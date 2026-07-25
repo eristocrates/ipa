@@ -1,290 +1,467 @@
 namespace http.rs.tdwg.org.ac.terms.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ac =
-    let _namespace_name = "http://rs.tdwg.org/ac/terms/"
+    let _namespace_iri = Namespace_Iri ac |> NamespaceIRI
+    /// <summary>
+    ///   <para>ac:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dwc:attributes/TermList</para>
+    ///   <para>This term list includes all currently valid terms that have been defined in the core Audubon Core namespace ac:.</para>
+    /// labels<para>Core terms defined by Audubon Core</para></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/">http://rs.tdwg.org/ac/terms/</seealso>
+    let _prefix_iri = Prefixed_Name(ac, "") |> PrefixedName
+    /// <summary>
+    ///   <para>ac:reviewerLiteral</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/reviewerLiteral">http://rs.tdwg.org/ac/terms/reviewerLiteral</seealso>
+    let reviewerLiteral = Prefixed_Name(ac, "reviewerLiteral") |> PrefixedName
+    /// <summary>
+    ///   <para>ac:variant</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/variant">http://rs.tdwg.org/ac/terms/variant</seealso>
+    let variant = Prefixed_Name(ac, "variant") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>ac:associatedObservationReference</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/associatedObservationReference">http://rs.tdwg.org/ac/terms/associatedObservationReference</seealso>
+    let associatedObservationReference =
+        Prefixed_Name(ac, "associatedObservationReference") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/freqHigh"></see>
+    ///   <para>ac:metadataLanguageLiteral</para>
     /// </summary>
-    let freqHigh = _prefix "freqHigh"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/metadataLanguageLiteral">http://rs.tdwg.org/ac/terms/metadataLanguageLiteral</seealso>
+    let metadataLanguageLiteral =
+        Prefixed_Name(ac, "metadataLanguageLiteral") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/radius"></see>
+    ///   <para>ac:freqLow</para>
     /// </summary>
-    let radius = _prefix "radius"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/freqLow">http://rs.tdwg.org/ac/terms/freqLow</seealso>
+    let freqLow = Prefixed_Name(ac, "freqLow") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/reviewerLiteral"></see>
+    ///   <para>ac:endTime</para>
     /// </summary>
-    let reviewerLiteral = _prefix "reviewerLiteral"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/endTime">http://rs.tdwg.org/ac/terms/endTime</seealso>
+    let endTime = Prefixed_Name(ac, "endTime") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/resourceCreationTechnique"></see>
+    ///   <para>ac:tag</para>
     /// </summary>
-    let resourceCreationTechnique = _prefix "resourceCreationTechnique"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/tag">http://rs.tdwg.org/ac/terms/tag</seealso>
+    let tag = Prefixed_Name(ac, "tag") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/mediaDuration"></see>
+    ///   <para>ac:otherScientificName</para>
     /// </summary>
-    let mediaDuration = _prefix "mediaDuration"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/otherScientificName">http://rs.tdwg.org/ac/terms/otherScientificName</seealso>
+    let otherScientificName = Prefixed_Name(ac, "otherScientificName") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/variant"></see>
+    ///   <para>ac:ServiceAccessPoint</para>
     /// </summary>
-    let variant = _prefix "variant"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/ServiceAccessPoint">http://rs.tdwg.org/ac/terms/ServiceAccessPoint</seealso>
+    let ServiceAccessPoint = Prefixed_Name(ac, "ServiceAccessPoint") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/associatedObservationReference"></see>
+    ///   <para>ac:captureDevice</para>
     /// </summary>
-    let associatedObservationReference = _prefix "associatedObservationReference"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/captureDevice">http://rs.tdwg.org/ac/terms/captureDevice</seealso>
+    let captureDevice = Prefixed_Name(ac, "captureDevice") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/physicalSetting"></see>
+    ///   <para>ac:attributionLinkURL</para>
     /// </summary>
-    let physicalSetting = _prefix "physicalSetting"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/attributionLinkURL">http://rs.tdwg.org/ac/terms/attributionLinkURL</seealso>
+    let attributionLinkURL = Prefixed_Name(ac, "attributionLinkURL") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/yFrac"></see>
+    ///   <para>ac:isROIOf</para>
     /// </summary>
-    let yFrac = _prefix "yFrac"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/isROIOf">http://rs.tdwg.org/ac/terms/isROIOf</seealso>
+    let isROIOf = Prefixed_Name(ac, "isROIOf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/endTimestamp"></see>
+    ///   <para>ac:subjectOrientation</para>
     /// </summary>
-    let endTimestamp = _prefix "endTimestamp"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/subjectOrientation">http://rs.tdwg.org/ac/terms/subjectOrientation</seealso>
+    let subjectOrientation = Prefixed_Name(ac, "subjectOrientation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/metadataLanguageLiteral"></see>
+    ///   <para>ac:providerID</para>
     /// </summary>
-    let metadataLanguageLiteral = _prefix "metadataLanguageLiteral"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/providerID">http://rs.tdwg.org/ac/terms/providerID</seealso>
+    let providerID = Prefixed_Name(ac, "providerID") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/caption"></see>
+    ///   <para>ac:hasServiceAccessPoint</para>
     /// </summary>
-    let caption = _prefix "caption"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/hasServiceAccessPoint">http://rs.tdwg.org/ac/terms/hasServiceAccessPoint</seealso>
+    let hasServiceAccessPoint =
+        Prefixed_Name(ac, "hasServiceAccessPoint") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/freqLow"></see>
+    ///   <para>ac:widthFrac</para>
     /// </summary>
-    let freqLow = _prefix "freqLow"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/widthFrac">http://rs.tdwg.org/ac/terms/widthFrac</seealso>
+    let widthFrac = Prefixed_Name(ac, "widthFrac") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/commenterLiteral"></see>
+    ///   <para>ac:metadataLanguage</para>
     /// </summary>
-    let commenterLiteral = _prefix "commenterLiteral"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/metadataLanguage">http://rs.tdwg.org/ac/terms/metadataLanguage</seealso>
+    let metadataLanguage = Prefixed_Name(ac, "metadataLanguage") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/frameRate"></see>
+    ///   <para>ac:metadataProviderLiteral</para>
     /// </summary>
-    let frameRate = _prefix "frameRate"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/metadataProviderLiteral">http://rs.tdwg.org/ac/terms/metadataProviderLiteral</seealso>
+    let metadataProviderLiteral =
+        Prefixed_Name(ac, "metadataProviderLiteral") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/commenter"></see>
+    ///   <para>ac:licenseLogoURL</para>
     /// </summary>
-    let commenter = _prefix "commenter"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/licenseLogoURL">http://rs.tdwg.org/ac/terms/licenseLogoURL</seealso>
+    let licenseLogoURL = Prefixed_Name(ac, "licenseLogoURL") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/endTime"></see>
+    ///   <para>ac:hashFunction</para>
     /// </summary>
-    let endTime = _prefix "endTime"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/hashFunction">http://rs.tdwg.org/ac/terms/hashFunction</seealso>
+    let hashFunction = Prefixed_Name(ac, "hashFunction") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/tag"></see>
+    ///   <para>ac:hashValue</para>
     /// </summary>
-    let tag = _prefix "tag"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/hashValue">http://rs.tdwg.org/ac/terms/hashValue</seealso>
+    let hashValue = Prefixed_Name(ac, "hashValue") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/taxonCoverage"></see>
+    ///   <para>ac:subtypeLiteral</para>
     /// </summary>
-    let taxonCoverage = _prefix "taxonCoverage"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/subtypeLiteral">http://rs.tdwg.org/ac/terms/subtypeLiteral</seealso>
+    let subtypeLiteral = Prefixed_Name(ac, "subtypeLiteral") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/subjectOrientationLiteral"></see>
+    ///   <para>ac:startTimestamp</para>
     /// </summary>
-    let subjectOrientationLiteral = _prefix "subjectOrientationLiteral"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/startTimestamp">http://rs.tdwg.org/ac/terms/startTimestamp</seealso>
+    let startTimestamp = Prefixed_Name(ac, "startTimestamp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/subjectPartLiteral"></see>
+    ///   <para>ac:metadataProvider</para>
     /// </summary>
-    let subjectPartLiteral = _prefix "subjectPartLiteral"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/metadataProvider">http://rs.tdwg.org/ac/terms/metadataProvider</seealso>
+    let metadataProvider = Prefixed_Name(ac, "metadataProvider") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/otherScientificName"></see>
+    ///   <para>ac:licensingException</para>
     /// </summary>
-    let otherScientificName = _prefix "otherScientificName"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/licensingException">http://rs.tdwg.org/ac/terms/licensingException</seealso>
+    let licensingException = Prefixed_Name(ac, "licensingException") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/ServiceAccessPoint"></see>
+    ///   <para>ac:radius</para>
     /// </summary>
-    let ServiceAccessPoint = _prefix "ServiceAccessPoint"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/radius">http://rs.tdwg.org/ac/terms/radius</seealso>
+    let radius = Prefixed_Name(ac, "radius") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/taxonCount"></see>
+    ///   <para>ac:physicalSetting</para>
     /// </summary>
-    let taxonCount = _prefix "taxonCount"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/physicalSetting">http://rs.tdwg.org/ac/terms/physicalSetting</seealso>
+    let physicalSetting = Prefixed_Name(ac, "physicalSetting") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/derivedFrom"></see>
+    ///   <para>ac:caption</para>
     /// </summary>
-    let derivedFrom = _prefix "derivedFrom"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/caption">http://rs.tdwg.org/ac/terms/caption</seealso>
+    let caption = Prefixed_Name(ac, "caption") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/attributionLogoURL"></see>
+    ///   <para>ac:commenter</para>
     /// </summary>
-    let attributionLogoURL = _prefix "attributionLogoURL"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/commenter">http://rs.tdwg.org/ac/terms/commenter</seealso>
+    let commenter = Prefixed_Name(ac, "commenter") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/variantLiteral"></see>
+    ///   <para>ac:taxonCoverage</para>
     /// </summary>
-    let variantLiteral = _prefix "variantLiteral"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/taxonCoverage">http://rs.tdwg.org/ac/terms/taxonCoverage</seealso>
+    let taxonCoverage = Prefixed_Name(ac, "taxonCoverage") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/subjectCategoryVocabulary"></see>
+    ///   <para>ac:taxonCount</para>
     /// </summary>
-    let subjectCategoryVocabulary = _prefix "subjectCategoryVocabulary"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/taxonCount">http://rs.tdwg.org/ac/terms/taxonCount</seealso>
+    let taxonCount = Prefixed_Name(ac, "taxonCount") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/IDofContainingCollection"></see>
+    ///   <para>ac:derivedFrom</para>
     /// </summary>
-    let IDofContainingCollection = _prefix "IDofContainingCollection"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/derivedFrom">http://rs.tdwg.org/ac/terms/derivedFrom</seealso>
+    let derivedFrom = Prefixed_Name(ac, "derivedFrom") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/captureDevice"></see>
+    ///   <para>ac:xFrac</para>
     /// </summary>
-    let captureDevice = _prefix "captureDevice"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/xFrac">http://rs.tdwg.org/ac/terms/xFrac</seealso>
+    let xFrac = Prefixed_Name(ac, "xFrac") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/attributionLinkURL"></see>
+    ///   <para>ac:metadataCreatorLiteral</para>
     /// </summary>
-    let attributionLinkURL = _prefix "attributionLinkURL"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/metadataCreatorLiteral">http://rs.tdwg.org/ac/terms/metadataCreatorLiteral</seealso>
+    let metadataCreatorLiteral =
+        Prefixed_Name(ac, "metadataCreatorLiteral") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/xFrac"></see>
+    ///   <para>ac:provider</para>
     /// </summary>
-    let xFrac = _prefix "xFrac"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/provider">http://rs.tdwg.org/ac/terms/provider</seealso>
+    let provider = Prefixed_Name(ac, "provider") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/metadataCreatorLiteral"></see>
+    ///   <para>ac:fundingAttribution</para>
     /// </summary>
-    let metadataCreatorLiteral = _prefix "metadataCreatorLiteral"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/fundingAttribution">http://rs.tdwg.org/ac/terms/fundingAttribution</seealso>
+    let fundingAttribution = Prefixed_Name(ac, "fundingAttribution") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/provider"></see>
+    ///   <para>ac:metadataCreator</para>
     /// </summary>
-    let provider = _prefix "provider"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/metadataCreator">http://rs.tdwg.org/ac/terms/metadataCreator</seealso>
+    let metadataCreator = Prefixed_Name(ac, "metadataCreator") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/isROIOf"></see>
+    ///   <para>ac:startTime</para>
     /// </summary>
-    let isROIOf = _prefix "isROIOf"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/startTime">http://rs.tdwg.org/ac/terms/startTime</seealso>
+    let startTime = Prefixed_Name(ac, "startTime") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/subjectOrientation"></see>
+    ///   <para>ac:serviceExpectation</para>
     /// </summary>
-    let subjectOrientation = _prefix "subjectOrientation"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/serviceExpectation">http://rs.tdwg.org/ac/terms/serviceExpectation</seealso>
+    let serviceExpectation = Prefixed_Name(ac, "serviceExpectation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/fundingAttribution"></see>
+    ///   <para>ac:mediaSpeed</para>
     /// </summary>
-    let fundingAttribution = _prefix "fundingAttribution"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/mediaSpeed">http://rs.tdwg.org/ac/terms/mediaSpeed</seealso>
+    let mediaSpeed = Prefixed_Name(ac, "mediaSpeed") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/metadataCreator"></see>
+    ///   <para>ac:reviewerComments</para>
     /// </summary>
-    let metadataCreator = _prefix "metadataCreator"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/reviewerComments">http://rs.tdwg.org/ac/terms/reviewerComments</seealso>
+    let reviewerComments = Prefixed_Name(ac, "reviewerComments") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/providerID"></see>
+    ///   <para>ac:digitizationDate</para>
     /// </summary>
-    let providerID = _prefix "providerID"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/digitizationDate">http://rs.tdwg.org/ac/terms/digitizationDate</seealso>
+    let digitizationDate = Prefixed_Name(ac, "digitizationDate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/hasServiceAccessPoint"></see>
+    ///   <para>ac:relatedResourceID</para>
     /// </summary>
-    let hasServiceAccessPoint = _prefix "hasServiceAccessPoint"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/relatedResourceID">http://rs.tdwg.org/ac/terms/relatedResourceID</seealso>
+    let relatedResourceID = Prefixed_Name(ac, "relatedResourceID") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/comments"></see>
+    ///   <para>ac:subtype</para>
     /// </summary>
-    let comments = _prefix "comments"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/subtype">http://rs.tdwg.org/ac/terms/subtype</seealso>
+    let subtype = Prefixed_Name(ac, "subtype") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/RegionOfInterest"></see>
+    ///   <para>ac:subjectPart</para>
     /// </summary>
-    let RegionOfInterest = _prefix "RegionOfInterest"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/subjectPart">http://rs.tdwg.org/ac/terms/subjectPart</seealso>
+    let subjectPart = Prefixed_Name(ac, "subjectPart") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/furtherInformationURL"></see>
+    ///   <para>ac:freqHigh</para>
     /// </summary>
-    let furtherInformationURL = _prefix "furtherInformationURL"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/freqHigh">http://rs.tdwg.org/ac/terms/freqHigh</seealso>
+    let freqHigh = Prefixed_Name(ac, "freqHigh") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/associatedSpecimenReference"></see>
+    ///   <para>ac:resourceCreationTechnique</para>
     /// </summary>
-    let associatedSpecimenReference = _prefix "associatedSpecimenReference"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/resourceCreationTechnique">http://rs.tdwg.org/ac/terms/resourceCreationTechnique</seealso>
+    let resourceCreationTechnique =
+        Prefixed_Name(ac, "resourceCreationTechnique") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/startTime"></see>
+    ///   <para>ac:mediaDuration</para>
     /// </summary>
-    let startTime = _prefix "startTime"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/mediaDuration">http://rs.tdwg.org/ac/terms/mediaDuration</seealso>
+    let mediaDuration = Prefixed_Name(ac, "mediaDuration") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/serviceExpectation"></see>
+    ///   <para>ac:yFrac</para>
     /// </summary>
-    let serviceExpectation = _prefix "serviceExpectation"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/yFrac">http://rs.tdwg.org/ac/terms/yFrac</seealso>
+    let yFrac = Prefixed_Name(ac, "yFrac") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/widthFrac"></see>
+    ///   <para>ac:endTimestamp</para>
     /// </summary>
-    let widthFrac = _prefix "widthFrac"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/endTimestamp">http://rs.tdwg.org/ac/terms/endTimestamp</seealso>
+    let endTimestamp = Prefixed_Name(ac, "endTimestamp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/metadataLanguage"></see>
+    ///   <para>ac:commenterLiteral</para>
     /// </summary>
-    let metadataLanguage = _prefix "metadataLanguage"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/commenterLiteral">http://rs.tdwg.org/ac/terms/commenterLiteral</seealso>
+    let commenterLiteral = Prefixed_Name(ac, "commenterLiteral") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/mediaSpeed"></see>
+    ///   <para>ac:frameRate</para>
     /// </summary>
-    let mediaSpeed = _prefix "mediaSpeed"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/frameRate">http://rs.tdwg.org/ac/terms/frameRate</seealso>
+    let frameRate = Prefixed_Name(ac, "frameRate") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/reviewerComments"></see>
+    ///   <para>ac:subjectOrientationLiteral</para>
     /// </summary>
-    let reviewerComments = _prefix "reviewerComments"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/subjectOrientationLiteral">http://rs.tdwg.org/ac/terms/subjectOrientationLiteral</seealso>
+    let subjectOrientationLiteral =
+        Prefixed_Name(ac, "subjectOrientationLiteral") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/metadataProviderLiteral"></see>
+    ///   <para>ac:subjectPartLiteral</para>
     /// </summary>
-    let metadataProviderLiteral = _prefix "metadataProviderLiteral"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/subjectPartLiteral">http://rs.tdwg.org/ac/terms/subjectPartLiteral</seealso>
+    let subjectPartLiteral = Prefixed_Name(ac, "subjectPartLiteral") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/licenseLogoURL"></see>
+    ///   <para>ac:attributionLogoURL</para>
     /// </summary>
-    let licenseLogoURL = _prefix "licenseLogoURL"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/attributionLogoURL">http://rs.tdwg.org/ac/terms/attributionLogoURL</seealso>
+    let attributionLogoURL = Prefixed_Name(ac, "attributionLogoURL") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/accessURI"></see>
+    ///   <para>ac:variantLiteral</para>
     /// </summary>
-    let accessURI = _prefix "accessURI"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/variantLiteral">http://rs.tdwg.org/ac/terms/variantLiteral</seealso>
+    let variantLiteral = Prefixed_Name(ac, "variantLiteral") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/variantDescription"></see>
+    ///   <para>ac:subjectCategoryVocabulary</para>
     /// </summary>
-    let variantDescription = _prefix "variantDescription"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/subjectCategoryVocabulary">http://rs.tdwg.org/ac/terms/subjectCategoryVocabulary</seealso>
+    let subjectCategoryVocabulary =
+        Prefixed_Name(ac, "subjectCategoryVocabulary") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/reviewer"></see>
+    ///   <para>ac:IDofContainingCollection</para>
     /// </summary>
-    let reviewer = _prefix "reviewer"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/IDofContainingCollection">http://rs.tdwg.org/ac/terms/IDofContainingCollection</seealso>
+    let IDofContainingCollection =
+        Prefixed_Name(ac, "IDofContainingCollection") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/providerLiteral"></see>
+    ///   <para>ac:comments</para>
     /// </summary>
-    let providerLiteral = _prefix "providerLiteral"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/comments">http://rs.tdwg.org/ac/terms/comments</seealso>
+    let comments = Prefixed_Name(ac, "comments") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/digitizationDate"></see>
+    ///   <para>ac:RegionOfInterest</para>
     /// </summary>
-    let digitizationDate = _prefix "digitizationDate"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/RegionOfInterest">http://rs.tdwg.org/ac/terms/RegionOfInterest</seealso>
+    let RegionOfInterest = Prefixed_Name(ac, "RegionOfInterest") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/relatedResourceID"></see>
+    ///   <para>ac:furtherInformationURL</para>
     /// </summary>
-    let relatedResourceID = _prefix "relatedResourceID"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/furtherInformationURL">http://rs.tdwg.org/ac/terms/furtherInformationURL</seealso>
+    let furtherInformationURL =
+        Prefixed_Name(ac, "furtherInformationURL") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/hashFunction"></see>
+    ///   <para>ac:associatedSpecimenReference</para>
     /// </summary>
-    let hashFunction = _prefix "hashFunction"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/associatedSpecimenReference">http://rs.tdwg.org/ac/terms/associatedSpecimenReference</seealso>
+    let associatedSpecimenReference =
+        Prefixed_Name(ac, "associatedSpecimenReference") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/hashValue"></see>
+    ///   <para>ac:accessURI</para>
     /// </summary>
-    let hashValue = _prefix "hashValue"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/accessURI">http://rs.tdwg.org/ac/terms/accessURI</seealso>
+    let accessURI = Prefixed_Name(ac, "accessURI") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/subtype"></see>
+    ///   <para>ac:variantDescription</para>
     /// </summary>
-    let subtype = _prefix "subtype"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/variantDescription">http://rs.tdwg.org/ac/terms/variantDescription</seealso>
+    let variantDescription = Prefixed_Name(ac, "variantDescription") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/subjectPart"></see>
+    ///   <para>ac:reviewer</para>
     /// </summary>
-    let subjectPart = _prefix "subjectPart"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/reviewer">http://rs.tdwg.org/ac/terms/reviewer</seealso>
+    let reviewer = Prefixed_Name(ac, "reviewer") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/subtypeLiteral"></see>
+    ///   <para>ac:providerLiteral</para>
     /// </summary>
-    let subtypeLiteral = _prefix "subtypeLiteral"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/providerLiteral">http://rs.tdwg.org/ac/terms/providerLiteral</seealso>
+    let providerLiteral = Prefixed_Name(ac, "providerLiteral") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/startTimestamp"></see>
+    ///   <para>ac:hasROI</para>
     /// </summary>
-    let startTimestamp = _prefix "startTimestamp"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/hasROI">http://rs.tdwg.org/ac/terms/hasROI</seealso>
+    let hasROI = Prefixed_Name(ac, "hasROI") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/metadataProvider"></see>
+    ///   <para>ac:heightFrac</para>
     /// </summary>
-    let metadataProvider = _prefix "metadataProvider"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/heightFrac">http://rs.tdwg.org/ac/terms/heightFrac</seealso>
+    let heightFrac = Prefixed_Name(ac, "heightFrac") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/licensingException"></see>
+    ///   <para>ac:timeOfDay</para>
     /// </summary>
-    let licensingException = _prefix "licensingException"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/timeOfDay">http://rs.tdwg.org/ac/terms/timeOfDay</seealso>
+    let timeOfDay = Prefixed_Name(ac, "timeOfDay") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/hasROI"></see>
+    ///   <para>ac:providerManagedID</para>
     /// </summary>
-    let hasROI = _prefix "hasROI"
-    /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/heightFrac"></see>
-    /// </summary>
-    let heightFrac = _prefix "heightFrac"
-    /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/timeOfDay"></see>
-    /// </summary>
-    let timeOfDay = _prefix "timeOfDay"
-    /// <summary>
-    ///   <see href="http://rs.tdwg.org/ac/terms/providerManagedID"></see>
-    /// </summary>
-    let providerManagedID = _prefix "providerManagedID"
+    /// <remarks></remarks>
+    /// <seealso href="http://rs.tdwg.org/ac/terms/providerManagedID">http://rs.tdwg.org/ac/terms/providerManagedID</seealso>
+    let providerManagedID = Prefixed_Name(ac, "providerManagedID") |> PrefixedName

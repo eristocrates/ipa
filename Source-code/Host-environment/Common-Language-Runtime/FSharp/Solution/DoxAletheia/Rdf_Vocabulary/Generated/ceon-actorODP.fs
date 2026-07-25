@@ -1,98 +1,247 @@
 namespace http.w3id.org.CEON.ontology.actorODP.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ceon_actorODP =
-    let _namespace_name = "http://w3id.org/CEON/ontology/actorODP/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri ceon_actorODP |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://w3id.org/CEON/ontology/actorODP/0.4/"></see>
+    ///   <para>ceon-actorODP:</para>
     /// </summary>
-    let ``_0.4/`` = _prefix "0.4/"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>A core ODP of the CEON ontology network, defining aspects of the actor concept.</para>
+    /// </remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/">http://w3id.org/CEON/ontology/actorODP/</seealso>
+    let _prefix_iri = Prefixed_Name(ceon_actorODP, "") |> PrefixedName
     /// <summary>
-    /// An agent able to act in the context of a circular value network, e.g. an organisation, person.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/Actor"></see></summary>
-    let Actor = _prefix "Actor"
+    ///   <para>ceon-actorODP:0.4/</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/0.4/">http://w3id.org/CEON/ontology/actorODP/0.4/</seealso>
+    let ``_0.4/`` = Prefixed_Name(ceon_actorODP, "0.4/") |> PrefixedName
+
     /// <summary>
-    /// Something that the actor is capable of doing, e.g. perfomring a certain role in a process, based on some properties, such as access to infrastructure, resources and know-how.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/Capability"></see></summary>
-    let Capability = _prefix "Capability"
+    ///   <para>ceon-actorODP:CollaborationParticipation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time.</para>
+    /// labels<para>Collaboration Participation</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation">http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation</seealso>
+    let CollaborationParticipation =
+        Prefixed_Name(ceon_actorODP, "CollaborationParticipation") |> PrefixedName
+
     /// <summary>
-    /// The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"></see></summary>
-    let CollaborationParticipation = _prefix "CollaborationParticipation"
+    ///   <para>ceon-actorODP:Participation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Represents the participation of objects in some situation.</para>
+    /// labels<para>Participation</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/Participation">http://w3id.org/CEON/ontology/actorODP/Participation</seealso>
+    let Participation = Prefixed_Name(ceon_actorODP, "Participation") |> PrefixedName
+
     /// <summary>
-    /// Represents the participation of objects in some situation.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/Participation"></see></summary>
-    let Participation = _prefix "Participation"
+    ///   <para>ceon-actorODP:ResourceParticipation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The generic relation representing the particpation of a resource in some relation. For example, it can be specialized to represent a reified version of an object or data property.</para>
+    /// labels<para>Resource Participation</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/ResourceParticipation">http://w3id.org/CEON/ontology/actorODP/ResourceParticipation</seealso>
+    let ResourceParticipation =
+        Prefixed_Name(ceon_actorODP, "ResourceParticipation") |> PrefixedName
+
     /// <summary>
-    /// An infrastructure refers to facilities, services, or systems for participations to function.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/Infrastructure"></see></summary>
-    let Infrastructure = _prefix "Infrastructure"
+    ///   <para>ceon-actorODP:Capability</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Something that the actor is capable of doing, e.g. perfomring a certain role in a process, based on some properties, such as access to infrastructure, resources and know-how.</para>
+    /// labels<para>Capability</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/Capability">http://w3id.org/CEON/ontology/actorODP/Capability</seealso>
+    let Capability = Prefixed_Name(ceon_actorODP, "Capability") |> PrefixedName
+
     /// <summary>
-    /// The start of a time interval.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/participationStartTime"></see></summary>
-    let participationStartTime = _prefix "participationStartTime"
+    ///   <para>ceon-actorODP:ResourceRelation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The relation involving the role of a certain actor with respect to a certain resource, e.g. an organisation or individual (actor) owning (role) a specific product (resource) at a specific point or period in time.</para>
+    /// labels<para>Resource Relation</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">http://w3id.org/CEON/ontology/actorODP/ResourceRelation</seealso>
+    let ResourceRelation =
+        Prefixed_Name(ceon_actorODP, "ResourceRelation") |> PrefixedName
+
     /// <summary>
-    /// The point in time when something took place or was valid.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/participationTimePoint"></see></summary>
-    let participationTimePoint = _prefix "participationTimePoint"
+    ///   <para>ceon-actorODP:capabilityOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Relates to the actor holding the capability.</para>
+    /// labels<para>capability of</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/capabilityOf">http://w3id.org/CEON/ontology/actorODP/capabilityOf</seealso>
+    let capabilityOf = Prefixed_Name(ceon_actorODP, "capabilityOf") |> PrefixedName
+
     /// <summary>
-    /// The generic relation representing the particpation of a resource in some relation. For example, it can be specialized to represent a reified version of an object or data property.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/ResourceParticipation"></see></summary>
-    let ResourceParticipation = _prefix "ResourceParticipation"
+    ///   <para>ceon-actorODP:capabilityProperty</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Relates some properties to the capability, such as the parameters of it, or the needed resources.</para>
+    /// labels<para>capability property</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/capabilityProperty">http://w3id.org/CEON/ontology/actorODP/capabilityProperty</seealso>
+    let capabilityProperty =
+        Prefixed_Name(ceon_actorODP, "capabilityProperty") |> PrefixedName
+
     /// <summary>
-    /// The relation involving the role of a certain actor with respect to a certain resource, e.g. an organisation or individual (actor) owning (role) a specific product (resource) at a specific point or period in time.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"></see></summary>
-    let ResourceRelation = _prefix "ResourceRelation"
+    ///   <para>ceon-actorODP:participatingObject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Participating object in a resource participation. This is part of a resource participation that can be a directional relation, and the participating object is the end point of the relation.</para>
+    /// labels<para>participating object</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/participatingObject">http://w3id.org/CEON/ontology/actorODP/participatingObject</seealso>
+    let participatingObject =
+        Prefixed_Name(ceon_actorODP, "participatingObject") |> PrefixedName
+
     /// <summary>
-    /// A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/Role"></see></summary>
-    let Role = _prefix "Role"
+    ///   <para>ceon-actorODP:basedOnCapability</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>An actor participates in a collaboration based on that it has some capability that is useful for the collaboration.</para>
+    /// labels<para>based on capability</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/basedOnCapability">http://w3id.org/CEON/ontology/actorODP/basedOnCapability</seealso>
+    let basedOnCapability =
+        Prefixed_Name(ceon_actorODP, "basedOnCapability") |> PrefixedName
+
     /// <summary>
-    /// An actor participates in a collaboration based on that it has some capability that is useful for the collaboration.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/basedOnCapability"></see></summary>
-    let basedOnCapability = _prefix "basedOnCapability"
+    ///   <para>ceon-actorODP:participatingInfrastructure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Holds the value of the infrastructure involved in this participation relation.</para>
+    /// labels<para>participating infrastructure</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/participatingInfrastructure">http://w3id.org/CEON/ontology/actorODP/participatingInfrastructure</seealso>
+    let participatingInfrastructure =
+        Prefixed_Name(ceon_actorODP, "participatingInfrastructure") |> PrefixedName
+
     /// <summary>
-    /// Relates to the actor holding the capability.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/capabilityOf"></see></summary>
-    let capabilityOf = _prefix "capabilityOf"
+    ///   <para>ceon-actorODP:participatingSubject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Participating subject in a resource participation. This is part of a resource participation that can be a directional relation, and the participating subject is the starting point of the relation.</para>
+    /// labels<para>participating subject</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/participatingSubject">http://w3id.org/CEON/ontology/actorODP/participatingSubject</seealso>
+    let participatingSubject =
+        Prefixed_Name(ceon_actorODP, "participatingSubject") |> PrefixedName
+
     /// <summary>
-    /// Relates some properties to the capability, such as the parameters of it, or the needed resources.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/capabilityProperty"></see></summary>
-    let capabilityProperty = _prefix "capabilityProperty"
+    ///   <para>ceon-actorODP:Actor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An agent able to act in the context of a circular value network, e.g. an organisation, person.</para>
+    /// labels<para>Actor</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/Actor">http://w3id.org/CEON/ontology/actorODP/Actor</seealso>
+    let Actor = Prefixed_Name(ceon_actorODP, "Actor") |> PrefixedName
     /// <summary>
-    /// Holds the value of the role of the participant in this participation relation.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/participantRole"></see></summary>
-    let participantRole = _prefix "participantRole"
+    ///   <para>ceon-actorODP:Infrastructure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An infrastructure refers to facilities, services, or systems for participations to function.</para>
+    /// labels<para>Infrastructure</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/Infrastructure">http://w3id.org/CEON/ontology/actorODP/Infrastructure</seealso>
+    let Infrastructure = Prefixed_Name(ceon_actorODP, "Infrastructure") |> PrefixedName
+
     /// <summary>
-    /// Holds the value of the actor involved in this participation relation.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/participatingActor"></see></summary>
-    let participatingActor = _prefix "participatingActor"
+    ///   <para>ceon-actorODP:participationStartTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The start of a time interval.</para>
+    /// labels<para>participation start time</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/participationStartTime">http://w3id.org/CEON/ontology/actorODP/participationStartTime</seealso>
+    let participationStartTime =
+        Prefixed_Name(ceon_actorODP, "participationStartTime") |> PrefixedName
+
     /// <summary>
-    /// Holds the value of the infrastructure involved in this participation relation.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/participatingInfrastructure"></see></summary>
-    let participatingInfrastructure = _prefix "participatingInfrastructure"
+    ///   <para>ceon-actorODP:participationTimePoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The point in time when something took place or was valid.</para>
+    /// labels<para>participation time point</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/participationTimePoint">http://w3id.org/CEON/ontology/actorODP/participationTimePoint</seealso>
+    let participationTimePoint =
+        Prefixed_Name(ceon_actorODP, "participationTimePoint") |> PrefixedName
+
     /// <summary>
-    /// Participating object in a resource participation. This is part of a resource participation that can be a directional relation, and the participating object is the end point of the relation.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/participatingObject"></see></summary>
-    let participatingObject = _prefix "participatingObject"
+    ///   <para>ceon-actorODP:Role</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow.</para>
+    /// labels<para>Role</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/Role">http://w3id.org/CEON/ontology/actorODP/Role</seealso>
+    let Role = Prefixed_Name(ceon_actorODP, "Role") |> PrefixedName
+
     /// <summary>
-    /// The resource that this participation relation relates to, i.e. for which the actor holds the specified role.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/participatingResource"></see></summary>
-    let participatingResource = _prefix "participatingResource"
+    ///   <para>ceon-actorODP:participantRole</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Holds the value of the role of the participant in this participation relation.</para>
+    /// labels<para>participant role</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/participantRole">http://w3id.org/CEON/ontology/actorODP/participantRole</seealso>
+    let participantRole =
+        Prefixed_Name(ceon_actorODP, "participantRole") |> PrefixedName
+
     /// <summary>
-    /// Participating subject in a resource participation. This is part of a resource participation that can be a directional relation, and the participating subject is the starting point of the relation.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/participatingSubject"></see></summary>
-    let participatingSubject = _prefix "participatingSubject"
+    ///   <para>ceon-actorODP:participatingActor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Holds the value of the actor involved in this participation relation.</para>
+    /// labels<para>participating actor</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/participatingActor">http://w3id.org/CEON/ontology/actorODP/participatingActor</seealso>
+    let participatingActor =
+        Prefixed_Name(ceon_actorODP, "participatingActor") |> PrefixedName
+
     /// <summary>
-    /// The end of a time interval.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/participationEndTime"></see></summary>
-    let participationEndTime = _prefix "participationEndTime"
+    ///   <para>ceon-actorODP:participatingResource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The resource that this participation relation relates to, i.e. for which the actor holds the specified role.</para>
+    /// labels<para>participating resource</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/participatingResource">http://w3id.org/CEON/ontology/actorODP/participatingResource</seealso>
+    let participatingResource =
+        Prefixed_Name(ceon_actorODP, "participatingResource") |> PrefixedName
+
     /// <summary>
-    /// The collaboration or process that this participation relates to.
-    /// <see href="http://w3id.org/CEON/ontology/actorODP/participationIn"></see></summary>
-    let participationIn = _prefix "participationIn"
+    ///   <para>ceon-actorODP:participationEndTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The end of a time interval.</para>
+    /// labels<para>participation end time</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/participationEndTime">http://w3id.org/CEON/ontology/actorODP/participationEndTime</seealso>
+    let participationEndTime =
+        Prefixed_Name(ceon_actorODP, "participationEndTime") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ceon-actorODP:participationIn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The collaboration or process that this participation relates to.</para>
+    /// labels<para>participation in</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/actorODP/participationIn">http://w3id.org/CEON/ontology/actorODP/participationIn</seealso>
+    let participationIn =
+        Prefixed_Name(ceon_actorODP, "participationIn") |> PrefixedName

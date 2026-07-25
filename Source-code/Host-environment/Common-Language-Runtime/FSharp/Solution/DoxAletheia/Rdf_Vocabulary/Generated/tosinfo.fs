@@ -1,26 +1,51 @@
 namespace http.tracker.api.gnome.org.ontology.v3.osinfo.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module tosinfo =
-    let _namespace_name = "http://tracker.api.gnome.org/ontology/v3/osinfo#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri tosinfo |> NamespaceIRI
     /// <summary>
-    /// An operating system installer
-    /// <see href="http://tracker.api.gnome.org/ontology/v3/osinfo#Installer"></see></summary>
-    let Installer = _prefix "Installer"
-    /// <summary>
-    ///   <see href="http://tracker.api.gnome.org/ontology/v3/osinfo#id"></see>
+    ///   <para>tosinfo:Installer</para>
     /// </summary>
-    let id = _prefix "id"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An operating system installer</para>
+    /// labels<para>Operating System Installer</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#Installer">http://tracker.api.gnome.org/ontology/v3/osinfo#Installer</seealso>
+    let Installer = Prefixed_Name(tosinfo, "Installer") |> PrefixedName
     /// <summary>
-    /// Languages supported by installer/live media.
-    /// <see href="http://tracker.api.gnome.org/ontology/v3/osinfo#language"></see></summary>
-    let language = _prefix "language"
-    /// <summary>
-    ///   <see href="http://tracker.api.gnome.org/ontology/v3/osinfo#mediaId"></see>
+    ///   <para>tosinfo:id</para>
     /// </summary>
-    let mediaId = _prefix "mediaId"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#id">http://tracker.api.gnome.org/ontology/v3/osinfo#id</seealso>
+    let id = Prefixed_Name(tosinfo, "id") |> PrefixedName
+    /// <summary>
+    ///   <para>tosinfo:language</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Languages supported by installer/live media.</para>
+    /// labels<para>Language</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#language">http://tracker.api.gnome.org/ontology/v3/osinfo#language</seealso>
+    let language = Prefixed_Name(tosinfo, "language") |> PrefixedName
+    /// <summary>
+    ///   <para>tosinfo:mediaId</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#mediaId">http://tracker.api.gnome.org/ontology/v3/osinfo#mediaId</seealso>
+    let mediaId = Prefixed_Name(tosinfo, "mediaId") |> PrefixedName
+    /// <summary>
+    ///   <para>tosinfo:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>tnrl:Ontology</para>
+    ///   <para>tnrl:Namespace</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#">http://tracker.api.gnome.org/ontology/v3/osinfo#</seealso>
+    let _prefix_iri = Prefixed_Name(tosinfo, "") |> PrefixedName

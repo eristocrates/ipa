@@ -1,3 +1,8 @@
+#time on
+fsi.ShowDeclarationValues <- false
+fsi.PrintLength <- 10
+
+
 open System
 open System.IO
 
@@ -5,19 +10,6 @@ open System.IO
 
 open FSharp.Compiler.Syntax
 open FSharp.Compiler.Tokenization
-
-#r "nuget: NeatIntervals"
-#r "nuget: XParsec"
-
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XParsecErgonomics.fsx"
-
-open XParsecErgonomics
-open StringExtensions
-open Unicode_Standard
-open XParsec
-open XParsec.CharParsers
-open XParsec.Combinators
-open XParsec.Parsers
 
 
 open System
@@ -29,6 +21,8 @@ open FSharp.Compiler.Text
 open FSharp.Compiler.Diagnostics
 open FSharp.Compiler.Interactive.Shell
 
+#r "nuget: FSharp.Data"
+open FSharp.Data
 
 
 #r "nuget:  Fabulous.AST"
@@ -38,200 +32,120 @@ open type Fabulous.AST.Ast
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XmlErgonomics.fsx"
 open XmlErgonomics
-
-let registry_path =
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Ergonomic_Extensions\obj\Release\net10.0\Ergonomic_Extensions.dll"
+open DoxAletheia
+open PrettierNaming
+// #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\LanguageTag.fsx"
+let registry_directory_path =
     @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\LanguageSubtag.txt"
-// TODO remember to manually regex comments to a single line
-
-(*
-
-Comments.*\r\n\s
-
-*)
-
-let ocaml_ident_keywords =
-    set [
-
-          "asr"
-          "land"
-          "lor"
-          "lsl"
-          "lsr"
-          "lxor"
-          "mod"
-
-           ]
-
-let rec fsharp_identifier (logical_string: string) =
-    match PrettyNaming.DoesIdentifierNeedBackticks logical_string with
-    | _ when ocaml_ident_keywords.Contains(logical_string) -> fsharp_identifier $"{logical_string}_"
-    | _ when logical_string.Contains(" ") ->
-        logical_string.Replace(" ", "_")
-        |> fsharp_identifier
-    | _ when logical_string.Contains(".") ->
-        logical_string.Replace(".", "_")
-        |> fsharp_identifier
-    | _ when logical_string.Contains("(") ->
-        logical_string.Replace("(", "_")
-        |> fsharp_identifier
-    | _ when logical_string.Contains(")") ->
-        logical_string.Replace(")", "_")
-        |> fsharp_identifier
-    | true -> PrettyNaming.NormalizeIdentifierBackticks logical_string
-    | _ -> logical_string
-
-let registry_content = File.ReadAllText(registry_path)
+[<Literal>]
+let registry_file_path = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\language-subtag-registry.json"
+let registry = JsonProvider<registry_file_path>.Load registry_file_path
 
 
-fsi.ShowDeclarationValues <- true
-// TODO next transition xparsec to type provider
-
-let horizontal_spaces = skipMany (choice [ pstring " "; pstring "\t" ])
-
-let key_char = satisfy (fun c -> Char.IsLetterOrDigit c || c = '-')
-
-let key_parser = many1Chars key_char
-
-let key_value_parser =
-    parser {
-        let! key = key_parser
-        do! skipChar ':'
-        do! horizontal_spaces
-
-        let! value, _ = manyCharsTill anyChar newline
-
-        return key, value
+type Subtag = 
+    {   
+        Added: DateTime
+        Comments: string array
+        Description: string array
+        Macrolanguage: string
+        PreferredValue: string
+        Prefix: string array
+        Scope: string option
+        Name: string
+        SuppressScript: string option
+        Tag: string option
+        Type: string
     }
 
-let delimiter_parser =
-    parser {
-        let! _ = pstring "%%"
-        do! skipNewline
-    }
-
-let record_parser = parser { return! many1 key_value_parser }
-
-let registry_parser =
-    parser {
-        let! records, _ = sepBy record_parser delimiter_parser
-        return records
-    }
-
-// parse string_parser "hello" from_input_string "hello world" expecting "hello world" return_string
-
-let parsed_registry =
-    Reader.ofString registry_content ()
-    |> registry_parser
-
-
-
-
-
-
-
-// (string * string) * ImmutableArray<ImmutableArray<string * string>>
-let registry =
-    match parsed_registry with
-    | Ok parsed -> parsed
-
-let records =
+let single_subtags =
     registry
-    |> Seq.map (fun tags -> tags |> Seq.map (fun tag -> tag))
-
-(*
-let distinct_keys =
-    records
-    |> Seq.collect (fun language ->
-
-        language |> Seq.map (fun (key, value) -> key)
-
-    )
-    |> Seq.distinct
-    |> Seq.sort
-    |> Seq.toArray
-
-let test_keys =
-    records
-    |> Seq.choose (fun language ->
-
-        let percent_exists =
-            language
-            |> Seq.exists (fun (key, value) -> String.IsNullOrWhiteSpace(key))
-        if percent_exists then
-            Some(language |> Seq.toArray)
-        else
-            None
+    |> Array.filter (fun subtag -> subtag.Deprecated.IsNone )
+    |> Array.filter (fun subtag -> not (subtag.Subtag.JsonValue.AsString().Contains("..")))
+    |> Array.filter (fun subtag -> not (String.IsNullOrWhiteSpace(subtag.Subtag.JsonValue.AsString())))
+    |> Array.map (fun subtag -> 
+        {   
+        
+        Added = subtag.Added
+        Comments = subtag.Comments
+        Description = subtag.Description
+        Macrolanguage = subtag.Macrolanguage.JsonValue.AsString()
+        PreferredValue = subtag.PreferredValue.JsonValue.AsString()
+        Prefix = subtag.Prefix
+        Scope = subtag.Scope
+        Name = subtag.Subtag.JsonValue.AsString()
+        SuppressScript = subtag.SuppressScript
+        Tag = subtag.Tag
+        Type = subtag.Type
+    }
 
 
-    )
-    |> Seq.toArray
-
-
-
-let distinct_values target_key =
-    records
-    |> Seq.map (fun key_values ->
-
-        key_values
-        |> Seq.tryPick (fun (key, value) ->
-
-            if key = target_key then
-                Some value
-            else
-                None)
-
-    )
-    |> Seq.distinct
-    |> Seq.sort
-
-let distinct_added_values = distinct_values "Added"
-let distinct_comments_values = distinct_values "Comments"
-let distinct_deprecated_values = distinct_values "Deprecated"
-let distinct_description_values = distinct_values "Description"
-let distinct_macrolanguage_values = distinct_values "Macrolanguage"
-let distinct_preferred_values_value = distinct_values "Preferred-Value"
-let distinct_scope_values = distinct_values "Scope"
-let distinct_subtag_values = distinct_values "Subtag"
-let distinct_suppress_script_values = distinct_values "Suppress-Script"
-
-let distinct_type_values =
-    distinct_values "Type"
-    |> Seq.choose (fun type_ -> type_)
-    |> Seq.toArray
-
-let language_records =
-    records
-    |> Seq.choose (fun record ->
-        let record_type =
-            record
-            |> Seq.pick (fun (key, value) ->
-                if key = "Type" then
-                    Some value
-                else
-                    None)
-        if record_type = "language" then
-            Some record
-        else
-            None)
-
-*)
+        )
+let prefixed_subtags =
+        single_subtags
+        |> Array.filter (fun subtag -> subtag.Prefix.Length > 0 )
+        |> Array.collect (fun subtag -> 
+                subtag.Prefix |> Array.map (fun prefix -> { subtag with Name = sprintf "%s-%s" prefix subtag.Name } )
+            )
+let subtags = 
+    Array.concat [| single_subtags ; prefixed_subtags|]
+    |> Array.sortBy (fun subtag -> subtag.Name)
 
 
 
+let subtag_types = 
+    subtags
+    |> Array.map (fun subtag -> subtag.Type)
+    |> Array.distinct
 
-[<RequireQualifiedAccess>]
-type Registry_Type =
-    | region
-    | language
+// type Language_Tag(primary:Language_Subtag, ext1:Extended_Language_Subtag option, ext2:Extended_Language_Subtag option, ext3:Extended_Language_Subtag option, region:Region_Subtag option, variants:Variant_Subtag option array, extensions:Extension_Subtag option array, private_use:Private_Use_Subtag option) =
+
+let languages = 
+    subtags
+    |> Array.filter (fun subtag -> subtag.Type = "language"&& subtag.Name <> "qaa..qtz")
+
+
+let extended_languages = 
+    subtags
+    |> Array.filter (fun subtag -> subtag.Type = "extlang")
+
+
+let scripts =
+    subtags
+    |> Array.filter (fun subtag -> subtag.Type = "script" && subtag.Name <> "Qaaa..Qabx")
+let regions =
+    subtags
+    |> Array.filter (fun subtag -> subtag.Type = "region")
+let variants =     
+    subtags
+    |> Array.filter (fun subtag -> subtag.Type = "variant")
+
+
 
 module RegistryXmlDocs = 
     open Xml_Documentation_Comments
-    let xmldoc_by_record record =
+    let xmldoc_by_record (subtag:Subtag) =
         summary {
-            for key, value in record do
-                match key with 
-                | "Comment" -> remarks { $"{SecurityElement.Escape key}: {SecurityElement.Escape value}" }
-                | _ -> para { $"{SecurityElement.Escape key}: {SecurityElement.Escape value}" }
+            para { sprintf "Name: %s" subtag.Name }
+            if subtag.Description.Length > 0 then 
+                para { sprintf "Description: %s" (subtag.Description |> String.concat "\n") }
+            para { sprintf "Type: %s" subtag.Type }
+            para { sprintf "Added: %A" subtag.Added }
+
+            if subtag.Comments.Length > 0 then 
+                remarks { sprintf "Comments: %s" (subtag.Comments |> String.concat "\n") }
+            if subtag.Macrolanguage.Length > 0 then 
+                para { sprintf "Macrolanguage: %s" subtag.Macrolanguage }
+            if subtag.PreferredValue.Length > 0 then 
+                para { sprintf "PreferredValue: %s" subtag.PreferredValue }
+            if subtag.Prefix.Length > 0 then 
+                para { sprintf "Prefixes: %s" (subtag.Prefix |> String.concat "\n") }
+            if subtag.Scope.IsSome then 
+                para { sprintf "Scope: %s" subtag.Scope.Value }
+            if subtag.SuppressScript.IsSome then 
+                para { sprintf "SuppressScript: %s" subtag.SuppressScript.Value }
+            if subtag.Tag.IsSome then 
+                para { sprintf "Tag: %s" subtag.Tag.Value }
 
         
         }
@@ -239,78 +153,131 @@ module RegistryXmlDocs =
         |> fun xelement -> xelement.ToString()
         |> fun xelement_string -> xelement_string.Split("\n")
 
-        
-let codegen_by_registry_type (target_type: Registry_Type) =
-    let type_binding =
-        match target_type with
-        | Registry_Type.language -> "Language_Tag"
-        | Registry_Type.region -> "Region_Subtag"
-    (Union(type_binding) {
-
-    let target_records = 
-        records
-        |> Seq.choose (fun record ->
-            let record_type =
-                record
-                |> Seq.pick (fun (key, value) ->
-                    if key = "Type" then
-                        Some value
-                    else
-                        None)
-            if record_type = target_type.ToString() then
-                Some record
-            else
-                None)
-    for record in target_records do
-
-        let subtag =
-            record
-            |> Seq.pick (fun (key, value) ->
-
-                if key = "Subtag" then
-                    Some value
-                else
-                    None
-
-            )
-        let description =
-            record
-            |> Seq.pick (fun (key, value) ->
-
-                if key = "Description" then
-                    Some value
-                else
-                    None
-
-            )
-        UnionCase(fsharp_identifier subtag)
-        |> _.xmlDocs(RegistryXmlDocs.xmldoc_by_record record)        
+let langtag_directory_path = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\LanguageTags"
 
 
-    }
-    ).members() {
-            Member(
-                "this.rdf_string","this.ToString"
-            )
-    }
-    |> _.attribute(Attribute("RequireQualifiedAccess ; StructuralComparison; StructuralEquality"))
-    |> _.xmlDocs( XmlDocs "https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry"        )
 
-/// TODO keep namespace in parity
-let namespace_binding = "DoxAletheia"
+let language_subtags = 
+                        Oak() {
+                            Namespace("DoxAletheia"){
 
-module LanguageSubtag = 
-    module fs = 
-        let text = 
-                    Oak() {
-                        Namespace(namespace_binding) {
-                            codegen_by_registry_type Registry_Type.language
-                            codegen_by_registry_type Registry_Type.region
+                                Union("Language_Subtag") {
+                                    for subtag in languages do
+                                        UnionCase(subtag.Name.normalize_identifier)
+                                        |> _.xmlDocs(RegistryXmlDocs.xmldoc_by_record subtag)
+                                }
+                                |> _.attribute(Attribute("RequireQualifiedAccess"))
+                            }
+                            }
+                            |> Gen.mkOak
+                            |> Gen.run
 
-                        }
-                    }
-                    |> Gen.mkOak
-                    |> Gen.run
-        let file_path = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\LanguageTag.fs"
+File.WriteAllText($@"{langtag_directory_path}\LanguageSubtags.fs",language_subtags)
 
-File.WriteAllText(LanguageSubtag.fs.file_path, LanguageSubtag.fs.text)
+
+
+
+
+
+
+
+let extended_language_subtags = 
+                        Oak() {
+                            Namespace("DoxAletheia"){
+                                Union("Extended_Language_Subtag") {
+                                    for subtag in extended_languages do
+                                        UnionCase(subtag.Name.normalize_identifier)
+                                        |> _.xmlDocs(RegistryXmlDocs.xmldoc_by_record subtag)
+
+                                }
+                                |> _.attribute(Attribute("RequireQualifiedAccess"))
+                            }
+                            }
+                            |> Gen.mkOak
+                            |> Gen.run
+
+File.WriteAllText($@"{langtag_directory_path}\Extended_Language_Subtags.fs",extended_language_subtags)
+
+
+
+
+
+
+
+
+let script_subtags = 
+                        Oak() {
+                            Namespace("DoxAletheia"){
+
+                                Union("Script_Subtag") {
+                                    for subtag in scripts do
+                                        UnionCase(subtag.Name.normalize_identifier)
+                                        |> _.xmlDocs(RegistryXmlDocs.xmldoc_by_record subtag)
+
+                                }
+                            }
+                            }
+                            |> Gen.mkOak
+                            |> Gen.run
+
+File.WriteAllText($@"{langtag_directory_path}\Script_Subtags.fs",script_subtags)
+
+
+
+
+
+
+
+
+let region_subtags = 
+                        Oak() {
+                            Namespace("DoxAletheia"){
+                                Union("Region_Subtag") {
+                                    for subtag in regions do
+                                        let name = 
+                                                match subtag.Name with 
+                                                | name when Char.IsAsciiDigit name[0]->  "Z'" + name
+                                                | name ->  name
+
+                                        UnionCase(name.normalize_identifier)
+                                        |> _.xmlDocs(RegistryXmlDocs.xmldoc_by_record subtag)
+
+                                }
+                            }
+                            }
+                            |> Gen.mkOak
+                            |> Gen.run
+
+File.WriteAllText($@"{langtag_directory_path}\Region_Subtags.fs",region_subtags)
+
+
+
+
+
+
+
+
+let variant_subtags = 
+                        Oak() {
+                            Namespace("DoxAletheia"){
+
+                                Union("Variant_Subtag") {
+                                    for subtag in variants do
+                                        UnionCase(subtag.Name.normalize_identifier)
+                                        |> _.xmlDocs(RegistryXmlDocs.xmldoc_by_record subtag)
+
+                                }
+                                |> _.attribute(Attribute("RequireQualifiedAccess"))
+                            }
+                            }
+                            |> Gen.mkOak
+                            |> Gen.run
+
+File.WriteAllText($@"{langtag_directory_path}\Variant_Subtags.fs",variant_subtags)
+
+
+
+
+
+
+

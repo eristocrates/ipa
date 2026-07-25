@@ -1,151 +1,304 @@
 namespace http.www.w3.org._2000._10.swap.math.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module math =
-    let _namespace_name = "http://www.w3.org/2000/10/swap/math#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri math |> NamespaceIRI
     /// <summary>
-    /// A math:Function is unique in terms of math:EqualTo.
-    /// <see href="http://www.w3.org/2000/10/swap/math#Function"></see></summary>
-    let Function = _prefix "Function"
-    /// <summary>
-    /// The class of things that are DAML lists were all of the
-    ///       members are math:Value items.
-    /// <see href="http://www.w3.org/2000/10/swap/math#List"></see></summary>
-    let List = _prefix "List"
-    /// <summary>
-    /// a logical operator allows evaluation eihter way, or testing relationship
-    ///          between two values
-    /// <see href="http://www.w3.org/2000/10/swap/math#LogicalOperator"></see></summary>
-    let LogicalOperator = _prefix "LogicalOperator"
-    /// <summary>
-    /// A math:ReverseFunction is unambiguous in terms of math:EqualTo.
-    /// <see href="http://www.w3.org/2000/10/swap/math#ReverseFunction"></see></summary>
-    let ReverseFunction = _prefix "ReverseFunction"
-    /// <summary>
-    ///   <see href="http://www.w3.org/2000/10/swap/math#StrictProperty"></see>
+    ///   <para>math:List</para>
     /// </summary>
-    let StrictProperty = _prefix "StrictProperty"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The class of things that are DAML lists were all of the
+    ///       members are math:Value items.</para>
+    /// labels<para>List</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#List">http://www.w3.org/2000/10/swap/math#List</seealso>
+    let List = Prefixed_Name(math, "List") |> PrefixedName
     /// <summary>
-    /// This is the class of things that are math lists with only two members.
-    /// <see href="http://www.w3.org/2000/10/swap/math#TwoMemberedList"></see></summary>
-    let TwoMemberedList = _prefix "TwoMemberedList"
+    ///   <para>math:StrictProperty</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>StrictProperty</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#StrictProperty">http://www.w3.org/2000/10/swap/math#StrictProperty</seealso>
+    let StrictProperty = Prefixed_Name(math, "StrictProperty") |> PrefixedName
     /// <summary>
-    /// The class of things that are numeric float values as in Python.
-    /// <see href="http://www.w3.org/2000/10/swap/math#Value"></see></summary>
-    let Value = _prefix "Value"
+    ///   <para>math:Value</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The class of things that are numeric float values as in Python.</para>
+    /// labels<para>Value</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#Value">http://www.w3.org/2000/10/swap/math#Value</seealso>
+    let Value = Prefixed_Name(math, "Value") |> PrefixedName
     /// <summary>
-    /// The object is calulated as the absolute value of the subject.
-    /// <see href="http://www.w3.org/2000/10/swap/math#absoluteValue"></see></summary>
-    let absoluteValue = _prefix "absoluteValue"
+    ///   <para>math:ReverseFunction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A math:ReverseFunction is unambiguous in terms of math:EqualTo. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#ReverseFunction">http://www.w3.org/2000/10/swap/math#ReverseFunction</seealso>
+    let ReverseFunction = Prefixed_Name(math, "ReverseFunction") |> PrefixedName
     /// <summary>
-    /// The subject is a pair of numbers. The object is calulated as the arc tangent value of the ratio of the two subject values.
-    /// <see href="http://www.w3.org/2000/10/swap/math#atan2"></see></summary>
-    let atan2 = _prefix "atan2"
+    ///   <para>math:absoluteValue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The object is calulated as the absolute value of the subject.</para>
+    /// labels<para>negation</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#absoluteValue">http://www.w3.org/2000/10/swap/math#absoluteValue</seealso>
+    let absoluteValue = Prefixed_Name(math, "absoluteValue") |> PrefixedName
     /// <summary>
-    /// The subject is an angle expressed in radians. The object is calulated as the cosine value of the subject.
-    /// <see href="http://www.w3.org/2000/10/swap/math#cos"></see></summary>
-    let cos = _prefix "cos"
+    ///   <para>math:degrees</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is an angle expressed in radians. The object is calulated as the conversion in degrees of the value of the subject.</para>
+    /// labels<para>degrees</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#degrees">http://www.w3.org/2000/10/swap/math#degrees</seealso>
+    let degrees = Prefixed_Name(math, "degrees") |> PrefixedName
     /// <summary>
-    /// The subject is an angle expressed in radians. The object is calulated as the conversion in degrees of the value of the subject.
-    /// <see href="http://www.w3.org/2000/10/swap/math#degrees"></see></summary>
-    let degrees = _prefix "degrees"
-    /// <summary>
-    /// The subject is a pair of numbers. The object
+    ///   <para>math:difference</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is a pair of numbers. The object
     /// is calculated by subtracting the second number of the pair from the first.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/math#difference"></see></summary>
-    let difference = _prefix "difference"
+    /// </para>
+    /// labels<para>difference</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#difference">http://www.w3.org/2000/10/swap/math#difference</seealso>
+    let difference = Prefixed_Name(math, "difference") |> PrefixedName
     /// <summary>
-    /// True iff the subject is a string representation of a number which  is EQUAL TO a number of which the object is a string representation.
-    /// <see href="http://www.w3.org/2000/10/swap/math#equalTo"></see></summary>
-    let equalTo = _prefix "equalTo"
-    /// <summary>
-    /// The subject is a pair of numbers. The object
-    /// is calculated by raising the first number of the power of the second.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/math#exponentiation"></see></summary>
-    let exponentiation = _prefix "exponentiation"
-    /// <summary>
-    /// True iff the subject is a string representation of a number which  is greater than the number of which the object is a string representation.
-    /// <see href="http://www.w3.org/2000/10/swap/math#greaterThan"></see></summary>
-    let greaterThan = _prefix "greaterThan"
-    /// <summary>
-    /// The subject is a pair of integer numbers. The object
+    ///   <para>math:integerQuotient</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is a pair of integer numbers. The object
     /// is calculated by dividing the first number of the pair by the second, ignoring remainder.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/math#integerQuotient"></see></summary>
-    let integerQuotient = _prefix "integerQuotient"
+    /// </para>
+    /// labels<para>integerQuotient</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#integerQuotient">http://www.w3.org/2000/10/swap/math#integerQuotient</seealso>
+    let integerQuotient = Prefixed_Name(math, "integerQuotient") |> PrefixedName
     /// <summary>
-    /// True iff the subject is a string representation of a number which  is LESS than a number of which the object is a string representation.
-    /// <see href="http://www.w3.org/2000/10/swap/math#lessThan"></see></summary>
-    let lessThan = _prefix "lessThan"
+    ///   <para>math:negation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject or object is calculated to be the negation of the other.</para>
+    /// labels<para>negation</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#negation">http://www.w3.org/2000/10/swap/math#negation</seealso>
+    let negation = Prefixed_Name(math, "negation") |> PrefixedName
     /// <summary>
-    /// The number of items in a list. The subject is a list,
-    /// the object is calculated as the number of members.
-    /// <see href="http://www.w3.org/2000/10/swap/math#memberCount"></see></summary>
-    let memberCount = _prefix "memberCount"
+    ///   <para>math:notLessThan</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>math:StrictProperty</para>
+    ///   <para>True iff the subject is a string representation of a number which  is NOT LESS than a number of which the object is a string representation.</para>
+    /// labels<para>notlessThan</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#notLessThan">http://www.w3.org/2000/10/swap/math#notLessThan</seealso>
+    let notLessThan = Prefixed_Name(math, "notLessThan") |> PrefixedName
     /// <summary>
-    /// The subject or object is calculated to be the negation of the other.
-    /// <see href="http://www.w3.org/2000/10/swap/math#negation"></see></summary>
-    let negation = _prefix "negation"
+    ///   <para>math:sin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is an angle expressed in radians. The object is calulated as the sine value of the subject.</para>
+    /// labels<para>sin</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#sin">http://www.w3.org/2000/10/swap/math#sin</seealso>
+    let sin = Prefixed_Name(math, "sin") |> PrefixedName
     /// <summary>
-    /// True iff the subject is a string representation of a number which  is NOT EQUAL to a number of which the object is a string representation.
-    /// <see href="http://www.w3.org/2000/10/swap/math#notEqualTo"></see></summary>
-    let notEqualTo = _prefix "notEqualTo"
+    ///   <para>math:atan2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is a pair of numbers. The object is calulated as the arc tangent value of the ratio of the two subject values.</para>
+    /// labels<para>atan2</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#atan2">http://www.w3.org/2000/10/swap/math#atan2</seealso>
+    let atan2 = Prefixed_Name(math, "atan2") |> PrefixedName
     /// <summary>
-    /// True iff the subject is a string representation of a number which is NOT greater than the number of which the object is a string representation.
-    /// <see href="http://www.w3.org/2000/10/swap/math#notGreaterThan"></see></summary>
-    let notGreaterThan = _prefix "notGreaterThan"
+    ///   <para>math:greaterThan</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>math:StrictProperty</para>
+    ///   <para>True iff the subject is a string representation of a number which  is greater than the number of which the object is a string representation.</para>
+    /// labels<para>greaterThan</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#greaterThan">http://www.w3.org/2000/10/swap/math#greaterThan</seealso>
+    let greaterThan = Prefixed_Name(math, "greaterThan") |> PrefixedName
     /// <summary>
-    /// True iff the subject is a string representation of a number which  is NOT LESS than a number of which the object is a string representation.
-    /// <see href="http://www.w3.org/2000/10/swap/math#notLessThan"></see></summary>
-    let notLessThan = _prefix "notLessThan"
+    ///   <para>math:notEqualTo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>math:StrictProperty</para>
+    ///   <para>True iff the subject is a string representation of a number which  is NOT EQUAL to a number of which the object is a string representation.</para>
+    /// labels<para>notEqualTo</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#notEqualTo">http://www.w3.org/2000/10/swap/math#notEqualTo</seealso>
+    let notEqualTo = Prefixed_Name(math, "notEqualTo") |> PrefixedName
     /// <summary>
-    /// The subject is a list of numbers.
-    /// The object is calculated as the arithmentic product of those numbers.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/math#product"></see></summary>
-    let product = _prefix "product"
+    ///   <para>math:memberCount</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>math:Function</para>
+    ///   <para>The number of items in a list. The subject is a list,
+    /// the object is calculated as the number of members.</para>
+    /// labels<para>memberCount</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#memberCount">http://www.w3.org/2000/10/swap/math#memberCount</seealso>
+    let memberCount = Prefixed_Name(math, "memberCount") |> PrefixedName
     /// <summary>
-    /// The subject is a pair of numbers. The object
+    ///   <para>math:notGreaterThan</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>math:StrictProperty</para>
+    ///   <para>True iff the subject is a string representation of a number which is NOT greater than the number of which the object is a string representation.</para>
+    /// labels<para>notGreaterThan</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#notGreaterThan">http://www.w3.org/2000/10/swap/math#notGreaterThan</seealso>
+    let notGreaterThan = Prefixed_Name(math, "notGreaterThan") |> PrefixedName
+    /// <summary>
+    ///   <para>math:rounded</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The object is calulated as the subject rounded to the nearest integer.</para>
+    /// labels<para>rounded</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#rounded">http://www.w3.org/2000/10/swap/math#rounded</seealso>
+    let rounded = Prefixed_Name(math, "rounded") |> PrefixedName
+    /// <summary>
+    ///   <para>math:sinh</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is an angle expressed in radians. The object is calulated as the hyperbolic sine value of the subject.</para>
+    /// labels<para>sinh</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#sinh">http://www.w3.org/2000/10/swap/math#sinh</seealso>
+    let sinh = Prefixed_Name(math, "sinh") |> PrefixedName
+    /// <summary>
+    ///   <para>math:quotient</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is a pair of numbers. The object
     /// is calculated by dividing the first number of the pair by the second.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/math#quotient"></see></summary>
-    let quotient = _prefix "quotient"
+    /// </para>
+    /// labels<para>quotient</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#quotient">http://www.w3.org/2000/10/swap/math#quotient</seealso>
+    let quotient = Prefixed_Name(math, "quotient") |> PrefixedName
     /// <summary>
-    /// The subject is a pair of integers. The object
+    ///   <para>math:tanh</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is an angle expressed in radians. The object is calulated as the hyperbolic tangent value of the subject.</para>
+    /// labels<para>tanh</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#tanh">http://www.w3.org/2000/10/swap/math#tanh</seealso>
+    let tanh = Prefixed_Name(math, "tanh") |> PrefixedName
+    /// <summary>
+    ///   <para>math:Function</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A math:Function is unique in terms of math:EqualTo. </para>
+    /// labels<para>Function</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#Function">http://www.w3.org/2000/10/swap/math#Function</seealso>
+    let Function = Prefixed_Name(math, "Function") |> PrefixedName
+    /// <summary>
+    ///   <para>math:LogicalOperator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>a logical operator allows evaluation eihter way, or testing relationship
+    ///          between two values</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#LogicalOperator">http://www.w3.org/2000/10/swap/math#LogicalOperator</seealso>
+    let LogicalOperator = Prefixed_Name(math, "LogicalOperator") |> PrefixedName
+    /// <summary>
+    ///   <para>math:TwoMemberedList</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>This is the class of things that are math lists with only two members.</para>
+    /// labels<para>TwoMemberedList</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#TwoMemberedList">http://www.w3.org/2000/10/swap/math#TwoMemberedList</seealso>
+    let TwoMemberedList = Prefixed_Name(math, "TwoMemberedList") |> PrefixedName
+    /// <summary>
+    ///   <para>math:cos</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is an angle expressed in radians. The object is calulated as the cosine value of the subject.</para>
+    /// labels<para>cos</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#cos">http://www.w3.org/2000/10/swap/math#cos</seealso>
+    let cos = Prefixed_Name(math, "cos") |> PrefixedName
+    /// <summary>
+    ///   <para>math:equalTo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>math:StrictProperty</para>
+    ///   <para>True iff the subject is a string representation of a number which  is EQUAL TO a number of which the object is a string representation.</para>
+    /// labels<para>equalTo</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#equalTo">http://www.w3.org/2000/10/swap/math#equalTo</seealso>
+    let equalTo = Prefixed_Name(math, "equalTo") |> PrefixedName
+    /// <summary>
+    ///   <para>math:exponentiation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is a pair of numbers. The object
+    /// is calculated by raising the first number of the power of the second.
+    /// </para>
+    /// labels<para>exponentiation</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#exponentiation">http://www.w3.org/2000/10/swap/math#exponentiation</seealso>
+    let exponentiation = Prefixed_Name(math, "exponentiation") |> PrefixedName
+    /// <summary>
+    ///   <para>math:lessThan</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>math:StrictProperty</para>
+    ///   <para>True iff the subject is a string representation of a number which  is LESS than a number of which the object is a string representation.</para>
+    /// labels<para>lessThan</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#lessThan">http://www.w3.org/2000/10/swap/math#lessThan</seealso>
+    let lessThan = Prefixed_Name(math, "lessThan") |> PrefixedName
+    /// <summary>
+    ///   <para>math:product</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is a list of numbers.
+    /// The object is calculated as the arithmentic product of those numbers.
+    /// </para>
+    /// labels<para>product</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#product">http://www.w3.org/2000/10/swap/math#product</seealso>
+    let product = Prefixed_Name(math, "product") |> PrefixedName
+    /// <summary>
+    ///   <para>math:remainder</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is a pair of integers. The object
     /// is calculated by dividing the first number of the pair by the second and taking the remainder.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/math#remainder"></see></summary>
-    let remainder = _prefix "remainder"
+    /// </para>
+    /// labels<para>remainder</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#remainder">http://www.w3.org/2000/10/swap/math#remainder</seealso>
+    let remainder = Prefixed_Name(math, "remainder") |> PrefixedName
     /// <summary>
-    /// The object is calulated as the subject rounded to the nearest integer.
-    /// <see href="http://www.w3.org/2000/10/swap/math#rounded"></see></summary>
-    let rounded = _prefix "rounded"
-    /// <summary>
-    /// The subject is an angle expressed in radians. The object is calulated as the sine value of the subject.
-    /// <see href="http://www.w3.org/2000/10/swap/math#sin"></see></summary>
-    let sin = _prefix "sin"
-    /// <summary>
-    /// The subject is an angle expressed in radians. The object is calulated as the hyperbolic sine value of the subject.
-    /// <see href="http://www.w3.org/2000/10/swap/math#sinh"></see></summary>
-    let sinh = _prefix "sinh"
-    /// <summary>
-    /// The subject is a list of numbers.
+    ///   <para>math:sum</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is a list of numbers.
     /// The object is calculated as the arithmentic sum of those numbers.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/math#sum"></see></summary>
-    let sum = _prefix "sum"
+    /// </para>
+    /// labels<para>sum</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#sum">http://www.w3.org/2000/10/swap/math#sum</seealso>
+    let sum = Prefixed_Name(math, "sum") |> PrefixedName
     /// <summary>
-    /// The subject is an angle expressed in radians. The object is calulated as the tangent value of the subject.
-    /// <see href="http://www.w3.org/2000/10/swap/math#tan"></see></summary>
-    let tan = _prefix "tan"
-    /// <summary>
-    /// The subject is an angle expressed in radians. The object is calulated as the hyperbolic tangent value of the subject.
-    /// <see href="http://www.w3.org/2000/10/swap/math#tanh"></see></summary>
-    let tanh = _prefix "tanh"
+    ///   <para>math:tan</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is an angle expressed in radians. The object is calulated as the tangent value of the subject.</para>
+    /// labels<para>tan</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/math#tan">http://www.w3.org/2000/10/swap/math#tan</seealso>
+    let tan = Prefixed_Name(math, "tan") |> PrefixedName

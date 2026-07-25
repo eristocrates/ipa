@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    
+    
+    
+    <Compile Include="PrefixID.fs" />
+    <Compile Include=".\RDF_Distribution\Single.fs" />
+    <Compile Include=".\RDF_Distribution\Multi.fs" />
+    <Compile Include="Manual_Prefixes.fs" />
+    <Compile Include="NamespaceRegistry.fs" />
+
+	  <Compile Include="LanguageTag\LanguageSubtags.fs" />
+	  <Compile Include="LanguageTag\Extended_Language_Subtags.fs" />
+	  <Compile Include="LanguageTag\Script_Subtags.fs" />
+	  <Compile Include="LanguageTag\Region_Subtags.fs" />
+	  <Compile Include="LanguageTag\Variant_Subtags.fs" />
+	  <Compile Include="LanguageTag\LanguageTags.fs" />
+	  <Compile Include="DotNetRDFSharp.fs" />
+	  <Compile Include="Graph_Data.fs" />
+	  <Compile Include="RDF_Shorthand.fs" />
+	  <Compile Include="RDF_Query.fs" />
+	  <Compile Include="Iana\Iana.fs" />
+	  <Compile Include="Iana\Iana_Schemes.fs" />
+	  <Compile Include="Iana\MimePath.fs" />
+	  <Compile Include="Iana\MimeSubstring.fs" />
+	  <Compile Include="Iana\MimeTypes.fs" />
+	  
+
+
+		
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="dotNetRdf" Version="3.5.2" />
+		<PackageReference Include="Iride" Version="0.6.1" />
+		<PackageReference Include="FSharp.Collections.ParallelSeq" Version="1.2.0" />
+		<PackageReference Include="FSharp.HashCollections" Version="0.3.4" />
+		<PackageReference Include="Unquote" Version="7.0.1" />
+		<PackageReference Include="FSharp.Json" Version="0.4.1" />
+	  <PackageReference Include="FSharp.Data" Version="8.1.14" /> 
+		<PackageReference Include="FSharp.Data.Adaptive" Version="1.2.26" />
+	</ItemGroup>
+	<ItemGroup>
+
+		<ProjectReference Include="..\Ergonomic_Extensions\Ergonomic_Extensions.fsproj" />
+
+	</ItemGroup>
+</Project>

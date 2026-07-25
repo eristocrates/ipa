@@ -1,2126 +1,4274 @@
 namespace http.rdaregistry.info.Elements.e.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module rdae =
-    let _namespace_name = "http://rdaregistry.info/Elements/e/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri rdae |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20001"></see>
+    ///   <para>rdae:P20002</para>
     /// </summary>
-    let P20001 = _prefix "P20001"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/contentType"></see>
-    /// </summary>
-    let contentType = _prefix "contentType"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20002"></see>
-    /// </summary>
-    let P20002 = _prefix "P20002"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/identifierForTheExpression"></see>
-    /// </summary>
-    let identifierForTheExpression = _prefix "identifierForTheExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20003"></see>
-    /// </summary>
-    let P20003 = _prefix "P20003"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has identifier for the expression</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20002">http://rdaregistry.info/Elements/e/P20002</seealso>
+    let P20002 = Prefixed_Name(rdae, "P20002") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/otherDistinguishingCharacteristicOfTheExpression"></see>
+    ///   <para>rdae:otherDistinguishingCharacteristicOfTheExpression</para>
     /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/otherDistinguishingCharacteristicOfTheExpression">http://rdaregistry.info/Elements/e/otherDistinguishingCharacteristicOfTheExpression</seealso>
     let otherDistinguishingCharacteristicOfTheExpression =
-        _prefix "otherDistinguishingCharacteristicOfTheExpression"
+        Prefixed_Name(rdae, "otherDistinguishingCharacteristicOfTheExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20004"></see>
+    ///   <para>rdae:award</para>
     /// </summary>
-    let P20004 = _prefix "P20004"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/dateOfCapture"></see>
-    /// </summary>
-    let dateOfCapture = _prefix "dateOfCapture"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20005"></see>
-    /// </summary>
-    let P20005 = _prefix "P20005"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/award"></see>
-    /// </summary>
-    let award = _prefix "award"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20006"></see>
-    /// </summary>
-    let P20006 = _prefix "P20006"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/languageOfExpression"></see>
-    /// </summary>
-    let languageOfExpression = _prefix "languageOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20007"></see>
-    /// </summary>
-    let P20007 = _prefix "P20007"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/languageOfTheContent"></see>
-    /// </summary>
-    let languageOfTheContent = _prefix "languageOfTheContent"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20008"></see>
-    /// </summary>
-    let P20008 = _prefix "P20008"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/artisticAndOrTechnicalCredit"></see>
-    /// </summary>
-    let artisticAndOrTechnicalCredit = _prefix "artisticAndOrTechnicalCredit"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20009"></see>
-    /// </summary>
-    let P20009 = _prefix "P20009"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20153"></see>
-    /// </summary>
-    let P20153 = _prefix "P20153"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20125"></see>
-    /// </summary>
-    let P20125 = _prefix "P20125"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsAMotionPictureExpression"></see>
-    /// </summary>
-    let adaptedAsAMotionPictureExpression = _prefix "adaptedAsAMotionPictureExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20010"></see>
-    /// </summary>
-    let P20010 = _prefix "P20010"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20071"></see>
-    /// </summary>
-    let P20071 = _prefix "P20071"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/award">http://rdaregistry.info/Elements/e/award</seealso>
+    let award = Prefixed_Name(rdae, "award") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/noteOnChangesInContentCharacteristics"></see>
+    ///   <para>rdae:languageOfExpression</para>
     /// </summary>
-    let noteOnChangesInContentCharacteristics =
-        _prefix "noteOnChangesInContentCharacteristics"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/languageOfExpression">http://rdaregistry.info/Elements/e/languageOfExpression</seealso>
+    let languageOfExpression =
+        Prefixed_Name(rdae, "languageOfExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20011"></see>
-    /// </summary>
-    let P20011 = _prefix "P20011"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20039"></see>
-    /// </summary>
-    let P20039 = _prefix "P20039"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/conductor"></see>
-    /// </summary>
-    let conductor = _prefix "conductor"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20012"></see>
-    /// </summary>
-    let P20012 = _prefix "P20012"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20070"></see>
-    /// </summary>
-    let P20070 = _prefix "P20070"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/actor"></see>
-    /// </summary>
-    let actor = _prefix "actor"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20013"></see>
-    /// </summary>
-    let P20013 = _prefix "P20013"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/onScreenPresenter"></see>
-    /// </summary>
-    let onScreenPresenter = _prefix "onScreenPresenter"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20014"></see>
-    /// </summary>
-    let P20014 = _prefix "P20014"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/dancer"></see>
-    /// </summary>
-    let dancer = _prefix "dancer"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20015"></see>
-    /// </summary>
-    let P20015 = _prefix "P20015"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/teacher"></see>
-    /// </summary>
-    let teacher = _prefix "teacher"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20016"></see>
-    /// </summary>
-    let P20016 = _prefix "P20016"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/host"></see>
-    /// </summary>
-    let host = _prefix "host"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20017"></see>
-    /// </summary>
-    let P20017 = _prefix "P20017"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/moderator"></see>
-    /// </summary>
-    let moderator = _prefix "moderator"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20018"></see>
-    /// </summary>
-    let P20018 = _prefix "P20018"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/puppeteer"></see>
-    /// </summary>
-    let puppeteer = _prefix "puppeteer"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20019"></see>
-    /// </summary>
-    let P20019 = _prefix "P20019"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/panelist"></see>
-    /// </summary>
-    let panelist = _prefix "panelist"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20020"></see>
-    /// </summary>
-    let P20020 = _prefix "P20020"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/instrumentalist"></see>
-    /// </summary>
-    let instrumentalist = _prefix "instrumentalist"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20021"></see>
-    /// </summary>
-    let P20021 = _prefix "P20021"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/commentator"></see>
-    /// </summary>
-    let commentator = _prefix "commentator"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20022"></see>
-    /// </summary>
-    let P20022 = _prefix "P20022"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/narrator"></see>
-    /// </summary>
-    let narrator = _prefix "narrator"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20023"></see>
-    /// </summary>
-    let P20023 = _prefix "P20023"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/storyteller"></see>
-    /// </summary>
-    let storyteller = _prefix "storyteller"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20024"></see>
-    /// </summary>
-    let P20024 = _prefix "P20024"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/speaker"></see>
-    /// </summary>
-    let speaker = _prefix "speaker"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20025"></see>
-    /// </summary>
-    let P20025 = _prefix "P20025"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/singer"></see>
-    /// </summary>
-    let singer = _prefix "singer"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20026"></see>
-    /// </summary>
-    let P20026 = _prefix "P20026"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20053"></see>
-    /// </summary>
-    let P20053 = _prefix "P20053"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/composerExpression"></see>
-    /// </summary>
-    let composerExpression = _prefix "composerExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20027"></see>
-    /// </summary>
-    let P20027 = _prefix "P20027"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/surveyor"></see>
-    /// </summary>
-    let surveyor = _prefix "surveyor"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20028"></see>
-    /// </summary>
-    let P20028 = _prefix "P20028"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/animator"></see>
-    /// </summary>
-    let animator = _prefix "animator"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20029"></see>
-    /// </summary>
-    let P20029 = _prefix "P20029"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/arrangerOfMusic"></see>
-    /// </summary>
-    let arrangerOfMusic = _prefix "arrangerOfMusic"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20030"></see>
-    /// </summary>
-    let P20030 = _prefix "P20030"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20068"></see>
-    /// </summary>
-    let P20068 = _prefix "P20068"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20046"></see>
-    /// </summary>
-    let P20046 = _prefix "P20046"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/writerOfAddedText"></see>
-    /// </summary>
-    let writerOfAddedText = _prefix "writerOfAddedText"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20031"></see>
-    /// </summary>
-    let P20031 = _prefix "P20031"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/stageDirector"></see>
-    /// </summary>
-    let stageDirector = _prefix "stageDirector"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20032"></see>
-    /// </summary>
-    let P20032 = _prefix "P20032"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/interviewerExpression"></see>
-    /// </summary>
-    let interviewerExpression = _prefix "interviewerExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20033"></see>
-    /// </summary>
-    let P20033 = _prefix "P20033"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/draftsman"></see>
-    /// </summary>
-    let draftsman = _prefix "draftsman"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20034"></see>
-    /// </summary>
-    let P20034 = _prefix "P20034"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/transcriber"></see>
-    /// </summary>
-    let transcriber = _prefix "transcriber"
+    ///   <para>rdae:P20008</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has artistic and/or technical credit</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20008">http://rdaregistry.info/Elements/e/P20008</seealso>
+    let P20008 = Prefixed_Name(rdae, "P20008") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20153</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20153">http://rdaregistry.info/Elements/e/P20153</seealso>
+    let P20153 = Prefixed_Name(rdae, "P20153") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20010</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has note on changes in content characteristics</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20010">http://rdaregistry.info/Elements/e/P20010</seealso>
+    let P20010 = Prefixed_Name(rdae, "P20010") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20039</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has performer</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20039">http://rdaregistry.info/Elements/e/P20039</seealso>
+    let P20039 = Prefixed_Name(rdae, "P20039") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20012</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has actor</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20012">http://rdaregistry.info/Elements/e/P20012</seealso>
+    let P20012 = Prefixed_Name(rdae, "P20012") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20070</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has voice actor</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20070">http://rdaregistry.info/Elements/e/P20070</seealso>
+    let P20070 = Prefixed_Name(rdae, "P20070") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:dancer</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/dancer">http://rdaregistry.info/Elements/e/dancer</seealso>
+    let dancer = Prefixed_Name(rdae, "dancer") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20015</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has teacher</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20015">http://rdaregistry.info/Elements/e/P20015</seealso>
+    let P20015 = Prefixed_Name(rdae, "P20015") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20035"></see>
+    ///   <para>rdae:teacher</para>
     /// </summary>
-    let P20035 = _prefix "P20035"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/teacher">http://rdaregistry.info/Elements/e/teacher</seealso>
+    let teacher = Prefixed_Name(rdae, "teacher") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20016</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has host</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20016">http://rdaregistry.info/Elements/e/P20016</seealso>
+    let P20016 = Prefixed_Name(rdae, "P20016") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicalDirector"></see>
+    ///   <para>rdae:P20018</para>
     /// </summary>
-    let musicalDirector = _prefix "musicalDirector"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has puppeteer</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20018">http://rdaregistry.info/Elements/e/P20018</seealso>
+    let P20018 = Prefixed_Name(rdae, "P20018") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20036"></see>
+    ///   <para>rdae:panelist</para>
     /// </summary>
-    let P20036 = _prefix "P20036"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/panelist">http://rdaregistry.info/Elements/e/panelist</seealso>
+    let panelist = Prefixed_Name(rdae, "panelist") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20020</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has instrumentalist</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20020">http://rdaregistry.info/Elements/e/P20020</seealso>
+    let P20020 = Prefixed_Name(rdae, "P20020") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/costumeDesigner"></see>
-    /// </summary>
-    let costumeDesigner = _prefix "costumeDesigner"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20037"></see>
-    /// </summary>
-    let P20037 = _prefix "P20037"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/translator"></see>
-    /// </summary>
-    let translator = _prefix "translator"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20038"></see>
-    /// </summary>
-    let P20038 = _prefix "P20038"
+    ///   <para>rdae:instrumentalist</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/instrumentalist">http://rdaregistry.info/Elements/e/instrumentalist</seealso>
+    let instrumentalist = Prefixed_Name(rdae, "instrumentalist") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/artDirector"></see>
+    ///   <para>rdae:P20022</para>
     /// </summary>
-    let artDirector = _prefix "artDirector"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has narrator</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20022">http://rdaregistry.info/Elements/e/P20022</seealso>
+    let P20022 = Prefixed_Name(rdae, "P20022") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/performer"></see>
+    ///   <para>rdae:narrator</para>
     /// </summary>
-    let performer = _prefix "performer"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/narrator">http://rdaregistry.info/Elements/e/narrator</seealso>
+    let narrator = Prefixed_Name(rdae, "narrator") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20040"></see>
+    ///   <para>rdae:P20023</para>
     /// </summary>
-    let P20040 = _prefix "P20040"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has storyteller</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20023">http://rdaregistry.info/Elements/e/P20023</seealso>
+    let P20023 = Prefixed_Name(rdae, "P20023") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/courtReporter"></see>
+    ///   <para>rdae:P20026</para>
     /// </summary>
-    let courtReporter = _prefix "courtReporter"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has composer (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20026">http://rdaregistry.info/Elements/e/P20026</seealso>
+    let P20026 = Prefixed_Name(rdae, "P20026") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20041"></see>
+    ///   <para>rdae:P20053</para>
     /// </summary>
-    let P20041 = _prefix "P20041"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has contributor</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20053">http://rdaregistry.info/Elements/e/P20053</seealso>
+    let P20053 = Prefixed_Name(rdae, "P20053") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/writerOfPreface"></see>
+    ///   <para>rdae:composerExpression</para>
     /// </summary>
-    let writerOfPreface = _prefix "writerOfPreface"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/composerExpression">http://rdaregistry.info/Elements/e/composerExpression</seealso>
+    let composerExpression = Prefixed_Name(rdae, "composerExpression") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20042"></see>
+    ///   <para>rdae:performer</para>
     /// </summary>
-    let P20042 = _prefix "P20042"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/performer">http://rdaregistry.info/Elements/e/performer</seealso>
+    let performer = Prefixed_Name(rdae, "performer") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/cartographerExpression"></see>
+    ///   <para>rdae:P20040</para>
     /// </summary>
-    let cartographerExpression = _prefix "cartographerExpression"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has court reporter</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20040">http://rdaregistry.info/Elements/e/P20040</seealso>
+    let P20040 = Prefixed_Name(rdae, "P20040") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20043"></see>
+    ///   <para>rdae:recordist</para>
     /// </summary>
-    let P20043 = _prefix "P20043"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/recordist">http://rdaregistry.info/Elements/e/recordist</seealso>
+    let recordist = Prefixed_Name(rdae, "recordist") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/choreographerExpression"></see>
+    ///   <para>rdae:P20056</para>
     /// </summary>
-    let choreographerExpression = _prefix "choreographerExpression"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has production designer</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20056">http://rdaregistry.info/Elements/e/P20056</seealso>
+    let P20056 = Prefixed_Name(rdae, "P20056") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20044"></see>
+    ///   <para>rdae:P20055</para>
     /// </summary>
-    let P20044 = _prefix "P20044"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has editor of moving image work</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20055">http://rdaregistry.info/Elements/e/P20055</seealso>
+    let P20055 = Prefixed_Name(rdae, "P20055") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/writerOfAddedCommentary"></see>
+    ///   <para>rdae:P20058</para>
     /// </summary>
-    let writerOfAddedCommentary = _prefix "writerOfAddedCommentary"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has minute taker</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20058">http://rdaregistry.info/Elements/e/P20058</seealso>
+    let P20058 = Prefixed_Name(rdae, "P20058") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20045"></see>
+    ///   <para>rdae:contributor</para>
     /// </summary>
-    let P20045 = _prefix "P20045"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/contributor">http://rdaregistry.info/Elements/e/contributor</seealso>
+    let contributor = Prefixed_Name(rdae, "contributor") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/writerOfIntroduction"></see>
+    ///   <para>rdae:P20054</para>
     /// </summary>
-    let writerOfIntroduction = _prefix "writerOfIntroduction"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has presenter</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20054">http://rdaregistry.info/Elements/e/P20054</seealso>
+    let P20054 = Prefixed_Name(rdae, "P20054") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/writerOfSupplementaryTextualContent"></see>
+    ///   <para>rdae:editorOfMovingImageWork</para>
     /// </summary>
-    let writerOfSupplementaryTextualContent =
-        _prefix "writerOfSupplementaryTextualContent"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/editorOfMovingImageWork">http://rdaregistry.info/Elements/e/editorOfMovingImageWork</seealso>
+    let editorOfMovingImageWork =
+        Prefixed_Name(rdae, "editorOfMovingImageWork") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20047"></see>
+    ///   <para>rdae:performerNarratorAndOrPresenter</para>
     /// </summary>
-    let P20047 = _prefix "P20047"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/intervieweeExpression"></see>
-    /// </summary>
-    let intervieweeExpression = _prefix "intervieweeExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20048"></see>
-    /// </summary>
-    let P20048 = _prefix "P20048"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/editor"></see>
-    /// </summary>
-    let editor = _prefix "editor"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20049"></see>
-    /// </summary>
-    let P20049 = _prefix "P20049"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/abridger"></see>
-    /// </summary>
-    let abridger = _prefix "abridger"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20050"></see>
-    /// </summary>
-    let P20050 = _prefix "P20050"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/recordingEngineer"></see>
-    /// </summary>
-    let recordingEngineer = _prefix "recordingEngineer"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20051"></see>
-    /// </summary>
-    let P20051 = _prefix "P20051"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/illustrator"></see>
-    /// </summary>
-    let illustrator = _prefix "illustrator"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20052"></see>
-    /// </summary>
-    let P20052 = _prefix "P20052"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/recordist"></see>
-    /// </summary>
-    let recordist = _prefix "recordist"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20056"></see>
-    /// </summary>
-    let P20056 = _prefix "P20056"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20055"></see>
-    /// </summary>
-    let P20055 = _prefix "P20055"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20058"></see>
-    /// </summary>
-    let P20058 = _prefix "P20058"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/contributor"></see>
-    /// </summary>
-    let contributor = _prefix "contributor"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20054"></see>
-    /// </summary>
-    let P20054 = _prefix "P20054"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/presenter"></see>
-    /// </summary>
-    let presenter = _prefix "presenter"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/editorOfMovingImageWork"></see>
-    /// </summary>
-    let editorOfMovingImageWork = _prefix "editorOfMovingImageWork"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/productionDesigner"></see>
-    /// </summary>
-    let productionDesigner = _prefix "productionDesigner"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20057"></see>
-    /// </summary>
-    let P20057 = _prefix "P20057"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/performerNarratorAndOrPresenter"></see>
-    /// </summary>
-    let performerNarratorAndOrPresenter = _prefix "performerNarratorAndOrPresenter"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/minuteTaker"></see>
-    /// </summary>
-    let minuteTaker = _prefix "minuteTaker"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20059"></see>
-    /// </summary>
-    let P20059 = _prefix "P20059"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/manifestationOfExpression"></see>
-    /// </summary>
-    let manifestationOfExpression = _prefix "manifestationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20060"></see>
-    /// </summary>
-    let P20060 = _prefix "P20060"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20127"></see>
-    /// </summary>
-    let P20127 = _prefix "P20127"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsARadioProgramExpression"></see>
-    /// </summary>
-    let adaptedAsARadioProgramExpression = _prefix "adaptedAsARadioProgramExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20061"></see>
-    /// </summary>
-    let P20061 = _prefix "P20061"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20062"></see>
-    /// </summary>
-    let P20062 = _prefix "P20062"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/formOfTactileNotation"></see>
-    /// </summary>
-    let formOfTactileNotation = _prefix "formOfTactileNotation"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20065"></see>
-    /// </summary>
-    let P20065 = _prefix "P20065"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20063"></see>
-    /// </summary>
-    let P20063 = _prefix "P20063"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20064"></see>
-    /// </summary>
-    let P20064 = _prefix "P20064"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/formOfNotation"></see>
-    /// </summary>
-    let formOfNotation = _prefix "formOfNotation"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/formOfNotatedMovement"></see>
-    /// </summary>
-    let formOfNotatedMovement = _prefix "formOfNotatedMovement"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/formOfMusicalNotation"></see>
-    /// </summary>
-    let formOfMusicalNotation = _prefix "formOfMusicalNotation"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/script"></see>
-    /// </summary>
-    let script = _prefix "script"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20066"></see>
-    /// </summary>
-    let P20066 = _prefix "P20066"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20128"></see>
-    /// </summary>
-    let P20128 = _prefix "P20128"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/performerNarratorAndOrPresenter">http://rdaregistry.info/Elements/e/performerNarratorAndOrPresenter</seealso>
+    let performerNarratorAndOrPresenter =
+        Prefixed_Name(rdae, "performerNarratorAndOrPresenter") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsATelevisionProgramExpression"></see>
+    ///   <para>rdae:minuteTaker</para>
     /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/minuteTaker">http://rdaregistry.info/Elements/e/minuteTaker</seealso>
+    let minuteTaker = Prefixed_Name(rdae, "minuteTaker") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:manifestationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/manifestationOfExpression">http://rdaregistry.info/Elements/e/manifestationOfExpression</seealso>
+    let manifestationOfExpression =
+        Prefixed_Name(rdae, "manifestationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20060</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as radio program (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20060">http://rdaregistry.info/Elements/e/P20060</seealso>
+    let P20060 = Prefixed_Name(rdae, "P20060") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20127</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is radio adaptation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20127">http://rdaregistry.info/Elements/e/P20127</seealso>
+    let P20127 = Prefixed_Name(rdae, "P20127") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:adaptedAsARadioProgramExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsARadioProgramExpression">http://rdaregistry.info/Elements/e/adaptedAsARadioProgramExpression</seealso>
+    let adaptedAsARadioProgramExpression =
+        Prefixed_Name(rdae, "adaptedAsARadioProgramExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20061</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has form of tactile notation</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20061">http://rdaregistry.info/Elements/e/P20061</seealso>
+    let P20061 = Prefixed_Name(rdae, "P20061") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20062</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has form of notation</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20062">http://rdaregistry.info/Elements/e/P20062</seealso>
+    let P20062 = Prefixed_Name(rdae, "P20062") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:formOfNotation</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/formOfNotation">http://rdaregistry.info/Elements/e/formOfNotation</seealso>
+    let formOfNotation = Prefixed_Name(rdae, "formOfNotation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:formOfNotatedMovement</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/formOfNotatedMovement">http://rdaregistry.info/Elements/e/formOfNotatedMovement</seealso>
+    let formOfNotatedMovement =
+        Prefixed_Name(rdae, "formOfNotatedMovement") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:formOfMusicalNotation</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/formOfMusicalNotation">http://rdaregistry.info/Elements/e/formOfMusicalNotation</seealso>
+    let formOfMusicalNotation =
+        Prefixed_Name(rdae, "formOfMusicalNotation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:script</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/script">http://rdaregistry.info/Elements/e/script</seealso>
+    let script = Prefixed_Name(rdae, "script") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20066</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as television program (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20066">http://rdaregistry.info/Elements/e/P20066</seealso>
+    let P20066 = Prefixed_Name(rdae, "P20066") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20128</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is television adaptation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20128">http://rdaregistry.info/Elements/e/P20128</seealso>
+    let P20128 = Prefixed_Name(rdae, "P20128") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:adaptedAsATelevisionProgramExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsATelevisionProgramExpression">http://rdaregistry.info/Elements/e/adaptedAsATelevisionProgramExpression</seealso>
     let adaptedAsATelevisionProgramExpression =
-        _prefix "adaptedAsATelevisionProgramExpression"
+        Prefixed_Name(rdae, "adaptedAsATelevisionProgramExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20067"></see>
+    ///   <para>rdae:P20067</para>
     /// </summary>
-    let P20067 = _prefix "P20067"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as video (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20067">http://rdaregistry.info/Elements/e/P20067</seealso>
+    let P20067 = Prefixed_Name(rdae, "P20067") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20134"></see>
+    ///   <para>rdae:P20134</para>
     /// </summary>
-    let P20134 = _prefix "P20134"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsAVideoProgramExpression"></see>
-    /// </summary>
-    let adaptedAsAVideoProgramExpression = _prefix "adaptedAsAVideoProgramExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/writerOfAddedLyrics"></see>
-    /// </summary>
-    let writerOfAddedLyrics = _prefix "writerOfAddedLyrics"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20069"></see>
-    /// </summary>
-    let P20069 = _prefix "P20069"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/summarizationOfTheContent"></see>
-    /// </summary>
-    let summarizationOfTheContent = _prefix "summarizationOfTheContent"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/voiceActor"></see>
-    /// </summary>
-    let voiceActor = _prefix "voiceActor"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/noteOnExpression"></see>
-    /// </summary>
-    let noteOnExpression = _prefix "noteOnExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20072"></see>
-    /// </summary>
-    let P20072 = _prefix "P20072"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20178"></see>
-    /// </summary>
-    let P20178 = _prefix "P20178"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20136"></see>
-    /// </summary>
-    let P20136 = _prefix "P20136"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20187"></see>
-    /// </summary>
-    let P20187 = _prefix "P20187"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20182"></see>
-    /// </summary>
-    let P20182 = _prefix "P20182"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20150"></see>
-    /// </summary>
-    let P20150 = _prefix "P20150"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20234"></see>
-    /// </summary>
-    let P20234 = _prefix "P20234"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20202"></see>
-    /// </summary>
-    let P20202 = _prefix "P20202"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/descriptionOfExpression"></see>
-    /// </summary>
-    let descriptionOfExpression = _prefix "descriptionOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20073"></see>
-    /// </summary>
-    let P20073 = _prefix "P20073"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20123"></see>
-    /// </summary>
-    let P20123 = _prefix "P20123"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/dramatizedAsExpression"></see>
-    /// </summary>
-    let dramatizedAsExpression = _prefix "dramatizedAsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20074"></see>
-    /// </summary>
-    let P20074 = _prefix "P20074"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20236"></see>
-    /// </summary>
-    let P20236 = _prefix "P20236"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20145"></see>
-    /// </summary>
-    let P20145 = _prefix "P20145"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/containedInExpression"></see>
-    /// </summary>
-    let containedInExpression = _prefix "containedInExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20075"></see>
-    /// </summary>
-    let P20075 = _prefix "P20075"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20198"></see>
-    /// </summary>
-    let P20198 = _prefix "P20198"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/supersededInPartByExpression"></see>
-    /// </summary>
-    let supersededInPartByExpression = _prefix "supersededInPartByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/replacedInPartByExpression"></see>
-    /// </summary>
-    let replacedInPartByExpression = _prefix "replacedInPartByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20076"></see>
-    /// </summary>
-    let P20076 = _prefix "P20076"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20169"></see>
-    /// </summary>
-    let P20169 = _prefix "P20169"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20199"></see>
-    /// </summary>
-    let P20199 = _prefix "P20199"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/replacedByExpression"></see>
-    /// </summary>
-    let replacedByExpression = _prefix "replacedByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/supersededByExpression"></see>
-    /// </summary>
-    let supersededByExpression = _prefix "supersededByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20077"></see>
-    /// </summary>
-    let P20077 = _prefix "P20077"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20124"></see>
-    /// </summary>
-    let P20124 = _prefix "P20124"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/verseAdaptationExpression"></see>
-    /// </summary>
-    let verseAdaptationExpression = _prefix "verseAdaptationExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20078"></see>
-    /// </summary>
-    let P20078 = _prefix "P20078"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20141"></see>
-    /// </summary>
-    let P20141 = _prefix "P20141"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20079"></see>
-    /// </summary>
-    let P20079 = _prefix "P20079"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/dubbedVersionOf"></see>
-    /// </summary>
-    let dubbedVersionOf = _prefix "dubbedVersionOf"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20171"></see>
-    /// </summary>
-    let P20171 = _prefix "P20171"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/dubbedVersion"></see>
-    /// </summary>
-    let dubbedVersion = _prefix "dubbedVersion"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20080"></see>
-    /// </summary>
-    let P20080 = _prefix "P20080"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20105"></see>
-    /// </summary>
-    let P20105 = _prefix "P20105"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20083"></see>
-    /// </summary>
-    let P20083 = _prefix "P20083"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/cadenzaExpression"></see>
-    /// </summary>
-    let cadenzaExpression = _prefix "cadenzaExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20081"></see>
-    /// </summary>
-    let P20081 = _prefix "P20081"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20204"></see>
-    /// </summary>
-    let P20204 = _prefix "P20204"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20082"></see>
-    /// </summary>
-    let P20082 = _prefix "P20082"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is video adaptation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20134">http://rdaregistry.info/Elements/e/P20134</seealso>
+    let P20134 = Prefixed_Name(rdae, "P20134") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicalVariationsBasedOnExpression"></see>
+    ///   <para>rdae:adaptedAsAVideoProgramExpression</para>
     /// </summary>
-    let musicalVariationsBasedOnExpression =
-        _prefix "musicalVariationsBasedOnExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsAVideoProgramExpression">http://rdaregistry.info/Elements/e/adaptedAsAVideoProgramExpression</seealso>
+    let adaptedAsAVideoProgramExpression =
+        Prefixed_Name(rdae, "adaptedAsAVideoProgramExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20203"></see>
+    ///   <para>rdae:P20100</para>
     /// </summary>
-    let P20203 = _prefix "P20203"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is complemented by (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20100">http://rdaregistry.info/Elements/e/P20100</seealso>
+    let P20100 = Prefixed_Name(rdae, "P20100") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicalVariationsExpression"></see>
+    ///   <para>rdae:P20163</para>
     /// </summary>
-    let musicalVariationsExpression = _prefix "musicalVariationsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20192"></see>
-    /// </summary>
-    let P20192 = _prefix "P20192"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/cadenzaComposedForExpression"></see>
-    /// </summary>
-    let cadenzaComposedForExpression = _prefix "cadenzaComposedForExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20084"></see>
-    /// </summary>
-    let P20084 = _prefix "P20084"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20100"></see>
-    /// </summary>
-    let P20100 = _prefix "P20100"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20163"></see>
-    /// </summary>
-    let P20163 = _prefix "P20163"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/librettoForExpression"></see>
-    /// </summary>
-    let librettoForExpression = _prefix "librettoForExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20085"></see>
-    /// </summary>
-    let P20085 = _prefix "P20085"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20243"></see>
-    /// </summary>
-    let P20243 = _prefix "P20243"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20103"></see>
-    /// </summary>
-    let P20103 = _prefix "P20103"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/incidentalMusicExpression"></see>
-    /// </summary>
-    let incidentalMusicExpression = _prefix "incidentalMusicExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20086"></see>
-    /// </summary>
-    let P20086 = _prefix "P20086"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20185"></see>
-    /// </summary>
-    let P20185 = _prefix "P20185"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/remadeAsExpression"></see>
-    /// </summary>
-    let remadeAsExpression = _prefix "remadeAsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20087"></see>
-    /// </summary>
-    let P20087 = _prefix "P20087"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20159"></see>
-    /// </summary>
-    let P20159 = _prefix "P20159"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicalSettingExpression"></see>
-    /// </summary>
-    let musicalSettingExpression = _prefix "musicalSettingExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20088"></see>
-    /// </summary>
-    let P20088 = _prefix "P20088"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20126"></see>
-    /// </summary>
-    let P20126 = _prefix "P20126"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/novelizationExpression"></see>
-    /// </summary>
-    let novelizationExpression = _prefix "novelizationExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20089"></see>
-    /// </summary>
-    let P20089 = _prefix "P20089"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20118"></see>
-    /// </summary>
-    let P20118 = _prefix "P20118"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/appendixToExpression"></see>
-    /// </summary>
-    let appendixToExpression = _prefix "appendixToExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20090"></see>
-    /// </summary>
-    let P20090 = _prefix "P20090"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20193"></see>
-    /// </summary>
-    let P20193 = _prefix "P20193"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/abstractedInExpression"></see>
-    /// </summary>
-    let abstractedInExpression = _prefix "abstractedInExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20091"></see>
-    /// </summary>
-    let P20091 = _prefix "P20091"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20194"></see>
-    /// </summary>
-    let P20194 = _prefix "P20194"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/indexedInExpression"></see>
-    /// </summary>
-    let indexedInExpression = _prefix "indexedInExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20092"></see>
-    /// </summary>
-    let P20092 = _prefix "P20092"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20183"></see>
-    /// </summary>
-    let P20183 = _prefix "P20183"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/choreographyExpression"></see>
-    /// </summary>
-    let choreographyExpression = _prefix "choreographyExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20093"></see>
-    /// </summary>
-    let P20093 = _prefix "P20093"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20146"></see>
-    /// </summary>
-    let P20146 = _prefix "P20146"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/errataExpression"></see>
-    /// </summary>
-    let errataExpression = _prefix "errataExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20094"></see>
-    /// </summary>
-    let P20094 = _prefix "P20094"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20148"></see>
-    /// </summary>
-    let P20148 = _prefix "P20148"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/illustrationsExpression"></see>
-    /// </summary>
-    let illustrationsExpression = _prefix "illustrationsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20095"></see>
-    /// </summary>
-    let P20095 = _prefix "P20095"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20096"></see>
-    /// </summary>
-    let P20096 = _prefix "P20096"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20130"></see>
-    /// </summary>
-    let P20130 = _prefix "P20130"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is libretto (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20163">http://rdaregistry.info/Elements/e/P20163</seealso>
+    let P20163 = Prefixed_Name(rdae, "P20163") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsAMotionPictureScreenplayExpression"></see>
+    ///   <para>rdae:librettoForExpression</para>
     /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/librettoForExpression">http://rdaregistry.info/Elements/e/librettoForExpression</seealso>
+    let librettoForExpression =
+        Prefixed_Name(rdae, "librettoForExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20085</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is incidental music (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20085">http://rdaregistry.info/Elements/e/P20085</seealso>
+    let P20085 = Prefixed_Name(rdae, "P20085") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20243</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is music (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20243">http://rdaregistry.info/Elements/e/P20243</seealso>
+    let P20243 = Prefixed_Name(rdae, "P20243") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20103</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is incidental music for (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20103">http://rdaregistry.info/Elements/e/P20103</seealso>
+    let P20103 = Prefixed_Name(rdae, "P20103") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:incidentalMusicExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/incidentalMusicExpression">http://rdaregistry.info/Elements/e/incidentalMusicExpression</seealso>
+    let incidentalMusicExpression =
+        Prefixed_Name(rdae, "incidentalMusicExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20086</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is remade as (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20086">http://rdaregistry.info/Elements/e/P20086</seealso>
+    let P20086 = Prefixed_Name(rdae, "P20086") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20118</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is appendix (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20118">http://rdaregistry.info/Elements/e/P20118</seealso>
+    let P20118 = Prefixed_Name(rdae, "P20118") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:appendixToExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/appendixToExpression">http://rdaregistry.info/Elements/e/appendixToExpression</seealso>
+    let appendixToExpression =
+        Prefixed_Name(rdae, "appendixToExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20090</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is abstracted in (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20090">http://rdaregistry.info/Elements/e/P20090</seealso>
+    let P20090 = Prefixed_Name(rdae, "P20090") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20193</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is abstracts for (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20193">http://rdaregistry.info/Elements/e/P20193</seealso>
+    let P20193 = Prefixed_Name(rdae, "P20193") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:abstractedInExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/abstractedInExpression">http://rdaregistry.info/Elements/e/abstractedInExpression</seealso>
+    let abstractedInExpression =
+        Prefixed_Name(rdae, "abstractedInExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20091</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is indexed in (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20091">http://rdaregistry.info/Elements/e/P20091</seealso>
+    let P20091 = Prefixed_Name(rdae, "P20091") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20183</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is choreography for (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20183">http://rdaregistry.info/Elements/e/P20183</seealso>
+    let P20183 = Prefixed_Name(rdae, "P20183") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:choreographyExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/choreographyExpression">http://rdaregistry.info/Elements/e/choreographyExpression</seealso>
+    let choreographyExpression =
+        Prefixed_Name(rdae, "choreographyExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20093</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is errata (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20093">http://rdaregistry.info/Elements/e/P20093</seealso>
+    let P20093 = Prefixed_Name(rdae, "P20093") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20146</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is errata to (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20146">http://rdaregistry.info/Elements/e/P20146</seealso>
+    let P20146 = Prefixed_Name(rdae, "P20146") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:errataExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/errataExpression">http://rdaregistry.info/Elements/e/errataExpression</seealso>
+    let errataExpression = Prefixed_Name(rdae, "errataExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20094</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is illustrations (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20094">http://rdaregistry.info/Elements/e/P20094</seealso>
+    let P20094 = Prefixed_Name(rdae, "P20094") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20148</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is illustrations for (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20148">http://rdaregistry.info/Elements/e/P20148</seealso>
+    let P20148 = Prefixed_Name(rdae, "P20148") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:illustrationsExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/illustrationsExpression">http://rdaregistry.info/Elements/e/illustrationsExpression</seealso>
+    let illustrationsExpression =
+        Prefixed_Name(rdae, "illustrationsExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20096</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as screenplay (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20096">http://rdaregistry.info/Elements/e/P20096</seealso>
+    let P20096 = Prefixed_Name(rdae, "P20096") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20130</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is motion picture screenplay based on (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20130">http://rdaregistry.info/Elements/e/P20130</seealso>
+    let P20130 = Prefixed_Name(rdae, "P20130") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:adaptedAsAMotionPictureScreenplayExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsAMotionPictureScreenplayExpression">http://rdaregistry.info/Elements/e/adaptedAsAMotionPictureScreenplayExpression</seealso>
     let adaptedAsAMotionPictureScreenplayExpression =
-        _prefix "adaptedAsAMotionPictureScreenplayExpression"
+        Prefixed_Name(rdae, "adaptedAsAMotionPictureScreenplayExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20097"></see>
+    ///   <para>rdae:P20097</para>
     /// </summary>
-    let P20097 = _prefix "P20097"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as television screenplay (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20097">http://rdaregistry.info/Elements/e/P20097</seealso>
+    let P20097 = Prefixed_Name(rdae, "P20097") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20098"></see>
+    ///   <para>rdae:P20098</para>
     /// </summary>
-    let P20098 = _prefix "P20098"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as video screenplay (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20098">http://rdaregistry.info/Elements/e/P20098</seealso>
+    let P20098 = Prefixed_Name(rdae, "P20098") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20129"></see>
+    ///   <para>rdae:P20129</para>
     /// </summary>
-    let P20129 = _prefix "P20129"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsAScreenplayExpression"></see>
-    /// </summary>
-    let adaptedAsAScreenplayExpression = _prefix "adaptedAsAScreenplayExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20131"></see>
-    /// </summary>
-    let P20131 = _prefix "P20131"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is screenplay based on (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20129">http://rdaregistry.info/Elements/e/P20129</seealso>
+    let P20129 = Prefixed_Name(rdae, "P20129") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsATelevisionScreenplayExpression"></see>
+    ///   <para>rdae:adaptedAsAScreenplayExpression</para>
     /// </summary>
-    let adaptedAsATelevisionScreenplayExpression =
-        _prefix "adaptedAsATelevisionScreenplayExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsAScreenplayExpression">http://rdaregistry.info/Elements/e/adaptedAsAScreenplayExpression</seealso>
+    let adaptedAsAScreenplayExpression =
+        Prefixed_Name(rdae, "adaptedAsAScreenplayExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20132"></see>
+    ///   <para>rdae:P20195</para>
     /// </summary>
-    let P20132 = _prefix "P20132"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is imitation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20195">http://rdaregistry.info/Elements/e/P20195</seealso>
+    let P20195 = Prefixed_Name(rdae, "P20195") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsAVideoScreenplayExpression"></see>
+    ///   <para>rdae:imitatedAsExpression</para>
     /// </summary>
-    let adaptedAsAVideoScreenplayExpression =
-        _prefix "adaptedAsAVideoScreenplayExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/imitatedAsExpression">http://rdaregistry.info/Elements/e/imitatedAsExpression</seealso>
+    let imitatedAsExpression =
+        Prefixed_Name(rdae, "imitatedAsExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20099"></see>
-    /// </summary>
-    let P20099 = _prefix "P20099"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20133"></see>
-    /// </summary>
-    let P20133 = _prefix "P20133"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsARadioScriptExpression"></see>
-    /// </summary>
-    let adaptedAsARadioScriptExpression = _prefix "adaptedAsARadioScriptExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20102"></see>
-    /// </summary>
-    let P20102 = _prefix "P20102"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20157"></see>
-    /// </summary>
-    let P20157 = _prefix "P20157"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20160"></see>
-    /// </summary>
-    let P20160 = _prefix "P20160"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20176"></see>
-    /// </summary>
-    let P20176 = _prefix "P20176"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20232"></see>
-    /// </summary>
-    let P20232 = _prefix "P20232"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/complementedByExpression"></see>
-    /// </summary>
-    let complementedByExpression = _prefix "complementedByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20101"></see>
-    /// </summary>
-    let P20101 = _prefix "P20101"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20168"></see>
-    /// </summary>
-    let P20168 = _prefix "P20168"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/continuedInPartByExpression"></see>
-    /// </summary>
-    let continuedInPartByExpression = _prefix "continuedInPartByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20174"></see>
-    /// </summary>
-    let P20174 = _prefix "P20174"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20175"></see>
-    /// </summary>
-    let P20175 = _prefix "P20175"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20173"></see>
-    /// </summary>
-    let P20173 = _prefix "P20173"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/screenplayForExpression"></see>
-    /// </summary>
-    let screenplayForExpression = _prefix "screenplayForExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20244"></see>
-    /// </summary>
-    let P20244 = _prefix "P20244"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/incidentalMusicForExpression"></see>
-    /// </summary>
-    let incidentalMusicForExpression = _prefix "incidentalMusicForExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20104"></see>
-    /// </summary>
-    let P20104 = _prefix "P20104"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20122"></see>
-    /// </summary>
-    let P20122 = _prefix "P20122"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/abstractExpression"></see>
-    /// </summary>
-    let abstractExpression = _prefix "abstractExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20109"></see>
-    /// </summary>
-    let P20109 = _prefix "P20109"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20108"></see>
-    /// </summary>
-    let P20108 = _prefix "P20108"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20156"></see>
-    /// </summary>
-    let P20156 = _prefix "P20156"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20107"></see>
-    /// </summary>
-    let P20107 = _prefix "P20107"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20155"></see>
-    /// </summary>
-    let P20155 = _prefix "P20155"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20172"></see>
-    /// </summary>
-    let P20172 = _prefix "P20172"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20120"></see>
-    /// </summary>
-    let P20120 = _prefix "P20120"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/augmentedByExpression"></see>
-    /// </summary>
-    let augmentedByExpression = _prefix "augmentedByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20106"></see>
-    /// </summary>
-    let P20106 = _prefix "P20106"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20179"></see>
-    /// </summary>
-    let P20179 = _prefix "P20179"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/summaryExpression"></see>
-    /// </summary>
-    let summaryExpression = _prefix "summaryExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20180"></see>
-    /// </summary>
-    let P20180 = _prefix "P20180"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/catalogueExpression"></see>
-    /// </summary>
-    let catalogueExpression = _prefix "catalogueExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20181"></see>
-    /// </summary>
-    let P20181 = _prefix "P20181"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/concordanceExpression"></see>
-    /// </summary>
-    let concordanceExpression = _prefix "concordanceExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20177"></see>
-    /// </summary>
-    let P20177 = _prefix "P20177"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/addendaExpression"></see>
-    /// </summary>
-    let addendaExpression = _prefix "addendaExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20110"></see>
-    /// </summary>
-    let P20110 = _prefix "P20110"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20190"></see>
-    /// </summary>
-    let P20190 = _prefix "P20190"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/basisForLibrettoExpression"></see>
-    /// </summary>
-    let basisForLibrettoExpression = _prefix "basisForLibrettoExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20111"></see>
-    /// </summary>
-    let P20111 = _prefix "P20111"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/reviewedInExpression"></see>
-    /// </summary>
-    let reviewedInExpression = _prefix "reviewedInExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20112"></see>
-    /// </summary>
-    let P20112 = _prefix "P20112"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/critiquedInExpression"></see>
-    /// </summary>
-    let critiquedInExpression = _prefix "critiquedInExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20113"></see>
-    /// </summary>
-    let P20113 = _prefix "P20113"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/commentaryInExpression"></see>
-    /// </summary>
-    let commentaryInExpression = _prefix "commentaryInExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20114"></see>
-    /// </summary>
-    let P20114 = _prefix "P20114"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20142"></see>
-    /// </summary>
-    let P20142 = _prefix "P20142"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20195"></see>
-    /// </summary>
-    let P20195 = _prefix "P20195"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/imitatedAsExpression"></see>
-    /// </summary>
-    let imitatedAsExpression = _prefix "imitatedAsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20115"></see>
-    /// </summary>
-    let P20115 = _prefix "P20115"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20184"></see>
-    /// </summary>
-    let P20184 = _prefix "P20184"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/expandedAsExpression"></see>
-    /// </summary>
-    let expandedAsExpression = _prefix "expandedAsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20116"></see>
-    /// </summary>
-    let P20116 = _prefix "P20116"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/evaluatedInExpression"></see>
-    /// </summary>
-    let evaluatedInExpression = _prefix "evaluatedInExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20117"></see>
-    /// </summary>
-    let P20117 = _prefix "P20117"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/analysedInExpression"></see>
-    /// </summary>
-    let analysedInExpression = _prefix "analysedInExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/appendixExpression"></see>
-    /// </summary>
-    let appendixExpression = _prefix "appendixExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20119"></see>
-    /// </summary>
-    let P20119 = _prefix "P20119"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20140"></see>
-    /// </summary>
-    let P20140 = _prefix "P20140"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/freelyTranslatedAsExpression"></see>
-    /// </summary>
-    let freelyTranslatedAsExpression = _prefix "freelyTranslatedAsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20147"></see>
-    /// </summary>
-    let P20147 = _prefix "P20147"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/guideExpression"></see>
-    /// </summary>
-    let guideExpression = _prefix "guideExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20121"></see>
-    /// </summary>
-    let P20121 = _prefix "P20121"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20166"></see>
-    /// </summary>
-    let P20166 = _prefix "P20166"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/abridgementOfExpression"></see>
-    /// </summary>
-    let abridgementOfExpression = _prefix "abridgementOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/abstractOfExpression"></see>
-    /// </summary>
-    let abstractOfExpression = _prefix "abstractOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20152"></see>
-    /// </summary>
-    let P20152 = _prefix "P20152"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/dramatizationOfExpression"></see>
-    /// </summary>
-    let dramatizationOfExpression = _prefix "dramatizationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/verseAdaptationOfExpression"></see>
-    /// </summary>
-    let verseAdaptationOfExpression = _prefix "verseAdaptationOfExpression"
+    ///   <para>rdae:P20115</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is expanded as (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20115">http://rdaregistry.info/Elements/e/P20115</seealso>
+    let P20115 = Prefixed_Name(rdae, "P20115") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20184</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is expanded version of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20184">http://rdaregistry.info/Elements/e/P20184</seealso>
+    let P20184 = Prefixed_Name(rdae, "P20184") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/motionPictureAdaptationOfExpression"></see>
+    ///   <para>rdae:expandedAsExpression</para>
     /// </summary>
-    let motionPictureAdaptationOfExpression =
-        _prefix "motionPictureAdaptationOfExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/expandedAsExpression">http://rdaregistry.info/Elements/e/expandedAsExpression</seealso>
+    let expandedAsExpression =
+        Prefixed_Name(rdae, "expandedAsExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/novelizationOfExpression"></see>
+    ///   <para>rdae:P20116</para>
     /// </summary>
-    let novelizationOfExpression = _prefix "novelizationOfExpression"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is evaluated in (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20116">http://rdaregistry.info/Elements/e/P20116</seealso>
+    let P20116 = Prefixed_Name(rdae, "P20116") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/radioAdaptationOfExpression"></see>
+    ///   <para>rdae:P20165</para>
     /// </summary>
-    let radioAdaptationOfExpression = _prefix "radioAdaptationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/televisionAdaptationOfExpression"></see>
-    /// </summary>
-    let televisionAdaptationOfExpression = _prefix "televisionAdaptationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/screenplayBasedOnExpression"></see>
-    /// </summary>
-    let screenplayBasedOnExpression = _prefix "screenplayBasedOnExpression"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is musical arrangement</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20165">http://rdaregistry.info/Elements/e/P20165</seealso>
+    let P20165 = Prefixed_Name(rdae, "P20165") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/motionPictureScreenplayBasedOnExpression"></see>
+    ///   <para>rdae:musicalArrangementOf</para>
     /// </summary>
-    let motionPictureScreenplayBasedOnExpression =
-        _prefix "motionPictureScreenplayBasedOnExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicalArrangementOf">http://rdaregistry.info/Elements/e/musicalArrangementOf</seealso>
+    let musicalArrangementOf =
+        Prefixed_Name(rdae, "musicalArrangementOf") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/televisionScreenplayBasedOnExpression"></see>
+    ///   <para>rdae:freeTranslationOfExpression</para>
     /// </summary>
-    let televisionScreenplayBasedOnExpression =
-        _prefix "televisionScreenplayBasedOnExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/freeTranslationOfExpression">http://rdaregistry.info/Elements/e/freeTranslationOfExpression</seealso>
+    let freeTranslationOfExpression =
+        Prefixed_Name(rdae, "freeTranslationOfExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/videoScreenplayBasedOnExpression"></see>
-    /// </summary>
-    let videoScreenplayBasedOnExpression = _prefix "videoScreenplayBasedOnExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/radioScriptBasedOnExpression"></see>
-    /// </summary>
-    let radioScriptBasedOnExpression = _prefix "radioScriptBasedOnExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/videoAdaptationOfExpression"></see>
-    /// </summary>
-    let videoAdaptationOfExpression = _prefix "videoAdaptationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20135"></see>
-    /// </summary>
-    let P20135 = _prefix "P20135"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20170"></see>
-    /// </summary>
-    let P20170 = _prefix "P20170"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/digestOfExpression"></see>
-    /// </summary>
-    let digestOfExpression = _prefix "digestOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/analysisOfExpression"></see>
-    /// </summary>
-    let analysisOfExpression = _prefix "analysisOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20137"></see>
-    /// </summary>
-    let P20137 = _prefix "P20137"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20154"></see>
-    /// </summary>
-    let P20154 = _prefix "P20154"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20143"></see>
-    /// </summary>
-    let P20143 = _prefix "P20143"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/absorptionOfExpression"></see>
-    /// </summary>
-    let absorptionOfExpression = _prefix "absorptionOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/absorbedExpression"></see>
-    /// </summary>
-    let absorbedExpression = _prefix "absorbedExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20138"></see>
-    /// </summary>
-    let P20138 = _prefix "P20138"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20144"></see>
-    /// </summary>
-    let P20144 = _prefix "P20144"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/absorbedInPartExpression"></see>
-    /// </summary>
-    let absorbedInPartExpression = _prefix "absorbedInPartExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/absorptionInPartOfExpression"></see>
-    /// </summary>
-    let absorptionInPartOfExpression = _prefix "absorptionInPartOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20139"></see>
-    /// </summary>
-    let P20139 = _prefix "P20139"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20165"></see>
-    /// </summary>
-    let P20165 = _prefix "P20165"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicalArrangementOf"></see>
-    /// </summary>
-    let musicalArrangementOf = _prefix "musicalArrangementOf"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/freeTranslationOfExpression"></see>
-    /// </summary>
-    let freeTranslationOfExpression = _prefix "freeTranslationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/translationOf"></see>
-    /// </summary>
-    let translationOf = _prefix "translationOf"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20196"></see>
-    /// </summary>
-    let P20196 = _prefix "P20196"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/parodiedAsExpression"></see>
-    /// </summary>
-    let parodiedAsExpression = _prefix "parodiedAsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/absorbedByExpression"></see>
-    /// </summary>
-    let absorbedByExpression = _prefix "absorbedByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/absorbedInPartByExpression"></see>
-    /// </summary>
-    let absorbedInPartByExpression = _prefix "absorbedInPartByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/containerOfExpression"></see>
-    /// </summary>
-    let containerOfExpression = _prefix "containerOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/containsExpression"></see>
-    /// </summary>
-    let containsExpression = _prefix "containsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/errataToExpression"></see>
-    /// </summary>
-    let errataToExpression = _prefix "errataToExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/guideToExpression"></see>
-    /// </summary>
-    let guideToExpression = _prefix "guideToExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/illustrationsForExpression"></see>
-    /// </summary>
-    let illustrationsForExpression = _prefix "illustrationsForExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20149"></see>
-    /// </summary>
-    let P20149 = _prefix "P20149"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20191"></see>
-    /// </summary>
-    let P20191 = _prefix "P20191"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/continuationOfExpression"></see>
-    /// </summary>
-    let continuationOfExpression = _prefix "continuationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/continuesExpression"></see>
-    /// </summary>
-    let continuesExpression = _prefix "continuesExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/evaluationOfExpression"></see>
-    /// </summary>
-    let evaluationOfExpression = _prefix "evaluationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20151"></see>
-    /// </summary>
-    let P20151 = _prefix "P20151"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/supplementToExpression"></see>
-    /// </summary>
-    let supplementToExpression = _prefix "supplementToExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptationOfExpression"></see>
-    /// </summary>
-    let adaptationOfExpression = _prefix "adaptationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsExpression"></see>
-    /// </summary>
-    let adaptedAsExpression = _prefix "adaptedAsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20201"></see>
-    /// </summary>
-    let P20201 = _prefix "P20201"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20167"></see>
-    /// </summary>
-    let P20167 = _prefix "P20167"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20235"></see>
-    /// </summary>
-    let P20235 = _prefix "P20235"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/precededByExpression"></see>
-    /// </summary>
-    let precededByExpression = _prefix "precededByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20197"></see>
-    /// </summary>
-    let P20197 = _prefix "P20197"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/findingAidExpression"></see>
-    /// </summary>
-    let findingAidExpression = _prefix "findingAidExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20188"></see>
-    /// </summary>
-    let P20188 = _prefix "P20188"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/indexExpression"></see>
-    /// </summary>
-    let indexExpression = _prefix "indexExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20161"></see>
-    /// </summary>
-    let P20161 = _prefix "P20161"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20158"></see>
-    /// </summary>
-    let P20158 = _prefix "P20158"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20162"></see>
-    /// </summary>
-    let P20162 = _prefix "P20162"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/screenplayExpression"></see>
-    /// </summary>
-    let screenplayExpression = _prefix "screenplayExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/motionPictureScreenplayExpression"></see>
-    /// </summary>
-    let motionPictureScreenplayExpression = _prefix "motionPictureScreenplayExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicalSettingOfExpression"></see>
-    /// </summary>
-    let musicalSettingOfExpression = _prefix "musicalSettingOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/radioScriptExpression"></see>
-    /// </summary>
-    let radioScriptExpression = _prefix "radioScriptExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/televisionScreenplayExpression"></see>
-    /// </summary>
-    let televisionScreenplayExpression = _prefix "televisionScreenplayExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/videoScreenplayExpression"></see>
-    /// </summary>
-    let videoScreenplayExpression = _prefix "videoScreenplayExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/librettoExpression"></see>
-    /// </summary>
-    let librettoExpression = _prefix "librettoExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20164"></see>
-    /// </summary>
-    let P20164 = _prefix "P20164"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20186"></see>
-    /// </summary>
-    let P20186 = _prefix "P20186"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/paraphrasedAsExpression"></see>
-    /// </summary>
-    let paraphrasedAsExpression = _prefix "paraphrasedAsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicalArrangement"></see>
-    /// </summary>
-    let musicalArrangement = _prefix "musicalArrangement"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/abridgedAsExpression"></see>
-    /// </summary>
-    let abridgedAsExpression = _prefix "abridgedAsExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20200"></see>
-    /// </summary>
-    let P20200 = _prefix "P20200"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/continuationInPartOfExpression"></see>
-    /// </summary>
-    let continuationInPartOfExpression = _prefix "continuationInPartOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/continuesInPartExpression"></see>
-    /// </summary>
-    let continuesInPartExpression = _prefix "continuesInPartExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/separatedFromExpression"></see>
-    /// </summary>
-    let separatedFromExpression = _prefix "separatedFromExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/succeededByExpression"></see>
-    /// </summary>
-    let succeededByExpression = _prefix "succeededByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/digestExpression"></see>
-    /// </summary>
-    let digestExpression = _prefix "digestExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/translatedAs"></see>
-    /// </summary>
-    let translatedAs = _prefix "translatedAs"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/supplementExpression"></see>
-    /// </summary>
-    let supplementExpression = _prefix "supplementExpression"
+    ///   <para>rdae:translationOf</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/translationOf">http://rdaregistry.info/Elements/e/translationOf</seealso>
+    let translationOf = Prefixed_Name(rdae, "translationOf") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20196</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is parody of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20196">http://rdaregistry.info/Elements/e/P20196</seealso>
+    let P20196 = Prefixed_Name(rdae, "P20196") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/screenplayForTheMotionPictureExpression"></see>
+    ///   <para>rdae:parodiedAsExpression</para>
     /// </summary>
-    let screenplayForTheMotionPictureExpression =
-        _prefix "screenplayForTheMotionPictureExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/parodiedAsExpression">http://rdaregistry.info/Elements/e/parodiedAsExpression</seealso>
+    let parodiedAsExpression =
+        Prefixed_Name(rdae, "parodiedAsExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/screenplayForTheTelevisionProgramExpression"></see>
+    ///   <para>rdae:absorbedByExpression</para>
     /// </summary>
-    let screenplayForTheTelevisionProgramExpression =
-        _prefix "screenplayForTheTelevisionProgramExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/absorbedByExpression">http://rdaregistry.info/Elements/e/absorbedByExpression</seealso>
+    let absorbedByExpression =
+        Prefixed_Name(rdae, "absorbedByExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/screenplayForTheVideoExpression"></see>
+    ///   <para>rdae:absorbedInPartByExpression</para>
     /// </summary>
-    let screenplayForTheVideoExpression = _prefix "screenplayForTheVideoExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/absorbedInPartByExpression">http://rdaregistry.info/Elements/e/absorbedInPartByExpression</seealso>
+    let absorbedInPartByExpression =
+        Prefixed_Name(rdae, "absorbedInPartByExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/scriptForTheRadioProgramExpression"></see>
+    ///   <para>rdae:containsExpression</para>
     /// </summary>
-    let scriptForTheRadioProgramExpression =
-        _prefix "scriptForTheRadioProgramExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/containsExpression">http://rdaregistry.info/Elements/e/containsExpression</seealso>
+    let containsExpression = Prefixed_Name(rdae, "containsExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:errataToExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/errataToExpression">http://rdaregistry.info/Elements/e/errataToExpression</seealso>
+    let errataToExpression = Prefixed_Name(rdae, "errataToExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:guideToExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/guideToExpression">http://rdaregistry.info/Elements/e/guideToExpression</seealso>
+    let guideToExpression = Prefixed_Name(rdae, "guideToExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/addendaToExpression"></see>
+    ///   <para>rdae:illustrationsForExpression</para>
     /// </summary>
-    let addendaToExpression = _prefix "addendaToExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/reviewOfExpression"></see>
-    /// </summary>
-    let reviewOfExpression = _prefix "reviewOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/summaryOfExpression"></see>
-    /// </summary>
-    let summaryOfExpression = _prefix "summaryOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/catalogueOfExpression"></see>
-    /// </summary>
-    let catalogueOfExpression = _prefix "catalogueOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/concordanceToExpression"></see>
-    /// </summary>
-    let concordanceToExpression = _prefix "concordanceToExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/critiqueOfExpression"></see>
-    /// </summary>
-    let critiqueOfExpression = _prefix "critiqueOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/choreographyForExpression"></see>
-    /// </summary>
-    let choreographyForExpression = _prefix "choreographyForExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/expandedVersionOfExpression"></see>
-    /// </summary>
-    let expandedVersionOfExpression = _prefix "expandedVersionOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/remakeOfExpression"></see>
-    /// </summary>
-    let remakeOfExpression = _prefix "remakeOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/paraphraseOfExpression"></see>
-    /// </summary>
-    let paraphraseOfExpression = _prefix "paraphraseOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/commentaryOnExpression"></see>
-    /// </summary>
-    let commentaryOnExpression = _prefix "commentaryOnExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/indexToExpression"></see>
-    /// </summary>
-    let indexToExpression = _prefix "indexToExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20189"></see>
-    /// </summary>
-    let P20189 = _prefix "P20189"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20211"></see>
-    /// </summary>
-    let P20211 = _prefix "P20211"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/revisionOf"></see>
-    /// </summary>
-    let revisionOf = _prefix "revisionOf"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/librettoBasedOnExpression"></see>
-    /// </summary>
-    let librettoBasedOnExpression = _prefix "librettoBasedOnExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/continuedByExpression"></see>
-    /// </summary>
-    let continuedByExpression = _prefix "continuedByExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/augmentationOfExpression"></see>
-    /// </summary>
-    let augmentationOfExpression = _prefix "augmentationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/abstractsForExpression"></see>
-    /// </summary>
-    let abstractsForExpression = _prefix "abstractsForExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/indexingForExpression"></see>
-    /// </summary>
-    let indexingForExpression = _prefix "indexingForExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/imitationOfExpression"></see>
-    /// </summary>
-    let imitationOfExpression = _prefix "imitationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/parodyOfExpression"></see>
-    /// </summary>
-    let parodyOfExpression = _prefix "parodyOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/findingAidForExpression"></see>
-    /// </summary>
-    let findingAidForExpression = _prefix "findingAidForExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/replacementInPartOfExpression"></see>
-    /// </summary>
-    let replacementInPartOfExpression = _prefix "replacementInPartOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/supersedesInPartExpression"></see>
-    /// </summary>
-    let supersedesInPartExpression = _prefix "supersedesInPartExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/replacementOfExpression"></see>
-    /// </summary>
-    let replacementOfExpression = _prefix "replacementOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/supersedesExpression"></see>
-    /// </summary>
-    let supersedesExpression = _prefix "supersedesExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/splitIntoExpression"></see>
-    /// </summary>
-    let splitIntoExpression = _prefix "splitIntoExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20212"></see>
-    /// </summary>
-    let P20212 = _prefix "P20212"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/mergerOfExpression"></see>
-    /// </summary>
-    let mergerOfExpression = _prefix "mergerOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/describedInExpression"></see>
-    /// </summary>
-    let describedInExpression = _prefix "describedInExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20233"></see>
-    /// </summary>
-    let P20233 = _prefix "P20233"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/derivativeExpression"></see>
-    /// </summary>
-    let derivativeExpression = _prefix "derivativeExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/basedOnExpression"></see>
-    /// </summary>
-    let basedOnExpression = _prefix "basedOnExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20205"></see>
-    /// </summary>
-    let P20205 = _prefix "P20205"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/relatedExpression"></see>
-    /// </summary>
-    let relatedExpression = _prefix "relatedExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20206"></see>
-    /// </summary>
-    let P20206 = _prefix "P20206"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/supplementaryContent"></see>
-    /// </summary>
-    let supplementaryContent = _prefix "supplementaryContent"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20207"></see>
-    /// </summary>
-    let P20207 = _prefix "P20207"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/illustrativeContent"></see>
-    /// </summary>
-    let illustrativeContent = _prefix "illustrativeContent"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20208"></see>
-    /// </summary>
-    let P20208 = _prefix "P20208"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/accessibilityContent"></see>
-    /// </summary>
-    let accessibilityContent = _prefix "accessibilityContent"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20209"></see>
-    /// </summary>
-    let P20209 = _prefix "P20209"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/formatOfNotatedMusic"></see>
-    /// </summary>
-    let formatOfNotatedMusic = _prefix "formatOfNotatedMusic"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20210"></see>
-    /// </summary>
-    let P20210 = _prefix "P20210"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/otherDetailsOfCartographicContent"></see>
-    /// </summary>
-    let otherDetailsOfCartographicContent = _prefix "otherDetailsOfCartographicContent"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/revisedAs"></see>
-    /// </summary>
-    let revisedAs = _prefix "revisedAs"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/mergedToFormExpression"></see>
-    /// </summary>
-    let mergedToFormExpression = _prefix "mergedToFormExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20213"></see>
-    /// </summary>
-    let P20213 = _prefix "P20213"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20228"></see>
-    /// </summary>
-    let P20228 = _prefix "P20228"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/additionalScaleInformation"></see>
-    /// </summary>
-    let additionalScaleInformation = _prefix "additionalScaleInformation"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20214"></see>
-    /// </summary>
-    let P20214 = _prefix "P20214"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/dateOfExpression"></see>
-    /// </summary>
-    let dateOfExpression = _prefix "dateOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20215"></see>
-    /// </summary>
-    let P20215 = _prefix "P20215"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/illustrationsForExpression">http://rdaregistry.info/Elements/e/illustrationsForExpression</seealso>
+    let illustrationsForExpression =
+        Prefixed_Name(rdae, "illustrationsForExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/mediumOfPerformanceOfMusicalContent"></see>
+    ///   <para>rdae:P20149</para>
     /// </summary>
-    let mediumOfPerformanceOfMusicalContent =
-        _prefix "mediumOfPerformanceOfMusicalContent"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is continuation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20149">http://rdaregistry.info/Elements/e/P20149</seealso>
+    let P20149 = Prefixed_Name(rdae, "P20149") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20191</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is continued by (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20191">http://rdaregistry.info/Elements/e/P20191</seealso>
+    let P20191 = Prefixed_Name(rdae, "P20191") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20216"></see>
+    ///   <para>rdae:continuationOfExpression</para>
     /// </summary>
-    let P20216 = _prefix "P20216"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/projectionOfCartographicContent"></see>
-    /// </summary>
-    let projectionOfCartographicContent = _prefix "projectionOfCartographicContent"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20217"></see>
-    /// </summary>
-    let P20217 = _prefix "P20217"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/placeAndDateOfCapture"></see>
-    /// </summary>
-    let placeAndDateOfCapture = _prefix "placeAndDateOfCapture"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20218"></see>
-    /// </summary>
-    let P20218 = _prefix "P20218"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/placeOfCapture"></see>
-    /// </summary>
-    let placeOfCapture = _prefix "placeOfCapture"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20219"></see>
-    /// </summary>
-    let P20219 = _prefix "P20219"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/duration"></see>
-    /// </summary>
-    let duration = _prefix "duration"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20220"></see>
-    /// </summary>
-    let P20220 = _prefix "P20220"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20224"></see>
-    /// </summary>
-    let P20224 = _prefix "P20224"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/colourOfMovingImage"></see>
-    /// </summary>
-    let colourOfMovingImage = _prefix "colourOfMovingImage"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20221"></see>
-    /// </summary>
-    let P20221 = _prefix "P20221"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/continuationOfExpression">http://rdaregistry.info/Elements/e/continuationOfExpression</seealso>
+    let continuationOfExpression =
+        Prefixed_Name(rdae, "continuationOfExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/colourContentOfResourceDesignedForPersonsWithVisualImpairments"></see>
+    ///   <para>rdae:continuesExpression</para>
     /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/continuesExpression">http://rdaregistry.info/Elements/e/continuesExpression</seealso>
+    let continuesExpression = Prefixed_Name(rdae, "continuesExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:evaluationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/evaluationOfExpression">http://rdaregistry.info/Elements/e/evaluationOfExpression</seealso>
+    let evaluationOfExpression =
+        Prefixed_Name(rdae, "evaluationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20151</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is supplement to (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20151">http://rdaregistry.info/Elements/e/P20151</seealso>
+    let P20151 = Prefixed_Name(rdae, "P20151") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:adaptedAsExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsExpression">http://rdaregistry.info/Elements/e/adaptedAsExpression</seealso>
+    let adaptedAsExpression = Prefixed_Name(rdae, "adaptedAsExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20201</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is merger of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20201">http://rdaregistry.info/Elements/e/P20201</seealso>
+    let P20201 = Prefixed_Name(rdae, "P20201") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20167</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is continuation in part of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20167">http://rdaregistry.info/Elements/e/P20167</seealso>
+    let P20167 = Prefixed_Name(rdae, "P20167") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20235</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has sequential expression relationship with</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20235">http://rdaregistry.info/Elements/e/P20235</seealso>
+    let P20235 = Prefixed_Name(rdae, "P20235") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:precededByExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/precededByExpression">http://rdaregistry.info/Elements/e/precededByExpression</seealso>
+    let precededByExpression =
+        Prefixed_Name(rdae, "precededByExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20197</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is finding aid for (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20197">http://rdaregistry.info/Elements/e/P20197</seealso>
+    let P20197 = Prefixed_Name(rdae, "P20197") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:findingAidExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/findingAidExpression">http://rdaregistry.info/Elements/e/findingAidExpression</seealso>
+    let findingAidExpression =
+        Prefixed_Name(rdae, "findingAidExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20188</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is index to (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20188">http://rdaregistry.info/Elements/e/P20188</seealso>
+    let P20188 = Prefixed_Name(rdae, "P20188") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:indexExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/indexExpression">http://rdaregistry.info/Elements/e/indexExpression</seealso>
+    let indexExpression = Prefixed_Name(rdae, "indexExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20161</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is television screenplay (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20161">http://rdaregistry.info/Elements/e/P20161</seealso>
+    let P20161 = Prefixed_Name(rdae, "P20161") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20158</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is motion picture screenplay (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20158">http://rdaregistry.info/Elements/e/P20158</seealso>
+    let P20158 = Prefixed_Name(rdae, "P20158") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20162</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is video screenplay (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20162">http://rdaregistry.info/Elements/e/P20162</seealso>
+    let P20162 = Prefixed_Name(rdae, "P20162") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:radioScriptExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/radioScriptExpression">http://rdaregistry.info/Elements/e/radioScriptExpression</seealso>
+    let radioScriptExpression =
+        Prefixed_Name(rdae, "radioScriptExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:televisionScreenplayExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/televisionScreenplayExpression">http://rdaregistry.info/Elements/e/televisionScreenplayExpression</seealso>
+    let televisionScreenplayExpression =
+        Prefixed_Name(rdae, "televisionScreenplayExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:videoScreenplayExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/videoScreenplayExpression">http://rdaregistry.info/Elements/e/videoScreenplayExpression</seealso>
+    let videoScreenplayExpression =
+        Prefixed_Name(rdae, "videoScreenplayExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:librettoExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/librettoExpression">http://rdaregistry.info/Elements/e/librettoExpression</seealso>
+    let librettoExpression = Prefixed_Name(rdae, "librettoExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20164</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is paraphrased as (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20164">http://rdaregistry.info/Elements/e/P20164</seealso>
+    let P20164 = Prefixed_Name(rdae, "P20164") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20186</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is paraphrase of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20186">http://rdaregistry.info/Elements/e/P20186</seealso>
+    let P20186 = Prefixed_Name(rdae, "P20186") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:paraphrasedAsExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/paraphrasedAsExpression">http://rdaregistry.info/Elements/e/paraphrasedAsExpression</seealso>
+    let paraphrasedAsExpression =
+        Prefixed_Name(rdae, "paraphrasedAsExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:musicalArrangement</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicalArrangement">http://rdaregistry.info/Elements/e/musicalArrangement</seealso>
+    let musicalArrangement = Prefixed_Name(rdae, "musicalArrangement") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:colourOfMovingImage</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/colourOfMovingImage">http://rdaregistry.info/Elements/e/colourOfMovingImage</seealso>
+    let colourOfMovingImage = Prefixed_Name(rdae, "colourOfMovingImage") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20221</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has colour content of resource designed for persons with visual impairments</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20221">http://rdaregistry.info/Elements/e/P20221</seealso>
+    let P20221 = Prefixed_Name(rdae, "P20221") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:colourContentOfResourceDesignedForPersonsWithVisualImpairments</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/colourContentOfResourceDesignedForPersonsWithVisualImpairments">http://rdaregistry.info/Elements/e/colourContentOfResourceDesignedForPersonsWithVisualImpairments</seealso>
     let colourContentOfResourceDesignedForPersonsWithVisualImpairments =
-        _prefix "colourContentOfResourceDesignedForPersonsWithVisualImpairments"
+        Prefixed_Name(rdae, "colourContentOfResourceDesignedForPersonsWithVisualImpairments") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20222"></see>
+    ///   <para>rdae:P20222</para>
     /// </summary>
-    let P20222 = _prefix "P20222"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has colour of still image</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20222">http://rdaregistry.info/Elements/e/P20222</seealso>
+    let P20222 = Prefixed_Name(rdae, "P20222") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/colourOfStillImage"></see>
+    ///   <para>rdae:colourOfStillImage</para>
     /// </summary>
-    let colourOfStillImage = _prefix "colourOfStillImage"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/colourOfStillImage">http://rdaregistry.info/Elements/e/colourOfStillImage</seealso>
+    let colourOfStillImage = Prefixed_Name(rdae, "colourOfStillImage") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20223"></see>
+    ///   <para>rdae:P20223</para>
     /// </summary>
-    let P20223 = _prefix "P20223"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/colourOfThreeDimensionalForm"></see>
-    /// </summary>
-    let colourOfThreeDimensionalForm = _prefix "colourOfThreeDimensionalForm"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/colourContent"></see>
-    /// </summary>
-    let colourContent = _prefix "colourContent"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20225"></see>
-    /// </summary>
-    let P20225 = _prefix "P20225"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/soundContent"></see>
-    /// </summary>
-    let soundContent = _prefix "soundContent"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20226"></see>
-    /// </summary>
-    let P20226 = _prefix "P20226"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has colour of three-dimensional form</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20223">http://rdaregistry.info/Elements/e/P20223</seealso>
+    let P20223 = Prefixed_Name(rdae, "P20223") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/horizontalScaleOfCartographicContent"></see>
+    ///   <para>rdae:colourOfThreeDimensionalForm</para>
     /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/colourOfThreeDimensionalForm">http://rdaregistry.info/Elements/e/colourOfThreeDimensionalForm</seealso>
+    let colourOfThreeDimensionalForm =
+        Prefixed_Name(rdae, "colourOfThreeDimensionalForm") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:colourContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/colourContent">http://rdaregistry.info/Elements/e/colourContent</seealso>
+    let colourContent = Prefixed_Name(rdae, "colourContent") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20225</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has sound content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20225">http://rdaregistry.info/Elements/e/P20225</seealso>
+    let P20225 = Prefixed_Name(rdae, "P20225") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:soundContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/soundContent">http://rdaregistry.info/Elements/e/soundContent</seealso>
+    let soundContent = Prefixed_Name(rdae, "soundContent") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20226</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has horizontal scale of cartographic content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20226">http://rdaregistry.info/Elements/e/P20226</seealso>
+    let P20226 = Prefixed_Name(rdae, "P20226") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:horizontalScaleOfCartographicContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/horizontalScaleOfCartographicContent">http://rdaregistry.info/Elements/e/horizontalScaleOfCartographicContent</seealso>
     let horizontalScaleOfCartographicContent =
-        _prefix "horizontalScaleOfCartographicContent"
+        Prefixed_Name(rdae, "horizontalScaleOfCartographicContent") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20227"></see>
+    ///   <para>rdae:conductor</para>
     /// </summary>
-    let P20227 = _prefix "P20227"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/conductor">http://rdaregistry.info/Elements/e/conductor</seealso>
+    let conductor = Prefixed_Name(rdae, "conductor") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:actor</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/actor">http://rdaregistry.info/Elements/e/actor</seealso>
+    let actor = Prefixed_Name(rdae, "actor") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20014</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has dancer</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20014">http://rdaregistry.info/Elements/e/P20014</seealso>
+    let P20014 = Prefixed_Name(rdae, "P20014") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:moderator</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/moderator">http://rdaregistry.info/Elements/e/moderator</seealso>
+    let moderator = Prefixed_Name(rdae, "moderator") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:speaker</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/speaker">http://rdaregistry.info/Elements/e/speaker</seealso>
+    let speaker = Prefixed_Name(rdae, "speaker") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:animator</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/animator">http://rdaregistry.info/Elements/e/animator</seealso>
+    let animator = Prefixed_Name(rdae, "animator") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:arrangerOfMusic</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/arrangerOfMusic">http://rdaregistry.info/Elements/e/arrangerOfMusic</seealso>
+    let arrangerOfMusic = Prefixed_Name(rdae, "arrangerOfMusic") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20031</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has stage director</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20031">http://rdaregistry.info/Elements/e/P20031</seealso>
+    let P20031 = Prefixed_Name(rdae, "P20031") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20057</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has performer, narrator, and/or presenter</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20057">http://rdaregistry.info/Elements/e/P20057</seealso>
+    let P20057 = Prefixed_Name(rdae, "P20057") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20059</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has manifestation of expression</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20059">http://rdaregistry.info/Elements/e/P20059</seealso>
+    let P20059 = Prefixed_Name(rdae, "P20059") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/scaleOfStillImageOrThreeDimensionalForm"></see>
+    ///   <para>rdae:dramatizedAsExpression</para>
     /// </summary>
-    let scaleOfStillImageOrThreeDimensionalForm =
-        _prefix "scaleOfStillImageOrThreeDimensionalForm"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/dramatizedAsExpression">http://rdaregistry.info/Elements/e/dramatizedAsExpression</seealso>
+    let dramatizedAsExpression =
+        Prefixed_Name(rdae, "dramatizedAsExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20230"></see>
+    ///   <para>rdae:P20074</para>
     /// </summary>
-    let P20230 = _prefix "P20230"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is contained in (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20074">http://rdaregistry.info/Elements/e/P20074</seealso>
+    let P20074 = Prefixed_Name(rdae, "P20074") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/scale"></see>
+    ///   <para>rdae:P20145</para>
     /// </summary>
-    let scale = _prefix "scale"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20229"></see>
-    /// </summary>
-    let P20229 = _prefix "P20229"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/aspectRatio"></see>
-    /// </summary>
-    let aspectRatio = _prefix "aspectRatio"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is container of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20145">http://rdaregistry.info/Elements/e/P20145</seealso>
+    let P20145 = Prefixed_Name(rdae, "P20145") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/verticalScaleOfCartographicContent"></see>
+    ///   <para>rdae:containedInExpression</para>
     /// </summary>
-    let verticalScaleOfCartographicContent =
-        _prefix "verticalScaleOfCartographicContent"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/containedInExpression">http://rdaregistry.info/Elements/e/containedInExpression</seealso>
+    let containedInExpression =
+        Prefixed_Name(rdae, "containedInExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20231"></see>
+    ///   <para>rdae:replacedInPartByExpression</para>
     /// </summary>
-    let P20231 = _prefix "P20231"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/workExpressed"></see>
-    /// </summary>
-    let workExpressed = _prefix "workExpressed"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/replacedInPartByExpression">http://rdaregistry.info/Elements/e/replacedInPartByExpression</seealso>
+    let replacedInPartByExpression =
+        Prefixed_Name(rdae, "replacedInPartByExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/accompanyingExpressionRelationship"></see>
+    ///   <para>rdae:P20076</para>
     /// </summary>
-    let accompanyingExpressionRelationship =
-        _prefix "accompanyingExpressionRelationship"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is replaced by (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20076">http://rdaregistry.info/Elements/e/P20076</seealso>
+    let P20076 = Prefixed_Name(rdae, "P20076") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20169</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is succeeded by (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20169">http://rdaregistry.info/Elements/e/P20169</seealso>
+    let P20169 = Prefixed_Name(rdae, "P20169") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20199</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is replacement of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20199">http://rdaregistry.info/Elements/e/P20199</seealso>
+    let P20199 = Prefixed_Name(rdae, "P20199") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20078</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is dubbed version of</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20078">http://rdaregistry.info/Elements/e/P20078</seealso>
+    let P20078 = Prefixed_Name(rdae, "P20078") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20141</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is translation of</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20141">http://rdaregistry.info/Elements/e/P20141</seealso>
+    let P20141 = Prefixed_Name(rdae, "P20141") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20079</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is dubbed version</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20079">http://rdaregistry.info/Elements/e/P20079</seealso>
+    let P20079 = Prefixed_Name(rdae, "P20079") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:dubbedVersionOf</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/dubbedVersionOf">http://rdaregistry.info/Elements/e/dubbedVersionOf</seealso>
+    let dubbedVersionOf = Prefixed_Name(rdae, "dubbedVersionOf") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:dubbedVersion</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/dubbedVersion">http://rdaregistry.info/Elements/e/dubbedVersion</seealso>
+    let dubbedVersion = Prefixed_Name(rdae, "dubbedVersion") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20080</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is cadenza (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20080">http://rdaregistry.info/Elements/e/P20080</seealso>
+    let P20080 = Prefixed_Name(rdae, "P20080") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20105</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is augmented by (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20105">http://rdaregistry.info/Elements/e/P20105</seealso>
+    let P20105 = Prefixed_Name(rdae, "P20105") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20083</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is cadenza composed for (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20083">http://rdaregistry.info/Elements/e/P20083</seealso>
+    let P20083 = Prefixed_Name(rdae, "P20083") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/derivativeExpressionRelationship"></see>
+    ///   <para>rdae:musicalVariationsBasedOnExpression</para>
     /// </summary>
-    let derivativeExpressionRelationship = _prefix "derivativeExpressionRelationship"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/descriptiveExpressionRelationship"></see>
-    /// </summary>
-    let descriptiveExpressionRelationship = _prefix "descriptiveExpressionRelationship"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/sequentialExpressionRelationship"></see>
-    /// </summary>
-    let sequentialExpressionRelationship = _prefix "sequentialExpressionRelationship"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/wholePartExpressionRelationship"></see>
-    /// </summary>
-    let wholePartExpressionRelationship = _prefix "wholePartExpressionRelationship"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20237"></see>
-    /// </summary>
-    let P20237 = _prefix "P20237"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/writerOfAfterword"></see>
-    /// </summary>
-    let writerOfAfterword = _prefix "writerOfAfterword"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20238"></see>
-    /// </summary>
-    let P20238 = _prefix "P20238"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/writerOfPostface"></see>
-    /// </summary>
-    let writerOfPostface = _prefix "writerOfPostface"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20239"></see>
-    /// </summary>
-    let P20239 = _prefix "P20239"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20241"></see>
-    /// </summary>
-    let P20241 = _prefix "P20241"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicalVariationsBasedOnExpression">http://rdaregistry.info/Elements/e/musicalVariationsBasedOnExpression</seealso>
+    let musicalVariationsBasedOnExpression =
+        Prefixed_Name(rdae, "musicalVariationsBasedOnExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicalTheatreAdaptationOfExpression"></see>
+    ///   <para>rdae:P20203</para>
     /// </summary>
-    let musicalTheatreAdaptationOfExpression =
-        _prefix "musicalTheatreAdaptationOfExpression"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is derivative (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20203">http://rdaregistry.info/Elements/e/P20203</seealso>
+    let P20203 = Prefixed_Name(rdae, "P20203") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20240"></see>
+    ///   <para>rdae:musicalVariationsExpression</para>
     /// </summary>
-    let P20240 = _prefix "P20240"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20242"></see>
-    /// </summary>
-    let P20242 = _prefix "P20242"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/operaAdaptationOfExpression"></see>
-    /// </summary>
-    let operaAdaptationOfExpression = _prefix "operaAdaptationOfExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsMusicalTheatreExpression"></see>
-    /// </summary>
-    let adaptedAsMusicalTheatreExpression = _prefix "adaptedAsMusicalTheatreExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/adaptedAsOperaExpression"></see>
-    /// </summary>
-    let adaptedAsOperaExpression = _prefix "adaptedAsOperaExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicExpression"></see>
-    /// </summary>
-    let musicExpression = _prefix "musicExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicForExpression"></see>
-    /// </summary>
-    let musicForExpression = _prefix "musicForExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20245"></see>
-    /// </summary>
-    let P20245 = _prefix "P20245"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20246"></see>
-    /// </summary>
-    let P20246 = _prefix "P20246"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/videoMusicExpression"></see>
-    /// </summary>
-    let videoMusicExpression = _prefix "videoMusicExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicForVideoExpression"></see>
-    /// </summary>
-    let musicForVideoExpression = _prefix "musicForVideoExpression"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20247"></see>
-    /// </summary>
-    let P20247 = _prefix "P20247"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20248"></see>
-    /// </summary>
-    let P20248 = _prefix "P20248"
-    /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/televisionProgramMusicExpression"></see>
-    /// </summary>
-    let televisionProgramMusicExpression = _prefix "televisionProgramMusicExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicalVariationsExpression">http://rdaregistry.info/Elements/e/musicalVariationsExpression</seealso>
+    let musicalVariationsExpression =
+        Prefixed_Name(rdae, "musicalVariationsExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicForTelevisionProgramExpression"></see>
+    ///   <para>rdae:P20132</para>
     /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is video screenplay based on (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20132">http://rdaregistry.info/Elements/e/P20132</seealso>
+    let P20132 = Prefixed_Name(rdae, "P20132") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:adaptedAsAVideoScreenplayExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsAVideoScreenplayExpression">http://rdaregistry.info/Elements/e/adaptedAsAVideoScreenplayExpression</seealso>
+    let adaptedAsAVideoScreenplayExpression =
+        Prefixed_Name(rdae, "adaptedAsAVideoScreenplayExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20099</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as radio script (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20099">http://rdaregistry.info/Elements/e/P20099</seealso>
+    let P20099 = Prefixed_Name(rdae, "P20099") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20102</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is screenplay for (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20102">http://rdaregistry.info/Elements/e/P20102</seealso>
+    let P20102 = Prefixed_Name(rdae, "P20102") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20157</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is screenplay (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20157">http://rdaregistry.info/Elements/e/P20157</seealso>
+    let P20157 = Prefixed_Name(rdae, "P20157") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20160</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is radio script (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20160">http://rdaregistry.info/Elements/e/P20160</seealso>
+    let P20160 = Prefixed_Name(rdae, "P20160") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20176</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is script for radio program (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20176">http://rdaregistry.info/Elements/e/P20176</seealso>
+    let P20176 = Prefixed_Name(rdae, "P20176") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20232</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has accompanying expression relationship with</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20232">http://rdaregistry.info/Elements/e/P20232</seealso>
+    let P20232 = Prefixed_Name(rdae, "P20232") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20152</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adaptation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20152">http://rdaregistry.info/Elements/e/P20152</seealso>
+    let P20152 = Prefixed_Name(rdae, "P20152") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:dramatizationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/dramatizationOfExpression">http://rdaregistry.info/Elements/e/dramatizationOfExpression</seealso>
+    let dramatizationOfExpression =
+        Prefixed_Name(rdae, "dramatizationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:supplementToExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/supplementToExpression">http://rdaregistry.info/Elements/e/supplementToExpression</seealso>
+    let supplementToExpression =
+        Prefixed_Name(rdae, "supplementToExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:adaptationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptationOfExpression">http://rdaregistry.info/Elements/e/adaptationOfExpression</seealso>
+    let adaptationOfExpression =
+        Prefixed_Name(rdae, "adaptationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:critiqueOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/critiqueOfExpression">http://rdaregistry.info/Elements/e/critiqueOfExpression</seealso>
+    let critiqueOfExpression =
+        Prefixed_Name(rdae, "critiqueOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:choreographyForExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/choreographyForExpression">http://rdaregistry.info/Elements/e/choreographyForExpression</seealso>
+    let choreographyForExpression =
+        Prefixed_Name(rdae, "choreographyForExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:expandedVersionOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/expandedVersionOfExpression">http://rdaregistry.info/Elements/e/expandedVersionOfExpression</seealso>
+    let expandedVersionOfExpression =
+        Prefixed_Name(rdae, "expandedVersionOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:illustrativeContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/illustrativeContent">http://rdaregistry.info/Elements/e/illustrativeContent</seealso>
+    let illustrativeContent = Prefixed_Name(rdae, "illustrativeContent") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20208</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has accessibility content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20208">http://rdaregistry.info/Elements/e/P20208</seealso>
+    let P20208 = Prefixed_Name(rdae, "P20208") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:accessibilityContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/accessibilityContent">http://rdaregistry.info/Elements/e/accessibilityContent</seealso>
+    let accessibilityContent =
+        Prefixed_Name(rdae, "accessibilityContent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20209</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has format of notated music</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20209">http://rdaregistry.info/Elements/e/P20209</seealso>
+    let P20209 = Prefixed_Name(rdae, "P20209") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:formatOfNotatedMusic</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/formatOfNotatedMusic">http://rdaregistry.info/Elements/e/formatOfNotatedMusic</seealso>
+    let formatOfNotatedMusic =
+        Prefixed_Name(rdae, "formatOfNotatedMusic") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20210</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has other details of cartographic content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20210">http://rdaregistry.info/Elements/e/P20210</seealso>
+    let P20210 = Prefixed_Name(rdae, "P20210") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20028</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has animator</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20028">http://rdaregistry.info/Elements/e/P20028</seealso>
+    let P20028 = Prefixed_Name(rdae, "P20028") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20029</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has arranger of music</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20029">http://rdaregistry.info/Elements/e/P20029</seealso>
+    let P20029 = Prefixed_Name(rdae, "P20029") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20036</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has costume designer</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20036">http://rdaregistry.info/Elements/e/P20036</seealso>
+    let P20036 = Prefixed_Name(rdae, "P20036") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:costumeDesigner</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/costumeDesigner">http://rdaregistry.info/Elements/e/costumeDesigner</seealso>
+    let costumeDesigner = Prefixed_Name(rdae, "costumeDesigner") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20038</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has art director</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20038">http://rdaregistry.info/Elements/e/P20038</seealso>
+    let P20038 = Prefixed_Name(rdae, "P20038") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:artDirector</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/artDirector">http://rdaregistry.info/Elements/e/artDirector</seealso>
+    let artDirector = Prefixed_Name(rdae, "artDirector") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:formOfTactileNotation</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/formOfTactileNotation">http://rdaregistry.info/Elements/e/formOfTactileNotation</seealso>
+    let formOfTactileNotation =
+        Prefixed_Name(rdae, "formOfTactileNotation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20065</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has script</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20065">http://rdaregistry.info/Elements/e/P20065</seealso>
+    let P20065 = Prefixed_Name(rdae, "P20065") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20063</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has form of notated movement</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20063">http://rdaregistry.info/Elements/e/P20063</seealso>
+    let P20063 = Prefixed_Name(rdae, "P20063") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20198</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is replacement in part of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20198">http://rdaregistry.info/Elements/e/P20198</seealso>
+    let P20198 = Prefixed_Name(rdae, "P20198") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:supersededInPartByExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/supersededInPartByExpression">http://rdaregistry.info/Elements/e/supersededInPartByExpression</seealso>
+    let supersededInPartByExpression =
+        Prefixed_Name(rdae, "supersededInPartByExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:replacedByExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/replacedByExpression">http://rdaregistry.info/Elements/e/replacedByExpression</seealso>
+    let replacedByExpression =
+        Prefixed_Name(rdae, "replacedByExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:supersededByExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/supersededByExpression">http://rdaregistry.info/Elements/e/supersededByExpression</seealso>
+    let supersededByExpression =
+        Prefixed_Name(rdae, "supersededByExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20077</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is verse adaptation (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20077">http://rdaregistry.info/Elements/e/P20077</seealso>
+    let P20077 = Prefixed_Name(rdae, "P20077") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20124</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is verse adaptation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20124">http://rdaregistry.info/Elements/e/P20124</seealso>
+    let P20124 = Prefixed_Name(rdae, "P20124") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:verseAdaptationExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/verseAdaptationExpression">http://rdaregistry.info/Elements/e/verseAdaptationExpression</seealso>
+    let verseAdaptationExpression =
+        Prefixed_Name(rdae, "verseAdaptationExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20171</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is translated as</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20171">http://rdaregistry.info/Elements/e/P20171</seealso>
+    let P20171 = Prefixed_Name(rdae, "P20171") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20081</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is musical variations based on (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20081">http://rdaregistry.info/Elements/e/P20081</seealso>
+    let P20081 = Prefixed_Name(rdae, "P20081") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20192</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is augmentation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20192">http://rdaregistry.info/Elements/e/P20192</seealso>
+    let P20192 = Prefixed_Name(rdae, "P20192") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:cadenzaComposedForExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/cadenzaComposedForExpression">http://rdaregistry.info/Elements/e/cadenzaComposedForExpression</seealso>
+    let cadenzaComposedForExpression =
+        Prefixed_Name(rdae, "cadenzaComposedForExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20084</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is libretto for (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20084">http://rdaregistry.info/Elements/e/P20084</seealso>
+    let P20084 = Prefixed_Name(rdae, "P20084") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20185</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is remake of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20185">http://rdaregistry.info/Elements/e/P20185</seealso>
+    let P20185 = Prefixed_Name(rdae, "P20185") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:remadeAsExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/remadeAsExpression">http://rdaregistry.info/Elements/e/remadeAsExpression</seealso>
+    let remadeAsExpression = Prefixed_Name(rdae, "remadeAsExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20087</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is musical setting (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20087">http://rdaregistry.info/Elements/e/P20087</seealso>
+    let P20087 = Prefixed_Name(rdae, "P20087") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:musicalSettingExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicalSettingExpression">http://rdaregistry.info/Elements/e/musicalSettingExpression</seealso>
+    let musicalSettingExpression =
+        Prefixed_Name(rdae, "musicalSettingExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20088</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is novelization (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20088">http://rdaregistry.info/Elements/e/P20088</seealso>
+    let P20088 = Prefixed_Name(rdae, "P20088") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20126</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is novelization of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20126">http://rdaregistry.info/Elements/e/P20126</seealso>
+    let P20126 = Prefixed_Name(rdae, "P20126") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:novelizationExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/novelizationExpression">http://rdaregistry.info/Elements/e/novelizationExpression</seealso>
+    let novelizationExpression =
+        Prefixed_Name(rdae, "novelizationExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20194</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is indexing for (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20194">http://rdaregistry.info/Elements/e/P20194</seealso>
+    let P20194 = Prefixed_Name(rdae, "P20194") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:indexedInExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/indexedInExpression">http://rdaregistry.info/Elements/e/indexedInExpression</seealso>
+    let indexedInExpression = Prefixed_Name(rdae, "indexedInExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20092</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is choreography (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20092">http://rdaregistry.info/Elements/e/P20092</seealso>
+    let P20092 = Prefixed_Name(rdae, "P20092") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:incidentalMusicForExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/incidentalMusicForExpression">http://rdaregistry.info/Elements/e/incidentalMusicForExpression</seealso>
+    let incidentalMusicForExpression =
+        Prefixed_Name(rdae, "incidentalMusicForExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20104</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is abstract (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20104">http://rdaregistry.info/Elements/e/P20104</seealso>
+    let P20104 = Prefixed_Name(rdae, "P20104") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20122</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is abstract of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20122">http://rdaregistry.info/Elements/e/P20122</seealso>
+    let P20122 = Prefixed_Name(rdae, "P20122") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:motionPictureScreenplayBasedOnExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/motionPictureScreenplayBasedOnExpression">http://rdaregistry.info/Elements/e/motionPictureScreenplayBasedOnExpression</seealso>
+    let motionPictureScreenplayBasedOnExpression =
+        Prefixed_Name(rdae, "motionPictureScreenplayBasedOnExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:televisionScreenplayBasedOnExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/televisionScreenplayBasedOnExpression">http://rdaregistry.info/Elements/e/televisionScreenplayBasedOnExpression</seealso>
+    let televisionScreenplayBasedOnExpression =
+        Prefixed_Name(rdae, "televisionScreenplayBasedOnExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:screenplayExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/screenplayExpression">http://rdaregistry.info/Elements/e/screenplayExpression</seealso>
+    let screenplayExpression =
+        Prefixed_Name(rdae, "screenplayExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:motionPictureScreenplayExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/motionPictureScreenplayExpression">http://rdaregistry.info/Elements/e/motionPictureScreenplayExpression</seealso>
+    let motionPictureScreenplayExpression =
+        Prefixed_Name(rdae, "motionPictureScreenplayExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:remakeOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/remakeOfExpression">http://rdaregistry.info/Elements/e/remakeOfExpression</seealso>
+    let remakeOfExpression = Prefixed_Name(rdae, "remakeOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:paraphraseOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/paraphraseOfExpression">http://rdaregistry.info/Elements/e/paraphraseOfExpression</seealso>
+    let paraphraseOfExpression =
+        Prefixed_Name(rdae, "paraphraseOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:commentaryOnExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/commentaryOnExpression">http://rdaregistry.info/Elements/e/commentaryOnExpression</seealso>
+    let commentaryOnExpression =
+        Prefixed_Name(rdae, "commentaryOnExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:indexToExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/indexToExpression">http://rdaregistry.info/Elements/e/indexToExpression</seealso>
+    let indexToExpression = Prefixed_Name(rdae, "indexToExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20189</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is revision of</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20189">http://rdaregistry.info/Elements/e/P20189</seealso>
+    let P20189 = Prefixed_Name(rdae, "P20189") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20211</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is revised as</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20211">http://rdaregistry.info/Elements/e/P20211</seealso>
+    let P20211 = Prefixed_Name(rdae, "P20211") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:revisionOf</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/revisionOf">http://rdaregistry.info/Elements/e/revisionOf</seealso>
+    let revisionOf = Prefixed_Name(rdae, "revisionOf") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:continuedByExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/continuedByExpression">http://rdaregistry.info/Elements/e/continuedByExpression</seealso>
+    let continuedByExpression =
+        Prefixed_Name(rdae, "continuedByExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:augmentationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/augmentationOfExpression">http://rdaregistry.info/Elements/e/augmentationOfExpression</seealso>
+    let augmentationOfExpression =
+        Prefixed_Name(rdae, "augmentationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:abstractsForExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/abstractsForExpression">http://rdaregistry.info/Elements/e/abstractsForExpression</seealso>
+    let abstractsForExpression =
+        Prefixed_Name(rdae, "abstractsForExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:imitationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/imitationOfExpression">http://rdaregistry.info/Elements/e/imitationOfExpression</seealso>
+    let imitationOfExpression =
+        Prefixed_Name(rdae, "imitationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:parodyOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/parodyOfExpression">http://rdaregistry.info/Elements/e/parodyOfExpression</seealso>
+    let parodyOfExpression = Prefixed_Name(rdae, "parodyOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:findingAidForExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/findingAidForExpression">http://rdaregistry.info/Elements/e/findingAidForExpression</seealso>
+    let findingAidForExpression =
+        Prefixed_Name(rdae, "findingAidForExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:replacementOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/replacementOfExpression">http://rdaregistry.info/Elements/e/replacementOfExpression</seealso>
+    let replacementOfExpression =
+        Prefixed_Name(rdae, "replacementOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:supersedesExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/supersedesExpression">http://rdaregistry.info/Elements/e/supersedesExpression</seealso>
+    let supersedesExpression =
+        Prefixed_Name(rdae, "supersedesExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:splitIntoExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/splitIntoExpression">http://rdaregistry.info/Elements/e/splitIntoExpression</seealso>
+    let splitIntoExpression = Prefixed_Name(rdae, "splitIntoExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20212</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is merged to form (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20212">http://rdaregistry.info/Elements/e/P20212</seealso>
+    let P20212 = Prefixed_Name(rdae, "P20212") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:mergerOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/mergerOfExpression">http://rdaregistry.info/Elements/e/mergerOfExpression</seealso>
+    let mergerOfExpression = Prefixed_Name(rdae, "mergerOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:adaptedAsMusicalTheatreExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsMusicalTheatreExpression">http://rdaregistry.info/Elements/e/adaptedAsMusicalTheatreExpression</seealso>
+    let adaptedAsMusicalTheatreExpression =
+        Prefixed_Name(rdae, "adaptedAsMusicalTheatreExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:adaptedAsOperaExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsOperaExpression">http://rdaregistry.info/Elements/e/adaptedAsOperaExpression</seealso>
+    let adaptedAsOperaExpression =
+        Prefixed_Name(rdae, "adaptedAsOperaExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:musicExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicExpression">http://rdaregistry.info/Elements/e/musicExpression</seealso>
+    let musicExpression = Prefixed_Name(rdae, "musicExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20245</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is video music (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20245">http://rdaregistry.info/Elements/e/P20245</seealso>
+    let P20245 = Prefixed_Name(rdae, "P20245") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20246</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is music for video (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20246">http://rdaregistry.info/Elements/e/P20246</seealso>
+    let P20246 = Prefixed_Name(rdae, "P20246") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:videoMusicExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/videoMusicExpression">http://rdaregistry.info/Elements/e/videoMusicExpression</seealso>
+    let videoMusicExpression =
+        Prefixed_Name(rdae, "videoMusicExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:musicForVideoExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicForVideoExpression">http://rdaregistry.info/Elements/e/musicForVideoExpression</seealso>
+    let musicForVideoExpression =
+        Prefixed_Name(rdae, "musicForVideoExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20247</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is television program music (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20247">http://rdaregistry.info/Elements/e/P20247</seealso>
+    let P20247 = Prefixed_Name(rdae, "P20247") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:musicForTelevisionProgramExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicForTelevisionProgramExpression">http://rdaregistry.info/Elements/e/musicForTelevisionProgramExpression</seealso>
     let musicForTelevisionProgramExpression =
-        _prefix "musicForTelevisionProgramExpression"
+        Prefixed_Name(rdae, "musicForTelevisionProgramExpression") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20249"></see>
+    ///   <para>rdae:P20249</para>
     /// </summary>
-    let P20249 = _prefix "P20249"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is radio program music (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20249">http://rdaregistry.info/Elements/e/P20249</seealso>
+    let P20249 = Prefixed_Name(rdae, "P20249") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20250"></see>
+    ///   <para>rdae:P20250</para>
     /// </summary>
-    let P20250 = _prefix "P20250"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is music for radio program (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20250">http://rdaregistry.info/Elements/e/P20250</seealso>
+    let P20250 = Prefixed_Name(rdae, "P20250") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/radioProgramMusicExpression"></see>
+    ///   <para>rdae:radioProgramMusicExpression</para>
     /// </summary>
-    let radioProgramMusicExpression = _prefix "radioProgramMusicExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/radioProgramMusicExpression">http://rdaregistry.info/Elements/e/radioProgramMusicExpression</seealso>
+    let radioProgramMusicExpression =
+        Prefixed_Name(rdae, "radioProgramMusicExpression") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicForRadioProgramExpression"></see>
+    ///   <para>rdae:musicForRadioProgramExpression</para>
     /// </summary>
-    let musicForRadioProgramExpression = _prefix "musicForRadioProgramExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicForRadioProgramExpression">http://rdaregistry.info/Elements/e/musicForRadioProgramExpression</seealso>
+    let musicForRadioProgramExpression =
+        Prefixed_Name(rdae, "musicForRadioProgramExpression") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20251"></see>
+    ///   <para>rdae:P20030</para>
     /// </summary>
-    let P20251 = _prefix "P20251"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has writer of added text</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20030">http://rdaregistry.info/Elements/e/P20030</seealso>
+    let P20030 = Prefixed_Name(rdae, "P20030") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/P20252"></see>
+    ///   <para>rdae:transcriber</para>
     /// </summary>
-    let P20252 = _prefix "P20252"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/transcriber">http://rdaregistry.info/Elements/e/transcriber</seealso>
+    let transcriber = Prefixed_Name(rdae, "transcriber") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/motionPictureMusicExpression"></see>
+    ///   <para>rdae:presenter</para>
     /// </summary>
-    let motionPictureMusicExpression = _prefix "motionPictureMusicExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/presenter">http://rdaregistry.info/Elements/e/presenter</seealso>
+    let presenter = Prefixed_Name(rdae, "presenter") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdaregistry.info/Elements/e/musicForMotionPictureExpression"></see>
+    ///   <para>rdae:noteOnExpression</para>
     /// </summary>
-    let musicForMotionPictureExpression = _prefix "musicForMotionPictureExpression"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/noteOnExpression">http://rdaregistry.info/Elements/e/noteOnExpression</seealso>
+    let noteOnExpression = Prefixed_Name(rdae, "noteOnExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20123</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is dramatization of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20123">http://rdaregistry.info/Elements/e/P20123</seealso>
+    let P20123 = Prefixed_Name(rdae, "P20123") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20236</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has whole-part expression relationship with</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20236">http://rdaregistry.info/Elements/e/P20236</seealso>
+    let P20236 = Prefixed_Name(rdae, "P20236") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20075</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is replaced in part by (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20075">http://rdaregistry.info/Elements/e/P20075</seealso>
+    let P20075 = Prefixed_Name(rdae, "P20075") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20095</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as motion picture screenplay (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20095">http://rdaregistry.info/Elements/e/P20095</seealso>
+    let P20095 = Prefixed_Name(rdae, "P20095") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:screenplayForTheMotionPictureExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/screenplayForTheMotionPictureExpression">http://rdaregistry.info/Elements/e/screenplayForTheMotionPictureExpression</seealso>
+    let screenplayForTheMotionPictureExpression =
+        Prefixed_Name(rdae, "screenplayForTheMotionPictureExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:indexingForExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/indexingForExpression">http://rdaregistry.info/Elements/e/indexingForExpression</seealso>
+    let indexingForExpression =
+        Prefixed_Name(rdae, "indexingForExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:writerOfPostface</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/writerOfPostface">http://rdaregistry.info/Elements/e/writerOfPostface</seealso>
+    let writerOfPostface = Prefixed_Name(rdae, "writerOfPostface") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20239</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is musical theatre adaptation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20239">http://rdaregistry.info/Elements/e/P20239</seealso>
+    let P20239 = Prefixed_Name(rdae, "P20239") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20240</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is opera adaptation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20240">http://rdaregistry.info/Elements/e/P20240</seealso>
+    let P20240 = Prefixed_Name(rdae, "P20240") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20242</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as opera (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20242">http://rdaregistry.info/Elements/e/P20242</seealso>
+    let P20242 = Prefixed_Name(rdae, "P20242") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:operaAdaptationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/operaAdaptationOfExpression">http://rdaregistry.info/Elements/e/operaAdaptationOfExpression</seealso>
+    let operaAdaptationOfExpression =
+        Prefixed_Name(rdae, "operaAdaptationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20034</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has transcriber</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20034">http://rdaregistry.info/Elements/e/P20034</seealso>
+    let P20034 = Prefixed_Name(rdae, "P20034") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20035</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has musical director</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20035">http://rdaregistry.info/Elements/e/P20035</seealso>
+    let P20035 = Prefixed_Name(rdae, "P20035") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:musicalDirector</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicalDirector">http://rdaregistry.info/Elements/e/musicalDirector</seealso>
+    let musicalDirector = Prefixed_Name(rdae, "musicalDirector") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20043</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has choreographer (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20043">http://rdaregistry.info/Elements/e/P20043</seealso>
+    let P20043 = Prefixed_Name(rdae, "P20043") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:productionDesigner</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/productionDesigner">http://rdaregistry.info/Elements/e/productionDesigner</seealso>
+    let productionDesigner = Prefixed_Name(rdae, "productionDesigner") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20159</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is musical setting of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20159">http://rdaregistry.info/Elements/e/P20159</seealso>
+    let P20159 = Prefixed_Name(rdae, "P20159") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20089</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is appendix to (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20089">http://rdaregistry.info/Elements/e/P20089</seealso>
+    let P20089 = Prefixed_Name(rdae, "P20089") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:adaptedAsARadioScriptExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsARadioScriptExpression">http://rdaregistry.info/Elements/e/adaptedAsARadioScriptExpression</seealso>
+    let adaptedAsARadioScriptExpression =
+        Prefixed_Name(rdae, "adaptedAsARadioScriptExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:complementedByExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/complementedByExpression">http://rdaregistry.info/Elements/e/complementedByExpression</seealso>
+    let complementedByExpression =
+        Prefixed_Name(rdae, "complementedByExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20101</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is continued in part by (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20101">http://rdaregistry.info/Elements/e/P20101</seealso>
+    let P20101 = Prefixed_Name(rdae, "P20101") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:abstractOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/abstractOfExpression">http://rdaregistry.info/Elements/e/abstractOfExpression</seealso>
+    let abstractOfExpression =
+        Prefixed_Name(rdae, "abstractOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:containerOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/containerOfExpression">http://rdaregistry.info/Elements/e/containerOfExpression</seealso>
+    let containerOfExpression =
+        Prefixed_Name(rdae, "containerOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:screenplayForTheTelevisionProgramExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/screenplayForTheTelevisionProgramExpression">http://rdaregistry.info/Elements/e/screenplayForTheTelevisionProgramExpression</seealso>
+    let screenplayForTheTelevisionProgramExpression =
+        Prefixed_Name(rdae, "screenplayForTheTelevisionProgramExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:replacementInPartOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/replacementInPartOfExpression">http://rdaregistry.info/Elements/e/replacementInPartOfExpression</seealso>
+    let replacementInPartOfExpression =
+        Prefixed_Name(rdae, "replacementInPartOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:supersedesInPartExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/supersedesInPartExpression">http://rdaregistry.info/Elements/e/supersedesInPartExpression</seealso>
+    let supersedesInPartExpression =
+        Prefixed_Name(rdae, "supersedesInPartExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20241</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as musical theatre (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20241">http://rdaregistry.info/Elements/e/P20241</seealso>
+    let P20241 = Prefixed_Name(rdae, "P20241") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:musicalTheatreAdaptationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicalTheatreAdaptationOfExpression">http://rdaregistry.info/Elements/e/musicalTheatreAdaptationOfExpression</seealso>
+    let musicalTheatreAdaptationOfExpression =
+        Prefixed_Name(rdae, "musicalTheatreAdaptationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:musicForMotionPictureExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicForMotionPictureExpression">http://rdaregistry.info/Elements/e/musicForMotionPictureExpression</seealso>
+    let musicForMotionPictureExpression =
+        Prefixed_Name(rdae, "musicForMotionPictureExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20037</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has translator</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20037">http://rdaregistry.info/Elements/e/P20037</seealso>
+    let P20037 = Prefixed_Name(rdae, "P20037") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:translator</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/translator">http://rdaregistry.info/Elements/e/translator</seealso>
+    let translator = Prefixed_Name(rdae, "translator") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20049</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has abridger</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20049">http://rdaregistry.info/Elements/e/P20049</seealso>
+    let P20049 = Prefixed_Name(rdae, "P20049") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:abridger</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/abridger">http://rdaregistry.info/Elements/e/abridger</seealso>
+    let abridger = Prefixed_Name(rdae, "abridger") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20064</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has form of musical notation</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20064">http://rdaregistry.info/Elements/e/P20064</seealso>
+    let P20064 = Prefixed_Name(rdae, "P20064") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:absorptionOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/absorptionOfExpression">http://rdaregistry.info/Elements/e/absorptionOfExpression</seealso>
+    let absorptionOfExpression =
+        Prefixed_Name(rdae, "absorptionOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:absorbedExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/absorbedExpression">http://rdaregistry.info/Elements/e/absorbedExpression</seealso>
+    let absorbedExpression = Prefixed_Name(rdae, "absorbedExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20144</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is absorbed in part by (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20144">http://rdaregistry.info/Elements/e/P20144</seealso>
+    let P20144 = Prefixed_Name(rdae, "P20144") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:absorbedInPartExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/absorbedInPartExpression">http://rdaregistry.info/Elements/e/absorbedInPartExpression</seealso>
+    let absorbedInPartExpression =
+        Prefixed_Name(rdae, "absorbedInPartExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:absorptionInPartOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/absorptionInPartOfExpression">http://rdaregistry.info/Elements/e/absorptionInPartOfExpression</seealso>
+    let absorptionInPartOfExpression =
+        Prefixed_Name(rdae, "absorptionInPartOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:musicalSettingOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicalSettingOfExpression">http://rdaregistry.info/Elements/e/musicalSettingOfExpression</seealso>
+    let musicalSettingOfExpression =
+        Prefixed_Name(rdae, "musicalSettingOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:musicForExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/musicForExpression">http://rdaregistry.info/Elements/e/musicForExpression</seealso>
+    let musicForExpression = Prefixed_Name(rdae, "musicForExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:cadenzaExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/cadenzaExpression">http://rdaregistry.info/Elements/e/cadenzaExpression</seealso>
+    let cadenzaExpression = Prefixed_Name(rdae, "cadenzaExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20204</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is based on (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20204">http://rdaregistry.info/Elements/e/P20204</seealso>
+    let P20204 = Prefixed_Name(rdae, "P20204") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20082</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is musical variations (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20082">http://rdaregistry.info/Elements/e/P20082</seealso>
+    let P20082 = Prefixed_Name(rdae, "P20082") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20131</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is television screenplay based on (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20131">http://rdaregistry.info/Elements/e/P20131</seealso>
+    let P20131 = Prefixed_Name(rdae, "P20131") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:adaptedAsATelevisionScreenplayExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsATelevisionScreenplayExpression">http://rdaregistry.info/Elements/e/adaptedAsATelevisionScreenplayExpression</seealso>
+    let adaptedAsATelevisionScreenplayExpression =
+        Prefixed_Name(rdae, "adaptedAsATelevisionScreenplayExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20133</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is radio script based on (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20133">http://rdaregistry.info/Elements/e/P20133</seealso>
+    let P20133 = Prefixed_Name(rdae, "P20133") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:evaluatedInExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/evaluatedInExpression">http://rdaregistry.info/Elements/e/evaluatedInExpression</seealso>
+    let evaluatedInExpression =
+        Prefixed_Name(rdae, "evaluatedInExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20138</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is absorption in part of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20138">http://rdaregistry.info/Elements/e/P20138</seealso>
+    let P20138 = Prefixed_Name(rdae, "P20138") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20139</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is musical arrangement of</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20139">http://rdaregistry.info/Elements/e/P20139</seealso>
+    let P20139 = Prefixed_Name(rdae, "P20139") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:abridgedAsExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/abridgedAsExpression">http://rdaregistry.info/Elements/e/abridgedAsExpression</seealso>
+    let abridgedAsExpression =
+        Prefixed_Name(rdae, "abridgedAsExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:librettoBasedOnExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/librettoBasedOnExpression">http://rdaregistry.info/Elements/e/librettoBasedOnExpression</seealso>
+    let librettoBasedOnExpression =
+        Prefixed_Name(rdae, "librettoBasedOnExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20227</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has scale of still image or three-dimensional form</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20227">http://rdaregistry.info/Elements/e/P20227</seealso>
+    let P20227 = Prefixed_Name(rdae, "P20227") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20248</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is music for television program (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20248">http://rdaregistry.info/Elements/e/P20248</seealso>
+    let P20248 = Prefixed_Name(rdae, "P20248") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:televisionProgramMusicExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/televisionProgramMusicExpression">http://rdaregistry.info/Elements/e/televisionProgramMusicExpression</seealso>
+    let televisionProgramMusicExpression =
+        Prefixed_Name(rdae, "televisionProgramMusicExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20251</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is motion picture music (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20251">http://rdaregistry.info/Elements/e/P20251</seealso>
+    let P20251 = Prefixed_Name(rdae, "P20251") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20252</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is music for motion picture (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20252">http://rdaregistry.info/Elements/e/P20252</seealso>
+    let P20252 = Prefixed_Name(rdae, "P20252") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:motionPictureMusicExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/motionPictureMusicExpression">http://rdaregistry.info/Elements/e/motionPictureMusicExpression</seealso>
+    let motionPictureMusicExpression =
+        Prefixed_Name(rdae, "motionPictureMusicExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/">http://rdaregistry.info/Elements/e/</seealso>
+    let _prefix_iri = Prefixed_Name(rdae, "") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20001</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has content type</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20001">http://rdaregistry.info/Elements/e/P20001</seealso>
+    let P20001 = Prefixed_Name(rdae, "P20001") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:contentType</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/contentType">http://rdaregistry.info/Elements/e/contentType</seealso>
+    let contentType = Prefixed_Name(rdae, "contentType") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:identifierForTheExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/identifierForTheExpression">http://rdaregistry.info/Elements/e/identifierForTheExpression</seealso>
+    let identifierForTheExpression =
+        Prefixed_Name(rdae, "identifierForTheExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20003</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has other distinguishing characteristic of the expression</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20003">http://rdaregistry.info/Elements/e/P20003</seealso>
+    let P20003 = Prefixed_Name(rdae, "P20003") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20004</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has date of capture</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20004">http://rdaregistry.info/Elements/e/P20004</seealso>
+    let P20004 = Prefixed_Name(rdae, "P20004") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:dateOfCapture</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/dateOfCapture">http://rdaregistry.info/Elements/e/dateOfCapture</seealso>
+    let dateOfCapture = Prefixed_Name(rdae, "dateOfCapture") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20005</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has award</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20005">http://rdaregistry.info/Elements/e/P20005</seealso>
+    let P20005 = Prefixed_Name(rdae, "P20005") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20006</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has language of expression</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20006">http://rdaregistry.info/Elements/e/P20006</seealso>
+    let P20006 = Prefixed_Name(rdae, "P20006") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20007</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has language of the content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20007">http://rdaregistry.info/Elements/e/P20007</seealso>
+    let P20007 = Prefixed_Name(rdae, "P20007") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:languageOfTheContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/languageOfTheContent">http://rdaregistry.info/Elements/e/languageOfTheContent</seealso>
+    let languageOfTheContent =
+        Prefixed_Name(rdae, "languageOfTheContent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:artisticAndOrTechnicalCredit</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/artisticAndOrTechnicalCredit">http://rdaregistry.info/Elements/e/artisticAndOrTechnicalCredit</seealso>
+    let artisticAndOrTechnicalCredit =
+        Prefixed_Name(rdae, "artisticAndOrTechnicalCredit") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20009</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is adapted as motion picture (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20009">http://rdaregistry.info/Elements/e/P20009</seealso>
+    let P20009 = Prefixed_Name(rdae, "P20009") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20125</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is motion picture adaptation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20125">http://rdaregistry.info/Elements/e/P20125</seealso>
+    let P20125 = Prefixed_Name(rdae, "P20125") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:adaptedAsAMotionPictureExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/adaptedAsAMotionPictureExpression">http://rdaregistry.info/Elements/e/adaptedAsAMotionPictureExpression</seealso>
+    let adaptedAsAMotionPictureExpression =
+        Prefixed_Name(rdae, "adaptedAsAMotionPictureExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20071</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has note on expression</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20071">http://rdaregistry.info/Elements/e/P20071</seealso>
+    let P20071 = Prefixed_Name(rdae, "P20071") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:noteOnChangesInContentCharacteristics</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/noteOnChangesInContentCharacteristics">http://rdaregistry.info/Elements/e/noteOnChangesInContentCharacteristics</seealso>
+    let noteOnChangesInContentCharacteristics =
+        Prefixed_Name(rdae, "noteOnChangesInContentCharacteristics") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20011</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has conductor</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20011">http://rdaregistry.info/Elements/e/P20011</seealso>
+    let P20011 = Prefixed_Name(rdae, "P20011") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20013</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has on-screen presenter</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20013">http://rdaregistry.info/Elements/e/P20013</seealso>
+    let P20013 = Prefixed_Name(rdae, "P20013") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:onScreenPresenter</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/onScreenPresenter">http://rdaregistry.info/Elements/e/onScreenPresenter</seealso>
+    let onScreenPresenter = Prefixed_Name(rdae, "onScreenPresenter") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:host</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/host">http://rdaregistry.info/Elements/e/host</seealso>
+    let host = Prefixed_Name(rdae, "host") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20017</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has moderator</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20017">http://rdaregistry.info/Elements/e/P20017</seealso>
+    let P20017 = Prefixed_Name(rdae, "P20017") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:puppeteer</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/puppeteer">http://rdaregistry.info/Elements/e/puppeteer</seealso>
+    let puppeteer = Prefixed_Name(rdae, "puppeteer") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20019</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has panelist</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20019">http://rdaregistry.info/Elements/e/P20019</seealso>
+    let P20019 = Prefixed_Name(rdae, "P20019") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20021</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has commentator</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20021">http://rdaregistry.info/Elements/e/P20021</seealso>
+    let P20021 = Prefixed_Name(rdae, "P20021") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:commentator</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/commentator">http://rdaregistry.info/Elements/e/commentator</seealso>
+    let commentator = Prefixed_Name(rdae, "commentator") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:storyteller</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/storyteller">http://rdaregistry.info/Elements/e/storyteller</seealso>
+    let storyteller = Prefixed_Name(rdae, "storyteller") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20024</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has speaker</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20024">http://rdaregistry.info/Elements/e/P20024</seealso>
+    let P20024 = Prefixed_Name(rdae, "P20024") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20025</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has singer</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20025">http://rdaregistry.info/Elements/e/P20025</seealso>
+    let P20025 = Prefixed_Name(rdae, "P20025") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:singer</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/singer">http://rdaregistry.info/Elements/e/singer</seealso>
+    let singer = Prefixed_Name(rdae, "singer") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20027</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has surveyor</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20027">http://rdaregistry.info/Elements/e/P20027</seealso>
+    let P20027 = Prefixed_Name(rdae, "P20027") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:surveyor</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/surveyor">http://rdaregistry.info/Elements/e/surveyor</seealso>
+    let surveyor = Prefixed_Name(rdae, "surveyor") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20068</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has writer of added lyrics</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20068">http://rdaregistry.info/Elements/e/P20068</seealso>
+    let P20068 = Prefixed_Name(rdae, "P20068") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20046</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has writer of supplementary textual content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20046">http://rdaregistry.info/Elements/e/P20046</seealso>
+    let P20046 = Prefixed_Name(rdae, "P20046") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:writerOfAddedText</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/writerOfAddedText">http://rdaregistry.info/Elements/e/writerOfAddedText</seealso>
+    let writerOfAddedText = Prefixed_Name(rdae, "writerOfAddedText") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:stageDirector</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/stageDirector">http://rdaregistry.info/Elements/e/stageDirector</seealso>
+    let stageDirector = Prefixed_Name(rdae, "stageDirector") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20032</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has interviewer (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20032">http://rdaregistry.info/Elements/e/P20032</seealso>
+    let P20032 = Prefixed_Name(rdae, "P20032") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:interviewerExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/interviewerExpression">http://rdaregistry.info/Elements/e/interviewerExpression</seealso>
+    let interviewerExpression =
+        Prefixed_Name(rdae, "interviewerExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20033</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has draftsman</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20033">http://rdaregistry.info/Elements/e/P20033</seealso>
+    let P20033 = Prefixed_Name(rdae, "P20033") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:draftsman</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/draftsman">http://rdaregistry.info/Elements/e/draftsman</seealso>
+    let draftsman = Prefixed_Name(rdae, "draftsman") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:courtReporter</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/courtReporter">http://rdaregistry.info/Elements/e/courtReporter</seealso>
+    let courtReporter = Prefixed_Name(rdae, "courtReporter") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20041</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has writer of preface</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20041">http://rdaregistry.info/Elements/e/P20041</seealso>
+    let P20041 = Prefixed_Name(rdae, "P20041") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:writerOfPreface</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/writerOfPreface">http://rdaregistry.info/Elements/e/writerOfPreface</seealso>
+    let writerOfPreface = Prefixed_Name(rdae, "writerOfPreface") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20042</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has cartographer (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20042">http://rdaregistry.info/Elements/e/P20042</seealso>
+    let P20042 = Prefixed_Name(rdae, "P20042") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:cartographerExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/cartographerExpression">http://rdaregistry.info/Elements/e/cartographerExpression</seealso>
+    let cartographerExpression =
+        Prefixed_Name(rdae, "cartographerExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:choreographerExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/choreographerExpression">http://rdaregistry.info/Elements/e/choreographerExpression</seealso>
+    let choreographerExpression =
+        Prefixed_Name(rdae, "choreographerExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20044</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has writer of added commentary</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20044">http://rdaregistry.info/Elements/e/P20044</seealso>
+    let P20044 = Prefixed_Name(rdae, "P20044") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:writerOfAddedCommentary</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/writerOfAddedCommentary">http://rdaregistry.info/Elements/e/writerOfAddedCommentary</seealso>
+    let writerOfAddedCommentary =
+        Prefixed_Name(rdae, "writerOfAddedCommentary") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20045</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has writer of introduction</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20045">http://rdaregistry.info/Elements/e/P20045</seealso>
+    let P20045 = Prefixed_Name(rdae, "P20045") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:writerOfIntroduction</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/writerOfIntroduction">http://rdaregistry.info/Elements/e/writerOfIntroduction</seealso>
+    let writerOfIntroduction =
+        Prefixed_Name(rdae, "writerOfIntroduction") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:writerOfSupplementaryTextualContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/writerOfSupplementaryTextualContent">http://rdaregistry.info/Elements/e/writerOfSupplementaryTextualContent</seealso>
+    let writerOfSupplementaryTextualContent =
+        Prefixed_Name(rdae, "writerOfSupplementaryTextualContent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20047</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has interviewee (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20047">http://rdaregistry.info/Elements/e/P20047</seealso>
+    let P20047 = Prefixed_Name(rdae, "P20047") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:intervieweeExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/intervieweeExpression">http://rdaregistry.info/Elements/e/intervieweeExpression</seealso>
+    let intervieweeExpression =
+        Prefixed_Name(rdae, "intervieweeExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20048</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has editor</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20048">http://rdaregistry.info/Elements/e/P20048</seealso>
+    let P20048 = Prefixed_Name(rdae, "P20048") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:editor</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/editor">http://rdaregistry.info/Elements/e/editor</seealso>
+    let editor = Prefixed_Name(rdae, "editor") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20050</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has recording engineer</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20050">http://rdaregistry.info/Elements/e/P20050</seealso>
+    let P20050 = Prefixed_Name(rdae, "P20050") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:recordingEngineer</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/recordingEngineer">http://rdaregistry.info/Elements/e/recordingEngineer</seealso>
+    let recordingEngineer = Prefixed_Name(rdae, "recordingEngineer") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20051</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has illustrator</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20051">http://rdaregistry.info/Elements/e/P20051</seealso>
+    let P20051 = Prefixed_Name(rdae, "P20051") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:illustrator</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/illustrator">http://rdaregistry.info/Elements/e/illustrator</seealso>
+    let illustrator = Prefixed_Name(rdae, "illustrator") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20052</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has recordist</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20052">http://rdaregistry.info/Elements/e/P20052</seealso>
+    let P20052 = Prefixed_Name(rdae, "P20052") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:writerOfAddedLyrics</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/writerOfAddedLyrics">http://rdaregistry.info/Elements/e/writerOfAddedLyrics</seealso>
+    let writerOfAddedLyrics = Prefixed_Name(rdae, "writerOfAddedLyrics") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20069</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has summarization of the content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20069">http://rdaregistry.info/Elements/e/P20069</seealso>
+    let P20069 = Prefixed_Name(rdae, "P20069") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:summarizationOfTheContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/summarizationOfTheContent">http://rdaregistry.info/Elements/e/summarizationOfTheContent</seealso>
+    let summarizationOfTheContent =
+        Prefixed_Name(rdae, "summarizationOfTheContent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:voiceActor</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/voiceActor">http://rdaregistry.info/Elements/e/voiceActor</seealso>
+    let voiceActor = Prefixed_Name(rdae, "voiceActor") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20072</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is description of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20072">http://rdaregistry.info/Elements/e/P20072</seealso>
+    let P20072 = Prefixed_Name(rdae, "P20072") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20178</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is review of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20178">http://rdaregistry.info/Elements/e/P20178</seealso>
+    let P20178 = Prefixed_Name(rdae, "P20178") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20136</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is analysis of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20136">http://rdaregistry.info/Elements/e/P20136</seealso>
+    let P20136 = Prefixed_Name(rdae, "P20136") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20187</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is commentary on (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20187">http://rdaregistry.info/Elements/e/P20187</seealso>
+    let P20187 = Prefixed_Name(rdae, "P20187") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20182</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is critique of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20182">http://rdaregistry.info/Elements/e/P20182</seealso>
+    let P20182 = Prefixed_Name(rdae, "P20182") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20150</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is evaluation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20150">http://rdaregistry.info/Elements/e/P20150</seealso>
+    let P20150 = Prefixed_Name(rdae, "P20150") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20234</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has descriptive expression relationship with</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20234">http://rdaregistry.info/Elements/e/P20234</seealso>
+    let P20234 = Prefixed_Name(rdae, "P20234") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20202</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is described in (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20202">http://rdaregistry.info/Elements/e/P20202</seealso>
+    let P20202 = Prefixed_Name(rdae, "P20202") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:descriptionOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/descriptionOfExpression">http://rdaregistry.info/Elements/e/descriptionOfExpression</seealso>
+    let descriptionOfExpression =
+        Prefixed_Name(rdae, "descriptionOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20073</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is dramatized as (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20073">http://rdaregistry.info/Elements/e/P20073</seealso>
+    let P20073 = Prefixed_Name(rdae, "P20073") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20168</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is separated from (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20168">http://rdaregistry.info/Elements/e/P20168</seealso>
+    let P20168 = Prefixed_Name(rdae, "P20168") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:continuedInPartByExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/continuedInPartByExpression">http://rdaregistry.info/Elements/e/continuedInPartByExpression</seealso>
+    let continuedInPartByExpression =
+        Prefixed_Name(rdae, "continuedInPartByExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20174</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is screenplay for television program (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20174">http://rdaregistry.info/Elements/e/P20174</seealso>
+    let P20174 = Prefixed_Name(rdae, "P20174") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20175</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is screenplay for video (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20175">http://rdaregistry.info/Elements/e/P20175</seealso>
+    let P20175 = Prefixed_Name(rdae, "P20175") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20173</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is screenplay for motion picture (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20173">http://rdaregistry.info/Elements/e/P20173</seealso>
+    let P20173 = Prefixed_Name(rdae, "P20173") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:screenplayForExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/screenplayForExpression">http://rdaregistry.info/Elements/e/screenplayForExpression</seealso>
+    let screenplayForExpression =
+        Prefixed_Name(rdae, "screenplayForExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20244</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is music for (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20244">http://rdaregistry.info/Elements/e/P20244</seealso>
+    let P20244 = Prefixed_Name(rdae, "P20244") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:abstractExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/abstractExpression">http://rdaregistry.info/Elements/e/abstractExpression</seealso>
+    let abstractExpression = Prefixed_Name(rdae, "abstractExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20109</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is addenda (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20109">http://rdaregistry.info/Elements/e/P20109</seealso>
+    let P20109 = Prefixed_Name(rdae, "P20109") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20108</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is concordance (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20108">http://rdaregistry.info/Elements/e/P20108</seealso>
+    let P20108 = Prefixed_Name(rdae, "P20108") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20156</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is index (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20156">http://rdaregistry.info/Elements/e/P20156</seealso>
+    let P20156 = Prefixed_Name(rdae, "P20156") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20107</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is catalogue (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20107">http://rdaregistry.info/Elements/e/P20107</seealso>
+    let P20107 = Prefixed_Name(rdae, "P20107") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20155</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is finding aid (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20155">http://rdaregistry.info/Elements/e/P20155</seealso>
+    let P20155 = Prefixed_Name(rdae, "P20155") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20172</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is supplement (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20172">http://rdaregistry.info/Elements/e/P20172</seealso>
+    let P20172 = Prefixed_Name(rdae, "P20172") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20120</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is guide (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20120">http://rdaregistry.info/Elements/e/P20120</seealso>
+    let P20120 = Prefixed_Name(rdae, "P20120") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:augmentedByExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/augmentedByExpression">http://rdaregistry.info/Elements/e/augmentedByExpression</seealso>
+    let augmentedByExpression =
+        Prefixed_Name(rdae, "augmentedByExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20106</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is summary (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20106">http://rdaregistry.info/Elements/e/P20106</seealso>
+    let P20106 = Prefixed_Name(rdae, "P20106") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20179</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is summary of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20179">http://rdaregistry.info/Elements/e/P20179</seealso>
+    let P20179 = Prefixed_Name(rdae, "P20179") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:summaryExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/summaryExpression">http://rdaregistry.info/Elements/e/summaryExpression</seealso>
+    let summaryExpression = Prefixed_Name(rdae, "summaryExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20180</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is catalogue of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20180">http://rdaregistry.info/Elements/e/P20180</seealso>
+    let P20180 = Prefixed_Name(rdae, "P20180") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:catalogueExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/catalogueExpression">http://rdaregistry.info/Elements/e/catalogueExpression</seealso>
+    let catalogueExpression = Prefixed_Name(rdae, "catalogueExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20181</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is concordance to (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20181">http://rdaregistry.info/Elements/e/P20181</seealso>
+    let P20181 = Prefixed_Name(rdae, "P20181") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:concordanceExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/concordanceExpression">http://rdaregistry.info/Elements/e/concordanceExpression</seealso>
+    let concordanceExpression =
+        Prefixed_Name(rdae, "concordanceExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20177</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is addenda to (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20177">http://rdaregistry.info/Elements/e/P20177</seealso>
+    let P20177 = Prefixed_Name(rdae, "P20177") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:addendaExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/addendaExpression">http://rdaregistry.info/Elements/e/addendaExpression</seealso>
+    let addendaExpression = Prefixed_Name(rdae, "addendaExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20110</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is basis for libretto (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20110">http://rdaregistry.info/Elements/e/P20110</seealso>
+    let P20110 = Prefixed_Name(rdae, "P20110") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20190</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is libretto based on (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20190">http://rdaregistry.info/Elements/e/P20190</seealso>
+    let P20190 = Prefixed_Name(rdae, "P20190") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:basisForLibrettoExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/basisForLibrettoExpression">http://rdaregistry.info/Elements/e/basisForLibrettoExpression</seealso>
+    let basisForLibrettoExpression =
+        Prefixed_Name(rdae, "basisForLibrettoExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20111</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is reviewed in (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20111">http://rdaregistry.info/Elements/e/P20111</seealso>
+    let P20111 = Prefixed_Name(rdae, "P20111") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:reviewedInExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/reviewedInExpression">http://rdaregistry.info/Elements/e/reviewedInExpression</seealso>
+    let reviewedInExpression =
+        Prefixed_Name(rdae, "reviewedInExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20112</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is critiqued in (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20112">http://rdaregistry.info/Elements/e/P20112</seealso>
+    let P20112 = Prefixed_Name(rdae, "P20112") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:critiquedInExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/critiquedInExpression">http://rdaregistry.info/Elements/e/critiquedInExpression</seealso>
+    let critiquedInExpression =
+        Prefixed_Name(rdae, "critiquedInExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20113</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is commentary in (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20113">http://rdaregistry.info/Elements/e/P20113</seealso>
+    let P20113 = Prefixed_Name(rdae, "P20113") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:commentaryInExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/commentaryInExpression">http://rdaregistry.info/Elements/e/commentaryInExpression</seealso>
+    let commentaryInExpression =
+        Prefixed_Name(rdae, "commentaryInExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20114</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is imitated as (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20114">http://rdaregistry.info/Elements/e/P20114</seealso>
+    let P20114 = Prefixed_Name(rdae, "P20114") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20142</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is parodied as (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20142">http://rdaregistry.info/Elements/e/P20142</seealso>
+    let P20142 = Prefixed_Name(rdae, "P20142") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20117</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is analysed in (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20117">http://rdaregistry.info/Elements/e/P20117</seealso>
+    let P20117 = Prefixed_Name(rdae, "P20117") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:analysedInExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/analysedInExpression">http://rdaregistry.info/Elements/e/analysedInExpression</seealso>
+    let analysedInExpression =
+        Prefixed_Name(rdae, "analysedInExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:appendixExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/appendixExpression">http://rdaregistry.info/Elements/e/appendixExpression</seealso>
+    let appendixExpression = Prefixed_Name(rdae, "appendixExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20119</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is freely translated as (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20119">http://rdaregistry.info/Elements/e/P20119</seealso>
+    let P20119 = Prefixed_Name(rdae, "P20119") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20140</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is free translation of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20140">http://rdaregistry.info/Elements/e/P20140</seealso>
+    let P20140 = Prefixed_Name(rdae, "P20140") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:freelyTranslatedAsExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/freelyTranslatedAsExpression">http://rdaregistry.info/Elements/e/freelyTranslatedAsExpression</seealso>
+    let freelyTranslatedAsExpression =
+        Prefixed_Name(rdae, "freelyTranslatedAsExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20147</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is guide to (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20147">http://rdaregistry.info/Elements/e/P20147</seealso>
+    let P20147 = Prefixed_Name(rdae, "P20147") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:guideExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/guideExpression">http://rdaregistry.info/Elements/e/guideExpression</seealso>
+    let guideExpression = Prefixed_Name(rdae, "guideExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20121</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is abridgement of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20121">http://rdaregistry.info/Elements/e/P20121</seealso>
+    let P20121 = Prefixed_Name(rdae, "P20121") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20166</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is abridged as (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20166">http://rdaregistry.info/Elements/e/P20166</seealso>
+    let P20166 = Prefixed_Name(rdae, "P20166") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:abridgementOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/abridgementOfExpression">http://rdaregistry.info/Elements/e/abridgementOfExpression</seealso>
+    let abridgementOfExpression =
+        Prefixed_Name(rdae, "abridgementOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:verseAdaptationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/verseAdaptationOfExpression">http://rdaregistry.info/Elements/e/verseAdaptationOfExpression</seealso>
+    let verseAdaptationOfExpression =
+        Prefixed_Name(rdae, "verseAdaptationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:motionPictureAdaptationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/motionPictureAdaptationOfExpression">http://rdaregistry.info/Elements/e/motionPictureAdaptationOfExpression</seealso>
+    let motionPictureAdaptationOfExpression =
+        Prefixed_Name(rdae, "motionPictureAdaptationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:novelizationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/novelizationOfExpression">http://rdaregistry.info/Elements/e/novelizationOfExpression</seealso>
+    let novelizationOfExpression =
+        Prefixed_Name(rdae, "novelizationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:radioAdaptationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/radioAdaptationOfExpression">http://rdaregistry.info/Elements/e/radioAdaptationOfExpression</seealso>
+    let radioAdaptationOfExpression =
+        Prefixed_Name(rdae, "radioAdaptationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:televisionAdaptationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/televisionAdaptationOfExpression">http://rdaregistry.info/Elements/e/televisionAdaptationOfExpression</seealso>
+    let televisionAdaptationOfExpression =
+        Prefixed_Name(rdae, "televisionAdaptationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:screenplayBasedOnExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/screenplayBasedOnExpression">http://rdaregistry.info/Elements/e/screenplayBasedOnExpression</seealso>
+    let screenplayBasedOnExpression =
+        Prefixed_Name(rdae, "screenplayBasedOnExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:videoScreenplayBasedOnExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/videoScreenplayBasedOnExpression">http://rdaregistry.info/Elements/e/videoScreenplayBasedOnExpression</seealso>
+    let videoScreenplayBasedOnExpression =
+        Prefixed_Name(rdae, "videoScreenplayBasedOnExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:radioScriptBasedOnExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/radioScriptBasedOnExpression">http://rdaregistry.info/Elements/e/radioScriptBasedOnExpression</seealso>
+    let radioScriptBasedOnExpression =
+        Prefixed_Name(rdae, "radioScriptBasedOnExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:videoAdaptationOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/videoAdaptationOfExpression">http://rdaregistry.info/Elements/e/videoAdaptationOfExpression</seealso>
+    let videoAdaptationOfExpression =
+        Prefixed_Name(rdae, "videoAdaptationOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20135</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is digest of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20135">http://rdaregistry.info/Elements/e/P20135</seealso>
+    let P20135 = Prefixed_Name(rdae, "P20135") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20170</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is digest (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20170">http://rdaregistry.info/Elements/e/P20170</seealso>
+    let P20170 = Prefixed_Name(rdae, "P20170") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:digestOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/digestOfExpression">http://rdaregistry.info/Elements/e/digestOfExpression</seealso>
+    let digestOfExpression = Prefixed_Name(rdae, "digestOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:analysisOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/analysisOfExpression">http://rdaregistry.info/Elements/e/analysisOfExpression</seealso>
+    let analysisOfExpression =
+        Prefixed_Name(rdae, "analysisOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20137</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is absorption of (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20137">http://rdaregistry.info/Elements/e/P20137</seealso>
+    let P20137 = Prefixed_Name(rdae, "P20137") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20154</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is preceded by (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20154">http://rdaregistry.info/Elements/e/P20154</seealso>
+    let P20154 = Prefixed_Name(rdae, "P20154") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20143</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is absorbed by (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20143">http://rdaregistry.info/Elements/e/P20143</seealso>
+    let P20143 = Prefixed_Name(rdae, "P20143") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20200</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>is split into (expression)</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20200">http://rdaregistry.info/Elements/e/P20200</seealso>
+    let P20200 = Prefixed_Name(rdae, "P20200") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:continuationInPartOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/continuationInPartOfExpression">http://rdaregistry.info/Elements/e/continuationInPartOfExpression</seealso>
+    let continuationInPartOfExpression =
+        Prefixed_Name(rdae, "continuationInPartOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:continuesInPartExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/continuesInPartExpression">http://rdaregistry.info/Elements/e/continuesInPartExpression</seealso>
+    let continuesInPartExpression =
+        Prefixed_Name(rdae, "continuesInPartExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:separatedFromExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/separatedFromExpression">http://rdaregistry.info/Elements/e/separatedFromExpression</seealso>
+    let separatedFromExpression =
+        Prefixed_Name(rdae, "separatedFromExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:succeededByExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/succeededByExpression">http://rdaregistry.info/Elements/e/succeededByExpression</seealso>
+    let succeededByExpression =
+        Prefixed_Name(rdae, "succeededByExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:digestExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/digestExpression">http://rdaregistry.info/Elements/e/digestExpression</seealso>
+    let digestExpression = Prefixed_Name(rdae, "digestExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:translatedAs</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/translatedAs">http://rdaregistry.info/Elements/e/translatedAs</seealso>
+    let translatedAs = Prefixed_Name(rdae, "translatedAs") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:supplementExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/supplementExpression">http://rdaregistry.info/Elements/e/supplementExpression</seealso>
+    let supplementExpression =
+        Prefixed_Name(rdae, "supplementExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:screenplayForTheVideoExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/screenplayForTheVideoExpression">http://rdaregistry.info/Elements/e/screenplayForTheVideoExpression</seealso>
+    let screenplayForTheVideoExpression =
+        Prefixed_Name(rdae, "screenplayForTheVideoExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:scriptForTheRadioProgramExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/scriptForTheRadioProgramExpression">http://rdaregistry.info/Elements/e/scriptForTheRadioProgramExpression</seealso>
+    let scriptForTheRadioProgramExpression =
+        Prefixed_Name(rdae, "scriptForTheRadioProgramExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:addendaToExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/addendaToExpression">http://rdaregistry.info/Elements/e/addendaToExpression</seealso>
+    let addendaToExpression = Prefixed_Name(rdae, "addendaToExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:reviewOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/reviewOfExpression">http://rdaregistry.info/Elements/e/reviewOfExpression</seealso>
+    let reviewOfExpression = Prefixed_Name(rdae, "reviewOfExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:summaryOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/summaryOfExpression">http://rdaregistry.info/Elements/e/summaryOfExpression</seealso>
+    let summaryOfExpression = Prefixed_Name(rdae, "summaryOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:catalogueOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/catalogueOfExpression">http://rdaregistry.info/Elements/e/catalogueOfExpression</seealso>
+    let catalogueOfExpression =
+        Prefixed_Name(rdae, "catalogueOfExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:concordanceToExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/concordanceToExpression">http://rdaregistry.info/Elements/e/concordanceToExpression</seealso>
+    let concordanceToExpression =
+        Prefixed_Name(rdae, "concordanceToExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:describedInExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/describedInExpression">http://rdaregistry.info/Elements/e/describedInExpression</seealso>
+    let describedInExpression =
+        Prefixed_Name(rdae, "describedInExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20233</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has derivative expression relationship with</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20233">http://rdaregistry.info/Elements/e/P20233</seealso>
+    let P20233 = Prefixed_Name(rdae, "P20233") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:derivativeExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/derivativeExpression">http://rdaregistry.info/Elements/e/derivativeExpression</seealso>
+    let derivativeExpression =
+        Prefixed_Name(rdae, "derivativeExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:basedOnExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/basedOnExpression">http://rdaregistry.info/Elements/e/basedOnExpression</seealso>
+    let basedOnExpression = Prefixed_Name(rdae, "basedOnExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20205</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has related expression</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20205">http://rdaregistry.info/Elements/e/P20205</seealso>
+    let P20205 = Prefixed_Name(rdae, "P20205") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:relatedExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/relatedExpression">http://rdaregistry.info/Elements/e/relatedExpression</seealso>
+    let relatedExpression = Prefixed_Name(rdae, "relatedExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20206</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has supplementary content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20206">http://rdaregistry.info/Elements/e/P20206</seealso>
+    let P20206 = Prefixed_Name(rdae, "P20206") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:supplementaryContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/supplementaryContent">http://rdaregistry.info/Elements/e/supplementaryContent</seealso>
+    let supplementaryContent =
+        Prefixed_Name(rdae, "supplementaryContent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20207</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has illustrative content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20207">http://rdaregistry.info/Elements/e/P20207</seealso>
+    let P20207 = Prefixed_Name(rdae, "P20207") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:otherDetailsOfCartographicContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/otherDetailsOfCartographicContent">http://rdaregistry.info/Elements/e/otherDetailsOfCartographicContent</seealso>
+    let otherDetailsOfCartographicContent =
+        Prefixed_Name(rdae, "otherDetailsOfCartographicContent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:revisedAs</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/revisedAs">http://rdaregistry.info/Elements/e/revisedAs</seealso>
+    let revisedAs = Prefixed_Name(rdae, "revisedAs") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:mergedToFormExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/mergedToFormExpression">http://rdaregistry.info/Elements/e/mergedToFormExpression</seealso>
+    let mergedToFormExpression =
+        Prefixed_Name(rdae, "mergedToFormExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20213</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has additional scale information</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20213">http://rdaregistry.info/Elements/e/P20213</seealso>
+    let P20213 = Prefixed_Name(rdae, "P20213") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20228</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has scale</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20228">http://rdaregistry.info/Elements/e/P20228</seealso>
+    let P20228 = Prefixed_Name(rdae, "P20228") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:additionalScaleInformation</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/additionalScaleInformation">http://rdaregistry.info/Elements/e/additionalScaleInformation</seealso>
+    let additionalScaleInformation =
+        Prefixed_Name(rdae, "additionalScaleInformation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20214</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has date of expression</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20214">http://rdaregistry.info/Elements/e/P20214</seealso>
+    let P20214 = Prefixed_Name(rdae, "P20214") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:dateOfExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/dateOfExpression">http://rdaregistry.info/Elements/e/dateOfExpression</seealso>
+    let dateOfExpression = Prefixed_Name(rdae, "dateOfExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20215</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has medium of performance of musical content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20215">http://rdaregistry.info/Elements/e/P20215</seealso>
+    let P20215 = Prefixed_Name(rdae, "P20215") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:mediumOfPerformanceOfMusicalContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/mediumOfPerformanceOfMusicalContent">http://rdaregistry.info/Elements/e/mediumOfPerformanceOfMusicalContent</seealso>
+    let mediumOfPerformanceOfMusicalContent =
+        Prefixed_Name(rdae, "mediumOfPerformanceOfMusicalContent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20216</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has projection of cartographic content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20216">http://rdaregistry.info/Elements/e/P20216</seealso>
+    let P20216 = Prefixed_Name(rdae, "P20216") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:projectionOfCartographicContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/projectionOfCartographicContent">http://rdaregistry.info/Elements/e/projectionOfCartographicContent</seealso>
+    let projectionOfCartographicContent =
+        Prefixed_Name(rdae, "projectionOfCartographicContent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20217</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has place and date of capture</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20217">http://rdaregistry.info/Elements/e/P20217</seealso>
+    let P20217 = Prefixed_Name(rdae, "P20217") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:placeAndDateOfCapture</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/placeAndDateOfCapture">http://rdaregistry.info/Elements/e/placeAndDateOfCapture</seealso>
+    let placeAndDateOfCapture =
+        Prefixed_Name(rdae, "placeAndDateOfCapture") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20218</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has place of capture</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20218">http://rdaregistry.info/Elements/e/P20218</seealso>
+    let P20218 = Prefixed_Name(rdae, "P20218") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:placeOfCapture</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/placeOfCapture">http://rdaregistry.info/Elements/e/placeOfCapture</seealso>
+    let placeOfCapture = Prefixed_Name(rdae, "placeOfCapture") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20219</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has duration</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20219">http://rdaregistry.info/Elements/e/P20219</seealso>
+    let P20219 = Prefixed_Name(rdae, "P20219") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:duration</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/duration">http://rdaregistry.info/Elements/e/duration</seealso>
+    let duration = Prefixed_Name(rdae, "duration") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20220</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has colour of moving image</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20220">http://rdaregistry.info/Elements/e/P20220</seealso>
+    let P20220 = Prefixed_Name(rdae, "P20220") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20224</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has colour content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20224">http://rdaregistry.info/Elements/e/P20224</seealso>
+    let P20224 = Prefixed_Name(rdae, "P20224") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:scaleOfStillImageOrThreeDimensionalForm</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/scaleOfStillImageOrThreeDimensionalForm">http://rdaregistry.info/Elements/e/scaleOfStillImageOrThreeDimensionalForm</seealso>
+    let scaleOfStillImageOrThreeDimensionalForm =
+        Prefixed_Name(rdae, "scaleOfStillImageOrThreeDimensionalForm") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20230</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has vertical scale of cartographic content</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20230">http://rdaregistry.info/Elements/e/P20230</seealso>
+    let P20230 = Prefixed_Name(rdae, "P20230") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:scale</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/scale">http://rdaregistry.info/Elements/e/scale</seealso>
+    let scale = Prefixed_Name(rdae, "scale") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20229</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has aspect ratio</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20229">http://rdaregistry.info/Elements/e/P20229</seealso>
+    let P20229 = Prefixed_Name(rdae, "P20229") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:aspectRatio</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/aspectRatio">http://rdaregistry.info/Elements/e/aspectRatio</seealso>
+    let aspectRatio = Prefixed_Name(rdae, "aspectRatio") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:verticalScaleOfCartographicContent</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/verticalScaleOfCartographicContent">http://rdaregistry.info/Elements/e/verticalScaleOfCartographicContent</seealso>
+    let verticalScaleOfCartographicContent =
+        Prefixed_Name(rdae, "verticalScaleOfCartographicContent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20231</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has work expressed</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20231">http://rdaregistry.info/Elements/e/P20231</seealso>
+    let P20231 = Prefixed_Name(rdae, "P20231") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:workExpressed</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/workExpressed">http://rdaregistry.info/Elements/e/workExpressed</seealso>
+    let workExpressed = Prefixed_Name(rdae, "workExpressed") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:accompanyingExpressionRelationship</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/accompanyingExpressionRelationship">http://rdaregistry.info/Elements/e/accompanyingExpressionRelationship</seealso>
+    let accompanyingExpressionRelationship =
+        Prefixed_Name(rdae, "accompanyingExpressionRelationship") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:derivativeExpressionRelationship</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/derivativeExpressionRelationship">http://rdaregistry.info/Elements/e/derivativeExpressionRelationship</seealso>
+    let derivativeExpressionRelationship =
+        Prefixed_Name(rdae, "derivativeExpressionRelationship") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:descriptiveExpressionRelationship</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/descriptiveExpressionRelationship">http://rdaregistry.info/Elements/e/descriptiveExpressionRelationship</seealso>
+    let descriptiveExpressionRelationship =
+        Prefixed_Name(rdae, "descriptiveExpressionRelationship") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:sequentialExpressionRelationship</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/sequentialExpressionRelationship">http://rdaregistry.info/Elements/e/sequentialExpressionRelationship</seealso>
+    let sequentialExpressionRelationship =
+        Prefixed_Name(rdae, "sequentialExpressionRelationship") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:wholePartExpressionRelationship</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/wholePartExpressionRelationship">http://rdaregistry.info/Elements/e/wholePartExpressionRelationship</seealso>
+    let wholePartExpressionRelationship =
+        Prefixed_Name(rdae, "wholePartExpressionRelationship") |> PrefixedName
+
+    /// <summary>
+    ///   <para>rdae:P20237</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has writer of afterword</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20237">http://rdaregistry.info/Elements/e/P20237</seealso>
+    let P20237 = Prefixed_Name(rdae, "P20237") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:writerOfAfterword</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/writerOfAfterword">http://rdaregistry.info/Elements/e/writerOfAfterword</seealso>
+    let writerOfAfterword = Prefixed_Name(rdae, "writerOfAfterword") |> PrefixedName
+    /// <summary>
+    ///   <para>rdae:P20238</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>has writer of postface</para></remarks>
+    /// <seealso href="http://rdaregistry.info/Elements/e/P20238">http://rdaregistry.info/Elements/e/P20238</seealso>
+    let P20238 = Prefixed_Name(rdae, "P20238") |> PrefixedName

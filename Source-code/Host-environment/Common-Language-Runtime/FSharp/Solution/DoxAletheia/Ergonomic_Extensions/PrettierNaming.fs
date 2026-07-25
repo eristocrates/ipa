@@ -1,4 +1,5 @@
 module DoxAletheia.PrettierNaming
+
 open System
 
 
@@ -59,10 +60,16 @@ module Prettier_Naming =
 
     let rec normalize_identifier (identifier: string) =
         match identifier with
+        | _ when identifier.Contains('-') ->
+            identifier.Replace("-", "_")
+            |> normalize_identifier
         | _ when identifier.Contains(' ') ->
             identifier.Replace(" ", "_")
             |> normalize_identifier
-        | _ when not (Syntax.PrettyNaming.IsIdentifierFirstCharacter identifier[0]) ->
+        | _ when
+            identifier.Length > 0
+            && not (Syntax.PrettyNaming.IsIdentifierFirstCharacter identifier[0])
+            ->
             "_" + identifier |> normalize_identifier
         | _ when FSharp_Keywords.keyword_names.Contains(identifier) -> identifier + "_" |> normalize_identifier
         | _ when does_identifier_need_backticks identifier ->

@@ -1,167 +1,369 @@
 namespace http.www.semanticdesktop.org.ontologies._2007._03._22.nmo.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module nmo =
-    let _namespace_name = "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#"
+    let _namespace_iri = Namespace_Iri nmo |> NamespaceIRI
+    /// <summary>
+    ///   <para>nmo:Message</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A message. Could be an email, instant messanging message, SMS message etc.</para>
+    /// labels<para>Message</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message</seealso>
+    let Message = Prefixed_Name(nmo, "Message") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:Mailbox</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A mailbox - container for MailboxDataObjects.</para>
+    /// labels<para>Mailbox</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox</seealso>
+    let Mailbox = Prefixed_Name(nmo, "Mailbox") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:MessageHeader</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An arbitrary message header.</para>
+    /// labels<para>MessageHeader</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader</seealso>
+    let MessageHeader = Prefixed_Name(nmo, "MessageHeader") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:bcc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>deprecated in favor of nmo:emailBcc</para>
+    /// labels<para>bcc</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#bcc">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#bcc</seealso>
+    let bcc = Prefixed_Name(nmo, "bcc") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:secondaryRecipient</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>deprecated in favor of nmo:secondaryMessageRecipient</para>
+    /// labels<para>secondaryRecipient</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#secondaryRecipient">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#secondaryRecipient</seealso>
+    let secondaryRecipient = Prefixed_Name(nmo, "secondaryRecipient") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:cc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>deprecated in favor of nmo:emailCc</para>
+    /// labels<para>cc</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#cc">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#cc</seealso>
+    let cc = Prefixed_Name(nmo, "cc") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:emailBcc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A Contact that is to receive a bcc of the email. A Bcc (blind carbon copy) is a copy of an email message sent to a recipient whose email address does not appear in the message.</para>
+    /// labels<para>bcc</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#emailBcc">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#emailBcc</seealso>
+    let emailBcc = Prefixed_Name(nmo, "emailBcc") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:emailTo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The primary intended recipient of an email.</para>
+    /// labels<para>to</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#emailTo">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#emailTo</seealso>
+    let emailTo = Prefixed_Name(nmo, "emailTo") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:hasAttachment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Links a message with files that were sent as attachments.</para>
+    /// labels<para>hasAttachment</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#hasAttachment">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#hasAttachment</seealso>
+    let hasAttachment = Prefixed_Name(nmo, "hasAttachment") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:htmlMessageContent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>HTML representation of the body of the message. For multipart messages, all parts are concatenated into the value of this property. Attachments, whose mimeTypes are different from text/plain or message/rfc822 are considered separate DataObjects and are therefore not included in the value of this property.</para>
+    /// labels<para>htmlMessageContent</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#htmlMessageContent">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#htmlMessageContent</seealso>
+    let htmlMessageContent = Prefixed_Name(nmo, "htmlMessageContent") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:messageSender</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The person or agent submitting the message to the network, if other from the one given with the nmo:from property. Defined in RFC 822 sec. 4.4.2</para>
+    /// labels<para>sender</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageSender">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageSender</seealso>
+    let messageSender = Prefixed_Name(nmo, "messageSender") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:primaryRecipient</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>deprecated in favor of primaryMessageRecipient</para>
+    /// labels<para>primaryRecipient</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#primaryRecipient">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#primaryRecipient</seealso>
+    let primaryRecipient = Prefixed_Name(nmo, "primaryRecipient") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:replyTo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>deprecated in favor of nmo:messageReplyTo</para>
+    /// labels<para>replyTo</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#replyTo">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#replyTo</seealso>
+    let replyTo = Prefixed_Name(nmo, "replyTo") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>deprecated in favor of nmo:emailTo</para>
+    /// labels<para>to</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#to">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#to</seealso>
+    let to_ = Prefixed_Name(nmo, "to") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:headerValue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Value of the message header.</para>
+    /// labels<para>headerValue</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#headerValue">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#headerValue</seealso>
+    let headerValue = Prefixed_Name(nmo, "headerValue") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:inReplyTo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Signifies that a message is a reply to another message. This feature is commonly used to link messages into conversations. Note that it is more specific than nmo:references. See RFC 2822 sec. 3.6.4</para>
+    /// labels<para>inReplyTo</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#inReplyTo">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#inReplyTo</seealso>
+    let inReplyTo = Prefixed_Name(nmo, "inReplyTo") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:isRead</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A flag that states the fact that a MailboxDataObject has been read.</para>
+    /// labels<para>isRead</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#isRead">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#isRead</seealso>
+    let isRead = Prefixed_Name(nmo, "isRead") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:messageRecipient</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A common superproperty for all properties that link a message with its recipients. Please don't use this property directly.</para>
+    /// labels<para>recipient</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageRecipient">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageRecipient</seealso>
+    let messageRecipient = Prefixed_Name(nmo, "messageRecipient") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:references</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Signifies that a message references another message. This property is a generic one. See RFC 2822 Sec. 3.6.4</para>
+    /// labels<para>references</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#references">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#references</seealso>
+    let references = Prefixed_Name(nmo, "references") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:messageId</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An identifier of a message. This property has been inspired by the message-id property defined in RFC 2822, Sec. 3.6.4. It should be used for all kinds of identifiers used by various messaging applications to connect multiple messages into conversations. For email messageids, values are according to RFC2822/sec 3.6.4 and the literal value in RDF must include the brackets.</para>
+    /// labels<para>messageId</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageId">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageId</seealso>
+    let messageId = Prefixed_Name(nmo, "messageId") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:messageReplyTo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An address where the reply should be sent.</para>
+    /// labels<para>replyTo</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageReplyTo">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageReplyTo</seealso>
+    let messageReplyTo = Prefixed_Name(nmo, "messageReplyTo") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:Email</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An email.</para>
+    /// labels<para>Email</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email</seealso>
+    let Email = Prefixed_Name(nmo, "Email") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:IMMessage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A message sent with Instant Messaging software.</para>
+    /// labels<para>IMMessage</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#IMMessage">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#IMMessage</seealso>
+    let IMMessage = Prefixed_Name(nmo, "IMMessage") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:MailboxDataObject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An entity encountered in a mailbox. Most common interpretations for such an entity include Message or Folder</para>
+    /// labels<para>MailboxDataObject</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MailboxDataObject">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MailboxDataObject</seealso>
+    let MailboxDataObject = Prefixed_Name(nmo, "MailboxDataObject") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:MimeEntity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A MIME entity, as defined in RFC2045, Section 2.4.</para>
+    /// labels<para>MimeEntity</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MimeEntity">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MimeEntity</seealso>
+    let MimeEntity = Prefixed_Name(nmo, "MimeEntity") |> PrefixedName
+    /// <summary>
+    ///   <para>nmo:contentMimeType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Key used to store the MIME type of the content of an object when it is different from the object's main MIME type. This value can be used, for example, to model an e-mail message whose mime type is"message/rfc822", but whose content has type "text/html". If not specified, the MIME type of the
+    /// content defaults to the value specified by the 'mimeType' property.</para>
+    /// labels<para>contentMimeType</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#contentMimeType">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#contentMimeType</seealso>
+    let contentMimeType = Prefixed_Name(nmo, "contentMimeType") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>nmo:secondaryMessageRecipient</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A superproperty for all "additional" recipients of a message.</para>
+    /// labels<para>secondaryRecipient</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#secondaryMessageRecipient">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#secondaryMessageRecipient</seealso>
+    let secondaryMessageRecipient =
+        Prefixed_Name(nmo, "secondaryMessageRecipient") |> PrefixedName
 
     /// <summary>
-    /// An email.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email"></see></summary>
-    let Email = _prefix "Email"
+    ///   <para>nmo:emailCc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A Contact that is to receive a cc of the email. A cc (carbon copy) is a copy of an email message whose recipient appears on the recipient list, so that all other recipients are aware of it.</para>
+    /// labels<para>cc</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#emailCc">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#emailCc</seealso>
+    let emailCc = Prefixed_Name(nmo, "emailCc") |> PrefixedName
+
     /// <summary>
-    /// A message. Could be an email, instant messanging message, SMS message etc.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"></see></summary>
-    let Message = _prefix "Message"
+    ///   <para>nmo:primaryMessageRecipient</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The primary intended recipient of a message.</para>
+    /// labels<para>primaryRecipient</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#primaryMessageRecipient">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#primaryMessageRecipient</seealso>
+    let primaryMessageRecipient =
+        Prefixed_Name(nmo, "primaryMessageRecipient") |> PrefixedName
+
     /// <summary>
-    /// A message sent with Instant Messaging software.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#IMMessage"></see></summary>
-    let IMMessage = _prefix "IMMessage"
+    ///   <para>nmo:from</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>deprecated in favor of nmo:messageFrom</para>
+    /// labels<para>from</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#from">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#from</seealso>
+    let from = Prefixed_Name(nmo, "from") |> PrefixedName
     /// <summary>
-    /// A mailbox - container for MailboxDataObjects.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox"></see></summary>
-    let Mailbox = _prefix "Mailbox"
+    ///   <para>nmo:headerName</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Name of the message header.</para>
+    /// labels<para>headerName</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#headerName">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#headerName</seealso>
+    let headerName = Prefixed_Name(nmo, "headerName") |> PrefixedName
     /// <summary>
-    /// An entity encountered in a mailbox. Most common interpretations for such an entity include Message or Folder
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MailboxDataObject"></see></summary>
-    let MailboxDataObject = _prefix "MailboxDataObject"
+    ///   <para>nmo:messageFrom</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The sender of the message</para>
+    /// labels<para>from</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageFrom">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageFrom</seealso>
+    let messageFrom = Prefixed_Name(nmo, "messageFrom") |> PrefixedName
     /// <summary>
-    /// An arbitrary message header.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader"></see></summary>
-    let MessageHeader = _prefix "MessageHeader"
+    ///   <para>nmo:messageHeader</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Links the message with an arbitrary message header.</para>
+    /// labels<para>messageHeader</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageHeader">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageHeader</seealso>
+    let messageHeader = Prefixed_Name(nmo, "messageHeader") |> PrefixedName
     /// <summary>
-    /// A MIME entity, as defined in RFC2045, Section 2.4.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MimeEntity"></see></summary>
-    let MimeEntity = _prefix "MimeEntity"
+    ///   <para>nmo:messageSubject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject of a message</para>
+    /// labels<para>messageSubject</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageSubject">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageSubject</seealso>
+    let messageSubject = Prefixed_Name(nmo, "messageSubject") |> PrefixedName
+
     /// <summary>
-    /// deprecated in favor of nmo:emailBcc
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#bcc"></see></summary>
-    let bcc = _prefix "bcc"
+    ///   <para>nmo:plainTextMessageContent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Plain text representation of the body of the message. For multipart messages, all parts are concatenated into the value of this property. Attachments, whose mimeTypes are different from text/plain or message/rfc822 are considered separate DataObjects and are therefore not included in the value of this property.</para>
+    /// labels<para>plainTextMessageContent</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#plainTextMessageContent">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#plainTextMessageContent</seealso>
+    let plainTextMessageContent =
+        Prefixed_Name(nmo, "plainTextMessageContent") |> PrefixedName
+
     /// <summary>
-    /// deprecated in favor of nmo:secondaryMessageRecipient
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#secondaryRecipient"></see></summary>
-    let secondaryRecipient = _prefix "secondaryRecipient"
+    ///   <para>nmo:recipient</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>deprecated in favor of nmo:messageRecipient</para>
+    /// labels<para>recipient</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#recipient">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#recipient</seealso>
+    let recipient = Prefixed_Name(nmo, "recipient") |> PrefixedName
     /// <summary>
-    /// deprecated in favor of nmo:emailCc
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#cc"></see></summary>
-    let cc = _prefix "cc"
+    ///   <para>nmo:receivedDate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Date when this message was received.</para>
+    /// labels<para>receivedDate</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#receivedDate">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#receivedDate</seealso>
+    let receivedDate = Prefixed_Name(nmo, "receivedDate") |> PrefixedName
     /// <summary>
-    /// Key used to store the MIME type of the content of an object when it is different from the object's main MIME type. This value can be used, for example, to model an e-mail message whose mime type is"message/rfc822", but whose content has type "text/html". If not specified, the MIME type of the
-    /// content defaults to the value specified by the 'mimeType' property.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#contentMimeType"></see></summary>
-    let contentMimeType = _prefix "contentMimeType"
+    ///   <para>nmo:sender</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>deprecated in favor of nmo:messageSender</para>
+    /// labels<para>sender</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#sender">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#sender</seealso>
+    let sender = Prefixed_Name(nmo, "sender") |> PrefixedName
     /// <summary>
-    /// A Contact that is to receive a bcc of the email. A Bcc (blind carbon copy) is a copy of an email message sent to a recipient whose email address does not appear in the message.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#emailBcc"></see></summary>
-    let emailBcc = _prefix "emailBcc"
-    /// <summary>
-    /// A superproperty for all "additional" recipients of a message.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#secondaryMessageRecipient"></see></summary>
-    let secondaryMessageRecipient = _prefix "secondaryMessageRecipient"
-    /// <summary>
-    /// A Contact that is to receive a cc of the email. A cc (carbon copy) is a copy of an email message whose recipient appears on the recipient list, so that all other recipients are aware of it.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#emailCc"></see></summary>
-    let emailCc = _prefix "emailCc"
-    /// <summary>
-    /// The primary intended recipient of an email.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#emailTo"></see></summary>
-    let emailTo = _prefix "emailTo"
-    /// <summary>
-    /// The primary intended recipient of a message.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#primaryMessageRecipient"></see></summary>
-    let primaryMessageRecipient = _prefix "primaryMessageRecipient"
-    /// <summary>
-    /// deprecated in favor of nmo:messageFrom
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#from"></see></summary>
-    let from = _prefix "from"
-    /// <summary>
-    /// Links a message with files that were sent as attachments.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#hasAttachment"></see></summary>
-    let hasAttachment = _prefix "hasAttachment"
-    /// <summary>
-    /// Name of the message header.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#headerName"></see></summary>
-    let headerName = _prefix "headerName"
-    /// <summary>
-    /// Value of the message header.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#headerValue"></see></summary>
-    let headerValue = _prefix "headerValue"
-    /// <summary>
-    /// HTML representation of the body of the message. For multipart messages, all parts are concatenated into the value of this property. Attachments, whose mimeTypes are different from text/plain or message/rfc822 are considered separate DataObjects and are therefore not included in the value of this property.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#htmlMessageContent"></see></summary>
-    let htmlMessageContent = _prefix "htmlMessageContent"
-    /// <summary>
-    /// Signifies that a message is a reply to another message. This feature is commonly used to link messages into conversations. Note that it is more specific than nmo:references. See RFC 2822 sec. 3.6.4
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#inReplyTo"></see></summary>
-    let inReplyTo = _prefix "inReplyTo"
-    /// <summary>
-    /// Signifies that a message references another message. This property is a generic one. See RFC 2822 Sec. 3.6.4
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#references"></see></summary>
-    let references = _prefix "references"
-    /// <summary>
-    /// A flag that states the fact that a MailboxDataObject has been read.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#isRead"></see></summary>
-    let isRead = _prefix "isRead"
-    /// <summary>
-    /// The sender of the message
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageFrom"></see></summary>
-    let messageFrom = _prefix "messageFrom"
-    /// <summary>
-    /// Links the message with an arbitrary message header.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageHeader"></see></summary>
-    let messageHeader = _prefix "messageHeader"
-    /// <summary>
-    /// An identifier of a message. This property has been inspired by the message-id property defined in RFC 2822, Sec. 3.6.4. It should be used for all kinds of identifiers used by various messaging applications to connect multiple messages into conversations. For email messageids, values are according to RFC2822/sec 3.6.4 and the literal value in RDF must include the brackets.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageId"></see></summary>
-    let messageId = _prefix "messageId"
-    /// <summary>
-    /// A common superproperty for all properties that link a message with its recipients. Please don't use this property directly.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageRecipient"></see></summary>
-    let messageRecipient = _prefix "messageRecipient"
-    /// <summary>
-    /// An address where the reply should be sent.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageReplyTo"></see></summary>
-    let messageReplyTo = _prefix "messageReplyTo"
-    /// <summary>
-    /// The person or agent submitting the message to the network, if other from the one given with the nmo:from property. Defined in RFC 822 sec. 4.4.2
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageSender"></see></summary>
-    let messageSender = _prefix "messageSender"
-    /// <summary>
-    /// The subject of a message
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageSubject"></see></summary>
-    let messageSubject = _prefix "messageSubject"
-    /// <summary>
-    /// Plain text representation of the body of the message. For multipart messages, all parts are concatenated into the value of this property. Attachments, whose mimeTypes are different from text/plain or message/rfc822 are considered separate DataObjects and are therefore not included in the value of this property.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#plainTextMessageContent"></see></summary>
-    let plainTextMessageContent = _prefix "plainTextMessageContent"
-    /// <summary>
-    /// deprecated in favor of primaryMessageRecipient
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#primaryRecipient"></see></summary>
-    let primaryRecipient = _prefix "primaryRecipient"
-    /// <summary>
-    /// deprecated in favor of nmo:messageRecipient
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#recipient"></see></summary>
-    let recipient = _prefix "recipient"
-    /// <summary>
-    /// Date when this message was received.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#receivedDate"></see></summary>
-    let receivedDate = _prefix "receivedDate"
-    /// <summary>
-    /// deprecated in favor of nmo:messageReplyTo
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#replyTo"></see></summary>
-    let replyTo = _prefix "replyTo"
-    /// <summary>
-    /// deprecated in favor of nmo:messageSender
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#sender"></see></summary>
-    let sender = _prefix "sender"
-    /// <summary>
-    /// Date when this message was sent.
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#sentDate"></see></summary>
-    let sentDate = _prefix "sentDate"
-    /// <summary>
-    /// deprecated in favor of nmo:emailTo
-    /// <see href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#to"></see></summary>
-    let to_ = _prefix "to"
+    ///   <para>nmo:sentDate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Date when this message was sent.</para>
+    /// labels<para>sentDate</para></remarks>
+    /// <seealso href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#sentDate">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#sentDate</seealso>
+    let sentDate = Prefixed_Name(nmo, "sentDate") |> PrefixedName

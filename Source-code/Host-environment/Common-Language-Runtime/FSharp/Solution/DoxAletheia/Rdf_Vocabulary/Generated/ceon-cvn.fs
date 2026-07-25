@@ -1,58 +1,131 @@
 namespace http.w3id.org.CEON.ontology.cvn.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ceon_cvn =
-    let _namespace_name = "http://w3id.org/CEON/ontology/cvn/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri ceon_cvn |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://w3id.org/CEON/ontology/cvn/0.3/"></see>
+    ///   <para>ceon-cvn:</para>
     /// </summary>
-    let ``_0.3/`` = _prefix "0.3/"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself.</para>
+    /// </remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/">http://w3id.org/CEON/ontology/cvn/</seealso>
+    let _prefix_iri = Prefixed_Name(ceon_cvn, "") |> PrefixedName
     /// <summary>
-    /// A network of interlinked value chains and interested parties.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/CVN"></see></summary>
-    let CVN = _prefix "CVN"
+    ///   <para>ceon-cvn:CVN</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A network of interlinked value chains and interested parties.</para>
+    /// labels<para>Circular Value Network</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/CVN">http://w3id.org/CEON/ontology/cvn/CVN</seealso>
+    let CVN = Prefixed_Name(ceon_cvn, "CVN") |> PrefixedName
     /// <summary>
-    /// A collaboration between a set of actors.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/Collaboration"></see></summary>
-    let Collaboration = _prefix "Collaboration"
+    ///   <para>ceon-cvn:CircularStrategy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A circular strategy, such as to reccycle, reuse or refurbish something.</para>
+    /// labels<para>Circular Strategy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/CircularStrategy">http://w3id.org/CEON/ontology/cvn/CircularStrategy</seealso>
+    let CircularStrategy = Prefixed_Name(ceon_cvn, "CircularStrategy") |> PrefixedName
     /// <summary>
-    /// A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/CVNBlueprint"></see></summary>
-    let CVNBlueprint = _prefix "CVNBlueprint"
+    ///   <para>ceon-cvn:composedOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Both a CVN and a process can be composed of other CVNs or processes.</para>
+    /// labels<para>composed of</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/composedOf">http://w3id.org/CEON/ontology/cvn/composedOf</seealso>
+    let composedOf = Prefixed_Name(ceon_cvn, "composedOf") |> PrefixedName
+
     /// <summary>
-    /// A circular strategy, such as to reccycle, reuse or refurbish something.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/CircularStrategy"></see></summary>
-    let CircularStrategy = _prefix "CircularStrategy"
+    ///   <para>ceon-cvn:implementsBlueprint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The blueprint (or plan) that this concrete CVN is an instance of.</para>
+    /// labels<para>implements blueprint</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/implementsBlueprint">http://w3id.org/CEON/ontology/cvn/implementsBlueprint</seealso>
+    let implementsBlueprint =
+        Prefixed_Name(ceon_cvn, "implementsBlueprint") |> PrefixedName
+
     /// <summary>
-    /// The value proposition that the planned abstract CVN configuration, or concrete network wants to achieve.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/aimsAtValue"></see></summary>
-    let aimsAtValue = _prefix "aimsAtValue"
+    ///   <para>ceon-cvn:relatedStrategy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A strategy that is targeted by this CVN or CVN blueprint.</para>
+    /// labels<para>related strategy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/relatedStrategy">http://w3id.org/CEON/ontology/cvn/relatedStrategy</seealso>
+    let relatedStrategy = Prefixed_Name(ceon_cvn, "relatedStrategy") |> PrefixedName
     /// <summary>
-    /// Both a CVN and a process can be composed of other CVNs or processes.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/composedOf"></see></summary>
-    let composedOf = _prefix "composedOf"
+    ///   <para>ceon-cvn:Collaboration</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A collaboration between a set of actors.</para>
+    /// labels<para>Collaboration</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/Collaboration">http://w3id.org/CEON/ontology/cvn/Collaboration</seealso>
+    let Collaboration = Prefixed_Name(ceon_cvn, "Collaboration") |> PrefixedName
     /// <summary>
-    /// Value creation can be captured at the actor level, i.e. value created by an actor's participation in a collaboration, or at the process or complete CVN level.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/createsValue"></see></summary>
-    let createsValue = _prefix "createsValue"
+    ///   <para>ceon-cvn:createsValue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Value creation can be captured at the actor level, i.e. value created by an actor's participation in a collaboration, or at the process or complete CVN level.</para>
+    /// labels<para>creates value</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/createsValue">http://w3id.org/CEON/ontology/cvn/createsValue</seealso>
+    let createsValue = Prefixed_Name(ceon_cvn, "createsValue") |> PrefixedName
+
     /// <summary>
-    /// The blueprint (or plan) that this concrete CVN is an instance of.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/implementsBlueprint"></see></summary>
-    let implementsBlueprint = _prefix "implementsBlueprint"
+    ///   <para>ceon-cvn:plansToImplementStrategy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A strategy that is planned to be implemented by this CVN or CVN blueprint.</para>
+    /// labels<para>plans to implement strategy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/plansToImplementStrategy">http://w3id.org/CEON/ontology/cvn/plansToImplementStrategy</seealso>
+    let plansToImplementStrategy =
+        Prefixed_Name(ceon_cvn, "plansToImplementStrategy") |> PrefixedName
+
     /// <summary>
-    /// A strategy that is implemented by this CVN or CVN blueprint.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/implementsStrategy"></see></summary>
-    let implementsStrategy = _prefix "implementsStrategy"
+    ///   <para>ceon-cvn:CVNBlueprint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs.</para>
+    /// labels<para>Circular Value Network Blueprint</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/CVNBlueprint">http://w3id.org/CEON/ontology/cvn/CVNBlueprint</seealso>
+    let CVNBlueprint = Prefixed_Name(ceon_cvn, "CVNBlueprint") |> PrefixedName
+
     /// <summary>
-    /// A strategy that is targeted by this CVN or CVN blueprint.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/relatedStrategy"></see></summary>
-    let relatedStrategy = _prefix "relatedStrategy"
+    ///   <para>ceon-cvn:implementsStrategy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A strategy that is implemented by this CVN or CVN blueprint.</para>
+    /// labels<para>implements strategy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/implementsStrategy">http://w3id.org/CEON/ontology/cvn/implementsStrategy</seealso>
+    let implementsStrategy =
+        Prefixed_Name(ceon_cvn, "implementsStrategy") |> PrefixedName
+
     /// <summary>
-    /// A strategy that is planned to be implemented by this CVN or CVN blueprint.
-    /// <see href="http://w3id.org/CEON/ontology/cvn/plansToImplementStrategy"></see></summary>
-    let plansToImplementStrategy = _prefix "plansToImplementStrategy"
+    ///   <para>ceon-cvn:0.3/</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/0.3/">http://w3id.org/CEON/ontology/cvn/0.3/</seealso>
+    let ``_0.3/`` = Prefixed_Name(ceon_cvn, "0.3/") |> PrefixedName
+    /// <summary>
+    ///   <para>ceon-cvn:aimsAtValue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The value proposition that the planned abstract CVN configuration, or concrete network wants to achieve.</para>
+    /// labels<para>aims at value</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/cvn/aimsAtValue">http://w3id.org/CEON/ontology/cvn/aimsAtValue</seealso>
+    let aimsAtValue = Prefixed_Name(ceon_cvn, "aimsAtValue") |> PrefixedName

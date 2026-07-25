@@ -1,175 +1,392 @@
 namespace http.archivi.ibc.regione.emilia_romagna.it.ontology.eac_cpf.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module eac_cpf =
-    let _namespace_name =
-        "http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/"
+    let _namespace_iri = Namespace_Iri eac_cpf |> NamespaceIRI
+    /// <summary>
+    ///   <para>eac-cpf:entity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>entity</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/entity">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/entity</seealso>
+    let entity = Prefixed_Name(eac_cpf, "entity") |> PrefixedName
+    /// <summary>
+    ///   <para>eac-cpf:control</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Control</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/control">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/control</seealso>
+    let control = Prefixed_Name(eac_cpf, "control") |> PrefixedName
+    /// <summary>
+    ///   <para>eac-cpf:hasPlace</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Place</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/hasPlace">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/hasPlace</seealso>
+    let hasPlace = Prefixed_Name(eac_cpf, "hasPlace") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>eac-cpf:resourceRelationType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Resource Relation Type</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/resourceRelationType">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/resourceRelationType</seealso>
+    let resourceRelationType =
+        Prefixed_Name(eac_cpf, "resourceRelationType") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/biogHist"></see>
+    ///   <para>eac-cpf:structureOrGenealogy</para>
     /// </summary>
-    let biogHist = _prefix "biogHist"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Structure or Genealogy</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/structureOrGenealogy">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/structureOrGenealogy</seealso>
+    let structureOrGenealogy =
+        Prefixed_Name(eac_cpf, "structureOrGenealogy") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/entity"></see>
+    ///   <para>eac-cpf:publicationStatus</para>
     /// </summary>
-    let entity = _prefix "entity"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Publication Status</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/publicationStatus">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/publicationStatus</seealso>
+    let publicationStatus = Prefixed_Name(eac_cpf, "publicationStatus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/control"></see>
+    ///   <para>eac-cpf:languageUsed</para>
     /// </summary>
-    let control = _prefix "control"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Languages Used</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/languageUsed">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/languageUsed</seealso>
+    let languageUsed = Prefixed_Name(eac_cpf, "languageUsed") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/controlArea"></see>
+    ///   <para>eac-cpf:maintenanceHistory</para>
     /// </summary>
-    let controlArea = _prefix "controlArea"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Maintenance History</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceHistory">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceHistory</seealso>
+    let maintenanceHistory =
+        Prefixed_Name(eac_cpf, "maintenanceHistory") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceHistory"></see>
+    ///   <para>eac-cpf:recordID</para>
     /// </summary>
-    let maintenanceHistory = _prefix "maintenanceHistory"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Record Identifier</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/recordID">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/recordID</seealso>
+    let recordID = Prefixed_Name(eac_cpf, "recordID") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/publicationStatus"></see>
+    ///   <para>eac-cpf:conventionDeclaration</para>
     /// </summary>
-    let publicationStatus = _prefix "publicationStatus"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Convention Declaration</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/conventionDeclaration">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/conventionDeclaration</seealso>
+    let conventionDeclaration =
+        Prefixed_Name(eac_cpf, "conventionDeclaration") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/source"></see>
+    ///   <para>eac-cpf:family</para>
     /// </summary>
-    let source = _prefix "source"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>family</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/family">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/family</seealso>
+    let family = Prefixed_Name(eac_cpf, "family") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/conventionDeclaration"></see>
+    ///   <para>eac-cpf:generalContext</para>
     /// </summary>
-    let conventionDeclaration = _prefix "conventionDeclaration"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>General Context</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/generalContext">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/generalContext</seealso>
+    let generalContext = Prefixed_Name(eac_cpf, "generalContext") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/recordID"></see>
+    ///   <para>eac-cpf:place</para>
     /// </summary>
-    let recordID = _prefix "recordID"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>place</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/place">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/place</seealso>
+    let place = Prefixed_Name(eac_cpf, "place") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/localTypeDeclaration"></see>
+    ///   <para>eac-cpf:language</para>
     /// </summary>
-    let localTypeDeclaration = _prefix "localTypeDeclaration"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>language</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/language">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/language</seealso>
+    let language = Prefixed_Name(eac_cpf, "language") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceStatus"></see>
+    ///   <para>eac-cpf:localControl</para>
     /// </summary>
-    let maintenanceStatus = _prefix "maintenanceStatus"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Local Control</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/localControl">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/localControl</seealso>
+    let localControl = Prefixed_Name(eac_cpf, "localControl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceAgency"></see>
+    ///   <para>eac-cpf:maintenanceStatus</para>
     /// </summary>
-    let maintenanceAgency = _prefix "maintenanceAgency"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Maintenance Status</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceStatus">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceStatus</seealso>
+    let maintenanceStatus = Prefixed_Name(eac_cpf, "maintenanceStatus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/corporateBody"></see>
+    ///   <para>eac-cpf:nameArea</para>
     /// </summary>
-    let corporateBody = _prefix "corporateBody"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>name area</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/nameArea">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/nameArea</seealso>
+    let nameArea = Prefixed_Name(eac_cpf, "nameArea") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/cpfRelation"></see>
+    ///   <para>eac-cpf:corporateBody</para>
     /// </summary>
-    let cpfRelation = _prefix "cpfRelation"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>corporate body</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/corporateBody">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/corporateBody</seealso>
+    let corporateBody = Prefixed_Name(eac_cpf, "corporateBody") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/relation"></see>
+    ///   <para>eac-cpf:cpfRelation</para>
     /// </summary>
-    let relation = _prefix "relation"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Corporate Body, Person, or Family Relation</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/cpfRelation">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/cpfRelation</seealso>
+    let cpfRelation = Prefixed_Name(eac_cpf, "cpfRelation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/cpfRelationType"></see>
+    ///   <para>eac-cpf:description</para>
     /// </summary>
-    let cpfRelationType = _prefix "cpfRelationType"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Description</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/description">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/description</seealso>
+    let description = Prefixed_Name(eac_cpf, "description") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/description"></see>
+    ///   <para>eac-cpf:existDates</para>
     /// </summary>
-    let description = _prefix "description"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Dates of Existence</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/existDates">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/existDates</seealso>
+    let existDates = Prefixed_Name(eac_cpf, "existDates") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/descriptionArea"></see>
+    ///   <para>eac-cpf:function</para>
     /// </summary>
-    let descriptionArea = _prefix "descriptionArea"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Function</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/function">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/function</seealso>
+    let function_ = Prefixed_Name(eac_cpf, "function") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/existDates"></see>
+    ///   <para>eac-cpf:hasMultipleIdentities</para>
     /// </summary>
-    let existDates = _prefix "existDates"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Multiple Identities</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/hasMultipleIdentities">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/hasMultipleIdentities</seealso>
+    let hasMultipleIdentities =
+        Prefixed_Name(eac_cpf, "hasMultipleIdentities") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/nameEntry"></see>
+    ///   <para>eac-cpf:languageDeclaration</para>
     /// </summary>
-    let nameEntry = _prefix "nameEntry"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Language Declaration</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/languageDeclaration">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/languageDeclaration</seealso>
+    let languageDeclaration =
+        Prefixed_Name(eac_cpf, "languageDeclaration") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/resourceRelation"></see>
+    ///   <para>eac-cpf:legalStatus</para>
     /// </summary>
-    let resourceRelation = _prefix "resourceRelation"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Legal Status</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/legalStatus">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/legalStatus</seealso>
+    let legalStatus = Prefixed_Name(eac_cpf, "legalStatus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/eac-cpf.rdf"></see>
+    ///   <para>eac-cpf:mandate</para>
     /// </summary>
-    let ``eac-cpf.rdf`` = _prefix "eac-cpf.rdf"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Mandate</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/mandate">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/mandate</seealso>
+    let mandate = Prefixed_Name(eac_cpf, "mandate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/family"></see>
+    ///   <para>eac-cpf:dainserire</para>
     /// </summary>
-    let family = _prefix "family"
+    /// <remarks></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/dainserire">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/dainserire</seealso>
+    let dainserire = Prefixed_Name(eac_cpf, "dainserire") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/function"></see>
+    ///   <para>eac-cpf:occupation</para>
     /// </summary>
-    let function_ = _prefix "function"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Occupation</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/occupation">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/occupation</seealso>
+    let occupation = Prefixed_Name(eac_cpf, "occupation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/generalContext"></see>
+    ///   <para>eac-cpf:person</para>
     /// </summary>
-    let generalContext = _prefix "generalContext"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>person</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/person">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/person</seealso>
+    let person = Prefixed_Name(eac_cpf, "person") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/hasMultipleIdentities"></see>
+    ///   <para>eac-cpf:biogHist</para>
     /// </summary>
-    let hasMultipleIdentities = _prefix "hasMultipleIdentities"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Biographical or Historical Note</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/biogHist">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/biogHist</seealso>
+    let biogHist = Prefixed_Name(eac_cpf, "biogHist") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/hasPlace"></see>
+    ///   <para>eac-cpf:controlArea</para>
     /// </summary>
-    let hasPlace = _prefix "hasPlace"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>control area</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/controlArea">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/controlArea</seealso>
+    let controlArea = Prefixed_Name(eac_cpf, "controlArea") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/place"></see>
+    ///   <para>eac-cpf:source</para>
     /// </summary>
-    let place = _prefix "place"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Source</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/source">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/source</seealso>
+    let source = Prefixed_Name(eac_cpf, "source") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/language"></see>
+    ///   <para>eac-cpf:localTypeDeclaration</para>
     /// </summary>
-    let language = _prefix "language"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Local Type Declaration</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/localTypeDeclaration">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/localTypeDeclaration</seealso>
+    let localTypeDeclaration =
+        Prefixed_Name(eac_cpf, "localTypeDeclaration") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/languageDeclaration"></see>
+    ///   <para>eac-cpf:maintenanceAgency</para>
     /// </summary>
-    let languageDeclaration = _prefix "languageDeclaration"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Maintenance Agency</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceAgency">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceAgency</seealso>
+    let maintenanceAgency = Prefixed_Name(eac_cpf, "maintenanceAgency") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/languageUsed"></see>
+    ///   <para>eac-cpf:relation</para>
     /// </summary>
-    let languageUsed = _prefix "languageUsed"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>relation</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/relation">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/relation</seealso>
+    let relation = Prefixed_Name(eac_cpf, "relation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/legalStatus"></see>
+    ///   <para>eac-cpf:cpfRelationType</para>
     /// </summary>
-    let legalStatus = _prefix "legalStatus"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Corporate Body, Person, or Family Relation Type</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/cpfRelationType">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/cpfRelationType</seealso>
+    let cpfRelationType = Prefixed_Name(eac_cpf, "cpfRelationType") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/localControl"></see>
+    ///   <para>eac-cpf:descriptionArea</para>
     /// </summary>
-    let localControl = _prefix "localControl"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>description area</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/descriptionArea">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/descriptionArea</seealso>
+    let descriptionArea = Prefixed_Name(eac_cpf, "descriptionArea") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/mandate"></see>
+    ///   <para>eac-cpf:nameEntry</para>
     /// </summary>
-    let mandate = _prefix "mandate"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Name Entry</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/nameEntry">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/nameEntry</seealso>
+    let nameEntry = Prefixed_Name(eac_cpf, "nameEntry") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/nameArea"></see>
+    ///   <para>eac-cpf:resourceRelation</para>
     /// </summary>
-    let nameArea = _prefix "nameArea"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Resource Relation</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/resourceRelation">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/resourceRelation</seealso>
+    let resourceRelation = Prefixed_Name(eac_cpf, "resourceRelation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/dainserire"></see>
+    ///   <para>eac-cpf:eac-cpf.rdf</para>
     /// </summary>
-    let dainserire = _prefix "dainserire"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/eac-cpf.rdf">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/eac-cpf.rdf</seealso>
+    let ``eac_cpf.rdf`` = Prefixed_Name(eac_cpf, "eac-cpf.rdf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/occupation"></see>
+    ///   <para>eac-cpf:placeRole</para>
     /// </summary>
-    let occupation = _prefix "occupation"
-    /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/person"></see>
-    /// </summary>
-    let person = _prefix "person"
-    /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/placeRole"></see>
-    /// </summary>
-    let placeRole = _prefix "placeRole"
-    /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/resourceRelationType"></see>
-    /// </summary>
-    let resourceRelationType = _prefix "resourceRelationType"
-    /// <summary>
-    ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/structureOrGenealogy"></see>
-    /// </summary>
-    let structureOrGenealogy = _prefix "structureOrGenealogy"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Place Role</para></remarks>
+    /// <seealso href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/placeRole">http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/placeRole</seealso>
+    let placeRole = Prefixed_Name(eac_cpf, "placeRole") |> PrefixedName

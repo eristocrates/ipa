@@ -1,134 +1,280 @@
 namespace http.linkeddata.finki.ukim.mk.lod.ontology.tao.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module trao =
-    let _namespace_name = "http://linkeddata.finki.ukim.mk/lod/ontology/tao#"
+    let _namespace_iri = Namespace_Iri trao |> NamespaceIRI
+    /// <summary>
+    ///   <para>trao:Accident_Service</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Class that describe emergency information on traffic accidents, fallen trees and other obstructions that affect accessibility. Includes information on location, impact, causes and possible traffic restrictions.</para>
+    /// labels<para>Accident_Service</para></remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Accident_Service">http://linkeddata.finki.ukim.mk/lod/ontology/tao#Accident_Service</seealso>
+    let Accident_Service = Prefixed_Name(trao, "Accident_Service") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:Place_Info</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Place_Info">http://linkeddata.finki.ukim.mk/lod/ontology/tao#Place_Info</seealso>
+    let Place_Info = Prefixed_Name(trao, "Place_Info") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:Rest_Area</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Class that describe rest areas with information on location, level of equipment, service and information functions.</para>
+    /// labels<para>Rest_Area</para></remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Rest_Area">http://linkeddata.finki.ukim.mk/lod/ontology/tao#Rest_Area</seealso>
+    let Rest_Area = Prefixed_Name(trao, "Rest_Area") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:areaPlaceName</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#areaPlaceName">http://linkeddata.finki.ukim.mk/lod/ontology/tao#areaPlaceName</seealso>
+    let areaPlaceName = Prefixed_Name(trao, "areaPlaceName") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:countyNumber</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#countyNumber">http://linkeddata.finki.ukim.mk/lod/ontology/tao#countyNumber</seealso>
+    let countyNumber = Prefixed_Name(trao, "countyNumber") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:information_Status</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#information_Status">http://linkeddata.finki.ukim.mk/lod/ontology/tao#information_Status</seealso>
+    let information_Status = Prefixed_Name(trao, "information_Status") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:issued</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:AnnotationProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#issued">http://linkeddata.finki.ukim.mk/lod/ontology/tao#issued</seealso>
+    let issued = Prefixed_Name(trao, "issued") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:lane</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#lane">http://linkeddata.finki.ukim.mk/lod/ontology/tao#lane</seealso>
+    let lane = Prefixed_Name(trao, "lane") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:lanesRestricted</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#lanesRestricted">http://linkeddata.finki.ukim.mk/lod/ontology/tao#lanesRestricted</seealso>
+    let lanesRestricted = Prefixed_Name(trao, "lanesRestricted") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:situationRecordTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#situationRecordTime">http://linkeddata.finki.ukim.mk/lod/ontology/tao#situationRecordTime</seealso>
+    let situationRecordTime = Prefixed_Name(trao, "situationRecordTime") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:speedLimit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#speedLimit">http://linkeddata.finki.ukim.mk/lod/ontology/tao#speedLimit</seealso>
+    let speedLimit = Prefixed_Name(trao, "speedLimit") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:textDescription</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#textDescription">http://linkeddata.finki.ukim.mk/lod/ontology/tao#textDescription</seealso>
+    let textDescription = Prefixed_Name(trao, "textDescription") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:Ferry_Service</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Class that contains information about reports of deviations and cancellations of the SwedishTransport Administration ferry services. Contains information on ferry routes, estimated duration and possible restrictions.</para>
+    /// labels<para>Ferry_Service</para></remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Ferry_Service">http://linkeddata.finki.ukim.mk/lod/ontology/tao#Ferry_Service</seealso>
+    let Ferry_Service = Prefixed_Name(trao, "Ferry_Service") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:Road_Condition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Class that describe the conditions of the road surface which may affect driving conditions. These may be related to the weather (e.g. ice, snow etc.) or to other conditions (e.g. oil, mud, leaves etc. on the road)</para>
+    /// labels<para>Road_Condition</para></remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Road_Condition">http://linkeddata.finki.ukim.mk/lod/ontology/tao#Road_Condition</seealso>
+    let Road_Condition = Prefixed_Name(trao, "Road_Condition") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:cityName</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#cityName">http://linkeddata.finki.ukim.mk/lod/ontology/tao#cityName</seealso>
+    let cityName = Prefixed_Name(trao, "cityName") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:contributor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:AnnotationProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#contributor">http://linkeddata.finki.ukim.mk/lod/ontology/tao#contributor</seealso>
+    let contributor = Prefixed_Name(trao, "contributor") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:has_Location</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#has_Location">http://linkeddata.finki.ukim.mk/lod/ontology/tao#has_Location</seealso>
+    let has_Location = Prefixed_Name(trao, "has_Location") |> PrefixedName
+    /// <summary>
+    ///   <para>trao:lengthAffected</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#lengthAffected">http://linkeddata.finki.ukim.mk/lod/ontology/tao#lengthAffected</seealso>
+    let lengthAffected = Prefixed_Name(trao, "lengthAffected") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>trao:location_Of_Situation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#location_Of_Situation">http://linkeddata.finki.ukim.mk/lod/ontology/tao#location_Of_Situation</seealso>
+    let location_Of_Situation =
+        Prefixed_Name(trao, "location_Of_Situation") |> PrefixedName
 
     /// <summary>
-    /// Class that describe emergency information on traffic accidents, fallen trees and other obstructions that affect accessibility. Includes information on location, impact, causes and possible traffic restrictions.
-    /// <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Accident_Service"></see></summary>
-    let Accident_Service = _prefix "Accident_Service"
-    /// <summary>
-    /// Class describing the basic information about Situation Record instances. It contains  information about time when it occured and information status.
-    /// <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Situation_Record"></see></summary>
-    let Situation_Record = _prefix "Situation_Record"
-    /// <summary>
-    /// Class that contains information about reports of deviations and cancellations of the SwedishTransport Administration ferry services. Contains information on ferry routes, estimated duration and possible restrictions.
-    /// <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Ferry_Service"></see></summary>
-    let Ferry_Service = _prefix "Ferry_Service"
-    /// <summary>
-    /// Information about location where the Situation Record was generated. It contains several properties describing the Location. It contains geo:longitude and geo:latitude for creataing external links to othe datasets.
-    /// <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Location"></see></summary>
-    let Location = _prefix "Location"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Place_Info"></see>
+    ///   <para>trao:preferredNamespaceUri</para>
     /// </summary>
-    let Place_Info = _prefix "Place_Info"
+    /// <remarks>
+    ///   <para>owl:AnnotationProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#preferredNamespaceUri">http://linkeddata.finki.ukim.mk/lod/ontology/tao#preferredNamespaceUri</seealso>
+    let preferredNamespaceUri =
+        Prefixed_Name(trao, "preferredNamespaceUri") |> PrefixedName
+
     /// <summary>
-    /// Class that describe rest areas with information on location, level of equipment, service and information functions.
-    /// <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Rest_Area"></see></summary>
-    let Rest_Area = _prefix "Rest_Area"
-    /// <summary>
-    /// Class that describe the conditions of the road surface which may affect driving conditions. These may be related to the weather (e.g. ice, snow etc.) or to other conditions (e.g. oil, mud, leaves etc. on the road)
-    /// <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Road_Condition"></see></summary>
-    let Road_Condition = _prefix "Road_Condition"
-    /// <summary>
-    /// Class that describe information about ongoing, planned and completed roadworks. Includes information on location, type of road work, impact and restrictions like closures of lanes, width restrictions, rerouting and traffic and speed reductions.
-    /// <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Road_Work"></see></summary>
-    let Road_Work = _prefix "Road_Work"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#areaPlaceName"></see>
+    ///   <para>trao:severity</para>
     /// </summary>
-    let areaPlaceName = _prefix "areaPlaceName"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#severity">http://linkeddata.finki.ukim.mk/lod/ontology/tao#severity</seealso>
+    let severity = Prefixed_Name(trao, "severity") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#carriageway"></see>
+    ///   <para>trao:</para>
     /// </summary>
-    let carriageway = _prefix "carriageway"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>Transport Administration Ontology (TAO) for describing data from Swedish Transport Administration Web site.</para>
+    /// labels<para>Transport Administration Ontology</para></remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#">http://linkeddata.finki.ukim.mk/lod/ontology/tao#</seealso>
+    let _prefix_iri = Prefixed_Name(trao, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#cityName"></see>
+    ///   <para>trao:Situation_Record</para>
     /// </summary>
-    let cityName = _prefix "cityName"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Class describing the basic information about Situation Record instances. It contains  information about time when it occured and information status.</para>
+    /// labels<para>Situation_Record</para></remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Situation_Record">http://linkeddata.finki.ukim.mk/lod/ontology/tao#Situation_Record</seealso>
+    let Situation_Record = Prefixed_Name(trao, "Situation_Record") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#contributor"></see>
+    ///   <para>trao:Location</para>
     /// </summary>
-    let contributor = _prefix "contributor"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Information about location where the Situation Record was generated. It contains several properties describing the Location. It contains geo:longitude and geo:latitude for creataing external links to othe datasets.</para>
+    /// labels<para>Location</para></remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Location">http://linkeddata.finki.ukim.mk/lod/ontology/tao#Location</seealso>
+    let Location = Prefixed_Name(trao, "Location") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#countyNumber"></see>
+    ///   <para>trao:Road_Work</para>
     /// </summary>
-    let countyNumber = _prefix "countyNumber"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Class that describe information about ongoing, planned and completed roadworks. Includes information on location, type of road work, impact and restrictions like closures of lanes, width restrictions, rerouting and traffic and speed reductions.</para>
+    /// labels<para>Road_Work</para></remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#Road_Work">http://linkeddata.finki.ukim.mk/lod/ontology/tao#Road_Work</seealso>
+    let Road_Work = Prefixed_Name(trao, "Road_Work") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#distanceNearestCity"></see>
+    ///   <para>trao:carriageway</para>
     /// </summary>
-    let distanceNearestCity = _prefix "distanceNearestCity"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#carriageway">http://linkeddata.finki.ukim.mk/lod/ontology/tao#carriageway</seealso>
+    let carriageway = Prefixed_Name(trao, "carriageway") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#ferryInfo"></see>
+    ///   <para>trao:distanceNearestCity</para>
     /// </summary>
-    let ferryInfo = _prefix "ferryInfo"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#distanceNearestCity">http://linkeddata.finki.ukim.mk/lod/ontology/tao#distanceNearestCity</seealso>
+    let distanceNearestCity = Prefixed_Name(trao, "distanceNearestCity") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#has_Location"></see>
+    ///   <para>trao:ferryInfo</para>
     /// </summary>
-    let has_Location = _prefix "has_Location"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#ferryInfo">http://linkeddata.finki.ukim.mk/lod/ontology/tao#ferryInfo</seealso>
+    let ferryInfo = Prefixed_Name(trao, "ferryInfo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#information_Status"></see>
+    ///   <para>trao:locaton_Descriptor</para>
     /// </summary>
-    let information_Status = _prefix "information_Status"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#locaton_Descriptor">http://linkeddata.finki.ukim.mk/lod/ontology/tao#locaton_Descriptor</seealso>
+    let locaton_Descriptor = Prefixed_Name(trao, "locaton_Descriptor") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#issued"></see>
+    ///   <para>trao:offsetDistance</para>
     /// </summary>
-    let issued = _prefix "issued"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#offsetDistance">http://linkeddata.finki.ukim.mk/lod/ontology/tao#offsetDistance</seealso>
+    let offsetDistance = Prefixed_Name(trao, "offsetDistance") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#lane"></see>
+    ///   <para>trao:preferredNamespacePrefix</para>
     /// </summary>
-    let lane = _prefix "lane"
+    /// <remarks>
+    ///   <para>owl:AnnotationProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#preferredNamespacePrefix">http://linkeddata.finki.ukim.mk/lod/ontology/tao#preferredNamespacePrefix</seealso>
+    let preferredNamespacePrefix =
+        Prefixed_Name(trao, "preferredNamespacePrefix") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#lanesRestricted"></see>
+    ///   <para>trao:title</para>
     /// </summary>
-    let lanesRestricted = _prefix "lanesRestricted"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#lengthAffected"></see>
-    /// </summary>
-    let lengthAffected = _prefix "lengthAffected"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#location_Of_Situation"></see>
-    /// </summary>
-    let location_Of_Situation = _prefix "location_Of_Situation"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#locaton_Descriptor"></see>
-    /// </summary>
-    let locaton_Descriptor = _prefix "locaton_Descriptor"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#offsetDistance"></see>
-    /// </summary>
-    let offsetDistance = _prefix "offsetDistance"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#preferredNamespacePrefix"></see>
-    /// </summary>
-    let preferredNamespacePrefix = _prefix "preferredNamespacePrefix"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#preferredNamespaceUri"></see>
-    /// </summary>
-    let preferredNamespaceUri = _prefix "preferredNamespaceUri"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#severity"></see>
-    /// </summary>
-    let severity = _prefix "severity"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#situationRecordTime"></see>
-    /// </summary>
-    let situationRecordTime = _prefix "situationRecordTime"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#speedLimit"></see>
-    /// </summary>
-    let speedLimit = _prefix "speedLimit"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#textDescription"></see>
-    /// </summary>
-    let textDescription = _prefix "textDescription"
-    /// <summary>
-    ///   <see href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#title"></see>
-    /// </summary>
-    let title = _prefix "title"
+    /// <remarks>
+    ///   <para>owl:AnnotationProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/tao#title">http://linkeddata.finki.ukim.mk/lod/ontology/tao#title</seealso>
+    let title = Prefixed_Name(trao, "title") |> PrefixedName

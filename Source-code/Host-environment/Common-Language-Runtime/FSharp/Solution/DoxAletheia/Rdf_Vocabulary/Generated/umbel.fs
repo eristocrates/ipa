@@ -1,360 +1,768 @@
 namespace http.umbel.org.umbel.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module umbel =
-    let _namespace_name = "http://umbel.org/umbel#"
+    let _namespace_iri = Namespace_Iri umbel |> NamespaceIRI
+    /// <summary>
+    ///   <para>umbel:Extraterrestrial</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Extraterrestrial">http://umbel.org/umbel#Extraterrestrial</seealso>
+    let Extraterrestrial = Prefixed_Name(umbel, "Extraterrestrial") |> PrefixedName
+    /// <summary>
+    ///   <para>umbel:NaturalSubstances</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#NaturalSubstances">http://umbel.org/umbel#NaturalSubstances</seealso>
+    let NaturalSubstances = Prefixed_Name(umbel, "NaturalSubstances") |> PrefixedName
+    /// <summary>
+    ///   <para>umbel:Prokaryotes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Prokaryotes">http://umbel.org/umbel#Prokaryotes</seealso>
+    let Prokaryotes = Prefixed_Name(umbel, "Prokaryotes") |> PrefixedName
+    /// <summary>
+    ///   <para>umbel:ProtistsFungus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#ProtistsFungus">http://umbel.org/umbel#ProtistsFungus</seealso>
+    let ProtistsFungus = Prefixed_Name(umbel, "ProtistsFungus") |> PrefixedName
+    /// <summary>
+    ///   <para>umbel:FinanceEconomy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#FinanceEconomy">http://umbel.org/umbel#FinanceEconomy</seealso>
+    let FinanceEconomy = Prefixed_Name(umbel, "FinanceEconomy") |> PrefixedName
+    /// <summary>
+    ///   <para>umbel:superPropertyOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:AnnotationProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#superPropertyOf">http://umbel.org/umbel#superPropertyOf</seealso>
+    let superPropertyOf = Prefixed_Name(umbel, "superPropertyOf") |> PrefixedName
+    /// <summary>
+    ///   <para>umbel:relatesToActivity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToActivity">http://umbel.org/umbel#relatesToActivity</seealso>
+    let relatesToActivity = Prefixed_Name(umbel, "relatesToActivity") |> PrefixedName
+    /// <summary>
+    ///   <para>umbel:isLike</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:SymmetricProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#isLike">http://umbel.org/umbel#isLike</seealso>
+    let isLike = Prefixed_Name(umbel, "isLike") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>umbel:relatesToAbstraction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToAbstraction">http://umbel.org/umbel#relatesToAbstraction</seealso>
+    let relatesToAbstraction =
+        Prefixed_Name(umbel, "relatesToAbstraction") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#AbstractLevel"></see>
+    ///   <para>umbel:AbstractLevel</para>
     /// </summary>
-    let AbstractLevel = _prefix "AbstractLevel"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#AbstractLevel">http://umbel.org/umbel#AbstractLevel</seealso>
+    let AbstractLevel = Prefixed_Name(umbel, "AbstractLevel") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#SuperType"></see>
+    ///   <para>umbel:SuperType</para>
     /// </summary>
-    let SuperType = _prefix "SuperType"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#SuperType">http://umbel.org/umbel#SuperType</seealso>
+    let SuperType = Prefixed_Name(umbel, "SuperType") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Activities"></see>
+    ///   <para>umbel:Activities</para>
     /// </summary>
-    let Activities = _prefix "Activities"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Activities">http://umbel.org/umbel#Activities</seealso>
+    let Activities = Prefixed_Name(umbel, "Activities") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Animals"></see>
+    ///   <para>umbel:Animals</para>
     /// </summary>
-    let Animals = _prefix "Animals"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Animals">http://umbel.org/umbel#Animals</seealso>
+    let Animals = Prefixed_Name(umbel, "Animals") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#AudioInfo"></see>
+    ///   <para>umbel:AudioInfo</para>
     /// </summary>
-    let AudioInfo = _prefix "AudioInfo"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#AudioInfo">http://umbel.org/umbel#AudioInfo</seealso>
+    let AudioInfo = Prefixed_Name(umbel, "AudioInfo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Chemistry"></see>
+    ///   <para>umbel:Chemistry</para>
     /// </summary>
-    let Chemistry = _prefix "Chemistry"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Chemistry">http://umbel.org/umbel#Chemistry</seealso>
+    let Chemistry = Prefixed_Name(umbel, "Chemistry") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Drugs"></see>
+    ///   <para>umbel:Drugs</para>
     /// </summary>
-    let Drugs = _prefix "Drugs"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Drugs">http://umbel.org/umbel#Drugs</seealso>
+    let Drugs = Prefixed_Name(umbel, "Drugs") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Earthscape"></see>
+    ///   <para>umbel:Earthscape</para>
     /// </summary>
-    let Earthscape = _prefix "Earthscape"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Earthscape">http://umbel.org/umbel#Earthscape</seealso>
+    let Earthscape = Prefixed_Name(umbel, "Earthscape") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Extraterrestrial"></see>
+    ///   <para>umbel:Facilities</para>
     /// </summary>
-    let Extraterrestrial = _prefix "Extraterrestrial"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Facilities">http://umbel.org/umbel#Facilities</seealso>
+    let Facilities = Prefixed_Name(umbel, "Facilities") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Facilities"></see>
+    ///   <para>umbel:Geopolitical</para>
     /// </summary>
-    let Facilities = _prefix "Facilities"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Geopolitical">http://umbel.org/umbel#Geopolitical</seealso>
+    let Geopolitical = Prefixed_Name(umbel, "Geopolitical") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Geopolitical"></see>
+    ///   <para>umbel:Numbers</para>
     /// </summary>
-    let Geopolitical = _prefix "Geopolitical"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Numbers">http://umbel.org/umbel#Numbers</seealso>
+    let Numbers = Prefixed_Name(umbel, "Numbers") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#NaturalSubstances"></see>
+    ///   <para>umbel:Organizations</para>
     /// </summary>
-    let NaturalSubstances = _prefix "NaturalSubstances"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Organizations">http://umbel.org/umbel#Organizations</seealso>
+    let Organizations = Prefixed_Name(umbel, "Organizations") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Numbers"></see>
+    ///   <para>umbel:PersonTypes</para>
     /// </summary>
-    let Numbers = _prefix "Numbers"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#PersonTypes">http://umbel.org/umbel#PersonTypes</seealso>
+    let PersonTypes = Prefixed_Name(umbel, "PersonTypes") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Organizations"></see>
+    ///   <para>umbel:Plants</para>
     /// </summary>
-    let Organizations = _prefix "Organizations"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Plants">http://umbel.org/umbel#Plants</seealso>
+    let Plants = Prefixed_Name(umbel, "Plants") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#PersonTypes"></see>
+    ///   <para>umbel:Society</para>
     /// </summary>
-    let PersonTypes = _prefix "PersonTypes"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Society">http://umbel.org/umbel#Society</seealso>
+    let Society = Prefixed_Name(umbel, "Society") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Plants"></see>
+    ///   <para>umbel:Time</para>
     /// </summary>
-    let Plants = _prefix "Plants"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Time">http://umbel.org/umbel#Time</seealso>
+    let Time = Prefixed_Name(umbel, "Time") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Prokaryotes"></see>
+    ///   <para>umbel:Workplaces</para>
     /// </summary>
-    let Prokaryotes = _prefix "Prokaryotes"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Workplaces">http://umbel.org/umbel#Workplaces</seealso>
+    let Workplaces = Prefixed_Name(umbel, "Workplaces") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#ProtistsFungus"></see>
+    ///   <para>umbel:Events</para>
     /// </summary>
-    let ProtistsFungus = _prefix "ProtistsFungus"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Events">http://umbel.org/umbel#Events</seealso>
+    let Events = Prefixed_Name(umbel, "Events") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Society"></see>
+    ///   <para>umbel:NaturalPhenomena</para>
     /// </summary>
-    let Society = _prefix "Society"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#NaturalPhenomena">http://umbel.org/umbel#NaturalPhenomena</seealso>
+    let NaturalPhenomena = Prefixed_Name(umbel, "NaturalPhenomena") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Time"></see>
+    ///   <para>umbel:Notations</para>
     /// </summary>
-    let Time = _prefix "Time"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Notations">http://umbel.org/umbel#Notations</seealso>
+    let Notations = Prefixed_Name(umbel, "Notations") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Workplaces"></see>
+    ///   <para>umbel:StructuredInfo</para>
     /// </summary>
-    let Workplaces = _prefix "Workplaces"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#StructuredInfo">http://umbel.org/umbel#StructuredInfo</seealso>
+    let StructuredInfo = Prefixed_Name(umbel, "StructuredInfo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Events"></see>
+    ///   <para>umbel:VisualInfo</para>
     /// </summary>
-    let Events = _prefix "Events"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#VisualInfo">http://umbel.org/umbel#VisualInfo</seealso>
+    let VisualInfo = Prefixed_Name(umbel, "VisualInfo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#FinanceEconomy"></see>
+    ///   <para>umbel:WrittenInfo</para>
     /// </summary>
-    let FinanceEconomy = _prefix "FinanceEconomy"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#WrittenInfo">http://umbel.org/umbel#WrittenInfo</seealso>
+    let WrittenInfo = Prefixed_Name(umbel, "WrittenInfo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#NaturalPhenomena"></see>
+    ///   <para>umbel:Attributes</para>
     /// </summary>
-    let NaturalPhenomena = _prefix "NaturalPhenomena"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Attributes">http://umbel.org/umbel#Attributes</seealso>
+    let Attributes = Prefixed_Name(umbel, "Attributes") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Notations"></see>
+    ///   <para>umbel:Diseases</para>
     /// </summary>
-    let Notations = _prefix "Notations"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Diseases">http://umbel.org/umbel#Diseases</seealso>
+    let Diseases = Prefixed_Name(umbel, "Diseases") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#StructuredInfo"></see>
+    ///   <para>umbel:FoodDrink</para>
     /// </summary>
-    let StructuredInfo = _prefix "StructuredInfo"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#FoodDrink">http://umbel.org/umbel#FoodDrink</seealso>
+    let FoodDrink = Prefixed_Name(umbel, "FoodDrink") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#VisualInfo"></see>
+    ///   <para>umbel:AutomaticInspectedSMatch</para>
     /// </summary>
-    let VisualInfo = _prefix "VisualInfo"
+    /// <remarks>
+    ///   <para>umbel:Qualifier</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#AutomaticInspectedSMatch">http://umbel.org/umbel#AutomaticInspectedSMatch</seealso>
+    let AutomaticInspectedSMatch =
+        Prefixed_Name(umbel, "AutomaticInspectedSMatch") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#WrittenInfo"></see>
+    ///   <para>umbel:Qualifier</para>
     /// </summary>
-    let WrittenInfo = _prefix "WrittenInfo"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Qualifier">http://umbel.org/umbel#Qualifier</seealso>
+    let Qualifier = Prefixed_Name(umbel, "Qualifier") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Attributes"></see>
+    ///   <para>umbel:AutomaticInspectedSV</para>
     /// </summary>
-    let Attributes = _prefix "Attributes"
+    /// <remarks>
+    ///   <para>umbel:Qualifier</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#AutomaticInspectedSV">http://umbel.org/umbel#AutomaticInspectedSV</seealso>
+    let AutomaticInspectedSV =
+        Prefixed_Name(umbel, "AutomaticInspectedSV") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Diseases"></see>
+    ///   <para>umbel:AutomaticNotSpecified</para>
     /// </summary>
-    let Diseases = _prefix "Diseases"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>umbel:Qualifier</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#AutomaticNotSpecified">http://umbel.org/umbel#AutomaticNotSpecified</seealso>
+    let AutomaticNotSpecified =
+        Prefixed_Name(umbel, "AutomaticNotSpecified") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#FoodDrink"></see>
+    ///   <para>umbel:Products</para>
     /// </summary>
-    let FoodDrink = _prefix "FoodDrink"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#Products">http://umbel.org/umbel#Products</seealso>
+    let Products = Prefixed_Name(umbel, "Products") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#AutomaticInspectedSMatch"></see>
+    ///   <para>umbel:ExternalDBOntologyMapping</para>
     /// </summary>
-    let AutomaticInspectedSMatch = _prefix "AutomaticInspectedSMatch"
+    /// <remarks>
+    ///   <para>umbel:Qualifier</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#ExternalDBOntologyMapping">http://umbel.org/umbel#ExternalDBOntologyMapping</seealso>
+    let ExternalDBOntologyMapping =
+        Prefixed_Name(umbel, "ExternalDBOntologyMapping") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Qualifier"></see>
+    ///   <para>umbel:ExternalGeoNamesMapping</para>
     /// </summary>
-    let Qualifier = _prefix "Qualifier"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>umbel:Qualifier</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#ExternalGeoNamesMapping">http://umbel.org/umbel#ExternalGeoNamesMapping</seealso>
+    let ExternalGeoNamesMapping =
+        Prefixed_Name(umbel, "ExternalGeoNamesMapping") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#AutomaticInspectedSV"></see>
+    ///   <para>umbel:ExternalOpenCycMapping</para>
     /// </summary>
-    let AutomaticInspectedSV = _prefix "AutomaticInspectedSV"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>umbel:Qualifier</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#ExternalOpenCycMapping">http://umbel.org/umbel#ExternalOpenCycMapping</seealso>
+    let ExternalOpenCycMapping =
+        Prefixed_Name(umbel, "ExternalOpenCycMapping") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#AutomaticNotSpecified"></see>
+    ///   <para>umbel:HeuristicListOfBasis</para>
     /// </summary>
-    let AutomaticNotSpecified = _prefix "AutomaticNotSpecified"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>umbel:Qualifier</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#HeuristicListOfBasis">http://umbel.org/umbel#HeuristicListOfBasis</seealso>
+    let HeuristicListOfBasis =
+        Prefixed_Name(umbel, "HeuristicListOfBasis") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#Products"></see>
+    ///   <para>umbel:HeuristicNotSpecified</para>
     /// </summary>
-    let Products = _prefix "Products"
+    /// <remarks>
+    ///   <para>umbel:Qualifier</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#HeuristicNotSpecified">http://umbel.org/umbel#HeuristicNotSpecified</seealso>
+    let HeuristicNotSpecified =
+        Prefixed_Name(umbel, "HeuristicNotSpecified") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#ExternalDBOntologyMapping"></see>
+    ///   <para>umbel:ManualNearlyEquivalent</para>
     /// </summary>
-    let ExternalDBOntologyMapping = _prefix "ExternalDBOntologyMapping"
+    /// <remarks>
+    ///   <para>umbel:Qualifier</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#ManualNearlyEquivalent">http://umbel.org/umbel#ManualNearlyEquivalent</seealso>
+    let ManualNearlyEquivalent =
+        Prefixed_Name(umbel, "ManualNearlyEquivalent") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#ExternalGeoNamesMapping"></see>
+    ///   <para>umbel:ManualSimilarSense</para>
     /// </summary>
-    let ExternalGeoNamesMapping = _prefix "ExternalGeoNamesMapping"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>umbel:Qualifier</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#ManualSimilarSense">http://umbel.org/umbel#ManualSimilarSense</seealso>
+    let ManualSimilarSense = Prefixed_Name(umbel, "ManualSimilarSense") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#ExternalOpenCycMapping"></see>
+    ///   <para>umbel:MarketsIndustries</para>
     /// </summary>
-    let ExternalOpenCycMapping = _prefix "ExternalOpenCycMapping"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#MarketsIndustries">http://umbel.org/umbel#MarketsIndustries</seealso>
+    let MarketsIndustries = Prefixed_Name(umbel, "MarketsIndustries") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#HeuristicListOfBasis"></see>
+    ///   <para>umbel:RefConcept</para>
     /// </summary>
-    let HeuristicListOfBasis = _prefix "HeuristicListOfBasis"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#RefConcept">http://umbel.org/umbel#RefConcept</seealso>
+    let RefConcept = Prefixed_Name(umbel, "RefConcept") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#HeuristicNotSpecified"></see>
+    ///   <para>umbel:isRelatedTo</para>
     /// </summary>
-    let HeuristicNotSpecified = _prefix "HeuristicNotSpecified"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#isRelatedTo">http://umbel.org/umbel#isRelatedTo</seealso>
+    let isRelatedTo = Prefixed_Name(umbel, "isRelatedTo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#ManualNearlyEquivalent"></see>
+    ///   <para>umbel:TopicsCategories</para>
     /// </summary>
-    let ManualNearlyEquivalent = _prefix "ManualNearlyEquivalent"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#TopicsCategories">http://umbel.org/umbel#TopicsCategories</seealso>
+    let TopicsCategories = Prefixed_Name(umbel, "TopicsCategories") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#ManualSimilarSense"></see>
+    ///   <para>umbel:correspondsTo</para>
     /// </summary>
-    let ManualSimilarSense = _prefix "ManualSimilarSense"
-    /// <summary>
-    ///   <see href="http://umbel.org/umbel#MarketsIndustries"></see>
-    /// </summary>
-    let MarketsIndustries = _prefix "MarketsIndustries"
-    /// <summary>
-    ///   <see href="http://umbel.org/umbel#RefConcept"></see>
-    /// </summary>
-    let RefConcept = _prefix "RefConcept"
-    /// <summary>
-    ///   <see href="http://umbel.org/umbel#isRelatedTo"></see>
-    /// </summary>
-    let isRelatedTo = _prefix "isRelatedTo"
-    /// <summary>
-    ///   <see href="http://umbel.org/umbel#TopicsCategories"></see>
-    /// </summary>
-    let TopicsCategories = _prefix "TopicsCategories"
-    /// <summary>
-    /// The property umbel:correspondsTo is used to assert a close correspondence between an external class, named entity, individual or instance with a Reference Concept class. umbel:correspondsTo relates the external class, named entity, individual or instance to the class through the basis of both its subject matter and intended scope. This predicate should be used where the correspondence between the two entities is felt to be nearly equivalent to a sameAs assertion, and is reflexive, but without the full entailments of intensional class memberships. In these cases, both entities are understood to have the same type and intended scope, but without asserting a full class-level or sameAs individual relationship.
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>owl:ReflexiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The property umbel:correspondsTo is used to assert a close correspondence between an external class, named entity, individual or instance with a Reference Concept class. umbel:correspondsTo relates the external class, named entity, individual or instance to the class through the basis of both its subject matter and intended scope. This predicate should be used where the correspondence between the two entities is felt to be nearly equivalent to a sameAs assertion, and is reflexive, but without the full entailments of intensional class memberships. In these cases, both entities are understood to have the same type and intended scope, but without asserting a full class-level or sameAs individual relationship.
     ///
     /// This predicate is designed for the circumstance of aligning two different ontologies or knowledge bases based on node-level correspondences, but without entailing the actual ontological relationships and structure of the object source. For example, the umbel:correspondsTo predicate is used to assert close correspondence between UMBEL Reference Concepts and Wikipedia categories or pages, yet without entailing the actual Wikipedia category structure.
     ///
     /// This property asserts a different and stronger relationship than umbel:isAbout. One practical use is to guide specific instance member determinations when, say, the native structure of the external ontology or knowledge base is to be analyzed and replaced with an UMBEL-based structure.
     ///
-    /// This property is therefore used to create a nearly equivalent assertion (however, with the degree of that equivalence being unknown or unknowable) between an external instance or class and a Reference Concept class
-    /// <see href="http://umbel.org/umbel#correspondsTo"></see></summary>
-    let correspondsTo = _prefix "correspondsTo"
+    /// This property is therefore used to create a nearly equivalent assertion (however, with the degree of that equivalence being unknown or unknowable) between an external instance or class and a Reference Concept class</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#correspondsTo">http://umbel.org/umbel#correspondsTo</seealso>
+    let correspondsTo = Prefixed_Name(umbel, "correspondsTo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#hasCharacteristic"></see>
+    ///   <para>umbel:hasCharacteristic</para>
     /// </summary>
-    let hasCharacteristic = _prefix "hasCharacteristic"
+    /// <remarks>
+    ///   <para>owl:AnnotationProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#hasCharacteristic">http://umbel.org/umbel#hasCharacteristic</seealso>
+    let hasCharacteristic = Prefixed_Name(umbel, "hasCharacteristic") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#hasMapping"></see>
+    ///   <para>umbel:hasMapping</para>
     /// </summary>
-    let hasMapping = _prefix "hasMapping"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#hasMapping">http://umbel.org/umbel#hasMapping</seealso>
+    let hasMapping = Prefixed_Name(umbel, "hasMapping") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#isAbout"></see>
+    ///   <para>umbel:isAbout</para>
     /// </summary>
-    let isAbout = _prefix "isAbout"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#isAbout">http://umbel.org/umbel#isAbout</seealso>
+    let isAbout = Prefixed_Name(umbel, "isAbout") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#isCharacteristicOf"></see>
+    ///   <para>umbel:isCharacteristicOf</para>
     /// </summary>
-    let isCharacteristicOf = _prefix "isCharacteristicOf"
+    /// <remarks>
+    ///   <para>owl:AnnotationProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#isCharacteristicOf">http://umbel.org/umbel#isCharacteristicOf</seealso>
+    let isCharacteristicOf = Prefixed_Name(umbel, "isCharacteristicOf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#isLike"></see>
+    ///   <para>umbel:relatesToAnimal</para>
     /// </summary>
-    let isLike = _prefix "isLike"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToAnimal">http://umbel.org/umbel#relatesToAnimal</seealso>
+    let relatesToAnimal = Prefixed_Name(umbel, "relatesToAnimal") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToAbstraction"></see>
+    ///   <para>umbel:relatesToAttribute</para>
     /// </summary>
-    let relatesToAbstraction = _prefix "relatesToAbstraction"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToAttribute">http://umbel.org/umbel#relatesToAttribute</seealso>
+    let relatesToAttribute = Prefixed_Name(umbel, "relatesToAttribute") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToActivity"></see>
+    ///   <para>umbel:relatesToAudioInfo</para>
     /// </summary>
-    let relatesToActivity = _prefix "relatesToActivity"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToAudioInfo">http://umbel.org/umbel#relatesToAudioInfo</seealso>
+    let relatesToAudioInfo = Prefixed_Name(umbel, "relatesToAudioInfo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToAnimal"></see>
+    ///   <para>umbel:relatesToChemistry</para>
     /// </summary>
-    let relatesToAnimal = _prefix "relatesToAnimal"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToChemistry">http://umbel.org/umbel#relatesToChemistry</seealso>
+    let relatesToChemistry = Prefixed_Name(umbel, "relatesToChemistry") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToAttribute"></see>
+    ///   <para>umbel:relatesToDisease</para>
     /// </summary>
-    let relatesToAttribute = _prefix "relatesToAttribute"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToDisease">http://umbel.org/umbel#relatesToDisease</seealso>
+    let relatesToDisease = Prefixed_Name(umbel, "relatesToDisease") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToAudioInfo"></see>
+    ///   <para>umbel:relatesToDrug</para>
     /// </summary>
-    let relatesToAudioInfo = _prefix "relatesToAudioInfo"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToDrug">http://umbel.org/umbel#relatesToDrug</seealso>
+    let relatesToDrug = Prefixed_Name(umbel, "relatesToDrug") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToChemistry"></see>
+    ///   <para>umbel:relatesToEarth</para>
     /// </summary>
-    let relatesToChemistry = _prefix "relatesToChemistry"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToEarth">http://umbel.org/umbel#relatesToEarth</seealso>
+    let relatesToEarth = Prefixed_Name(umbel, "relatesToEarth") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToDisease"></see>
+    ///   <para>umbel:relatesToEvent</para>
     /// </summary>
-    let relatesToDisease = _prefix "relatesToDisease"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToEvent">http://umbel.org/umbel#relatesToEvent</seealso>
+    let relatesToEvent = Prefixed_Name(umbel, "relatesToEvent") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToDrug"></see>
+    ///   <para>umbel:relatesToFacility</para>
     /// </summary>
-    let relatesToDrug = _prefix "relatesToDrug"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToFacility">http://umbel.org/umbel#relatesToFacility</seealso>
+    let relatesToFacility = Prefixed_Name(umbel, "relatesToFacility") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToEarth"></see>
+    ///   <para>umbel:relatesToFinanceEconomy</para>
     /// </summary>
-    let relatesToEarth = _prefix "relatesToEarth"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToFinanceEconomy">http://umbel.org/umbel#relatesToFinanceEconomy</seealso>
+    let relatesToFinanceEconomy =
+        Prefixed_Name(umbel, "relatesToFinanceEconomy") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToEvent"></see>
+    ///   <para>umbel:relatesToFoodDrink</para>
     /// </summary>
-    let relatesToEvent = _prefix "relatesToEvent"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToFoodDrink">http://umbel.org/umbel#relatesToFoodDrink</seealso>
+    let relatesToFoodDrink = Prefixed_Name(umbel, "relatesToFoodDrink") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToFacility"></see>
+    ///   <para>umbel:relatesToGeoEntity</para>
     /// </summary>
-    let relatesToFacility = _prefix "relatesToFacility"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToGeoEntity">http://umbel.org/umbel#relatesToGeoEntity</seealso>
+    let relatesToGeoEntity = Prefixed_Name(umbel, "relatesToGeoEntity") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToFinanceEconomy"></see>
+    ///   <para>umbel:relatesToHeavens</para>
     /// </summary>
-    let relatesToFinanceEconomy = _prefix "relatesToFinanceEconomy"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToHeavens">http://umbel.org/umbel#relatesToHeavens</seealso>
+    let relatesToHeavens = Prefixed_Name(umbel, "relatesToHeavens") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToFoodDrink"></see>
+    ///   <para>umbel:relatesToMarketIndustry</para>
     /// </summary>
-    let relatesToFoodDrink = _prefix "relatesToFoodDrink"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToMarketIndustry">http://umbel.org/umbel#relatesToMarketIndustry</seealso>
+    let relatesToMarketIndustry =
+        Prefixed_Name(umbel, "relatesToMarketIndustry") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToGeoEntity"></see>
+    ///   <para>umbel:relatesToNotation</para>
     /// </summary>
-    let relatesToGeoEntity = _prefix "relatesToGeoEntity"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToNotation">http://umbel.org/umbel#relatesToNotation</seealso>
+    let relatesToNotation = Prefixed_Name(umbel, "relatesToNotation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToHeavens"></see>
+    ///   <para>umbel:relatesToNumbers</para>
     /// </summary>
-    let relatesToHeavens = _prefix "relatesToHeavens"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToNumbers">http://umbel.org/umbel#relatesToNumbers</seealso>
+    let relatesToNumbers = Prefixed_Name(umbel, "relatesToNumbers") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToMarketIndustry"></see>
+    ///   <para>umbel:relatesToOrganizationType</para>
     /// </summary>
-    let relatesToMarketIndustry = _prefix "relatesToMarketIndustry"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToOrganizationType">http://umbel.org/umbel#relatesToOrganizationType</seealso>
+    let relatesToOrganizationType =
+        Prefixed_Name(umbel, "relatesToOrganizationType") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToNotation"></see>
+    ///   <para>umbel:relatesToOtherOrganism</para>
     /// </summary>
-    let relatesToNotation = _prefix "relatesToNotation"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToOtherOrganism">http://umbel.org/umbel#relatesToOtherOrganism</seealso>
+    let relatesToOtherOrganism =
+        Prefixed_Name(umbel, "relatesToOtherOrganism") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToNumbers"></see>
+    ///   <para>umbel:relatesToPersonType</para>
     /// </summary>
-    let relatesToNumbers = _prefix "relatesToNumbers"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToPersonType">http://umbel.org/umbel#relatesToPersonType</seealso>
+    let relatesToPersonType =
+        Prefixed_Name(umbel, "relatesToPersonType") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToOrganizationType"></see>
+    ///   <para>umbel:relatesToPhenomenon</para>
     /// </summary>
-    let relatesToOrganizationType = _prefix "relatesToOrganizationType"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToPhenomenon">http://umbel.org/umbel#relatesToPhenomenon</seealso>
+    let relatesToPhenomenon =
+        Prefixed_Name(umbel, "relatesToPhenomenon") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToOtherOrganism"></see>
+    ///   <para>umbel:relatesToPlant</para>
     /// </summary>
-    let relatesToOtherOrganism = _prefix "relatesToOtherOrganism"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToPlant">http://umbel.org/umbel#relatesToPlant</seealso>
+    let relatesToPlant = Prefixed_Name(umbel, "relatesToPlant") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToPersonType"></see>
+    ///   <para>umbel:relatesToProductType</para>
     /// </summary>
-    let relatesToPersonType = _prefix "relatesToPersonType"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToProductType">http://umbel.org/umbel#relatesToProductType</seealso>
+    let relatesToProductType =
+        Prefixed_Name(umbel, "relatesToProductType") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToPhenomenon"></see>
+    ///   <para>umbel:relatesToSociety</para>
     /// </summary>
-    let relatesToPhenomenon = _prefix "relatesToPhenomenon"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToSociety">http://umbel.org/umbel#relatesToSociety</seealso>
+    let relatesToSociety = Prefixed_Name(umbel, "relatesToSociety") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToPlant"></see>
+    ///   <para>umbel:relatesToStructuredInfo</para>
     /// </summary>
-    let relatesToPlant = _prefix "relatesToPlant"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToStructuredInfo">http://umbel.org/umbel#relatesToStructuredInfo</seealso>
+    let relatesToStructuredInfo =
+        Prefixed_Name(umbel, "relatesToStructuredInfo") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToProductType"></see>
+    ///   <para>umbel:relatesToSubstance</para>
     /// </summary>
-    let relatesToProductType = _prefix "relatesToProductType"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToSubstance">http://umbel.org/umbel#relatesToSubstance</seealso>
+    let relatesToSubstance = Prefixed_Name(umbel, "relatesToSubstance") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToSociety"></see>
+    ///   <para>umbel:relatesToTime</para>
     /// </summary>
-    let relatesToSociety = _prefix "relatesToSociety"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToTime">http://umbel.org/umbel#relatesToTime</seealso>
+    let relatesToTime = Prefixed_Name(umbel, "relatesToTime") |> PrefixedName
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToStructuredInfo"></see>
+    ///   <para>umbel:relatesToTopic</para>
     /// </summary>
-    let relatesToStructuredInfo = _prefix "relatesToStructuredInfo"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToTopic">http://umbel.org/umbel#relatesToTopic</seealso>
+    let relatesToTopic = Prefixed_Name(umbel, "relatesToTopic") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToSubstance"></see>
+    ///   <para>umbel:relatesToVisualInfo</para>
     /// </summary>
-    let relatesToSubstance = _prefix "relatesToSubstance"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToVisualInfo">http://umbel.org/umbel#relatesToVisualInfo</seealso>
+    let relatesToVisualInfo =
+        Prefixed_Name(umbel, "relatesToVisualInfo") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToTime"></see>
+    ///   <para>umbel:relatesToWorkplace</para>
     /// </summary>
-    let relatesToTime = _prefix "relatesToTime"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToWorkplace">http://umbel.org/umbel#relatesToWorkplace</seealso>
+    let relatesToWorkplace = Prefixed_Name(umbel, "relatesToWorkplace") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToTopic"></see>
+    ///   <para>umbel:relatesToWrittenInfo</para>
     /// </summary>
-    let relatesToTopic = _prefix "relatesToTopic"
-    /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToVisualInfo"></see>
-    /// </summary>
-    let relatesToVisualInfo = _prefix "relatesToVisualInfo"
-    /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToWorkplace"></see>
-    /// </summary>
-    let relatesToWorkplace = _prefix "relatesToWorkplace"
-    /// <summary>
-    ///   <see href="http://umbel.org/umbel#relatesToWrittenInfo"></see>
-    /// </summary>
-    let relatesToWrittenInfo = _prefix "relatesToWrittenInfo"
-    /// <summary>
-    ///   <see href="http://umbel.org/umbel#superPropertyOf"></see>
-    /// </summary>
-    let superPropertyOf = _prefix "superPropertyOf"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://umbel.org/umbel#relatesToWrittenInfo">http://umbel.org/umbel#relatesToWrittenInfo</seealso>
+    let relatesToWrittenInfo =
+        Prefixed_Name(umbel, "relatesToWrittenInfo") |> PrefixedName

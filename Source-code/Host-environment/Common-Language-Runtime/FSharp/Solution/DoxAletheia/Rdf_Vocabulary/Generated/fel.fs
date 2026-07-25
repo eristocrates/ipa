@@ -1,130 +1,315 @@
 namespace http.w3id.org.vcb.fel.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module fel =
-    let _namespace_name = "http://w3id.org/vcb/fel#"
+    let _namespace_iri = Namespace_Iri fel |> NamespaceIRI
+    /// <summary>
+    ///   <para>fel:AdjectivePoS</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:PartOfSpeechClass</para>
+    ///
+    /// labels<para>Adjective</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#AdjectivePoS">http://w3id.org/vcb/fel#AdjectivePoS</seealso>
+    let AdjectivePoS = Prefixed_Name(fel, "AdjectivePoS") |> PrefixedName
+    /// <summary>
+    ///   <para>fel:PartOfSpeechClass</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Part Of Speech Class</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#PartOfSpeechClass">http://w3id.org/vcb/fel#PartOfSpeechClass</seealso>
+    let PartOfSpeechClass = Prefixed_Name(fel, "PartOfSpeechClass") |> PrefixedName
+    /// <summary>
+    ///   <para>fel:BaseFormClass</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Base Form Class</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#BaseFormClass">http://w3id.org/vcb/fel#BaseFormClass</seealso>
+    let BaseFormClass = Prefixed_Name(fel, "BaseFormClass") |> PrefixedName
+    /// <summary>
+    ///   <para>fel:CommonForm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>fel:BaseFormClass</para>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Common Form</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#CommonForm">http://w3id.org/vcb/fel#CommonForm</seealso>
+    let CommonForm = Prefixed_Name(fel, "CommonForm") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>fel:DescriptiveReference</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>fel:ReferenceClass</para>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Desciptive Reference</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#DescriptiveReference">http://w3id.org/vcb/fel#DescriptiveReference</seealso>
+    let DescriptiveReference =
+        Prefixed_Name(fel, "DescriptiveReference") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#AdjectivePoS"></see>
+    ///   <para>fel:DirectReference</para>
     /// </summary>
-    let AdjectivePoS = _prefix "AdjectivePoS"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:ReferenceClass</para>
+    ///
+    /// labels<para>Direct Reference</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#DirectReference">http://w3id.org/vcb/fel#DirectReference</seealso>
+    let DirectReference = Prefixed_Name(fel, "DirectReference") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#PartOfSpeechClass"></see>
+    ///   <para>fel:MaximalOverlap</para>
     /// </summary>
-    let PartOfSpeechClass = _prefix "PartOfSpeechClass"
+    /// <remarks>
+    ///   <para>fel:OverlapClass</para>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Maximal Overlap</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#MaximalOverlap">http://w3id.org/vcb/fel#MaximalOverlap</seealso>
+    let MaximalOverlap = Prefixed_Name(fel, "MaximalOverlap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#AdverbPoS"></see>
+    ///   <para>fel:MinimalOverlap</para>
     /// </summary>
-    let AdverbPoS = _prefix "AdverbPoS"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:OverlapClass</para>
+    ///
+    /// labels<para>Minimal Overlap</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#MinimalOverlap">http://w3id.org/vcb/fel#MinimalOverlap</seealso>
+    let MinimalOverlap = Prefixed_Name(fel, "MinimalOverlap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#AliasProperForm"></see>
+    ///   <para>fel:NounPhrasePoS</para>
     /// </summary>
-    let AliasProperForm = _prefix "AliasProperForm"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:PartOfSpeechClass</para>
+    ///
+    /// labels<para>Noun Phrase PoS</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#NounPhrasePoS">http://w3id.org/vcb/fel#NounPhrasePoS</seealso>
+    let NounPhrasePoS = Prefixed_Name(fel, "NounPhrasePoS") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#BaseFormClass"></see>
+    ///   <para>fel:PluralNounPhrasePoS</para>
     /// </summary>
-    let BaseFormClass = _prefix "BaseFormClass"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:PartOfSpeechClass</para>
+    ///
+    /// labels<para>Plural Noun Phrase PoS</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#PluralNounPhrasePoS">http://w3id.org/vcb/fel#PluralNounPhrasePoS</seealso>
+    let PluralNounPhrasePoS = Prefixed_Name(fel, "PluralNounPhrasePoS") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#ProperForm"></see>
+    ///   <para>fel:NounPhrase</para>
     /// </summary>
-    let ProperForm = _prefix "ProperForm"
+    /// <remarks></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#NounPhrase">http://w3id.org/vcb/fel#NounPhrase</seealso>
+    let NounPhrase = Prefixed_Name(fel, "NounPhrase") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#AnaphoricReference"></see>
+    ///   <para>fel:ReferenceClass</para>
     /// </summary>
-    let AnaphoricReference = _prefix "AnaphoricReference"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Reference Class</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#ReferenceClass">http://w3id.org/vcb/fel#ReferenceClass</seealso>
+    let ReferenceClass = Prefixed_Name(fel, "ReferenceClass") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#ReferenceClass"></see>
+    ///   <para>fel:ExtendedProperForm</para>
     /// </summary>
-    let ReferenceClass = _prefix "ReferenceClass"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:BaseFormClass</para>
+    ///
+    /// labels<para>Extended Proper Form</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#ExtendedProperForm">http://w3id.org/vcb/fel#ExtendedProperForm</seealso>
+    let ExtendedProperForm = Prefixed_Name(fel, "ExtendedProperForm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#CommonForm"></see>
+    ///   <para>fel:IntermediateOverlap</para>
     /// </summary>
-    let CommonForm = _prefix "CommonForm"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:OverlapClass</para>
+    ///
+    /// labels<para>Intermediate Overlap</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#IntermediateOverlap">http://w3id.org/vcb/fel#IntermediateOverlap</seealso>
+    let IntermediateOverlap = Prefixed_Name(fel, "IntermediateOverlap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#DescriptiveReference"></see>
+    ///   <para>fel:MetonymicReference</para>
     /// </summary>
-    let DescriptiveReference = _prefix "DescriptiveReference"
+    /// <remarks>
+    ///   <para>fel:ReferenceClass</para>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Metonymic Reference</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#MetonymicReference">http://w3id.org/vcb/fel#MetonymicReference</seealso>
+    let MetonymicReference = Prefixed_Name(fel, "MetonymicReference") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#DirectReference"></see>
+    ///   <para>fel:NoOverlap</para>
     /// </summary>
-    let DirectReference = _prefix "DirectReference"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:OverlapClass</para>
+    ///
+    /// labels<para>No Overlap</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#NoOverlap">http://w3id.org/vcb/fel#NoOverlap</seealso>
+    let NoOverlap = Prefixed_Name(fel, "NoOverlap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#ExtendedProperForm"></see>
+    ///   <para>fel:ProperForm</para>
     /// </summary>
-    let ExtendedProperForm = _prefix "ExtendedProperForm"
+    /// <remarks>
+    ///   <para>fel:BaseFormClass</para>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Proper Form</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#ProperForm">http://w3id.org/vcb/fel#ProperForm</seealso>
+    let ProperForm = Prefixed_Name(fel, "ProperForm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#FullProperForm"></see>
+    ///   <para>fel:NumericTemporalForm</para>
     /// </summary>
-    let FullProperForm = _prefix "FullProperForm"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:BaseFormClass</para>
+    ///
+    /// labels<para>Numeric and Temporal Form</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#NumericTemporalForm">http://w3id.org/vcb/fel#NumericTemporalForm</seealso>
+    let NumericTemporalForm = Prefixed_Name(fel, "NumericTemporalForm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#IntermediateOverlap"></see>
+    ///   <para>fel:ProForm</para>
     /// </summary>
-    let IntermediateOverlap = _prefix "IntermediateOverlap"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:BaseFormClass</para>
+    ///
+    /// labels<para>Pro-Form</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#ProForm">http://w3id.org/vcb/fel#ProForm</seealso>
+    let ProForm = Prefixed_Name(fel, "ProForm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#OverlapClass"></see>
+    ///   <para>fel:RelatedReference</para>
     /// </summary>
-    let OverlapClass = _prefix "OverlapClass"
+    /// <remarks>
+    ///   <para>fel:ReferenceClass</para>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Related Reference</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#RelatedReference">http://w3id.org/vcb/fel#RelatedReference</seealso>
+    let RelatedReference = Prefixed_Name(fel, "RelatedReference") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#MaximalOverlap"></see>
+    ///   <para>fel:ShortProperForm</para>
     /// </summary>
-    let MaximalOverlap = _prefix "MaximalOverlap"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:BaseFormClass</para>
+    ///
+    /// labels<para>Short Proper Form</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#ShortProperForm">http://w3id.org/vcb/fel#ShortProperForm</seealso>
+    let ShortProperForm = Prefixed_Name(fel, "ShortProperForm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#MetaphoricReference"></see>
+    ///   <para>fel:VerbPoS</para>
     /// </summary>
-    let MetaphoricReference = _prefix "MetaphoricReference"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:PartOfSpeechClass</para>
+    ///
+    /// labels<para>Verb PoS</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#VerbPoS">http://w3id.org/vcb/fel#VerbPoS</seealso>
+    let VerbPoS = Prefixed_Name(fel, "VerbPoS") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#MetonymicReference"></see>
+    ///   <para>fel:entityType</para>
     /// </summary>
-    let MetonymicReference = _prefix "MetonymicReference"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Entity Type</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#entityType">http://w3id.org/vcb/fel#entityType</seealso>
+    let entityType = Prefixed_Name(fel, "entityType") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#MinimalOverlap"></see>
+    ///   <para>fel:SingularNounPhrasePoS</para>
     /// </summary>
-    let MinimalOverlap = _prefix "MinimalOverlap"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:PartOfSpeechClass</para>
+    ///
+    /// labels<para>Singular Noun Phrase PoS</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#SingularNounPhrasePoS">http://w3id.org/vcb/fel#SingularNounPhrasePoS</seealso>
+    let SingularNounPhrasePoS =
+        Prefixed_Name(fel, "SingularNounPhrasePoS") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#NoOverlap"></see>
+    ///   <para>fel:</para>
     /// </summary>
-    let NoOverlap = _prefix "NoOverlap"
+    /// <remarks>
+    ///   <para>void:Dataset</para>
+    ///   <para>owl:Ontology</para>
+    ///
+    /// labels<para>A Fine-grained Entity Linking vocabulary</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#">http://w3id.org/vcb/fel#</seealso>
+    let _prefix_iri = Prefixed_Name(fel, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#NounPhrasePoS"></see>
+    ///   <para>fel:AdverbPoS</para>
     /// </summary>
-    let NounPhrasePoS = _prefix "NounPhrasePoS"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:PartOfSpeechClass</para>
+    ///
+    /// labels<para>Adverb</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#AdverbPoS">http://w3id.org/vcb/fel#AdverbPoS</seealso>
+    let AdverbPoS = Prefixed_Name(fel, "AdverbPoS") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#NumericTemporalForm"></see>
+    ///   <para>fel:AliasProperForm</para>
     /// </summary>
-    let NumericTemporalForm = _prefix "NumericTemporalForm"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:BaseFormClass</para>
+    ///
+    /// labels<para>Alias Proper Form</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#AliasProperForm">http://w3id.org/vcb/fel#AliasProperForm</seealso>
+    let AliasProperForm = Prefixed_Name(fel, "AliasProperForm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#PluralNounPhrasePoS"></see>
+    ///   <para>fel:AnaphoricReference</para>
     /// </summary>
-    let PluralNounPhrasePoS = _prefix "PluralNounPhrasePoS"
+    /// <remarks>
+    ///   <para>fel:ReferenceClass</para>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Anaphoric Reference</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#AnaphoricReference">http://w3id.org/vcb/fel#AnaphoricReference</seealso>
+    let AnaphoricReference = Prefixed_Name(fel, "AnaphoricReference") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#NounPhrase"></see>
+    ///   <para>fel:FullProperForm</para>
     /// </summary>
-    let NounPhrase = _prefix "NounPhrase"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:BaseFormClass</para>
+    ///
+    /// labels<para>Full Proper Form</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#FullProperForm">http://w3id.org/vcb/fel#FullProperForm</seealso>
+    let FullProperForm = Prefixed_Name(fel, "FullProperForm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#ProForm"></see>
+    ///   <para>fel:OverlapClass</para>
     /// </summary>
-    let ProForm = _prefix "ProForm"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Overlap Class</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#OverlapClass">http://w3id.org/vcb/fel#OverlapClass</seealso>
+    let OverlapClass = Prefixed_Name(fel, "OverlapClass") |> PrefixedName
     /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#RelatedReference"></see>
+    ///   <para>fel:MetaphoricReference</para>
     /// </summary>
-    let RelatedReference = _prefix "RelatedReference"
-    /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#ShortProperForm"></see>
-    /// </summary>
-    let ShortProperForm = _prefix "ShortProperForm"
-    /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#SingularNounPhrasePoS"></see>
-    /// </summary>
-    let SingularNounPhrasePoS = _prefix "SingularNounPhrasePoS"
-    /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#VerbPoS"></see>
-    /// </summary>
-    let VerbPoS = _prefix "VerbPoS"
-    /// <summary>
-    ///   <see href="http://w3id.org/vcb/fel#entityType"></see>
-    /// </summary>
-    let entityType = _prefix "entityType"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>fel:ReferenceClass</para>
+    ///
+    /// labels<para>Metaphoric Reference</para></remarks>
+    /// <seealso href="http://w3id.org/vcb/fel#MetaphoricReference">http://w3id.org/vcb/fel#MetaphoricReference</seealso>
+    let MetaphoricReference = Prefixed_Name(fel, "MetaphoricReference") |> PrefixedName

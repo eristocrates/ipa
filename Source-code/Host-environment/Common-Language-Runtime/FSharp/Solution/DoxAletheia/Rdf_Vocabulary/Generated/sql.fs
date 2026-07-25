@@ -1,470 +1,1073 @@
 namespace http.ns.inria.fr.ast.sql.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module sql =
-    let _namespace_name = "http://ns.inria.fr/ast/sql#"
+    let _namespace_iri = Namespace_Iri sql |> NamespaceIRI
+    /// <summary>
+    ///   <para>sql:ASTNode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Abstract class subsumed by all AST node classes.</para>
+    /// labels<para>Generic AST Node</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#ASTNode">http://ns.inria.fr/ast/sql#ASTNode</seealso>
+    let ASTNode = Prefixed_Name(sql, "ASTNode") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:AggregateFunction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL aggregate function returns a single value given the values of multiple rows from a column.</para>
+    /// labels<para>Aggregate Function</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#AggregateFunction">http://ns.inria.fr/ast/sql#AggregateFunction</seealso>
+    let AggregateFunction = Prefixed_Name(sql, "AggregateFunction") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Function</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL built-in function that performs calculation and returns a value. May be vendor-specific.</para>
+    /// labels<para>Function</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Function">http://ns.inria.fr/ast/sql#Function</seealso>
+    let Function = Prefixed_Name(sql, "Function") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Cast</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL scalar function that converts an expression to a target data type</para>
+    /// labels<para>Cast</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Cast">http://ns.inria.fr/ast/sql#Cast</seealso>
+    let Cast = Prefixed_Name(sql, "Cast") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Column</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A reference or declarative statement for a catalog column.</para>
+    /// labels<para>Relational Column</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Column">http://ns.inria.fr/ast/sql#Column</seealso>
+    let Column = Prefixed_Name(sql, "Column") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:CommitStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL COMMIT statement.</para>
+    /// labels<para>Commit Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#CommitStatement">http://ns.inria.fr/ast/sql#CommitStatement</seealso>
+    let CommitStatement = Prefixed_Name(sql, "CommitStatement") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>sql:TransactionManagementStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL transaction management statement.</para>
+    /// labels<para>Transaction Management Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#TransactionManagementStatement">http://ns.inria.fr/ast/sql#TransactionManagementStatement</seealso>
+    let TransactionManagementStatement =
+        Prefixed_Name(sql, "TransactionManagementStatement") |> PrefixedName
 
     /// <summary>
-    /// Abstract class subsumed by all AST node classes.
-    /// <see href="http://ns.inria.fr/ast/sql#ASTNode"></see></summary>
-    let ASTNode = _prefix "ASTNode"
-    /// <summary>
-    /// A SQL access control statement.
-    /// <see href="http://ns.inria.fr/ast/sql#AccessControlStatement"></see></summary>
-    let AccessControlStatement = _prefix "AccessControlStatement"
-    /// <summary>
-    /// A SQL statement.
-    /// <see href="http://ns.inria.fr/ast/sql#Statement"></see></summary>
-    let Statement = _prefix "Statement"
-    /// <summary>
-    /// A SQL aggregate function returns a single value given the values of multiple rows from a column.
-    /// <see href="http://ns.inria.fr/ast/sql#AggregateFunction"></see></summary>
-    let AggregateFunction = _prefix "AggregateFunction"
-    /// <summary>
-    /// A SQL built-in function that performs calculation and returns a value. May be vendor-specific.
-    /// <see href="http://ns.inria.fr/ast/sql#Function"></see></summary>
-    let Function = _prefix "Function"
-    /// <summary>
-    /// A SQL aggregation expression consists in the use of an aggregate function.
-    /// <see href="http://ns.inria.fr/ast/sql#AggregationExpression"></see></summary>
-    let AggregationExpression = _prefix "AggregationExpression"
-    /// <summary>
-    /// A SQL expression denotes any clause that when evaluated returns values.
-    /// <see href="http://ns.inria.fr/ast/sql#Expression"></see></summary>
-    let Expression = _prefix "Expression"
-    /// <summary>
-    /// The SQL AS operator used to give an identifier to an expression.
-    /// <see href="http://ns.inria.fr/ast/sql#Alias"></see></summary>
-    let Alias = _prefix "Alias"
-    /// <summary>
-    /// A SQL operator used to perform arithmetic calculations, comparisons or value assignments.
-    /// <see href="http://ns.inria.fr/ast/sql#Operator"></see></summary>
-    let Operator = _prefix "Operator"
-    /// <summary>
-    /// The SQL '*' wildcard operator, substitutes to all the columns of the tables in the FROM clause.
-    /// <see href="http://ns.inria.fr/ast/sql#All"></see></summary>
-    let All = _prefix "All"
-    /// <summary>
-    /// A SQL ALTER statement.
-    /// <see href="http://ns.inria.fr/ast/sql#AlterStatement"></see></summary>
-    let AlterStatement = _prefix "AlterStatement"
-    /// <summary>
-    /// A SQL data definition statement.
-    /// <see href="http://ns.inria.fr/ast/sql#DataDefinitionStatement"></see></summary>
-    let DataDefinitionStatement = _prefix "DataDefinitionStatement"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#And"></see>
+    ///   <para>sql:StringOperator</para>
     /// </summary>
-    let And = _prefix "And"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para></para>
+    /// labels<para>String Operator</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#StringOperator">http://ns.inria.fr/ast/sql#StringOperator</seealso>
+    let StringOperator = Prefixed_Name(sql, "StringOperator") |> PrefixedName
     /// <summary>
-    /// A SQL logical connective used to perform logical calculation.
-    /// <see href="http://ns.inria.fr/ast/sql#LogicalOperator"></see></summary>
-    let LogicalOperator = _prefix "LogicalOperator"
-    /// <summary>
-    /// A SQL arithmetic operator used to perform arithmetic calculation.
-    /// <see href="http://ns.inria.fr/ast/sql#ArithmeticOperator"></see></summary>
-    let ArithmeticOperator = _prefix "ArithmeticOperator"
-    /// <summary>
-    /// The SQL aggregate function that returns the mean of the given expression.
-    /// <see href="http://ns.inria.fr/ast/sql#Avg"></see></summary>
-    let Avg = _prefix "Avg"
-    /// <summary>
-    /// Ternary predicate used to assert whether a provided expression's value is within the range specified by two other expressions' values.
-    /// <see href="http://ns.inria.fr/ast/sql#Between"></see></summary>
-    let Between = _prefix "Between"
-    /// <summary>
-    /// Represents a collection of one or more expressions or subqueries, that may be combined with logical operators, and when evaluated returns one of the TRUE / FALSE / UNKNOWN truth values.
-    /// <see href="http://ns.inria.fr/ast/sql#Predicate"></see></summary>
-    let Predicate = _prefix "Predicate"
-    /// <summary>
-    /// A SQL CALL statement.
-    /// <see href="http://ns.inria.fr/ast/sql#CallStatement"></see></summary>
-    let CallStatement = _prefix "CallStatement"
-    /// <summary>
-    /// A SQL procedural statement.
-    /// <see href="http://ns.inria.fr/ast/sql#ProceduralStatement"></see></summary>
-    let ProceduralStatement = _prefix "ProceduralStatement"
-    /// <summary>
-    /// A SQL case expression enables the use of the IF &lt;condition&gt; THEN &lt;consequent&gt; ELSE &lt;alternative&gt; logic within SQL statements.
-    /// <see href="http://ns.inria.fr/ast/sql#CaseExpression"></see></summary>
-    let CaseExpression = _prefix "CaseExpression"
-    /// <summary>
-    /// A SQL scalar function that converts an expression to a target data type
-    /// <see href="http://ns.inria.fr/ast/sql#Cast"></see></summary>
-    let Cast = _prefix "Cast"
-    /// <summary>
-    /// A SQL scalar function.
-    /// <see href="http://ns.inria.fr/ast/sql#DataTypeConversionFunction"></see></summary>
-    let DataTypeConversionFunction = _prefix "DataTypeConversionFunction"
-    /// <summary>
-    /// A database catalog object reference.
-    /// <see href="http://ns.inria.fr/ast/sql#CatalogObject"></see></summary>
-    let CatalogObject = _prefix "CatalogObject"
-    /// <summary>
-    /// A reference or declarative statement for a catalog column.
-    /// <see href="http://ns.inria.fr/ast/sql#Column"></see></summary>
-    let Column = _prefix "Column"
-    /// <summary>
-    /// A valid identifier for a catalog column.
-    /// <see href="http://ns.inria.fr/ast/sql#ColumnIdentifier"></see></summary>
-    let ColumnIdentifier = _prefix "ColumnIdentifier"
-    /// <summary>
-    /// A database catalog object identifier, qualified or not.
-    /// <see href="http://ns.inria.fr/ast/sql#ObjectIdentifier"></see></summary>
-    let ObjectIdentifier = _prefix "ObjectIdentifier"
-    /// <summary>
-    /// A SQL COMMIT statement.
-    /// <see href="http://ns.inria.fr/ast/sql#CommitStatement"></see></summary>
-    let CommitStatement = _prefix "CommitStatement"
-    /// <summary>
-    /// A SQL transaction management statement.
-    /// <see href="http://ns.inria.fr/ast/sql#TransactionManagementStatement"></see></summary>
-    let TransactionManagementStatement = _prefix "TransactionManagementStatement"
-    /// <summary>
-    /// A binary operator used to compare two values, and when evaluated returns one of the TRUE / FALSE / UNKNOWN truth values.
-    /// <see href="http://ns.inria.fr/ast/sql#ComparisonOperator"></see></summary>
-    let ComparisonOperator = _prefix "ComparisonOperator"
-    /// <summary>
-    /// A SQL concatenation operator that returns the combination of two strings, expressions or values.
-    /// <see href="http://ns.inria.fr/ast/sql#Concatenation"></see></summary>
-    let Concatenation = _prefix "Concatenation"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#StringOperator"></see>
+    ///   <para>sql:ConnectStatement</para>
     /// </summary>
-    let StringOperator = _prefix "StringOperator"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL CONNECT statement.</para>
+    /// labels<para>Connect Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#ConnectStatement">http://ns.inria.fr/ast/sql#ConnectStatement</seealso>
+    let ConnectStatement = Prefixed_Name(sql, "ConnectStatement") |> PrefixedName
     /// <summary>
-    /// A SQL CONNECT statement.
-    /// <see href="http://ns.inria.fr/ast/sql#ConnectStatement"></see></summary>
-    let ConnectStatement = _prefix "ConnectStatement"
-    /// <summary>
-    /// A SQL session management statement.
-    /// <see href="http://ns.inria.fr/ast/sql#SessionManagementStatement"></see></summary>
-    let SessionManagementStatement = _prefix "SessionManagementStatement"
-    /// <summary>
-    /// The SQL aggregate function that returns the number of rows or non NULL values from the result set.
-    /// <see href="http://ns.inria.fr/ast/sql#Count"></see></summary>
-    let Count = _prefix "Count"
-    /// <summary>
-    /// A SQL CREATE statement.
-    /// <see href="http://ns.inria.fr/ast/sql#CreateStatement"></see></summary>
-    let CreateStatement = _prefix "CreateStatement"
-    /// <summary>
-    /// Join predicate used to perform the cross-product of two tables.
-    /// <see href="http://ns.inria.fr/ast/sql#CrossJoin"></see></summary>
-    let CrossJoin = _prefix "CrossJoin"
-    /// <summary>
-    /// Binary predicate used join two or more tables.
-    /// <see href="http://ns.inria.fr/ast/sql#JoinPredicate"></see></summary>
-    let JoinPredicate = _prefix "JoinPredicate"
-    /// <summary>
-    /// A SQL data manipulation statement.
-    /// <see href="http://ns.inria.fr/ast/sql#DataManipulationStatement"></see></summary>
-    let DataManipulationStatement = _prefix "DataManipulationStatement"
-    /// <summary>
-    /// A SQL scalar function returns a single value given the input values. The input value is of a SQL primitive data type.
-    /// <see href="http://ns.inria.fr/ast/sql#ScalarFunction"></see></summary>
-    let ScalarFunction = _prefix "ScalarFunction"
-    /// <summary>
-    /// A SQL date time function returns a date or time value or performs a specific date or time value computation.
-    /// <see href="http://ns.inria.fr/ast/sql#DateTimeFunction"></see></summary>
-    let DateTimeFunction = _prefix "DateTimeFunction"
-    /// <summary>
-    /// A SQL DELETE statement.
-    /// <see href="http://ns.inria.fr/ast/sql#DeleteStatement"></see></summary>
-    let DeleteStatement = _prefix "DeleteStatement"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#Div"></see>
+    ///   <para>sql:Count</para>
     /// </summary>
-    let Div = _prefix "Div"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The SQL aggregate function that returns the number of rows or non NULL values from the result set.</para>
+    /// labels<para>Count</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Count">http://ns.inria.fr/ast/sql#Count</seealso>
+    let Count = Prefixed_Name(sql, "Count") |> PrefixedName
     /// <summary>
-    /// A SQL DROP statement.
-    /// <see href="http://ns.inria.fr/ast/sql#DropStatement"></see></summary>
-    let DropStatement = _prefix "DropStatement"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#Equals"></see>
+    ///   <para>sql:CreateStatement</para>
     /// </summary>
-    let Equals = _prefix "Equals"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL CREATE statement.</para>
+    /// labels<para>Create Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#CreateStatement">http://ns.inria.fr/ast/sql#CreateStatement</seealso>
+    let CreateStatement = Prefixed_Name(sql, "CreateStatement") |> PrefixedName
     /// <summary>
-    /// A SQL exclusion operator used to return the result set produced by removing the result rows of the second query that appear in the result set of the first query.
-    /// <see href="http://ns.inria.fr/ast/sql#Except"></see></summary>
-    let Except = _prefix "Except"
-    /// <summary>
-    /// A SQL set operator used to perform set operation on the results of two or more queries.
-    /// <see href="http://ns.inria.fr/ast/sql#SetOperator"></see></summary>
-    let SetOperator = _prefix "SetOperator"
-    /// <summary>
-    /// Unary predicate that returns one of the TRUE or FALSE truth values depending on whether the evaluated subquery returns an empty result set.
-    /// <see href="http://ns.inria.fr/ast/sql#Exists"></see></summary>
-    let Exists = _prefix "Exists"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#FullOuterJoin"></see>
+    ///   <para>sql:RollbackStatement</para>
     /// </summary>
-    let FullOuterJoin = _prefix "FullOuterJoin"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL ROLLBACK statement.</para>
+    /// labels<para>Rollback Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#RollbackStatement">http://ns.inria.fr/ast/sql#RollbackStatement</seealso>
+    let RollbackStatement = Prefixed_Name(sql, "RollbackStatement") |> PrefixedName
     /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#OuterJoin"></see>
+    ///   <para>sql:Sequence</para>
     /// </summary>
-    let OuterJoin = _prefix "OuterJoin"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A reference or declarative statement for a catalog sequence.</para>
+    /// labels<para>Relational Sequence</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Sequence">http://ns.inria.fr/ast/sql#Sequence</seealso>
+    let Sequence = Prefixed_Name(sql, "Sequence") |> PrefixedName
     /// <summary>
-    /// A SQL function expressions consists in the use of any built-in SQL function.
-    /// <see href="http://ns.inria.fr/ast/sql#FunctionExpression"></see></summary>
-    let FunctionExpression = _prefix "FunctionExpression"
-    /// <summary>
-    /// A SQL GRANT statement used to give a set of privileges or roles to specified users that are actionable on specified database objects.
-    /// <see href="http://ns.inria.fr/ast/sql#Grant"></see></summary>
-    let Grant = _prefix "Grant"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#GreaterEquals"></see>
+    ///   <para>sql:SequenceIdentifier</para>
     /// </summary>
-    let GreaterEquals = _prefix "GreaterEquals"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A valid identifier for a catalog sequence.</para>
+    /// labels<para>Identifier</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#SequenceIdentifier">http://ns.inria.fr/ast/sql#SequenceIdentifier</seealso>
+    let SequenceIdentifier = Prefixed_Name(sql, "SequenceIdentifier") |> PrefixedName
     /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#GreaterThan"></see>
+    ///   <para>sql:Sum</para>
     /// </summary>
-    let GreaterThan = _prefix "GreaterThan"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The SQL aggregate function that returns the sum of the given expression.</para>
+    /// labels<para>Sum</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Sum">http://ns.inria.fr/ast/sql#Sum</seealso>
+    let Sum = Prefixed_Name(sql, "Sum") |> PrefixedName
     /// <summary>
-    /// A SQL import or export statement.
-    /// <see href="http://ns.inria.fr/ast/sql#IOStatement"></see></summary>
-    let IOStatement = _prefix "IOStatement"
-    /// <summary>
-    /// Variadic predicate used to assert whether the first provided expression's value is within the set of following provided expressions' values.
-    /// <see href="http://ns.inria.fr/ast/sql#In"></see></summary>
-    let In = _prefix "In"
-    /// <summary>
-    /// A reference or declarative statement for a catalog index.
-    /// <see href="http://ns.inria.fr/ast/sql#Index"></see></summary>
-    let Index = _prefix "Index"
-    /// <summary>
-    /// A valid identifier for a catalog index.
-    /// <see href="http://ns.inria.fr/ast/sql#IndexIdentifier"></see></summary>
-    let IndexIdentifier = _prefix "IndexIdentifier"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#InnerJoin"></see>
+    ///   <para>sql:Table</para>
     /// </summary>
-    let InnerJoin = _prefix "InnerJoin"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A reference or declarative statement for a catalog table.</para>
+    /// labels<para>Relational Table</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Table">http://ns.inria.fr/ast/sql#Table</seealso>
+    let Table = Prefixed_Name(sql, "Table") |> PrefixedName
     /// <summary>
-    /// A SQL INSERT statement.
-    /// <see href="http://ns.inria.fr/ast/sql#InsertStatement"></see></summary>
-    let InsertStatement = _prefix "InsertStatement"
-    /// <summary>
-    /// A SQL intersection operator used to return the common result rows of the combination of the result sets of two or more queries.
-    /// <see href="http://ns.inria.fr/ast/sql#Intersect"></see></summary>
-    let Intersect = _prefix "Intersect"
-    /// <summary>
-    /// Unary predicate that compares the evaluated expression's value with NULL
-    /// <see href="http://ns.inria.fr/ast/sql#IsNull"></see></summary>
-    let IsNull = _prefix "IsNull"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#LeftOuterJoin"></see>
+    ///   <para>sql:UpdateStatement</para>
     /// </summary>
-    let LeftOuterJoin = _prefix "LeftOuterJoin"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL UPDATE statement.</para>
+    /// labels<para>Update Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#UpdateStatement">http://ns.inria.fr/ast/sql#UpdateStatement</seealso>
+    let UpdateStatement = Prefixed_Name(sql, "UpdateStatement") |> PrefixedName
     /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#LessEquals"></see>
+    ///   <para>sql:User</para>
     /// </summary>
-    let LessEquals = _prefix "LessEquals"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A reference or declarative statement for a catalog user.</para>
+    /// labels<para>Relational User</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#User">http://ns.inria.fr/ast/sql#User</seealso>
+    let User = Prefixed_Name(sql, "User") |> PrefixedName
     /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#LessThan"></see>
+    ///   <para>sql:UserIdentifier</para>
     /// </summary>
-    let LessThan = _prefix "LessThan"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A valid identifier for a catalog user.</para>
+    /// labels<para>User Identifier</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#UserIdentifier">http://ns.inria.fr/ast/sql#UserIdentifier</seealso>
+    let UserIdentifier = Prefixed_Name(sql, "UserIdentifier") |> PrefixedName
     /// <summary>
-    /// Binary predicate that returns one of the TRUE or FALSE truth values depending on whether the string resulting in the evaluation of the first expression matches the lightweight regular expression described in the second expression.
-    /// <see href="http://ns.inria.fr/ast/sql#Like"></see></summary>
-    let Like = _prefix "Like"
-    /// <summary>
-    /// A SQL LOCK TABLE statement.
-    /// <see href="http://ns.inria.fr/ast/sql#LockTableStatement"></see></summary>
-    let LockTableStatement = _prefix "LockTableStatement"
-    /// <summary>
-    /// The SQL aggregate function that returns the maximum value of the given expression.
-    /// <see href="http://ns.inria.fr/ast/sql#Max"></see></summary>
-    let Max = _prefix "Max"
-    /// <summary>
-    /// The SQL aggregate function that returns the minimum value of the given expression.
-    /// <see href="http://ns.inria.fr/ast/sql#Min"></see></summary>
-    let Min = _prefix "Min"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#Minus"></see>
+    ///   <para>sql:clause</para>
     /// </summary>
-    let Minus = _prefix "Minus"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A SQL clause is a part of a statement.</para>
+    /// labels<para>Clause</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#clause">http://ns.inria.fr/ast/sql#clause</seealso>
+    let clause = Prefixed_Name(sql, "clause") |> PrefixedName
     /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#Mult"></see>
+    ///   <para>sql:from</para>
     /// </summary>
-    let Mult = _prefix "Mult"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The SQL clause that specifies the target sources (tables, views, subqueries) of a SELECT statement.</para>
+    /// labels<para>FROM clause</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#from">http://ns.inria.fr/ast/sql#from</seealso>
+    let from = Prefixed_Name(sql, "from") |> PrefixedName
     /// <summary>
-    /// A unary arithmetic operator used to produce the negative of its operand.
-    /// <see href="http://ns.inria.fr/ast/sql#Negate"></see></summary>
-    let Negate = _prefix "Negate"
-    /// <summary>
-    /// A SQL logical negation that can be used to negate any condition.
-    /// <see href="http://ns.inria.fr/ast/sql#Not"></see></summary>
-    let Not = _prefix "Not"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#NotEquals"></see>
+    ///   <para>sql:LogicalOperator</para>
     /// </summary>
-    let NotEquals = _prefix "NotEquals"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL logical connective used to perform logical calculation.</para>
+    /// labels<para>Logical Operator</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#LogicalOperator">http://ns.inria.fr/ast/sql#LogicalOperator</seealso>
+    let LogicalOperator = Prefixed_Name(sql, "LogicalOperator") |> PrefixedName
     /// <summary>
-    /// A SQL now function is a nullary function that returns the current timestamp.
-    /// <see href="http://ns.inria.fr/ast/sql#Now"></see></summary>
-    let Now = _prefix "Now"
-    /// <summary>
-    /// A SQL number function that returns a numeric value and reads numeric values or string with numeric characters.
-    /// <see href="http://ns.inria.fr/ast/sql#NumberFunction"></see></summary>
-    let NumberFunction = _prefix "NumberFunction"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#Or"></see>
+    ///   <para>sql:Predicate</para>
     /// </summary>
-    let Or = _prefix "Or"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Represents a collection of one or more expressions or subqueries, that may be combined with logical operators, and when evaluated returns one of the TRUE / FALSE / UNKNOWN truth values.</para>
+    /// labels<para>Predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Predicate">http://ns.inria.fr/ast/sql#Predicate</seealso>
+    let Predicate = Prefixed_Name(sql, "Predicate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#Plus"></see>
+    ///   <para>sql:Except</para>
     /// </summary>
-    let Plus = _prefix "Plus"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL exclusion operator used to return the result set produced by removing the result rows of the second query that appear in the result set of the first query.</para>
+    /// labels<para>Exclusion</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Except">http://ns.inria.fr/ast/sql#Except</seealso>
+    let Except = Prefixed_Name(sql, "Except") |> PrefixedName
     /// <summary>
-    /// A reference or declarative statement for a catalog procedure.
-    /// <see href="http://ns.inria.fr/ast/sql#Procedure"></see></summary>
-    let Procedure = _prefix "Procedure"
-    /// <summary>
-    /// A valid identifier for a catalog procedure.
-    /// <see href="http://ns.inria.fr/ast/sql#ProcedureIdentifier"></see></summary>
-    let ProcedureIdentifier = _prefix "ProcedureIdentifier"
-    /// <summary>
-    /// A SQL REVOKE statement used to revoke a set of privileges or roles to specified users from specified database objects.
-    /// <see href="http://ns.inria.fr/ast/sql#Revoke"></see></summary>
-    let Revoke = _prefix "Revoke"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/ast/sql#RightOuterJoin"></see>
+    ///   <para>sql:FunctionExpression</para>
     /// </summary>
-    let RightOuterJoin = _prefix "RightOuterJoin"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL function expressions consists in the use of any built-in SQL function.</para>
+    /// labels<para>Function Expression</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#FunctionExpression">http://ns.inria.fr/ast/sql#FunctionExpression</seealso>
+    let FunctionExpression = Prefixed_Name(sql, "FunctionExpression") |> PrefixedName
     /// <summary>
-    /// A reference or declarative statement for a catalog role.
-    /// <see href="http://ns.inria.fr/ast/sql#Role"></see></summary>
-    let Role = _prefix "Role"
+    ///   <para>sql:GreaterEquals</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Greater than or equal to comparison</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#GreaterEquals">http://ns.inria.fr/ast/sql#GreaterEquals</seealso>
+    let GreaterEquals = Prefixed_Name(sql, "GreaterEquals") |> PrefixedName
     /// <summary>
-    /// A valid identifier for a catalog role.
-    /// <see href="http://ns.inria.fr/ast/sql#RoleIdentifier"></see></summary>
-    let RoleIdentifier = _prefix "RoleIdentifier"
+    ///   <para>sql:Index</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A reference or declarative statement for a catalog index.</para>
+    /// labels<para>Relational Index</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Index">http://ns.inria.fr/ast/sql#Index</seealso>
+    let Index = Prefixed_Name(sql, "Index") |> PrefixedName
     /// <summary>
-    /// A SQL ROLLBACK statement.
-    /// <see href="http://ns.inria.fr/ast/sql#RollbackStatement"></see></summary>
-    let RollbackStatement = _prefix "RollbackStatement"
+    ///   <para>sql:InnerJoin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Inner Join Predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#InnerJoin">http://ns.inria.fr/ast/sql#InnerJoin</seealso>
+    let InnerJoin = Prefixed_Name(sql, "InnerJoin") |> PrefixedName
     /// <summary>
-    /// A reference or declarative statement for a catalog schema.
-    /// <see href="http://ns.inria.fr/ast/sql#Schema"></see></summary>
-    let Schema = _prefix "Schema"
+    ///   <para>sql:Intersect</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL intersection operator used to return the common result rows of the combination of the result sets of two or more queries.</para>
+    /// labels<para>Intersection</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Intersect">http://ns.inria.fr/ast/sql#Intersect</seealso>
+    let Intersect = Prefixed_Name(sql, "Intersect") |> PrefixedName
     /// <summary>
-    /// A valid identifier for a catalog schema.
-    /// <see href="http://ns.inria.fr/ast/sql#SchemaIdentifier"></see></summary>
-    let SchemaIdentifier = _prefix "SchemaIdentifier"
+    ///   <para>sql:LessEquals</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Less than or equal to comparison</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#LessEquals">http://ns.inria.fr/ast/sql#LessEquals</seealso>
+    let LessEquals = Prefixed_Name(sql, "LessEquals") |> PrefixedName
     /// <summary>
-    /// A SQL SELECT statement.
-    /// <see href="http://ns.inria.fr/ast/sql#SelectStatement"></see></summary>
-    let SelectStatement = _prefix "SelectStatement"
+    ///   <para>sql:LessThan</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Less than comparison</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#LessThan">http://ns.inria.fr/ast/sql#LessThan</seealso>
+    let LessThan = Prefixed_Name(sql, "LessThan") |> PrefixedName
     /// <summary>
-    /// A reference or declarative statement for a catalog sequence.
-    /// <see href="http://ns.inria.fr/ast/sql#Sequence"></see></summary>
-    let Sequence = _prefix "Sequence"
+    ///   <para>sql:Max</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The SQL aggregate function that returns the maximum value of the given expression.</para>
+    /// labels<para>Maximum</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Max">http://ns.inria.fr/ast/sql#Max</seealso>
+    let Max = Prefixed_Name(sql, "Max") |> PrefixedName
     /// <summary>
-    /// A valid identifier for a catalog sequence.
-    /// <see href="http://ns.inria.fr/ast/sql#SequenceIdentifier"></see></summary>
-    let SequenceIdentifier = _prefix "SequenceIdentifier"
+    ///   <para>sql:Min</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The SQL aggregate function that returns the minimum value of the given expression.</para>
+    /// labels<para>Minimum</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Min">http://ns.inria.fr/ast/sql#Min</seealso>
+    let Min = Prefixed_Name(sql, "Min") |> PrefixedName
     /// <summary>
-    /// Assigns a value to a session variable identifier.
-    /// <see href="http://ns.inria.fr/ast/sql#SetStatement"></see></summary>
-    let SetStatement = _prefix "SetStatement"
+    ///   <para>sql:Not</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL logical negation that can be used to negate any condition.</para>
+    /// labels<para>Logical Negation</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Not">http://ns.inria.fr/ast/sql#Not</seealso>
+    let Not = Prefixed_Name(sql, "Not") |> PrefixedName
     /// <summary>
-    /// The SQL aggregate function that returns the standard deviation (square root of the variance) of the given expression.
-    /// <see href="http://ns.inria.fr/ast/sql#StdDev"></see></summary>
-    let StdDev = _prefix "StdDev"
+    ///   <para>sql:Or</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Logical Disjunction</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Or">http://ns.inria.fr/ast/sql#Or</seealso>
+    let Or = Prefixed_Name(sql, "Or") |> PrefixedName
     /// <summary>
-    /// The SQL aggregate function that returns the sum of the given expression.
-    /// <see href="http://ns.inria.fr/ast/sql#Sum"></see></summary>
-    let Sum = _prefix "Sum"
+    ///   <para>sql:Operator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL operator used to perform arithmetic calculations, comparisons or value assignments.</para>
+    /// labels<para>Operator</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Operator">http://ns.inria.fr/ast/sql#Operator</seealso>
+    let Operator = Prefixed_Name(sql, "Operator") |> PrefixedName
     /// <summary>
-    /// A reference or declarative statement for a catalog table.
-    /// <see href="http://ns.inria.fr/ast/sql#Table"></see></summary>
-    let Table = _prefix "Table"
+    ///   <para>sql:And</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Logical Conjunction</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#And">http://ns.inria.fr/ast/sql#And</seealso>
+    let And = Prefixed_Name(sql, "And") |> PrefixedName
     /// <summary>
-    /// A SQL function that returns a virtual table.
-    /// <see href="http://ns.inria.fr/ast/sql#TableFunction"></see></summary>
-    let TableFunction = _prefix "TableFunction"
+    ///   <para>sql:ArithmeticOperator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL arithmetic operator used to perform arithmetic calculation.</para>
+    /// labels<para>Arithmetic Operator</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#ArithmeticOperator">http://ns.inria.fr/ast/sql#ArithmeticOperator</seealso>
+    let ArithmeticOperator = Prefixed_Name(sql, "ArithmeticOperator") |> PrefixedName
     /// <summary>
-    /// A valid identifier for a catalog table.
-    /// <see href="http://ns.inria.fr/ast/sql#TableIdentifier"></see></summary>
-    let TableIdentifier = _prefix "TableIdentifier"
+    ///   <para>sql:Between</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Ternary predicate used to assert whether a provided expression's value is within the range specified by two other expressions' values.</para>
+    /// labels<para>Range predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Between">http://ns.inria.fr/ast/sql#Between</seealso>
+    let Between = Prefixed_Name(sql, "Between") |> PrefixedName
+
     /// <summary>
-    /// A SQL union operator used to return the combination of the result sets of two or more queries.
-    /// <see href="http://ns.inria.fr/ast/sql#Union"></see></summary>
-    let Union = _prefix "Union"
+    ///   <para>sql:DataTypeConversionFunction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL scalar function.</para>
+    /// labels<para>Data Type Conversion Function</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#DataTypeConversionFunction">http://ns.inria.fr/ast/sql#DataTypeConversionFunction</seealso>
+    let DataTypeConversionFunction =
+        Prefixed_Name(sql, "DataTypeConversionFunction") |> PrefixedName
+
     /// <summary>
-    /// A SQL union operator used to return the combination of the result sets of two or more queries, including duplicate result rows.
-    /// <see href="http://ns.inria.fr/ast/sql#UnionAll"></see></summary>
-    let UnionAll = _prefix "UnionAll"
+    ///   <para>sql:All</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The SQL '*' wildcard operator, substitutes to all the columns of the tables in the FROM clause.</para>
+    /// labels<para>All</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#All">http://ns.inria.fr/ast/sql#All</seealso>
+    let All = Prefixed_Name(sql, "All") |> PrefixedName
     /// <summary>
-    /// A SQL UPDATE statement.
-    /// <see href="http://ns.inria.fr/ast/sql#UpdateStatement"></see></summary>
-    let UpdateStatement = _prefix "UpdateStatement"
+    ///   <para>sql:Avg</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The SQL aggregate function that returns the mean of the given expression.</para>
+    /// labels<para>Average</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Avg">http://ns.inria.fr/ast/sql#Avg</seealso>
+    let Avg = Prefixed_Name(sql, "Avg") |> PrefixedName
     /// <summary>
-    /// A reference or declarative statement for a catalog user.
-    /// <see href="http://ns.inria.fr/ast/sql#User"></see></summary>
-    let User = _prefix "User"
+    ///   <para>sql:CallStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL CALL statement.</para>
+    /// labels<para>Call Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#CallStatement">http://ns.inria.fr/ast/sql#CallStatement</seealso>
+    let CallStatement = Prefixed_Name(sql, "CallStatement") |> PrefixedName
     /// <summary>
-    /// A valid identifier for a catalog user.
-    /// <see href="http://ns.inria.fr/ast/sql#UserIdentifier"></see></summary>
-    let UserIdentifier = _prefix "UserIdentifier"
+    ///   <para>sql:CaseExpression</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL case expression enables the use of the IF &lt;condition&gt; THEN &lt;consequent&gt; ELSE &lt;alternative&gt; logic within SQL statements.</para>
+    /// labels<para>Case Expression</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#CaseExpression">http://ns.inria.fr/ast/sql#CaseExpression</seealso>
+    let CaseExpression = Prefixed_Name(sql, "CaseExpression") |> PrefixedName
     /// <summary>
-    /// The SQL aggregate function that returns the variance of the given expression.
-    /// <see href="http://ns.inria.fr/ast/sql#Var"></see></summary>
-    let Var = _prefix "Var"
+    ///   <para>sql:CatalogObject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A database catalog object reference.</para>
+    /// labels<para>Database Catalog Object</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#CatalogObject">http://ns.inria.fr/ast/sql#CatalogObject</seealso>
+    let CatalogObject = Prefixed_Name(sql, "CatalogObject") |> PrefixedName
     /// <summary>
-    /// A reference or declarative statement for a catalog view.
-    /// <see href="http://ns.inria.fr/ast/sql#View"></see></summary>
-    let View = _prefix "View"
+    ///   <para>sql:ObjectIdentifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A database catalog object identifier, qualified or not.</para>
+    /// labels<para>Database Catalog Object Identifier</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#ObjectIdentifier">http://ns.inria.fr/ast/sql#ObjectIdentifier</seealso>
+    let ObjectIdentifier = Prefixed_Name(sql, "ObjectIdentifier") |> PrefixedName
     /// <summary>
-    /// A valid identifier for a catalog view.
-    /// <see href="http://ns.inria.fr/ast/sql#ViewIdentifier"></see></summary>
-    let ViewIdentifier = _prefix "ViewIdentifier"
+    ///   <para>sql:NotEquals</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Difference comparison</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#NotEquals">http://ns.inria.fr/ast/sql#NotEquals</seealso>
+    let NotEquals = Prefixed_Name(sql, "NotEquals") |> PrefixedName
     /// <summary>
-    /// The generic predicate used to attach an ordered list of children to any AST node.
-    /// <see href="http://ns.inria.fr/ast/sql#args"></see></summary>
-    let args = _prefix "args"
+    ///   <para>sql:Plus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Addition</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Plus">http://ns.inria.fr/ast/sql#Plus</seealso>
+    let Plus = Prefixed_Name(sql, "Plus") |> PrefixedName
     /// <summary>
-    /// A SQL clause is a part of a statement.
-    /// <see href="http://ns.inria.fr/ast/sql#clause"></see></summary>
-    let clause = _prefix "clause"
+    ///   <para>sql:ProcedureIdentifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A valid identifier for a catalog procedure.</para>
+    /// labels<para>Procedure Identifier</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#ProcedureIdentifier">http://ns.inria.fr/ast/sql#ProcedureIdentifier</seealso>
+    let ProcedureIdentifier = Prefixed_Name(sql, "ProcedureIdentifier") |> PrefixedName
     /// <summary>
-    /// The SQL clause that specifies the target sources (tables, views, subqueries) of a SELECT statement.
-    /// <see href="http://ns.inria.fr/ast/sql#from"></see></summary>
-    let from = _prefix "from"
+    ///   <para>sql:RoleIdentifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A valid identifier for a catalog role.</para>
+    /// labels<para>Role Identifier</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#RoleIdentifier">http://ns.inria.fr/ast/sql#RoleIdentifier</seealso>
+    let RoleIdentifier = Prefixed_Name(sql, "RoleIdentifier") |> PrefixedName
     /// <summary>
-    /// The SQL clause that specifies the columns whose values will be considered to cluster the result set of selected rows.
-    /// <see href="http://ns.inria.fr/ast/sql#groupBy"></see></summary>
-    let groupBy = _prefix "groupBy"
+    ///   <para>sql:Schema</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A reference or declarative statement for a catalog schema.</para>
+    /// labels<para>Relational Schema</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Schema">http://ns.inria.fr/ast/sql#Schema</seealso>
+    let Schema = Prefixed_Name(sql, "Schema") |> PrefixedName
     /// <summary>
-    /// The SQL clause that specifies the filtering predicates to apply on the clustered result set resulting of a GROUP BY clause.
-    /// <see href="http://ns.inria.fr/ast/sql#having"></see></summary>
-    let having = _prefix "having"
+    ///   <para>sql:DeleteStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL DELETE statement.</para>
+    /// labels<para>Delete Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#DeleteStatement">http://ns.inria.fr/ast/sql#DeleteStatement</seealso>
+    let DeleteStatement = Prefixed_Name(sql, "DeleteStatement") |> PrefixedName
     /// <summary>
-    /// The SQL clause that specifies into which table the following values or select statement's result set are to be inserted into.
-    /// <see href="http://ns.inria.fr/ast/sql#into"></see></summary>
-    let into = _prefix "into"
+    ///   <para>sql:Equals</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Equality comparison</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Equals">http://ns.inria.fr/ast/sql#Equals</seealso>
+    let Equals = Prefixed_Name(sql, "Equals") |> PrefixedName
     /// <summary>
-    /// The SQL clause that limits the number of records from the result set that should be returned.
-    /// <see href="http://ns.inria.fr/ast/sql#limit"></see></summary>
-    let limit = _prefix "limit"
+    ///   <para>sql:Grant</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL GRANT statement used to give a set of privileges or roles to specified users that are actionable on specified database objects.</para>
+    /// labels<para>Grant Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Grant">http://ns.inria.fr/ast/sql#Grant</seealso>
+    let Grant = Prefixed_Name(sql, "Grant") |> PrefixedName
     /// <summary>
-    /// The SQL clause that specifies how to order the result set's records according to given expressions.
-    /// <see href="http://ns.inria.fr/ast/sql#orderBy"></see></summary>
-    let orderBy = _prefix "orderBy"
+    ///   <para>sql:In</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Variadic predicate used to assert whether the first provided expression's value is within the set of following provided expressions' values.</para>
+    /// labels<para>In predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#In">http://ns.inria.fr/ast/sql#In</seealso>
+    let In = Prefixed_Name(sql, "In") |> PrefixedName
     /// <summary>
-    /// The SQL clause that specifies the projected tables of a SELECT statement.
-    /// <see href="http://ns.inria.fr/ast/sql#select"></see></summary>
-    let select = _prefix "select"
+    ///   <para>sql:ProceduralStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL procedural statement.</para>
+    /// labels<para>Procedural Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#ProceduralStatement">http://ns.inria.fr/ast/sql#ProceduralStatement</seealso>
+    let ProceduralStatement = Prefixed_Name(sql, "ProceduralStatement") |> PrefixedName
     /// <summary>
-    /// The SQL clause that specifies a list of values or expressions evaluating to values.
-    /// <see href="http://ns.inria.fr/ast/sql#values"></see></summary>
-    let values = _prefix "values"
+    ///   <para>sql:FullOuterJoin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Full Outer Join Predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#FullOuterJoin">http://ns.inria.fr/ast/sql#FullOuterJoin</seealso>
+    let FullOuterJoin = Prefixed_Name(sql, "FullOuterJoin") |> PrefixedName
     /// <summary>
-    /// The SQL clause that specifies the filtering predicates to apply on the inputs of the FROM clause.
-    /// <see href="http://ns.inria.fr/ast/sql#where"></see></summary>
-    let where = _prefix "where"
+    ///   <para>sql:GreaterThan</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Greater than comparison</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#GreaterThan">http://ns.inria.fr/ast/sql#GreaterThan</seealso>
+    let GreaterThan = Prefixed_Name(sql, "GreaterThan") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:ColumnIdentifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A valid identifier for a catalog column.</para>
+    /// labels<para>Column Identifier</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#ColumnIdentifier">http://ns.inria.fr/ast/sql#ColumnIdentifier</seealso>
+    let ColumnIdentifier = Prefixed_Name(sql, "ColumnIdentifier") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Concatenation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL concatenation operator that returns the combination of two strings, expressions or values.</para>
+    /// labels<para>Concatenation</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Concatenation">http://ns.inria.fr/ast/sql#Concatenation</seealso>
+    let Concatenation = Prefixed_Name(sql, "Concatenation") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:CrossJoin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Join predicate used to perform the cross-product of two tables.</para>
+    /// labels<para>Cross Join Predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#CrossJoin">http://ns.inria.fr/ast/sql#CrossJoin</seealso>
+    let CrossJoin = Prefixed_Name(sql, "CrossJoin") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:groupBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The SQL clause that specifies the columns whose values will be considered to cluster the result set of selected rows.</para>
+    /// labels<para>GROUP BY clause</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#groupBy">http://ns.inria.fr/ast/sql#groupBy</seealso>
+    let groupBy = Prefixed_Name(sql, "groupBy") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:values</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The SQL clause that specifies a list of values or expressions evaluating to values.</para>
+    /// labels<para>VALUES list Clause</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#values">http://ns.inria.fr/ast/sql#values</seealso>
+    let values = Prefixed_Name(sql, "values") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///
+    /// labels<para>SQL Abstract Syntax Trees Vocabulary</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#">http://ns.inria.fr/ast/sql#</seealso>
+    let _prefix_iri = Prefixed_Name(sql, "") |> PrefixedName
+
+    /// <summary>
+    ///   <para>sql:AccessControlStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL access control statement.</para>
+    /// labels<para>Access Control Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#AccessControlStatement">http://ns.inria.fr/ast/sql#AccessControlStatement</seealso>
+    let AccessControlStatement =
+        Prefixed_Name(sql, "AccessControlStatement") |> PrefixedName
+
+    /// <summary>
+    ///   <para>sql:Statement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL statement.</para>
+    /// labels<para>Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Statement">http://ns.inria.fr/ast/sql#Statement</seealso>
+    let Statement = Prefixed_Name(sql, "Statement") |> PrefixedName
+
+    /// <summary>
+    ///   <para>sql:AggregationExpression</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL aggregation expression consists in the use of an aggregate function.</para>
+    /// labels<para>Aggregation Expression</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#AggregationExpression">http://ns.inria.fr/ast/sql#AggregationExpression</seealso>
+    let AggregationExpression =
+        Prefixed_Name(sql, "AggregationExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>sql:Expression</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL expression denotes any clause that when evaluated returns values.</para>
+    /// labels<para>Expression</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Expression">http://ns.inria.fr/ast/sql#Expression</seealso>
+    let Expression = Prefixed_Name(sql, "Expression") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Alias</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The SQL AS operator used to give an identifier to an expression.</para>
+    /// labels<para>Alias</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Alias">http://ns.inria.fr/ast/sql#Alias</seealso>
+    let Alias = Prefixed_Name(sql, "Alias") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:AlterStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL ALTER statement.</para>
+    /// labels<para>Alter Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#AlterStatement">http://ns.inria.fr/ast/sql#AlterStatement</seealso>
+    let AlterStatement = Prefixed_Name(sql, "AlterStatement") |> PrefixedName
+
+    /// <summary>
+    ///   <para>sql:DataDefinitionStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL data definition statement.</para>
+    /// labels<para>Data Definition Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#DataDefinitionStatement">http://ns.inria.fr/ast/sql#DataDefinitionStatement</seealso>
+    let DataDefinitionStatement =
+        Prefixed_Name(sql, "DataDefinitionStatement") |> PrefixedName
+
+    /// <summary>
+    ///   <para>sql:ComparisonOperator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A binary operator used to compare two values, and when evaluated returns one of the TRUE / FALSE / UNKNOWN truth values.</para>
+    /// labels<para>Comparison Operator</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#ComparisonOperator">http://ns.inria.fr/ast/sql#ComparisonOperator</seealso>
+    let ComparisonOperator = Prefixed_Name(sql, "ComparisonOperator") |> PrefixedName
+
+    /// <summary>
+    ///   <para>sql:SessionManagementStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL session management statement.</para>
+    /// labels<para>Session Management Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#SessionManagementStatement">http://ns.inria.fr/ast/sql#SessionManagementStatement</seealso>
+    let SessionManagementStatement =
+        Prefixed_Name(sql, "SessionManagementStatement") |> PrefixedName
+
+    /// <summary>
+    ///   <para>sql:JoinPredicate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Binary predicate used join two or more tables.</para>
+    /// labels<para>Join Predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#JoinPredicate">http://ns.inria.fr/ast/sql#JoinPredicate</seealso>
+    let JoinPredicate = Prefixed_Name(sql, "JoinPredicate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>sql:DataManipulationStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL data manipulation statement.</para>
+    /// labels<para>Data Manipulation Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#DataManipulationStatement">http://ns.inria.fr/ast/sql#DataManipulationStatement</seealso>
+    let DataManipulationStatement =
+        Prefixed_Name(sql, "DataManipulationStatement") |> PrefixedName
+
+    /// <summary>
+    ///   <para>sql:ScalarFunction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL scalar function returns a single value given the input values. The input value is of a SQL primitive data type.</para>
+    /// labels<para>Scalar Function</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#ScalarFunction">http://ns.inria.fr/ast/sql#ScalarFunction</seealso>
+    let ScalarFunction = Prefixed_Name(sql, "ScalarFunction") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:DateTimeFunction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL date time function returns a date or time value or performs a specific date or time value computation.</para>
+    /// labels<para>Date Time Computation Function</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#DateTimeFunction">http://ns.inria.fr/ast/sql#DateTimeFunction</seealso>
+    let DateTimeFunction = Prefixed_Name(sql, "DateTimeFunction") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Div</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Division</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Div">http://ns.inria.fr/ast/sql#Div</seealso>
+    let Div = Prefixed_Name(sql, "Div") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:DropStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL DROP statement.</para>
+    /// labels<para>Drop Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#DropStatement">http://ns.inria.fr/ast/sql#DropStatement</seealso>
+    let DropStatement = Prefixed_Name(sql, "DropStatement") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:SetOperator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL set operator used to perform set operation on the results of two or more queries.</para>
+    /// labels<para>Set Operator</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#SetOperator">http://ns.inria.fr/ast/sql#SetOperator</seealso>
+    let SetOperator = Prefixed_Name(sql, "SetOperator") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Exists</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Unary predicate that returns one of the TRUE or FALSE truth values depending on whether the evaluated subquery returns an empty result set.</para>
+    /// labels<para>Exists predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Exists">http://ns.inria.fr/ast/sql#Exists</seealso>
+    let Exists = Prefixed_Name(sql, "Exists") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:OuterJoin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Outer Join Predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#OuterJoin">http://ns.inria.fr/ast/sql#OuterJoin</seealso>
+    let OuterJoin = Prefixed_Name(sql, "OuterJoin") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:IOStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL import or export statement.</para>
+    /// labels<para>Import / Export Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#IOStatement">http://ns.inria.fr/ast/sql#IOStatement</seealso>
+    let IOStatement = Prefixed_Name(sql, "IOStatement") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:IndexIdentifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A valid identifier for a catalog index.</para>
+    /// labels<para>Index Identifier</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#IndexIdentifier">http://ns.inria.fr/ast/sql#IndexIdentifier</seealso>
+    let IndexIdentifier = Prefixed_Name(sql, "IndexIdentifier") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:InsertStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL INSERT statement.</para>
+    /// labels<para>Insert Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#InsertStatement">http://ns.inria.fr/ast/sql#InsertStatement</seealso>
+    let InsertStatement = Prefixed_Name(sql, "InsertStatement") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:IsNull</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Unary predicate that compares the evaluated expression's value with NULL</para>
+    /// labels<para>Is Null predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#IsNull">http://ns.inria.fr/ast/sql#IsNull</seealso>
+    let IsNull = Prefixed_Name(sql, "IsNull") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:LeftOuterJoin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Left Outer Join Predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#LeftOuterJoin">http://ns.inria.fr/ast/sql#LeftOuterJoin</seealso>
+    let LeftOuterJoin = Prefixed_Name(sql, "LeftOuterJoin") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Like</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Binary predicate that returns one of the TRUE or FALSE truth values depending on whether the string resulting in the evaluation of the first expression matches the lightweight regular expression described in the second expression.</para>
+    /// labels<para>Like predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Like">http://ns.inria.fr/ast/sql#Like</seealso>
+    let Like = Prefixed_Name(sql, "Like") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:LockTableStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL LOCK TABLE statement.</para>
+    /// labels<para>Lock Table Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#LockTableStatement">http://ns.inria.fr/ast/sql#LockTableStatement</seealso>
+    let LockTableStatement = Prefixed_Name(sql, "LockTableStatement") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Minus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Subtraction</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Minus">http://ns.inria.fr/ast/sql#Minus</seealso>
+    let Minus = Prefixed_Name(sql, "Minus") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Mult</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Multiplication</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Mult">http://ns.inria.fr/ast/sql#Mult</seealso>
+    let Mult = Prefixed_Name(sql, "Mult") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Negate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A unary arithmetic operator used to produce the negative of its operand.</para>
+    /// labels<para>Negation</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Negate">http://ns.inria.fr/ast/sql#Negate</seealso>
+    let Negate = Prefixed_Name(sql, "Negate") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Now</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL now function is a nullary function that returns the current timestamp.</para>
+    /// labels<para>Now</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Now">http://ns.inria.fr/ast/sql#Now</seealso>
+    let Now = Prefixed_Name(sql, "Now") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:NumberFunction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL number function that returns a numeric value and reads numeric values or string with numeric characters.</para>
+    /// labels<para>Number Function</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#NumberFunction">http://ns.inria.fr/ast/sql#NumberFunction</seealso>
+    let NumberFunction = Prefixed_Name(sql, "NumberFunction") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Procedure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A reference or declarative statement for a catalog procedure.</para>
+    /// labels<para>Relational Procedure</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Procedure">http://ns.inria.fr/ast/sql#Procedure</seealso>
+    let Procedure = Prefixed_Name(sql, "Procedure") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Revoke</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL REVOKE statement used to revoke a set of privileges or roles to specified users from specified database objects.</para>
+    /// labels<para>Revoke Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Revoke">http://ns.inria.fr/ast/sql#Revoke</seealso>
+    let Revoke = Prefixed_Name(sql, "Revoke") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:RightOuterJoin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Right Outer Join Predicate</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#RightOuterJoin">http://ns.inria.fr/ast/sql#RightOuterJoin</seealso>
+    let RightOuterJoin = Prefixed_Name(sql, "RightOuterJoin") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Role</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A reference or declarative statement for a catalog role.</para>
+    /// labels<para>Relational Role</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Role">http://ns.inria.fr/ast/sql#Role</seealso>
+    let Role = Prefixed_Name(sql, "Role") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:SchemaIdentifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A valid identifier for a catalog schema.</para>
+    /// labels<para>Schema Identifier</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#SchemaIdentifier">http://ns.inria.fr/ast/sql#SchemaIdentifier</seealso>
+    let SchemaIdentifier = Prefixed_Name(sql, "SchemaIdentifier") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:SelectStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL SELECT statement.</para>
+    /// labels<para>Select Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#SelectStatement">http://ns.inria.fr/ast/sql#SelectStatement</seealso>
+    let SelectStatement = Prefixed_Name(sql, "SelectStatement") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:SetStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Assigns a value to a session variable identifier.</para>
+    /// labels<para>Set Statement</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#SetStatement">http://ns.inria.fr/ast/sql#SetStatement</seealso>
+    let SetStatement = Prefixed_Name(sql, "SetStatement") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:StdDev</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The SQL aggregate function that returns the standard deviation (square root of the variance) of the given expression.</para>
+    /// labels<para>Standard Deviation</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#StdDev">http://ns.inria.fr/ast/sql#StdDev</seealso>
+    let StdDev = Prefixed_Name(sql, "StdDev") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:TableFunction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL function that returns a virtual table.</para>
+    /// labels<para>Table Function</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#TableFunction">http://ns.inria.fr/ast/sql#TableFunction</seealso>
+    let TableFunction = Prefixed_Name(sql, "TableFunction") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:TableIdentifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A valid identifier for a catalog table.</para>
+    /// labels<para>Table Identifier</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#TableIdentifier">http://ns.inria.fr/ast/sql#TableIdentifier</seealso>
+    let TableIdentifier = Prefixed_Name(sql, "TableIdentifier") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Union</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL union operator used to return the combination of the result sets of two or more queries.</para>
+    /// labels<para>Union</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Union">http://ns.inria.fr/ast/sql#Union</seealso>
+    let Union = Prefixed_Name(sql, "Union") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:UnionAll</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A SQL union operator used to return the combination of the result sets of two or more queries, including duplicate result rows.</para>
+    /// labels<para>Union All</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#UnionAll">http://ns.inria.fr/ast/sql#UnionAll</seealso>
+    let UnionAll = Prefixed_Name(sql, "UnionAll") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:Var</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The SQL aggregate function that returns the variance of the given expression.</para>
+    /// labels<para>Variance</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#Var">http://ns.inria.fr/ast/sql#Var</seealso>
+    let Var = Prefixed_Name(sql, "Var") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:View</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A reference or declarative statement for a catalog view.</para>
+    /// labels<para>Relational View</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#View">http://ns.inria.fr/ast/sql#View</seealso>
+    let View = Prefixed_Name(sql, "View") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:ViewIdentifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A valid identifier for a catalog view.</para>
+    /// labels<para>View Identifier</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#ViewIdentifier">http://ns.inria.fr/ast/sql#ViewIdentifier</seealso>
+    let ViewIdentifier = Prefixed_Name(sql, "ViewIdentifier") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:args</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The generic predicate used to attach an ordered list of children to any AST node.</para>
+    /// labels<para>AST Node Arguments</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#args">http://ns.inria.fr/ast/sql#args</seealso>
+    let args = Prefixed_Name(sql, "args") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:having</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The SQL clause that specifies the filtering predicates to apply on the clustered result set resulting of a GROUP BY clause.</para>
+    /// labels<para>HAVING clause</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#having">http://ns.inria.fr/ast/sql#having</seealso>
+    let having = Prefixed_Name(sql, "having") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:into</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The SQL clause that specifies into which table the following values or select statement's result set are to be inserted into.</para>
+    /// labels<para>INTO target table clause</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#into">http://ns.inria.fr/ast/sql#into</seealso>
+    let into = Prefixed_Name(sql, "into") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:limit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The SQL clause that limits the number of records from the result set that should be returned.</para>
+    /// labels<para>LIMIT clause</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#limit">http://ns.inria.fr/ast/sql#limit</seealso>
+    let limit = Prefixed_Name(sql, "limit") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:orderBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The SQL clause that specifies how to order the result set's records according to given expressions.</para>
+    /// labels<para>ORDER BY clause</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#orderBy">http://ns.inria.fr/ast/sql#orderBy</seealso>
+    let orderBy = Prefixed_Name(sql, "orderBy") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:select</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The SQL clause that specifies the projected tables of a SELECT statement.</para>
+    /// labels<para>SELECT clause</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#select">http://ns.inria.fr/ast/sql#select</seealso>
+    let select = Prefixed_Name(sql, "select") |> PrefixedName
+    /// <summary>
+    ///   <para>sql:where</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The SQL clause that specifies the filtering predicates to apply on the inputs of the FROM clause.</para>
+    /// labels<para>WHERE clause</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ast/sql#where">http://ns.inria.fr/ast/sql#where</seealso>
+    let where = Prefixed_Name(sql, "where") |> PrefixedName

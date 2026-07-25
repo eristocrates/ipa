@@ -1,86 +1,191 @@
 namespace http.data.press.net.ontology.stuff.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module pns =
-    let _namespace_name = "http://data.press.net/ontology/stuff/"
+    let _namespace_iri = Namespace_Iri pns |> NamespaceIRI
+    /// <summary>
+    ///   <para>pns:Stuff</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Generic Stuff Class  - a base class for all domain stuff</para>
+    /// labels<para>Generic Stuff Class</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/Stuff">http://data.press.net/ontology/stuff/Stuff</seealso>
+    let Stuff = Prefixed_Name(pns, "Stuff") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:dateOfBirth</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Property of a Person. A person's date of birth</para>
+    /// labels<para>A person's date of birth</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/dateOfBirth">http://data.press.net/ontology/stuff/dateOfBirth</seealso>
+    let dateOfBirth = Prefixed_Name(pns, "dateOfBirth") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:dateOfDeath</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Property of a Person. A person's date of death</para>
+    /// labels<para>A person's date of death</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/dateOfDeath">http://data.press.net/ontology/stuff/dateOfDeath</seealso>
+    let dateOfDeath = Prefixed_Name(pns, "dateOfDeath") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:hasImage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Property that associates images with domain entities, e.g. official photograph, corporate logo</para>
+    /// labels<para>Property that associates images with domain entities.</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/hasImage">http://data.press.net/ontology/stuff/hasImage</seealso>
+    let hasImage = Prefixed_Name(pns, "hasImage") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:Intangible</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A base class for all intangible stuff (eg love, conservatism, fashion)</para>
+    /// labels<para>A base class for Intangible Stuff</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/Intangible">http://data.press.net/ontology/stuff/Intangible</seealso>
+    let Intangible = Prefixed_Name(pns, "Intangible") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:Tangible</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A base class for all tangible stuff (eg people, places, physical things)</para>
+    /// labels<para>A base Class for Tangible Stuff</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/Tangible">http://data.press.net/ontology/stuff/Tangible</seealso>
+    let Tangible = Prefixed_Name(pns, "Tangible") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:alias</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>String property that indicates an alias of a Stuff instance. For example 'Television' might have an alias of 'TV'.</para>
+    /// labels<para>An alias label of a Stuff instance</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/alias">http://data.press.net/ontology/stuff/alias</seealso>
+    let alias = Prefixed_Name(pns, "alias") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:hasAsset</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Property that associates assets directly with domain entities, e.g. official biography, corporate logo</para>
+    /// labels<para>Property that associates assets directly with domain entities.</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/hasAsset">http://data.press.net/ontology/stuff/hasAsset</seealso>
+    let hasAsset = Prefixed_Name(pns, "hasAsset") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:parentLocation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Property of a Location. References the parent location of this location</para>
+    /// labels<para>A parent location</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/parentLocation">http://data.press.net/ontology/stuff/parentLocation</seealso>
+    let parentLocation = Prefixed_Name(pns, "parentLocation") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:label</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>String property that indicates the definitive label of a Stuff instance. This might be the full name of a Person, Organization or something Intangible</para>
+    /// labels<para>The definitive label of a Stuff instance</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/label">http://data.press.net/ontology/stuff/label</seealso>
+    let label = Prefixed_Name(pns, "label") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:longName</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>String property that indicates the long name of a Person or Organization via foaf:Agent. Also infers Stuff label via pns:label. For example 'Manchester United F.C.'</para>
+    /// labels<para>A long name of a Person or Organization</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/longName">http://data.press.net/ontology/stuff/longName</seealso>
+    let longName = Prefixed_Name(pns, "longName") |> PrefixedName
+    /// <summary>
+    ///   <para>pns:name</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>String property that indicates the definitive full name of a Person or Organization via foaf:Agent. Also infers Stuff label via pns:label</para>
+    /// labels<para>The definitive name of a Person or Organization</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/name">http://data.press.net/ontology/stuff/name</seealso>
+    let name = Prefixed_Name(pns, "name") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>pns:notablyAssociatedWith</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Property that notably associates stuff together, for example Karl Lagerfeld is notably associated with Fashion</para>
+    /// labels<para>Property that notably associates stuff together</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/notablyAssociatedWith">http://data.press.net/ontology/stuff/notablyAssociatedWith</seealso>
+    let notablyAssociatedWith =
+        Prefixed_Name(pns, "notablyAssociatedWith") |> PrefixedName
 
     /// <summary>
-    /// A base class for all intangible stuff (eg love, conservatism, fashion)
-    /// <see href="http://data.press.net/ontology/stuff/Intangible"></see></summary>
-    let Intangible = _prefix "Intangible"
+    ///   <para>pns:placeOfBirth</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Property of a Person. A person's place of birth</para>
+    /// labels<para>A person's place of birth</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/placeOfBirth">http://data.press.net/ontology/stuff/placeOfBirth</seealso>
+    let placeOfBirth = Prefixed_Name(pns, "placeOfBirth") |> PrefixedName
     /// <summary>
-    /// Generic Stuff Class  - a base class for all domain stuff
-    /// <see href="http://data.press.net/ontology/stuff/Stuff"></see></summary>
-    let Stuff = _prefix "Stuff"
+    ///   <para>pns:shortName</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>String property that indicates the short name of a Person or Organization via foaf:Agent. Also infers Stuff label via pns:label. For example 'Man Utd'</para>
+    /// labels<para>A short name of a Person or Organization</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/shortName">http://data.press.net/ontology/stuff/shortName</seealso>
+    let shortName = Prefixed_Name(pns, "shortName") |> PrefixedName
     /// <summary>
-    /// A Location - a base class for Locations. Also a subclass of geo:SpatialThing
-    /// <see href="http://data.press.net/ontology/stuff/Location"></see></summary>
-    let Location = _prefix "Location"
+    ///   <para>pns:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>The Stuff Ontology models real world entities. There are two kinds of stuff: tangibles and intangibles. Tangible stuff includes persons, locations and organizations. Intangibles are abstract concepts such as smoking, feminism or love.</para>
+    /// </remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/">http://data.press.net/ontology/stuff/</seealso>
+    let _prefix_iri = Prefixed_Name(pns, "") |> PrefixedName
     /// <summary>
-    /// A base class for all tangible stuff (eg people, places, physical things)
-    /// <see href="http://data.press.net/ontology/stuff/Tangible"></see></summary>
-    let Tangible = _prefix "Tangible"
+    ///   <para>pns:Location</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Location - a base class for Locations. Also a subclass of geo:SpatialThing</para>
+    /// labels<para>A Location - a base class for Locations</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/Location">http://data.press.net/ontology/stuff/Location</seealso>
+    let Location = Prefixed_Name(pns, "Location") |> PrefixedName
     /// <summary>
-    /// An Organization - a base class for instances of organizations. Also a subclass of foaf:Organization
-    /// <see href="http://data.press.net/ontology/stuff/Organization"></see></summary>
-    let Organization = _prefix "Organization"
+    ///   <para>pns:Organization</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An Organization - a base class for instances of organizations. Also a subclass of foaf:Organization</para>
+    /// labels<para>An Organization - a base class for instances of organizations</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/Organization">http://data.press.net/ontology/stuff/Organization</seealso>
+    let Organization = Prefixed_Name(pns, "Organization") |> PrefixedName
     /// <summary>
-    /// A Person - a base class for people instances. Also a subclass of foaf:Person
-    /// <see href="http://data.press.net/ontology/stuff/Person"></see></summary>
-    let Person = _prefix "Person"
+    ///   <para>pns:Person</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Person - a base class for people instances. Also a subclass of foaf:Person</para>
+    /// labels<para>A Person - a base class for people instances.</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/Person">http://data.press.net/ontology/stuff/Person</seealso>
+    let Person = Prefixed_Name(pns, "Person") |> PrefixedName
     /// <summary>
-    /// String property that indicates an alias of a Stuff instance. For example 'Television' might have an alias of 'TV'.
-    /// <see href="http://data.press.net/ontology/stuff/alias"></see></summary>
-    let alias = _prefix "alias"
-    /// <summary>
-    /// String property that indicates the definitive description of a Stuff instance.
-    /// <see href="http://data.press.net/ontology/stuff/comment"></see></summary>
-    let comment = _prefix "comment"
-    /// <summary>
-    /// Property of a Person. A person's date of birth
-    /// <see href="http://data.press.net/ontology/stuff/dateOfBirth"></see></summary>
-    let dateOfBirth = _prefix "dateOfBirth"
-    /// <summary>
-    /// Property of a Person. A person's date of death
-    /// <see href="http://data.press.net/ontology/stuff/dateOfDeath"></see></summary>
-    let dateOfDeath = _prefix "dateOfDeath"
-    /// <summary>
-    /// Property that associates assets directly with domain entities, e.g. official biography, corporate logo
-    /// <see href="http://data.press.net/ontology/stuff/hasAsset"></see></summary>
-    let hasAsset = _prefix "hasAsset"
-    /// <summary>
-    /// Property that associates images with domain entities, e.g. official photograph, corporate logo
-    /// <see href="http://data.press.net/ontology/stuff/hasImage"></see></summary>
-    let hasImage = _prefix "hasImage"
-    /// <summary>
-    /// String property that indicates the definitive label of a Stuff instance. This might be the full name of a Person, Organization or something Intangible
-    /// <see href="http://data.press.net/ontology/stuff/label"></see></summary>
-    let label = _prefix "label"
-    /// <summary>
-    /// String property that indicates the long name of a Person or Organization via foaf:Agent. Also infers Stuff label via pns:label. For example 'Manchester United F.C.'
-    /// <see href="http://data.press.net/ontology/stuff/longName"></see></summary>
-    let longName = _prefix "longName"
-    /// <summary>
-    /// String property that indicates the definitive full name of a Person or Organization via foaf:Agent. Also infers Stuff label via pns:label
-    /// <see href="http://data.press.net/ontology/stuff/name"></see></summary>
-    let name = _prefix "name"
-    /// <summary>
-    /// Property that notably associates stuff together, for example Karl Lagerfeld is notably associated with Fashion
-    /// <see href="http://data.press.net/ontology/stuff/notablyAssociatedWith"></see></summary>
-    let notablyAssociatedWith = _prefix "notablyAssociatedWith"
-    /// <summary>
-    /// Property of a Location. References the parent location of this location
-    /// <see href="http://data.press.net/ontology/stuff/parentLocation"></see></summary>
-    let parentLocation = _prefix "parentLocation"
-    /// <summary>
-    /// Property of a Person. A person's place of birth
-    /// <see href="http://data.press.net/ontology/stuff/placeOfBirth"></see></summary>
-    let placeOfBirth = _prefix "placeOfBirth"
-    /// <summary>
-    /// String property that indicates the short name of a Person or Organization via foaf:Agent. Also infers Stuff label via pns:label. For example 'Man Utd'
-    /// <see href="http://data.press.net/ontology/stuff/shortName"></see></summary>
-    let shortName = _prefix "shortName"
+    ///   <para>pns:comment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>String property that indicates the definitive description of a Stuff instance.</para>
+    /// labels<para>The definitive description of a Stuff instance</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/stuff/comment">http://data.press.net/ontology/stuff/comment</seealso>
+    let comment = Prefixed_Name(pns, "comment") |> PrefixedName

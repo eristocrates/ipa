@@ -1,83 +1,172 @@
 namespace https.termlex.oeg.fi.upm.es.termlex.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module termlex =
-    let _namespace_name = "https://termlex.oeg.fi.upm.es/termlex#"
+    let _namespace_iri = Namespace_Iri termlex |> NamespaceIRI
+    /// <summary>
+    ///   <para>termlex:1</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>termlex:ReliabilityCode</para>
+    /// </remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#1">https://termlex.oeg.fi.upm.es/termlex#1</seealso>
+    let _1 = Prefixed_Name(termlex, "1") |> PrefixedName
+    /// <summary>
+    ///   <para>termlex:4</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>termlex:ReliabilityCode</para>
+    /// </remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#4">https://termlex.oeg.fi.upm.es/termlex#4</seealso>
+    let _4 = Prefixed_Name(termlex, "4") |> PrefixedName
+    /// <summary>
+    ///   <para>termlex:Note</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The Note class represents additional information given about a resource, may it be a concept, a term or any other entity. Oher data can be attached to it, such as the source and authorship of the note.</para>
+    /// labels<para>Note</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#Note">https://termlex.oeg.fi.upm.es/termlex#Note</seealso>
+    let Note = Prefixed_Name(termlex, "Note") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>termlex:TerminologicalConcept</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The TerminologicalConcept class represents a mental abstraction, concept or unit of thought that embodies the meaning of one or more lexical entries, that refer to the same lexical sense, thus, belong to the same area of epertise.</para>
+    /// labels<para>Terminological Concept</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#TerminologicalConcept">https://termlex.oeg.fi.upm.es/termlex#TerminologicalConcept</seealso>
+    let TerminologicalConcept =
+        Prefixed_Name(termlex, "TerminologicalConcept") |> PrefixedName
 
     /// <summary>
-    ///   <see href="https://termlex.oeg.fi.upm.es/termlex#1"></see>
+    ///   <para>termlex:Usage</para>
     /// </summary>
-    let _1 = _prefix "1"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The Usage class represents usage notes, advices or indications regarding the lexical sense of a given terminological concept. </para>
+    /// labels<para>Usage</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#Usage">https://termlex.oeg.fi.upm.es/termlex#Usage</seealso>
+    let Usage = Prefixed_Name(termlex, "Usage") |> PrefixedName
     /// <summary>
-    /// The ReliabilityCode class represents the trustworthiness degree of a determined resource, may it be a concept, a term or any other entity. This class points at a fixed set of values, from 1 to 5, for standardisation purposes.
-    ///
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#ReliabilityCode"></see></summary>
-    let ReliabilityCode = _prefix "ReliabilityCode"
-    /// <summary>
-    ///   <see href="https://termlex.oeg.fi.upm.es/termlex#2"></see>
+    ///   <para>termlex:isConceptOf</para>
     /// </summary>
-    let _2 = _prefix "2"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The isConceptOf property relates the meaning of a Terminological Concept by linking it to a particular ontological meaning.</para>
+    /// labels<para>is concept of</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#isConceptOf">https://termlex.oeg.fi.upm.es/termlex#isConceptOf</seealso>
+    let isConceptOf = Prefixed_Name(termlex, "isConceptOf") |> PrefixedName
     /// <summary>
-    ///   <see href="https://termlex.oeg.fi.upm.es/termlex#3"></see>
+    ///   <para>termlex:evokes</para>
     /// </summary>
-    let _3 = _prefix "3"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The evokes property relates a lexical entry to the terminological concepts it evokes.</para>
+    /// labels<para>evokes</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#evokes">https://termlex.oeg.fi.upm.es/termlex#evokes</seealso>
+    let evokes = Prefixed_Name(termlex, "evokes") |> PrefixedName
     /// <summary>
-    ///   <see href="https://termlex.oeg.fi.upm.es/termlex#4"></see>
+    ///   <para>termlex:lexicalizedSense</para>
     /// </summary>
-    let _4 = _prefix "4"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The lexicalizedSense property relates a terminological concept to a unique corresponding lexical sense.</para>
+    /// labels<para>lexicalized sense</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#lexicalizedSense">https://termlex.oeg.fi.upm.es/termlex#lexicalizedSense</seealso>
+    let lexicalizedSense = Prefixed_Name(termlex, "lexicalizedSense") |> PrefixedName
     /// <summary>
-    ///   <see href="https://termlex.oeg.fi.upm.es/termlex#5"></see>
+    ///   <para>termlex:3</para>
     /// </summary>
-    let _5 = _prefix "5"
+    /// <remarks>
+    ///   <para>termlex:ReliabilityCode</para>
+    /// </remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#3">https://termlex.oeg.fi.upm.es/termlex#3</seealso>
+    let _3 = Prefixed_Name(termlex, "3") |> PrefixedName
+
     /// <summary>
-    /// The Definition class represents the description of a resource, may it be a concept, a term or any other entity. Additional information can be attached to it, such as the source and authorship of the definition.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#Definition"></see></summary>
-    let Definition = _prefix "Definition"
+    ///   <para>termlex:isLexicalizedSenseOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The isLexicalizedSense property relates a lexical sense to a unique corresponding terminological concept.</para>
+    /// labels<para>is lexicalized sense of</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#isLexicalizedSenseOf">https://termlex.oeg.fi.upm.es/termlex#isLexicalizedSenseOf</seealso>
+    let isLexicalizedSenseOf =
+        Prefixed_Name(termlex, "isLexicalizedSenseOf") |> PrefixedName
+
     /// <summary>
-    /// The Note class represents additional information given about a resource, may it be a concept, a term or any other entity. Oher data can be attached to it, such as the source and authorship of the note.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#Note"></see></summary>
-    let Note = _prefix "Note"
+    ///   <para>termlex:reliabilityCode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The reliabilityCode property relates a lexical sense to the the reliability code class.</para>
+    /// labels<para>Reliability Code</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#reliabilityCode">https://termlex.oeg.fi.upm.es/termlex#reliabilityCode</seealso>
+    let reliabilityCode = Prefixed_Name(termlex, "reliabilityCode") |> PrefixedName
     /// <summary>
-    /// The Source class represents the provenance information of an element, may it be the authorship, notes or other sources.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#Source"></see></summary>
-    let Source = _prefix "Source"
+    ///   <para>termlex:ReliabilityCode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The ReliabilityCode class represents the trustworthiness degree of a determined resource, may it be a concept, a term or any other entity. This class points at a fixed set of values, from 1 to 5, for standardisation purposes.
+    /// </para>
+    /// labels<para>Reliability Code</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#ReliabilityCode">https://termlex.oeg.fi.upm.es/termlex#ReliabilityCode</seealso>
+    let ReliabilityCode = Prefixed_Name(termlex, "ReliabilityCode") |> PrefixedName
     /// <summary>
-    /// The TerminologicalConcept class represents a mental abstraction, concept or unit of thought that embodies the meaning of one or more lexical entries, that refer to the same lexical sense, thus, belong to the same area of epertise.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#TerminologicalConcept"></see></summary>
-    let TerminologicalConcept = _prefix "TerminologicalConcept"
+    ///   <para>termlex:2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>termlex:ReliabilityCode</para>
+    /// </remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#2">https://termlex.oeg.fi.upm.es/termlex#2</seealso>
+    let _2 = Prefixed_Name(termlex, "2") |> PrefixedName
     /// <summary>
-    /// The Usage class represents usage notes, advices or indications regarding the lexical sense of a given terminological concept.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#Usage"></see></summary>
-    let Usage = _prefix "Usage"
+    ///   <para>termlex:5</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>termlex:ReliabilityCode</para>
+    /// </remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#5">https://termlex.oeg.fi.upm.es/termlex#5</seealso>
+    let _5 = Prefixed_Name(termlex, "5") |> PrefixedName
     /// <summary>
-    /// The concept property relates an ontological entity to a terminological concept that represents the corresponding meaning.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#concept"></see></summary>
-    let concept = _prefix "concept"
+    ///   <para>termlex:Definition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The Definition class represents the description of a resource, may it be a concept, a term or any other entity. Additional information can be attached to it, such as the source and authorship of the definition.</para>
+    /// labels<para>Definition</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#Definition">https://termlex.oeg.fi.upm.es/termlex#Definition</seealso>
+    let Definition = Prefixed_Name(termlex, "Definition") |> PrefixedName
     /// <summary>
-    /// The isConceptOf property relates the meaning of a Terminological Concept by linking it to a particular ontological meaning.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#isConceptOf"></see></summary>
-    let isConceptOf = _prefix "isConceptOf"
+    ///   <para>termlex:Source</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The Source class represents the provenance information of an element, may it be the authorship, notes or other sources.</para>
+    /// labels<para>Source</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#Source">https://termlex.oeg.fi.upm.es/termlex#Source</seealso>
+    let Source = Prefixed_Name(termlex, "Source") |> PrefixedName
     /// <summary>
-    /// The evokes property relates a lexical entry to the terminological concepts it evokes.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#evokes"></see></summary>
-    let evokes = _prefix "evokes"
+    ///   <para>termlex:concept</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The concept property relates an ontological entity to a terminological concept that represents the corresponding meaning.</para>
+    /// labels<para>concept</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#concept">https://termlex.oeg.fi.upm.es/termlex#concept</seealso>
+    let concept = Prefixed_Name(termlex, "concept") |> PrefixedName
     /// <summary>
-    /// The isEvokedBy property relates a terminological concept to one of the lexical entries that evoke it.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#isEvokedBy"></see></summary>
-    let isEvokedBy = _prefix "isEvokedBy"
-    /// <summary>
-    /// The isLexicalizedSense property relates a lexical sense to a unique corresponding terminological concept.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#isLexicalizedSenseOf"></see></summary>
-    let isLexicalizedSenseOf = _prefix "isLexicalizedSenseOf"
-    /// <summary>
-    /// The lexicalizedSense property relates a terminological concept to a unique corresponding lexical sense.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#lexicalizedSense"></see></summary>
-    let lexicalizedSense = _prefix "lexicalizedSense"
-    /// <summary>
-    /// The reliabilityCode property relates a lexical sense to the the reliability code class.
-    /// <see href="https://termlex.oeg.fi.upm.es/termlex#reliabilityCode"></see></summary>
-    let reliabilityCode = _prefix "reliabilityCode"
+    ///   <para>termlex:isEvokedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The isEvokedBy property relates a terminological concept to one of the lexical entries that evoke it.</para>
+    /// labels<para>is evoked by</para></remarks>
+    /// <seealso href="https://termlex.oeg.fi.upm.es/termlex#isEvokedBy">https://termlex.oeg.fi.upm.es/termlex#isEvokedBy</seealso>
+    let isEvokedBy = Prefixed_Name(termlex, "isEvokedBy") |> PrefixedName

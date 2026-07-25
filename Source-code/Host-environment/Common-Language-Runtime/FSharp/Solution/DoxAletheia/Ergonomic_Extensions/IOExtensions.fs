@@ -3,10 +3,118 @@ open System
 open System.IO
 open System.IO.Compression
 open FsHttp
+open FSharp.Data
 
 [<Literal>]
 let userAgent =
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.115.0"
+
+
+type PathInfo = 
+    | FilePathInfo of FileInfo
+    | DirectoryPathInfo of DirectoryInfo
+    member this.path = 
+        match this with 
+        | FilePathInfo file -> file.FullName
+        | DirectoryPathInfo directory -> directory.FullName
+    member this.stem = 
+        match this with 
+        | FilePathInfo file -> Path.GetFileNameWithoutExtension file.FullName
+        | DirectoryPathInfo directory -> directory.Name
+    member this.extension = 
+        match this with 
+        | FilePathInfo file -> file.Extension.TrimStart('.')
+        | DirectoryPathInfo directory -> String.Empty
+    member this.as_file = 
+        match this with 
+        | FilePathInfo file -> file
+        | DirectoryPathInfo directory -> new FileInfo(directory.FullName)
+    member this.as_directory = 
+        match this with 
+        | FilePathInfo file -> new DirectoryInfo(file.FullName)
+        | DirectoryPathInfo directory -> directory
+    member this.parent_directory = 
+        match this with 
+        | FilePathInfo file -> file.Directory
+        | DirectoryPathInfo directory -> directory.Parent
+    member this.exists = 
+        match this with 
+        | FilePathInfo file -> file.Exists
+        | DirectoryPathInfo directory -> directory.Exists
+    member this.does_NOT_exist = not this.exists
+    member this.save_file_text (file_text:string) = 
+        if not (this.parent_directory.Exists) then 
+            Directory.CreateDirectory(this.parent_directory.FullName) |> ignore
+        File.WriteAllText(this.as_file.FullName, file_text )
+    member this.save_file_lines (file_lines:string array) = 
+        if not (this.parent_directory.Exists) then 
+            Directory.CreateDirectory(this.parent_directory.FullName) |> ignore
+        File.WriteAllLines(this.as_file.FullName, file_lines )
+    member this.child_files (pattern:string) = Directory.GetFiles(this.path, pattern, SearchOption.TopDirectoryOnly)
+    member this.descendant_files (pattern:string) = Directory.GetFiles(this.path, pattern, SearchOption.AllDirectories)
+
+    // TODO be mindful of unintended consequences from defaulting to directory 
+    /// defaults to non existant directory 
+    static member from_string (path:string) = 
+    
+        match File.Exists(path),Directory.Exists(path) with 
+        | true,false -> new FileInfo(path) |> FilePathInfo
+        | _,_ when Path.EndsInDirectorySeparator path -> new DirectoryInfo(path) |> DirectoryPathInfo
+        | _,_ when Path.GetExtension(path).TrimStart('.').Length > 0 -> new FileInfo(path) |> FilePathInfo
+        | _,_ -> new DirectoryInfo(path) |> DirectoryPathInfo
+
+
+let (!/) (root_path:string) = PathInfo.from_string root_path 
+let (./) (parent:PathInfo) (relative:string) = 
+    Path.Combine(parent.path,relative) |> PathInfo.from_string
+
+module Folder = 
+    let DoxAletheia = !/ @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia"
+    let DotNetRDFSharp = !/ @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\DotNetRDFSharp"
+    
+    let Generated = !/ @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\Generated\"
+    let Vocabulary = DoxAletheia ./ "Vocabulary"
+    let https = Vocabulary ./ "https"
+    let Downloaded = Vocabulary ./ "Downloaded"
+    let Authored = Vocabulary ./ "Authored"
+    let Manual = Vocabulary ./ "Manual"
+    let fibo = Vocabulary ./ @"https\spec.edmcouncil.org"
+
+
+
+
+
+module Document =
+    module manual_name_distribution = 
+        [<Literal>]
+        let literal_path = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Registry\manual_name_distribution.csv"
+    let manual_metadata = Folder.Manual ./ "manual_metadata.json"
+    module PrefixRegistry = 
+        [<Literal>]
+        let literal_path = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Registry\PrefixRegistry.json"
+        
+    
+    module Bioregistry = 
+        let registry = JsonProvider<"https://github.com/biopragmatics/bioregistry/raw/refs/heads/main/src/bioregistry/data/bioregistry.json">.Load "https://github.com/biopragmatics/bioregistry/raw/refs/heads/main/src/bioregistry/data/bioregistry.json"
+    module lov = 
+    
+        [<Literal>]
+        let filePath =
+            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\lov.vocabulary.json"
+
+        let json = JsonProvider<filePath>.Load filePath
+        let n3 = PathInfo.from_string @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\lov.n3"
+        let nq = PathInfo.from_string @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\lov.nq"
+
+
+    module prefixcc =
+        [<Literal>]
+        let filePath =
+            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\prefix.cc.json"
+
+        let json = JsonProvider<filePath>.Load filePath
+    
+
 
 
 module MediaType =
@@ -162,3 +270,5 @@ let relative_path_to_iri(relativePath: string) =
         $"{scheme}://{host}{path}{delimiter}"
 
     | _ -> failwith $"Invalid relative path format: {relativePath}"
+
+

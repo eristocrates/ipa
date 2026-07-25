@@ -1,90 +1,212 @@
 namespace https.www.gleif.org.ontology.Geocoding.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module gleif_geo =
-    let _namespace_name = "https://www.gleif.org/ontology/Geocoding/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    let _namespace_iri = Namespace_Iri gleif_geo |> NamespaceIRI
 
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/MatchTypePointAddress"></see>
+    ///   <para>gleif-geo:MatchTypeInterpolated</para>
     /// </summary>
-    let MatchTypePointAddress = _prefix "MatchTypePointAddress"
+    /// <remarks>
+    ///   <para>gleif-geo:MatchType</para>
+    ///
+    /// labels<para>match type interpolated</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/MatchTypeInterpolated">https://www.gleif.org/ontology/Geocoding/MatchTypeInterpolated</seealso>
+    let MatchTypeInterpolated =
+        Prefixed_Name(gleif_geo, "MatchTypeInterpolated") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/MatchTypeInterpolated"></see>
+    ///   <para>gleif-geo:</para>
     /// </summary>
-    let MatchTypeInterpolated = _prefix "MatchTypeInterpolated"
+    /// <remarks>
+    ///   <para>voaf:Vocabulary</para>
+    ///   <para>owl:Ontology</para>
+    ///
+    /// labels<para>GLEIF Geocoding Ontology</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/">https://www.gleif.org/ontology/Geocoding/</seealso>
+    let _prefix_iri = Prefixed_Name(gleif_geo, "") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/BoundingBox"></see>
+    ///   <para>gleif-geo:topLeft</para>
     /// </summary>
-    let BoundingBox = _prefix "BoundingBox"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>top left</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/topLeft">https://www.gleif.org/ontology/Geocoding/topLeft</seealso>
+    let topLeft = Prefixed_Name(gleif_geo, "topLeft") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/topLeft"></see>
+    ///   <para>gleif-geo:hasBoundingBox</para>
     /// </summary>
-    let topLeft = _prefix "topLeft"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has bounding box</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/hasBoundingBox">https://www.gleif.org/ontology/Geocoding/hasBoundingBox</seealso>
+    let hasBoundingBox = Prefixed_Name(gleif_geo, "hasBoundingBox") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/bottomRight"></see>
+    ///   <para>gleif-geo:hasStreet</para>
     /// </summary>
-    let bottomRight = _prefix "bottomRight"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has street</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/hasStreet">https://www.gleif.org/ontology/Geocoding/hasStreet</seealso>
+    let hasStreet = Prefixed_Name(gleif_geo, "hasStreet") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/GeocodedAddress"></see>
+    ///   <para>gleif-geo:hasDistrict</para>
     /// </summary>
-    let GeocodedAddress = _prefix "GeocodedAddress"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has district</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/hasDistrict">https://www.gleif.org/ontology/Geocoding/hasDistrict</seealso>
+    let hasDistrict = Prefixed_Name(gleif_geo, "hasDistrict") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/relevance"></see>
+    ///   <para>gleif-geo:matchDate</para>
     /// </summary>
-    let relevance = _prefix "relevance"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has end</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/matchDate">https://www.gleif.org/ontology/Geocoding/matchDate</seealso>
+    let matchDate = Prefixed_Name(gleif_geo, "matchDate") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/hasBoundingBox"></see>
+    ///   <para>gleif-geo:matchType</para>
     /// </summary>
-    let hasBoundingBox = _prefix "hasBoundingBox"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>match type</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/matchType">https://www.gleif.org/ontology/Geocoding/matchType</seealso>
+    let matchType = Prefixed_Name(gleif_geo, "matchType") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/hasStreet"></see>
+    ///   <para>gleif-geo:MatchType</para>
     /// </summary>
-    let hasStreet = _prefix "hasStreet"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>match type</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/MatchType">https://www.gleif.org/ontology/Geocoding/MatchType</seealso>
+    let MatchType = Prefixed_Name(gleif_geo, "MatchType") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/hasDistrict"></see>
+    ///   <para>gleif-geo:originalAddressText</para>
     /// </summary>
-    let hasDistrict = _prefix "hasDistrict"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>original address text</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/originalAddressText">https://www.gleif.org/ontology/Geocoding/originalAddressText</seealso>
+    let originalAddressText =
+        Prefixed_Name(gleif_geo, "originalAddressText") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/matchDate"></see>
+    ///   <para>gleif-geo:hasGeocodedAddress</para>
     /// </summary>
-    let matchDate = _prefix "matchDate"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has geocoded address</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/hasGeocodedAddress">https://www.gleif.org/ontology/Geocoding/hasGeocodedAddress</seealso>
+    let hasGeocodedAddress =
+        Prefixed_Name(gleif_geo, "hasGeocodedAddress") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/formattedAddressText"></see>
+    ///   <para>gleif-geo:formattedAddressText</para>
     /// </summary>
-    let formattedAddressText = _prefix "formattedAddressText"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>formatted address text</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/formattedAddressText">https://www.gleif.org/ontology/Geocoding/formattedAddressText</seealso>
+    let formattedAddressText =
+        Prefixed_Name(gleif_geo, "formattedAddressText") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/matchType"></see>
+    ///   <para>gleif-geo:originalAddress</para>
     /// </summary>
-    let matchType = _prefix "matchType"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>original address</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/originalAddress">https://www.gleif.org/ontology/Geocoding/originalAddress</seealso>
+    let originalAddress = Prefixed_Name(gleif_geo, "originalAddress") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/MatchType"></see>
+    ///   <para>gleif-geo:matchLevel</para>
     /// </summary>
-    let MatchType = _prefix "MatchType"
+    /// <remarks>
+    ///   <para>owl:AnnotationProperty</para>
+    ///
+    /// labels<para>match level</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/matchLevel">https://www.gleif.org/ontology/Geocoding/matchLevel</seealso>
+    let matchLevel = Prefixed_Name(gleif_geo, "matchLevel") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/locationId"></see>
+    ///   <para>gleif-geo:MatchTypePointAddress</para>
     /// </summary>
-    let locationId = _prefix "locationId"
+    /// <remarks>
+    ///   <para>gleif-geo:MatchType</para>
+    ///
+    /// labels<para>match type point address</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/MatchTypePointAddress">https://www.gleif.org/ontology/Geocoding/MatchTypePointAddress</seealso>
+    let MatchTypePointAddress =
+        Prefixed_Name(gleif_geo, "MatchTypePointAddress") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/hasRegionText"></see>
+    ///   <para>gleif-geo:BoundingBox</para>
     /// </summary>
-    let hasRegionText = _prefix "hasRegionText"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>bounding box</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/BoundingBox">https://www.gleif.org/ontology/Geocoding/BoundingBox</seealso>
+    let BoundingBox = Prefixed_Name(gleif_geo, "BoundingBox") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/originalAddress"></see>
+    ///   <para>gleif-geo:bottomRight</para>
     /// </summary>
-    let originalAddress = _prefix "originalAddress"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>bottom right</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/bottomRight">https://www.gleif.org/ontology/Geocoding/bottomRight</seealso>
+    let bottomRight = Prefixed_Name(gleif_geo, "bottomRight") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/originalAddressText"></see>
+    ///   <para>gleif-geo:GeocodedAddress</para>
     /// </summary>
-    let originalAddressText = _prefix "originalAddressText"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>geocoded address</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/GeocodedAddress">https://www.gleif.org/ontology/Geocoding/GeocodedAddress</seealso>
+    let GeocodedAddress = Prefixed_Name(gleif_geo, "GeocodedAddress") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/hasGeocodedAddress"></see>
+    ///   <para>gleif-geo:relevance</para>
     /// </summary>
-    let hasGeocodedAddress = _prefix "hasGeocodedAddress"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>bottom right</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/relevance">https://www.gleif.org/ontology/Geocoding/relevance</seealso>
+    let relevance = Prefixed_Name(gleif_geo, "relevance") |> PrefixedName
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/Geocoding/matchLevel"></see>
+    ///   <para>gleif-geo:locationId</para>
     /// </summary>
-    let matchLevel = _prefix "matchLevel"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///
+    /// labels<para>location ID</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/locationId">https://www.gleif.org/ontology/Geocoding/locationId</seealso>
+    let locationId = Prefixed_Name(gleif_geo, "locationId") |> PrefixedName
+    /// <summary>
+    ///   <para>gleif-geo:hasRegionText</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has region text</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/Geocoding/hasRegionText">https://www.gleif.org/ontology/Geocoding/hasRegionText</seealso>
+    let hasRegionText = Prefixed_Name(gleif_geo, "hasRegionText") |> PrefixedName

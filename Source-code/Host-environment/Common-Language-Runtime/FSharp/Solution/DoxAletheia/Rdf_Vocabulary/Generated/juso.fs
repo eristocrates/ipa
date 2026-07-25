@@ -1,280 +1,551 @@
 namespace http.rdfs.co.juso.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module juso =
-    let _namespace_name = "http://rdfs.co/juso/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri juso |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/SpatialThing"></see>
+    ///   <para>juso:SpatialThing</para>
     /// </summary>
-    let SpatialThing = _prefix "SpatialThing"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/postal_code"></see>
-    /// </summary>
-    let postal_code = _prefix "postal_code"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/SpatialThing">http://rdfs.co/juso/SpatialThing</seealso>
+    let SpatialThing = Prefixed_Name(juso, "SpatialThing") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/first_level_administrative_division"></see>
+    ///   <para>juso:thoroughfare_address</para>
     /// </summary>
-    let first_level_administrative_division =
-        _prefix "first_level_administrative_division"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/thoroughfare_address">http://rdfs.co/juso/thoroughfare_address</seealso>
+    let thoroughfare_address =
+        Prefixed_Name(juso, "thoroughfare_address") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/thoroughfare_address"></see>
+    ///   <para>juso:0.1/rdf</para>
     /// </summary>
-    let thoroughfare_address = _prefix "thoroughfare_address"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdfs.co/juso/0.1/rdf">http://rdfs.co/juso/0.1/rdf</seealso>
+    let ``_0.1/rdf`` = Prefixed_Name(juso, "0.1/rdf") |> PrefixedName
     /// <summary>
-    ///
+    ///   <para>juso:0.1/ttl</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdfs.co/juso/0.1/ttl">http://rdfs.co/juso/0.1/ttl</seealso>
+    let ``_0.1/ttl`` = Prefixed_Name(juso, "0.1/ttl") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:PoliticalDivisionGroup</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Bag</para>
+    ///   <para>
+    ///     These classes and properties are used to describe political and
+    ///     administrative divisions.
+    ///     </para>
+    /// labels<para>Political Division Terms</para></remarks>
+    /// <seealso href="http://rdfs.co/juso/PoliticalDivisionGroup">http://rdfs.co/juso/PoliticalDivisionGroup</seealso>
+    let PoliticalDivisionGroup =
+        Prefixed_Name(juso, "PoliticalDivisionGroup") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:CoreGroup</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Bag</para>
+    ///   <para>
+    ///     These classes and properties form the core of Juso Ontology. They describe
+    ///     fundamental characteristics of geography in relatively broad terms.
+    ///     </para>
+    /// labels<para>Core Terms</para></remarks>
+    /// <seealso href="http://rdfs.co/juso/CoreGroup">http://rdfs.co/juso/CoreGroup</seealso>
+    let CoreGroup = Prefixed_Name(juso, "CoreGroup") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:AddressGroup</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Bag</para>
+    ///   <para>
+    ///     These classes and properties are used to describe addresses.
+    ///     </para>
+    /// labels<para>Address Terms</para></remarks>
+    /// <seealso href="http://rdfs.co/juso/AddressGroup">http://rdfs.co/juso/AddressGroup</seealso>
+    let AddressGroup = Prefixed_Name(juso, "AddressGroup") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:locator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/locator">http://rdfs.co/juso/locator</seealso>
+    let locator = Prefixed_Name(juso, "locator") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:locator_address</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/locator_address">http://rdfs.co/juso/locator_address</seealso>
+    let locator_address = Prefixed_Name(juso, "locator_address") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:fifth_level_administrative_division</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/fifth_level_administrative_division">http://rdfs.co/juso/fifth_level_administrative_division</seealso>
+    let fifth_level_administrative_division =
+        Prefixed_Name(juso, "fifth_level_administrative_division") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:Thoroughfare</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Thoroughfare">http://rdfs.co/juso/Thoroughfare</seealso>
+    let Thoroughfare = Prefixed_Name(juso, "Thoroughfare") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:within</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/within">http://rdfs.co/juso/within</seealso>
+    let within = Prefixed_Name(juso, "within") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:endonym</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/endonym">http://rdfs.co/juso/endonym</seealso>
+    let endonym = Prefixed_Name(juso, "endonym") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:exonym</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/exonym">http://rdfs.co/juso/exonym</seealso>
+    let exonym = Prefixed_Name(juso, "exonym") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:geometry</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/geometry">http://rdfs.co/juso/geometry</seealso>
+    let geometry = Prefixed_Name(juso, "geometry") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:FirstLevelAdministrativeDivision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/FirstLevelAdministrativeDivision">http://rdfs.co/juso/FirstLevelAdministrativeDivision</seealso>
+    let FirstLevelAdministrativeDivision =
+        Prefixed_Name(juso, "FirstLevelAdministrativeDivision") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:Municipality</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Municipality">http://rdfs.co/juso/Municipality</seealso>
+    let Municipality = Prefixed_Name(juso, "Municipality") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:Village</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Village">http://rdfs.co/juso/Village</seealso>
+    let Village = Prefixed_Name(juso, "Village") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:political_division</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/political_division">http://rdfs.co/juso/political_division</seealso>
+    let political_division = Prefixed_Name(juso, "political_division") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:parent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/parent">http://rdfs.co/juso/parent</seealso>
+    let parent = Prefixed_Name(juso, "parent") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:postal_code</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/postal_code">http://rdfs.co/juso/postal_code</seealso>
+    let postal_code = Prefixed_Name(juso, "postal_code") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:0.1</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>ccrel:Work</para>
+    ///   <para>adms:SemanticAsset</para>
+    ///   <para>owl:Ontology</para>
+    ///   <para>voaf:Vocabulary</para>
+    ///   <para>
     ///     Most of the descriptions given here are from Wikipedia or from the related
     ///     ontologies and vocabularies.
-    ///
-    ///
+    ///     </para>
+    ///   <para>
+    ///     There is an extension to this ontology with some country-specific terms for
+    ///     &lt;a href="http://rdfs.co/juso/kr/"&gt;South Korea&lt;/a&gt;.
+    ///     </para>
+    ///   <para>
     ///     &lt;div&gt;
     ///       The master version of this vocabulary is maintained in &lt;a
     ///       href="https://github.com/listinc/juso-ontology"&gt;the GitHub repository&lt;/a&gt;
     ///       so others can contribute edits and improvements.
     ///     &lt;/div&gt;
-    ///
-    /// <see href="http://rdfs.co/juso/0.1"></see></summary>
-    let ``_0.1`` = _prefix "0.1"
+    ///     </para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/0.1">http://rdfs.co/juso/0.1</seealso>
+    let ``_0.1`` = Prefixed_Name(juso, "0.1") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/0.1/rdf"></see>
+    ///   <para>juso:</para>
     /// </summary>
-    let ``_0.1/rdf`` = _prefix "0.1/rdf"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdfs.co/juso/">http://rdfs.co/juso/</seealso>
+    let _prefix_iri = Prefixed_Name(juso, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/0.1/ttl"></see>
+    ///   <para>juso:full_address</para>
     /// </summary>
-    let ``_0.1/ttl`` = _prefix "0.1/ttl"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/full_address">http://rdfs.co/juso/full_address</seealso>
+    let full_address = Prefixed_Name(juso, "full_address") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/0.1/html"></see>
+    ///   <para>juso:thoroughfare</para>
     /// </summary>
-    let ``_0.1/html`` = _prefix "0.1/html"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/thoroughfare">http://rdfs.co/juso/thoroughfare</seealso>
+    let thoroughfare = Prefixed_Name(juso, "thoroughfare") |> PrefixedName
     /// <summary>
-    ///
-    ///     These classes and properties are used to describe political and
-    ///     administrative divisions.
-    ///
-    /// <see href="http://rdfs.co/juso/PoliticalDivisionGroup"></see></summary>
-    let PoliticalDivisionGroup = _prefix "PoliticalDivisionGroup"
-    /// <summary>
-    ///
-    ///     These classes and properties form the core of Juso Ontology. They describe
-    ///     fundamental characteristics of geography in relatively broad terms.
-    ///
-    /// <see href="http://rdfs.co/juso/CoreGroup"></see></summary>
-    let CoreGroup = _prefix "CoreGroup"
-    /// <summary>
-    ///
-    ///     These classes and properties are used to describe addresses.
-    ///
-    /// <see href="http://rdfs.co/juso/AddressGroup"></see></summary>
-    let AddressGroup = _prefix "AddressGroup"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Address"></see>
+    ///   <para>juso:po_box</para>
     /// </summary>
-    let Address = _prefix "Address"
+    /// <remarks></remarks>
+    /// <seealso href="http://rdfs.co/juso/po_box">http://rdfs.co/juso/po_box</seealso>
+    let po_box = Prefixed_Name(juso, "po_box") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/full_address"></see>
+    ///   <para>juso:PostalCode</para>
     /// </summary>
-    let full_address = _prefix "full_address"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/PostalCode">http://rdfs.co/juso/PostalCode</seealso>
+    let PostalCode = Prefixed_Name(juso, "PostalCode") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/thoroughfare"></see>
+    ///   <para>juso:City</para>
     /// </summary>
-    let thoroughfare = _prefix "thoroughfare"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/City">http://rdfs.co/juso/City</seealso>
+    let City = Prefixed_Name(juso, "City") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/locator"></see>
+    ///   <para>juso:Address</para>
     /// </summary>
-    let locator = _prefix "locator"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Address">http://rdfs.co/juso/Address</seealso>
+    let Address = Prefixed_Name(juso, "Address") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/locator_address"></see>
+    ///   <para>juso:country</para>
     /// </summary>
-    let locator_address = _prefix "locator_address"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/country">http://rdfs.co/juso/country</seealso>
+    let country = Prefixed_Name(juso, "country") |> PrefixedName
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/po_box"></see>
+    ///   <para>juso:Street</para>
     /// </summary>
-    let po_box = _prefix "po_box"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/PostalCode"></see>
-    /// </summary>
-    let PostalCode = _prefix "PostalCode"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/country"></see>
-    /// </summary>
-    let country = _prefix "country"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Street">http://rdfs.co/juso/Street</seealso>
+    let Street = Prefixed_Name(juso, "Street") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/second_level_administrative_division"></see>
+    ///   <para>juso:AdministrativeDivision</para>
     /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/AdministrativeDivision">http://rdfs.co/juso/AdministrativeDivision</seealso>
+    let AdministrativeDivision =
+        Prefixed_Name(juso, "AdministrativeDivision") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:CapitalDistrict</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/CapitalDistrict">http://rdfs.co/juso/CapitalDistrict</seealso>
+    let CapitalDistrict = Prefixed_Name(juso, "CapitalDistrict") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:County</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/County">http://rdfs.co/juso/County</seealso>
+    let County = Prefixed_Name(juso, "County") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:historical_address</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/historical_address">http://rdfs.co/juso/historical_address</seealso>
+    let historical_address = Prefixed_Name(juso, "historical_address") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:Feature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Feature">http://rdfs.co/juso/Feature</seealso>
+    let Feature = Prefixed_Name(juso, "Feature") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:Country</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Country">http://rdfs.co/juso/Country</seealso>
+    let Country = Prefixed_Name(juso, "Country") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:District</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/District">http://rdfs.co/juso/District</seealso>
+    let District = Prefixed_Name(juso, "District") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:FederatedState</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/FederatedState">http://rdfs.co/juso/FederatedState</seealso>
+    let FederatedState = Prefixed_Name(juso, "FederatedState") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:FifthLevelAdministrativeDivision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/FifthLevelAdministrativeDivision">http://rdfs.co/juso/FifthLevelAdministrativeDivision</seealso>
+    let FifthLevelAdministrativeDivision =
+        Prefixed_Name(juso, "FifthLevelAdministrativeDivision") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:FourthLevelAdministrativeDivision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/FourthLevelAdministrativeDivision">http://rdfs.co/juso/FourthLevelAdministrativeDivision</seealso>
+    let FourthLevelAdministrativeDivision =
+        Prefixed_Name(juso, "FourthLevelAdministrativeDivision") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:Hamlet</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Hamlet">http://rdfs.co/juso/Hamlet</seealso>
+    let Hamlet = Prefixed_Name(juso, "Hamlet") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:Neighborhood</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Neighborhood">http://rdfs.co/juso/Neighborhood</seealso>
+    let Neighborhood = Prefixed_Name(juso, "Neighborhood") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:Parish</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Parish">http://rdfs.co/juso/Parish</seealso>
+    let Parish = Prefixed_Name(juso, "Parish") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:Province</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Province">http://rdfs.co/juso/Province</seealso>
+    let Province = Prefixed_Name(juso, "Province") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:Borough</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdfs.co/juso/Borough">http://rdfs.co/juso/Borough</seealso>
+    let Borough = Prefixed_Name(juso, "Borough") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:Town</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Town">http://rdfs.co/juso/Town</seealso>
+    let Town = Prefixed_Name(juso, "Town") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:Township</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Township">http://rdfs.co/juso/Township</seealso>
+    let Township = Prefixed_Name(juso, "Township") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:SecondLevelAdministrativeDivision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/SecondLevelAdministrativeDivision">http://rdfs.co/juso/SecondLevelAdministrativeDivision</seealso>
+    let SecondLevelAdministrativeDivision =
+        Prefixed_Name(juso, "SecondLevelAdministrativeDivision") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:ThirdLevelAdministrativeDivision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/ThirdLevelAdministrativeDivision">http://rdfs.co/juso/ThirdLevelAdministrativeDivision</seealso>
+    let ThirdLevelAdministrativeDivision =
+        Prefixed_Name(juso, "ThirdLevelAdministrativeDivision") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:post_office_box</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/post_office_box">http://rdfs.co/juso/post_office_box</seealso>
+    let post_office_box = Prefixed_Name(juso, "post_office_box") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:second_level_administrative_division</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/second_level_administrative_division">http://rdfs.co/juso/second_level_administrative_division</seealso>
     let second_level_administrative_division =
-        _prefix "second_level_administrative_division"
+        Prefixed_Name(juso, "second_level_administrative_division") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/third_level_administrative_division"></see>
+    ///   <para>juso:PoliticalDivision</para>
     /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/PoliticalDivision">http://rdfs.co/juso/PoliticalDivision</seealso>
+    let PoliticalDivision = Prefixed_Name(juso, "PoliticalDivision") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:ConsolidatedCityCounty</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/ConsolidatedCityCounty">http://rdfs.co/juso/ConsolidatedCityCounty</seealso>
+    let ConsolidatedCityCounty =
+        Prefixed_Name(juso, "ConsolidatedCityCounty") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:address</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/address">http://rdfs.co/juso/address</seealso>
+    let address = Prefixed_Name(juso, "address") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:Geometry</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/Geometry">http://rdfs.co/juso/Geometry</seealso>
+    let Geometry = Prefixed_Name(juso, "Geometry") |> PrefixedName
+    /// <summary>
+    ///   <para>juso:name</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/name">http://rdfs.co/juso/name</seealso>
+    let name = Prefixed_Name(juso, "name") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:first_level_administrative_division</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/first_level_administrative_division">http://rdfs.co/juso/first_level_administrative_division</seealso>
+    let first_level_administrative_division =
+        Prefixed_Name(juso, "first_level_administrative_division") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:0.1/html</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://rdfs.co/juso/0.1/html">http://rdfs.co/juso/0.1/html</seealso>
+    let ``_0.1/html`` = Prefixed_Name(juso, "0.1/html") |> PrefixedName
+
+    /// <summary>
+    ///   <para>juso:third_level_administrative_division</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/third_level_administrative_division">http://rdfs.co/juso/third_level_administrative_division</seealso>
     let third_level_administrative_division =
-        _prefix "third_level_administrative_division"
+        Prefixed_Name(juso, "third_level_administrative_division") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://rdfs.co/juso/fourth_level_administrative_division"></see>
+    ///   <para>juso:fourth_level_administrative_division</para>
     /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://rdfs.co/juso/fourth_level_administrative_division">http://rdfs.co/juso/fourth_level_administrative_division</seealso>
     let fourth_level_administrative_division =
-        _prefix "fourth_level_administrative_division"
-
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/fifth_level_administrative_division"></see>
-    /// </summary>
-    let fifth_level_administrative_division =
-        _prefix "fifth_level_administrative_division"
-
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Thoroughfare"></see>
-    /// </summary>
-    let Thoroughfare = _prefix "Thoroughfare"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Street"></see>
-    /// </summary>
-    let Street = _prefix "Street"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/AdministrativeDivision"></see>
-    /// </summary>
-    let AdministrativeDivision = _prefix "AdministrativeDivision"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/PoliticalDivision"></see>
-    /// </summary>
-    let PoliticalDivision = _prefix "PoliticalDivision"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/CapitalDistrict"></see>
-    /// </summary>
-    let CapitalDistrict = _prefix "CapitalDistrict"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/City"></see>
-    /// </summary>
-    let City = _prefix "City"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/ConsolidatedCityCounty"></see>
-    /// </summary>
-    let ConsolidatedCityCounty = _prefix "ConsolidatedCityCounty"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/County"></see>
-    /// </summary>
-    let County = _prefix "County"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/address"></see>
-    /// </summary>
-    let address = _prefix "address"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/historical_address"></see>
-    /// </summary>
-    let historical_address = _prefix "historical_address"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Feature"></see>
-    /// </summary>
-    let Feature = _prefix "Feature"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Geometry"></see>
-    /// </summary>
-    let Geometry = _prefix "Geometry"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/name"></see>
-    /// </summary>
-    let name = _prefix "name"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/within"></see>
-    /// </summary>
-    let within = _prefix "within"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/endonym"></see>
-    /// </summary>
-    let endonym = _prefix "endonym"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/exonym"></see>
-    /// </summary>
-    let exonym = _prefix "exonym"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/geometry"></see>
-    /// </summary>
-    let geometry = _prefix "geometry"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Country"></see>
-    /// </summary>
-    let Country = _prefix "Country"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/District"></see>
-    /// </summary>
-    let District = _prefix "District"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/FederatedState"></see>
-    /// </summary>
-    let FederatedState = _prefix "FederatedState"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/FifthLevelAdministrativeDivision"></see>
-    /// </summary>
-    let FifthLevelAdministrativeDivision = _prefix "FifthLevelAdministrativeDivision"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/FirstLevelAdministrativeDivision"></see>
-    /// </summary>
-    let FirstLevelAdministrativeDivision = _prefix "FirstLevelAdministrativeDivision"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/FourthLevelAdministrativeDivision"></see>
-    /// </summary>
-    let FourthLevelAdministrativeDivision = _prefix "FourthLevelAdministrativeDivision"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Hamlet"></see>
-    /// </summary>
-    let Hamlet = _prefix "Hamlet"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Municipality"></see>
-    /// </summary>
-    let Municipality = _prefix "Municipality"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Neighborhood"></see>
-    /// </summary>
-    let Neighborhood = _prefix "Neighborhood"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Parish"></see>
-    /// </summary>
-    let Parish = _prefix "Parish"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Province"></see>
-    /// </summary>
-    let Province = _prefix "Province"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Borough"></see>
-    /// </summary>
-    let Borough = _prefix "Borough"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Town"></see>
-    /// </summary>
-    let Town = _prefix "Town"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Township"></see>
-    /// </summary>
-    let Township = _prefix "Township"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/Village"></see>
-    /// </summary>
-    let Village = _prefix "Village"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/political_division"></see>
-    /// </summary>
-    let political_division = _prefix "political_division"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/parent"></see>
-    /// </summary>
-    let parent = _prefix "parent"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/SecondLevelAdministrativeDivision"></see>
-    /// </summary>
-    let SecondLevelAdministrativeDivision = _prefix "SecondLevelAdministrativeDivision"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/ThirdLevelAdministrativeDivision"></see>
-    /// </summary>
-    let ThirdLevelAdministrativeDivision = _prefix "ThirdLevelAdministrativeDivision"
-    /// <summary>
-    ///   <see href="http://rdfs.co/juso/post_office_box"></see>
-    /// </summary>
-    let post_office_box = _prefix "post_office_box"
+        Prefixed_Name(juso, "fourth_level_administrative_division") |> PrefixedName

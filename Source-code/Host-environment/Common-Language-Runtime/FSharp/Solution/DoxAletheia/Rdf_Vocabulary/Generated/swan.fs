@@ -1,22 +1,40 @@
 namespace http.purl.org.swan._2._0.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module swan =
-    let _namespace_name = "http://purl.org/swan/2.0/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    let _namespace_iri = Namespace_Iri swan |> NamespaceIRI
 
     /// <summary>
-    ///   <see href="http://purl.org/swan/2.0/agents/"></see>
+    ///   <para>swan:discourse-elements/</para>
     /// </summary>
-    let ``agents/`` = _prefix "agents/"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/swan/2.0/discourse-elements/">http://purl.org/swan/2.0/discourse-elements/</seealso>
+    let ``discourse_elements/`` =
+        Prefixed_Name(swan, "discourse-elements/") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/swan/2.0/discourse-elements/"></see>
+    ///   <para>swan:discourse-relationships/</para>
     /// </summary>
-    let ``discourse-elements/`` = _prefix "discourse-elements/"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/swan/2.0/discourse-relationships/">http://purl.org/swan/2.0/discourse-relationships/</seealso>
+    let ``discourse_relationships/`` =
+        Prefixed_Name(swan, "discourse-relationships/") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/swan/2.0/discourse-relationships/"></see>
+    ///   <para>swan:agents/</para>
     /// </summary>
-    let ``discourse-relationships/`` = _prefix "discourse-relationships/"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/swan/2.0/agents/">http://purl.org/swan/2.0/agents/</seealso>
+    let ``agents/`` = Prefixed_Name(swan, "agents/") |> PrefixedName
+    /// <summary>
+    ///   <para>swan:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///
+    /// labels<para>SWAN ontology v. 2.0</para></remarks>
+    /// <seealso href="http://purl.org/swan/2.0/">http://purl.org/swan/2.0/</seealso>
+    let _prefix_iri = Prefixed_Name(swan, "") |> PrefixedName

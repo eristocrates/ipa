@@ -1,302 +1,679 @@
 namespace http.purl.org.biodiversity.taxon.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module taxon =
-    let _namespace_name = "http://purl.org/biodiversity/taxon/"
+    let _namespace_iri = Namespace_Iri taxon |> NamespaceIRI
+    /// <summary>
+    ///   <para>taxon:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>Version 0.18 Added those taxon classes I know about, and data type properties for scientific name and authority</para>
+    /// labels<para>TaxonMap Ontology</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/">http://purl.org/biodiversity/taxon/</seealso>
+    let _prefix_iri = Prefixed_Name(taxon, "") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Tetrapod</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Tetrapod</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Tetrapod">http://purl.org/biodiversity/taxon/Tetrapod</seealso>
+    let Tetrapod = Prefixed_Name(taxon, "Tetrapod") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Arachnid</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Arachnid</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Arachnid">http://purl.org/biodiversity/taxon/Arachnid</seealso>
+    let Arachnid = Prefixed_Name(taxon, "Arachnid") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Arthropod</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Arthropod</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Arthropod">http://purl.org/biodiversity/taxon/Arthropod</seealso>
+    let Arthropod = Prefixed_Name(taxon, "Arthropod") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Fish</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Fish</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Fish">http://purl.org/biodiversity/taxon/Fish</seealso>
+    let Fish = Prefixed_Name(taxon, "Fish") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Bacteria</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Bacteria</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Bacteria">http://purl.org/biodiversity/taxon/Bacteria</seealso>
+    let Bacteria = Prefixed_Name(taxon, "Bacteria") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Cartilaginous_fish</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Cartilaginous Fish</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Cartilaginous_fish">http://purl.org/biodiversity/taxon/Cartilaginous_fish</seealso>
+    let Cartilaginous_fish = Prefixed_Name(taxon, "Cartilaginous_fish") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:ClubMoss</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>ClubMoss</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/ClubMoss">http://purl.org/biodiversity/taxon/ClubMoss</seealso>
+    let ClubMoss = Prefixed_Name(taxon, "ClubMoss") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Cycad</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Cycad</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Cycad">http://purl.org/biodiversity/taxon/Cycad</seealso>
+    let Cycad = Prefixed_Name(taxon, "Cycad") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:DataObject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>DataObject</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/DataObject">http://purl.org/biodiversity/taxon/DataObject</seealso>
+    let DataObject = Prefixed_Name(taxon, "DataObject") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Fern</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Fern</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Fern">http://purl.org/biodiversity/taxon/Fern</seealso>
+    let Fern = Prefixed_Name(taxon, "Fern") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:GreenAlga</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>GreenAlga</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/GreenAlga">http://purl.org/biodiversity/taxon/GreenAlga</seealso>
+    let GreenAlga = Prefixed_Name(taxon, "GreenAlga") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Image</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Image</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Image">http://purl.org/biodiversity/taxon/Image</seealso>
+    let Image = Prefixed_Name(taxon, "Image") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Ray_Fined_fish</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Ray Fined Fish</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Ray_Fined_fish">http://purl.org/biodiversity/taxon/Ray_Fined_fish</seealso>
+    let Ray_Fined_fish = Prefixed_Name(taxon, "Ray_Fined_fish") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Red_algae</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Red algae</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Red_algae">http://purl.org/biodiversity/taxon/Red_algae</seealso>
+    let Red_algae = Prefixed_Name(taxon, "Red_algae") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:TaxonRank</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A proposed superclass for all the known LOD classes of a Taxon Rank</para>
+    /// labels<para>TaxonRank</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/TaxonRank">http://purl.org/biodiversity/taxon/TaxonRank</seealso>
+    let TaxonRank = Prefixed_Name(taxon, "TaxonRank") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:binomial</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>a scientific name consisting of genus, epithet i.e. Felis silvestris</para>
+    /// labels<para>binomial</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/binomial">http://purl.org/biodiversity/taxon/binomial</seealso>
+    let binomial = Prefixed_Name(taxon, "binomial") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:scientificName</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The scientific name without the authority string i.e. Felidae or Puma concolor</para>
+    /// labels<para>scientificName</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/scientificName">http://purl.org/biodiversity/taxon/scientificName</seealso>
+    let scientificName = Prefixed_Name(taxon, "scientificName") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:canonicalFormID</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The URI ID for the canonical form of the name i.e. Puma concolor or Felidae, for name to name mapping</para>
+    /// labels<para>canonicalFormID</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/canonicalFormID">http://purl.org/biodiversity/taxon/canonicalFormID</seealso>
+    let canonicalFormID = Prefixed_Name(taxon, "canonicalFormID") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:dbKingdom</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>dbKingdom</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/dbKingdom">http://purl.org/biodiversity/taxon/dbKingdom</seealso>
+    let dbKingdom = Prefixed_Name(taxon, "dbKingdom") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:dbOrder</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>dbOrder</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/dbOrder">http://purl.org/biodiversity/taxon/dbOrder</seealso>
+    let dbOrder = Prefixed_Name(taxon, "dbOrder") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:dbPhylum</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>dbPhylum</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/dbPhylum">http://purl.org/biodiversity/taxon/dbPhylum</seealso>
+    let dbPhylum = Prefixed_Name(taxon, "dbPhylum") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:dbSpecies</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>dbSpecies</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/dbSpecies">http://purl.org/biodiversity/taxon/dbSpecies</seealso>
+    let dbSpecies = Prefixed_Name(taxon, "dbSpecies") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:monomial</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>a one word scientific name i.e. Felidae, Mammalia, Metazoa</para>
+    /// labels<para>monomial</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/monomial">http://purl.org/biodiversity/taxon/monomial</seealso>
+    let monomial = Prefixed_Name(taxon, "monomial") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:uniprotKingdom</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>uniprotKingdom</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/uniprotKingdom">http://purl.org/biodiversity/taxon/uniprotKingdom</seealso>
+    let uniprotKingdom = Prefixed_Name(taxon, "uniprotKingdom") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:uniprotOrder</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>uniprotOrder</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/uniprotOrder">http://purl.org/biodiversity/taxon/uniprotOrder</seealso>
+    let uniprotOrder = Prefixed_Name(taxon, "uniprotOrder") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:uniprotPhylum</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>uniprotPhylum</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/uniprotPhylum">http://purl.org/biodiversity/taxon/uniprotPhylum</seealso>
+    let uniprotPhylum = Prefixed_Name(taxon, "uniprotPhylum") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:uniprotSpecies</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>uniprotSpecies</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/uniprotSpecies">http://purl.org/biodiversity/taxon/uniprotSpecies</seealso>
+    let uniprotSpecies = Prefixed_Name(taxon, "uniprotSpecies") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Amphibian</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Amphibian</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Amphibian">http://purl.org/biodiversity/taxon/Amphibian</seealso>
+    let Amphibian = Prefixed_Name(taxon, "Amphibian") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Animal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Animal</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Animal">http://purl.org/biodiversity/taxon/Animal</seealso>
+    let Animal = Prefixed_Name(taxon, "Animal") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Eukaryote</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Eukaryote</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Eukaryote">http://purl.org/biodiversity/taxon/Eukaryote</seealso>
+    let Eukaryote = Prefixed_Name(taxon, "Eukaryote") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Archaea</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Archaea</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Archaea">http://purl.org/biodiversity/taxon/Archaea</seealso>
+    let Archaea = Prefixed_Name(taxon, "Archaea") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:BiologicalOrganism</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>BiologicalOrganism</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/BiologicalOrganism">http://purl.org/biodiversity/taxon/BiologicalOrganism</seealso>
+    let BiologicalOrganism = Prefixed_Name(taxon, "BiologicalOrganism") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Armoured_fish</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Armoured_fish</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Armoured_fish">http://purl.org/biodiversity/taxon/Armoured_fish</seealso>
+    let Armoured_fish = Prefixed_Name(taxon, "Armoured_fish") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Bird</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Bird</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Bird">http://purl.org/biodiversity/taxon/Bird</seealso>
+    let Bird = Prefixed_Name(taxon, "Bird") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Cephalochordate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Cephalochordate</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Cephalochordate">http://purl.org/biodiversity/taxon/Cephalochordate</seealso>
+    let Cephalochordate = Prefixed_Name(taxon, "Cephalochordate") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Chordate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Chordate</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Chordate">http://purl.org/biodiversity/taxon/Chordate</seealso>
+    let Chordate = Prefixed_Name(taxon, "Chordate") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Plant</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Viridiplantae</para><para>Plant</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Plant">http://purl.org/biodiversity/taxon/Plant</seealso>
+    let Plant = Prefixed_Name(taxon, "Plant") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Conifer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Conifer</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Conifer">http://purl.org/biodiversity/taxon/Conifer</seealso>
+    let Conifer = Prefixed_Name(taxon, "Conifer") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Crustacean</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Crustacean</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Crustacean">http://purl.org/biodiversity/taxon/Crustacean</seealso>
+    let Crustacean = Prefixed_Name(taxon, "Crustacean") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Dinosauria</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Dinosaurs</para>
+    /// labels<para>Dinosauria</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Dinosauria">http://purl.org/biodiversity/taxon/Dinosauria</seealso>
+    let Dinosauria = Prefixed_Name(taxon, "Dinosauria") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:FloweringPlant</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>FloweringPlant</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/FloweringPlant">http://purl.org/biodiversity/taxon/FloweringPlant</seealso>
+    let FloweringPlant = Prefixed_Name(taxon, "FloweringPlant") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Fungus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Fungus</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Fungus">http://purl.org/biodiversity/taxon/Fungus</seealso>
+    let Fungus = Prefixed_Name(taxon, "Fungus") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Ginkgo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Ginkgo</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Ginkgo">http://purl.org/biodiversity/taxon/Ginkgo</seealso>
+    let Ginkgo = Prefixed_Name(taxon, "Ginkgo") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Gnetophytes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Gnetophytes</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Gnetophytes">http://purl.org/biodiversity/taxon/Gnetophytes</seealso>
+    let Gnetophytes = Prefixed_Name(taxon, "Gnetophytes") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Insect</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Insect</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Insect">http://purl.org/biodiversity/taxon/Insect</seealso>
+    let Insect = Prefixed_Name(taxon, "Insect") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Jawless_fish</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Jawless fish</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Jawless_fish">http://purl.org/biodiversity/taxon/Jawless_fish</seealso>
+    let Jawless_fish = Prefixed_Name(taxon, "Jawless_fish") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Lobe_Finned_fish</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Lobe Finned Fish</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Lobe_Finned_fish">http://purl.org/biodiversity/taxon/Lobe_Finned_fish</seealso>
+    let Lobe_Finned_fish = Prefixed_Name(taxon, "Lobe_Finned_fish") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Lungfish</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Lungfish</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Lungfish">http://purl.org/biodiversity/taxon/Lungfish</seealso>
+    let Lungfish = Prefixed_Name(taxon, "Lungfish") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:Mammal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Mammal</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Mammal">http://purl.org/biodiversity/taxon/Mammal</seealso>
+    let Mammal = Prefixed_Name(taxon, "Mammal") |> PrefixedName
+    /// <summary>
+    ///   <para>taxon:MapImage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>MapImage</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/MapImage">http://purl.org/biodiversity/taxon/MapImage</seealso>
+    let MapImage = Prefixed_Name(taxon, "MapImage") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>taxon:Microbial_Eukaryote</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>a polyphyletic group</para>
+    /// labels<para>Microbial Eukaryote</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Microbial_Eukaryote">http://purl.org/biodiversity/taxon/Microbial_Eukaryote</seealso>
+    let Microbial_Eukaryote =
+        Prefixed_Name(taxon, "Microbial_Eukaryote") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Amphibian"></see>
+    ///   <para>taxon:ModernReptile</para>
     /// </summary>
-    let Amphibian = _prefix "Amphibian"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The class of recently extant reptiles including Crocodiles, Turtles, Snakes and Lizards</para>
+    /// labels<para>Modern Reptile</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/ModernReptile">http://purl.org/biodiversity/taxon/ModernReptile</seealso>
+    let ModernReptile = Prefixed_Name(taxon, "ModernReptile") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Tetrapod"></see>
+    ///   <para>taxon:Mollusca</para>
     /// </summary>
-    let Tetrapod = _prefix "Tetrapod"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Mollusca</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Mollusca">http://purl.org/biodiversity/taxon/Mollusca</seealso>
+    let Mollusca = Prefixed_Name(taxon, "Mollusca") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Animal"></see>
+    ///   <para>taxon:Moss</para>
     /// </summary>
-    let Animal = _prefix "Animal"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Moss</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Moss">http://purl.org/biodiversity/taxon/Moss</seealso>
+    let Moss = Prefixed_Name(taxon, "Moss") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Eukaryote"></see>
+    ///   <para>taxon:Taxon</para>
     /// </summary>
-    let Eukaryote = _prefix "Eukaryote"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A proposed superclass for all the known LOD classes for a "taxon"</para>
+    /// labels<para>Taxon</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Taxon">http://purl.org/biodiversity/taxon/Taxon</seealso>
+    let Taxon = Prefixed_Name(taxon, "Taxon") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Arachnid"></see>
+    ///   <para>taxon:TaxonConcept</para>
     /// </summary>
-    let Arachnid = _prefix "Arachnid"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/TaxonConcept">http://purl.org/biodiversity/taxon/TaxonConcept</seealso>
+    let TaxonConcept = Prefixed_Name(taxon, "TaxonConcept") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Arthropod"></see>
+    ///   <para>taxon:TaxonName</para>
     /// </summary>
-    let Arthropod = _prefix "Arthropod"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A proposed superclass for all the known LOD classes a taxon name</para>
+    /// labels<para>TaxonName</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/TaxonName">http://purl.org/biodiversity/taxon/TaxonName</seealso>
+    let TaxonName = Prefixed_Name(taxon, "TaxonName") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Archaea"></see>
+    ///   <para>taxon:TaxonNameID</para>
     /// </summary>
-    let Archaea = _prefix "Archaea"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>TaxonNameID</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/TaxonNameID">http://purl.org/biodiversity/taxon/TaxonNameID</seealso>
+    let TaxonNameID = Prefixed_Name(taxon, "TaxonNameID") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/BiologicalOrganism"></see>
+    ///   <para>taxon:Tunicate</para>
     /// </summary>
-    let BiologicalOrganism = _prefix "BiologicalOrganism"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Tunicate</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Tunicate">http://purl.org/biodiversity/taxon/Tunicate</seealso>
+    let Tunicate = Prefixed_Name(taxon, "Tunicate") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Armoured_fish"></see>
+    ///   <para>taxon:Unclassified_Chordate</para>
     /// </summary>
-    let Armoured_fish = _prefix "Armoured_fish"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>a polyphyletic group</para>
+    /// labels<para>Unclassified Chordate</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/Unclassified_Chordate">http://purl.org/biodiversity/taxon/Unclassified_Chordate</seealso>
+    let Unclassified_Chordate =
+        Prefixed_Name(taxon, "Unclassified_Chordate") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Fish"></see>
+    ///   <para>taxon:authority</para>
     /// </summary>
-    let Fish = _prefix "Fish"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The author and year of the species description publication i.e (Baker 1899)</para>
+    /// labels<para>authority</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/authority">http://purl.org/biodiversity/taxon/authority</seealso>
+    let authority = Prefixed_Name(taxon, "authority") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Bacteria"></see>
+    ///   <para>taxon:relatedTaxonNameID</para>
     /// </summary>
-    let Bacteria = _prefix "Bacteria"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The URI to a URI of a related name</para>
+    /// labels<para>relatedTaxonNameID</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/relatedTaxonNameID">http://purl.org/biodiversity/taxon/relatedTaxonNameID</seealso>
+    let relatedTaxonNameID = Prefixed_Name(taxon, "relatedTaxonNameID") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Bird"></see>
+    ///   <para>taxon:canonicalFormID_Of</para>
     /// </summary>
-    let Bird = _prefix "Bird"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The URI ID for the scientific name with authorship form of the name i.e. Puma concolor Linnaeus 1758, for name to name mapping</para>
+    /// labels<para>canonicalFormID Of</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/canonicalFormID_Of">http://purl.org/biodiversity/taxon/canonicalFormID_Of</seealso>
+    let canonicalFormID_Of = Prefixed_Name(taxon, "canonicalFormID_Of") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Cartilaginous_fish"></see>
+    ///   <para>taxon:relatedTaxonNameID_Of</para>
     /// </summary>
-    let Cartilaginous_fish = _prefix "Cartilaginous_fish"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The URI to a URI of a related name</para>
+    /// labels<para>relatedTaxonNameID_ Of</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/relatedTaxonNameID_Of">http://purl.org/biodiversity/taxon/relatedTaxonNameID_Of</seealso>
+    let relatedTaxonNameID_Of =
+        Prefixed_Name(taxon, "relatedTaxonNameID_Of") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Cephalochordate"></see>
+    ///   <para>taxon:commonName</para>
     /// </summary>
-    let Cephalochordate = _prefix "Cephalochordate"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The common name for a taxon i.e. "Wolf"</para>
+    /// labels<para>commonName</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/commonName">http://purl.org/biodiversity/taxon/commonName</seealso>
+    let commonName = Prefixed_Name(taxon, "commonName") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Chordate"></see>
+    ///   <para>taxon:dbClass</para>
     /// </summary>
-    let Chordate = _prefix "Chordate"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>dbClass</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/dbClass">http://purl.org/biodiversity/taxon/dbClass</seealso>
+    let dbClass = Prefixed_Name(taxon, "dbClass") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/ClubMoss"></see>
+    ///   <para>taxon:dbFamily</para>
     /// </summary>
-    let ClubMoss = _prefix "ClubMoss"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>dbFamily</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/dbFamily">http://purl.org/biodiversity/taxon/dbFamily</seealso>
+    let dbFamily = Prefixed_Name(taxon, "dbFamily") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Plant"></see>
+    ///   <para>taxon:dbGenus</para>
     /// </summary>
-    let Plant = _prefix "Plant"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>dbGenus</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/dbGenus">http://purl.org/biodiversity/taxon/dbGenus</seealso>
+    let dbGenus = Prefixed_Name(taxon, "dbGenus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Conifer"></see>
+    ///   <para>taxon:relatedName</para>
     /// </summary>
-    let Conifer = _prefix "Conifer"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/relatedName">http://purl.org/biodiversity/taxon/relatedName</seealso>
+    let relatedName = Prefixed_Name(taxon, "relatedName") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Crustacean"></see>
+    ///   <para>taxon:trinomial</para>
     /// </summary>
-    let Crustacean = _prefix "Crustacean"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>a scientific name consisting of genus epithet and subepithet i.e. Felis silvestris lybica</para>
+    /// labels<para>trinomial</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/trinomial">http://purl.org/biodiversity/taxon/trinomial</seealso>
+    let trinomial = Prefixed_Name(taxon, "trinomial") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Cycad"></see>
+    ///   <para>taxon:uniprotClass</para>
     /// </summary>
-    let Cycad = _prefix "Cycad"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>uniprotClass</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/uniprotClass">http://purl.org/biodiversity/taxon/uniprotClass</seealso>
+    let uniprotClass = Prefixed_Name(taxon, "uniprotClass") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/DataObject"></see>
+    ///   <para>taxon:uniprotFamily</para>
     /// </summary>
-    let DataObject = _prefix "DataObject"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>uniprotFamily</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/uniprotFamily">http://purl.org/biodiversity/taxon/uniprotFamily</seealso>
+    let uniprotFamily = Prefixed_Name(taxon, "uniprotFamily") |> PrefixedName
     /// <summary>
-    /// Dinosaurs
-    /// <see href="http://purl.org/biodiversity/taxon/Dinosauria"></see></summary>
-    let Dinosauria = _prefix "Dinosauria"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Fern"></see>
+    ///   <para>taxon:uniprotGenus</para>
     /// </summary>
-    let Fern = _prefix "Fern"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/FloweringPlant"></see>
-    /// </summary>
-    let FloweringPlant = _prefix "FloweringPlant"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Fungus"></see>
-    /// </summary>
-    let Fungus = _prefix "Fungus"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Ginkgo"></see>
-    /// </summary>
-    let Ginkgo = _prefix "Ginkgo"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Gnetophytes"></see>
-    /// </summary>
-    let Gnetophytes = _prefix "Gnetophytes"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/GreenAlga"></see>
-    /// </summary>
-    let GreenAlga = _prefix "GreenAlga"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Image"></see>
-    /// </summary>
-    let Image = _prefix "Image"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Insect"></see>
-    /// </summary>
-    let Insect = _prefix "Insect"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Jawless_fish"></see>
-    /// </summary>
-    let Jawless_fish = _prefix "Jawless_fish"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Lobe_Finned_fish"></see>
-    /// </summary>
-    let Lobe_Finned_fish = _prefix "Lobe_Finned_fish"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Lungfish"></see>
-    /// </summary>
-    let Lungfish = _prefix "Lungfish"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Mammal"></see>
-    /// </summary>
-    let Mammal = _prefix "Mammal"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/MapImage"></see>
-    /// </summary>
-    let MapImage = _prefix "MapImage"
-    /// <summary>
-    /// a polyphyletic group
-    /// <see href="http://purl.org/biodiversity/taxon/Microbial_Eukaryote"></see></summary>
-    let Microbial_Eukaryote = _prefix "Microbial_Eukaryote"
-    /// <summary>
-    /// The class of recently extant reptiles including Crocodiles, Turtles, Snakes and Lizards
-    /// <see href="http://purl.org/biodiversity/taxon/ModernReptile"></see></summary>
-    let ModernReptile = _prefix "ModernReptile"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Mollusca"></see>
-    /// </summary>
-    let Mollusca = _prefix "Mollusca"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Moss"></see>
-    /// </summary>
-    let Moss = _prefix "Moss"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Ray_Fined_fish"></see>
-    /// </summary>
-    let Ray_Fined_fish = _prefix "Ray_Fined_fish"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Red_algae"></see>
-    /// </summary>
-    let Red_algae = _prefix "Red_algae"
-    /// <summary>
-    /// A proposed superclass for all the known LOD classes for a "taxon"
-    /// <see href="http://purl.org/biodiversity/taxon/Taxon"></see></summary>
-    let Taxon = _prefix "Taxon"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/TaxonConcept"></see>
-    /// </summary>
-    let TaxonConcept = _prefix "TaxonConcept"
-    /// <summary>
-    /// A proposed superclass for all the known LOD classes a taxon name
-    /// <see href="http://purl.org/biodiversity/taxon/TaxonName"></see></summary>
-    let TaxonName = _prefix "TaxonName"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/TaxonNameID"></see>
-    /// </summary>
-    let TaxonNameID = _prefix "TaxonNameID"
-    /// <summary>
-    /// A proposed superclass for all the known LOD classes of a Taxon Rank
-    /// <see href="http://purl.org/biodiversity/taxon/TaxonRank"></see></summary>
-    let TaxonRank = _prefix "TaxonRank"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/Tunicate"></see>
-    /// </summary>
-    let Tunicate = _prefix "Tunicate"
-    /// <summary>
-    /// a polyphyletic group
-    /// <see href="http://purl.org/biodiversity/taxon/Unclassified_Chordate"></see></summary>
-    let Unclassified_Chordate = _prefix "Unclassified_Chordate"
-    /// <summary>
-    /// The author and year of the species description publication i.e (Baker 1899)
-    /// <see href="http://purl.org/biodiversity/taxon/authority"></see></summary>
-    let authority = _prefix "authority"
-    /// <summary>
-    /// a scientific name consisting of genus, epithet i.e. Felis silvestris
-    /// <see href="http://purl.org/biodiversity/taxon/binomial"></see></summary>
-    let binomial = _prefix "binomial"
-    /// <summary>
-    /// The scientific name without the authority string i.e. Felidae or Puma concolor
-    /// <see href="http://purl.org/biodiversity/taxon/scientificName"></see></summary>
-    let scientificName = _prefix "scientificName"
-    /// <summary>
-    /// The URI ID for the canonical form of the name i.e. Puma concolor or Felidae, for name to name mapping
-    /// <see href="http://purl.org/biodiversity/taxon/canonicalFormID"></see></summary>
-    let canonicalFormID = _prefix "canonicalFormID"
-    /// <summary>
-    /// The URI to a URI of a related name
-    /// <see href="http://purl.org/biodiversity/taxon/relatedTaxonNameID"></see></summary>
-    let relatedTaxonNameID = _prefix "relatedTaxonNameID"
-    /// <summary>
-    /// The URI ID for the scientific name with authorship form of the name i.e. Puma concolor Linnaeus 1758, for name to name mapping
-    /// <see href="http://purl.org/biodiversity/taxon/canonicalFormID_Of"></see></summary>
-    let canonicalFormID_Of = _prefix "canonicalFormID_Of"
-    /// <summary>
-    /// The URI to a URI of a related name
-    /// <see href="http://purl.org/biodiversity/taxon/relatedTaxonNameID_Of"></see></summary>
-    let relatedTaxonNameID_Of = _prefix "relatedTaxonNameID_Of"
-    /// <summary>
-    /// The common name for a taxon i.e. "Wolf"
-    /// <see href="http://purl.org/biodiversity/taxon/commonName"></see></summary>
-    let commonName = _prefix "commonName"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/dbClass"></see>
-    /// </summary>
-    let dbClass = _prefix "dbClass"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/dbFamily"></see>
-    /// </summary>
-    let dbFamily = _prefix "dbFamily"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/dbGenus"></see>
-    /// </summary>
-    let dbGenus = _prefix "dbGenus"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/dbKingdom"></see>
-    /// </summary>
-    let dbKingdom = _prefix "dbKingdom"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/dbOrder"></see>
-    /// </summary>
-    let dbOrder = _prefix "dbOrder"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/dbPhylum"></see>
-    /// </summary>
-    let dbPhylum = _prefix "dbPhylum"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/dbSpecies"></see>
-    /// </summary>
-    let dbSpecies = _prefix "dbSpecies"
-    /// <summary>
-    /// a one word scientific name i.e. Felidae, Mammalia, Metazoa
-    /// <see href="http://purl.org/biodiversity/taxon/monomial"></see></summary>
-    let monomial = _prefix "monomial"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/relatedName"></see>
-    /// </summary>
-    let relatedName = _prefix "relatedName"
-    /// <summary>
-    /// a scientific name consisting of genus epithet and subepithet i.e. Felis silvestris lybica
-    /// <see href="http://purl.org/biodiversity/taxon/trinomial"></see></summary>
-    let trinomial = _prefix "trinomial"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/uniprotClass"></see>
-    /// </summary>
-    let uniprotClass = _prefix "uniprotClass"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/uniprotFamily"></see>
-    /// </summary>
-    let uniprotFamily = _prefix "uniprotFamily"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/uniprotGenus"></see>
-    /// </summary>
-    let uniprotGenus = _prefix "uniprotGenus"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/uniprotKingdom"></see>
-    /// </summary>
-    let uniprotKingdom = _prefix "uniprotKingdom"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/uniprotOrder"></see>
-    /// </summary>
-    let uniprotOrder = _prefix "uniprotOrder"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/uniprotPhylum"></see>
-    /// </summary>
-    let uniprotPhylum = _prefix "uniprotPhylum"
-    /// <summary>
-    ///   <see href="http://purl.org/biodiversity/taxon/uniprotSpecies"></see>
-    /// </summary>
-    let uniprotSpecies = _prefix "uniprotSpecies"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>uniprotGenus</para></remarks>
+    /// <seealso href="http://purl.org/biodiversity/taxon/uniprotGenus">http://purl.org/biodiversity/taxon/uniprotGenus</seealso>
+    let uniprotGenus = Prefixed_Name(taxon, "uniprotGenus") |> PrefixedName

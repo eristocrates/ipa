@@ -1,15 +1,18 @@
 namespace http.erlangen_crm.org.current.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ecrm =
-    let _namespace_name = "http://erlangen-crm.org/current/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    let _namespace_iri = Namespace_Iri ecrm |> NamespaceIRI
 
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E10_Transfer_of_Custody</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises transfers of physical custody of objects between instances of E39 Actor.
     ///
     /// The recording of the donor and/or recipient is optional. It is possible that in an instance of E10 Transfer of Custody there is either no donor or no recipient. Depending on the circumstances it may describe:
@@ -28,11 +31,399 @@ module ecrm =
     /// - the return of Picasso's "Guernica" to Madrid's Prado in 1981
     ///
     /// In First Order Logic:
-    /// E10(x) ⊃ E7(x)
-    /// <see href="http://erlangen-crm.org/current/E10_Transfer_of_Custody"></see></summary>
-    let E10_Transfer_of_Custody = _prefix "E10_Transfer_of_Custody"
+    /// E10(x) ⊃ E7(x)</para>
+    /// labels<para>E10 Transfer of Custody</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E10_Transfer_of_Custody">http://erlangen-crm.org/current/E10_Transfer_of_Custody</seealso>
+    let E10_Transfer_of_Custody =
+        Prefixed_Name(ecrm, "E10_Transfer_of_Custody") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P30_transferred_custody_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies an item or items of E18 Physical Thing concerned in an E10 Transfer of Custody activity.
+    ///
+    /// The property will typically describe the object that is handed over by an E39 Actor to another Actor's custody. On occasion, physical custody may be transferred involuntarily or illegally – through accident, unsolicited donation, or theft.
+    ///
+    /// Examples:
+    /// - the delivery of the paintings by Secure Deliveries Inc. to the National Gallery (E10) transferred custody of paintings from The Iveagh Bequest (E19)
+    ///
+    /// In First Order Logic:
+    /// P30 (x,y) ⊃ E10(x)
+    /// P30 (x,y) ⊃ E18(y)</para>
+    /// labels<para>P30 transferred custody of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P30_transferred_custody_of">http://erlangen-crm.org/current/P30_transferred_custody_of</seealso>
+    let P30_transferred_custody_of =
+        Prefixed_Name(ecrm, "P30_transferred_custody_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E11_Modification</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises all instances of E7 Activity that create, alter or change E24 Physical Man-Made Thing.
+    ///
+    /// This class includes the production of an item from raw materials, and other so far undocumented objects, and the preventive treatment or restoration of an object for conservation.
+    ///
+    /// Since the distinction between modification and production is not always clear, modification is regarded as the more generally applicable concept. This implies that some items may be consumed or destroyed in a Modification, and that others may be produced as a result of it. An event should also be documented using E81 Transformation if it results in the destruction of one or more objects and the simultaneous production of others using parts or material from the originals. In this case, the new items have separate identities.
+    ///
+    /// If the instance of the E29 Design or Procedure utilized for the modification prescribes the use of specific materials, they should be documented using property P68 foresees use of (use foreseen by): E57 Material of E29 Design or Procedure, rather than via P126 employed (was employed in): E57 Material.
+    ///
+    /// Examples:
+    /// - the construction of the SS Great Britain (E12)
+    /// - the impregnation of the Vasa warship in Stockholm for preservation after 1956
+    /// - the transformation of the Enola Gay into a museum exhibit by the National Air and Space Museum in Washington DC between 1993 and 1995 (E12, E81)
+    /// - the last renewal of the gold coating of the Toshogu shrine in Nikko, Japan
+    ///
+    /// In First Order Logic:
+    /// E11(x) ⊃ E7(x)</para>
+    /// labels<para>E11 Modification</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E11_Modification">http://erlangen-crm.org/current/E11_Modification</seealso>
+    let E11_Modification = Prefixed_Name(ecrm, "E11_Modification") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P108_has_produced</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E24 Physical Man-Made Thing that came into existence as a result of an E12 Production.
+    /// The identity of an instance of E24 Physical Man-Made Thing is not defined by its matter, but by its existence as a subject of documentation. An E12 Production can result in the creation of multiple instances of E24 Physical Man-Made Thing.
+    ///
+    /// Examples:
+    /// - The building of Rome (E12) has produced Τhe Colosseum (E22)
+    ///
+    /// In First Order Logic:
+    /// P108(x,y) ⊃ E12(x)
+    /// P108(x,y) ⊃ E24(y)
+    /// P108(x,y) ⊃ P31(x,y)
+    /// P108(x,y) ⊃ P92(x,y)</para>
+    /// labels<para>P108 has produced</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P108_has_produced">http://erlangen-crm.org/current/P108_has_produced</seealso>
+    let P108_has_produced = Prefixed_Name(ecrm, "P108_has_produced") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E1_CRM_Entity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises all things in the universe of discourse of the CIDOC Conceptual Reference Model.
+    ///
+    /// It is an abstract concept providing for three general properties:
+    /// 1.Identification by name or appellation, and in particular by a preferred identifier
+    /// 2.Classification by type, allowing further refinement of the specific subclass an instance belongs to
+    /// 3.Attachment of free text for the expression of anything not captured by formal properties
+    ///
+    /// With the exception of E59 Primitive Value, all other classes within the CRM are directly or indirectly specialisations of E1 CRM Entity.
+    ///
+    /// Examples:
+    /// the earthquake in Lisbon 1755 (E5)
+    ///
+    /// In First Order Logic:
+    /// E1(x)</para>
+    /// labels<para>E1 CRM Entity</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E1_CRM_Entity">http://erlangen-crm.org/current/E1_CRM_Entity</seealso>
+    let E1_CRM_Entity = Prefixed_Name(ecrm, "E1_CRM_Entity") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P140_assigned_attribute_to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property indicates the item to which an attribute or relation is assigned.
+    ///
+    /// Examples:
+    /// - February 1997 Current Ownership Assessment of Martin Doerr's silver cup (E13) assigned attribute to Martin Doerr's silver cup (E19)
+    /// - 01 June 1997 Identifier Assignment of the silver cup donated by Martin Doerr (E15) assigned attribute to silver cup 232 (E19)
+    ///
+    /// In First Order Logic:
+    /// P140(x,y) ⊃ E13(x)
+    /// P140(x,y) ⊃ E1(y)</para>
+    /// labels<para>P140 assigned attribute to</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P140_assigned_attribute_to">http://erlangen-crm.org/current/P140_assigned_attribute_to</seealso>
+    let P140_assigned_attribute_to =
+        Prefixed_Name(ecrm, "P140_assigned_attribute_to") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P135i_was_created_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P135 was created by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P135i_was_created_by">http://erlangen-crm.org/current/P135i_was_created_by</seealso>
+    let P135i_was_created_by =
+        Prefixed_Name(ecrm, "P135i_was_created_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P107_has_current_or_former_member</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property relates an E39 Actor to the E74 Group of which that E39 Actor is a member.
+    ///
+    /// Groups, Legal Bodies and Persons, may all be members of Groups. A Group necessarily consists of more than one member.
+    ///
+    /// This property is a shortcut of the more fully developed path from E74 Group through P144 joined with (gained member by), E85 Joining, P143 joined (was joined by) to E39 Actor
+    /// The property P107.1 kind of member can be used to specify the type of membership or the role the member has in the group.
+    ///
+    /// Examples:
+    /// - Moholy Nagy (E21) is current or former member of Bauhaus (E74)
+    /// - National Museum of Science and Industry (E40) has current or former member The National Railway Museum (E40)
+    /// - The married couple Queen Elisabeth and Prince Phillip (E74) has current or former member Prince Phillip (E21) with P107.1 kind of member husband (E55 Type)
+    ///
+    /// In First Order Logic:
+    /// P107(x,y) ⊃ E74(x)
+    /// P107(x,y) ⊃ E39(y)
+    /// P107(x,y,z) ⊃ [P107(x,y) ∧ E55(z)]
+    ///
+    /// Properties: P107.1 kind of member: E55 Type</para>
+    /// labels<para>P107 has current or former member</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P107_has_current_or_former_member">http://erlangen-crm.org/current/P107_has_current_or_former_member</seealso>
+    let P107_has_current_or_former_member =
+        Prefixed_Name(ecrm, "P107_has_current_or_former_member") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E75_Conceptual_Object_Appellation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises all appellations specific to intellectual products or standardized patterns.
+    /// This class comprises appellations that are by their form or syntax specific to identifying instances of
+    /// E28 Conceptual Object, such as intellectual products, standardized patterns etc.
+    ///
+    ///
+    /// Examples:
+    /// - "ISBN 3-7913-1418-1"
+    /// - "ISO 2788-1986 (F)"
+    /// - "DOI=10.1109/MIS.2007.103"
+    ///
+    /// In First Order Logic:
+    /// E75(x) ⊃ E41(x)</para>
+    /// labels<para>E75 Conceptual Object Appellation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E75_Conceptual_Object_Appellation">http://erlangen-crm.org/current/E75_Conceptual_Object_Appellation</seealso>
+    let E75_Conceptual_Object_Appellation =
+        Prefixed_Name(ecrm, "E75_Conceptual_Object_Appellation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P111_added</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E18 Physical Thing that is added during an E79 Part Addition activity
+    ///
+    /// Examples:
+    /// - the insertion of the final nail (E79) added the last nail in George VI's coffin (E18)
+    ///
+    /// In First Order Logic:
+    /// P111(x,y) ⊃ E79(x)
+    /// P111(x,y) ⊃ E18(y)
+    /// P111(x,y) ⊃ P12(x,y)
+    /// P111(x,y) ⊃ P16(x,y)</para>
+    /// labels<para>P111 added</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P111_added">http://erlangen-crm.org/current/P111_added</seealso>
+    let P111_added = Prefixed_Name(ecrm, "P111_added") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P116_starts</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Scope note:
+    /// This property allows the starting point for a E2 Temporal Entity to be situated by reference to the starting point of another temporal entity of longer duration.
+    ///
+    /// This property is only necessary if the time span is unknown (otherwise the relationship can be calculated). This property is the same as the "starts / started-by" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
+    ///
+    /// Examples:
+    /// - Early Bronze Age (E4) starts Bronze Age (E4)
+    ///
+    /// In First Order Logic:
+    /// P116(x,y) ⊃ E2(x)
+    /// P116(x,y) ⊃ E2(y)</para>
+    /// labels<para>P116 starts</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P116_starts">http://erlangen-crm.org/current/P116_starts</seealso>
+    let P116_starts = Prefixed_Name(ecrm, "P116_starts") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P116i_is_started_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P116 is started by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P116i_is_started_by">http://erlangen-crm.org/current/P116i_is_started_by</seealso>
+    let P116i_is_started_by = Prefixed_Name(ecrm, "P116i_is_started_by") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P2_has_type</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property allows sub typing of CRM entities - a form of specialisation – through the use of a terminological hierarchy, or thesaurus.
+    ///
+    /// The CRM is intended to focus on the high-level entities and relationships needed to describe data structures. Consequently, it does not specialise entities any further than is required for this immediate purpose. However, entities in the isA hierarchy of the CRM may by specialised into any number of sub entities, which can be defined in the E55 Type hierarchy. E51 Contact Point, for example, may be specialised into "e-mail address", "telephone number", "post office box", "URL" etc. none of which figures explicitly in the CRM hierarchy. Sub typing obviously requires consistency between the meaning of the terms assigned and the more general intent of the CRM entity in question.
+    ///
+    /// Examples:
+    /// - "enquiries@cidoc-crm.org" (E51) has type e-mail address (E55)
+    ///
+    /// In First Order Logic:
+    /// P2(x,y) ⊃ E1(x)
+    /// P2(x,y) ⊃ E55(y)</para>
+    /// labels<para>P2 has type</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P2_has_type">http://erlangen-crm.org/current/P2_has_type</seealso>
+    let P2_has_type = Prefixed_Name(ecrm, "P2_has_type") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P137i_is_exemplified_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P137 is exemplified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P137i_is_exemplified_by">http://erlangen-crm.org/current/P137i_is_exemplified_by</seealso>
+    let P137i_is_exemplified_by =
+        Prefixed_Name(ecrm, "P137i_is_exemplified_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P38_deassigned</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property records the identifier that was deassigned from an instance of E1 CRM Entity.
+    /// Deassignment of an identifier may be necessary when an item is taken out of an inventory, a new numbering system is introduced or items are merged or split up.
+    /// The same identifier may be deassigned on more than one occasion.
+    ///
+    /// Examples:
+    /// - 31 July 2001 Identifier Assignment of the silver cup OXCMS:2001.1.32 (E15) deassigned "232" (E42)
+    ///
+    /// In First Order Logic:
+    /// P38(x,y) ⊃ E15(x)
+    /// P38(x,y) ⊃ E42(y)
+    /// P38(x,y) ⊃ P141(x,y)</para>
+    /// labels<para>P38 deassigned</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P38_deassigned">http://erlangen-crm.org/current/P38_deassigned</seealso>
+    let P38_deassigned = Prefixed_Name(ecrm, "P38_deassigned") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P38i_was_deassigned_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P38 was deassigned by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P38i_was_deassigned_by">http://erlangen-crm.org/current/P38i_was_deassigned_by</seealso>
+    let P38i_was_deassigned_by =
+        Prefixed_Name(ecrm, "P38i_was_deassigned_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P80_end_is_qualified_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Scope note:
+    /// This property qualifies the end of an E52 Time-Span in some way.
+    ///
+    /// The nature of the qualification may be certainty, precision, source etc.
+    ///
+    /// Examples:
+    /// - the time-span of the Holocene (E52) end is qualified by approximately (E62)
+    ///
+    /// In First Order Logic:
+    /// P80(x,y) ⊃ E52(x)
+    /// P80(x,y) ⊃ E62(y)
+    /// P80(x,y) ⊃ P3(x,y)</para>
+    /// labels<para>P80 end is qualified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P80_end_is_qualified_by">http://erlangen-crm.org/current/P80_end_is_qualified_by</seealso>
+    let P80_end_is_qualified_by =
+        Prefixed_Name(ecrm, "P80_end_is_qualified_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P81_ongoing_throughout</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the minimum period of time covered by an E52 Time-Span.
+    ///
+    /// Since Time-Spans may not have precisely known temporal extents, the CRM supports statements about the minimum and maximum temporal extents of Time-Spans. This property allows a Time-Span’s minimum temporal extent (i.e. its inner boundary) to be assigned an E61 Time Primitive value. Time Primitives are treated by the CRM as application or system specific date intervals, and are not further analysed.
+    ///
+    /// Examples:
+    /// - the time-span of the development of the CIDOC CRM (E52) ongoing throughout 1996-2002 (E61)
+    ///
+    /// In First Order Logic:
+    /// P81 (x,y) ⊃ E52(x)
+    /// P81 (x,y) ⊃ E61(y)</para>
+    /// labels<para>P81 ongoing throughout</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P81_ongoing_throughout">http://erlangen-crm.org/current/P81_ongoing_throughout</seealso>
+    let P81_ongoing_throughout =
+        Prefixed_Name(ecrm, "P81_ongoing_throughout") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P82_at_some_time_within</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the maximum period of time within which an E52 Time-Span falls.
+    ///
+    /// Since Time-Spans may not have precisely known temporal extents, the CRM supports statements about the minimum and maximum temporal extents of Time-Spans. This property allows a Time-Span’s maximum temporal extent (i.e. its outer boundary) to be assigned an E61 Time Primitive value. Time Primitives are treated by the CRM as application or system specific date intervals, and are not further analysed.
+    ///
+    /// Examples:
+    /// - the time-span of the development of the CIDOC CRM (E52) at some time within 1992-infinity (E61)
+    ///
+    /// In First Order Logic:
+    /// P82 (x,y) ⊃ E52(x)
+    /// P82 (x,y) ⊃ E61(y)</para>
+    /// labels<para>P82 at some time within</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P82_at_some_time_within">http://erlangen-crm.org/current/P82_at_some_time_within</seealso>
+    let P82_at_some_time_within =
+        Prefixed_Name(ecrm, "P82_at_some_time_within") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P9_consists_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of E4 Period with another instance of E4 Period that is defined by a subset of the phenomena that define the former. Therefore the spacetime volume of the latter must fall
+    /// within the spacetime volume of the former.
+    /// This property is transitive.
+    ///
+    ///
+    /// Examples:
+    /// - Cretan Bronze Age (E4) consists of Middle Minoan (E4)
+    ///
+    /// In First Order Logic:
+    /// P9(x,y) ⊃ E4(x)
+    /// P9(x,y) ⊃ E4(y)
+    /// P9(x,y) ⊃ P10(y,x)</para>
+    /// labels<para>P9 consists of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P9_consists_of">http://erlangen-crm.org/current/P9_consists_of</seealso>
+    let P9_consists_of = Prefixed_Name(ecrm, "P9_consists_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P9i_forms_part_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P9 forms part of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P9i_forms_part_of">http://erlangen-crm.org/current/P9i_forms_part_of</seealso>
+    let P9i_forms_part_of = Prefixed_Name(ecrm, "P9i_forms_part_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E18_Physical_Thing</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises all persistent physical items with a relatively stable form, man-made or natural.
     ///
     /// Depending on the existence of natural boundaries of such things, the CRM distinguishes the instances of E19 Physical Object from instances of E26 Physical Feature, such as holes, rivers, pieces of land etc. Most instances of E19 Physical Object can be moved (if not too heavy), whereas features are integral to the surrounding matter.
@@ -50,80 +441,17 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// E18(x) ⊃ E72(x)
-    /// E18(x) ⊃ E92(x)
-    /// <see href="http://erlangen-crm.org/current/E18_Physical_Thing"></see></summary>
-    let E18_Physical_Thing = _prefix "E18_Physical_Thing"
+    /// E18(x) ⊃ E92(x)</para>
+    /// labels<para>E18 Physical Thing</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E18_Physical_Thing">http://erlangen-crm.org/current/E18_Physical_Thing</seealso>
+    let E18_Physical_Thing = Prefixed_Name(ecrm, "E18_Physical_Thing") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This property identifies an item or items of E18 Physical Thing concerned in an E10 Transfer of Custody activity.
-    ///
-    /// The property will typically describe the object that is handed over by an E39 Actor to another Actor's custody. On occasion, physical custody may be transferred involuntarily or illegally – through accident, unsolicited donation, or theft.
-    ///
-    /// Examples:
-    /// - the delivery of the paintings by Secure Deliveries Inc. to the National Gallery (E10) transferred custody of paintings from The Iveagh Bequest (E19)
-    ///
-    /// In First Order Logic:
-    /// P30 (x,y) ⊃ E10(x)
-    /// P30 (x,y) ⊃ E18(y)
-    /// <see href="http://erlangen-crm.org/current/P30_transferred_custody_of"></see></summary>
-    let P30_transferred_custody_of = _prefix "P30_transferred_custody_of"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises actions intentionally carried out by instances of E39 Actor that result in changes of state in the cultural, social, or physical systems documented.
-    ///
-    /// This notion includes complex, composite and long-lasting actions such as the building of a settlement or a war, as well as simple, short-lived actions such as the opening of a door.
-    ///
-    /// Examples:
-    /// - the Battle of Stalingrad
-    /// - the Yalta Conference
-    /// - my birthday celebration 28-6-1995
-    /// - the writing of "Faust" by Goethe (E65)
-    /// - the formation of the Bauhaus 1919 (E66)
-    /// - calling the place identified by TGN '7017998' 'Quyunjig' by the people of Iraq
-    /// - Kira Weber working in glass art from 1984 to 1993
-    /// - Kira Weber working in oil and pastel painting from 1993
-    ///
-    /// In First Order Logic:
-    /// E7(x) ⊃ E5(x)
-    /// <see href="http://erlangen-crm.org/current/E7_Activity"></see></summary>
-    let E7_Activity = _prefix "E7_Activity"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises all instances of E7 Activity that create, alter or change E24 Physical Man-Made Thing.
-    ///
-    /// This class includes the production of an item from raw materials, and other so far undocumented objects, and the preventive treatment or restoration of an object for conservation.
-    ///
-    /// Since the distinction between modification and production is not always clear, modification is regarded as the more generally applicable concept. This implies that some items may be consumed or destroyed in a Modification, and that others may be produced as a result of it. An event should also be documented using E81 Transformation if it results in the destruction of one or more objects and the simultaneous production of others using parts or material from the originals. In this case, the new items have separate identities.
-    ///
-    /// If the instance of the E29 Design or Procedure utilized for the modification prescribes the use of specific materials, they should be documented using property P68 foresees use of (use foreseen by): E57 Material of E29 Design or Procedure, rather than via P126 employed (was employed in): E57 Material.
-    ///
-    /// Examples:
-    /// - the construction of the SS Great Britain (E12)
-    /// - the impregnation of the Vasa warship in Stockholm for preservation after 1956
-    /// - the transformation of the Enola Gay into a museum exhibit by the National Air and Space Museum in Washington DC between 1993 and 1995 (E12, E81)
-    /// - the last renewal of the gold coating of the Toshogu shrine in Nikko, Japan
-    ///
-    /// In First Order Logic:
-    /// E11(x) ⊃ E7(x)
-    /// <see href="http://erlangen-crm.org/current/E11_Modification"></see></summary>
-    let E11_Modification = _prefix "E11_Modification"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E24 Physical Man-Made Thing modified in an E11 Modification.
-    ///
-    /// If a modification is applied to a non-man-made object, it is regarded as an E22 Man-Made Object from that time onwards.
-    ///
-    /// Examples:
-    /// - rebuilding of the Reichstag (E11) has modified the Reichstag in Berlin (E24)
-    ///
-    /// In First Order Logic:
-    /// P31(x,y) ⊃ E11(x)
-    /// P31(x,y) ⊃ E24(y)
-    /// P31(x,y) ⊃ P12(x,y)
-    /// <see href="http://erlangen-crm.org/current/P31_has_modified"></see></summary>
-    let P31_has_modified = _prefix "P31_has_modified"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E24_Physical_Man-Made_Thing</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises all persistent physical items that are purposely created by human activity.
     ///
     /// This class comprises man-made objects, such as a swords, and man-made features, such as rock art. No assumptions are made as to the extent of modification required to justify regarding an object as man-made. For example, a "cup and ring" carving on bedrock is regarded as instance of E24 Physical Man-Made Thing.
@@ -135,46 +463,18 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// E24(x) ⊃ E18(x)
-    /// E24(x) ⊃ E71(x)
-    /// <see href="http://erlangen-crm.org/current/E24_Physical_Man-Made_Thing"></see></summary>
-    let ``E24_Physical_Man-Made_Thing`` = _prefix "E24_Physical_Man-Made_Thing"
+    /// E24(x) ⊃ E71(x)</para>
+    /// labels<para>E24 Physical Man-Made Thing</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E24_Physical_Man-Made_Thing">http://erlangen-crm.org/current/E24_Physical_Man-Made_Thing</seealso>
+    let E24_Physical_Man_Made_Thing =
+        Prefixed_Name(ecrm, "E24_Physical_Man-Made_Thing") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This class comprises activities that are designed to, and succeed in, creating one or more new items.
-    ///
-    /// It specializes the notion of modification into production. The decision as to whether or not an object is regarded as new is context sensitive. Normally, items are considered "new" if there is no obvious overall similarity between them and the consumed items and material used in their production. In other cases, an item is considered "new" because it becomes relevant to documentation by a modification. For example, the scribbling of a name on a potsherd may make it a voting token. The original potsherd may not be worth documenting, in contrast to the inscribed one.
-    ///
-    /// This entity can be collective: the printing of a thousand books, for example, would normally be considered a single event.
-    ///
-    /// An event should also be documented using E81 Transformation if it results in the destruction of one or more objects and the simultaneous production of others using parts or material from the originals. In this case, the new items have separate identities and matter is preserved, but identity is not.
-    ///
-    /// Examples:
-    /// - the construction of the SS Great Britain
-    /// - the first casting of the Little Mermaid from the harbour of Copenhagen
-    /// - Rembrandt's creating of the seventh state of his etching "Woman sitting half dressed beside a stove", 1658, identified by Bartsch Number 197 (E12,E65,E81)
-    ///
-    /// In First Order Logic:
-    /// E12(x) ⊃ E11(x)
-    /// E12(x) ⊃ E63(x)
-    /// <see href="http://erlangen-crm.org/current/E12_Production"></see></summary>
-    let E12_Production = _prefix "E12_Production"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E24 Physical Man-Made Thing that came into existence as a result of an E12 Production.
-    /// The identity of an instance of E24 Physical Man-Made Thing is not defined by its matter, but by its existence as a subject of documentation. An E12 Production can result in the creation of multiple instances of E24 Physical Man-Made Thing.
-    ///
-    /// Examples:
-    /// - The building of Rome (E12) has produced Τhe Colosseum (E22)
-    ///
-    /// In First Order Logic:
-    /// P108(x,y) ⊃ E12(x)
-    /// P108(x,y) ⊃ E24(y)
-    /// P108(x,y) ⊃ P31(x,y)
-    /// P108(x,y) ⊃ P92(x,y)
-    /// <see href="http://erlangen-crm.org/current/P108_has_produced"></see></summary>
-    let P108_has_produced = _prefix "P108_has_produced"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E63_Beginning_of_Existence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises events that bring into existence any E77 Persistent Item.
     ///
     /// It may be used for temporal reasoning about things (intellectual products, physical items, groups of people, living beings) beginning to exist; it serves as a hook for determination of a terminus post quem and ante quem.
@@ -186,70 +486,18 @@ module ecrm =
     /// - the construction of the Eiffel Tower
     ///
     /// In First Order Logic:
-    /// E63(x) ⊃ E5(x)
-    /// <see href="http://erlangen-crm.org/current/E63_Beginning_of_Existence"></see></summary>
-    let E63_Beginning_of_Existence = _prefix "E63_Beginning_of_Existence"
+    /// E63(x) ⊃ E5(x)</para>
+    /// labels<para>E63 Beginning of Existence</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E63_Beginning_of_Existence">http://erlangen-crm.org/current/E63_Beginning_of_Existence</seealso>
+    let E63_Beginning_of_Existence =
+        Prefixed_Name(ecrm, "E63_Beginning_of_Existence") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This class comprises the actions of making assertions about properties of an object or any relation between two items or concepts.
-    ///
-    /// This class allows the documentation of how the respective assignment came about, and whose opinion it was. All the attributes or properties assigned in such an action can also be seen as directly attached to the respective item or concept, possibly as a collection of contradictory values. All cases of properties in this model that are also described indirectly through an action are characterised as "short cuts" of this action. This redundant modelling of two alternative views is preferred because many implementations may have good reasons to model either the action or the short cut, and the relation between both alternatives can be captured by simple rules.
-    ///
-    /// In particular, the class describes the actions of people making propositions and statements during certain museum procedures, e.g. the person and date when a condition statement was made, an identifier was assigned, the museum object was measured, etc. Which kinds of such assignments and statements need to be documented explicitly in structures of a schema rather than free text, depends on if this information should be accessible by structured queries.
-    ///
-    /// Examples:
-    /// - the assessment of the current ownership of Martin Doerr's silver cup in February 1997
-    ///
-    /// In First Order Logic:
-    /// E13(x) ⊃ E7(x)
-    /// <see href="http://erlangen-crm.org/current/E13_Attribute_Assignment"></see></summary>
-    let E13_Attribute_Assignment = _prefix "E13_Attribute_Assignment"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises all things in the universe of discourse of the CIDOC Conceptual Reference Model.
-    ///
-    /// It is an abstract concept providing for three general properties:
-    /// 1.Identification by name or appellation, and in particular by a preferred identifier
-    /// 2.Classification by type, allowing further refinement of the specific subclass an instance belongs to
-    /// 3.Attachment of free text for the expression of anything not captured by formal properties
-    ///
-    /// With the exception of E59 Primitive Value, all other classes within the CRM are directly or indirectly specialisations of E1 CRM Entity.
-    ///
-    /// Examples:
-    /// the earthquake in Lisbon 1755 (E5)
-    ///
-    /// In First Order Logic:
-    /// E1(x)
-    /// <see href="http://erlangen-crm.org/current/E1_CRM_Entity"></see></summary>
-    let E1_CRM_Entity = _prefix "E1_CRM_Entity"
-    /// <summary>
-    /// Scope note:
-    /// This property indicates the item to which an attribute or relation is assigned.
-    ///
-    /// Examples:
-    /// - February 1997 Current Ownership Assessment of Martin Doerr's silver cup (E13) assigned attribute to Martin Doerr's silver cup (E19)
-    /// - 01 June 1997 Identifier Assignment of the silver cup donated by Martin Doerr (E15) assigned attribute to silver cup 232 (E19)
-    ///
-    /// In First Order Logic:
-    /// P140(x,y) ⊃ E13(x)
-    /// P140(x,y) ⊃ E1(y)
-    /// <see href="http://erlangen-crm.org/current/P140_assigned_attribute_to"></see></summary>
-    let P140_assigned_attribute_to = _prefix "P140_assigned_attribute_to"
-    /// <summary>
-    /// Scope note:
-    /// This class describes the act of assessing the state of preservation of an object during a particular period.
-    ///
-    /// The condition assessment may be carried out by inspection, measurement or through historical research. This class is used to document circumstances of the respective assessment that may be relevant to interpret its quality at a later stage, or to continue research on related documents.
-    ///
-    /// Examples:
-    /// - last year's inspection of humidity damage to the frescos in the St. George chapel in our village
-    ///
-    /// In First Order Logic:
-    /// E14(x) ⊃ E13(x)
-    /// <see href="http://erlangen-crm.org/current/E14_Condition_Assessment"></see></summary>
-    let E14_Condition_Assessment = _prefix "E14_Condition_Assessment"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P35_has_identified</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property identifies the E3 Condition State that was observed in an E14 Condition Assessment activity.
     ///
     /// Examples:
@@ -258,25 +506,148 @@ module ecrm =
     /// In First Order Logic:
     /// P35(x,y) ⊃E14(x)
     /// P35(x,y) ⊃ E3(y)
-    /// P35(x,y) ⊃ P141(x,y)
-    /// <see href="http://erlangen-crm.org/current/P35_has_identified"></see></summary>
-    let P35_has_identified = _prefix "P35_has_identified"
+    /// P35(x,y) ⊃ P141(x,y)</para>
+    /// labels<para>P35 has identified</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P35_has_identified">http://erlangen-crm.org/current/P35_has_identified</seealso>
+    let P35_has_identified = Prefixed_Name(ecrm, "P35_has_identified") |> PrefixedName
     /// <summary>
-    /// Scope note:
-    /// This property identifies the E18 Physical Thing that was assessed during an E14 Condition Assessment activity.
-    /// Conditions may be assessed either by direct observation or using recorded evidence. In the latter case the E18 Physical Thing does not need to be present or extant.
+    ///   <para>ecrm:P37_assigned</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property records the identifier that was assigned to an item in an Identifier Assignment activity.
+    /// The same identifier may be assigned on more than one occasion.
+    /// An Identifier might be created prior to an assignment.
     ///
     /// Examples:
-    /// - 1997 condition assessment of the silver collection (E14) concerned silver cup 232 (E22)
+    /// - 01 June 1997 Identifier Assignment of the silver cup donated by Martin Doerr (E15) assigned "232" (E42)
     ///
     /// In First Order Logic:
-    /// P34(x,y) ⊃ E14(x)
-    /// P34(x,y) ⊃ E18(y)
-    /// P34(x,y) ⊃ P140(x,y)
-    /// <see href="http://erlangen-crm.org/current/P34_concerned"></see></summary>
-    let P34_concerned = _prefix "P34_concerned"
+    /// P37(x,y) ⊃ E15(x)
+    /// P37(x,y) ⊃ E42(y)
+    /// P37(x,y) ⊃ P141(x,y)</para>
+    /// labels<para>P37 assigned</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P37_assigned">http://erlangen-crm.org/current/P37_assigned</seealso>
+    let P37_assigned = Prefixed_Name(ecrm, "P37_assigned") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P124_transformed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E77 Persistent Item or items that cease to exist due to a E81 Transformation.
+    ///
+    /// It is replaced by the result of the Transformation, which becomes a new unit of documentation. The continuity between both items, the new and the old, is expressed by the link to the common Transformation.
+    ///
+    /// Examples:
+    /// - the transformation of the Venetian Loggia in Heraklion into a city hall (E81) transformed the Venetian Loggia in Heraklion (E22)
+    /// - the death and mummification of Tut-Ankh-Amun (E81) transformed the ruling Pharao Tut-Ankh-Amun (E21)
+    ///
+    /// In First Order Logic:
+    /// P124(x,y) ⊃ E81(x)
+    /// P124(x,y) ⊃ E77(y)
+    /// P124(x,y) ⊃ P93(x,y)</para>
+    /// labels<para>P124 transformed</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P124_transformed">http://erlangen-crm.org/current/P124_transformed</seealso>
+    let P124_transformed = Prefixed_Name(ecrm, "P124_transformed") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P121_overlaps_with</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This symmetric property allows the instances of E53 Place with overlapping geometric extents to be associated with each other.
+    ///
+    /// It does not specify anything about the shared area. This property is purely spatial, in contrast to Allen operators, which are purely temporal.
+    ///
+    /// Examples:
+    /// - the territory of the United States (E53) overlaps with the Arctic (E53)
+    ///
+    /// In First Order Logic:
+    /// P121(x,y) ⊃ E53(x)
+    /// P121(x,y) ⊃ E53(y)
+    /// P121(x,y) ⊃ P121(y,x)</para>
+    /// labels<para>P121 overlaps with</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P121_overlaps_with">http://erlangen-crm.org/current/P121_overlaps_with</seealso>
+    let P121_overlaps_with = Prefixed_Name(ecrm, "P121_overlaps_with") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P123i_resulted_from</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P123 resulted from</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P123i_resulted_from">http://erlangen-crm.org/current/P123i_resulted_from</seealso>
+    let P123i_resulted_from = Prefixed_Name(ecrm, "P123i_resulted_from") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P50i_is_current_keeper_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P50 is current keeper of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P50i_is_current_keeper_of">http://erlangen-crm.org/current/P50i_is_current_keeper_of</seealso>
+    let P50i_is_current_keeper_of =
+        Prefixed_Name(ecrm, "P50i_is_current_keeper_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P51i_is_former_or_current_owner_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P51 is former or current owner of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P51i_is_former_or_current_owner_of">http://erlangen-crm.org/current/P51i_is_former_or_current_owner_of</seealso>
+    let P51i_is_former_or_current_owner_of =
+        Prefixed_Name(ecrm, "P51i_is_former_or_current_owner_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P90_has_value</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Scope note:
+    /// This property allows an E54 Dimension to be approximated by an E60 Number primitive.
+    ///
+    /// Examples:
+    /// - height of silver cup 232 (E54) has value 226 (E60)
+    ///
+    /// In First Order Logic:
+    /// P90(x,y) ⊃ E54(x)
+    /// P90(x,y) ⊃ E60(y)</para>
+    /// labels<para>P90 has value</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P90_has_value">http://erlangen-crm.org/current/P90_has_value</seealso>
+    let P90_has_value = Prefixed_Name(ecrm, "P90_has_value") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E14_Condition_Assessment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class describes the act of assessing the state of preservation of an object during a particular period.
+    ///
+    /// The condition assessment may be carried out by inspection, measurement or through historical research. This class is used to document circumstances of the respective assessment that may be relevant to interpret its quality at a later stage, or to continue research on related documents.
+    ///
+    /// Examples:
+    /// - last year's inspection of humidity damage to the frescos in the St. George chapel in our village
+    ///
+    /// In First Order Logic:
+    /// E14(x) ⊃ E13(x)</para>
+    /// labels<para>E14 Condition Assessment</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E14_Condition_Assessment">http://erlangen-crm.org/current/E14_Condition_Assessment</seealso>
+    let E14_Condition_Assessment =
+        Prefixed_Name(ecrm, "E14_Condition_Assessment") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E15_Identifier_Assignment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises activities that result in the allocation of an identifier to an instance of E1 CRM Entity. An E15 Identifier Assignment may include the creation of the identifier from multiple constituents, which themselves may be instances of E41 Appellation. The syntax and kinds of constituents to be used may be declared in a rule constituting an instance of E29 Design or Procedure.
     ///
     /// Examples of such identifiers include Find Numbers, Inventory Numbers, uniform titles in the sense of librarianship and Digital Object Identifiers (DOI). Documenting the act of identifier assignment and deassignment is especially useful when objects change custody or the identification system of an organization is changed. In order to keep track of the identity of things in such cases, it is important to document by whom, when and for what purpose an identifier is assigned to an item.
@@ -289,26 +660,18 @@ module ecrm =
     /// - On June 1, 2001 assigning the personal name heading "Guillaume, de Machaut, ca. 1300-1377" (E42,E82) to Guillaume de Machaut (E21)
     ///
     /// In First Order Logic:
-    /// E15(x) ⊃ E13(x)
-    /// <see href="http://erlangen-crm.org/current/E15_Identifier_Assignment"></see></summary>
-    let E15_Identifier_Assignment = _prefix "E15_Identifier_Assignment"
+    /// E15(x) ⊃ E13(x)</para>
+    /// labels<para>E15 Identifier Assignment</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E15_Identifier_Assignment">http://erlangen-crm.org/current/E15_Identifier_Assignment</seealso>
+    let E15_Identifier_Assignment =
+        Prefixed_Name(ecrm, "E15_Identifier_Assignment") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This property records the identifier that was assigned to an item in an Identifier Assignment activity.
-    /// The same identifier may be assigned on more than one occasion.
-    /// An Identifier might be created prior to an assignment.
-    ///
-    /// Examples:
-    /// - 01 June 1997 Identifier Assignment of the silver cup donated by Martin Doerr (E15) assigned "232" (E42)
-    ///
-    /// In First Order Logic:
-    /// P37(x,y) ⊃ E15(x)
-    /// P37(x,y) ⊃ E42(y)
-    /// P37(x,y) ⊃ P141(x,y)
-    /// <see href="http://erlangen-crm.org/current/P37_assigned"></see></summary>
-    let P37_assigned = _prefix "P37_assigned"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E42_Identifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises strings or codes assigned to instances of E1 CRM Entity in order to identify them uniquely and permanently within the context of one or more organisations. Such codes are often known as inventory numbers, registration codes, etc. and are typically composed of alphanumeric sequences. The class E42 Identifier is not normally used for machine-generated identifiers used for automated processing unless these are also used by human agents.
     ///
     /// Examples:
@@ -322,27 +685,17 @@ module ecrm =
     /// the French rules]
     ///
     /// In First Order Logic:
-    /// E42(x) ⊃ E41(x)
-    /// <see href="http://erlangen-crm.org/current/E42_Identifier"></see></summary>
-    let E42_Identifier = _prefix "E42_Identifier"
+    /// E42(x) ⊃ E41(x)</para>
+    /// labels<para>E42 Identifier</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E42_Identifier">http://erlangen-crm.org/current/E42_Identifier</seealso>
+    let E42_Identifier = Prefixed_Name(ecrm, "E42_Identifier") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This class comprises actions measuring physical properties and other values that can be determined by a systematic procedure.
-    ///
-    /// Examples include measuring the monetary value of a collection of coins or the running time of a specific video cassette.
-    ///
-    /// The E16 Measurement may use simple counting or tools, such as yardsticks or radiation detection devices. The interest is in the method and care applied, so that the reliability of the result may be judged at a later stage, or research continued on the associated documents. The date of the event is important for dimensions, which may change value over time, such as the length of an object subject to shrinkage. Details of methods and devices are best handled as free text, whereas basic techniques such as "carbon 14 dating" should be encoded using P2 has type (is type of:) E55 Type.
-    ///
-    /// Examples:
-    /// - measurement of height of silver cup 232 on the 31st August 1997
-    /// - the carbon 14 dating of the "Schoeninger Speer II" in 1996 [an about 400.000 years old Palaeolithic complete wooden spear found in Schoeningen, Niedersachsen, Germany in 1995]
-    ///
-    /// In First Order Logic:
-    /// E16(x) ⊃ E13(x)
-    /// <see href="http://erlangen-crm.org/current/E16_Measurement"></see></summary>
-    let E16_Measurement = _prefix "E16_Measurement"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P40_observed_dimension</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property records the dimension that was observed in an E16 Measurement Event.
     /// E54 Dimension can be any quantifiable aspect of E70 Thing. Weight, image colour depth and monetary value are dimensions in this sense. One measurement activity may determine more than one dimension of one object.
     /// Dimensions may be determined either by direct observation or using recorded evidence. In the latter case the measured Thing does not need to be present or extant.
@@ -354,11 +707,18 @@ module ecrm =
     /// In First Order Logic:
     /// P40(x,y) ⊃ E16(x)
     /// P40(x,y)⊃ E54(y)
-    /// P40(x,y) ⊃ P141(x,y)
-    /// <see href="http://erlangen-crm.org/current/P40_observed_dimension"></see></summary>
-    let P40_observed_dimension = _prefix "P40_observed_dimension"
+    /// P40(x,y) ⊃ P141(x,y)</para>
+    /// labels<para>P40 observed dimension</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P40_observed_dimension">http://erlangen-crm.org/current/P40_observed_dimension</seealso>
+    let P40_observed_dimension =
+        Prefixed_Name(ecrm, "P40_observed_dimension") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E54_Dimension</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises quantifiable properties that can be measured by some calibrated means and can be approximated by values, i.e. points or regions in a mathematical or conceptual space, such as natural or real numbers, RGB values etc.
     ///
     /// An instance of E54 Dimension represents the true quantity, independent from its numerical approximation, e.g. in inches or in cm. The properties of the class E54 Dimension allow for expressing the numerical approximation of the values of an instance of E54 Dimension. If the true values belong to a non-discrete space, such as spatial distances, it is recommended to record them as approximations by intervals or regions of indeterminacy enclosing the assumed true values. For instance, a length of 5 cm may be recorded as 4.5-5.5 cm, according to the precision of the respective observation. Note, that interoperability of values described in different units depends critically on the representation as value regions.
@@ -377,11 +737,16 @@ module ecrm =
     /// - calibrated C14 date: 2460-2720 years, etc
     ///
     /// In First Order Logic:
-    /// E54(x) ⊃ E1(x)
-    /// <see href="http://erlangen-crm.org/current/E54_Dimension"></see></summary>
-    let E54_Dimension = _prefix "E54_Dimension"
+    /// E54(x) ⊃ E1(x)</para>
+    /// labels<para>E54 Dimension</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E54_Dimension">http://erlangen-crm.org/current/E54_Dimension</seealso>
+    let E54_Dimension = Prefixed_Name(ecrm, "E54_Dimension") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P39_measured</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property associates an instance of E16 Measurement with the instance of E1 CRM Entity to which it applied. An instance of E1 CRM Entity may be measured more than once. Material and immaterial things and processes may be measured, e.g. the number of words in a text, or the duration of an event.
     ///
     /// Examples:
@@ -390,25 +755,16 @@ module ecrm =
     /// In First Order Logic:
     /// P39(x,y) ⊃ E16(x)
     /// P39(x,y) ⊃ E1(y)
-    /// P39(x,y) ⊃ P140(x,y)
-    /// <see href="http://erlangen-crm.org/current/P39_measured"></see></summary>
-    let P39_measured = _prefix "P39_measured"
+    /// P39(x,y) ⊃ P140(x,y)</para>
+    /// labels<para>P39 measured</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P39_measured">http://erlangen-crm.org/current/P39_measured</seealso>
+    let P39_measured = Prefixed_Name(ecrm, "P39_measured") |> PrefixedName
     /// <summary>
-    /// Scope note:
-    /// This class comprises the actions of classifying items of whatever kind. Such items include objects, specimens, people, actions and concepts.
-    ///
-    /// This class allows for the documentation of the context of classification acts in cases where the value of the classification depends on the personal opinion of the classifier, and the date that the classification was made. This class also encompasses the notion of "determination", i.e. the systematic and molecular identification of a specimen in biology.
-    ///
-    /// Examples:
-    /// - the first classification of object GE34604 as Lament Cloth, October 2nd
-    /// - the determination of a cactus in Martin Doerr's garden as 'Cereus hildmannianus K.Schumann', July 2003
-    ///
-    /// In First Order Logic:
-    /// E17(x) ⊃ E13(x)
-    /// <see href="http://erlangen-crm.org/current/E17_Type_Assignment"></see></summary>
-    let E17_Type_Assignment = _prefix "E17_Type_Assignment"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P41_classified</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property records the item to which a type was assigned in an E17 Type Assignment activity.
     /// Any instance of a CRM entity may be assigned a type through type assignment. Type assignment events allow a more detailed path from E1 CRM Entity through P41 classified (was classified), E17 Type Assignment, P42 assigned (was assigned by) to E55 Type for assigning types to objects compared to the shortcut offered by P2 has type (is type of).
     ///
@@ -418,11 +774,16 @@ module ecrm =
     /// In First Order Logic:
     /// P41(x,y) ⊃ E17(x)
     /// P41(x,y) ⊃ E1(y)
-    /// P41(x,y) ⊃ P140(x,y)
-    /// <see href="http://erlangen-crm.org/current/P41_classified"></see></summary>
-    let P41_classified = _prefix "P41_classified"
+    /// P41(x,y) ⊃ P140(x,y)</para>
+    /// labels<para>P41 classified</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P41_classified">http://erlangen-crm.org/current/P41_classified</seealso>
+    let P41_classified = Prefixed_Name(ecrm, "P41_classified") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P42_assigned</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property records the type that was assigned to an entity by an E17 Type Assignment activity.
     /// Type assignment events allow a more detailed path from E1 CRM Entity through P41 classified (was classified by), E17 Type Assignment, P42 assigned (was assigned by) to E55 Type for assigning types to objects compared to the shortcut offered by P2 has type (is type of).
     /// For example, a fragment of an antique vessel could be assigned the type “attic red figured belly handled amphora” by expert A. The same fragment could be assigned the type “shoulder handled amphora” by expert B.
@@ -434,11 +795,16 @@ module ecrm =
     /// In First Order Logic:
     /// P42(x,y) ⊃ E17(x)
     /// P42(x,y)⊃ E55(y)
-    /// P42(x,y) ⊃ P141(x,y)
-    /// <see href="http://erlangen-crm.org/current/P42_assigned"></see></summary>
-    let P42_assigned = _prefix "P42_assigned"
+    /// P42(x,y) ⊃ P141(x,y)</para>
+    /// labels<para>P42 assigned</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P42_assigned">http://erlangen-crm.org/current/P42_assigned</seealso>
+    let P42_assigned = Prefixed_Name(ecrm, "P42_assigned") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E55_Type</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises concepts denoted by terms from thesauri and controlled vocabularies used to characterize and classify instances of CRM classes. Instances of E55 Type represent concepts  in contrast to instances of E41 Appellation which are used to name instances of CRM classes.
     ///
     /// E55 Type is the CRM's interface to domain specific ontologies and thesauri. These can be represented in the CRM as subclasses of E55 Type, forming hierarchies of terms, i.e. instances of E55 Type linked via P127 has broader  term (has narrower term). Such hierarchies may be extended with additional properties.
@@ -454,45 +820,16 @@ module ecrm =
     /// - wedding, earthquake, skirmish [types of E5]
     ///
     /// In First Order Logic:
-    /// E55(x) ⊃ E28(x)
-    /// <see href="http://erlangen-crm.org/current/E55_Type"></see></summary>
-    let E55_Type = _prefix "E55_Type"
+    /// E55(x) ⊃ E28(x)</para>
+    /// labels<para>E55 Type</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E55_Type">http://erlangen-crm.org/current/E55_Type</seealso>
+    let E55_Type = Prefixed_Name(ecrm, "E55_Type") |> PrefixedName
     /// <summary>
-    /// Scope note:
-    /// This class comprises those material or immaterial items to which instances of E30 Right, such as the right of ownership or use, can be applied.
-    ///
-    /// This is true for all E18 Physical Thing. In the case of instances of E28 Conceptual Object, however, the identity of the E28 Conceptual Object or the method of its use may be too ambiguous to reliably establish instances of E30 Right, as in the case of taxa and inspirations. Ownership of corporations is currently regarded as out of scope of the CRM.
-    ///
-    /// Examples:
-    /// - the Cullinan diamond (E19)
-    /// - definition of the CIDOC Conceptual Reference Model Version 2.1 (E73)
-    ///
-    /// In First Order Logic:
-    /// E72(x) ⊃ E70(x)
-    /// <see href="http://erlangen-crm.org/current/E72_Legal_Object"></see></summary>
-    let E72_Legal_Object = _prefix "E72_Legal_Object"
-
-    /// <summary>
-    /// Scope note:
-    /// This property allows an instance of E53 Place to be associated as the former or current location of an instance of E18 Physical Thing.
-    ///
-    /// In the case of E19 Physical Objects, the property does not allow any indication of the Time-Span during which the Physical Object was located at this Place, nor if this is the current location.
-    ///
-    /// In the case of immobile objects, the Place would normally correspond to the Place of creation.
-    /// P53 has former or current location (is former or current location of) is a shortcut. A more detailed representation can make use of the fully developed (i.e. indirect) path from E19 Physical Object through P25 moved (moved by), E9 Move, P26 moved to (was destination of) or P27 moved from (was origin of) to E53 Place.
-    ///
-    /// Examples:
-    /// - silver cup 232 (E22) has former or current location Display Case 4, Room 23, Museum of Oxford (E53)
-    ///
-    /// In First Order Logic:
-    /// P53(x,y) ⊃ E18(x)
-    /// P53(x,y) ⊃ E53(y)
-    /// <see href="http://erlangen-crm.org/current/P53_has_former_or_current_location"></see></summary>
-    let P53_has_former_or_current_location =
-        _prefix "P53_has_former_or_current_location"
-
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E53_Place</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises extents in space, in particular on the surface of the earth, in the pure sense of physics: independent from temporal phenomena and matter.
     ///
     /// The instances of E53 Place are usually determined by reference to the position of "immobile" objects such as buildings, cities, mountains, rivers, or dedicated geodetic marks. A Place can be determined by combining a frame of reference and a location with respect to this frame. It may be identified by one or more instances of E44 Place Appellation.
@@ -508,11 +845,17 @@ module ecrm =
     /// - here -&gt; &lt;-
     ///
     /// In First Order Logic:
-    /// E53(x) ⊃ E1(x)
-    /// <see href="http://erlangen-crm.org/current/E53_Place"></see></summary>
-    let E53_Place = _prefix "E53_Place"
+    /// E53(x) ⊃ E1(x)</para>
+    /// labels<para>E53 Place</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E53_Place">http://erlangen-crm.org/current/E53_Place</seealso>
+    let E53_Place = Prefixed_Name(ecrm, "E53_Place") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E92_Spacetime_Volume</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises 4 dimensional point sets (volumes) in physical spacetime regardless its true geometric form. They may derive their identity from being the extent of a material phenomenon or from being the interpretation of an expression defining an extent in spacetime. Intersections of instances of E92 Spacetime Volume, Place and Timespan are also regarded as instances of E92 Spacetime Volume. An instance of E92 Spacetime Volume is either contiguous or composed of a finite number of contiguous subsets. Its boundaries may be fuzzy due to the properties of the phenomena it derives from or due to the limited precision up to which defining expression can be identified with a real extent in spacetime. The duration of existence of an instance of a spacetime volume is trivially its projection on time.
     ///
     /// Examples:
@@ -522,15 +865,18 @@ module ecrm =
     /// - the spacetime volume defined by a polygon approximating the Danube river flood in Austria between 6th and 9th of August 2002
     ///
     /// In First Order Logic:
-    /// E92(x) ⊃ E1(x)
-    /// <see href="http://erlangen-crm.org/current/E92_Spacetime_Volume"></see></summary>
-    let E92_Spacetime_Volume = _prefix "E92_Spacetime_Volume"
+    /// E92(x) ⊃ E1(x)</para>
+    /// labels<para>E92 Spacetime Volume</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E92_Spacetime_Volume">http://erlangen-crm.org/current/E92_Spacetime_Volume</seealso>
+    let E92_Spacetime_Volume =
+        Prefixed_Name(ecrm, "E92_Spacetime_Volume") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P13i_was_destroyed_by"></see>
+    ///   <para>ecrm:E57_Material</para>
     /// </summary>
-    let P13i_was_destroyed_by = _prefix "P13i_was_destroyed_by"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class is a specialization of E55 Type and comprises the concepts of materials.
     ///
     /// Instances of E57 Material may denote properties of matter before its use, during its use, and as incorporated in an object, such as ultramarine powder, tempera paste, reinforced concrete. Discrete pieces of raw-materials kept in museums, such as bricks, sheets of fabric, pieces of metal, should be modelled individually in the same way as other objects. Discrete used or processed pieces, such as the stones from Nefer Titi's temple, should be modelled as parts (cf. P46 is composed of).
@@ -547,11 +893,16 @@ module ecrm =
     /// - resin
     ///
     /// In First Order Logic:
-    /// E57(x) ⊃ E55(x)
-    /// <see href="http://erlangen-crm.org/current/E57_Material"></see></summary>
-    let E57_Material = _prefix "E57_Material"
+    /// E57(x) ⊃ E55(x)</para>
+    /// labels<para>E57 Material</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E57_Material">http://erlangen-crm.org/current/E57_Material</seealso>
+    let E57_Material = Prefixed_Name(ecrm, "E57_Material") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P45_consists_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property identifies the instances of E57 Materials of which an instance of E18 Physical Thing is composed.
     ///
     /// All physical things consist of physical materials. P45 consists of (is incorporated in) allows the different Materials to be recorded. P45 consists of (is incorporated in) refers here to observed Material as opposed to the consumed raw material.
@@ -563,30 +914,16 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// P45(x,y) ⊃ E18(x)
-    /// P45(x,y) ⊃ E57(y)
-    /// <see href="http://erlangen-crm.org/current/P45_consists_of"></see></summary>
-    let P45_consists_of = _prefix "P45_consists_of"
+    /// P45(x,y) ⊃ E57(y)</para>
+    /// labels<para>P45 consists of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P45_consists_of">http://erlangen-crm.org/current/P45_consists_of</seealso>
+    let P45_consists_of = Prefixed_Name(ecrm, "P45_consists_of") |> PrefixedName
     /// <summary>
-    /// Scope note:
-    /// This class comprises non-material products of our minds and other human produced data that have become objects of a discourse about their identity, circumstances of creation or historical implication. The production of such information may have been supported by the use of technical devices such as cameras or computers.
-    ///
-    /// Characteristically, instances of this class are created, invented or thought by someone, and then may be documented or communicated between persons. Instances of E28 Conceptual Object have the ability to exist on more than one particular carrier at the same time, such as paper, electronic signals, marks, audio media, paintings, photos, human memories, etc.
-    /// They cannot be destroyed. They exist as long as they can be found on at least one carrier or in at least one human memory. Their existence ends when the last carrier and the last memory are lost.
-    ///
-    /// Examples:
-    /// - Beethoven's "Ode an die Freude" (Ode to Joy) (E73)
-    /// - the definition of "ontology" in the Oxford English Dictionary
-    /// - the knowledge about the victory at Marathon carried by the famous runner
-    /// - 'Maxwell equations' [preferred subject access point from LCSH,
-    ///  http://lccn.loc.gov/sh85082387, as of 19 November 2012]
-    /// - 'Equations, Maxwell' [variant subject access point, from the same source]
-    ///
-    /// In First Order Logic:
-    /// E28(x) ⊃ E71(x)
-    /// <see href="http://erlangen-crm.org/current/E28_Conceptual_Object"></see></summary>
-    let E28_Conceptual_Object = _prefix "E28_Conceptual_Object"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E19_Physical_Object</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises items of a material nature that are units for documentation and have physical boundaries that separate them completely in an objective way from other objects.
     ///
     /// The class also includes all aggregates of objects made for functional purposes of whatever kind, independent of physical coherence, such as a set of chessmen. Typically, instances of E19 Physical Object can be moved (if not too heavy).
@@ -603,11 +940,17 @@ module ecrm =
     /// - Apollo 13 at the time of launch
     ///
     /// In First Order Logic:
-    /// E19(x) ⊃ E18(x)
-    /// <see href="http://erlangen-crm.org/current/E19_Physical_Object"></see></summary>
-    let E19_Physical_Object = _prefix "E19_Physical_Object"
+    /// E19(x) ⊃ E18(x)</para>
+    /// labels<para>E19 Physical Object</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E19_Physical_Object">http://erlangen-crm.org/current/E19_Physical_Object</seealso>
+    let E19_Physical_Object = Prefixed_Name(ecrm, "E19_Physical_Object") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P55_has_current_location</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property records the location of an E19 Physical Object at the time of validity of the record or database containing the statement that uses this property.
     ///
     /// This property is a specialisation of P53 has former or current location (is former or current location of). It indicates that the E53 Place associated with the E19 Physical Object is the current location of the object. The property does not allow any indication of how long the Object has been at the current location.
@@ -619,24 +962,35 @@ module ecrm =
     /// In First Order Logic:
     /// P55(x,y) ⊃ E19(x)
     /// P55(x,y) ⊃ E53(y)
-    /// P55(x,y) ⊃ P53(x,y)
-    /// <see href="http://erlangen-crm.org/current/P55_has_current_location"></see></summary>
-    let P55_has_current_location = _prefix "P55_has_current_location"
+    /// P55(x,y) ⊃ P53(x,y)</para>
+    /// labels<para>P55 has current location</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P55_has_current_location">http://erlangen-crm.org/current/P55_has_current_location</seealso>
+    let P55_has_current_location =
+        Prefixed_Name(ecrm, "P55_has_current_location") |> PrefixedName
 
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P54_has_current_permanent_location</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property records the foreseen permanent location of an instance of E19 Physical Object at the time of validity of the record or database containing the statement that uses this property.
     ///
     /// P54 has current permanent location (is current permanent location of) is similar to P55 has current location (currently holds). However, it indicates the E53 Place currently reserved for an object, such as the permanent storage location or a permanent exhibit location. The object may be temporarily removed from the permanent location, for example when used in temporary exhibitions or loaned to another institution. The object may never actually be located at its permanent location.
     ///
     /// Examples:
-    /// - silver cup 232 (E22) has current permanent location Shelf 3.1, Store 2, Museum of Oxford (E53)
-    /// <see href="http://erlangen-crm.org/current/P54_has_current_permanent_location"></see></summary>
+    /// - silver cup 232 (E22) has current permanent location Shelf 3.1, Store 2, Museum of Oxford (E53)</para>
+    /// labels<para>P54 has current permanent location</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P54_has_current_permanent_location">http://erlangen-crm.org/current/P54_has_current_permanent_location</seealso>
     let P54_has_current_permanent_location =
-        _prefix "P54_has_current_permanent_location"
+        Prefixed_Name(ecrm, "P54_has_current_permanent_location") |> PrefixedName
 
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P48_has_preferred_identifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property records the preferred E42 Identifier that was used to identify an instance of E1 CRM Entity at the time this property was recorded.
     ///
     /// More than one preferred identifier may have been assigned to an item over time.
@@ -650,27 +1004,18 @@ module ecrm =
     /// In First Order Logic:
     /// P48(x,y) ⊃ E1(x)
     /// P48(x,y) ⊃ E42(y)
-    /// P48(x,y) ⊃ P1(x,y)
-    /// <see href="http://erlangen-crm.org/current/P48_has_preferred_identifier"></see></summary>
-    let P48_has_preferred_identifier = _prefix "P48_has_preferred_identifier"
+    /// P48(x,y) ⊃ P1(x,y)</para>
+    /// labels<para>P48 has preferred identifier</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P48_has_preferred_identifier">http://erlangen-crm.org/current/P48_has_preferred_identifier</seealso>
+    let P48_has_preferred_identifier =
+        Prefixed_Name(ecrm, "P48_has_preferred_identifier") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This class comprises individual items of a material nature, which live, have lived or are natural products of or from living organisms.
-    ///
-    /// Artificial objects that incorporate biological elements, such as Victorian butterfly frames, can be documented as both instances of E20 Biological Object and E22 Man-Made Object.
-    ///
-    /// Examples:
-    /// - me
-    /// - Tut-Ankh-Amun
-    /// - Boukephalas [Horse of Alexander the Great]
-    /// - petrified dinosaur excrement PA1906-344
-    ///
-    /// In First Order Logic:
-    /// E20(x) ⊃ E19(x)
-    /// <see href="http://erlangen-crm.org/current/E20_Biological_Object"></see></summary>
-    let E20_Biological_Object = _prefix "E20_Biological_Object"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E21_Person</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises real persons who live or are assumed to have lived.
     ///
     /// Legendary figures that may have existed, such as Ulysses and King Arthur, fall into this class if the documentation refers to them as historical figures. In cases where doubt exists as to whether several persons are in fact identical, multiple instances can be created and linked to indicate their relationship. The CRM does not propose a specific form to support reasoning about possible identity.
@@ -681,15 +1026,16 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// E21(x) ⊃ E20(x)
-    /// E21(x) ⊃ E39(x)
-    /// <see href="http://erlangen-crm.org/current/E21_Person"></see></summary>
-    let E21_Person = _prefix "E21_Person"
+    /// E21(x) ⊃ E39(x)</para>
+    /// labels<para>E21 Person</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E21_Person">http://erlangen-crm.org/current/E21_Person</seealso>
+    let E21_Person = Prefixed_Name(ecrm, "E21_Person") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P98i_was_born"></see>
+    ///   <para>ecrm:E39_Actor</para>
     /// </summary>
-    let P98i_was_born = _prefix "P98i_was_born"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises people, either individually or in groups, who have the potential to perform intentional actions of kinds for which someone may be held responsible.
     ///
     /// The CRM does not attempt to model the inadvertent actions of such actors. Individual people should be documented as instances of E21 Person, whereas groups should be documented as instances of either E74 Group or its subclass E40 Legal Body.
@@ -700,11 +1046,16 @@ module ecrm =
     /// - Sir Ian McKellan (E21)
     ///
     /// In First Order Logic:
-    /// E39(x) ⊃ E77(x)
-    /// <see href="http://erlangen-crm.org/current/E39_Actor"></see></summary>
-    let E39_Actor = _prefix "E39_Actor"
+    /// E39(x) ⊃ E77(x)</para>
+    /// labels<para>E39 Actor</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E39_Actor">http://erlangen-crm.org/current/E39_Actor</seealso>
+    let E39_Actor = Prefixed_Name(ecrm, "E39_Actor") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P152_has_parent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property associates an instance of E21 Person with another instance of E21 Person who plays the role of the first instance’s parent, regardless of whether the relationship is biological parenthood, assumed or pretended biological parenthood or an equivalent legal status of rights and obligations obtained by a social or legal act. This property is, among others, a shortcut of the fully developed paths from ‘E21Person’ through ‘P98i was born’, ‘E67 Birth’, ‘P96 by mother’ to ‘E21 Person’, and from ‘E21Person’ through ‘P98i was born’, ‘E67 Birth’, ‘P97 from father’ to ‘E21 Person’.
     ///
     /// Examples:
@@ -716,31 +1067,28 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// P152(x,y) ⊃ E21(x)
-    /// P152(x,y) ⊃ E21(y)
-    /// <see href="http://erlangen-crm.org/current/P152_has_parent"></see></summary>
-    let P152_has_parent = _prefix "P152_has_parent"
+    /// P152(x,y) ⊃ E21(y)</para>
+    /// labels<para>P152 has parent</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P152_has_parent">http://erlangen-crm.org/current/P152_has_parent</seealso>
+    let P152_has_parent = Prefixed_Name(ecrm, "P152_has_parent") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This class comprises physical objects purposely created by human activity.
-    ///
-    /// No assumptions are made as to the extent of modification required to justify regarding an object as man-made. For example, an inscribed piece of rock or a preserved butterfly are both regarded as instances of E22 Man-Made Object.
-    ///
-    /// Examples:
-    /// - Mallard (the World's fastest steam engine)
-    /// - the Portland Vase
-    /// - the Coliseum
-    ///
-    /// In First Order Logic:
-    /// E22(x) ⊃ E19(x)
-    /// E22(x) ⊃ E24(x)
-    /// <see href="http://erlangen-crm.org/current/E22_Man-Made_Object"></see></summary>
-    let ``E22_Man-Made_Object`` = _prefix "E22_Man-Made_Object"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P108i_was_produced_by"></see>
+    ///   <para>ecrm:P108i_was_produced_by</para>
     /// </summary>
-    let P108i_was_produced_by = _prefix "P108i_was_produced_by"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P108 was produced by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P108i_was_produced_by">http://erlangen-crm.org/current/P108i_was_produced_by</seealso>
+    let P108i_was_produced_by =
+        Prefixed_Name(ecrm, "P108i_was_produced_by") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E71_Man-Made_Thing</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises discrete, identifiable man-made items that are documented as single units.
     ///
     /// These items are either intellectual products or man-made physical things, and are characterized by relative stability. They may for instance have a solid physical form, an electronic encoding, or they may be logical concepts or structures.
@@ -752,69 +1100,25 @@ module ecrm =
     /// - the taxon 'Fringilla coelebs Linnaeus, 1758' (E55)
     ///
     /// In First Order Logic:
-    /// E71(x) ⊃ E70(x)
-    /// <see href="http://erlangen-crm.org/current/E71_Man-Made_Thing"></see></summary>
-    let ``E71_Man-Made_Thing`` = _prefix "E71_Man-Made_Thing"
+    /// E71(x) ⊃ E70(x)</para>
+    /// labels<para>E71 Man-Made Thing</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E71_Man-Made_Thing">http://erlangen-crm.org/current/E71_Man-Made_Thing</seealso>
+    let E71_Man_Made_Thing = Prefixed_Name(ecrm, "E71_Man-Made_Thing") |> PrefixedName
     /// <summary>
-    /// Scope note:
-    /// This class comprises physical features that are purposely created by human activity, such as scratches, artificial caves, artificial water channels, etc.
-    ///
-    /// No assumptions are made as to the extent of modification required to justify regarding a feature as man-made. For example, rock art or even "cup and ring" carvings on bedrock a regarded as types of E25 Man-Made Feature.
-    ///
-    /// Examples:
-    /// - the Manchester Ship Canal
-    /// - Michael Jackson's nose following plastic surgery
-    ///
-    /// In First Order Logic:
-    /// E25(x) ⊃ E26(x)
-    /// E25(x) ⊃ E24(x)
-    /// <see href="http://erlangen-crm.org/current/E25_Man-Made_Feature"></see></summary>
-    let ``E25_Man-Made_Feature`` = _prefix "E25_Man-Made_Feature"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises identifiable features that are physically attached in an integral way to particular physical objects.
-    ///
-    /// Instances of E26 Physical Feature share many of the attributes of instances of E19 Physical Object. They may have a one-, two- or three-dimensional geometric extent, but there are no natural borders that separate them completely in an objective way from the carrier objects. For example, a doorway is a feature but the door itself, being attached by hinges, is not.
-    ///
-    /// Instances of E26 Physical Feature can be features in a narrower sense, such as scratches, holes, reliefs, surface colours, reflection zones in an opal crystal or a density change in a piece of wood. In the wider sense, they are portions of particular objects with partially imaginary borders, such as the core of the Earth, an area of property on the surface of the Earth, a landscape or the head of a contiguous marble statue. They can be measured and dated, and it is sometimes possible to state who or what is or was responsible for them. They cannot be separated from the carrier object, but a segment of the carrier object may be identified (or sometimes removed) carrying the complete feature.
-    ///
-    /// This definition coincides with the definition of "fiat objects" (Smith &amp; Varzi, 2000, pp.401-420), with the exception of aggregates of "bona fide objects".
-    ///
-    /// Examples:
-    /// - the temple in Abu Simbel before its removal, which was carved out of solid rock
-    /// - Albrecht Duerer's signature on his painting of Charles the Great
-    /// - the damage to the nose of the Great Sphinx in Giza
-    /// - Michael Jackson's nose prior to plastic surgery
-    ///
-    /// In First Order Logic:
-    /// E26(x) ⊃ E18(x)
-    /// <see href="http://erlangen-crm.org/current/E26_Physical_Feature"></see></summary>
-    let E26_Physical_Feature = _prefix "E26_Physical_Feature"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P56i_is_found_on"></see>
+    ///   <para>ecrm:P56i_is_found_on</para>
     /// </summary>
-    let P56i_is_found_on = _prefix "P56i_is_found_on"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P56 is found on</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P56i_is_found_on">http://erlangen-crm.org/current/P56i_is_found_on</seealso>
+    let P56i_is_found_on = Prefixed_Name(ecrm, "P56i_is_found_on") |> PrefixedName
     /// <summary>
-    /// Scope note:
-    /// This class comprises pieces of land or sea floor.
-    ///
-    /// In contrast to the purely geometric notion of E53 Place, this class describes constellations of matter on the surface of the Earth or other celestial body, which can be represented by photographs, paintings and maps.
-    ///
-    /// Instances of E27 Site are composed of relatively immobile material items and features in a particular configuration at a particular location.
-    ///
-    /// Examples:
-    /// - the Amazon river basin
-    /// - Knossos
-    /// - the Apollo 11 landing site
-    /// - Heathrow Airport
-    /// - the submerged harbour of the Minoan settlement of Gournia, Crete
-    ///
-    /// In First Order Logic:
-    /// E27(x)⊃ E26(x)
-    /// <see href="http://erlangen-crm.org/current/E27_Site"></see></summary>
-    let E27_Site = _prefix "E27_Site"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E65_Creation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises events that result in the creation of conceptual items or immaterial products, such as legends, poems, texts, music, images, movies, laws, types etc.
     ///
     /// Examples:
@@ -823,15 +1127,26 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// E65(x) ⊃ E7(x)
-    /// E65(x) ⊃ E63(x)
-    /// <see href="http://erlangen-crm.org/current/E65_Creation"></see></summary>
-    let E65_Creation = _prefix "E65_Creation"
+    /// E65(x) ⊃ E63(x)</para>
+    /// labels<para>E65 Creation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E65_Creation">http://erlangen-crm.org/current/E65_Creation</seealso>
+    let E65_Creation = Prefixed_Name(ecrm, "E65_Creation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P94i_was_created_by"></see>
+    ///   <para>ecrm:P94i_was_created_by</para>
     /// </summary>
-    let P94i_was_created_by = _prefix "P94i_was_created_by"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P94 was created by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P94i_was_created_by">http://erlangen-crm.org/current/P94i_was_created_by</seealso>
+    let P94i_was_created_by = Prefixed_Name(ecrm, "P94i_was_created_by") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E29_Design_or_Procedure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises documented plans for the execution of actions in order to achieve a result of a specific quality, form or contents. In particular it comprises plans for deliberate human activities that may result in the modification or production of instances of E24 Physical Thing.
     ///
     /// Instances of E29 Design or Procedure can be structured in parts and sequences or depend on others. This is modelled using P69 has association with (is associated with)..
@@ -851,31 +1166,18 @@ module ecrm =
     /// - The drawing on the folio 860 of the Codex Atlanticus from Leonardo da Vinci, 1486-1490, kept in the Biblioteca Ambrosiana in Milan
     ///
     /// In First Order Logic:
-    /// E29(x) ⊃ E73(x)
-    /// <see href="http://erlangen-crm.org/current/E29_Design_or_Procedure"></see></summary>
-    let E29_Design_or_Procedure = _prefix "E29_Design_or_Procedure"
+    /// E29(x) ⊃ E73(x)</para>
+    /// labels<para>E29 Design or Procedure</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E29_Design_or_Procedure">http://erlangen-crm.org/current/E29_Design_or_Procedure</seealso>
+    let E29_Design_or_Procedure =
+        Prefixed_Name(ecrm, "E29_Design_or_Procedure") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This class comprises identifiable immaterial items, such as a poems, jokes, data sets, images, texts, multimedia objects, procedural prescriptions, computer program code, algorithm or mathematical formulae, that have an objectively recognizable structure and are documented as single units.
-    /// The encoding structure known as a "named graph" also falls under this class, so that each "named graph" is an instance of an E73 Information Object.
-    ///
-    /// An E73 Information Object does not depend on a specific physical carrier, which can include human memory, and it can exist on one or more carriers simultaneously.
-    /// Instances of E73 Information Object of a linguistic nature should be declared as instances of the E33 Linguistic Object subclass. Instances of E73 Information Object of a documentary nature should be declared as instances of the E31 Document subclass. Conceptual items such as types and classes are not instances of E73 Information Object, nor are ideas without a reproducible expression.
-    ///
-    /// Examples:
-    /// - image BM000038850.JPG from the Clayton Herbarium in London
-    /// - E. A. Poe's "The Raven"
-    /// - the movie "The Seven Samurai" by Akira Kurosawa
-    /// - the Maxwell Equations
-    /// - The Getty AAT as published as Linked Open Data, accessed 1/10/2014
-    ///
-    /// In First Order Logic:
-    /// E73(x) ⊃ E89(x)
-    /// E73(x) ⊃ E90(x)
-    /// <see href="http://erlangen-crm.org/current/E73_Information_Object"></see></summary>
-    let E73_Information_Object = _prefix "E73_Information_Object"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E2_Temporal_Entity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises all phenomena, such as the instances of E4 Periods, E5 Events and states, which happen over a limited extent in time. This extent in time must be contiguous, i.e., without gaps. In case the defining kinds of phenomena for an instance of E2 Temporal Entity cease to happen, and occur later again at another time, we regard that the former E2 Temporal Entity has ended and a new instance has come into existence. In more intuitive terms, the same event cannot happen twice.
     ///
     /// In some contexts, these are also called perdurants. This class is disjoint from E77 Persistent Item. This is an abstract class and has no direct instances. E2 Temporal Entity is specialized into E4 Period, which applies to a particular geographic area (defined with a greater or lesser degree of precision), and E3 Condition State, which applies to instances of E18 Physical Thing.
@@ -886,11 +1188,16 @@ module ecrm =
     /// - the Peterhof Palace near Saint Petersburg being in ruins from 1944 – 1946 (E3)
     ///
     /// In First Order Logic:
-    /// E2(x) ⊃ E1(x)
-    /// <see href="http://erlangen-crm.org/current/E2_Temporal_Entity"></see></summary>
-    let E2_Temporal_Entity = _prefix "E2_Temporal_Entity"
+    /// E2(x) ⊃ E1(x)</para>
+    /// labels<para>E2 Temporal Entity</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E2_Temporal_Entity">http://erlangen-crm.org/current/E2_Temporal_Entity</seealso>
+    let E2_Temporal_Entity = Prefixed_Name(ecrm, "E2_Temporal_Entity") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P4_has_time-span</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property describes the temporal confinement of an instance of an E2 Temporal Entity.
     ///
     /// The related E52 Time-Span is understood as the real Time-Span during which the phenomena were active, which make up the temporal entity instance. It does not convey any other meaning than a positioning on the "time-line" of chronology. The Time-Span in turn is approximated by a set of dates (E61 Time Primitive). A temporal entity can have in reality only one Time-Span, but there may exist alternative opinions about it, which we would express by assigning multiple Time-Spans. Related temporal entities may share a Time-Span. Time-Spans may have completely unknown dates but other descriptions by which we can infer knowledge.
@@ -900,11 +1207,16 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// P4(x,y) ⊃ E2(x)
-    /// P4(x,y) ⊃ E52(y)
-    /// <see href="http://erlangen-crm.org/current/P4_has_time-span"></see></summary>
-    let ``P4_has_time-span`` = _prefix "P4_has_time-span"
+    /// P4(x,y) ⊃ E52(y)</para>
+    /// labels<para>P4 has time-span</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P4_has_time-span">http://erlangen-crm.org/current/P4_has_time-span</seealso>
+    let P4_has_time_span = Prefixed_Name(ecrm, "P4_has_time-span") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E77_Persistent_Item</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises items that have a persistent identity, sometimes known as "endurants" in philosophy.
     ///
     /// They can be repeatedly recognized within the duration of their existence by identity criteria rather than by continuity or observation. Persistent Items can be either physical entities, such as people, animals or things, or conceptual entities such as ideas, concepts, products of the imagination or common names.
@@ -920,11 +1232,16 @@ module ecrm =
     /// - the Bermuda Triangle
     ///
     /// In First Order Logic:
-    /// E77(x) ⊃ E1(x)
-    /// <see href="http://erlangen-crm.org/current/E77_Persistent_Item"></see></summary>
-    let E77_Persistent_Item = _prefix "E77_Persistent_Item"
+    /// E77(x) ⊃ E1(x)</para>
+    /// labels<para>E77 Persistent Item</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E77_Persistent_Item">http://erlangen-crm.org/current/E77_Persistent_Item</seealso>
+    let E77_Persistent_Item = Prefixed_Name(ecrm, "E77_Persistent_Item") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E30_Right</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises legal privileges concerning material and immaterial things or their derivatives.
     ///
     /// These include reproduction and property rights.
@@ -934,46 +1251,16 @@ module ecrm =
     /// - ownership of the "Mona Lisa" by the Louvre
     ///
     /// In First Order Logic:
-    /// E30(x) ⊃ E89(x
-    /// <see href="http://erlangen-crm.org/current/E30_Right"></see></summary>
-    let E30_Right = _prefix "E30_Right"
+    /// E30(x) ⊃ E89(x</para>
+    /// labels<para>E30 Right</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E30_Right">http://erlangen-crm.org/current/E30_Right</seealso>
+    let E30_Right = Prefixed_Name(ecrm, "E30_Right") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P104i_applies_to"></see>
+    ///   <para>ecrm:P70_documents</para>
     /// </summary>
-    let P104i_applies_to = _prefix "P104i_applies_to"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises immaterial items, including but not limited to stories, plots, procedural prescriptions, algorithms, laws of physics or images that are, or represent in some sense, sets of propositions about real or imaginary things and that are documented as single units or serve as topic of discourse.
-    ///
-    /// This class also comprises items that are "about" something in the sense of a subject. In the wider sense, this class includes expressions of psychological value such as non-figural art and musical themes. However, conceptual items such as types and classes are not instances of E89 Propositional Object. This should not be confused with the definition of a type, which is indeed an instance of E89 Propositional Object.
-    ///
-    /// Examples:
-    /// - Maxwell's Equations
-    /// - The ideational contents of Aristotle's book entitled 'Metaphysics' as rendered in the Greek texts translated in … Oxford edition…
-    /// - The underlying prototype of any "no-smoking" sign (E36)
-    /// - The common ideas of the plots of the movie "The Seven Samurai" by Akira Kurosawa and the movie "The Magnificent Seven" by John Sturges
-    /// - The image content of the photo of the Allied Leaders at Yalta published by UPI, 1945 (E38)
-    ///
-    /// In First Order Logic:
-    /// E89(x) ⊃ E28(x)
-    /// <see href="http://erlangen-crm.org/current/E89_Propositional_Object"></see></summary>
-    let E89_Propositional_Object = _prefix "E89_Propositional_Object"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises identifiable immaterial items that make propositions about reality.
-    /// These propositions may be expressed in text, graphics, images, audiograms, videograms or by other similar means. Documentation databases are regarded as a special case of E31 Document. This class should not be confused with the term "document" in Information Technology, which is compatible with E73 Information Object.
-    ///
-    /// Examples:
-    /// - the Encyclopaedia Britannica (E32)
-    /// - The image content of the photo of the Allied Leaders at Yalta published by UPI, 1945 (E38)
-    /// - the Doomsday Book
-    ///
-    /// In First Order Logic:
-    /// E31(x) ⊃ E73(x)
-    /// <see href="http://erlangen-crm.org/current/E31_Document"></see></summary>
-    let E31_Document = _prefix "E31_Document"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property describes the CRM Entities documented by instances of E31 Document.
     ///
     /// Documents may describe any conceivable entity, hence the link to the highest-level entity in the CRM hierarchy. This property is intended for cases where a reference is regarded as being of a documentary character, in the scholarly or scientific sense.
@@ -984,11 +1271,17 @@ module ecrm =
     /// In First Order Logic:
     /// P70 (x,y) ⊃ E31(x)
     /// P70 (x,y) ⊃ E1(y)
-    /// P70(x,y) ⊃ P67(x,y)
-    /// <see href="http://erlangen-crm.org/current/P70_documents"></see></summary>
-    let P70_documents = _prefix "P70_documents"
+    /// P70(x,y) ⊃ P67(x,y)</para>
+    /// labels<para>P70 documents</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P70_documents">http://erlangen-crm.org/current/P70_documents</seealso>
+    let P70_documents = Prefixed_Name(ecrm, "P70_documents") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E32_Authority_Document</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises encyclopaedia, thesauri, authority lists and other documents that define terminology or conceptual systems for consistent use.
     ///
     /// Examples:
@@ -997,64 +1290,18 @@ module ecrm =
     /// - the CIDOC Conceptual Reference Model
     ///
     /// In First Order Logic:
-    /// E32(x) ⊃ E31(x)
-    /// <see href="http://erlangen-crm.org/current/E32_Authority_Document"></see></summary>
-    let E32_Authority_Document = _prefix "E32_Authority_Document"
+    /// E32(x) ⊃ E31(x)</para>
+    /// labels<para>E32 Authority Document</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E32_Authority_Document">http://erlangen-crm.org/current/E32_Authority_Document</seealso>
+    let E32_Authority_Document =
+        Prefixed_Name(ecrm, "E32_Authority_Document") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This class comprises identifiable expressions in natural language or languages.
-    ///
-    /// Instances of E33 Linguistic Object can be expressed in many ways: e.g. as written texts, recorded speech or sign language. However, the CRM treats instances of E33 Linguistic Object independently from the medium or method by which they are expressed. Expressions in formal languages, such as computer code or mathematical formulae, are not treated as instances of E33 Linguistic Object by the CRM. These should be modelled as instances of E73 Information Object.
-    /// The text of an instance of E33 Linguistic Object can be documented in a note by P3 has note: E62 String
-    ///
-    /// Examples:
-    /// - the text of the Ellesmere Chaucer manuscript
-    /// - the lyrics of the song "Blue Suede Shoes"
-    /// - the text of the Jabberwocky by Lewis Carroll
-    /// - the text of "Doktoro Jekyll kaj Sinjoro Hyde" (an Esperanto translation of Dr Jekyll and Mr Hyde)
-    ///
-    /// In First Order Logic:
-    /// E33(x) ⊃ E73(x)
-    /// <see href="http://erlangen-crm.org/current/E33_Linguistic_Object"></see></summary>
-    let E33_Linguistic_Object = _prefix "E33_Linguistic_Object"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P73i_is_translation_of"></see>
+    ///   <para>ecrm:E37_Mark</para>
     /// </summary>
-    let P73i_is_translation_of = _prefix "P73i_is_translation_of"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the E56 Language of an E33 Linguistic Object.
-    ///
-    /// Linguistic Objects are composed in one or more human Languages. This property allows these languages to be documented.
-    ///
-    /// Examples:
-    /// - the American Declaration of Independence (E33) has language 18th Century English (E56)
-    ///
-    /// In First Order Logic:
-    /// P72(x,y) ⊃ E33(x)
-    /// P72(x,y) ⊃ E56(y)
-    /// <see href="http://erlangen-crm.org/current/P72_has_language"></see></summary>
-    let P72_has_language = _prefix "P72_has_language"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises recognisable, short texts attached to instances of E24 Physical Man-Made Thing.
-    ///
-    /// The transcription of the text can be documented in a note by P3 has note: E62 String. The alphabet used can be documented by P2 has type: E55 Type. This class does not intend to describe the idiosyncratic characteristics of an individual physical embodiment of an inscription, but the underlying prototype. The physical embodiment is modelled in the CRM as E24 Physical Man-Made Thing.
-    ///
-    /// The relationship of a physical copy of a book to the text it contains is modelled using E84 Information Carrier. P128 carries (is carried by): E33 Linguistic Object.
-    ///
-    /// Examples:
-    /// - "keep off the grass" on a sign stuck in the lawn of the quad of Balliol College
-    /// - The text published in Corpus Inscriptionum Latinarum V 895
-    /// - Kilroy was here
-    ///
-    /// In First Order Logic:
-    /// E34(x) ⊃ E33(x)
-    /// E34(x) ⊃ E37(x)
-    /// <see href="http://erlangen-crm.org/current/E34_Inscription"></see></summary>
-    let E34_Inscription = _prefix "E34_Inscription"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises symbols, signs, signatures or short texts applied to instances of E24 Physical Man-Made Thing by arbitrary techniques in order to indicate the creator, owner, dedications, purpose, etc.
     ///
     /// This class specifically excludes features that have no semantic significance, such as scratches or tool marks. These should be documented as instances of E25 Man-Made Feature.
@@ -1065,11 +1312,16 @@ module ecrm =
     ///  
     ///
     /// In First Order Logic:
-    /// E37(x) ⊃ E36(x)
-    /// <see href="http://erlangen-crm.org/current/E37_Mark"></see></summary>
-    let E37_Mark = _prefix "E37_Mark"
+    /// E37(x) ⊃ E36(x)</para>
+    /// labels<para>E37 Mark</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E37_Mark">http://erlangen-crm.org/current/E37_Mark</seealso>
+    let E37_Mark = Prefixed_Name(ecrm, "E37_Mark") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E35_Title</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises the names assigned to works, such as texts, artworks or pieces of music.
     ///
     /// Titles are proper noun phrases or verbal phrases, and should not be confused with generic object names such as "chair", "painting" or "book" (the latter are common nouns that stand for instances of E55 Type). Titles may be assigned by the creator of the work itself, or by a social group.
@@ -1084,11 +1336,16 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// E35(x) ⊃ E33(x)
-    /// E35(x) ⊃ E41(x)
-    /// <see href="http://erlangen-crm.org/current/E35_Title"></see></summary>
-    let E35_Title = _prefix "E35_Title"
+    /// E35(x) ⊃ E41(x)</para>
+    /// labels<para>E35 Title</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E35_Title">http://erlangen-crm.org/current/E35_Title</seealso>
+    let E35_Title = Prefixed_Name(ecrm, "E35_Title") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E41_Appellation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises signs, either meaningful or not, or arrangements of signs following a specific syntax, that are used or can be used to refer to and identify a specific instance of some class or category within a certain context.
     ///
     /// Instances of E41 Appellation do not identify things by their meaning, even if they happen to have one, but instead by convention, tradition, or agreement. Instances of E41 Appellation are cultural constructs; as such, they have a context, a history, and a use in time and space by some group of users. A given instance of E41 Appellation can have alternative forms, i.e., other instances of E41 Appellation that are always regarded as equivalent independent from the thing it denotes.
@@ -1106,67 +1363,28 @@ module ecrm =
     /// - “安” [Chinese "an", meaning "peace"]
     ///
     /// In First Order Logic:
-    /// E41(x) ⊃ E90(x)
-    /// <see href="http://erlangen-crm.org/current/E41_Appellation"></see></summary>
-    let E41_Appellation = _prefix "E41_Appellation"
+    /// E41(x) ⊃ E90(x)</para>
+    /// labels<para>E41 Appellation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E41_Appellation">http://erlangen-crm.org/current/E41_Appellation</seealso>
+    let E41_Appellation = Prefixed_Name(ecrm, "E41_Appellation") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This class comprises the intellectual or conceptual aspects of recognisable marks and images.
-    ///
-    /// This class does not intend to describe the idiosyncratic characteristics of an individual physical embodiment of a visual item, but the underlying prototype. For example, a mark such as the ICOM logo is generally considered to be the same logo when used on any number of publications. The size, orientation and colour may change, but the logo remains uniquely identifiable. The same is true of images that are reproduced many times. This means that visual items are independent of their physical support.
-    ///
-    /// The class E36 Visual Item provides a means of identifying and linking together instances of E24 Physical Man-Made Thing that carry the same visual symbols, marks or images etc. The property P62 depicts (is depicted by) between E24 Physical Man-Made Thing and depicted subjects (E1 CRM Entity) can be regarded as a short-cut of the more fully developed path from E24 Physical Man-Made Thing through P65 shows visual item (is shown by), E36 Visual Item, P138 represents (has representation) to E1CRM Entity, which in addition captures the optical features of the depiction.
-    ///
-    /// Examples:
-    /// - the visual appearance of Monet's "La Pie" (E38)
-    /// - the Coca-Cola logo (E34)
-    /// - the Chi-Rho (E37)
-    /// - the communist red star (E37)
-    ///
-    /// In First Order Logic:
-    /// E36(x) ⊃ E73(x)
-    /// <see href="http://erlangen-crm.org/current/E36_Visual_Item"></see></summary>
-    let E36_Visual_Item = _prefix "E36_Visual_Item"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises distributions of form, tone and colour that may be found on surfaces such as photos, paintings, prints and sculptures or directly on electronic media.
-    ///
-    /// The degree to which variations in the distribution of form and colour affect the identity of an instance of E38 Image depends on a given purpose. The original painting of the Mona Lisa in the Louvre may be said to bear the same instance of E38 Image as reproductions in the form of transparencies, postcards, posters or T-shirts, even though they may differ in size and carrier and may vary in tone and colour. The images in a "spot the difference" competition are not the same with respect to their context, however similar they may at first appear.
-    ///
-    /// Examples:
-    /// - the front side of all 20 Swiss Frs notes
-    /// - the image depicted on all reproductions of the Mona Lisa
-    ///
-    /// In First Order Logic:
-    /// E38(x) ⊃ E36(x)
-    /// <see href="http://erlangen-crm.org/current/E38_Image"></see></summary>
-    let E38_Image = _prefix "E38_Image"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises the states of objects characterised by a certain condition over a time-span.
-    ///
-    /// An instance of this class describes the prevailing physical condition of any material object or
-    /// feature during a specific E52 Time Span. In general, the time-span for which a certain
-    /// condition can be asserted may be shorter than the real time-span, for which this condition held.
-    /// The nature of that condition can be described using  P2 has type. For example, the E3
-    /// Condition State "condition of the SS Great Britain between 22 September 1846 and 27 August
-    /// 1847" can be characterized as E55 Type "wrecked".
-    ///
-    /// Examples:
-    /// - the "Amber Room" in Tsarskoje Selo being completely reconstructed from summer 2003 until now
-    /// - the Peterhof Palace near Saint Petersburg being in ruins from 1944 – 1946
-    /// - the state of my turkey in the oven at 14:30 on 25 December, 2002 (P2 has type: E55 Type "still not cooked")
-    ///
-    /// In First Order Logic:
-    /// E3(x) ⊃ E2(x)
-    /// <see href="http://erlangen-crm.org/current/E3_Condition_State"></see></summary>
-    let E3_Condition_State = _prefix "E3_Condition_State"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P44i_is_condition_of"></see>
+    ///   <para>ecrm:P44i_is_condition_of</para>
     /// </summary>
-    let P44i_is_condition_of = _prefix "P44i_is_condition_of"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P44 is condition of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P44i_is_condition_of">http://erlangen-crm.org/current/P44i_is_condition_of</seealso>
+    let P44i_is_condition_of =
+        Prefixed_Name(ecrm, "P44i_is_condition_of") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E40_Legal_Body</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises institutions or groups of people that have obtained a legal recognition as a group and can act collectively as agents.
     ///
     /// This means that they can perform actions, own property, create or destroy things and can be held collectively responsible for their actions like individual people. The term 'personne morale' is often used for this in French.
@@ -1177,46 +1395,16 @@ module ecrm =
     /// - the National Museum of Denmark
     ///
     /// In First Order Logic:
-    /// E40(x) ⊃ E74(x)
-    /// <see href="http://erlangen-crm.org/current/E40_Legal_Body"></see></summary>
-    let E40_Legal_Body = _prefix "E40_Legal_Body"
+    /// E40(x) ⊃ E74(x)</para>
+    /// labels<para>E40 Legal Body</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E40_Legal_Body">http://erlangen-crm.org/current/E40_Legal_Body</seealso>
+    let E40_Legal_Body = Prefixed_Name(ecrm, "E40_Legal_Body") |> PrefixedName
     /// <summary>
-    /// Scope note:
-    /// This property identifies former or current instances of E30 Rights held by an E39 Actor.
-    ///
-    /// Examples:
-    /// - Michael Jackson (E21) possesses Intellectual property rights on the Beatles' back catalogue (E30)
-    ///
-    /// In First Order Logic:
-    /// P75(x,y) ⊃ E39(x)
-    /// P75(x,y) ⊃ E30(y)
-    /// <see href="http://erlangen-crm.org/current/P75_possesses"></see></summary>
-    let P75_possesses = _prefix "P75_possesses"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises any gatherings or organizations of E39 Actors that act collectively or in a similar way due to any form of unifying relationship. In the wider sense this class also comprises official positions which used to be regarded in certain contexts as one actor, independent of the current holder
-    /// of the office, such as the president of a country. In such cases, it may happen that the Group never had more than one member. A joint pseudonym (i.e., a name that seems indicative of an individual but that is actually used as a persona by two or more people) is a particular case of E74 Group..
-    ///
-    /// A gathering of people becomes an E74 Group when it exhibits organizational characteristics usually typified by a set of ideas or beliefs held in common, or actions performed together. These might be communication, creating some common artifact, a common purpose such as study, worship, business, sports, etc. Nationality can be modelled as membership in an E74 Group (cf. HumanML markup). Married couples and other concepts of family are regarded as particular examples of E74 Group.
-    ///
-    /// Examples:
-    /// - the impressionists
-    /// - the Navajo
-    /// - the Greeks
-    /// - the peace protestors in New York City on February 15 2003
-    /// - Exxon-Mobil
-    /// - King Solomon and his wives
-    /// - the President of the Swiss Confederation
-    /// - Nicolas Bourbaki
-    /// - Betty Crocker
-    /// - Ellery Queen
-    ///
-    /// In First Order Logic:
-    /// E74(x) ⊃ E39(x)
-    /// <see href="http://erlangen-crm.org/current/E74_Group"></see></summary>
-    let E74_Group = _prefix "E74_Group"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E90_Symbolic_Object</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises identifiable symbols and any aggregation of symbols, such as characters, identifiers, traffic signs, emblems, texts, data sets, images, musical scores, multimedia objects, computer program code or mathematical formulae that have an objectively recognizable structure and that are documented as single units.
     ///
     /// It includes sets of signs of any nature, which may serve to designate something, or to communicate some propositional content.
@@ -1235,11 +1423,17 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// E90(x) ⊃ E28(x)
-    /// E90(x) ⊃ E72(x)
-    /// <see href="http://erlangen-crm.org/current/E90_Symbolic_Object"></see></summary>
-    let E90_Symbolic_Object = _prefix "E90_Symbolic_Object"
+    /// E90(x) ⊃ E72(x)</para>
+    /// labels<para>E90 Symbolic Object</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E90_Symbolic_Object">http://erlangen-crm.org/current/E90_Symbolic_Object</seealso>
+    let E90_Symbolic_Object = Prefixed_Name(ecrm, "E90_Symbolic_Object") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E44_Place_Appellation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises any sort of identifier characteristically used to refer to an E53 Place.
     ///
     /// Instances of E44 Place Appellation may vary in their degree of precision and their meaning may vary over time - the same instance of E44 Place Appellation may be used to refer to several places, either because of cultural shifts, or because objects used as reference points have moved around. Instances of E44 Place Appellation can be extremely varied in form: postal addresses, instances of E47 Spatial Coordinate, and parts of buildings can all be considered as instances of E44 Place Appellation.
@@ -1254,39 +1448,18 @@ module ecrm =
     /// - "the City"
     ///
     /// In First Order Logic:
-    /// E44(x) ⊃ E41(x)
-    /// <see href="http://erlangen-crm.org/current/E44_Place_Appellation"></see></summary>
-    let E44_Place_Appellation = _prefix "E44_Place_Appellation"
+    /// E44(x) ⊃ E41(x)</para>
+    /// labels<para>E44 Place Appellation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E44_Place_Appellation">http://erlangen-crm.org/current/E44_Place_Appellation</seealso>
+    let E44_Place_Appellation =
+        Prefixed_Name(ecrm, "E44_Place_Appellation") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This class comprises identifiers expressed in coding systems for places, such as postal addresses used for mailing.
-    ///
-    /// An E45 Address can be considered both as the name of an E53 Place and as an E51 Contact Point for an E39 Actor. This dual aspect is reflected in the multiple inheritance. However, some forms of mailing addresses, such as a postal box, are only instances of E51 Contact Point, since they do not identify any particular Place. These should not be documented as instances of E45 Address.
-    ///
-    /// Examples:
-    /// - "1-29-3 Otsuka, Bunkyo-ku, Tokyo, 121, Japan"
-    /// - "Rue David Dufour 5, CH-1211, Genève"
-    ///
-    /// In First Order Logic:
-    /// E45(x) ⊃ E44(x)
-    /// E45(x) ⊃ E51(x)
-    /// <see href="http://erlangen-crm.org/current/E45_Address"></see></summary>
-    let E45_Address = _prefix "E45_Address"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises identifiers employed, or understood, by communication services to direct communications to an instance of E39 Actor. These include E-mail addresses, telephone numbers, post office boxes, Fax numbers, URLs etc. Most postal addresses can be considered both as instances of E44 Place Appellation and E51 Contact Point. In such cases the subclass E45 Address should be used.
-    /// URLs are addresses used by machines to access another machine through an http request. Since the accessed machine acts on behalf of the E39 Actor providing the machine, URLs are considered as instances of E51 Contact Point to that E39 Actor.
-    ///
-    /// Examples:
-    /// - "+41 22 418 5571"
-    /// - "weasel@paveprime.com"
-    ///
-    /// In First Order Logic:
-    /// E51(x) ⊃ E41(x)
-    /// <see href="http://erlangen-crm.org/current/E51_Contact_Point"></see></summary>
-    let E51_Contact_Point = _prefix "E51_Contact_Point"
-    /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E46_Section_Definition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises areas of objects referred to in terms specific to the general geometry or structure of its kind.
     ///
     /// The 'prow' of the boat, the 'frame' of the picture, the 'front' of the building are all instances of E46 Section Definition. The class highlights the fact that parts of objects can be treated as locations. This holds in particular for features without natural boundaries, such as the "head" of a marble statue made out of one block (cf. E53 Place). In answer to the question 'where is the signature?' one might reply 'on the lower left corner'. (Section Definition is closely related to the term "segment" in Gerstl, P.&amp; Pribbenow, S, 1996 " A conceptual theory of part – whole relations and its applications", Data &amp; Knowledge Engineering 20 305-322, North Holland- Elsevier).
@@ -1298,15 +1471,29 @@ module ecrm =
     /// - "left inner side of my box"
     ///
     /// In First Order Logic:
-    /// E46(x) ⊃ E44(x)
-    /// <see href="http://erlangen-crm.org/current/E46_Section_Definition"></see></summary>
-    let E46_Section_Definition = _prefix "E46_Section_Definition"
+    /// E46(x) ⊃ E44(x)</para>
+    /// labels<para>E46 Section Definition</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E46_Section_Definition">http://erlangen-crm.org/current/E46_Section_Definition</seealso>
+    let E46_Section_Definition =
+        Prefixed_Name(ecrm, "E46_Section_Definition") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P58i_defines_section"></see>
+    ///   <para>ecrm:P58i_defines_section</para>
     /// </summary>
-    let P58i_defines_section = _prefix "P58i_defines_section"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P58 defines section</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P58i_defines_section">http://erlangen-crm.org/current/P58i_defines_section</seealso>
+    let P58i_defines_section =
+        Prefixed_Name(ecrm, "P58i_defines_section") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E47_Spatial_Coordinates</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises the textual or numeric information required to locate specific instances of E53 Place within schemes of spatial identification.
     ///
     /// Coordinates are a specific form of E44 Place Appellation, that is, a means of referring to a particular E53 Place. Coordinates are not restricted to longitude, latitude and altitude. Any regular system of reference that maps onto an E19 Physical Object can be used to generate coordinates.
@@ -1316,27 +1503,3063 @@ module ecrm =
     /// - "Black queen's bishop 4" [chess coordinate].
     ///
     /// In First Order Logic:
-    /// E47(x) ⊃ E44(x)
-    /// <see href="http://erlangen-crm.org/current/E47_Spatial_Coordinates"></see></summary>
-    let E47_Spatial_Coordinates = _prefix "E47_Spatial_Coordinates"
+    /// E47(x) ⊃ E44(x)</para>
+    /// labels<para>E47 Spatial Coordinates</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E47_Spatial_Coordinates">http://erlangen-crm.org/current/E47_Spatial_Coordinates</seealso>
+    let E47_Spatial_Coordinates =
+        Prefixed_Name(ecrm, "E47_Spatial_Coordinates") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This class comprises particular and common forms of E44 Place Appellation.
+    ///   <para>ecrm:P7_took_place_at</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the spatial location of an instance of E4 Period.
     ///
-    /// Place Names may change their application over time: the name of an E53 Place may change, and a name may be reused for a different E53 Place. Instances of E48 Place Name are typically subject to place name gazetteers.
+    /// The related E53 Place should be seen as an approximation of the geographical area within which the phenomena that characterise the period in question occurred. P7took place at (witnessed) does not convey any meaning other than spatial positioning (generally on the surface of the earth).  For example, the period "Révolution française" can be said to have taken place in "France", the "Victorian" period, may be said to have taken place in "Britain" and its colonies, as well as other parts of Europe and north America.
+    /// A period can take place at multiple locations.
+    /// It is a shortcut of the more fully developed path from E4 Period through P161 has spatial projection, E53 Place, P89 falls within (contains) to E53 Place. Describe in words.
     ///
-    /// Examples:
-    /// - "Greece"
-    /// - "Athens"
-    /// - "Geneva"
-    /// - "Lac Léman"
+    /// Examples
+    /// - the period "Révolution française" (E4) took place at France (E53)
     ///
     /// In First Order Logic:
-    /// E48(x) ⊃ E44(x)
-    /// <see href="http://erlangen-crm.org/current/E48_Place_Name"></see></summary>
-    let E48_Place_Name = _prefix "E48_Place_Name"
+    /// P7(x,y) ⊃ E4(x)
+    /// P7(x,y) ⊃ E53(y)</para>
+    /// labels<para>P7 took place at</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P7_took_place_at">http://erlangen-crm.org/current/P7_took_place_at</seealso>
+    let P7_took_place_at = Prefixed_Name(ecrm, "P7_took_place_at") |> PrefixedName
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E50_Date</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises specific forms of E49 Time Appellation.
+    ///
+    /// Dates may vary in their degree of precision.
+    ///
+    /// Examples:
+    /// - "1900"
+    /// - "4-4-1959"
+    /// - "19-MAR-1922"
+    /// - "19640604"
+    ///
+    /// In First Order Logic:
+    /// E50(x) ⊃ E49(x)</para>
+    /// labels<para>E50 Date</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E50_Date">http://erlangen-crm.org/current/E50_Date</seealso>
+    let E50_Date = Prefixed_Name(ecrm, "E50_Date") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P83_had_at_least_duration</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the minimum length of time covered by an E52 Time-Span.
+    ///
+    /// It allows an E52 Time-Span to be associated with an E54 Dimension representing it’s minimum duration (i.e. it’s inner boundary) independent from the actual beginning and end.
+    ///
+    /// Examples:
+    /// - the time span of the Battle of Issos 333 B.C.E. (E52) had at least duration Battle of Issos minimum duration (E54) has unit (P91) day (E58) has value (P90) 1 (E60)
+    ///
+    /// In First Order Logic:
+    /// P83(x,y) ⊃ E52(x)
+    /// P83(x,y) ⊃ E54(y)</para>
+    /// labels<para>P83 had at least duration</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P83_had_at_least_duration">http://erlangen-crm.org/current/P83_had_at_least_duration</seealso>
+    let P83_had_at_least_duration =
+        Prefixed_Name(ecrm, "P83_had_at_least_duration") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P84_had_at_most_duration</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the maximum length of time covered by an E52 Time-Span.
+    ///
+    /// It allows an E52 Time-Span to be associated with an E54 Dimension representing it’s maximum duration (i.e. it’s outer boundary) independent from the actual beginning and end.
+    ///
+    /// Examples:
+    /// - the time span of the Battle of Issos 333 B.C.E. (E52) had at most duration Battle of Issos maximum duration (E54) has unit (P91) day (E58) has value (P90) 2 (E60)
+    ///
+    /// In First Order Logic:
+    /// P84(x,y) ⊃ E52(x)
+    /// P84(x,y) ⊃ E54(y)</para>
+    /// labels<para>P84 had at most duration</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P84_had_at_most_duration">http://erlangen-crm.org/current/P84_had_at_most_duration</seealso>
+    let P84_had_at_most_duration =
+        Prefixed_Name(ecrm, "P84_had_at_most_duration") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P4i_is_time-span_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P4 is time-span of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P4i_is_time-span_of">http://erlangen-crm.org/current/P4i_is_time-span_of</seealso>
+    let P4i_is_time_span_of = Prefixed_Name(ecrm, "P4i_is_time-span_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P59i_is_located_on_or_within</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P59 is located on or within</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P59i_is_located_on_or_within">http://erlangen-crm.org/current/P59i_is_located_on_or_within</seealso>
+    let P59i_is_located_on_or_within =
+        Prefixed_Name(ecrm, "P59i_is_located_on_or_within") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P91_has_unit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property shows the type of unit an E54 Dimension was expressed in.
+    ///
+    /// Examples:
+    /// - height of silver cup 232 (E54) has unit mm (E58)
+    ///
+    /// In First Order Logic:
+    /// P91(x,y) ⊃ E54(x)
+    /// P91(x,y) ⊃ E58(y)</para>
+    /// labels<para>P91 has unit</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P91_has_unit">http://erlangen-crm.org/current/P91_has_unit</seealso>
+    let P91_has_unit = Prefixed_Name(ecrm, "P91_has_unit") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E56_Language</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class is a specialization of E55 Type and comprises the natural languages in the sense of concepts.
+    ///
+    /// This type is used categorically in the model without reference to instances of it, i.e. the Model does not foresee the description of instances of instances of E56 Language, e.g.: "instances of  Mandarin Chinese".
+    ///
+    /// It is recommended that internationally or nationally agreed codes and terminology are used to denote instances of E56 Language, such as those defined in ISO 639:1988.
+    ///
+    /// Examples:
+    /// - el [Greek]
+    /// - en [English]
+    /// - eo [Esperanto]
+    /// - es [Spanish]
+    /// - fr [French]
+    ///
+    /// In First Order Logic:
+    /// E56(x) ⊃ E55(x)</para>
+    /// labels<para>E56 Language</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E56_Language">http://erlangen-crm.org/current/E56_Language</seealso>
+    let E56_Language = Prefixed_Name(ecrm, "E56_Language") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E58_Measurement_Unit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class is a specialization of E55 Type and comprises the types of measurement units: feet, inches, centimetres, litres, lumens, etc.
+    ///
+    /// This type is used categorically in the model without reference to instances of it, i.e. the Model does not foresee the description of instances of instances of E58 Measurement Unit, e.g.: "instances of cm".
+    ///
+    /// Système International (SI) units or internationally recognized non-SI terms should be used whenever possible. (ISO 1000:1992). Archaic Measurement Units used in historical records should be preserved.
+    ///
+    /// Examples:
+    /// - cm [centrimetre]
+    /// - km [kilometre]
+    /// - m [meter]
+    /// - m/s [meters per second]
+    /// - A [Ampere]
+    /// - GRD [Greek Drachme]
+    /// - C° [degrees centigrade]
+    ///
+    /// In First Order Logic:
+    /// E58(x) ⊃ E55(x)</para>
+    /// labels<para>E58 Measurement Unit</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E58_Measurement_Unit">http://erlangen-crm.org/current/E58_Measurement_Unit</seealso>
+    let E58_Measurement_Unit =
+        Prefixed_Name(ecrm, "E58_Measurement_Unit") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P91i_is_unit_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P91 is unit of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P91i_is_unit_of">http://erlangen-crm.org/current/P91i_is_unit_of</seealso>
+    let P91i_is_unit_of = Prefixed_Name(ecrm, "P91i_is_unit_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E5_Event</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises changes of states in cultural, social or physical systems, regardless of scale, brought about by a series or group of coherent physical, cultural, technological or legal phenomena. Such changes of state will affect instances of E77 Persistent Item or its subclasses.
+    ///
+    /// The distinction between an E5 Event and an E4 Period is partly a question of the scale of observation. Viewed at a coarse level of detail, an E5 Event is an 'instantaneous' change of state. At a fine level, the E5 Event can be analysed into its component phenomena within a space and time frame, and as such can be seen as an E4 Period. The reverse is not necessarily the case: not all instances of E4 Period give rise to a noteworthy change of state.
+    ///
+    /// Examples:
+    /// - the birth of Cleopatra (E67)
+    /// - the destruction of Herculaneum by volcanic eruption in 79 AD (E6)
+    /// - World War II (E7)
+    /// - the Battle of Stalingrad (E7)
+    /// - the Yalta Conference (E7)
+    /// - my birthday celebration 28-6-1995 (E7)
+    /// - the falling of a tile from my roof last Sunday
+    /// - the CIDOC Conference 2003 (E7)
+    ///
+    /// In First Order Logic:
+    /// E5(x) ⊃ E4(x)</para>
+    /// labels<para>E5 Event</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E5_Event">http://erlangen-crm.org/current/E5_Event</seealso>
+    let E5_Event = Prefixed_Name(ecrm, "E5_Event") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P12_occurred_in_the_presence_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the active or passive presence of an E77 Persistent Item in an E5 Event without implying any specific role.
+    ///
+    /// It connects the history of a thing with the E53 Place and E50 Date of an event. For example, an object may be the desk, now in a museum on which a treaty was signed. The presence of an immaterial thing implies the presence of at least one of its carriers.
+    ///
+    /// Examples:
+    /// - Deckchair 42 (E19) was present at The sinking of the Titanic (E5)
+    ///
+    /// In First Order Logic:
+    /// P12(x,y) ⊃ E5(x)
+    /// P12(x,y) ⊃ E77(y)</para>
+    /// labels<para>P12 occurred in the presence of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P12_occurred_in_the_presence_of">http://erlangen-crm.org/current/P12_occurred_in_the_presence_of</seealso>
+    let P12_occurred_in_the_presence_of =
+        Prefixed_Name(ecrm, "P12_occurred_in_the_presence_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P92_brought_into_existence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property allows an E63 Beginning of Existence event to be linked to the E77 Persistent Item brought into existence by it.
+    ///
+    /// It allows a "start" to be attached to any Persistent Item being documented i.e. E70 Thing, E72 Legal Object, E39 Actor, E41 Appellation, E51 Contact Point and E55 Type.
+    ///
+    /// Examples:
+    /// - the birth of Mozart (E67) brought into existence Mozart (E21)
+    ///
+    /// In First Order Logic:
+    /// P92(x,y) ⊃ E63(x)
+    /// P92(x,y) ⊃ E77(y)
+    /// P92(x,y) ⊃ P12(x,y)</para>
+    /// labels<para>P92 brought into existence</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P92_brought_into_existence">http://erlangen-crm.org/current/P92_brought_into_existence</seealso>
+    let P92_brought_into_existence =
+        Prefixed_Name(ecrm, "P92_brought_into_existence") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E64_End_of_Existence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises events that end the existence of any E77 Persistent Item.
+    ///
+    /// It may be used for temporal reasoning about things (physical items, groups of people, living beings) ceasing to exist; it serves as a hook for determination of a terminus postquem and antequem. In cases where substance from a Persistent Item continues to exist in a new form, the process would be documented by E81 Transformation.
+    ///
+    /// Examples:
+    /// - the death of Snoopy, my dog
+    /// - the melting of the snowman
+    /// - the burning of the Temple of Artemis in Ephesos by Herostratos in 356BC
+    ///
+    /// In First Order Logic:
+    /// E64(x) ⊃ E5(x)</para>
+    /// labels<para>E64 End of Existence</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E64_End_of_Existence">http://erlangen-crm.org/current/E64_End_of_Existence</seealso>
+    let E64_End_of_Existence =
+        Prefixed_Name(ecrm, "E64_End_of_Existence") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P93_took_out_of_existence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property allows an E64 End of Existence event to be linked to the E77 Persistent Item taken out of existence by it.
+    /// In the case of immaterial things, the E64 End of Existence is considered to take place with the destruction of the last physical carrier.
+    /// This allows an “end” to be attached to any Persistent Item being documented i.e. E70 Thing, E72 Legal Object, E39 Actor, E41 Appellation, E51 Contact Point and E55 Type. For many Persistent Items we know the maximum life-span and can infer, that they must have ended to exist. We assume in that case an End of Existence, which may be as unnoticeable as forgetting the secret knowledge by the last representative of some indigenous nation.
+    ///
+    /// Examples:
+    /// - the death of Mozart (E69) took out of existence Mozart (E21)
+    ///
+    /// In First Order Logic:
+    /// P93 (x,y) ⊃ E64(x)
+    /// P93 (x,y) ⊃ E77(y)
+    /// P93(x,y) ⊃ P12(x,y)</para>
+    /// labels<para>P93 took out of existence</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P93_took_out_of_existence">http://erlangen-crm.org/current/P93_took_out_of_existence</seealso>
+    let P93_took_out_of_existence =
+        Prefixed_Name(ecrm, "P93_took_out_of_existence") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E66_Formation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises events that result in the formation of a formal or informal E74 Group of people,
+    /// such as a club, society, association, corporation or nation.
+    ///
+    /// E66 Formation does not include the arbitrary aggregation of people who do not act as a collective.
+    /// The formation of an instance of E74 Group does not require that the group is populated with members
+    /// at the time of formation. In order to express the joining of members at the time of formation, the
+    /// respective activity should be simultaneously an instance of both E66 Formation and E85 Joining.
+    ///
+    /// Examples:
+    ///  the formation of the CIDOC CRM Special Interest Group
+    ///  the formation of the Soviet Union
+    ///  the conspiring of the murderers of Caesar
+    ///
+    /// In First Order Logic:
+    /// E66(x) ⊃ E7(x)
+    /// E66(x) ⊃ E63(x)</para>
+    /// labels<para>E66 Formation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E66_Formation">http://erlangen-crm.org/current/E66_Formation</seealso>
+    let E66_Formation = Prefixed_Name(ecrm, "E66_Formation") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P95_has_formed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property links the founding or E66 Formation for an E74 Group with the Group itself.
+    ///
+    /// Examples:
+    /// - the formation of the CIDOC CRM SIG at the August 2000 CIDOC Board meeting (E66) has formed the CIDOC CRM Special Interest Group (E74)
+    ///
+    /// In First Order Logic:
+    /// P95(x,y) ⊃ E66(x)
+    /// P95(x,y) ⊃ E74(y)
+    /// P95(x,y) ⊃ P92(x,y)</para>
+    /// labels<para>P95 has formed</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P95_has_formed">http://erlangen-crm.org/current/P95_has_formed</seealso>
+    let P95_has_formed = Prefixed_Name(ecrm, "P95_has_formed") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E67_Birth</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the births of human beings. E67 Birth is a biological event focussing on the context of people coming into life. (E63 Beginning of Existence comprises the coming into life of any living beings).
+    ///
+    /// Twins, triplets etc. are brought into life by the same E67 Birth event. The introduction of the E67 Birth event as a documentation element allows the description of a range of family relationships in a simple model. Suitable extensions may describe more details and the complexity of motherhood with the intervention of modern medicine. In this model, the biological father is not seen as a necessary participant in the E67 Birth event.
+    ///
+    /// Examples:
+    /// - the birth of Alexander the Great
+    ///
+    /// In First Order Logic:
+    /// E67(x) ⊃ E63(x)</para>
+    /// labels<para>E67 Birth</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E67_Birth">http://erlangen-crm.org/current/E67_Birth</seealso>
+    let E67_Birth = Prefixed_Name(ecrm, "E67_Birth") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P97_from_father</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property links an E67 Birth event to an E21 Person in the role of biological father.
+    /// Note that biological fathers are not seen as necessary participants in the Birth, whereas birth-giving mothers are (see P96 by mother (gave birth)). The Person being born is linked to the Birth with the property P98 brought into life (was born).
+    ///
+    /// This is not intended for use with general natural history material, only people. There is no explicit method for modelling conception and gestation except by using extensions.
+    /// A Birth event is normally (but not always) associated with one biological father.
+    ///
+    /// Examples:
+    /// - King George VI (E21) was father for the birth of Queen Elizabeth II (E67)
+    ///
+    /// In First Order Logic:
+    /// P97(x,y) ⊃ E67(x)
+    /// P97(x,y) ⊃ E21(y)</para>
+    /// labels<para>P97 from father</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P97_from_father">http://erlangen-crm.org/current/P97_from_father</seealso>
+    let P97_from_father = Prefixed_Name(ecrm, "P97_from_father") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P96_by_mother</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property links an E67 Birth event to an E21 Person as a participant in the role of birth-giving mother.
+    /// Note that biological fathers are not necessarily participants in the Birth (see P97 from father (was father for)). The Person being born is linked to the Birth with the property P98 brought into life (was born). This is not intended for use with general natural history material, only people. There is no explicit method for modelling conception and gestation except by using extensions. This is a sub-property of P11 had participant (participated in).
+    ///
+    /// Examples:
+    /// - the birth of Queen Elizabeth II (E67) by mother Queen Mother (E21)
+    ///
+    /// In First Order Logic:
+    /// P96(x,y) ⊃ E67(x)
+    /// P96(x,y) ⊃ E21(y)
+    /// P96(x,y) ⊃ P11(x,y)</para>
+    /// labels<para>P96 by mother</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P96_by_mother">http://erlangen-crm.org/current/P96_by_mother</seealso>
+    let P96_by_mother = Prefixed_Name(ecrm, "P96_by_mother") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E68_Dissolution</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the events that result in the formal or informal termination of an E74 Group of people.
+    ///
+    /// If the dissolution was deliberate, the Dissolution event should also be instantiated as an E7 Activity.
+    ///
+    /// Examples:
+    /// - the fall of the Roman Empire
+    /// - the liquidation of Enron Corporation
+    ///
+    /// In First Order Logic:
+    /// E68(x) ⊃ E64(x)</para>
+    /// labels<para>E68 Dissolution</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E68_Dissolution">http://erlangen-crm.org/current/E68_Dissolution</seealso>
+    let E68_Dissolution = Prefixed_Name(ecrm, "E68_Dissolution") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E69_Death</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the deaths of human beings.
+    /// If a person is killed, their death should be instantiated as E69 Death and as E7 Activity. The death or perishing of other living beings should be documented using E64 End of Existence.
+    ///
+    /// Examples:
+    /// - the murder of Julius Caesar (E69,E7)
+    /// - the death of Senator Paul Wellstone
+    ///
+    /// In First Order Logic:
+    /// E69(x) ⊃ E64(x)</para>
+    /// labels<para>E69 Death</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E69_Death">http://erlangen-crm.org/current/E69_Death</seealso>
+    let E69_Death = Prefixed_Name(ecrm, "E69_Death") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P100_was_death_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property links an E69 Death event to the E21 Person that died.
+    ///
+    /// A Death event may involve multiple people, for example in the case of a battle or disaster.
+    /// This is not intended for use with general Natural History material, only people.
+    ///
+    /// Examples:
+    /// - Mozart's death (E69) was death of Mozart (E21)</para>
+    /// labels<para>P100 was death of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P100_was_death_of">http://erlangen-crm.org/current/P100_was_death_of</seealso>
+    let P100_was_death_of = Prefixed_Name(ecrm, "P100_was_death_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E6_Destruction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises events that destroy one or more instances of E18 Physical Thing such that they lose their identity as the subjects of documentation.
+    ///
+    /// Some destruction events are intentional, while others are independent of human activity. Intentional destruction may be documented by classifying the event as both an E6 Destruction and E7 Activity.
+    ///
+    /// The decision to document an object as destroyed, transformed or modified is context sensitive:
+    /// 1.  If the matter remaining from the destruction is not documented, the event is modelled solely as E6 Destruction.
+    /// 2. An event should also be documented using E81 Transformation if it results in the destruction of one or more objects and the simultaneous production of others using parts or material from the original. In this case, the new items have separate identities. Matter is preserved, but identity is not.
+    /// 3. When the initial identity of the changed instance of E18 Physical Thing is preserved, the event should be documented as E11 Modification.
+    ///
+    /// Examples:
+    /// - the destruction of Herculaneum by volcanic eruption in 79 AD
+    /// - the destruction of Nineveh (E6, E7)
+    /// - the breaking of a champagne glass yesterday by my dog
+    ///
+    /// In First Order Logic:
+    /// E6(x) ⊃ E64(x)</para>
+    /// labels<para>E6 Destruction</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E6_Destruction">http://erlangen-crm.org/current/E6_Destruction</seealso>
+    let E6_Destruction = Prefixed_Name(ecrm, "E6_Destruction") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P13_destroyed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property allows specific instances of E18 Physical Thing that have been destroyed to be related to a destruction event.
+    /// Destruction implies the end of an item's life as a subject of cultural documentation – the physical matter of which the item was composed may in fact continue to exist. A destruction event may be contiguous with a Production that brings into existence a derived object composed partly of matter from the destroyed object.
+    ///
+    /// Examples:
+    /// - the Tay Bridge Desaster (E6) destroyed The Tay Bridge (E22)
+    ///
+    /// In First Order Logic:
+    /// P13 (x,y) ⊃ E6 (x)
+    /// P13 (x,y) ⊃ E18(y)
+    /// P13 (x,y) ⊃ P93(x,y)</para>
+    /// labels<para>P13 destroyed</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P13_destroyed">http://erlangen-crm.org/current/P13_destroyed</seealso>
+    let P13_destroyed = Prefixed_Name(ecrm, "P13_destroyed") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E70_Thing</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This general class comprises discrete, identifiable, instances of E77 Persistent Item that are documented as single units, that either consist of matter or depend on being carried by matter and are characterized by relative stability.
+    ///
+    /// They may be intellectual products or physical things. They may for instance have a solid physical form, an electronic encoding, or they may be a logical concept or structure.
+    ///
+    /// Examples:
+    /// - my photograph collection (E78)
+    /// - the bottle of milk in my refrigerator (E22)
+    /// - the plan of the Strassburger Muenster (E29)
+    /// - the thing on the top of Otto Hahn's desk (E19)
+    /// - the form of the no-smoking sign (E36)
+    /// - the cave of Dirou, Mani, Greece (E27)
+    ///
+    /// In First Order Logic:
+    /// E70(x) ⊃ E77(x)</para>
+    /// labels<para>E70 Thing</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E70_Thing">http://erlangen-crm.org/current/E70_Thing</seealso>
+    let E70_Thing = Prefixed_Name(ecrm, "E70_Thing") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P105_right_held_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E39 Actor who holds the instances of E30 Right to an E72 Legal Object.
+    /// It is a superproperty of P52 has current owner (is current owner of) because ownership is a right that is held on the owned object.
+    ///
+    /// P105 right held by (has right on) is a shortcut of the fully developed path from E72 Legal Object through P104 is subject to (applies to), E30 Right, P75 possesses (is possessed by) to E39 Actor.
+    ///
+    /// Examples:
+    /// - Beatles back catalogue (E73) right held by Michael Jackson (E21)
+    ///
+    /// In First Order Logic:
+    /// P105(x,y) ⊃ E72(x)
+    /// P105(x,y) ⊃ E39(y)</para>
+    /// labels<para>P105 right held by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P105_right_held_by">http://erlangen-crm.org/current/P105_right_held_by</seealso>
+    let P105_right_held_by = Prefixed_Name(ecrm, "P105_right_held_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P144i_gained_member_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P144 gained member by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P144i_gained_member_by">http://erlangen-crm.org/current/P144i_gained_member_by</seealso>
+    let P144i_gained_member_by =
+        Prefixed_Name(ecrm, "P144i_gained_member_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P95i_was_formed_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P95 was formed by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P95i_was_formed_by">http://erlangen-crm.org/current/P95i_was_formed_by</seealso>
+    let P95i_was_formed_by = Prefixed_Name(ecrm, "P95i_was_formed_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P146i_lost_member_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P146 lost member by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P146i_lost_member_by">http://erlangen-crm.org/current/P146i_lost_member_by</seealso>
+    let P146i_lost_member_by =
+        Prefixed_Name(ecrm, "P146i_lost_member_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E78_Collection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises aggregations of instances of E18 Physical Thing that are assembled and maintained ("curated" and "preserved," in museological terminology) by one or more instances of E39 Actor over time for a specific purpose and audience, and according to a particular collection development plan.
+    ///
+    /// Items may be added or removed from an E78 Collection in pursuit of this plan. This class should not be confused with the E39 Actor maintaining the E78 Collection often referred to with the name of the E78 Collection (e.g. "The Wallace Collection decided…").
+    ///
+    /// Collective objects in the general sense, like a tomb full of gifts, a folder with stamps or a set of chessmen, should be documented as instances of E19 Physical Object, and not as instances of E78 Collection. This is because they form wholes either because they are physically bound together or because they are kept together for their functionality.
+    ///
+    /// Examples:
+    /// - The John Clayton Herbarium
+    /// - the Wallace Collection
+    /// - Mikael Heggelund Foslie's coralline red algae Herbarium at Museum of Natural History and Archaeology, Trondheim, Norway
+    ///
+    /// In First Order Logic:
+    /// E78(x) ⊃ E24(x)</para>
+    /// labels<para>E78 Collection</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E78_Collection">http://erlangen-crm.org/current/E78_Collection</seealso>
+    let E78_Collection = Prefixed_Name(ecrm, "E78_Collection") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P109_has_current_or_former_curator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E39 Actor or Actors who assume or have assumed overall curatorial responsibility for an E78 Collection.
+    ///
+    /// It does not allow a history of curation to be recorded. This would require use of an Event initiating a curator being responsible for a Collection.
+    ///
+    /// Examples:
+    /// - the Robert Opie Collection (E78) has current or former curator Robert Opie (E39)
+    /// - the Mikael Heggelund Foslie's coralline red algae Herbarium (E78) has current or former curator Mikael Heggelund Foslie
+    ///
+    /// In First Order Logic:
+    /// P109(x,y) ⊃ E78(x)
+    /// P109(x,y) ⊃ E39(y)
+    /// P109(x,y) ⊃ P49(x,y)</para>
+    /// labels<para>P109 has current or former curator</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P109_has_current_or_former_curator">http://erlangen-crm.org/current/P109_has_current_or_former_curator</seealso>
+    let P109_has_current_or_former_curator =
+        Prefixed_Name(ecrm, "P109_has_current_or_former_curator") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E79_Part_Addition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises activities that result in an instance of E24 Physical Man-Made Thing being increased, enlarged or augmented by the addition of a part.
+    ///
+    /// Typical scenarios include the attachment of an accessory, the integration of a component, the addition of an element to an aggregate object, or the accessioning of an object into a curated E78 Collection. Objects to which parts are added are, by definition, man-made, since the addition of a part implies a human activity. Following the addition of parts, the resulting man-made assemblages are treated objectively as single identifiable wholes, made up of constituent or component parts bound together either physically (for example the engine becoming a part of the car), or by sharing a common purpose (such as the 32 chess pieces that make up a chess set). This class of activities forms a basis for reasoning about the history and continuity of identity of objects that are integrated into other objects over time, such as precious gemstones being repeatedly incorporated into different items of jewellery, or cultural artifacts being added to different museum instances of E78 Collection over their lifespan.
+    ///
+    /// Examples:
+    /// - the setting of the koh-i-noor diamond into the crown of Queen Elizabeth the Queen Mother
+    /// - the addition of the painting "Room in Brooklyn" by Edward Hopper to the collection of the Museum of Fine Arts, Boston
+    ///
+    /// In First Order Logic:
+    /// E79(x) ⊃ E11(x)</para>
+    /// labels<para>E79 Part Addition</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E79_Part_Addition">http://erlangen-crm.org/current/E79_Part_Addition</seealso>
+    let E79_Part_Addition = Prefixed_Name(ecrm, "E79_Part_Addition") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P110_augmented</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E24 Physical Man-Made Thing that is added to (augmented) in an E79 Part Addition.
+    ///
+    /// Although a Part Addition event normally concerns only one item of Physical Man-Made Thing, it is possible to imagine circumstances under which more than one item might be added to (augmented). For example, the artist Jackson Pollock trailing paint onto multiple canvasses.
+    ///
+    /// Examples:
+    /// - the final nail-insertion Event (E79) augmented Coffin of George VI (E24)
+    ///
+    /// In First Order Logic:
+    /// P110(x,y) ⊃ E79(x)
+    /// P110(x,y) ⊃ E24(y)
+    /// P110(x,y) ⊃ P31(x,y)</para>
+    /// labels<para>P110 augmented</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P110_augmented">http://erlangen-crm.org/current/P110_augmented</seealso>
+    let P110_augmented = Prefixed_Name(ecrm, "P110_augmented") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P14_carried_out_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the active participation of an E39 Actor in an E7 Activity.
+    ///
+    /// It implies causal or legal responsibility. The P14.1 in the role of property of the property allows the nature of an Actor's participation to be specified.
+    ///
+    /// Examples:
+    /// - the painting of the Sistine Chapel (E7) carried out by Michaelangelo Buonaroti (E21) in the role of master craftsman (E55)
+    ///
+    /// In First Order Logic:
+    /// P14 (x,y) ⊃ E7(x)
+    /// P14 (x,y)⊃ E39(y)
+    /// P14 (x,y) ⊃ P11(x,y)
+    /// P14(x,y,z) ⊃ [P14(x,y) ∧ E55(z)]</para>
+    /// labels<para>P14 carried out by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P14_carried_out_by">http://erlangen-crm.org/current/P14_carried_out_by</seealso>
+    let P14_carried_out_by = Prefixed_Name(ecrm, "P14_carried_out_by") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E80_Part_Removal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the activities that result in an instance of E18 Physical Thing being decreased by the removal of a part.
+    ///
+    /// Typical scenarios include the detachment of an accessory, the removal of a component or part of a composite object, or the deaccessioning of an object from a curated E78 Collection. If the E80 Part Removal results in the total decomposition of the original object into pieces, such that the whole ceases to exist, the activity should instead be modelled as an E81 Transformation, i.e. a simultaneous destruction and production. In cases where the part removed has no discernible identity prior to its removal but does have an identity subsequent to its removal, the activity should be regarded as both E80 Part Removal and E12 Production. This class of activities forms a basis for reasoning about the history, and continuity of identity over time, of objects that are removed from other objects, such as precious gemstones being extracted from different items of jewelry, or cultural artifacts being deaccessioned from different museum collections over their lifespan.
+    ///
+    /// Examples:
+    /// - the removal of the engine from my car
+    /// - the disposal of object number 1976:234 from the collection
+    ///
+    /// In First Order Logic:
+    /// E80(x) ⊃ E11(x)</para>
+    /// labels<para>E80 Part Removal</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E80_Part_Removal">http://erlangen-crm.org/current/E80_Part_Removal</seealso>
+    let E80_Part_Removal = Prefixed_Name(ecrm, "E80_Part_Removal") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P112_diminished</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E24 Physical Man-Made Thing that was diminished by E80 Part Removal.
+    ///
+    /// Although a Part removal activity normally concerns only one item of Physical Man-Made Thing, it is possible to imagine circumstances under which more than one item might be diminished by a single Part Removal activity.
+    ///
+    /// Examples:
+    /// - the coffin of Tut-Ankh-Amun (E22) was diminished by The opening of the coffin of Tut-Ankh-Amun (E80)
+    ///
+    /// In First Order Logic:
+    /// P112(x,y) ⊃ E80(x)
+    /// P112(x,y) ⊃ E24(y)
+    /// P112(x,y) ⊃ P31(x,y)</para>
+    /// labels<para>P112 diminished</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P112_diminished">http://erlangen-crm.org/current/P112_diminished</seealso>
+    let P112_diminished = Prefixed_Name(ecrm, "P112_diminished") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P113_removed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E18 Physical Thing that is removed during an E80 Part Removal activity.
+    ///
+    /// Examples:
+    /// - the opening of the coffin of Tut-Ankh-Amun (E80) removed The mummy of Tut-Ankh-Amun (E20,E22)
+    ///
+    /// In First Order Logic:
+    /// P113(x,y) ⊃ E80(x)
+    /// P113(x,y) ⊃ E18(y)
+    /// P113(x,y) ⊃ P12(x,y)</para>
+    /// labels<para>P113 removed</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P113_removed">http://erlangen-crm.org/current/P113_removed</seealso>
+    let P113_removed = Prefixed_Name(ecrm, "P113_removed") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E81_Transformation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the events that result in the simultaneous destruction of one or more than one E77 Persistent Item and the creation of one or more than one E77 Persistent Item that preserves recognizable substance from the first one(s) but has fundamentally different nature and identity.
+    ///
+    /// Although the old and the new instances of E77 Persistent Item are treated as discrete entities having separate, unique identities, they are causally connected through the E81 Transformation; the destruction of the old E77 Persistent Item(s) directly causes the creation of the new one(s) using or preserving some relevant substance. Instances of E81 Transformation are therefore distinct from re-classifications (documented using E17 Type Assignment) or modifications (documented using E11 Modification) of objects that do not fundamentally change their nature or identity. Characteristic cases are reconstructions and repurposing of historical buildings or ruins, fires leaving buildings in ruins, taxidermy of specimen in natural history and the reorganization of a corporate body into a new one.
+    ///
+    /// Examples:
+    /// - the death and mummification of Tut-Ankh-Amun (transformation of Tut-Ankh-Amun from a living person to a mummy) (E69,E81,E7)
+    ///
+    /// In First Order Logic:
+    /// E81(x) ⊃ E63(x)
+    /// E81(x) ⊃ E64(x)</para>
+    /// labels<para>E81 Transformation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E81_Transformation">http://erlangen-crm.org/current/E81_Transformation</seealso>
+    let E81_Transformation = Prefixed_Name(ecrm, "E81_Transformation") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P123_resulted_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E77 Persistent Item or items that are the result of an E81 Transformation.
+    ///
+    /// New items replace the transformed item or items, which cease to exist as units of documentation. The physical continuity between the old and the new is expressed by the link to the common Transformation.
+    ///
+    /// Examples:
+    /// - the transformation of the Venetian Loggia in Heraklion into a city hall (E81)  resulted in the City Hall of Heraklion (E22)
+    /// - the death and mummification of Tut-Ankh-Amun (E81) resulted in the Mummy of Tut Tut-Ankh-Amun (E22 and E20)
+    ///
+    /// In First Order Logic:
+    /// P123(x,y) ⊃ E81(x)
+    /// P123(x,y) ⊃ E77(y)
+    /// P123(x,y) ⊃ P92(x,y)</para>
+    /// labels<para>P123 resulted in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P123_resulted_in">http://erlangen-crm.org/current/P123_resulted_in</seealso>
+    let P123_resulted_in = Prefixed_Name(ecrm, "P123_resulted_in") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E82_Actor_Appellation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises any sort of name, number, code or symbol characteristically used to identify an E39 Actor.
+    /// An E39 Actor will typically have more than one E82 Actor Appellation, and instances of E82 Actor Appellation in turn may have alternative representations. The distinction between corporate and personal names, which is particularly important in library applications, should be made by explicitly linking the E82 Actor Appellation to an instance of either E21 Person or E74 Group/E40 Legal Body. If this is not possible, the distinction can be made through the use of the P2 has type mechanism.
+    ///
+    /// Examples:
+    /// - "John Doe"
+    /// - "Doe, J"
+    /// - "the U.S. Social Security Number 246-14-2304"
+    /// - "the Artist Formerly Known as Prince"
+    /// - "the Master of the Flemish Madonna"
+    /// - "Raphael's Workshop"
+    /// - "the Brontë Sisters"
+    /// - "ICOM"
+    /// - "International Council of Museums"
+    ///
+    /// In First Order Logic:
+    /// E82(x) ⊃ E41(x)</para>
+    /// labels<para>E82 Actor Appellation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E82_Actor_Appellation">http://erlangen-crm.org/current/E82_Actor_Appellation</seealso>
+    let E82_Actor_Appellation =
+        Prefixed_Name(ecrm, "E82_Actor_Appellation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E83_Type_Creation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises activities formally defining new types of items.
+    ///
+    /// It is typically a rigorous scholarly or scientific process that ensures a type is exhaustively described and appropriately named. In some cases, particularly in archaeology and the life sciences, E83 Type Creation requires the identification of an exemplary specimen and the publication of the type definition in an appropriate scholarly forum. The activity of E83 Type Creation is central to research in the life sciences, where a type would be referred to as a "taxon," the type description as a "protologue," and the exemplary specimens as "orgininal element" or "holotype".
+    ///
+    /// Examples:
+    /// - creation of the taxon 'Penicillium brefeldianum B. O. Dodge' (1933)
+    /// - addition of class E84 Information Carrier to the CIDOC CRM
+    ///
+    /// In First Order Logic:
+    /// E83(x) ⊃ E65(x)</para>
+    /// labels<para>E83 Type Creation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E83_Type_Creation">http://erlangen-crm.org/current/E83_Type_Creation</seealso>
+    let E83_Type_Creation = Prefixed_Name(ecrm, "E83_Type_Creation") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P135_created_type</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E55 Type, which is created in an E83Type Creation activity.
+    ///
+    /// Examples:
+    /// - The description of a new ribbon worm species by Bürger (E83) created type 'Lineus coxinus (Bürger, 1892)' (E55)
+    ///
+    /// In First Order Logic:
+    /// P135(x,y) ⊃ E83(x)
+    /// P135(x,y) ⊃ E55(y)
+    /// P135(x,y) ⊃ P94(x,y)</para>
+    /// labels<para>P135 created type</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P135_created_type">http://erlangen-crm.org/current/P135_created_type</seealso>
+    let P135_created_type = Prefixed_Name(ecrm, "P135_created_type") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E84_Information_Carrier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises all instances of E22 Man-Made Object that are explicitly designed to act as persistent physical carriers for instances of E73 Information Object.
+    ///
+    /// An E84 Information Carrier may or may not contain information, e.g., a diskette. Note that any E18 Physical Thing may carry information, such as an E34 Inscription. However, unless it was specifically designed for this purpose, it is not an Information Carrier. Therefore the property P128 carries (is carried by) applies to E18 Physical Thing in general.
+    ///
+    /// Examples:
+    /// - the Rosetta Stone
+    /// - my paperback copy of Crime &amp; Punishment
+    /// - the computer disk at ICS-FORTH that stores the canonical Definition of the CIDOC CRM
+    ///
+    /// In First Order Logic:
+    /// E84(x) ⊃ E22(x)</para>
+    /// labels<para>E84 Information Carrier</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E84_Information_Carrier">http://erlangen-crm.org/current/E84_Information_Carrier</seealso>
+    let E84_Information_Carrier =
+        Prefixed_Name(ecrm, "E84_Information_Carrier") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E85_Joining</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the activities that result in an instance of E39 Actor becoming a member of an instance of E74 Group. This class does not imply initiative by either party. It may be the initiative of a third party.
+    ///
+    /// Typical scenarios include becoming a member of a social organisation, becoming employee of a company, marriage, the adoption of a child by a family and the inauguration of somebody into an official position.
+    ///
+    /// Examples:
+    /// - The election of Sir Isaac Newton as Member of Parliament for the University of Cambridge to the Convention Parliament of 1689
+    /// - The inauguration of Mikhail Sergeyevich Gorbachev as leader of the Union of Soviet Socialist Republics (USSR) in 1985
+    /// - The implementation of the membership treaty between EU and Denmark  January 1. 1973
+    ///
+    /// In First Order Logic:
+    /// E85(x) ⊃ E7(x)</para>
+    /// labels<para>E85 Joining</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E85_Joining">http://erlangen-crm.org/current/E85_Joining</seealso>
+    let E85_Joining = Prefixed_Name(ecrm, "E85_Joining") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P143_joined</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the instance of E39 Actor that becomes member of a E74 Group in an E85 Joining.
+    ///
+    /// Joining events allow for describing people becoming members of a group with a more detailed path from E74 Group through P144 joined with (gained member by), E85 Joining, P143 joined (was joined by) to E39 Actor, compared to the shortcut offered by P107 has current or former member (is current or former member of).
+    ///
+    /// Examples:
+    /// - The election of Sir Isaac Newton as Member of Parliament to the Convention Parliament of 1689 (E85) joined Sir Isaac Newton (E21)
+    /// - The inauguration of Mikhail Sergeyevich Gorbachev as leader of the Union of Soviet Socialist Republics (USSR) in 1985 (E85) joined Mikhail Sergeyevich Gorbachev (E21)
+    /// - The implementation of the membership treaty January 1. 1973 between EU and Denmark (E85) joined Denmark (E40)
+    ///
+    /// In First Order Logic:
+    /// P143(x,y) ⊃ E85(x)
+    /// P143(x,y) ⊃ E39(y)
+    /// P143(x,y) ⊃ P11(x,y)</para>
+    /// labels<para>P143 joined</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P143_joined">http://erlangen-crm.org/current/P143_joined</seealso>
+    let P143_joined = Prefixed_Name(ecrm, "P143_joined") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P144_joined_with</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the instance of E74 Group of which an instance of E39 Actor becomes a member through an instance of E85 Joining.
+    ///
+    /// Although a Joining activity normally concerns only one instance of E74 Group, it is possible to imagine circumstances under which becoming member of one Group implies becoming member of another Group as well.
+    ///
+    /// Joining events allow for describing people becoming members of a group with a more detailed path from E74 Group through P144 joined with (gained member by), E85 Joining, P143 joined (was joined by) to E39 Actor, compared to the shortcut offered by P107 has current or former member (is current or former member of).
+    /// The property P144.1 kind of member can be used to specify the type of membership or the role the member has in the group.
+    ///
+    /// Examples:
+    /// - The election of Sir Isaac Newton as Member of Parliament to the Convention Parliament of 1689 (E85) joined with the Convention Parliament (E40)
+    /// - The inauguration of Mikhail Sergeyevich Gorbachev as Leader of the Union of Soviet Socialist Republics (USSR) in 1985 (E85) joined with the office of Leader of the Union of Soviet Socialist Republics (USSR) (E40) with P144.1 kind  of member President (E55)
+    /// - The implementation of the membership treaty January 1. 1973 between EU and Denmark (E85) joined with EU (E40)
+    ///
+    /// In First Order Logic:
+    /// P144(x,y) ⊃ E85(x)
+    /// P144(x,y)⊃ E74(y)
+    /// P144(x,y,z) ⊃ [P144(x,y) ∧ E55(z)]
+    /// P144(x,y) ⊃ P11(x,y)
+    ///
+    /// Properties: P144.1 kind of member: E55 Type</para>
+    /// labels<para>P144 joined with</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P144_joined_with">http://erlangen-crm.org/current/P144_joined_with</seealso>
+    let P144_joined_with = Prefixed_Name(ecrm, "P144_joined_with") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E86_Leaving</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the activities that result in an instance of E39 Actor to be disassociated from an instance of E74 Group. This class does not imply initiative by either party. It may be the initiative of a third party.
+    ///
+    /// Typical scenarios include the termination of membership in a social organisation, ending the employment at a company, divorce, and the end of tenure of somebody in an official position.
+    ///
+    /// Examples:
+    /// - The end of Sir Isaac Newton's duty as Member of Parliament for the University of Cambridge to the Convention Parliament in 1702
+    /// - George Washington's leaving office in 1797
+    /// - The implementation of the treaty regulating the termination of Greenland’s membership in EU between EU, Denmark and Greenland February 1. 1985
+    ///
+    /// In First Order Logic:
+    /// E86(x) ⊃ E7(x)</para>
+    /// labels<para>E86 Leaving</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E86_Leaving">http://erlangen-crm.org/current/E86_Leaving</seealso>
+    let E86_Leaving = Prefixed_Name(ecrm, "E86_Leaving") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P145_separated</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the instance of E39 Actor that leaves an instance of E74 Group through an instance of E86 Leaving.
+    ///
+    /// Examples:
+    /// - The end of Sir Isaac Newton's duty as Member of Parliament for the University of Cambridge to the Convention Parliament in 1702 separated Sir Isaac Newton
+    /// - George Washington's leaving office in 1797 separated George Washington
+    /// - The implementation of the treaty regulating the termination of Greenland membership in EU between EU, Denmark and Greenland February 1. 1985 (E86) separated Greenland (E40)
+    ///
+    /// In First Order Logic:
+    /// P145(x,y) ⊃ E86(x)
+    /// P145(x,y) ⊃ E39(y)
+    /// P145(x,y) ⊃ P11(x,y)</para>
+    /// labels<para>P145 separated</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P145_separated">http://erlangen-crm.org/current/P145_separated</seealso>
+    let P145_separated = Prefixed_Name(ecrm, "P145_separated") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P146_separated_from</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the instance of E74 Group an instance of E39 Actor leaves through an instance of E86 Leaving.
+    ///
+    /// Although a Leaving activity normally concerns only one instance of E74 Group, it is possible to imagine circumstances under which leaving one E74 Group implies leaving another E74 Group as well.
+    ///
+    /// Examples:
+    /// - The end of Sir Isaac Newton's duty as Member of Parliament for the University of Cambridge to the Convention Parliament in 1702 separated from the Convention Parliament
+    /// - George Washington's leaving office in 1797 separated from the office of President of the United States
+    /// - The implementation of the treaty regulating the termination of Greenland membership in EU between EU, Denmark and Greenland February 1. 1985 separated from EU (E40)
+    ///
+    /// In First Order Logic:
+    /// P146(x,y) ⊃ E86(x)
+    /// P146(x,y) ⊃ E74(y)
+    /// P146(x,y) ⊃ P11(x,y)</para>
+    /// labels<para>P146 separated from</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P146_separated_from">http://erlangen-crm.org/current/P146_separated_from</seealso>
+    let P146_separated_from = Prefixed_Name(ecrm, "P146_separated_from") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P148_has_component</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of E89 Propositional Object with a structural part of it that is by itself an instance of E89 Propositional Object.
+    ///
+    /// Examples:
+    /// - Dante's "Divine Comedy" (E89) has component Dante's "Hell" (E89)
+    ///
+    /// In First Order Logic:
+    /// P148(x,y) ⊃ E89(x)
+    /// P148(x,y) ⊃ E89(y)</para>
+    /// labels<para>P148 has component</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P148_has_component">http://erlangen-crm.org/current/P148_has_component</seealso>
+    let P148_has_component = Prefixed_Name(ecrm, "P148_has_component") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P129i_is_subject_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P129 is subject of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P129i_is_subject_of">http://erlangen-crm.org/current/P129i_is_subject_of</seealso>
+    let P129i_is_subject_of = Prefixed_Name(ecrm, "P129i_is_subject_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P67i_is_referred_to_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P67 is referred to by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P67i_is_referred_to_by">http://erlangen-crm.org/current/P67i_is_referred_to_by</seealso>
+    let P67i_is_referred_to_by =
+        Prefixed_Name(ecrm, "P67i_is_referred_to_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E8_Acquisition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises transfers of legal ownership from one or more instances of E39 Actor to one or more other instances of E39 Actor.
+    ///
+    /// The class also applies to the establishment or loss of ownership of instances of E18 Physical Thing. It does not, however, imply changes of any other kinds of right. The recording of the donor and/or recipient is optional. It is possible that in an instance of E8 Acquisition there is either no donor or no recipient. Depending on the circumstances, it may describe:
+    ///
+    /// 1. the beginning of ownership
+    /// 2. the end of ownership
+    /// 3. the transfer of ownership
+    /// 4. the acquisition from an unknown source
+    /// 5. the loss of title due to destruction of the item
+    ///
+    /// It may also describe events where a collector appropriates legal title, for example by annexation or field collection. The interpretation of the museum notion of "accession" differs between institutions. The CRM therefore models legal ownership (E8 Acquisition) and physical custody (E10 Transfer of Custody) separately. Institutions will then model their specific notions of accession and deaccession as combinations of these.
+    ///
+    /// Examples:
+    /// - the collection of a hammer-head shark of the genus Sphyrna (Carchariniformes) XXXtbc by John Steinbeck and Edward Ricketts at Puerto Escondido in the Gulf of Mexico on March 25th, 1940
+    /// - the acquisition of El Greco's "The Apostles Peter and Paul" by the State Hermitage in Saint Petersburg
+    /// - the loss of my stuffed chaffinch 'Fringilla coelebs Linnaeus, 1758' due to insect damage last year
+    ///
+    /// In First Order Logic:
+    /// E8(x) ⊃ E7(x)</para>
+    /// labels<para>E8 Acquisition</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E8_Acquisition">http://erlangen-crm.org/current/E8_Acquisition</seealso>
+    let E8_Acquisition = Prefixed_Name(ecrm, "E8_Acquisition") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P24_transferred_title_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E18 Physical Thing or things involved in an E8 Acquisition.
+    ///
+    /// In reality, an acquisition must refer to at least one transferred item.
+    ///
+    /// Examples:
+    /// - acquisition of the Amoudrouz collection by the Geneva Ethnographic Museum (E8) transferred title of Amoudrouz Collection (E78)
+    ///
+    /// In First Order Logic:
+    /// P24(x,y) ⊃ E8(x)
+    /// P24(x,y) ⊃ E18(y)</para>
+    /// labels<para>P24 transferred title of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P24_transferred_title_of">http://erlangen-crm.org/current/P24_transferred_title_of</seealso>
+    let P24_transferred_title_of =
+        Prefixed_Name(ecrm, "P24_transferred_title_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P106_is_composed_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of E90 Symbolic Object with a part of it that is by itself an instance of E90 Symbolic Object, such as fragments of texts or clippings from an image. This property is transitive.
+    ///
+    /// Examples:
+    /// - This Scope note P106 (E33) is composed of fragments of texts (E33)
+    /// - 'recognizable' P106 (E90) is composed of 'ecognizabl' (E90)
+    ///
+    /// In First Order Logic:
+    /// P106(x,y) ⊃ E90(x)
+    /// P106(x,y) ⊃ E90(y)</para>
+    /// labels<para>P106 is composed of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P106_is_composed_of">http://erlangen-crm.org/current/P106_is_composed_of</seealso>
+    let P106_is_composed_of = Prefixed_Name(ecrm, "P106_is_composed_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E93_Presence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises instances of E92 Spacetime Volume that result from intersection of instances of
+    /// E92 Spacetime Volume with an instance of E52 Time-Span. The identity of an instance of this class is determined by the identities of the constituing spacetime volume and the time-span.
+    ///
+    /// This class can be used to define temporal snapshots at a particular time-span, such as the extent of the Roman Empire at 33 B.C., or the extent occupied by a museum object at rest in an exhibit. In particular, it can be used to define the spatial projection of a spacetime volume during a particular time-span, such as the maximal spatial extent of a flood at some particular hour, or all areas covered by the Poland within the 20th century AD.
+    ///
+    /// In First Order Logic:
+    /// E93(x) ⊃ E92(x)</para>
+    /// labels<para>E93 Spacetime Snapshot</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E93_Presence">http://erlangen-crm.org/current/E93_Presence</seealso>
+    let E93_Presence = Prefixed_Name(ecrm, "E93_Presence") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E9_Move</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises changes of the physical location of the instances of E19 Physical Object.
+    ///
+    /// Note, that the class E9 Move inherits the property P7 took place at (witnessed): E53 Place. This property should be used to describe the trajectory or a larger area within which a move takes place, whereas the properties P26 moved to (was destination of), P27 moved from (was origin of) describe the start and end points only. Moves may also be documented to consist of other moves (via P9 consists of (forms part of)), in order to describe intermediate stages on a trajectory. In that case, start and end points of the partial moves should match appropriately between each other and with the overall event.
+    ///
+    /// Examples:
+    /// - the relocation of London Bridge from the UK to the USA
+    /// - the movement of the exhibition "Treasures of Tut-Ankh-Amun" 1976-1979
+    ///
+    /// In First Order Logic:
+    /// E9(x) ⊃ E7(x)</para>
+    /// labels<para>E9 Move</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E9_Move">http://erlangen-crm.org/current/E9_Move</seealso>
+    let E9_Move = Prefixed_Name(ecrm, "E9_Move") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P27_moved_from</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies a starting E53 Place of an E9 Move.
+    ///
+    /// A move will be linked to an origin, such as the move of an artefact from storage to display. A move may be linked to many starting instances of E53 Place by multiple instances of this property. In this case the move describes the picking up of a set of objects. The area of the move includes the origin(s), route and destination(s).
+    /// Therefore the described origin is an instance of E53 Place which P89 falls within (contains) the instance of E53 Place the move P7 took place at.
+    ///
+    /// Examples:
+    /// - the movement of Tut-Ankh-Amun Exhibition (E9) moved from The Egyptian Museum in Cairo (E53)
+    ///
+    /// In First Order Logic:
+    /// P27(x,y) ⊃ E9(x)
+    /// P27(x,y) ⊃ E53(y)
+    /// P27(x,y) ⊃ (z)[ E53(z) ∧ P7(x,z) ∧ P89(y,z)]</para>
+    /// labels<para>P27 moved from</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P27_moved_from">http://erlangen-crm.org/current/P27_moved_from</seealso>
+    let P27_moved_from = Prefixed_Name(ecrm, "P27_moved_from") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P26_moved_to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies a destination of a E9 Move.
+    ///
+    /// A move will be linked to a destination, such as the move of an artefact from storage to display. A move may be linked to many terminal instances of E53 Place by multiple instances of this property. In this case the move describes a distribution of a set of objects. The area of the move includes the origin(s), route and destination(s).
+    /// Therefore the described destination is an instance of E53 Place which P89 falls within (contains) the instance of E53 Place the move P7 took place at.
+    ///
+    /// Examples:
+    /// - the movement of Tut-Ankh-Amun Exhibition (E9) moved to The British Museum (E53)
+    ///
+    /// In First Order Logic:
+    /// P26(x,y) ⊃ E9(x)
+    /// P26(x,y) ⊃ E53(y)
+    /// P26(x,y) ⊃ (z)[ E53(z) ∧ P7(x,z) ∧ P89(y,z)]</para>
+    /// labels<para>P26 moved to</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P26_moved_to">http://erlangen-crm.org/current/P26_moved_to</seealso>
+    let P26_moved_to = Prefixed_Name(ecrm, "P26_moved_to") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P100i_died_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P100 died in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P100i_died_in">http://erlangen-crm.org/current/P100i_died_in</seealso>
+    let P100i_died_in = Prefixed_Name(ecrm, "P100i_died_in") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P93i_was_taken_out_of_existence_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P93 was taken out of existence by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P93i_was_taken_out_of_existence_by">http://erlangen-crm.org/current/P93i_was_taken_out_of_existence_by</seealso>
+    let P93i_was_taken_out_of_existence_by =
+        Prefixed_Name(ecrm, "P93i_was_taken_out_of_existence_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P101_had_as_general_use</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property links an instance of E70 Thing to an E55 Type of usage.
+    ///
+    /// It allows the relationship between particular things, both physical and immaterial, and general methods and techniques of use to be documented. Thus it can be asserted that a baseball bat had a general use for sport and a specific use for threatening people during the Great Train Robbery.
+    ///
+    /// Examples:
+    /// - Tony Gill's Ford Mustang (E22) had as general use transportation (E55)
+    ///
+    /// In First Order Logic:
+    /// P102(x,y) ⊃ E71(x)
+    /// P102(x,y) ⊃ E35(y)
+    /// P102(x,y,z) ⊃ [P102(x,y) ∧ E55(z)]
+    /// P102(x,y) ⊃ P1(x,y)</para>
+    /// labels<para>P101 had as general use</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P101_had_as_general_use">http://erlangen-crm.org/current/P101_had_as_general_use</seealso>
+    let P101_had_as_general_use =
+        Prefixed_Name(ecrm, "P101_had_as_general_use") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P101i_was_use_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P101 was use of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P101i_was_use_of">http://erlangen-crm.org/current/P101i_was_use_of</seealso>
+    let P101i_was_use_of = Prefixed_Name(ecrm, "P101i_was_use_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P102_has_title</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the E35 Title applied to an instance of E71 Man-Made Thing. The E55 Type of Title is assigned in a sub property.
+    ///
+    /// The P102.1 has type property of the P102 has title (is title of) property enables the relationship between the Title and the thing to be further clarified, for example, if the Title was a given Title, a supplied Title etc.
+    /// It allows any man-made material or immaterial thing to be given a Title. It is possible to imagine a Title being created without a specific object in mind.
+    ///
+    /// Examples:
+    /// - the first book of the Old Testament (E33) has title "Genesis" (E35) has type translated (E55)
+    ///
+    /// In First Order Logic:
+    /// P102(x,y) ⊃ E71(x)
+    /// P102(x,y) ⊃ E35(y)
+    /// P102(x,y,z) ⊃ [P102(x,y) ∧ E55(z)]
+    /// P102(x,y) ⊃ P1(x,y)
+    ///
+    /// Properties: P102.1 has type: E55 Type</para>
+    /// labels<para>P102 has title</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P102_has_title">http://erlangen-crm.org/current/P102_has_title</seealso>
+    let P102_has_title = Prefixed_Name(ecrm, "P102_has_title") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P1_is_identified_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the naming or identification of any real world item by a name or any other identifier.
+    ///
+    /// This property is intended for identifiers in general use, which form part of the world the model intends to describe, and not merely for internal database identifiers which are specific to a technical system, unless these latter also have a more general use outside the technical context. This property includes in particular identification by mathematical expressions such as coordinate systems used for the identification of instances of E53 Place. The property does not reveal anything about when, where and by whom this identifier was used. A more detailed representation can be made using the fully developed (i.e. indirect) path through E15 Identifier Assignment.
+    ///
+    /// Examples:
+    /// - the capital of Italy (E53) is identified by "Rome" (E48)
+    /// - text 25014-32 (E33) is identified by "The Decline and Fall of the Roman Empire" (E35)
+    ///
+    /// In First Order Logic:
+    /// P1(x,y) ⊃ E1(x)
+    /// P1(x,y) ⊃ E41(y)</para>
+    /// labels<para>P1 is identified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P1_is_identified_by">http://erlangen-crm.org/current/P1_is_identified_by</seealso>
+    let P1_is_identified_by = Prefixed_Name(ecrm, "P1_is_identified_by") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P102i_is_title_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P102 is title of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P102i_is_title_of">http://erlangen-crm.org/current/P102i_is_title_of</seealso>
+    let P102i_is_title_of = Prefixed_Name(ecrm, "P102i_is_title_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P1i_identifies</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P1 identifies</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P1i_identifies">http://erlangen-crm.org/current/P1i_identifies</seealso>
+    let P1i_identifies = Prefixed_Name(ecrm, "P1i_identifies") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P103_was_intended_for</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property links an instance of E71 Man-Made Thing to an E55 Type of usage.
+    ///
+    /// It creates a property between specific man-made things, both physical and immaterial, to Types of intended methods and techniques of use. Note: A link between specific man-made things and a specific use activity should be expressed using P19 was intended use of (was made for).
+    ///
+    /// Examples:
+    /// - this plate (E22) was intended for being destroyed at wedding reception (E55)
+    ///
+    /// In First Order Logic:
+    /// P103(x,y) ⊃ E71(x)
+    /// P103(x,y) ⊃ E55(y)</para>
+    /// labels<para>P103 was intended for</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P103_was_intended_for">http://erlangen-crm.org/current/P103_was_intended_for</seealso>
+    let P103_was_intended_for =
+        Prefixed_Name(ecrm, "P103_was_intended_for") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P103i_was_intention_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P103 was intention of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P103i_was_intention_of">http://erlangen-crm.org/current/P103i_was_intention_of</seealso>
+    let P103i_was_intention_of =
+        Prefixed_Name(ecrm, "P103i_was_intention_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P106i_forms_part_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P106 forms part of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P106i_forms_part_of">http://erlangen-crm.org/current/P106i_forms_part_of</seealso>
+    let P106i_forms_part_of = Prefixed_Name(ecrm, "P106i_forms_part_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P107i_is_current_or_former_member_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P107 is current or former member of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P107i_is_current_or_former_member_of">http://erlangen-crm.org/current/P107i_is_current_or_former_member_of</seealso>
+    let P107i_is_current_or_former_member_of =
+        Prefixed_Name(ecrm, "P107i_is_current_or_former_member_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P31i_was_modified_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P31 was modified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P31i_was_modified_by">http://erlangen-crm.org/current/P31i_was_modified_by</seealso>
+    let P31i_was_modified_by =
+        Prefixed_Name(ecrm, "P31i_was_modified_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P92i_was_brought_into_existence_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P92 was brought into existence by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P92i_was_brought_into_existence_by">http://erlangen-crm.org/current/P92i_was_brought_into_existence_by</seealso>
+    let P92i_was_brought_into_existence_by =
+        Prefixed_Name(ecrm, "P92i_was_brought_into_existence_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P49_has_former_or_current_keeper</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E39 Actor or Actors who have or have had custody of an instance of E18 Physical Thing at some time.
+    ///
+    /// The distinction with P50 has current keeper (is current keeper of) is that P49 has former or current keeper (is former or current keeper of) leaves open the question as to whether the specified keepers are current.
+    ///
+    /// P49 has former or current keeper (is former or current keeper of) is a shortcut for the more detailed path from E18 Physical Thing through P30 transferred custody of (custody transferred through), E10 Transfer of Custody, P28 custody surrendered by (surrendered custody through) or P29 custody received by (received custody through) to E39 Actor.
+    ///
+    /// Examples:
+    /// - paintings from The Iveagh Bequest (E18) has former or current keeper Secure Deliveries Inc. (E40)
+    ///
+    /// In First Order Logic:
+    /// P49(x,y) ⊃ E18(x)
+    /// P49(x,y) ⊃ E39(y)</para>
+    /// labels<para>P49 has former or current keeper</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P49_has_former_or_current_keeper">http://erlangen-crm.org/current/P49_has_former_or_current_keeper</seealso>
+    let P49_has_former_or_current_keeper =
+        Prefixed_Name(ecrm, "P49_has_former_or_current_keeper") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P109i_is_current_or_former_curator_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P109 is current or former curator of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P109i_is_current_or_former_curator_of">http://erlangen-crm.org/current/P109i_is_current_or_former_curator_of</seealso>
+    let P109i_is_current_or_former_curator_of =
+        Prefixed_Name(ecrm, "P109i_is_current_or_former_curator_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P49i_is_former_or_current_keeper_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P49 is former or current keeper of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P49i_is_former_or_current_keeper_of">http://erlangen-crm.org/current/P49i_is_former_or_current_keeper_of</seealso>
+    let P49i_is_former_or_current_keeper_of =
+        Prefixed_Name(ecrm, "P49i_is_former_or_current_keeper_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P10_falls_within</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of E4 Period with another instance of E4 Period that falls within the spacetime volumes occupied by the latter.In other words, all points in the former are also points in the latter. This property is transitive.
+    ///
+    /// Examples:
+    /// - the Great Plague (E4) falls within The Gothic period (E4)
+    ///
+    /// In First Order Logic:
+    /// P10(x,y) ⊃ E92(x)
+    /// P10(x,y) ⊃ E92(y)</para>
+    /// labels<para>P10 falls within</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P10_falls_within">http://erlangen-crm.org/current/P10_falls_within</seealso>
+    let P10_falls_within = Prefixed_Name(ecrm, "P10_falls_within") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P16_used_specific_object</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the use of material or immaterial things in a way essential to the performance or the outcome of an E7 Activity.
+    ///
+    /// This property typically applies to tools, instruments, moulds, raw materials and items embedded in a product. It implies that the presence of the object in question was a necessary condition for the action. For example, the activity of writing this text required the use of a computer. An immaterial thing can be used if at least one of its carriers is present. For example, the software tools on a computer.
+    ///
+    /// Another example is the use of a particular name by a particular group of people over some span to identify a thing, such as a settlement. In this case, the physical carriers of this name are at least the people understanding its use.
+    ///
+    /// Examples:
+    /// - the writing of this scope note (E7) used specific object Nicholas Crofts' computer (E22)
+    /// mode of use Typing Tool; Storage Medium (E55)
+    /// - the people of Iraq calling the place identified by TGN '7017998' (E7) used specific object
+    /// "Quyunjig" (E44) mode of use Current; Vernacular (E55)
+    ///
+    /// FOL:
+    /// P16 (x,y) ⊃ E7(x)
+    /// P16 (x,y) ⊃ E70(y)
+    /// P16 (x,y) ⊃ P12(x,y)
+    /// P16 (x,y) ⊃ P15(x,y)
+    /// P16(x,y,z) ⊃ [P16(x,y) ∧ E55(z)]</para>
+    /// labels<para>P16 used specific object</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P16_used_specific_object">http://erlangen-crm.org/current/P16_used_specific_object</seealso>
+    let P16_used_specific_object =
+        Prefixed_Name(ecrm, "P16_used_specific_object") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P111i_was_added_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P111 was added by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P111i_was_added_by">http://erlangen-crm.org/current/P111i_was_added_by</seealso>
+    let P111i_was_added_by = Prefixed_Name(ecrm, "P111i_was_added_by") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P16i_was_used_for</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P16 was used for</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P16i_was_used_for">http://erlangen-crm.org/current/P16i_was_used_for</seealso>
+    let P16i_was_used_for = Prefixed_Name(ecrm, "P16i_was_used_for") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P112i_was_diminished_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P112 was diminished by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P112i_was_diminished_by">http://erlangen-crm.org/current/P112i_was_diminished_by</seealso>
+    let P112i_was_diminished_by =
+        Prefixed_Name(ecrm, "P112i_was_diminished_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P113i_was_removed_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P113 was removed by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P113i_was_removed_by">http://erlangen-crm.org/current/P113i_was_removed_by</seealso>
+    let P113i_was_removed_by =
+        Prefixed_Name(ecrm, "P113i_was_removed_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P12i_was_present_at</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P12 was present at</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P12i_was_present_at">http://erlangen-crm.org/current/P12i_was_present_at</seealso>
+    let P12i_was_present_at = Prefixed_Name(ecrm, "P12i_was_present_at") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P114_is_equal_in_time_to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>Scope note:
+    /// This symmetric property allows the instances of E2 Temporal Entity with the same E52 Time-Span to be equated.
+    /// This property is only necessary if the time span is unknown (otherwise the equivalence can be calculated).
+    ///
+    /// This property is the same as the "equal" relationship of Allen’s temporal logic (Allen, 1983, pp. 832-843).
+    /// This property is transitive.
+    ///
+    /// Examples:
+    /// - the destruction of the Villa Justinian Tempus (E6) is equal in time to the death of Maximus Venderus (E69)
+    ///
+    /// In First Order Logic:
+    /// P114(x,y) ⊃ E2(x)
+    /// P114(x,y) ⊃ E2(y)
+    /// P114(x,y) ⊃ P114(y,x)</para>
+    /// labels<para>P114 is equal in time to</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P114_is_equal_in_time_to">http://erlangen-crm.org/current/P114_is_equal_in_time_to</seealso>
+    let P114_is_equal_in_time_to =
+        Prefixed_Name(ecrm, "P114_is_equal_in_time_to") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P115_finishes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Scope note:
+    /// This property allows the ending point for a E2 Temporal Entity to be situated by reference to the ending point of another temporal entity of longer duration.
+    ///
+    /// This property is only necessary if the time span is unknown (otherwise the relationship can be calculated). This property is the same as the "finishes / finished-by" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
+    /// This property is transitive.
+    ///
+    /// Examples:
+    /// - Late Bronze Age (E4) finishes Bronze Age (E4)
+    ///
+    /// In First Order Logic:
+    /// P115(x,y) ⊃ E2(x)
+    /// P115(x,y) ⊃ E2(y)</para>
+    /// labels<para>P115 finishes</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P115_finishes">http://erlangen-crm.org/current/P115_finishes</seealso>
+    let P115_finishes = Prefixed_Name(ecrm, "P115_finishes") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P115i_is_finished_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P115 is finished by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P115i_is_finished_by">http://erlangen-crm.org/current/P115i_is_finished_by</seealso>
+    let P115i_is_finished_by =
+        Prefixed_Name(ecrm, "P115i_is_finished_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P132_overlaps_with</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>Scope note:
+    /// This symmetric property associates two instances of E92 Spacetime Volume that have some of their extent in common.
+    ///
+    /// Examples:
+    /// - the "Urnfield" period (E4) overlaps with the "Hallstatt" period (E4)
+    ///
+    /// In First Order Logic:
+    /// P132(x,y) ⊃ E92(x)
+    /// P132(x,y) ⊃ E92(y)
+    /// P132(x,y) ⊃ P132(y,x)</para>
+    /// labels<para>P132 overlaps with</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P132_overlaps_with">http://erlangen-crm.org/current/P132_overlaps_with</seealso>
+    let P132_overlaps_with = Prefixed_Name(ecrm, "P132_overlaps_with") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P133_is_separated_from</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This symmetric property associates two instances of E92 Spacetime Volume that have no extent in common
+    ///
+    /// Examples:
+    /// - the "Hallstatt" period (E4) is separated from the "La Tène" era (E4)
+    ///
+    /// In First Order Logic:
+    /// P133(x,y) ⊃ E92(x)
+    /// P133(x,y) ⊃ E92(y)
+    /// P133(x,y) ⊃ P133(y,x)</para>
+    /// labels<para>P133 is separated from</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P133_is_separated_from">http://erlangen-crm.org/current/P133_is_separated_from</seealso>
+    let P133_is_separated_from =
+        Prefixed_Name(ecrm, "P133_is_separated_from") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P134_continued</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property associates two instances of E7 Activity, where the domain is considered as an intentional continuation of the range. A continuation of an activity may happen when the continued activity is still ongoing or after the continued activity has completely ended. The continuing activity may have started already before it decided to continue the other one. Continuation implies a coherence of intentions and outcomes of the involved activities.
+    ///
+    /// Examples:
+    /// - the construction of the Kölner Dom (Cologne Cathedral) (E7), abandoned in the 15th century, was continued by construction in the 19th century adapting the initial plans so as to preserve the intended appearance (E7)
+    ///
+    /// In First Order Logic:
+    /// P134(x,y) ⊃ E7(x)
+    /// P134(x,y)⊃ E7(y)
+    /// P134(x,y) ⊃ P15(x,y)</para>
+    /// labels<para>P134 continued</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P134_continued">http://erlangen-crm.org/current/P134_continued</seealso>
+    let P134_continued = Prefixed_Name(ecrm, "P134_continued") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P15_was_influenced_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This is a high level property, which captures the relationship between an E7 Activity and anything that may have had some bearing upon it.
+    ///
+    /// The property has more specific sub properties.
+    ///
+    /// Examples:
+    /// - the designing of the Sydney Harbour Bridge (E7) was influenced by the Tyne bridge (E22)
+    ///
+    /// FOL:
+    /// P15 (x,y) ⊃ E7(x)
+    /// P15 (x,y) ⊃ E1(y)</para>
+    /// labels<para>P15 was influenced by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P15_was_influenced_by">http://erlangen-crm.org/current/P15_was_influenced_by</seealso>
+    let P15_was_influenced_by =
+        Prefixed_Name(ecrm, "P15_was_influenced_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P134i_was_continued_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P134 was continued by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P134i_was_continued_by">http://erlangen-crm.org/current/P134i_was_continued_by</seealso>
+    let P134i_was_continued_by =
+        Prefixed_Name(ecrm, "P134i_was_continued_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P15i_influenced</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P15 influenced</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P15i_influenced">http://erlangen-crm.org/current/P15i_influenced</seealso>
+    let P15i_influenced = Prefixed_Name(ecrm, "P15i_influenced") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P136_was_based_on</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies one or more items that were used as evidence to declare a new E55 Type.
+    ///
+    /// The examination of these items is often the only objective way to understand the precise characteristics of a new Type. Such items should be deposited in a museum or similar institution for that reason. The taxonomic role renders the specific relationship of each item to the Type, such as "holotype" or "original element".
+    ///
+    /// Examples:
+    /// - the taxon creation of the plant species 'Serratula glauca Linné, 1753.' (E83) was based on Object BM000576251 of the Clayton Herbarium (E20)  in the taxonomic role original element (E55)
+    ///
+    /// In First Order Logic:
+    /// P136(x,y) ⊃ E83(x)
+    /// P136(x,y) ⊃ E1(y)
+    /// P136(x,y,z) ⊃ [P136(x,y) ∧ E55(z)]
+    /// P136(x,y) ⊃ P15(x,y)
+    ///
+    /// Properties: P136.1 in the taxonomic role: E55 Type</para>
+    /// labels<para>P136 was based on</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P136_was_based_on">http://erlangen-crm.org/current/P136_was_based_on</seealso>
+    let P136_was_based_on = Prefixed_Name(ecrm, "P136_was_based_on") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P136i_supported_type_creation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P136 supported type creation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P136i_supported_type_creation">http://erlangen-crm.org/current/P136i_supported_type_creation</seealso>
+    let P136i_supported_type_creation =
+        Prefixed_Name(ecrm, "P136i_supported_type_creation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P137_exemplifies</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property allows an item to be declared as a particular example of an E55 Type or taxon
+    /// The P137.1 in the taxonomic role property of P137 exemplifies (is exemplified by) allows differentiation of taxonomic roles. The taxonomic role renders the specific relationship of this example to the Type, such as "prototypical", "archetypical", "lectotype", etc. The taxonomic role "lectotype" is not associated with the Type Creation (E83) itself, but selected in a later phase.
+    ///
+    /// Examples:
+    /// - Object BM000098044 of the Clayton Herbarium (E20) exemplifies Spigelia marilandica (L.) L. (E55) in the taxonomic role lectotype
+    ///
+    /// In First Order Logic:
+    /// P137(x,y) ⊃ E1(x)
+    /// P137(x,y) ⊃ E55(y)
+    /// P137(x,y,z) ⊃ [P137(x,y) ∧ E55(z)]
+    /// P137(x,y) ⊃ P2(x,y)
+    ///
+    /// Properties: P137.1 in the taxonomic role: E55 Type</para>
+    /// labels<para>P137 exemplifies</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P137_exemplifies">http://erlangen-crm.org/current/P137_exemplifies</seealso>
+    let P137_exemplifies = Prefixed_Name(ecrm, "P137_exemplifies") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P139_has_alternative_form</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property establishes a relationship of equivalence between two instances of E41 Appellation independent from any item identified by them. It is a dynamic asymmetric relationship, where the range expresses the derivative, if such a direction can be established. Otherwise, the relationship is symmetric. The relationship is not transitive.
+    ///
+    /// The equivalence applies to all cases of use of an instance of E41 Appellation. Multiple names assigned to an object, which are not equivalent for all things identified with a specific instance of E41 Appellation, should be modelled as repeated values of P1 is identified by (identifies).
+    ///
+    /// P139.1 has type allows the type of derivation, such as “transliteration from Latin 1 to ASCII” be refined..
+    ///
+    /// Examples:
+    /// - "Martin Doerr" (E41) has alternative form "Martin Dörr" (E41) has type Alternate spelling (E55)
+    /// - "Гончарова, Наталья Сергеевна" (E41) has alternative form "Gončarova, Natal´â Sergeevna" (E41) has type ISO 9:1995 transliteration (E55)
+    /// - "Αθήνα" has alternative form "Athina" has type transcription.
+    ///
+    /// In First Order Logic:
+    /// P139(x,y) ⊃ E41(x)
+    /// P139 (x,y) ⊃ E41(y)
+    /// P139(x,y,z) ⊃ [P139(x,y) ∧ E55(z)]
+    /// P139(x,y) ⊃ P139(y,x)
+    ///
+    /// Properties: P139.1 has type: E55 Type</para>
+    /// labels<para>P139 has alternative form</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P139_has_alternative_form">http://erlangen-crm.org/current/P139_has_alternative_form</seealso>
+    let P139_has_alternative_form =
+        Prefixed_Name(ecrm, "P139_has_alternative_form") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P140i_was_attributed_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P140 was attributed by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P140i_was_attributed_by">http://erlangen-crm.org/current/P140i_was_attributed_by</seealso>
+    let P140i_was_attributed_by =
+        Prefixed_Name(ecrm, "P140i_was_attributed_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P141_assigned</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property indicates the attribute that was assigned or the item that was related to the item denoted by a property P140 assigned attribute to in an Attribute assignment action.
+    ///
+    /// Examples:
+    /// - February 1997 Current Ownership Assessment of Martin Doerr's silver cup (E13) assigned Martin Doerr (E21)
+    /// - 01 June 1997 Identifier Assignment of the silver cup donated by Martin Doerr (E15) assigned object identifier 232
+    ///
+    /// In First Order Logic:
+    /// P141(x,y) ⊃ E13(x)
+    /// P141(x,y) ⊃ E1(y)</para>
+    /// labels<para>P141 assigned</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P141_assigned">http://erlangen-crm.org/current/P141_assigned</seealso>
+    let P141_assigned = Prefixed_Name(ecrm, "P141_assigned") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P141i_was_assigned_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P141 was assigned by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P141i_was_assigned_by">http://erlangen-crm.org/current/P141i_was_assigned_by</seealso>
+    let P141i_was_assigned_by =
+        Prefixed_Name(ecrm, "P141i_was_assigned_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P142_used_constituent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property associates the event of assigning an instance of E42 Identifier with the instances of E90 Symbolic Object that were used as constituents of the identifier.
+    ///
+    /// Examples:
+    /// - On June 1, 2001 assigning the personal name identifier “Guillaume, de Machaut, ca. 1300-1377” (E15) used constituent “ca. 1300-1377” (E49)
+    /// - Assigning a uniform title to the anonymous textual work known as ‘The Adoration of the Shepherds’(E15) used constituent ‘Coventry’ (E48)
+    /// - Assigning a uniform title to Pina Bausch’s choreographic work entitled ‘Rite of spring’ (E15) used constituent ‘(Choreographic Work: Bausch)’(E90)
+    /// - Assigning a uniform title to the motion picture directed in 1933 by Merian C. Cooper and Ernest B. Schoedsack and entitled ‘King Kong’ (E15) used constituent ‘1933’ (E50)
+    /// - Assigning the corporate name identifier ‘Univerza v Ljubljani. Oddelek za bibliotekarstvo’ to The Department for library science of the University of Ljubljana (E15) used constituent ‘Univerza v Ljubljani’ (E42)
+    ///
+    /// In First Order Logic:
+    /// P142(x,y) ⊃ E15(x)
+    /// P142(x,y) ⊃ E90(y)
+    /// P142(x,y) ⊃ P16(x,y)</para>
+    /// labels<para>P142 used constituent</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P142_used_constituent">http://erlangen-crm.org/current/P142_used_constituent</seealso>
+    let P142_used_constituent =
+        Prefixed_Name(ecrm, "P142_used_constituent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P142i_was_used_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P142 was used in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P142i_was_used_in">http://erlangen-crm.org/current/P142i_was_used_in</seealso>
+    let P142i_was_used_in = Prefixed_Name(ecrm, "P142i_was_used_in") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P145i_left_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P145 left by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P145i_left_by">http://erlangen-crm.org/current/P145i_left_by</seealso>
+    let P145i_left_by = Prefixed_Name(ecrm, "P145i_left_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P147i_was_curated_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P147 was curated by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P147i_was_curated_by">http://erlangen-crm.org/current/P147i_was_curated_by</seealso>
+    let P147i_was_curated_by =
+        Prefixed_Name(ecrm, "P147i_was_curated_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P148i_is_component_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P148 is component of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P148i_is_component_of">http://erlangen-crm.org/current/P148i_is_component_of</seealso>
+    let P148i_is_component_of =
+        Prefixed_Name(ecrm, "P148i_is_component_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P149_is_identified_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies an instance of E28 Conceptual Object using an instance of E75 Conceptual Object Appellation.
+    ///
+    /// Examples:
+    /// - The German edition of the CIDOC CRM (E73) is identified by ISBN 978-3-00-030907-6 (E75)
+    ///
+    /// In First Order Logic:
+    /// P149(x,y) ⊃ E28(x)
+    /// P149(x,y) ⊃ E75(y)
+    /// P149(x,y) ⊃ P1(x,y)</para>
+    /// labels<para>P149 is identified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P149_is_identified_by">http://erlangen-crm.org/current/P149_is_identified_by</seealso>
+    let P149_is_identified_by =
+        Prefixed_Name(ecrm, "P149_is_identified_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P149i_identifies</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P149 identifies</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P149i_identifies">http://erlangen-crm.org/current/P149i_identifies</seealso>
+    let P149i_identifies = Prefixed_Name(ecrm, "P149i_identifies") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P14i_performed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P14 performed</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P14i_performed">http://erlangen-crm.org/current/P14i_performed</seealso>
+    let P14i_performed = Prefixed_Name(ecrm, "P14i_performed") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P150_defines_typical_parts_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of E55 Type “A” with an instance of E55 Type “B”, when items of type “A” typically form part of items of type “B”, such as “car motors” and “cars”. It allows types to be organised into hierarchies based on one type describing a typical part of another. This property is equivalent to "broader term partitive (BTP)" as defined in ISO 2788 and “broaderPartitive” in SKOS.
+    ///
+    /// Examples:
+    /// - Car motors (E55) defines typical parts of cars (E55)
+    ///
+    /// In First Order Logic:
+    /// P150(x,y) ⊃ (E55 Type)
+    /// P150(x,y) ⊃ E55(y)</para>
+    /// labels<para>P150 defines typical parts of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P150_defines_typical_parts_of">http://erlangen-crm.org/current/P150_defines_typical_parts_of</seealso>
+    let P150_defines_typical_parts_of =
+        Prefixed_Name(ecrm, "P150_defines_typical_parts_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P150i_defines_typical_wholes_for</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P150 defines typical wholes for</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P150i_defines_typical_wholes_for">http://erlangen-crm.org/current/P150i_defines_typical_wholes_for</seealso>
+    let P150i_defines_typical_wholes_for =
+        Prefixed_Name(ecrm, "P150i_defines_typical_wholes_for") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P151_was_formed_from</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of E66 Formation with an instance of E74 Group from which the
+    /// new group was formed preserving a sense of continuity such as in mission, membership or tradition.
+    ///
+    /// Examples:
+    /// - The formation of the House of Bourbon-Conti in 1581 (E66) was formed from House of Condé (E74)
+    ///
+    /// In First Order Logic:
+    /// P151(x,y) ⊃ E66(x)
+    /// P151(x,y) ⊃ E74(y)
+    /// P151(x,y) ⊃ P11(x,y)</para>
+    /// labels<para>P151 was formed from</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P151_was_formed_from">http://erlangen-crm.org/current/P151_was_formed_from</seealso>
+    let P151_was_formed_from =
+        Prefixed_Name(ecrm, "P151_was_formed_from") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P151i_participated_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P151 participated in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P151i_participated_in">http://erlangen-crm.org/current/P151i_participated_in</seealso>
+    let P151i_participated_in =
+        Prefixed_Name(ecrm, "P151i_participated_in") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P152i_is_parent_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P152 is parent of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P152i_is_parent_of">http://erlangen-crm.org/current/P152i_is_parent_of</seealso>
+    let P152i_is_parent_of = Prefixed_Name(ecrm, "P152i_is_parent_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P156_occupies</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the largest volume in space that an instance of E18 Physical Thing has occupied at any time during its existence, with respect to the reference space relative to itself. This allows you to describe the thing itself as a place that may contain other things, such as a box that may contain coins. In other words, it is the volume that contains all the points which the thing has covered at some time during its existence. In the case of an E26 Physical Feature the default reference space is the one in which the object that bears the feature or at least the surrounding matter of the feature is at rest. In this case there is a 1:1 relation of E26 Feature and E53 Place. For simplicity of implementation multiple inheritance (E26 Feature IsA E53 Place) may be a practical approach.
+    ///
+    /// For instances of E19 Physical Objects the default reference space is the one which is at rest to the object itself, i.e. which moves together with the object. We include in the occupied space the space filled by the matter of the physical thing and all its inner spaces.
+    ///
+    /// This property is a subproperty of P161 has spatial projection because it refers to its own domain as reference space for its range, whereas P161 has spatial projection may refer to a place in terms of any reference space. For some instances of E18 Physical Object the relative stability of form may not be sufficient to define a useful local reference space, for instance for an amoeba. In such cases the fully
+    /// developed path to an external reference space and using a temporal validity component may be adequate to determine the place they have occupied.
+    ///
+    /// In contrast to P156 occupies, the property P53 has former or current location identifies an instance of E53 Place at which a thing is or has been for some unspecified time span. Further it does not constrain the reference space of the referred instance of P53 Place.
+    ///
+    /// In First Order Logic:
+    /// P156 (x,y) = [E18(x) ∧ E53(y) ∧ P161(x,y) ∧ P157(y,x)]</para>
+    /// labels<para>P156 occupies</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P156_occupies">http://erlangen-crm.org/current/P156_occupies</seealso>
+    let P156_occupies = Prefixed_Name(ecrm, "P156_occupies") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P161_has_spatial_projection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of a E92 Spacetime Volume with an instance of E53 Place that is the result of the spatial projection of the instance of a E92 Spacetime Volume on a reference space. In general there can be more than one useful reference space to describe the spatial projection of a spacetime volume, such as that of a battle ship versus that of the seafloor. Therefore the projection is not unique.
+    /// This is part of the fully developed path that is shortcut by P7took place at (witnessed. The more fully developed path from E4 Period through P161 has spatial projection, E53 Place, P89 falls within (contains) to E53 Place.
+    ///
+    /// Example
+    ///
+    /// In First Order Logic:
+    /// P161(x,y) ⊃ E92(x)
+    /// P161(x,y) ⊃ E53(y)</para>
+    /// labels<para>P161 has spatial projection</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P161_has_spatial_projection">http://erlangen-crm.org/current/P161_has_spatial_projection</seealso>
+    let P161_has_spatial_projection =
+        Prefixed_Name(ecrm, "P161_has_spatial_projection") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P157_is_at_rest_relative_to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of E53 Place with the instance of E18 Physical Thing that determines a reference space for this instance of E53 Place by being at rest with respect to this reference space. The relative stability of form of an E18 Physical Thing defines its default reference space. The reference space is not spatially limited to the referred thing. For example, a ship determines a reference space in terms of which other ships in its neighbourhood may be described. Larger constellations of matter, such as continental plates, may comprise many physical features that are at rest with them and define the same reference space.
+    ///
+    /// Examples:
+    /// - The spatial extent of the municipality of Athens in 2014 (E53) is at rest relative to The Royal Observatory in Greenwich (E25)
+    /// - The place where Lord Nelson died on H.M.S. Victory (E53) is at rest relative to H.M.S. Victory (E22)
+    ///
+    /// In First Order Logic:
+    /// P157(x,y) ⊃ E53(x)
+    /// P157(x,y) ⊃ E18(y)</para>
+    /// labels<para>P157 is at rest relative to</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P157_is_at_rest_relative_to">http://erlangen-crm.org/current/P157_is_at_rest_relative_to</seealso>
+    let P157_is_at_rest_relative_to =
+        Prefixed_Name(ecrm, "P157_is_at_rest_relative_to") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P157i_provides_reference_space_for</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P157 provides reference space for</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P157i_provides_reference_space_for">http://erlangen-crm.org/current/P157i_provides_reference_space_for</seealso>
+    let P157i_provides_reference_space_for =
+        Prefixed_Name(ecrm, "P157i_provides_reference_space_for") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P160_has_temporal_projection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the temporal projection of an instance of an E92 Spacetime Volume. The property P4 has time-span is the same as P160 has temporal projection if it is used to document an instance of E4 Period or any subclass of it.
+    ///
+    /// Example:
+    ///
+    /// In First Order Logic:
+    /// P160(x,y) ⊃ E92(x)
+    /// P160(x,y)⊃ E52(y)</para>
+    /// labels<para>P160 has temporal projection</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P160_has_temporal_projection">http://erlangen-crm.org/current/P160_has_temporal_projection</seealso>
+    let P160_has_temporal_projection =
+        Prefixed_Name(ecrm, "P160_has_temporal_projection") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P164_during</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property relates an E93 Presence with an arbitrary E52 Time-Span that defines the section of the spacetime volume that this instance of E93 Presence is related to by P166 was a presence of (had presence). that is concerned by this instance of E93 Presence.
+    ///
+    /// Examples:
+    ///
+    /// In First Order Logic:
+    /// P164 (x,y) ⊃ E93(x)
+    /// P164 (x,y) ⊃ E52(y)</para>
+    /// labels<para>P164 is restricted by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P164_during">http://erlangen-crm.org/current/P164_during</seealso>
+    let P164_during = Prefixed_Name(ecrm, "P164_during") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P164i_was_time-span_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P164i_was_time-span_of">http://erlangen-crm.org/current/P164i_was_time-span_of</seealso>
+    let P164i_was_time_span_of =
+        Prefixed_Name(ecrm, "P164i_was_time-span_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P165_incorporates</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of E73 Information Object with an instance of E90 Symbolic Object (or any of its subclasses) that was included in it.
+    /// This property makes it possible to recognise the autonomous status of the incorporated signs, which were created in a distinct context, and can be incorporated in many distinct self-contained expressions, and to highlight the difference between structural and accidental whole-part relationships between conceptual entities. It accounts for many cultural facts that are quite frequent and significant: the inclusion of a poem in an anthology, the re-use of an operatic aria in a new opera, the use of a reproduction of a painting for a book cover or a CD booklet, the integration of textual quotations, the presence of lyrics in a song that sets those lyrics to music, the presence of the text of a play in a movie based on that play, etc. In particular, this property allows for modelling relationships of different levels of symbolic specificity, such as the natural language words making up a particular text, the characters making up the words and punctuation, the choice of fonts and page layout for the characters.
+    /// A digital photograph of a manuscript page incorporates the text of the manuscript page
+    /// It is an implicit transitive property.
+    ///
+    /// Examples:
+    ///
+    /// - The content of Charles-Moïse Briquet’s ‘Les Filigranes: dictionnaire historique des marques du papier’ (E32) P165 incorporates the visual aspect of the watermark used around 1358-61 by some Spanish papermaker(s) and identified as ‘Briquet 4019’ (E37)
+    /// - The visual content of Jacopo Amigoni’s painting known as ‘The Singer Farinelli and friends’ (E38) P165 incorporates the musical notation of Farinelli’s musical work entitled ‘La Partenza’ (E73)
+    /// - The visual content of Nicolas Poussin’s painting entitled ‘Les Bergers d’Arcadie’ (E38) P165 incorporates the Latin phrase ‘Et in Arcadia ego’ (E33)
+    ///
+    /// In First Order Logic:
+    /// P165(x,y) ⊃ E73(x)
+    /// P165(x,y) ⊃ E90(y)
+    /// P165(x,y) ⊃ P106(x,y)</para>
+    /// </remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P165_incorporates">http://erlangen-crm.org/current/P165_incorporates</seealso>
+    let P165_incorporates = Prefixed_Name(ecrm, "P165_incorporates") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P165i_is_incorporated_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P165i_is_incorporated_in">http://erlangen-crm.org/current/P165i_is_incorporated_in</seealso>
+    let P165i_is_incorporated_in =
+        Prefixed_Name(ecrm, "P165i_is_incorporated_in") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P166_was_a_presence_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope Note:
+    /// This property relates an E93 Presence with the STV it is part of...
+    ///
+    /// In First Order Logic:
+    /// P166(x,y) ⊃ E93(x)
+    /// P166(x,y) ⊃ E92(y)</para>
+    /// </remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P166_was_a_presence_of">http://erlangen-crm.org/current/P166_was_a_presence_of</seealso>
+    let P166_was_a_presence_of =
+        Prefixed_Name(ecrm, "P166_was_a_presence_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P19i_was_made_for</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P19 was made for</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P19i_was_made_for">http://erlangen-crm.org/current/P19i_was_made_for</seealso>
+    let P19i_was_made_for = Prefixed_Name(ecrm, "P19i_was_made_for") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P20_had_specific_purpose</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the relationship between a preparatory activity and the event it is intended to be preparation for.
+    ///
+    /// This includes activities, orders and other organisational actions, taken in preparation for other activities or events.
+    ///
+    /// P20 had specific purpose (was purpose of) implies that an activity succeeded in achieving its aim. If it does not succeed, such as the setting of a trap that did not catch anything, one may document the unrealized intention using P21 had general purpose (was purpose of):E55 Type and/or  P33 used specific technique (was used by): E29 Design or Procedure.
+    ///
+    /// Examples:
+    /// - Van Eyck's pigment grinding in 1432 (E7) had specific purpose the painting of the Ghent altar piece (E12)
+    ///
+    /// In First Order Logic:
+    /// P21(x,y) ⊃ E7(x)
+    /// P21(x,y) ⊃ E55(y)</para>
+    /// labels<para>P20 had specific purpose</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P20_had_specific_purpose">http://erlangen-crm.org/current/P20_had_specific_purpose</seealso>
+    let P20_had_specific_purpose =
+        Prefixed_Name(ecrm, "P20_had_specific_purpose") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P20i_was_purpose_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P20 was purpose of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P20i_was_purpose_of">http://erlangen-crm.org/current/P20i_was_purpose_of</seealso>
+    let P20i_was_purpose_of = Prefixed_Name(ecrm, "P20i_was_purpose_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P21_had_general_purpose</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes an intentional relationship between an E7 Activity and some general goal or purpose.
+    ///
+    /// This may involve activities intended as preparation for some type of activity or event. P21had general purpose (was purpose of) differs from P20 had specific purpose (was purpose of) in that no occurrence of an event is implied as the purpose.
+    ///
+    /// Examples:
+    /// - Van Eyck's pigment grinding (E7) had general purpose painting (E55)
+    /// - the setting of trap 2742 on May 17th 1874 (E7) had general purpose Catching Moose
+    /// (E55) (Activity type
+    ///
+    /// In First Order Logic:
+    /// P21(x,y) ⊃ E7(x)
+    /// P21(x,y) ⊃ E55(y)</para>
+    /// labels<para>P21 had general purpose</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P21_had_general_purpose">http://erlangen-crm.org/current/P21_had_general_purpose</seealso>
+    let P21_had_general_purpose =
+        Prefixed_Name(ecrm, "P21_had_general_purpose") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P21i_was_purpose_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P21 was purpose of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P21i_was_purpose_of">http://erlangen-crm.org/current/P21i_was_purpose_of</seealso>
+    let P21i_was_purpose_of = Prefixed_Name(ecrm, "P21i_was_purpose_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P22_transferred_title_to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E39 Actor that acquires the legal ownership of an object as a result of an E8 Acquisition.
+    ///
+    /// The property will typically describe an Actor purchasing or otherwise acquiring an object from another Actor. However, title may also be acquired, without any corresponding loss of title by another Actor, through legal fieldwork such as hunting, shooting or fishing.
+    ///
+    /// In reality the title is either transferred to or from someone, or both.
+    ///
+    /// Examples:
+    /// - acquisition of the Amoudrouz collection by the Geneva Ethnography Museum (E8) transferred title to Geneva Ethnography Museum (E74)
+    ///
+    /// In First Order Logic:
+    /// P22(x,y) ⊃ E8(x)
+    /// P22(x,y) ⊃ E39(y)
+    /// P22 (x,y) ⊃ P14(x,y)</para>
+    /// labels<para>P22 transferred title to</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P22_transferred_title_to">http://erlangen-crm.org/current/P22_transferred_title_to</seealso>
+    let P22_transferred_title_to =
+        Prefixed_Name(ecrm, "P22_transferred_title_to") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P22i_acquired_title_through</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:InverseFunctionalProperty</para>
+    ///
+    /// labels<para>P22 acquired title through</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P22i_acquired_title_through">http://erlangen-crm.org/current/P22i_acquired_title_through</seealso>
+    let P22i_acquired_title_through =
+        Prefixed_Name(ecrm, "P22i_acquired_title_through") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P23_transferred_title_from</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E39 Actor or Actors who relinquish legal ownership as the result of an E8 Acquisition.
+    ///
+    /// The property will typically be used to describe a person donating or selling an object to a museum. In reality title is either transferred to or from someone, or both.
+    ///
+    /// Examples:
+    /// - acquisition of the Amoudrouz collection by the Geneva Ethnographic Museum (E8) transferred title from Heirs of Amoudrouz (E74)
+    ///
+    /// In First Order Logic:
+    /// P23(x,y) ⊃ E8(x)
+    /// P23(x,y) ⊃ E39(y)
+    /// P23 (x,y) ⊃ P14(x,y)</para>
+    /// labels<para>P23 transferred title from</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P23_transferred_title_from">http://erlangen-crm.org/current/P23_transferred_title_from</seealso>
+    let P23_transferred_title_from =
+        Prefixed_Name(ecrm, "P23_transferred_title_from") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P23i_surrendered_title_through</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P23 surrendered title through</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P23i_surrendered_title_through">http://erlangen-crm.org/current/P23i_surrendered_title_through</seealso>
+    let P23i_surrendered_title_through =
+        Prefixed_Name(ecrm, "P23i_surrendered_title_through") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P24i_changed_ownership_through</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P24 changed ownership through</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P24i_changed_ownership_through">http://erlangen-crm.org/current/P24i_changed_ownership_through</seealso>
+    let P24i_changed_ownership_through =
+        Prefixed_Name(ecrm, "P24i_changed_ownership_through") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P25i_moved_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P25 moved by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P25i_moved_by">http://erlangen-crm.org/current/P25i_moved_by</seealso>
+    let P25i_moved_by = Prefixed_Name(ecrm, "P25i_moved_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P26i_was_destination_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P26 was destination of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P26i_was_destination_of">http://erlangen-crm.org/current/P26i_was_destination_of</seealso>
+    let P26i_was_destination_of =
+        Prefixed_Name(ecrm, "P26i_was_destination_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P7i_witnessed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P7 witnessed</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P7i_witnessed">http://erlangen-crm.org/current/P7i_witnessed</seealso>
+    let P7i_witnessed = Prefixed_Name(ecrm, "P7i_witnessed") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P27i_was_origin_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P27 was origin of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P27i_was_origin_of">http://erlangen-crm.org/current/P27i_was_origin_of</seealso>
+    let P27i_was_origin_of = Prefixed_Name(ecrm, "P27i_was_origin_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P39i_was_measured_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P39 was measured by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P39i_was_measured_by">http://erlangen-crm.org/current/P39i_was_measured_by</seealso>
+    let P39i_was_measured_by =
+        Prefixed_Name(ecrm, "P39i_was_measured_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P3_has_note</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Scope note:
+    /// This property is a container for all informal descriptions about an object that have not been expressed in terms of CRM constructs.
+    ///
+    /// In particular it captures the characterisation of the item itself, its internal structures, appearance etc.
+    /// Like property P2 has type (is type of), this property is a consequence of the restricted focus of the CRM. The aim is not to capture, in a structured form, everything that can be said about an item; indeed, the CRM formalism is not regarded as sufficient to express everything that can be said. Good practice requires use of distinct note fields for different aspects of a characterisation. The P3.1 has type property of P3 has note allows differentiation of specific notes, e.g. "construction", "decoration" etc.
+    /// An item may have many notes, but a note is attached to a specific item.
+    ///
+    /// Examples:
+    /// - coffee mug - OXCMS:1983.1.1 (E19) has note "chipped at edge of handle" (E62) has type
+    /// Condition (E55)
+    ///
+    /// In First Order Logic:
+    /// P3(x,y) ⊃ E1(x)
+    /// P3(x,y) ⊃ E62(y)
+    /// P3(x,y,z) ⊃ [P3(x,y) ∧ E55(z)]
+    ///
+    /// Properties: P3.1 has type: E55 Type</para>
+    /// labels<para>P3 has note</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P3_has_note">http://erlangen-crm.org/current/P3_has_note</seealso>
+    let P3_has_note = Prefixed_Name(ecrm, "P3_has_note") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P40i_was_observed_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P40 was observed in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P40i_was_observed_in">http://erlangen-crm.org/current/P40i_was_observed_in</seealso>
+    let P40i_was_observed_in =
+        Prefixed_Name(ecrm, "P40i_was_observed_in") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P41i_was_classified_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P41 was classified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P41i_was_classified_by">http://erlangen-crm.org/current/P41i_was_classified_by</seealso>
+    let P41i_was_classified_by =
+        Prefixed_Name(ecrm, "P41i_was_classified_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P42i_was_assigned_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P42 was assigned by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P42i_was_assigned_by">http://erlangen-crm.org/current/P42i_was_assigned_by</seealso>
+    let P42i_was_assigned_by =
+        Prefixed_Name(ecrm, "P42i_was_assigned_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P43_has_dimension</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property records a E54 Dimension of some E70 Thing.
+    /// It is a shortcut of the more fully developed path from E70 Thing through P39 measured (was measured by), E16 Measurement P40 observed dimension (was observed in) to E54 Dimension. It offers no information about how and when an E54 Dimension was established, nor by whom.
+    ///
+    /// An instance of E54 Dimension is specific to an instance of E70 Thing.
+    ///
+    /// Examples:
+    /// - silver cup 232 (E22) has dimension height of silver cup 232 (E54) has unit (P91) mm (E58), has value (P90) 224 (E60)
+    ///
+    /// In First Order Logic:
+    /// P43(x,y) ⊃ E70(x)
+    /// P43(x,y) ⊃ E54(y)</para>
+    /// labels<para>P43 has dimension</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P43_has_dimension">http://erlangen-crm.org/current/P43_has_dimension</seealso>
+    let P43_has_dimension = Prefixed_Name(ecrm, "P43_has_dimension") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P43i_is_dimension_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P43 is dimension of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P43i_is_dimension_of">http://erlangen-crm.org/current/P43i_is_dimension_of</seealso>
+    let P43i_is_dimension_of =
+        Prefixed_Name(ecrm, "P43i_is_dimension_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P44_has_condition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property records an E3 Condition State for some E18 Physical Thing.
+    ///
+    /// It is a shortcut of the more fully developed path from E18 Physical Thing through P34 concerned (was assessed by), E14 Condition Assessment P35 has identified (was identified by) to E3 Condition State. It offers no information about how and when the E3 Condition State was established, nor by whom.
+    ///
+    /// An instance of Condition State is specific to an instance of Physical Thing.
+    ///
+    /// Examples:
+    /// - silver cup 232 (E22) has condition oxidation traces were present in 1997 (E3) has type oxidation traces (E55)
+    ///
+    /// In First Order Logic:
+    /// P44(x,y) ⊃ E18(x)
+    /// P44(x,y) ⊃ E3(y)</para>
+    /// labels<para>P44 has condition</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P44_has_condition">http://erlangen-crm.org/current/P44_has_condition</seealso>
+    let P44_has_condition = Prefixed_Name(ecrm, "P44_has_condition") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P45i_is_incorporated_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P45 is incorporated in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P45i_is_incorporated_in">http://erlangen-crm.org/current/P45i_is_incorporated_in</seealso>
+    let P45i_is_incorporated_in =
+        Prefixed_Name(ecrm, "P45i_is_incorporated_in") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P46_is_composed_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property allows instances of E18 Physical Thing to be analysed into component elements.
+    ///
+    /// Component elements, since they are themselves instances of E18 Physical Thing, may be further analysed into sub-components, thereby creating a hierarchy of part decomposition. An instance of E18 Physical Thing may be shared between multiple wholes, for example two buildings may share a common wall. This property does not specify when and for how long a component element resided in the respective whole. If a component is not part of a whole from the beginning of existence or until the end of existence of the whole, the classes E79 Part Addition and E90 Part Removal can be used to document when a component became part of a particular whole and/or when it stopped being a part of it. For the time-span of being part of the respective whole, the component is completely contained in the place the whole occupies.
+    ///
+    /// This property is intended to describe specific components that are individually documented, rather than general aspects. Overall descriptions of the structure of an instance of E18 Physical Thing are captured by the P3 has note property.
+    ///
+    /// The instances of E57 Material of which an item of E18 Physical Thing is composed should be documented using P45 consists of (is incorporated in).
+    ///
+    /// Examples:
+    /// - the Royal carriage (E22) forms part of the Royal train (E22)
+    /// - the "Hog's Back" (E24) forms part of the "Fosseway" (E24)
+    ///
+    /// In First Order Logic:
+    /// P46(x,y) ⊃ E18(x)
+    /// P46(x,y) ⊃ E18(y)
+    /// P46(x,y) ⊃ P132(x,y)
+    /// P46(x,y) ⊃ (uzw)[E93(u) ∧ P166 (x,u) ∧ E52(z) ∧ P164(u,z) ∧ E93(w) ∧ P166 (y,w) ∧
+    /// P164(w,z) ∧ P10(w,u)]</para>
+    /// labels<para>P46 is composed of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P46_is_composed_of">http://erlangen-crm.org/current/P46_is_composed_of</seealso>
+    let P46_is_composed_of = Prefixed_Name(ecrm, "P46_is_composed_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P46i_forms_part_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P46 forms part of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P46i_forms_part_of">http://erlangen-crm.org/current/P46i_forms_part_of</seealso>
+    let P46i_forms_part_of = Prefixed_Name(ecrm, "P46i_forms_part_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P48i_is_preferred_identifier_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P48 is preferred identifier of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P48i_is_preferred_identifier_of">http://erlangen-crm.org/current/P48i_is_preferred_identifier_of</seealso>
+    let P48i_is_preferred_identifier_of =
+        Prefixed_Name(ecrm, "P48i_is_preferred_identifier_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P52_has_current_owner</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E21 Person, E74 Group or E40 Legal Body that was the owner of an instance of E18 Physical Thing at the time of validity of the record or database containing the statement that uses this property.
+    ///
+    /// P52 has current owner (is current owner of) is a shortcut for the more detailed path from E18 Physical Thing through P24 transferred title of (changed ownership through), E8 Acquisition, P22 transferred title to (acquired title through) to E39 Actor, if and only if this acquisition event is the most recent.
+    ///
+    /// Examples:
+    /// - paintings from the Iveagh Bequest (E18) has current owner «English Heritage» (E40)
+    ///
+    /// In First Order Logic:
+    /// P52 (x,y) ⊃ E18(x)
+    /// P52 (x,y) ⊃ E39(y)
+    /// P52(x,y) ⊃ P51(x,y)
+    /// P52(x,y) ⊃ P105(x,y)</para>
+    /// labels<para>P52 has current owner</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P52_has_current_owner">http://erlangen-crm.org/current/P52_has_current_owner</seealso>
+    let P52_has_current_owner =
+        Prefixed_Name(ecrm, "P52_has_current_owner") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P52i_is_current_owner_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P52 is current owner of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P52i_is_current_owner_of">http://erlangen-crm.org/current/P52i_is_current_owner_of</seealso>
+    let P52i_is_current_owner_of =
+        Prefixed_Name(ecrm, "P52i_is_current_owner_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P53i_is_former_or_current_location_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P53 is former or current location of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P53i_is_former_or_current_location_of">http://erlangen-crm.org/current/P53i_is_former_or_current_location_of</seealso>
+    let P53i_is_former_or_current_location_of =
+        Prefixed_Name(ecrm, "P53i_is_former_or_current_location_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P54i_is_current_permanent_location_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P54 is current permanent location of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P54i_is_current_permanent_location_of">http://erlangen-crm.org/current/P54i_is_current_permanent_location_of</seealso>
+    let P54i_is_current_permanent_location_of =
+        Prefixed_Name(ecrm, "P54i_is_current_permanent_location_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P55i_currently_holds</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P55 currently holds</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P55i_currently_holds">http://erlangen-crm.org/current/P55i_currently_holds</seealso>
+    let P55i_currently_holds =
+        Prefixed_Name(ecrm, "P55i_currently_holds") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P56_bears_feature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property links an instance of E19 Physical Object to an instance of E26 Physical Feature that it bears.
+    /// An E26 Physical Feature can only exist on one object. One object may bear more than one E26 Physical Feature. An E27 Site should be considered as an E26 Physical Feature on the surface of the Earth.
+    /// An instance B of E26 Physical Feature being a detail of the structure of another instance A of E26 Physical Feature can be linked to B by use of the property P46 is composed of (forms part of). This implies that the subfeature B is P56i found on the same E19 Physical Object as A.
+    /// P56 bears feature (is found on) is a shortcut. A more detailed representation can make use of the fully developed (i.e. indirect) path from E19 Physical Object through P59 has section (is located on or within), E53 Place, P53 has former or current location (is former or current location of) to E26 Physical Feature.
+    ///
+    /// Examples:
+    /// - silver cup 232 (E22) bears feature 32 mm scratch on silver cup 232 (E26)
+    ///
+    /// In First Order Logic:
+    /// P56(x,y) ⊃E19(x)
+    /// P56(x,y) ⊃ E26(y)
+    /// P56(x,y) ⊃ P46(x,y)</para>
+    /// labels<para>P56 bears feature</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P56_bears_feature">http://erlangen-crm.org/current/P56_bears_feature</seealso>
+    let P56_bears_feature = Prefixed_Name(ecrm, "P56_bears_feature") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P57_has_number_of_parts</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Scope note:
+    /// This property documents the E60 Number of parts of which an instance of E19 Physical Object is composed.
+    ///
+    /// This may be used as a method of checking inventory counts with regard to aggregate or collective objects. What constitutes a part or component depends on the context and requirements of the documentation. Normally, the parts documented in this way would not be considered as worthy of individual attention.
+    ///
+    /// For a more complete description, objects may be decomposed into their components and constituents using P46 is composed of (forms parts of) and P45 consists of (is incorporated in). This allows each element to be described individually.
+    ///
+    /// Examples:
+    /// - chess set 233 (E22) has number of parts 33 (E60)
+    ///
+    /// In First Order Logic:
+    /// P57(x,y) ⊃ E19(x)
+    /// P57(x,y) ⊃ E60(y)</para>
+    /// labels<para>P57 has number of parts</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P57_has_number_of_parts">http://erlangen-crm.org/current/P57_has_number_of_parts</seealso>
+    let P57_has_number_of_parts =
+        Prefixed_Name(ecrm, "P57_has_number_of_parts") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P58_has_section_definition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property links an area (section) named by a E46 Section Definition to the instance of E18 Physical Thing upon which it is found.
+    /// The CRM handles sections as locations (instances of E53 Place) within or on E18 Physical Thing that are identified by E46 Section Definitions. Sections need not be discrete and separable components or parts of an object.
+    ///
+    /// This is part of a more developed path from E18 Physical Thing through P58, E46 Section Definition, P87 is identified by (identifies) that allows a more precise definition of a location found on an object than the shortcut P59 has section (is located on or within).
+    /// A particular instance of a Section Definition only applies to one instance of Physical Thing.
+    ///
+    /// Examples:
+    /// - HMS Victory (E22) has section definition "poop deck of HMS Victory" (E46)
+    ///
+    /// In First Order Logic:
+    /// P58(x,y) ⊃ E18(x)
+    /// P58(x,y) ⊃ E46(y)</para>
+    /// labels<para>P58 has section definition</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P58_has_section_definition">http://erlangen-crm.org/current/P58_has_section_definition</seealso>
+    let P58_has_section_definition =
+        Prefixed_Name(ecrm, "P58_has_section_definition") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P59_has_section</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property links an area to the instance of E18 Physical Thing upon which it is found.
+    ///
+    /// It is typically used when a named E46 Section Definition is not appropriate.
+    /// E18 Physical Thing may be subdivided into arbitrary regions.
+    ///
+    /// P59 has section (is located on or within) is a shortcut. If the E53 Place is identified by a Section Definition, a more detailed representation can make use of the fully developed (i.e. indirect) path from E18 Physical Thing through P58 has section definition (defines section), E46 Section Definition, P87 is identified by (identifies) to E53 Place. A Place can only be located on or within one Physical Object.
+    ///
+    /// Examples:
+    /// - HMS Victory (E22) has section HMS Victory section B347.6 (E53)
+    ///
+    /// In First Order Logic:
+    /// P59(x,y) ⊃ E18(x)
+    /// P59(x,y) ⊃ E53(y)</para>
+    /// labels<para>P59 has section</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P59_has_section">http://erlangen-crm.org/current/P59_has_section</seealso>
+    let P59_has_section = Prefixed_Name(ecrm, "P59_has_section") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P5_consists_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the decomposition of an E3 Condition State into discrete, subsidiary states.It is assumed that the sub-states into which the condition state is analysed form a logical whole - although the entire story may not be completely known – and that the sub-states are in fact constitutive of the general condition state. For example, a general condition state of “in ruins” may be decomposed
+    /// into the individual stages of decay.
+    /// This property is transitive
+    ///
+    /// Examples:
+    /// - The Condition State of the ruined Parthenon (E3) consists of the bombarded state after the explosion of a Venetian shell in 1687 (E3)
+    ///
+    /// In First Order Logic:
+    /// P5(x,y) ⊃ E3(x)
+    /// P5(x,y) ⊃ E3(y)</para>
+    /// labels<para>P5 consists of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P5_consists_of">http://erlangen-crm.org/current/P5_consists_of</seealso>
+    let P5_consists_of = Prefixed_Name(ecrm, "P5_consists_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P5i_forms_part_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P5 forms part of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P5i_forms_part_of">http://erlangen-crm.org/current/P5i_forms_part_of</seealso>
+    let P5i_forms_part_of = Prefixed_Name(ecrm, "P5i_forms_part_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P62_depicts</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies something that is depicted by an instance of E24 Physical Man-Made Thing. Depicting is meant in the sense that the surface of the E24 Physical Man-Made Thing shows, through its passive optical qualities or form, a representation of the entity depicted. It does not pertain to inscriptions or any other information encoding.
+    ///
+    /// This property is a shortcut of the more fully developed path from E24 Physical Man-Made Thing through P65 shows visual item (is shown by), E36 Visual Item, P138 represents (has representation) to E1CRM Entity. P62.1 mode of depiction allows the nature of the depiction to be refined.
+    ///
+    /// Examples:
+    /// - The painting "La Liberté guidant le peuple" by Eugène Delacroix (E84) depicts the French "July Revolution" of 1830 (E7)
+    /// - the 20 pence coin held by the Department of Coins and Medals of the British Museum under registration number 2006,1101.126 (E24) depicts Queen Elizabeth II (E21) mode of depiction Profile (E55)
+    ///
+    /// In First Order Logic:
+    /// P62(x,y) ⊃ E24(x)
+    /// P62(x,y) ⊃ E1(y)
+    /// P62(x,y,z) ⊃ [P62(x,y) ∧ E55(z)]
+    ///
+    /// Properties: P62.1 mode of depiction: E55 Type</para>
+    /// labels<para>P62 depicts</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P62_depicts">http://erlangen-crm.org/current/P62_depicts</seealso>
+    let P62_depicts = Prefixed_Name(ecrm, "P62_depicts") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P62i_is_depicted_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P62 is depicted by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P62i_is_depicted_by">http://erlangen-crm.org/current/P62i_is_depicted_by</seealso>
+    let P62i_is_depicted_by = Prefixed_Name(ecrm, "P62i_is_depicted_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P65_shows_visual_item</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property documents an E36 Visual Item shown by an instance of E24 Physical Man-Made Thing.
+    ///
+    /// This property is similar to P62 depicts (is depicted by) in that it associates an item of E24 Physical Man-Made Thing with a visual representation. However, P65 shows visual item (is shown by) differs from the P62 depicts (is depicted by) property in that it makes no claims about what the E36 Visual Item is deemed to represent. E36 Visual Item identifies a recognisable image or visual symbol, regardless of what this image may or may not represent.
+    ///
+    /// For example, all recent British coins bear a portrait of Queen Elizabeth II, a fact that is correctly documented using P62 depicts (is depicted by). Different portraits have been used at different periods, however. P65 shows visual item (is shown by) can be used to refer to a particular portrait.
+    /// P65 shows visual item (is shown by) may also be used for Visual Items such as signs, marks and symbols, for example the 'Maltese Cross' or the 'copyright symbol’ that have no particular representational content.
+    ///
+    /// This property is part of the fully developed path from E24 Physical Man-Made Thing through P65 shows visual item (is shown by), E36 Visual Item, P138 represents (has representation) to E1 CRM Entity which is shortcut by, P62 depicts (is depicted by).
+    ///
+    /// Examples:
+    /// - My T-Shirt (E22) shows visual item Mona Lisa (E38)
+    ///
+    /// In First Order Logic: P65(x,y) ⊃ E24(x)
+    /// P65(x,y) ⊃ E36(y)
+    /// P65(x,y) ⊃ P128(x,y)</para>
+    /// labels<para>P65 shows visual item</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P65_shows_visual_item">http://erlangen-crm.org/current/P65_shows_visual_item</seealso>
+    let P65_shows_visual_item =
+        Prefixed_Name(ecrm, "P65_shows_visual_item") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P69_has_association_with</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property generalises relationships like whole-part, sequence, prerequisite or inspired by between instances of E29 Design or Procedure. Any instance of E29 Design or Procedure may be associated with other designs or procedures. The property is considered to be symmetrical unless otherwise indicated by P69.1 has type.
+    /// The P69.1 has type property of P69 has association with allows the nature of the association to be specified reading from domain to range; examples of types of association between instances of E29 Design or Procedure include: has part, follows, requires, etc.
+    /// The property can typically be used to model the decomposition of the description of a complete workflow into a series of separate procedures.
+    ///
+    /// Examples:
+    /// - Procedure for glass blowing (E29) has association with procedure for glass heating (E29)
+    /// - The set of instructions for performing Macbeth in Max Reinhardt's production in 1916 in Berlin at Deutsches Theater (E29) has association with the scene design drawing by Ernst Stern reproduced at http://www.glopad.org/pi/fr/record/digdoc/1003814 (E29) has type has part (E55)
+    /// - Preparation of parchment (E29) has association with soaking and unhairing of skin (E29) has type 'has part' (E55). Preparation of parchment (E29) has association with stretching of skin (E29) has type 'has part' (E55). Stretching of skin (E29) has association with soaking and unhairing of skin (E29) has type 'follows' (E55).
+    /// - The plan for reassembling the temples at Abu Simbel (E29) has association with the plan for
+    /// storing and transporting the blocks (E29) has type 'follows' (E55)'.
+    ///
+    /// In First Order Logic:
+    /// P69 (x,y) ⊃ E29(x)
+    /// P69 (x,y) ⊃ E29(y)
+    /// P69(x,y,z) ⊃ [P69(x,y) ∧ E55(z)]
+    /// P69(x,y) ⊃P69(y,x)
+    ///
+    /// Properties: P69.1 has type: E55 Type</para>
+    /// labels<para>P69 has association with</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P69_has_association_with">http://erlangen-crm.org/current/P69_has_association_with</seealso>
+    let P69_has_association_with =
+        Prefixed_Name(ecrm, "P69_has_association_with") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P69i_is_associated_with</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P69 is associated with</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P69i_is_associated_with">http://erlangen-crm.org/current/P69i_is_associated_with</seealso>
+    let P69i_is_associated_with =
+        Prefixed_Name(ecrm, "P69i_is_associated_with") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P70i_is_documented_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P70 is documented in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P70i_is_documented_in">http://erlangen-crm.org/current/P70i_is_documented_in</seealso>
+    let P70i_is_documented_in =
+        Prefixed_Name(ecrm, "P70i_is_documented_in") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P71_lists</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property documents a source E32 Authority Document for an instance of an E1 CRM Entity.
+    ///
+    /// Examples:
+    /// - the Art &amp; Architecture Thesaurus (E32) lists alcazars (E55)
+    ///
+    /// In First Order Logic:
+    /// P71(x,y) ⊃ E32(x)
+    /// P71(x,y) ⊃ E1(y)
+    /// P71(x,y) ⊃ P67(x,y)</para>
+    /// labels<para>P71 lists</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P71_lists">http://erlangen-crm.org/current/P71_lists</seealso>
+    let P71_lists = Prefixed_Name(ecrm, "P71_lists") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P71i_is_listed_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P71 is listed in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P71i_is_listed_in">http://erlangen-crm.org/current/P71i_is_listed_in</seealso>
+    let P71i_is_listed_in = Prefixed_Name(ecrm, "P71i_is_listed_in") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P72i_is_language_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P72 is language of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P72i_is_language_of">http://erlangen-crm.org/current/P72i_is_language_of</seealso>
+    let P72i_is_language_of = Prefixed_Name(ecrm, "P72i_is_language_of") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P73_has_translation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the source and target of instances of E33Linguistic Object involved in a translation.
+    ///
+    /// When a Linguistic Object is translated into a new language it becomes a new Linguistic Object, despite being conceptually similar to the source object.
+    ///
+    /// Examples:
+    /// - "Les Baigneurs" (E33) has translation "The Bathers" (E33)
+    ///
+    /// In First Order Logic:
+    /// P73(x,y) ⊃ E33(x)
+    /// P73(x,y) ⊃ E33(y)
+    /// P73(x,y) ⊃ P130(y,x)</para>
+    /// labels<para>P73 has translation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P73_has_translation">http://erlangen-crm.org/current/P73_has_translation</seealso>
+    let P73_has_translation = Prefixed_Name(ecrm, "P73_has_translation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P74_has_current_or_former_residence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the current or former E53 Place of residence of an E39 Actor.
+    ///
+    /// The residence may be either the Place where the Actor resides, or a legally registered address of any kind.
+    ///
+    /// Examples:
+    /// - Queen Elizabeth II (E39) has current or former residence Buckingham Palace (E53)
+    ///
+    /// In First Order Logic:
+    /// P74(x,y) ⊃ E39(x)
+    /// P74(x,y) ⊃ E53(y)</para>
+    /// labels<para>P74 has current or former residence</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P74_has_current_or_former_residence">http://erlangen-crm.org/current/P74_has_current_or_former_residence</seealso>
+    let P74_has_current_or_former_residence =
+        Prefixed_Name(ecrm, "P74_has_current_or_former_residence") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P74i_is_current_or_former_residence_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P74 is current or former residence of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P74i_is_current_or_former_residence_of">http://erlangen-crm.org/current/P74i_is_current_or_former_residence_of</seealso>
+    let P74i_is_current_or_former_residence_of =
+        Prefixed_Name(ecrm, "P74i_is_current_or_former_residence_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P75i_is_possessed_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P75 is possessed by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P75i_is_possessed_by">http://erlangen-crm.org/current/P75i_is_possessed_by</seealso>
+    let P75i_is_possessed_by =
+        Prefixed_Name(ecrm, "P75i_is_possessed_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P76_has_contact_point</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies an E51 Contact Point of any type that provides access to an E39 Actor by any communication method, such as e-mail or fax.
+    ///
+    /// Examples:
+    /// - RLG (E40) has contact point "bl.ric@rlg.org" (E51)
+    ///
+    /// In First Order Logic:
+    /// P76(x,y) ⊃ E39(x)
+    /// P76(x,y) ⊃ E51(y)</para>
+    /// labels<para>P76 has contact point</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P76_has_contact_point">http://erlangen-crm.org/current/P76_has_contact_point</seealso>
+    let P76_has_contact_point =
+        Prefixed_Name(ecrm, "P76_has_contact_point") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P78_is_identified_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies an E52 Time-Span using an E49Time Appellation.
+    ///
+    /// Examples:
+    /// - the time span 1926 to 1988 (E52) is identified by "Showa" (Japanese time appellation) (E49)
+    ///
+    /// In First Order Logic:
+    /// P78(x,y) ⊃ E52(x)
+    /// P78(x,y) ⊃ E49(y)
+    /// P78(x,y) ⊃ P1(x,y)</para>
+    /// labels<para>P78 is identified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P78_is_identified_by">http://erlangen-crm.org/current/P78_is_identified_by</seealso>
+    let P78_is_identified_by =
+        Prefixed_Name(ecrm, "P78_is_identified_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P78i_identifies</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P78 identifies</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P78i_identifies">http://erlangen-crm.org/current/P78i_identifies</seealso>
+    let P78i_identifies = Prefixed_Name(ecrm, "P78i_identifies") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P79_beginning_is_qualified_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Scope note:
+    /// This property qualifies the beginning of an E52 Time-Span in some way.
+    ///
+    /// The nature of the qualification may be certainty, precision, source etc.
+    ///
+    /// Examples:
+    /// - the time-span of the Holocene (E52) beginning is qualified by approximately (E62)
+    ///
+    /// In First Order Logic:
+    /// P79 (x,y) ⊃ E52 (x)
+    /// P79 (x,y) ⊃ E62(y)
+    /// P79(x,y) ⊃ P3(x,y)</para>
+    /// labels<para>P79 beginning is qualified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P79_beginning_is_qualified_by">http://erlangen-crm.org/current/P79_beginning_is_qualified_by</seealso>
+    let P79_beginning_is_qualified_by =
+        Prefixed_Name(ecrm, "P79_beginning_is_qualified_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P53_has_former_or_current_location</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property allows an instance of E53 Place to be associated as the former or current location of an instance of E18 Physical Thing.
+    ///
+    /// In the case of E19 Physical Objects, the property does not allow any indication of the Time-Span during which the Physical Object was located at this Place, nor if this is the current location.
+    ///
+    /// In the case of immobile objects, the Place would normally correspond to the Place of creation.
+    /// P53 has former or current location (is former or current location of) is a shortcut. A more detailed representation can make use of the fully developed (i.e. indirect) path from E19 Physical Object through P25 moved (moved by), E9 Move, P26 moved to (was destination of) or P27 moved from (was origin of) to E53 Place.
+    ///
+    /// Examples:
+    /// - silver cup 232 (E22) has former or current location Display Case 4, Room 23, Museum of Oxford (E53)
+    ///
+    /// In First Order Logic:
+    /// P53(x,y) ⊃ E18(x)
+    /// P53(x,y) ⊃ E53(y)</para>
+    /// labels<para>P53 has former or current location</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P53_has_former_or_current_location">http://erlangen-crm.org/current/P53_has_former_or_current_location</seealso>
+    let P53_has_former_or_current_location =
+        Prefixed_Name(ecrm, "P53_has_former_or_current_location") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E51_Contact_Point</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises identifiers employed, or understood, by communication services to direct communications to an instance of E39 Actor. These include E-mail addresses, telephone numbers, post office boxes, Fax numbers, URLs etc. Most postal addresses can be considered both as instances of E44 Place Appellation and E51 Contact Point. In such cases the subclass E45 Address should be used.
+    /// URLs are addresses used by machines to access another machine through an http request. Since the accessed machine acts on behalf of the E39 Actor providing the machine, URLs are considered as instances of E51 Contact Point to that E39 Actor.
+    ///
+    /// Examples:
+    /// - "+41 22 418 5571"
+    /// - "weasel@paveprime.com"
+    ///
+    /// In First Order Logic:
+    /// E51(x) ⊃ E41(x)</para>
+    /// labels<para>E51 Contact Point</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E51_Contact_Point">http://erlangen-crm.org/current/E51_Contact_Point</seealso>
+    let E51_Contact_Point = Prefixed_Name(ecrm, "E51_Contact_Point") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E49_Time_Appellation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises all forms of names or codes, such as historical periods, and dates, which are characteristically used to refer to a specific E52 Time-Span.
     ///
     /// The instances of E49 Time Appellation may vary in their degree of precision, and they may be relative to other time frames, "Before Christ" for example. Instances of E52 Time-Span are often defined by reference to a cultural period or an event e.g. 'the duration of the Ming Dynasty'.
@@ -1349,11 +4572,655 @@ module ecrm =
     /// - "Last century"
     ///
     /// In First Order Logic:
-    /// E49(x) ⊃ E41(x)
-    /// <see href="http://erlangen-crm.org/current/E49_Time_Appellation"></see></summary>
-    let E49_Time_Appellation = _prefix "E49_Time_Appellation"
+    /// E49(x) ⊃ E41(x)</para>
+    /// labels<para>E49 Time Appellation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E49_Time_Appellation">http://erlangen-crm.org/current/E49_Time_Appellation</seealso>
+    let E49_Time_Appellation =
+        Prefixed_Name(ecrm, "E49_Time_Appellation") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P99_dissolved</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property links the disbanding or E68 Dissolution of an E74 Group to the Group itself.
+    ///
+    /// Examples:
+    /// - the end of The Hole in the Wall Gang (E68) dissolved The Hole in the Wall Gang (E74)
+    ///
+    /// In First Order Logic:
+    /// P99(x,y) ⊃ E68(x)
+    /// P99(x,y) ⊃ E74(y)
+    /// P99(x,y) ⊃ P11(x,y)
+    /// P99(x,y) ⊃ P93(x,y)</para>
+    /// labels<para>P99 dissolved</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P99_dissolved">http://erlangen-crm.org/current/P99_dissolved</seealso>
+    let P99_dissolved = Prefixed_Name(ecrm, "P99_dissolved") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P125i_was_type_of_object_used_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P125 was type of object used in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P125i_was_type_of_object_used_in">http://erlangen-crm.org/current/P125i_was_type_of_object_used_in</seealso>
+    let P125i_was_type_of_object_used_in =
+        Prefixed_Name(ecrm, "P125i_was_type_of_object_used_in") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P127_has_broader_term</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies a super-Type to which an E55 Type is related.
+    ///
+    /// It allows Types to be organised into hierarchies. This is the sense of "broader term generic (BTG)" as defined in ISO 2788
+    ///
+    /// Examples:
+    /// - dime (E55) has broader term coin (E55)
+    ///
+    /// In First Order Logic:
+    /// P127(x,y) ⊃ E55(x)
+    /// P127(x,y) ⊃ E55(y)</para>
+    /// labels<para>P127 has broader term</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P127_has_broader_term">http://erlangen-crm.org/current/P127_has_broader_term</seealso>
+    let P127_has_broader_term =
+        Prefixed_Name(ecrm, "P127_has_broader_term") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P130_shows_features_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property generalises the notions of "copy of" and "similar to" into a directed relationship, where the domain expresses the derivative, if such a direction can be established. Otherwise, the relationship is symmetric. If the reason for similarity is a sort of derivation process, i.e., that the creator has used or had in mind the form of a particular thing during the creation or production, this process should be explicitly modelled. Moreover it expresses similarity in cases that can be stated between two objects only, without historical knowledge about its reasons.
+    ///
+    ///
+    /// Examples:
+    /// - the Parthenon Frieze on the Acropolis in Athens (E22) shows features of the Original Parthenon Frieze in the British museum (E22). Kind of similarity: Copy (E55)
+    ///
+    /// In First Order Logic:
+    /// P130 (x,y) ⊃ E70(x)
+    /// P130 (x,y) ⊃ E70(y)
+    /// P130(x,y,z) ⊃ [P130(x,y) ∧ E55(z)]
+    /// P130(x,y) ⊃ P130(y,x)
+    ///
+    /// Properties: P130.1 kind of similarity: E55 Type</para>
+    /// labels<para>P130 shows features of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P130_shows_features_of">http://erlangen-crm.org/current/P130_shows_features_of</seealso>
+    let P130_shows_features_of =
+        Prefixed_Name(ecrm, "P130_shows_features_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P33i_was_used_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P33 was used by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P33i_was_used_by">http://erlangen-crm.org/current/P33i_was_used_by</seealso>
+    let P33i_was_used_by = Prefixed_Name(ecrm, "P33i_was_used_by") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P34_concerned</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E18 Physical Thing that was assessed during an E14 Condition Assessment activity.
+    /// Conditions may be assessed either by direct observation or using recorded evidence. In the latter case the E18 Physical Thing does not need to be present or extant.
+    ///
+    /// Examples:
+    /// - 1997 condition assessment of the silver collection (E14) concerned silver cup 232 (E22)
+    ///
+    /// In First Order Logic:
+    /// P34(x,y) ⊃ E14(x)
+    /// P34(x,y) ⊃ E18(y)
+    /// P34(x,y) ⊃ P140(x,y)</para>
+    /// labels<para>P34 concerned</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P34_concerned">http://erlangen-crm.org/current/P34_concerned</seealso>
+    let P34_concerned = Prefixed_Name(ecrm, "P34_concerned") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E89_Propositional_Object</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises immaterial items, including but not limited to stories, plots, procedural prescriptions, algorithms, laws of physics or images that are, or represent in some sense, sets of propositions about real or imaginary things and that are documented as single units or serve as topic of discourse.
+    ///
+    /// This class also comprises items that are "about" something in the sense of a subject. In the wider sense, this class includes expressions of psychological value such as non-figural art and musical themes. However, conceptual items such as types and classes are not instances of E89 Propositional Object. This should not be confused with the definition of a type, which is indeed an instance of E89 Propositional Object.
+    ///
+    /// Examples:
+    /// - Maxwell's Equations
+    /// - The ideational contents of Aristotle's book entitled 'Metaphysics' as rendered in the Greek texts translated in … Oxford edition…
+    /// - The underlying prototype of any "no-smoking" sign (E36)
+    /// - The common ideas of the plots of the movie "The Seven Samurai" by Akira Kurosawa and the movie "The Magnificent Seven" by John Sturges
+    /// - The image content of the photo of the Allied Leaders at Yalta published by UPI, 1945 (E38)
+    ///
+    /// In First Order Logic:
+    /// E89(x) ⊃ E28(x)</para>
+    /// labels<para>E89 Propositional Object</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E89_Propositional_Object">http://erlangen-crm.org/current/E89_Propositional_Object</seealso>
+    let E89_Propositional_Object =
+        Prefixed_Name(ecrm, "E89_Propositional_Object") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E33_Linguistic_Object</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises identifiable expressions in natural language or languages.
+    ///
+    /// Instances of E33 Linguistic Object can be expressed in many ways: e.g. as written texts, recorded speech or sign language. However, the CRM treats instances of E33 Linguistic Object independently from the medium or method by which they are expressed. Expressions in formal languages, such as computer code or mathematical formulae, are not treated as instances of E33 Linguistic Object by the CRM. These should be modelled as instances of E73 Information Object.
+    /// The text of an instance of E33 Linguistic Object can be documented in a note by P3 has note: E62 String
+    ///
+    /// Examples:
+    /// - the text of the Ellesmere Chaucer manuscript
+    /// - the lyrics of the song "Blue Suede Shoes"
+    /// - the text of the Jabberwocky by Lewis Carroll
+    /// - the text of "Doktoro Jekyll kaj Sinjoro Hyde" (an Esperanto translation of Dr Jekyll and Mr Hyde)
+    ///
+    /// In First Order Logic:
+    /// E33(x) ⊃ E73(x)</para>
+    /// labels<para>E33 Linguistic Object</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E33_Linguistic_Object">http://erlangen-crm.org/current/E33_Linguistic_Object</seealso>
+    let E33_Linguistic_Object =
+        Prefixed_Name(ecrm, "E33_Linguistic_Object") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E34_Inscription</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises recognisable, short texts attached to instances of E24 Physical Man-Made Thing.
+    ///
+    /// The transcription of the text can be documented in a note by P3 has note: E62 String. The alphabet used can be documented by P2 has type: E55 Type. This class does not intend to describe the idiosyncratic characteristics of an individual physical embodiment of an inscription, but the underlying prototype. The physical embodiment is modelled in the CRM as E24 Physical Man-Made Thing.
+    ///
+    /// The relationship of a physical copy of a book to the text it contains is modelled using E84 Information Carrier. P128 carries (is carried by): E33 Linguistic Object.
+    ///
+    /// Examples:
+    /// - "keep off the grass" on a sign stuck in the lawn of the quad of Balliol College
+    /// - The text published in Corpus Inscriptionum Latinarum V 895
+    /// - Kilroy was here
+    ///
+    /// In First Order Logic:
+    /// E34(x) ⊃ E33(x)
+    /// E34(x) ⊃ E37(x)</para>
+    /// labels<para>E34 Inscription</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E34_Inscription">http://erlangen-crm.org/current/E34_Inscription</seealso>
+    let E34_Inscription = Prefixed_Name(ecrm, "E34_Inscription") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E38_Image</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises distributions of form, tone and colour that may be found on surfaces such as photos, paintings, prints and sculptures or directly on electronic media.
+    ///
+    /// The degree to which variations in the distribution of form and colour affect the identity of an instance of E38 Image depends on a given purpose. The original painting of the Mona Lisa in the Louvre may be said to bear the same instance of E38 Image as reproductions in the form of transparencies, postcards, posters or T-shirts, even though they may differ in size and carrier and may vary in tone and colour. The images in a "spot the difference" competition are not the same with respect to their context, however similar they may at first appear.
+    ///
+    /// Examples:
+    /// - the front side of all 20 Swiss Frs notes
+    /// - the image depicted on all reproductions of the Mona Lisa
+    ///
+    /// In First Order Logic:
+    /// E38(x) ⊃ E36(x)</para>
+    /// labels<para>E38 Image</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E38_Image">http://erlangen-crm.org/current/E38_Image</seealso>
+    let E38_Image = Prefixed_Name(ecrm, "E38_Image") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P94_has_created</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property allows a conceptual E65 Creation to be linked to the E28 Conceptual Object created by it.
+    ///
+    /// It represents the act of conceiving the intellectual content of the E28 Conceptual Object. It does not represent the act of creating the first physical carrier of the E28 Conceptual Object. As an example, this is the composition of a poem, not its commitment to paper.
+    ///
+    /// Examples:
+    /// - the composition of "The Four Friends" by A. A. Milne (E65) has created "The Four Friends" by A. A. Milne (E28)
+    ///
+    /// In First Order Logic:
+    /// P94(x,y) ⊃ E65(x)
+    /// P94(x,y) ⊃ E28(y)
+    /// P94(x,y) ⊃ P92(x,y)</para>
+    /// labels<para>P94 has created</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P94_has_created">http://erlangen-crm.org/current/P94_has_created</seealso>
+    let P94_has_created = Prefixed_Name(ecrm, "P94_has_created") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P143i_was_joined_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P143 was joined by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P143i_was_joined_by">http://erlangen-crm.org/current/P143i_was_joined_by</seealso>
+    let P143i_was_joined_by = Prefixed_Name(ecrm, "P143i_was_joined_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P29_custody_received_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E39 Actor or Actors who receive custody of an instance of E18 Physical Thing in an E10 Transfer of Custody activity.
+    ///
+    /// The property will typically describe Actors receiving custody of an object when it is handed over from another Actor's care. On occasion, physical custody may be received involuntarily or illegally – through accident, unsolicited donation, or theft.
+    /// In reality, custody is either transferred to someone or from someone, or both.
+    ///
+    /// Examples:
+    /// - representatives of The National Gallery (E40) received custody through. The delivery of the paintings by Secure Delivieries Inc. to the National Gallery (E10)
+    ///
+    /// In First Order Logic:
+    /// P29 (x,y) ⊃ E10(x)
+    /// P29 (x,y) ⊃ E39(y)
+    /// P29(x,y) ⊃ P14(x,y)</para>
+    /// labels<para>P29 custody received by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P29_custody_received_by">http://erlangen-crm.org/current/P29_custody_received_by</seealso>
+    let P29_custody_received_by =
+        Prefixed_Name(ecrm, "P29_custody_received_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P50_has_current_keeper</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E39 Actor or Actors who had custody of an instance of E18 Physical Thing at the time of validity of the record or database containing the statement that uses this property.
+    ///
+    /// P50 has current keeper (is current keeper of) is a shortcut for the more detailed path from E18 Physical Thing through P30 transferred custody of (custody transferred through), E10 Transfer of Custody, P29 custody received by (received custody through) to E39 Actor.
+    ///
+    /// Examples:
+    /// - painting from The Iveagh Bequest (E18) has current keeper The National Gallery (E40)
+    ///
+    /// In First Order Logic:
+    /// P50(x,y) ⊃ E18(x)
+    /// P50(x,y) ⊃ E39(y)
+    /// P50(x,y) ⊃ P49(x,y)</para>
+    /// labels<para>P50 has current keeper</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P50_has_current_keeper">http://erlangen-crm.org/current/P50_has_current_keeper</seealso>
+    let P50_has_current_keeper =
+        Prefixed_Name(ecrm, "P50_has_current_keeper") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P51_has_former_or_current_owner</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E39 Actor that is or has been the legal owner (i.e. title holder) of an instance of E18 Physical Thing at some time.
+    ///
+    /// The distinction with P52 has current owner (is current owner of) is that P51 has former or current owner (is former or current owner of) does not indicate whether the specified owners are current. P51 has former or current owner (is former or current owner of) is a shortcut for the more detailed path from E18 Physical Thing through P24 transferred title of (changed ownership through), E8 Acquisition, P23 transferred title from (surrendered title through), or P22 transferred title to (acquired title through) to E39 Actor.
+    ///
+    /// Examples:
+    /// - paintings from the Iveagh Bequest (E18) has former or current owner Lord Iveagh (E21)
+    ///
+    /// In First Order Logic:
+    /// P51(x,y) ⊃ E18(x)
+    /// P51(x,y) ⊃ E39(y)</para>
+    /// labels<para>P51 has former or current owner</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P51_has_former_or_current_owner">http://erlangen-crm.org/current/P51_has_former_or_current_owner</seealso>
+    let P51_has_former_or_current_owner =
+        Prefixed_Name(ecrm, "P51_has_former_or_current_owner") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P84i_was_maximum_duration_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P84 was maximum duration of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P84i_was_maximum_duration_of">http://erlangen-crm.org/current/P84i_was_maximum_duration_of</seealso>
+    let P84i_was_maximum_duration_of =
+        Prefixed_Name(ecrm, "P84i_was_maximum_duration_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P87i_identifies</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P87 identifies</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P87i_identifies">http://erlangen-crm.org/current/P87i_identifies</seealso>
+    let P87i_identifies = Prefixed_Name(ecrm, "P87i_identifies") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P98i_was_born</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P98 was born</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P98i_was_born">http://erlangen-crm.org/current/P98i_was_born</seealso>
+    let P98i_was_born = Prefixed_Name(ecrm, "P98i_was_born") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E22_Man-Made_Object</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises physical objects purposely created by human activity.
+    ///
+    /// No assumptions are made as to the extent of modification required to justify regarding an object as man-made. For example, an inscribed piece of rock or a preserved butterfly are both regarded as instances of E22 Man-Made Object.
+    ///
+    /// Examples:
+    /// - Mallard (the World's fastest steam engine)
+    /// - the Portland Vase
+    /// - the Coliseum
+    ///
+    /// In First Order Logic:
+    /// E22(x) ⊃ E19(x)
+    /// E22(x) ⊃ E24(x)</para>
+    /// labels<para>E22 Man-Made Object</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E22_Man-Made_Object">http://erlangen-crm.org/current/E22_Man-Made_Object</seealso>
+    let E22_Man_Made_Object = Prefixed_Name(ecrm, "E22_Man-Made_Object") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E25_Man-Made_Feature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises physical features that are purposely created by human activity, such as scratches, artificial caves, artificial water channels, etc.
+    ///
+    /// No assumptions are made as to the extent of modification required to justify regarding a feature as man-made. For example, rock art or even "cup and ring" carvings on bedrock a regarded as types of E25 Man-Made Feature.
+    ///
+    /// Examples:
+    /// - the Manchester Ship Canal
+    /// - Michael Jackson's nose following plastic surgery
+    ///
+    /// In First Order Logic:
+    /// E25(x) ⊃ E26(x)
+    /// E25(x) ⊃ E24(x)</para>
+    /// labels<para>E25 Man-Made Feature</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E25_Man-Made_Feature">http://erlangen-crm.org/current/E25_Man-Made_Feature</seealso>
+    let E25_Man_Made_Feature =
+        Prefixed_Name(ecrm, "E25_Man-Made_Feature") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E26_Physical_Feature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises identifiable features that are physically attached in an integral way to particular physical objects.
+    ///
+    /// Instances of E26 Physical Feature share many of the attributes of instances of E19 Physical Object. They may have a one-, two- or three-dimensional geometric extent, but there are no natural borders that separate them completely in an objective way from the carrier objects. For example, a doorway is a feature but the door itself, being attached by hinges, is not.
+    ///
+    /// Instances of E26 Physical Feature can be features in a narrower sense, such as scratches, holes, reliefs, surface colours, reflection zones in an opal crystal or a density change in a piece of wood. In the wider sense, they are portions of particular objects with partially imaginary borders, such as the core of the Earth, an area of property on the surface of the Earth, a landscape or the head of a contiguous marble statue. They can be measured and dated, and it is sometimes possible to state who or what is or was responsible for them. They cannot be separated from the carrier object, but a segment of the carrier object may be identified (or sometimes removed) carrying the complete feature.
+    ///
+    /// This definition coincides with the definition of "fiat objects" (Smith &amp; Varzi, 2000, pp.401-420), with the exception of aggregates of "bona fide objects".
+    ///
+    /// Examples:
+    /// - the temple in Abu Simbel before its removal, which was carved out of solid rock
+    /// - Albrecht Duerer's signature on his painting of Charles the Great
+    /// - the damage to the nose of the Great Sphinx in Giza
+    /// - Michael Jackson's nose prior to plastic surgery
+    ///
+    /// In First Order Logic:
+    /// E26(x) ⊃ E18(x)</para>
+    /// labels<para>E26 Physical Feature</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E26_Physical_Feature">http://erlangen-crm.org/current/E26_Physical_Feature</seealso>
+    let E26_Physical_Feature =
+        Prefixed_Name(ecrm, "E26_Physical_Feature") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E27_Site</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises pieces of land or sea floor.
+    ///
+    /// In contrast to the purely geometric notion of E53 Place, this class describes constellations of matter on the surface of the Earth or other celestial body, which can be represented by photographs, paintings and maps.
+    ///
+    /// Instances of E27 Site are composed of relatively immobile material items and features in a particular configuration at a particular location.
+    ///
+    /// Examples:
+    /// - the Amazon river basin
+    /// - Knossos
+    /// - the Apollo 11 landing site
+    /// - Heathrow Airport
+    /// - the submerged harbour of the Minoan settlement of Gournia, Crete
+    ///
+    /// In First Order Logic:
+    /// E27(x)⊃ E26(x)</para>
+    /// labels<para>E27 Site</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E27_Site">http://erlangen-crm.org/current/E27_Site</seealso>
+    let E27_Site = Prefixed_Name(ecrm, "E27_Site") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E73_Information_Object</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises identifiable immaterial items, such as a poems, jokes, data sets, images, texts, multimedia objects, procedural prescriptions, computer program code, algorithm or mathematical formulae, that have an objectively recognizable structure and are documented as single units.
+    /// The encoding structure known as a "named graph" also falls under this class, so that each "named graph" is an instance of an E73 Information Object.
+    ///
+    /// An E73 Information Object does not depend on a specific physical carrier, which can include human memory, and it can exist on one or more carriers simultaneously.
+    /// Instances of E73 Information Object of a linguistic nature should be declared as instances of the E33 Linguistic Object subclass. Instances of E73 Information Object of a documentary nature should be declared as instances of the E31 Document subclass. Conceptual items such as types and classes are not instances of E73 Information Object, nor are ideas without a reproducible expression.
+    ///
+    /// Examples:
+    /// - image BM000038850.JPG from the Clayton Herbarium in London
+    /// - E. A. Poe's "The Raven"
+    /// - the movie "The Seven Samurai" by Akira Kurosawa
+    /// - the Maxwell Equations
+    /// - The Getty AAT as published as Linked Open Data, accessed 1/10/2014
+    ///
+    /// In First Order Logic:
+    /// E73(x) ⊃ E89(x)
+    /// E73(x) ⊃ E90(x)</para>
+    /// labels<para>E73 Information Object</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E73_Information_Object">http://erlangen-crm.org/current/E73_Information_Object</seealso>
+    let E73_Information_Object =
+        Prefixed_Name(ecrm, "E73_Information_Object") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P104i_applies_to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P104 applies to</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P104i_applies_to">http://erlangen-crm.org/current/P104i_applies_to</seealso>
+    let P104i_applies_to = Prefixed_Name(ecrm, "P104i_applies_to") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E31_Document</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises identifiable immaterial items that make propositions about reality.
+    /// These propositions may be expressed in text, graphics, images, audiograms, videograms or by other similar means. Documentation databases are regarded as a special case of E31 Document. This class should not be confused with the term "document" in Information Technology, which is compatible with E73 Information Object.
+    ///
+    /// Examples:
+    /// - the Encyclopaedia Britannica (E32)
+    /// - The image content of the photo of the Allied Leaders at Yalta published by UPI, 1945 (E38)
+    /// - the Doomsday Book
+    ///
+    /// In First Order Logic:
+    /// E31(x) ⊃ E73(x)</para>
+    /// labels<para>E31 Document</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E31_Document">http://erlangen-crm.org/current/E31_Document</seealso>
+    let E31_Document = Prefixed_Name(ecrm, "E31_Document") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P73i_is_translation_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P73 is translation of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P73i_is_translation_of">http://erlangen-crm.org/current/P73i_is_translation_of</seealso>
+    let P73i_is_translation_of =
+        Prefixed_Name(ecrm, "P73i_is_translation_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P72_has_language</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the E56 Language of an E33 Linguistic Object.
+    ///
+    /// Linguistic Objects are composed in one or more human Languages. This property allows these languages to be documented.
+    ///
+    /// Examples:
+    /// - the American Declaration of Independence (E33) has language 18th Century English (E56)
+    ///
+    /// In First Order Logic:
+    /// P72(x,y) ⊃ E33(x)
+    /// P72(x,y) ⊃ E56(y)</para>
+    /// labels<para>P72 has language</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P72_has_language">http://erlangen-crm.org/current/P72_has_language</seealso>
+    let P72_has_language = Prefixed_Name(ecrm, "P72_has_language") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E36_Visual_Item</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the intellectual or conceptual aspects of recognisable marks and images.
+    ///
+    /// This class does not intend to describe the idiosyncratic characteristics of an individual physical embodiment of a visual item, but the underlying prototype. For example, a mark such as the ICOM logo is generally considered to be the same logo when used on any number of publications. The size, orientation and colour may change, but the logo remains uniquely identifiable. The same is true of images that are reproduced many times. This means that visual items are independent of their physical support.
+    ///
+    /// The class E36 Visual Item provides a means of identifying and linking together instances of E24 Physical Man-Made Thing that carry the same visual symbols, marks or images etc. The property P62 depicts (is depicted by) between E24 Physical Man-Made Thing and depicted subjects (E1 CRM Entity) can be regarded as a short-cut of the more fully developed path from E24 Physical Man-Made Thing through P65 shows visual item (is shown by), E36 Visual Item, P138 represents (has representation) to E1CRM Entity, which in addition captures the optical features of the depiction.
+    ///
+    /// Examples:
+    /// - the visual appearance of Monet's "La Pie" (E38)
+    /// - the Coca-Cola logo (E34)
+    /// - the Chi-Rho (E37)
+    /// - the communist red star (E37)
+    ///
+    /// In First Order Logic:
+    /// E36(x) ⊃ E73(x)</para>
+    /// labels<para>E36 Visual Item</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E36_Visual_Item">http://erlangen-crm.org/current/E36_Visual_Item</seealso>
+    let E36_Visual_Item = Prefixed_Name(ecrm, "E36_Visual_Item") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E3_Condition_State</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the states of objects characterised by a certain condition over a time-span.
+    ///
+    /// An instance of this class describes the prevailing physical condition of any material object or
+    /// feature during a specific E52 Time Span. In general, the time-span for which a certain
+    /// condition can be asserted may be shorter than the real time-span, for which this condition held.
+    /// The nature of that condition can be described using  P2 has type. For example, the E3
+    /// Condition State "condition of the SS Great Britain between 22 September 1846 and 27 August
+    /// 1847" can be characterized as E55 Type "wrecked".
+    ///
+    /// Examples:
+    /// - the "Amber Room" in Tsarskoje Selo being completely reconstructed from summer 2003 until now
+    /// - the Peterhof Palace near Saint Petersburg being in ruins from 1944 – 1946
+    /// - the state of my turkey in the oven at 14:30 on 25 December, 2002 (P2 has type: E55 Type "still not cooked")
+    ///
+    /// In First Order Logic:
+    /// E3(x) ⊃ E2(x)</para>
+    /// labels<para>E3 Condition State</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E3_Condition_State">http://erlangen-crm.org/current/E3_Condition_State</seealso>
+    let E3_Condition_State = Prefixed_Name(ecrm, "E3_Condition_State") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P75_possesses</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies former or current instances of E30 Rights held by an E39 Actor.
+    ///
+    /// Examples:
+    /// - Michael Jackson (E21) possesses Intellectual property rights on the Beatles' back catalogue (E30)
+    ///
+    /// In First Order Logic:
+    /// P75(x,y) ⊃ E39(x)
+    /// P75(x,y) ⊃ E30(y)</para>
+    /// labels<para>P75 possesses</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P75_possesses">http://erlangen-crm.org/current/P75_possesses</seealso>
+    let P75_possesses = Prefixed_Name(ecrm, "P75_possesses") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E74_Group</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises any gatherings or organizations of E39 Actors that act collectively or in a similar way due to any form of unifying relationship. In the wider sense this class also comprises official positions which used to be regarded in certain contexts as one actor, independent of the current holder
+    /// of the office, such as the president of a country. In such cases, it may happen that the Group never had more than one member. A joint pseudonym (i.e., a name that seems indicative of an individual but that is actually used as a persona by two or more people) is a particular case of E74 Group..
+    ///
+    /// A gathering of people becomes an E74 Group when it exhibits organizational characteristics usually typified by a set of ideas or beliefs held in common, or actions performed together. These might be communication, creating some common artifact, a common purpose such as study, worship, business, sports, etc. Nationality can be modelled as membership in an E74 Group (cf. HumanML markup). Married couples and other concepts of family are regarded as particular examples of E74 Group.
+    ///
+    /// Examples:
+    /// - the impressionists
+    /// - the Navajo
+    /// - the Greeks
+    /// - the peace protestors in New York City on February 15 2003
+    /// - Exxon-Mobil
+    /// - King Solomon and his wives
+    /// - the President of the Swiss Confederation
+    /// - Nicolas Bourbaki
+    /// - Betty Crocker
+    /// - Ellery Queen
+    ///
+    /// In First Order Logic:
+    /// E74(x) ⊃ E39(x)</para>
+    /// labels<para>E74 Group</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E74_Group">http://erlangen-crm.org/current/E74_Group</seealso>
+    let E74_Group = Prefixed_Name(ecrm, "E74_Group") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E45_Address</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises identifiers expressed in coding systems for places, such as postal addresses used for mailing.
+    ///
+    /// An E45 Address can be considered both as the name of an E53 Place and as an E51 Contact Point for an E39 Actor. This dual aspect is reflected in the multiple inheritance. However, some forms of mailing addresses, such as a postal box, are only instances of E51 Contact Point, since they do not identify any particular Place. These should not be documented as instances of E45 Address.
+    ///
+    /// Examples:
+    /// - "1-29-3 Otsuka, Bunkyo-ku, Tokyo, 121, Japan"
+    /// - "Rue David Dufour 5, CH-1211, Genève"
+    ///
+    /// In First Order Logic:
+    /// E45(x) ⊃ E44(x)
+    /// E45(x) ⊃ E51(x)</para>
+    /// labels<para>E45 Address</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E45_Address">http://erlangen-crm.org/current/E45_Address</seealso>
+    let E45_Address = Prefixed_Name(ecrm, "E45_Address") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E48_Place_Name</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises particular and common forms of E44 Place Appellation.
+    ///
+    /// Place Names may change their application over time: the name of an E53 Place may change, and a name may be reused for a different E53 Place. Instances of E48 Place Name are typically subject to place name gazetteers.
+    ///
+    /// Examples:
+    /// - "Greece"
+    /// - "Athens"
+    /// - "Geneva"
+    /// - "Lac Léman"
+    ///
+    /// In First Order Logic:
+    /// E48(x) ⊃ E44(x)</para>
+    /// labels<para>E48 Place Name</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E48_Place_Name">http://erlangen-crm.org/current/E48_Place_Name</seealso>
+    let E48_Place_Name = Prefixed_Name(ecrm, "E48_Place_Name") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E4_Period</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises sets of coherent phenomena or cultural manifestations occurring in time and space.
     ///
     /// It is the social or physical coherence of these phenomena that identify an E4 Period and not the associated spatiotemporal extent. This extent is only the “ground” or space in an abstract physical sense that the actual process of growth, spread and retreat has covered. Consequently, different periods can overlap and coexist in time and space, such as when a nomadic culture exists in the same area and time as a sedentary culture. This also means that overlapping land use rights, common among first nations, amounts to overlapping periods.
@@ -1382,47 +5249,28 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// E4(x) ⊃ E2(x)
-    /// E4(x) ⊃ E92(x)
-    /// <see href="http://erlangen-crm.org/current/E4_Period"></see></summary>
-    let E4_Period = _prefix "E4_Period"
+    /// E4(x) ⊃ E92(x)</para>
+    /// labels<para>E4 Period</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E4_Period">http://erlangen-crm.org/current/E4_Period</seealso>
+    let E4_Period = Prefixed_Name(ecrm, "E4_Period") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This property describes the spatial location of an instance of E4 Period.
-    ///
-    /// The related E53 Place should be seen as an approximation of the geographical area within which the phenomena that characterise the period in question occurred. P7took place at (witnessed) does not convey any meaning other than spatial positioning (generally on the surface of the earth).  For example, the period "Révolution française" can be said to have taken place in "France", the "Victorian" period, may be said to have taken place in "Britain" and its colonies, as well as other parts of Europe and north America.
-    /// A period can take place at multiple locations.
-    /// It is a shortcut of the more fully developed path from E4 Period through P161 has spatial projection, E53 Place, P89 falls within (contains) to E53 Place. Describe in words.
-    ///
-    /// Examples
-    /// - the period "Révolution française" (E4) took place at France (E53)
-    ///
-    /// In First Order Logic:
-    /// P7(x,y) ⊃ E4(x)
-    /// P7(x,y) ⊃ E53(y)
-    /// <see href="http://erlangen-crm.org/current/P7_took_place_at"></see></summary>
-    let P7_took_place_at = _prefix "P7_took_place_at"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises specific forms of E49 Time Appellation.
-    ///
-    /// Dates may vary in their degree of precision.
-    ///
-    /// Examples:
-    /// - "1900"
-    /// - "4-4-1959"
-    /// - "19-MAR-1922"
-    /// - "19640604"
-    ///
-    /// In First Order Logic:
-    /// E50(x) ⊃ E49(x)
-    /// <see href="http://erlangen-crm.org/current/E50_Date"></see></summary>
-    let E50_Date = _prefix "E50_Date"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P76i_provides_access_to"></see>
+    ///   <para>ecrm:P76i_provides_access_to</para>
     /// </summary>
-    let P76i_provides_access_to = _prefix "P76i_provides_access_to"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P76 provides access to</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P76i_provides_access_to">http://erlangen-crm.org/current/P76i_provides_access_to</seealso>
+    let P76i_provides_access_to =
+        Prefixed_Name(ecrm, "P76i_provides_access_to") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:E52_Time-Span</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
     /// This class comprises abstract temporal extents, in the sense of Galilean physics, having a beginning, an end and a duration.
     ///
     /// Time Span has no other semantic connotations. Time-Spans are used to define the temporal extent of instances of E4 Period, E5 Event and any other phenomena valid for a certain time. An E52 Time-Span may be identified by one or more instances of E49 Time Appellation.
@@ -1439,381 +5287,16 @@ module ecrm =
     /// - duration of the Ming Dynasty
     ///
     /// In First Order Logic:
-    /// E52(x) ⊃ E1(x)
-    /// <see href="http://erlangen-crm.org/current/E52_Time-Span"></see></summary>
-    let ``E52_Time-Span`` = _prefix "E52_Time-Span"
+    /// E52(x) ⊃ E1(x)</para>
+    /// labels<para>E52 Time-Span</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E52_Time-Span">http://erlangen-crm.org/current/E52_Time-Span</seealso>
+    let E52_Time_Span = Prefixed_Name(ecrm, "E52_Time-Span") |> PrefixedName
     /// <summary>
-    /// Scope note:
-    /// This property describes the minimum length of time covered by an E52 Time-Span.
-    ///
-    /// It allows an E52 Time-Span to be associated with an E54 Dimension representing it’s minimum duration (i.e. it’s inner boundary) independent from the actual beginning and end.
-    ///
-    /// Examples:
-    /// - the time span of the Battle of Issos 333 B.C.E. (E52) had at least duration Battle of Issos minimum duration (E54) has unit (P91) day (E58) has value (P90) 1 (E60)
-    ///
-    /// In First Order Logic:
-    /// P83(x,y) ⊃ E52(x)
-    /// P83(x,y) ⊃ E54(y)
-    /// <see href="http://erlangen-crm.org/current/P83_had_at_least_duration"></see></summary>
-    let P83_had_at_least_duration = _prefix "P83_had_at_least_duration"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the maximum length of time covered by an E52 Time-Span.
-    ///
-    /// It allows an E52 Time-Span to be associated with an E54 Dimension representing it’s maximum duration (i.e. it’s outer boundary) independent from the actual beginning and end.
-    ///
-    /// Examples:
-    /// - the time span of the Battle of Issos 333 B.C.E. (E52) had at most duration Battle of Issos maximum duration (E54) has unit (P91) day (E58) has value (P90) 2 (E60)
-    ///
-    /// In First Order Logic:
-    /// P84(x,y) ⊃ E52(x)
-    /// P84(x,y) ⊃ E54(y)
-    /// <see href="http://erlangen-crm.org/current/P84_had_at_most_duration"></see></summary>
-    let P84_had_at_most_duration = _prefix "P84_had_at_most_duration"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P4i_is_time-span_of"></see>
+    ///   <para>ecrm:P104_is_subject_to</para>
     /// </summary>
-    let ``P4i_is_time-span_of`` = _prefix "P4i_is_time-span_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P59i_is_located_on_or_within"></see>
-    /// </summary>
-    let P59i_is_located_on_or_within = _prefix "P59i_is_located_on_or_within"
-    /// <summary>
-    /// Scope note:
-    /// This property shows the type of unit an E54 Dimension was expressed in.
-    ///
-    /// Examples:
-    /// - height of silver cup 232 (E54) has unit mm (E58)
-    ///
-    /// In First Order Logic:
-    /// P91(x,y) ⊃ E54(x)
-    /// P91(x,y) ⊃ E58(y)
-    /// <see href="http://erlangen-crm.org/current/P91_has_unit"></see></summary>
-    let P91_has_unit = _prefix "P91_has_unit"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P135i_was_created_by"></see>
-    /// </summary>
-    let P135i_was_created_by = _prefix "P135i_was_created_by"
-    /// <summary>
-    /// Scope note:
-    /// This class is a specialization of E55 Type and comprises the natural languages in the sense of concepts.
-    ///
-    /// This type is used categorically in the model without reference to instances of it, i.e. the Model does not foresee the description of instances of instances of E56 Language, e.g.: "instances of  Mandarin Chinese".
-    ///
-    /// It is recommended that internationally or nationally agreed codes and terminology are used to denote instances of E56 Language, such as those defined in ISO 639:1988.
-    ///
-    /// Examples:
-    /// - el [Greek]
-    /// - en [English]
-    /// - eo [Esperanto]
-    /// - es [Spanish]
-    /// - fr [French]
-    ///
-    /// In First Order Logic:
-    /// E56(x) ⊃ E55(x)
-    /// <see href="http://erlangen-crm.org/current/E56_Language"></see></summary>
-    let E56_Language = _prefix "E56_Language"
-    /// <summary>
-    /// Scope note:
-    /// This class is a specialization of E55 Type and comprises the types of measurement units: feet, inches, centimetres, litres, lumens, etc.
-    ///
-    /// This type is used categorically in the model without reference to instances of it, i.e. the Model does not foresee the description of instances of instances of E58 Measurement Unit, e.g.: "instances of cm".
-    ///
-    /// Système International (SI) units or internationally recognized non-SI terms should be used whenever possible. (ISO 1000:1992). Archaic Measurement Units used in historical records should be preserved.
-    ///
-    /// Examples:
-    /// - cm [centrimetre]
-    /// - km [kilometre]
-    /// - m [meter]
-    /// - m/s [meters per second]
-    /// - A [Ampere]
-    /// - GRD [Greek Drachme]
-    /// - C° [degrees centigrade]
-    ///
-    /// In First Order Logic:
-    /// E58(x) ⊃ E55(x)
-    /// <see href="http://erlangen-crm.org/current/E58_Measurement_Unit"></see></summary>
-    let E58_Measurement_Unit = _prefix "E58_Measurement_Unit"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P91i_is_unit_of"></see>
-    /// </summary>
-    let P91i_is_unit_of = _prefix "P91i_is_unit_of"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises changes of states in cultural, social or physical systems, regardless of scale, brought about by a series or group of coherent physical, cultural, technological or legal phenomena. Such changes of state will affect instances of E77 Persistent Item or its subclasses.
-    ///
-    /// The distinction between an E5 Event and an E4 Period is partly a question of the scale of observation. Viewed at a coarse level of detail, an E5 Event is an 'instantaneous' change of state. At a fine level, the E5 Event can be analysed into its component phenomena within a space and time frame, and as such can be seen as an E4 Period. The reverse is not necessarily the case: not all instances of E4 Period give rise to a noteworthy change of state.
-    ///
-    /// Examples:
-    /// - the birth of Cleopatra (E67)
-    /// - the destruction of Herculaneum by volcanic eruption in 79 AD (E6)
-    /// - World War II (E7)
-    /// - the Battle of Stalingrad (E7)
-    /// - the Yalta Conference (E7)
-    /// - my birthday celebration 28-6-1995 (E7)
-    /// - the falling of a tile from my roof last Sunday
-    /// - the CIDOC Conference 2003 (E7)
-    ///
-    /// In First Order Logic:
-    /// E5(x) ⊃ E4(x)
-    /// <see href="http://erlangen-crm.org/current/E5_Event"></see></summary>
-    let E5_Event = _prefix "E5_Event"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the active or passive presence of an E77 Persistent Item in an E5 Event without implying any specific role.
-    ///
-    /// It connects the history of a thing with the E53 Place and E50 Date of an event. For example, an object may be the desk, now in a museum on which a treaty was signed. The presence of an immaterial thing implies the presence of at least one of its carriers.
-    ///
-    /// Examples:
-    /// - Deckchair 42 (E19) was present at The sinking of the Titanic (E5)
-    ///
-    /// In First Order Logic:
-    /// P12(x,y) ⊃ E5(x)
-    /// P12(x,y) ⊃ E77(y)
-    /// <see href="http://erlangen-crm.org/current/P12_occurred_in_the_presence_of"></see></summary>
-    let P12_occurred_in_the_presence_of = _prefix "P12_occurred_in_the_presence_of"
-    /// <summary>
-    /// Scope note:
-    /// This property allows an E63 Beginning of Existence event to be linked to the E77 Persistent Item brought into existence by it.
-    ///
-    /// It allows a "start" to be attached to any Persistent Item being documented i.e. E70 Thing, E72 Legal Object, E39 Actor, E41 Appellation, E51 Contact Point and E55 Type.
-    ///
-    /// Examples:
-    /// - the birth of Mozart (E67) brought into existence Mozart (E21)
-    ///
-    /// In First Order Logic:
-    /// P92(x,y) ⊃ E63(x)
-    /// P92(x,y) ⊃ E77(y)
-    /// P92(x,y) ⊃ P12(x,y)
-    /// <see href="http://erlangen-crm.org/current/P92_brought_into_existence"></see></summary>
-    let P92_brought_into_existence = _prefix "P92_brought_into_existence"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises events that end the existence of any E77 Persistent Item.
-    ///
-    /// It may be used for temporal reasoning about things (physical items, groups of people, living beings) ceasing to exist; it serves as a hook for determination of a terminus postquem and antequem. In cases where substance from a Persistent Item continues to exist in a new form, the process would be documented by E81 Transformation.
-    ///
-    /// Examples:
-    /// - the death of Snoopy, my dog
-    /// - the melting of the snowman
-    /// - the burning of the Temple of Artemis in Ephesos by Herostratos in 356BC
-    ///
-    /// In First Order Logic:
-    /// E64(x) ⊃ E5(x)
-    /// <see href="http://erlangen-crm.org/current/E64_End_of_Existence"></see></summary>
-    let E64_End_of_Existence = _prefix "E64_End_of_Existence"
-    /// <summary>
-    /// Scope note:
-    /// This property allows an E64 End of Existence event to be linked to the E77 Persistent Item taken out of existence by it.
-    /// In the case of immaterial things, the E64 End of Existence is considered to take place with the destruction of the last physical carrier.
-    /// This allows an “end” to be attached to any Persistent Item being documented i.e. E70 Thing, E72 Legal Object, E39 Actor, E41 Appellation, E51 Contact Point and E55 Type. For many Persistent Items we know the maximum life-span and can infer, that they must have ended to exist. We assume in that case an End of Existence, which may be as unnoticeable as forgetting the secret knowledge by the last representative of some indigenous nation.
-    ///
-    /// Examples:
-    /// - the death of Mozart (E69) took out of existence Mozart (E21)
-    ///
-    /// In First Order Logic:
-    /// P93 (x,y) ⊃ E64(x)
-    /// P93 (x,y) ⊃ E77(y)
-    /// P93(x,y) ⊃ P12(x,y)
-    /// <see href="http://erlangen-crm.org/current/P93_took_out_of_existence"></see></summary>
-    let P93_took_out_of_existence = _prefix "P93_took_out_of_existence"
-    /// <summary>
-    /// Scope note:
-    /// This property allows a conceptual E65 Creation to be linked to the E28 Conceptual Object created by it.
-    ///
-    /// It represents the act of conceiving the intellectual content of the E28 Conceptual Object. It does not represent the act of creating the first physical carrier of the E28 Conceptual Object. As an example, this is the composition of a poem, not its commitment to paper.
-    ///
-    /// Examples:
-    /// - the composition of "The Four Friends" by A. A. Milne (E65) has created "The Four Friends" by A. A. Milne (E28)
-    ///
-    /// In First Order Logic:
-    /// P94(x,y) ⊃ E65(x)
-    /// P94(x,y) ⊃ E28(y)
-    /// P94(x,y) ⊃ P92(x,y)
-    /// <see href="http://erlangen-crm.org/current/P94_has_created"></see></summary>
-    let P94_has_created = _prefix "P94_has_created"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises events that result in the formation of a formal or informal E74 Group of people,
-    /// such as a club, society, association, corporation or nation.
-    ///
-    /// E66 Formation does not include the arbitrary aggregation of people who do not act as a collective.
-    /// The formation of an instance of E74 Group does not require that the group is populated with members
-    /// at the time of formation. In order to express the joining of members at the time of formation, the
-    /// respective activity should be simultaneously an instance of both E66 Formation and E85 Joining.
-    ///
-    /// Examples:
-    ///  the formation of the CIDOC CRM Special Interest Group
-    ///  the formation of the Soviet Union
-    ///  the conspiring of the murderers of Caesar
-    ///
-    /// In First Order Logic:
-    /// E66(x) ⊃ E7(x)
-    /// E66(x) ⊃ E63(x)
-    /// <see href="http://erlangen-crm.org/current/E66_Formation"></see></summary>
-    let E66_Formation = _prefix "E66_Formation"
-    /// <summary>
-    /// Scope note:
-    /// This property links the founding or E66 Formation for an E74 Group with the Group itself.
-    ///
-    /// Examples:
-    /// - the formation of the CIDOC CRM SIG at the August 2000 CIDOC Board meeting (E66) has formed the CIDOC CRM Special Interest Group (E74)
-    ///
-    /// In First Order Logic:
-    /// P95(x,y) ⊃ E66(x)
-    /// P95(x,y) ⊃ E74(y)
-    /// P95(x,y) ⊃ P92(x,y)
-    /// <see href="http://erlangen-crm.org/current/P95_has_formed"></see></summary>
-    let P95_has_formed = _prefix "P95_has_formed"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises the births of human beings. E67 Birth is a biological event focussing on the context of people coming into life. (E63 Beginning of Existence comprises the coming into life of any living beings).
-    ///
-    /// Twins, triplets etc. are brought into life by the same E67 Birth event. The introduction of the E67 Birth event as a documentation element allows the description of a range of family relationships in a simple model. Suitable extensions may describe more details and the complexity of motherhood with the intervention of modern medicine. In this model, the biological father is not seen as a necessary participant in the E67 Birth event.
-    ///
-    /// Examples:
-    /// - the birth of Alexander the Great
-    ///
-    /// In First Order Logic:
-    /// E67(x) ⊃ E63(x)
-    /// <see href="http://erlangen-crm.org/current/E67_Birth"></see></summary>
-    let E67_Birth = _prefix "E67_Birth"
-    /// <summary>
-    /// Scope note:
-    /// This property links an E67 Birth event to an E21 Person in the role of biological father.
-    /// Note that biological fathers are not seen as necessary participants in the Birth, whereas birth-giving mothers are (see P96 by mother (gave birth)). The Person being born is linked to the Birth with the property P98 brought into life (was born).
-    ///
-    /// This is not intended for use with general natural history material, only people. There is no explicit method for modelling conception and gestation except by using extensions.
-    /// A Birth event is normally (but not always) associated with one biological father.
-    ///
-    /// Examples:
-    /// - King George VI (E21) was father for the birth of Queen Elizabeth II (E67)
-    ///
-    /// In First Order Logic:
-    /// P97(x,y) ⊃ E67(x)
-    /// P97(x,y) ⊃ E21(y)
-    /// <see href="http://erlangen-crm.org/current/P97_from_father"></see></summary>
-    let P97_from_father = _prefix "P97_from_father"
-    /// <summary>
-    /// Scope note:
-    /// This property links an E67 Birth event to an E21 Person as a participant in the role of birth-giving mother.
-    /// Note that biological fathers are not necessarily participants in the Birth (see P97 from father (was father for)). The Person being born is linked to the Birth with the property P98 brought into life (was born). This is not intended for use with general natural history material, only people. There is no explicit method for modelling conception and gestation except by using extensions. This is a sub-property of P11 had participant (participated in).
-    ///
-    /// Examples:
-    /// - the birth of Queen Elizabeth II (E67) by mother Queen Mother (E21)
-    ///
-    /// In First Order Logic:
-    /// P96(x,y) ⊃ E67(x)
-    /// P96(x,y) ⊃ E21(y)
-    /// P96(x,y) ⊃ P11(x,y)
-    /// <see href="http://erlangen-crm.org/current/P96_by_mother"></see></summary>
-    let P96_by_mother = _prefix "P96_by_mother"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises the events that result in the formal or informal termination of an E74 Group of people.
-    ///
-    /// If the dissolution was deliberate, the Dissolution event should also be instantiated as an E7 Activity.
-    ///
-    /// Examples:
-    /// - the fall of the Roman Empire
-    /// - the liquidation of Enron Corporation
-    ///
-    /// In First Order Logic:
-    /// E68(x) ⊃ E64(x)
-    /// <see href="http://erlangen-crm.org/current/E68_Dissolution"></see></summary>
-    let E68_Dissolution = _prefix "E68_Dissolution"
-    /// <summary>
-    /// Scope note:
-    /// This property links the disbanding or E68 Dissolution of an E74 Group to the Group itself.
-    ///
-    /// Examples:
-    /// - the end of The Hole in the Wall Gang (E68) dissolved The Hole in the Wall Gang (E74)
-    ///
-    /// In First Order Logic:
-    /// P99(x,y) ⊃ E68(x)
-    /// P99(x,y) ⊃ E74(y)
-    /// P99(x,y) ⊃ P11(x,y)
-    /// P99(x,y) ⊃ P93(x,y)
-    /// <see href="http://erlangen-crm.org/current/P99_dissolved"></see></summary>
-    let P99_dissolved = _prefix "P99_dissolved"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises the deaths of human beings.
-    /// If a person is killed, their death should be instantiated as E69 Death and as E7 Activity. The death or perishing of other living beings should be documented using E64 End of Existence.
-    ///
-    /// Examples:
-    /// - the murder of Julius Caesar (E69,E7)
-    /// - the death of Senator Paul Wellstone
-    ///
-    /// In First Order Logic:
-    /// E69(x) ⊃ E64(x)
-    /// <see href="http://erlangen-crm.org/current/E69_Death"></see></summary>
-    let E69_Death = _prefix "E69_Death"
-    /// <summary>
-    /// Scope note:
-    /// This property links an E69 Death event to the E21 Person that died.
-    ///
-    /// A Death event may involve multiple people, for example in the case of a battle or disaster.
-    /// This is not intended for use with general Natural History material, only people.
-    ///
-    /// Examples:
-    /// - Mozart's death (E69) was death of Mozart (E21)
-    /// <see href="http://erlangen-crm.org/current/P100_was_death_of"></see></summary>
-    let P100_was_death_of = _prefix "P100_was_death_of"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises events that destroy one or more instances of E18 Physical Thing such that they lose their identity as the subjects of documentation.
-    ///
-    /// Some destruction events are intentional, while others are independent of human activity. Intentional destruction may be documented by classifying the event as both an E6 Destruction and E7 Activity.
-    ///
-    /// The decision to document an object as destroyed, transformed or modified is context sensitive:
-    /// 1.  If the matter remaining from the destruction is not documented, the event is modelled solely as E6 Destruction.
-    /// 2. An event should also be documented using E81 Transformation if it results in the destruction of one or more objects and the simultaneous production of others using parts or material from the original. In this case, the new items have separate identities. Matter is preserved, but identity is not.
-    /// 3. When the initial identity of the changed instance of E18 Physical Thing is preserved, the event should be documented as E11 Modification.
-    ///
-    /// Examples:
-    /// - the destruction of Herculaneum by volcanic eruption in 79 AD
-    /// - the destruction of Nineveh (E6, E7)
-    /// - the breaking of a champagne glass yesterday by my dog
-    ///
-    /// In First Order Logic:
-    /// E6(x) ⊃ E64(x)
-    /// <see href="http://erlangen-crm.org/current/E6_Destruction"></see></summary>
-    let E6_Destruction = _prefix "E6_Destruction"
-    /// <summary>
-    /// Scope note:
-    /// This property allows specific instances of E18 Physical Thing that have been destroyed to be related to a destruction event.
-    /// Destruction implies the end of an item's life as a subject of cultural documentation – the physical matter of which the item was composed may in fact continue to exist. A destruction event may be contiguous with a Production that brings into existence a derived object composed partly of matter from the destroyed object.
-    ///
-    /// Examples:
-    /// - the Tay Bridge Desaster (E6) destroyed The Tay Bridge (E22)
-    ///
-    /// In First Order Logic:
-    /// P13 (x,y) ⊃ E6 (x)
-    /// P13 (x,y) ⊃ E18(y)
-    /// P13 (x,y) ⊃ P93(x,y)
-    /// <see href="http://erlangen-crm.org/current/P13_destroyed"></see></summary>
-    let P13_destroyed = _prefix "P13_destroyed"
-    /// <summary>
-    /// Scope note:
-    /// This general class comprises discrete, identifiable, instances of E77 Persistent Item that are documented as single units, that either consist of matter or depend on being carried by matter and are characterized by relative stability.
-    ///
-    /// They may be intellectual products or physical things. They may for instance have a solid physical form, an electronic encoding, or they may be a logical concept or structure.
-    ///
-    /// Examples:
-    /// - my photograph collection (E78)
-    /// - the bottle of milk in my refrigerator (E22)
-    /// - the plan of the Strassburger Muenster (E29)
-    /// - the thing on the top of Otto Hahn's desk (E19)
-    /// - the form of the no-smoking sign (E36)
-    /// - the cave of Dirou, Mani, Greece (E27)
-    ///
-    /// In First Order Logic:
-    /// E70(x) ⊃ E77(x)
-    /// <see href="http://erlangen-crm.org/current/E70_Thing"></see></summary>
-    let E70_Thing = _prefix "E70_Thing"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property links a particular E72 Legal Object to the instances of E30 Right to which it is subject.
     ///
     /// The Right is held by an E39 Actor as described by P75 possesses (is possessed by).
@@ -1823,579 +5306,16 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// P104(x,y) ⊃ E72(x)
-    /// P104(x,y) ⊃ E30(y)
-    /// <see href="http://erlangen-crm.org/current/P104_is_subject_to"></see></summary>
-    let P104_is_subject_to = _prefix "P104_is_subject_to"
+    /// P104(x,y) ⊃ E30(y)</para>
+    /// labels<para>P104 is subject to</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P104_is_subject_to">http://erlangen-crm.org/current/P104_is_subject_to</seealso>
+    let P104_is_subject_to = Prefixed_Name(ecrm, "P104_is_subject_to") |> PrefixedName
     /// <summary>
-    /// Scope note:
-    /// This property identifies the E39 Actor who holds the instances of E30 Right to an E72 Legal Object.
-    /// It is a superproperty of P52 has current owner (is current owner of) because ownership is a right that is held on the owned object.
-    ///
-    /// P105 right held by (has right on) is a shortcut of the fully developed path from E72 Legal Object through P104 is subject to (applies to), E30 Right, P75 possesses (is possessed by) to E39 Actor.
-    ///
-    /// Examples:
-    /// - Beatles back catalogue (E73) right held by Michael Jackson (E21)
-    ///
-    /// In First Order Logic:
-    /// P105(x,y) ⊃ E72(x)
-    /// P105(x,y) ⊃ E39(y)
-    /// <see href="http://erlangen-crm.org/current/P105_right_held_by"></see></summary>
-    let P105_right_held_by = _prefix "P105_right_held_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P144i_gained_member_by"></see>
+    ///   <para>ecrm:P25_moved</para>
     /// </summary>
-    let P144i_gained_member_by = _prefix "P144i_gained_member_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P95i_was_formed_by"></see>
-    /// </summary>
-    let P95i_was_formed_by = _prefix "P95i_was_formed_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P146i_lost_member_by"></see>
-    /// </summary>
-    let P146i_lost_member_by = _prefix "P146i_lost_member_by"
-    /// <summary>
-    /// Scope note:
-    /// This property relates an E39 Actor to the E74 Group of which that E39 Actor is a member.
-    ///
-    /// Groups, Legal Bodies and Persons, may all be members of Groups. A Group necessarily consists of more than one member.
-    ///
-    /// This property is a shortcut of the more fully developed path from E74 Group through P144 joined with (gained member by), E85 Joining, P143 joined (was joined by) to E39 Actor
-    /// The property P107.1 kind of member can be used to specify the type of membership or the role the member has in the group.
-    ///
-    /// Examples:
-    /// - Moholy Nagy (E21) is current or former member of Bauhaus (E74)
-    /// - National Museum of Science and Industry (E40) has current or former member The National Railway Museum (E40)
-    /// - The married couple Queen Elisabeth and Prince Phillip (E74) has current or former member Prince Phillip (E21) with P107.1 kind of member husband (E55 Type)
-    ///
-    /// In First Order Logic:
-    /// P107(x,y) ⊃ E74(x)
-    /// P107(x,y) ⊃ E39(y)
-    /// P107(x,y,z) ⊃ [P107(x,y) ∧ E55(z)]
-    ///
-    /// Properties: P107.1 kind of member: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P107_has_current_or_former_member"></see></summary>
-    let P107_has_current_or_former_member = _prefix "P107_has_current_or_former_member"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises all appellations specific to intellectual products or standardized patterns.
-    /// This class comprises appellations that are by their form or syntax specific to identifying instances of
-    /// E28 Conceptual Object, such as intellectual products, standardized patterns etc.
-    ///
-    ///
-    /// Examples:
-    /// - "ISBN 3-7913-1418-1"
-    /// - "ISO 2788-1986 (F)"
-    /// - "DOI=10.1109/MIS.2007.103"
-    ///
-    /// In First Order Logic:
-    /// E75(x) ⊃ E41(x)
-    /// <see href="http://erlangen-crm.org/current/E75_Conceptual_Object_Appellation"></see></summary>
-    let E75_Conceptual_Object_Appellation = _prefix "E75_Conceptual_Object_Appellation"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises aggregations of instances of E18 Physical Thing that are assembled and maintained ("curated" and "preserved," in museological terminology) by one or more instances of E39 Actor over time for a specific purpose and audience, and according to a particular collection development plan.
-    ///
-    /// Items may be added or removed from an E78 Collection in pursuit of this plan. This class should not be confused with the E39 Actor maintaining the E78 Collection often referred to with the name of the E78 Collection (e.g. "The Wallace Collection decided…").
-    ///
-    /// Collective objects in the general sense, like a tomb full of gifts, a folder with stamps or a set of chessmen, should be documented as instances of E19 Physical Object, and not as instances of E78 Collection. This is because they form wholes either because they are physically bound together or because they are kept together for their functionality.
-    ///
-    /// Examples:
-    /// - The John Clayton Herbarium
-    /// - the Wallace Collection
-    /// - Mikael Heggelund Foslie's coralline red algae Herbarium at Museum of Natural History and Archaeology, Trondheim, Norway
-    ///
-    /// In First Order Logic:
-    /// E78(x) ⊃ E24(x)
-    /// <see href="http://erlangen-crm.org/current/E78_Collection"></see></summary>
-    let E78_Collection = _prefix "E78_Collection"
-
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E39 Actor or Actors who assume or have assumed overall curatorial responsibility for an E78 Collection.
-    ///
-    /// It does not allow a history of curation to be recorded. This would require use of an Event initiating a curator being responsible for a Collection.
-    ///
-    /// Examples:
-    /// - the Robert Opie Collection (E78) has current or former curator Robert Opie (E39)
-    /// - the Mikael Heggelund Foslie's coralline red algae Herbarium (E78) has current or former curator Mikael Heggelund Foslie
-    ///
-    /// In First Order Logic:
-    /// P109(x,y) ⊃ E78(x)
-    /// P109(x,y) ⊃ E39(y)
-    /// P109(x,y) ⊃ P49(x,y)
-    /// <see href="http://erlangen-crm.org/current/P109_has_current_or_former_curator"></see></summary>
-    let P109_has_current_or_former_curator =
-        _prefix "P109_has_current_or_former_curator"
-
-    /// <summary>
-    /// Scope note:
-    /// This class comprises activities that result in an instance of E24 Physical Man-Made Thing being increased, enlarged or augmented by the addition of a part.
-    ///
-    /// Typical scenarios include the attachment of an accessory, the integration of a component, the addition of an element to an aggregate object, or the accessioning of an object into a curated E78 Collection. Objects to which parts are added are, by definition, man-made, since the addition of a part implies a human activity. Following the addition of parts, the resulting man-made assemblages are treated objectively as single identifiable wholes, made up of constituent or component parts bound together either physically (for example the engine becoming a part of the car), or by sharing a common purpose (such as the 32 chess pieces that make up a chess set). This class of activities forms a basis for reasoning about the history and continuity of identity of objects that are integrated into other objects over time, such as precious gemstones being repeatedly incorporated into different items of jewellery, or cultural artifacts being added to different museum instances of E78 Collection over their lifespan.
-    ///
-    /// Examples:
-    /// - the setting of the koh-i-noor diamond into the crown of Queen Elizabeth the Queen Mother
-    /// - the addition of the painting "Room in Brooklyn" by Edward Hopper to the collection of the Museum of Fine Arts, Boston
-    ///
-    /// In First Order Logic:
-    /// E79(x) ⊃ E11(x)
-    /// <see href="http://erlangen-crm.org/current/E79_Part_Addition"></see></summary>
-    let E79_Part_Addition = _prefix "E79_Part_Addition"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E24 Physical Man-Made Thing that is added to (augmented) in an E79 Part Addition.
-    ///
-    /// Although a Part Addition event normally concerns only one item of Physical Man-Made Thing, it is possible to imagine circumstances under which more than one item might be added to (augmented). For example, the artist Jackson Pollock trailing paint onto multiple canvasses.
-    ///
-    /// Examples:
-    /// - the final nail-insertion Event (E79) augmented Coffin of George VI (E24)
-    ///
-    /// In First Order Logic:
-    /// P110(x,y) ⊃ E79(x)
-    /// P110(x,y) ⊃ E24(y)
-    /// P110(x,y) ⊃ P31(x,y)
-    /// <see href="http://erlangen-crm.org/current/P110_augmented"></see></summary>
-    let P110_augmented = _prefix "P110_augmented"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E18 Physical Thing that is added during an E79 Part Addition activity
-    ///
-    /// Examples:
-    /// - the insertion of the final nail (E79) added the last nail in George VI's coffin (E18)
-    ///
-    /// In First Order Logic:
-    /// P111(x,y) ⊃ E79(x)
-    /// P111(x,y) ⊃ E18(y)
-    /// P111(x,y) ⊃ P12(x,y)
-    /// P111(x,y) ⊃ P16(x,y)
-    /// <see href="http://erlangen-crm.org/current/P111_added"></see></summary>
-    let P111_added = _prefix "P111_added"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the active participation of an E39 Actor in an E7 Activity.
-    ///
-    /// It implies causal or legal responsibility. The P14.1 in the role of property of the property allows the nature of an Actor's participation to be specified.
-    ///
-    /// Examples:
-    /// - the painting of the Sistine Chapel (E7) carried out by Michaelangelo Buonaroti (E21) in the role of master craftsman (E55)
-    ///
-    /// In First Order Logic:
-    /// P14 (x,y) ⊃ E7(x)
-    /// P14 (x,y)⊃ E39(y)
-    /// P14 (x,y) ⊃ P11(x,y)
-    /// P14(x,y,z) ⊃ [P14(x,y) ∧ E55(z)]
-    /// <see href="http://erlangen-crm.org/current/P14_carried_out_by"></see></summary>
-    let P14_carried_out_by = _prefix "P14_carried_out_by"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises the activities that result in an instance of E18 Physical Thing being decreased by the removal of a part.
-    ///
-    /// Typical scenarios include the detachment of an accessory, the removal of a component or part of a composite object, or the deaccessioning of an object from a curated E78 Collection. If the E80 Part Removal results in the total decomposition of the original object into pieces, such that the whole ceases to exist, the activity should instead be modelled as an E81 Transformation, i.e. a simultaneous destruction and production. In cases where the part removed has no discernible identity prior to its removal but does have an identity subsequent to its removal, the activity should be regarded as both E80 Part Removal and E12 Production. This class of activities forms a basis for reasoning about the history, and continuity of identity over time, of objects that are removed from other objects, such as precious gemstones being extracted from different items of jewelry, or cultural artifacts being deaccessioned from different museum collections over their lifespan.
-    ///
-    /// Examples:
-    /// - the removal of the engine from my car
-    /// - the disposal of object number 1976:234 from the collection
-    ///
-    /// In First Order Logic:
-    /// E80(x) ⊃ E11(x)
-    /// <see href="http://erlangen-crm.org/current/E80_Part_Removal"></see></summary>
-    let E80_Part_Removal = _prefix "E80_Part_Removal"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E24 Physical Man-Made Thing that was diminished by E80 Part Removal.
-    ///
-    /// Although a Part removal activity normally concerns only one item of Physical Man-Made Thing, it is possible to imagine circumstances under which more than one item might be diminished by a single Part Removal activity.
-    ///
-    /// Examples:
-    /// - the coffin of Tut-Ankh-Amun (E22) was diminished by The opening of the coffin of Tut-Ankh-Amun (E80)
-    ///
-    /// In First Order Logic:
-    /// P112(x,y) ⊃ E80(x)
-    /// P112(x,y) ⊃ E24(y)
-    /// P112(x,y) ⊃ P31(x,y)
-    /// <see href="http://erlangen-crm.org/current/P112_diminished"></see></summary>
-    let P112_diminished = _prefix "P112_diminished"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E18 Physical Thing that is removed during an E80 Part Removal activity.
-    ///
-    /// Examples:
-    /// - the opening of the coffin of Tut-Ankh-Amun (E80) removed The mummy of Tut-Ankh-Amun (E20,E22)
-    ///
-    /// In First Order Logic:
-    /// P113(x,y) ⊃ E80(x)
-    /// P113(x,y) ⊃ E18(y)
-    /// P113(x,y) ⊃ P12(x,y)
-    /// <see href="http://erlangen-crm.org/current/P113_removed"></see></summary>
-    let P113_removed = _prefix "P113_removed"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises the events that result in the simultaneous destruction of one or more than one E77 Persistent Item and the creation of one or more than one E77 Persistent Item that preserves recognizable substance from the first one(s) but has fundamentally different nature and identity.
-    ///
-    /// Although the old and the new instances of E77 Persistent Item are treated as discrete entities having separate, unique identities, they are causally connected through the E81 Transformation; the destruction of the old E77 Persistent Item(s) directly causes the creation of the new one(s) using or preserving some relevant substance. Instances of E81 Transformation are therefore distinct from re-classifications (documented using E17 Type Assignment) or modifications (documented using E11 Modification) of objects that do not fundamentally change their nature or identity. Characteristic cases are reconstructions and repurposing of historical buildings or ruins, fires leaving buildings in ruins, taxidermy of specimen in natural history and the reorganization of a corporate body into a new one.
-    ///
-    /// Examples:
-    /// - the death and mummification of Tut-Ankh-Amun (transformation of Tut-Ankh-Amun from a living person to a mummy) (E69,E81,E7)
-    ///
-    /// In First Order Logic:
-    /// E81(x) ⊃ E63(x)
-    /// E81(x) ⊃ E64(x)
-    /// <see href="http://erlangen-crm.org/current/E81_Transformation"></see></summary>
-    let E81_Transformation = _prefix "E81_Transformation"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E77 Persistent Item or items that cease to exist due to a E81 Transformation.
-    ///
-    /// It is replaced by the result of the Transformation, which becomes a new unit of documentation. The continuity between both items, the new and the old, is expressed by the link to the common Transformation.
-    ///
-    /// Examples:
-    /// - the transformation of the Venetian Loggia in Heraklion into a city hall (E81) transformed the Venetian Loggia in Heraklion (E22)
-    /// - the death and mummification of Tut-Ankh-Amun (E81) transformed the ruling Pharao Tut-Ankh-Amun (E21)
-    ///
-    /// In First Order Logic:
-    /// P124(x,y) ⊃ E81(x)
-    /// P124(x,y) ⊃ E77(y)
-    /// P124(x,y) ⊃ P93(x,y)
-    /// <see href="http://erlangen-crm.org/current/P124_transformed"></see></summary>
-    let P124_transformed = _prefix "P124_transformed"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E77 Persistent Item or items that are the result of an E81 Transformation.
-    ///
-    /// New items replace the transformed item or items, which cease to exist as units of documentation. The physical continuity between the old and the new is expressed by the link to the common Transformation.
-    ///
-    /// Examples:
-    /// - the transformation of the Venetian Loggia in Heraklion into a city hall (E81)  resulted in the City Hall of Heraklion (E22)
-    /// - the death and mummification of Tut-Ankh-Amun (E81) resulted in the Mummy of Tut Tut-Ankh-Amun (E22 and E20)
-    ///
-    /// In First Order Logic:
-    /// P123(x,y) ⊃ E81(x)
-    /// P123(x,y) ⊃ E77(y)
-    /// P123(x,y) ⊃ P92(x,y)
-    /// <see href="http://erlangen-crm.org/current/P123_resulted_in"></see></summary>
-    let P123_resulted_in = _prefix "P123_resulted_in"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises any sort of name, number, code or symbol characteristically used to identify an E39 Actor.
-    /// An E39 Actor will typically have more than one E82 Actor Appellation, and instances of E82 Actor Appellation in turn may have alternative representations. The distinction between corporate and personal names, which is particularly important in library applications, should be made by explicitly linking the E82 Actor Appellation to an instance of either E21 Person or E74 Group/E40 Legal Body. If this is not possible, the distinction can be made through the use of the P2 has type mechanism.
-    ///
-    /// Examples:
-    /// - "John Doe"
-    /// - "Doe, J"
-    /// - "the U.S. Social Security Number 246-14-2304"
-    /// - "the Artist Formerly Known as Prince"
-    /// - "the Master of the Flemish Madonna"
-    /// - "Raphael's Workshop"
-    /// - "the Brontë Sisters"
-    /// - "ICOM"
-    /// - "International Council of Museums"
-    ///
-    /// In First Order Logic:
-    /// E82(x) ⊃ E41(x)
-    /// <see href="http://erlangen-crm.org/current/E82_Actor_Appellation"></see></summary>
-    let E82_Actor_Appellation = _prefix "E82_Actor_Appellation"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises activities formally defining new types of items.
-    ///
-    /// It is typically a rigorous scholarly or scientific process that ensures a type is exhaustively described and appropriately named. In some cases, particularly in archaeology and the life sciences, E83 Type Creation requires the identification of an exemplary specimen and the publication of the type definition in an appropriate scholarly forum. The activity of E83 Type Creation is central to research in the life sciences, where a type would be referred to as a "taxon," the type description as a "protologue," and the exemplary specimens as "orgininal element" or "holotype".
-    ///
-    /// Examples:
-    /// - creation of the taxon 'Penicillium brefeldianum B. O. Dodge' (1933)
-    /// - addition of class E84 Information Carrier to the CIDOC CRM
-    ///
-    /// In First Order Logic:
-    /// E83(x) ⊃ E65(x)
-    /// <see href="http://erlangen-crm.org/current/E83_Type_Creation"></see></summary>
-    let E83_Type_Creation = _prefix "E83_Type_Creation"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E55 Type, which is created in an E83Type Creation activity.
-    ///
-    /// Examples:
-    /// - The description of a new ribbon worm species by Bürger (E83) created type 'Lineus coxinus (Bürger, 1892)' (E55)
-    ///
-    /// In First Order Logic:
-    /// P135(x,y) ⊃ E83(x)
-    /// P135(x,y) ⊃ E55(y)
-    /// P135(x,y) ⊃ P94(x,y)
-    /// <see href="http://erlangen-crm.org/current/P135_created_type"></see></summary>
-    let P135_created_type = _prefix "P135_created_type"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises all instances of E22 Man-Made Object that are explicitly designed to act as persistent physical carriers for instances of E73 Information Object.
-    ///
-    /// An E84 Information Carrier may or may not contain information, e.g., a diskette. Note that any E18 Physical Thing may carry information, such as an E34 Inscription. However, unless it was specifically designed for this purpose, it is not an Information Carrier. Therefore the property P128 carries (is carried by) applies to E18 Physical Thing in general.
-    ///
-    /// Examples:
-    /// - the Rosetta Stone
-    /// - my paperback copy of Crime &amp; Punishment
-    /// - the computer disk at ICS-FORTH that stores the canonical Definition of the CIDOC CRM
-    ///
-    /// In First Order Logic:
-    /// E84(x) ⊃ E22(x)
-    /// <see href="http://erlangen-crm.org/current/E84_Information_Carrier"></see></summary>
-    let E84_Information_Carrier = _prefix "E84_Information_Carrier"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises the activities that result in an instance of E39 Actor becoming a member of an instance of E74 Group. This class does not imply initiative by either party. It may be the initiative of a third party.
-    ///
-    /// Typical scenarios include becoming a member of a social organisation, becoming employee of a company, marriage, the adoption of a child by a family and the inauguration of somebody into an official position.
-    ///
-    /// Examples:
-    /// - The election of Sir Isaac Newton as Member of Parliament for the University of Cambridge to the Convention Parliament of 1689
-    /// - The inauguration of Mikhail Sergeyevich Gorbachev as leader of the Union of Soviet Socialist Republics (USSR) in 1985
-    /// - The implementation of the membership treaty between EU and Denmark  January 1. 1973
-    ///
-    /// In First Order Logic:
-    /// E85(x) ⊃ E7(x)
-    /// <see href="http://erlangen-crm.org/current/E85_Joining"></see></summary>
-    let E85_Joining = _prefix "E85_Joining"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the instance of E39 Actor that becomes member of a E74 Group in an E85 Joining.
-    ///
-    /// Joining events allow for describing people becoming members of a group with a more detailed path from E74 Group through P144 joined with (gained member by), E85 Joining, P143 joined (was joined by) to E39 Actor, compared to the shortcut offered by P107 has current or former member (is current or former member of).
-    ///
-    /// Examples:
-    /// - The election of Sir Isaac Newton as Member of Parliament to the Convention Parliament of 1689 (E85) joined Sir Isaac Newton (E21)
-    /// - The inauguration of Mikhail Sergeyevich Gorbachev as leader of the Union of Soviet Socialist Republics (USSR) in 1985 (E85) joined Mikhail Sergeyevich Gorbachev (E21)
-    /// - The implementation of the membership treaty January 1. 1973 between EU and Denmark (E85) joined Denmark (E40)
-    ///
-    /// In First Order Logic:
-    /// P143(x,y) ⊃ E85(x)
-    /// P143(x,y) ⊃ E39(y)
-    /// P143(x,y) ⊃ P11(x,y)
-    /// <see href="http://erlangen-crm.org/current/P143_joined"></see></summary>
-    let P143_joined = _prefix "P143_joined"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the instance of E74 Group of which an instance of E39 Actor becomes a member through an instance of E85 Joining.
-    ///
-    /// Although a Joining activity normally concerns only one instance of E74 Group, it is possible to imagine circumstances under which becoming member of one Group implies becoming member of another Group as well.
-    ///
-    /// Joining events allow for describing people becoming members of a group with a more detailed path from E74 Group through P144 joined with (gained member by), E85 Joining, P143 joined (was joined by) to E39 Actor, compared to the shortcut offered by P107 has current or former member (is current or former member of).
-    /// The property P144.1 kind of member can be used to specify the type of membership or the role the member has in the group.
-    ///
-    /// Examples:
-    /// - The election of Sir Isaac Newton as Member of Parliament to the Convention Parliament of 1689 (E85) joined with the Convention Parliament (E40)
-    /// - The inauguration of Mikhail Sergeyevich Gorbachev as Leader of the Union of Soviet Socialist Republics (USSR) in 1985 (E85) joined with the office of Leader of the Union of Soviet Socialist Republics (USSR) (E40) with P144.1 kind  of member President (E55)
-    /// - The implementation of the membership treaty January 1. 1973 between EU and Denmark (E85) joined with EU (E40)
-    ///
-    /// In First Order Logic:
-    /// P144(x,y) ⊃ E85(x)
-    /// P144(x,y)⊃ E74(y)
-    /// P144(x,y,z) ⊃ [P144(x,y) ∧ E55(z)]
-    /// P144(x,y) ⊃ P11(x,y)
-    ///
-    /// Properties: P144.1 kind of member: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P144_joined_with"></see></summary>
-    let P144_joined_with = _prefix "P144_joined_with"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises the activities that result in an instance of E39 Actor to be disassociated from an instance of E74 Group. This class does not imply initiative by either party. It may be the initiative of a third party.
-    ///
-    /// Typical scenarios include the termination of membership in a social organisation, ending the employment at a company, divorce, and the end of tenure of somebody in an official position.
-    ///
-    /// Examples:
-    /// - The end of Sir Isaac Newton's duty as Member of Parliament for the University of Cambridge to the Convention Parliament in 1702
-    /// - George Washington's leaving office in 1797
-    /// - The implementation of the treaty regulating the termination of Greenland’s membership in EU between EU, Denmark and Greenland February 1. 1985
-    ///
-    /// In First Order Logic:
-    /// E86(x) ⊃ E7(x)
-    /// <see href="http://erlangen-crm.org/current/E86_Leaving"></see></summary>
-    let E86_Leaving = _prefix "E86_Leaving"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the instance of E39 Actor that leaves an instance of E74 Group through an instance of E86 Leaving.
-    ///
-    /// Examples:
-    /// - The end of Sir Isaac Newton's duty as Member of Parliament for the University of Cambridge to the Convention Parliament in 1702 separated Sir Isaac Newton
-    /// - George Washington's leaving office in 1797 separated George Washington
-    /// - The implementation of the treaty regulating the termination of Greenland membership in EU between EU, Denmark and Greenland February 1. 1985 (E86) separated Greenland (E40)
-    ///
-    /// In First Order Logic:
-    /// P145(x,y) ⊃ E86(x)
-    /// P145(x,y) ⊃ E39(y)
-    /// P145(x,y) ⊃ P11(x,y)
-    /// <see href="http://erlangen-crm.org/current/P145_separated"></see></summary>
-    let P145_separated = _prefix "P145_separated"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the instance of E74 Group an instance of E39 Actor leaves through an instance of E86 Leaving.
-    ///
-    /// Although a Leaving activity normally concerns only one instance of E74 Group, it is possible to imagine circumstances under which leaving one E74 Group implies leaving another E74 Group as well.
-    ///
-    /// Examples:
-    /// - The end of Sir Isaac Newton's duty as Member of Parliament for the University of Cambridge to the Convention Parliament in 1702 separated from the Convention Parliament
-    /// - George Washington's leaving office in 1797 separated from the office of President of the United States
-    /// - The implementation of the treaty regulating the termination of Greenland membership in EU between EU, Denmark and Greenland February 1. 1985 separated from EU (E40)
-    ///
-    /// In First Order Logic:
-    /// P146(x,y) ⊃ E86(x)
-    /// P146(x,y) ⊃ E74(y)
-    /// P146(x,y) ⊃ P11(x,y)
-    /// <see href="http://erlangen-crm.org/current/P146_separated_from"></see></summary>
-    let P146_separated_from = _prefix "P146_separated_from"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises the activities that result in the continuity of management and the preservation and evolution of instances of E78 Collection, following an implicit or explicit curation plan.
-    ///
-    /// It specializes the notion of activity into the curation of a collection and allows the history of curation to be recorded.
-    ///
-    /// Items are accumulated and organized following criteria like subject, chronological period, material type, style of art etc. and can be added or removed from an E78 Collection for a specific purpose and/or audience. The initial aggregation of items of a collection is regarded as an instance of E12 Production Event while the activity of evolving, preserving and promoting a collection is regarded as an instance of E87 Curation Activity.
-    ///
-    /// Examples:
-    /// - the curation of Mikael Heggelund Foslie's coralline red algae Herbarium 1876 – 1909 (when Foslie died), now at Museum of Natural History and Archaeology, Norway
-    ///
-    /// In First Order Logic:
-    /// E87(x) ⊃ E7(x)
-    /// <see href="http://erlangen-crm.org/current/E87_Curation_Activity"></see></summary>
-    let E87_Curation_Activity = _prefix "E87_Curation_Activity"
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of E87 Curation Activity with the instance of E78 Collection or collections with that is subject of athat curation activity following some implicit or explicit curation plan.
-    ///
-    /// Examples:
-    /// - The activities (E87) by the Benaki Museum curated the acquisition of dolls and games of urban and folk manufacture dating from the 17th to the 20th century, from England, France and Germany for the "Toys, Games and Childhood Collection (E78) of the Museum
-    /// - The activities (E87) of the Historical Museum of Crete, Heraklion, Crete, curated the development of the permanent Numismatic Collection (E78)
-    /// - The activities (E87) by Mikael Heggelund Foslie curated the Mikael Heggelund Foslie's coralline red algae Herbarium
-    ///
-    /// In First Order Logic:
-    /// P147(x,y) ⊃ E87(x)
-    /// P147(x,y) ⊃ E78(y)
-    /// <see href="http://erlangen-crm.org/current/P147_curated"></see></summary>
-    let P147_curated = _prefix "P147_curated"
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of E89 Propositional Object with a structural part of it that is by itself an instance of E89 Propositional Object.
-    ///
-    /// Examples:
-    /// - Dante's "Divine Comedy" (E89) has component Dante's "Hell" (E89)
-    ///
-    /// In First Order Logic:
-    /// P148(x,y) ⊃ E89(x)
-    /// P148(x,y) ⊃ E89(y)
-    /// <see href="http://erlangen-crm.org/current/P148_has_component"></see></summary>
-    let P148_has_component = _prefix "P148_has_component"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P129i_is_subject_of"></see>
-    /// </summary>
-    let P129i_is_subject_of = _prefix "P129i_is_subject_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P67i_is_referred_to_by"></see>
-    /// </summary>
-    let P67i_is_referred_to_by = _prefix "P67i_is_referred_to_by"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises transfers of legal ownership from one or more instances of E39 Actor to one or more other instances of E39 Actor.
-    ///
-    /// The class also applies to the establishment or loss of ownership of instances of E18 Physical Thing. It does not, however, imply changes of any other kinds of right. The recording of the donor and/or recipient is optional. It is possible that in an instance of E8 Acquisition there is either no donor or no recipient. Depending on the circumstances, it may describe:
-    ///
-    /// 1. the beginning of ownership
-    /// 2. the end of ownership
-    /// 3. the transfer of ownership
-    /// 4. the acquisition from an unknown source
-    /// 5. the loss of title due to destruction of the item
-    ///
-    /// It may also describe events where a collector appropriates legal title, for example by annexation or field collection. The interpretation of the museum notion of "accession" differs between institutions. The CRM therefore models legal ownership (E8 Acquisition) and physical custody (E10 Transfer of Custody) separately. Institutions will then model their specific notions of accession and deaccession as combinations of these.
-    ///
-    /// Examples:
-    /// - the collection of a hammer-head shark of the genus Sphyrna (Carchariniformes) XXXtbc by John Steinbeck and Edward Ricketts at Puerto Escondido in the Gulf of Mexico on March 25th, 1940
-    /// - the acquisition of El Greco's "The Apostles Peter and Paul" by the State Hermitage in Saint Petersburg
-    /// - the loss of my stuffed chaffinch 'Fringilla coelebs Linnaeus, 1758' due to insect damage last year
-    ///
-    /// In First Order Logic:
-    /// E8(x) ⊃ E7(x)
-    /// <see href="http://erlangen-crm.org/current/E8_Acquisition"></see></summary>
-    let E8_Acquisition = _prefix "E8_Acquisition"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E18 Physical Thing or things involved in an E8 Acquisition.
-    ///
-    /// In reality, an acquisition must refer to at least one transferred item.
-    ///
-    /// Examples:
-    /// - acquisition of the Amoudrouz collection by the Geneva Ethnographic Museum (E8) transferred title of Amoudrouz Collection (E78)
-    ///
-    /// In First Order Logic:
-    /// P24(x,y) ⊃ E8(x)
-    /// P24(x,y) ⊃ E18(y)
-    /// <see href="http://erlangen-crm.org/current/P24_transferred_title_of"></see></summary>
-    let P24_transferred_title_of = _prefix "P24_transferred_title_of"
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of E90 Symbolic Object with a part of it that is by itself an instance of E90 Symbolic Object, such as fragments of texts or clippings from an image. This property is transitive.
-    ///
-    /// Examples:
-    /// - This Scope note P106 (E33) is composed of fragments of texts (E33)
-    /// - 'recognizable' P106 (E90) is composed of 'ecognizabl' (E90)
-    ///
-    /// In First Order Logic:
-    /// P106(x,y) ⊃ E90(x)
-    /// P106(x,y) ⊃ E90(y)
-    /// <see href="http://erlangen-crm.org/current/P106_is_composed_of"></see></summary>
-    let P106_is_composed_of = _prefix "P106_is_composed_of"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises instances of E92 Spacetime Volume that result from intersection of instances of
-    /// E92 Spacetime Volume with an instance of E52 Time-Span. The identity of an instance of this class is determined by the identities of the constituing spacetime volume and the time-span.
-    ///
-    /// This class can be used to define temporal snapshots at a particular time-span, such as the extent of the Roman Empire at 33 B.C., or the extent occupied by a museum object at rest in an exhibit. In particular, it can be used to define the spatial projection of a spacetime volume during a particular time-span, such as the maximal spatial extent of a flood at some particular hour, or all areas covered by the Poland within the 20th century AD.
-    ///
-    /// In First Order Logic:
-    /// E93(x) ⊃ E92(x)
-    /// <see href="http://erlangen-crm.org/current/E93_Presence"></see></summary>
-    let E93_Presence = _prefix "E93_Presence"
-    /// <summary>
-    /// Scope note:
-    /// This class comprises changes of the physical location of the instances of E19 Physical Object.
-    ///
-    /// Note, that the class E9 Move inherits the property P7 took place at (witnessed): E53 Place. This property should be used to describe the trajectory or a larger area within which a move takes place, whereas the properties P26 moved to (was destination of), P27 moved from (was origin of) describe the start and end points only. Moves may also be documented to consist of other moves (via P9 consists of (forms part of)), in order to describe intermediate stages on a trajectory. In that case, start and end points of the partial moves should match appropriately between each other and with the overall event.
-    ///
-    /// Examples:
-    /// - the relocation of London Bridge from the UK to the USA
-    /// - the movement of the exhibition "Treasures of Tut-Ankh-Amun" 1976-1979
-    ///
-    /// In First Order Logic:
-    /// E9(x) ⊃ E7(x)
-    /// <see href="http://erlangen-crm.org/current/E9_Move"></see></summary>
-    let E9_Move = _prefix "E9_Move"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies a starting E53 Place of an E9 Move.
-    ///
-    /// A move will be linked to an origin, such as the move of an artefact from storage to display. A move may be linked to many starting instances of E53 Place by multiple instances of this property. In this case the move describes the picking up of a set of objects. The area of the move includes the origin(s), route and destination(s).
-    /// Therefore the described origin is an instance of E53 Place which P89 falls within (contains) the instance of E53 Place the move P7 took place at.
-    ///
-    /// Examples:
-    /// - the movement of Tut-Ankh-Amun Exhibition (E9) moved from The Egyptian Museum in Cairo (E53)
-    ///
-    /// In First Order Logic:
-    /// P27(x,y) ⊃ E9(x)
-    /// P27(x,y) ⊃ E53(y)
-    /// P27(x,y) ⊃ (z)[ E53(z) ∧ P7(x,z) ∧ P89(y,z)]
-    /// <see href="http://erlangen-crm.org/current/P27_moved_from"></see></summary>
-    let P27_moved_from = _prefix "P27_moved_from"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies a destination of a E9 Move.
-    ///
-    /// A move will be linked to a destination, such as the move of an artefact from storage to display. A move may be linked to many terminal instances of E53 Place by multiple instances of this property. In this case the move describes a distribution of a set of objects. The area of the move includes the origin(s), route and destination(s).
-    /// Therefore the described destination is an instance of E53 Place which P89 falls within (contains) the instance of E53 Place the move P7 took place at.
-    ///
-    /// Examples:
-    /// - the movement of Tut-Ankh-Amun Exhibition (E9) moved to The British Museum (E53)
-    ///
-    /// In First Order Logic:
-    /// P26(x,y) ⊃ E9(x)
-    /// P26(x,y) ⊃ E53(y)
-    /// P26(x,y) ⊃ (z)[ E53(z) ∧ P7(x,z) ∧ P89(y,z)]
-    /// <see href="http://erlangen-crm.org/current/P26_moved_to"></see></summary>
-    let P26_moved_to = _prefix "P26_moved_to"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property identifies an instance of E19 Physical Object that was moved by a move event. A move must concern at least one object.
     ///
     /// The property implies the object’s passive participation. For example, Monet’s painting “Impression sunrise” was moved for the first Impressionist exhibition in 1874.
@@ -2406,273 +5326,17 @@ module ecrm =
     /// In First Order Logic:
     /// P25(x,y) ⊃ E9(x)
     /// P25(x,y) ⊃ E19(y)
-    /// P25(x,y) ⊃ P12(x,y)
-    /// <see href="http://erlangen-crm.org/current/P25_moved"></see></summary>
-    let P25_moved = _prefix "P25_moved"
+    /// P25(x,y) ⊃ P12(x,y)</para>
+    /// labels<para>P25 moved</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P25_moved">http://erlangen-crm.org/current/P25_moved</seealso>
+    let P25_moved = Prefixed_Name(ecrm, "P25_moved") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P100i_died_in"></see>
+    ///   <para>ecrm:P117_occurs_during</para>
     /// </summary>
-    let P100i_died_in = _prefix "P100i_died_in"
-
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P93i_was_taken_out_of_existence_by"></see>
-    /// </summary>
-    let P93i_was_taken_out_of_existence_by =
-        _prefix "P93i_was_taken_out_of_existence_by"
-
-    /// <summary>
-    /// Scope note:
-    /// This property links an instance of E70 Thing to an E55 Type of usage.
-    ///
-    /// It allows the relationship between particular things, both physical and immaterial, and general methods and techniques of use to be documented. Thus it can be asserted that a baseball bat had a general use for sport and a specific use for threatening people during the Great Train Robbery.
-    ///
-    /// Examples:
-    /// - Tony Gill's Ford Mustang (E22) had as general use transportation (E55)
-    ///
-    /// In First Order Logic:
-    /// P102(x,y) ⊃ E71(x)
-    /// P102(x,y) ⊃ E35(y)
-    /// P102(x,y,z) ⊃ [P102(x,y) ∧ E55(z)]
-    /// P102(x,y) ⊃ P1(x,y)
-    /// <see href="http://erlangen-crm.org/current/P101_had_as_general_use"></see></summary>
-    let P101_had_as_general_use = _prefix "P101_had_as_general_use"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P101i_was_use_of"></see>
-    /// </summary>
-    let P101i_was_use_of = _prefix "P101i_was_use_of"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the E35 Title applied to an instance of E71 Man-Made Thing. The E55 Type of Title is assigned in a sub property.
-    ///
-    /// The P102.1 has type property of the P102 has title (is title of) property enables the relationship between the Title and the thing to be further clarified, for example, if the Title was a given Title, a supplied Title etc.
-    /// It allows any man-made material or immaterial thing to be given a Title. It is possible to imagine a Title being created without a specific object in mind.
-    ///
-    /// Examples:
-    /// - the first book of the Old Testament (E33) has title "Genesis" (E35) has type translated (E55)
-    ///
-    /// In First Order Logic:
-    /// P102(x,y) ⊃ E71(x)
-    /// P102(x,y) ⊃ E35(y)
-    /// P102(x,y,z) ⊃ [P102(x,y) ∧ E55(z)]
-    /// P102(x,y) ⊃ P1(x,y)
-    ///
-    /// Properties: P102.1 has type: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P102_has_title"></see></summary>
-    let P102_has_title = _prefix "P102_has_title"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the naming or identification of any real world item by a name or any other identifier.
-    ///
-    /// This property is intended for identifiers in general use, which form part of the world the model intends to describe, and not merely for internal database identifiers which are specific to a technical system, unless these latter also have a more general use outside the technical context. This property includes in particular identification by mathematical expressions such as coordinate systems used for the identification of instances of E53 Place. The property does not reveal anything about when, where and by whom this identifier was used. A more detailed representation can be made using the fully developed (i.e. indirect) path through E15 Identifier Assignment.
-    ///
-    /// Examples:
-    /// - the capital of Italy (E53) is identified by "Rome" (E48)
-    /// - text 25014-32 (E33) is identified by "The Decline and Fall of the Roman Empire" (E35)
-    ///
-    /// In First Order Logic:
-    /// P1(x,y) ⊃ E1(x)
-    /// P1(x,y) ⊃ E41(y)
-    /// <see href="http://erlangen-crm.org/current/P1_is_identified_by"></see></summary>
-    let P1_is_identified_by = _prefix "P1_is_identified_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P102i_is_title_of"></see>
-    /// </summary>
-    let P102i_is_title_of = _prefix "P102i_is_title_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P1i_identifies"></see>
-    /// </summary>
-    let P1i_identifies = _prefix "P1i_identifies"
-    /// <summary>
-    /// Scope note:
-    /// This property links an instance of E71 Man-Made Thing to an E55 Type of usage.
-    ///
-    /// It creates a property between specific man-made things, both physical and immaterial, to Types of intended methods and techniques of use. Note: A link between specific man-made things and a specific use activity should be expressed using P19 was intended use of (was made for).
-    ///
-    /// Examples:
-    /// - this plate (E22) was intended for being destroyed at wedding reception (E55)
-    ///
-    /// In First Order Logic:
-    /// P103(x,y) ⊃ E71(x)
-    /// P103(x,y) ⊃ E55(y)
-    /// <see href="http://erlangen-crm.org/current/P103_was_intended_for"></see></summary>
-    let P103_was_intended_for = _prefix "P103_was_intended_for"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P103i_was_intention_of"></see>
-    /// </summary>
-    let P103i_was_intention_of = _prefix "P103i_was_intention_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P105i_has_right_on"></see>
-    /// </summary>
-    let P105i_has_right_on = _prefix "P105i_has_right_on"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P106i_forms_part_of"></see>
-    /// </summary>
-    let P106i_forms_part_of = _prefix "P106i_forms_part_of"
-
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P107i_is_current_or_former_member_of"></see>
-    /// </summary>
-    let P107i_is_current_or_former_member_of =
-        _prefix "P107i_is_current_or_former_member_of"
-
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P31i_was_modified_by"></see>
-    /// </summary>
-    let P31i_was_modified_by = _prefix "P31i_was_modified_by"
-
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P92i_was_brought_into_existence_by"></see>
-    /// </summary>
-    let P92i_was_brought_into_existence_by =
-        _prefix "P92i_was_brought_into_existence_by"
-
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E39 Actor or Actors who have or have had custody of an instance of E18 Physical Thing at some time.
-    ///
-    /// The distinction with P50 has current keeper (is current keeper of) is that P49 has former or current keeper (is former or current keeper of) leaves open the question as to whether the specified keepers are current.
-    ///
-    /// P49 has former or current keeper (is former or current keeper of) is a shortcut for the more detailed path from E18 Physical Thing through P30 transferred custody of (custody transferred through), E10 Transfer of Custody, P28 custody surrendered by (surrendered custody through) or P29 custody received by (received custody through) to E39 Actor.
-    ///
-    /// Examples:
-    /// - paintings from The Iveagh Bequest (E18) has former or current keeper Secure Deliveries Inc. (E40)
-    ///
-    /// In First Order Logic:
-    /// P49(x,y) ⊃ E18(x)
-    /// P49(x,y) ⊃ E39(y)
-    /// <see href="http://erlangen-crm.org/current/P49_has_former_or_current_keeper"></see></summary>
-    let P49_has_former_or_current_keeper = _prefix "P49_has_former_or_current_keeper"
-
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P109i_is_current_or_former_curator_of"></see>
-    /// </summary>
-    let P109i_is_current_or_former_curator_of =
-        _prefix "P109i_is_current_or_former_curator_of"
-
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P49i_is_former_or_current_keeper_of"></see>
-    /// </summary>
-    let P49i_is_former_or_current_keeper_of =
-        _prefix "P49i_is_former_or_current_keeper_of"
-
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of E4 Period with another instance of E4 Period that falls within the spacetime volumes occupied by the latter.In other words, all points in the former are also points in the latter. This property is transitive.
-    ///
-    /// Examples:
-    /// - the Great Plague (E4) falls within The Gothic period (E4)
-    ///
-    /// In First Order Logic:
-    /// P10(x,y) ⊃ E92(x)
-    /// P10(x,y) ⊃ E92(y)
-    /// <see href="http://erlangen-crm.org/current/P10_falls_within"></see></summary>
-    let P10_falls_within = _prefix "P10_falls_within"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P10i_contains"></see>
-    /// </summary>
-    let P10i_contains = _prefix "P10i_contains"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P110i_was_augmented_by"></see>
-    /// </summary>
-    let P110i_was_augmented_by = _prefix "P110i_was_augmented_by"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the use of material or immaterial things in a way essential to the performance or the outcome of an E7 Activity.
-    ///
-    /// This property typically applies to tools, instruments, moulds, raw materials and items embedded in a product. It implies that the presence of the object in question was a necessary condition for the action. For example, the activity of writing this text required the use of a computer. An immaterial thing can be used if at least one of its carriers is present. For example, the software tools on a computer.
-    ///
-    /// Another example is the use of a particular name by a particular group of people over some span to identify a thing, such as a settlement. In this case, the physical carriers of this name are at least the people understanding its use.
-    ///
-    /// Examples:
-    /// - the writing of this scope note (E7) used specific object Nicholas Crofts' computer (E22)
-    /// mode of use Typing Tool; Storage Medium (E55)
-    /// - the people of Iraq calling the place identified by TGN '7017998' (E7) used specific object
-    /// "Quyunjig" (E44) mode of use Current; Vernacular (E55)
-    ///
-    /// FOL:
-    /// P16 (x,y) ⊃ E7(x)
-    /// P16 (x,y) ⊃ E70(y)
-    /// P16 (x,y) ⊃ P12(x,y)
-    /// P16 (x,y) ⊃ P15(x,y)
-    /// P16(x,y,z) ⊃ [P16(x,y) ∧ E55(z)]
-    /// <see href="http://erlangen-crm.org/current/P16_used_specific_object"></see></summary>
-    let P16_used_specific_object = _prefix "P16_used_specific_object"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P111i_was_added_by"></see>
-    /// </summary>
-    let P111i_was_added_by = _prefix "P111i_was_added_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P16i_was_used_for"></see>
-    /// </summary>
-    let P16i_was_used_for = _prefix "P16i_was_used_for"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P112i_was_diminished_by"></see>
-    /// </summary>
-    let P112i_was_diminished_by = _prefix "P112i_was_diminished_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P113i_was_removed_by"></see>
-    /// </summary>
-    let P113i_was_removed_by = _prefix "P113i_was_removed_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P12i_was_present_at"></see>
-    /// </summary>
-    let P12i_was_present_at = _prefix "P12i_was_present_at"
-    /// <summary>
-    /// Scope note:
-    /// This symmetric property allows the instances of E2 Temporal Entity with the same E52 Time-Span to be equated.
-    /// This property is only necessary if the time span is unknown (otherwise the equivalence can be calculated).
-    ///
-    /// This property is the same as the "equal" relationship of Allen’s temporal logic (Allen, 1983, pp. 832-843).
-    /// This property is transitive.
-    ///
-    /// Examples:
-    /// - the destruction of the Villa Justinian Tempus (E6) is equal in time to the death of Maximus Venderus (E69)
-    ///
-    /// In First Order Logic:
-    /// P114(x,y) ⊃ E2(x)
-    /// P114(x,y) ⊃ E2(y)
-    /// P114(x,y) ⊃ P114(y,x)
-    /// <see href="http://erlangen-crm.org/current/P114_is_equal_in_time_to"></see></summary>
-    let P114_is_equal_in_time_to = _prefix "P114_is_equal_in_time_to"
-    /// <summary>
-    /// Scope note:
-    /// This property allows the ending point for a E2 Temporal Entity to be situated by reference to the ending point of another temporal entity of longer duration.
-    ///
-    /// This property is only necessary if the time span is unknown (otherwise the relationship can be calculated). This property is the same as the "finishes / finished-by" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
-    /// This property is transitive.
-    ///
-    /// Examples:
-    /// - Late Bronze Age (E4) finishes Bronze Age (E4)
-    ///
-    /// In First Order Logic:
-    /// P115(x,y) ⊃ E2(x)
-    /// P115(x,y) ⊃ E2(y)
-    /// <see href="http://erlangen-crm.org/current/P115_finishes"></see></summary>
-    let P115_finishes = _prefix "P115_finishes"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P115i_is_finished_by"></see>
-    /// </summary>
-    let P115i_is_finished_by = _prefix "P115i_is_finished_by"
-    /// <summary>
-    /// Scope note:
-    /// This property allows the starting point for a E2 Temporal Entity to be situated by reference to the starting point of another temporal entity of longer duration.
-    ///
-    /// This property is only necessary if the time span is unknown (otherwise the relationship can be calculated). This property is the same as the "starts / started-by" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
-    ///
-    /// Examples:
-    /// - Early Bronze Age (E4) starts Bronze Age (E4)
-    ///
-    /// In First Order Logic:
-    /// P116(x,y) ⊃ E2(x)
-    /// P116(x,y) ⊃ E2(y)
-    /// <see href="http://erlangen-crm.org/current/P116_starts"></see></summary>
-    let P116_starts = _prefix "P116_starts"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P116i_is_started_by"></see>
-    /// </summary>
-    let P116i_is_started_by = _prefix "P116i_is_started_by"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Scope note:
     /// This property allows the entire E52 Time-Span of an E2 Temporal Entity to be situated within the Time-Span of another temporal entity that starts before and ends after the included temporal entity.
     ///
     /// This property is only necessary if the time span is unknown (otherwise the relationship can be calculated). This property is the same as the "during / includes" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
@@ -2682,35 +5346,38 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// P117(x,y) ⊃ E2(x)
-    /// P117(x,y) ⊃ E2(y)
-    /// <see href="http://erlangen-crm.org/current/P117_occurs_during"></see></summary>
-    let P117_occurs_during = _prefix "P117_occurs_during"
+    /// P117(x,y) ⊃ E2(y)</para>
+    /// labels<para>P117 occurs during</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P117_occurs_during">http://erlangen-crm.org/current/P117_occurs_during</seealso>
+    let P117_occurs_during = Prefixed_Name(ecrm, "P117_occurs_during") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P117i_includes"></see>
+    ///   <para>ecrm:P117i_includes</para>
     /// </summary>
-    let P117i_includes = _prefix "P117i_includes"
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P117 includes</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P117i_includes">http://erlangen-crm.org/current/P117i_includes</seealso>
+    let P117i_includes = Prefixed_Name(ecrm, "P117i_includes") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This property identifies an overlap between the instances of E52 Time-Span of two instances of E2 Temporal Entity.
-    ///
-    /// It implies a temporal order between the two entities: if A overlaps in time B, then A must start before B, and B must end after A. This property is only necessary if the relevant time spans are unknown (otherwise the relationship can be calculated).
-    ///
-    /// This property is the same as the "overlaps / overlapped-by" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
-    ///
-    /// Examples:
-    /// - the Iron Age (E4) overlaps in time with the Roman period (E4)
-    ///
-    /// In First Order Logic:
-    /// P118(x,y) ⊃ E2(x)
-    /// P118(x,y) ⊃ E2(y)
-    /// <see href="http://erlangen-crm.org/current/P118_overlaps_in_time_with"></see></summary>
-    let P118_overlaps_in_time_with = _prefix "P118_overlaps_in_time_with"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P118i_is_overlapped_in_time_by"></see>
+    ///   <para>ecrm:P118i_is_overlapped_in_time_by</para>
     /// </summary>
-    let P118i_is_overlapped_in_time_by = _prefix "P118i_is_overlapped_in_time_by"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P118 is overlapped in time by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P118i_is_overlapped_in_time_by">http://erlangen-crm.org/current/P118i_is_overlapped_in_time_by</seealso>
+    let P118i_is_overlapped_in_time_by =
+        Prefixed_Name(ecrm, "P118i_is_overlapped_in_time_by") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P119_meets_in_time_with</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property indicates that one E2 Temporal Entity immediately follows another.
     ///
     /// It implies a particular order between the two entities: if A meets in time with B, then A must precede B. This property is only necessary if the relevant time spans are unknown (otherwise the relationship can be calculated).
@@ -2722,35 +5389,41 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// P119(x,y) ⊃ E2(x)
-    /// P119(x,y) ⊃ E2(y)
-    /// <see href="http://erlangen-crm.org/current/P119_meets_in_time_with"></see></summary>
-    let P119_meets_in_time_with = _prefix "P119_meets_in_time_with"
+    /// P119(x,y) ⊃ E2(y)</para>
+    /// labels<para>P119 meets in time with</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P119_meets_in_time_with">http://erlangen-crm.org/current/P119_meets_in_time_with</seealso>
+    let P119_meets_in_time_with =
+        Prefixed_Name(ecrm, "P119_meets_in_time_with") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P119i_is_met_in_time_by"></see>
+    ///   <para>ecrm:P119i_is_met_in_time_by</para>
     /// </summary>
-    let P119i_is_met_in_time_by = _prefix "P119i_is_met_in_time_by"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P119 is met in time by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P119i_is_met_in_time_by">http://erlangen-crm.org/current/P119i_is_met_in_time_by</seealso>
+    let P119i_is_met_in_time_by =
+        Prefixed_Name(ecrm, "P119i_is_met_in_time_by") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This property describes the active or passive participation of instances of E39 Actors in an E5 Event.
-    ///
-    /// It connects the life-line of the related E39 Actor with the E53 Place and E50 Date of the event. The property implies that the Actor was involved in the event but does not imply any causal relationship. The subject of a portrait can be said to have participated in the creation of the portrait.
-    ///
-    /// Examples:
-    /// - Napoleon (E21) participated in The Battle of Waterloo (E7)
-    /// - Maria (E21) participated in Photographing of Maria (E7)
-    ///
-    /// In First Order Logic:
-    /// P11(x,y) ⊃ E5(x)
-    /// P11(x,y) ⊃ E39(y)
-    /// P11(x,y) ⊃ P12(x,y)
-    /// <see href="http://erlangen-crm.org/current/P11_had_participant"></see></summary>
-    let P11_had_participant = _prefix "P11_had_participant"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P11i_participated_in"></see>
+    ///   <para>ecrm:P11i_participated_in</para>
     /// </summary>
-    let P11i_participated_in = _prefix "P11i_participated_in"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P11 participated in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P11i_participated_in">http://erlangen-crm.org/current/P11i_participated_in</seealso>
+    let P11i_participated_in =
+        Prefixed_Name(ecrm, "P11i_participated_in") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P120_occurs_before</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property identifies the relative chronological sequence of two temporal entities.
     ///
     /// It implies that a temporal gap exists between the end of A and the start of B. This property is only necessary if the relevant time spans are unknown (otherwise the relationship can be calculated).
@@ -2762,316 +5435,25 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// P120(x,y) ⊃ E2(x)
-    /// P120(x,y) ⊃ E2(y)
-    /// <see href="http://erlangen-crm.org/current/P120_occurs_before"></see></summary>
-    let P120_occurs_before = _prefix "P120_occurs_before"
+    /// P120(x,y) ⊃ E2(y)</para>
+    /// labels<para>P120 occurs before</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P120_occurs_before">http://erlangen-crm.org/current/P120_occurs_before</seealso>
+    let P120_occurs_before = Prefixed_Name(ecrm, "P120_occurs_before") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P120i_occurs_after"></see>
+    ///   <para>ecrm:P2i_is_type_of</para>
     /// </summary>
-    let P120i_occurs_after = _prefix "P120i_occurs_after"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P2 is type of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P2i_is_type_of">http://erlangen-crm.org/current/P2i_is_type_of</seealso>
+    let P2i_is_type_of = Prefixed_Name(ecrm, "P2i_is_type_of") |> PrefixedName
     /// <summary>
-    /// Scope note:
-    /// This symmetric property allows the instances of E53 Place with overlapping geometric extents to be associated with each other.
-    ///
-    /// It does not specify anything about the shared area. This property is purely spatial, in contrast to Allen operators, which are purely temporal.
-    ///
-    /// Examples:
-    /// - the territory of the United States (E53) overlaps with the Arctic (E53)
-    ///
-    /// In First Order Logic:
-    /// P121(x,y) ⊃ E53(x)
-    /// P121(x,y) ⊃ E53(y)
-    /// P121(x,y) ⊃ P121(y,x)
-    /// <see href="http://erlangen-crm.org/current/P121_overlaps_with"></see></summary>
-    let P121_overlaps_with = _prefix "P121_overlaps_with"
-    /// <summary>
-    /// Scope note:
-    /// This symmetric property allows the instances of E53 Place which share common borders to be related as such.
-    ///
-    /// This property is purely spatial, in contrast to Allen operators, which are purely temporal.
-    ///
-    /// Examples:
-    /// - Scotland (E53) borders with England (E53)
-    ///
-    /// In First Order Logic:
-    /// P122(x,y) ⊃ E53(x)
-    /// P122(x,y) ⊃ E53(y)
-    /// P122(x,y) ⊃ P122(y,x)
-    /// <see href="http://erlangen-crm.org/current/P122_borders_with"></see></summary>
-    let P122_borders_with = _prefix "P122_borders_with"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P123i_resulted_from"></see>
+    ///   <para>ecrm:P138_represents</para>
     /// </summary>
-    let P123i_resulted_from = _prefix "P123i_resulted_from"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P124i_was_transformed_by"></see>
-    /// </summary>
-    let P124i_was_transformed_by = _prefix "P124i_was_transformed_by"
-    /// <summary>
-    /// Scope note:
-    /// This property defines the kind of objects used in an E7 Activity, when the specific instance is either unknown or not of interest, such as use of "a hammer".
-    ///
-    /// Examples:
-    /// - at the Battle of Agincourt (E7), the English archers used object of type long bow (E55)
-    ///
-    /// In First Order Logic:
-    /// P125(x,y) ⊃ E7(x)
-    /// P125(x,y) ⊃ E55(y)
-    /// <see href="http://erlangen-crm.org/current/P125_used_object_of_type"></see></summary>
-    let P125_used_object_of_type = _prefix "P125_used_object_of_type"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P125i_was_type_of_object_used_in"></see>
-    /// </summary>
-    let P125i_was_type_of_object_used_in = _prefix "P125i_was_type_of_object_used_in"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies E57 Material employed in an E11 Modification.
-    ///
-    /// The E57 Material used during the E11 Modification does not necessarily become incorporated into the E24 Physical Man-Made Thing that forms the subject of the E11 Modification.
-    ///
-    /// Examples:
-    /// - the repairing of the Queen Mary (E11) employed Steel (E57)
-    /// - distilled water (E57) was employed in the restoration of the Sistine Chapel (E11)
-    ///
-    /// In First Order Logic:
-    /// P126(x,y) ⊃ E11(x)
-    /// P126(x,y) ⊃ E57(y)
-    /// <see href="http://erlangen-crm.org/current/P126_employed"></see></summary>
-    let P126_employed = _prefix "P126_employed"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P126i_was_employed_in"></see>
-    /// </summary>
-    let P126i_was_employed_in = _prefix "P126i_was_employed_in"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies a super-Type to which an E55 Type is related.
-    ///
-    /// It allows Types to be organised into hierarchies. This is the sense of "broader term generic (BTG)" as defined in ISO 2788
-    ///
-    /// Examples:
-    /// - dime (E55) has broader term coin (E55)
-    ///
-    /// In First Order Logic:
-    /// P127(x,y) ⊃ E55(x)
-    /// P127(x,y) ⊃ E55(y)
-    /// <see href="http://erlangen-crm.org/current/P127_has_broader_term"></see></summary>
-    let P127_has_broader_term = _prefix "P127_has_broader_term"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P127i_has_narrower_term"></see>
-    /// </summary>
-    let P127i_has_narrower_term = _prefix "P127i_has_narrower_term"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies an E90 Symbolic Object carried by an instance of E18 Physical Thing.
-    ///
-    ///
-    /// Examples:
-    /// - Matthew's paperback copy of Reach for the Sky (E84) carries the text of Reach for the Sky (E73)
-    ///
-    /// In First Order Logic:
-    /// P128(x,y) ⊃ E18(x)
-    /// P128(x,y) ⊃ E90(y)
-    /// P128(x,y) ⊃ P130(x,y)
-    /// <see href="http://erlangen-crm.org/current/P128_carries"></see></summary>
-    let P128_carries = _prefix "P128_carries"
-    /// <summary>
-    /// Scope note:
-    /// This property generalises the notions of "copy of" and "similar to" into a directed relationship, where the domain expresses the derivative, if such a direction can be established. Otherwise, the relationship is symmetric. If the reason for similarity is a sort of derivation process, i.e., that the creator has used or had in mind the form of a particular thing during the creation or production, this process should be explicitly modelled. Moreover it expresses similarity in cases that can be stated between two objects only, without historical knowledge about its reasons.
-    ///
-    ///
-    /// Examples:
-    /// - the Parthenon Frieze on the Acropolis in Athens (E22) shows features of the Original Parthenon Frieze in the British museum (E22). Kind of similarity: Copy (E55)
-    ///
-    /// In First Order Logic:
-    /// P130 (x,y) ⊃ E70(x)
-    /// P130 (x,y) ⊃ E70(y)
-    /// P130(x,y,z) ⊃ [P130(x,y) ∧ E55(z)]
-    /// P130(x,y) ⊃ P130(y,x)
-    ///
-    /// Properties: P130.1 kind of similarity: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P130_shows_features_of"></see></summary>
-    let P130_shows_features_of = _prefix "P130_shows_features_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P128i_is_carried_by"></see>
-    /// </summary>
-    let P128i_is_carried_by = _prefix "P128i_is_carried_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P130i_features_are_also_found_on"></see>
-    /// </summary>
-    let P130i_features_are_also_found_on = _prefix "P130i_features_are_also_found_on"
-    /// <summary>
-    /// Scope note:
-    /// This property documents that an E89 Propositional Object has as subject an instance of E1 CRM Entity.
-    ///
-    /// This differs from P67 refers to (is referred to by), which refers to an E1 CRM Entity, in that it describes the primary subject or subjects of an E89 Propositional Object.
-    ///
-    /// Examples:
-    /// - The text entitled 'Reach for the sky' (E33) is about Douglas Bader (E21)
-    ///
-    /// In First Order Logic:
-    /// P129(x,y) ⊃ E89(x)
-    /// P129(x,y) ⊃ E1(y)
-    /// P129(x,y) ⊃ P67(x,y)
-    /// <see href="http://erlangen-crm.org/current/P129_is_about"></see></summary>
-    let P129_is_about = _prefix "P129_is_about"
-    /// <summary>
-    /// Scope note:
-    /// This property documents that an E89 Propositional Object makes a statement about an instance of E1 CRM Entity. P67 refers to (is referred to by) has the P67.1 has type link to an instance of E55 Type. This is intended to allow a more detailed description of the type of reference. This differs from P129 is about (is subject of), which describes the primary subject or subjects of the E89 Propositional Object.
-    ///
-    /// Examples:
-    /// - the eBay auction listing for 4 July 2002 (E73) refers to silver cup 232 (E22) has type item for sale (E55)
-    ///
-    /// In First Order Logic:
-    /// P67(x,y) ⊃ E89(x)
-    /// P67(x,y) ⊃ E1(y)
-    /// P67(x,y,z) ⊃ [P67(x,y) ∧ E55(z)]
-    ///
-    /// Properties: P67.1 has type: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P67_refers_to"></see></summary>
-    let P67_refers_to = _prefix "P67_refers_to"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies a name used specifically to identify an E39 Actor.
-    ///
-    /// This property is a specialisation of P1 is identified by (identifies) is identified by.
-    ///
-    /// Examples:
-    /// - Tyler Withersopp IV (E39) is identified by "US social security number 619-17-4204" (E82)
-    ///
-    /// In First Order Logic:
-    /// P131(x,y) ⊃ E39(x)
-    /// P131(x,y) ⊃ E82(y)
-    /// P131(x,y) ⊃ P1(x,y)
-    /// <see href="http://erlangen-crm.org/current/P131_is_identified_by"></see></summary>
-    let P131_is_identified_by = _prefix "P131_is_identified_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P131i_identifies"></see>
-    /// </summary>
-    let P131i_identifies = _prefix "P131i_identifies"
-    /// <summary>
-    /// Scope note:
-    /// This symmetric property associates two instances of E92 Spacetime Volume that have some of their extent in common.
-    ///
-    /// Examples:
-    /// - the "Urnfield" period (E4) overlaps with the "Hallstatt" period (E4)
-    ///
-    /// In First Order Logic:
-    /// P132(x,y) ⊃ E92(x)
-    /// P132(x,y) ⊃ E92(y)
-    /// P132(x,y) ⊃ P132(y,x)
-    /// <see href="http://erlangen-crm.org/current/P132_overlaps_with"></see></summary>
-    let P132_overlaps_with = _prefix "P132_overlaps_with"
-    /// <summary>
-    /// Scope note:
-    /// This symmetric property associates two instances of E92 Spacetime Volume that have no extent in common
-    ///
-    /// Examples:
-    /// - the "Hallstatt" period (E4) is separated from the "La Tène" era (E4)
-    ///
-    /// In First Order Logic:
-    /// P133(x,y) ⊃ E92(x)
-    /// P133(x,y) ⊃ E92(y)
-    /// P133(x,y) ⊃ P133(y,x)
-    /// <see href="http://erlangen-crm.org/current/P133_is_separated_from"></see></summary>
-    let P133_is_separated_from = _prefix "P133_is_separated_from"
-    /// <summary>
-    /// Scope note:
-    /// This property associates two instances of E7 Activity, where the domain is considered as an intentional continuation of the range. A continuation of an activity may happen when the continued activity is still ongoing or after the continued activity has completely ended. The continuing activity may have started already before it decided to continue the other one. Continuation implies a coherence of intentions and outcomes of the involved activities.
-    ///
-    /// Examples:
-    /// - the construction of the Kölner Dom (Cologne Cathedral) (E7), abandoned in the 15th century, was continued by construction in the 19th century adapting the initial plans so as to preserve the intended appearance (E7)
-    ///
-    /// In First Order Logic:
-    /// P134(x,y) ⊃ E7(x)
-    /// P134(x,y)⊃ E7(y)
-    /// P134(x,y) ⊃ P15(x,y)
-    /// <see href="http://erlangen-crm.org/current/P134_continued"></see></summary>
-    let P134_continued = _prefix "P134_continued"
-    /// <summary>
-    /// Scope note:
-    /// This is a high level property, which captures the relationship between an E7 Activity and anything that may have had some bearing upon it.
-    ///
-    /// The property has more specific sub properties.
-    ///
-    /// Examples:
-    /// - the designing of the Sydney Harbour Bridge (E7) was influenced by the Tyne bridge (E22)
-    ///
-    /// FOL:
-    /// P15 (x,y) ⊃ E7(x)
-    /// P15 (x,y) ⊃ E1(y)
-    /// <see href="http://erlangen-crm.org/current/P15_was_influenced_by"></see></summary>
-    let P15_was_influenced_by = _prefix "P15_was_influenced_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P134i_was_continued_by"></see>
-    /// </summary>
-    let P134i_was_continued_by = _prefix "P134i_was_continued_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P15i_influenced"></see>
-    /// </summary>
-    let P15i_influenced = _prefix "P15i_influenced"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies one or more items that were used as evidence to declare a new E55 Type.
-    ///
-    /// The examination of these items is often the only objective way to understand the precise characteristics of a new Type. Such items should be deposited in a museum or similar institution for that reason. The taxonomic role renders the specific relationship of each item to the Type, such as "holotype" or "original element".
-    ///
-    /// Examples:
-    /// - the taxon creation of the plant species 'Serratula glauca Linné, 1753.' (E83) was based on Object BM000576251 of the Clayton Herbarium (E20)  in the taxonomic role original element (E55)
-    ///
-    /// In First Order Logic:
-    /// P136(x,y) ⊃ E83(x)
-    /// P136(x,y) ⊃ E1(y)
-    /// P136(x,y,z) ⊃ [P136(x,y) ∧ E55(z)]
-    /// P136(x,y) ⊃ P15(x,y)
-    ///
-    /// Properties: P136.1 in the taxonomic role: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P136_was_based_on"></see></summary>
-    let P136_was_based_on = _prefix "P136_was_based_on"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P136i_supported_type_creation"></see>
-    /// </summary>
-    let P136i_supported_type_creation = _prefix "P136i_supported_type_creation"
-    /// <summary>
-    /// Scope note:
-    /// This property allows an item to be declared as a particular example of an E55 Type or taxon
-    /// The P137.1 in the taxonomic role property of P137 exemplifies (is exemplified by) allows differentiation of taxonomic roles. The taxonomic role renders the specific relationship of this example to the Type, such as "prototypical", "archetypical", "lectotype", etc. The taxonomic role "lectotype" is not associated with the Type Creation (E83) itself, but selected in a later phase.
-    ///
-    /// Examples:
-    /// - Object BM000098044 of the Clayton Herbarium (E20) exemplifies Spigelia marilandica (L.) L. (E55) in the taxonomic role lectotype
-    ///
-    /// In First Order Logic:
-    /// P137(x,y) ⊃ E1(x)
-    /// P137(x,y) ⊃ E55(y)
-    /// P137(x,y,z) ⊃ [P137(x,y) ∧ E55(z)]
-    /// P137(x,y) ⊃ P2(x,y)
-    ///
-    /// Properties: P137.1 in the taxonomic role: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P137_exemplifies"></see></summary>
-    let P137_exemplifies = _prefix "P137_exemplifies"
-    /// <summary>
-    /// Scope note:
-    /// This property allows sub typing of CRM entities - a form of specialisation – through the use of a terminological hierarchy, or thesaurus.
-    ///
-    /// The CRM is intended to focus on the high-level entities and relationships needed to describe data structures. Consequently, it does not specialise entities any further than is required for this immediate purpose. However, entities in the isA hierarchy of the CRM may by specialised into any number of sub entities, which can be defined in the E55 Type hierarchy. E51 Contact Point, for example, may be specialised into "e-mail address", "telephone number", "post office box", "URL" etc. none of which figures explicitly in the CRM hierarchy. Sub typing obviously requires consistency between the meaning of the terms assigned and the more general intent of the CRM entity in question.
-    ///
-    /// Examples:
-    /// - "enquiries@cidoc-crm.org" (E51) has type e-mail address (E55)
-    ///
-    /// In First Order Logic:
-    /// P2(x,y) ⊃ E1(x)
-    /// P2(x,y) ⊃ E55(y)
-    /// <see href="http://erlangen-crm.org/current/P2_has_type"></see></summary>
-    let P2_has_type = _prefix "P2_has_type"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P137i_is_exemplified_by"></see>
-    /// </summary>
-    let P137i_is_exemplified_by = _prefix "P137i_is_exemplified_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P2i_is_type_of"></see>
-    /// </summary>
-    let P2i_is_type_of = _prefix "P2i_is_type_of"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property establishes the relationship between an E36 Visual Item and the entity that it visually represents.
     ///
     /// Any entity may be represented visually. This property is part of the fully developed path from E24 Physical Man-Made Thing through P65 shows visual item (is shown by), E36 Visual Item, P138 represents (has representation) to E1 CRM Entity, which is shortcut by P62depicts (is depicted by). P138.1 mode of representation allows the nature of the representation to be refined.
@@ -3088,426 +5470,28 @@ module ecrm =
     /// P138(x,y) ⊃ E36(x)
     /// P138(x,y) ⊃ E1(y)
     /// P138(x,y,z) ⊃ [P138(x,y) ∧ E55(z)]
-    /// P138(x,y) ⊃ P67(x,y)
-    /// <see href="http://erlangen-crm.org/current/P138_represents"></see></summary>
-    let P138_represents = _prefix "P138_represents"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P138i_has_representation"></see>
-    /// </summary>
-    let P138i_has_representation = _prefix "P138i_has_representation"
-    /// <summary>
-    /// Scope note:
-    /// This property establishes a relationship of equivalence between two instances of E41 Appellation independent from any item identified by them. It is a dynamic asymmetric relationship, where the range expresses the derivative, if such a direction can be established. Otherwise, the relationship is symmetric. The relationship is not transitive.
-    ///
-    /// The equivalence applies to all cases of use of an instance of E41 Appellation. Multiple names assigned to an object, which are not equivalent for all things identified with a specific instance of E41 Appellation, should be modelled as repeated values of P1 is identified by (identifies).
-    ///
-    /// P139.1 has type allows the type of derivation, such as “transliteration from Latin 1 to ASCII” be refined..
-    ///
-    /// Examples:
-    /// - "Martin Doerr" (E41) has alternative form "Martin Dörr" (E41) has type Alternate spelling (E55)
-    /// - "Гончарова, Наталья Сергеевна" (E41) has alternative form "Gončarova, Natal´â Sergeevna" (E41) has type ISO 9:1995 transliteration (E55)
-    /// - "Αθήνα" has alternative form "Athina" has type transcription.
-    ///
-    /// In First Order Logic:
-    /// P139(x,y) ⊃ E41(x)
-    /// P139 (x,y) ⊃ E41(y)
-    /// P139(x,y,z) ⊃ [P139(x,y) ∧ E55(z)]
-    /// P139(x,y) ⊃ P139(y,x)
-    ///
-    /// Properties: P139.1 has type: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P139_has_alternative_form"></see></summary>
-    let P139_has_alternative_form = _prefix "P139_has_alternative_form"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P140i_was_attributed_by"></see>
-    /// </summary>
-    let P140i_was_attributed_by = _prefix "P140i_was_attributed_by"
-    /// <summary>
-    /// Scope note:
-    /// This property indicates the attribute that was assigned or the item that was related to the item denoted by a property P140 assigned attribute to in an Attribute assignment action.
-    ///
-    /// Examples:
-    /// - February 1997 Current Ownership Assessment of Martin Doerr's silver cup (E13) assigned Martin Doerr (E21)
-    /// - 01 June 1997 Identifier Assignment of the silver cup donated by Martin Doerr (E15) assigned object identifier 232
-    ///
-    /// In First Order Logic:
-    /// P141(x,y) ⊃ E13(x)
-    /// P141(x,y) ⊃ E1(y)
-    /// <see href="http://erlangen-crm.org/current/P141_assigned"></see></summary>
-    let P141_assigned = _prefix "P141_assigned"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P141i_was_assigned_by"></see>
-    /// </summary>
-    let P141i_was_assigned_by = _prefix "P141i_was_assigned_by"
-    /// <summary>
-    /// Scope note:
-    /// This property associates the event of assigning an instance of E42 Identifier with the instances of E90 Symbolic Object that were used as constituents of the identifier.
-    ///
-    /// Examples:
-    /// - On June 1, 2001 assigning the personal name identifier “Guillaume, de Machaut, ca. 1300-1377” (E15) used constituent “ca. 1300-1377” (E49)
-    /// - Assigning a uniform title to the anonymous textual work known as ‘The Adoration of the Shepherds’(E15) used constituent ‘Coventry’ (E48)
-    /// - Assigning a uniform title to Pina Bausch’s choreographic work entitled ‘Rite of spring’ (E15) used constituent ‘(Choreographic Work: Bausch)’(E90)
-    /// - Assigning a uniform title to the motion picture directed in 1933 by Merian C. Cooper and Ernest B. Schoedsack and entitled ‘King Kong’ (E15) used constituent ‘1933’ (E50)
-    /// - Assigning the corporate name identifier ‘Univerza v Ljubljani. Oddelek za bibliotekarstvo’ to The Department for library science of the University of Ljubljana (E15) used constituent ‘Univerza v Ljubljani’ (E42)
-    ///
-    /// In First Order Logic:
-    /// P142(x,y) ⊃ E15(x)
-    /// P142(x,y) ⊃ E90(y)
-    /// P142(x,y) ⊃ P16(x,y)
-    /// <see href="http://erlangen-crm.org/current/P142_used_constituent"></see></summary>
-    let P142_used_constituent = _prefix "P142_used_constituent"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P142i_was_used_in"></see>
-    /// </summary>
-    let P142i_was_used_in = _prefix "P142i_was_used_in"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P143i_was_joined_by"></see>
-    /// </summary>
-    let P143i_was_joined_by = _prefix "P143i_was_joined_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P145i_left_by"></see>
-    /// </summary>
-    let P145i_left_by = _prefix "P145i_left_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P147i_was_curated_by"></see>
-    /// </summary>
-    let P147i_was_curated_by = _prefix "P147i_was_curated_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P148i_is_component_of"></see>
-    /// </summary>
-    let P148i_is_component_of = _prefix "P148i_is_component_of"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies an instance of E28 Conceptual Object using an instance of E75 Conceptual Object Appellation.
-    ///
-    /// Examples:
-    /// - The German edition of the CIDOC CRM (E73) is identified by ISBN 978-3-00-030907-6 (E75)
-    ///
-    /// In First Order Logic:
-    /// P149(x,y) ⊃ E28(x)
-    /// P149(x,y) ⊃ E75(y)
-    /// P149(x,y) ⊃ P1(x,y)
-    /// <see href="http://erlangen-crm.org/current/P149_is_identified_by"></see></summary>
-    let P149_is_identified_by = _prefix "P149_is_identified_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P149i_identifies"></see>
-    /// </summary>
-    let P149i_identifies = _prefix "P149i_identifies"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P14i_performed"></see>
-    /// </summary>
-    let P14i_performed = _prefix "P14i_performed"
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of E55 Type “A” with an instance of E55 Type “B”, when items of type “A” typically form part of items of type “B”, such as “car motors” and “cars”. It allows types to be organised into hierarchies based on one type describing a typical part of another. This property is equivalent to "broader term partitive (BTP)" as defined in ISO 2788 and “broaderPartitive” in SKOS.
-    ///
-    /// Examples:
-    /// - Car motors (E55) defines typical parts of cars (E55)
-    ///
-    /// In First Order Logic:
-    /// P150(x,y) ⊃ (E55 Type)
-    /// P150(x,y) ⊃ E55(y)
-    /// <see href="http://erlangen-crm.org/current/P150_defines_typical_parts_of"></see></summary>
-    let P150_defines_typical_parts_of = _prefix "P150_defines_typical_parts_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P150i_defines_typical_wholes_for"></see>
-    /// </summary>
-    let P150i_defines_typical_wholes_for = _prefix "P150i_defines_typical_wholes_for"
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of E66 Formation with an instance of E74 Group from which the
-    /// new group was formed preserving a sense of continuity such as in mission, membership or tradition.
-    ///
-    /// Examples:
-    /// - The formation of the House of Bourbon-Conti in 1581 (E66) was formed from House of Condé (E74)
-    ///
-    /// In First Order Logic:
-    /// P151(x,y) ⊃ E66(x)
-    /// P151(x,y) ⊃ E74(y)
-    /// P151(x,y) ⊃ P11(x,y)
-    /// <see href="http://erlangen-crm.org/current/P151_was_formed_from"></see></summary>
-    let P151_was_formed_from = _prefix "P151_was_formed_from"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P151i_participated_in"></see>
-    /// </summary>
-    let P151i_participated_in = _prefix "P151i_participated_in"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P152i_is_parent_of"></see>
-    /// </summary>
-    let P152i_is_parent_of = _prefix "P152i_is_parent_of"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the largest volume in space that an instance of E18 Physical Thing has occupied at any time during its existence, with respect to the reference space relative to itself. This allows you to describe the thing itself as a place that may contain other things, such as a box that may contain coins. In other words, it is the volume that contains all the points which the thing has covered at some time during its existence. In the case of an E26 Physical Feature the default reference space is the one in which the object that bears the feature or at least the surrounding matter of the feature is at rest. In this case there is a 1:1 relation of E26 Feature and E53 Place. For simplicity of implementation multiple inheritance (E26 Feature IsA E53 Place) may be a practical approach.
-    ///
-    /// For instances of E19 Physical Objects the default reference space is the one which is at rest to the object itself, i.e. which moves together with the object. We include in the occupied space the space filled by the matter of the physical thing and all its inner spaces.
-    ///
-    /// This property is a subproperty of P161 has spatial projection because it refers to its own domain as reference space for its range, whereas P161 has spatial projection may refer to a place in terms of any reference space. For some instances of E18 Physical Object the relative stability of form may not be sufficient to define a useful local reference space, for instance for an amoeba. In such cases the fully
-    /// developed path to an external reference space and using a temporal validity component may be adequate to determine the place they have occupied.
-    ///
-    /// In contrast to P156 occupies, the property P53 has former or current location identifies an instance of E53 Place at which a thing is or has been for some unspecified time span. Further it does not constrain the reference space of the referred instance of P53 Place.
-    ///
-    /// In First Order Logic:
-    /// P156 (x,y) = [E18(x) ∧ E53(y) ∧ P161(x,y) ∧ P157(y,x)]
-    /// <see href="http://erlangen-crm.org/current/P156_occupies"></see></summary>
-    let P156_occupies = _prefix "P156_occupies"
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of a E92 Spacetime Volume with an instance of E53 Place that is the result of the spatial projection of the instance of a E92 Spacetime Volume on a reference space. In general there can be more than one useful reference space to describe the spatial projection of a spacetime volume, such as that of a battle ship versus that of the seafloor. Therefore the projection is not unique.
-    /// This is part of the fully developed path that is shortcut by P7took place at (witnessed. The more fully developed path from E4 Period through P161 has spatial projection, E53 Place, P89 falls within (contains) to E53 Place.
-    ///
-    /// Example
-    ///
-    /// In First Order Logic:
-    /// P161(x,y) ⊃ E92(x)
-    /// P161(x,y) ⊃ E53(y)
-    /// <see href="http://erlangen-crm.org/current/P161_has_spatial_projection"></see></summary>
-    let P161_has_spatial_projection = _prefix "P161_has_spatial_projection"
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of E53 Place with the instance of E18 Physical Thing that determines a reference space for this instance of E53 Place by being at rest with respect to this reference space. The relative stability of form of an E18 Physical Thing defines its default reference space. The reference space is not spatially limited to the referred thing. For example, a ship determines a reference space in terms of which other ships in its neighbourhood may be described. Larger constellations of matter, such as continental plates, may comprise many physical features that are at rest with them and define the same reference space.
-    ///
-    /// Examples:
-    /// - The spatial extent of the municipality of Athens in 2014 (E53) is at rest relative to The Royal Observatory in Greenwich (E25)
-    /// - The place where Lord Nelson died on H.M.S. Victory (E53) is at rest relative to H.M.S. Victory (E22)
-    ///
-    /// In First Order Logic:
-    /// P157(x,y) ⊃ E53(x)
-    /// P157(x,y) ⊃ E18(y)
-    /// <see href="http://erlangen-crm.org/current/P157_is_at_rest_relative_to"></see></summary>
-    let P157_is_at_rest_relative_to = _prefix "P157_is_at_rest_relative_to"
+    /// P138(x,y) ⊃ P67(x,y)</para>
+    /// labels<para>P138 represents</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P138_represents">http://erlangen-crm.org/current/P138_represents</seealso>
+    let P138_represents = Prefixed_Name(ecrm, "P138_represents") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P157i_provides_reference_space_for"></see>
+    ///   <para>ecrm:P138i_has_representation</para>
     /// </summary>
-    let P157i_provides_reference_space_for =
-        _prefix "P157i_provides_reference_space_for"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P138 has representation</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P138i_has_representation">http://erlangen-crm.org/current/P138i_has_representation</seealso>
+    let P138i_has_representation =
+        Prefixed_Name(ecrm, "P138i_has_representation") |> PrefixedName
 
     /// <summary>
-    /// Scope note:
-    /// This property describes the temporal projection of an instance of an E92 Spacetime Volume. The property P4 has time-span is the same as P160 has temporal projection if it is used to document an instance of E4 Period or any subclass of it.
-    ///
-    /// Example:
-    ///
-    /// In First Order Logic:
-    /// P160(x,y) ⊃ E92(x)
-    /// P160(x,y)⊃ E52(y)
-    /// <see href="http://erlangen-crm.org/current/P160_has_temporal_projection"></see></summary>
-    let P160_has_temporal_projection = _prefix "P160_has_temporal_projection"
-    /// <summary>
-    /// Scope note:
-    /// This property relates an E93 Presence with an arbitrary E52 Time-Span that defines the section of the spacetime volume that this instance of E93 Presence is related to by P166 was a presence of (had presence). that is concerned by this instance of E93 Presence.
-    ///
-    /// Examples:
-    ///
-    /// In First Order Logic:
-    /// P164 (x,y) ⊃ E93(x)
-    /// P164 (x,y) ⊃ E52(y)
-    /// <see href="http://erlangen-crm.org/current/P164_during"></see></summary>
-    let P164_during = _prefix "P164_during"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P164i_was_time-span_of"></see>
+    ///   <para>ecrm:P28_custody_surrendered_by</para>
     /// </summary>
-    let ``P164i_was_time-span_of`` = _prefix "P164i_was_time-span_of"
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of E73 Information Object with an instance of E90 Symbolic Object (or any of its subclasses) that was included in it.
-    /// This property makes it possible to recognise the autonomous status of the incorporated signs, which were created in a distinct context, and can be incorporated in many distinct self-contained expressions, and to highlight the difference between structural and accidental whole-part relationships between conceptual entities. It accounts for many cultural facts that are quite frequent and significant: the inclusion of a poem in an anthology, the re-use of an operatic aria in a new opera, the use of a reproduction of a painting for a book cover or a CD booklet, the integration of textual quotations, the presence of lyrics in a song that sets those lyrics to music, the presence of the text of a play in a movie based on that play, etc. In particular, this property allows for modelling relationships of different levels of symbolic specificity, such as the natural language words making up a particular text, the characters making up the words and punctuation, the choice of fonts and page layout for the characters.
-    /// A digital photograph of a manuscript page incorporates the text of the manuscript page
-    /// It is an implicit transitive property.
-    ///
-    /// Examples:
-    ///
-    /// - The content of Charles-Moïse Briquet’s ‘Les Filigranes: dictionnaire historique des marques du papier’ (E32) P165 incorporates the visual aspect of the watermark used around 1358-61 by some Spanish papermaker(s) and identified as ‘Briquet 4019’ (E37)
-    /// - The visual content of Jacopo Amigoni’s painting known as ‘The Singer Farinelli and friends’ (E38) P165 incorporates the musical notation of Farinelli’s musical work entitled ‘La Partenza’ (E73)
-    /// - The visual content of Nicolas Poussin’s painting entitled ‘Les Bergers d’Arcadie’ (E38) P165 incorporates the Latin phrase ‘Et in Arcadia ego’ (E33)
-    ///
-    /// In First Order Logic:
-    /// P165(x,y) ⊃ E73(x)
-    /// P165(x,y) ⊃ E90(y)
-    /// P165(x,y) ⊃ P106(x,y)
-    /// <see href="http://erlangen-crm.org/current/P165_incorporates"></see></summary>
-    let P165_incorporates = _prefix "P165_incorporates"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P165i_is_incorporated_in"></see>
-    /// </summary>
-    let P165i_is_incorporated_in = _prefix "P165i_is_incorporated_in"
-    /// <summary>
-    /// Scope Note:
-    /// This property relates an E93 Presence with the STV it is part of...
-    ///
-    /// In First Order Logic:
-    /// P166(x,y) ⊃ E93(x)
-    /// P166(x,y) ⊃ E92(y)
-    /// <see href="http://erlangen-crm.org/current/P166_was_a_presence_of"></see></summary>
-    let P166_was_a_presence_of = _prefix "P166_was_a_presence_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P166i_had_presence"></see>
-    /// </summary>
-    let P166i_had_presence = _prefix "P166i_had_presence"
-    /// <summary>
-    /// Scope Note:
-    /// This property points to a wider area in which my thing /event was ...
-    ///
-    /// In First Order Logic:
-    /// P167(x,y) ⊃ E93(x)
-    /// P167(x,y) ⊃ E53(y)
-    /// <see href="http://erlangen-crm.org/current/P167_at"></see></summary>
-    let P167_at = _prefix "P167_at"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P167i_was_place_of"></see>
-    /// </summary>
-    let P167i_was_place_of = _prefix "P167i_was_place_of"
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of E53 Place with an instance of E94 Space Primitive that defines it. Syntactic variants or use of different scripts may result in multiple instances of E94 Space Primitive defining exactly the same place. Transformations between different reference systems in general result in new definitions of places approximating each other and not in alternative definitions. Note that it is possible for a place to be defined by phenomena causal to it or other forms of identification rather than by an instance of E94 Space Primitive. In this case, this property must not be used for approximating the respective instance of E53 Place with an instance of E94 Space Primitive.
-    ///
-    /// In First Order Logic:
-    /// P168(x,y) ⊃ E53(x)
-    /// P168(x,y) ⊃ E94(y)
-    /// <see href="http://erlangen-crm.org/current/P168_place_is_defined_by"></see></summary>
-    let P168_place_is_defined_by = _prefix "P168_place_is_defined_by"
-    /// <summary>
-    /// Scope note:
-    /// This property describes an item or items that are regarded as a reason for carrying out the E7 Activity.
-    ///
-    /// For example, the discovery of a large hoard of treasure may call for a celebration, an order from head quarters can start a military manoeuvre.
-    ///
-    /// Examples:
-    /// - the resignation of the chief executive (E7) was motivated by the collapse of Swiss Air (E68).
-    /// - the coronation of Elizabeth II (E7) was motivated by the death of George VI (E69)
-    ///
-    /// FOL:
-    /// P17(x,y) ⊃ E7(x)
-    /// P17(x,y) ⊃ E1(y)
-    /// P17 (x,y) ⊃ P15(x,y)
-    /// <see href="http://erlangen-crm.org/current/P17_was_motivated_by"></see></summary>
-    let P17_was_motivated_by = _prefix "P17_was_motivated_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P17i_motivated"></see>
-    /// </summary>
-    let P17i_motivated = _prefix "P17i_motivated"
-    /// <summary>
-    /// Scope note:
-    /// This property relates an E7 Activity with objects created specifically for use in the activity.
-    ///
-    /// This is distinct from the intended use of an item in some general type of activity such as the book of common prayer which was intended for use in Church of England services (see P101 had as general use (was use of)).
-    ///
-    /// Examples:
-    /// - Lady Diana Spencer's wedding dress (E71) was made for Wedding of Prince Charles and Lady Diana Spencer (E7) mode of use To Be Worn (E55)
-    ///
-    /// FOL:
-    /// P19(x,y) ⊃ E7(x)
-    /// P19(x,y) ⊃ E71(y)
-    /// P19(x,y,z) ⊃ [P19(x,y) ∧ E55(z)]
-    ///
-    /// Properties: P19.1 mode of use: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P19_was_intended_use_of"></see></summary>
-    let P19_was_intended_use_of = _prefix "P19_was_intended_use_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P19i_was_made_for"></see>
-    /// </summary>
-    let P19i_was_made_for = _prefix "P19i_was_made_for"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the relationship between a preparatory activity and the event it is intended to be preparation for.
-    ///
-    /// This includes activities, orders and other organisational actions, taken in preparation for other activities or events.
-    ///
-    /// P20 had specific purpose (was purpose of) implies that an activity succeeded in achieving its aim. If it does not succeed, such as the setting of a trap that did not catch anything, one may document the unrealized intention using P21 had general purpose (was purpose of):E55 Type and/or  P33 used specific technique (was used by): E29 Design or Procedure.
-    ///
-    /// Examples:
-    /// - Van Eyck's pigment grinding in 1432 (E7) had specific purpose the painting of the Ghent altar piece (E12)
-    ///
-    /// In First Order Logic:
-    /// P21(x,y) ⊃ E7(x)
-    /// P21(x,y) ⊃ E55(y)
-    /// <see href="http://erlangen-crm.org/current/P20_had_specific_purpose"></see></summary>
-    let P20_had_specific_purpose = _prefix "P20_had_specific_purpose"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P20i_was_purpose_of"></see>
-    /// </summary>
-    let P20i_was_purpose_of = _prefix "P20i_was_purpose_of"
-    /// <summary>
-    /// Scope note:
-    /// This property describes an intentional relationship between an E7 Activity and some general goal or purpose.
-    ///
-    /// This may involve activities intended as preparation for some type of activity or event. P21had general purpose (was purpose of) differs from P20 had specific purpose (was purpose of) in that no occurrence of an event is implied as the purpose.
-    ///
-    /// Examples:
-    /// - Van Eyck's pigment grinding (E7) had general purpose painting (E55)
-    /// - the setting of trap 2742 on May 17th 1874 (E7) had general purpose Catching Moose
-    /// (E55) (Activity type
-    ///
-    /// In First Order Logic:
-    /// P21(x,y) ⊃ E7(x)
-    /// P21(x,y) ⊃ E55(y)
-    /// <see href="http://erlangen-crm.org/current/P21_had_general_purpose"></see></summary>
-    let P21_had_general_purpose = _prefix "P21_had_general_purpose"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P21i_was_purpose_of"></see>
-    /// </summary>
-    let P21i_was_purpose_of = _prefix "P21i_was_purpose_of"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E39 Actor that acquires the legal ownership of an object as a result of an E8 Acquisition.
-    ///
-    /// The property will typically describe an Actor purchasing or otherwise acquiring an object from another Actor. However, title may also be acquired, without any corresponding loss of title by another Actor, through legal fieldwork such as hunting, shooting or fishing.
-    ///
-    /// In reality the title is either transferred to or from someone, or both.
-    ///
-    /// Examples:
-    /// - acquisition of the Amoudrouz collection by the Geneva Ethnography Museum (E8) transferred title to Geneva Ethnography Museum (E74)
-    ///
-    /// In First Order Logic:
-    /// P22(x,y) ⊃ E8(x)
-    /// P22(x,y) ⊃ E39(y)
-    /// P22 (x,y) ⊃ P14(x,y)
-    /// <see href="http://erlangen-crm.org/current/P22_transferred_title_to"></see></summary>
-    let P22_transferred_title_to = _prefix "P22_transferred_title_to"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P22i_acquired_title_through"></see>
-    /// </summary>
-    let P22i_acquired_title_through = _prefix "P22i_acquired_title_through"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E39 Actor or Actors who relinquish legal ownership as the result of an E8 Acquisition.
-    ///
-    /// The property will typically be used to describe a person donating or selling an object to a museum. In reality title is either transferred to or from someone, or both.
-    ///
-    /// Examples:
-    /// - acquisition of the Amoudrouz collection by the Geneva Ethnographic Museum (E8) transferred title from Heirs of Amoudrouz (E74)
-    ///
-    /// In First Order Logic:
-    /// P23(x,y) ⊃ E8(x)
-    /// P23(x,y) ⊃ E39(y)
-    /// P23 (x,y) ⊃ P14(x,y)
-    /// <see href="http://erlangen-crm.org/current/P23_transferred_title_from"></see></summary>
-    let P23_transferred_title_from = _prefix "P23_transferred_title_from"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P23i_surrendered_title_through"></see>
-    /// </summary>
-    let P23i_surrendered_title_through = _prefix "P23i_surrendered_title_through"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P24i_changed_ownership_through"></see>
-    /// </summary>
-    let P24i_changed_ownership_through = _prefix "P24i_changed_ownership_through"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P25i_moved_by"></see>
-    /// </summary>
-    let P25i_moved_by = _prefix "P25i_moved_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P26i_was_destination_of"></see>
-    /// </summary>
-    let P26i_was_destination_of = _prefix "P26i_was_destination_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P7i_witnessed"></see>
-    /// </summary>
-    let P7i_witnessed = _prefix "P7i_witnessed"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P27i_was_origin_of"></see>
-    /// </summary>
-    let P27i_was_origin_of = _prefix "P27i_was_origin_of"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property identifies the E39 Actor or Actors who surrender custody of an instance of E18 Physical Thing in an E10 Transfer of Custody activity.
     ///
     /// The property will typically describe an Actor surrendering custody of an object when it is handed over to someone else's care. On occasion, physical custody may be surrendered involuntarily – through accident, loss or theft.
@@ -3519,39 +5503,51 @@ module ecrm =
     /// In First Order Logic:
     /// P28(x,y) ⊃ E10(x)
     /// P28(x,y) ⊃ E39(y)
-    /// P28(x,y) ⊃ P14(x,y)
-    /// <see href="http://erlangen-crm.org/current/P28_custody_surrendered_by"></see></summary>
-    let P28_custody_surrendered_by = _prefix "P28_custody_surrendered_by"
+    /// P28(x,y) ⊃ P14(x,y)</para>
+    /// labels<para>P28 custody surrendered by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P28_custody_surrendered_by">http://erlangen-crm.org/current/P28_custody_surrendered_by</seealso>
+    let P28_custody_surrendered_by =
+        Prefixed_Name(ecrm, "P28_custody_surrendered_by") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P28i_surrendered_custody_through"></see>
+    ///   <para>ecrm:P28i_surrendered_custody_through</para>
     /// </summary>
-    let P28i_surrendered_custody_through = _prefix "P28i_surrendered_custody_through"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P28 surrendered custody through</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P28i_surrendered_custody_through">http://erlangen-crm.org/current/P28i_surrendered_custody_through</seealso>
+    let P28i_surrendered_custody_through =
+        Prefixed_Name(ecrm, "P28i_surrendered_custody_through") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This property identifies the E39 Actor or Actors who receive custody of an instance of E18 Physical Thing in an E10 Transfer of Custody activity.
-    ///
-    /// The property will typically describe Actors receiving custody of an object when it is handed over from another Actor's care. On occasion, physical custody may be received involuntarily or illegally – through accident, unsolicited donation, or theft.
-    /// In reality, custody is either transferred to someone or from someone, or both.
-    ///
-    /// Examples:
-    /// - representatives of The National Gallery (E40) received custody through. The delivery of the paintings by Secure Delivieries Inc. to the National Gallery (E10)
-    ///
-    /// In First Order Logic:
-    /// P29 (x,y) ⊃ E10(x)
-    /// P29 (x,y) ⊃ E39(y)
-    /// P29(x,y) ⊃ P14(x,y)
-    /// <see href="http://erlangen-crm.org/current/P29_custody_received_by"></see></summary>
-    let P29_custody_received_by = _prefix "P29_custody_received_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P29i_received_custody_through"></see>
+    ///   <para>ecrm:P29i_received_custody_through</para>
     /// </summary>
-    let P29i_received_custody_through = _prefix "P29i_received_custody_through"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P29 received custody through</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P29i_received_custody_through">http://erlangen-crm.org/current/P29i_received_custody_through</seealso>
+    let P29i_received_custody_through =
+        Prefixed_Name(ecrm, "P29i_received_custody_through") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P30i_custody_transferred_through"></see>
+    ///   <para>ecrm:P30i_custody_transferred_through</para>
     /// </summary>
-    let P30i_custody_transferred_through = _prefix "P30i_custody_transferred_through"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P30 custody transferred through</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P30i_custody_transferred_through">http://erlangen-crm.org/current/P30i_custody_transferred_through</seealso>
+    let P30i_custody_transferred_through =
+        Prefixed_Name(ecrm, "P30i_custody_transferred_through") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P32_used_general_technique</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property identifies the technique or method that was employed in   an activity.
     /// These techniques should be drawn from an external E55 Type hierarchy of consistent terminology of general techniques or methods such as embroidery, oil-painting, carbon dating, etc. Specific documented techniques should be described as instances of E29 Design or Procedure. This property identifies the technique that was employed in an act of modification.
     ///
@@ -3562,15 +5558,29 @@ module ecrm =
     /// In First Order Logic:
     /// P32(x,y) ⊃ E7(x)
     /// P32(x,y) ⊃ E55(y)
-    /// P32(x,y) ⊃ P125(x,y)
-    /// <see href="http://erlangen-crm.org/current/P32_used_general_technique"></see></summary>
-    let P32_used_general_technique = _prefix "P32_used_general_technique"
+    /// P32(x,y) ⊃ P125(x,y)</para>
+    /// labels<para>P32 used general technique</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P32_used_general_technique">http://erlangen-crm.org/current/P32_used_general_technique</seealso>
+    let P32_used_general_technique =
+        Prefixed_Name(ecrm, "P32_used_general_technique") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P32i_was_technique_of"></see>
+    ///   <para>ecrm:P32i_was_technique_of</para>
     /// </summary>
-    let P32i_was_technique_of = _prefix "P32i_was_technique_of"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P32 was technique of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P32i_was_technique_of">http://erlangen-crm.org/current/P32i_was_technique_of</seealso>
+    let P32i_was_technique_of =
+        Prefixed_Name(ecrm, "P32i_was_technique_of") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P33_used_specific_technique</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property identifies a specific instance of E29 Design or Procedure in order to carry out an instance of E7 Activity or parts of it.
     ///
     /// The property differs from P32 used general technique (was technique of) in that P33 refers to an instance of E29 Design or Procedure, which is a concrete information object in its own right rather than simply being a term or a method known by tradition.
@@ -3584,356 +5594,49 @@ module ecrm =
     /// In First Order Logic:
     /// P33(x,y) ⊃ E7(x)
     /// P33(x,y) ⊃ E29(y)
-    /// P33(x,y) ⊃ P16(x,y)
-    /// <see href="http://erlangen-crm.org/current/P33_used_specific_technique"></see></summary>
-    let P33_used_specific_technique = _prefix "P33_used_specific_technique"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P33i_was_used_by"></see>
-    /// </summary>
-    let P33i_was_used_by = _prefix "P33i_was_used_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P34i_was_assessed_by"></see>
-    /// </summary>
-    let P34i_was_assessed_by = _prefix "P34i_was_assessed_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P35i_was_identified_by"></see>
-    /// </summary>
-    let P35i_was_identified_by = _prefix "P35i_was_identified_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P37i_was_assigned_by"></see>
-    /// </summary>
-    let P37i_was_assigned_by = _prefix "P37i_was_assigned_by"
-    /// <summary>
-    /// Scope note:
-    /// This property records the identifier that was deassigned from an instance of E1 CRM Entity.
-    /// Deassignment of an identifier may be necessary when an item is taken out of an inventory, a new numbering system is introduced or items are merged or split up.
-    /// The same identifier may be deassigned on more than one occasion.
-    ///
-    /// Examples:
-    /// - 31 July 2001 Identifier Assignment of the silver cup OXCMS:2001.1.32 (E15) deassigned "232" (E42)
-    ///
-    /// In First Order Logic:
-    /// P38(x,y) ⊃ E15(x)
-    /// P38(x,y) ⊃ E42(y)
-    /// P38(x,y) ⊃ P141(x,y)
-    /// <see href="http://erlangen-crm.org/current/P38_deassigned"></see></summary>
-    let P38_deassigned = _prefix "P38_deassigned"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P38i_was_deassigned_by"></see>
-    /// </summary>
-    let P38i_was_deassigned_by = _prefix "P38i_was_deassigned_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P39i_was_measured_by"></see>
-    /// </summary>
-    let P39i_was_measured_by = _prefix "P39i_was_measured_by"
-    /// <summary>
-    /// Scope note:
-    /// This property is a container for all informal descriptions about an object that have not been expressed in terms of CRM constructs.
-    ///
-    /// In particular it captures the characterisation of the item itself, its internal structures, appearance etc.
-    /// Like property P2 has type (is type of), this property is a consequence of the restricted focus of the CRM. The aim is not to capture, in a structured form, everything that can be said about an item; indeed, the CRM formalism is not regarded as sufficient to express everything that can be said. Good practice requires use of distinct note fields for different aspects of a characterisation. The P3.1 has type property of P3 has note allows differentiation of specific notes, e.g. "construction", "decoration" etc.
-    /// An item may have many notes, but a note is attached to a specific item.
-    ///
-    /// Examples:
-    /// - coffee mug - OXCMS:1983.1.1 (E19) has note "chipped at edge of handle" (E62) has type
-    /// Condition (E55)
-    ///
-    /// In First Order Logic:
-    /// P3(x,y) ⊃ E1(x)
-    /// P3(x,y) ⊃ E62(y)
-    /// P3(x,y,z) ⊃ [P3(x,y) ∧ E55(z)]
-    ///
-    /// Properties: P3.1 has type: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P3_has_note"></see></summary>
-    let P3_has_note = _prefix "P3_has_note"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P40i_was_observed_in"></see>
-    /// </summary>
-    let P40i_was_observed_in = _prefix "P40i_was_observed_in"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P41i_was_classified_by"></see>
-    /// </summary>
-    let P41i_was_classified_by = _prefix "P41i_was_classified_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P42i_was_assigned_by"></see>
-    /// </summary>
-    let P42i_was_assigned_by = _prefix "P42i_was_assigned_by"
-    /// <summary>
-    /// Scope note:
-    /// This property records a E54 Dimension of some E70 Thing.
-    /// It is a shortcut of the more fully developed path from E70 Thing through P39 measured (was measured by), E16 Measurement P40 observed dimension (was observed in) to E54 Dimension. It offers no information about how and when an E54 Dimension was established, nor by whom.
-    ///
-    /// An instance of E54 Dimension is specific to an instance of E70 Thing.
-    ///
-    /// Examples:
-    /// - silver cup 232 (E22) has dimension height of silver cup 232 (E54) has unit (P91) mm (E58), has value (P90) 224 (E60)
-    ///
-    /// In First Order Logic:
-    /// P43(x,y) ⊃ E70(x)
-    /// P43(x,y) ⊃ E54(y)
-    /// <see href="http://erlangen-crm.org/current/P43_has_dimension"></see></summary>
-    let P43_has_dimension = _prefix "P43_has_dimension"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P43i_is_dimension_of"></see>
-    /// </summary>
-    let P43i_is_dimension_of = _prefix "P43i_is_dimension_of"
-    /// <summary>
-    /// Scope note:
-    /// This property records an E3 Condition State for some E18 Physical Thing.
-    ///
-    /// It is a shortcut of the more fully developed path from E18 Physical Thing through P34 concerned (was assessed by), E14 Condition Assessment P35 has identified (was identified by) to E3 Condition State. It offers no information about how and when the E3 Condition State was established, nor by whom.
-    ///
-    /// An instance of Condition State is specific to an instance of Physical Thing.
-    ///
-    /// Examples:
-    /// - silver cup 232 (E22) has condition oxidation traces were present in 1997 (E3) has type oxidation traces (E55)
-    ///
-    /// In First Order Logic:
-    /// P44(x,y) ⊃ E18(x)
-    /// P44(x,y) ⊃ E3(y)
-    /// <see href="http://erlangen-crm.org/current/P44_has_condition"></see></summary>
-    let P44_has_condition = _prefix "P44_has_condition"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P45i_is_incorporated_in"></see>
-    /// </summary>
-    let P45i_is_incorporated_in = _prefix "P45i_is_incorporated_in"
-    /// <summary>
-    /// Scope note:
-    /// This property allows instances of E18 Physical Thing to be analysed into component elements.
-    ///
-    /// Component elements, since they are themselves instances of E18 Physical Thing, may be further analysed into sub-components, thereby creating a hierarchy of part decomposition. An instance of E18 Physical Thing may be shared between multiple wholes, for example two buildings may share a common wall. This property does not specify when and for how long a component element resided in the respective whole. If a component is not part of a whole from the beginning of existence or until the end of existence of the whole, the classes E79 Part Addition and E90 Part Removal can be used to document when a component became part of a particular whole and/or when it stopped being a part of it. For the time-span of being part of the respective whole, the component is completely contained in the place the whole occupies.
-    ///
-    /// This property is intended to describe specific components that are individually documented, rather than general aspects. Overall descriptions of the structure of an instance of E18 Physical Thing are captured by the P3 has note property.
-    ///
-    /// The instances of E57 Material of which an item of E18 Physical Thing is composed should be documented using P45 consists of (is incorporated in).
-    ///
-    /// Examples:
-    /// - the Royal carriage (E22) forms part of the Royal train (E22)
-    /// - the "Hog's Back" (E24) forms part of the "Fosseway" (E24)
-    ///
-    /// In First Order Logic:
-    /// P46(x,y) ⊃ E18(x)
-    /// P46(x,y) ⊃ E18(y)
-    /// P46(x,y) ⊃ P132(x,y)
-    /// P46(x,y) ⊃ (uzw)[E93(u) ∧ P166 (x,u) ∧ E52(z) ∧ P164(u,z) ∧ E93(w) ∧ P166 (y,w) ∧
-    /// P164(w,z) ∧ P10(w,u)]
-    /// <see href="http://erlangen-crm.org/current/P46_is_composed_of"></see></summary>
-    let P46_is_composed_of = _prefix "P46_is_composed_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P46i_forms_part_of"></see>
-    /// </summary>
-    let P46i_forms_part_of = _prefix "P46i_forms_part_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P48i_is_preferred_identifier_of"></see>
-    /// </summary>
-    let P48i_is_preferred_identifier_of = _prefix "P48i_is_preferred_identifier_of"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E39 Actor or Actors who had custody of an instance of E18 Physical Thing at the time of validity of the record or database containing the statement that uses this property.
-    ///
-    /// P50 has current keeper (is current keeper of) is a shortcut for the more detailed path from E18 Physical Thing through P30 transferred custody of (custody transferred through), E10 Transfer of Custody, P29 custody received by (received custody through) to E39 Actor.
-    ///
-    /// Examples:
-    /// - painting from The Iveagh Bequest (E18) has current keeper The National Gallery (E40)
-    ///
-    /// In First Order Logic:
-    /// P50(x,y) ⊃ E18(x)
-    /// P50(x,y) ⊃ E39(y)
-    /// P50(x,y) ⊃ P49(x,y)
-    /// <see href="http://erlangen-crm.org/current/P50_has_current_keeper"></see></summary>
-    let P50_has_current_keeper = _prefix "P50_has_current_keeper"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P50i_is_current_keeper_of"></see>
-    /// </summary>
-    let P50i_is_current_keeper_of = _prefix "P50i_is_current_keeper_of"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies the E39 Actor that is or has been the legal owner (i.e. title holder) of an instance of E18 Physical Thing at some time.
-    ///
-    /// The distinction with P52 has current owner (is current owner of) is that P51 has former or current owner (is former or current owner of) does not indicate whether the specified owners are current. P51 has former or current owner (is former or current owner of) is a shortcut for the more detailed path from E18 Physical Thing through P24 transferred title of (changed ownership through), E8 Acquisition, P23 transferred title from (surrendered title through), or P22 transferred title to (acquired title through) to E39 Actor.
-    ///
-    /// Examples:
-    /// - paintings from the Iveagh Bequest (E18) has former or current owner Lord Iveagh (E21)
-    ///
-    /// In First Order Logic:
-    /// P51(x,y) ⊃ E18(x)
-    /// P51(x,y) ⊃ E39(y)
-    /// <see href="http://erlangen-crm.org/current/P51_has_former_or_current_owner"></see></summary>
-    let P51_has_former_or_current_owner = _prefix "P51_has_former_or_current_owner"
+    /// P33(x,y) ⊃ P16(x,y)</para>
+    /// labels<para>P33 used specific technique</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P33_used_specific_technique">http://erlangen-crm.org/current/P33_used_specific_technique</seealso>
+    let P33_used_specific_technique =
+        Prefixed_Name(ecrm, "P33_used_specific_technique") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P51i_is_former_or_current_owner_of"></see>
+    ///   <para>ecrm:P34i_was_assessed_by</para>
     /// </summary>
-    let P51i_is_former_or_current_owner_of =
-        _prefix "P51i_is_former_or_current_owner_of"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P34 was assessed by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P34i_was_assessed_by">http://erlangen-crm.org/current/P34i_was_assessed_by</seealso>
+    let P34i_was_assessed_by =
+        Prefixed_Name(ecrm, "P34i_was_assessed_by") |> PrefixedName
 
     /// <summary>
-    /// Scope note:
-    /// This property identifies the E21 Person, E74 Group or E40 Legal Body that was the owner of an instance of E18 Physical Thing at the time of validity of the record or database containing the statement that uses this property.
-    ///
-    /// P52 has current owner (is current owner of) is a shortcut for the more detailed path from E18 Physical Thing through P24 transferred title of (changed ownership through), E8 Acquisition, P22 transferred title to (acquired title through) to E39 Actor, if and only if this acquisition event is the most recent.
-    ///
-    /// Examples:
-    /// - paintings from the Iveagh Bequest (E18) has current owner «English Heritage» (E40)
-    ///
-    /// In First Order Logic:
-    /// P52 (x,y) ⊃ E18(x)
-    /// P52 (x,y) ⊃ E39(y)
-    /// P52(x,y) ⊃ P51(x,y)
-    /// P52(x,y) ⊃ P105(x,y)
-    /// <see href="http://erlangen-crm.org/current/P52_has_current_owner"></see></summary>
-    let P52_has_current_owner = _prefix "P52_has_current_owner"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P52i_is_current_owner_of"></see>
+    ///   <para>ecrm:P35i_was_identified_by</para>
     /// </summary>
-    let P52i_is_current_owner_of = _prefix "P52i_is_current_owner_of"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P35 was identified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P35i_was_identified_by">http://erlangen-crm.org/current/P35i_was_identified_by</seealso>
+    let P35i_was_identified_by =
+        Prefixed_Name(ecrm, "P35i_was_identified_by") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P53i_is_former_or_current_location_of"></see>
+    ///   <para>ecrm:P65i_is_shown_by</para>
     /// </summary>
-    let P53i_is_former_or_current_location_of =
-        _prefix "P53i_is_former_or_current_location_of"
-
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P65 is shown by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P65i_is_shown_by">http://erlangen-crm.org/current/P65i_is_shown_by</seealso>
+    let P65i_is_shown_by = Prefixed_Name(ecrm, "P65i_is_shown_by") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P54i_is_current_permanent_location_of"></see>
+    ///   <para>ecrm:P68_foresees_use_of</para>
     /// </summary>
-    let P54i_is_current_permanent_location_of =
-        _prefix "P54i_is_current_permanent_location_of"
-
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P55i_currently_holds"></see>
-    /// </summary>
-    let P55i_currently_holds = _prefix "P55i_currently_holds"
-    /// <summary>
-    /// Scope note:
-    /// This property links an instance of E19 Physical Object to an instance of E26 Physical Feature that it bears.
-    /// An E26 Physical Feature can only exist on one object. One object may bear more than one E26 Physical Feature. An E27 Site should be considered as an E26 Physical Feature on the surface of the Earth.
-    /// An instance B of E26 Physical Feature being a detail of the structure of another instance A of E26 Physical Feature can be linked to B by use of the property P46 is composed of (forms part of). This implies that the subfeature B is P56i found on the same E19 Physical Object as A.
-    /// P56 bears feature (is found on) is a shortcut. A more detailed representation can make use of the fully developed (i.e. indirect) path from E19 Physical Object through P59 has section (is located on or within), E53 Place, P53 has former or current location (is former or current location of) to E26 Physical Feature.
-    ///
-    /// Examples:
-    /// - silver cup 232 (E22) bears feature 32 mm scratch on silver cup 232 (E26)
-    ///
-    /// In First Order Logic:
-    /// P56(x,y) ⊃E19(x)
-    /// P56(x,y) ⊃ E26(y)
-    /// P56(x,y) ⊃ P46(x,y)
-    /// <see href="http://erlangen-crm.org/current/P56_bears_feature"></see></summary>
-    let P56_bears_feature = _prefix "P56_bears_feature"
-    /// <summary>
-    /// Scope note:
-    /// This property documents the E60 Number of parts of which an instance of E19 Physical Object is composed.
-    ///
-    /// This may be used as a method of checking inventory counts with regard to aggregate or collective objects. What constitutes a part or component depends on the context and requirements of the documentation. Normally, the parts documented in this way would not be considered as worthy of individual attention.
-    ///
-    /// For a more complete description, objects may be decomposed into their components and constituents using P46 is composed of (forms parts of) and P45 consists of (is incorporated in). This allows each element to be described individually.
-    ///
-    /// Examples:
-    /// - chess set 233 (E22) has number of parts 33 (E60)
-    ///
-    /// In First Order Logic:
-    /// P57(x,y) ⊃ E19(x)
-    /// P57(x,y) ⊃ E60(y)
-    /// <see href="http://erlangen-crm.org/current/P57_has_number_of_parts"></see></summary>
-    let P57_has_number_of_parts = _prefix "P57_has_number_of_parts"
-    /// <summary>
-    /// Scope note:
-    /// This property links an area (section) named by a E46 Section Definition to the instance of E18 Physical Thing upon which it is found.
-    /// The CRM handles sections as locations (instances of E53 Place) within or on E18 Physical Thing that are identified by E46 Section Definitions. Sections need not be discrete and separable components or parts of an object.
-    ///
-    /// This is part of a more developed path from E18 Physical Thing through P58, E46 Section Definition, P87 is identified by (identifies) that allows a more precise definition of a location found on an object than the shortcut P59 has section (is located on or within).
-    /// A particular instance of a Section Definition only applies to one instance of Physical Thing.
-    ///
-    /// Examples:
-    /// - HMS Victory (E22) has section definition "poop deck of HMS Victory" (E46)
-    ///
-    /// In First Order Logic:
-    /// P58(x,y) ⊃ E18(x)
-    /// P58(x,y) ⊃ E46(y)
-    /// <see href="http://erlangen-crm.org/current/P58_has_section_definition"></see></summary>
-    let P58_has_section_definition = _prefix "P58_has_section_definition"
-    /// <summary>
-    /// Scope note:
-    /// This property links an area to the instance of E18 Physical Thing upon which it is found.
-    ///
-    /// It is typically used when a named E46 Section Definition is not appropriate.
-    /// E18 Physical Thing may be subdivided into arbitrary regions.
-    ///
-    /// P59 has section (is located on or within) is a shortcut. If the E53 Place is identified by a Section Definition, a more detailed representation can make use of the fully developed (i.e. indirect) path from E18 Physical Thing through P58 has section definition (defines section), E46 Section Definition, P87 is identified by (identifies) to E53 Place. A Place can only be located on or within one Physical Object.
-    ///
-    /// Examples:
-    /// - HMS Victory (E22) has section HMS Victory section B347.6 (E53)
-    ///
-    /// In First Order Logic:
-    /// P59(x,y) ⊃ E18(x)
-    /// P59(x,y) ⊃ E53(y)
-    /// <see href="http://erlangen-crm.org/current/P59_has_section"></see></summary>
-    let P59_has_section = _prefix "P59_has_section"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the decomposition of an E3 Condition State into discrete, subsidiary states.It is assumed that the sub-states into which the condition state is analysed form a logical whole - although the entire story may not be completely known – and that the sub-states are in fact constitutive of the general condition state. For example, a general condition state of “in ruins” may be decomposed
-    /// into the individual stages of decay.
-    /// This property is transitive
-    ///
-    /// Examples:
-    /// - The Condition State of the ruined Parthenon (E3) consists of the bombarded state after the explosion of a Venetian shell in 1687 (E3)
-    ///
-    /// In First Order Logic:
-    /// P5(x,y) ⊃ E3(x)
-    /// P5(x,y) ⊃ E3(y)
-    /// <see href="http://erlangen-crm.org/current/P5_consists_of"></see></summary>
-    let P5_consists_of = _prefix "P5_consists_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P5i_forms_part_of"></see>
-    /// </summary>
-    let P5i_forms_part_of = _prefix "P5i_forms_part_of"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies something that is depicted by an instance of E24 Physical Man-Made Thing. Depicting is meant in the sense that the surface of the E24 Physical Man-Made Thing shows, through its passive optical qualities or form, a representation of the entity depicted. It does not pertain to inscriptions or any other information encoding.
-    ///
-    /// This property is a shortcut of the more fully developed path from E24 Physical Man-Made Thing through P65 shows visual item (is shown by), E36 Visual Item, P138 represents (has representation) to E1CRM Entity. P62.1 mode of depiction allows the nature of the depiction to be refined.
-    ///
-    /// Examples:
-    /// - The painting "La Liberté guidant le peuple" by Eugène Delacroix (E84) depicts the French "July Revolution" of 1830 (E7)
-    /// - the 20 pence coin held by the Department of Coins and Medals of the British Museum under registration number 2006,1101.126 (E24) depicts Queen Elizabeth II (E21) mode of depiction Profile (E55)
-    ///
-    /// In First Order Logic:
-    /// P62(x,y) ⊃ E24(x)
-    /// P62(x,y) ⊃ E1(y)
-    /// P62(x,y,z) ⊃ [P62(x,y) ∧ E55(z)]
-    ///
-    /// Properties: P62.1 mode of depiction: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P62_depicts"></see></summary>
-    let P62_depicts = _prefix "P62_depicts"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P62i_is_depicted_by"></see>
-    /// </summary>
-    let P62i_is_depicted_by = _prefix "P62i_is_depicted_by"
-    /// <summary>
-    /// Scope note:
-    /// This property documents an E36 Visual Item shown by an instance of E24 Physical Man-Made Thing.
-    ///
-    /// This property is similar to P62 depicts (is depicted by) in that it associates an item of E24 Physical Man-Made Thing with a visual representation. However, P65 shows visual item (is shown by) differs from the P62 depicts (is depicted by) property in that it makes no claims about what the E36 Visual Item is deemed to represent. E36 Visual Item identifies a recognisable image or visual symbol, regardless of what this image may or may not represent.
-    ///
-    /// For example, all recent British coins bear a portrait of Queen Elizabeth II, a fact that is correctly documented using P62 depicts (is depicted by). Different portraits have been used at different periods, however. P65 shows visual item (is shown by) can be used to refer to a particular portrait.
-    /// P65 shows visual item (is shown by) may also be used for Visual Items such as signs, marks and symbols, for example the 'Maltese Cross' or the 'copyright symbol’ that have no particular representational content.
-    ///
-    /// This property is part of the fully developed path from E24 Physical Man-Made Thing through P65 shows visual item (is shown by), E36 Visual Item, P138 represents (has representation) to E1 CRM Entity which is shortcut by, P62 depicts (is depicted by).
-    ///
-    /// Examples:
-    /// - My T-Shirt (E22) shows visual item Mona Lisa (E38)
-    ///
-    /// In First Order Logic: P65(x,y) ⊃ E24(x)
-    /// P65(x,y) ⊃ E36(y)
-    /// P65(x,y) ⊃ P128(x,y)
-    /// <see href="http://erlangen-crm.org/current/P65_shows_visual_item"></see></summary>
-    let P65_shows_visual_item = _prefix "P65_shows_visual_item"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P65i_is_shown_by"></see>
-    /// </summary>
-    let P65i_is_shown_by = _prefix "P65i_is_shown_by"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property identifies an E57 Material foreseeen to be used by an E29 Design or Procedure.
     ///
     /// E29 Designs and procedures commonly foresee the use of particular E57 Materials. The fabrication of adobe bricks, for example, requires straw, clay and water. This property enables this to be documented.
@@ -3946,203 +5649,515 @@ module ecrm =
     /// In First Order Logic:
     /// P68(x,y) ⊃ E29(x)
     /// P68(x,y) ⊃ E57(y)
-    /// P68(x,y) ⊃ P67(x,y)
-    /// <see href="http://erlangen-crm.org/current/P68_foresees_use_of"></see></summary>
-    let P68_foresees_use_of = _prefix "P68_foresees_use_of"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P68i_use_foreseen_by"></see>
-    /// </summary>
-    let P68i_use_foreseen_by = _prefix "P68i_use_foreseen_by"
-    /// <summary>
-    /// Scope note:
-    /// This property generalises relationships like whole-part, sequence, prerequisite or inspired by between instances of E29 Design or Procedure. Any instance of E29 Design or Procedure may be associated with other designs or procedures. The property is considered to be symmetrical unless otherwise indicated by P69.1 has type.
-    /// The P69.1 has type property of P69 has association with allows the nature of the association to be specified reading from domain to range; examples of types of association between instances of E29 Design or Procedure include: has part, follows, requires, etc.
-    /// The property can typically be used to model the decomposition of the description of a complete workflow into a series of separate procedures.
-    ///
-    /// Examples:
-    /// - Procedure for glass blowing (E29) has association with procedure for glass heating (E29)
-    /// - The set of instructions for performing Macbeth in Max Reinhardt's production in 1916 in Berlin at Deutsches Theater (E29) has association with the scene design drawing by Ernst Stern reproduced at http://www.glopad.org/pi/fr/record/digdoc/1003814 (E29) has type has part (E55)
-    /// - Preparation of parchment (E29) has association with soaking and unhairing of skin (E29) has type 'has part' (E55). Preparation of parchment (E29) has association with stretching of skin (E29) has type 'has part' (E55). Stretching of skin (E29) has association with soaking and unhairing of skin (E29) has type 'follows' (E55).
-    /// - The plan for reassembling the temples at Abu Simbel (E29) has association with the plan for
-    /// storing and transporting the blocks (E29) has type 'follows' (E55)'.
-    ///
-    /// In First Order Logic:
-    /// P69 (x,y) ⊃ E29(x)
-    /// P69 (x,y) ⊃ E29(y)
-    /// P69(x,y,z) ⊃ [P69(x,y) ∧ E55(z)]
-    /// P69(x,y) ⊃P69(y,x)
-    ///
-    /// Properties: P69.1 has type: E55 Type
-    /// <see href="http://erlangen-crm.org/current/P69_has_association_with"></see></summary>
-    let P69_has_association_with = _prefix "P69_has_association_with"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P69i_is_associated_with"></see>
-    /// </summary>
-    let P69i_is_associated_with = _prefix "P69i_is_associated_with"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P70i_is_documented_in"></see>
-    /// </summary>
-    let P70i_is_documented_in = _prefix "P70i_is_documented_in"
-    /// <summary>
-    /// Scope note:
-    /// This property documents a source E32 Authority Document for an instance of an E1 CRM Entity.
-    ///
-    /// Examples:
-    /// - the Art &amp; Architecture Thesaurus (E32) lists alcazars (E55)
-    ///
-    /// In First Order Logic:
-    /// P71(x,y) ⊃ E32(x)
-    /// P71(x,y) ⊃ E1(y)
-    /// P71(x,y) ⊃ P67(x,y)
-    /// <see href="http://erlangen-crm.org/current/P71_lists"></see></summary>
-    let P71_lists = _prefix "P71_lists"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P71i_is_listed_in"></see>
-    /// </summary>
-    let P71i_is_listed_in = _prefix "P71i_is_listed_in"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P72i_is_language_of"></see>
-    /// </summary>
-    let P72i_is_language_of = _prefix "P72i_is_language_of"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the source and target of instances of E33Linguistic Object involved in a translation.
-    ///
-    /// When a Linguistic Object is translated into a new language it becomes a new Linguistic Object, despite being conceptually similar to the source object.
-    ///
-    /// Examples:
-    /// - "Les Baigneurs" (E33) has translation "The Bathers" (E33)
-    ///
-    /// In First Order Logic:
-    /// P73(x,y) ⊃ E33(x)
-    /// P73(x,y) ⊃ E33(y)
-    /// P73(x,y) ⊃ P130(y,x)
-    /// <see href="http://erlangen-crm.org/current/P73_has_translation"></see></summary>
-    let P73_has_translation = _prefix "P73_has_translation"
+    /// P68(x,y) ⊃ P67(x,y)</para>
+    /// labels<para>P68 foresees use of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P68_foresees_use_of">http://erlangen-crm.org/current/P68_foresees_use_of</seealso>
+    let P68_foresees_use_of = Prefixed_Name(ecrm, "P68_foresees_use_of") |> PrefixedName
 
     /// <summary>
-    /// Scope note:
-    /// This property describes the current or former E53 Place of residence of an E39 Actor.
+    ///   <para>ecrm:P68i_use_foreseen_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
     ///
-    /// The residence may be either the Place where the Actor resides, or a legally registered address of any kind.
-    ///
-    /// Examples:
-    /// - Queen Elizabeth II (E39) has current or former residence Buckingham Palace (E53)
-    ///
-    /// In First Order Logic:
-    /// P74(x,y) ⊃ E39(x)
-    /// P74(x,y) ⊃ E53(y)
-    /// <see href="http://erlangen-crm.org/current/P74_has_current_or_former_residence"></see></summary>
-    let P74_has_current_or_former_residence =
-        _prefix "P74_has_current_or_former_residence"
+    /// labels<para>P68 use foreseen by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P68i_use_foreseen_by">http://erlangen-crm.org/current/P68i_use_foreseen_by</seealso>
+    let P68i_use_foreseen_by =
+        Prefixed_Name(ecrm, "P68i_use_foreseen_by") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P74i_is_current_or_former_residence_of"></see>
+    ///   <para>ecrm:E16_Measurement</para>
     /// </summary>
-    let P74i_is_current_or_former_residence_of =
-        _prefix "P74i_is_current_or_former_residence_of"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises actions measuring physical properties and other values that can be determined by a systematic procedure.
+    ///
+    /// Examples include measuring the monetary value of a collection of coins or the running time of a specific video cassette.
+    ///
+    /// The E16 Measurement may use simple counting or tools, such as yardsticks or radiation detection devices. The interest is in the method and care applied, so that the reliability of the result may be judged at a later stage, or research continued on the associated documents. The date of the event is important for dimensions, which may change value over time, such as the length of an object subject to shrinkage. Details of methods and devices are best handled as free text, whereas basic techniques such as "carbon 14 dating" should be encoded using P2 has type (is type of:) E55 Type.
+    ///
+    /// Examples:
+    /// - measurement of height of silver cup 232 on the 31st August 1997
+    /// - the carbon 14 dating of the "Schoeninger Speer II" in 1996 [an about 400.000 years old Palaeolithic complete wooden spear found in Schoeningen, Niedersachsen, Germany in 1995]
+    ///
+    /// In First Order Logic:
+    /// E16(x) ⊃ E13(x)</para>
+    /// labels<para>E16 Measurement</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E16_Measurement">http://erlangen-crm.org/current/E16_Measurement</seealso>
+    let E16_Measurement = Prefixed_Name(ecrm, "E16_Measurement") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E17_Type_Assignment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the actions of classifying items of whatever kind. Such items include objects, specimens, people, actions and concepts.
+    ///
+    /// This class allows for the documentation of the context of classification acts in cases where the value of the classification depends on the personal opinion of the classifier, and the date that the classification was made. This class also encompasses the notion of "determination", i.e. the systematic and molecular identification of a specimen in biology.
+    ///
+    /// Examples:
+    /// - the first classification of object GE34604 as Lament Cloth, October 2nd
+    /// - the determination of a cactus in Martin Doerr's garden as 'Cereus hildmannianus K.Schumann', July 2003
+    ///
+    /// In First Order Logic:
+    /// E17(x) ⊃ E13(x)</para>
+    /// labels<para>E17 Type Assignment</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E17_Type_Assignment">http://erlangen-crm.org/current/E17_Type_Assignment</seealso>
+    let E17_Type_Assignment = Prefixed_Name(ecrm, "E17_Type_Assignment") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E72_Legal_Object</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises those material or immaterial items to which instances of E30 Right, such as the right of ownership or use, can be applied.
+    ///
+    /// This is true for all E18 Physical Thing. In the case of instances of E28 Conceptual Object, however, the identity of the E28 Conceptual Object or the method of its use may be too ambiguous to reliably establish instances of E30 Right, as in the case of taxa and inspirations. Ownership of corporations is currently regarded as out of scope of the CRM.
+    ///
+    /// Examples:
+    /// - the Cullinan diamond (E19)
+    /// - definition of the CIDOC Conceptual Reference Model Version 2.1 (E73)
+    ///
+    /// In First Order Logic:
+    /// E72(x) ⊃ E70(x)</para>
+    /// labels<para>E72 Legal Object</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E72_Legal_Object">http://erlangen-crm.org/current/E72_Legal_Object</seealso>
+    let E72_Legal_Object = Prefixed_Name(ecrm, "E72_Legal_Object") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P75i_is_possessed_by"></see>
+    ///   <para>ecrm:P13i_was_destroyed_by</para>
     /// </summary>
-    let P75i_is_possessed_by = _prefix "P75i_is_possessed_by"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P13 was destroyed by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P13i_was_destroyed_by">http://erlangen-crm.org/current/P13i_was_destroyed_by</seealso>
+    let P13i_was_destroyed_by =
+        Prefixed_Name(ecrm, "P13i_was_destroyed_by") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This property identifies an E51 Contact Point of any type that provides access to an E39 Actor by any communication method, such as e-mail or fax.
-    ///
-    /// Examples:
-    /// - RLG (E40) has contact point "bl.ric@rlg.org" (E51)
-    ///
-    /// In First Order Logic:
-    /// P76(x,y) ⊃ E39(x)
-    /// P76(x,y) ⊃ E51(y)
-    /// <see href="http://erlangen-crm.org/current/P76_has_contact_point"></see></summary>
-    let P76_has_contact_point = _prefix "P76_has_contact_point"
-    /// <summary>
-    /// Scope note:
-    /// This property identifies an E52 Time-Span using an E49Time Appellation.
-    ///
-    /// Examples:
-    /// - the time span 1926 to 1988 (E52) is identified by "Showa" (Japanese time appellation) (E49)
-    ///
-    /// In First Order Logic:
-    /// P78(x,y) ⊃ E52(x)
-    /// P78(x,y) ⊃ E49(y)
-    /// P78(x,y) ⊃ P1(x,y)
-    /// <see href="http://erlangen-crm.org/current/P78_is_identified_by"></see></summary>
-    let P78_is_identified_by = _prefix "P78_is_identified_by"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P78i_identifies"></see>
+    ///   <para>ecrm:E28_Conceptual_Object</para>
     /// </summary>
-    let P78i_identifies = _prefix "P78i_identifies"
-    /// <summary>
-    /// Scope note:
-    /// This property qualifies the beginning of an E52 Time-Span in some way.
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises non-material products of our minds and other human produced data that have become objects of a discourse about their identity, circumstances of creation or historical implication. The production of such information may have been supported by the use of technical devices such as cameras or computers.
     ///
-    /// The nature of the qualification may be certainty, precision, source etc.
-    ///
-    /// Examples:
-    /// - the time-span of the Holocene (E52) beginning is qualified by approximately (E62)
-    ///
-    /// In First Order Logic:
-    /// P79 (x,y) ⊃ E52 (x)
-    /// P79 (x,y) ⊃ E62(y)
-    /// P79(x,y) ⊃ P3(x,y)
-    /// <see href="http://erlangen-crm.org/current/P79_beginning_is_qualified_by"></see></summary>
-    let P79_beginning_is_qualified_by = _prefix "P79_beginning_is_qualified_by"
-    /// <summary>
-    /// Scope note:
-    /// This property qualifies the end of an E52 Time-Span in some way.
-    ///
-    /// The nature of the qualification may be certainty, precision, source etc.
+    /// Characteristically, instances of this class are created, invented or thought by someone, and then may be documented or communicated between persons. Instances of E28 Conceptual Object have the ability to exist on more than one particular carrier at the same time, such as paper, electronic signals, marks, audio media, paintings, photos, human memories, etc.
+    /// They cannot be destroyed. They exist as long as they can be found on at least one carrier or in at least one human memory. Their existence ends when the last carrier and the last memory are lost.
     ///
     /// Examples:
-    /// - the time-span of the Holocene (E52) end is qualified by approximately (E62)
+    /// - Beethoven's "Ode an die Freude" (Ode to Joy) (E73)
+    /// - the definition of "ontology" in the Oxford English Dictionary
+    /// - the knowledge about the victory at Marathon carried by the famous runner
+    /// - 'Maxwell equations' [preferred subject access point from LCSH,
+    ///  http://lccn.loc.gov/sh85082387, as of 19 November 2012]
+    /// - 'Equations, Maxwell' [variant subject access point, from the same source]
     ///
     /// In First Order Logic:
-    /// P80(x,y) ⊃ E52(x)
-    /// P80(x,y) ⊃ E62(y)
-    /// P80(x,y) ⊃ P3(x,y)
-    /// <see href="http://erlangen-crm.org/current/P80_end_is_qualified_by"></see></summary>
-    let P80_end_is_qualified_by = _prefix "P80_end_is_qualified_by"
+    /// E28(x) ⊃ E71(x)</para>
+    /// labels<para>E28 Conceptual Object</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E28_Conceptual_Object">http://erlangen-crm.org/current/E28_Conceptual_Object</seealso>
+    let E28_Conceptual_Object =
+        Prefixed_Name(ecrm, "E28_Conceptual_Object") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
-    /// This property describes the minimum period of time covered by an E52 Time-Span.
-    ///
-    /// Since Time-Spans may not have precisely known temporal extents, the CRM supports statements about the minimum and maximum temporal extents of Time-Spans. This property allows a Time-Span’s minimum temporal extent (i.e. its inner boundary) to be assigned an E61 Time Primitive value. Time Primitives are treated by the CRM as application or system specific date intervals, and are not further analysed.
-    ///
-    /// Examples:
-    /// - the time-span of the development of the CIDOC CRM (E52) ongoing throughout 1996-2002 (E61)
-    ///
-    /// In First Order Logic:
-    /// P81 (x,y) ⊃ E52(x)
-    /// P81 (x,y) ⊃ E61(y)
-    /// <see href="http://erlangen-crm.org/current/P81_ongoing_throughout"></see></summary>
-    let P81_ongoing_throughout = _prefix "P81_ongoing_throughout"
-    /// <summary>
-    /// Scope note:
-    /// This property describes the maximum period of time within which an E52 Time-Span falls.
-    ///
-    /// Since Time-Spans may not have precisely known temporal extents, the CRM supports statements about the minimum and maximum temporal extents of Time-Spans. This property allows a Time-Span’s maximum temporal extent (i.e. its outer boundary) to be assigned an E61 Time Primitive value. Time Primitives are treated by the CRM as application or system specific date intervals, and are not further analysed.
-    ///
-    /// Examples:
-    /// - the time-span of the development of the CIDOC CRM (E52) at some time within 1992-infinity (E61)
-    ///
-    /// In First Order Logic:
-    /// P82 (x,y) ⊃ E52(x)
-    /// P82 (x,y) ⊃ E61(y)
-    /// <see href="http://erlangen-crm.org/current/P82_at_some_time_within"></see></summary>
-    let P82_at_some_time_within = _prefix "P82_at_some_time_within"
-    /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P83i_was_minimum_duration_of"></see>
+    ///   <para>ecrm:E20_Biological_Object</para>
     /// </summary>
-    let P83i_was_minimum_duration_of = _prefix "P83i_was_minimum_duration_of"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises individual items of a material nature, which live, have lived or are natural products of or from living organisms.
+    ///
+    /// Artificial objects that incorporate biological elements, such as Victorian butterfly frames, can be documented as both instances of E20 Biological Object and E22 Man-Made Object.
+    ///
+    /// Examples:
+    /// - me
+    /// - Tut-Ankh-Amun
+    /// - Boukephalas [Horse of Alexander the Great]
+    /// - petrified dinosaur excrement PA1906-344
+    ///
+    /// In First Order Logic:
+    /// E20(x) ⊃ E19(x)</para>
+    /// labels<para>E20 Biological Object</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E20_Biological_Object">http://erlangen-crm.org/current/E20_Biological_Object</seealso>
+    let E20_Biological_Object =
+        Prefixed_Name(ecrm, "E20_Biological_Object") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P84i_was_maximum_duration_of"></see>
+    ///   <para>ecrm:P105i_has_right_on</para>
     /// </summary>
-    let P84i_was_maximum_duration_of = _prefix "P84i_was_maximum_duration_of"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P105 has right on</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P105i_has_right_on">http://erlangen-crm.org/current/P105i_has_right_on</seealso>
+    let P105i_has_right_on = Prefixed_Name(ecrm, "P105i_has_right_on") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P118_overlaps_in_time_with</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies an overlap between the instances of E52 Time-Span of two instances of E2 Temporal Entity.
+    ///
+    /// It implies a temporal order between the two entities: if A overlaps in time B, then A must start before B, and B must end after A. This property is only necessary if the relevant time spans are unknown (otherwise the relationship can be calculated).
+    ///
+    /// This property is the same as the "overlaps / overlapped-by" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
+    ///
+    /// Examples:
+    /// - the Iron Age (E4) overlaps in time with the Roman period (E4)
+    ///
+    /// In First Order Logic:
+    /// P118(x,y) ⊃ E2(x)
+    /// P118(x,y) ⊃ E2(y)</para>
+    /// labels<para>P118 overlaps in time with</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P118_overlaps_in_time_with">http://erlangen-crm.org/current/P118_overlaps_in_time_with</seealso>
+    let P118_overlaps_in_time_with =
+        Prefixed_Name(ecrm, "P118_overlaps_in_time_with") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P11_had_participant</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes the active or passive participation of instances of E39 Actors in an E5 Event.
+    ///
+    /// It connects the life-line of the related E39 Actor with the E53 Place and E50 Date of the event. The property implies that the Actor was involved in the event but does not imply any causal relationship. The subject of a portrait can be said to have participated in the creation of the portrait.
+    ///
+    /// Examples:
+    /// - Napoleon (E21) participated in The Battle of Waterloo (E7)
+    /// - Maria (E21) participated in Photographing of Maria (E7)
+    ///
+    /// In First Order Logic:
+    /// P11(x,y) ⊃ E5(x)
+    /// P11(x,y) ⊃ E39(y)
+    /// P11(x,y) ⊃ P12(x,y)</para>
+    /// labels<para>P11 had participant</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P11_had_participant">http://erlangen-crm.org/current/P11_had_participant</seealso>
+    let P11_had_participant = Prefixed_Name(ecrm, "P11_had_participant") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P120i_occurs_after</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P120 occurs after</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P120i_occurs_after">http://erlangen-crm.org/current/P120i_occurs_after</seealso>
+    let P120i_occurs_after = Prefixed_Name(ecrm, "P120i_occurs_after") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P122_borders_with</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This symmetric property allows the instances of E53 Place which share common borders to be related as such.
+    ///
+    /// This property is purely spatial, in contrast to Allen operators, which are purely temporal.
+    ///
+    /// Examples:
+    /// - Scotland (E53) borders with England (E53)
+    ///
+    /// In First Order Logic:
+    /// P122(x,y) ⊃ E53(x)
+    /// P122(x,y) ⊃ E53(y)
+    /// P122(x,y) ⊃ P122(y,x)</para>
+    /// labels<para>P122 borders with</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P122_borders_with">http://erlangen-crm.org/current/P122_borders_with</seealso>
+    let P122_borders_with = Prefixed_Name(ecrm, "P122_borders_with") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P124i_was_transformed_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P124 was transformed by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P124i_was_transformed_by">http://erlangen-crm.org/current/P124i_was_transformed_by</seealso>
+    let P124i_was_transformed_by =
+        Prefixed_Name(ecrm, "P124i_was_transformed_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P125_used_object_of_type</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property defines the kind of objects used in an E7 Activity, when the specific instance is either unknown or not of interest, such as use of "a hammer".
+    ///
+    /// Examples:
+    /// - at the Battle of Agincourt (E7), the English archers used object of type long bow (E55)
+    ///
+    /// In First Order Logic:
+    /// P125(x,y) ⊃ E7(x)
+    /// P125(x,y) ⊃ E55(y)</para>
+    /// labels<para>P125 used object of type</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P125_used_object_of_type">http://erlangen-crm.org/current/P125_used_object_of_type</seealso>
+    let P125_used_object_of_type =
+        Prefixed_Name(ecrm, "P125_used_object_of_type") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P126_employed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies E57 Material employed in an E11 Modification.
+    ///
+    /// The E57 Material used during the E11 Modification does not necessarily become incorporated into the E24 Physical Man-Made Thing that forms the subject of the E11 Modification.
+    ///
+    /// Examples:
+    /// - the repairing of the Queen Mary (E11) employed Steel (E57)
+    /// - distilled water (E57) was employed in the restoration of the Sistine Chapel (E11)
+    ///
+    /// In First Order Logic:
+    /// P126(x,y) ⊃ E11(x)
+    /// P126(x,y) ⊃ E57(y)</para>
+    /// labels<para>P126 employed</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P126_employed">http://erlangen-crm.org/current/P126_employed</seealso>
+    let P126_employed = Prefixed_Name(ecrm, "P126_employed") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P126i_was_employed_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P126 was employed in</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P126i_was_employed_in">http://erlangen-crm.org/current/P126i_was_employed_in</seealso>
+    let P126i_was_employed_in =
+        Prefixed_Name(ecrm, "P126i_was_employed_in") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P127i_has_narrower_term</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P127 has narrower term</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P127i_has_narrower_term">http://erlangen-crm.org/current/P127i_has_narrower_term</seealso>
+    let P127i_has_narrower_term =
+        Prefixed_Name(ecrm, "P127i_has_narrower_term") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P128_carries</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies an E90 Symbolic Object carried by an instance of E18 Physical Thing.
+    ///
+    ///
+    /// Examples:
+    /// - Matthew's paperback copy of Reach for the Sky (E84) carries the text of Reach for the Sky (E73)
+    ///
+    /// In First Order Logic:
+    /// P128(x,y) ⊃ E18(x)
+    /// P128(x,y) ⊃ E90(y)
+    /// P128(x,y) ⊃ P130(x,y)</para>
+    /// labels<para>P128 carries</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P128_carries">http://erlangen-crm.org/current/P128_carries</seealso>
+    let P128_carries = Prefixed_Name(ecrm, "P128_carries") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P129_is_about</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property documents that an E89 Propositional Object has as subject an instance of E1 CRM Entity.
+    ///
+    /// This differs from P67 refers to (is referred to by), which refers to an E1 CRM Entity, in that it describes the primary subject or subjects of an E89 Propositional Object.
+    ///
+    /// Examples:
+    /// - The text entitled 'Reach for the sky' (E33) is about Douglas Bader (E21)
+    ///
+    /// In First Order Logic:
+    /// P129(x,y) ⊃ E89(x)
+    /// P129(x,y) ⊃ E1(y)
+    /// P129(x,y) ⊃ P67(x,y)</para>
+    /// labels<para>P129 is about</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P129_is_about">http://erlangen-crm.org/current/P129_is_about</seealso>
+    let P129_is_about = Prefixed_Name(ecrm, "P129_is_about") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P67_refers_to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property documents that an E89 Propositional Object makes a statement about an instance of E1 CRM Entity. P67 refers to (is referred to by) has the P67.1 has type link to an instance of E55 Type. This is intended to allow a more detailed description of the type of reference. This differs from P129 is about (is subject of), which describes the primary subject or subjects of the E89 Propositional Object.
+    ///
+    /// Examples:
+    /// - the eBay auction listing for 4 July 2002 (E73) refers to silver cup 232 (E22) has type item for sale (E55)
+    ///
+    /// In First Order Logic:
+    /// P67(x,y) ⊃ E89(x)
+    /// P67(x,y) ⊃ E1(y)
+    /// P67(x,y,z) ⊃ [P67(x,y) ∧ E55(z)]
+    ///
+    /// Properties: P67.1 has type: E55 Type</para>
+    /// labels<para>P67 refers to</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P67_refers_to">http://erlangen-crm.org/current/P67_refers_to</seealso>
+    let P67_refers_to = Prefixed_Name(ecrm, "P67_refers_to") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P131_is_identified_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies a name used specifically to identify an E39 Actor.
+    ///
+    /// This property is a specialisation of P1 is identified by (identifies) is identified by.
+    ///
+    /// Examples:
+    /// - Tyler Withersopp IV (E39) is identified by "US social security number 619-17-4204" (E82)
+    ///
+    /// In First Order Logic:
+    /// P131(x,y) ⊃ E39(x)
+    /// P131(x,y) ⊃ E82(y)
+    /// P131(x,y) ⊃ P1(x,y)</para>
+    /// labels<para>P131 is identified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P131_is_identified_by">http://erlangen-crm.org/current/P131_is_identified_by</seealso>
+    let P131_is_identified_by =
+        Prefixed_Name(ecrm, "P131_is_identified_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P131i_identifies</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P131 identifies</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P131i_identifies">http://erlangen-crm.org/current/P131i_identifies</seealso>
+    let P131i_identifies = Prefixed_Name(ecrm, "P131i_identifies") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P166i_had_presence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P166i_had_presence">http://erlangen-crm.org/current/P166i_had_presence</seealso>
+    let P166i_had_presence = Prefixed_Name(ecrm, "P166i_had_presence") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P167_at</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope Note:
+    /// This property points to a wider area in which my thing /event was ...
+    ///
+    /// In First Order Logic:
+    /// P167(x,y) ⊃ E93(x)
+    /// P167(x,y) ⊃ E53(y)</para>
+    /// </remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P167_at">http://erlangen-crm.org/current/P167_at</seealso>
+    let P167_at = Prefixed_Name(ecrm, "P167_at") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P167i_was_place_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P167i_was_place_of">http://erlangen-crm.org/current/P167i_was_place_of</seealso>
+    let P167i_was_place_of = Prefixed_Name(ecrm, "P167i_was_place_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P168_place_is_defined_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of E53 Place with an instance of E94 Space Primitive that defines it. Syntactic variants or use of different scripts may result in multiple instances of E94 Space Primitive defining exactly the same place. Transformations between different reference systems in general result in new definitions of places approximating each other and not in alternative definitions. Note that it is possible for a place to be defined by phenomena causal to it or other forms of identification rather than by an instance of E94 Space Primitive. In this case, this property must not be used for approximating the respective instance of E53 Place with an instance of E94 Space Primitive.
+    ///
+    /// In First Order Logic:
+    /// P168(x,y) ⊃ E53(x)
+    /// P168(x,y) ⊃ E94(y)</para>
+    /// </remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P168_place_is_defined_by">http://erlangen-crm.org/current/P168_place_is_defined_by</seealso>
+    let P168_place_is_defined_by =
+        Prefixed_Name(ecrm, "P168_place_is_defined_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P17_was_motivated_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property describes an item or items that are regarded as a reason for carrying out the E7 Activity.
+    ///
+    /// For example, the discovery of a large hoard of treasure may call for a celebration, an order from head quarters can start a military manoeuvre.
+    ///
+    /// Examples:
+    /// - the resignation of the chief executive (E7) was motivated by the collapse of Swiss Air (E68).
+    /// - the coronation of Elizabeth II (E7) was motivated by the death of George VI (E69)
+    ///
+    /// FOL:
+    /// P17(x,y) ⊃ E7(x)
+    /// P17(x,y) ⊃ E1(y)
+    /// P17 (x,y) ⊃ P15(x,y)</para>
+    /// labels<para>P17 was motivated by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P17_was_motivated_by">http://erlangen-crm.org/current/P17_was_motivated_by</seealso>
+    let P17_was_motivated_by =
+        Prefixed_Name(ecrm, "P17_was_motivated_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P17i_motivated</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P17 motivated</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P17i_motivated">http://erlangen-crm.org/current/P17i_motivated</seealso>
+    let P17i_motivated = Prefixed_Name(ecrm, "P17i_motivated") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P19_was_intended_use_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property relates an E7 Activity with objects created specifically for use in the activity.
+    ///
+    /// This is distinct from the intended use of an item in some general type of activity such as the book of common prayer which was intended for use in Church of England services (see P101 had as general use (was use of)).
+    ///
+    /// Examples:
+    /// - Lady Diana Spencer's wedding dress (E71) was made for Wedding of Prince Charles and Lady Diana Spencer (E7) mode of use To Be Worn (E55)
+    ///
+    /// FOL:
+    /// P19(x,y) ⊃ E7(x)
+    /// P19(x,y) ⊃ E71(y)
+    /// P19(x,y,z) ⊃ [P19(x,y) ∧ E55(z)]
+    ///
+    /// Properties: P19.1 mode of use: E55 Type</para>
+    /// labels<para>P19 was intended use of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P19_was_intended_use_of">http://erlangen-crm.org/current/P19_was_intended_use_of</seealso>
+    let P19_was_intended_use_of =
+        Prefixed_Name(ecrm, "P19_was_intended_use_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P83i_was_minimum_duration_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P83 was minimum duration of</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P83i_was_minimum_duration_of">http://erlangen-crm.org/current/P83i_was_minimum_duration_of</seealso>
+    let P83i_was_minimum_duration_of =
+        Prefixed_Name(ecrm, "P83i_was_minimum_duration_of") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P86_falls_within</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property describes the inclusion relationship between two instances of E52 Time-Span.
     ///
     /// This property supports the notion that a Time-Span’s temporal extent falls within the temporal extent of another Time-Span. It addresses temporal containment only, and no contextual link between the two instances of Time-Span is implied.
@@ -4153,29 +6168,45 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// P86(x,y) ⊃ E52(x)
-    /// P86(x,y) ⊃ E52(y)
-    /// <see href="http://erlangen-crm.org/current/P86_falls_within"></see></summary>
-    let P86_falls_within = _prefix "P86_falls_within"
+    /// P86(x,y) ⊃ E52(y)</para>
+    /// labels<para>P86 falls within</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P86_falls_within">http://erlangen-crm.org/current/P86_falls_within</seealso>
+    let P86_falls_within = Prefixed_Name(ecrm, "P86_falls_within") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P86i_contains"></see>
+    ///   <para>ecrm:P86i_contains</para>
     /// </summary>
-    let P86i_contains = _prefix "P86i_contains"
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P86 contains</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P86i_contains">http://erlangen-crm.org/current/P86i_contains</seealso>
+    let P86i_contains = Prefixed_Name(ecrm, "P86i_contains") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P87_is_identified_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property identifies an E53 Place using an E44 Place Appellation.
     ///
     /// Examples of Place Appellations used to identify Places include instances of E48 Place Name, addresses, E47 Spatial Coordinates etc.
     ///
     /// Examples:
-    /// - the location of the Duke of Wellington's House (E53) is identified by "No 1 London" (E45)
-    /// <see href="http://erlangen-crm.org/current/P87_is_identified_by"></see></summary>
-    let P87_is_identified_by = _prefix "P87_is_identified_by"
+    /// - the location of the Duke of Wellington's House (E53) is identified by "No 1 London" (E45)</para>
+    /// labels<para>P87 is identified by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P87_is_identified_by">http://erlangen-crm.org/current/P87_is_identified_by</seealso>
+    let P87_is_identified_by =
+        Prefixed_Name(ecrm, "P87_is_identified_by") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P87i_identifies"></see>
+    ///   <para>ecrm:P89_falls_within</para>
     /// </summary>
-    let P87i_identifies = _prefix "P87i_identifies"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property identifies an instance of E53 Place that falls wholly within the extent of another E53 Place.
     ///
     /// It addresses spatial containment only, and does not imply any relationship between things or phenomena occupying these places.
@@ -4186,15 +6217,27 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// P89(x,y) ⊃ E53(x)
-    /// P89(x,y) ⊃ E53(y)
-    /// <see href="http://erlangen-crm.org/current/P89_falls_within"></see></summary>
-    let P89_falls_within = _prefix "P89_falls_within"
+    /// P89(x,y) ⊃ E53(y)</para>
+    /// labels<para>P89 falls within</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P89_falls_within">http://erlangen-crm.org/current/P89_falls_within</seealso>
+    let P89_falls_within = Prefixed_Name(ecrm, "P89_falls_within") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P89i_contains"></see>
+    ///   <para>ecrm:P89i_contains</para>
     /// </summary>
-    let P89i_contains = _prefix "P89i_contains"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P89 contains</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P89i_contains">http://erlangen-crm.org/current/P89i_contains</seealso>
+    let P89i_contains = Prefixed_Name(ecrm, "P89i_contains") |> PrefixedName
+
     /// <summary>
-    /// Scope note:
+    ///   <para>ecrm:P8_took_place_on_or_within</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property describes the location of an instance of E4 Period with respect to an E19 Physical Object.
     /// P8 took place on or within (witnessed) is a shortcut of the more fully developed path from E4 Period through P7 took place at, E53 Place, P156 occupies (is occupied by) to E18 Physical Thing.
     ///
@@ -4206,35 +6249,46 @@ module ecrm =
     ///
     /// In First Order Logic:
     /// P8(x,y) ⊃ E4(x)
-    /// P8(x,y) ⊃ E18(y)
-    /// <see href="http://erlangen-crm.org/current/P8_took_place_on_or_within"></see></summary>
-    let P8_took_place_on_or_within = _prefix "P8_took_place_on_or_within"
+    /// P8(x,y) ⊃ E18(y)</para>
+    /// labels<para>P8 took place on or within</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P8_took_place_on_or_within">http://erlangen-crm.org/current/P8_took_place_on_or_within</seealso>
+    let P8_took_place_on_or_within =
+        Prefixed_Name(ecrm, "P8_took_place_on_or_within") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P8i_witnessed"></see>
+    ///   <para>ecrm:P8i_witnessed</para>
     /// </summary>
-    let P8i_witnessed = _prefix "P8i_witnessed"
-    /// <summary>
-    /// Scope note:
-    /// This property allows an E54 Dimension to be approximated by an E60 Number primitive.
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
     ///
-    /// Examples:
-    /// - height of silver cup 232 (E54) has value 226 (E60)
+    /// labels<para>P8 witnessed</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P8i_witnessed">http://erlangen-crm.org/current/P8i_witnessed</seealso>
+    let P8i_witnessed = Prefixed_Name(ecrm, "P8i_witnessed") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P96i_gave_birth</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
     ///
-    /// In First Order Logic:
-    /// P90(x,y) ⊃ E54(x)
-    /// P90(x,y) ⊃ E60(y)
-    /// <see href="http://erlangen-crm.org/current/P90_has_value"></see></summary>
-    let P90_has_value = _prefix "P90_has_value"
+    /// labels<para>P96 gave birth</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P96i_gave_birth">http://erlangen-crm.org/current/P96i_gave_birth</seealso>
+    let P96i_gave_birth = Prefixed_Name(ecrm, "P96i_gave_birth") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P96i_gave_birth"></see>
+    ///   <para>ecrm:P97i_was_father_for</para>
     /// </summary>
-    let P96i_gave_birth = _prefix "P96i_gave_birth"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P97 was father for</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P97i_was_father_for">http://erlangen-crm.org/current/P97i_was_father_for</seealso>
+    let P97i_was_father_for = Prefixed_Name(ecrm, "P97i_was_father_for") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P97i_was_father_for"></see>
+    ///   <para>ecrm:P98_brought_into_life</para>
     /// </summary>
-    let P97i_was_father_for = _prefix "P97i_was_father_for"
-    /// <summary>
-    /// Scope note:
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
     /// This property links an E67Birth event to an E21 Person in the role of offspring.
     ///
     /// Twins, triplets etc. are brought into life by the same Birth event. This is not intended for use with general Natural History material, only people. There is no explicit method for modelling conception and gestation except by using extensions.
@@ -4245,30 +6299,219 @@ module ecrm =
     /// In First Order Logic:
     /// P98(x,y) ⊃ E67(x)
     /// P98(x,y) ⊃ E21(y)
-    /// P98(x,y) ⊃ P92(x,y)
-    /// <see href="http://erlangen-crm.org/current/P98_brought_into_life"></see></summary>
-    let P98_brought_into_life = _prefix "P98_brought_into_life"
+    /// P98(x,y) ⊃ P92(x,y)</para>
+    /// labels<para>P98 brought into life</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P98_brought_into_life">http://erlangen-crm.org/current/P98_brought_into_life</seealso>
+    let P98_brought_into_life =
+        Prefixed_Name(ecrm, "P98_brought_into_life") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P99i_was_dissolved_by"></see>
+    ///   <para>ecrm:P99i_was_dissolved_by</para>
     /// </summary>
-    let P99i_was_dissolved_by = _prefix "P99i_was_dissolved_by"
-    /// <summary>
-    /// Scope note:
-    /// This property associates an instance of E4 Period with another instance of E4 Period that is defined by a subset of the phenomena that define the former. Therefore the spacetime volume of the latter must fall
-    /// within the spacetime volume of the former.
-    /// This property is transitive.
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
     ///
+    /// labels<para>P99 was dissolved by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P99i_was_dissolved_by">http://erlangen-crm.org/current/P99i_was_dissolved_by</seealso>
+    let P99i_was_dissolved_by =
+        Prefixed_Name(ecrm, "P99i_was_dissolved_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>Erlangen CRM / OWL - An OWL DL 1.0 implementation of the CIDOC Conceptual Reference Model, based on: Nick Crofts, Martin Doerr, Tony Gill, Stephen Stead, Matthew Stiff (eds.): Definition of the CIDOC Conceptual Reference Model (http://cidoc-crm.org/).
+    /// This implementation has been originally created by Bernhard Schiemann, Martin Oischinger and Günther Görz at the Friedrich-Alexander-University of Erlangen-Nuremberg, Department of Computer Science, Chair of Computer Science 8 (Artificial Intelligence) in cooperation with the Department of Museum Informatics of the Germanisches Nationalmuseum Nuremberg and the Department of Biodiversity Informatics of the Zoologisches Forschungsmuseum Alexander Koenig Bonn.
+    /// The Erlangen CRM / OWL implementation of the CIDOC Conceptual Reference Model is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.</para>
+    ///   <para>Changelog: https://github.com/erlangen-crm/ecrm/commits/master</para>
+    /// labels<para>Erlangen CRM / OWL</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/">http://erlangen-crm.org/current/</seealso>
+    let _prefix_iri = Prefixed_Name(ecrm, "") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E7_Activity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises actions intentionally carried out by instances of E39 Actor that result in changes of state in the cultural, social, or physical systems documented.
+    ///
+    /// This notion includes complex, composite and long-lasting actions such as the building of a settlement or a war, as well as simple, short-lived actions such as the opening of a door.
     ///
     /// Examples:
-    /// - Cretan Bronze Age (E4) consists of Middle Minoan (E4)
+    /// - the Battle of Stalingrad
+    /// - the Yalta Conference
+    /// - my birthday celebration 28-6-1995
+    /// - the writing of "Faust" by Goethe (E65)
+    /// - the formation of the Bauhaus 1919 (E66)
+    /// - calling the place identified by TGN '7017998' 'Quyunjig' by the people of Iraq
+    /// - Kira Weber working in glass art from 1984 to 1993
+    /// - Kira Weber working in oil and pastel painting from 1993
     ///
     /// In First Order Logic:
-    /// P9(x,y) ⊃ E4(x)
-    /// P9(x,y) ⊃ E4(y)
-    /// P9(x,y) ⊃ P10(y,x)
-    /// <see href="http://erlangen-crm.org/current/P9_consists_of"></see></summary>
-    let P9_consists_of = _prefix "P9_consists_of"
+    /// E7(x) ⊃ E5(x)</para>
+    /// labels<para>E7 Activity</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E7_Activity">http://erlangen-crm.org/current/E7_Activity</seealso>
+    let E7_Activity = Prefixed_Name(ecrm, "E7_Activity") |> PrefixedName
     /// <summary>
-    ///   <see href="http://erlangen-crm.org/current/P9i_forms_part_of"></see>
+    ///   <para>ecrm:P31_has_modified</para>
     /// </summary>
-    let P9i_forms_part_of = _prefix "P9i_forms_part_of"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property identifies the E24 Physical Man-Made Thing modified in an E11 Modification.
+    ///
+    /// If a modification is applied to a non-man-made object, it is regarded as an E22 Man-Made Object from that time onwards.
+    ///
+    /// Examples:
+    /// - rebuilding of the Reichstag (E11) has modified the Reichstag in Berlin (E24)
+    ///
+    /// In First Order Logic:
+    /// P31(x,y) ⊃ E11(x)
+    /// P31(x,y) ⊃ E24(y)
+    /// P31(x,y) ⊃ P12(x,y)</para>
+    /// labels<para>P31 has modified</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P31_has_modified">http://erlangen-crm.org/current/P31_has_modified</seealso>
+    let P31_has_modified = Prefixed_Name(ecrm, "P31_has_modified") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:E12_Production</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises activities that are designed to, and succeed in, creating one or more new items.
+    ///
+    /// It specializes the notion of modification into production. The decision as to whether or not an object is regarded as new is context sensitive. Normally, items are considered "new" if there is no obvious overall similarity between them and the consumed items and material used in their production. In other cases, an item is considered "new" because it becomes relevant to documentation by a modification. For example, the scribbling of a name on a potsherd may make it a voting token. The original potsherd may not be worth documenting, in contrast to the inscribed one.
+    ///
+    /// This entity can be collective: the printing of a thousand books, for example, would normally be considered a single event.
+    ///
+    /// An event should also be documented using E81 Transformation if it results in the destruction of one or more objects and the simultaneous production of others using parts or material from the originals. In this case, the new items have separate identities and matter is preserved, but identity is not.
+    ///
+    /// Examples:
+    /// - the construction of the SS Great Britain
+    /// - the first casting of the Little Mermaid from the harbour of Copenhagen
+    /// - Rembrandt's creating of the seventh state of his etching "Woman sitting half dressed beside a stove", 1658, identified by Bartsch Number 197 (E12,E65,E81)
+    ///
+    /// In First Order Logic:
+    /// E12(x) ⊃ E11(x)
+    /// E12(x) ⊃ E63(x)</para>
+    /// labels<para>E12 Production</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E12_Production">http://erlangen-crm.org/current/E12_Production</seealso>
+    let E12_Production = Prefixed_Name(ecrm, "E12_Production") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E13_Attribute_Assignment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the actions of making assertions about properties of an object or any relation between two items or concepts.
+    ///
+    /// This class allows the documentation of how the respective assignment came about, and whose opinion it was. All the attributes or properties assigned in such an action can also be seen as directly attached to the respective item or concept, possibly as a collection of contradictory values. All cases of properties in this model that are also described indirectly through an action are characterised as "short cuts" of this action. This redundant modelling of two alternative views is preferred because many implementations may have good reasons to model either the action or the short cut, and the relation between both alternatives can be captured by simple rules.
+    ///
+    /// In particular, the class describes the actions of people making propositions and statements during certain museum procedures, e.g. the person and date when a condition statement was made, an identifier was assigned, the museum object was measured, etc. Which kinds of such assignments and statements need to be documented explicitly in structures of a schema rather than free text, depends on if this information should be accessible by structured queries.
+    ///
+    /// Examples:
+    /// - the assessment of the current ownership of Martin Doerr's silver cup in February 1997
+    ///
+    /// In First Order Logic:
+    /// E13(x) ⊃ E7(x)</para>
+    /// labels<para>E13 Attribute Assignment</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E13_Attribute_Assignment">http://erlangen-crm.org/current/E13_Attribute_Assignment</seealso>
+    let E13_Attribute_Assignment =
+        Prefixed_Name(ecrm, "E13_Attribute_Assignment") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:E87_Curation_Activity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scope note:
+    /// This class comprises the activities that result in the continuity of management and the preservation and evolution of instances of E78 Collection, following an implicit or explicit curation plan.
+    ///
+    /// It specializes the notion of activity into the curation of a collection and allows the history of curation to be recorded.
+    ///
+    /// Items are accumulated and organized following criteria like subject, chronological period, material type, style of art etc. and can be added or removed from an E78 Collection for a specific purpose and/or audience. The initial aggregation of items of a collection is regarded as an instance of E12 Production Event while the activity of evolving, preserving and promoting a collection is regarded as an instance of E87 Curation Activity.
+    ///
+    /// Examples:
+    /// - the curation of Mikael Heggelund Foslie's coralline red algae Herbarium 1876 – 1909 (when Foslie died), now at Museum of Natural History and Archaeology, Norway
+    ///
+    /// In First Order Logic:
+    /// E87(x) ⊃ E7(x)</para>
+    /// labels<para>E87 Curation Activity</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/E87_Curation_Activity">http://erlangen-crm.org/current/E87_Curation_Activity</seealso>
+    let E87_Curation_Activity =
+        Prefixed_Name(ecrm, "E87_Curation_Activity") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P147_curated</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Scope note:
+    /// This property associates an instance of E87 Curation Activity with the instance of E78 Collection or collections with that is subject of athat curation activity following some implicit or explicit curation plan.
+    ///
+    /// Examples:
+    /// - The activities (E87) by the Benaki Museum curated the acquisition of dolls and games of urban and folk manufacture dating from the 17th to the 20th century, from England, France and Germany for the "Toys, Games and Childhood Collection (E78) of the Museum
+    /// - The activities (E87) of the Historical Museum of Crete, Heraklion, Crete, curated the development of the permanent Numismatic Collection (E78)
+    /// - The activities (E87) by Mikael Heggelund Foslie curated the Mikael Heggelund Foslie's coralline red algae Herbarium
+    ///
+    /// In First Order Logic:
+    /// P147(x,y) ⊃ E87(x)
+    /// P147(x,y) ⊃ E78(y)</para>
+    /// labels<para>P147 curated</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P147_curated">http://erlangen-crm.org/current/P147_curated</seealso>
+    let P147_curated = Prefixed_Name(ecrm, "P147_curated") |> PrefixedName
+    /// <summary>
+    ///   <para>ecrm:P10i_contains</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///
+    /// labels<para>P10 contains</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P10i_contains">http://erlangen-crm.org/current/P10i_contains</seealso>
+    let P10i_contains = Prefixed_Name(ecrm, "P10i_contains") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P110i_was_augmented_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P110 was augmented by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P110i_was_augmented_by">http://erlangen-crm.org/current/P110i_was_augmented_by</seealso>
+    let P110i_was_augmented_by =
+        Prefixed_Name(ecrm, "P110i_was_augmented_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P128i_is_carried_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P128 is carried by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P128i_is_carried_by">http://erlangen-crm.org/current/P128i_is_carried_by</seealso>
+    let P128i_is_carried_by = Prefixed_Name(ecrm, "P128i_is_carried_by") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P130i_features_are_also_found_on</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P130 features are also found on</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P130i_features_are_also_found_on">http://erlangen-crm.org/current/P130i_features_are_also_found_on</seealso>
+    let P130i_features_are_also_found_on =
+        Prefixed_Name(ecrm, "P130i_features_are_also_found_on") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ecrm:P37i_was_assigned_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>P37 was assigned by</para></remarks>
+    /// <seealso href="http://erlangen-crm.org/current/P37i_was_assigned_by">http://erlangen-crm.org/current/P37i_was_assigned_by</seealso>
+    let P37i_was_assigned_by =
+        Prefixed_Name(ecrm, "P37i_was_assigned_by") |> PrefixedName

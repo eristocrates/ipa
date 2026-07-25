@@ -1,70 +1,149 @@
 namespace http.purl.org.dc.elements._1._1.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module dc11 =
-    let _namespace_name = "http://purl.org/dc/elements/1.1/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri dc11 |> NamespaceIRI
     /// <summary>
-    /// An entity responsible for making contributions to the resource.
-    /// <see href="http://purl.org/dc/elements/1.1/contributor"></see></summary>
-    let contributor = _prefix "contributor"
+    ///   <para>dc11:</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</seealso>
+    let _prefix_iri = Prefixed_Name(dc11, "") |> PrefixedName
     /// <summary>
-    /// The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant.
-    /// <see href="http://purl.org/dc/elements/1.1/coverage"></see></summary>
-    let coverage = _prefix "coverage"
+    ///   <para>dc11:contributor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An entity responsible for making contributions to the resource.</para>
+    /// labels<para>Contributor</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/contributor">http://purl.org/dc/elements/1.1/contributor</seealso>
+    let contributor = Prefixed_Name(dc11, "contributor") |> PrefixedName
     /// <summary>
-    /// An entity primarily responsible for making the resource.
-    /// <see href="http://purl.org/dc/elements/1.1/creator"></see></summary>
-    let creator = _prefix "creator"
+    ///   <para>dc11:coverage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant.</para>
+    /// labels<para>Coverage</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/coverage">http://purl.org/dc/elements/1.1/coverage</seealso>
+    let coverage = Prefixed_Name(dc11, "coverage") |> PrefixedName
     /// <summary>
-    /// A point or period of time associated with an event in the lifecycle of the resource.
-    /// <see href="http://purl.org/dc/elements/1.1/date"></see></summary>
-    let date = _prefix "date"
+    ///   <para>dc11:creator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An entity primarily responsible for making the resource.</para>
+    /// labels<para>Creator</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/creator">http://purl.org/dc/elements/1.1/creator</seealso>
+    let creator = Prefixed_Name(dc11, "creator") |> PrefixedName
     /// <summary>
-    /// An account of the resource.
-    /// <see href="http://purl.org/dc/elements/1.1/description"></see></summary>
-    let description = _prefix "description"
+    ///   <para>dc11:date</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A point or period of time associated with an event in the lifecycle of the resource.</para>
+    /// labels<para>Date</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/date">http://purl.org/dc/elements/1.1/date</seealso>
+    let date = Prefixed_Name(dc11, "date") |> PrefixedName
     /// <summary>
-    /// The file format, physical medium, or dimensions of the resource.
-    /// <see href="http://purl.org/dc/elements/1.1/format"></see></summary>
-    let format = _prefix "format"
+    ///   <para>dc11:description</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An account of the resource.</para>
+    /// labels<para>Description</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/description">http://purl.org/dc/elements/1.1/description</seealso>
+    let description = Prefixed_Name(dc11, "description") |> PrefixedName
     /// <summary>
-    /// An unambiguous reference to the resource within a given context.
-    /// <see href="http://purl.org/dc/elements/1.1/identifier"></see></summary>
-    let identifier = _prefix "identifier"
+    ///   <para>dc11:format</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The file format, physical medium, or dimensions of the resource.</para>
+    /// labels<para>Format</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/format">http://purl.org/dc/elements/1.1/format</seealso>
+    let format = Prefixed_Name(dc11, "format") |> PrefixedName
     /// <summary>
-    /// A language of the resource.
-    /// <see href="http://purl.org/dc/elements/1.1/language"></see></summary>
-    let language = _prefix "language"
+    ///   <para>dc11:identifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An unambiguous reference to the resource within a given context.</para>
+    /// labels<para>Identifier</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/identifier">http://purl.org/dc/elements/1.1/identifier</seealso>
+    let identifier = Prefixed_Name(dc11, "identifier") |> PrefixedName
     /// <summary>
-    /// An entity responsible for making the resource available.
-    /// <see href="http://purl.org/dc/elements/1.1/publisher"></see></summary>
-    let publisher = _prefix "publisher"
+    ///   <para>dc11:language</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A language of the resource.</para>
+    /// labels<para>Language</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/language">http://purl.org/dc/elements/1.1/language</seealso>
+    let language = Prefixed_Name(dc11, "language") |> PrefixedName
     /// <summary>
-    /// A related resource.
-    /// <see href="http://purl.org/dc/elements/1.1/relation"></see></summary>
-    let relation = _prefix "relation"
+    ///   <para>dc11:publisher</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An entity responsible for making the resource available.</para>
+    /// labels<para>Publisher</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/publisher">http://purl.org/dc/elements/1.1/publisher</seealso>
+    let publisher = Prefixed_Name(dc11, "publisher") |> PrefixedName
     /// <summary>
-    /// Information about rights held in and over the resource.
-    /// <see href="http://purl.org/dc/elements/1.1/rights"></see></summary>
-    let rights = _prefix "rights"
+    ///   <para>dc11:relation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A related resource.</para>
+    /// labels<para>Relation</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/relation">http://purl.org/dc/elements/1.1/relation</seealso>
+    let relation = Prefixed_Name(dc11, "relation") |> PrefixedName
     /// <summary>
-    /// A related resource from which the described resource is derived.
-    /// <see href="http://purl.org/dc/elements/1.1/source"></see></summary>
-    let source = _prefix "source"
+    ///   <para>dc11:rights</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Information about rights held in and over the resource.</para>
+    /// labels<para>Rights</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/rights">http://purl.org/dc/elements/1.1/rights</seealso>
+    let rights = Prefixed_Name(dc11, "rights") |> PrefixedName
     /// <summary>
-    /// The topic of the resource.
-    /// <see href="http://purl.org/dc/elements/1.1/subject"></see></summary>
-    let subject = _prefix "subject"
+    ///   <para>dc11:source</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A related resource from which the described resource is derived.</para>
+    /// labels<para>Source</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/source">http://purl.org/dc/elements/1.1/source</seealso>
+    let source = Prefixed_Name(dc11, "source") |> PrefixedName
     /// <summary>
-    /// A name given to the resource.
-    /// <see href="http://purl.org/dc/elements/1.1/title"></see></summary>
-    let title = _prefix "title"
+    ///   <para>dc11:subject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The topic of the resource.</para>
+    /// labels<para>Subject</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/subject">http://purl.org/dc/elements/1.1/subject</seealso>
+    let subject = Prefixed_Name(dc11, "subject") |> PrefixedName
     /// <summary>
-    /// The nature or genre of the resource.
-    /// <see href="http://purl.org/dc/elements/1.1/type"></see></summary>
-    let type_ = _prefix "type"
+    ///   <para>dc11:title</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A name given to the resource.</para>
+    /// labels<para>Title</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/title">http://purl.org/dc/elements/1.1/title</seealso>
+    let title = Prefixed_Name(dc11, "title") |> PrefixedName
+    /// <summary>
+    ///   <para>dc11:type</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The nature or genre of the resource.</para>
+    /// labels<para>Type</para></remarks>
+    /// <seealso href="http://purl.org/dc/elements/1.1/type">http://purl.org/dc/elements/1.1/type</seealso>
+    let type_ = Prefixed_Name(dc11, "type") |> PrefixedName

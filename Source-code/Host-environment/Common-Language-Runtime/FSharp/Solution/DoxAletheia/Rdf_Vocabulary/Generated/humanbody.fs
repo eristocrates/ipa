@@ -1,158 +1,365 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.humanBody.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module humanbody =
-    let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/humanBody#"
+    let _namespace_iri = Namespace_Iri humanbody |> NamespaceIRI
+    /// <summary>
+    ///   <para>humanbody:</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#">http://eulersharp.sourceforge.net/2003/03swap/humanBody#</seealso>
+    let _prefix_iri = Prefixed_Name(humanbody, "") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>humanbody:AdultBodyMassIndex</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>adult body mass index</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AdultBodyMassIndex">http://eulersharp.sourceforge.net/2003/03swap/humanBody#AdultBodyMassIndex</seealso>
+    let AdultBodyMassIndex =
+        Prefixed_Name(humanbody, "AdultBodyMassIndex") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AcquiredStructure"></see>
+    ///   <para>humanbody:Weighing</para>
     /// </summary>
-    let AcquiredStructure = _prefix "AcquiredStructure"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>weighing a human body</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Weighing">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Weighing</seealso>
+    let Weighing = Prefixed_Name(humanbody, "Weighing") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Structure"></see>
+    ///   <para>humanbody:SurfaceAreaMeasurement</para>
     /// </summary>
-    let Structure = _prefix "Structure"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Approximative calculation, e.g. in an N3 rule with formula of Mosteller, see http://eulersharp.sourceforge.net/2003/03swap/bodySurfaceArea_rules.</para>
+    /// labels<para>human body surface area measurement</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SurfaceAreaMeasurement">http://eulersharp.sourceforge.net/2003/03swap/humanBody#SurfaceAreaMeasurement</seealso>
+    let SurfaceAreaMeasurement =
+        Prefixed_Name(humanbody, "SurfaceAreaMeasurement") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AnatomicalStructure"></see>
+    ///   <para>humanbody:Underweight</para>
     /// </summary>
-    let AnatomicalStructure = _prefix "AnatomicalStructure"
+    /// <remarks>
+    ///   <para>humanbody:WeightStatus</para>
+    ///   <para>Body mass index ranging 16-18.4 kg/m2.</para>
+    /// labels<para>underweight</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Underweight">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Underweight</seealso>
+    let Underweight = Prefixed_Name(humanbody, "Underweight") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AdultBodyMassIndex"></see>
+    ///   <para>humanbody:Structure</para>
     /// </summary>
-    let AdultBodyMassIndex = _prefix "AdultBodyMassIndex"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body structure</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Structure">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Structure</seealso>
+    let Structure = Prefixed_Name(humanbody, "Structure") |> PrefixedName
+
     /// <summary>
-    /// May overestimate body fat in athletes and others who have a muscular build; may underestimate body fat in older persons and others who have lost muscle mass.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AdultBodyMassIndexMeasurement"></see></summary>
-    let AdultBodyMassIndexMeasurement = _prefix "AdultBodyMassIndexMeasurement"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#BirthWeight"></see>
+    ///   <para>humanbody:BirthWeightMeasurement</para>
     /// </summary>
-    let BirthWeight = _prefix "BirthWeight"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body birth weight measurement</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#BirthWeightMeasurement">http://eulersharp.sourceforge.net/2003/03swap/humanBody#BirthWeightMeasurement</seealso>
+    let BirthWeightMeasurement =
+        Prefixed_Name(humanbody, "BirthWeightMeasurement") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Weight"></see>
+    ///   <para>humanbody:hasLength</para>
     /// </summary>
-    let Weight = _prefix "Weight"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasLength">http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasLength</seealso>
+    let hasLength = Prefixed_Name(humanbody, "hasLength") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#BirthWeightMeasurement"></see>
+    ///   <para>humanbody:weightOf</para>
     /// </summary>
-    let BirthWeightMeasurement = _prefix "BirthWeightMeasurement"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#weightOf">http://eulersharp.sourceforge.net/2003/03swap/humanBody#weightOf</seealso>
+    let weightOf = Prefixed_Name(humanbody, "weightOf") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeightMeasurement"></see>
+    ///   <para>humanbody:AcquiredStructure</para>
     /// </summary>
-    let WeightMeasurement = _prefix "WeightMeasurement"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>acquired human body structure</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AcquiredStructure">http://eulersharp.sourceforge.net/2003/03swap/humanBody#AcquiredStructure</seealso>
+    let AcquiredStructure =
+        Prefixed_Name(humanbody, "AcquiredStructure") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Weighing"></see>
+    ///   <para>humanbody:AnatomicalStructure</para>
     /// </summary>
-    let Weighing = _prefix "Weighing"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human anatomical structure</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AnatomicalStructure">http://eulersharp.sourceforge.net/2003/03swap/humanBody#AnatomicalStructure</seealso>
+    let AnatomicalStructure =
+        Prefixed_Name(humanbody, "AnatomicalStructure") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Body"></see>
+    ///   <para>humanbody:AdultBodyMassIndexMeasurement</para>
     /// </summary>
-    let Body = _prefix "Body"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>May overestimate body fat in athletes and others who have a muscular build; may underestimate body fat in older persons and others who have lost muscle mass.</para>
+    /// labels<para>adult body mass index measurement</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AdultBodyMassIndexMeasurement">http://eulersharp.sourceforge.net/2003/03swap/humanBody#AdultBodyMassIndexMeasurement</seealso>
+    let AdultBodyMassIndexMeasurement =
+        Prefixed_Name(humanbody, "AdultBodyMassIndexMeasurement") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#DeadBody"></see>
+    ///   <para>humanbody:WeighingDevice</para>
     /// </summary>
-    let DeadBody = _prefix "DeadBody"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body weighing device</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeighingDevice">http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeighingDevice</seealso>
+    let WeighingDevice = Prefixed_Name(humanbody, "WeighingDevice") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Death"></see>
+    ///   <para>humanbody:BirthWeight</para>
     /// </summary>
-    let Death = _prefix "Death"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body birth weight</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#BirthWeight">http://eulersharp.sourceforge.net/2003/03swap/humanBody#BirthWeight</seealso>
+    let BirthWeight = Prefixed_Name(humanbody, "BirthWeight") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Length"></see>
+    ///   <para>humanbody:Weight</para>
     /// </summary>
-    let Length = _prefix "Length"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body weight</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Weight">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Weight</seealso>
+    let Weight = Prefixed_Name(humanbody, "Weight") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#LengthMeasurement"></see>
+    ///   <para>humanbody:WeightMeasurement</para>
     /// </summary>
-    let LengthMeasurement = _prefix "LengthMeasurement"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body weight measurement</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeightMeasurement">http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeightMeasurement</seealso>
+    let WeightMeasurement =
+        Prefixed_Name(humanbody, "WeightMeasurement") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#LengthMeasuring"></see>
+    ///   <para>humanbody:Body</para>
     /// </summary>
-    let LengthMeasuring = _prefix "LengthMeasuring"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Body">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Body</seealso>
+    let Body = Prefixed_Name(humanbody, "Body") |> PrefixedName
     /// <summary>
-    /// Body mass index ranging 35-44.9 kg/m2.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#MorbidlyObese"></see></summary>
-    let MorbidlyObese = _prefix "MorbidlyObese"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeightStatus"></see>
+    ///   <para>humanbody:DeadBody</para>
     /// </summary>
-    let WeightStatus = _prefix "WeightStatus"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human dead body</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#DeadBody">http://eulersharp.sourceforge.net/2003/03swap/humanBody#DeadBody</seealso>
+    let DeadBody = Prefixed_Name(humanbody, "DeadBody") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Newborn"></see>
+    ///   <para>humanbody:Death</para>
     /// </summary>
-    let Newborn = _prefix "Newborn"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human death</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Death">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Death</seealso>
+    let Death = Prefixed_Name(humanbody, "Death") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasWeight"></see>
+    ///   <para>humanbody:LengthMeasurement</para>
     /// </summary>
-    let hasWeight = _prefix "hasWeight"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body length measurement</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#LengthMeasurement">http://eulersharp.sourceforge.net/2003/03swap/humanBody#LengthMeasurement</seealso>
+    let LengthMeasurement =
+        Prefixed_Name(humanbody, "LengthMeasurement") |> PrefixedName
+
     /// <summary>
-    /// Body mass index ranging 18.5-24.9 kg/m2.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#NormalWeight"></see></summary>
-    let NormalWeight = _prefix "NormalWeight"
-    /// <summary>
-    /// Body mass index ranging 30-34.9 kg/m2.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Obese"></see></summary>
-    let Obese = _prefix "Obese"
-    /// <summary>
-    /// Body mass index ranging 25-29.9 kg/m2.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Overweight"></see></summary>
-    let Overweight = _prefix "Overweight"
-    /// <summary>
-    /// Body mass index lower than 16 kg/m2.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SeverelyUnderweight"></see></summary>
-    let SeverelyUnderweight = _prefix "SeverelyUnderweight"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Substance"></see>
+    ///   <para>humanbody:MorbidlyObese</para>
     /// </summary>
-    let Substance = _prefix "Substance"
+    /// <remarks>
+    ///   <para>humanbody:WeightStatus</para>
+    ///   <para>Body mass index ranging 35-44.9 kg/m2.</para>
+    /// labels<para>morbidly obese</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#MorbidlyObese">http://eulersharp.sourceforge.net/2003/03swap/humanBody#MorbidlyObese</seealso>
+    let MorbidlyObese = Prefixed_Name(humanbody, "MorbidlyObese") |> PrefixedName
     /// <summary>
-    /// Body mass index over 44.9 kg/m2.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SuperObese"></see></summary>
-    let SuperObese = _prefix "SuperObese"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Surface"></see>
+    ///   <para>humanbody:WeightStatus</para>
     /// </summary>
-    let Surface = _prefix "Surface"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>weight status</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeightStatus">http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeightStatus</seealso>
+    let WeightStatus = Prefixed_Name(humanbody, "WeightStatus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SurfaceArea"></see>
+    ///   <para>humanbody:Obese</para>
     /// </summary>
-    let SurfaceArea = _prefix "SurfaceArea"
+    /// <remarks>
+    ///   <para>humanbody:WeightStatus</para>
+    ///   <para>Body mass index ranging 30-34.9 kg/m2.</para>
+    /// labels<para>obese</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Obese">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Obese</seealso>
+    let Obese = Prefixed_Name(humanbody, "Obese") |> PrefixedName
     /// <summary>
-    /// Approximative calculation, e.g. in an N3 rule with formula of Mosteller, see http://eulersharp.sourceforge.net/2003/03swap/bodySurfaceArea_rules.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SurfaceAreaMeasurement"></see></summary>
-    let SurfaceAreaMeasurement = _prefix "SurfaceAreaMeasurement"
-    /// <summary>
-    /// Body mass index ranging 16-18.4 kg/m2.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Underweight"></see></summary>
-    let Underweight = _prefix "Underweight"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeighingDevice"></see>
+    ///   <para>humanbody:Overweight</para>
     /// </summary>
-    let WeighingDevice = _prefix "WeighingDevice"
+    /// <remarks>
+    ///   <para>humanbody:WeightStatus</para>
+    ///   <para>Body mass index ranging 25-29.9 kg/m2.</para>
+    /// labels<para>overweight</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Overweight">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Overweight</seealso>
+    let Overweight = Prefixed_Name(humanbody, "Overweight") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasBirthWeight"></see>
+    ///   <para>humanbody:Substance</para>
     /// </summary>
-    let hasBirthWeight = _prefix "hasBirthWeight"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body substance</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Substance">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Substance</seealso>
+    let Substance = Prefixed_Name(humanbody, "Substance") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasBodyMassIndex"></see>
+    ///   <para>humanbody:SuperObese</para>
     /// </summary>
-    let hasBodyMassIndex = _prefix "hasBodyMassIndex"
+    /// <remarks>
+    ///   <para>humanbody:WeightStatus</para>
+    ///   <para>Body mass index over 44.9 kg/m2.</para>
+    /// labels<para>super obese</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SuperObese">http://eulersharp.sourceforge.net/2003/03swap/humanBody#SuperObese</seealso>
+    let SuperObese = Prefixed_Name(humanbody, "SuperObese") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasLength"></see>
+    ///   <para>humanbody:hasWeight</para>
     /// </summary>
-    let hasLength = _prefix "hasLength"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasWeight">http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasWeight</seealso>
+    let hasWeight = Prefixed_Name(humanbody, "hasWeight") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasSurfaceArea"></see>
+    ///   <para>humanbody:hasBirthWeight</para>
     /// </summary>
-    let hasSurfaceArea = _prefix "hasSurfaceArea"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasBirthWeight">http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasBirthWeight</seealso>
+    let hasBirthWeight = Prefixed_Name(humanbody, "hasBirthWeight") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasWeightStatus"></see>
+    ///   <para>humanbody:hasBodyMassIndex</para>
     /// </summary>
-    let hasWeightStatus = _prefix "hasWeightStatus"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasBodyMassIndex">http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasBodyMassIndex</seealso>
+    let hasBodyMassIndex = Prefixed_Name(humanbody, "hasBodyMassIndex") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#weightOf"></see>
+    ///   <para>humanbody:hasSurfaceArea</para>
     /// </summary>
-    let weightOf = _prefix "weightOf"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasSurfaceArea">http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasSurfaceArea</seealso>
+    let hasSurfaceArea = Prefixed_Name(humanbody, "hasSurfaceArea") |> PrefixedName
+    /// <summary>
+    ///   <para>humanbody:hasWeightStatus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasWeightStatus">http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasWeightStatus</seealso>
+    let hasWeightStatus = Prefixed_Name(humanbody, "hasWeightStatus") |> PrefixedName
+
+    /// <summary>
+    ///   <para>humanbody:SeverelyUnderweight</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>humanbody:WeightStatus</para>
+    ///   <para>Body mass index lower than 16 kg/m2.</para>
+    /// labels<para>severely underweight</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SeverelyUnderweight">http://eulersharp.sourceforge.net/2003/03swap/humanBody#SeverelyUnderweight</seealso>
+    let SeverelyUnderweight =
+        Prefixed_Name(humanbody, "SeverelyUnderweight") |> PrefixedName
+
+    /// <summary>
+    ///   <para>humanbody:Surface</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body surface</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Surface">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Surface</seealso>
+    let Surface = Prefixed_Name(humanbody, "Surface") |> PrefixedName
+    /// <summary>
+    ///   <para>humanbody:SurfaceArea</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body surface area</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SurfaceArea">http://eulersharp.sourceforge.net/2003/03swap/humanBody#SurfaceArea</seealso>
+    let SurfaceArea = Prefixed_Name(humanbody, "SurfaceArea") |> PrefixedName
+    /// <summary>
+    ///   <para>humanbody:Length</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>human body length</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Length">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Length</seealso>
+    let Length = Prefixed_Name(humanbody, "Length") |> PrefixedName
+    /// <summary>
+    ///   <para>humanbody:LengthMeasuring</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>measuring a human body length</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#LengthMeasuring">http://eulersharp.sourceforge.net/2003/03swap/humanBody#LengthMeasuring</seealso>
+    let LengthMeasuring = Prefixed_Name(humanbody, "LengthMeasuring") |> PrefixedName
+    /// <summary>
+    ///   <para>humanbody:Newborn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>newborn body</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Newborn">http://eulersharp.sourceforge.net/2003/03swap/humanBody#Newborn</seealso>
+    let Newborn = Prefixed_Name(humanbody, "Newborn") |> PrefixedName
+    /// <summary>
+    ///   <para>humanbody:NormalWeight</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>humanbody:WeightStatus</para>
+    ///   <para>Body mass index ranging 18.5-24.9 kg/m2.</para>
+    /// labels<para>normal weight</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#NormalWeight">http://eulersharp.sourceforge.net/2003/03swap/humanBody#NormalWeight</seealso>
+    let NormalWeight = Prefixed_Name(humanbody, "NormalWeight") |> PrefixedName

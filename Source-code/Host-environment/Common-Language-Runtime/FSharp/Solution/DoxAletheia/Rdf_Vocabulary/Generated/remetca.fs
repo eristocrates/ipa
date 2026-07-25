@@ -1,139 +1,288 @@
 namespace http.www.purl.org.net.remetca.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module remetca =
-    let _namespace_name = "http://www.purl.org/net/remetca#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri remetca |> NamespaceIRI
     /// <summary>
-    /// Equivalent to TEI
-    /// <see href="http://www.purl.org/net/remetca#Poem"></see></summary>
-    let Poem = _prefix "Poem"
-    /// <summary>
-    /// Complete literary work in which one or more poems are inserted
-    /// <see href="http://www.purl.org/net/remetca#Complete_work"></see></summary>
-    let Complete_work = _prefix "Complete_work"
-    /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#Accentual_versification"></see>
+    ///   <para>remetca:Poem</para>
     /// </summary>
-    let Accentual_versification = _prefix "Accentual_versification"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Equivalent to TEI </para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#Poem">http://www.purl.org/net/remetca#Poem</seealso>
+    let Poem = Prefixed_Name(remetca, "Poem") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#versification_System"></see>
+    ///   <para>remetca:versification_System</para>
     /// </summary>
-    let versification_System = _prefix "versification_System"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#versification_System">http://www.purl.org/net/remetca#versification_System</seealso>
+    let versification_System =
+        Prefixed_Name(remetca, "versification_System") |> PrefixedName
+
     /// <summary>
-    /// Equivalent to TEI &lt;edition&gt;
-    ///             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-edition.html
-    /// <see href="http://www.purl.org/net/remetca#Edition"></see></summary>
-    let Edition = _prefix "Edition"
+    ///   <para>remetca:Edition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Equivalent to TEI &lt;edition&gt;
+    ///             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-edition.html</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#Edition">http://www.purl.org/net/remetca#Edition</seealso>
+    let Edition = Prefixed_Name(remetca, "Edition") |> PrefixedName
     /// <summary>
-    /// Equivalent to TEI &lt;l&gt;
-    ///             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html
-    /// <see href="http://www.purl.org/net/remetca#Line"></see></summary>
-    let Line = _prefix "Line"
+    ///   <para>remetca:Stanza</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Equals to TEI &lt;lg&gt;
+    ///             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#Stanza">http://www.purl.org/net/remetca#Stanza</seealso>
+    let Stanza = Prefixed_Name(remetca, "Stanza") |> PrefixedName
+
     /// <summary>
-    /// Equivalent to TEI &lt;idno&gt;
+    ///   <para>remetca:Syllabic_versification</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#Syllabic_versification">http://www.purl.org/net/remetca#Syllabic_versification</seealso>
+    let Syllabic_versification =
+        Prefixed_Name(remetca, "Syllabic_versification") |> PrefixedName
+
+    /// <summary>
+    ///   <para>remetca:has_rhyme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>asonancia="asonante/consonante" (not TEI, added by
+    ///             ReMetCa)</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_rhyme">http://www.purl.org/net/remetca#has_rhyme</seealso>
+    let has_rhyme = Prefixed_Name(remetca, "has_rhyme") |> PrefixedName
+    /// <summary>
+    ///   <para>remetca:consonant</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#consonant">http://www.purl.org/net/remetca#consonant</seealso>
+    let consonant = Prefixed_Name(remetca, "consonant") |> PrefixedName
+    /// <summary>
+    ///   <para>remetca:hasLines</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Related to TEI Attribute: </para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#hasLines">http://www.purl.org/net/remetca#hasLines</seealso>
+    let hasLines = Prefixed_Name(remetca, "hasLines") |> PrefixedName
+    /// <summary>
+    ///   <para>remetca:has_incipit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_incipit">http://www.purl.org/net/remetca#has_incipit</seealso>
+    let has_incipit = Prefixed_Name(remetca, "has_incipit") |> PrefixedName
+
+    /// <summary>
+    ///   <para>remetca:has_metrical_scheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>TEI attribute met &lt;lg met=””&gt;</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_metrical_scheme">http://www.purl.org/net/remetca#has_metrical_scheme</seealso>
+    let has_metrical_scheme =
+        Prefixed_Name(remetca, "has_metrical_scheme") |> PrefixedName
+
+    /// <summary>
+    ///   <para>remetca:has_number_of_stanzas</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_number_of_stanzas">http://www.purl.org/net/remetca#has_number_of_stanzas</seealso>
+    let has_number_of_stanzas =
+        Prefixed_Name(remetca, "has_number_of_stanzas") |> PrefixedName
+
+    /// <summary>
+    ///   <para>remetca:has_number_of_syllables</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_number_of_syllables">http://www.purl.org/net/remetca#has_number_of_syllables</seealso>
+    let has_number_of_syllables =
+        Prefixed_Name(remetca, "has_number_of_syllables") |> PrefixedName
+
+    /// <summary>
+    ///   <para>remetca:has_title</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_title">http://www.purl.org/net/remetca#has_title</seealso>
+    let has_title = Prefixed_Name(remetca, "has_title") |> PrefixedName
+    /// <summary>
+    ///   <para>remetca:isAuthorof</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#isAuthorof">http://www.purl.org/net/remetca#isAuthorof</seealso>
+    let isAuthorof = Prefixed_Name(remetca, "isAuthorof") |> PrefixedName
+    /// <summary>
+    ///   <para>remetca:Complete_work</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Complete literary work in which one or more poems are inserted</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#Complete_work">http://www.purl.org/net/remetca#Complete_work</seealso>
+    let Complete_work = Prefixed_Name(remetca, "Complete_work") |> PrefixedName
+
+    /// <summary>
+    ///   <para>remetca:Accentual_versification</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#Accentual_versification">http://www.purl.org/net/remetca#Accentual_versification</seealso>
+    let Accentual_versification =
+        Prefixed_Name(remetca, "Accentual_versification") |> PrefixedName
+
+    /// <summary>
+    ///   <para>remetca:Line</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Equivalent to TEI &lt;l&gt;
+    ///             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#Line">http://www.purl.org/net/remetca#Line</seealso>
+    let Line = Prefixed_Name(remetca, "Line") |> PrefixedName
+    /// <summary>
+    ///   <para>remetca:Manuscript</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Equivalent to TEI &lt;idno&gt;
     ///             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-idno.html inside
     ///             &lt;msIdentifier&gt;
     ///             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-msIdentifier.html and inside
-    ///             &lt;msDesc&gt;
-    /// <see href="http://www.purl.org/net/remetca#Manuscript"></see></summary>
-    let Manuscript = _prefix "Manuscript"
+    ///             &lt;msDesc&gt;</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#Manuscript">http://www.purl.org/net/remetca#Manuscript</seealso>
+    let Manuscript = Prefixed_Name(remetca, "Manuscript") |> PrefixedName
     /// <summary>
-    /// Equals to TEI &lt;lg&gt;
-    ///             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html
-    /// <see href="http://www.purl.org/net/remetca#Stanza"></see></summary>
-    let Stanza = _prefix "Stanza"
-    /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#Syllabic_versification"></see>
+    ///   <para>remetca:Syllable</para>
     /// </summary>
-    let Syllabic_versification = _prefix "Syllabic_versification"
-    /// <summary>
-    /// Equals to TEI &lt;syll&gt;
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Equals to TEI &lt;syll&gt;
     ///             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-syll.html or &lt;MetSym&gt;
     ///             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-metSym.html but no exact
-    ///             correspondence
-    /// <see href="http://www.purl.org/net/remetca#Syllable"></see></summary>
-    let Syllable = _prefix "Syllable"
+    ///             correspondence</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#Syllable">http://www.purl.org/net/remetca#Syllable</seealso>
+    let Syllable = Prefixed_Name(remetca, "Syllable") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#asonant"></see>
+    ///   <para>remetca:asonant</para>
     /// </summary>
-    let asonant = _prefix "asonant"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#asonant">http://www.purl.org/net/remetca#asonant</seealso>
+    let asonant = Prefixed_Name(remetca, "asonant") |> PrefixedName
     /// <summary>
-    /// asonancia="asonante/consonante" (not TEI, added by
-    ///             ReMetCa)
-    /// <see href="http://www.purl.org/net/remetca#has_rhyme"></see></summary>
-    let has_rhyme = _prefix "has_rhyme"
-    /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#consonant"></see>
+    ///   <para>remetca:hasPoems</para>
     /// </summary>
-    let consonant = _prefix "consonant"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#hasPoems">http://www.purl.org/net/remetca#hasPoems</seealso>
+    let hasPoems = Prefixed_Name(remetca, "hasPoems") |> PrefixedName
     /// <summary>
-    /// Related to TEI Attribute:
-    /// <see href="http://www.purl.org/net/remetca#hasLines"></see></summary>
-    let hasLines = _prefix "hasLines"
-    /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#hasPoems"></see>
+    ///   <para>remetca:hasStanzas</para>
     /// </summary>
-    let hasPoems = _prefix "hasPoems"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#hasStanzas">http://www.purl.org/net/remetca#hasStanzas</seealso>
+    let hasStanzas = Prefixed_Name(remetca, "hasStanzas") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#hasStanzas"></see>
+    ///   <para>remetca:hasSyllables</para>
     /// </summary>
-    let hasStanzas = _prefix "hasStanzas"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#hasSyllables">http://www.purl.org/net/remetca#hasSyllables</seealso>
+    let hasSyllables = Prefixed_Name(remetca, "hasSyllables") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#hasSyllables"></see>
+    ///   <para>remetca:has_caesura</para>
     /// </summary>
-    let hasSyllables = _prefix "hasSyllables"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_caesura">http://www.purl.org/net/remetca#has_caesura</seealso>
+    let has_caesura = Prefixed_Name(remetca, "has_caesura") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#has_caesura"></see>
+    ///   <para>remetca:has_musical_notation</para>
     /// </summary>
-    let has_caesura = _prefix "has_caesura"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_musical_notation">http://www.purl.org/net/remetca#has_musical_notation</seealso>
+    let has_musical_notation =
+        Prefixed_Name(remetca, "has_musical_notation") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#has_incipit"></see>
+    ///   <para>remetca:has_name_of_stanza</para>
     /// </summary>
-    let has_incipit = _prefix "has_incipit"
-    /// <summary>
-    /// TEI attribute met &lt;lg met=””&gt;
-    /// <see href="http://www.purl.org/net/remetca#has_metrical_scheme"></see></summary>
-    let has_metrical_scheme = _prefix "has_metrical_scheme"
-    /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#has_musical_notation"></see>
-    /// </summary>
-    let has_musical_notation = _prefix "has_musical_notation"
-    /// <summary>
-    /// Equivalent to TEI attribute &lt;lg subtype=""&gt; de lg type
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Equivalent to TEI attribute &lt;lg subtype=""&gt; de lg type
     ///             “estrofa”/cabeza/estribillo" and populated with the controlled vocabulary of
-    ///             http://vocabularios.caicyt.gov.ar/pmc/
-    /// <see href="http://www.purl.org/net/remetca#has_name_of_stanza"></see></summary>
-    let has_name_of_stanza = _prefix "has_name_of_stanza"
+    ///             http://vocabularios.caicyt.gov.ar/pmc/</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_name_of_stanza">http://www.purl.org/net/remetca#has_name_of_stanza</seealso>
+    let has_name_of_stanza =
+        Prefixed_Name(remetca, "has_name_of_stanza") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#has_number_of_lines"></see>
+    ///   <para>remetca:has_number_of_lines</para>
     /// </summary>
-    let has_number_of_lines = _prefix "has_number_of_lines"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_number_of_lines">http://www.purl.org/net/remetca#has_number_of_lines</seealso>
+    let has_number_of_lines =
+        Prefixed_Name(remetca, "has_number_of_lines") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#has_number_of_stanzas"></see>
+    ///   <para>remetca:has_rhymeScheme</para>
     /// </summary>
-    let has_number_of_stanzas = _prefix "has_number_of_stanzas"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Equivalent to TEI attribute &lt;lg rhyme=””&gt;</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_rhymeScheme">http://www.purl.org/net/remetca#has_rhymeScheme</seealso>
+    let has_rhymeScheme = Prefixed_Name(remetca, "has_rhymeScheme") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#has_number_of_syllables"></see>
+    ///   <para>remetca:has_text</para>
     /// </summary>
-    let has_number_of_syllables = _prefix "has_number_of_syllables"
-    /// <summary>
-    /// Equivalent to TEI attribute &lt;lg rhyme=””&gt;
-    /// <see href="http://www.purl.org/net/remetca#has_rhymeScheme"></see></summary>
-    let has_rhymeScheme = _prefix "has_rhymeScheme"
-    /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#has_text"></see>
-    /// </summary>
-    let has_text = _prefix "has_text"
-    /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#has_title"></see>
-    /// </summary>
-    let has_title = _prefix "has_title"
-    /// <summary>
-    ///   <see href="http://www.purl.org/net/remetca#isAuthorof"></see>
-    /// </summary>
-    let isAuthorof = _prefix "isAuthorof"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.purl.org/net/remetca#has_text">http://www.purl.org/net/remetca#has_text</seealso>
+    let has_text = Prefixed_Name(remetca, "has_text") |> PrefixedName

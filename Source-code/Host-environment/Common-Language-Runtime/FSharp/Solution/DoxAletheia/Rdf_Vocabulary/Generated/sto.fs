@@ -1,86 +1,189 @@
 namespace https.w3id.org.i40.sto.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module sto =
-    let _namespace_name = "https://w3id.org/i40/sto#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri sto |> NamespaceIRI
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#IndustryDomain"></see>
+    ///   <para>sto:IndustryDomain</para>
     /// </summary>
-    let IndustryDomain = _prefix "IndustryDomain"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Industry Domain</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#IndustryDomain">https://w3id.org/i40/sto#IndustryDomain</seealso>
+    let IndustryDomain = Prefixed_Name(sto, "IndustryDomain") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#SDO"></see>
+    ///   <para>sto:formationDate</para>
     /// </summary>
-    let SDO = _prefix "SDO"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Formation Date</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#formationDate">https://w3id.org/i40/sto#formationDate</seealso>
+    let formationDate = Prefixed_Name(sto, "formationDate") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#Standard"></see>
+    ///   <para>sto:hasOfficialWebsite</para>
     /// </summary>
-    let Standard = _prefix "Standard"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Has Official website</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#hasOfficialWebsite">https://w3id.org/i40/sto#hasOfficialWebsite</seealso>
+    let hasOfficialWebsite = Prefixed_Name(sto, "hasOfficialWebsite") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#abbreviation"></see>
+    ///   <para>sto:hasWikipediaArticle</para>
     /// </summary>
-    let abbreviation = _prefix "abbreviation"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Has Wikipedia article</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#hasWikipediaArticle">https://w3id.org/i40/sto#hasWikipediaArticle</seealso>
+    let hasWikipediaArticle = Prefixed_Name(sto, "hasWikipediaArticle") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#formationDate"></see>
+    ///   <para>sto:norm</para>
     /// </summary>
-    let formationDate = _prefix "formationDate"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Norm</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#norm">https://w3id.org/i40/sto#norm</seealso>
+    let norm = Prefixed_Name(sto, "norm") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#hasDBpediaResource"></see>
+    ///   <para>sto:publisher</para>
     /// </summary>
-    let hasDBpediaResource = _prefix "hasDBpediaResource"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Publisher</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#publisher">https://w3id.org/i40/sto#publisher</seealso>
+    let publisher = Prefixed_Name(sto, "publisher") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#hasOfficialWebsite"></see>
+    ///   <para>sto:scope</para>
     /// </summary>
-    let hasOfficialWebsite = _prefix "hasOfficialWebsite"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Scope</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#scope">https://w3id.org/i40/sto#scope</seealso>
+    let scope = Prefixed_Name(sto, "scope") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#hasTag"></see>
+    ///   <para>sto:Standard</para>
     /// </summary>
-    let hasTag = _prefix "hasTag"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Standard</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#Standard">https://w3id.org/i40/sto#Standard</seealso>
+    let Standard = Prefixed_Name(sto, "Standard") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#hasWikidataEntity"></see>
+    ///   <para>sto:license</para>
     /// </summary>
-    let hasWikidataEntity = _prefix "hasWikidataEntity"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>License</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#license">https://w3id.org/i40/sto#license</seealso>
+    let license = Prefixed_Name(sto, "license") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#hasWikipediaArticle"></see>
+    ///   <para>sto:published</para>
     /// </summary>
-    let hasWikipediaArticle = _prefix "hasWikipediaArticle"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Published</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#published">https://w3id.org/i40/sto#published</seealso>
+    let published = Prefixed_Name(sto, "published") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#license"></see>
+    ///   <para>sto:ramiHierarchyLevel</para>
     /// </summary>
-    let license = _prefix "license"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>RAMI Hierarchy Level</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#ramiHierarchyLevel">https://w3id.org/i40/sto#ramiHierarchyLevel</seealso>
+    let ramiHierarchyLevel = Prefixed_Name(sto, "ramiHierarchyLevel") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#motivation"></see>
+    ///   <para>sto:motivation</para>
     /// </summary>
-    let motivation = _prefix "motivation"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>motivation</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#motivation">https://w3id.org/i40/sto#motivation</seealso>
+    let motivation = Prefixed_Name(sto, "motivation") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#name"></see>
+    ///   <para>sto:relatedTo</para>
     /// </summary>
-    let name = _prefix "name"
+    /// <remarks>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Related to</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#relatedTo">https://w3id.org/i40/sto#relatedTo</seealso>
+    let relatedTo = Prefixed_Name(sto, "relatedTo") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#norm"></see>
+    ///   <para>sto:</para>
     /// </summary>
-    let norm = _prefix "norm"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="https://w3id.org/i40/sto#">https://w3id.org/i40/sto#</seealso>
+    let _prefix_iri = Prefixed_Name(sto, "") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#published"></see>
+    ///   <para>sto:SDO</para>
     /// </summary>
-    let published = _prefix "published"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Standard Developing Organization</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#SDO">https://w3id.org/i40/sto#SDO</seealso>
+    let SDO = Prefixed_Name(sto, "SDO") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#publisher"></see>
+    ///   <para>sto:abbreviation</para>
     /// </summary>
-    let publisher = _prefix "publisher"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Abbreviated name</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#abbreviation">https://w3id.org/i40/sto#abbreviation</seealso>
+    let abbreviation = Prefixed_Name(sto, "abbreviation") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#ramiHierarchyLevel"></see>
+    ///   <para>sto:hasDBpediaResource</para>
     /// </summary>
-    let ramiHierarchyLevel = _prefix "ramiHierarchyLevel"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Has DBpedia resource</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#hasDBpediaResource">https://w3id.org/i40/sto#hasDBpediaResource</seealso>
+    let hasDBpediaResource = Prefixed_Name(sto, "hasDBpediaResource") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#relatedTo"></see>
+    ///   <para>sto:hasTag</para>
     /// </summary>
-    let relatedTo = _prefix "relatedTo"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Has Tag</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#hasTag">https://w3id.org/i40/sto#hasTag</seealso>
+    let hasTag = Prefixed_Name(sto, "hasTag") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/i40/sto#scope"></see>
+    ///   <para>sto:hasWikidataEntity</para>
     /// </summary>
-    let scope = _prefix "scope"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Has Wikidata entity</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#hasWikidataEntity">https://w3id.org/i40/sto#hasWikidataEntity</seealso>
+    let hasWikidataEntity = Prefixed_Name(sto, "hasWikidataEntity") |> PrefixedName
+    /// <summary>
+    ///   <para>sto:name</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Name</para></remarks>
+    /// <seealso href="https://w3id.org/i40/sto#name">https://w3id.org/i40/sto#name</seealso>
+    let name = Prefixed_Name(sto, "name") |> PrefixedName

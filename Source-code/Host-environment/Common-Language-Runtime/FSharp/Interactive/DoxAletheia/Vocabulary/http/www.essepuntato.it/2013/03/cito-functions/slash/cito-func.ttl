@@ -1,0 +1,223 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cito-func: <http://www.essepuntato.it/2013/03/cito-functions/>.
+
+_:B95f17fabc36995eecdf7b37c65d78dbc a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (cito-func:NegativeRhetoricalFunction
+                                                                             cito-func:NeutralRhetoricalFunction
+                                                                             cito-func:PositiveRhetoricalFunction).
+<http://purl.org/spar/cito/agreesWith> a cito-func:PositiveRhetoricalFunction,
+                                         <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/cites> a cito-func:NeutralRhetoricalFunction,
+                                    <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/citesAsAuthority> a cito-func:RhetoricalFunction,
+                                               cito-func:FactualFunction,
+                                               <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/citesAsDataSource> a cito-func:FactualFunction,
+                                                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/citesAsEvidence> a cito-func:RhetoricalFunction,
+                                              cito-func:FactualFunction,
+                                              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/citesAsMetadataDocument> a cito-func:FactualFunction,
+                                                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/citesAsPotentialSolution> a cito-func:PositiveRhetoricalFunction,
+                                                       <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/citesAsRecommendedReading> a cito-func:NeutralRhetoricalFunction,
+                                                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/citesAsRelated> a cito-func:NeutralRhetoricalFunction,
+                                             <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/citesAsSourceDocument> a cito-func:FactualFunction,
+                                                    <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/citesForInformation> a cito-func:FactualFunction,
+                                                  <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/compiles> a cito-func:FactualFunction,
+                                       <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/confirms> a cito-func:PositiveRhetoricalFunction,
+                                       <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/containsAssertionFrom> a cito-func:RhetoricalFunction,
+                                                    cito-func:FactualFunction,
+                                                    <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/corrects> a cito-func:NegativeRhetoricalFunction,
+                                       <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/credits> a cito-func:PositiveRhetoricalFunction,
+                                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/critiques> a cito-func:NegativeRhetoricalFunction,
+                                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/derides> a cito-func:NegativeRhetoricalFunction,
+                                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/describes> a cito-func:NeutralRhetoricalFunction,
+                                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/disagreesWith> a cito-func:NegativeRhetoricalFunction,
+                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/discusses> a cito-func:NeutralRhetoricalFunction,
+                                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/disputes> a cito-func:NegativeRhetoricalFunction,
+                                       <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/documents> a cito-func:FactualFunction,
+                                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/extends> a cito-func:NeutralRhetoricalFunction,
+                                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/givesBackgroundTo> a cito-func:RhetoricalFunction,
+                                                cito-func:FactualFunction,
+                                                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/givesSupportTo> a cito-func:RhetoricalFunction,
+                                             cito-func:FactualFunction,
+                                             <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/hasReplyFrom> a cito-func:NeutralRhetoricalFunction,
+                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/includesExcerptFrom> a cito-func:FactualFunction,
+                                                  <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/includesQuotationFrom> a cito-func:FactualFunction,
+                                                    <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isAgreedWithBy> a cito-func:PositiveRhetoricalFunction,
+                                             <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCitedAsAuthorityBy> a cito-func:RhetoricalFunction,
+                                                   cito-func:FactualFunction,
+                                                   <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCitedAsDataSourceBy> a cito-func:FactualFunction,
+                                                    <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCitedAsEvidenceBy> a cito-func:RhetoricalFunction,
+                                                  cito-func:FactualFunction,
+                                                  <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCitedAsMetadataDocumentBy> a cito-func:FactualFunction,
+                                                          <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCitedAsPotentialSolution> a cito-func:PositiveRhetoricalFunction,
+                                                         <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCitedAsRecommendedReading> a cito-func:NeutralRhetoricalFunction,
+                                                          <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCitedAsRelatedBy> a cito-func:NeutralRhetoricalFunction,
+                                                 <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCitedAsSourceDocumentBy> a cito-func:FactualFunction,
+                                                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCitedBy> a cito-func:NeutralRhetoricalFunction,
+                                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCitedForInformationBy> a cito-func:FactualFunction,
+                                                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCompiledBy> a cito-func:FactualFunction,
+                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isConfirmedBy> a cito-func:PositiveRhetoricalFunction,
+                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCorrectedBy> a cito-func:NegativeRhetoricalFunction,
+                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCreditedBy> a cito-func:PositiveRhetoricalFunction,
+                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isCritiquedBy> a cito-func:NegativeRhetoricalFunction,
+                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isDeridedBy> a cito-func:NegativeRhetoricalFunction,
+                                          <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isDescribedBy> a cito-func:NeutralRhetoricalFunction,
+                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isDisagreedWithBy> a cito-func:NegativeRhetoricalFunction,
+                                                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isDiscussedBy> a cito-func:NeutralRhetoricalFunction,
+                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isDisputedBy> a cito-func:NegativeRhetoricalFunction,
+                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isDocumentedBy> a cito-func:FactualFunction,
+                                             <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isExtendedBy> a cito-func:NeutralRhetoricalFunction,
+                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isParodiedBy> a cito-func:NegativeRhetoricalFunction,
+                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isPlagiarizedBy> a cito-func:FactualFunction,
+                                              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isQualifiedBy> a cito-func:NegativeRhetoricalFunction,
+                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isRefutedBy> a cito-func:NegativeRhetoricalFunction,
+                                          <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isRetractedBy> a cito-func:NegativeRhetoricalFunction,
+                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isReviewedBy> a cito-func:NeutralRhetoricalFunction,
+                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isRidiculedBy> a cito-func:NegativeRhetoricalFunction,
+                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isSepculatedOnBy> a cito-func:NeutralRhetoricalFunction,
+                                               <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isSupportedBy> a cito-func:PositiveRhetoricalFunction,
+                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/isUpdatedBy> a cito-func:FactualFunction,
+                                          <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/obtainsBackgroundFrom> a cito-func:RhetoricalFunction,
+                                                    cito-func:FactualFunction,
+                                                    <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/obtainsSupportFrom> a cito-func:RhetoricalFunction,
+                                                 cito-func:FactualFunction,
+                                                 <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/parodies> a cito-func:NegativeRhetoricalFunction,
+                                       <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/plagiarizes> a cito-func:FactualFunction,
+                                          <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/providesAssertionFor> a cito-func:RhetoricalFunction,
+                                                   cito-func:FactualFunction,
+                                                   <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/providesConclusionsFor> a cito-func:FactualFunction,
+                                                     <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/providesDataFor> a cito-func:FactualFunction,
+                                              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/providesExcerptFor> a cito-func:FactualFunction,
+                                                 <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/providesMethodFor> a cito-func:FactualFunction,
+                                                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/providesQuotationFor> a cito-func:FactualFunction,
+                                                   <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/qualifies> a cito-func:NegativeRhetoricalFunction,
+                                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/refutes> a cito-func:NegativeRhetoricalFunction,
+                                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/repliesTo> a cito-func:NeutralRhetoricalFunction,
+                                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/retracts> a cito-func:NegativeRhetoricalFunction,
+                                       <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/reviews> a cito-func:NeutralRhetoricalFunction,
+                                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/ridicules> a cito-func:NegativeRhetoricalFunction,
+                                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/speculatesOn> a cito-func:NeutralRhetoricalFunction,
+                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/supports> a cito-func:PositiveRhetoricalFunction,
+                                       <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/updates> a cito-func:FactualFunction,
+                                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/usesConclusionsFrom> a cito-func:FactualFunction,
+                                                  <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/usesDataFrom> a cito-func:FactualFunction,
+                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/spar/cito/usesMethodIn> a cito-func:FactualFunction,
+                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://www.essepuntato.it/2013/03/cito-functions> <http://purl.org/dc/elements/1.1/creator> "Andrea Nuzzolese",
+                                                                                             "Angelo Di Iorio",
+                                                                                             "Silvio Peroni";
+                                                   <http://purl.org/dc/elements/1.1/date> "2013-05-20";
+                                                   <http://purl.org/dc/elements/1.1/description> """CiTOFunctions is an ontology that provides a classification for citations. In particular, it classifies CiTO properties (each defining a particular citational act) according to their factual (class functions:FactualFunction) and positive/neutral/negative rhetorical functions (classes functions:PositiveRhetoricalFunction, functions:NeuterRhetoricalFunction and functions:NegativeRhetoricalFunction), as proposed by Peroni et al. in: 
+
+Peroni, S., Shotton, D. (2012). FaBiO and CiTO: ontologies for describing bibliographic resources and citations. In Journal of Web Semantics: Science, Services and Agents on the World Wide Web, 17 (December 2012): 33-43. Amsterdam, The Netherlands: Elsevier. DOI: 10.1016/j.websem.2012.08.001"""@en;
+                                                   <http://purl.org/dc/elements/1.1/title> "Functions of Citations";
+                                                   a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                   rdfs:comment "CiTOFunctions is an ontology that classifies each CiTO property according to the factual and rhetorical citational function it refers to."@en;
+                                                   rdfs:label "CiTOFunction";
+                                                   <http://www.w3.org/2002/07/owl#imports> <http://purl.org/spar/cito>;
+                                                   <http://www.w3.org/2002/07/owl#versionInfo> "1.2 - aligned with CiTO 2.5.1"@en.
+cito-func:CitationFunction a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "A class defining the set of citation types having a particular function."@en;
+                           rdfs:label "citation function"@en.
+cito-func:FactualFunction a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "A class defining the set of citation types having a factual function."@en;
+                          rdfs:label "factual function"@en;
+                          rdfs:subClassOf cito-func:CitationFunction.
+cito-func:NegativeRhetoricalFunction a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "A class defining the set of citation types having a negative rhetorical function."@en;
+                                     rdfs:label "negative rhetorical function"@en;
+                                     rdfs:subClassOf cito-func:RhetoricalFunction.
+cito-func:NeutralRhetoricalFunction a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "A class defining the set of citation types having a neutral rhetorical function."@en;
+                                    rdfs:label "neutral rhetorical function"@en;
+                                    rdfs:subClassOf cito-func:RhetoricalFunction.
+cito-func:PositiveRhetoricalFunction a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "A class defining the set of citation types having a positive rhetorical function."@en;
+                                     rdfs:label "positive rhetorical function"@en;
+                                     rdfs:subClassOf cito-func:RhetoricalFunction.
+cito-func:RhetoricalFunction a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "A class defining the set of citation types having a particular rhetorical function."@en;
+                             rdfs:label "rhetorical function"@en;
+                             rdfs:subClassOf cito-func:CitationFunction.

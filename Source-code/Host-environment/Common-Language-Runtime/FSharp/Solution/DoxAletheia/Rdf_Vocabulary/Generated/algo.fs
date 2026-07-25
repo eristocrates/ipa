@@ -1,161 +1,325 @@
 namespace http.securitytoolbox.appspot.com.securityAlgorithms.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module algo =
-    let _namespace_name = "http://securitytoolbox.appspot.com/securityAlgorithms#"
+    let _namespace_iri = Namespace_Iri algo |> NamespaceIRI
+    /// <summary>
+    ///   <para>algo:AES</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>algo:SymmetricAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#AES">http://securitytoolbox.appspot.com/securityAlgorithms#AES</seealso>
+    let AES = Prefixed_Name(algo, "AES") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:hasNSALevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>These can be Typel, Type 2, Type3, or Type4</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#hasNSALevel">http://securitytoolbox.appspot.com/securityAlgorithms#hasNSALevel</seealso>
+    let hasNSALevel = Prefixed_Name(algo, "hasNSALevel") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:SymmetricAlgorithm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#SymmetricAlgorithm">http://securitytoolbox.appspot.com/securityAlgorithms#SymmetricAlgorithm</seealso>
+    let SymmetricAlgorithm = Prefixed_Name(algo, "SymmetricAlgorithm") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:Blowfish</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>algo:SymmetricAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#Blowfish">http://securitytoolbox.appspot.com/securityAlgorithms#Blowfish</seealso>
+    let Blowfish = Prefixed_Name(algo, "Blowfish") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:CAST</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>algo:SymmetricAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#CAST">http://securitytoolbox.appspot.com/securityAlgorithms#CAST</seealso>
+    let CAST = Prefixed_Name(algo, "CAST") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:CBC-MAC</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>algo:MACAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#CBC-MAC">http://securitytoolbox.appspot.com/securityAlgorithms#CBC-MAC</seealso>
+    let CBC_MAC = Prefixed_Name(algo, "CBC-MAC") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:MACAlgorithm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#MACAlgorithm">http://securitytoolbox.appspot.com/securityAlgorithms#MACAlgorithm</seealso>
+    let MACAlgorithm = Prefixed_Name(algo, "MACAlgorithm") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:DiffieHellman</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>algo:KeyExchangeAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#DiffieHellman">http://securitytoolbox.appspot.com/securityAlgorithms#DiffieHellman</seealso>
+    let DiffieHellman = Prefixed_Name(algo, "DiffieHellman") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>algo:KeyExchangeAlgorithm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#KeyExchangeAlgorithm">http://securitytoolbox.appspot.com/securityAlgorithms#KeyExchangeAlgorithm</seealso>
+    let KeyExchangeAlgorithm =
+        Prefixed_Name(algo, "KeyExchangeAlgorithm") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#AES"></see>
+    ///   <para>algo:ECC</para>
     /// </summary>
-    let AES = _prefix "AES"
+    /// <remarks>
+    ///   <para>algo:AsymmetricAlgorithm</para>
+    ///   <para>Elliptic Curve Crypto</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#ECC">http://securitytoolbox.appspot.com/securityAlgorithms#ECC</seealso>
+    let ECC = Prefixed_Name(algo, "ECC") |> PrefixedName
     /// <summary>
-    /// These can be Typel, Type 2, Type3, or Type4
-    /// <see href="http://securitytoolbox.appspot.com/securityAlgorithms#hasNSALevel"></see></summary>
-    let hasNSALevel = _prefix "hasNSALevel"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#SymmetricAlgorithm"></see>
+    ///   <para>algo:RC4</para>
     /// </summary>
-    let SymmetricAlgorithm = _prefix "SymmetricAlgorithm"
+    /// <remarks>
+    ///   <para>algo:SymmetricAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#RC4">http://securitytoolbox.appspot.com/securityAlgorithms#RC4</seealso>
+    let RC4 = Prefixed_Name(algo, "RC4") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#Algorithm"></see>
+    ///   <para>algo:RIPE-MD</para>
     /// </summary>
-    let Algorithm = _prefix "Algorithm"
+    /// <remarks>
+    ///   <para>algo:HashAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#RIPE-MD">http://securitytoolbox.appspot.com/securityAlgorithms#RIPE-MD</seealso>
+    let RIPE_MD = Prefixed_Name(algo, "RIPE-MD") |> PrefixedName
     /// <summary>
-    /// NIST FIPS Standard
-    /// <see href="http://securitytoolbox.appspot.com/securityAlgorithms#isNISTStandard"></see></summary>
-    let isNISTStandard = _prefix "isNISTStandard"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#AsymmetricAlgorithm"></see>
+    ///   <para>algo:RSA</para>
     /// </summary>
-    let AsymmetricAlgorithm = _prefix "AsymmetricAlgorithm"
+    /// <remarks>
+    ///   <para>algo:AsymmetricAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#RSA">http://securitytoolbox.appspot.com/securityAlgorithms#RSA</seealso>
+    let RSA = Prefixed_Name(algo, "RSA") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#EncryptionAlgorithm"></see>
+    ///   <para>algo:SHA-1</para>
     /// </summary>
-    let EncryptionAlgorithm = _prefix "EncryptionAlgorithm"
+    /// <remarks>
+    ///   <para>algo:HashAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#SHA-1">http://securitytoolbox.appspot.com/securityAlgorithms#SHA-1</seealso>
+    let SHA_1 = Prefixed_Name(algo, "SHA-1") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#Blowfish"></see>
+    ///   <para>algo:SynmmetricAlgorithm</para>
     /// </summary>
-    let Blowfish = _prefix "Blowfish"
+    /// <remarks></remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#SynmmetricAlgorithm">http://securitytoolbox.appspot.com/securityAlgorithms#SynmmetricAlgorithm</seealso>
+    let SynmmetricAlgorithm = Prefixed_Name(algo, "SynmmetricAlgorithm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#CAST"></see>
+    ///   <para>algo:Algorithm</para>
     /// </summary>
-    let CAST = _prefix "CAST"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#Algorithm">http://securitytoolbox.appspot.com/securityAlgorithms#Algorithm</seealso>
+    let Algorithm = Prefixed_Name(algo, "Algorithm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#CBC-MAC"></see>
+    ///   <para>algo:CRAYON</para>
     /// </summary>
-    let ``CBC-MAC`` = _prefix "CBC-MAC"
+    /// <remarks>
+    ///   <para>algo:SymmetricAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#CRAYON">http://securitytoolbox.appspot.com/securityAlgorithms#CRAYON</seealso>
+    let CRAYON = Prefixed_Name(algo, "CRAYON") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#MACAlgorithm"></see>
+    ///   <para>algo:ChecksumAlgorithm</para>
     /// </summary>
-    let MACAlgorithm = _prefix "MACAlgorithm"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#ChecksumAlgorithm">http://securitytoolbox.appspot.com/securityAlgorithms#ChecksumAlgorithm</seealso>
+    let ChecksumAlgorithm = Prefixed_Name(algo, "ChecksumAlgorithm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#CRAYON"></see>
+    ///   <para>algo:keyLength</para>
     /// </summary>
-    let CRAYON = _prefix "CRAYON"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#keyLength">http://securitytoolbox.appspot.com/securityAlgorithms#keyLength</seealso>
+    let keyLength = Prefixed_Name(algo, "keyLength") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#CRC-16"></see>
+    ///   <para>algo:SignatureAlgorithm</para>
     /// </summary>
-    let ``CRC-16`` = _prefix "CRC-16"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#SignatureAlgorithm">http://securitytoolbox.appspot.com/securityAlgorithms#SignatureAlgorithm</seealso>
+    let SignatureAlgorithm = Prefixed_Name(algo, "SignatureAlgorithm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#ChecksumAlgorithm"></see>
+    ///   <para>algo:SHA-256</para>
     /// </summary>
-    let ChecksumAlgorithm = _prefix "ChecksumAlgorithm"
+    /// <remarks>
+    ///   <para>algo:HashAlgorithm</para>
+    ///   <para>usually used with AES</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#SHA-256">http://securitytoolbox.appspot.com/securityAlgorithms#SHA-256</seealso>
+    let SHA_256 = Prefixed_Name(algo, "SHA-256") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#CRC-32"></see>
+    ///   <para>algo:CRC-32</para>
     /// </summary>
-    let ``CRC-32`` = _prefix "CRC-32"
+    /// <remarks>
+    ///   <para>algo:ChecksumAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#CRC-32">http://securitytoolbox.appspot.com/securityAlgorithms#CRC-32</seealso>
+    let CRC_32 = Prefixed_Name(algo, "CRC-32") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#CRC-8"></see>
+    ///   <para>algo:HMAC</para>
     /// </summary>
-    let ``CRC-8`` = _prefix "CRC-8"
+    /// <remarks>
+    ///   <para>algo:MACAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#HMAC">http://securitytoolbox.appspot.com/securityAlgorithms#HMAC</seealso>
+    let HMAC = Prefixed_Name(algo, "HMAC") |> PrefixedName
     /// <summary>
-    /// Refers only to single DES
-    /// <see href="http://securitytoolbox.appspot.com/securityAlgorithms#DES"></see></summary>
-    let DES = _prefix "DES"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#keyLength"></see>
+    ///   <para>algo:KEA</para>
     /// </summary>
-    let keyLength = _prefix "keyLength"
+    /// <remarks>
+    ///   <para>algo:KeyExchangeAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#KEA">http://securitytoolbox.appspot.com/securityAlgorithms#KEA</seealso>
+    let KEA = Prefixed_Name(algo, "KEA") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#DiffieHellman"></see>
+    ///   <para>algo:Oakley</para>
     /// </summary>
-    let DiffieHellman = _prefix "DiffieHellman"
+    /// <remarks>
+    ///   <para>algo:KeyExchangeAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#Oakley">http://securitytoolbox.appspot.com/securityAlgorithms#Oakley</seealso>
+    let Oakley = Prefixed_Name(algo, "Oakley") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#KeyExchangeAlgorithm"></see>
+    ///   <para>algo:TripleDES</para>
     /// </summary>
-    let KeyExchangeAlgorithm = _prefix "KeyExchangeAlgorithm"
+    /// <remarks>
+    ///   <para>algo:SymmetricAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#TripleDES">http://securitytoolbox.appspot.com/securityAlgorithms#TripleDES</seealso>
+    let TripleDES = Prefixed_Name(algo, "TripleDES") |> PrefixedName
     /// <summary>
-    /// Elliptic Curve Crypto
-    /// <see href="http://securitytoolbox.appspot.com/securityAlgorithms#ECC"></see></summary>
-    let ECC = _prefix "ECC"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#HMAC"></see>
+    ///   <para>algo:Skipjack</para>
     /// </summary>
-    let HMAC = _prefix "HMAC"
+    /// <remarks>
+    ///   <para>algo:SymmetricAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#Skipjack">http://securitytoolbox.appspot.com/securityAlgorithms#Skipjack</seealso>
+    let Skipjack = Prefixed_Name(algo, "Skipjack") |> PrefixedName
     /// <summary>
-    ///
+    ///   <para>algo:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>voaf:Vocabulary</para>
+    ///   <para>owl:Ontology</para>
+    ///   <para> An ontology to describe various cryptographic algorithms</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#">http://securitytoolbox.appspot.com/securityAlgorithms#</seealso>
+    let _prefix_iri = Prefixed_Name(algo, "") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:isNISTStandard</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>NIST FIPS Standard</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#isNISTStandard">http://securitytoolbox.appspot.com/securityAlgorithms#isNISTStandard</seealso>
+    let isNISTStandard = Prefixed_Name(algo, "isNISTStandard") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:AsymmetricAlgorithm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#AsymmetricAlgorithm">http://securitytoolbox.appspot.com/securityAlgorithms#AsymmetricAlgorithm</seealso>
+    let AsymmetricAlgorithm = Prefixed_Name(algo, "AsymmetricAlgorithm") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:EncryptionAlgorithm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#EncryptionAlgorithm">http://securitytoolbox.appspot.com/securityAlgorithms#EncryptionAlgorithm</seealso>
+    let EncryptionAlgorithm = Prefixed_Name(algo, "EncryptionAlgorithm") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:CRC-16</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>algo:ChecksumAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#CRC-16">http://securitytoolbox.appspot.com/securityAlgorithms#CRC-16</seealso>
+    let CRC_16 = Prefixed_Name(algo, "CRC-16") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:CRC-8</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>algo:ChecksumAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#CRC-8">http://securitytoolbox.appspot.com/securityAlgorithms#CRC-8</seealso>
+    let CRC_8 = Prefixed_Name(algo, "CRC-8") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:DES</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>algo:SymmetricAlgorithm</para>
+    ///   <para>Refers only to single DES</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#DES">http://securitytoolbox.appspot.com/securityAlgorithms#DES</seealso>
+    let DES = Prefixed_Name(algo, "DES") |> PrefixedName
+    /// <summary>
+    ///   <para>algo:HashAlgorithm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>
     /// Key dependent function; useful in providing user authentication without a
     /// secret key
-    ///
-    /// <see href="http://securitytoolbox.appspot.com/securityAlgorithms#HashAlgorithm"></see></summary>
-    let HashAlgorithm = _prefix "HashAlgorithm"
+    /// </para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#HashAlgorithm">http://securitytoolbox.appspot.com/securityAlgorithms#HashAlgorithm</seealso>
+    let HashAlgorithm = Prefixed_Name(algo, "HashAlgorithm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#SignatureAlgorithm"></see>
+    ///   <para>algo:MD4</para>
     /// </summary>
-    let SignatureAlgorithm = _prefix "SignatureAlgorithm"
+    /// <remarks>
+    ///   <para>algo:HashAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#MD4">http://securitytoolbox.appspot.com/securityAlgorithms#MD4</seealso>
+    let MD4 = Prefixed_Name(algo, "MD4") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#KEA"></see>
+    ///   <para>algo:MD5</para>
     /// </summary>
-    let KEA = _prefix "KEA"
+    /// <remarks>
+    ///   <para>algo:HashAlgorithm</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#MD5">http://securitytoolbox.appspot.com/securityAlgorithms#MD5</seealso>
+    let MD5 = Prefixed_Name(algo, "MD5") |> PrefixedName
     /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#MD4"></see>
+    ///   <para>algo:modeOfOperation</para>
     /// </summary>
-    let MD4 = _prefix "MD4"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#MD5"></see>
-    /// </summary>
-    let MD5 = _prefix "MD5"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#Oakley"></see>
-    /// </summary>
-    let Oakley = _prefix "Oakley"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#RC4"></see>
-    /// </summary>
-    let RC4 = _prefix "RC4"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#RIPE-MD"></see>
-    /// </summary>
-    let ``RIPE-MD`` = _prefix "RIPE-MD"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#RSA"></see>
-    /// </summary>
-    let RSA = _prefix "RSA"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#SHA-1"></see>
-    /// </summary>
-    let ``SHA-1`` = _prefix "SHA-1"
-    /// <summary>
-    /// usually used with AES
-    /// <see href="http://securitytoolbox.appspot.com/securityAlgorithms#SHA-256"></see></summary>
-    let ``SHA-256`` = _prefix "SHA-256"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#Skipjack"></see>
-    /// </summary>
-    let Skipjack = _prefix "Skipjack"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#TripleDES"></see>
-    /// </summary>
-    let TripleDES = _prefix "TripleDES"
-    /// <summary>
-    ///   <see href="http://securitytoolbox.appspot.com/securityAlgorithms#SynmmetricAlgorithm"></see>
-    /// </summary>
-    let SynmmetricAlgorithm = _prefix "SynmmetricAlgorithm"
-    /// <summary>
-    /// Can be CBC, ECB, OFB, CFB, or Counter
-    /// <see href="http://securitytoolbox.appspot.com/securityAlgorithms#modeOfOperation"></see></summary>
-    let modeOfOperation = _prefix "modeOfOperation"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Can be CBC, ECB, OFB, CFB, or Counter</para>
+    /// </remarks>
+    /// <seealso href="http://securitytoolbox.appspot.com/securityAlgorithms#modeOfOperation">http://securitytoolbox.appspot.com/securityAlgorithms#modeOfOperation</seealso>
+    let modeOfOperation = Prefixed_Name(algo, "modeOfOperation") |> PrefixedName

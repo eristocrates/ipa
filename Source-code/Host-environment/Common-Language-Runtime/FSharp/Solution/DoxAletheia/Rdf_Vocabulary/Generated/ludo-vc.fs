@@ -1,70 +1,166 @@
 namespace http.ns.inria.fr.ludo.v1.virtualcontext.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ludo_vc =
-    let _namespace_name = "http://ns.inria.fr/ludo/v1/virtualcontext#"
+    let _namespace_iri = Namespace_Iri ludo_vc |> NamespaceIRI
+    /// <summary>
+    ///   <para>ludo-vc:GameLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Represents the current (latest) game level in which the player is in the serious game</para>
+    /// labels<para>Game level</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#GameLevel">http://ns.inria.fr/ludo/v1/virtualcontext#GameLevel</seealso>
+    let GameLevel = Prefixed_Name(ludo_vc, "GameLevel") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>ludo-vc:nearbyPlayerDistance</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Nearby Player Distance in meters</para>
+    /// labels<para>Nearby Player Distance</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#nearbyPlayerDistance">http://ns.inria.fr/ludo/v1/virtualcontext#nearbyPlayerDistance</seealso>
+    let nearbyPlayerDistance =
+        Prefixed_Name(ludo_vc, "nearbyPlayerDistance") |> PrefixedName
 
     /// <summary>
-    /// Represents the current (latest) game level in which the player is in the serious game
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#GameLevel"></see></summary>
-    let GameLevel = _prefix "GameLevel"
+    ///   <para>ludo-vc:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>Given the increasing amount of structured data published on the Web, many possibilities are open for creating new types of games that use resources from the Web of Data. In particular, if we consider the subcategory of Serious Games in which the object of the game is to educate the user through the interactive discovery of real-life concepts (associated to Semantic Web resources), the inclusion of a semantic representation of the user profile and his contextual information becomes an important element to recommend the user more accurate concepts. Ludo is an ontology that allows the creation of Serious Games with those characteristics.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#">http://ns.inria.fr/ludo/v1/virtualcontext#</seealso>
+    let _prefix_iri = Prefixed_Name(ludo_vc, "") |> PrefixedName
     /// <summary>
-    /// It represents the realation of proximity between two players
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#NearbyPlayer"></see></summary>
-    let NearbyPlayer = _prefix "NearbyPlayer"
+    ///   <para>ludo-vc:NearbyPlayer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It represents the realation of proximity between two players</para>
+    /// labels<para>Nearby Player</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#NearbyPlayer">http://ns.inria.fr/ludo/v1/virtualcontext#NearbyPlayer</seealso>
+    let NearbyPlayer = Prefixed_Name(ludo_vc, "NearbyPlayer") |> PrefixedName
     /// <summary>
-    /// Point of interest
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#POI"></see></summary>
-    let POI = _prefix "POI"
+    ///   <para>ludo-vc:POI</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Point of interest</para>
+    /// labels<para>POI</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#POI">http://ns.inria.fr/ludo/v1/virtualcontext#POI</seealso>
+    let POI = Prefixed_Name(ludo_vc, "POI") |> PrefixedName
     /// <summary>
-    /// Represents the virtual activity that the player is performing inside the game. Such as learning, exploring.
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#VirtualActivity"></see></summary>
-    let VirtualActivity = _prefix "VirtualActivity"
+    ///   <para>ludo-vc:VirtualActivity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Represents the virtual activity that the player is performing inside the game. Such as learning, exploring.</para>
+    /// labels<para>Virtual activity</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#VirtualActivity">http://ns.inria.fr/ludo/v1/virtualcontext#VirtualActivity</seealso>
+    let VirtualActivity = Prefixed_Name(ludo_vc, "VirtualActivity") |> PrefixedName
     /// <summary>
-    /// Represents the relation between a real life location and a location inside the game
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#VirtualLocation"></see></summary>
-    let VirtualLocation = _prefix "VirtualLocation"
+    ///   <para>ludo-vc:VirtualLocation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Represents the relation between a real life location and a location inside the game</para>
+    /// labels<para>Virtual location</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#VirtualLocation">http://ns.inria.fr/ludo/v1/virtualcontext#VirtualLocation</seealso>
+    let VirtualLocation = Prefixed_Name(ludo_vc, "VirtualLocation") |> PrefixedName
+
     /// <summary>
-    /// The current level of the game in which the Gameplayer is
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#hasCurrentGameLevel"></see></summary>
-    let hasCurrentGameLevel = _prefix "hasCurrentGameLevel"
+    ///   <para>ludo-vc:hasCurrentGameLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The current level of the game in which the Gameplayer is</para>
+    /// labels<para>Has current game level</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#hasCurrentGameLevel">http://ns.inria.fr/ludo/v1/virtualcontext#hasCurrentGameLevel</seealso>
+    let hasCurrentGameLevel =
+        Prefixed_Name(ludo_vc, "hasCurrentGameLevel") |> PrefixedName
+
     /// <summary>
-    /// Given the current virtual location of a GamePlayer, it defines the corresponding POI in real life
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#hasCurrentPOI"></see></summary>
-    let hasCurrentPOI = _prefix "hasCurrentPOI"
+    ///   <para>ludo-vc:hasCurrentPOI</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Given the current virtual location of a GamePlayer, it defines the corresponding POI in real life</para>
+    /// labels<para>Has current POI</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#hasCurrentPOI">http://ns.inria.fr/ludo/v1/virtualcontext#hasCurrentPOI</seealso>
+    let hasCurrentPOI = Prefixed_Name(ludo_vc, "hasCurrentPOI") |> PrefixedName
+
     /// <summary>
-    /// The currrent VirtualAcitivity of a GamePlayer
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#hasCurrentVirtualActivity"></see></summary>
-    let hasCurrentVirtualActivity = _prefix "hasCurrentVirtualActivity"
+    ///   <para>ludo-vc:hasCurrentVirtualActivity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The currrent VirtualAcitivity of a GamePlayer</para>
+    /// labels<para>Has currrent VirtualAcitivity</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#hasCurrentVirtualActivity">http://ns.inria.fr/ludo/v1/virtualcontext#hasCurrentVirtualActivity</seealso>
+    let hasCurrentVirtualActivity =
+        Prefixed_Name(ludo_vc, "hasCurrentVirtualActivity") |> PrefixedName
+
     /// <summary>
-    /// Nearby player distance
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#hasDistance"></see></summary>
-    let hasDistance = _prefix "hasDistance"
+    ///   <para>ludo-vc:hasDistance</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Nearby player distance</para>
+    /// labels<para>Has distance</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#hasDistance">http://ns.inria.fr/ludo/v1/virtualcontext#hasDistance</seealso>
+    let hasDistance = Prefixed_Name(ludo_vc, "hasDistance") |> PrefixedName
     /// <summary>
-    /// The label of the game level
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#hasGameLevelLabel"></see></summary>
-    let hasGameLevelLabel = _prefix "hasGameLevelLabel"
+    ///   <para>ludo-vc:hasGameLevelLabel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The label of the game level</para>
+    /// labels<para>Has game level label</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#hasGameLevelLabel">http://ns.inria.fr/ludo/v1/virtualcontext#hasGameLevelLabel</seealso>
+    let hasGameLevelLabel = Prefixed_Name(ludo_vc, "hasGameLevelLabel") |> PrefixedName
+
     /// <summary>
-    /// The numeric label of the game level
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#hasGameLevelNumber"></see></summary>
-    let hasGameLevelNumber = _prefix "hasGameLevelNumber"
+    ///   <para>ludo-vc:hasGameLevelNumber</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The numeric label of the game level</para>
+    /// labels<para>Has game level number</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#hasGameLevelNumber">http://ns.inria.fr/ludo/v1/virtualcontext#hasGameLevelNumber</seealso>
+    let hasGameLevelNumber =
+        Prefixed_Name(ludo_vc, "hasGameLevelNumber") |> PrefixedName
+
     /// <summary>
-    /// The category of the POI
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#hasPOICategory"></see></summary>
-    let hasPOICategory = _prefix "hasPOICategory"
+    ///   <para>ludo-vc:hasPOICategory</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The category of the POI</para>
+    /// labels<para>Has POI category</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#hasPOICategory">http://ns.inria.fr/ludo/v1/virtualcontext#hasPOICategory</seealso>
+    let hasPOICategory = Prefixed_Name(ludo_vc, "hasPOICategory") |> PrefixedName
     /// <summary>
-    /// A label with the name of the POI
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#hasPOILabel"></see></summary>
-    let hasPOILabel = _prefix "hasPOILabel"
+    ///   <para>ludo-vc:hasPOILabel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A label with the name of the POI</para>
+    /// labels<para>Has POI label</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#hasPOILabel">http://ns.inria.fr/ludo/v1/virtualcontext#hasPOILabel</seealso>
+    let hasPOILabel = Prefixed_Name(ludo_vc, "hasPOILabel") |> PrefixedName
+
     /// <summary>
-    /// Virtual Activity
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#hasVirtualActivityLabel"></see></summary>
-    let hasVirtualActivityLabel = _prefix "hasVirtualActivityLabel"
-    /// <summary>
-    /// Nearby Player Distance in meters
-    /// <see href="http://ns.inria.fr/ludo/v1/virtualcontext#nearbyPlayerDistance"></see></summary>
-    let nearbyPlayerDistance = _prefix "nearbyPlayerDistance"
+    ///   <para>ludo-vc:hasVirtualActivityLabel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Virtual Activity</para>
+    /// labels<para>Virtual Activity</para></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext#hasVirtualActivityLabel">http://ns.inria.fr/ludo/v1/virtualcontext#hasVirtualActivityLabel</seealso>
+    let hasVirtualActivityLabel =
+        Prefixed_Name(ludo_vc, "hasVirtualActivityLabel") |> PrefixedName

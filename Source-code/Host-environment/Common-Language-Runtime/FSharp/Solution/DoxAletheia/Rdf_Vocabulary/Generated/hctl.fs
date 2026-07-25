@@ -1,61 +1,131 @@
 namespace https.www.w3.org._2019.wot.hypermedia.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module hctl =
-    let _namespace_name = "https://www.w3.org/2019/wot/hypermedia#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri hctl |> NamespaceIRI
     /// <summary>
-    /// Communication metadata describing the expected response message.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#ExpectedResponse"></see></summary>
-    let ExpectedResponse = _prefix "ExpectedResponse"
+    ///   <para>hctl:ExpectedResponse</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>owl:Class</para>
+    ///   <para>Communication metadata describing the expected response message.</para>
+    /// labels<para>ExpectedResponse</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#ExpectedResponse">https://www.w3.org/2019/wot/hypermedia#ExpectedResponse</seealso>
+    let ExpectedResponse = Prefixed_Name(hctl, "ExpectedResponse") |> PrefixedName
     /// <summary>
-    /// A form can be viewed as a statement of "To perform an &lt;b&gt;&lt;em&gt;operation type&lt;/em&gt;&lt;/b&gt; operation on &lt;b&gt;&lt;em&gt;form context&lt;/b&gt;&lt;/em&gt;, make a &lt;b&gt;&lt;em&gt;request method&lt;/b&gt;&lt;/em&gt; request to &lt;b&gt;&lt;em&gt;submission target&lt;/b&gt;&lt;/em&gt;" where the optional &lt;b&gt;&lt;em&gt;form fields&lt;/b&gt;&lt;/em&gt; may further describe the required request. In Thing Descriptions, the &lt;b&gt;&lt;em&gt;form context&lt;/b&gt;&lt;/em&gt; is the surrounding Object, such as Properties, Actions, and Events or the Thing itself for meta-interactions.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#Form"></see></summary>
-    let Form = _prefix "Form"
+    ///   <para>hctl:Link</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>owl:Class</para>
+    ///   <para>A link can be viewed as a statement of the form "&lt;b&gt;&lt;em&gt;link context&lt;/em&gt;&lt;/b&gt;  has a &lt;b&gt;&lt;em&gt;relation type&lt;/em&gt;&lt;/b&gt; resource at &lt;b&gt;&lt;em&gt;link target&lt;/em&gt;&lt;/b&gt;", where the optional &lt;b&gt;&lt;em&gt;target attributes&lt;/em&gt;&lt;/b&gt;  may further describe the resource.</para>
+    /// labels<para>Link</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#Link">https://www.w3.org/2019/wot/hypermedia#Link</seealso>
+    let Link = Prefixed_Name(hctl, "Link") |> PrefixedName
     /// <summary>
-    /// A link can be viewed as a statement of the form "&lt;b&gt;&lt;em&gt;link context&lt;/em&gt;&lt;/b&gt;  has a &lt;b&gt;&lt;em&gt;relation type&lt;/em&gt;&lt;/b&gt; resource at &lt;b&gt;&lt;em&gt;link target&lt;/em&gt;&lt;/b&gt;", where the optional &lt;b&gt;&lt;em&gt;target attributes&lt;/em&gt;&lt;/b&gt;  may further describe the resource.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#Link"></see></summary>
-    let Link = _prefix "Link"
-    /// <summary>
-    /// Content coding values indicate an encoding transformation that has been or can be applied to a representation. Content codings are primarily used to allow a representation to be compressed or otherwise usefully transformed without losing the identity of its underlying media type and without loss of information. Examples of content coding include "gzip", "deflate", etc.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#forContentCoding"></see></summary>
-    let forContentCoding = _prefix "forContentCoding"
-    /// <summary>
-    /// Assign a content type based on a media type [[IANA-MEDIA-TYPES]] (e.g., 'text/plain') and potential parameters (e.g., 'charset=utf-8') for the media type.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#forContentType"></see></summary>
-    let forContentType = _prefix "forContentType"
-    /// <summary>
-    /// Indicates the exact mechanism by which an interaction will be accomplished for a given protocol when there are multiple options.
+    ///   <para>hctl:forSubProtocol</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Indicates the exact mechanism by which an interaction will be accomplished for a given protocol when there are multiple options.
     ///
-    /// For example, for HTTP and Events, it indicates which of several available mechanisms should be used for asynchronous notifications such as long polling, websub (also see https://www.w3.org/TR/websub/), or server sent events (also see https://www.w3.org/TR/eventsource/). Please note that there is no restriction on the sub-protocol selection and other mechanisms can also be announced by this subprotocol term.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#forSubProtocol"></see></summary>
-    let forSubProtocol = _prefix "forSubProtocol"
+    /// For example, for HTTP and Events, it indicates which of several available mechanisms should be used for asynchronous notifications such as long polling, websub (also see https://www.w3.org/TR/websub/), or server sent events (also see https://www.w3.org/TR/eventsource/). Please note that there is no restriction on the sub-protocol selection and other mechanisms can also be announced by this subprotocol term.</para>
+    /// labels<para>forSubProtocol</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#forSubProtocol">https://www.w3.org/2019/wot/hypermedia#forSubProtocol</seealso>
+    let forSubProtocol = Prefixed_Name(hctl, "forSubProtocol") |> PrefixedName
     /// <summary>
-    /// By default, the context, or anchor, of a link conveyed in the Link header field is the URL of the representation it is associated with, as defined in RFC7231, Section 3.1.4.1, and is serialized as a URI.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#hasAnchor"></see></summary>
-    let hasAnchor = _prefix "hasAnchor"
+    ///   <para>hctl:hasTarget</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>target IRI of a link or submission target of a form.</para>
+    /// labels<para>hasTarget</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#hasTarget">https://www.w3.org/2019/wot/hypermedia#hasTarget</seealso>
+    let hasTarget = Prefixed_Name(hctl, "hasTarget") |> PrefixedName
     /// <summary>
-    /// Indicates the semantic intention of performing the operation(s) described by the form.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#hasOperationType"></see></summary>
-    let hasOperationType = _prefix "hasOperationType"
+    ///   <para>hctl:forContentCoding</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Content coding values indicate an encoding transformation that has been or can be applied to a representation. Content codings are primarily used to allow a representation to be compressed or otherwise usefully transformed without losing the identity of its underlying media type and without loss of information. Examples of content coding include "gzip", "deflate", etc. </para>
+    /// labels<para>forContentCoding</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#forContentCoding">https://www.w3.org/2019/wot/hypermedia#forContentCoding</seealso>
+    let forContentCoding = Prefixed_Name(hctl, "forContentCoding") |> PrefixedName
     /// <summary>
-    /// A link relation type identifies the semantics of a link.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#hasRelationType"></see></summary>
-    let hasRelationType = _prefix "hasRelationType"
+    ///   <para>hctl:hasAnchor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>By default, the context, or anchor, of a link conveyed in the Link header field is the URL of the representation it is associated with, as defined in RFC7231, Section 3.1.4.1, and is serialized as a URI.</para>
+    /// labels<para>hasAnchor</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#hasAnchor">https://www.w3.org/2019/wot/hypermedia#hasAnchor</seealso>
+    let hasAnchor = Prefixed_Name(hctl, "hasAnchor") |> PrefixedName
     /// <summary>
-    /// target IRI of a link or submission target of a form.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#hasTarget"></see></summary>
-    let hasTarget = _prefix "hasTarget"
+    ///   <para>hctl:hasOperationType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates the semantic intention of performing the operation(s) described by the form.</para>
+    /// labels<para>hasOperationType</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#hasOperationType">https://www.w3.org/2019/wot/hypermedia#hasOperationType</seealso>
+    let hasOperationType = Prefixed_Name(hctl, "hasOperationType") |> PrefixedName
     /// <summary>
-    /// Target attribute providing a hint indicating what the media type [IANA-MEDIA-TYPES] of the result of dereferencing the link should be.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#hintsAtMediaType"></see></summary>
-    let hintsAtMediaType = _prefix "hintsAtMediaType"
+    ///   <para>hctl:returns</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This optional term can be used if, e.g., the output communication metadata differ from input metdata (e.g., output contentType differ from the
+    ///      input contentType). The response name contains metadata that is only valid for the reponse messages.</para>
+    /// labels<para>returns</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#returns">https://www.w3.org/2019/wot/hypermedia#returns</seealso>
+    let returns = Prefixed_Name(hctl, "returns") |> PrefixedName
     /// <summary>
-    /// This optional term can be used if, e.g., the output communication metadata differ from input metdata (e.g., output contentType differ from the
-    ///      input contentType). The response name contains metadata that is only valid for the reponse messages.
-    /// <see href="https://www.w3.org/2019/wot/hypermedia#returns"></see></summary>
-    let returns = _prefix "returns"
+    ///   <para>hctl:hasRelationType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A link relation type identifies the semantics of a link.</para>
+    /// labels<para>hasRelationType</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#hasRelationType">https://www.w3.org/2019/wot/hypermedia#hasRelationType</seealso>
+    let hasRelationType = Prefixed_Name(hctl, "hasRelationType") |> PrefixedName
+    /// <summary>
+    ///   <para>hctl:hintsAtMediaType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Target attribute providing a hint indicating what the media type [IANA-MEDIA-TYPES] of the result of dereferencing the link should be.</para>
+    /// labels<para>hintsAtMediaType</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#hintsAtMediaType">https://www.w3.org/2019/wot/hypermedia#hintsAtMediaType</seealso>
+    let hintsAtMediaType = Prefixed_Name(hctl, "hintsAtMediaType") |> PrefixedName
+    /// <summary>
+    ///   <para>hctl:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>Ontology designed to provide an RDF representation of Hypermedia Controls, in particular links and forms.</para>
+    /// labels<para>Hypermedia Controls Ontology</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#">https://www.w3.org/2019/wot/hypermedia#</seealso>
+    let _prefix_iri = Prefixed_Name(hctl, "") |> PrefixedName
+    /// <summary>
+    ///   <para>hctl:Form</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>owl:Class</para>
+    ///   <para>A form can be viewed as a statement of "To perform an &lt;b&gt;&lt;em&gt;operation type&lt;/em&gt;&lt;/b&gt; operation on &lt;b&gt;&lt;em&gt;form context&lt;/b&gt;&lt;/em&gt;, make a &lt;b&gt;&lt;em&gt;request method&lt;/b&gt;&lt;/em&gt; request to &lt;b&gt;&lt;em&gt;submission target&lt;/b&gt;&lt;/em&gt;" where the optional &lt;b&gt;&lt;em&gt;form fields&lt;/b&gt;&lt;/em&gt; may further describe the required request. In Thing Descriptions, the &lt;b&gt;&lt;em&gt;form context&lt;/b&gt;&lt;/em&gt; is the surrounding Object, such as Properties, Actions, and Events or the Thing itself for meta-interactions.</para>
+    /// labels<para>Form</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#Form">https://www.w3.org/2019/wot/hypermedia#Form</seealso>
+    let Form = Prefixed_Name(hctl, "Form") |> PrefixedName
+    /// <summary>
+    ///   <para>hctl:forContentType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Assign a content type based on a media type [[IANA-MEDIA-TYPES]] (e.g., 'text/plain') and potential parameters (e.g., 'charset=utf-8') for the media type.</para>
+    /// labels<para>forContentType</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/hypermedia#forContentType">https://www.w3.org/2019/wot/hypermedia#forContentType</seealso>
+    let forContentType = Prefixed_Name(hctl, "forContentType") |> PrefixedName

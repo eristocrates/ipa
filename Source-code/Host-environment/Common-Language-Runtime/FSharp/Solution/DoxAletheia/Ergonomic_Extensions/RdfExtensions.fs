@@ -17,6 +17,50 @@ open VDS.RDF.Storage
 open VDS.RDF.Parsing.Tokens
 open VDS.RDF.Writing
 
+open PrettierNaming
+
+
+let rdfsharp_namespace (iri:string) = 
+    let uri = Uri(iri)
+    let terminal = 
+        match iri[iri.Length - 1] with 
+        | '#' -> "hash"
+        | '/' -> "slash"
+        | _ -> "bare"
+    let segments = 
+        Array.concat [|
+            [|uri.Scheme|]
+            (uri.Host.Split("."))
+            (uri.Segments
+            |> Array.collect (fun segment -> segment.Split(".")))
+            [|terminal|]
+
+        |]
+    segments
+            |> Array.map (fun segment -> segment.Replace("/","").Replace("-","_").Replace("~","_"))
+            |> Array.filter (fun segment -> segment <> "")
+            |> Array.map (fun segment -> 
+                let lead = 
+                    match segment with 
+                    | _ when Char.IsAsciiDigit segment[0] -> "_"
+                    |_ when FSharp_Keywords.keyword_names.Contains segment -> "_"
+                    | _ -> ""
+                lead + segment
+            )
+            |> String.concat "."
+
+
+
+
+
+
+
+
+
+
+
+
+
 let private is_high_surrogate_code_unit value = value >= 0xD800 && value <= 0xDBFF
 
 let private is_low_surrogate_code_unit value = value >= 0xDC00 && value <= 0xDFFF

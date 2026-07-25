@@ -20,7 +20,6 @@
 	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ergonomic_Extensions\Ergonomic_Extensions.fsproj" />
-    <ProjectReference Include="..\Namespace_Prefixes\Namespace_Prefixes.fsproj" />
   </ItemGroup>
 
 </Project>

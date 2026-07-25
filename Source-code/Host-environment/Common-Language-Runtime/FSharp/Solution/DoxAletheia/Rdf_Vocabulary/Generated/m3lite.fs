@@ -1,1739 +1,4096 @@
 namespace http.purl.org.iot.vocab.m3_lite.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module m3lite =
-    let _namespace_name = "http://purl.org/iot/vocab/m3-lite#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
-    /// <summary>
-    /// The ABS (Anti-lock Braking System) receives information from ABS computer to control the pressure on the breaks, This helps the wheels not to get locked up, it adjust the break pressure and prevents the wheels from locking. (Definition Source Google).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ABS"></see></summary>
-    let ABS = _prefix "ABS"
-    /// <summary>
-    /// Transportation, Smart Car/Vehicle, Intelligent Transport System (ITS) as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Transportation"></see></summary>
-    let Transportation = _prefix "Transportation"
-    /// <summary>
-    /// This property is used to classify devices by DomainOfInterest (e.g., blood pressure sensor is used in healthcare).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#hasDomainOfInterest"></see></summary>
-    let hasDomainOfInterest = _prefix "hasDomainOfInterest"
-    /// <summary>
-    /// Initial E-UTRAN Radio Access Bearer establishment success rate.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AccInitialERabEstabSuccRate"></see></summary>
-    let AccInitialERabEstabSuccRate = _prefix "AccInitialERabEstabSuccRate"
-    /// <summary>
-    /// Communication related properties.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Communication"></see></summary>
-    let Communication = _prefix "Communication"
-    /// <summary>
-    /// Initial E-UTRAN Radio Access Bearer setup success rate.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AccInitialERabSetupSuccRate"></see></summary>
-    let AccInitialERabSetupSuccRate = _prefix "AccInitialERabSetupSuccRate"
-    /// <summary>
-    /// Radio Resource Control connection setup success rate.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AccRrcConnSetupSuccRate"></see></summary>
-    let AccRrcConnSetupSuccRate = _prefix "AccRrcConnSetupSuccRate"
-    /// <summary>
-    /// S1 (S1 standardized interface between eNB and Evolved Packet Core) signalling establishment success rate.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AccS1SigEstabSuccRate"></see></summary>
-    let AccS1SigEstabSuccRate = _prefix "AccS1SigEstabSuccRate"
-    /// <summary>
-    /// The rate of change of the velocity of a particle with respect to time.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Acceleration"></see></summary>
-    let Acceleration = _prefix "Acceleration"
-    /// <summary>
-    /// The acceleration at a given instant of time.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AccelerationInstantaneous"></see></summary>
-    let AccelerationInstantaneous = _prefix "AccelerationInstantaneous"
-    /// <summary>
-    ///  Accelerometers are used to automatically determine the orientation in which the user is holding the IoT Object (portrait or landscape).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Accelerometer"></see></summary>
-    let Accelerometer = _prefix "Accelerometer"
-    /// <summary>
-    /// The product of the voltage across a branch of an alternating-current circuit and the component of the electric current that is in phase with the voltage.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ActivePower"></see></summary>
-    let ActivePower = _prefix "ActivePower"
-    /// <summary>
-    /// It is the rate, per unit time, at which electrical energy is transferred by an electric circuit.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Power"></see></summary>
-    let Power = _prefix "Power"
-    /// <summary>
-    /// Agriculture, Smart farm as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Agriculture"></see></summary>
-    let Agriculture = _prefix "Agriculture"
-    /// <summary>
-    /// Application Domain for example: health, environment, etc.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DomainOfInterest"></see></summary>
-    let DomainOfInterest = _prefix "DomainOfInterest"
-    /// <summary>
-    /// An actuator to automatically switch on/off the air conditioner.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AirConditioner"></see></summary>
-    let AirConditioner = _prefix "AirConditioner"
-    /// <summary>
-    /// Smart Home/Building Automation as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BuildingAutomation"></see></summary>
-    let BuildingAutomation = _prefix "BuildingAutomation"
-    /// <summary>
-    /// Sensor used to measure air humidity.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AirHumiditySensor"></see></summary>
-    let AirHumiditySensor = _prefix "AirHumiditySensor"
-    /// <summary>
-    /// Environment (earthquake, flooding, fire, pollution) as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Environment"></see></summary>
-    let Environment = _prefix "Environment"
-    /// <summary>
-    /// Humidity sensor or hygrometer is an instrument used for measuring the moisture concent in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#HumiditySensor"></see></summary>
-    let HumiditySensor = _prefix "HumiditySensor"
-    /// <summary>
-    /// Air Pollutant Sensor are devices that detect and monitor the presence of air pollution in the surrounding area (source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AirPollutantSensor"></see></summary>
-    let AirPollutantSensor = _prefix "AirPollutantSensor"
-    /// <summary>
-    /// Usually measured using Air Quality Index (AQI), it is the measure of Air Pollution in the environment. It is similar to Air Quality.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AirPollution"></see></summary>
-    let AirPollution = _prefix "AirPollution"
-    /// <summary>
-    /// Usually measured using an air quality index (AQI) that is a number used by government agencies to communicate to the public how polluted the air currently is or how polluted it is forecast to become. Different countries have their own air quality indices, corresponding to different national air quality standards. It is the measure of Air Quality of the environment. It is similar to Air Pollution. (Source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AirQuality"></see></summary>
-    let AirQuality = _prefix "AirQuality"
-    /// <summary>
-    /// The temperature of the air that would be indicated by a thermometer exposed to the air at a location sheltered from direct solar radiation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AirTemperature"></see></summary>
-    let AirTemperature = _prefix "AirTemperature"
-    /// <summary>
-    /// It is the air temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Temperature"></see></summary>
-    let Temperature = _prefix "Temperature"
-    /// <summary>
-    /// Device to measure the Air temperature of either indoor or outdoor atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AirThermometer"></see></summary>
-    let AirThermometer = _prefix "AirThermometer"
-    /// <summary>
-    /// A device to measure the temperature in a room or outside.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Thermometer"></see></summary>
-    let Thermometer = _prefix "Thermometer"
-    /// <summary>
-    /// An actuator to automatically switch on/off the alarm system.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AlarmSystem"></see></summary>
-    let AlarmSystem = _prefix "AlarmSystem"
-    /// <summary>
-    /// Measure of Alcohol Level in the system.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AlcoholLevel"></see></summary>
-    let AlcoholLevel = _prefix "AlcoholLevel"
-    /// <summary>
-    /// Device used to detect and measure Alcohol Level in the system.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AlcoholLevelSensor"></see></summary>
-    let AlcoholLevelSensor = _prefix "AlcoholLevelSensor"
-    /// <summary>
-    /// The ampere is the SI unit for measuring an electric current which is the flow of electric charges through a surface at the rate of one coulomb per second.The ampere is the SI unit for measuring an electric current which is the flow of electric charges through a surface at the rate of one coulomb per second.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Ampere"></see></summary>
-    let Ampere = _prefix "Ampere"
-    /// <summary>
-    /// It is the rate of change of angular displacement and is a vector quantity (more precisely, a pseudovector) that specifies the angular speed (rotational speed) of an object and the axis about which the object is rotating. (Source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AngularSpeed"></see></summary>
-    let AngularSpeed = _prefix "AngularSpeed"
-    /// <summary>
-    /// when the source of the sound were animals.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Animals"></see></summary>
-    let Animals = _prefix "Animals"
-    /// <summary>
-    /// Source where the sound originated.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SoundSource"></see></summary>
-    let SoundSource = _prefix "SoundSource"
-    /// <summary>
-    /// The pressure exerted by the atmosphere as a consequence of gravitational attraction exerted upon the column of air lying directly above the point in question.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AtmosphericPressure"></see></summary>
-    let AtmosphericPressure = _prefix "AtmosphericPressure"
-    /// <summary>
-    /// It is the physical force exerted on or against an object by something in contact with it.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Pressure"></see></summary>
-    let Pressure = _prefix "Pressure"
-    /// <summary>
-    /// Atmospheric Pressure Sensor, Barometer or Barometric Pressure Sensor is a scientific instrument used in meteorology to measure atmospheric pressure.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AtmosphericPressureSensor"></see></summary>
-    let AtmosphericPressureSensor = _prefix "AtmosphericPressureSensor"
-    /// <summary>
-    /// Weather Forecasting, Meterology as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Weather"></see></summary>
-    let Weather = _prefix "Weather"
-    /// <summary>
-    /// When the devices are set to take the observations Automatically without any external aid.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#AutomaticSensing"></see></summary>
-    let AutomaticSensing = _prefix "AutomaticSensing"
-    /// <summary>
-    /// Type of Measurement done using a device.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MeasurementType"></see></summary>
-    let MeasurementType = _prefix "MeasurementType"
-    /// <summary>
-    /// Metric unit of atmospheric pressure equal to 14.50 pounds per square inch (lb/in2), 1.02 kilograms per square centimetre (kg/cm2), 29.53 inches of mercury (in Hg), or 0.9869 atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Bar"></see></summary>
-    let Bar = _prefix "Bar"
-    /// <summary>
-    /// A tagging device can be Barcode.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Barcode"></see></summary>
-    let Barcode = _prefix "Barcode"
-    /// <summary>
-    /// Measure of the percentage of the battery capacity that remains available.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BatteryLevel"></see></summary>
-    let BatteryLevel = _prefix "BatteryLevel"
-    /// <summary>
-    /// Beat Per Minute (bpm) is the unit to measure heart rate.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BeatPerMinute"></see></summary>
-    let BeatPerMinute = _prefix "BeatPerMinute"
-    /// <summary>
-    /// An actuator to automatically switch on/off the window blinds.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Blind"></see></summary>
-    let Blind = _prefix "Blind"
-    /// <summary>
-    /// Measure of Blood glucose level or blood sugar level.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BloodGlucose"></see></summary>
-    let BloodGlucose = _prefix "BloodGlucose"
-    /// <summary>
-    /// Measure of the pressure in your blood vessels when your heart rests between beats.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BloodPressure"></see></summary>
-    let BloodPressure = _prefix "BloodPressure"
-    /// <summary>
-    /// Device used to measure Blood Pressure.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BloodPressureSensor"></see></summary>
-    let BloodPressureSensor = _prefix "BloodPressureSensor"
-    /// <summary>
-    /// Healthcare as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Health"></see></summary>
-    let Health = _prefix "Health"
-    /// <summary>
-    /// Measure of board temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BoardTemperature"></see></summary>
-    let BoardTemperature = _prefix "BoardTemperature"
-    /// <summary>
-    /// Device used to measure board temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BoardThermometer"></see></summary>
-    let BoardThermometer = _prefix "BoardThermometer"
-    /// <summary>
-    /// Sensor used to measure board input voltage.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BoardVoltageSensor"></see></summary>
-    let BoardVoltageSensor = _prefix "BoardVoltageSensor"
-    /// <summary>
-    /// Device which can measure the difference in electric potential energy between two points per unit electric charge.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VoltageSensor"></see></summary>
-    let VoltageSensor = _prefix "VoltageSensor"
-    /// <summary>
-    /// Measure of body temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BodyTemperature"></see></summary>
-    let BodyTemperature = _prefix "BodyTemperature"
-    /// <summary>
-    /// Device used to measure body temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BodyThermometer"></see></summary>
-    let BodyThermometer = _prefix "BodyThermometer"
-    /// <summary>
-    /// An actuator to automatically switch on/off the boiler.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Boiler"></see></summary>
-    let Boiler = _prefix "Boiler"
-    /// <summary>
-    /// Measure of building or room temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#BuildingTemperature"></see></summary>
-    let BuildingTemperature = _prefix "BuildingTemperature"
-    /// <summary>
-    /// Carbon Dioxide (CO2) measure in the atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#CO2"></see></summary>
-    let CO2 = _prefix "CO2"
-    /// <summary>
-    /// Carbon Dioxide (CO2) Sensor used to measure level of CO2 in the atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#CO2Sensor"></see></summary>
-    let CO2Sensor = _prefix "CO2Sensor"
-    /// <summary>
-    /// Device used to detect poisonous gaseous in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#GaseousPollutantSensor"></see></summary>
-    let GaseousPollutantSensor = _prefix "GaseousPollutantSensor"
-    /// <summary>
-    /// Device to detect Carbon Monoxide (CO) in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#COSensor"></see></summary>
-    let COSensor = _prefix "COSensor"
-    /// <summary>
-    /// Measure of blood calcium level.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Calcium"></see></summary>
-    let Calcium = _prefix "Calcium"
-    /// <summary>
-    /// If the measurement was taken when the sensor was being calibrated.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#CalibrationSensing"></see></summary>
-    let CalibrationSensing = _prefix "CalibrationSensing"
-    /// <summary>
-    /// Candela is the luminous intensity, in a given direction, of a source that emits monochromatic radiation of frequency 540 x 10^12 hertz and that has a radiant intensity in that direction of 1/683 watt per steradian. (Source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Candela"></see></summary>
-    let Candela = _prefix "Candela"
-    /// <summary>
-    /// Measure of the ability of a system to store an electric charge.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Capacitance"></see></summary>
-    let Capacitance = _prefix "Capacitance"
-    /// <summary>
-    /// The centibar is a unit of pressure defined as 1e-2 bar.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Centibar"></see></summary>
-    let Centibar = _prefix "Centibar"
-    /// <summary>
-    /// A metric unit of length, equal to one hundredth of a metre.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Centimetre"></see></summary>
-    let Centimetre = _prefix "Centimetre"
-    /// <summary>
-    /// It is the unit of length.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Metre"></see></summary>
-    let Metre = _prefix "Metre"
+    let _namespace_iri = Namespace_Iri m3lite |> NamespaceIRI
+    /// <summary>
+    ///   <para>m3lite:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>The M3-lite is a taxonomy that enables testbeds to semantically annotate the IoT data produced by heterogeneous devices and store them in a federated datastore such as FIESTA-IoT. In this taxonomy, we classify devices, the domain of interests (health, smart home, smart kitchen, environmental monitoring, etc.), phenomena and unit of measurements.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#">http://purl.org/iot/vocab/m3-lite#</seealso>
+    let _prefix_iri = Prefixed_Name(m3lite, "") |> PrefixedName
 
     /// <summary>
-    /// Measure of Chemical Agent Atmospheric Concentration
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentration"></see></summary>
+    ///   <para>m3lite:AccS1SigEstabSuccRate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>S1 (S1 standardized interface between eNB and Evolved Packet Core) signalling establishment success rate.</para>
+    /// labels<para>S1 Signalling Establishment Success Rate</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AccS1SigEstabSuccRate">http://purl.org/iot/vocab/m3-lite#AccS1SigEstabSuccRate</seealso>
+    let AccS1SigEstabSuccRate =
+        Prefixed_Name(m3lite, "AccS1SigEstabSuccRate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ActivePower</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The product of the voltage across a branch of an alternating-current circuit and the component of the electric current that is in phase with the voltage.</para>
+    /// labels<para>Active Power</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ActivePower">http://purl.org/iot/vocab/m3-lite#ActivePower</seealso>
+    let ActivePower = Prefixed_Name(m3lite, "ActivePower") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Ampere</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The ampere is the SI unit for measuring an electric current which is the flow of electric charges through a surface at the rate of one coulomb per second.The ampere is the SI unit for measuring an electric current which is the flow of electric charges through a surface at the rate of one coulomb per second.</para>
+    /// labels<para>Ampere (A)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Ampere">http://purl.org/iot/vocab/m3-lite#Ampere</seealso>
+    let Ampere = Prefixed_Name(m3lite, "Ampere") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Pressure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the physical force exerted on or against an object by something in contact with it.</para>
+    /// labels<para>Pressure</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Pressure">http://purl.org/iot/vocab/m3-lite#Pressure</seealso>
+    let Pressure = Prefixed_Name(m3lite, "Pressure") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:AtmosphericPressureSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Atmospheric Pressure Sensor, Barometer or Barometric Pressure Sensor is a scientific instrument used in meteorology to measure atmospheric pressure.</para>
+    /// labels<para>Atmospheric Pressure Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AtmosphericPressureSensor">http://purl.org/iot/vocab/m3-lite#AtmosphericPressureSensor</seealso>
+    let AtmosphericPressureSensor =
+        Prefixed_Name(m3lite, "AtmosphericPressureSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:BeatPerMinute</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Beat Per Minute (bpm) is the unit to measure heart rate.</para>
+    /// labels<para>Beat Per Minute (bpm)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BeatPerMinute">http://purl.org/iot/vocab/m3-lite#BeatPerMinute</seealso>
+    let BeatPerMinute = Prefixed_Name(m3lite, "BeatPerMinute") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:BloodPressureSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to measure Blood Pressure.</para>
+    /// labels<para>Blood Pressure Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BloodPressureSensor">http://purl.org/iot/vocab/m3-lite#BloodPressureSensor</seealso>
+    let BloodPressureSensor =
+        Prefixed_Name(m3lite, "BloodPressureSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:VoltageSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device which can measure the difference in electric potential energy between two points per unit electric charge.</para>
+    /// labels<para>Voltage Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VoltageSensor">http://purl.org/iot/vocab/m3-lite#VoltageSensor</seealso>
+    let VoltageSensor = Prefixed_Name(m3lite, "VoltageSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:BodyTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of body temperature.</para>
+    /// labels<para>Body Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BodyTemperature">http://purl.org/iot/vocab/m3-lite#BodyTemperature</seealso>
+    let BodyTemperature = Prefixed_Name(m3lite, "BodyTemperature") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:BodyThermometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to measure body temperature.</para>
+    /// labels<para>Body Thermometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BodyThermometer">http://purl.org/iot/vocab/m3-lite#BodyThermometer</seealso>
+    let BodyThermometer = Prefixed_Name(m3lite, "BodyThermometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ConductivitySensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to measure the conductivity of a system.</para>
+    /// labels<para>Conductivity Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ConductivitySensor">http://purl.org/iot/vocab/m3-lite#ConductivitySensor</seealso>
+    let ConductivitySensor = Prefixed_Name(m3lite, "ConductivitySensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Count</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Number of available particular things.</para>
+    /// labels<para>Count</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Count">http://purl.org/iot/vocab/m3-lite#Count</seealso>
+    let Count = Prefixed_Name(m3lite, "Count") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:CountAvailableBicycles</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Number of available bicycles at a particular bicycle docking station.</para>
+    /// labels<para>Count Available Bicycles</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#CountAvailableBicycles">http://purl.org/iot/vocab/m3-lite#CountAvailableBicycles</seealso>
+    let CountAvailableBicycles =
+        Prefixed_Name(m3lite, "CountAvailableBicycles") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:CountEmptyDockingPoints</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Number of empty docking points at a particular bicycle docking station.</para>
+    /// labels<para>Count Empty Docking Points</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#CountEmptyDockingPoints">http://purl.org/iot/vocab/m3-lite#CountEmptyDockingPoints</seealso>
+    let CountEmptyDockingPoints =
+        Prefixed_Name(m3lite, "CountEmptyDockingPoints") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Counter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensors that reckons occurrences or repetitions of physical objects, phenomena or events.</para>
+    /// labels<para>Counter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Counter">http://purl.org/iot/vocab/m3-lite#Counter</seealso>
+    let Counter = Prefixed_Name(m3lite, "Counter") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Crowd</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>When the source of the sound was crowd.</para>
+    /// labels<para>Crowd Sound Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Crowd">http://purl.org/iot/vocab/m3-lite#Crowd</seealso>
+    let Crowd = Prefixed_Name(m3lite, "Crowd") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Cupboard</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically open/close the cupboard.</para>
+    /// labels<para>Cupboard Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Cupboard">http://purl.org/iot/vocab/m3-lite#Cupboard</seealso>
+    let Cupboard = Prefixed_Name(m3lite, "Cupboard") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Curtain</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically open/close the curtain.</para>
+    /// labels<para>Curtain Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Curtain">http://purl.org/iot/vocab/m3-lite#Curtain</seealso>
+    let Curtain = Prefixed_Name(m3lite, "Curtain") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Degree</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Degree.</para>
+    /// labels<para>Degree</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Degree">http://purl.org/iot/vocab/m3-lite#Degree</seealso>
+    let Degree = Prefixed_Name(m3lite, "Degree") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DegreeAngle</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A plane angle unit which is equal to 1/360 of a full rotation or pi/180 rad.</para>
+    /// labels<para>Degree Angle</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DegreeAngle">http://purl.org/iot/vocab/m3-lite#DegreeAngle</seealso>
+    let DegreeAngle = Prefixed_Name(m3lite, "DegreeAngle") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DegreeCelsius</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A temperature unit which is equal to one kelvin degree. However, they have their zeros at different points. The centigrade scale has its zero at 273.15 K.</para>
+    /// labels<para>Degree Celsius</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DegreeCelsius">http://purl.org/iot/vocab/m3-lite#DegreeCelsius</seealso>
+    let DegreeCelsius = Prefixed_Name(m3lite, "DegreeCelsius") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DegreeFahrenheit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measurement Unit to represent temperature on the Fahrenheit scale.</para>
+    /// labels<para>Degree Fahrenheit</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DegreeFahrenheit">http://purl.org/iot/vocab/m3-lite#DegreeFahrenheit</seealso>
+    let DegreeFahrenheit = Prefixed_Name(m3lite, "DegreeFahrenheit") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ElectricField1800MHz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A field of force associated with a moving electric charge equivalent to an electric field and a magnetic field at right angles to each other and to the direction of propagation. Applied to the 1800 MHz UHF band.</para>
+    /// labels<para>Electric Field 1800 MHz</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricField1800MHz">http://purl.org/iot/vocab/m3-lite#ElectricField1800MHz</seealso>
+    let ElectricField1800MHz =
+        Prefixed_Name(m3lite, "ElectricField1800MHz") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ElectricField2100MHz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A field of force associated with a moving electric charge equivalent to an electric field and a magnetic field at right angles to each other and to the direction of propagation. Applied to the 2100 MHz UHF band.</para>
+    /// labels<para>Electric Field 2100 MHz</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricField2100MHz">http://purl.org/iot/vocab/m3-lite#ElectricField2100MHz</seealso>
+    let ElectricField2100MHz =
+        Prefixed_Name(m3lite, "ElectricField2100MHz") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ElectricField2400MHz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A field of force associated with a moving electric charge equivalent to an electric field and a magnetic field at right angles to each other and to the direction of propagation. Applied to the 2400 MHz UHF band.</para>
+    /// labels<para>Electric Field 2400 MHz</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricField2400MHz">http://purl.org/iot/vocab/m3-lite#ElectricField2400MHz</seealso>
+    let ElectricField2400MHz =
+        Prefixed_Name(m3lite, "ElectricField2400MHz") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Experiment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Experiment based measurements.</para>
+    /// labels<para>Experiment Measurement Type</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Experiment">http://purl.org/iot/vocab/m3-lite#Experiment</seealso>
+    let Experiment = Prefixed_Name(m3lite, "Experiment") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:FallDetector</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device to detect is a person has fallen.</para>
+    /// labels<para>Fall Detector</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FallDetector">http://purl.org/iot/vocab/m3-lite#FallDetector</seealso>
+    let FallDetector = Prefixed_Name(m3lite, "FallDetector") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Fan</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>When the source of the sound was Fan.</para>
+    /// labels<para>Fan Sound Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Fan">http://purl.org/iot/vocab/m3-lite#Fan</seealso>
+    let Fan = Prefixed_Name(m3lite, "Fan") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Farad</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>SI unit of electrical capacitance.</para>
+    /// labels<para>Farad</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Farad">http://purl.org/iot/vocab/m3-lite#Farad</seealso>
+    let Farad = Prefixed_Name(m3lite, "Farad") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:FillLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Property used to determine the level a certain object such as waste bin is filled upto.</para>
+    /// labels<para>Fill Level</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FillLevel">http://purl.org/iot/vocab/m3-lite#FillLevel</seealso>
+    let FillLevel = Prefixed_Name(m3lite, "FillLevel") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Hydrophone</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A hydrophone is a microphone designed to be used underwater for recording or listening to underwater sound.</para>
+    /// labels<para>Hydrophone</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Hydrophone">http://purl.org/iot/vocab/m3-lite#Hydrophone</seealso>
+    let Hydrophone = Prefixed_Name(m3lite, "Hydrophone") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:IEEE802154InterfaceEnergyMeter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor that measures the power consumption of the IEEE802.15.4 interface nodes.</para>
+    /// labels<para>IEEE802.15.4 Interface Energy Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#IEEE802154InterfaceEnergyMeter">http://purl.org/iot/vocab/m3-lite#IEEE802154InterfaceEnergyMeter</seealso>
+    let IEEE802154InterfaceEnergyMeter =
+        Prefixed_Name(m3lite, "IEEE802154InterfaceEnergyMeter") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Illuminance</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Illuminance is the total luminous flux incident on a surface, per unit area.</para>
+    /// labels<para>Illuminance</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Illuminance">http://purl.org/iot/vocab/m3-lite#Illuminance</seealso>
+    let Illuminance = Prefixed_Name(m3lite, "Illuminance") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ImageSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor that detects and conveys the information that constitutes an image.</para>
+    /// labels<para>Image Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ImageSensor">http://purl.org/iot/vocab/m3-lite#ImageSensor</seealso>
+    let ImageSensor = Prefixed_Name(m3lite, "ImageSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Inch</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Length in inches.</para>
+    /// labels<para>Inch</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Inch">http://purl.org/iot/vocab/m3-lite#Inch</seealso>
+    let Inch = Prefixed_Name(m3lite, "Inch") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Index</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Arbitrary indirect reference which should be translated into meaningful measurements by using the corresponding decoding algorithm detailed in the resource description. In this case the returned values can only take certain values from a finite set.</para>
+    /// labels<para>Index</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Index">http://purl.org/iot/vocab/m3-lite#Index</seealso>
+    let Index = Prefixed_Name(m3lite, "Index") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:IntDlLatency</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Downlink Latency.</para>
+    /// labels<para>Downlink Latency</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#IntDlLatency">http://purl.org/iot/vocab/m3-lite#IntDlLatency</seealso>
+    let IntDlLatency = Prefixed_Name(m3lite, "IntDlLatency") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:IntDlThroughputKbps</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Downlink Throughput.</para>
+    /// labels<para>Downlink Throughput</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#IntDlThroughputKbps">http://purl.org/iot/vocab/m3-lite#IntDlThroughputKbps</seealso>
+    let IntDlThroughputKbps =
+        Prefixed_Name(m3lite, "IntDlThroughputKbps") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:IntUlPacketLoss</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Uplink Packet Loss.</para>
+    /// labels<para>Uplink Packet Loss</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#IntUlPacketLoss">http://purl.org/iot/vocab/m3-lite#IntUlPacketLoss</seealso>
+    let IntUlPacketLoss = Prefixed_Name(m3lite, "IntUlPacketLoss") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:IntUlThroughputKbps</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Uplink Throughput.</para>
+    /// labels<para>Uplink Throughput</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#IntUlThroughputKbps">http://purl.org/iot/vocab/m3-lite#IntUlThroughputKbps</seealso>
+    let IntUlThroughputKbps =
+        Prefixed_Name(m3lite, "IntUlThroughputKbps") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Invalid</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>If the measurement was tagged invalid.</para>
+    /// labels<para>Invalid Measurement Type</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Invalid">http://purl.org/iot/vocab/m3-lite#Invalid</seealso>
+    let Invalid = Prefixed_Name(m3lite, "Invalid") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MicrogramPerCubicMetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Microgram per cubic metre is a unit of density defined as microgram divided by cubic metre. Milligram per cubic metre is a derived unit in the International System of Units.</para>
+    /// labels<para>Microgram Per Cubic Metre, Microgram Per Cubic Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MicrogramPerCubicMetre">http://purl.org/iot/vocab/m3-lite#MicrogramPerCubicMetre</seealso>
+    let MicrogramPerCubicMetre =
+        Prefixed_Name(m3lite, "MicrogramPerCubicMetre") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Microvolt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a unit of electromotive force or potential difference equal to one millionth of a volt. </para>
+    /// labels<para>Microvolt (uV)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Microvolt">http://purl.org/iot/vocab/m3-lite#Microvolt</seealso>
+    let Microvolt = Prefixed_Name(m3lite, "Microvolt") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Volt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The SI unit of electromotive force, the difference of potential that would carry one ampere of current against one ohm resistance.</para>
+    /// labels<para>Volt</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Volt">http://purl.org/iot/vocab/m3-lite#Volt</seealso>
+    let Volt = Prefixed_Name(m3lite, "Volt") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Microwatt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a unit of power.</para>
+    /// labels<para>Microwatt (uW)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Microwatt">http://purl.org/iot/vocab/m3-lite#Microwatt</seealso>
+    let Microwatt = Prefixed_Name(m3lite, "Microwatt") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Watt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the SI unit of power, equivalent to one joule per second, corresponding to the rate of consumption of energy in an electric circuit where the potential difference is one volt and the current one ampere.</para>
+    /// labels<para>Watt (W)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Watt">http://purl.org/iot/vocab/m3-lite#Watt</seealso>
+    let Watt = Prefixed_Name(m3lite, "Watt") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MicrowattPerSquareCentimetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is one of the unit for radiative and other energy fluxes.</para>
+    /// labels<para>Microwatt Per Square Centimetre, Microwatt Per Square Centimeter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MicrowattPerSquareCentimetre">http://purl.org/iot/vocab/m3-lite#MicrowattPerSquareCentimetre</seealso>
+    let MicrowattPerSquareCentimetre =
+        Prefixed_Name(m3lite, "MicrowattPerSquareCentimetre") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Millilitre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>One thousandth of a litre (0.002 pint).</para>
+    /// labels<para>Millilitre, Milliliter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Millilitre">http://purl.org/iot/vocab/m3-lite#Millilitre</seealso>
+    let Millilitre = Prefixed_Name(m3lite, "Millilitre") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Millimetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>One thousandth of a metre (0.039 in).</para>
+    /// labels<para>Millimetre, Millimeter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Millimetre">http://purl.org/iot/vocab/m3-lite#Millimetre</seealso>
+    let Millimetre = Prefixed_Name(m3lite, "Millimetre") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MillimetrePerHour</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A unit of both speed (scalar) and velocity (vector), defined as the distance of one millimetre travelled per unit hour.</para>
+    /// labels<para>Millimetre Per Hour, Millimeter Per Hour</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MillimetrePerHour">http://purl.org/iot/vocab/m3-lite#MillimetrePerHour</seealso>
+    let MillimetrePerHour = Prefixed_Name(m3lite, "MillimetrePerHour") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Millisecond</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>One thousandth of a second.</para>
+    /// labels<para>Millisecond</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Millisecond">http://purl.org/iot/vocab/m3-lite#Millisecond</seealso>
+    let Millisecond = Prefixed_Name(m3lite, "Millisecond") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Millivolt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>One thousandth of a volt.</para>
+    /// labels<para>Millivolt (mV)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Millivolt">http://purl.org/iot/vocab/m3-lite#Millivolt</seealso>
+    let Millivolt = Prefixed_Name(m3lite, "Millivolt") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:PHSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect PH level.</para>
+    /// labels<para>PH Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PHSensor">http://purl.org/iot/vocab/m3-lite#PHSensor</seealso>
+    let PHSensor = Prefixed_Name(m3lite, "PHSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:PPM</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It describes the concentration of something in water or soil.</para>
+    /// labels<para>PPM (parts per million)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PPM">http://purl.org/iot/vocab/m3-lite#PPM</seealso>
+    let PPM = Prefixed_Name(m3lite, "PPM") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:PartsPerBillion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It describes the concentration of something in parts per billion parts of water or soil, expressed in any (but common) unit of measurement.</para>
+    /// labels<para>Parts Per Billion</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PartsPerBillion">http://purl.org/iot/vocab/m3-lite#PartsPerBillion</seealso>
+    let PartsPerBillion = Prefixed_Name(m3lite, "PartsPerBillion") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Pascal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Unit for pressure (e.g., atmospheric pressure).</para>
+    /// labels<para>Pascal</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Pascal">http://purl.org/iot/vocab/m3-lite#Pascal</seealso>
+    let Pascal = Prefixed_Name(m3lite, "Pascal") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Percent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the amount in or for every hundred.</para>
+    /// labels<para>Percent</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Percent">http://purl.org/iot/vocab/m3-lite#Percent</seealso>
+    let Percent = Prefixed_Name(m3lite, "Percent") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Place</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Location, Place, GPS coordinates as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Place DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Place">http://purl.org/iot/vocab/m3-lite#Place</seealso>
+    let Place = Prefixed_Name(m3lite, "Place") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Potassium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the measure of Blood Potassium Level.</para>
+    /// labels<para>Potassium</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Potassium">http://purl.org/iot/vocab/m3-lite#Potassium</seealso>
+    let Potassium = Prefixed_Name(m3lite, "Potassium") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Pound</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A unit of weight equal to 16 oz. 1 pound= 453.592 grams</para>
+    /// labels<para>Pound</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Pound">http://purl.org/iot/vocab/m3-lite#Pound</seealso>
+    let Pound = Prefixed_Name(m3lite, "Pound") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SpeedAverage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A measure of the average rate of motion of an object.</para>
+    /// labels<para>Speed Average</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SpeedAverage">http://purl.org/iot/vocab/m3-lite#SpeedAverage</seealso>
+    let SpeedAverage = Prefixed_Name(m3lite, "SpeedAverage") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SpeedInstantaneous</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A measure of the instantaneous rate of motion of an object.</para>
+    /// labels<para>Speed Instantaneous</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SpeedInstantaneous">http://purl.org/iot/vocab/m3-lite#SpeedInstantaneous</seealso>
+    let SpeedInstantaneous = Prefixed_Name(m3lite, "SpeedInstantaneous") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SpeedMedian</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A measure of the median rate of motion of an object.</para>
+    /// labels<para>Speed Median</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SpeedMedian">http://purl.org/iot/vocab/m3-lite#SpeedMedian</seealso>
+    let SpeedMedian = Prefixed_Name(m3lite, "SpeedMedian") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SpeedSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor used to detect speed.</para>
+    /// labels<para>Speed Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SpeedSensor">http://purl.org/iot/vocab/m3-lite#SpeedSensor</seealso>
+    let SpeedSensor = Prefixed_Name(m3lite, "SpeedSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Step</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a measure of number of Step taken.</para>
+    /// labels<para>Step</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Step">http://purl.org/iot/vocab/m3-lite#Step</seealso>
+    let Step = Prefixed_Name(m3lite, "Step") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Transportation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Transportation, Smart Car/Vehicle, Intelligent Transport System (ITS) as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Transportation DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Transportation">http://purl.org/iot/vocab/m3-lite#Transportation</seealso>
+    let Transportation = Prefixed_Name(m3lite, "Transportation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:AccInitialERabSetupSuccRate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Initial E-UTRAN Radio Access Bearer setup success rate.</para>
+    /// labels<para>Initial E-RAB Setup Success Rate</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AccInitialERabSetupSuccRate">http://purl.org/iot/vocab/m3-lite#AccInitialERabSetupSuccRate</seealso>
+    let AccInitialERabSetupSuccRate =
+        Prefixed_Name(m3lite, "AccInitialERabSetupSuccRate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:City</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Smart City as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Smart City DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#City">http://purl.org/iot/vocab/m3-lite#City</seealso>
+    let City = Prefixed_Name(m3lite, "City") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Clock</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>sensor that measures time</para>
+    /// labels<para>Clock</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Clock">http://purl.org/iot/vocab/m3-lite#Clock</seealso>
+    let Clock = Prefixed_Name(m3lite, "Clock") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:CoffeeMachine</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the coffee machine.</para>
+    /// labels<para>Coffee Machine, Coffee Maker Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#CoffeeMachine">http://purl.org/iot/vocab/m3-lite#CoffeeMachine</seealso>
+    let CoffeeMachine = Prefixed_Name(m3lite, "CoffeeMachine") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DirectionHeading</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The course or direction in which a object (vehicle, person, ...) is moving.</para>
+    /// labels<para>Direction Heading</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DirectionHeading">http://purl.org/iot/vocab/m3-lite#DirectionHeading</seealso>
+    let DirectionHeading = Prefixed_Name(m3lite, "DirectionHeading") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Door</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically open/close the door.</para>
+    /// labels<para>Door Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Door">http://purl.org/iot/vocab/m3-lite#Door</seealso>
+    let Door = Prefixed_Name(m3lite, "Door") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DoorStateSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>This sensor detects if a door is in the state of OPEN or CLOSED.</para>
+    /// labels<para>Door State Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DoorStateSensor">http://purl.org/iot/vocab/m3-lite#DoorStateSensor</seealso>
+    let DoorStateSensor = Prefixed_Name(m3lite, "DoorStateSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:GyroscopeSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gyroscope is a device for measuring or maintaining orientation.</para>
+    /// labels<para>Gyroscope Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#GyroscopeSensor">http://purl.org/iot/vocab/m3-lite#GyroscopeSensor</seealso>
+    let GyroscopeSensor = Prefixed_Name(m3lite, "GyroscopeSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:H2SSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to measure of hydrogen sulphide in the environment.</para>
+    /// labels<para>H2S Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#H2SSensor">http://purl.org/iot/vocab/m3-lite#H2SSensor</seealso>
+    let H2SSensor = Prefixed_Name(m3lite, "H2SSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Kilometre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A metric unit of measurement equal to 1,000 metres (approx 0.62 miles).</para>
+    /// labels<para>Kilometre, Kilometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Kilometre">http://purl.org/iot/vocab/m3-lite#Kilometre</seealso>
+    let Kilometre = Prefixed_Name(m3lite, "Kilometre") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:LightSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Light/Illuminance Sensor is used to adjust the brightness of the surface.</para>
+    /// labels<para>Light Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#LightSensor">http://purl.org/iot/vocab/m3-lite#LightSensor</seealso>
+    let LightSensor = Prefixed_Name(m3lite, "LightSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Pedometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Pedometer is used to count the number of steps when walking, running, etc.</para>
+    /// labels<para>Pedometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Pedometer">http://purl.org/iot/vocab/m3-lite#Pedometer</seealso>
+    let Pedometer = Prefixed_Name(m3lite, "Pedometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Precipitation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is any product of the condensation of atmospheric water vapour that falls under gravity.</para>
+    /// labels<para>Precipitation</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Precipitation">http://purl.org/iot/vocab/m3-lite#Precipitation</seealso>
+    let Precipitation = Prefixed_Name(m3lite, "Precipitation") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Presence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure to know if an object is present. It is usually boolean.</para>
+    /// labels<para>Presence</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Presence">http://purl.org/iot/vocab/m3-lite#Presence</seealso>
+    let Presence = Prefixed_Name(m3lite, "Presence") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:PresenceStateDriverCard1</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicates the presence of the first driver card.</para>
+    /// labels<para>Presence State Driver Card 1</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PresenceStateDriverCard1">http://purl.org/iot/vocab/m3-lite#PresenceStateDriverCard1</seealso>
+    let PresenceStateDriverCard1 =
+        Prefixed_Name(m3lite, "PresenceStateDriverCard1") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:PresenceStateDriverCard2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicates the presence of the second driver card.</para>
+    /// labels<para>Presence State Driver Card 2</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PresenceStateDriverCard2">http://purl.org/iot/vocab/m3-lite#PresenceStateDriverCard2</seealso>
+    let PresenceStateDriverCard2 =
+        Prefixed_Name(m3lite, "PresenceStateDriverCard2") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:PresenceStateEmergencyVehicle</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The presence or absence of an emergency vehicle (ambulance, fire fighters, etc.).</para>
+    /// labels<para>Presence State Emergency Vehicle</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PresenceStateEmergencyVehicle">http://purl.org/iot/vocab/m3-lite#PresenceStateEmergencyVehicle</seealso>
+    let PresenceStateEmergencyVehicle =
+        Prefixed_Name(m3lite, "PresenceStateEmergencyVehicle") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:PressureSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A device used to detect pressure. For example, it can be attached on the bed to infer if the user is lying, sleeping, sitting, bed occupancy, etc.</para>
+    /// labels<para>Pressure Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PressureSensor">http://purl.org/iot/vocab/m3-lite#PressureSensor</seealso>
+    let PressureSensor = Prefixed_Name(m3lite, "PressureSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Proximity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure to detect proximity.</para>
+    /// labels<para>Proximity</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Proximity">http://purl.org/iot/vocab/m3-lite#Proximity</seealso>
+    let Proximity = Prefixed_Name(m3lite, "Proximity") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:QRCode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A tagging device can be QRCode.</para>
+    /// labels<para>QR Code tagging Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#QRCode">http://purl.org/iot/vocab/m3-lite#QRCode</seealso>
+    let QRCode = Prefixed_Name(m3lite, "QRCode") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:RFID</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A tagging device can be RFID.</para>
+    /// labels<para>RFID Tagging Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RFID">http://purl.org/iot/vocab/m3-lite#RFID</seealso>
+    let RFID = Prefixed_Name(m3lite, "RFID") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Radian</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The radian is a unit of angular measure defined such that an angle of one radian subtended from the centre of a unit circle produces an arc with arc length 1.</para>
+    /// labels<para>Radian</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Radian">http://purl.org/iot/vocab/m3-lite#Radian</seealso>
+    let Radian = Prefixed_Name(m3lite, "Radian") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Rainfall</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The depth of precipitation (water-equivalent) that accumulated over a measurement time quantity.</para>
+    /// labels<para>Rainfall</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Rainfall">http://purl.org/iot/vocab/m3-lite#Rainfall</seealso>
+    let Rainfall = Prefixed_Name(m3lite, "Rainfall") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ReactivePower</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The portion of electricity that establishes and sustains the electric and magnetic fields of alternating-current equipment.</para>
+    /// labels<para>Reactive Power</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ReactivePower">http://purl.org/iot/vocab/m3-lite#ReactivePower</seealso>
+    let ReactivePower = Prefixed_Name(m3lite, "ReactivePower") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:RetERabDrop</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>ERAB Drop.</para>
+    /// labels<para>ERAB Drop</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RetERabDrop">http://purl.org/iot/vocab/m3-lite#RetERabDrop</seealso>
+    let RetERabDrop = Prefixed_Name(m3lite, "RetERabDrop") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:RevolutionsPerMinute</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Revolutions per minute (abbreviated rpm, RPM, rev/min, r/min) is a measure of the frequency of rotation, specifically the number of rotations around a fixed axis in one minute. It is used as a measure of rotational speed of a mechanical component.</para>
+    /// labels<para>Revolutions Per Minute</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RevolutionsPerMinute">http://purl.org/iot/vocab/m3-lite#RevolutionsPerMinute</seealso>
+    let RevolutionsPerMinute =
+        Prefixed_Name(m3lite, "RevolutionsPerMinute") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:RoomTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Temperature of a room.</para>
+    /// labels<para>Room Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RoomTemperature">http://purl.org/iot/vocab/m3-lite#RoomTemperature</seealso>
+    let RoomTemperature = Prefixed_Name(m3lite, "RoomTemperature") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:RotationalSpeed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Rotational speed (or speed of revolution) of an object rotating around an axis is the number of turns of the object divided by time, specified as revolutions per minute (rpm), revolutions per second (rev/s), or radians per second (rad/s). (Source Wikipedia)</para>
+    /// labels<para>Rotational Speed</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RotationalSpeed">http://purl.org/iot/vocab/m3-lite#RotationalSpeed</seealso>
+    let RotationalSpeed = Prefixed_Name(m3lite, "RotationalSpeed") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SPO2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a measure of the amount of oxygenated haemoglobin in the blood.</para>
+    /// labels<para>SPO2</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SPO2">http://purl.org/iot/vocab/m3-lite#SPO2</seealso>
+    let SPO2 = Prefixed_Name(m3lite, "SPO2") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Salinity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the measure of all the salts dissolved in water.</para>
+    /// labels<para>Salinity</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Salinity">http://purl.org/iot/vocab/m3-lite#Salinity</seealso>
+    let Salinity = Prefixed_Name(m3lite, "Salinity") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SaltMeter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device use to detect salinity of water.</para>
+    /// labels<para>Salt Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SaltMeter">http://purl.org/iot/vocab/m3-lite#SaltMeter</seealso>
+    let SaltMeter = Prefixed_Name(m3lite, "SaltMeter") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SecondAngle</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a unit of angular measurement equal to 1/60 of one degree.</para>
+    /// labels<para>Second Angle</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SecondAngle">http://purl.org/iot/vocab/m3-lite#SecondAngle</seealso>
+    let SecondAngle = Prefixed_Name(m3lite, "SecondAngle") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Seismometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Seismometers are instruments that measure motions of the ground, including those of seismic waves generated by earthquakes, volcanic eruptions, and other seismic sources.</para>
+    /// labels<para>Seismometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Seismometer">http://purl.org/iot/vocab/m3-lite#Seismometer</seealso>
+    let Seismometer = Prefixed_Name(m3lite, "Seismometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SiemensPerMetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Conductivity is measured in Siemens per metre (S/m).</para>
+    /// labels<para>Siemens Per Metre, Siemens Per Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SiemensPerMetre">http://purl.org/iot/vocab/m3-lite#SiemensPerMetre</seealso>
+    let SiemensPerMetre = Prefixed_Name(m3lite, "SiemensPerMetre") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Sink</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the sink.</para>
+    /// labels<para>Sink Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Sink">http://purl.org/iot/vocab/m3-lite#Sink</seealso>
+    let Sink = Prefixed_Name(m3lite, "Sink") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Sirens</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>When source of the sound were sirens either from ambulance, police car or factory etc.</para>
+    /// labels<para>Sirens Sound Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Sirens">http://purl.org/iot/vocab/m3-lite#Sirens</seealso>
+    let Sirens = Prefixed_Name(m3lite, "Sirens") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SkinConductance</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Electroderal activity (also known as skin conductance or galvanic skin response) directly correlates to the sympathetic nervous system activity and thus provides a powerful tool for monitoring arousal and certain aspects of autonomic regulation.</para>
+    /// labels<para>Skin conductance, GSR</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SkinConductance">http://purl.org/iot/vocab/m3-lite#SkinConductance</seealso>
+    let SkinConductance = Prefixed_Name(m3lite, "SkinConductance") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SkinConductanceSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect Skin Conductance.</para>
+    /// labels<para>Skin Conductance Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SkinConductanceSensor">http://purl.org/iot/vocab/m3-lite#SkinConductanceSensor</seealso>
+    let SkinConductanceSensor =
+        Prefixed_Name(m3lite, "SkinConductanceSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:VoiceCommand</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A voice command to control a voice controlled system or environment, such as a smart home.</para>
+    /// labels<para>Voice Command</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VoiceCommand">http://purl.org/iot/vocab/m3-lite#VoiceCommand</seealso>
+    let VoiceCommand = Prefixed_Name(m3lite, "VoiceCommand") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:VoiceCommandController</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuating device called  that allows to semi-control the environment of the Voice Command Sensor.</para>
+    /// labels<para>Voice Command Controller</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VoiceCommandController">http://purl.org/iot/vocab/m3-lite#VoiceCommandController</seealso>
+    let VoiceCommandController =
+        Prefixed_Name(m3lite, "VoiceCommandController") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:VoiceCommandSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor that uses automatic speech recognition technology to match or reject a recorded voice command according to a specified set of available voice commands.</para>
+    /// labels<para>Voice Command Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VoiceCommandSensor">http://purl.org/iot/vocab/m3-lite#VoiceCommandSensor</seealso>
+    let VoiceCommandSensor = Prefixed_Name(m3lite, "VoiceCommandSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:VoltAmpereReactive</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>In electric power transmission and distribution, volt-ampere reactive (var) is a unit in which reactive power is expressed in an AC electric power system.</para>
+    /// labels<para>Volt Ampere Reactive, VAR</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VoltAmpereReactive">http://purl.org/iot/vocab/m3-lite#VoltAmpereReactive</seealso>
+    let VoltAmpereReactive = Prefixed_Name(m3lite, "VoltAmpereReactive") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WaterNO3IonSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor used to measure NO3 concentration level in the water.</para>
+    /// labels<para>Water NO3 Ion Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WaterNO3IonSensor">http://purl.org/iot/vocab/m3-lite#WaterNO3IonSensor</seealso>
+    let WaterNO3IonSensor = Prefixed_Name(m3lite, "WaterNO3IonSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WaterO2IonSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor used to measure O2 concentration level in the water.</para>
+    /// labels<para>Water O2 Ion Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WaterO2IonSensor">http://purl.org/iot/vocab/m3-lite#WaterO2IonSensor</seealso>
+    let WaterO2IonSensor = Prefixed_Name(m3lite, "WaterO2IonSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WaterPHSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect PH level of water.</para>
+    /// labels<para>Water PH Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WaterPHSensor">http://purl.org/iot/vocab/m3-lite#WaterPHSensor</seealso>
+    let WaterPHSensor = Prefixed_Name(m3lite, "WaterPHSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WaterTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sea surface temperature (SST) is the water temperature close to the ocean's surface.</para>
+    /// labels<para>Water Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WaterTemperature">http://purl.org/iot/vocab/m3-lite#WaterTemperature</seealso>
+    let WaterTemperature = Prefixed_Name(m3lite, "WaterTemperature") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WaterThermometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>This sensor reports Water temperature.</para>
+    /// labels<para>Water Thermometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WaterThermometer">http://purl.org/iot/vocab/m3-lite#WaterThermometer</seealso>
+    let WaterThermometer = Prefixed_Name(m3lite, "WaterThermometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Weight</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A body's relative mass or the quantity of matter contained by it, giving rise to a downward force; the heaviness of a person or thing.</para>
+    /// labels<para>Weight</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Weight">http://purl.org/iot/vocab/m3-lite#Weight</seealso>
+    let Weight = Prefixed_Name(m3lite, "Weight") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WeightSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to weight an object.</para>
+    /// labels<para>Weight Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WeightSensor">http://purl.org/iot/vocab/m3-lite#WeightSensor</seealso>
+    let WeightSensor = Prefixed_Name(m3lite, "WeightSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:WiFiInterfaceEnergyMeter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure the average power consumption of the WiFi interface nodes.</para>
+    /// labels<para>WiFi Interface Energy Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WiFiInterfaceEnergyMeter">http://purl.org/iot/vocab/m3-lite#WiFiInterfaceEnergyMeter</seealso>
+    let WiFiInterfaceEnergyMeter =
+        Prefixed_Name(m3lite, "WiFiInterfaceEnergyMeter") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:WindChill</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The cooling effect of wind blowing on a surface.</para>
+    /// labels<para>Wind Chill</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WindChill">http://purl.org/iot/vocab/m3-lite#WindChill</seealso>
+    let WindChill = Prefixed_Name(m3lite, "WindChill") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WindChillSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect Wind Chill.</para>
+    /// labels<para>Wind Chill Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WindChillSensor">http://purl.org/iot/vocab/m3-lite#WindChillSensor</seealso>
+    let WindChillSensor = Prefixed_Name(m3lite, "WindChillSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Window</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically open/close the window.</para>
+    /// labels<para>Window Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Window">http://purl.org/iot/vocab/m3-lite#Window</seealso>
+    let Window = Prefixed_Name(m3lite, "Window") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WorkingState</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicator of whether a person (or object) is working or not</para>
+    /// labels<para>Working State</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WorkingState">http://purl.org/iot/vocab/m3-lite#WorkingState</seealso>
+    let WorkingState = Prefixed_Name(m3lite, "WorkingState") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WorkingStateDriver</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicator of whether the driver of a vehicle is present or not</para>
+    /// labels<para>Working State Driver</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WorkingStateDriver">http://purl.org/iot/vocab/m3-lite#WorkingStateDriver</seealso>
+    let WorkingStateDriver = Prefixed_Name(m3lite, "WorkingStateDriver") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:WorkingStateDriver1</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>State of work of the first driver as defined in the FMS standard.</para>
+    /// labels<para>Working State Driver 1</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WorkingStateDriver1">http://purl.org/iot/vocab/m3-lite#WorkingStateDriver1</seealso>
+    let WorkingStateDriver1 =
+        Prefixed_Name(m3lite, "WorkingStateDriver1") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:hasMeasurementType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Each sensing device can have a different sensing mechanism which may result in different kinds of sensor data. This property links observation of the sensor to the associated MeasurementType.</para>
+    /// labels<para>has Measurement Type</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#hasMeasurementType">http://purl.org/iot/vocab/m3-lite#hasMeasurementType</seealso>
+    let hasMeasurementType = Prefixed_Name(m3lite, "hasMeasurementType") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:hasSoundSource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This property links sound to its environmental source.</para>
+    /// labels<para>has Sound Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#hasSoundSource">http://purl.org/iot/vocab/m3-lite#hasSoundSource</seealso>
+    let hasSoundSource = Prefixed_Name(m3lite, "hasSoundSource") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:hasSource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This property links sensed phenomena to its environmental source.</para>
+    /// labels<para>has Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#hasSource">http://purl.org/iot/vocab/m3-lite#hasSource</seealso>
+    let hasSource = Prefixed_Name(m3lite, "hasSource") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Communication</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Communication related properties.</para>
+    /// labels<para>Communication Related Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Communication">http://purl.org/iot/vocab/m3-lite#Communication</seealso>
+    let Communication = Prefixed_Name(m3lite, "Communication") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:AccelerationInstantaneous</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The acceleration at a given instant of time.</para>
+    /// labels<para>Instantaneous Acceleration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AccelerationInstantaneous">http://purl.org/iot/vocab/m3-lite#AccelerationInstantaneous</seealso>
+    let AccelerationInstantaneous =
+        Prefixed_Name(m3lite, "AccelerationInstantaneous") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:DomainOfInterest</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Application Domain for example: health, environment, etc.</para>
+    /// labels<para>Domain Of Interest</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DomainOfInterest">http://purl.org/iot/vocab/m3-lite#DomainOfInterest</seealso>
+    let DomainOfInterest = Prefixed_Name(m3lite, "DomainOfInterest") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:AirConditioner</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the air conditioner.</para>
+    /// labels<para>Air Conditioner Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AirConditioner">http://purl.org/iot/vocab/m3-lite#AirConditioner</seealso>
+    let AirConditioner = Prefixed_Name(m3lite, "AirConditioner") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:AirHumiditySensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor used to measure air humidity.</para>
+    /// labels<para>Air Humidity Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AirHumiditySensor">http://purl.org/iot/vocab/m3-lite#AirHumiditySensor</seealso>
+    let AirHumiditySensor = Prefixed_Name(m3lite, "AirHumiditySensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:AirPollutantSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Air Pollutant Sensor are devices that detect and monitor the presence of air pollution in the surrounding area (source Wikipedia).</para>
+    /// labels<para>Air Pollutant Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AirPollutantSensor">http://purl.org/iot/vocab/m3-lite#AirPollutantSensor</seealso>
+    let AirPollutantSensor = Prefixed_Name(m3lite, "AirPollutantSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:AirTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The temperature of the air that would be indicated by a thermometer exposed to the air at a location sheltered from direct solar radiation.</para>
+    /// labels<para>Air Temperature, Weather Temperature, Ambient Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AirTemperature">http://purl.org/iot/vocab/m3-lite#AirTemperature</seealso>
+    let AirTemperature = Prefixed_Name(m3lite, "AirTemperature") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:AlcoholLevelSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect and measure Alcohol Level in the system.</para>
+    /// labels<para>Alcohol Level Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AlcoholLevelSensor">http://purl.org/iot/vocab/m3-lite#AlcoholLevelSensor</seealso>
+    let AlcoholLevelSensor = Prefixed_Name(m3lite, "AlcoholLevelSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:AngularSpeed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the rate of change of angular displacement and is a vector quantity (more precisely, a pseudovector) that specifies the angular speed (rotational speed) of an object and the axis about which the object is rotating. (Source Wikipedia).</para>
+    /// labels<para>Angular Speed</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AngularSpeed">http://purl.org/iot/vocab/m3-lite#AngularSpeed</seealso>
+    let AngularSpeed = Prefixed_Name(m3lite, "AngularSpeed") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Weather</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Weather Forecasting, Meterology as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Weather Forecasting DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Weather">http://purl.org/iot/vocab/m3-lite#Weather</seealso>
+    let Weather = Prefixed_Name(m3lite, "Weather") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Barcode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A tagging device can be Barcode.</para>
+    /// labels<para>Barcode Tagging Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Barcode">http://purl.org/iot/vocab/m3-lite#Barcode</seealso>
+    let Barcode = Prefixed_Name(m3lite, "Barcode") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:BatteryLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the percentage of the battery capacity that remains available.</para>
+    /// labels<para>Battery Level Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BatteryLevel">http://purl.org/iot/vocab/m3-lite#BatteryLevel</seealso>
+    let BatteryLevel = Prefixed_Name(m3lite, "BatteryLevel") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:BuildingTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of building or room temperature.</para>
+    /// labels<para>Building/Room Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BuildingTemperature">http://purl.org/iot/vocab/m3-lite#BuildingTemperature</seealso>
+    let BuildingTemperature =
+        Prefixed_Name(m3lite, "BuildingTemperature") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:CO2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Carbon Dioxide (CO2) measure in the atmosphere.</para>
+    /// labels<para>Carbon Dioxide (CO2) Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#CO2">http://purl.org/iot/vocab/m3-lite#CO2</seealso>
+    let CO2 = Prefixed_Name(m3lite, "CO2") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Calcium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of blood calcium level.</para>
+    /// labels<para>Calcium Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Calcium">http://purl.org/iot/vocab/m3-lite#Calcium</seealso>
+    let Calcium = Prefixed_Name(m3lite, "Calcium") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Metre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the unit of length.</para>
+    /// labels<para>Metre, Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Metre">http://purl.org/iot/vocab/m3-lite#Metre</seealso>
+    let Metre = Prefixed_Name(m3lite, "Metre") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ChemicalAgentAtmosphericConcentration</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of Chemical Agent Atmospheric Concentration</para>
+    /// labels<para>Chemical Agent Atmospheric Concentration Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentration">http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentration</seealso>
     let ChemicalAgentAtmosphericConcentration =
-        _prefix "ChemicalAgentAtmosphericConcentration"
+        Prefixed_Name(m3lite, "ChemicalAgentAtmosphericConcentration") |> PrefixedName
 
     /// <summary>
-    /// Measure of Chemical Agent Concentration
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentConcentration"></see></summary>
-    let ChemicalAgentConcentration = _prefix "ChemicalAgentConcentration"
-
-    /// <summary>
-    /// Measure of the concentration of chemical particles suspended in the atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationAirParticles"></see></summary>
+    ///   <para>m3lite:ChemicalAgentAtmosphericConcentrationAirParticles</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the concentration of chemical particles suspended in the atmosphere.</para>
+    /// labels<para>Air Particles Chemical Agent Atmospheric Concentration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationAirParticles">http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationAirParticles</seealso>
     let ChemicalAgentAtmosphericConcentrationAirParticles =
-        _prefix "ChemicalAgentAtmosphericConcentrationAirParticles"
+        Prefixed_Name(m3lite, "ChemicalAgentAtmosphericConcentrationAirParticles") |> PrefixedName
 
     /// <summary>
-    /// Measure of the concentration of Carbon Monoxide (CO) gas suspended in the atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationCO"></see></summary>
+    ///   <para>m3lite:ChemicalAgentAtmosphericConcentrationCO</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the concentration of Carbon Monoxide (CO) gas suspended in the atmosphere.</para>
+    /// labels<para>Carbon Monoxide (CO) Chemical Agent Atmospheric Concentration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationCO">http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationCO</seealso>
     let ChemicalAgentAtmosphericConcentrationCO =
-        _prefix "ChemicalAgentAtmosphericConcentrationCO"
+        Prefixed_Name(m3lite, "ChemicalAgentAtmosphericConcentrationCO") |> PrefixedName
 
     /// <summary>
-    /// Measure of the concentration of dust suspended in the air.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationDust"></see></summary>
-    let ChemicalAgentAtmosphericConcentrationDust =
-        _prefix "ChemicalAgentAtmosphericConcentrationDust"
-
-    /// <summary>
-    /// Measure of the concentration of Carbon Monoxide (CO) gas suspended in the atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationNO"></see></summary>
-    let ChemicalAgentAtmosphericConcentrationNO =
-        _prefix "ChemicalAgentAtmosphericConcentrationNO"
-
-    /// <summary>
-    /// Measure of the concentration of NO2 gas suspended in the atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationNO2"></see></summary>
-    let ChemicalAgentAtmosphericConcentrationNO2 =
-        _prefix "ChemicalAgentAtmosphericConcentrationNO2"
-
-    /// <summary>
-    /// The concentration of ozone (O3) gas suspended in the atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationO3"></see></summary>
-    let ChemicalAgentAtmosphericConcentrationO3 =
-        _prefix "ChemicalAgentAtmosphericConcentrationO3"
-
-    /// <summary>
-    /// Measure of the concentration of Sulphur dioxide (SO2) gas suspended in the atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationSO2"></see></summary>
-    let ChemicalAgentAtmosphericConcentrationSO2 =
-        _prefix "ChemicalAgentAtmosphericConcentrationSO2"
-
-    /// <summary>
-    /// Measure of the concentration of Volatile Organic Compound gas suspended in the atmosphere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationVOC"></see></summary>
+    ///   <para>m3lite:ChemicalAgentAtmosphericConcentrationVOC</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the concentration of Volatile Organic Compound gas suspended in the atmosphere.</para>
+    /// labels<para>Volatile Organic Compound Chemical Agent Atmospheric Concentration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationVOC">http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationVOC</seealso>
     let ChemicalAgentAtmosphericConcentrationVOC =
-        _prefix "ChemicalAgentAtmosphericConcentrationVOC"
+        Prefixed_Name(m3lite, "ChemicalAgentAtmosphericConcentrationVOC") |> PrefixedName
 
     /// <summary>
-    /// Measure of Chemical Agent Concentration in Water
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentration"></see></summary>
-    let ChemicalAgentWaterConcentration = _prefix "ChemicalAgentWaterConcentration"
+    ///   <para>m3lite:ChemicalAgentWaterConcentration</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of Chemical Agent Concentration in Water </para>
+    /// labels<para>Chemical Agent Water Concentration Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentration">http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentration</seealso>
+    let ChemicalAgentWaterConcentration =
+        Prefixed_Name(m3lite, "ChemicalAgentWaterConcentration") |> PrefixedName
 
     /// <summary>
-    /// Measure of NH4 ion concentration in Water
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentrationNH4Ion"></see></summary>
-    let ChemicalAgentWaterConcentrationNH4Ion =
-        _prefix "ChemicalAgentWaterConcentrationNH4Ion"
-
-    /// <summary>
-    /// Measure of NO3 ion concentration in Water
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentrationNO3Ion"></see></summary>
+    ///   <para>m3lite:ChemicalAgentWaterConcentrationNO3Ion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of NO3 ion concentration in Water </para>
+    /// labels<para>Nitrate Ion (NO3-) Chemical Agent Water Concentration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentrationNO3Ion">http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentrationNO3Ion</seealso>
     let ChemicalAgentWaterConcentrationNO3Ion =
-        _prefix "ChemicalAgentWaterConcentrationNO3Ion"
+        Prefixed_Name(m3lite, "ChemicalAgentWaterConcentrationNO3Ion") |> PrefixedName
 
     /// <summary>
-    /// Measure of O2 concentration in Water
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentrationO2"></see></summary>
-    let ChemicalAgentWaterConcentrationO2 = _prefix "ChemicalAgentWaterConcentrationO2"
-    /// <summary>
-    /// Measure of the cholesterol level in a system.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Cholesterol"></see></summary>
-    let Cholesterol = _prefix "Cholesterol"
-    /// <summary>
-    /// Device used to measure the cholesterol level in a system.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#CholesterolSensor"></see></summary>
-    let CholesterolSensor = _prefix "CholesterolSensor"
-    /// <summary>
-    /// Smart City as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#City"></see></summary>
-    let City = _prefix "City"
-    /// <summary>
-    /// sensor that measures time
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Clock"></see></summary>
-    let Clock = _prefix "Clock"
-    /// <summary>
-    /// Measure of cloud cover at a certain time.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#CloudCover"></see></summary>
-    let CloudCover = _prefix "CloudCover"
-    /// <summary>
-    /// Cloud Cover Sensor is used to detect whether it is sunny, cloudy, etc.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#CloudCoverSensor"></see></summary>
-    let CloudCoverSensor = _prefix "CloudCoverSensor"
-    /// <summary>
-    /// An actuator to automatically switch on/off the coffee machine.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#CoffeeMachine"></see></summary>
-    let CoffeeMachine = _prefix "CoffeeMachine"
-    /// <summary>
-    /// Actuating devices for Computer or PC.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Computer"></see></summary>
-    let Computer = _prefix "Computer"
-    /// <summary>
-    /// Measure of ability to conduct electricity. It is measured in siemens per metre (S/m).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Conductivity"></see></summary>
-    let Conductivity = _prefix "Conductivity"
-    /// <summary>
-    /// Device used to measure the conductivity of a system.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ConductivitySensor"></see></summary>
-    let ConductivitySensor = _prefix "ConductivitySensor"
-    /// <summary>
-    /// When the source of the sound was a construction work.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ConstructionWork"></see></summary>
-    let ConstructionWork = _prefix "ConstructionWork"
-    /// <summary>
-    /// Triples for location in the (Latitude, Longitude, Altitude) format.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Coordinates"></see></summary>
-    let Coordinates = _prefix "Coordinates"
-    /// <summary>
-    /// SI unit of electric charge.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Coulomb"></see></summary>
-    let Coulomb = _prefix "Coulomb"
-    /// <summary>
-    /// Number of available particular things.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Count"></see></summary>
-    let Count = _prefix "Count"
-    /// <summary>
-    /// Number of available bicycles at a particular bicycle docking station.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#CountAvailableBicycles"></see></summary>
-    let CountAvailableBicycles = _prefix "CountAvailableBicycles"
-    /// <summary>
-    /// Number of taxis available at a particular taxi stop.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#CountAvailableTaxis"></see></summary>
-    let CountAvailableTaxis = _prefix "CountAvailableTaxis"
-    /// <summary>
-    /// Number of empty docking points at a particular bicycle docking station.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#CountEmptyDockingPoints"></see></summary>
-    let CountEmptyDockingPoints = _prefix "CountEmptyDockingPoints"
-    /// <summary>
-    /// Sensors that reckons occurrences or repetitions of physical objects, phenomena or events.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Counter"></see></summary>
-    let Counter = _prefix "Counter"
-    /// <summary>
-    /// When the source of the sound was crowd.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Crowd"></see></summary>
-    let Crowd = _prefix "Crowd"
-    /// <summary>
-    /// An actuator to automatically open/close the cupboard.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Cupboard"></see></summary>
-    let Cupboard = _prefix "Cupboard"
-    /// <summary>
-    /// An actuator to automatically open/close the curtain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Curtain"></see></summary>
-    let Curtain = _prefix "Curtain"
-    /// <summary>
-    /// Day is a unit of time.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Day"></see></summary>
-    let Day = _prefix "Day"
-    /// <summary>
-    /// Qualitatively defined as the second division of the hour by sixty, the first division by sixty being the minute. SI definition of second is "the duration of 9 192 631 770 periods of the radiation corresponding to the transition between the two hyperfine levels of the ground state of the cesium 133 atom.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SecondTime"></see></summary>
-    let SecondTime = _prefix "SecondTime"
-    /// <summary>
-    /// Decibel is a logarithmic unit used to express the ratio of two values of a physical quantity. It is often used to measure sound level.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Decibel"></see></summary>
-    let Decibel = _prefix "Decibel"
-    /// <summary>
-    /// Sound pressure sensed by the human ear.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DecibelA"></see></summary>
-    let DecibelA = _prefix "DecibelA"
-    /// <summary>
-    /// It describes power ratio in decibels of the measured power referenced to one milliwatt.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DecibelMilliwatt"></see></summary>
-    let DecibelMilliwatt = _prefix "DecibelMilliwatt"
-    /// <summary>
-    /// Degree.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Degree"></see></summary>
-    let Degree = _prefix "Degree"
-    /// <summary>
-    /// A plane angle unit which is equal to 1/360 of a full rotation or pi/180 rad.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DegreeAngle"></see></summary>
-    let DegreeAngle = _prefix "DegreeAngle"
-    /// <summary>
-    /// A temperature unit which is equal to one kelvin degree. However, they have their zeros at different points. The centigrade scale has its zero at 273.15 K.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DegreeCelsius"></see></summary>
-    let DegreeCelsius = _prefix "DegreeCelsius"
-    /// <summary>
-    /// Measurement Unit to represent temperature on the Fahrenheit scale.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DegreeFahrenheit"></see></summary>
-    let DegreeFahrenheit = _prefix "DegreeFahrenheit"
-    /// <summary>
-    /// Difference between Dewpoint and surface temperatures.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DeltaDewPoint"></see></summary>
-    let DeltaDewPoint = _prefix "DeltaDewPoint"
-    /// <summary>
-    /// It is the temperature to which air must be cooled at constant pressure to condense to form liquid.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DewPoint"></see></summary>
-    let DewPoint = _prefix "DewPoint"
-    /// <summary>
-    /// Device that measures the difference between Dewpoint and surface temperatures.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DeltaDewPointSensor"></see></summary>
-    let DeltaDewPointSensor = _prefix "DeltaDewPointSensor"
-    /// <summary>
-    /// Time a device is working and is available
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DeviceUptime"></see></summary>
-    let DeviceUptime = _prefix "DeviceUptime"
-    /// <summary>
-    /// Sensor that measures time a device is working and is available.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DeviceUptimeClock"></see></summary>
-    let DeviceUptimeClock = _prefix "DeviceUptimeClock"
-    /// <summary>
-    /// Device that measures dew point.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DewPointSensor"></see></summary>
-    let DewPointSensor = _prefix "DewPointSensor"
-    /// <summary>
-    /// The temperature at which dew forms and is a measure of atmospheric moisture. It is the temperature to which air must be cooled at constant pressure and water content to reach saturation. A higher dew point indicates more moisture in the air; a dew point greater than 20 Degree C (68 Degree F) is considered uncomfortable and greater than 22 Degree C (72 Degree F) is considered to be extremely humid.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DewPointTemperature"></see></summary>
-    let DewPointTemperature = _prefix "DewPointTemperature"
-    /// <summary>
-    ///  Measure of the pressure in the arteries when the heart rests between beats.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DiastolicBloodPressure"></see></summary>
-    let DiastolicBloodPressure = _prefix "DiastolicBloodPressure"
-    /// <summary>
-    /// Without dimensions; having no appreciable or noteworthy extent. Without physical meaning.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Dimensionless"></see></summary>
-    let Dimensionless = _prefix "Dimensionless"
-    /// <summary>
-    /// Measurements of sensors are affected by the direction of the sensing device. This concept is used to reflect it.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Direction"></see></summary>
-    let Direction = _prefix "Direction"
-    /// <summary>
-    /// The geodetic azimuth of the direction towards which an object is point to.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DirectionAzimuth"></see></summary>
-    let DirectionAzimuth = _prefix "DirectionAzimuth"
-    /// <summary>
-    /// The course or direction in which a object (vehicle, person, ...) is moving.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DirectionHeading"></see></summary>
-    let DirectionHeading = _prefix "DirectionHeading"
-    /// <summary>
-    /// The azimuth direction of a  source relative to the azimuth direction of the DOA sensor.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DirectionOfArrival"></see></summary>
-    let DirectionOfArrival = _prefix "DirectionOfArrival"
-    /// <summary>
-    /// Sensor that estimates the azimuth direction of sources relative to the sensor’s position.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DirectionOfArrivalSensor"></see></summary>
-    let DirectionOfArrivalSensor = _prefix "DirectionOfArrivalSensor"
-    /// <summary>
-    /// An actuator to automatically switch on/off the dishwasher.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DishWasher"></see></summary>
-    let DishWasher = _prefix "DishWasher"
-    /// <summary>
-    /// Measure of how far apart objects are.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Distance"></see></summary>
-    let Distance = _prefix "Distance"
-    /// <summary>
-    /// Distance Sensor is used to detect distance between two objects for example:  the safety distance with other cars. Distance sensor can be a laser.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DistanceSensor"></see></summary>
-    let DistanceSensor = _prefix "DistanceSensor"
-    /// <summary>
-    /// An actuator to automatically open/close the door.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Door"></see></summary>
-    let Door = _prefix "Door"
-    /// <summary>
-    /// This sensor detects if a door is in the state of OPEN or CLOSED.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DoorStateSensor"></see></summary>
-    let DoorStateSensor = _prefix "DoorStateSensor"
-    /// <summary>
-    /// Describes if a door is OPEN or CLOSED.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DoorStatus"></see></summary>
-    let DoorStatus = _prefix "DoorStatus"
-    /// <summary>
-    /// An actuator to automatically open/close the drawer.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Drawer"></see></summary>
-    let Drawer = _prefix "Drawer"
-    /// <summary>
-    /// A sensing device that measures dust particle concentration.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#DustSensor"></see></summary>
-    let DustSensor = _prefix "DustSensor"
-    /// <summary>
-    /// Unit to measure Air Quality in European cities.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#EAQI"></see></summary>
-    let EAQI = _prefix "EAQI"
-    /// <summary>
-    /// ECG or EKG (Electrocardiogram) device.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ECG"></see></summary>
-    let ECG = _prefix "ECG"
-    /// <summary>
-    /// Affective Science, Emotion, Mood, Emotional State, Brain Wave as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Emotion"></see></summary>
-    let Emotion = _prefix "Emotion"
-    /// <summary>
-    /// The actuator for turning ESP on/off.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ESP"></see></summary>
-    let ESP = _prefix "ESP"
-    /// <summary>
-    /// It is the physical property of matter that causes it to experience a force when placed in an electromagnetic field. (Source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricCharge"></see></summary>
-    let ElectricCharge = _prefix "ElectricCharge"
-    /// <summary>
-    /// Electric current is the flow of electric charge. It is a base quantity in the International System of Units. Electric current is electric charge divided by time. Electric Current is the flow (movement) of electric charge. The amount of electric current through some surface, e.g., a section through a copper conductor, is defined as the amount of electric charge flowing through that surface over time.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricCurrent"></see></summary>
-    let ElectricCurrent = _prefix "ElectricCurrent"
-    /// <summary>
-    /// Electric field is the electric force per unit charge.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricField"></see></summary>
-    let ElectricField = _prefix "ElectricField"
-    /// <summary>
-    /// A field of force associated with a moving electric charge equivalent to an electric field and a magnetic field at right angles to each other and to the direction of propagation. Applied to the 1800 MHz UHF band.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricField1800MHz"></see></summary>
-    let ElectricField1800MHz = _prefix "ElectricField1800MHz"
-    /// <summary>
-    /// A field of force associated with a moving electric charge equivalent to an electric field and a magnetic field at right angles to each other and to the direction of propagation. Applied to the 2100 MHz UHF band.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricField2100MHz"></see></summary>
-    let ElectricField2100MHz = _prefix "ElectricField2100MHz"
-    /// <summary>
-    /// A field of force associated with a moving electric charge equivalent to an electric field and a magnetic field at right angles to each other and to the direction of propagation. Applied to the 2400 MHz UHF band.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricField2400MHz"></see></summary>
-    let ElectricField2400MHz = _prefix "ElectricField2400MHz"
-    /// <summary>
-    /// A field of force associated with a moving electric charge equivalent to an electric field and a magnetic field at right angles to each other and to the direction of propagation. Applied to the 900 MHz UHF band.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricField900Mhz"></see></summary>
-    let ElectricField900Mhz = _prefix "ElectricField900Mhz"
-    /// <summary>
-    /// Scientific instrument for measuring electromagnetic fields (EMF). Most of them measure the electromagnetic radiation flux density (DC fields) or the change in an electromagnetic field over time (AC fields).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricFieldSensor"></see></summary>
-    let ElectricFieldSensor = _prefix "ElectricFieldSensor"
-    /// <summary>
-    /// Electric potential is the potential energy per unit charge associated with static (time-invariant) electric field.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricPotential"></see></summary>
-    let ElectricPotential = _prefix "ElectricPotential"
-    /// <summary>
-    /// The electrical resistance of an electrical conductor is the opposition to the passage of an electric current through that conductor.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricalResistance"></see></summary>
-    let ElectricalResistance = _prefix "ElectricalResistance"
-    /// <summary>
-    /// Sensor that measures the changes in electrical or magnetic signals based on an environmental input.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ElectricalSensor"></see></summary>
-    let ElectricalSensor = _prefix "ElectricalSensor"
-    /// <summary>
-    /// Energy is the property that must be transferred to an object in order to perform work on. (Source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Energy"></see></summary>
-    let Energy = _prefix "Energy"
-    /// <summary>
-    /// Energy or Smart Grid as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#EnergyDOI"></see></summary>
-    let EnergyDOI = _prefix "EnergyDOI"
-    /// <summary>
-    /// Sensor to measure power or energy consumption.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#EnergyMeter"></see></summary>
-    let EnergyMeter = _prefix "EnergyMeter"
-    /// <summary>
-    /// Experiment based measurements.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Experiment"></see></summary>
-    let Experiment = _prefix "Experiment"
-    /// <summary>
-    /// Device to detect is a person has fallen.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FallDetector"></see></summary>
-    let FallDetector = _prefix "FallDetector"
-    /// <summary>
-    /// When the source of the sound was Fan.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Fan"></see></summary>
-    let Fan = _prefix "Fan"
-    /// <summary>
-    /// SI unit of electrical capacitance.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Farad"></see></summary>
-    let Farad = _prefix "Farad"
-    /// <summary>
-    /// Property used to determine the level a certain object such as waste bin is filled upto.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FillLevel"></see></summary>
-    let FillLevel = _prefix "FillLevel"
-    /// <summary>
-    /// Ratio of volume of combustible exhaust fluid to the total volume of diesel exhaust fluid storage container.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FillLevelGasTank"></see></summary>
-    let FillLevelGasTank = _prefix "FillLevelGasTank"
-    /// <summary>
-    /// Ratio of volume of combustible exhaust fluid to the total volume of diesel exhaust fluid storage container. This is the value for the primary tank of the vehicle.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FillLevelGasTank1"></see></summary>
-    let FillLevelGasTank1 = _prefix "FillLevelGasTank1"
-    /// <summary>
-    /// Ratio of volume of combustible exhaust fluid to the total volume of diesel exhaust fluid storage container. This is the value for the secondary tank of the vehicle.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FillLevelGasTank2"></see></summary>
-    let FillLevelGasTank2 = _prefix "FillLevelGasTank2"
-    /// <summary>
-    /// Ratio between the current filleage level and the total capacity of a waste container.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FillLevelWasteContainer"></see></summary>
-    let FillLevelWasteContainer = _prefix "FillLevelWasteContainer"
-    /// <summary>
-    /// The actuator for turning on or off the fog lamp.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FogLamp"></see></summary>
-    let FogLamp = _prefix "FogLamp"
-    /// <summary>
-    /// Measure of temperature of the food.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FoodTemperature"></see></summary>
-    let FoodTemperature = _prefix "FoodTemperature"
-    /// <summary>
-    /// An actuator to automatically open/close the freezer.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Freezer"></see></summary>
-    let Freezer = _prefix "Freezer"
-    /// <summary>
-    /// Frequency is the number of occurrences of a repeating event per unit time.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Frequency"></see></summary>
-    let Frequency = _prefix "Frequency"
-    /// <summary>
-    /// Device used to detect the frequency.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FrequencySensor"></see></summary>
-    let FrequencySensor = _prefix "FrequencySensor"
-    /// <summary>
-    /// An actuator to automatically switch on/off the fridge.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Fridge"></see></summary>
-    let Fridge = _prefix "Fridge"
-    /// <summary>
-    /// The amount of fuel a vehicle uses to travel a particular distance at a particular speed.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FuelConsumption"></see></summary>
-    let FuelConsumption = _prefix "FuelConsumption"
-    /// <summary>
-    /// A measure that displays the instantaneous fuel consumption of a vehicle during its operation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FuelConsumptionInstantaneous"></see></summary>
-    let FuelConsumptionInstantaneous = _prefix "FuelConsumptionInstantaneous"
-    /// <summary>
-    /// Accumulated amount of fuel used during vehicle operation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FuelConsumptionTotal"></see></summary>
-    let FuelConsumptionTotal = _prefix "FuelConsumptionTotal"
-    /// <summary>
-    /// Device used to detect fuel level in a system such a car.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#FuelLevel"></see></summary>
-    let FuelLevel = _prefix "FuelLevel"
-    /// <summary>
-    /// Device that allows an object to localize itself.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#GPSSensor"></see></summary>
-    let GPSSensor = _prefix "GPSSensor"
-    /// <summary>
-    /// Device that detects the presence of gases in an area, often as part of a safety system.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#GasDetector"></see></summary>
-    let GasDetector = _prefix "GasDetector"
-    /// <summary>
-    /// Gauss is the CGS unit of measurement of magnetic flux density (or magnetic induction) (B) (Source Wikipedia)
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Gauss"></see></summary>
-    let Gauss = _prefix "Gauss"
-    /// <summary>
-    /// Device used to detect glucometer, blood sugar, blood glucose level.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Glucometer"></see></summary>
-    let Glucometer = _prefix "Glucometer"
-    /// <summary>
-    /// It is a metric system unit of mass
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Gram"></see></summary>
-    let Gram = _prefix "Gram"
-    /// <summary>
-    /// It is defined by mass in grams divided by volume in cubic metres.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#GramPerCubicMetre"></see></summary>
-    let GramPerCubicMetre = _prefix "GramPerCubicMetre"
-    /// <summary>
-    /// It shows how many grams of a certain substance are present in one litre of a usually liquid or gaseous mixture.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#GramPerLitre"></see></summary>
-    let GramPerLitre = _prefix "GramPerLitre"
-    /// <summary>
-    /// A gyrometer is an instrument which measures an angular speed.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#GyrometerSensor"></see></summary>
-    let GyrometerSensor = _prefix "GyrometerSensor"
-    /// <summary>
-    /// A gyroscope is a device for measuring or maintaining orientation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#GyroscopeSensor"></see></summary>
-    let GyroscopeSensor = _prefix "GyroscopeSensor"
-    /// <summary>
-    /// Device used to measure of hydrogen sulphide in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#H2SSensor"></see></summary>
-    let H2SSensor = _prefix "H2SSensor"
-    /// <summary>
-    /// The number of times your heart beats each minute (bpm).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#HeartBeat"></see></summary>
-    let HeartBeat = _prefix "HeartBeat"
-    /// <summary>
-    /// Device to count heart beats per minute.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#HeartBeatSensor"></see></summary>
-    let HeartBeatSensor = _prefix "HeartBeatSensor"
-    /// <summary>
-    /// An actuator to automatically switch on/off the heating.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Heating"></see></summary>
-    let Heating = _prefix "Heating"
-    /// <summary>
-    /// The SI unit of frequency, equal to one cycle per second.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Hertz"></see></summary>
-    let Hertz = _prefix "Hertz"
-    /// <summary>
-    /// Hour of the day.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Hour"></see></summary>
-    let Hour = _prefix "Hour"
-    /// <summary>
-    /// Measure of Household Appliance Temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#HouseholdApplianceTemperature"></see></summary>
-    let HouseholdApplianceTemperature = _prefix "HouseholdApplianceTemperature"
-    /// <summary>
-    /// Device used to detect if an object (vehicle, room, place, etc.) is occupied by Human.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#HumanPresenceDetector"></see></summary>
-    let HumanPresenceDetector = _prefix "HumanPresenceDetector"
-    /// <summary>
-    /// Device used to detect if on object is occupied or not.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PresenceDetector"></see></summary>
-    let PresenceDetector = _prefix "PresenceDetector"
-    /// <summary>
-    /// A quantity representing the amount of water vapour in the atmosphere or in a gas.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Humidity"></see></summary>
-    let Humidity = _prefix "Humidity"
-    /// <summary>
-    /// A hydrophone is a microphone designed to be used underwater for recording or listening to underwater sound.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Hydrophone"></see></summary>
-    let Hydrophone = _prefix "Hydrophone"
-    /// <summary>
-    /// Sensor that measures the power consumption of the IEEE802.15.4 interface nodes.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#IEEE802154InterfaceEnergyMeter"></see></summary>
-    let IEEE802154InterfaceEnergyMeter = _prefix "IEEE802154InterfaceEnergyMeter"
-    /// <summary>
-    /// Illuminance is the total luminous flux incident on a surface, per unit area.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Illuminance"></see></summary>
-    let Illuminance = _prefix "Illuminance"
-    /// <summary>
-    /// Sensor that detects and conveys the information that constitutes an image.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ImageSensor"></see></summary>
-    let ImageSensor = _prefix "ImageSensor"
-    /// <summary>
-    /// Length in inches.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Inch"></see></summary>
-    let Inch = _prefix "Inch"
-    /// <summary>
-    /// Arbitrary indirect reference which should be translated into meaningful measurements by using the corresponding decoding algorithm detailed in the resource description. In this case the returned values can only take certain values from a finite set.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Index"></see></summary>
-    let Index = _prefix "Index"
-    /// <summary>
-    /// Downlink Latency.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#IntDlLatency"></see></summary>
-    let IntDlLatency = _prefix "IntDlLatency"
-    /// <summary>
-    /// Downlink Throughput.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#IntDlThroughputKbps"></see></summary>
-    let IntDlThroughputKbps = _prefix "IntDlThroughputKbps"
-    /// <summary>
-    /// Uplink Packet Loss.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#IntUlPacketLoss"></see></summary>
-    let IntUlPacketLoss = _prefix "IntUlPacketLoss"
-    /// <summary>
-    /// Uplink Throughput.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#IntUlThroughputKbps"></see></summary>
-    let IntUlThroughputKbps = _prefix "IntUlThroughputKbps"
-    /// <summary>
-    /// If the measurement was tagged invalid.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Invalid"></see></summary>
-    let Invalid = _prefix "Invalid"
-    /// <summary>
-    /// Ionising radiation is radiation that carries enough energy to free electrons from atoms or molecules, thereby ionizing them. Gamma rays, X-rays, and the higher ultraviolet part of the electromagnetic spectrum are ionizing, whereas the lower ultraviolet part of the electromagnetic spectrum, and also the lower part of the spectrum below UV, including visible light (including nearly all types of laser light), infrared, microwaves, and radio waves are all considered non-ionizing radiation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#IonisingRadiation"></see></summary>
-    let IonisingRadiation = _prefix "IonisingRadiation"
-    /// <summary>
-    /// An actuator to automatically irrigate.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Irrigation"></see></summary>
-    let Irrigation = _prefix "Irrigation"
-    /// <summary>
-    /// Each of the accountable elements within a group.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Item"></see></summary>
-    let Item = _prefix "Item"
-    /// <summary>
-    /// Kelvin is a unit of measurement for temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Kelvin"></see></summary>
-    let Kelvin = _prefix "Kelvin"
-    /// <summary>
-    /// Measure of electrical energy equivalent to a power consumption of one thousand watts for one hour.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#KiloWattHour"></see></summary>
-    let KiloWattHour = _prefix "KiloWattHour"
-    /// <summary>
-    /// It is a unit of data transfer rate equal to: 1,000 bits per second.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#KilobitsPerSecond"></see></summary>
-    let KilobitsPerSecond = _prefix "KilobitsPerSecond"
-    /// <summary>
-    /// The SI unit of mass, it is equal to the mass of the international prototype of the kilogram.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Kilogram"></see></summary>
-    let Kilogram = _prefix "Kilogram"
-    /// <summary>
-    /// It is SI derived unit of density, defined by mass in kilograms divided by volume in cubic metres.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#KilogramPerCubicMetre"></see></summary>
-    let KilogramPerCubicMetre = _prefix "KilogramPerCubicMetre"
-    /// <summary>
-    /// A metric unit of measurement equal to 1,000 metres (approx 0.62 miles).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Kilometre"></see></summary>
-    let Kilometre = _prefix "Kilometre"
-    /// <summary>
-    /// It is a unit of speed, expressing the number of kilometres travelled in one hour.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#KilometrePerHour"></see></summary>
-    let KilometrePerHour = _prefix "KilometrePerHour"
-    /// <summary>
-    /// A speed/velocity unit which is equal to the speed of an object traveling 1 metre distance in one second.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MetrePerSecond"></see></summary>
-    let MetrePerSecond = _prefix "MetrePerSecond"
-    /// <summary>
-    /// An actuator to automatically switch on/off the lamp.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Lamp"></see></summary>
-    let Lamp = _prefix "Lamp"
-    /// <summary>
-    /// An actuator to automatically switch on/off the lavatory.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Lavatory"></see></summary>
-    let Lavatory = _prefix "Lavatory"
-    /// <summary>
-    /// Leaf wetness is a meteorological parameter that describes the amount of dew and precipitation left on surfaces. It is used for monitoring leaf moisture for agricultural purposes, such as fungus and disease control, for control of irrigation systems, and for detection of fog and dew conditions, and early detection of rainfall. (Source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#LeafWetness"></see></summary>
-    let LeafWetness = _prefix "LeafWetness"
-    /// <summary>
-    /// Leaf Wetness Sensor is used in agriculture to check whether the plants need to be watered.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#LeafWetnessSensor"></see></summary>
-    let LeafWetnessSensor = _prefix "LeafWetnessSensor"
-    /// <summary>
-    /// Light/Illuminance Sensor is used to adjust the brightness of the surface.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#LightSensor"></see></summary>
-    let LightSensor = _prefix "LightSensor"
-    /// <summary>
-    /// A metric unit of capacity defined as the volume of one kilogram of water under standard conditions. It is equal to 1,000 cubic centimetres.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Litre"></see></summary>
-    let Litre = _prefix "Litre"
-    /// <summary>
-    /// A consumption unit which is equal to the one of a vehicle which needs 1 fuel litre in order to traverse 100 kilometres.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#LitrePer100Kilometres"></see></summary>
-    let LitrePer100Kilometres = _prefix "LitrePer100Kilometres"
-    /// <summary>
-    /// Measure the average power consumption of the LoRa interface nodes.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#LoRaInterfaceEnergyMeter"></see></summary>
-    let LoRaInterfaceEnergyMeter = _prefix "LoRaInterfaceEnergyMeter"
-    /// <summary>
-    /// A particular place or position.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#LocationQK"></see></summary>
-    let LocationQK = _prefix "LocationQK"
-    /// <summary>
-    /// The SI unit of luminous flux, equal to the amount of light emitted per second in a unit solid angle of one steradian from a uniform source of one candela.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Lumen"></see></summary>
-    let Lumen = _prefix "Lumen"
-    /// <summary>
-    /// Luminous Flux is the measure of the perceived power of light.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#LuminousFlux"></see></summary>
-    let LuminousFlux = _prefix "LuminousFlux"
-    /// <summary>
-    ///  It is a measure of the wavelength-weighted power emitted by a light source in a particular direction per unit solid angle, based on the luminosity function, a standardized model of the sensitivity of the human eye. The SI unit of luminous intensity is the candela (cd), an SI base unit. (Source Wikipedia)
-    /// <see href="http://purl.org/iot/vocab/m3-lite#LuminousIntensity"></see></summary>
-    let LuminousIntensity = _prefix "LuminousIntensity"
-    /// <summary>
-    /// The SI unit of illuminance, equal to one lumen per square metre.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Lux"></see></summary>
-    let Lux = _prefix "Lux"
-    /// <summary>
-    /// A region around a magnetic material or a moving electric charge within which the force of magnetism acts.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MagneticField"></see></summary>
-    let MagneticField = _prefix "MagneticField"
-    /// <summary>
-    /// It is the magnetic flux  through a surface is the surface integral of the normal component of the magnetic field (B) passing through that surface. The SI unit of magnetic flux is the weber (Wb). (Source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MagneticFluxDensity"></see></summary>
-    let MagneticFluxDensity = _prefix "MagneticFluxDensity"
-    /// <summary>
-    /// A magnetometer is an device that measures magnetism—either magnetization of magnetic material like a ferromagnet, or the strength and, in some cases, direction of the magnetic field at a point in space. (Source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Magnetometer"></see></summary>
-    let Magnetometer = _prefix "Magnetometer"
-    /// <summary>
-    /// If the measurement was taken when human effort was involved.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Manual"></see></summary>
-    let Manual = _prefix "Manual"
-    /// <summary>
-    /// Mass is a property of a physical body. It is the measure of an object's resistance to acceleration when a net force is applied.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Mass"></see></summary>
-    let Mass = _prefix "Mass"
-    /// <summary>
-    /// Device used to detect Methane in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MethaneSensor"></see></summary>
-    let MethaneSensor = _prefix "MethaneSensor"
-    /// <summary>
-    /// It is the unit of acceleration.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MetrePerSecondSquare"></see></summary>
-    let MetrePerSecondSquare = _prefix "MetrePerSecondSquare"
-    /// <summary>
-    /// It is a unit of electric current, or amount of electric charge per second.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Microampere"></see></summary>
-    let Microampere = _prefix "Microampere"
-    /// <summary>
-    /// It is a unit of mass equal to one billionth (1×10^−9) of a kilogram.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Microgram"></see></summary>
-    let Microgram = _prefix "Microgram"
-    /// <summary>
-    /// Microgram per cubic metre is a unit of density defined as microgram divided by cubic metre. Milligram per cubic metre is a derived unit in the International System of Units.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MicrogramPerCubicMetre"></see></summary>
-    let MicrogramPerCubicMetre = _prefix "MicrogramPerCubicMetre"
-    /// <summary>
-    /// It is a unit of electromotive force or potential difference equal to one millionth of a volt.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Microvolt"></see></summary>
-    let Microvolt = _prefix "Microvolt"
-    /// <summary>
-    /// The SI unit of electromotive force, the difference of potential that would carry one ampere of current against one ohm resistance.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Volt"></see></summary>
-    let Volt = _prefix "Volt"
-    /// <summary>
-    /// It is a unit of power.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Microwatt"></see></summary>
-    let Microwatt = _prefix "Microwatt"
-    /// <summary>
-    /// It is the SI unit of power, equivalent to one joule per second, corresponding to the rate of consumption of energy in an electric circuit where the potential difference is one volt and the current one ampere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Watt"></see></summary>
-    let Watt = _prefix "Watt"
-    /// <summary>
-    /// It is one of the unit for radiative and other energy fluxes.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MicrowattPerSquareCentimetre"></see></summary>
-    let MicrowattPerSquareCentimetre = _prefix "MicrowattPerSquareCentimetre"
-    /// <summary>
-    /// It is the SI unit for radiative and other energy fluxes.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WattPerSquareMetre"></see></summary>
-    let WattPerSquareMetre = _prefix "WattPerSquareMetre"
-    /// <summary>
-    /// An actuator to automatically switch on/off the Microwave.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Microwave"></see></summary>
-    let Microwave = _prefix "Microwave"
-    /// <summary>
-    /// Measure of the number of miles or the average distance that a vehicle can travel on a specified quantity of fuel
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Mileage"></see></summary>
-    let Mileage = _prefix "Mileage"
-    /// <summary>
-    /// The distance which can be travelled by the vehicle before the next service inspection is required.  A negative distance is transmitted if the service inspection has been passed.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MileageDistanceToService"></see></summary>
-    let MileageDistanceToService = _prefix "MileageDistanceToService"
-    /// <summary>
-    /// The total distance travelled by the particular vehicle since its initial production.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MileageTotal"></see></summary>
-    let MileageTotal = _prefix "MileageTotal"
-    /// <summary>
-    /// It is a unit of length that is equal to 1,760 yards (approx. 1.609 kilometres).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Miles"></see></summary>
-    let Miles = _prefix "Miles"
-    /// <summary>
-    /// One thousandth of an ampere.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Milliampere"></see></summary>
-    let Milliampere = _prefix "Milliampere"
-    /// <summary>
-    /// One thousandth of a bar.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Millibar"></see></summary>
-    let Millibar = _prefix "Millibar"
-    /// <summary>
-    /// One thousandth of a gram.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Milligram"></see></summary>
-    let Milligram = _prefix "Milligram"
-    /// <summary>
-    /// It is a density measurement unit.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MilligramPerCubicMetre"></see></summary>
-    let MilligramPerCubicMetre = _prefix "MilligramPerCubicMetre"
-    /// <summary>
-    /// Level of Dissolved substance in liquid measured in mg per litre.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MilligramPerLitre"></see></summary>
-    let MilligramPerLitre = _prefix "MilligramPerLitre"
-    /// <summary>
-    /// A dose unit which is equal to 1 milligram of a substance per square metre of surface area of the recipient subject.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MilligramPerSquareMetre"></see></summary>
-    let MilligramPerSquareMetre = _prefix "MilligramPerSquareMetre"
-    /// <summary>
-    /// One thousandth of a litre (0.002 pint).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Millilitre"></see></summary>
-    let Millilitre = _prefix "Millilitre"
-    /// <summary>
-    /// One thousandth of a metre (0.039 in).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Millimetre"></see></summary>
-    let Millimetre = _prefix "Millimetre"
-    /// <summary>
-    /// A unit of both speed (scalar) and velocity (vector), defined as the distance of one millimetre travelled per unit hour.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MillimetrePerHour"></see></summary>
-    let MillimetrePerHour = _prefix "MillimetrePerHour"
-    /// <summary>
-    /// One thousandth of a second.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Millisecond"></see></summary>
-    let Millisecond = _prefix "Millisecond"
-    /// <summary>
-    /// One thousandth of a volt.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Millivolt"></see></summary>
-    let Millivolt = _prefix "Millivolt"
-    /// <summary>
-    /// It is a measure of the intensity of the signal of a radio transmitter.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MillivoltPerMetre"></see></summary>
-    let MillivoltPerMetre = _prefix "MillivoltPerMetre"
-    /// <summary>
-    /// A unit of power equal to one thousandth of a watt.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Milliwatt"></see></summary>
-    let Milliwatt = _prefix "Milliwatt"
-    /// <summary>
-    /// A Minute of Angle (MOA) is an angular measurement. A MOA is 1/60th of a degree.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MinuteAngle"></see></summary>
-    let MinuteAngle = _prefix "MinuteAngle"
-    /// <summary>
-    /// A unit of time equal to 60 seconds or 1/60th of an hour.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MinuteTime"></see></summary>
-    let MinuteTime = _prefix "MinuteTime"
-    /// <summary>
-    /// A millimetre of mercury is a manometric unit of pressure, formerly defined as the extra pressure generated by a column of mercury one millimetre high and now defined as precisely 133.322387415 pascals. It is denoted by the symbol mmHg. It  is used to measure blood pressure measurements (systolic and diastolic).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MmHg"></see></summary>
-    let MmHg = _prefix "MmHg"
-    /// <summary>
-    /// It is the amount of a substance that corresponds to its formula mass in milligrams. MmolPerLitre is used to measure cholesterol.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MmolPerLitre"></see></summary>
-    let MmolPerLitre = _prefix "MmolPerLitre"
-    /// <summary>
-    /// Handover Execution.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MobHoExecSuccRate"></see></summary>
-    let MobHoExecSuccRate = _prefix "MobHoExecSuccRate"
-    /// <summary>
-    /// Handover Preparation Success Rate.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MobHoPrepSuccRate"></see></summary>
-    let MobHoPrepSuccRate = _prefix "MobHoPrepSuccRate"
-    /// <summary>
-    /// Handover Mobility Success Rate.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MobMobilitySuccRate"></see></summary>
-    let MobMobilitySuccRate = _prefix "MobMobilitySuccRate"
-    /// <summary>
-    /// It is the action or process of moving or being moved.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Motion"></see></summary>
-    let Motion = _prefix "Motion"
-    /// <summary>
-    /// Indicator of whether a person (or object) is detected upon his/her/its movement.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MotionState"></see></summary>
-    let MotionState = _prefix "MotionState"
-    /// <summary>
-    /// Indicates whether motion of the vehicle is detected or not.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#MotionStateVehicle"></see></summary>
-    let MotionStateVehicle = _prefix "MotionStateVehicle"
-    /// <summary>
-    /// A tagging device can be NFC (Near Field Communication).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#NFC"></see></summary>
-    let NFC = _prefix "NFC"
-    /// <summary>
-    /// Device used to detect NH3 level in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#NH3Sensor"></see></summary>
-    let NH3Sensor = _prefix "NH3Sensor"
-    /// <summary>
-    /// Sensor detecting levels of Nitrogen Dioxide (NO2) in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#NO2Sensor"></see></summary>
-    let NO2Sensor = _prefix "NO2Sensor"
-    /// <summary>
-    /// Device used to detect Nitrogen Oxide (NO) in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#NOSensor"></see></summary>
-    let NOSensor = _prefix "NOSensor"
-    /// <summary>
-    /// When the source of the sound were noisy neighbours.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Neighbours"></see></summary>
-    let Neighbours = _prefix "Neighbours"
-    /// <summary>
-    /// Device used to detect Ozone (O3) in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#O3Sensor"></see></summary>
-    let O3Sensor = _prefix "O3Sensor"
-    /// <summary>
-    /// An odometer or odograph is an instrument that indicates distance travelled by a vehicle, such as bicycle or automobile.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Odometer"></see></summary>
-    let Odometer = _prefix "Odometer"
-    /// <summary>
-    /// Ohm is the unit of electrical resistance.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Ohm"></see></summary>
-    let Ohm = _prefix "Ohm"
-    /// <summary>
-    /// Okta is the unit to measure the cloud cover.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Okta"></see></summary>
-    let Okta = _prefix "Okta"
-    /// <summary>
-    /// A sensing device that measures dust particle concentration using optical sensing mean.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#OpticalDustSensor"></see></summary>
-    let OpticalDustSensor = _prefix "OpticalDustSensor"
-    /// <summary>
-    /// Relates to phenomenon and unit that are not available currently in the current version of Taxonomy.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Others"></see></summary>
-    let Others = _prefix "Others"
-    /// <summary>
-    /// Environmental Origin of a particular observation. With respect to one kind of Source (Sound source), it can be coming from traffic, siren of a police car, etc.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Source"></see></summary>
-    let Source = _prefix "Source"
-    /// <summary>
-    /// Device used to detect Oxygen (O2) in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#OxygenSensor"></see></summary>
-    let OxygenSensor = _prefix "OxygenSensor"
-    /// <summary>
-    /// It is a numeric scale used to specify the acidity or basicity of an aqueous solution.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PH"></see></summary>
-    let PH = _prefix "PH"
-    /// <summary>
-    /// Device used to detect PH level.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PHSensor"></see></summary>
-    let PHSensor = _prefix "PHSensor"
-    /// <summary>
-    /// It describes the concentration of something in water or soil.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PPM"></see></summary>
-    let PPM = _prefix "PPM"
-    /// <summary>
-    /// It describes the concentration of something in parts per billion parts of water or soil, expressed in any (but common) unit of measurement.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PartsPerBillion"></see></summary>
-    let PartsPerBillion = _prefix "PartsPerBillion"
-    /// <summary>
-    /// Unit for pressure (e.g., atmospheric pressure).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Pascal"></see></summary>
-    let Pascal = _prefix "Pascal"
-    /// <summary>
-    /// Pedometer is used to count the number of steps when walking, running, etc.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Pedometer"></see></summary>
-    let Pedometer = _prefix "Pedometer"
-    /// <summary>
-    /// It is the amount in or for every hundred.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Percent"></see></summary>
-    let Percent = _prefix "Percent"
-    /// <summary>
-    /// Location, Place, GPS coordinates as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Place"></see></summary>
-    let Place = _prefix "Place"
-    /// <summary>
-    /// It is the measure of Blood Potassium Level.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Potassium"></see></summary>
-    let Potassium = _prefix "Potassium"
-    /// <summary>
-    /// A unit of weight equal to 16 oz. 1 pound= 453.592 grams
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Pound"></see></summary>
-    let Pound = _prefix "Pound"
-    /// <summary>
-    /// It is any product of the condensation of atmospheric water vapour that falls under gravity.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Precipitation"></see></summary>
-    let Precipitation = _prefix "Precipitation"
-    /// <summary>
-    /// It is a device measuring the amount of precipitation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PrecipitationSensor"></see></summary>
-    let PrecipitationSensor = _prefix "PrecipitationSensor"
-    /// <summary>
-    /// Measure to know if an object is present. It is usually boolean.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Presence"></see></summary>
-    let Presence = _prefix "Presence"
-    /// <summary>
-    /// Indicates the presence of the first driver card.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PresenceStateDriverCard"></see></summary>
-    let PresenceStateDriverCard = _prefix "PresenceStateDriverCard"
-    /// <summary>
-    /// Indicates the presence of the first driver card.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PresenceStateDriverCard1"></see></summary>
-    let PresenceStateDriverCard1 = _prefix "PresenceStateDriverCard1"
-    /// <summary>
-    /// Indicates the presence of the second driver card.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PresenceStateDriverCard2"></see></summary>
-    let PresenceStateDriverCard2 = _prefix "PresenceStateDriverCard2"
-    /// <summary>
-    /// The presence or absence of an emergency vehicle (ambulance, fire fighters, etc.).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PresenceStateEmergencyVehicle"></see></summary>
-    let PresenceStateEmergencyVehicle = _prefix "PresenceStateEmergencyVehicle"
-    /// <summary>
-    /// The presence or absence of a vehicle parked.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PresenceStateParking"></see></summary>
-    let PresenceStateParking = _prefix "PresenceStateParking"
-    /// <summary>
-    /// The presence or absence of people passing.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PresenceStatePeople"></see></summary>
-    let PresenceStatePeople = _prefix "PresenceStatePeople"
-    /// <summary>
-    /// A device used to detect pressure. For example, it can be attached on the bed to infer if the user is lying, sleeping, sitting, bed occupancy, etc.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PressureSensor"></see></summary>
-    let PressureSensor = _prefix "PressureSensor"
-    /// <summary>
-    /// Measure to detect proximity.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Proximity"></see></summary>
-    let Proximity = _prefix "Proximity"
-    /// <summary>
-    /// Detect if something is within proximity of a sensor.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ProximitySensor"></see></summary>
-    let ProximitySensor = _prefix "ProximitySensor"
-    /// <summary>
-    /// When the source of the sound was public transit.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PublicTransit"></see></summary>
-    let PublicTransit = _prefix "PublicTransit"
-    /// <summary>
-    /// Pulse Oxymeter, SpO2, Blood Oxygen Saturation Sensor are used to measure the concentration of oxygen in the blood.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#PulseOxymeter"></see></summary>
-    let PulseOxymeter = _prefix "PulseOxymeter"
-    /// <summary>
-    /// A tagging device can be QRCode.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#QRCode"></see></summary>
-    let QRCode = _prefix "QRCode"
-    /// <summary>
-    /// A tagging device can be RFID.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RFID"></see></summary>
-    let RFID = _prefix "RFID"
-    /// <summary>
-    /// The radian is a unit of angular measure defined such that an angle of one radian subtended from the centre of a unit circle produces an arc with arc length 1.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Radian"></see></summary>
-    let Radian = _prefix "Radian"
-    /// <summary>
-    /// The radian per second is defined as the change in the orientation of an object, in radians, every second. The radian per second is the SI unit of angular (rotational) speed.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RadianPerSecond"></see></summary>
-    let RadianPerSecond = _prefix "RadianPerSecond"
-    /// <summary>
-    /// A particle detector, also known as a radiation detector or Geiger counter, is a device used to detect, track, and/or identify ionising particles, such as those produced by nuclear decay, cosmic radiation, or reactions in a particle accelerator.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RadiationParticleDetector"></see></summary>
-    let RadiationParticleDetector = _prefix "RadiationParticleDetector"
-    /// <summary>
-    /// The number of ionizing events detected in one minute.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RadiationParticlesPerMinute"></see></summary>
-    let RadiationParticlesPerMinute = _prefix "RadiationParticlesPerMinute"
-    /// <summary>
-    /// The depth of precipitation (water-equivalent) that accumulated over a measurement time quantity.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Rainfall"></see></summary>
-    let Rainfall = _prefix "Rainfall"
-    /// <summary>
-    /// The portion of electricity that establishes and sustains the electric and magnetic fields of alternating-current equipment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ReactivePower"></see></summary>
-    let ReactivePower = _prefix "ReactivePower"
-    /// <summary>
-    /// Activity Recognized. This is usually made available as a part of analysis done by Google. The available activities recognized are IN_VEHICLE, ON_BICYCLE, ON_FOOT, RUNNING, STILL, TILTING, UNKNOWN, and WALKING.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RecognizedActivity"></see></summary>
-    let RecognizedActivity = _prefix "RecognizedActivity"
-    /// <summary>
-    /// The ratio of vapour pressure to saturation vapour pressure, where vapour pressure is the pressure exerted by the molecules of water vapour and saturation vapour pressure is the pressure exerted by molecules of water vapour in AIR that has attained saturation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RelativeHumidity"></see></summary>
-    let RelativeHumidity = _prefix "RelativeHumidity"
-    /// <summary>
-    /// Connected Users to a communication channel/platform
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ResAverageLicConnectedUsers"></see></summary>
-    let ResAverageLicConnectedUsers = _prefix "ResAverageLicConnectedUsers"
-    /// <summary>
-    /// ERAB Drop.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RetERabDrop"></see></summary>
-    let RetERabDrop = _prefix "RetERabDrop"
-    /// <summary>
-    /// Revolutions per minute (abbreviated rpm, RPM, rev/min, r/min) is a measure of the frequency of rotation, specifically the number of rotations around a fixed axis in one minute. It is used as a measure of rotational speed of a mechanical component.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RevolutionsPerMinute"></see></summary>
-    let RevolutionsPerMinute = _prefix "RevolutionsPerMinute"
-    /// <summary>
-    /// Ratio of time on which a road lane section is occupied by vehicles within a given period of time.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RoadOccupancy"></see></summary>
-    let RoadOccupancy = _prefix "RoadOccupancy"
-    /// <summary>
-    /// Device used to measure the road Surface temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RoadSurfaceThermometer"></see></summary>
-    let RoadSurfaceThermometer = _prefix "RoadSurfaceThermometer"
-    /// <summary>
-    /// Temperature of the road.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RoadTemperature"></see></summary>
-    let RoadTemperature = _prefix "RoadTemperature"
-    /// <summary>
-    /// Temperature of a room.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RoomTemperature"></see></summary>
-    let RoomTemperature = _prefix "RoomTemperature"
-    /// <summary>
-    /// Rotational speed (or speed of revolution) of an object rotating around an axis is the number of turns of the object divided by time, specified as revolutions per minute (rpm), revolutions per second (rev/s), or radians per second (rad/s). (Source Wikipedia)
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RotationalSpeed"></see></summary>
-    let RotationalSpeed = _prefix "RotationalSpeed"
-    /// <summary>
-    /// Rotational speed is a property that is the rate of rotation of a material around an axis, in this case the engine cylinders.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#RotationalSpeedEngine"></see></summary>
-    let RotationalSpeedEngine = _prefix "RotationalSpeedEngine"
-    /// <summary>
-    /// Device use to detect Sulphur Dioxide (SO2) level in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SO2Sensor"></see></summary>
-    let SO2Sensor = _prefix "SO2Sensor"
-    /// <summary>
-    /// It is a measure of the amount of oxygenated haemoglobin in the blood.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SPO2"></see></summary>
-    let SPO2 = _prefix "SPO2"
-    /// <summary>
-    /// It is the measure of all the salts dissolved in water.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Salinity"></see></summary>
-    let Salinity = _prefix "Salinity"
-    /// <summary>
-    /// Device use to detect salinity of water.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SaltMeter"></see></summary>
-    let SaltMeter = _prefix "SaltMeter"
-    /// <summary>
-    /// Arbitrary indirect reference which should be translated into meaningful measurements by using the corresponding decoding algorithm detailed in the resource description. In this case the returned values are part of a continuous variable which can take any numeric value.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Scale"></see></summary>
-    let Scale = _prefix "Scale"
-    /// <summary>
-    ///  Actuator used to turn Seat Belt Tension Actuator on or off.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SeatBeltTensionSensor"></see></summary>
-    let SeatBeltTensionSensor = _prefix "SeatBeltTensionSensor"
-    /// <summary>
-    /// It is a unit of angular measurement equal to 1/60 of one degree.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SecondAngle"></see></summary>
-    let SecondAngle = _prefix "SecondAngle"
-    /// <summary>
-    /// Seismometers are instruments that measure motions of the ground, including those of seismic waves generated by earthquakes, volcanic eruptions, and other seismic sources.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Seismometer"></see></summary>
-    let Seismometer = _prefix "Seismometer"
-    /// <summary>
-    /// Shake sensor is used to deduce the quality of the road, earthquakes.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ShakeSensor"></see></summary>
-    let ShakeSensor = _prefix "ShakeSensor"
-    /// <summary>
-    /// An actuator to automatically switch on/off the shower.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Shower"></see></summary>
-    let Shower = _prefix "Shower"
-    /// <summary>
-    /// Conductivity is measured in Siemens per metre (S/m).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SiemensPerMetre"></see></summary>
-    let SiemensPerMetre = _prefix "SiemensPerMetre"
-    /// <summary>
-    /// An actuator to automatically switch on/off the sink.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Sink"></see></summary>
-    let Sink = _prefix "Sink"
-    /// <summary>
-    /// When source of the sound were sirens either from ambulance, police car or factory etc.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Sirens"></see></summary>
-    let Sirens = _prefix "Sirens"
-    /// <summary>
-    /// Electroderal activity (also known as skin conductance or galvanic skin response) directly correlates to the sympathetic nervous system activity and thus provides a powerful tool for monitoring arousal and certain aspects of autonomic regulation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SkinConductance"></see></summary>
-    let SkinConductance = _prefix "SkinConductance"
-    /// <summary>
-    /// Device used to detect Skin Conductance.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SkinConductanceSensor"></see></summary>
-    let SkinConductanceSensor = _prefix "SkinConductanceSensor"
-    /// <summary>
-    /// Device used to detect if there is a fire or the smoke.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SmokeDetector"></see></summary>
-    let SmokeDetector = _prefix "SmokeDetector"
-    /// <summary>
-    /// The actuator that turn Snow chains on/off.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SnowChains"></see></summary>
-    let SnowChains = _prefix "SnowChains"
-    /// <summary>
-    /// Measure of Blood Sodium level.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Sodium"></see></summary>
-    let Sodium = _prefix "Sodium"
-    /// <summary>
-    /// It is the quantity of water contained in a material, such as soil.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SoilHumidity"></see></summary>
-    let SoilHumidity = _prefix "SoilHumidity"
-    /// <summary>
-    /// Soil Humidity sensor, Soil moisture, Hygrometer are an instrument used for measuring the soil moisture or soil humidity.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SoilHumiditySensor"></see></summary>
-    let SoilHumiditySensor = _prefix "SoilHumiditySensor"
-    /// <summary>
-    /// The force per unit area required to remove film water from soil.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SoilMoistureTension"></see></summary>
-    let SoilMoistureTension = _prefix "SoilMoistureTension"
-    /// <summary>
-    /// Soil temperature is the bulk temperature of the soil, not the surface (skin) temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SoilTemperature"></see></summary>
-    let SoilTemperature = _prefix "SoilTemperature"
-    /// <summary>
-    /// This sensor reports Soil temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SoilThermometer"></see></summary>
-    let SoilThermometer = _prefix "SoilThermometer"
-    /// <summary>
-    /// It is the power per unit area received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SolarRadiation"></see></summary>
-    let SolarRadiation = _prefix "SolarRadiation"
-    /// <summary>
-    /// Device used to detect Solar Radiation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SolarRadiationSensor"></see></summary>
-    let SolarRadiationSensor = _prefix "SolarRadiationSensor"
-    /// <summary>
-    /// Measure of noise level in the environment
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Sound"></see></summary>
-    let Sound = _prefix "Sound"
-    /// <summary>
-    /// Sound pressure level is a logarithmic measure of the RMS sound pressure of a sound relative to a reference value, the threshold of hearing. The reference sound pressure was chosen conventionally to correspond to the quietest sound at 1000 Hz that the human ear can detect (20 uPa). In this case, the specific parameter is measured in an open environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SoundPressureLevel"></see></summary>
-    let SoundPressureLevel = _prefix "SoundPressureLevel"
-    /// <summary>
-    /// Similar to Sound.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SoundPressureLevelAmbient"></see></summary>
-    let SoundPressureLevelAmbient = _prefix "SoundPressureLevelAmbient"
-    /// <summary>
-    /// Sensor used to detect Noise level. It can be Sound Sensor, Noise level Sensor, Volume sensor, Microphone
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SoundSensor"></see></summary>
-    let SoundSensor = _prefix "SoundSensor"
-    /// <summary>
-    /// The rate at which someone or something moves or operates or is able to move or operate.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Speed"></see></summary>
-    let Speed = _prefix "Speed"
-    /// <summary>
-    /// A measure of the average rate of motion of an object.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SpeedAverage"></see></summary>
-    let SpeedAverage = _prefix "SpeedAverage"
-    /// <summary>
-    /// A measure of the instantaneous rate of motion of an object.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SpeedInstantaneous"></see></summary>
-    let SpeedInstantaneous = _prefix "SpeedInstantaneous"
-    /// <summary>
-    /// A measure of the median rate of motion of an object.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SpeedMedian"></see></summary>
-    let SpeedMedian = _prefix "SpeedMedian"
-    /// <summary>
-    /// Sensor used to detect speed.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SpeedSensor"></see></summary>
-    let SpeedSensor = _prefix "SpeedSensor"
-    /// <summary>
-    /// It is a measure of number of Step taken.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Step"></see></summary>
-    let Step = _prefix "Step"
-    /// <summary>
-    /// The position of the Sun in the sky is a function of both time and the geographic coordinates of the observer on the surface of the Earth. (Source Wikipedia).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SunPositionDirection"></see></summary>
-    let SunPositionDirection = _prefix "SunPositionDirection"
-    /// <summary>
-    /// Sensor used to detect sun position.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SunPositionDirectionSensor"></see></summary>
-    let SunPositionDirectionSensor = _prefix "SunPositionDirectionSensor"
-    /// <summary>
-    /// It is the altitude of the sun, the angle between the horizon and the centre of the sun's disc.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SunPositionElevation"></see></summary>
-    let SunPositionElevation = _prefix "SunPositionElevation"
-    /// <summary>
-    /// Device used to detect sun elevation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SunPositionElevationSensor"></see></summary>
-    let SunPositionElevationSensor = _prefix "SunPositionElevationSensor"
-    /// <summary>
-    /// It is the pressure when the heart beats while pumping blood.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#SystolicBloodPressure"></see></summary>
-    let SystolicBloodPressure = _prefix "SystolicBloodPressure"
-    /// <summary>
-    /// An actuator to automatically switch on/off the television.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#TV"></see></summary>
-    let TV = _prefix "TV"
-    /// <summary>
-    /// An actuator to automatically switch on/off the Telephone.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Telephone"></see></summary>
-    let Telephone = _prefix "Telephone"
-    /// <summary>
-    /// The temperature of a vehicle engine.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#TemperatureEngine"></see></summary>
-    let TemperatureEngine = _prefix "TemperatureEngine"
-    /// <summary>
-    /// The temperature of the air that would be indicated by a thermometer exposed to the air inside a waste container.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#TemperatureWasteContainer"></see></summary>
-    let TemperatureWasteContainer = _prefix "TemperatureWasteContainer"
-    /// <summary>
-    /// It is the SI unit of magnetic flux density.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Tesla"></see></summary>
-    let Tesla = _prefix "Tesla"
-    /// <summary>
-    /// It is a device used to monitor the throttle position of a vehicle.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#ThrottleSensor"></see></summary>
-    let ThrottleSensor = _prefix "ThrottleSensor"
-    /// <summary>
-    /// Indicator of whether a person (or object) has overpassed a particular time threshold (e.g. maximum number of hours driving, etc.)
-    /// <see href="http://purl.org/iot/vocab/m3-lite#TimeRelatedState"></see></summary>
-    let TimeRelatedState = _prefix "TimeRelatedState"
-    /// <summary>
-    /// Indicator of whether the driver of a vehicle approaches or exceeds his/her working time limits.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#TimeRelatedStateDriver"></see></summary>
-    let TimeRelatedStateDriver = _prefix "TimeRelatedStateDriver"
-    /// <summary>
-    /// Indicates if the first driver approaches or exceeds working time limits (or other limits).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#TimeRelatedStateDriver1"></see></summary>
-    let TimeRelatedStateDriver1 = _prefix "TimeRelatedStateDriver1"
-    /// <summary>
-    /// Indicates if the second driver approaches or exceeds working time limits (or other limits).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#TimeRelatedStateDriver2"></see></summary>
-    let TimeRelatedStateDriver2 = _prefix "TimeRelatedStateDriver2"
-    /// <summary>
-    /// Sequence of characters or encoded information identifying when a certain event occurred, usually giving date and time of day, sometimes accurate to a small fraction of a second. This representation should be encoded following ISO8601.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Timestamp"></see></summary>
-    let Timestamp = _prefix "Timestamp"
-    /// <summary>
-    /// It is a non-SI metric unit of mass equal to 1,000 kilograms.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Tonne"></see></summary>
-    let Tonne = _prefix "Tonne"
-    /// <summary>
-    /// Device that captures and records physical touch or embrace on a device and/or object.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#TouchSensor"></see></summary>
-    let TouchSensor = _prefix "TouchSensor"
-    /// <summary>
-    /// Tourism as an Internet of Things (IoT) applicative domain.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Tourism"></see></summary>
-    let Tourism = _prefix "Tourism"
-    /// <summary>
-    /// When the source of the sound was traffic.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Traffic"></see></summary>
-    let Traffic = _prefix "Traffic"
-    /// <summary>
-    /// The intensity of a traffic flow is the number of vehicles passing a cross section of a road in a unit of time.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#TrafficIntensity"></see></summary>
-    let TrafficIntensity = _prefix "TrafficIntensity"
-    /// <summary>
-    /// Ultrasonic sensors are used to deduce human posture in smart home for example.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#UltrasonicSensor"></see></summary>
-    let UltrasonicSensor = _prefix "UltrasonicSensor"
-    /// <summary>
-    /// Sensor that detects levels of Volatile Organic Components (VOC) in the environment.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VOCSensor"></see></summary>
-    let VOCSensor = _prefix "VOCSensor"
-    /// <summary>
-    /// Device used to count the number of vehicles (e.g., used within the Citypulse project).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VehicleCountSensor"></see></summary>
-    let VehicleCountSensor = _prefix "VehicleCountSensor"
-    /// <summary>
-    /// Measure to indicates whether the vehicle is exceeding the legal speed limit.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VehicleOverspeedState"></see></summary>
-    let VehicleOverspeedState = _prefix "VehicleOverspeedState"
-    /// <summary>
-    /// Device used to detect if an vehicle is present at a place.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VehiclePresenceDetector"></see></summary>
-    let VehiclePresenceDetector = _prefix "VehiclePresenceDetector"
-    /// <summary>
-    /// Number of vehicles that traverse a concrete region of the space in one minute.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VehiclesPerMinute"></see></summary>
-    let VehiclesPerMinute = _prefix "VehiclesPerMinute"
-    /// <summary>
-    /// An actuator to automatically open/close the ventilation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Ventilation"></see></summary>
-    let Ventilation = _prefix "Ventilation"
-    /// <summary>
-    /// The state of being able to see or be seen.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Visibility"></see></summary>
-    let Visibility = _prefix "Visibility"
-    /// <summary>
-    /// Device used to detect Visibility.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VisibilitySensor"></see></summary>
-    let VisibilitySensor = _prefix "VisibilitySensor"
-    /// <summary>
-    /// A voice command to control a voice controlled system or environment, such as a smart home.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VoiceCommand"></see></summary>
-    let VoiceCommand = _prefix "VoiceCommand"
-    /// <summary>
-    /// An actuating device called  that allows to semi-control the environment of the Voice Command Sensor.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VoiceCommandController"></see></summary>
-    let VoiceCommandController = _prefix "VoiceCommandController"
-    /// <summary>
-    /// Sensor that uses automatic speech recognition technology to match or reject a recorded voice command according to a specified set of available voice commands.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VoiceCommandSensor"></see></summary>
-    let VoiceCommandSensor = _prefix "VoiceCommandSensor"
-    /// <summary>
-    /// In electric power transmission and distribution, volt-ampere reactive (var) is a unit in which reactive power is expressed in an AC electric power system.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#VoltAmpereReactive"></see></summary>
-    let VoltAmpereReactive = _prefix "VoltAmpereReactive"
-    /// <summary>
-    /// An electromotive force or potential difference expressed in volts (Source Google).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Voltage"></see></summary>
-    let Voltage = _prefix "Voltage"
-    /// <summary>
-    /// An actuator to automatically switch on/off the washing machine.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WashingMachine"></see></summary>
-    let WashingMachine = _prefix "WashingMachine"
-    /// <summary>
-    /// Device used to measure the conductivity of water.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WaterConductivitySensor"></see></summary>
-    let WaterConductivitySensor = _prefix "WaterConductivitySensor"
-    /// <summary>
-    /// The height reached by the water in a reservoir, river, storage tank, or similar.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WaterLevel"></see></summary>
-    let WaterLevel = _prefix "WaterLevel"
-    /// <summary>
-    /// Sensor used to measure NH4 concentration level in the water.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WaterNH4IonSensor"></see></summary>
-    let WaterNH4IonSensor = _prefix "WaterNH4IonSensor"
-    /// <summary>
-    /// Sensor used to measure NO3 concentration level in the water.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WaterNO3IonSensor"></see></summary>
-    let WaterNO3IonSensor = _prefix "WaterNO3IonSensor"
-    /// <summary>
-    /// Sensor used to measure O2 concentration level in the water.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WaterO2IonSensor"></see></summary>
-    let WaterO2IonSensor = _prefix "WaterO2IonSensor"
-    /// <summary>
-    /// Device used to detect PH level of water.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WaterPHSensor"></see></summary>
-    let WaterPHSensor = _prefix "WaterPHSensor"
-    /// <summary>
-    /// Sea surface temperature (SST) is the water temperature close to the ocean's surface.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WaterTemperature"></see></summary>
-    let WaterTemperature = _prefix "WaterTemperature"
-    /// <summary>
-    /// This sensor reports Water temperature.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WaterThermometer"></see></summary>
-    let WaterThermometer = _prefix "WaterThermometer"
-    /// <summary>
-    /// Luminosity.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WeatherLuminosity"></see></summary>
-    let WeatherLuminosity = _prefix "WeatherLuminosity"
-    /// <summary>
-    /// Weather Precipitation.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WeatherPrecipitation"></see></summary>
-    let WeatherPrecipitation = _prefix "WeatherPrecipitation"
-    /// <summary>
-    /// A body's relative mass or the quantity of matter contained by it, giving rise to a downward force; the heaviness of a person or thing.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Weight"></see></summary>
-    let Weight = _prefix "Weight"
-    /// <summary>
-    /// Device used to weight an object.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WeightSensor"></see></summary>
-    let WeightSensor = _prefix "WeightSensor"
-    /// <summary>
-    /// Measure the average power consumption of the WiFi interface nodes.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WiFiInterfaceEnergyMeter"></see></summary>
-    let WiFiInterfaceEnergyMeter = _prefix "WiFiInterfaceEnergyMeter"
-    /// <summary>
-    /// The cooling effect of wind blowing on a surface.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WindChill"></see></summary>
-    let WindChill = _prefix "WindChill"
-    /// <summary>
-    /// Device used to detect Wind Chill.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WindChillSensor"></see></summary>
-    let WindChillSensor = _prefix "WindChillSensor"
-    /// <summary>
-    /// The geodetic azimuth of the direction from which the wind is blowing.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WindDirection"></see></summary>
-    let WindDirection = _prefix "WindDirection"
-    /// <summary>
-    /// Device used to detect wind direction.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WindDirectionSensor"></see></summary>
-    let WindDirectionSensor = _prefix "WindDirectionSensor"
-    /// <summary>
-    /// The ratio of the distance covered by moving air to the time quantity taken to cover it.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WindSpeed"></see></summary>
-    let WindSpeed = _prefix "WindSpeed"
-    /// <summary>
-    /// Wind Speed Sensor, Anemometer or Wind Velocity Sensor is used to measure the wind speed.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WindSpeedSensor"></see></summary>
-    let WindSpeedSensor = _prefix "WindSpeedSensor"
-    /// <summary>
-    /// An actuator to automatically open/close the window.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Window"></see></summary>
-    let Window = _prefix "Window"
-    /// <summary>
-    /// Indicator of whether a person (or object) is working or not
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WorkingState"></see></summary>
-    let WorkingState = _prefix "WorkingState"
-    /// <summary>
-    /// Indicator of whether the driver of a vehicle is present or not
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WorkingStateDriver"></see></summary>
-    let WorkingStateDriver = _prefix "WorkingStateDriver"
-    /// <summary>
-    /// State of work of the first driver as defined in the FMS standard.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WorkingStateDriver1"></see></summary>
-    let WorkingStateDriver1 = _prefix "WorkingStateDriver1"
-    /// <summary>
-    /// State of work of the second driver as defined in the FMS standard.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#WorkingStateDriver2"></see></summary>
-    let WorkingStateDriver2 = _prefix "WorkingStateDriver2"
-    /// <summary>
-    /// This unit is used to measure delta dew point within the Com4Innov tesbed. Natural number (W/out unit).
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Wout"></see></summary>
-    let Wout = _prefix "Wout"
-    /// <summary>
-    /// Year as a unit of time.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#Year"></see></summary>
-    let Year = _prefix "Year"
-    /// <summary>
-    /// The observations made by the sensors are affected by the direction of the sensing device. This property allows observations of the sensor to be associated to the Direction concept.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#hasDirection"></see></summary>
-    let hasDirection = _prefix "hasDirection"
-    /// <summary>
-    /// Each sensing device can have a different sensing mechanism which may result in different kinds of sensor data. This property links observation of the sensor to the associated MeasurementType.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#hasMeasurementType"></see></summary>
-    let hasMeasurementType = _prefix "hasMeasurementType"
-    /// <summary>
-    /// This property links sound to its environmental source.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#hasSoundSource"></see></summary>
-    let hasSoundSource = _prefix "hasSoundSource"
-    /// <summary>
-    /// This property links sensed phenomena to its environmental source.
-    /// <see href="http://purl.org/iot/vocab/m3-lite#hasSource"></see></summary>
-    let hasSource = _prefix "hasSource"
+    ///   <para>m3lite:ChemicalAgentWaterConcentrationO2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of O2 concentration in Water </para>
+    /// labels<para>Oxygen (O2) Chemical Agent Water Concentration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentrationO2">http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentrationO2</seealso>
+    let ChemicalAgentWaterConcentrationO2 =
+        Prefixed_Name(m3lite, "ChemicalAgentWaterConcentrationO2") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Cholesterol</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the cholesterol level in a system.</para>
+    /// labels<para>Cholesterol Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Cholesterol">http://purl.org/iot/vocab/m3-lite#Cholesterol</seealso>
+    let Cholesterol = Prefixed_Name(m3lite, "Cholesterol") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:CloudCover</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of cloud cover at a certain time. </para>
+    /// labels<para>Cloud Cover Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#CloudCover">http://purl.org/iot/vocab/m3-lite#CloudCover</seealso>
+    let CloudCover = Prefixed_Name(m3lite, "CloudCover") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:CloudCoverSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Cloud Cover Sensor is used to detect whether it is sunny, cloudy, etc.</para>
+    /// labels<para>Cloud Cover Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#CloudCoverSensor">http://purl.org/iot/vocab/m3-lite#CloudCoverSensor</seealso>
+    let CloudCoverSensor = Prefixed_Name(m3lite, "CloudCoverSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Computer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Actuating devices for Computer or PC.</para>
+    /// labels<para>Computer, PC Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Computer">http://purl.org/iot/vocab/m3-lite#Computer</seealso>
+    let Computer = Prefixed_Name(m3lite, "Computer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Conductivity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of ability to conduct electricity. It is measured in siemens per metre (S/m).</para>
+    /// labels<para>Conductivity</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Conductivity">http://purl.org/iot/vocab/m3-lite#Conductivity</seealso>
+    let Conductivity = Prefixed_Name(m3lite, "Conductivity") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ConstructionWork</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>When the source of the sound was a construction work.</para>
+    /// labels<para>Construction Work Sound Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ConstructionWork">http://purl.org/iot/vocab/m3-lite#ConstructionWork</seealso>
+    let ConstructionWork = Prefixed_Name(m3lite, "ConstructionWork") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Coordinates</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Triples for location in the (Latitude, Longitude, Altitude) format.</para>
+    /// labels<para>Coordinates</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Coordinates">http://purl.org/iot/vocab/m3-lite#Coordinates</seealso>
+    let Coordinates = Prefixed_Name(m3lite, "Coordinates") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Coulomb</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>SI unit of electric charge.</para>
+    /// labels<para>Coulomb</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Coulomb">http://purl.org/iot/vocab/m3-lite#Coulomb</seealso>
+    let Coulomb = Prefixed_Name(m3lite, "Coulomb") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:FuelConsumption</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The amount of fuel a vehicle uses to travel a particular distance at a particular speed.</para>
+    /// labels<para>Fuel Consumption Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FuelConsumption">http://purl.org/iot/vocab/m3-lite#FuelConsumption</seealso>
+    let FuelConsumption = Prefixed_Name(m3lite, "FuelConsumption") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:FuelConsumptionInstantaneous</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A measure that displays the instantaneous fuel consumption of a vehicle during its operation.</para>
+    /// labels<para>Fuel Consumption Instantaneous</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FuelConsumptionInstantaneous">http://purl.org/iot/vocab/m3-lite#FuelConsumptionInstantaneous</seealso>
+    let FuelConsumptionInstantaneous =
+        Prefixed_Name(m3lite, "FuelConsumptionInstantaneous") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:FuelConsumptionTotal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Accumulated amount of fuel used during vehicle operation.</para>
+    /// labels<para>Fuel Consumption Total</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FuelConsumptionTotal">http://purl.org/iot/vocab/m3-lite#FuelConsumptionTotal</seealso>
+    let FuelConsumptionTotal =
+        Prefixed_Name(m3lite, "FuelConsumptionTotal") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Irrigation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically irrigate.</para>
+    /// labels<para>Irrigation Actuation Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Irrigation">http://purl.org/iot/vocab/m3-lite#Irrigation</seealso>
+    let Irrigation = Prefixed_Name(m3lite, "Irrigation") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Item</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Each of the accountable elements within a group.</para>
+    /// labels<para>Item</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Item">http://purl.org/iot/vocab/m3-lite#Item</seealso>
+    let Item = Prefixed_Name(m3lite, "Item") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:KiloWattHour</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of electrical energy equivalent to a power consumption of one thousand watts for one hour.</para>
+    /// labels<para>Kilo Watt Hour</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#KiloWattHour">http://purl.org/iot/vocab/m3-lite#KiloWattHour</seealso>
+    let KiloWattHour = Prefixed_Name(m3lite, "KiloWattHour") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:KilobitsPerSecond</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a unit of data transfer rate equal to: 1,000 bits per second.</para>
+    /// labels<para>Kilobits Per Second</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#KilobitsPerSecond">http://purl.org/iot/vocab/m3-lite#KilobitsPerSecond</seealso>
+    let KilobitsPerSecond = Prefixed_Name(m3lite, "KilobitsPerSecond") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Kilogram</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The SI unit of mass, it is equal to the mass of the international prototype of the kilogram.</para>
+    /// labels<para>Kilogram (kg)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Kilogram">http://purl.org/iot/vocab/m3-lite#Kilogram</seealso>
+    let Kilogram = Prefixed_Name(m3lite, "Kilogram") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MetrePerSecond</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A speed/velocity unit which is equal to the speed of an object traveling 1 metre distance in one second.</para>
+    /// labels<para>Metre Per Second, Meter Per Second  (m/s)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MetrePerSecond">http://purl.org/iot/vocab/m3-lite#MetrePerSecond</seealso>
+    let MetrePerSecond = Prefixed_Name(m3lite, "MetrePerSecond") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Lamp</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the lamp.</para>
+    /// labels<para>Lamp Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Lamp">http://purl.org/iot/vocab/m3-lite#Lamp</seealso>
+    let Lamp = Prefixed_Name(m3lite, "Lamp") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Lavatory</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the lavatory.</para>
+    /// labels<para>Lavatory Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Lavatory">http://purl.org/iot/vocab/m3-lite#Lavatory</seealso>
+    let Lavatory = Prefixed_Name(m3lite, "Lavatory") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:LeafWetness</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Leaf wetness is a meteorological parameter that describes the amount of dew and precipitation left on surfaces. It is used for monitoring leaf moisture for agricultural purposes, such as fungus and disease control, for control of irrigation systems, and for detection of fog and dew conditions, and early detection of rainfall. (Source Wikipedia).</para>
+    /// labels<para>Leaf Wetness</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#LeafWetness">http://purl.org/iot/vocab/m3-lite#LeafWetness</seealso>
+    let LeafWetness = Prefixed_Name(m3lite, "LeafWetness") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:LeafWetnessSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Leaf Wetness Sensor is used in agriculture to check whether the plants need to be watered.</para>
+    /// labels<para>Leaf Wetness Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#LeafWetnessSensor">http://purl.org/iot/vocab/m3-lite#LeafWetnessSensor</seealso>
+    let LeafWetnessSensor = Prefixed_Name(m3lite, "LeafWetnessSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Litre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A metric unit of capacity defined as the volume of one kilogram of water under standard conditions. It is equal to 1,000 cubic centimetres.</para>
+    /// labels<para>Litre, Liter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Litre">http://purl.org/iot/vocab/m3-lite#Litre</seealso>
+    let Litre = Prefixed_Name(m3lite, "Litre") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:LitrePer100Kilometres</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A consumption unit which is equal to the one of a vehicle which needs 1 fuel litre in order to traverse 100 kilometres.</para>
+    /// labels<para>Litre Per 100 Kilometres, Liter Per 100 Kilometers</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#LitrePer100Kilometres">http://purl.org/iot/vocab/m3-lite#LitrePer100Kilometres</seealso>
+    let LitrePer100Kilometres =
+        Prefixed_Name(m3lite, "LitrePer100Kilometres") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:LoRaInterfaceEnergyMeter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure the average power consumption of the LoRa interface nodes.</para>
+    /// labels<para>LoRa Interface Energy Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#LoRaInterfaceEnergyMeter">http://purl.org/iot/vocab/m3-lite#LoRaInterfaceEnergyMeter</seealso>
+    let LoRaInterfaceEnergyMeter =
+        Prefixed_Name(m3lite, "LoRaInterfaceEnergyMeter") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:LocationQK</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A particular place or position.</para>
+    /// labels<para>Location Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#LocationQK">http://purl.org/iot/vocab/m3-lite#LocationQK</seealso>
+    let LocationQK = Prefixed_Name(m3lite, "LocationQK") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:LuminousFlux</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Luminous Flux is the measure of the perceived power of light.</para>
+    /// labels<para>Luminous Flux</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#LuminousFlux">http://purl.org/iot/vocab/m3-lite#LuminousFlux</seealso>
+    let LuminousFlux = Prefixed_Name(m3lite, "LuminousFlux") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:LuminousIntensity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para> It is a measure of the wavelength-weighted power emitted by a light source in a particular direction per unit solid angle, based on the luminosity function, a standardized model of the sensitivity of the human eye. The SI unit of luminous intensity is the candela (cd), an SI base unit. (Source Wikipedia)</para>
+    /// labels<para>Luminous Intensity</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#LuminousIntensity">http://purl.org/iot/vocab/m3-lite#LuminousIntensity</seealso>
+    let LuminousIntensity = Prefixed_Name(m3lite, "LuminousIntensity") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Lux</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The SI unit of illuminance, equal to one lumen per square metre.</para>
+    /// labels<para>Lux (lx)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Lux">http://purl.org/iot/vocab/m3-lite#Lux</seealso>
+    let Lux = Prefixed_Name(m3lite, "Lux") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MagneticField</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A region around a magnetic material or a moving electric charge within which the force of magnetism acts.</para>
+    /// labels<para>Magnetic Field</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MagneticField">http://purl.org/iot/vocab/m3-lite#MagneticField</seealso>
+    let MagneticField = Prefixed_Name(m3lite, "MagneticField") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Tonne</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a non-SI metric unit of mass equal to 1,000 kilograms.</para>
+    /// labels<para>Tonne</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Tonne">http://purl.org/iot/vocab/m3-lite#Tonne</seealso>
+    let Tonne = Prefixed_Name(m3lite, "Tonne") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:TouchSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device that captures and records physical touch or embrace on a device and/or object.</para>
+    /// labels<para>Touch Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#TouchSensor">http://purl.org/iot/vocab/m3-lite#TouchSensor</seealso>
+    let TouchSensor = Prefixed_Name(m3lite, "TouchSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Tourism</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Tourism as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Tourism DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Tourism">http://purl.org/iot/vocab/m3-lite#Tourism</seealso>
+    let Tourism = Prefixed_Name(m3lite, "Tourism") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Traffic</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>When the source of the sound was traffic.</para>
+    /// labels<para>Traffic</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Traffic">http://purl.org/iot/vocab/m3-lite#Traffic</seealso>
+    let Traffic = Prefixed_Name(m3lite, "Traffic") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:TrafficIntensity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The intensity of a traffic flow is the number of vehicles passing a cross section of a road in a unit of time.</para>
+    /// labels<para>Traffic Intensity</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#TrafficIntensity">http://purl.org/iot/vocab/m3-lite#TrafficIntensity</seealso>
+    let TrafficIntensity = Prefixed_Name(m3lite, "TrafficIntensity") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:UltrasonicSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Ultrasonic sensors are used to deduce human posture in smart home for example.</para>
+    /// labels<para>Ultrasonic Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#UltrasonicSensor">http://purl.org/iot/vocab/m3-lite#UltrasonicSensor</seealso>
+    let UltrasonicSensor = Prefixed_Name(m3lite, "UltrasonicSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:VOCSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor that detects levels of Volatile Organic Components (VOC) in the environment.</para>
+    /// labels<para>Volatile Organic Compound (VOC) Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VOCSensor">http://purl.org/iot/vocab/m3-lite#VOCSensor</seealso>
+    let VOCSensor = Prefixed_Name(m3lite, "VOCSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:VehicleCountSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to count the number of vehicles (e.g., used within the Citypulse project).</para>
+    /// labels<para>Vehicle Count Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VehicleCountSensor">http://purl.org/iot/vocab/m3-lite#VehicleCountSensor</seealso>
+    let VehicleCountSensor = Prefixed_Name(m3lite, "VehicleCountSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:VehicleOverspeedState</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure to indicates whether the vehicle is exceeding the legal speed limit.</para>
+    /// labels<para>Vehicle Overspeed State</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VehicleOverspeedState">http://purl.org/iot/vocab/m3-lite#VehicleOverspeedState</seealso>
+    let VehicleOverspeedState =
+        Prefixed_Name(m3lite, "VehicleOverspeedState") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:VehiclePresenceDetector</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect if an vehicle is present at a place.</para>
+    /// labels<para> Vehicle Presence Detector</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VehiclePresenceDetector">http://purl.org/iot/vocab/m3-lite#VehiclePresenceDetector</seealso>
+    let VehiclePresenceDetector =
+        Prefixed_Name(m3lite, "VehiclePresenceDetector") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:AlcoholLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of Alcohol Level in the system.</para>
+    /// labels<para>Alcohol Level Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AlcoholLevel">http://purl.org/iot/vocab/m3-lite#AlcoholLevel</seealso>
+    let AlcoholLevel = Prefixed_Name(m3lite, "AlcoholLevel") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Animals</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>when the source of the sound were animals.</para>
+    /// labels<para>Animals as Sound Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Animals">http://purl.org/iot/vocab/m3-lite#Animals</seealso>
+    let Animals = Prefixed_Name(m3lite, "Animals") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Blind</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the window blinds.</para>
+    /// labels<para>Blind Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Blind">http://purl.org/iot/vocab/m3-lite#Blind</seealso>
+    let Blind = Prefixed_Name(m3lite, "Blind") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:CountAvailableTaxis</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Number of taxis available at a particular taxi stop.</para>
+    /// labels<para>Count Available Taxis</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#CountAvailableTaxis">http://purl.org/iot/vocab/m3-lite#CountAvailableTaxis</seealso>
+    let CountAvailableTaxis =
+        Prefixed_Name(m3lite, "CountAvailableTaxis") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:IonisingRadiation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Ionising radiation is radiation that carries enough energy to free electrons from atoms or molecules, thereby ionizing them. Gamma rays, X-rays, and the higher ultraviolet part of the electromagnetic spectrum are ionizing, whereas the lower ultraviolet part of the electromagnetic spectrum, and also the lower part of the spectrum below UV, including visible light (including nearly all types of laser light), infrared, microwaves, and radio waves are all considered non-ionizing radiation.</para>
+    /// labels<para>Ionising Radiation</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#IonisingRadiation">http://purl.org/iot/vocab/m3-lite#IonisingRadiation</seealso>
+    let IonisingRadiation = Prefixed_Name(m3lite, "IonisingRadiation") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Kelvin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Kelvin is a unit of measurement for temperature.</para>
+    /// labels<para>Kelvin, Degree Kelvin</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Kelvin">http://purl.org/iot/vocab/m3-lite#Kelvin</seealso>
+    let Kelvin = Prefixed_Name(m3lite, "Kelvin") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:KilogramPerCubicMetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is SI derived unit of density, defined by mass in kilograms divided by volume in cubic metres.</para>
+    /// labels<para>Kilogram Per Cubic Metre, Kilogram Per Cubic Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#KilogramPerCubicMetre">http://purl.org/iot/vocab/m3-lite#KilogramPerCubicMetre</seealso>
+    let KilogramPerCubicMetre =
+        Prefixed_Name(m3lite, "KilogramPerCubicMetre") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:KilometrePerHour</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a unit of speed, expressing the number of kilometres travelled in one hour.</para>
+    /// labels<para>Kilometre Per Hour, Kilometer Per Hour</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#KilometrePerHour">http://purl.org/iot/vocab/m3-lite#KilometrePerHour</seealso>
+    let KilometrePerHour = Prefixed_Name(m3lite, "KilometrePerHour") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MilligramPerSquareMetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A dose unit which is equal to 1 milligram of a substance per square metre of surface area of the recipient subject.</para>
+    /// labels<para>Milligram Per Square Metre, Milligram Per Square Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MilligramPerSquareMetre">http://purl.org/iot/vocab/m3-lite#MilligramPerSquareMetre</seealso>
+    let MilligramPerSquareMetre =
+        Prefixed_Name(m3lite, "MilligramPerSquareMetre") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MillivoltPerMetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a measure of the intensity of the signal of a radio transmitter.</para>
+    /// labels<para>Millivolt Per Metre, Millivolt Per Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MillivoltPerMetre">http://purl.org/iot/vocab/m3-lite#MillivoltPerMetre</seealso>
+    let MillivoltPerMetre = Prefixed_Name(m3lite, "MillivoltPerMetre") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Milliwatt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A unit of power equal to one thousandth of a watt.</para>
+    /// labels<para>Milliwatt (mW)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Milliwatt">http://purl.org/iot/vocab/m3-lite#Milliwatt</seealso>
+    let Milliwatt = Prefixed_Name(m3lite, "Milliwatt") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:PrecipitationSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a device measuring the amount of precipitation.</para>
+    /// labels<para>Precipitation Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PrecipitationSensor">http://purl.org/iot/vocab/m3-lite#PrecipitationSensor</seealso>
+    let PrecipitationSensor =
+        Prefixed_Name(m3lite, "PrecipitationSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:PresenceStateDriverCard</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicates the presence of the first driver card.</para>
+    /// labels<para>Presence State Driver Card</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PresenceStateDriverCard">http://purl.org/iot/vocab/m3-lite#PresenceStateDriverCard</seealso>
+    let PresenceStateDriverCard =
+        Prefixed_Name(m3lite, "PresenceStateDriverCard") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:PresenceStateParking</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The presence or absence of a vehicle parked.</para>
+    /// labels<para>Presence State Parking</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PresenceStateParking">http://purl.org/iot/vocab/m3-lite#PresenceStateParking</seealso>
+    let PresenceStateParking =
+        Prefixed_Name(m3lite, "PresenceStateParking") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:PresenceStatePeople</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The presence or absence of people passing.</para>
+    /// labels<para>Presence State People</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PresenceStatePeople">http://purl.org/iot/vocab/m3-lite#PresenceStatePeople</seealso>
+    let PresenceStatePeople =
+        Prefixed_Name(m3lite, "PresenceStatePeople") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ProximitySensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Detect if something is within proximity of a sensor.</para>
+    /// labels<para>Proximity Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ProximitySensor">http://purl.org/iot/vocab/m3-lite#ProximitySensor</seealso>
+    let ProximitySensor = Prefixed_Name(m3lite, "ProximitySensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:PublicTransit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>When the source of the sound was public transit.</para>
+    /// labels<para>Public Transit Sound Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PublicTransit">http://purl.org/iot/vocab/m3-lite#PublicTransit</seealso>
+    let PublicTransit = Prefixed_Name(m3lite, "PublicTransit") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:PulseOxymeter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Pulse Oxymeter, SpO2, Blood Oxygen Saturation Sensor are used to measure the concentration of oxygen in the blood.</para>
+    /// labels<para>Pulse Oxymeter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PulseOxymeter">http://purl.org/iot/vocab/m3-lite#PulseOxymeter</seealso>
+    let PulseOxymeter = Prefixed_Name(m3lite, "PulseOxymeter") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:RadianPerSecond</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The radian per second is defined as the change in the orientation of an object, in radians, every second. The radian per second is the SI unit of angular (rotational) speed.</para>
+    /// labels<para>Radian Per Second</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RadianPerSecond">http://purl.org/iot/vocab/m3-lite#RadianPerSecond</seealso>
+    let RadianPerSecond = Prefixed_Name(m3lite, "RadianPerSecond") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:RadiationParticleDetector</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A particle detector, also known as a radiation detector or Geiger counter, is a device used to detect, track, and/or identify ionising particles, such as those produced by nuclear decay, cosmic radiation, or reactions in a particle accelerator.</para>
+    /// labels<para>Radiation Particle Detector</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RadiationParticleDetector">http://purl.org/iot/vocab/m3-lite#RadiationParticleDetector</seealso>
+    let RadiationParticleDetector =
+        Prefixed_Name(m3lite, "RadiationParticleDetector") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:RadiationParticlesPerMinute</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The number of ionizing events detected in one minute.</para>
+    /// labels<para>Radiation Particles Per Minute</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RadiationParticlesPerMinute">http://purl.org/iot/vocab/m3-lite#RadiationParticlesPerMinute</seealso>
+    let RadiationParticlesPerMinute =
+        Prefixed_Name(m3lite, "RadiationParticlesPerMinute") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:RecognizedActivity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Activity Recognized. This is usually made available as a part of analysis done by Google. The available activities recognized are IN_VEHICLE, ON_BICYCLE, ON_FOOT, RUNNING, STILL, TILTING, UNKNOWN, and WALKING.</para>
+    /// labels<para>Recognized Activity</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RecognizedActivity">http://purl.org/iot/vocab/m3-lite#RecognizedActivity</seealso>
+    let RecognizedActivity = Prefixed_Name(m3lite, "RecognizedActivity") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:RelativeHumidity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The ratio of vapour pressure to saturation vapour pressure, where vapour pressure is the pressure exerted by the molecules of water vapour and saturation vapour pressure is the pressure exerted by molecules of water vapour in AIR that has attained saturation.</para>
+    /// labels<para>Relative Humidity</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RelativeHumidity">http://purl.org/iot/vocab/m3-lite#RelativeHumidity</seealso>
+    let RelativeHumidity = Prefixed_Name(m3lite, "RelativeHumidity") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:RoadOccupancy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Ratio of time on which a road lane section is occupied by vehicles within a given period of time.</para>
+    /// labels<para>Road Occupancy</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RoadOccupancy">http://purl.org/iot/vocab/m3-lite#RoadOccupancy</seealso>
+    let RoadOccupancy = Prefixed_Name(m3lite, "RoadOccupancy") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:RoadSurfaceThermometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to measure the road Surface temperature.</para>
+    /// labels<para>Road Surface Thermometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RoadSurfaceThermometer">http://purl.org/iot/vocab/m3-lite#RoadSurfaceThermometer</seealso>
+    let RoadSurfaceThermometer =
+        Prefixed_Name(m3lite, "RoadSurfaceThermometer") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:RoadTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Temperature of the road.</para>
+    /// labels<para>Road Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RoadTemperature">http://purl.org/iot/vocab/m3-lite#RoadTemperature</seealso>
+    let RoadTemperature = Prefixed_Name(m3lite, "RoadTemperature") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:RotationalSpeedEngine</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Rotational speed is a property that is the rate of rotation of a material around an axis, in this case the engine cylinders.</para>
+    /// labels<para>Rotational Speed Engine</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#RotationalSpeedEngine">http://purl.org/iot/vocab/m3-lite#RotationalSpeedEngine</seealso>
+    let RotationalSpeedEngine =
+        Prefixed_Name(m3lite, "RotationalSpeedEngine") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SO2Sensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device use to detect Sulphur Dioxide (SO2) level in the environment.</para>
+    /// labels<para>Sulphur Dioxide (SO2) Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SO2Sensor">http://purl.org/iot/vocab/m3-lite#SO2Sensor</seealso>
+    let SO2Sensor = Prefixed_Name(m3lite, "SO2Sensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Scale</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Arbitrary indirect reference which should be translated into meaningful measurements by using the corresponding decoding algorithm detailed in the resource description. In this case the returned values are part of a continuous variable which can take any numeric value.</para>
+    /// labels<para>Scale</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Scale">http://purl.org/iot/vocab/m3-lite#Scale</seealso>
+    let Scale = Prefixed_Name(m3lite, "Scale") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SeatBeltTensionSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para> Actuator used to turn Seat Belt Tension Actuator on or off. </para>
+    /// labels<para>Seat Belt Tension Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SeatBeltTensionSensor">http://purl.org/iot/vocab/m3-lite#SeatBeltTensionSensor</seealso>
+    let SeatBeltTensionSensor =
+        Prefixed_Name(m3lite, "SeatBeltTensionSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Shower</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the shower.</para>
+    /// labels<para>Shower Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Shower">http://purl.org/iot/vocab/m3-lite#Shower</seealso>
+    let Shower = Prefixed_Name(m3lite, "Shower") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:VehiclesPerMinute</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Number of vehicles that traverse a concrete region of the space in one minute.</para>
+    /// labels<para>Vehicles Per Minute</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VehiclesPerMinute">http://purl.org/iot/vocab/m3-lite#VehiclesPerMinute</seealso>
+    let VehiclesPerMinute = Prefixed_Name(m3lite, "VehiclesPerMinute") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Ventilation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically open/close the ventilation.</para>
+    /// labels<para>Ventilation Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Ventilation">http://purl.org/iot/vocab/m3-lite#Ventilation</seealso>
+    let Ventilation = Prefixed_Name(m3lite, "Ventilation") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Visibility</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The state of being able to see or be seen.</para>
+    /// labels<para>Visibility</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Visibility">http://purl.org/iot/vocab/m3-lite#Visibility</seealso>
+    let Visibility = Prefixed_Name(m3lite, "Visibility") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:VisibilitySensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect Visibility.</para>
+    /// labels<para>Visibility Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#VisibilitySensor">http://purl.org/iot/vocab/m3-lite#VisibilitySensor</seealso>
+    let VisibilitySensor = Prefixed_Name(m3lite, "VisibilitySensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Voltage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An electromotive force or potential difference expressed in volts (Source Google).</para>
+    /// labels<para>Voltage</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Voltage">http://purl.org/iot/vocab/m3-lite#Voltage</seealso>
+    let Voltage = Prefixed_Name(m3lite, "Voltage") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WashingMachine</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the washing machine.</para>
+    /// labels<para>Washing Machine Actuation Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WashingMachine">http://purl.org/iot/vocab/m3-lite#WashingMachine</seealso>
+    let WashingMachine = Prefixed_Name(m3lite, "WashingMachine") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:WaterConductivitySensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to measure the conductivity of water.</para>
+    /// labels<para>Water Conductivity Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WaterConductivitySensor">http://purl.org/iot/vocab/m3-lite#WaterConductivitySensor</seealso>
+    let WaterConductivitySensor =
+        Prefixed_Name(m3lite, "WaterConductivitySensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:WaterLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The height reached by the water in a reservoir, river, storage tank, or similar.</para>
+    /// labels<para>Water Level</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WaterLevel">http://purl.org/iot/vocab/m3-lite#WaterLevel</seealso>
+    let WaterLevel = Prefixed_Name(m3lite, "WaterLevel") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WaterNH4IonSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor used to measure NH4 concentration level in the water.</para>
+    /// labels<para>Water NH4 Ion Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WaterNH4IonSensor">http://purl.org/iot/vocab/m3-lite#WaterNH4IonSensor</seealso>
+    let WaterNH4IonSensor = Prefixed_Name(m3lite, "WaterNH4IonSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WeatherLuminosity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Luminosity.</para>
+    /// labels<para>Weather Luminosity</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WeatherLuminosity">http://purl.org/iot/vocab/m3-lite#WeatherLuminosity</seealso>
+    let WeatherLuminosity = Prefixed_Name(m3lite, "WeatherLuminosity") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:WeatherPrecipitation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Weather Precipitation.</para>
+    /// labels<para>Weather Precipitation</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WeatherPrecipitation">http://purl.org/iot/vocab/m3-lite#WeatherPrecipitation</seealso>
+    let WeatherPrecipitation =
+        Prefixed_Name(m3lite, "WeatherPrecipitation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:WindDirection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The geodetic azimuth of the direction from which the wind is blowing.</para>
+    /// labels<para>Wind Direction</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WindDirection">http://purl.org/iot/vocab/m3-lite#WindDirection</seealso>
+    let WindDirection = Prefixed_Name(m3lite, "WindDirection") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:WindDirectionSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect wind direction.</para>
+    /// labels<para>Wind Direction Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WindDirectionSensor">http://purl.org/iot/vocab/m3-lite#WindDirectionSensor</seealso>
+    let WindDirectionSensor =
+        Prefixed_Name(m3lite, "WindDirectionSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:WindSpeed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The ratio of the distance covered by moving air to the time quantity taken to cover it.</para>
+    /// labels<para>Wind Velocity, Wind Speed</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WindSpeed">http://purl.org/iot/vocab/m3-lite#WindSpeed</seealso>
+    let WindSpeed = Prefixed_Name(m3lite, "WindSpeed") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WindSpeedSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Wind Speed Sensor, Anemometer or Wind Velocity Sensor is used to measure the wind speed.</para>
+    /// labels<para>Wind Speed Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WindSpeedSensor">http://purl.org/iot/vocab/m3-lite#WindSpeedSensor</seealso>
+    let WindSpeedSensor = Prefixed_Name(m3lite, "WindSpeedSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:WorkingStateDriver2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>State of work of the second driver as defined in the FMS standard.</para>
+    /// labels<para>Working State Driver 2</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WorkingStateDriver2">http://purl.org/iot/vocab/m3-lite#WorkingStateDriver2</seealso>
+    let WorkingStateDriver2 =
+        Prefixed_Name(m3lite, "WorkingStateDriver2") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Wout</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>This unit is used to measure delta dew point within the Com4Innov tesbed. Natural number (W/out unit).</para>
+    /// labels<para>W/out</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Wout">http://purl.org/iot/vocab/m3-lite#Wout</seealso>
+    let Wout = Prefixed_Name(m3lite, "Wout") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Year</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Year as a unit of time.</para>
+    /// labels<para>Year</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Year">http://purl.org/iot/vocab/m3-lite#Year</seealso>
+    let Year = Prefixed_Name(m3lite, "Year") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:hasDirection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The observations made by the sensors are affected by the direction of the sensing device. This property allows observations of the sensor to be associated to the Direction concept.</para>
+    /// labels<para>has Direction</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#hasDirection">http://purl.org/iot/vocab/m3-lite#hasDirection</seealso>
+    let hasDirection = Prefixed_Name(m3lite, "hasDirection") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DewPointSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device that measures dew point.</para>
+    /// labels<para>Dew Point Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DewPointSensor">http://purl.org/iot/vocab/m3-lite#DewPointSensor</seealso>
+    let DewPointSensor = Prefixed_Name(m3lite, "DewPointSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Lumen</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The SI unit of luminous flux, equal to the amount of light emitted per second in a unit solid angle of one steradian from a uniform source of one candela.</para>
+    /// labels<para>Lumen (lm)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Lumen">http://purl.org/iot/vocab/m3-lite#Lumen</seealso>
+    let Lumen = Prefixed_Name(m3lite, "Lumen") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MagneticFluxDensity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the magnetic flux  through a surface is the surface integral of the normal component of the magnetic field (B) passing through that surface. The SI unit of magnetic flux is the weber (Wb). (Source Wikipedia).</para>
+    /// labels<para>Magnetic Flux Density</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MagneticFluxDensity">http://purl.org/iot/vocab/m3-lite#MagneticFluxDensity</seealso>
+    let MagneticFluxDensity =
+        Prefixed_Name(m3lite, "MagneticFluxDensity") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SunPositionDirection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The position of the Sun in the sky is a function of both time and the geographic coordinates of the observer on the surface of the Earth. (Source Wikipedia).</para>
+    /// labels<para>Sun Position Direction</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SunPositionDirection">http://purl.org/iot/vocab/m3-lite#SunPositionDirection</seealso>
+    let SunPositionDirection =
+        Prefixed_Name(m3lite, "SunPositionDirection") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:COSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device to detect Carbon Monoxide (CO) in the environment.</para>
+    /// labels<para>Carbon Monoxide (CO) Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#COSensor">http://purl.org/iot/vocab/m3-lite#COSensor</seealso>
+    let COSensor = Prefixed_Name(m3lite, "COSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:CholesterolSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to measure the cholesterol level in a system.</para>
+    /// labels<para>Cholesterol Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#CholesterolSensor">http://purl.org/iot/vocab/m3-lite#CholesterolSensor</seealso>
+    let CholesterolSensor = Prefixed_Name(m3lite, "CholesterolSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:FillLevelGasTank</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Ratio of volume of combustible exhaust fluid to the total volume of diesel exhaust fluid storage container.</para>
+    /// labels<para>Fill Level Gas Tank</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FillLevelGasTank">http://purl.org/iot/vocab/m3-lite#FillLevelGasTank</seealso>
+    let FillLevelGasTank = Prefixed_Name(m3lite, "FillLevelGasTank") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Microgram</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a unit of mass equal to one billionth (1×10^−9) of a kilogram.</para>
+    /// labels<para>Microgram (ug)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Microgram">http://purl.org/iot/vocab/m3-lite#Microgram</seealso>
+    let Microgram = Prefixed_Name(m3lite, "Microgram") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:OxygenSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect Oxygen (O2) in the environment.</para>
+    /// labels<para>Oxygen Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#OxygenSensor">http://purl.org/iot/vocab/m3-lite#OxygenSensor</seealso>
+    let OxygenSensor = Prefixed_Name(m3lite, "OxygenSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:PH</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a numeric scale used to specify the acidity or basicity of an aqueous solution.</para>
+    /// labels<para>PH</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PH">http://purl.org/iot/vocab/m3-lite#PH</seealso>
+    let PH = Prefixed_Name(m3lite, "PH") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ShakeSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Shake sensor is used to deduce the quality of the road, earthquakes.</para>
+    /// labels<para>Shake Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ShakeSensor">http://purl.org/iot/vocab/m3-lite#ShakeSensor</seealso>
+    let ShakeSensor = Prefixed_Name(m3lite, "ShakeSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ChemicalAgentConcentration</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of Chemical Agent Concentration</para>
+    /// labels<para>Chemical Agent Concentration Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentConcentration">http://purl.org/iot/vocab/m3-lite#ChemicalAgentConcentration</seealso>
+    let ChemicalAgentConcentration =
+        Prefixed_Name(m3lite, "ChemicalAgentConcentration") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ChemicalAgentWaterConcentrationNH4Ion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of NH4 ion concentration in Water </para>
+    /// labels<para>Ammonium ion (NH4+) Chemical Agent Water Concentration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentrationNH4Ion">http://purl.org/iot/vocab/m3-lite#ChemicalAgentWaterConcentrationNH4Ion</seealso>
+    let ChemicalAgentWaterConcentrationNH4Ion =
+        Prefixed_Name(m3lite, "ChemicalAgentWaterConcentrationNH4Ion") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:NFC</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A tagging device can be NFC (Near Field Communication).</para>
+    /// labels<para>NFC Tagging Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#NFC">http://purl.org/iot/vocab/m3-lite#NFC</seealso>
+    let NFC = Prefixed_Name(m3lite, "NFC") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:NH3Sensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect NH3 level in the environment.</para>
+    /// labels<para>NH3 Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#NH3Sensor">http://purl.org/iot/vocab/m3-lite#NH3Sensor</seealso>
+    let NH3Sensor = Prefixed_Name(m3lite, "NH3Sensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ResAverageLicConnectedUsers</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Connected Users to a communication channel/platform</para>
+    /// labels<para>Connected Users</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ResAverageLicConnectedUsers">http://purl.org/iot/vocab/m3-lite#ResAverageLicConnectedUsers</seealso>
+    let ResAverageLicConnectedUsers =
+        Prefixed_Name(m3lite, "ResAverageLicConnectedUsers") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ABS</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The ABS (Anti-lock Braking System) receives information from ABS computer to control the pressure on the breaks, This helps the wheels not to get locked up, it adjust the break pressure and prevents the wheels from locking. (Definition Source Google).</para>
+    /// labels<para>ABS (Anti-lock Braking System) Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ABS">http://purl.org/iot/vocab/m3-lite#ABS</seealso>
+    let ABS = Prefixed_Name(m3lite, "ABS") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:hasDomainOfInterest</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This property is used to classify devices by DomainOfInterest (e.g., blood pressure sensor is used in healthcare).</para>
+    /// labels<para>has Domain Of Interest</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#hasDomainOfInterest">http://purl.org/iot/vocab/m3-lite#hasDomainOfInterest</seealso>
+    let hasDomainOfInterest =
+        Prefixed_Name(m3lite, "hasDomainOfInterest") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:AccInitialERabEstabSuccRate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Initial E-UTRAN Radio Access Bearer establishment success rate.</para>
+    /// labels<para>Initial E-RAB Establishment Success Rate</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AccInitialERabEstabSuccRate">http://purl.org/iot/vocab/m3-lite#AccInitialERabEstabSuccRate</seealso>
+    let AccInitialERabEstabSuccRate =
+        Prefixed_Name(m3lite, "AccInitialERabEstabSuccRate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:AccRrcConnSetupSuccRate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Radio Resource Control connection setup success rate.</para>
+    /// labels<para>RRC Connection Setup Success Rate</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AccRrcConnSetupSuccRate">http://purl.org/iot/vocab/m3-lite#AccRrcConnSetupSuccRate</seealso>
+    let AccRrcConnSetupSuccRate =
+        Prefixed_Name(m3lite, "AccRrcConnSetupSuccRate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Acceleration</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The rate of change of the velocity of a particle with respect to time.</para>
+    /// labels<para>Acceleration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Acceleration">http://purl.org/iot/vocab/m3-lite#Acceleration</seealso>
+    let Acceleration = Prefixed_Name(m3lite, "Acceleration") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Accelerometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para> Accelerometers are used to automatically determine the orientation in which the user is holding the IoT Object (portrait or landscape).</para>
+    /// labels<para>Accelerometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Accelerometer">http://purl.org/iot/vocab/m3-lite#Accelerometer</seealso>
+    let Accelerometer = Prefixed_Name(m3lite, "Accelerometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Power</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the rate, per unit time, at which electrical energy is transferred by an electric circuit.</para>
+    /// labels<para>Power</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Power">http://purl.org/iot/vocab/m3-lite#Power</seealso>
+    let Power = Prefixed_Name(m3lite, "Power") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Agriculture</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Agriculture, Smart farm as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Agriculture DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Agriculture">http://purl.org/iot/vocab/m3-lite#Agriculture</seealso>
+    let Agriculture = Prefixed_Name(m3lite, "Agriculture") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:BuildingAutomation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Smart Home/Building Automation as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Smart Building DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BuildingAutomation">http://purl.org/iot/vocab/m3-lite#BuildingAutomation</seealso>
+    let BuildingAutomation = Prefixed_Name(m3lite, "BuildingAutomation") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Environment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Environment (earthquake, flooding, fire, pollution) as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Environment DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Environment">http://purl.org/iot/vocab/m3-lite#Environment</seealso>
+    let Environment = Prefixed_Name(m3lite, "Environment") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:HumiditySensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Humidity sensor or hygrometer is an instrument used for measuring the moisture concent in the environment.</para>
+    /// labels<para>Humidity Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#HumiditySensor">http://purl.org/iot/vocab/m3-lite#HumiditySensor</seealso>
+    let HumiditySensor = Prefixed_Name(m3lite, "HumiditySensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:AirPollution</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Usually measured using Air Quality Index (AQI), it is the measure of Air Pollution in the environment. It is similar to Air Quality.</para>
+    /// labels<para>Air Pollution Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AirPollution">http://purl.org/iot/vocab/m3-lite#AirPollution</seealso>
+    let AirPollution = Prefixed_Name(m3lite, "AirPollution") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:AirQuality</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Usually measured using an air quality index (AQI) that is a number used by government agencies to communicate to the public how polluted the air currently is or how polluted it is forecast to become. Different countries have their own air quality indices, corresponding to different national air quality standards. It is the measure of Air Quality of the environment. It is similar to Air Pollution. (Source Wikipedia).</para>
+    /// labels<para>Air Quality Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AirQuality">http://purl.org/iot/vocab/m3-lite#AirQuality</seealso>
+    let AirQuality = Prefixed_Name(m3lite, "AirQuality") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Temperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the air temperature.</para>
+    /// labels<para>Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Temperature">http://purl.org/iot/vocab/m3-lite#Temperature</seealso>
+    let Temperature = Prefixed_Name(m3lite, "Temperature") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:AirThermometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device to measure the Air temperature of either indoor or outdoor atmosphere.</para>
+    /// labels<para>Air Thermometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AirThermometer">http://purl.org/iot/vocab/m3-lite#AirThermometer</seealso>
+    let AirThermometer = Prefixed_Name(m3lite, "AirThermometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Thermometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A device to measure the temperature in a room or outside.</para>
+    /// labels<para>Thermometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Thermometer">http://purl.org/iot/vocab/m3-lite#Thermometer</seealso>
+    let Thermometer = Prefixed_Name(m3lite, "Thermometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:AlarmSystem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the alarm system.</para>
+    /// labels<para>Alarm System Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AlarmSystem">http://purl.org/iot/vocab/m3-lite#AlarmSystem</seealso>
+    let AlarmSystem = Prefixed_Name(m3lite, "AlarmSystem") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SoundSource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Source where the sound originated.</para>
+    /// labels<para>Sound Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SoundSource">http://purl.org/iot/vocab/m3-lite#SoundSource</seealso>
+    let SoundSource = Prefixed_Name(m3lite, "SoundSource") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:AtmosphericPressure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The pressure exerted by the atmosphere as a consequence of gravitational attraction exerted upon the column of air lying directly above the point in question.</para>
+    /// labels<para>Atmospheric Pressure</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AtmosphericPressure">http://purl.org/iot/vocab/m3-lite#AtmosphericPressure</seealso>
+    let AtmosphericPressure =
+        Prefixed_Name(m3lite, "AtmosphericPressure") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:AutomaticSensing</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>When the devices are set to take the observations Automatically without any external aid.</para>
+    /// labels<para>Automatic Measurement Type</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#AutomaticSensing">http://purl.org/iot/vocab/m3-lite#AutomaticSensing</seealso>
+    let AutomaticSensing = Prefixed_Name(m3lite, "AutomaticSensing") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MeasurementType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Type of Measurement done using a device.</para>
+    /// labels<para>Measurement Type</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MeasurementType">http://purl.org/iot/vocab/m3-lite#MeasurementType</seealso>
+    let MeasurementType = Prefixed_Name(m3lite, "MeasurementType") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Bar</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Metric unit of atmospheric pressure equal to 14.50 pounds per square inch (lb/in2), 1.02 kilograms per square centimetre (kg/cm2), 29.53 inches of mercury (in Hg), or 0.9869 atmosphere.</para>
+    /// labels<para>Bar</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Bar">http://purl.org/iot/vocab/m3-lite#Bar</seealso>
+    let Bar = Prefixed_Name(m3lite, "Bar") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:BloodGlucose</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of Blood glucose level or blood sugar level.</para>
+    /// labels<para>Blood Glucose Quantity Kind</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BloodGlucose">http://purl.org/iot/vocab/m3-lite#BloodGlucose</seealso>
+    let BloodGlucose = Prefixed_Name(m3lite, "BloodGlucose") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:BloodPressure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the pressure in your blood vessels when your heart rests between beats.</para>
+    /// labels<para>Blood Pressure</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BloodPressure">http://purl.org/iot/vocab/m3-lite#BloodPressure</seealso>
+    let BloodPressure = Prefixed_Name(m3lite, "BloodPressure") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Health</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Healthcare as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Health Care DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Health">http://purl.org/iot/vocab/m3-lite#Health</seealso>
+    let Health = Prefixed_Name(m3lite, "Health") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:BoardTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of board temperature.</para>
+    /// labels<para>Board Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BoardTemperature">http://purl.org/iot/vocab/m3-lite#BoardTemperature</seealso>
+    let BoardTemperature = Prefixed_Name(m3lite, "BoardTemperature") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:BoardThermometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to measure board temperature.</para>
+    /// labels<para>Board Thermometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BoardThermometer">http://purl.org/iot/vocab/m3-lite#BoardThermometer</seealso>
+    let BoardThermometer = Prefixed_Name(m3lite, "BoardThermometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:BoardVoltageSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor used to measure board input voltage.</para>
+    /// labels<para>Board Voltage Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#BoardVoltageSensor">http://purl.org/iot/vocab/m3-lite#BoardVoltageSensor</seealso>
+    let BoardVoltageSensor = Prefixed_Name(m3lite, "BoardVoltageSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Boiler</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the boiler.</para>
+    /// labels<para>Boiler Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Boiler">http://purl.org/iot/vocab/m3-lite#Boiler</seealso>
+    let Boiler = Prefixed_Name(m3lite, "Boiler") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:CO2Sensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Carbon Dioxide (CO2) Sensor used to measure level of CO2 in the atmosphere.</para>
+    /// labels<para>Carbon Dioxide (CO2) Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#CO2Sensor">http://purl.org/iot/vocab/m3-lite#CO2Sensor</seealso>
+    let CO2Sensor = Prefixed_Name(m3lite, "CO2Sensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:GaseousPollutantSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect poisonous gaseous in the environment.</para>
+    /// labels<para>Gaseous Pollutant Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#GaseousPollutantSensor">http://purl.org/iot/vocab/m3-lite#GaseousPollutantSensor</seealso>
+    let GaseousPollutantSensor =
+        Prefixed_Name(m3lite, "GaseousPollutantSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:CalibrationSensing</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>If the measurement was taken when the sensor was being calibrated.</para>
+    /// labels<para>Calibration Measurement Type</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#CalibrationSensing">http://purl.org/iot/vocab/m3-lite#CalibrationSensing</seealso>
+    let CalibrationSensing = Prefixed_Name(m3lite, "CalibrationSensing") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Candela</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Candela is the luminous intensity, in a given direction, of a source that emits monochromatic radiation of frequency 540 x 10^12 hertz and that has a radiant intensity in that direction of 1/683 watt per steradian. (Source Wikipedia).</para>
+    /// labels<para>Candela</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Candela">http://purl.org/iot/vocab/m3-lite#Candela</seealso>
+    let Candela = Prefixed_Name(m3lite, "Candela") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Capacitance</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the ability of a system to store an electric charge.</para>
+    /// labels<para>Capacitance</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Capacitance">http://purl.org/iot/vocab/m3-lite#Capacitance</seealso>
+    let Capacitance = Prefixed_Name(m3lite, "Capacitance") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Centibar</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The centibar is a unit of pressure defined as 1e-2 bar.</para>
+    /// labels<para>Centibar</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Centibar">http://purl.org/iot/vocab/m3-lite#Centibar</seealso>
+    let Centibar = Prefixed_Name(m3lite, "Centibar") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Centimetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A metric unit of length, equal to one hundredth of a metre.</para>
+    /// labels<para>Centimetre, Centimeter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Centimetre">http://purl.org/iot/vocab/m3-lite#Centimetre</seealso>
+    let Centimetre = Prefixed_Name(m3lite, "Centimetre") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ChemicalAgentAtmosphericConcentrationDust</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the concentration of dust suspended in the air.</para>
+    /// labels<para>Chemical Agent Atmospheric Concentration Dust</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationDust">http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationDust</seealso>
+    let ChemicalAgentAtmosphericConcentrationDust =
+        Prefixed_Name(m3lite, "ChemicalAgentAtmosphericConcentrationDust") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ChemicalAgentAtmosphericConcentrationNO</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the concentration of Carbon Monoxide (CO) gas suspended in the atmosphere.</para>
+    /// labels<para>Nitrogen Monoxide (NO) Chemical Agent Atmospheric Concentration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationNO">http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationNO</seealso>
+    let ChemicalAgentAtmosphericConcentrationNO =
+        Prefixed_Name(m3lite, "ChemicalAgentAtmosphericConcentrationNO") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ChemicalAgentAtmosphericConcentrationNO2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the concentration of NO2 gas suspended in the atmosphere.</para>
+    /// labels<para>NO2 Chemical Agent Atmospheric Concentration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationNO2">http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationNO2</seealso>
+    let ChemicalAgentAtmosphericConcentrationNO2 =
+        Prefixed_Name(m3lite, "ChemicalAgentAtmosphericConcentrationNO2") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ChemicalAgentAtmosphericConcentrationO3</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The concentration of ozone (O3) gas suspended in the atmosphere.</para>
+    /// labels<para>Chemical Agent Atmospheric Concentration O3</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationO3">http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationO3</seealso>
+    let ChemicalAgentAtmosphericConcentrationO3 =
+        Prefixed_Name(m3lite, "ChemicalAgentAtmosphericConcentrationO3") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ChemicalAgentAtmosphericConcentrationSO2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the concentration of Sulphur dioxide (SO2) gas suspended in the atmosphere.</para>
+    /// labels<para>Sulphur dioxide (SO2) Chemical Agent Atmospheric Concentration</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationSO2">http://purl.org/iot/vocab/m3-lite#ChemicalAgentAtmosphericConcentrationSO2</seealso>
+    let ChemicalAgentAtmosphericConcentrationSO2 =
+        Prefixed_Name(m3lite, "ChemicalAgentAtmosphericConcentrationSO2") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Day</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Day is a unit of time.</para>
+    /// labels<para>Day</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Day">http://purl.org/iot/vocab/m3-lite#Day</seealso>
+    let Day = Prefixed_Name(m3lite, "Day") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SecondTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Qualitatively defined as the second division of the hour by sixty, the first division by sixty being the minute. SI definition of second is "the duration of 9 192 631 770 periods of the radiation corresponding to the transition between the two hyperfine levels of the ground state of the cesium 133 atom.</para>
+    /// labels<para>Second Time</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SecondTime">http://purl.org/iot/vocab/m3-lite#SecondTime</seealso>
+    let SecondTime = Prefixed_Name(m3lite, "SecondTime") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Decibel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Decibel is a logarithmic unit used to express the ratio of two values of a physical quantity. It is often used to measure sound level.</para>
+    /// labels<para>Decibel (dB)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Decibel">http://purl.org/iot/vocab/m3-lite#Decibel</seealso>
+    let Decibel = Prefixed_Name(m3lite, "Decibel") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DecibelA</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sound pressure sensed by the human ear.</para>
+    /// labels<para>DecibelA (dB(A))</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DecibelA">http://purl.org/iot/vocab/m3-lite#DecibelA</seealso>
+    let DecibelA = Prefixed_Name(m3lite, "DecibelA") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DecibelMilliwatt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It describes power ratio in decibels of the measured power referenced to one milliwatt.</para>
+    /// labels<para>Decibel Milliwatt</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DecibelMilliwatt">http://purl.org/iot/vocab/m3-lite#DecibelMilliwatt</seealso>
+    let DecibelMilliwatt = Prefixed_Name(m3lite, "DecibelMilliwatt") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DeltaDewPoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Difference between Dewpoint and surface temperatures.</para>
+    /// labels<para>Delta Dew Point</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DeltaDewPoint">http://purl.org/iot/vocab/m3-lite#DeltaDewPoint</seealso>
+    let DeltaDewPoint = Prefixed_Name(m3lite, "DeltaDewPoint") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DewPoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the temperature to which air must be cooled at constant pressure to condense to form liquid.</para>
+    /// labels<para>Dew Point</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DewPoint">http://purl.org/iot/vocab/m3-lite#DewPoint</seealso>
+    let DewPoint = Prefixed_Name(m3lite, "DewPoint") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:DeltaDewPointSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device that measures the difference between Dewpoint and surface temperatures.</para>
+    /// labels<para>Delta Dew Point Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DeltaDewPointSensor">http://purl.org/iot/vocab/m3-lite#DeltaDewPointSensor</seealso>
+    let DeltaDewPointSensor =
+        Prefixed_Name(m3lite, "DeltaDewPointSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:DeviceUptime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Time a device is working and is available</para>
+    /// labels<para>Device Uptime</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DeviceUptime">http://purl.org/iot/vocab/m3-lite#DeviceUptime</seealso>
+    let DeviceUptime = Prefixed_Name(m3lite, "DeviceUptime") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DeviceUptimeClock</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor that measures time a device is working and is available.</para>
+    /// labels<para>Device Uptime Clock</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DeviceUptimeClock">http://purl.org/iot/vocab/m3-lite#DeviceUptimeClock</seealso>
+    let DeviceUptimeClock = Prefixed_Name(m3lite, "DeviceUptimeClock") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:DewPointTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The temperature at which dew forms and is a measure of atmospheric moisture. It is the temperature to which air must be cooled at constant pressure and water content to reach saturation. A higher dew point indicates more moisture in the air; a dew point greater than 20 Degree C (68 Degree F) is considered uncomfortable and greater than 22 Degree C (72 Degree F) is considered to be extremely humid.</para>
+    /// labels<para>Dew Point Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DewPointTemperature">http://purl.org/iot/vocab/m3-lite#DewPointTemperature</seealso>
+    let DewPointTemperature =
+        Prefixed_Name(m3lite, "DewPointTemperature") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:DiastolicBloodPressure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para> Measure of the pressure in the arteries when the heart rests between beats.</para>
+    /// labels<para>Diastolic Blood Pressure</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DiastolicBloodPressure">http://purl.org/iot/vocab/m3-lite#DiastolicBloodPressure</seealso>
+    let DiastolicBloodPressure =
+        Prefixed_Name(m3lite, "DiastolicBloodPressure") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Dimensionless</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Without dimensions; having no appreciable or noteworthy extent. Without physical meaning.</para>
+    /// labels<para>Dimensionless</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Dimensionless">http://purl.org/iot/vocab/m3-lite#Dimensionless</seealso>
+    let Dimensionless = Prefixed_Name(m3lite, "Dimensionless") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Direction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measurements of sensors are affected by the direction of the sensing device. This concept is used to reflect it.</para>
+    /// labels<para>Direction</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Direction">http://purl.org/iot/vocab/m3-lite#Direction</seealso>
+    let Direction = Prefixed_Name(m3lite, "Direction") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DirectionAzimuth</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The geodetic azimuth of the direction towards which an object is point to.</para>
+    /// labels<para>Direction Azimuth</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DirectionAzimuth">http://purl.org/iot/vocab/m3-lite#DirectionAzimuth</seealso>
+    let DirectionAzimuth = Prefixed_Name(m3lite, "DirectionAzimuth") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DirectionOfArrival</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The azimuth direction of a  source relative to the azimuth direction of the DOA sensor.</para>
+    /// labels<para>Direction Of Arrival</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DirectionOfArrival">http://purl.org/iot/vocab/m3-lite#DirectionOfArrival</seealso>
+    let DirectionOfArrival = Prefixed_Name(m3lite, "DirectionOfArrival") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:DirectionOfArrivalSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor that estimates the azimuth direction of sources relative to the sensor’s position.</para>
+    /// labels<para>Direction Of Arrival (DOA) Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DirectionOfArrivalSensor">http://purl.org/iot/vocab/m3-lite#DirectionOfArrivalSensor</seealso>
+    let DirectionOfArrivalSensor =
+        Prefixed_Name(m3lite, "DirectionOfArrivalSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:DishWasher</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the dishwasher.</para>
+    /// labels<para>Dish Washer Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DishWasher">http://purl.org/iot/vocab/m3-lite#DishWasher</seealso>
+    let DishWasher = Prefixed_Name(m3lite, "DishWasher") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Distance</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of how far apart objects are.</para>
+    /// labels<para>Distance</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Distance">http://purl.org/iot/vocab/m3-lite#Distance</seealso>
+    let Distance = Prefixed_Name(m3lite, "Distance") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DistanceSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Distance Sensor is used to detect distance between two objects for example:  the safety distance with other cars. Distance sensor can be a laser.</para>
+    /// labels<para>Distance Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DistanceSensor">http://purl.org/iot/vocab/m3-lite#DistanceSensor</seealso>
+    let DistanceSensor = Prefixed_Name(m3lite, "DistanceSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DoorStatus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Describes if a door is OPEN or CLOSED.</para>
+    /// labels<para>Door Status</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DoorStatus">http://purl.org/iot/vocab/m3-lite#DoorStatus</seealso>
+    let DoorStatus = Prefixed_Name(m3lite, "DoorStatus") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Drawer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically open/close the drawer.</para>
+    /// labels<para>Drawer Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Drawer">http://purl.org/iot/vocab/m3-lite#Drawer</seealso>
+    let Drawer = Prefixed_Name(m3lite, "Drawer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:DustSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A sensing device that measures dust particle concentration.</para>
+    /// labels<para>Dust Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#DustSensor">http://purl.org/iot/vocab/m3-lite#DustSensor</seealso>
+    let DustSensor = Prefixed_Name(m3lite, "DustSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:EAQI</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Unit to measure Air Quality in European cities.</para>
+    /// labels<para>European Air Quality Index (EAQI)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#EAQI">http://purl.org/iot/vocab/m3-lite#EAQI</seealso>
+    let EAQI = Prefixed_Name(m3lite, "EAQI") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ECG</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>ECG or EKG (Electrocardiogram) device.</para>
+    /// labels<para>ECG or EKG (Electrocardiogram)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ECG">http://purl.org/iot/vocab/m3-lite#ECG</seealso>
+    let ECG = Prefixed_Name(m3lite, "ECG") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Emotion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Affective Science, Emotion, Mood, Emotional State, Brain Wave as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Emotion DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Emotion">http://purl.org/iot/vocab/m3-lite#Emotion</seealso>
+    let Emotion = Prefixed_Name(m3lite, "Emotion") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ESP</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The actuator for turning ESP on/off.</para>
+    /// labels<para>ESP (Electronic Stability Program) Actuating device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ESP">http://purl.org/iot/vocab/m3-lite#ESP</seealso>
+    let ESP = Prefixed_Name(m3lite, "ESP") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ElectricCharge</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the physical property of matter that causes it to experience a force when placed in an electromagnetic field. (Source Wikipedia).</para>
+    /// labels<para>Electric Charge</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricCharge">http://purl.org/iot/vocab/m3-lite#ElectricCharge</seealso>
+    let ElectricCharge = Prefixed_Name(m3lite, "ElectricCharge") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ElectricCurrent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Electric current is the flow of electric charge. It is a base quantity in the International System of Units. Electric current is electric charge divided by time. Electric Current is the flow (movement) of electric charge. The amount of electric current through some surface, e.g., a section through a copper conductor, is defined as the amount of electric charge flowing through that surface over time.</para>
+    /// labels<para>Electric Current</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricCurrent">http://purl.org/iot/vocab/m3-lite#ElectricCurrent</seealso>
+    let ElectricCurrent = Prefixed_Name(m3lite, "ElectricCurrent") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ElectricField</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Electric field is the electric force per unit charge.</para>
+    /// labels<para>Electric Field</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricField">http://purl.org/iot/vocab/m3-lite#ElectricField</seealso>
+    let ElectricField = Prefixed_Name(m3lite, "ElectricField") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ElectricField900Mhz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A field of force associated with a moving electric charge equivalent to an electric field and a magnetic field at right angles to each other and to the direction of propagation. Applied to the 900 MHz UHF band.</para>
+    /// labels<para>Electric Field 900 MHz</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricField900Mhz">http://purl.org/iot/vocab/m3-lite#ElectricField900Mhz</seealso>
+    let ElectricField900Mhz =
+        Prefixed_Name(m3lite, "ElectricField900Mhz") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ElectricFieldSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scientific instrument for measuring electromagnetic fields (EMF). Most of them measure the electromagnetic radiation flux density (DC fields) or the change in an electromagnetic field over time (AC fields).</para>
+    /// labels<para>Electric Field Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricFieldSensor">http://purl.org/iot/vocab/m3-lite#ElectricFieldSensor</seealso>
+    let ElectricFieldSensor =
+        Prefixed_Name(m3lite, "ElectricFieldSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ElectricPotential</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Electric potential is the potential energy per unit charge associated with static (time-invariant) electric field.</para>
+    /// labels<para>Electric Potential</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricPotential">http://purl.org/iot/vocab/m3-lite#ElectricPotential</seealso>
+    let ElectricPotential = Prefixed_Name(m3lite, "ElectricPotential") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ElectricalResistance</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The electrical resistance of an electrical conductor is the opposition to the passage of an electric current through that conductor.</para>
+    /// labels<para>Electrical Resistance</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricalResistance">http://purl.org/iot/vocab/m3-lite#ElectricalResistance</seealso>
+    let ElectricalResistance =
+        Prefixed_Name(m3lite, "ElectricalResistance") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:ElectricalSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor that measures the changes in electrical or magnetic signals based on an environmental input.</para>
+    /// labels<para>Electrical Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ElectricalSensor">http://purl.org/iot/vocab/m3-lite#ElectricalSensor</seealso>
+    let ElectricalSensor = Prefixed_Name(m3lite, "ElectricalSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Energy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Energy is the property that must be transferred to an object in order to perform work on. (Source Wikipedia).</para>
+    /// labels<para>Energy</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Energy">http://purl.org/iot/vocab/m3-lite#Energy</seealso>
+    let Energy = Prefixed_Name(m3lite, "Energy") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:EnergyDOI</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Energy or Smart Grid as an Internet of Things (IoT) applicative domain.</para>
+    /// labels<para>Energy DOI</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#EnergyDOI">http://purl.org/iot/vocab/m3-lite#EnergyDOI</seealso>
+    let EnergyDOI = Prefixed_Name(m3lite, "EnergyDOI") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:EnergyMeter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor to measure power or energy consumption.</para>
+    /// labels<para>Energy Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#EnergyMeter">http://purl.org/iot/vocab/m3-lite#EnergyMeter</seealso>
+    let EnergyMeter = Prefixed_Name(m3lite, "EnergyMeter") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:FillLevelGasTank1</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Ratio of volume of combustible exhaust fluid to the total volume of diesel exhaust fluid storage container. This is the value for the primary tank of the vehicle.</para>
+    /// labels<para>Fill Level Gas Tank 1</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FillLevelGasTank1">http://purl.org/iot/vocab/m3-lite#FillLevelGasTank1</seealso>
+    let FillLevelGasTank1 = Prefixed_Name(m3lite, "FillLevelGasTank1") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:FillLevelGasTank2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Ratio of volume of combustible exhaust fluid to the total volume of diesel exhaust fluid storage container. This is the value for the secondary tank of the vehicle.</para>
+    /// labels<para>Fill Level Gas Tank 2</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FillLevelGasTank2">http://purl.org/iot/vocab/m3-lite#FillLevelGasTank2</seealso>
+    let FillLevelGasTank2 = Prefixed_Name(m3lite, "FillLevelGasTank2") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:FillLevelWasteContainer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Ratio between the current filleage level and the total capacity of a waste container.</para>
+    /// labels<para>Fill Level Waste Container</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FillLevelWasteContainer">http://purl.org/iot/vocab/m3-lite#FillLevelWasteContainer</seealso>
+    let FillLevelWasteContainer =
+        Prefixed_Name(m3lite, "FillLevelWasteContainer") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:FogLamp</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The actuator for turning on or off the fog lamp.</para>
+    /// labels<para>Fog Lamp Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FogLamp">http://purl.org/iot/vocab/m3-lite#FogLamp</seealso>
+    let FogLamp = Prefixed_Name(m3lite, "FogLamp") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:FoodTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of temperature of the food.</para>
+    /// labels<para>Food Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FoodTemperature">http://purl.org/iot/vocab/m3-lite#FoodTemperature</seealso>
+    let FoodTemperature = Prefixed_Name(m3lite, "FoodTemperature") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Freezer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically open/close the freezer.</para>
+    /// labels<para>Freezer, Chiller Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Freezer">http://purl.org/iot/vocab/m3-lite#Freezer</seealso>
+    let Freezer = Prefixed_Name(m3lite, "Freezer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Frequency</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Frequency is the number of occurrences of a repeating event per unit time.</para>
+    /// labels<para>Frequency</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Frequency">http://purl.org/iot/vocab/m3-lite#Frequency</seealso>
+    let Frequency = Prefixed_Name(m3lite, "Frequency") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:FrequencySensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect the frequency.</para>
+    /// labels<para>Frequency Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FrequencySensor">http://purl.org/iot/vocab/m3-lite#FrequencySensor</seealso>
+    let FrequencySensor = Prefixed_Name(m3lite, "FrequencySensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Fridge</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the fridge.</para>
+    /// labels<para>Fridge, Refrigerator Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Fridge">http://purl.org/iot/vocab/m3-lite#Fridge</seealso>
+    let Fridge = Prefixed_Name(m3lite, "Fridge") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:FuelLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect fuel level in a system such a car.</para>
+    /// labels<para>Fuel Level Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#FuelLevel">http://purl.org/iot/vocab/m3-lite#FuelLevel</seealso>
+    let FuelLevel = Prefixed_Name(m3lite, "FuelLevel") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:GPSSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device that allows an object to localize itself.</para>
+    /// labels<para>GPS Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#GPSSensor">http://purl.org/iot/vocab/m3-lite#GPSSensor</seealso>
+    let GPSSensor = Prefixed_Name(m3lite, "GPSSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:GasDetector</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device that detects the presence of gases in an area, often as part of a safety system.</para>
+    /// labels<para>Gas Detector</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#GasDetector">http://purl.org/iot/vocab/m3-lite#GasDetector</seealso>
+    let GasDetector = Prefixed_Name(m3lite, "GasDetector") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Gauss</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Gauss is the CGS unit of measurement of magnetic flux density (or magnetic induction) (B) (Source Wikipedia)</para>
+    /// labels<para>Gauss</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Gauss">http://purl.org/iot/vocab/m3-lite#Gauss</seealso>
+    let Gauss = Prefixed_Name(m3lite, "Gauss") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Glucometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect glucometer, blood sugar, blood glucose level.</para>
+    /// labels<para>Glucometer Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Glucometer">http://purl.org/iot/vocab/m3-lite#Glucometer</seealso>
+    let Glucometer = Prefixed_Name(m3lite, "Glucometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Gram</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a metric system unit of mass</para>
+    /// labels<para>Gram (g)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Gram">http://purl.org/iot/vocab/m3-lite#Gram</seealso>
+    let Gram = Prefixed_Name(m3lite, "Gram") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:GramPerCubicMetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is defined by mass in grams divided by volume in cubic metres.</para>
+    /// labels<para>Gram Per Cubic Metre, Gram Per Cubic Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#GramPerCubicMetre">http://purl.org/iot/vocab/m3-lite#GramPerCubicMetre</seealso>
+    let GramPerCubicMetre = Prefixed_Name(m3lite, "GramPerCubicMetre") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:GramPerLitre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It shows how many grams of a certain substance are present in one litre of a usually liquid or gaseous mixture.</para>
+    /// labels<para>Gram Per Litre, Gram Per Liter (g/L)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#GramPerLitre">http://purl.org/iot/vocab/m3-lite#GramPerLitre</seealso>
+    let GramPerLitre = Prefixed_Name(m3lite, "GramPerLitre") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:GyrometerSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gyrometer is an instrument which measures an angular speed.</para>
+    /// labels<para>Gyrometer Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#GyrometerSensor">http://purl.org/iot/vocab/m3-lite#GyrometerSensor</seealso>
+    let GyrometerSensor = Prefixed_Name(m3lite, "GyrometerSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:HeartBeat</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The number of times your heart beats each minute (bpm).</para>
+    /// labels<para>Heart Beat</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#HeartBeat">http://purl.org/iot/vocab/m3-lite#HeartBeat</seealso>
+    let HeartBeat = Prefixed_Name(m3lite, "HeartBeat") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:HeartBeatSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device to count heart beats per minute.</para>
+    /// labels<para>Heart Beat Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#HeartBeatSensor">http://purl.org/iot/vocab/m3-lite#HeartBeatSensor</seealso>
+    let HeartBeatSensor = Prefixed_Name(m3lite, "HeartBeatSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Heating</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the heating.</para>
+    /// labels<para>Heating Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Heating">http://purl.org/iot/vocab/m3-lite#Heating</seealso>
+    let Heating = Prefixed_Name(m3lite, "Heating") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Hertz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The SI unit of frequency, equal to one cycle per second.</para>
+    /// labels<para>Hertz</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Hertz">http://purl.org/iot/vocab/m3-lite#Hertz</seealso>
+    let Hertz = Prefixed_Name(m3lite, "Hertz") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Hour</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Hour of the day.</para>
+    /// labels<para>Hour</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Hour">http://purl.org/iot/vocab/m3-lite#Hour</seealso>
+    let Hour = Prefixed_Name(m3lite, "Hour") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:HouseholdApplianceTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of Household Appliance Temperature.</para>
+    /// labels<para>Household Appliance Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#HouseholdApplianceTemperature">http://purl.org/iot/vocab/m3-lite#HouseholdApplianceTemperature</seealso>
+    let HouseholdApplianceTemperature =
+        Prefixed_Name(m3lite, "HouseholdApplianceTemperature") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:HumanPresenceDetector</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect if an object (vehicle, room, place, etc.) is occupied by Human.</para>
+    /// labels<para> Human Presence Detector</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#HumanPresenceDetector">http://purl.org/iot/vocab/m3-lite#HumanPresenceDetector</seealso>
+    let HumanPresenceDetector =
+        Prefixed_Name(m3lite, "HumanPresenceDetector") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:PresenceDetector</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect if on object is occupied or not.</para>
+    /// labels<para>Presence Detector</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#PresenceDetector">http://purl.org/iot/vocab/m3-lite#PresenceDetector</seealso>
+    let PresenceDetector = Prefixed_Name(m3lite, "PresenceDetector") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Humidity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A quantity representing the amount of water vapour in the atmosphere or in a gas.</para>
+    /// labels<para>Humidity</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Humidity">http://purl.org/iot/vocab/m3-lite#Humidity</seealso>
+    let Humidity = Prefixed_Name(m3lite, "Humidity") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Magnetometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A magnetometer is an device that measures magnetism—either magnetization of magnetic material like a ferromagnet, or the strength and, in some cases, direction of the magnetic field at a point in space. (Source Wikipedia).</para>
+    /// labels<para>Magnetometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Magnetometer">http://purl.org/iot/vocab/m3-lite#Magnetometer</seealso>
+    let Magnetometer = Prefixed_Name(m3lite, "Magnetometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Manual</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>If the measurement was taken when human effort was involved.</para>
+    /// labels<para>Manual Measurement Type</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Manual">http://purl.org/iot/vocab/m3-lite#Manual</seealso>
+    let Manual = Prefixed_Name(m3lite, "Manual") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Mass</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Mass is a property of a physical body. It is the measure of an object's resistance to acceleration when a net force is applied.</para>
+    /// labels<para>Mass</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Mass">http://purl.org/iot/vocab/m3-lite#Mass</seealso>
+    let Mass = Prefixed_Name(m3lite, "Mass") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MethaneSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect Methane in the environment.</para>
+    /// labels<para>Methane (CH4) Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MethaneSensor">http://purl.org/iot/vocab/m3-lite#MethaneSensor</seealso>
+    let MethaneSensor = Prefixed_Name(m3lite, "MethaneSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MetrePerSecondSquare</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the unit of acceleration.</para>
+    /// labels<para>Metre Per Second Square, Meter Per Second Square</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MetrePerSecondSquare">http://purl.org/iot/vocab/m3-lite#MetrePerSecondSquare</seealso>
+    let MetrePerSecondSquare =
+        Prefixed_Name(m3lite, "MetrePerSecondSquare") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Microampere</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a unit of electric current, or amount of electric charge per second.</para>
+    /// labels<para>Microampere (uA)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Microampere">http://purl.org/iot/vocab/m3-lite#Microampere</seealso>
+    let Microampere = Prefixed_Name(m3lite, "Microampere") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:WattPerSquareMetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the SI unit for radiative and other energy fluxes.</para>
+    /// labels<para>Watt Per Square Metre, Watt Per Square Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#WattPerSquareMetre">http://purl.org/iot/vocab/m3-lite#WattPerSquareMetre</seealso>
+    let WattPerSquareMetre = Prefixed_Name(m3lite, "WattPerSquareMetre") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Microwave</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the Microwave.</para>
+    /// labels<para>Microwave Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Microwave">http://purl.org/iot/vocab/m3-lite#Microwave</seealso>
+    let Microwave = Prefixed_Name(m3lite, "Microwave") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Mileage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of the number of miles or the average distance that a vehicle can travel on a specified quantity of fuel</para>
+    /// labels<para>Mileage</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Mileage">http://purl.org/iot/vocab/m3-lite#Mileage</seealso>
+    let Mileage = Prefixed_Name(m3lite, "Mileage") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MileageDistanceToService</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The distance which can be travelled by the vehicle before the next service inspection is required.  A negative distance is transmitted if the service inspection has been passed.</para>
+    /// labels<para>Mileage Distance To Service</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MileageDistanceToService">http://purl.org/iot/vocab/m3-lite#MileageDistanceToService</seealso>
+    let MileageDistanceToService =
+        Prefixed_Name(m3lite, "MileageDistanceToService") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MileageTotal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The total distance travelled by the particular vehicle since its initial production.</para>
+    /// labels<para>Mileage Total</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MileageTotal">http://purl.org/iot/vocab/m3-lite#MileageTotal</seealso>
+    let MileageTotal = Prefixed_Name(m3lite, "MileageTotal") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Miles</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a unit of length that is equal to 1,760 yards (approx. 1.609 kilometres).</para>
+    /// labels<para>Miles</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Miles">http://purl.org/iot/vocab/m3-lite#Miles</seealso>
+    let Miles = Prefixed_Name(m3lite, "Miles") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Milliampere</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>One thousandth of an ampere.</para>
+    /// labels<para>Milliampere (mA)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Milliampere">http://purl.org/iot/vocab/m3-lite#Milliampere</seealso>
+    let Milliampere = Prefixed_Name(m3lite, "Milliampere") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Millibar</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>One thousandth of a bar.</para>
+    /// labels<para>Millibar</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Millibar">http://purl.org/iot/vocab/m3-lite#Millibar</seealso>
+    let Millibar = Prefixed_Name(m3lite, "Millibar") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Milligram</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>One thousandth of a gram.</para>
+    /// labels<para>Milligram (mg)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Milligram">http://purl.org/iot/vocab/m3-lite#Milligram</seealso>
+    let Milligram = Prefixed_Name(m3lite, "Milligram") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MilligramPerCubicMetre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a density measurement unit.</para>
+    /// labels<para>Milligram Per Cubic Metre, Milligram Per Cubic Meter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MilligramPerCubicMetre">http://purl.org/iot/vocab/m3-lite#MilligramPerCubicMetre</seealso>
+    let MilligramPerCubicMetre =
+        Prefixed_Name(m3lite, "MilligramPerCubicMetre") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MilligramPerLitre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Level of Dissolved substance in liquid measured in mg per litre.</para>
+    /// labels<para>Milligram Per Litre, Milligram Per Liter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MilligramPerLitre">http://purl.org/iot/vocab/m3-lite#MilligramPerLitre</seealso>
+    let MilligramPerLitre = Prefixed_Name(m3lite, "MilligramPerLitre") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MinuteAngle</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Minute of Angle (MOA) is an angular measurement. A MOA is 1/60th of a degree.</para>
+    /// labels<para>Minute Angle</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MinuteAngle">http://purl.org/iot/vocab/m3-lite#MinuteAngle</seealso>
+    let MinuteAngle = Prefixed_Name(m3lite, "MinuteAngle") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MinuteTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A unit of time equal to 60 seconds or 1/60th of an hour.</para>
+    /// labels<para>Minute Time</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MinuteTime">http://purl.org/iot/vocab/m3-lite#MinuteTime</seealso>
+    let MinuteTime = Prefixed_Name(m3lite, "MinuteTime") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MmHg</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A millimetre of mercury is a manometric unit of pressure, formerly defined as the extra pressure generated by a column of mercury one millimetre high and now defined as precisely 133.322387415 pascals. It is denoted by the symbol mmHg. It  is used to measure blood pressure measurements (systolic and diastolic).</para>
+    /// labels<para>MmHg</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MmHg">http://purl.org/iot/vocab/m3-lite#MmHg</seealso>
+    let MmHg = Prefixed_Name(m3lite, "MmHg") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MmolPerLitre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the amount of a substance that corresponds to its formula mass in milligrams. MmolPerLitre is used to measure cholesterol.</para>
+    /// labels<para>Mmol Per Litre, Mmol Per Liter</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MmolPerLitre">http://purl.org/iot/vocab/m3-lite#MmolPerLitre</seealso>
+    let MmolPerLitre = Prefixed_Name(m3lite, "MmolPerLitre") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MobHoExecSuccRate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Handover Execution.</para>
+    /// labels<para>Handover Execution</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MobHoExecSuccRate">http://purl.org/iot/vocab/m3-lite#MobHoExecSuccRate</seealso>
+    let MobHoExecSuccRate = Prefixed_Name(m3lite, "MobHoExecSuccRate") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MobHoPrepSuccRate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Handover Preparation Success Rate.</para>
+    /// labels<para>Handover Preparation Success Rate</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MobHoPrepSuccRate">http://purl.org/iot/vocab/m3-lite#MobHoPrepSuccRate</seealso>
+    let MobHoPrepSuccRate = Prefixed_Name(m3lite, "MobHoPrepSuccRate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:MobMobilitySuccRate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Handover Mobility Success Rate.</para>
+    /// labels<para>Handover Mobility Success Rate</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MobMobilitySuccRate">http://purl.org/iot/vocab/m3-lite#MobMobilitySuccRate</seealso>
+    let MobMobilitySuccRate =
+        Prefixed_Name(m3lite, "MobMobilitySuccRate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Motion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the action or process of moving or being moved.</para>
+    /// labels<para>Motion</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Motion">http://purl.org/iot/vocab/m3-lite#Motion</seealso>
+    let Motion = Prefixed_Name(m3lite, "Motion") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MotionState</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicator of whether a person (or object) is detected upon his/her/its movement.</para>
+    /// labels<para>Motion State</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MotionState">http://purl.org/iot/vocab/m3-lite#MotionState</seealso>
+    let MotionState = Prefixed_Name(m3lite, "MotionState") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:MotionStateVehicle</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicates whether motion of the vehicle is detected or not.</para>
+    /// labels<para>Motion State Vehicle</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#MotionStateVehicle">http://purl.org/iot/vocab/m3-lite#MotionStateVehicle</seealso>
+    let MotionStateVehicle = Prefixed_Name(m3lite, "MotionStateVehicle") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:NO2Sensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor detecting levels of Nitrogen Dioxide (NO2) in the environment.</para>
+    /// labels<para>Nitrogen Dioxide (NO2) Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#NO2Sensor">http://purl.org/iot/vocab/m3-lite#NO2Sensor</seealso>
+    let NO2Sensor = Prefixed_Name(m3lite, "NO2Sensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:NOSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect Nitrogen Oxide (NO) in the environment.</para>
+    /// labels<para>Nitrogen Oxide (NO) Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#NOSensor">http://purl.org/iot/vocab/m3-lite#NOSensor</seealso>
+    let NOSensor = Prefixed_Name(m3lite, "NOSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Neighbours</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>When the source of the sound were noisy neighbours.</para>
+    /// labels<para>Neighbours Sound Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Neighbours">http://purl.org/iot/vocab/m3-lite#Neighbours</seealso>
+    let Neighbours = Prefixed_Name(m3lite, "Neighbours") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:O3Sensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect Ozone (O3) in the environment.</para>
+    /// labels<para>Ozone (O3) Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#O3Sensor">http://purl.org/iot/vocab/m3-lite#O3Sensor</seealso>
+    let O3Sensor = Prefixed_Name(m3lite, "O3Sensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Odometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An odometer or odograph is an instrument that indicates distance travelled by a vehicle, such as bicycle or automobile.</para>
+    /// labels<para>Odometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Odometer">http://purl.org/iot/vocab/m3-lite#Odometer</seealso>
+    let Odometer = Prefixed_Name(m3lite, "Odometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Ohm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Ohm is the unit of electrical resistance.</para>
+    /// labels<para>Ohm</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Ohm">http://purl.org/iot/vocab/m3-lite#Ohm</seealso>
+    let Ohm = Prefixed_Name(m3lite, "Ohm") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Okta</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Okta is the unit to measure the cloud cover.</para>
+    /// labels<para>Okta</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Okta">http://purl.org/iot/vocab/m3-lite#Okta</seealso>
+    let Okta = Prefixed_Name(m3lite, "Okta") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:OpticalDustSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A sensing device that measures dust particle concentration using optical sensing mean.</para>
+    /// labels<para>Optical Dust Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#OpticalDustSensor">http://purl.org/iot/vocab/m3-lite#OpticalDustSensor</seealso>
+    let OpticalDustSensor = Prefixed_Name(m3lite, "OpticalDustSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Others</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Relates to phenomenon and unit that are not available currently in the current version of Taxonomy.</para>
+    /// labels<para>Others</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Others">http://purl.org/iot/vocab/m3-lite#Others</seealso>
+    let Others = Prefixed_Name(m3lite, "Others") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Source</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Environmental Origin of a particular observation. With respect to one kind of Source (Sound source), it can be coming from traffic, siren of a police car, etc.</para>
+    /// labels<para>Source</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Source">http://purl.org/iot/vocab/m3-lite#Source</seealso>
+    let Source = Prefixed_Name(m3lite, "Source") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SmokeDetector</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect if there is a fire or the smoke.</para>
+    /// labels<para>Smoke Detector</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SmokeDetector">http://purl.org/iot/vocab/m3-lite#SmokeDetector</seealso>
+    let SmokeDetector = Prefixed_Name(m3lite, "SmokeDetector") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SnowChains</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The actuator that turn Snow chains on/off.</para>
+    /// labels<para>Snow Chains Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SnowChains">http://purl.org/iot/vocab/m3-lite#SnowChains</seealso>
+    let SnowChains = Prefixed_Name(m3lite, "SnowChains") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Sodium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of Blood Sodium level.</para>
+    /// labels<para>Sodium</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Sodium">http://purl.org/iot/vocab/m3-lite#Sodium</seealso>
+    let Sodium = Prefixed_Name(m3lite, "Sodium") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SoilHumidity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the quantity of water contained in a material, such as soil. </para>
+    /// labels<para>Soil Humidity</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SoilHumidity">http://purl.org/iot/vocab/m3-lite#SoilHumidity</seealso>
+    let SoilHumidity = Prefixed_Name(m3lite, "SoilHumidity") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SoilHumiditySensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Soil Humidity sensor, Soil moisture, Hygrometer are an instrument used for measuring the soil moisture or soil humidity.</para>
+    /// labels<para>Soil Humidity Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SoilHumiditySensor">http://purl.org/iot/vocab/m3-lite#SoilHumiditySensor</seealso>
+    let SoilHumiditySensor = Prefixed_Name(m3lite, "SoilHumiditySensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SoilMoistureTension</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The force per unit area required to remove film water from soil.</para>
+    /// labels<para>Soil Moisture Tension</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SoilMoistureTension">http://purl.org/iot/vocab/m3-lite#SoilMoistureTension</seealso>
+    let SoilMoistureTension =
+        Prefixed_Name(m3lite, "SoilMoistureTension") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SoilTemperature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Soil temperature is the bulk temperature of the soil, not the surface (skin) temperature.</para>
+    /// labels<para>Soil Temperature</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SoilTemperature">http://purl.org/iot/vocab/m3-lite#SoilTemperature</seealso>
+    let SoilTemperature = Prefixed_Name(m3lite, "SoilTemperature") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SoilThermometer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>This sensor reports Soil temperature.</para>
+    /// labels<para>Soil Thermometer</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SoilThermometer">http://purl.org/iot/vocab/m3-lite#SoilThermometer</seealso>
+    let SoilThermometer = Prefixed_Name(m3lite, "SoilThermometer") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SolarRadiation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the power per unit area received from the Sun in the form of electromagnetic radiation in the wavelength range of the measuring instrument. (Source Wikipedia).</para>
+    /// labels<para>Solar Radiation Measurement, PAR Measurement (Photosynthetically Active Radiation)</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SolarRadiation">http://purl.org/iot/vocab/m3-lite#SolarRadiation</seealso>
+    let SolarRadiation = Prefixed_Name(m3lite, "SolarRadiation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SolarRadiationSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect Solar Radiation.</para>
+    /// labels<para>Solar Radiation Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SolarRadiationSensor">http://purl.org/iot/vocab/m3-lite#SolarRadiationSensor</seealso>
+    let SolarRadiationSensor =
+        Prefixed_Name(m3lite, "SolarRadiationSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Sound</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Measure of noise level in the environment</para>
+    /// labels<para>Sound, Noise Level</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Sound">http://purl.org/iot/vocab/m3-lite#Sound</seealso>
+    let Sound = Prefixed_Name(m3lite, "Sound") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:SoundPressureLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sound pressure level is a logarithmic measure of the RMS sound pressure of a sound relative to a reference value, the threshold of hearing. The reference sound pressure was chosen conventionally to correspond to the quietest sound at 1000 Hz that the human ear can detect (20 uPa). In this case, the specific parameter is measured in an open environment.</para>
+    /// labels<para>Sound Pressure Level</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SoundPressureLevel">http://purl.org/iot/vocab/m3-lite#SoundPressureLevel</seealso>
+    let SoundPressureLevel = Prefixed_Name(m3lite, "SoundPressureLevel") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SoundPressureLevelAmbient</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Similar to Sound.</para>
+    /// labels<para>Sound Pressure Level Ambient</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SoundPressureLevelAmbient">http://purl.org/iot/vocab/m3-lite#SoundPressureLevelAmbient</seealso>
+    let SoundPressureLevelAmbient =
+        Prefixed_Name(m3lite, "SoundPressureLevelAmbient") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SoundSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor used to detect Noise level. It can be Sound Sensor, Noise level Sensor, Volume sensor, Microphone</para>
+    /// labels<para>Sound Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SoundSensor">http://purl.org/iot/vocab/m3-lite#SoundSensor</seealso>
+    let SoundSensor = Prefixed_Name(m3lite, "SoundSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Speed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The rate at which someone or something moves or operates or is able to move or operate.</para>
+    /// labels<para>Speed</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Speed">http://purl.org/iot/vocab/m3-lite#Speed</seealso>
+    let Speed = Prefixed_Name(m3lite, "Speed") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SunPositionDirectionSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sensor used to detect sun position.</para>
+    /// labels<para>Sun Position Direction Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SunPositionDirectionSensor">http://purl.org/iot/vocab/m3-lite#SunPositionDirectionSensor</seealso>
+    let SunPositionDirectionSensor =
+        Prefixed_Name(m3lite, "SunPositionDirectionSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SunPositionElevation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the altitude of the sun, the angle between the horizon and the centre of the sun's disc.</para>
+    /// labels<para>Sun Position Elevation</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SunPositionElevation">http://purl.org/iot/vocab/m3-lite#SunPositionElevation</seealso>
+    let SunPositionElevation =
+        Prefixed_Name(m3lite, "SunPositionElevation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SunPositionElevationSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Device used to detect sun elevation.</para>
+    /// labels<para>Sun Position Elevation Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SunPositionElevationSensor">http://purl.org/iot/vocab/m3-lite#SunPositionElevationSensor</seealso>
+    let SunPositionElevationSensor =
+        Prefixed_Name(m3lite, "SunPositionElevationSensor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:SystolicBloodPressure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the pressure when the heart beats while pumping blood.</para>
+    /// labels<para>Systolic Blood Pressure</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#SystolicBloodPressure">http://purl.org/iot/vocab/m3-lite#SystolicBloodPressure</seealso>
+    let SystolicBloodPressure =
+        Prefixed_Name(m3lite, "SystolicBloodPressure") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:TV</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the television.</para>
+    /// labels<para>TV Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#TV">http://purl.org/iot/vocab/m3-lite#TV</seealso>
+    let TV = Prefixed_Name(m3lite, "TV") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:Telephone</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An actuator to automatically switch on/off the Telephone.</para>
+    /// labels<para>Telephone Actuating Device</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Telephone">http://purl.org/iot/vocab/m3-lite#Telephone</seealso>
+    let Telephone = Prefixed_Name(m3lite, "Telephone") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:TemperatureEngine</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The temperature of a vehicle engine.</para>
+    /// labels<para>Temperature Engine</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#TemperatureEngine">http://purl.org/iot/vocab/m3-lite#TemperatureEngine</seealso>
+    let TemperatureEngine = Prefixed_Name(m3lite, "TemperatureEngine") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:TemperatureWasteContainer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The temperature of the air that would be indicated by a thermometer exposed to the air inside a waste container.</para>
+    /// labels<para>Temperature Waste Container</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#TemperatureWasteContainer">http://purl.org/iot/vocab/m3-lite#TemperatureWasteContainer</seealso>
+    let TemperatureWasteContainer =
+        Prefixed_Name(m3lite, "TemperatureWasteContainer") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Tesla</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is the SI unit of magnetic flux density.</para>
+    /// labels<para>Tesla</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Tesla">http://purl.org/iot/vocab/m3-lite#Tesla</seealso>
+    let Tesla = Prefixed_Name(m3lite, "Tesla") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:ThrottleSensor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>It is a device used to monitor the throttle position of a vehicle.</para>
+    /// labels<para>Throttle Position Sensor</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#ThrottleSensor">http://purl.org/iot/vocab/m3-lite#ThrottleSensor</seealso>
+    let ThrottleSensor = Prefixed_Name(m3lite, "ThrottleSensor") |> PrefixedName
+    /// <summary>
+    ///   <para>m3lite:TimeRelatedState</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicator of whether a person (or object) has overpassed a particular time threshold (e.g. maximum number of hours driving, etc.)</para>
+    /// labels<para>Time Related State</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#TimeRelatedState">http://purl.org/iot/vocab/m3-lite#TimeRelatedState</seealso>
+    let TimeRelatedState = Prefixed_Name(m3lite, "TimeRelatedState") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:TimeRelatedStateDriver</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicator of whether the driver of a vehicle approaches or exceeds his/her working time limits.</para>
+    /// labels<para>Time Related State Driver</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#TimeRelatedStateDriver">http://purl.org/iot/vocab/m3-lite#TimeRelatedStateDriver</seealso>
+    let TimeRelatedStateDriver =
+        Prefixed_Name(m3lite, "TimeRelatedStateDriver") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:TimeRelatedStateDriver1</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicates if the first driver approaches or exceeds working time limits (or other limits).</para>
+    /// labels<para>Time Related State Driver 1</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#TimeRelatedStateDriver1">http://purl.org/iot/vocab/m3-lite#TimeRelatedStateDriver1</seealso>
+    let TimeRelatedStateDriver1 =
+        Prefixed_Name(m3lite, "TimeRelatedStateDriver1") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:TimeRelatedStateDriver2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Indicates if the second driver approaches or exceeds working time limits (or other limits).</para>
+    /// labels<para>Time Related State Driver 2</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#TimeRelatedStateDriver2">http://purl.org/iot/vocab/m3-lite#TimeRelatedStateDriver2</seealso>
+    let TimeRelatedStateDriver2 =
+        Prefixed_Name(m3lite, "TimeRelatedStateDriver2") |> PrefixedName
+
+    /// <summary>
+    ///   <para>m3lite:Timestamp</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Sequence of characters or encoded information identifying when a certain event occurred, usually giving date and time of day, sometimes accurate to a small fraction of a second. This representation should be encoded following ISO8601.</para>
+    /// labels<para>Timestamp</para></remarks>
+    /// <seealso href="http://purl.org/iot/vocab/m3-lite#Timestamp">http://purl.org/iot/vocab/m3-lite#Timestamp</seealso>
+    let Timestamp = Prefixed_Name(m3lite, "Timestamp") |> PrefixedName

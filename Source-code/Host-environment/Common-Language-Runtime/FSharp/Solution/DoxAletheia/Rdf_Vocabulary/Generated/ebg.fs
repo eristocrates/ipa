@@ -1,166 +1,433 @@
 namespace http.data.businessgraph.io.ontology.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ebg =
-    let _namespace_name = "http://data.businessgraph.io/ontology#"
+    let _namespace_iri = Namespace_Iri ebg |> NamespaceIRI
+    /// <summary>
+    ///   <para>ebg:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>The euBusinessGraph (`ebg:`) ontology represents companies, type/status/economic classification, addresses, identifiers, company officers (e.g., directors and CEOs), and dataset offerings.
+    ///
+    /// It uses `schema:domainIncludes/rangeIncludes` (which are polymorphic) to describe which properties are applicable to a class,
+    /// rather than `rdfs:domain/range` (which are monomorphic) to prescribe what classes must be applied to each node using a property.
+    /// We find that this enables more flexible reuse and combination of different ontologies.
+    /// We reuse the following ontologies and nomenclatures, and extend them where appropriate with classes and properties:
+    ///
+    /// - W3C Org, W3C RegOrg (basic company data),
+    ///
+    /// - W3C Time (officer membership),
+    ///
+    /// - W3C Locn (addresses),
+    ///
+    /// - schema.org (domain/rangeIncludes and various properties)
+    ///
+    /// - DBpedia ontology (jurisdiction)
+    ///
+    /// - NGEO and Spatial (NUTS administrative divisions)
+    ///
+    /// - ADMS (identifiers),
+    ///
+    /// - FOAF, SIOC (blog posts),
+    ///
+    /// - RAMON, SKOS (NACE economic classifications and various nomenclatures),
+    ///
+    /// - VOID (dataset descriptions).
+    ///
+    /// This is only a reference. See more detail in the [EBG Semantic Model](https://docs.google.com/document/d/1dhMOTlIOC6dOK_jksJRX0CB-GIRoiYY6fWtCnZArUhU/edit) google document, which includes an informative description of classes and properties, gives examples and data provider rules, and provides more schema and instance diagrams.
+    ///
+    /// ## Overview
+    /// The figure below gives an overview of the ontology, depicting the main classes and their relationships (i.e., object properties). The ontology covers the following areas:
+    ///
+    /// - Registered Organization: To represent a legal company.
+    ///
+    /// - Identifier System: To represent Identifier Systems. A company can have several Identifiers belonging to different Identifier Systems.
+    ///
+    /// - Officer: To represent associated company officers, e.g., directors.
+    ///
+    /// - Dataset: To represent information about datasets that are offered by company data providers.
+    ///
+    /// ![](https://raw.githubusercontent.com/euBusinessGraph/eubg-data/master/model/images/ontology-overview.png)
+    ///
+    /// ### Registered Organization (company)
+    /// Registered organizations are the main entities for which information is captured in the euBusinessGraph ontology. The ontology is not concerned with unregistered informal groups. Registered organizations gain legal entity status by the act of registration and are distinct from the broader concept of organizations, groups or, in some jurisdictions, sole traders. The figure below shows the classes and properties for representing core data about a registered organization.
+    ///
+    /// ![](https://raw.githubusercontent.com/euBusinessGraph/eubg-data/master/model/images/ontology-company-classes.png)
+    ///
+    /// ### Identifier System
+    /// Mechanisms to identify companies in various data sources are essential in integration of data about companies across data sources. A proper understanding of what kind of systems of identifiers can be used for companies is thus necessary in this context. We analyzed various types of identifiers commonly used for companies and collected various properties of the systems they are part of. We modelled identifiers and identifier systems explicitly in the ontology as shown in thew figure below.
+    ///
+    /// ![](https://raw.githubusercontent.com/euBusinessGraph/eubg-data/master/model/images/ontology-identifier-classes.png)
+    ///
+    /// ### Officer
+    /// We use the membership model of the W3C Organization Ontology in a straightforward way to represent officer data as shown in the figure below.
+    ///
+    /// ![](https://raw.githubusercontent.com/euBusinessGraph/eubg-data/master/model/images/ontology-officer-classes.png)
+    ///
+    /// ### Dataset Descriptions
+    /// Data consumers need to know how many companies are included in a data provider dataset, from which jurisdictions, and what depth of data is included (e.g., which properties, addresses with what geo resolution, etc.). We thus need to express both metadata about the dataset itself, and fine-grained statistics about the content of a dataset, as shown in the figure below.
+    ///
+    /// ![](https://raw.githubusercontent.com/euBusinessGraph/eubg-data/master/model/images/ontology-dataset-classes.png)
+    ///
+    /// </para>
+    /// </remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#">http://data.businessgraph.io/ontology#</seealso>
+    let _prefix_iri = Prefixed_Name(ebg, "") |> PrefixedName
+    /// <summary>
+    ///   <para>ebg:LAURegion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Local Administrative Unit</para>
+    /// labels<para>LAU Region</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#LAURegion">http://data.businessgraph.io/ontology#LAURegion</seealso>
+    let LAURegion = Prefixed_Name(ebg, "LAURegion") |> PrefixedName
+    /// <summary>
+    ///   <para>ebg:WebResource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Web Resource</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#WebResource">http://data.businessgraph.io/ontology#WebResource</seealso>
+    let WebResource = Prefixed_Name(ebg, "WebResource") |> PrefixedName
+    /// <summary>
+    ///   <para>ebg:adminUnit</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#adminUnit">http://data.businessgraph.io/ontology#adminUnit</seealso>
+    let adminUnit = Prefixed_Name(ebg, "adminUnit") |> PrefixedName
+    /// <summary>
+    ///   <para>ebg:order</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Global order of a thesaurus concept respecting the hierarchical structure (depth-first traversal)</para>
+    /// labels<para>order</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#order">http://data.businessgraph.io/ontology#order</seealso>
+    let order = Prefixed_Name(ebg, "order") |> PrefixedName
+    /// <summary>
+    ///   <para>ebg:adminUnitL4</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>admin unit level 4</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#adminUnitL4">http://data.businessgraph.io/ontology#adminUnitL4</seealso>
+    let adminUnitL4 = Prefixed_Name(ebg, "adminUnitL4") |> PrefixedName
+    /// <summary>
+    ///   <para>ebg:adminUnitL5</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>admin unit level 5</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#adminUnitL5">http://data.businessgraph.io/ontology#adminUnitL5</seealso>
+    let adminUnitL5 = Prefixed_Name(ebg, "adminUnitL5") |> PrefixedName
+    /// <summary>
+    ///   <para>ebg:adminUnitL6</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>admin unit level 6</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#adminUnitL6">http://data.businessgraph.io/ontology#adminUnitL6</seealso>
+    let adminUnitL6 = Prefixed_Name(ebg, "adminUnitL6") |> PrefixedName
+    /// <summary>
+    ///   <para>ebg:dissolutionYear</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>dissolution year</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#dissolutionYear">http://data.businessgraph.io/ontology#dissolutionYear</seealso>
+    let dissolutionYear = Prefixed_Name(ebg, "dissolutionYear") |> PrefixedName
+    /// <summary>
+    ///   <para>ebg:foundingYear</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>founding year</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#foundingYear">http://data.businessgraph.io/ontology#foundingYear</seealso>
+    let foundingYear = Prefixed_Name(ebg, "foundingYear") |> PrefixedName
+    /// <summary>
+    ///   <para>ebg:geoResolution</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>geocoordinate resolution</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#geoResolution">http://data.businessgraph.io/ontology#geoResolution</seealso>
+    let geoResolution = Prefixed_Name(ebg, "geoResolution") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>ebg:identifierWebResource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>identifier web resource</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#identifierWebResource">http://data.businessgraph.io/ontology#identifierWebResource</seealso>
+    let identifierWebResource =
+        Prefixed_Name(ebg, "identifierWebResource") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#IdentifierSystem"></see>
+    ///   <para>ebg:isEnumerated</para>
     /// </summary>
-    let IdentifierSystem = _prefix "IdentifierSystem"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has enumerated identifiers</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#isEnumerated">http://data.businessgraph.io/ontology#isEnumerated</seealso>
+    let isEnumerated = Prefixed_Name(ebg, "isEnumerated") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#IdentifierWebResource"></see>
+    ///   <para>ebg:isImmutable</para>
     /// </summary>
-    let IdentifierWebResource = _prefix "IdentifierWebResource"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has immutable identifiers</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#isImmutable">http://data.businessgraph.io/ontology#isImmutable</seealso>
+    let isImmutable = Prefixed_Name(ebg, "isImmutable") |> PrefixedName
     /// <summary>
-    /// Local Administrative Unit
-    /// <see href="http://data.businessgraph.io/ontology#LAURegion"></see></summary>
-    let LAURegion = _prefix "LAURegion"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#WebResource"></see>
+    ///   <para>ebg:isOfficial</para>
     /// </summary>
-    let WebResource = _prefix "WebResource"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>is official in jurisdiction</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#isOfficial">http://data.businessgraph.io/ontology#isOfficial</seealso>
+    let isOfficial = Prefixed_Name(ebg, "isOfficial") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#adminUnit"></see>
+    ///   <para>ebg:isPersistent</para>
     /// </summary>
-    let adminUnit = _prefix "adminUnit"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has persistent identifiers</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#isPersistent">http://data.businessgraph.io/ontology#isPersistent</seealso>
+    let isPersistent = Prefixed_Name(ebg, "isPersistent") |> PrefixedName
     /// <summary>
-    /// Global order of a thesaurus concept respecting the hierarchical structure (depth-first traversal)
-    /// <see href="http://data.businessgraph.io/ontology#order"></see></summary>
-    let order = _prefix "order"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#adminUnitL3"></see>
+    ///   <para>ebg:isPublic</para>
     /// </summary>
-    let adminUnitL3 = _prefix "adminUnitL3"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>is public</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#isPublic">http://data.businessgraph.io/ontology#isPublic</seealso>
+    let isPublic = Prefixed_Name(ebg, "isPublic") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#adminUnitL4"></see>
+    ///   <para>ebg:isSingleValued</para>
     /// </summary>
-    let adminUnitL4 = _prefix "adminUnitL4"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>is single-valued</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#isSingleValued">http://data.businessgraph.io/ontology#isSingleValued</seealso>
+    let isSingleValued = Prefixed_Name(ebg, "isSingleValued") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#adminUnitL5"></see>
+    ///   <para>ebg:isStartup</para>
     /// </summary>
-    let adminUnitL5 = _prefix "adminUnitL5"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>is startup</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#isStartup">http://data.businessgraph.io/ontology#isStartup</seealso>
+    let isStartup = Prefixed_Name(ebg, "isStartup") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#adminUnitL6"></see>
+    ///   <para>ebg:isStateOwned</para>
     /// </summary>
-    let adminUnitL6 = _prefix "adminUnitL6"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>is state owned</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#isStateOwned">http://data.businessgraph.io/ontology#isStateOwned</seealso>
+    let isStateOwned = Prefixed_Name(ebg, "isStateOwned") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#dissolutionYear"></see>
+    ///   <para>ebg:level</para>
     /// </summary>
-    let dissolutionYear = _prefix "dissolutionYear"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Hierarchical level of a thesaurus concept</para>
+    /// labels<para>concept level</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#level">http://data.businessgraph.io/ontology#level</seealso>
+    let level = Prefixed_Name(ebg, "level") |> PrefixedName
     /// <summary>
-    /// Exclusion note of a NACE classification concept
-    /// <see href="http://data.businessgraph.io/ontology#exclusionNote"></see></summary>
-    let exclusionNote = _prefix "exclusionNote"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#foundingYear"></see>
+    ///   <para>ebg:numberOfEmployees</para>
     /// </summary>
-    let foundingYear = _prefix "foundingYear"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>number of employees</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#numberOfEmployees">http://data.businessgraph.io/ontology#numberOfEmployees</seealso>
+    let numberOfEmployees = Prefixed_Name(ebg, "numberOfEmployees") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#geoResolution"></see>
+    ///   <para>ebg:orgActivityText</para>
     /// </summary>
-    let geoResolution = _prefix "geoResolution"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>economic activity text</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#orgActivityText">http://data.businessgraph.io/ontology#orgActivityText</seealso>
+    let orgActivityText = Prefixed_Name(ebg, "orgActivityText") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#identifierWebResource"></see>
+    ///   <para>ebg:orgActivityTransitive</para>
     /// </summary>
-    let identifierWebResource = _prefix "identifierWebResource"
+    /// <remarks></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#orgActivityTransitive">http://data.businessgraph.io/ontology#orgActivityTransitive</seealso>
+    let orgActivityTransitive =
+        Prefixed_Name(ebg, "orgActivityTransitive") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#isEnumerated"></see>
+    ///   <para>ebg:orgStatusText</para>
     /// </summary>
-    let isEnumerated = _prefix "isEnumerated"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>status text</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#orgStatusText">http://data.businessgraph.io/ontology#orgStatusText</seealso>
+    let orgStatusText = Prefixed_Name(ebg, "orgStatusText") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#isImmutable"></see>
+    ///   <para>ebg:probabilityOfDefault</para>
     /// </summary>
-    let isImmutable = _prefix "isImmutable"
+    /// <remarks></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#probabilityOfDefault">http://data.businessgraph.io/ontology#probabilityOfDefault</seealso>
+    let probabilityOfDefault =
+        Prefixed_Name(ebg, "probabilityOfDefault") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#isOfficial"></see>
+    ///   <para>ebg:ralCode</para>
     /// </summary>
-    let isOfficial = _prefix "isOfficial"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>identifier system RAL code</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#ralCode">http://data.businessgraph.io/ontology#ralCode</seealso>
+    let ralCode = Prefixed_Name(ebg, "ralCode") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#isPersistent"></see>
+    ///   <para>ebg:replacementPattern</para>
     /// </summary>
-    let isPersistent = _prefix "isPersistent"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>replacement pattern</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#replacementPattern">http://data.businessgraph.io/ontology#replacementPattern</seealso>
+    let replacementPattern = Prefixed_Name(ebg, "replacementPattern") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#isPublic"></see>
+    ///   <para>ebg:rolePositionText</para>
     /// </summary>
-    let isPublic = _prefix "isPublic"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>role text</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#rolePositionText">http://data.businessgraph.io/ontology#rolePositionText</seealso>
+    let rolePositionText = Prefixed_Name(ebg, "rolePositionText") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#isPubliclyTraded"></see>
+    ///   <para>ebg:urlTemplate</para>
     /// </summary>
-    let isPubliclyTraded = _prefix "isPubliclyTraded"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>URL template</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#urlTemplate">http://data.businessgraph.io/ontology#urlTemplate</seealso>
+    let urlTemplate = Prefixed_Name(ebg, "urlTemplate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#isSingleValued"></see>
+    ///   <para>ebg:validationRule</para>
     /// </summary>
-    let isSingleValued = _prefix "isSingleValued"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>validation rule</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#validationRule">http://data.businessgraph.io/ontology#validationRule</seealso>
+    let validationRule = Prefixed_Name(ebg, "validationRule") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#isStartup"></see>
+    ///   <para>ebg:webResource</para>
     /// </summary>
-    let isStartup = _prefix "isStartup"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>web resource</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#webResource">http://data.businessgraph.io/ontology#webResource</seealso>
+    let webResource = Prefixed_Name(ebg, "webResource") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#isStateOwned"></see>
+    ///   <para>ebg:IdentifierSystem</para>
     /// </summary>
-    let isStateOwned = _prefix "isStateOwned"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Identifier System</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#IdentifierSystem">http://data.businessgraph.io/ontology#IdentifierSystem</seealso>
+    let IdentifierSystem = Prefixed_Name(ebg, "IdentifierSystem") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#isUnique"></see>
+    ///   <para>ebg:isPubliclyTraded</para>
     /// </summary>
-    let isUnique = _prefix "isUnique"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>is publicly traded</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#isPubliclyTraded">http://data.businessgraph.io/ontology#isPubliclyTraded</seealso>
+    let isPubliclyTraded = Prefixed_Name(ebg, "isPubliclyTraded") |> PrefixedName
     /// <summary>
-    /// Hierarchical level of a thesaurus concept
-    /// <see href="http://data.businessgraph.io/ontology#level"></see></summary>
-    let level = _prefix "level"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#numberOfEmployees"></see>
+    ///   <para>ebg:isUnique</para>
     /// </summary>
-    let numberOfEmployees = _prefix "numberOfEmployees"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has unique identifiers</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#isUnique">http://data.businessgraph.io/ontology#isUnique</seealso>
+    let isUnique = Prefixed_Name(ebg, "isUnique") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#orgActivityText"></see>
+    ///   <para>ebg:adminUnitL3</para>
     /// </summary>
-    let orgActivityText = _prefix "orgActivityText"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>admin unit level 3</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#adminUnitL3">http://data.businessgraph.io/ontology#adminUnitL3</seealso>
+    let adminUnitL3 = Prefixed_Name(ebg, "adminUnitL3") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#orgActivityTransitive"></see>
+    ///   <para>ebg:exclusionNote</para>
     /// </summary>
-    let orgActivityTransitive = _prefix "orgActivityTransitive"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Exclusion note of a NACE classification concept</para>
+    /// labels<para>exclusion note</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#exclusionNote">http://data.businessgraph.io/ontology#exclusionNote</seealso>
+    let exclusionNote = Prefixed_Name(ebg, "exclusionNote") |> PrefixedName
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#orgStatusText"></see>
+    ///   <para>ebg:validationRegex</para>
     /// </summary>
-    let orgStatusText = _prefix "orgStatusText"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>validation regex</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#validationRegex">http://data.businessgraph.io/ontology#validationRegex</seealso>
+    let validationRegex = Prefixed_Name(ebg, "validationRegex") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#orgTypeText"></see>
+    ///   <para>ebg:IdentifierWebResource</para>
     /// </summary>
-    let orgTypeText = _prefix "orgTypeText"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Identifier Web Resource</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#IdentifierWebResource">http://data.businessgraph.io/ontology#IdentifierWebResource</seealso>
+    let IdentifierWebResource =
+        Prefixed_Name(ebg, "IdentifierWebResource") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#probabilityOfDefault"></see>
+    ///   <para>ebg:orgTypeText</para>
     /// </summary>
-    let probabilityOfDefault = _prefix "probabilityOfDefault"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#ralCode"></see>
-    /// </summary>
-    let ralCode = _prefix "ralCode"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#replacementPattern"></see>
-    /// </summary>
-    let replacementPattern = _prefix "replacementPattern"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#rolePositionText"></see>
-    /// </summary>
-    let rolePositionText = _prefix "rolePositionText"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#urlTemplate"></see>
-    /// </summary>
-    let urlTemplate = _prefix "urlTemplate"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#validationRegex"></see>
-    /// </summary>
-    let validationRegex = _prefix "validationRegex"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#validationRule"></see>
-    /// </summary>
-    let validationRule = _prefix "validationRule"
-    /// <summary>
-    ///   <see href="http://data.businessgraph.io/ontology#webResource"></see>
-    /// </summary>
-    let webResource = _prefix "webResource"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>type text</para></remarks>
+    /// <seealso href="http://data.businessgraph.io/ontology#orgTypeText">http://data.businessgraph.io/ontology#orgTypeText</seealso>
+    let orgTypeText = Prefixed_Name(ebg, "orgTypeText") |> PrefixedName

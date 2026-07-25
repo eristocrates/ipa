@@ -1,238 +1,513 @@
 namespace http.lawd.info.ontology.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module lawd =
-    let _namespace_name = "http://lawd.info/ontology/"
+    let _namespace_iri = Namespace_Iri lawd |> NamespaceIRI
+    /// <summary>
+    ///   <para>lawd:Person</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Any person, whether historical, mythological, or fictional</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Person">http://lawd.info/ontology/Person</seealso>
+    let Person = Prefixed_Name(lawd, "Person") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:WrittenWork</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A written work, whether extant or not. May be considered to embody a Conceptual Work.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/WrittenWork">http://lawd.info/ontology/WrittenWork</seealso>
+    let WrittenWork = Prefixed_Name(lawd, "WrittenWork") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:Attestation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An Attestation models a piece of evidence for something in a text (e.g. the mention of a person in a document). Typically it is the conjunction of a Citation and an entity like a name or person.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Attestation">http://lawd.info/ontology/Attestation</seealso>
+    let Attestation = Prefixed_Name(lawd, "Attestation") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:ConceptualWork</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Conceptual Work groups together one or more Written Works which
+    ///       have the same intellectual source. E.g. The Iliad, as opposed to a particular manuscript witness or edition of the Iliad.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/ConceptualWork">http://lawd.info/ontology/ConceptualWork</seealso>
+    let ConceptualWork = Prefixed_Name(lawd, "ConceptualWork") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>lawd:MythologicalCreature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Class for non-human, non-divine Agents, e.g. Polyphemus or Medusa.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/MythologicalCreature">http://lawd.info/ontology/MythologicalCreature</seealso>
+    let MythologicalCreature =
+        Prefixed_Name(lawd, "MythologicalCreature") |> PrefixedName
 
     /// <summary>
-    /// Any person, whether historical, mythological, or fictional
-    /// <see href="http://lawd.info/ontology/Person"></see></summary>
-    let Person = _prefix "Person"
-    /// <summary>
-    /// Any conceivable place, such as a town, a mountain, or the site of a building.
-    /// <see href="http://lawd.info/ontology/Place"></see></summary>
-    let Place = _prefix "Place"
-    /// <summary>
-    /// A written work, whether extant or not. May be considered to embody a Conceptual Work.
-    /// <see href="http://lawd.info/ontology/WrittenWork"></see></summary>
-    let WrittenWork = _prefix "WrittenWork"
-    /// <summary>
-    ///   <see href="http://lawd.info/ontology/1.0/"></see>
+    ///   <para>lawd:PlaceName</para>
     /// </summary>
-    let ``_1.0/`` = _prefix "1.0/"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The name of a lawd:Place</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/PlaceName">http://lawd.info/ontology/PlaceName</seealso>
+    let PlaceName = Prefixed_Name(lawd, "PlaceName") |> PrefixedName
     /// <summary>
-    /// An Agent is an abstract entity which has agency or is considered capable of acting in some way. Current subclasses include Deities and Persons.
-    /// <see href="http://lawd.info/ontology/Agent"></see></summary>
-    let Agent = _prefix "Agent"
-    /// <summary>
-    /// A Written Work that collects together more than one Written Work.
-    ///       Manuscripts are often AssembledWorks.
-    /// <see href="http://lawd.info/ontology/AssembledWork"></see></summary>
-    let AssembledWork = _prefix "AssembledWork"
-    /// <summary>
-    /// An Attestation models a piece of evidence for something in a text (e.g. the mention of a person in a document). Typically it is the conjunction of a Citation and an entity like a name or person.
-    /// <see href="http://lawd.info/ontology/Attestation"></see></summary>
-    let Attestation = _prefix "Attestation"
-    /// <summary>
-    /// Superclass for types of evidence that support assertions.
-    /// <see href="http://lawd.info/ontology/EvidentiaryItem"></see></summary>
-    let EvidentiaryItem = _prefix "EvidentiaryItem"
-    /// <summary>
-    /// A Citation models a bibliographic reference as a resource.
-    /// <see href="http://lawd.info/ontology/Citation"></see></summary>
-    let Citation = _prefix "Citation"
-    /// <summary>
-    /// (Experimental) Part of a collation of witnesses to a text.
-    /// <see href="http://lawd.info/ontology/CollationItem"></see></summary>
-    let CollationItem = _prefix "CollationItem"
-    /// <summary>
-    /// A Conceptual Work groups together one or more Written Works which
-    ///       have the same intellectual source. E.g. The Iliad, as opposed to a particular manuscript witness or edition of the Iliad.
-    /// <see href="http://lawd.info/ontology/ConceptualWork"></see></summary>
-    let ConceptualWork = _prefix "ConceptualWork"
-    /// <summary>
-    /// Any divine Agent.
-    /// <see href="http://lawd.info/ontology/Deity"></see></summary>
-    let Deity = _prefix "Deity"
-    /// <summary>
-    /// A published (whether officially or not) Written Work that relies on
-    ///       one or more Written Works as sources
-    /// <see href="http://lawd.info/ontology/Edition"></see></summary>
-    let Edition = _prefix "Edition"
-    /// <summary>
-    ///   <see href="http://lawd.info/ontology/EditorialComment"></see>
+    ///   <para>lawd:Reading</para>
     /// </summary>
-    let EditorialComment = _prefix "EditorialComment"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>(Experimental) The superclass for members of the readingScheme concept scheme. A Reading is a word, phrase, or larger chunk of text from a witness (or any observation of variance concerning the text, such as an omission or interpolation).</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Reading">http://lawd.info/ontology/Reading</seealso>
+    let Reading = Prefixed_Name(lawd, "Reading") |> PrefixedName
     /// <summary>
-    /// A portion of a Written Work in a distinct hand. Written Works may
-    ///       consist of one or more hands.
-    /// <see href="http://lawd.info/ontology/Hand"></see></summary>
-    let Hand = _prefix "Hand"
-    /// <summary>
-    /// Class for non-human, non-divine Agents, e.g. Polyphemus or Medusa.
-    /// <see href="http://lawd.info/ontology/MythologicalCreature"></see></summary>
-    let MythologicalCreature = _prefix "MythologicalCreature"
-    /// <summary>
-    /// A name is a resource providing a name for some thing. It may be specialized with subclasses like PersonalName or PlaceName
-    /// <see href="http://lawd.info/ontology/Name"></see></summary>
-    let Name = _prefix "Name"
-    /// <summary>
-    /// A name belonging to a lawd:Person
-    /// <see href="http://lawd.info/ontology/PersonalName"></see></summary>
-    let PersonalName = _prefix "PersonalName"
-    /// <summary>
-    /// The name of a lawd:Place
-    /// <see href="http://lawd.info/ontology/PlaceName"></see></summary>
-    let PlaceName = _prefix "PlaceName"
-    /// <summary>
-    /// (Experimental) The superclass for members of the readingScheme concept scheme. A Reading is a word, phrase, or larger chunk of text from a witness (or any observation of variance concerning the text, such as an omission or interpolation).
-    /// <see href="http://lawd.info/ontology/Reading"></see></summary>
-    let Reading = _prefix "Reading"
-    /// <summary>
-    ///   <see href="http://lawd.info/ontology/Reference"></see>
+    ///   <para>lawd:Translation</para>
     /// </summary>
-    let Reference = _prefix "Reference"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Written Work that translates one or more other Written Works that embody the same Conceptual Work.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Translation">http://lawd.info/ontology/Translation</seealso>
+    let Translation = Prefixed_Name(lawd, "Translation") |> PrefixedName
     /// <summary>
-    /// An ordered collection that maps Written Works used as sources for an
-    ///       Edition to symbols used to represent them in the context of that Edition.
-    /// <see href="http://lawd.info/ontology/Sigla"></see></summary>
-    let Sigla = _prefix "Sigla"
+    ///   <para>lawd:variant</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>lawd:Reading</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/variant">http://lawd.info/ontology/variant</seealso>
+    let variant = Prefixed_Name(lawd, "variant") |> PrefixedName
     /// <summary>
-    /// A Siglum represents a witness (a Written Work of some kind) and
+    ///   <para>lawd:conjecture</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>lawd:Reading</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/conjecture">http://lawd.info/ontology/conjecture</seealso>
+    let conjecture = Prefixed_Name(lawd, "conjecture") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:conjunctOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates that a piece of evidence (any subclass of lawd:EvidentiaryItem) is joined to another—for example because they co-occur.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/conjunctOf">http://lawd.info/ontology/conjunctOf</seealso>
+    let conjunctOf = Prefixed_Name(lawd, "conjunctOf") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>voaf:Vocabulary</para>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/">http://lawd.info/ontology/</seealso>
+    let _prefix_iri = Prefixed_Name(lawd, "") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:AssembledWork</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Written Work that collects together more than one Written Work.
+    ///       Manuscripts are often AssembledWorks.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/AssembledWork">http://lawd.info/ontology/AssembledWork</seealso>
+    let AssembledWork = Prefixed_Name(lawd, "AssembledWork") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:CollationItem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>(Experimental) Part of a collation of witnesses to a text.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/CollationItem">http://lawd.info/ontology/CollationItem</seealso>
+    let CollationItem = Prefixed_Name(lawd, "CollationItem") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:Hand</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A portion of a Written Work in a distinct hand. Written Works may
+    ///       consist of one or more hands.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Hand">http://lawd.info/ontology/Hand</seealso>
+    let Hand = Prefixed_Name(lawd, "Hand") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:Reference</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Reference">http://lawd.info/ontology/Reference</seealso>
+    let Reference = Prefixed_Name(lawd, "Reference") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:Siglum</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Siglum represents a witness (a Written Work of some kind) and
     ///       associates it with a symbol used to represent that work in the context of an
-    ///       Edition.
-    /// <see href="http://lawd.info/ontology/Siglum"></see></summary>
-    let Siglum = _prefix "Siglum"
+    ///       Edition.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Siglum">http://lawd.info/ontology/Siglum</seealso>
+    let Siglum = Prefixed_Name(lawd, "Siglum") |> PrefixedName
     /// <summary>
-    /// A Written Work that translates one or more other Written Works that embody the same Conceptual Work.
-    /// <see href="http://lawd.info/ontology/Translation"></see></summary>
-    let Translation = _prefix "Translation"
-    /// <summary>
-    /// A label representing an abbreviated form of a name or title, e.g. of
-    ///       an author or work. E.g. Homer -&gt; Hom.; Odyssey -&gt; Od.;
-    /// <see href="http://lawd.info/ontology/abbreviation"></see></summary>
-    let abbreviation = _prefix "abbreviation"
-    /// <summary>
-    ///   <see href="http://lawd.info/ontology/addition"></see>
+    ///   <para>lawd:abbreviation</para>
     /// </summary>
-    let addition = _prefix "addition"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A label representing an abbreviated form of a name or title, e.g. of
+    ///       an author or work. E.g. Homer -&gt; Hom.; Odyssey -&gt; Od.;</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/abbreviation">http://lawd.info/ontology/abbreviation</seealso>
+    let abbreviation = Prefixed_Name(lawd, "abbreviation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://lawd.info/ontology/variant"></see>
+    ///   <para>lawd:deletion</para>
     /// </summary>
-    let variant = _prefix "variant"
+    /// <remarks>
+    ///   <para>lawd:Reading</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/deletion">http://lawd.info/ontology/deletion</seealso>
+    let deletion = Prefixed_Name(lawd, "deletion") |> PrefixedName
     /// <summary>
-    /// (Experimental) The SKOS scheme for classifying types of lawd:Reading.
-    /// <see href="http://lawd.info/ontology/readingScheme"></see></summary>
-    let readingScheme = _prefix "readingScheme"
-    /// <summary>
-    ///   <see href="http://lawd.info/ontology/agreement"></see>
+    ///   <para>lawd:embodies</para>
     /// </summary>
-    let agreement = _prefix "agreement"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The relationship between a Written Work and the abstract Conceptual Work it embodies. For example, the OCT text of Homer's Iliad's relationship to the idea of Homer's Iliad.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/embodies">http://lawd.info/ontology/embodies</seealso>
+    let embodies = Prefixed_Name(lawd, "embodies") |> PrefixedName
     /// <summary>
-    /// a Motivation that represents the addition of a critical apparatus
-    ///       comment upon a text
-    /// <see href="http://lawd.info/ontology/collation"></see></summary>
-    let collation = _prefix "collation"
-    /// <summary>
-    ///   <see href="http://lawd.info/ontology/conjecture"></see>
+    ///   <para>lawd:hasName</para>
     /// </summary>
-    let conjecture = _prefix "conjecture"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates that (e.g.) a Person or Place has a lawd:Name that is the range of the property.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/hasName">http://lawd.info/ontology/hasName</seealso>
+    let hasName = Prefixed_Name(lawd, "hasName") |> PrefixedName
     /// <summary>
-    /// Indicates that a piece of evidence (any subclass of lawd:EvidentiaryItem) is joined to another—for example because they co-occur.
-    /// <see href="http://lawd.info/ontology/conjunctOf"></see></summary>
-    let conjunctOf = _prefix "conjunctOf"
-    /// <summary>
-    ///   <see href="http://lawd.info/ontology/correction"></see>
+    ///   <para>lawd:interpolation</para>
     /// </summary>
-    let correction = _prefix "correction"
+    /// <remarks>
+    ///   <para>lawd:Reading</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/interpolation">http://lawd.info/ontology/interpolation</seealso>
+    let interpolation = Prefixed_Name(lawd, "interpolation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://lawd.info/ontology/intervention"></see>
+    ///   <para>lawd:omission</para>
     /// </summary>
-    let intervention = _prefix "intervention"
+    /// <remarks>
+    ///   <para>lawd:Reading</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/omission">http://lawd.info/ontology/omission</seealso>
+    let omission = Prefixed_Name(lawd, "omission") |> PrefixedName
     /// <summary>
-    ///   <see href="http://lawd.info/ontology/deletion"></see>
+    ///   <para>lawd:responsibleAgent</para>
     /// </summary>
-    let deletion = _prefix "deletion"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Connects a work of any type to the person, group, or insitution
+    ///       responsible for the creation of the work.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/responsibleAgent">http://lawd.info/ontology/responsibleAgent</seealso>
+    let responsibleAgent = Prefixed_Name(lawd, "responsibleAgent") |> PrefixedName
     /// <summary>
-    /// The relationship between a Written Work and the abstract Conceptual Work it embodies. For example, the OCT text of Homer's Iliad's relationship to the idea of Homer's Iliad.
-    /// <see href="http://lawd.info/ontology/embodies"></see></summary>
-    let embodies = _prefix "embodies"
-    /// <summary>
-    /// The place where an artifact was discovered.
-    /// <see href="http://lawd.info/ontology/foundAt"></see></summary>
-    let foundAt = _prefix "foundAt"
-    /// <summary>
-    /// Generic location relation.
-    /// <see href="http://lawd.info/ontology/where"></see></summary>
-    let where = _prefix "where"
-    /// <summary>
-    /// Indicates a lawd:Attestation providing evidence for a name, etc.
-    /// <see href="http://lawd.info/ontology/hasAttestation"></see></summary>
-    let hasAttestation = _prefix "hasAttestation"
-    /// <summary>
-    /// Indicates a Citation that contains the source for a lawd:Attestation
-    /// <see href="http://lawd.info/ontology/hasCitation"></see></summary>
-    let hasCitation = _prefix "hasCitation"
-    /// <summary>
-    /// Indicates that (e.g.) a Person or Place has a lawd:Name that is the range of the property.
-    /// <see href="http://lawd.info/ontology/hasName"></see></summary>
-    let hasName = _prefix "hasName"
-    /// <summary>
-    ///   <see href="http://lawd.info/ontology/interpolation"></see>
+    ///   <para>lawd:transposition</para>
     /// </summary>
-    let interpolation = _prefix "interpolation"
+    /// <remarks>
+    ///   <para>lawd:Reading</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/transposition">http://lawd.info/ontology/transposition</seealso>
+    let transposition = Prefixed_Name(lawd, "transposition") |> PrefixedName
     /// <summary>
-    ///   <see href="http://lawd.info/ontology/omission"></see>
+    ///   <para>lawd:uncertainReading</para>
     /// </summary>
-    let omission = _prefix "omission"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>lawd:Reading</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/uncertainReading">http://lawd.info/ontology/uncertainReading</seealso>
+    let uncertainReading = Prefixed_Name(lawd, "uncertainReading") |> PrefixedName
     /// <summary>
-    /// The place where an artifact originated.
-    /// <see href="http://lawd.info/ontology/origin"></see></summary>
-    let origin = _prefix "origin"
-    /// <summary>
-    /// Indicates the primary form of a lawd:Name
-    /// <see href="http://lawd.info/ontology/primaryForm"></see></summary>
-    let primaryForm = _prefix "primaryForm"
-    /// <summary>
-    ///   <see href="http://lawd.info/ontology/readingType"></see>
+    ///   <para>lawd:variantForm</para>
     /// </summary>
-    let readingType = _prefix "readingType"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Indicates a variant form of a lawd:Name</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/variantForm">http://lawd.info/ontology/variantForm</seealso>
+    let variantForm = Prefixed_Name(lawd, "variantForm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://lawd.info/ontology/representedBy"></see>
+    ///   <para>lawd:1.0/</para>
     /// </summary>
-    let representedBy = _prefix "representedBy"
+    /// <remarks></remarks>
+    /// <seealso href="http://lawd.info/ontology/1.0/">http://lawd.info/ontology/1.0/</seealso>
+    let ``_1.0/`` = Prefixed_Name(lawd, "1.0/") |> PrefixedName
     /// <summary>
-    /// Describes the relationship between a Citation or Siglum and the
-    ///       Written Work it indicates.
-    /// <see href="http://lawd.info/ontology/represents"></see></summary>
-    let represents = _prefix "represents"
-    /// <summary>
-    /// Connects a work of any type to the person, group, or insitution
-    ///       responsible for the creation of the work.
-    /// <see href="http://lawd.info/ontology/responsibleAgent"></see></summary>
-    let responsibleAgent = _prefix "responsibleAgent"
-    /// <summary>
-    /// Connects any kind of author or creator to the work he/she/it is
-    ///       responsible for creating. The author may be anonymous or fictional.
-    /// <see href="http://lawd.info/ontology/responsibleFor"></see></summary>
-    let responsibleFor = _prefix "responsibleFor"
-    /// <summary>
-    ///   <see href="http://lawd.info/ontology/transposition"></see>
+    ///   <para>lawd:Deity</para>
     /// </summary>
-    let transposition = _prefix "transposition"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Any divine Agent.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Deity">http://lawd.info/ontology/Deity</seealso>
+    let Deity = Prefixed_Name(lawd, "Deity") |> PrefixedName
     /// <summary>
-    ///   <see href="http://lawd.info/ontology/uncertainReading"></see>
+    ///   <para>lawd:EditorialComment</para>
     /// </summary>
-    let uncertainReading = _prefix "uncertainReading"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/EditorialComment">http://lawd.info/ontology/EditorialComment</seealso>
+    let EditorialComment = Prefixed_Name(lawd, "EditorialComment") |> PrefixedName
     /// <summary>
-    /// Indicates a variant form of a lawd:Name
-    /// <see href="http://lawd.info/ontology/variantForm"></see></summary>
-    let variantForm = _prefix "variantForm"
+    ///   <para>lawd:Agent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An Agent is an abstract entity which has agency or is considered capable of acting in some way. Current subclasses include Deities and Persons.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Agent">http://lawd.info/ontology/Agent</seealso>
+    let Agent = Prefixed_Name(lawd, "Agent") |> PrefixedName
     /// <summary>
-    /// (Experimental) Connects an item in a collation to the witness it derives from.
-    /// <see href="http://lawd.info/ontology/witness"></see></summary>
-    let witness = _prefix "witness"
+    ///   <para>lawd:Edition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A published (whether officially or not) Written Work that relies on
+    ///       one or more Written Works as sources</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Edition">http://lawd.info/ontology/Edition</seealso>
+    let Edition = Prefixed_Name(lawd, "Edition") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:Name</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A name is a resource providing a name for some thing. It may be specialized with subclasses like PersonalName or PlaceName</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Name">http://lawd.info/ontology/Name</seealso>
+    let Name = Prefixed_Name(lawd, "Name") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:PersonalName</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A name belonging to a lawd:Person</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/PersonalName">http://lawd.info/ontology/PersonalName</seealso>
+    let PersonalName = Prefixed_Name(lawd, "PersonalName") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:Sigla</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An ordered collection that maps Written Works used as sources for an
+    ///       Edition to symbols used to represent them in the context of that Edition.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Sigla">http://lawd.info/ontology/Sigla</seealso>
+    let Sigla = Prefixed_Name(lawd, "Sigla") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:addition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>lawd:Reading</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/addition">http://lawd.info/ontology/addition</seealso>
+    let addition = Prefixed_Name(lawd, "addition") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:collation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>oa:Motivation</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>a Motivation that represents the addition of a critical apparatus
+    ///       comment upon a text</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/collation">http://lawd.info/ontology/collation</seealso>
+    let collation = Prefixed_Name(lawd, "collation") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:intervention</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>lawd:Reading</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/intervention">http://lawd.info/ontology/intervention</seealso>
+    let intervention = Prefixed_Name(lawd, "intervention") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:foundAt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The place where an artifact was discovered.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/foundAt">http://lawd.info/ontology/foundAt</seealso>
+    let foundAt = Prefixed_Name(lawd, "foundAt") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:hasCitation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates a Citation that contains the source for a lawd:Attestation</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/hasCitation">http://lawd.info/ontology/hasCitation</seealso>
+    let hasCitation = Prefixed_Name(lawd, "hasCitation") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:origin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The place where an artifact originated.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/origin">http://lawd.info/ontology/origin</seealso>
+    let origin = Prefixed_Name(lawd, "origin") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:readingType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/readingType">http://lawd.info/ontology/readingType</seealso>
+    let readingType = Prefixed_Name(lawd, "readingType") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:responsibleFor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Connects any kind of author or creator to the work he/she/it is
+    ///       responsible for creating. The author may be anonymous or fictional.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/responsibleFor">http://lawd.info/ontology/responsibleFor</seealso>
+    let responsibleFor = Prefixed_Name(lawd, "responsibleFor") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:witness</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>(Experimental) Connects an item in a collation to the witness it derives from.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/witness">http://lawd.info/ontology/witness</seealso>
+    let witness = Prefixed_Name(lawd, "witness") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:Place</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Any conceivable place, such as a town, a mountain, or the site of a building.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Place">http://lawd.info/ontology/Place</seealso>
+    let Place = Prefixed_Name(lawd, "Place") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:EvidentiaryItem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Superclass for types of evidence that support assertions.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/EvidentiaryItem">http://lawd.info/ontology/EvidentiaryItem</seealso>
+    let EvidentiaryItem = Prefixed_Name(lawd, "EvidentiaryItem") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:Citation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Citation models a bibliographic reference as a resource.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/Citation">http://lawd.info/ontology/Citation</seealso>
+    let Citation = Prefixed_Name(lawd, "Citation") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:readingScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>(Experimental) The SKOS scheme for classifying types of lawd:Reading.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/readingScheme">http://lawd.info/ontology/readingScheme</seealso>
+    let readingScheme = Prefixed_Name(lawd, "readingScheme") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:agreement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>lawd:Reading</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/agreement">http://lawd.info/ontology/agreement</seealso>
+    let agreement = Prefixed_Name(lawd, "agreement") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:correction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>lawd:Reading</para>
+    ///   <para>owl:NamedIndividual</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/correction">http://lawd.info/ontology/correction</seealso>
+    let correction = Prefixed_Name(lawd, "correction") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:where</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Generic location relation.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/where">http://lawd.info/ontology/where</seealso>
+    let where = Prefixed_Name(lawd, "where") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:hasAttestation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates a lawd:Attestation providing evidence for a name, etc.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/hasAttestation">http://lawd.info/ontology/hasAttestation</seealso>
+    let hasAttestation = Prefixed_Name(lawd, "hasAttestation") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:primaryForm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Indicates the primary form of a lawd:Name</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/primaryForm">http://lawd.info/ontology/primaryForm</seealso>
+    let primaryForm = Prefixed_Name(lawd, "primaryForm") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:representedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/representedBy">http://lawd.info/ontology/representedBy</seealso>
+    let representedBy = Prefixed_Name(lawd, "representedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>lawd:represents</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Describes the relationship between a Citation or Siglum and the
+    ///       Written Work it indicates.</para>
+    /// </remarks>
+    /// <seealso href="http://lawd.info/ontology/represents">http://lawd.info/ontology/represents</seealso>
+    let represents = Prefixed_Name(lawd, "represents") |> PrefixedName

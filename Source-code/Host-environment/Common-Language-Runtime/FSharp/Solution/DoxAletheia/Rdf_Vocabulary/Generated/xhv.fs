@@ -1,482 +1,925 @@
 namespace http.www.w3.org._1999.xhtml.vocab.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module xhv =
-    let _namespace_name = "http://www.w3.org/1999/xhtml/vocab#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri xhv |> NamespaceIRI
     /// <summary>
-    /// stylesheet refers to a resource
-    ///       serving as a stylesheet for a resource.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#stylesheet"></see></summary>
-    let stylesheet = _prefix "stylesheet"
-    /// <summary>
-    /// A message
-    ///       with important, and usually time-sensitive, information. Also see alertdialog
-    ///       and status.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#alert"></see></summary>
-    let alert = _prefix "alert"
-    /// <summary>
-    /// A
-    ///       type of dialog that contains an alert message, where initial focus goes
-    ///       an element within the dialog. Also see alert and dialog.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#alertdialog"></see></summary>
-    let alertdialog = _prefix "alertdialog"
-    /// <summary>
-    /// alternate
-    ///     designates alternate versions for a resource.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#alternate"></see></summary>
-    let alternate = _prefix "alternate"
-    /// <summary>
-    ///   <see href="http://www.w3.org/1999/xhtml/vocab#relrev-properties"></see>
+    ///   <para>xhv:stylesheet</para>
     /// </summary>
-    let ``relrev-properties`` = _prefix "relrev-properties"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>stylesheet refers to a resource
+    ///       serving as a stylesheet for a resource. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#stylesheet">http://www.w3.org/1999/xhtml/vocab#stylesheet</seealso>
+    let stylesheet = Prefixed_Name(xhv, "stylesheet") |> PrefixedName
     /// <summary>
-    /// appendix refers to a resource serving
-    ///       as an appendix in a collection.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#appendix"></see></summary>
-    let appendix = _prefix "appendix"
-    /// <summary>
-    /// A
-    ///       region declared as a web application, as opposed to a web document.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#application"></see></summary>
-    let application = _prefix "application"
-    /// <summary>
-    /// A section
-    ///       of a page that consists of a composition that forms an independent part
-    ///       of a document, page, or site.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#article"></see></summary>
-    let article = _prefix "article"
-    /// <summary>
-    /// contains
-    ///       the prime heading or internal title of a page.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#banner"></see></summary>
-    let banner = _prefix "banner"
-    /// <summary>
-    ///   <see href="http://www.w3.org/1999/xhtml/vocab#role-properties"></see>
+    ///   <para>xhv:appendix</para>
     /// </summary>
-    let ``role-properties`` = _prefix "role-properties"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>appendix refers to a resource serving
+    ///       as an appendix in a collection. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#appendix">http://www.w3.org/1999/xhtml/vocab#appendix</seealso>
+    let appendix = Prefixed_Name(xhv, "appendix") |> PrefixedName
     /// <summary>
-    /// bookmark refers to a bookmark - a link
-    ///       to a key entry point within an extended document.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#bookmark"></see></summary>
-    let bookmark = _prefix "bookmark"
+    ///   <para>xhv:checkbox</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A checkable
+    ///       input that has three possible values: true, false, or mixed.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#checkbox">http://www.w3.org/1999/xhtml/vocab#checkbox</seealso>
+    let checkbox = Prefixed_Name(xhv, "checkbox") |> PrefixedName
     /// <summary>
-    /// An input
-    ///       that allows for user-triggered actions when clicked or pressed. Also see
-    ///       link.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#button"></see></summary>
-    let button = _prefix "button"
-    /// <summary>
-    /// chapter refers to a resource serving
-    ///       as a chapter in a collection.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#chapter"></see></summary>
-    let chapter = _prefix "chapter"
-    /// <summary>
-    /// A checkable
-    ///       input that has three possible values: true, false, or mixed.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#checkbox"></see></summary>
-    let checkbox = _prefix "checkbox"
-    /// <summary>
-    /// cite refers to a resource that defines
-    ///       a citation.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#cite"></see></summary>
-    let cite = _prefix "cite"
-    /// <summary>
-    /// A
-    ///       cell containing header information for a column.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#columnheader"></see></summary>
-    let columnheader = _prefix "columnheader"
-    /// <summary>
-    /// A presentation
+    ///   <para>xhv:combobox</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A presentation
     ///       of a select; usually similar to a textbox where users can type ahead to
     ///       select an option, or type to enter arbitrary text as a new item in the
-    ///       list. Also see listbox.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#combobox"></see></summary>
-    let combobox = _prefix "combobox"
+    ///       list. Also see listbox.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#combobox">http://www.w3.org/1999/xhtml/vocab#combobox</seealso>
+    let combobox = Prefixed_Name(xhv, "combobox") |> PrefixedName
     /// <summary>
-    /// indicates that the section supports but is
-    ///       separable from the main content of resource.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#complementary"></see></summary>
-    let complementary = _prefix "complementary"
-    /// <summary>
-    /// contains meta information about the
-    ///       content on the page or the page as a whole.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#contentinfo"></see></summary>
-    let contentinfo = _prefix "contentinfo"
-    /// <summary>
-    /// contents refers to a resource serving
-    ///       as a table of contents.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#contents"></see></summary>
-    let contents = _prefix "contents"
-    /// <summary>
-    /// copyright refers to a copyright
-    ///       statement for the resource.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#copyright"></see></summary>
-    let copyright = _prefix "copyright"
-    /// <summary>
-    /// indicates the definition of a term or concept.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#definition"></see></summary>
-    let definition = _prefix "definition"
-    /// <summary>
-    /// A dialog
-    ///       is an application window that is designed to interrupt the current processing
-    ///       of an application in order to prompt the user to enter information or require
-    ///       a response. Also see alertdialog.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#dialog"></see></summary>
-    let dialog = _prefix "dialog"
-    /// <summary>
-    /// A list
-    ///       of references to members of a group, such as a static table of contents.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#directory"></see></summary>
-    let directory = _prefix "directory"
-    /// <summary>
-    /// A region
-    ///       containing related information that is declared as document content, as
-    ///       opposed to a web application.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#document"></see></summary>
-    let document = _prefix "document"
-    /// <summary>
-    /// first refers the first item in a
-    ///       collection (see also start and top).
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#first"></see></summary>
-    let first = _prefix "first"
-    /// <summary>
-    /// A landmark
-    ///       region that contains a collection of items and objects that, as a whole,
-    ///       combine to create a form. Also see search.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#form"></see></summary>
-    let form = _prefix "form"
-    /// <summary>
-    /// glossary refers to a resource
-    ///       providing a glossary of terms.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#glossary"></see></summary>
-    let glossary = _prefix "glossary"
-    /// <summary>
-    /// A grid is
+    ///   <para>xhv:grid</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A grid is
     ///       an interactive control which contains cells of tabular data arranged in
-    ///       rows and columns, like a table.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#grid"></see></summary>
-    let grid = _prefix "grid"
+    ///       rows and columns, like a table.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#grid">http://www.w3.org/1999/xhtml/vocab#grid</seealso>
+    let grid = Prefixed_Name(xhv, "grid") |> PrefixedName
     /// <summary>
-    /// A cell
-    ///       in a grid or treegrid.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#gridcell"></see></summary>
-    let gridcell = _prefix "gridcell"
+    ///   <para>xhv:help</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>help refers to a resource offering
+    ///       help. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#help">http://www.w3.org/1999/xhtml/vocab#help</seealso>
+    let help = Prefixed_Name(xhv, "help") |> PrefixedName
     /// <summary>
-    /// A set of
-    ///       user interface objects which are not intended to be included in a page
-    ///       summary or table of contents by assistive technologies.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#group"></see></summary>
-    let group = _prefix "group"
+    ///   <para>xhv:img</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A container
+    ///       for a collection of elements that form an image.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#img">http://www.w3.org/1999/xhtml/vocab#img</seealso>
+    let img = Prefixed_Name(xhv, "img") |> PrefixedName
     /// <summary>
-    /// A heading
-    ///       for a section of the page.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#heading"></see></summary>
-    let heading = _prefix "heading"
+    ///   <para>xhv:last</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>last refers to the last resource in a
+    ///       collection of resources. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#last">http://www.w3.org/1999/xhtml/vocab#last</seealso>
+    let last = Prefixed_Name(xhv, "last") |> PrefixedName
     /// <summary>
-    /// help refers to a resource offering
-    ///       help.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#help"></see></summary>
-    let help = _prefix "help"
-    /// <summary>
-    /// icon refers to a resource that
-    ///       represents an icon.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#icon"></see></summary>
-    let icon = _prefix "icon"
-    /// <summary>
-    /// A container
-    ///       for a collection of elements that form an image.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#img"></see></summary>
-    let img = _prefix "img"
-    /// <summary>
-    /// index refers to a resource providing
-    ///       an index.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#index"></see></summary>
-    let index = _prefix "index"
-    /// <summary>
-    /// itsRules indicates that the designated
-    ///       resource is an [ITS] rule set.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#itsRules"></see></summary>
-    let itsRules = _prefix "itsRules"
-    /// <summary>
-    /// last refers to the last resource in a
-    ///       collection of resources.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#last"></see></summary>
-    let last = _prefix "last"
-    /// <summary>
-    /// license refers to a resource that
-    ///       defines the associated license.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#license"></see></summary>
-    let license = _prefix "license"
-    /// <summary>
-    /// An interactive
+    ///   <para>xhv:link</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An interactive
     ///       reference to an internal or external resource that, when activated, causes
-    ///       the user agent to navigate to that resource. Also see button.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#link"></see></summary>
-    let link = _prefix "link"
+    ///       the user agent to navigate to that resource. Also see button.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#link">http://www.w3.org/1999/xhtml/vocab#link</seealso>
+    let link = Prefixed_Name(xhv, "link") |> PrefixedName
     /// <summary>
-    /// A group of
-    ///       non-interactive list items. Also see listbox.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#list"></see></summary>
-    let list = _prefix "list"
-    /// <summary>
-    /// A widget
-    ///       that allows the user to select one or more items from a list of choices.
-    ///       Also see combobox and list.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#listbox"></see></summary>
-    let listbox = _prefix "listbox"
-    /// <summary>
-    /// A single
-    ///       item in a list or directory.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#listitem"></see></summary>
-    let listitem = _prefix "listitem"
-    /// <summary>
-    /// A type of
+    ///   <para>xhv:log</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A type of
     ///       live region where new information is added in meaningful order and old
-    ///       information may disappear. Also see marquee.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#log"></see></summary>
-    let log = _prefix "log"
+    ///       information may disappear. Also see marquee.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#log">http://www.w3.org/1999/xhtml/vocab#log</seealso>
+    let log = Prefixed_Name(xhv, "log") |> PrefixedName
     /// <summary>
-    /// acts as the
-    ///       main content of the document.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#main"></see></summary>
-    let main = _prefix "main"
+    ///   <para>xhv:main</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>acts as the
+    ///       main content of the document. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#main">http://www.w3.org/1999/xhtml/vocab#main</seealso>
+    let main = Prefixed_Name(xhv, "main") |> PrefixedName
     /// <summary>
-    /// A type
-    ///       of live region where non-essential information changes frequently. Also
-    ///       see log.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#marquee"></see></summary>
-    let marquee = _prefix "marquee"
+    ///   <para>xhv:menuitem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An option
+    ///       in a group of choices contained by a menu or menubar.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#menuitem">http://www.w3.org/1999/xhtml/vocab#menuitem</seealso>
+    let menuitem = Prefixed_Name(xhv, "menuitem") |> PrefixedName
     /// <summary>
-    /// Content that
-    ///       represents a mathematical expression.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#math"></see></summary>
-    let math = _prefix "math"
+    ///   <para>xhv:menuitemcheckbox</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A
+    ///       checkable menuitem that has three possible values: true, false, or mixed.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#menuitemcheckbox">http://www.w3.org/1999/xhtml/vocab#menuitemcheckbox</seealso>
+    let menuitemcheckbox = Prefixed_Name(xhv, "menuitemcheckbox") |> PrefixedName
     /// <summary>
-    /// A type of
-    ///       widget that offers a list of choices to the user.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#menu"></see></summary>
-    let menu = _prefix "menu"
+    ///   <para>xhv:next</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>next refers to the next resource
+    ///       (after the current one) in an ordered collection of resources. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#next">http://www.w3.org/1999/xhtml/vocab#next</seealso>
+    let next = Prefixed_Name(xhv, "next") |> PrefixedName
     /// <summary>
-    /// A presentation
-    ///       of menu that usually remains visible and is usually presented horizontally.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#menubar"></see></summary>
-    let menubar = _prefix "menubar"
+    ///   <para>xhv:prev</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>prev refers to a previous resource
+    ///       (before the current one) in an ordered collection of resources. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#prev">http://www.w3.org/1999/xhtml/vocab#prev</seealso>
+    let prev = Prefixed_Name(xhv, "prev") |> PrefixedName
     /// <summary>
-    /// An option
-    ///       in a group of choices contained by a menu or menubar.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#menuitem"></see></summary>
-    let menuitem = _prefix "menuitem"
-    /// <summary>
-    /// A
-    ///       checkable menuitem that has three possible values: true, false, or mixed.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#menuitemcheckbox"></see></summary>
-    let menuitemcheckbox = _prefix "menuitemcheckbox"
-    /// <summary>
-    /// A
-    ///       checkable menuitem in a group of menuitemradio roles, only one of which
-    ///       can be checked at a time.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#menuitemradio"></see></summary>
-    let menuitemradio = _prefix "menuitemradio"
-    /// <summary>
-    /// meta refers to a resource that
-    ///       provides metadata.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#meta"></see></summary>
-    let meta = _prefix "meta"
-    /// <summary>
-    /// indicates a collection of items suitable for
-    ///       navigating the document or related documents.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#navigation"></see></summary>
-    let navigation = _prefix "navigation"
-    /// <summary>
-    /// next refers to the next resource
-    ///       (after the current one) in an ordered collection of resources.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#next"></see></summary>
-    let next = _prefix "next"
-    /// <summary>
-    /// indicates
-    ///       the content is parenthetic or ancillary to the main content of the
-    ///       resource.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#note"></see></summary>
-    let note = _prefix "note"
-    /// <summary>
-    /// A selectable
-    ///       item in a select list.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#option"></see></summary>
-    let option = _prefix "option"
-    /// <summary>
-    /// p3pv1 refers to a P3P Policy Reference
-    ///       File [P3P].
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#p3pv1"></see></summary>
-    let p3pv1 = _prefix "p3pv1"
-    /// <summary>
-    /// An
-    ///       element whose implicit native role semantics will not be mapped to the
-    ///       accessibility API.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#presentation"></see></summary>
-    let presentation = _prefix "presentation"
-    /// <summary>
-    /// prev refers to a previous resource
-    ///       (before the current one) in an ordered collection of resources.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#prev"></see></summary>
-    let prev = _prefix "prev"
-    /// <summary>
-    /// An
-    ///       element that displays the progress status for tasks that take a long time.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#progressbar"></see></summary>
-    let progressbar = _prefix "progressbar"
-    /// <summary>
-    /// A checkable
-    ///       input in a group of radio roles, only one of which can be checked at a
-    ///       time.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#radio"></see></summary>
-    let radio = _prefix "radio"
-    /// <summary>
-    /// A group
-    ///       of radio buttons.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#radiogroup"></see></summary>
-    let radiogroup = _prefix "radiogroup"
-    /// <summary>
-    /// A large
+    ///   <para>xhv:region</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A large
     ///       perceivable section of a web page or document, that the author feels is
     ///       important enough to be included in a page summary or table of contents,
-    ///       for example, an area of the page containing live sporting event statistics.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#region"></see></summary>
-    let region = _prefix "region"
+    ///       for example, an area of the page containing live sporting event statistics.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#region">http://www.w3.org/1999/xhtml/vocab#region</seealso>
+    let region = Prefixed_Name(xhv, "region") |> PrefixedName
     /// <summary>
-    /// role indicates the purpose of the
+    ///   <para>xhv:section</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>section refers to a resource serving
+    ///       as a section in a collection. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#section">http://www.w3.org/1999/xhtml/vocab#section</seealso>
+    let section = Prefixed_Name(xhv, "section") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:spinbutton</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A form
+    ///       of range that expects a user to select from amongst discrete choices.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#spinbutton">http://www.w3.org/1999/xhtml/vocab#spinbutton</seealso>
+    let spinbutton = Prefixed_Name(xhv, "spinbutton") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:start</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>start refers to the first resource in
+    ///       a collection of resources. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#start">http://www.w3.org/1999/xhtml/vocab#start</seealso>
+    let start = Prefixed_Name(xhv, "start") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:status</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A container
+    ///       whose content is advisory information for the user but is not important
+    ///       enough to justify an alert. Also see alert.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#status">http://www.w3.org/1999/xhtml/vocab#status</seealso>
+    let status = Prefixed_Name(xhv, "status") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:tree</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A type of
+    ///       list that may contain sub-level nested groups that can be collapsed and
+    ///       expanded.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#tree">http://www.w3.org/1999/xhtml/vocab#tree</seealso>
+    let tree = Prefixed_Name(xhv, "tree") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:treegrid</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A grid
+    ///       whose rows can be expanded and collapsed in the same manner as for a tree.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#treegrid">http://www.w3.org/1999/xhtml/vocab#treegrid</seealso>
+    let treegrid = Prefixed_Name(xhv, "treegrid") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:treeitem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An option
+    ///       item of a tree. This is an element within a tree that may be expanded or
+    ///       collapsed if it contains a sub-level group of treeitems.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#treeitem">http://www.w3.org/1999/xhtml/vocab#treeitem</seealso>
+    let treeitem = Prefixed_Name(xhv, "treeitem") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:alternate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>alternate
+    ///     designates alternate versions for a resource.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#alternate">http://www.w3.org/1999/xhtml/vocab#alternate</seealso>
+    let alternate = Prefixed_Name(xhv, "alternate") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:role-properties</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:member</para>
+    ///   <para>rdf:Bag</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#role-properties">http://www.w3.org/1999/xhtml/vocab#role-properties</seealso>
+    let role_properties = Prefixed_Name(xhv, "role-properties") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:columnheader</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A
+    ///       cell containing header information for a column.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#columnheader">http://www.w3.org/1999/xhtml/vocab#columnheader</seealso>
+    let columnheader = Prefixed_Name(xhv, "columnheader") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:copyright</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>copyright refers to a copyright
+    ///       statement for the resource. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#copyright">http://www.w3.org/1999/xhtml/vocab#copyright</seealso>
+    let copyright = Prefixed_Name(xhv, "copyright") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:dialog</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A dialog
+    ///       is an application window that is designed to interrupt the current processing
+    ///       of an application in order to prompt the user to enter information or require
+    ///       a response. Also see alertdialog.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#dialog">http://www.w3.org/1999/xhtml/vocab#dialog</seealso>
+    let dialog = Prefixed_Name(xhv, "dialog") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:first</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>first refers the first item in a
+    ///       collection (see also start and top).</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#first">http://www.w3.org/1999/xhtml/vocab#first</seealso>
+    let first = Prefixed_Name(xhv, "first") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:glossary</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>glossary refers to a resource
+    ///       providing a glossary of terms. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#glossary">http://www.w3.org/1999/xhtml/vocab#glossary</seealso>
+    let glossary = Prefixed_Name(xhv, "glossary") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:gridcell</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A cell
+    ///       in a grid or treegrid.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#gridcell">http://www.w3.org/1999/xhtml/vocab#gridcell</seealso>
+    let gridcell = Prefixed_Name(xhv, "gridcell") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:heading</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A heading
+    ///       for a section of the page.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#heading">http://www.w3.org/1999/xhtml/vocab#heading</seealso>
+    let heading = Prefixed_Name(xhv, "heading") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:icon</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>icon refers to a resource that
+    ///       represents an icon. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#icon">http://www.w3.org/1999/xhtml/vocab#icon</seealso>
+    let icon = Prefixed_Name(xhv, "icon") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:index</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>index refers to a resource providing
+    ///       an index. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#index">http://www.w3.org/1999/xhtml/vocab#index</seealso>
+    let index = Prefixed_Name(xhv, "index") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:license</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>license refers to a resource that
+    ///       defines the associated license. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#license">http://www.w3.org/1999/xhtml/vocab#license</seealso>
+    let license = Prefixed_Name(xhv, "license") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:list</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A group of
+    ///       non-interactive list items. Also see listbox.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#list">http://www.w3.org/1999/xhtml/vocab#list</seealso>
+    let list = Prefixed_Name(xhv, "list") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:listbox</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A widget
+    ///       that allows the user to select one or more items from a list of choices.
+    ///       Also see combobox and list.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#listbox">http://www.w3.org/1999/xhtml/vocab#listbox</seealso>
+    let listbox = Prefixed_Name(xhv, "listbox") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:math</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Content that
+    ///       represents a mathematical expression. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#math">http://www.w3.org/1999/xhtml/vocab#math</seealso>
+    let math = Prefixed_Name(xhv, "math") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:menu</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A type of
+    ///       widget that offers a list of choices to the user.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#menu">http://www.w3.org/1999/xhtml/vocab#menu</seealso>
+    let menu = Prefixed_Name(xhv, "menu") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:menuitemradio</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A
+    ///       checkable menuitem in a group of menuitemradio roles, only one of which
+    ///       can be checked at a time.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#menuitemradio">http://www.w3.org/1999/xhtml/vocab#menuitemradio</seealso>
+    let menuitemradio = Prefixed_Name(xhv, "menuitemradio") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:meta</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>meta refers to a resource that
+    ///       provides metadata. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#meta">http://www.w3.org/1999/xhtml/vocab#meta</seealso>
+    let meta = Prefixed_Name(xhv, "meta") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:p3pv1</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>p3pv1 refers to a P3P Policy Reference
+    ///       File [P3P]. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#p3pv1">http://www.w3.org/1999/xhtml/vocab#p3pv1</seealso>
+    let p3pv1 = Prefixed_Name(xhv, "p3pv1") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:progressbar</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An
+    ///       element that displays the progress status for tasks that take a long time.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#progressbar">http://www.w3.org/1999/xhtml/vocab#progressbar</seealso>
+    let progressbar = Prefixed_Name(xhv, "progressbar") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:radio</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A checkable
+    ///       input in a group of radio roles, only one of which can be checked at a
+    ///       time.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#radio">http://www.w3.org/1999/xhtml/vocab#radio</seealso>
+    let radio = Prefixed_Name(xhv, "radio") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:rowgroup</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A group
+    ///       containing one or more row elements in a grid.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#rowgroup">http://www.w3.org/1999/xhtml/vocab#rowgroup</seealso>
+    let rowgroup = Prefixed_Name(xhv, "rowgroup") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:rowheader</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A cell
+    ///       containing header information for a row in a grid.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#rowheader">http://www.w3.org/1999/xhtml/vocab#rowheader</seealso>
+    let rowheader = Prefixed_Name(xhv, "rowheader") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:scrollbar</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A graphical
+    ///       object that controls the scrolling of content within a viewing area, regardless
+    ///       of whether the content is fully displayed within the viewing area.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#scrollbar">http://www.w3.org/1999/xhtml/vocab#scrollbar</seealso>
+    let scrollbar = Prefixed_Name(xhv, "scrollbar") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:search</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>indicates
+    ///       that the section provides a search facility. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#search">http://www.w3.org/1999/xhtml/vocab#search</seealso>
+    let search = Prefixed_Name(xhv, "search") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:subsection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>subsection refers to a resource
+    ///       serving as a subsection in a collection. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#subsection">http://www.w3.org/1999/xhtml/vocab#subsection</seealso>
+    let subsection = Prefixed_Name(xhv, "subsection") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:tab</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A grouping
+    ///       label providing a mechanism for selecting the tab content that is to be
+    ///       rendered to the user.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#tab">http://www.w3.org/1999/xhtml/vocab#tab</seealso>
+    let tab = Prefixed_Name(xhv, "tab") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:timer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A type of
+    ///       live region containing a numerical counter which indicates an amount of
+    ///       elapsed time from a start point, or the time remaining until an end point.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#timer">http://www.w3.org/1999/xhtml/vocab#timer</seealso>
+    let timer = Prefixed_Name(xhv, "timer") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:toolbar</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A collection
+    ///       of commonly used function buttons represented in compact visual form.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#toolbar">http://www.w3.org/1999/xhtml/vocab#toolbar</seealso>
+    let toolbar = Prefixed_Name(xhv, "toolbar") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:tooltip</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A contextual
+    ///       popup that displays a description for an element.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#tooltip">http://www.w3.org/1999/xhtml/vocab#tooltip</seealso>
+    let tooltip = Prefixed_Name(xhv, "tooltip") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:top</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>top is a synonym for start. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#top">http://www.w3.org/1999/xhtml/vocab#top</seealso>
+    let top = Prefixed_Name(xhv, "top") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:application</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A
+    ///       region declared as a web application, as opposed to a web document.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#application">http://www.w3.org/1999/xhtml/vocab#application</seealso>
+    let application = Prefixed_Name(xhv, "application") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:bookmark</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>bookmark refers to a bookmark - a link
+    ///       to a key entry point within an extended document. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#bookmark">http://www.w3.org/1999/xhtml/vocab#bookmark</seealso>
+    let bookmark = Prefixed_Name(xhv, "bookmark") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:chapter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>chapter refers to a resource serving
+    ///       as a chapter in a collection. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#chapter">http://www.w3.org/1999/xhtml/vocab#chapter</seealso>
+    let chapter = Prefixed_Name(xhv, "chapter") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:complementary</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>indicates that the section supports but is
+    ///       separable from the main content of resource.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#complementary">http://www.w3.org/1999/xhtml/vocab#complementary</seealso>
+    let complementary = Prefixed_Name(xhv, "complementary") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:contents</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>contents refers to a resource serving
+    ///       as a table of contents. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#contents">http://www.w3.org/1999/xhtml/vocab#contents</seealso>
+    let contents = Prefixed_Name(xhv, "contents") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:definition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>indicates the definition of a term or concept.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#definition">http://www.w3.org/1999/xhtml/vocab#definition</seealso>
+    let definition = Prefixed_Name(xhv, "definition") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:directory</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A list
+    ///       of references to members of a group, such as a static table of contents.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#directory">http://www.w3.org/1999/xhtml/vocab#directory</seealso>
+    let directory = Prefixed_Name(xhv, "directory") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:group</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A set of
+    ///       user interface objects which are not intended to be included in a page
+    ///       summary or table of contents by assistive technologies.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#group">http://www.w3.org/1999/xhtml/vocab#group</seealso>
+    let group = Prefixed_Name(xhv, "group") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:itsRules</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>itsRules indicates that the designated
+    ///       resource is an [ITS] rule set.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#itsRules">http://www.w3.org/1999/xhtml/vocab#itsRules</seealso>
+    let itsRules = Prefixed_Name(xhv, "itsRules") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:listitem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A single
+    ///       item in a list or directory.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#listitem">http://www.w3.org/1999/xhtml/vocab#listitem</seealso>
+    let listitem = Prefixed_Name(xhv, "listitem") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:marquee</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A type
+    ///       of live region where non-essential information changes frequently. Also
+    ///       see log.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#marquee">http://www.w3.org/1999/xhtml/vocab#marquee</seealso>
+    let marquee = Prefixed_Name(xhv, "marquee") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:tabpanel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A container
+    ///       for the resources associated with a tab, where each tab is contained in
+    ///       a tablist.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#tabpanel">http://www.w3.org/1999/xhtml/vocab#tabpanel</seealso>
+    let tabpanel = Prefixed_Name(xhv, "tabpanel") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:textbox</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Input
+    ///       that allows free-form text as its value.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#textbox">http://www.w3.org/1999/xhtml/vocab#textbox</seealso>
+    let textbox = Prefixed_Name(xhv, "textbox") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:up</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>up refers to a resource "above" in a
+    ///       hierarchically structured set. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#up">http://www.w3.org/1999/xhtml/vocab#up</seealso>
+    let up = Prefixed_Name(xhv, "up") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:document</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A region
+    ///       containing related information that is declared as document content, as
+    ///       opposed to a web application.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#document">http://www.w3.org/1999/xhtml/vocab#document</seealso>
+    let document = Prefixed_Name(xhv, "document") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:form</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A landmark
+    ///       region that contains a collection of items and objects that, as a whole,
+    ///       combine to create a form. Also see search.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#form">http://www.w3.org/1999/xhtml/vocab#form</seealso>
+    let form = Prefixed_Name(xhv, "form") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:navigation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>indicates a collection of items suitable for
+    ///       navigating the document or related documents.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#navigation">http://www.w3.org/1999/xhtml/vocab#navigation</seealso>
+    let navigation = Prefixed_Name(xhv, "navigation") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:note</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>indicates
+    ///       the content is parenthetic or ancillary to the main content of the
+    ///       resource. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#note">http://www.w3.org/1999/xhtml/vocab#note</seealso>
+    let note = Prefixed_Name(xhv, "note") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:presentation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An
+    ///       element whose implicit native role semantics will not be mapped to the
+    ///       accessibility API.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#presentation">http://www.w3.org/1999/xhtml/vocab#presentation</seealso>
+    let presentation = Prefixed_Name(xhv, "presentation") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:radiogroup</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A group
+    ///       of radio buttons.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#radiogroup">http://www.w3.org/1999/xhtml/vocab#radiogroup</seealso>
+    let radiogroup = Prefixed_Name(xhv, "radiogroup") |> PrefixedName
+    /// <summary>
+    ///   <para>xhv:role</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>rdf:Bag</para>
+    ///   <para>role indicates the purpose of the
     ///       resource. See the XHTML Role
     ///       Vocabulary for roles in this vocabulary space, and XHTMLROLE for information on extending the
-    ///       collection of roles.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#role"></see></summary>
-    let role = _prefix "role"
+    ///       collection of roles. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#role">http://www.w3.org/1999/xhtml/vocab#role</seealso>
+    let role = Prefixed_Name(xhv, "role") |> PrefixedName
     /// <summary>
-    /// A row of cells
-    ///       in a grid.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#row"></see></summary>
-    let row = _prefix "row"
+    ///   <para>xhv:option</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A selectable
+    ///       item in a select list.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#option">http://www.w3.org/1999/xhtml/vocab#option</seealso>
+    let option = Prefixed_Name(xhv, "option") |> PrefixedName
     /// <summary>
-    /// A group
-    ///       containing one or more row elements in a grid.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#rowgroup"></see></summary>
-    let rowgroup = _prefix "rowgroup"
+    ///   <para>xhv:row</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A row of cells
+    ///       in a grid.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#row">http://www.w3.org/1999/xhtml/vocab#row</seealso>
+    let row = Prefixed_Name(xhv, "row") |> PrefixedName
     /// <summary>
-    /// A cell
-    ///       containing header information for a row in a grid.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#rowheader"></see></summary>
-    let rowheader = _prefix "rowheader"
+    ///   <para>xhv:separator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A divider
+    ///       that separates and distinguishes sections of content or groups of menuitems.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#separator">http://www.w3.org/1999/xhtml/vocab#separator</seealso>
+    let separator = Prefixed_Name(xhv, "separator") |> PrefixedName
     /// <summary>
-    /// A graphical
-    ///       object that controls the scrolling of content within a viewing area, regardless
-    ///       of whether the content is fully displayed within the viewing area.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#scrollbar"></see></summary>
-    let scrollbar = _prefix "scrollbar"
+    ///   <para>xhv:tablist</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A list
+    ///       of tab elements, which are references to tabpanel elements.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#tablist">http://www.w3.org/1999/xhtml/vocab#tablist</seealso>
+    let tablist = Prefixed_Name(xhv, "tablist") |> PrefixedName
     /// <summary>
-    /// indicates
-    ///       that the section provides a search facility.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#search"></see></summary>
-    let search = _prefix "search"
+    ///   <para>xhv:menubar</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A presentation
+    ///       of menu that usually remains visible and is usually presented horizontally.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#menubar">http://www.w3.org/1999/xhtml/vocab#menubar</seealso>
+    let menubar = Prefixed_Name(xhv, "menubar") |> PrefixedName
     /// <summary>
-    /// section refers to a resource serving
-    ///       as a section in a collection.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#section"></see></summary>
-    let section = _prefix "section"
+    ///   <para>xhv:slider</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A user
+    ///       input where the user selects a value from within a given range.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#slider">http://www.w3.org/1999/xhtml/vocab#slider</seealso>
+    let slider = Prefixed_Name(xhv, "slider") |> PrefixedName
     /// <summary>
-    /// A divider
-    ///       that separates and distinguishes sections of content or groups of menuitems.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#separator"></see></summary>
-    let separator = _prefix "separator"
+    ///   <para>xhv:alert</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A message
+    ///       with important, and usually time-sensitive, information. Also see alertdialog
+    ///       and status.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#alert">http://www.w3.org/1999/xhtml/vocab#alert</seealso>
+    let alert = Prefixed_Name(xhv, "alert") |> PrefixedName
     /// <summary>
-    /// A user
-    ///       input where the user selects a value from within a given range.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#slider"></see></summary>
-    let slider = _prefix "slider"
+    ///   <para>xhv:alertdialog</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A
+    ///       type of dialog that contains an alert message, where initial focus goes
+    ///       an element within the dialog. Also see alert and dialog.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#alertdialog">http://www.w3.org/1999/xhtml/vocab#alertdialog</seealso>
+    let alertdialog = Prefixed_Name(xhv, "alertdialog") |> PrefixedName
     /// <summary>
-    /// A form
-    ///       of range that expects a user to select from amongst discrete choices.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#spinbutton"></see></summary>
-    let spinbutton = _prefix "spinbutton"
+    ///   <para>xhv:relrev-properties</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Bag</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#relrev-properties">http://www.w3.org/1999/xhtml/vocab#relrev-properties</seealso>
+    let relrev_properties = Prefixed_Name(xhv, "relrev-properties") |> PrefixedName
     /// <summary>
-    /// start refers to the first resource in
-    ///       a collection of resources.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#start"></see></summary>
-    let start = _prefix "start"
+    ///   <para>xhv:article</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A section
+    ///       of a page that consists of a composition that forms an independent part
+    ///       of a document, page, or site.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#article">http://www.w3.org/1999/xhtml/vocab#article</seealso>
+    let article = Prefixed_Name(xhv, "article") |> PrefixedName
     /// <summary>
-    /// A container
-    ///       whose content is advisory information for the user but is not important
-    ///       enough to justify an alert. Also see alert.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#status"></see></summary>
-    let status = _prefix "status"
+    ///   <para>xhv:banner</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>contains
+    ///       the prime heading or internal title of a page. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#banner">http://www.w3.org/1999/xhtml/vocab#banner</seealso>
+    let banner = Prefixed_Name(xhv, "banner") |> PrefixedName
     /// <summary>
-    /// subsection refers to a resource
-    ///       serving as a subsection in a collection.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#subsection"></see></summary>
-    let subsection = _prefix "subsection"
+    ///   <para>xhv:button</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An input
+    ///       that allows for user-triggered actions when clicked or pressed. Also see
+    ///       link.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#button">http://www.w3.org/1999/xhtml/vocab#button</seealso>
+    let button = Prefixed_Name(xhv, "button") |> PrefixedName
     /// <summary>
-    /// A grouping
-    ///       label providing a mechanism for selecting the tab content that is to be
-    ///       rendered to the user.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#tab"></see></summary>
-    let tab = _prefix "tab"
+    ///   <para>xhv:cite</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>cite refers to a resource that defines
+    ///       a citation. </para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#cite">http://www.w3.org/1999/xhtml/vocab#cite</seealso>
+    let cite = Prefixed_Name(xhv, "cite") |> PrefixedName
     /// <summary>
-    /// A list
-    ///       of tab elements, which are references to tabpanel elements.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#tablist"></see></summary>
-    let tablist = _prefix "tablist"
-    /// <summary>
-    /// A container
-    ///       for the resources associated with a tab, where each tab is contained in
-    ///       a tablist.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#tabpanel"></see></summary>
-    let tabpanel = _prefix "tabpanel"
-    /// <summary>
-    /// Input
-    ///       that allows free-form text as its value.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#textbox"></see></summary>
-    let textbox = _prefix "textbox"
-    /// <summary>
-    /// A type of
-    ///       live region containing a numerical counter which indicates an amount of
-    ///       elapsed time from a start point, or the time remaining until an end point.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#timer"></see></summary>
-    let timer = _prefix "timer"
-    /// <summary>
-    /// A collection
-    ///       of commonly used function buttons represented in compact visual form.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#toolbar"></see></summary>
-    let toolbar = _prefix "toolbar"
-    /// <summary>
-    /// A contextual
-    ///       popup that displays a description for an element.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#tooltip"></see></summary>
-    let tooltip = _prefix "tooltip"
-    /// <summary>
-    /// top is a synonym for start.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#top"></see></summary>
-    let top = _prefix "top"
-    /// <summary>
-    /// A type of
-    ///       list that may contain sub-level nested groups that can be collapsed and
-    ///       expanded.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#tree"></see></summary>
-    let tree = _prefix "tree"
-    /// <summary>
-    /// A grid
-    ///       whose rows can be expanded and collapsed in the same manner as for a tree.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#treegrid"></see></summary>
-    let treegrid = _prefix "treegrid"
-    /// <summary>
-    /// An option
-    ///       item of a tree. This is an element within a tree that may be expanded or
-    ///       collapsed if it contains a sub-level group of treeitems.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#treeitem"></see></summary>
-    let treeitem = _prefix "treeitem"
-    /// <summary>
-    /// up refers to a resource "above" in a
-    ///       hierarchically structured set.
-    /// <see href="http://www.w3.org/1999/xhtml/vocab#up"></see></summary>
-    let up = _prefix "up"
+    ///   <para>xhv:contentinfo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>contains meta information about the
+    ///       content on the page or the page as a whole.</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/xhtml/vocab#contentinfo">http://www.w3.org/1999/xhtml/vocab#contentinfo</seealso>
+    let contentinfo = Prefixed_Name(xhv, "contentinfo") |> PrefixedName

@@ -1,62 +1,137 @@
 namespace https.vocab.eccenca.com.revision.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module eccrev =
-    let _namespace_name = "https://vocab.eccenca.com/revision/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri eccrev |> NamespaceIRI
     /// <summary>
-    /// Represents a branch
-    /// <see href="https://vocab.eccenca.com/revision/Branch"></see></summary>
-    let Branch = _prefix "Branch"
+    ///   <para>eccrev:Revision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Represents a modification on a specific named graph</para>
+    /// labels<para>Revision</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/Revision">https://vocab.eccenca.com/revision/Revision</seealso>
+    let Revision = Prefixed_Name(eccrev, "Revision") |> PrefixedName
     /// <summary>
-    /// The commit to which this branch or tag references
-    /// <see href="https://vocab.eccenca.com/revision/referencesCommit"></see></summary>
-    let referencesCommit = _prefix "referencesCommit"
+    ///   <para>eccrev:Tag</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Represents a tag</para>
+    /// labels<para>Tag</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/Tag">https://vocab.eccenca.com/revision/Tag</seealso>
+    let Tag = Prefixed_Name(eccrev, "Tag") |> PrefixedName
     /// <summary>
-    /// Represents a modification on a specific named graph
-    /// <see href="https://vocab.eccenca.com/revision/Revision"></see></summary>
-    let Revision = _prefix "Revision"
+    ///   <para>eccrev:previousCommit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Connects to the previous commit (or pair of commits in the case of a merge commit)</para>
+    /// labels<para>previous commit</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/previousCommit">https://vocab.eccenca.com/revision/previousCommit</seealso>
+    let previousCommit = Prefixed_Name(eccrev, "previousCommit") |> PrefixedName
     /// <summary>
-    /// Represents a tag
-    /// <see href="https://vocab.eccenca.com/revision/Tag"></see></summary>
-    let Tag = _prefix "Tag"
+    ///   <para>eccrev:deltaDelete</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The IRI of the named graph containing the deleted triples of a revision (compared to its previous revision)</para>
+    /// labels<para>delete delta</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/deltaDelete">https://vocab.eccenca.com/revision/deltaDelete</seealso>
+    let deltaDelete = Prefixed_Name(eccrev, "deltaDelete") |> PrefixedName
     /// <summary>
-    /// Represents a modification of the datastore. A commit consists typically on a collection of :Revision (connected with a :hasRevision relationship
-    /// <see href="https://vocab.eccenca.com/revision/Commit"></see></summary>
-    let Commit = _prefix "Commit"
+    ///   <para>eccrev:hasRevisionGraph</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The named graph the revision refers to</para>
+    /// labels<para>has revision graph</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/hasRevisionGraph">https://vocab.eccenca.com/revision/hasRevisionGraph</seealso>
+    let hasRevisionGraph = Prefixed_Name(eccrev, "hasRevisionGraph") |> PrefixedName
     /// <summary>
-    /// The author of the commit
-    /// <see href="https://vocab.eccenca.com/revision/commitAuthor"></see></summary>
-    let commitAuthor = _prefix "commitAuthor"
+    ///   <para>eccrev:sha256</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A sha256 digest of a commit based on the RDF NC14 algorithm described in "Signing RDF Graphs" by Jeremy J. Carroll (DOI: 10.1007/F978-3-540-39718-2_24).</para>
+    /// labels<para>sha256 digest</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/sha256">https://vocab.eccenca.com/revision/sha256</seealso>
+    let sha256 = Prefixed_Name(eccrev, "sha256") |> PrefixedName
     /// <summary>
-    /// A message describing the commit
-    /// <see href="https://vocab.eccenca.com/revision/commitMessage"></see></summary>
-    let commitMessage = _prefix "commitMessage"
+    ///   <para>eccrev:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>voaf:Vocabulary</para>
+    ///   <para>A vocabulary &amp; data model for describing RDF changes and revisions. It defines the Commit &amp; Revision classes together with their expected properties.</para>
+    /// labels<para>eccrev: RDF changes and revisions vocabulary</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/">https://vocab.eccenca.com/revision/</seealso>
+    let _prefix_iri = Prefixed_Name(eccrev, "") |> PrefixedName
     /// <summary>
-    /// Connects to the previous commit (or pair of commits in the case of a merge commit)
-    /// <see href="https://vocab.eccenca.com/revision/previousCommit"></see></summary>
-    let previousCommit = _prefix "previousCommit"
+    ///   <para>eccrev:Branch</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Represents a branch</para>
+    /// labels<para>Branch</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/Branch">https://vocab.eccenca.com/revision/Branch</seealso>
+    let Branch = Prefixed_Name(eccrev, "Branch") |> PrefixedName
     /// <summary>
-    /// A named graph revision belonging to the commit
-    /// <see href="https://vocab.eccenca.com/revision/hasRevision"></see></summary>
-    let hasRevision = _prefix "hasRevision"
+    ///   <para>eccrev:Commit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Represents a modification of the datastore. A commit consists typically on a collection of :Revision (connected with a :hasRevision relationship</para>
+    /// labels<para>Commit</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/Commit">https://vocab.eccenca.com/revision/Commit</seealso>
+    let Commit = Prefixed_Name(eccrev, "Commit") |> PrefixedName
     /// <summary>
-    /// The IRI of the named graph containing the deleted triples of a revision (compared to its previous revision)
-    /// <see href="https://vocab.eccenca.com/revision/deltaDelete"></see></summary>
-    let deltaDelete = _prefix "deltaDelete"
+    ///   <para>eccrev:referencesCommit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The commit to which this branch or tag references</para>
+    /// labels<para>references commit</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/referencesCommit">https://vocab.eccenca.com/revision/referencesCommit</seealso>
+    let referencesCommit = Prefixed_Name(eccrev, "referencesCommit") |> PrefixedName
     /// <summary>
-    /// The named graph the revision refers to
-    /// <see href="https://vocab.eccenca.com/revision/hasRevisionGraph"></see></summary>
-    let hasRevisionGraph = _prefix "hasRevisionGraph"
+    ///   <para>eccrev:commitAuthor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The author of the commit</para>
+    /// labels<para>commit author</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/commitAuthor">https://vocab.eccenca.com/revision/commitAuthor</seealso>
+    let commitAuthor = Prefixed_Name(eccrev, "commitAuthor") |> PrefixedName
     /// <summary>
-    /// The IRI of the named graph containing the inserted triples of a revision (compared to its previous revision)
-    /// <see href="https://vocab.eccenca.com/revision/deltaInsert"></see></summary>
-    let deltaInsert = _prefix "deltaInsert"
+    ///   <para>eccrev:commitMessage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A message describing the commit</para>
+    /// labels<para>commit message</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/commitMessage">https://vocab.eccenca.com/revision/commitMessage</seealso>
+    let commitMessage = Prefixed_Name(eccrev, "commitMessage") |> PrefixedName
     /// <summary>
-    /// A sha256 digest of a commit based on the RDF NC14 algorithm described in "Signing RDF Graphs" by Jeremy J. Carroll (DOI: 10.1007/F978-3-540-39718-2_24).
-    /// <see href="https://vocab.eccenca.com/revision/sha256"></see></summary>
-    let sha256 = _prefix "sha256"
+    ///   <para>eccrev:hasRevision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:InverseFunctionalProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A named graph revision belonging to the commit</para>
+    /// labels<para>has revision</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/hasRevision">https://vocab.eccenca.com/revision/hasRevision</seealso>
+    let hasRevision = Prefixed_Name(eccrev, "hasRevision") |> PrefixedName
+    /// <summary>
+    ///   <para>eccrev:deltaInsert</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The IRI of the named graph containing the inserted triples of a revision (compared to its previous revision)</para>
+    /// labels<para>insert delta</para></remarks>
+    /// <seealso href="https://vocab.eccenca.com/revision/deltaInsert">https://vocab.eccenca.com/revision/deltaInsert</seealso>
+    let deltaInsert = Prefixed_Name(eccrev, "deltaInsert") |> PrefixedName

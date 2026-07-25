@@ -3,39 +3,22 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
-	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	
   </PropertyGroup>
 
-  <ItemGroup>	  
+  <ItemGroup>
+	  <Compile Include="Generate.fs" />
+	  <Compile Include="Generated\*.fs" />
 	  
 
-	  <Compile Include="LanguageTag.fs" />
-	  <Compile Include="Grammar.fs" />
-	  
-	  
-	  <Compile Include="Iana.fs" />
-	  <Compile Include="Iana_Schemes.fs" />
-	  <Compile Include="MimeTypes.fs" />
-	  <Compile Include="MimePath.fs" />
-	  <Compile Include="MimeSubstring.fs" />
-	  
 
-	  <Compile Include=".\xsd.fs" />
-	  <Compile Include=".\Manual\xml.fs" /> 
-	  <Compile Include=".\Manual\xsi.fs" />
-	  <Compile Include=".\Manual\xdt.fs" />
-	  <Compile Include=".\Generated\*.fs" />
-	  <Compile Include="Literal.fs" />
-	  <Compile Include="Graph_Data.fs" />
-	  <Compile Include="Rdf_Document.fs" />
-	  
-	  <Compile Include="Rdf_Shorthand.fs" />
-	  <Compile Include="Data_Store.fs" />
 	  
 
   </ItemGroup>
 	
 	<ItemGroup>
+		<PackageReference Include="FSharp.Collections.ParallelSeq" Version="1.2.0" />
+		<PackageReference Update="FSharp.Core" Version="10.0.102" />
 		<PackageReference Include="FSharp.Data.Adaptive" Version="1.2.26" />
 		<PackageReference Include="Unquote" Version="7.0.1" />
 		<PackageReference Include="FSharp.Json" Version="0.4.1" />
@@ -73,11 +56,10 @@
 	
   <ItemGroup>
 	  
+    <ProjectReference Include="..\DotNetRDFSharp\DotNetRDFSharp.fsproj" />
+	  
     <ProjectReference Include="..\Ergonomic_Extensions\Ergonomic_Extensions.fsproj" />
-    <ProjectReference Include="..\Interval_Range\Interval_Range.fsproj" />
-    <ProjectReference Include="..\ParserCombinator\ParserCombinator.fsproj" />
-    <ProjectReference Include="..\Rdf_Registry\Rdf_Registry.fsproj" />
-    <ProjectReference Include="..\Unicodepoint\Unicodepoint.fsproj" />
+    
   </ItemGroup>
 
 </Project>

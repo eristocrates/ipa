@@ -1,54 +1,109 @@
 namespace http.www.w3.org.ns.shacl_shacl.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module shsh =
-    let _namespace_name = "http://www.w3.org/ns/shacl-shacl#"
+    let _namespace_iri = Namespace_Iri shsh |> NamespaceIRI
+    /// <summary>
+    ///   <para>shsh:EntailmentShape</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>shacl:NodeShape</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#EntailmentShape">http://www.w3.org/ns/shacl-shacl#EntailmentShape</seealso>
+    let EntailmentShape = Prefixed_Name(shsh, "EntailmentShape") |> PrefixedName
+    /// <summary>
+    ///   <para>shsh:ListNodeShape</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>shacl:NodeShape</para>
+    ///   <para>Defines constraints on what it means for a node to be a node within a well-formed RDF list. Note that this does not check whether the rdf:rest items are also well-formed lists as this would lead to unsupported recursion.</para>
+    /// labels<para>List node shape</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#ListNodeShape">http://www.w3.org/ns/shacl-shacl#ListNodeShape</seealso>
+    let ListNodeShape = Prefixed_Name(shsh, "ListNodeShape") |> PrefixedName
+    /// <summary>
+    ///   <para>shsh:ListShape</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>shacl:NodeShape</para>
+    ///   <para>A shape describing well-formed RDF lists. Currently does not check for non-recursion. This could be expressed using SHACL-SPARQL.</para>
+    /// labels<para>List shape</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#ListShape">http://www.w3.org/ns/shacl-shacl#ListShape</seealso>
+    let ListShape = Prefixed_Name(shsh, "ListShape") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>shsh:PathListWithAtLeast2Members</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>shacl:NodeShape</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#PathListWithAtLeast2Members">http://www.w3.org/ns/shacl-shacl#PathListWithAtLeast2Members</seealso>
+    let PathListWithAtLeast2Members =
+        Prefixed_Name(shsh, "PathListWithAtLeast2Members") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/shacl-shacl#EntailmentShape"></see>
+    ///   <para>shsh:PathShape</para>
     /// </summary>
-    let EntailmentShape = _prefix "EntailmentShape"
+    /// <remarks>
+    ///   <para>shacl:NodeShape</para>
+    ///   <para>A shape that can be used to validate the syntax rules of well-formed SHACL paths.</para>
+    /// labels<para>Path shape</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#PathShape">http://www.w3.org/ns/shacl-shacl#PathShape</seealso>
+    let PathShape = Prefixed_Name(shsh, "PathShape") |> PrefixedName
     /// <summary>
-    /// Defines constraints on what it means for a node to be a node within a well-formed RDF list. Note that this does not check whether the rdf:rest items are also well-formed lists as this would lead to unsupported recursion.
-    /// <see href="http://www.w3.org/ns/shacl-shacl#ListNodeShape"></see></summary>
-    let ListNodeShape = _prefix "ListNodeShape"
-    /// <summary>
-    /// A shape describing well-formed RDF lists. Currently does not check for non-recursion. This could be expressed using SHACL-SPARQL.
-    /// <see href="http://www.w3.org/ns/shacl-shacl#ListShape"></see></summary>
-    let ListShape = _prefix "ListShape"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/shacl-shacl#NodeShapeShape"></see>
+    ///   <para>shsh:NodeShapeShape</para>
     /// </summary>
-    let NodeShapeShape = _prefix "NodeShapeShape"
+    /// <remarks>
+    ///   <para>shacl:NodeShape</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#NodeShapeShape">http://www.w3.org/ns/shacl-shacl#NodeShapeShape</seealso>
+    let NodeShapeShape = Prefixed_Name(shsh, "NodeShapeShape") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/shacl-shacl#PathListWithAtLeast2Members"></see>
+    ///   <para>shsh:ShapesGraphShape</para>
     /// </summary>
-    let PathListWithAtLeast2Members = _prefix "PathListWithAtLeast2Members"
+    /// <remarks>
+    ///   <para>shacl:NodeShape</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#ShapesGraphShape">http://www.w3.org/ns/shacl-shacl#ShapesGraphShape</seealso>
+    let ShapesGraphShape = Prefixed_Name(shsh, "ShapesGraphShape") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/shacl-shacl#PathNodeShape"></see>
+    ///   <para>shsh:ShapesListShape</para>
     /// </summary>
-    let PathNodeShape = _prefix "PathNodeShape"
+    /// <remarks>
+    ///   <para>shacl:NodeShape</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#ShapesListShape">http://www.w3.org/ns/shacl-shacl#ShapesListShape</seealso>
+    let ShapesListShape = Prefixed_Name(shsh, "ShapesListShape") |> PrefixedName
     /// <summary>
-    /// A shape that can be used to validate the syntax rules of well-formed SHACL paths.
-    /// <see href="http://www.w3.org/ns/shacl-shacl#PathShape"></see></summary>
-    let PathShape = _prefix "PathShape"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/shacl-shacl#PropertyShapeShape"></see>
+    ///   <para>shsh:</para>
     /// </summary>
-    let PropertyShapeShape = _prefix "PropertyShapeShape"
+    /// <remarks>
+    ///   <para>This shapes graph can be used to validate SHACL shapes graphs against a subset of the syntax rules.</para>
+    /// labels<para>SHACL for SHACL</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#">http://www.w3.org/ns/shacl-shacl#</seealso>
+    let _prefix_iri = Prefixed_Name(shsh, "") |> PrefixedName
     /// <summary>
-    /// A shape that can be used to validate syntax rules for other shapes.
-    /// <see href="http://www.w3.org/ns/shacl-shacl#ShapeShape"></see></summary>
-    let ShapeShape = _prefix "ShapeShape"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/shacl-shacl#ShapesGraphShape"></see>
+    ///   <para>shsh:PathNodeShape</para>
     /// </summary>
-    let ShapesGraphShape = _prefix "ShapesGraphShape"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#PathNodeShape">http://www.w3.org/ns/shacl-shacl#PathNodeShape</seealso>
+    let PathNodeShape = Prefixed_Name(shsh, "PathNodeShape") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/shacl-shacl#ShapesListShape"></see>
+    ///   <para>shsh:PropertyShapeShape</para>
     /// </summary>
-    let ShapesListShape = _prefix "ShapesListShape"
+    /// <remarks>
+    ///   <para>shacl:NodeShape</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#PropertyShapeShape">http://www.w3.org/ns/shacl-shacl#PropertyShapeShape</seealso>
+    let PropertyShapeShape = Prefixed_Name(shsh, "PropertyShapeShape") |> PrefixedName
+    /// <summary>
+    ///   <para>shsh:ShapeShape</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>shacl:NodeShape</para>
+    ///   <para>A shape that can be used to validate syntax rules for other shapes.</para>
+    /// labels<para>Shape shape</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/shacl-shacl#ShapeShape">http://www.w3.org/ns/shacl-shacl#ShapeShape</seealso>
+    let ShapeShape = Prefixed_Name(shsh, "ShapeShape") |> PrefixedName

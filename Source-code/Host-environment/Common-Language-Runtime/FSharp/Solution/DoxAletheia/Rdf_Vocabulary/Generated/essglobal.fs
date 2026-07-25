@@ -1,186 +1,420 @@
 namespace http.purl.org.essglobal.vocab.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module essglobal =
-    let _namespace_name = "http://purl.org/essglobal/vocab/"
+    let _namespace_iri = Namespace_Iri essglobal |> NamespaceIRI
+    /// <summary>
+    ///   <para>essglobal:Activities</para>
+    /// </summary>
+    /// <remarks>
+    ///
+    /// labels<para>Actividades VES</para><para>Activities VES</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/Activities">http://purl.org/essglobal/vocab/Activities</seealso>
+    let Activities = Prefixed_Name(essglobal, "Activities") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:Input</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Insumo</para><para>Input</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/Input">http://purl.org/essglobal/vocab/Input</seealso>
+    let Input = Prefixed_Name(essglobal, "Input") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:Labour</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Trabalho</para><para>Labour</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/Labour">http://purl.org/essglobal/vocab/Labour</seealso>
+    let Labour = Prefixed_Name(essglobal, "Labour") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:LocationOfSale</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Location of Sale</para><para>Local de Venda</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/LocationOfSale">http://purl.org/essglobal/vocab/LocationOfSale</seealso>
+    let LocationOfSale = Prefixed_Name(essglobal, "LocationOfSale") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:Network</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Network</para><para>Rede</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/Network">http://purl.org/essglobal/vocab/Network</seealso>
+    let Network = Prefixed_Name(essglobal, "Network") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:ProductOrService</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Produto ou Serviço</para><para>Product or Service</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/ProductOrService">http://purl.org/essglobal/vocab/ProductOrService</seealso>
+    let ProductOrService = Prefixed_Name(essglobal, "ProductOrService") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:SSEInitiative</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Iniciativa ESS</para><para>SSE Initiative</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/SSEInitiative">http://purl.org/essglobal/vocab/SSEInitiative</seealso>
+    let SSEInitiative = Prefixed_Name(essglobal, "SSEInitiative") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:SaleOption</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Opção de Venda</para><para>Sale Option</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/SaleOption">http://purl.org/essglobal/vocab/SaleOption</seealso>
+    let SaleOption = Prefixed_Name(essglobal, "SaleOption") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:TypeOfLabour</para>
+    /// </summary>
+    /// <remarks>
+    ///
+    /// labels<para>Tipo de Trabalho VES</para><para>Type of Labour VES</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/TypeOfLabour">http://purl.org/essglobal/vocab/TypeOfLabour</seealso>
+    let TypeOfLabour = Prefixed_Name(essglobal, "TypeOfLabour") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:costPerUnit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Custo por Unidade</para><para>Cost per Unit</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/costPerUnit">http://purl.org/essglobal/vocab/costPerUnit</seealso>
+    let costPerUnit = Prefixed_Name(essglobal, "costPerUnit") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:hasSaleOption</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Tem uma Opção de Venda</para><para>Has a Sale Option</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/hasSaleOption">http://purl.org/essglobal/vocab/hasSaleOption</seealso>
+    let hasSaleOption = Prefixed_Name(essglobal, "hasSaleOption") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:isAvailableAt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Disponível Em</para><para>Available At</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/isAvailableAt">http://purl.org/essglobal/vocab/isAvailableAt</seealso>
+    let isAvailableAt = Prefixed_Name(essglobal, "isAvailableAt") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:isComposedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Is Composed By</para><para>É Composto Por</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/isComposedBy">http://purl.org/essglobal/vocab/isComposedBy</seealso>
+    let isComposedBy = Prefixed_Name(essglobal, "isComposedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:isSSE</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>É Iniciativa da ESS</para><para>Is SSE Initiative</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/isSSE">http://purl.org/essglobal/vocab/isSSE</seealso>
+    let isSSE = Prefixed_Name(essglobal, "isSSE") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:legalForm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Forma Jurídica</para><para>Legal Form</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/legalForm">http://purl.org/essglobal/vocab/legalForm</seealso>
+    let legalForm = Prefixed_Name(essglobal, "legalForm") |> PrefixedName
+    /// <summary>
+    ///   <para>essglobal:objective</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Objective</para><para>Objetivo</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/objective">http://purl.org/essglobal/vocab/objective</seealso>
+    let objective = Prefixed_Name(essglobal, "objective") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>essglobal:quantityPerProductOrServiceUnit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Quantidade por Unidade de Produto ou Serviço</para><para>Quantity per Product or Service Unit</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/quantityPerProductOrServiceUnit">http://purl.org/essglobal/vocab/quantityPerProductOrServiceUnit</seealso>
+    let quantityPerProductOrServiceUnit =
+        Prefixed_Name(essglobal, "quantityPerProductOrServiceUnit") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/Activities"></see>
+    ///   <para>essglobal:salesMarginPercentage</para>
     /// </summary>
-    let Activities = _prefix "Activities"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Margem de Vendas (percentagem)</para><para>Sales Margin (percentage)</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/salesMarginPercentage">http://purl.org/essglobal/vocab/salesMarginPercentage</seealso>
+    let salesMarginPercentage =
+        Prefixed_Name(essglobal, "salesMarginPercentage") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/Address"></see>
+    ///   <para>essglobal:state</para>
     /// </summary>
-    let Address = _prefix "Address"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Estado</para><para>State</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/state">http://purl.org/essglobal/vocab/state</seealso>
+    let state = Prefixed_Name(essglobal, "state") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/Cost"></see>
+    ///   <para>essglobal:totalMen</para>
     /// </summary>
-    let Cost = _prefix "Cost"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Total de Homens</para><para>Total of Men</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/totalMen">http://purl.org/essglobal/vocab/totalMen</seealso>
+    let totalMen = Prefixed_Name(essglobal, "totalMen") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/CostComposition"></see>
+    ///   <para>essglobal:hasCost</para>
     /// </summary>
-    let CostComposition = _prefix "CostComposition"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Tem Custo</para><para>Has Cost</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/hasCost">http://purl.org/essglobal/vocab/hasCost</seealso>
+    let hasCost = Prefixed_Name(essglobal, "hasCost") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/Input"></see>
+    ///   <para>essglobal:hasImpactOnCost</para>
     /// </summary>
-    let Input = _prefix "Input"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Tem impacto no custo</para><para>Has impact on cost</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/hasImpactOnCost">http://purl.org/essglobal/vocab/hasImpactOnCost</seealso>
+    let hasImpactOnCost = Prefixed_Name(essglobal, "hasImpactOnCost") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/Labour"></see>
+    ///   <para>essglobal:economicSector</para>
     /// </summary>
-    let Labour = _prefix "Labour"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Economic Sector</para><para>Setor Económico</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/economicSector">http://purl.org/essglobal/vocab/economicSector</seealso>
+    let economicSector = Prefixed_Name(essglobal, "economicSector") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/LegalForm"></see>
+    ///   <para>essglobal:hasInputCost</para>
     /// </summary>
-    let LegalForm = _prefix "LegalForm"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Tem insumo</para><para>Has input</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/hasInputCost">http://purl.org/essglobal/vocab/hasInputCost</seealso>
+    let hasInputCost = Prefixed_Name(essglobal, "hasInputCost") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/LocationOfSale"></see>
+    ///   <para>essglobal:hasProductOrService</para>
     /// </summary>
-    let LocationOfSale = _prefix "LocationOfSale"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Tem Produto ou Serviço</para><para>Has Product or Service</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/hasProductOrService">http://purl.org/essglobal/vocab/hasProductOrService</seealso>
+    let hasProductOrService =
+        Prefixed_Name(essglobal, "hasProductOrService") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/Network"></see>
+    ///   <para>essglobal:isAvailable</para>
     /// </summary>
-    let Network = _prefix "Network"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Está disponível</para><para>Is available</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/isAvailable">http://purl.org/essglobal/vocab/isAvailable</seealso>
+    let isAvailable = Prefixed_Name(essglobal, "isAvailable") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/OtherCosts"></see>
+    ///   <para>essglobal:LegalForm</para>
     /// </summary>
-    let OtherCosts = _prefix "OtherCosts"
+    /// <remarks>
+    ///
+    /// labels<para>Forma Jurídica VES</para><para>Legal Form VES</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/LegalForm">http://purl.org/essglobal/vocab/LegalForm</seealso>
+    let LegalForm = Prefixed_Name(essglobal, "LegalForm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/ProductOrService"></see>
+    ///   <para>essglobal:isMain</para>
     /// </summary>
-    let ProductOrService = _prefix "ProductOrService"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>É o Principal</para><para>Is Main</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/isMain">http://purl.org/essglobal/vocab/isMain</seealso>
+    let isMain = Prefixed_Name(essglobal, "isMain") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/Qualifiers"></see>
+    ///   <para>essglobal:deliveryRangeDistance</para>
     /// </summary>
-    let Qualifiers = _prefix "Qualifiers"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Alcance da Entrega (distância)</para><para>Delivery Range (distance)</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/deliveryRangeDistance">http://purl.org/essglobal/vocab/deliveryRangeDistance</seealso>
+    let deliveryRangeDistance =
+        Prefixed_Name(essglobal, "deliveryRangeDistance") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/SSEInitiative"></see>
+    ///   <para>essglobal:hasAddress</para>
     /// </summary>
-    let SSEInitiative = _prefix "SSEInitiative"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Tem um endereço</para><para>Has an address</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/hasAddress">http://purl.org/essglobal/vocab/hasAddress</seealso>
+    let hasAddress = Prefixed_Name(essglobal, "hasAddress") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/SaleOption"></see>
+    ///   <para>essglobal:typeOfLabour</para>
     /// </summary>
-    let SaleOption = _prefix "SaleOption"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Tipo de Trabalho</para><para>Type of Labour</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/typeOfLabour">http://purl.org/essglobal/vocab/typeOfLabour</seealso>
+    let typeOfLabour = Prefixed_Name(essglobal, "typeOfLabour") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/TypeOfLabour"></see>
+    ///   <para>essglobal:OtherCosts</para>
     /// </summary>
-    let TypeOfLabour = _prefix "TypeOfLabour"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Outros Custos</para><para>Other Costs</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/OtherCosts">http://purl.org/essglobal/vocab/OtherCosts</seealso>
+    let OtherCosts = Prefixed_Name(essglobal, "OtherCosts") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/costPerUnit"></see>
+    ///   <para>essglobal:Qualifiers</para>
     /// </summary>
-    let costPerUnit = _prefix "costPerUnit"
+    /// <remarks>
+    ///
+    /// labels<para>Qualificadores VES</para><para>Qualifiers VES</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/Qualifiers">http://purl.org/essglobal/vocab/Qualifiers</seealso>
+    let Qualifiers = Prefixed_Name(essglobal, "Qualifiers") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/deliveryRangeDistance"></see>
+    ///   <para>essglobal:mission</para>
     /// </summary>
-    let deliveryRangeDistance = _prefix "deliveryRangeDistance"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Mission</para><para>Missão</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/mission">http://purl.org/essglobal/vocab/mission</seealso>
+    let mission = Prefixed_Name(essglobal, "mission") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/economicSector"></see>
+    ///   <para>essglobal:qualifier</para>
     /// </summary>
-    let economicSector = _prefix "economicSector"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Qualificador</para><para>Qualifier</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/qualifier">http://purl.org/essglobal/vocab/qualifier</seealso>
+    let qualifier = Prefixed_Name(essglobal, "qualifier") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/hasAddress"></see>
+    ///   <para>essglobal:salesMarginValue</para>
     /// </summary>
-    let hasAddress = _prefix "hasAddress"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Margem de Vendas (valor)</para><para>Sales Margin (value)</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/salesMarginValue">http://purl.org/essglobal/vocab/salesMarginValue</seealso>
+    let salesMarginValue = Prefixed_Name(essglobal, "salesMarginValue") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/hasCost"></see>
+    ///   <para>essglobal:totalOfMembers</para>
     /// </summary>
-    let hasCost = _prefix "hasCost"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Total de Associados</para><para>Total of Members</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/totalOfMembers">http://purl.org/essglobal/vocab/totalOfMembers</seealso>
+    let totalOfMembers = Prefixed_Name(essglobal, "totalOfMembers") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/hasImpactOnCost"></see>
+    ///   <para>essglobal:totalWomen</para>
     /// </summary>
-    let hasImpactOnCost = _prefix "hasImpactOnCost"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Total de Mulheres</para><para>Total of Women</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/totalWomen">http://purl.org/essglobal/vocab/totalWomen</seealso>
+    let totalWomen = Prefixed_Name(essglobal, "totalWomen") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/hasInputCost"></see>
+    ///   <para>essglobal:unit</para>
     /// </summary>
-    let hasInputCost = _prefix "hasInputCost"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Unidade</para><para>Unit</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/unit">http://purl.org/essglobal/vocab/unit</seealso>
+    let unit = Prefixed_Name(essglobal, "unit") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/hasLabourCost"></see>
+    ///   <para>essglobal:</para>
     /// </summary>
-    let hasLabourCost = _prefix "hasLabourCost"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>voaf:Vocabulary</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/">http://purl.org/essglobal/vocab/</seealso>
+    let _prefix_iri = Prefixed_Name(essglobal, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/hasOtherCosts"></see>
+    ///   <para>essglobal:Address</para>
     /// </summary>
-    let hasOtherCosts = _prefix "hasOtherCosts"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Endereço</para><para>Address</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/Address">http://purl.org/essglobal/vocab/Address</seealso>
+    let Address = Prefixed_Name(essglobal, "Address") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/hasProductOrService"></see>
+    ///   <para>essglobal:Cost</para>
     /// </summary>
-    let hasProductOrService = _prefix "hasProductOrService"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Custo</para><para>Cost</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/Cost">http://purl.org/essglobal/vocab/Cost</seealso>
+    let Cost = Prefixed_Name(essglobal, "Cost") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/hasSaleOption"></see>
+    ///   <para>essglobal:CostComposition</para>
     /// </summary>
-    let hasSaleOption = _prefix "hasSaleOption"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Composição de Custos</para><para>Cost Composition</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/CostComposition">http://purl.org/essglobal/vocab/CostComposition</seealso>
+    let CostComposition = Prefixed_Name(essglobal, "CostComposition") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/isAvailable"></see>
+    ///   <para>essglobal:hasLabourCost</para>
     /// </summary>
-    let isAvailable = _prefix "isAvailable"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Tem Trabalho</para><para>Has Labour</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/hasLabourCost">http://purl.org/essglobal/vocab/hasLabourCost</seealso>
+    let hasLabourCost = Prefixed_Name(essglobal, "hasLabourCost") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/isAvailableAt"></see>
+    ///   <para>essglobal:hasOtherCosts</para>
     /// </summary>
-    let isAvailableAt = _prefix "isAvailableAt"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/isComposedBy"></see>
-    /// </summary>
-    let isComposedBy = _prefix "isComposedBy"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/isMain"></see>
-    /// </summary>
-    let isMain = _prefix "isMain"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/isSSE"></see>
-    /// </summary>
-    let isSSE = _prefix "isSSE"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/legalForm"></see>
-    /// </summary>
-    let legalForm = _prefix "legalForm"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/mission"></see>
-    /// </summary>
-    let mission = _prefix "mission"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/objective"></see>
-    /// </summary>
-    let objective = _prefix "objective"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/qualifier"></see>
-    /// </summary>
-    let qualifier = _prefix "qualifier"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/quantityPerProductOrServiceUnit"></see>
-    /// </summary>
-    let quantityPerProductOrServiceUnit = _prefix "quantityPerProductOrServiceUnit"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/salesMarginPercentage"></see>
-    /// </summary>
-    let salesMarginPercentage = _prefix "salesMarginPercentage"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/salesMarginValue"></see>
-    /// </summary>
-    let salesMarginValue = _prefix "salesMarginValue"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/state"></see>
-    /// </summary>
-    let state = _prefix "state"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/totalMen"></see>
-    /// </summary>
-    let totalMen = _prefix "totalMen"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/totalOfMembers"></see>
-    /// </summary>
-    let totalOfMembers = _prefix "totalOfMembers"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/totalWomen"></see>
-    /// </summary>
-    let totalWomen = _prefix "totalWomen"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/typeOfLabour"></see>
-    /// </summary>
-    let typeOfLabour = _prefix "typeOfLabour"
-    /// <summary>
-    ///   <see href="http://purl.org/essglobal/vocab/unit"></see>
-    /// </summary>
-    let unit = _prefix "unit"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Tem Outros Custos</para><para>Has Other Costs</para></remarks>
+    /// <seealso href="http://purl.org/essglobal/vocab/hasOtherCosts">http://purl.org/essglobal/vocab/hasOtherCosts</seealso>
+    let hasOtherCosts = Prefixed_Name(essglobal, "hasOtherCosts") |> PrefixedName

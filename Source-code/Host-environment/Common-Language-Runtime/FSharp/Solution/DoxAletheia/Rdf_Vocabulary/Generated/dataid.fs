@@ -1,288 +1,654 @@
 namespace http.dataid.dbpedia.org.ns.core.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module dataid =
-    let _namespace_name = "http://dataid.dbpedia.org/ns/core#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri dataid |> NamespaceIRI
     /// <summary>
-    /// The level of openness of access to particular groups of agents
-    /// <see href="http://dataid.dbpedia.org/ns/core#AccessLevel"></see></summary>
-    let AccessLevel = _prefix "AccessLevel"
-    /// <summary>
-    /// Provides an agent with unrestricted access and all rights of a resource.
-    /// <see href="http://dataid.dbpedia.org/ns/core#PrivateAccess"></see></summary>
-    let PrivateAccess = _prefix "PrivateAccess"
-    /// <summary>
-    /// Limits the rights an agent has on a resource to read and modify.
-    /// <see href="http://dataid.dbpedia.org/ns/core#SemiPrivateAccess"></see></summary>
-    let SemiPrivateAccess = _prefix "SemiPrivateAccess"
-    /// <summary>
-    /// Limits the rights an agent has on a resource to read rights.
-    /// <see href="http://dataid.dbpedia.org/ns/core#PublicAccess"></see></summary>
-    let PublicAccess = _prefix "PublicAccess"
-    /// <summary>
-    /// Disallows access to a resource for an agent.
-    /// <see href="http://dataid.dbpedia.org/ns/core#NoAccess"></see></summary>
-    let NoAccess = _prefix "NoAccess"
-    /// <summary>
-    /// Any type of agent without a specific function.
-    /// <see href="http://dataid.dbpedia.org/ns/core#Agent"></see></summary>
-    let Agent = _prefix "Agent"
-    /// <summary>
-    /// Uniquly identifies an agent given a identifier and a correspondng aid/pid system (ORCID, ResearcherID etc.).
-    /// <see href="http://dataid.dbpedia.org/ns/core#AgentIdentifier"></see></summary>
-    let AgentIdentifier = _prefix "AgentIdentifier"
-    /// <summary>
-    /// the id of an agent as string
-    /// <see href="http://dataid.dbpedia.org/ns/core#aid"></see></summary>
-    let aid = _prefix "aid"
-    /// <summary>
-    /// the aid/pid system used for this identifier (ORCID, ResearcherID etc.)
-    /// <see href="http://dataid.dbpedia.org/ns/core#aidSystem"></see></summary>
-    let aidSystem = _prefix "aidSystem"
-    /// <summary>
-    /// Instances of this class define an array of rights and responsibilities an agent, assigned with this role for a given scope of entities, has to address or can execute.
-    /// <see href="http://dataid.dbpedia.org/ns/core#AgentRole"></see></summary>
-    let AgentRole = _prefix "AgentRole"
-    /// <summary>
-    /// AgentRoles allows an agent to execute certain actions.
-    /// <see href="http://dataid.dbpedia.org/ns/core#allowsFor"></see></summary>
-    let allowsFor = _prefix "allowsFor"
-    /// <summary>
-    /// A visitor/anonymous agent has only read rights on public and semi-private documents
-    /// <see href="http://dataid.dbpedia.org/ns/core#Guest"></see></summary>
-    let Guest = _prefix "Guest"
-    /// <summary>
-    /// Creator of the resource. An agent that is credited with a main part in the initial creation of the resource.
-    /// <see href="http://dataid.dbpedia.org/ns/core#Creator"></see></summary>
-    let Creator = _prefix "Creator"
-    /// <summary>
-    /// Contributor to the resource. An agent that was involved in creating or maintaining the resource but does not have the main part in this activity.
-    /// <see href="http://dataid.dbpedia.org/ns/core#Contributor"></see></summary>
-    let Contributor = _prefix "Contributor"
-    /// <summary>
-    /// Maintainer of the dataset. An agent that ensures the technical correctness, accessibility and up-to-dateness of a dataset.
-    /// <see href="http://dataid.dbpedia.org/ns/core#Maintainer"></see></summary>
-    let Maintainer = _prefix "Maintainer"
-    /// <summary>
-    /// Publisher of the dataset. An agent that makes the dataset accessible online on a server or repository without necessarily being involved in its creation.
-    /// <see href="http://dataid.dbpedia.org/ns/core#Publisher"></see></summary>
-    let Publisher = _prefix "Publisher"
-    /// <summary>
-    /// Contact agent. An agent that can be contacted for general requests about the resource.
-    /// <see href="http://dataid.dbpedia.org/ns/core#Contact"></see></summary>
-    let Contact = _prefix "Contact"
-    /// <summary>
-    /// The responsibility to supervise other agents.
-    /// <see href="http://dataid.dbpedia.org/ns/core#AgentSupervision"></see></summary>
-    let AgentSupervision = _prefix "AgentSupervision"
-    /// <summary>
-    /// AgentRoles provide access rights as well as responsibilities an agent has to attend to in order to fullfill this role. Responsible actions should describe actions pertaining to responsibilities an agent is supposed to do.
-    /// <see href="http://dataid.dbpedia.org/ns/core#ResponsibleAction"></see></summary>
-    let ResponsibleAction = _prefix "ResponsibleAction"
-    /// <summary>
-    /// This concept defines a scope of Entities and links it to an Agent which has certain rights for those entities (defined by the AgentRole). This scope consists of all Entities directly linked to the context, as well as transitively dependend Entities
-    /// <see href="http://dataid.dbpedia.org/ns/core#AuthorityEntityContext"></see></summary>
-    let AuthorityEntityContext = _prefix "AuthorityEntityContext"
-    /// <summary>
-    /// Defines that a context keeps intact for the next version of a DataID (if set to 'true').
-    /// The property of certain authority entity context to be able to be inherited
-    /// <see href="http://dataid.dbpedia.org/ns/core#isInheritable"></see></summary>
-    let isInheritable = _prefix "isInheritable"
-    /// <summary>
-    /// Adds a role an agent can administer in the scope provided by the AuthorityEntityContext, thereby allowing for certain actions an agent can execute.
-    /// <see href="http://dataid.dbpedia.org/ns/core#authorityAgentRole"></see></summary>
-    let authorityAgentRole = _prefix "authorityAgentRole"
-    /// <summary>
-    /// An AuthorityEntityContext is valid for a specific Agent until a certain point in time.
-    /// <see href="http://dataid.dbpedia.org/ns/core#validUntil"></see></summary>
-    let validUntil = _prefix "validUntil"
-    /// <summary>
-    /// An AuthorityEntityContext is valid for a specific Agent from a certain point in time.
-    /// <see href="http://dataid.dbpedia.org/ns/core#validFrom"></see></summary>
-    let validFrom = _prefix "validFrom"
-    /// <summary>
-    /// Defines the scope of an authority-context. An Agent has the right to execute authorized actions in this scope (e.g. a single DataId and all it's members).
-    /// <see href="http://dataid.dbpedia.org/ns/core#authorizedFor"></see></summary>
-    let authorizedFor = _prefix "authorizedFor"
-    /// <summary>
-    /// Provides an agent the ability to execute authorized actions in a certain scope (e.g. to modify the metadata of a dataset)
-    /// <see href="http://dataid.dbpedia.org/ns/core#authorizedAgent"></see></summary>
-    let authorizedAgent = _prefix "authorizedAgent"
-    /// <summary>
-    /// AgentRoles provide agents with the ability to execute certain actions as well as demand certain responsibilities, which are defines by the instances of this concept.
-    /// <see href="http://dataid.dbpedia.org/ns/core#AuthorizedAction"></see></summary>
-    let AuthorizedAction = _prefix "AuthorizedAction"
-    /// <summary>
-    /// AgentRoles provide access and modification rights to an agent. Entitled actions should comprise actions pertaining to access/modification restrictions.
-    /// <see href="http://dataid.dbpedia.org/ns/core#EntitledAction"></see></summary>
-    let EntitledAction = _prefix "EntitledAction"
-    /// <summary>
-    /// Entitled action to modify the content of an entity.
-    /// <see href="http://dataid.dbpedia.org/ns/core#ModifyContent"></see></summary>
-    let ModifyContent = _prefix "ModifyContent"
-    /// <summary>
-    /// Entitled action to read the content of an entity.
-    /// <see href="http://dataid.dbpedia.org/ns/core#ReadContent"></see></summary>
-    let ReadContent = _prefix "ReadContent"
-    /// <summary>
-    /// Entitled action to read the DataID dataset metadata
-    /// <see href="http://dataid.dbpedia.org/ns/core#ReadDataId"></see></summary>
-    let ReadDataId = _prefix "ReadDataId"
-    /// <summary>
-    /// The responsibility to respond to contact attempts by external agents. A contact point for the entity.
-    /// <see href="http://dataid.dbpedia.org/ns/core#ResponseToContact"></see></summary>
-    let ResponseToContact = _prefix "ResponseToContact"
-    /// <summary>
-    /// Entitled action to modify the role of agents on certain entities.
-    /// <see href="http://dataid.dbpedia.org/ns/core#ModifyAgentRoles"></see></summary>
-    let ModifyAgentRoles = _prefix "ModifyAgentRoles"
-    /// <summary>
-    /// Entitled action to modify access level of an entity.
-    /// <see href="http://dataid.dbpedia.org/ns/core#ModifyAccessLevel"></see></summary>
-    let ModifyAccessLevel = _prefix "ModifyAccessLevel"
-    /// <summary>
-    /// Entitled action to delete some content of an entity.
-    /// <see href="http://dataid.dbpedia.org/ns/core#DeleteContent"></see></summary>
-    let DeleteContent = _prefix "DeleteContent"
-    /// <summary>
-    /// The responsibility to update dataset metadata.
-    /// <see href="http://dataid.dbpedia.org/ns/core#UpdateDataId"></see></summary>
-    let UpdateDataId = _prefix "UpdateDataId"
-    /// <summary>
-    /// The responsibility decide if the entity should be published
-    /// <see href="http://dataid.dbpedia.org/ns/core#PublishingDecision"></see></summary>
-    let PublishingDecision = _prefix "PublishingDecision"
-    /// <summary>
-    /// Entitled action to modify which agents are authorized on certain entities.
-    /// <see href="http://dataid.dbpedia.org/ns/core#ModifyAuthorizedAgents"></see></summary>
-    let ModifyAuthorizedAgents = _prefix "ModifyAuthorizedAgents"
-    /// <summary>
-    /// The responsibility to manage changes and react to bugs and issues that are reported
-    /// <see href="http://dataid.dbpedia.org/ns/core#ResponseToLifeCycleEvent"></see></summary>
-    let ResponseToLifeCycleEvent = _prefix "ResponseToLifeCycleEvent"
-    /// <summary>
-    /// A description of one or more datasets. The DataID itself.
-    /// <see href="http://dataid.dbpedia.org/ns/core#DataId"></see></summary>
-    let DataId = _prefix "DataId"
-    /// <summary>
-    /// defines the access rights for DataId related entities
-    /// <see href="http://dataid.dbpedia.org/ns/core#hasAccessLevel"></see></summary>
-    let hasAccessLevel = _prefix "hasAccessLevel"
-    /// <summary>
-    /// Points out a dataid:AuthorityEntityContext pertaining to this resource.
-    /// <see href="http://dataid.dbpedia.org/ns/core#hasEntityContext"></see></summary>
-    let hasEntityContext = _prefix "hasEntityContext"
-    /// <summary>
-    /// A collection of data, available for access in one or more formats. Dataset resources describe the concept of the dataset, not it's manifestation (the data itself), which can be acquired as Distribution.
-    ///     Datasets are prov:Entities and can be generated by prov:Activities.
-    /// <see href="http://dataid.dbpedia.org/ns/core#Dataset"></see></summary>
-    let Dataset = _prefix "Dataset"
-    /// <summary>
-    /// Latest version of a DataIdPart
-    /// <see href="http://dataid.dbpedia.org/ns/core#latestVersion"></see></summary>
-    let latestVersion = _prefix "latestVersion"
-    /// <summary>
-    /// Next version of a DataIdPart
-    /// <see href="http://dataid.dbpedia.org/ns/core#nextVersion"></see></summary>
-    let nextVersion = _prefix "nextVersion"
-    /// <summary>
-    /// provides a version string for any entity
-    /// <see href="http://dataid.dbpedia.org/ns/core#version"></see></summary>
-    let version = _prefix "version"
-    /// <summary>
-    /// previous version of a DataIdPart
-    /// <see href="http://dataid.dbpedia.org/ns/core#previousVersion"></see></summary>
-    let previousVersion = _prefix "previousVersion"
-    /// <summary>
-    /// some agent generally connected to the dataset, their function to be specified by their rdf:type
-    /// <see href="http://dataid.dbpedia.org/ns/core#associatedAgent"></see></summary>
-    let associatedAgent = _prefix "associatedAgent"
-    /// <summary>
-    /// A way to access a dataset, like a dump file, an endpoint, an API etc.
-    /// <see href="http://dataid.dbpedia.org/ns/core#Distribution"></see></summary>
-    let Distribution = _prefix "Distribution"
-    /// <summary>
-    /// A dedicated directory holding multiple files of the same dataset.
-    /// <see href="http://dataid.dbpedia.org/ns/core#Directory"></see></summary>
-    let Directory = _prefix "Directory"
-    /// <summary>
-    /// Checksum of a file to check for correctness
-    /// <see href="http://dataid.dbpedia.org/ns/core#checksum"></see></summary>
-    let checksum = _prefix "checksum"
-    /// <summary>
-    /// The name of the graph of this distribution in a SPARQL endpoint
-    /// <see href="http://dataid.dbpedia.org/ns/core#graphName"></see></summary>
-    let graphName = _prefix "graphName"
-    /// <summary>
-    /// Multiple files of a distribution constituting one dataset.
-    /// <see href="http://dataid.dbpedia.org/ns/core#FileCollection"></see></summary>
-    let FileCollection = _prefix "FileCollection"
-    /// <summary>
-    ///   <see href="http://dataid.dbpedia.org/ns/core#GuestAgent"></see>
+    ///   <para>dataid:AccessLevel</para>
     /// </summary>
-    let GuestAgent = _prefix "GuestAgent"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The level of openness of access to particular groups of agents</para>
+    /// labels<para>Access level</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#AccessLevel">http://dataid.dbpedia.org/ns/core#AccessLevel</seealso>
+    let AccessLevel = Prefixed_Name(dataid, "AccessLevel") |> PrefixedName
     /// <summary>
-    /// Entity representing the set of links between two datasets.
-    /// <see href="http://dataid.dbpedia.org/ns/core#Linkset"></see></summary>
-    let Linkset = _prefix "Linkset"
+    ///   <para>dataid:PublicAccess</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:AccessLevel</para>
+    ///   <para>Limits the rights an agent has on a resource to read rights.</para>
+    /// labels<para>public</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#PublicAccess">http://dataid.dbpedia.org/ns/core#PublicAccess</seealso>
+    let PublicAccess = Prefixed_Name(dataid, "PublicAccess") |> PrefixedName
     /// <summary>
-    /// A specific distribution, which is accessible via an access url and provides data as a web service in a certain format.
-    /// <see href="http://dataid.dbpedia.org/ns/core#ServiceEndpoint"></see></summary>
-    let ServiceEndpoint = _prefix "ServiceEndpoint"
+    ///   <para>dataid:ModifyContent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:EntitledAction</para>
+    ///   <para>Entitled action to modify the content of an entity.</para>
+    /// labels<para>modify content right</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#ModifyContent">http://dataid.dbpedia.org/ns/core#ModifyContent</seealso>
+    let ModifyContent = Prefixed_Name(dataid, "ModifyContent") |> PrefixedName
     /// <summary>
-    /// A single data dump file representing your dataset.
-    /// <see href="http://dataid.dbpedia.org/ns/core#SingleFile"></see></summary>
-    let SingleFile = _prefix "SingleFile"
+    ///   <para>dataid:ModifyAgentRoles</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:EntitledAction</para>
+    ///   <para>Entitled action to modify the role of agents on certain entities.</para>
+    /// labels<para>modify agent roles</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#ModifyAgentRoles">http://dataid.dbpedia.org/ns/core#ModifyAgentRoles</seealso>
+    let ModifyAgentRoles = Prefixed_Name(dataid, "ModifyAgentRoles") |> PrefixedName
     /// <summary>
-    /// A specific distribution, which is accessible via an access url and can be queried with the SPARQL language.
-    /// <see href="http://dataid.dbpedia.org/ns/core#SparqlEndpoint"></see></summary>
-    let SparqlEndpoint = _prefix "SparqlEndpoint"
+    ///   <para>dataid:DataId</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A description of one or more datasets. The DataID itself.</para>
+    /// labels<para>DataId</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#DataId">http://dataid.dbpedia.org/ns/core#DataId</seealso>
+    let DataId = Prefixed_Name(dataid, "DataId") |> PrefixedName
     /// <summary>
-    /// Describes the steps which have to be taken to gain access to the described data at the location of a distribution (e.g. register an account to gain dct:accessRights).
-    /// <see href="http://dataid.dbpedia.org/ns/core#accessProcedure"></see></summary>
-    let accessProcedure = _prefix "accessProcedure"
+    ///   <para>dataid:Dataset</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A collection of data, available for access in one or more formats. Dataset resources describe the concept of the dataset, not it's manifestation (the data itself), which can be acquired as Distribution.
+    ///     Datasets are prov:Entities and can be generated by prov:Activities.</para>
+    /// labels<para>Dataset</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Dataset">http://dataid.dbpedia.org/ns/core#Dataset</seealso>
+    let Dataset = Prefixed_Name(dataid, "Dataset") |> PrefixedName
     /// <summary>
-    /// provides an unique identifier for this agent
-    /// <see href="http://dataid.dbpedia.org/ns/core#agentId"></see></summary>
-    let agentId = _prefix "agentId"
+    ///   <para>dataid:version</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>provides a version string for any entity</para>
+    /// labels<para>version</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#version">http://dataid.dbpedia.org/ns/core#version</seealso>
+    let version = Prefixed_Name(dataid, "version") |> PrefixedName
     /// <summary>
-    /// uri/url provided as, or in addition to an id
-    /// <see href="http://dataid.dbpedia.org/ns/core#aidURI"></see></summary>
-    let aidURI = _prefix "aidURI"
+    ///   <para>dataid:associatedAgent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>some agent generally connected to the dataset, their function to be specified by their rdf:type</para>
+    /// labels<para>associated agent</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#associatedAgent">http://dataid.dbpedia.org/ns/core#associatedAgent</seealso>
+    let associatedAgent = Prefixed_Name(dataid, "associatedAgent") |> PrefixedName
     /// <summary>
-    /// A crc32 checksum
-    /// <see href="http://dataid.dbpedia.org/ns/core#crc32"></see></summary>
-    let crc32 = _prefix "crc32"
+    ///   <para>dataid:NoAccess</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:AccessLevel</para>
+    ///   <para>Disallows access to a resource for an agent.</para>
+    /// labels<para>no access</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#NoAccess">http://dataid.dbpedia.org/ns/core#NoAccess</seealso>
+    let NoAccess = Prefixed_Name(dataid, "NoAccess") |> PrefixedName
     /// <summary>
-    /// A md5 checksum
-    /// <see href="http://dataid.dbpedia.org/ns/core#md5"></see></summary>
-    let md5 = _prefix "md5"
+    ///   <para>dataid:AgentSupervision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:ResponsibleAction</para>
+    ///   <para>The responsibility to supervise other agents.</para>
+    /// labels<para>agent supervision</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#AgentSupervision">http://dataid.dbpedia.org/ns/core#AgentSupervision</seealso>
+    let AgentSupervision = Prefixed_Name(dataid, "AgentSupervision") |> PrefixedName
     /// <summary>
-    /// Set of links to another dataset contained in this dataset
-    /// <see href="http://dataid.dbpedia.org/ns/core#containsLinks"></see></summary>
-    let containsLinks = _prefix "containsLinks"
+    ///   <para>dataid:aid</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>the id of an agent as string</para>
+    /// labels<para>aid</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#aid">http://dataid.dbpedia.org/ns/core#aid</seealso>
+    let aid = Prefixed_Name(dataid, "aid") |> PrefixedName
     /// <summary>
-    /// Inverse property of dcat:distribution, linking a Distribution to a Dataset
-    /// <see href="http://dataid.dbpedia.org/ns/core#isDistributionOf"></see></summary>
-    let isDistributionOf = _prefix "isDistributionOf"
+    ///   <para>dataid:allowsFor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>AgentRoles allows an agent to execute certain actions.</para>
+    /// labels<para>allowes for</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#allowsFor">http://dataid.dbpedia.org/ns/core#allowsFor</seealso>
+    let allowsFor = Prefixed_Name(dataid, "allowsFor") |> PrefixedName
     /// <summary>
-    /// provides the uri of a short preview of the data provided by a distribution (do not link to the download or accessURL with this property)
-    /// <see href="http://dataid.dbpedia.org/ns/core#preview"></see></summary>
-    let preview = _prefix "preview"
+    ///   <para>dataid:Maintainer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:AgentRole</para>
+    ///   <para>Maintainer of the dataset. An agent that ensures the technical correctness, accessibility and up-to-dateness of a dataset.</para>
+    /// labels<para>maintainer</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Maintainer">http://dataid.dbpedia.org/ns/core#Maintainer</seealso>
+    let Maintainer = Prefixed_Name(dataid, "Maintainer") |> PrefixedName
     /// <summary>
-    /// points to other dataset containing related data
-    /// <see href="http://dataid.dbpedia.org/ns/core#similarData"></see></summary>
-    let similarData = _prefix "similarData"
+    ///   <para>dataid:isInheritable</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Defines that a context keeps intact for the next version of a DataID (if set to 'true').</para>
+    ///   <para>The property of certain authority entity context to be able to be inherited</para>
+    /// labels<para>is inheritable</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#isInheritable">http://dataid.dbpedia.org/ns/core#isInheritable</seealso>
+    let isInheritable = Prefixed_Name(dataid, "isInheritable") |> PrefixedName
     /// <summary>
-    /// software needed to access the data in this distribution
-    /// <see href="http://dataid.dbpedia.org/ns/core#softwareRquirement"></see></summary>
-    let softwareRquirement = _prefix "softwareRquirement"
+    ///   <para>dataid:validUntil</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>An AuthorityEntityContext is valid for a specific Agent until a certain point in time.</para>
+    /// labels<para>valid until</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#validUntil">http://dataid.dbpedia.org/ns/core#validUntil</seealso>
+    let validUntil = Prefixed_Name(dataid, "validUntil") |> PrefixedName
     /// <summary>
-    /// Limits rights and actions an Agent is allwed to take depending on the AccessLevel chosen for this AuthorityEntityContext.
-    /// <see href="http://dataid.dbpedia.org/ns/core#validForAccessLevel"></see></summary>
-    let validForAccessLevel = _prefix "validForAccessLevel"
+    ///   <para>dataid:authorizedAgent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Provides an agent the ability to execute authorized actions in a certain scope (e.g. to modify the metadata of a dataset)</para>
+    /// labels<para>authorized agent</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#authorizedAgent">http://dataid.dbpedia.org/ns/core#authorizedAgent</seealso>
+    let authorizedAgent = Prefixed_Name(dataid, "authorizedAgent") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:AuthorizedAction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>AgentRoles provide agents with the ability to execute certain actions as well as demand certain responsibilities, which are defines by the instances of this concept.</para>
+    /// labels<para>Authorized action</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#AuthorizedAction">http://dataid.dbpedia.org/ns/core#AuthorizedAction</seealso>
+    let AuthorizedAction = Prefixed_Name(dataid, "AuthorizedAction") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:ResponseToContact</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:ResponsibleAction</para>
+    ///   <para>The responsibility to respond to contact attempts by external agents. A contact point for the entity.</para>
+    /// labels<para>response to contact attempt</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#ResponseToContact">http://dataid.dbpedia.org/ns/core#ResponseToContact</seealso>
+    let ResponseToContact = Prefixed_Name(dataid, "ResponseToContact") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:ModifyAccessLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:EntitledAction</para>
+    ///   <para>Entitled action to modify access level of an entity.</para>
+    /// labels<para>modify entity access level</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#ModifyAccessLevel">http://dataid.dbpedia.org/ns/core#ModifyAccessLevel</seealso>
+    let ModifyAccessLevel = Prefixed_Name(dataid, "ModifyAccessLevel") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:DeleteContent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:EntitledAction</para>
+    ///   <para>Entitled action to delete some content of an entity.</para>
+    /// labels<para>delete content right</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#DeleteContent">http://dataid.dbpedia.org/ns/core#DeleteContent</seealso>
+    let DeleteContent = Prefixed_Name(dataid, "DeleteContent") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:UpdateDataId</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:ResponsibleAction</para>
+    ///   <para>The responsibility to update dataset metadata.</para>
+    /// labels<para>update DataId</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#UpdateDataId">http://dataid.dbpedia.org/ns/core#UpdateDataId</seealso>
+    let UpdateDataId = Prefixed_Name(dataid, "UpdateDataId") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:PublishingDecision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:ResponsibleAction</para>
+    ///   <para>The responsibility decide if the entity should be published</para>
+    /// labels<para>publishing decision</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#PublishingDecision">http://dataid.dbpedia.org/ns/core#PublishingDecision</seealso>
+    let PublishingDecision = Prefixed_Name(dataid, "PublishingDecision") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:hasEntityContext</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Points out a dataid:AuthorityEntityContext pertaining to this resource.</para>
+    /// labels<para>has authority-entity-context</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#hasEntityContext">http://dataid.dbpedia.org/ns/core#hasEntityContext</seealso>
+    let hasEntityContext = Prefixed_Name(dataid, "hasEntityContext") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:nextVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Next version of a DataIdPart</para>
+    /// labels<para>next version</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#nextVersion">http://dataid.dbpedia.org/ns/core#nextVersion</seealso>
+    let nextVersion = Prefixed_Name(dataid, "nextVersion") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:previousVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>previous version of a DataIdPart</para>
+    /// labels<para>previous version</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#previousVersion">http://dataid.dbpedia.org/ns/core#previousVersion</seealso>
+    let previousVersion = Prefixed_Name(dataid, "previousVersion") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:Distribution</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A way to access a dataset, like a dump file, an endpoint, an API etc.</para>
+    /// labels<para>Distribution</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Distribution">http://dataid.dbpedia.org/ns/core#Distribution</seealso>
+    let Distribution = Prefixed_Name(dataid, "Distribution") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:AgentIdentifier</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Uniquly identifies an agent given a identifier and a correspondng aid/pid system (ORCID, ResearcherID etc.).</para>
+    /// labels<para>agent identifier</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#AgentIdentifier">http://dataid.dbpedia.org/ns/core#AgentIdentifier</seealso>
+    let AgentIdentifier = Prefixed_Name(dataid, "AgentIdentifier") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:AgentRole</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Instances of this class define an array of rights and responsibilities an agent, assigned with this role for a given scope of entities, has to address or can execute.</para>
+    /// labels<para>Agent role</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#AgentRole">http://dataid.dbpedia.org/ns/core#AgentRole</seealso>
+    let AgentRole = Prefixed_Name(dataid, "AgentRole") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:Guest</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:AgentRole</para>
+    ///   <para>A visitor/anonymous agent has only read rights on public and semi-private documents</para>
+    /// labels<para>guest</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Guest">http://dataid.dbpedia.org/ns/core#Guest</seealso>
+    let Guest = Prefixed_Name(dataid, "Guest") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:Contributor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:AgentRole</para>
+    ///   <para>Contributor to the resource. An agent that was involved in creating or maintaining the resource but does not have the main part in this activity.</para>
+    /// labels<para>contributor</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Contributor">http://dataid.dbpedia.org/ns/core#Contributor</seealso>
+    let Contributor = Prefixed_Name(dataid, "Contributor") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:Contact</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:AgentRole</para>
+    ///   <para>Contact agent. An agent that can be contacted for general requests about the resource.</para>
+    /// labels<para>contact</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Contact">http://dataid.dbpedia.org/ns/core#Contact</seealso>
+    let Contact = Prefixed_Name(dataid, "Contact") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:Directory</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A dedicated directory holding multiple files of the same dataset.</para>
+    /// labels<para>dataset files in one directory</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Directory">http://dataid.dbpedia.org/ns/core#Directory</seealso>
+    let Directory = Prefixed_Name(dataid, "Directory") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:checksum</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Checksum of a file to check for correctness</para>
+    /// labels<para>checksum</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#checksum">http://dataid.dbpedia.org/ns/core#checksum</seealso>
+    let checksum = Prefixed_Name(dataid, "checksum") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:aidSystem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>the aid/pid system used for this identifier (ORCID, ResearcherID etc.)</para>
+    /// labels<para>aid system</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#aidSystem">http://dataid.dbpedia.org/ns/core#aidSystem</seealso>
+    let aidSystem = Prefixed_Name(dataid, "aidSystem") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:Creator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:AgentRole</para>
+    ///   <para>Creator of the resource. An agent that is credited with a main part in the initial creation of the resource.</para>
+    /// labels<para>creator</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Creator">http://dataid.dbpedia.org/ns/core#Creator</seealso>
+    let Creator = Prefixed_Name(dataid, "Creator") |> PrefixedName
+
+    /// <summary>
+    ///   <para>dataid:AuthorityEntityContext</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>This concept defines a scope of Entities and links it to an Agent which has certain rights for those entities (defined by the AgentRole). This scope consists of all Entities directly linked to the context, as well as transitively dependend Entities</para>
+    /// labels<para>Authority entity context</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#AuthorityEntityContext">http://dataid.dbpedia.org/ns/core#AuthorityEntityContext</seealso>
+    let AuthorityEntityContext =
+        Prefixed_Name(dataid, "AuthorityEntityContext") |> PrefixedName
+
+    /// <summary>
+    ///   <para>dataid:authorityAgentRole</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Adds a role an agent can administer in the scope provided by the AuthorityEntityContext, thereby allowing for certain actions an agent can execute.</para>
+    /// labels<para>authority agent role</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#authorityAgentRole">http://dataid.dbpedia.org/ns/core#authorityAgentRole</seealso>
+    let authorityAgentRole = Prefixed_Name(dataid, "authorityAgentRole") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:validFrom</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>An AuthorityEntityContext is valid for a specific Agent from a certain point in time.</para>
+    /// labels<para>valid from</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#validFrom">http://dataid.dbpedia.org/ns/core#validFrom</seealso>
+    let validFrom = Prefixed_Name(dataid, "validFrom") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:authorizedFor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Defines the scope of an authority-context. An Agent has the right to execute authorized actions in this scope (e.g. a single DataId and all it's members).</para>
+    /// labels<para>authorized for</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#authorizedFor">http://dataid.dbpedia.org/ns/core#authorizedFor</seealso>
+    let authorizedFor = Prefixed_Name(dataid, "authorizedFor") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:EntitledAction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>AgentRoles provide access and modification rights to an agent. Entitled actions should comprise actions pertaining to access/modification restrictions.</para>
+    /// labels<para>Entitled action</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#EntitledAction">http://dataid.dbpedia.org/ns/core#EntitledAction</seealso>
+    let EntitledAction = Prefixed_Name(dataid, "EntitledAction") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:ReadContent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:EntitledAction</para>
+    ///   <para>Entitled action to read the content of an entity.</para>
+    /// labels<para>read content right</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#ReadContent">http://dataid.dbpedia.org/ns/core#ReadContent</seealso>
+    let ReadContent = Prefixed_Name(dataid, "ReadContent") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:ReadDataId</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:EntitledAction</para>
+    ///   <para>Entitled action to read the DataID dataset metadata</para>
+    /// labels<para>read DataID right</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#ReadDataId">http://dataid.dbpedia.org/ns/core#ReadDataId</seealso>
+    let ReadDataId = Prefixed_Name(dataid, "ReadDataId") |> PrefixedName
+
+    /// <summary>
+    ///   <para>dataid:ModifyAuthorizedAgents</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:EntitledAction</para>
+    ///   <para>Entitled action to modify which agents are authorized on certain entities.</para>
+    /// labels<para>modify authorized agents</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#ModifyAuthorizedAgents">http://dataid.dbpedia.org/ns/core#ModifyAuthorizedAgents</seealso>
+    let ModifyAuthorizedAgents =
+        Prefixed_Name(dataid, "ModifyAuthorizedAgents") |> PrefixedName
+
+    /// <summary>
+    ///   <para>dataid:ResponseToLifeCycleEvent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:ResponsibleAction</para>
+    ///   <para>The responsibility to manage changes and react to bugs and issues that are reported</para>
+    /// labels<para>response to life-cycle event</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#ResponseToLifeCycleEvent">http://dataid.dbpedia.org/ns/core#ResponseToLifeCycleEvent</seealso>
+    let ResponseToLifeCycleEvent =
+        Prefixed_Name(dataid, "ResponseToLifeCycleEvent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>dataid:hasAccessLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>defines the access rights for DataId related entities</para>
+    /// labels<para>access level</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#hasAccessLevel">http://dataid.dbpedia.org/ns/core#hasAccessLevel</seealso>
+    let hasAccessLevel = Prefixed_Name(dataid, "hasAccessLevel") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:latestVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Latest version of a DataIdPart</para>
+    /// labels<para>latest linkset version</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#latestVersion">http://dataid.dbpedia.org/ns/core#latestVersion</seealso>
+    let latestVersion = Prefixed_Name(dataid, "latestVersion") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:FileCollection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Multiple files of a distribution constituting one dataset.</para>
+    /// labels<para>dataset files in differnt paths of a distribution</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#FileCollection">http://dataid.dbpedia.org/ns/core#FileCollection</seealso>
+    let FileCollection = Prefixed_Name(dataid, "FileCollection") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:GuestAgent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:Agent</para>
+    /// </remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#GuestAgent">http://dataid.dbpedia.org/ns/core#GuestAgent</seealso>
+    let GuestAgent = Prefixed_Name(dataid, "GuestAgent") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:Linkset</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Entity representing the set of links between two datasets.</para>
+    /// labels<para>Linkset</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Linkset">http://dataid.dbpedia.org/ns/core#Linkset</seealso>
+    let Linkset = Prefixed_Name(dataid, "Linkset") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:ServiceEndpoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A specific distribution, which is accessible via an access url and provides data as a web service in a certain format.</para>
+    /// labels<para>Service Endpoint</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#ServiceEndpoint">http://dataid.dbpedia.org/ns/core#ServiceEndpoint</seealso>
+    let ServiceEndpoint = Prefixed_Name(dataid, "ServiceEndpoint") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:SingleFile</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A single data dump file representing your dataset.</para>
+    /// labels<para>single dump file</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#SingleFile">http://dataid.dbpedia.org/ns/core#SingleFile</seealso>
+    let SingleFile = Prefixed_Name(dataid, "SingleFile") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:SparqlEndpoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A specific distribution, which is accessible via an access url and can be queried with the SPARQL language.</para>
+    /// labels<para>Sparql Endpoint</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#SparqlEndpoint">http://dataid.dbpedia.org/ns/core#SparqlEndpoint</seealso>
+    let SparqlEndpoint = Prefixed_Name(dataid, "SparqlEndpoint") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:accessProcedure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Describes the steps which have to be taken to gain access to the described data at the location of a distribution (e.g. register an account to gain dct:accessRights).</para>
+    /// labels<para>access procedure</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#accessProcedure">http://dataid.dbpedia.org/ns/core#accessProcedure</seealso>
+    let accessProcedure = Prefixed_Name(dataid, "accessProcedure") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:agentId</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:InverseFunctionalProperty</para>
+    ///   <para>provides an unique identifier for this agent</para>
+    /// labels<para>agent id</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#agentId">http://dataid.dbpedia.org/ns/core#agentId</seealso>
+    let agentId = Prefixed_Name(dataid, "agentId") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:aidURI</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>uri/url provided as, or in addition to an id</para>
+    /// labels<para>aid uri</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#aidURI">http://dataid.dbpedia.org/ns/core#aidURI</seealso>
+    let aidURI = Prefixed_Name(dataid, "aidURI") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:crc32</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    ///   <para>A crc32 checksum</para>
+    /// labels<para>crc32 checksum</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#crc32">http://dataid.dbpedia.org/ns/core#crc32</seealso>
+    let crc32 = Prefixed_Name(dataid, "crc32") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:md5</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    ///   <para>A md5 checksum</para>
+    /// labels<para>md5 checksum</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#md5">http://dataid.dbpedia.org/ns/core#md5</seealso>
+    let md5 = Prefixed_Name(dataid, "md5") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:containsLinks</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Set of links to another dataset contained in this dataset</para>
+    /// labels<para>contains links</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#containsLinks">http://dataid.dbpedia.org/ns/core#containsLinks</seealso>
+    let containsLinks = Prefixed_Name(dataid, "containsLinks") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:isDistributionOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Inverse property of dcat:distribution, linking a Distribution to a Dataset</para>
+    /// labels<para>Is distribution of</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#isDistributionOf">http://dataid.dbpedia.org/ns/core#isDistributionOf</seealso>
+    let isDistributionOf = Prefixed_Name(dataid, "isDistributionOf") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:preview</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>provides the uri of a short preview of the data provided by a distribution (do not link to the download or accessURL with this property)</para>
+    /// labels<para>data preview</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#preview">http://dataid.dbpedia.org/ns/core#preview</seealso>
+    let preview = Prefixed_Name(dataid, "preview") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:similarData</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>points to other dataset containing related data</para>
+    /// labels<para>similar data</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#similarData">http://dataid.dbpedia.org/ns/core#similarData</seealso>
+    let similarData = Prefixed_Name(dataid, "similarData") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:softwareRquirement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>software needed to access the data in this distribution</para>
+    /// labels<para>software requirement</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#softwareRquirement">http://dataid.dbpedia.org/ns/core#softwareRquirement</seealso>
+    let softwareRquirement = Prefixed_Name(dataid, "softwareRquirement") |> PrefixedName
+
+    /// <summary>
+    ///   <para>dataid:validForAccessLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Limits rights and actions an Agent is allwed to take depending on the AccessLevel chosen for this AuthorityEntityContext.</para>
+    /// labels<para>valid for access level</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#validForAccessLevel">http://dataid.dbpedia.org/ns/core#validForAccessLevel</seealso>
+    let validForAccessLevel =
+        Prefixed_Name(dataid, "validForAccessLevel") |> PrefixedName
+
+    /// <summary>
+    ///   <para>dataid:Publisher</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:AgentRole</para>
+    ///   <para>Publisher of the dataset. An agent that makes the dataset accessible online on a server or repository without necessarily being involved in its creation.</para>
+    /// labels<para>publisher</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Publisher">http://dataid.dbpedia.org/ns/core#Publisher</seealso>
+    let Publisher = Prefixed_Name(dataid, "Publisher") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:ResponsibleAction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>AgentRoles provide access rights as well as responsibilities an agent has to attend to in order to fullfill this role. Responsible actions should describe actions pertaining to responsibilities an agent is supposed to do.</para>
+    /// labels<para>responsible actions</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#ResponsibleAction">http://dataid.dbpedia.org/ns/core#ResponsibleAction</seealso>
+    let ResponsibleAction = Prefixed_Name(dataid, "ResponsibleAction") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>DBpedia Data ID is an ontology with the goal of describing LOD datasets via RDF files in a uniform way. Established vocabularies like DCAT, VoID, Prov-O and SPARQL Service Description are used for maximum compatibility.</para>
+    /// labels<para>DataID</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#">http://dataid.dbpedia.org/ns/core#</seealso>
+    let _prefix_iri = Prefixed_Name(dataid, "") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:PrivateAccess</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:AccessLevel</para>
+    ///   <para>Provides an agent with unrestricted access and all rights of a resource.</para>
+    /// labels<para>private</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#PrivateAccess">http://dataid.dbpedia.org/ns/core#PrivateAccess</seealso>
+    let PrivateAccess = Prefixed_Name(dataid, "PrivateAccess") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:SemiPrivateAccess</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>dataid:AccessLevel</para>
+    ///   <para>Limits the rights an agent has on a resource to read and modify.</para>
+    /// labels<para>semi-private</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#SemiPrivateAccess">http://dataid.dbpedia.org/ns/core#SemiPrivateAccess</seealso>
+    let SemiPrivateAccess = Prefixed_Name(dataid, "SemiPrivateAccess") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:Agent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Any type of agent without a specific function.</para>
+    /// labels<para>Agent</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#Agent">http://dataid.dbpedia.org/ns/core#Agent</seealso>
+    let Agent = Prefixed_Name(dataid, "Agent") |> PrefixedName
+    /// <summary>
+    ///   <para>dataid:graphName</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The name of the graph of this distribution in a SPARQL endpoint</para>
+    /// labels<para>Graph name</para></remarks>
+    /// <seealso href="http://dataid.dbpedia.org/ns/core#graphName">http://dataid.dbpedia.org/ns/core#graphName</seealso>
+    let graphName = Prefixed_Name(dataid, "graphName") |> PrefixedName

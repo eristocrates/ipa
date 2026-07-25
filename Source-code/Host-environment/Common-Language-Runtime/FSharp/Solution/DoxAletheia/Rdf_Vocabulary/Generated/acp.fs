@@ -1,156 +1,339 @@
 namespace http.www.w3.org.ns.solid.acp.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module acp =
-    let _namespace_name = "http://www.w3.org/ns/solid/acp#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri acp |> NamespaceIRI
     /// <summary>
-    /// All Access Controls controlling member resources access via the acp:memberAccessControl property MUST be included in the set of Access Controls linked as acp:accessControl in the effective authorization graph of a resource.
-    /// <see href="http://www.w3.org/ns/solid/acp#AccessControl"></see></summary>
-    let AccessControl = _prefix "AccessControl"
-    /// <summary>
-    /// Both the acp:resource property and its inverse acp:accessControlResource MUST be taken into account in determining the Access Control Resources controlling access to resources.
-    /// <see href="http://www.w3.org/ns/solid/acp#AccessControlResource"></see></summary>
-    let AccessControlResource = _prefix "AccessControlResource"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#AccessGrant"></see>
+    ///   <para>acp:AccessControl</para>
     /// </summary>
-    let AccessGrant = _prefix "AccessGrant"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>All Access Controls controlling member resources access via the acp:memberAccessControl property MUST be included in the set of Access Controls linked as acp:accessControl in the effective authorization graph of a resource.</para>
+    /// labels<para>Access Control</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#AccessControl">http://www.w3.org/ns/solid/acp#AccessControl</seealso>
+    let AccessControl = Prefixed_Name(acp, "AccessControl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#AccessMode"></see>
+    ///   <para>acp:resource</para>
     /// </summary>
-    let AccessMode = _prefix "AccessMode"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#AlwaysSatisfiedRestriction"></see>
-    /// </summary>
-    let AlwaysSatisfiedRestriction = _prefix "AlwaysSatisfiedRestriction"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#AuthenticatedAgent"></see>
-    /// </summary>
-    let AuthenticatedAgent = _prefix "AuthenticatedAgent"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#Context"></see>
-    /// </summary>
-    let Context = _prefix "Context"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#CreatorAgent"></see>
-    /// </summary>
-    let CreatorAgent = _prefix "CreatorAgent"
-    /// <summary>
-    /// A Matcher MUST be satisfied if and only if: it defines at least one attribute; and, at least one value of each defined attribute matches the Context. ACP engines MUST match the context attributes defined by this specification according to IRI equality and literal term equality.
+    /// <remarks>
+    ///   <para>rdf:Property</para>
     ///
-    /// ACP implementations supporting sub-properties of acp:attribute other than the ones defined by ACP SHOULD also define and implement corresponding matching algorithms.
-    /// <see href="http://www.w3.org/ns/solid/acp#Matcher"></see></summary>
-    let Matcher = _prefix "Matcher"
+    /// labels<para>resource</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#resource">http://www.w3.org/ns/solid/acp#resource</seealso>
+    let resource = Prefixed_Name(acp, "resource") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#OwnerAgent"></see>
+    ///   <para>acp:agent</para>
     /// </summary>
-    let OwnerAgent = _prefix "OwnerAgent"
+    /// <remarks>
+    ///   <para>In a Matcher, agent attributes define a set of agents, at least one of which MUST match the Context for the Matcher to be satisfied.</para>
+    /// labels<para>agent</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#agent">http://www.w3.org/ns/solid/acp#agent</seealso>
+    let agent = Prefixed_Name(acp, "agent") |> PrefixedName
     /// <summary>
-    /// An ACP engine MUST grant exactly those Access Modes allowed by Effective Policies. Effective Policies are the Policies controlling access to a resource. A Policy MUST control access to a resource if: it is applied by an Access Control of an ACR of the resource; or, it is applied by a member Access Control of an ACR of an ancestor of the resource.
+    ///   <para>acp:AccessMode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Access Mode</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#AccessMode">http://www.w3.org/ns/solid/acp#AccessMode</seealso>
+    let AccessMode = Prefixed_Name(acp, "AccessMode") |> PrefixedName
+
+    /// <summary>
+    ///   <para>acp:AlwaysSatisfiedRestriction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Always Satisfied Restriction</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#AlwaysSatisfiedRestriction">http://www.w3.org/ns/solid/acp#AlwaysSatisfiedRestriction</seealso>
+    let AlwaysSatisfiedRestriction =
+        Prefixed_Name(acp, "AlwaysSatisfiedRestriction") |> PrefixedName
+
+    /// <summary>
+    ///   <para>acp:CreatorAgent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>Creator Agent</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#CreatorAgent">http://www.w3.org/ns/solid/acp#CreatorAgent</seealso>
+    let CreatorAgent = Prefixed_Name(acp, "CreatorAgent") |> PrefixedName
+    /// <summary>
+    ///   <para>acp:Policy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An ACP engine MUST grant exactly those Access Modes allowed by Effective Policies. Effective Policies are the Policies controlling access to a resource. A Policy MUST control access to a resource if: it is applied by an Access Control of an ACR of the resource; or, it is applied by a member Access Control of an ACR of an ancestor of the resource.
     ///
     /// An Access Mode MUST be granted if and only if in the set of Effective Policies controlling access to it: a satisfied policy allows the Access Mode; and, no satisfied policy denies it.
     ///
-    /// A Policy MUST be satisfied if and only if: it references at least one Matcher via an acp:allOf or acp:anyOf property; and, all of its acp:allOf Matchers are satisfied; and, at least one of its acp:anyOf Matchers is satisfied; and, none of its acp:noneOf Matchers are satisfied.
-    /// <see href="http://www.w3.org/ns/solid/acp#Policy"></see></summary>
-    let Policy = _prefix "Policy"
+    /// A Policy MUST be satisfied if and only if: it references at least one Matcher via an acp:allOf or acp:anyOf property; and, all of its acp:allOf Matchers are satisfied; and, at least one of its acp:anyOf Matchers is satisfied; and, none of its acp:noneOf Matchers are satisfied.</para>
+    /// labels<para>Access Policy</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#Policy">http://www.w3.org/ns/solid/acp#Policy</seealso>
+    let Policy = Prefixed_Name(acp, "Policy") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#PublicAgent"></see>
+    ///   <para>acp:allow</para>
     /// </summary>
-    let PublicAgent = _prefix "PublicAgent"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>allow</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#allow">http://www.w3.org/ns/solid/acp#allow</seealso>
+    let allow = Prefixed_Name(acp, "allow") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#PublicClient"></see>
+    ///   <para>acp:client</para>
     /// </summary>
-    let PublicClient = _prefix "PublicClient"
+    /// <remarks>
+    ///   <para>In a Matcher, client attributes define a set of clients, at least one of which MUST match the Context for the Matcher to be satisfied. </para>
+    /// labels<para>client</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#client">http://www.w3.org/ns/solid/acp#client</seealso>
+    let client = Prefixed_Name(acp, "client") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#PublicIssuer"></see>
+    ///   <para>acp:creator</para>
     /// </summary>
-    let PublicIssuer = _prefix "PublicIssuer"
+    /// <remarks>
+    ///
+    /// labels<para>creator</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#creator">http://www.w3.org/ns/solid/acp#creator</seealso>
+    let creator = Prefixed_Name(acp, "creator") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#accessControl"></see>
+    ///   <para>acp:memberAccessControl</para>
     /// </summary>
-    let accessControl = _prefix "accessControl"
+    /// <remarks>
+    ///
+    /// labels<para>member access control</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#memberAccessControl">http://www.w3.org/ns/solid/acp#memberAccessControl</seealso>
+    let memberAccessControl = Prefixed_Name(acp, "memberAccessControl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#accessControlResource"></see>
+    ///   <para>acp:owner</para>
     /// </summary>
-    let accessControlResource = _prefix "accessControlResource"
+    /// <remarks>
+    ///
+    /// labels<para>owner</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#owner">http://www.w3.org/ns/solid/acp#owner</seealso>
+    let owner = Prefixed_Name(acp, "owner") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#resource"></see>
+    ///   <para>acp:vc</para>
     /// </summary>
-    let resource = _prefix "resource"
+    /// <remarks>
+    ///   <para>In a Matcher, vc attributes define a set of types of Verifiable Credentials (VC), at least one of which MUST match the Context for the Matcher to be satisfied. A VC type present in the Context MUST be a valid VC presented as part of the resource access request.</para>
+    /// labels<para>vc</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#vc">http://www.w3.org/ns/solid/acp#vc</seealso>
+    let vc = Prefixed_Name(acp, "vc") |> PrefixedName
     /// <summary>
-    /// In a Matcher, agent attributes define a set of agents, at least one of which MUST match the Context for the Matcher to be satisfied.
-    /// <see href="http://www.w3.org/ns/solid/acp#agent"></see></summary>
-    let agent = _prefix "agent"
-    /// <summary>
-    /// Sub-properties of acp:attribute can be created to fit the specific access control requirements of applications.
-    /// <see href="http://www.w3.org/ns/solid/acp#attribute"></see></summary>
-    let attribute = _prefix "attribute"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#allOf"></see>
+    ///   <para>acp:grant</para>
     /// </summary>
-    let allOf = _prefix "allOf"
+    /// <remarks>
+    ///
+    /// labels<para>grant</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#grant">http://www.w3.org/ns/solid/acp#grant</seealso>
+    let grant = Prefixed_Name(acp, "grant") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#allow"></see>
+    ///   <para>acp:mode</para>
     /// </summary>
-    let allow = _prefix "allow"
+    /// <remarks>
+    ///
+    /// labels<para>mode</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#mode">http://www.w3.org/ns/solid/acp#mode</seealso>
+    let mode = Prefixed_Name(acp, "mode") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#anyOf"></see>
+    ///   <para>acp:target</para>
     /// </summary>
-    let anyOf = _prefix "anyOf"
+    /// <remarks>
+    ///
+    /// labels<para>target</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#target">http://www.w3.org/ns/solid/acp#target</seealso>
+    let target = Prefixed_Name(acp, "target") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#apply"></see>
+    ///   <para>acp:AccessControlResource</para>
     /// </summary>
-    let apply = _prefix "apply"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Both the acp:resource property and its inverse acp:accessControlResource MUST be taken into account in determining the Access Control Resources controlling access to resources.</para>
+    /// labels<para>Access Control Resource</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#AccessControlResource">http://www.w3.org/ns/solid/acp#AccessControlResource</seealso>
+    let AccessControlResource =
+        Prefixed_Name(acp, "AccessControlResource") |> PrefixedName
+
     /// <summary>
-    /// In a Matcher, client attributes define a set of clients, at least one of which MUST match the Context for the Matcher to be satisfied.
-    /// <see href="http://www.w3.org/ns/solid/acp#client"></see></summary>
-    let client = _prefix "client"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#context"></see>
+    ///   <para>acp:Context</para>
     /// </summary>
-    let context = _prefix "context"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Context</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#Context">http://www.w3.org/ns/solid/acp#Context</seealso>
+    let Context = Prefixed_Name(acp, "Context") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#creator"></see>
+    ///   <para>acp:OwnerAgent</para>
     /// </summary>
-    let creator = _prefix "creator"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>Owner Agent</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#OwnerAgent">http://www.w3.org/ns/solid/acp#OwnerAgent</seealso>
+    let OwnerAgent = Prefixed_Name(acp, "OwnerAgent") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#deny"></see>
+    ///   <para>acp:AccessGrant</para>
     /// </summary>
-    let deny = _prefix "deny"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>Access Grant</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#AccessGrant">http://www.w3.org/ns/solid/acp#AccessGrant</seealso>
+    let AccessGrant = Prefixed_Name(acp, "AccessGrant") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#grant"></see>
+    ///   <para>acp:Matcher</para>
     /// </summary>
-    let grant = _prefix "grant"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A Matcher MUST be satisfied if and only if: it defines at least one attribute; and, at least one value of each defined attribute matches the Context. ACP engines MUST match the context attributes defined by this specification according to IRI equality and literal term equality.
+    ///
+    /// ACP implementations supporting sub-properties of acp:attribute other than the ones defined by ACP SHOULD also define and implement corresponding matching algorithms.</para>
+    /// labels<para>Matcher</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#Matcher">http://www.w3.org/ns/solid/acp#Matcher</seealso>
+    let Matcher = Prefixed_Name(acp, "Matcher") |> PrefixedName
     /// <summary>
-    /// In a Matcher, issuer attributes define a set of issuers, at least one of which MUST match the Context for the Matcher to be satisfied.
-    /// <see href="http://www.w3.org/ns/solid/acp#issuer"></see></summary>
-    let issuer = _prefix "issuer"
-    /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#memberAccessControl"></see>
+    ///   <para>acp:PublicClient</para>
     /// </summary>
-    let memberAccessControl = _prefix "memberAccessControl"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>acp:AlwaysSatisfiedRestriction</para>
+    ///
+    /// labels<para>Public Client</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#PublicClient">http://www.w3.org/ns/solid/acp#PublicClient</seealso>
+    let PublicClient = Prefixed_Name(acp, "PublicClient") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#mode"></see>
+    ///   <para>acp:attribute</para>
     /// </summary>
-    let mode = _prefix "mode"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Sub-properties of acp:attribute can be created to fit the specific access control requirements of applications.</para>
+    /// labels<para>attribute</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#attribute">http://www.w3.org/ns/solid/acp#attribute</seealso>
+    let attribute = Prefixed_Name(acp, "attribute") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#noneOf"></see>
+    ///   <para>acp:allOf</para>
     /// </summary>
-    let noneOf = _prefix "noneOf"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>all of</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#allOf">http://www.w3.org/ns/solid/acp#allOf</seealso>
+    let allOf = Prefixed_Name(acp, "allOf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#owner"></see>
+    ///   <para>acp:apply</para>
     /// </summary>
-    let owner = _prefix "owner"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>apply</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#apply">http://www.w3.org/ns/solid/acp#apply</seealso>
+    let apply = Prefixed_Name(acp, "apply") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/solid/acp#target"></see>
+    ///   <para>acp:context</para>
     /// </summary>
-    let target = _prefix "target"
+    /// <remarks>
+    ///
+    /// labels<para>context</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#context">http://www.w3.org/ns/solid/acp#context</seealso>
+    let context = Prefixed_Name(acp, "context") |> PrefixedName
     /// <summary>
-    /// In a Matcher, vc attributes define a set of types of Verifiable Credentials (VC), at least one of which MUST match the Context for the Matcher to be satisfied. A VC type present in the Context MUST be a valid VC presented as part of the resource access request.
-    /// <see href="http://www.w3.org/ns/solid/acp#vc"></see></summary>
-    let vc = _prefix "vc"
+    ///   <para>acp:deny</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>deny</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#deny">http://www.w3.org/ns/solid/acp#deny</seealso>
+    let deny = Prefixed_Name(acp, "deny") |> PrefixedName
+    /// <summary>
+    ///   <para>acp:issuer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>In a Matcher, issuer attributes define a set of issuers, at least one of which MUST match the Context for the Matcher to be satisfied.</para>
+    /// labels<para>issuer</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#issuer">http://www.w3.org/ns/solid/acp#issuer</seealso>
+    let issuer = Prefixed_Name(acp, "issuer") |> PrefixedName
+    /// <summary>
+    ///   <para>acp:noneOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>none of</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#noneOf">http://www.w3.org/ns/solid/acp#noneOf</seealso>
+    let noneOf = Prefixed_Name(acp, "noneOf") |> PrefixedName
+    /// <summary>
+    ///   <para>acp:PublicAgent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>acp:AlwaysSatisfiedRestriction</para>
+    ///
+    /// labels<para>Public Agent</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#PublicAgent">http://www.w3.org/ns/solid/acp#PublicAgent</seealso>
+    let PublicAgent = Prefixed_Name(acp, "PublicAgent") |> PrefixedName
+    /// <summary>
+    ///   <para>acp:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///
+    /// labels<para>Access Control Policy Language (ACP)</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#">http://www.w3.org/ns/solid/acp#</seealso>
+    let _prefix_iri = Prefixed_Name(acp, "") |> PrefixedName
+    /// <summary>
+    ///   <para>acp:AuthenticatedAgent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>Authenticated Agent</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#AuthenticatedAgent">http://www.w3.org/ns/solid/acp#AuthenticatedAgent</seealso>
+    let AuthenticatedAgent = Prefixed_Name(acp, "AuthenticatedAgent") |> PrefixedName
+    /// <summary>
+    ///   <para>acp:PublicIssuer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>acp:AlwaysSatisfiedRestriction</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>Public Issuer</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#PublicIssuer">http://www.w3.org/ns/solid/acp#PublicIssuer</seealso>
+    let PublicIssuer = Prefixed_Name(acp, "PublicIssuer") |> PrefixedName
+    /// <summary>
+    ///   <para>acp:accessControl</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>access control</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#accessControl">http://www.w3.org/ns/solid/acp#accessControl</seealso>
+    let accessControl = Prefixed_Name(acp, "accessControl") |> PrefixedName
+
+    /// <summary>
+    ///   <para>acp:accessControlResource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>access control resource</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#accessControlResource">http://www.w3.org/ns/solid/acp#accessControlResource</seealso>
+    let accessControlResource =
+        Prefixed_Name(acp, "accessControlResource") |> PrefixedName
+
+    /// <summary>
+    ///   <para>acp:anyOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>any of</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/solid/acp#anyOf">http://www.w3.org/ns/solid/acp#anyOf</seealso>
+    let anyOf = Prefixed_Name(acp, "anyOf") |> PrefixedName

@@ -1,171 +1,432 @@
 namespace https.www.gleif.org.ontology.L2.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module gleif_L2 =
-    let _namespace_name = "https://www.gleif.org/ontology/L2/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    let _namespace_iri = Namespace_Iri gleif_L2 |> NamespaceIRI
 
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusAnnulled"></see>
+    ///   <para>gleif-L2:RegistrationStatusAnnulled</para>
     /// </summary>
-    let RegistrationStatusAnnulled = _prefix "RegistrationStatusAnnulled"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusDuplicate"></see>
-    /// </summary>
-    let RegistrationStatusDuplicate = _prefix "RegistrationStatusDuplicate"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusLapsed"></see>
-    /// </summary>
-    let RegistrationStatusLapsed = _prefix "RegistrationStatusLapsed"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusPendingArchival"></see>
-    /// </summary>
-    let RegistrationStatusPendingArchival = _prefix "RegistrationStatusPendingArchival"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusPendingTransfer"></see>
-    /// </summary>
-    let RegistrationStatusPendingTransfer = _prefix "RegistrationStatusPendingTransfer"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusPublished"></see>
-    /// </summary>
-    let RegistrationStatusPublished = _prefix "RegistrationStatusPublished"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusRetired"></see>
-    /// </summary>
-    let RegistrationStatusRetired = _prefix "RegistrationStatusRetired"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/AccountingStandardIFRS"></see>
-    /// </summary>
-    let AccountingStandardIFRS = _prefix "AccountingStandardIFRS"
+    /// <remarks>
+    ///   <para>gleif-L2:RegistrationStatus</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>annulled</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RegistrationStatusAnnulled">https://www.gleif.org/ontology/L2/RegistrationStatusAnnulled</seealso>
+    let RegistrationStatusAnnulled =
+        Prefixed_Name(gleif_L2, "RegistrationStatusAnnulled") |> PrefixedName
 
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/AccountingStandardOtherAccountingStandard"></see>
+    ///   <para>gleif-L2:RegistrationStatusLapsed</para>
     /// </summary>
-    let AccountingStandardOtherAccountingStandard =
-        _prefix "AccountingStandardOtherAccountingStandard"
+    /// <remarks>
+    ///   <para>gleif-L2:RegistrationStatus</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>lapsed</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RegistrationStatusLapsed">https://www.gleif.org/ontology/L2/RegistrationStatusLapsed</seealso>
+    let RegistrationStatusLapsed =
+        Prefixed_Name(gleif_L2, "RegistrationStatusLapsed") |> PrefixedName
 
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/AccountingStandardUSGAAP"></see>
+    ///   <para>gleif-L2:RegistrationStatusPublished</para>
     /// </summary>
-    let AccountingStandardUSGAAP = _prefix "AccountingStandardUSGAAP"
+    /// <remarks>
+    ///   <para>gleif-L2:RegistrationStatus</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>published</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RegistrationStatusPublished">https://www.gleif.org/ontology/L2/RegistrationStatusPublished</seealso>
+    let RegistrationStatusPublished =
+        Prefixed_Name(gleif_L2, "RegistrationStatusPublished") |> PrefixedName
 
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindAccountsFiling"></see>
+    ///   <para>gleif-L2:AccountingStandardIFRS</para>
     /// </summary>
-    let RelationshipValidationDocumentsKindAccountsFiling =
-        _prefix "RelationshipValidationDocumentsKindAccountsFiling"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>gleif-L2:AccountingStandard</para>
+    ///
+    /// labels<para>IFRS</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/AccountingStandardIFRS">https://www.gleif.org/ontology/L2/AccountingStandardIFRS</seealso>
+    let AccountingStandardIFRS =
+        Prefixed_Name(gleif_L2, "AccountingStandardIFRS") |> PrefixedName
 
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindContracts"></see>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments</para>
     /// </summary>
-    let RelationshipValidationDocumentsKindContracts =
-        _prefix "RelationshipValidationDocumentsKindContracts"
-
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindOtherOfficialDocuments"></see>
-    /// </summary>
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKind</para>
+    ///
+    /// labels<para>other official documents</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindOtherOfficialDocuments">https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindOtherOfficialDocuments</seealso>
     let RelationshipValidationDocumentsKindOtherOfficialDocuments =
-        _prefix "RelationshipValidationDocumentsKindOtherOfficialDocuments"
+        Prefixed_Name(gleif_L2, "RelationshipValidationDocumentsKindOtherOfficialDocuments") |> PrefixedName
 
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindRegulatoryFiling"></see>
+    ///   <para>gleif-L2:RelationshipStatusActive</para>
     /// </summary>
-    let RelationshipValidationDocumentsKindRegulatoryFiling =
-        _prefix "RelationshipValidationDocumentsKindRegulatoryFiling"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>gleif-L2:RelationshipStatus</para>
+    ///
+    /// labels<para>active</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RelationshipStatusActive">https://www.gleif.org/ontology/L2/RelationshipStatusActive</seealso>
+    let RelationshipStatusActive =
+        Prefixed_Name(gleif_L2, "RelationshipStatusActive") |> PrefixedName
 
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindSupportingDocuments"></see>
+    ///   <para>gleif-L2:hasRelationshipStatus</para>
     /// </summary>
-    let RelationshipValidationDocumentsKindSupportingDocuments =
-        _prefix "RelationshipValidationDocumentsKindSupportingDocuments"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has relationship status</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/hasRelationshipStatus">https://www.gleif.org/ontology/L2/hasRelationshipStatus</seealso>
+    let hasRelationshipStatus =
+        Prefixed_Name(gleif_L2, "hasRelationshipStatus") |> PrefixedName
 
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RelationshipStatusActive"></see>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKind</para>
     /// </summary>
-    let RelationshipStatusActive = _prefix "RelationshipStatusActive"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RelationshipStatusInactive"></see>
-    /// </summary>
-    let RelationshipStatusInactive = _prefix "RelationshipStatusInactive"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/hasRelationshipStatus"></see>
-    /// </summary>
-    let hasRelationshipStatus = _prefix "hasRelationshipStatus"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RelationshipStatus"></see>
-    /// </summary>
-    let RelationshipStatus = _prefix "RelationshipStatus"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/hasChild"></see>
-    /// </summary>
-    let hasChild = _prefix "hasChild"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/hasParent"></see>
-    /// </summary>
-    let hasParent = _prefix "hasParent"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/hasRelationshipPeriod"></see>
-    /// </summary>
-    let hasRelationshipPeriod = _prefix "hasRelationshipPeriod"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/AccountingConsolidation"></see>
-    /// </summary>
-    let AccountingConsolidation = _prefix "AccountingConsolidation"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/hasAccountingStandard"></see>
-    /// </summary>
-    let hasAccountingStandard = _prefix "hasAccountingStandard"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/AccountingStandard"></see>
-    /// </summary>
-    let AccountingStandard = _prefix "AccountingStandard"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/DirectConsolidation"></see>
-    /// </summary>
-    let DirectConsolidation = _prefix "DirectConsolidation"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/InternationalBranchRelationship"></see>
-    /// </summary>
-    let InternationalBranchRelationship = _prefix "InternationalBranchRelationship"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/LegalEntityRelationshipRecord"></see>
-    /// </summary>
-    let LegalEntityRelationshipRecord = _prefix "LegalEntityRelationshipRecord"
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/hasValidationDocuments"></see>
-    /// </summary>
-    let hasValidationDocuments = _prefix "hasValidationDocuments"
-
-    /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKind"></see>
-    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>relationship validation documents kind</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKind">https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKind</seealso>
     let RelationshipValidationDocumentsKind =
-        _prefix "RelationshipValidationDocumentsKind"
+        Prefixed_Name(gleif_L2, "RelationshipValidationDocumentsKind") |> PrefixedName
 
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/hasDocumentFilingPeriod"></see>
+    ///   <para>gleif-L2:hasDocumentFilingPeriod</para>
     /// </summary>
-    let hasDocumentFilingPeriod = _prefix "hasDocumentFilingPeriod"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has document filing period</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/hasDocumentFilingPeriod">https://www.gleif.org/ontology/L2/hasDocumentFilingPeriod</seealso>
+    let hasDocumentFilingPeriod =
+        Prefixed_Name(gleif_L2, "hasDocumentFilingPeriod") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/hasAccountingPeriod"></see>
+    ///   <para>gleif-L2:hasValidationReference</para>
     /// </summary>
-    let hasAccountingPeriod = _prefix "hasAccountingPeriod"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has validation reference</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/hasValidationReference">https://www.gleif.org/ontology/L2/hasValidationReference</seealso>
+    let hasValidationReference =
+        Prefixed_Name(gleif_L2, "hasValidationReference") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/hasValidationSources"></see>
+    ///   <para>gleif-L2:RegistrationStatusPendingArchival</para>
     /// </summary>
-    let hasValidationSources = _prefix "hasValidationSources"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>gleif-L2:RegistrationStatus</para>
+    ///
+    /// labels<para>pending archival</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RegistrationStatusPendingArchival">https://www.gleif.org/ontology/L2/RegistrationStatusPendingArchival</seealso>
+    let RegistrationStatusPendingArchival =
+        Prefixed_Name(gleif_L2, "RegistrationStatusPendingArchival") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/hasValidationReference"></see>
+    ///   <para>gleif-L2:AccountingStandardUSGAAP</para>
     /// </summary>
-    let hasValidationReference = _prefix "hasValidationReference"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>gleif-L2:AccountingStandard</para>
+    ///
+    /// labels<para>US GAAP</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/AccountingStandardUSGAAP">https://www.gleif.org/ontology/L2/AccountingStandardUSGAAP</seealso>
+    let AccountingStandardUSGAAP =
+        Prefixed_Name(gleif_L2, "AccountingStandardUSGAAP") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatus"></see>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKindContracts</para>
     /// </summary>
-    let RegistrationStatus = _prefix "RegistrationStatus"
+    /// <remarks>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKind</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>contracts</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindContracts">https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindContracts</seealso>
+    let RelationshipValidationDocumentsKindContracts =
+        Prefixed_Name(gleif_L2, "RelationshipValidationDocumentsKindContracts") |> PrefixedName
+
     /// <summary>
-    ///   <see href="https://www.gleif.org/ontology/L2/UltimateConsolidation"></see>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments</para>
     /// </summary>
-    let UltimateConsolidation = _prefix "UltimateConsolidation"
+    /// <remarks>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKind</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>supporting documents</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindSupportingDocuments">https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindSupportingDocuments</seealso>
+    let RelationshipValidationDocumentsKindSupportingDocuments =
+        Prefixed_Name(gleif_L2, "RelationshipValidationDocumentsKindSupportingDocuments") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:hasChild</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///
+    /// labels<para>has child</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/hasChild">https://www.gleif.org/ontology/L2/hasChild</seealso>
+    let hasChild = Prefixed_Name(gleif_L2, "hasChild") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:hasAccountingStandard</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has accounting standard</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/hasAccountingStandard">https://www.gleif.org/ontology/L2/hasAccountingStandard</seealso>
+    let hasAccountingStandard =
+        Prefixed_Name(gleif_L2, "hasAccountingStandard") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:AccountingStandard</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>accounting standard</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/AccountingStandard">https://www.gleif.org/ontology/L2/AccountingStandard</seealso>
+    let AccountingStandard =
+        Prefixed_Name(gleif_L2, "AccountingStandard") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:DirectConsolidation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>direct consolidation</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/DirectConsolidation">https://www.gleif.org/ontology/L2/DirectConsolidation</seealso>
+    let DirectConsolidation =
+        Prefixed_Name(gleif_L2, "DirectConsolidation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:hasValidationDocuments</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has validation documents</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/hasValidationDocuments">https://www.gleif.org/ontology/L2/hasValidationDocuments</seealso>
+    let hasValidationDocuments =
+        Prefixed_Name(gleif_L2, "hasValidationDocuments") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:hasValidationSources</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has validation sources</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/hasValidationSources">https://www.gleif.org/ontology/L2/hasValidationSources</seealso>
+    let hasValidationSources =
+        Prefixed_Name(gleif_L2, "hasValidationSources") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:RegistrationStatus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>relationship registration status</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RegistrationStatus">https://www.gleif.org/ontology/L2/RegistrationStatus</seealso>
+    let RegistrationStatus =
+        Prefixed_Name(gleif_L2, "RegistrationStatus") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:RegistrationStatusDuplicate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>gleif-L2:RegistrationStatus</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>duplicate</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RegistrationStatusDuplicate">https://www.gleif.org/ontology/L2/RegistrationStatusDuplicate</seealso>
+    let RegistrationStatusDuplicate =
+        Prefixed_Name(gleif_L2, "RegistrationStatusDuplicate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:RegistrationStatusPendingTransfer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>gleif-L2:RegistrationStatus</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>pending transfer</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RegistrationStatusPendingTransfer">https://www.gleif.org/ontology/L2/RegistrationStatusPendingTransfer</seealso>
+    let RegistrationStatusPendingTransfer =
+        Prefixed_Name(gleif_L2, "RegistrationStatusPendingTransfer") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:RegistrationStatusRetired</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>gleif-L2:RegistrationStatus</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>retired</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RegistrationStatusRetired">https://www.gleif.org/ontology/L2/RegistrationStatusRetired</seealso>
+    let RegistrationStatusRetired =
+        Prefixed_Name(gleif_L2, "RegistrationStatusRetired") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:AccountingStandardOtherAccountingStandard</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>gleif-L2:AccountingStandard</para>
+    ///
+    /// labels<para>other accounting standard</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/AccountingStandardOtherAccountingStandard">https://www.gleif.org/ontology/L2/AccountingStandardOtherAccountingStandard</seealso>
+    let AccountingStandardOtherAccountingStandard =
+        Prefixed_Name(gleif_L2, "AccountingStandardOtherAccountingStandard") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKindAccountsFiling</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKind</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>accounts filing</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindAccountsFiling">https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindAccountsFiling</seealso>
+    let RelationshipValidationDocumentsKindAccountsFiling =
+        Prefixed_Name(gleif_L2, "RelationshipValidationDocumentsKindAccountsFiling") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>gleif-L2:RelationshipValidationDocumentsKind</para>
+    ///
+    /// labels<para>regulatory filing</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindRegulatoryFiling">https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindRegulatoryFiling</seealso>
+    let RelationshipValidationDocumentsKindRegulatoryFiling =
+        Prefixed_Name(gleif_L2, "RelationshipValidationDocumentsKindRegulatoryFiling") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:RelationshipStatusInactive</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>gleif-L2:RelationshipStatus</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>inactive</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RelationshipStatusInactive">https://www.gleif.org/ontology/L2/RelationshipStatusInactive</seealso>
+    let RelationshipStatusInactive =
+        Prefixed_Name(gleif_L2, "RelationshipStatusInactive") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:RelationshipStatus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>relationship status</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/RelationshipStatus">https://www.gleif.org/ontology/L2/RelationshipStatus</seealso>
+    let RelationshipStatus =
+        Prefixed_Name(gleif_L2, "RelationshipStatus") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:hasParent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///
+    /// labels<para>has parent</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/hasParent">https://www.gleif.org/ontology/L2/hasParent</seealso>
+    let hasParent = Prefixed_Name(gleif_L2, "hasParent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:hasRelationshipPeriod</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has relationship period</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/hasRelationshipPeriod">https://www.gleif.org/ontology/L2/hasRelationshipPeriod</seealso>
+    let hasRelationshipPeriod =
+        Prefixed_Name(gleif_L2, "hasRelationshipPeriod") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>voaf:Vocabulary</para>
+    ///
+    /// labels<para>GLEIF L2 Ontology</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/">https://www.gleif.org/ontology/L2/</seealso>
+    let _prefix_iri = Prefixed_Name(gleif_L2, "") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:AccountingConsolidation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>accounting consolidation</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/AccountingConsolidation">https://www.gleif.org/ontology/L2/AccountingConsolidation</seealso>
+    let AccountingConsolidation =
+        Prefixed_Name(gleif_L2, "AccountingConsolidation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:InternationalBranchRelationship</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>international branch relationship</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/InternationalBranchRelationship">https://www.gleif.org/ontology/L2/InternationalBranchRelationship</seealso>
+    let InternationalBranchRelationship =
+        Prefixed_Name(gleif_L2, "InternationalBranchRelationship") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:LegalEntityRelationshipRecord</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>legal entity relationship record</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/LegalEntityRelationshipRecord">https://www.gleif.org/ontology/L2/LegalEntityRelationshipRecord</seealso>
+    let LegalEntityRelationshipRecord =
+        Prefixed_Name(gleif_L2, "LegalEntityRelationshipRecord") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:hasAccountingPeriod</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has accounting period</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/hasAccountingPeriod">https://www.gleif.org/ontology/L2/hasAccountingPeriod</seealso>
+    let hasAccountingPeriod =
+        Prefixed_Name(gleif_L2, "hasAccountingPeriod") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-L2:UltimateConsolidation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>ultimate consolidation</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/L2/UltimateConsolidation">https://www.gleif.org/ontology/L2/UltimateConsolidation</seealso>
+    let UltimateConsolidation =
+        Prefixed_Name(gleif_L2, "UltimateConsolidation") |> PrefixedName

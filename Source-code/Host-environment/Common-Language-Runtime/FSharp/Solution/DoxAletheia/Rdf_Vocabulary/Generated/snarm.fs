@@ -1,42 +1,91 @@
 namespace http.rdf.myexperiment.org.ontologies.snarm.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module snarm =
-    let _namespace_name = "http://rdf.myexperiment.org/ontologies/snarm/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri snarm |> NamespaceIRI
     /// <summary>
-    /// The Unrestricted Access to an AccessType
-    /// <see href="http://rdf.myexperiment.org/ontologies/snarm/Access"></see></summary>
-    let Access = _prefix "Access"
+    ///   <para>snarm:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para> This ontology is designed for representing access rights within a simple network of associated users/groups.</para>
+    /// labels<para>SNARM Ontology v1.1</para></remarks>
+    /// <seealso href="http://rdf.myexperiment.org/ontologies/snarm/">http://rdf.myexperiment.org/ontologies/snarm/</seealso>
+    let _prefix_iri = Prefixed_Name(snarm, "") |> PrefixedName
     /// <summary>
-    /// The AccessType an Access provides
-    /// <see href="http://rdf.myexperiment.org/ontologies/snarm/has-access-type"></see></summary>
-    let ``has-access-type`` = _prefix "has-access-type"
+    ///   <para>snarm:Accesser</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The Accesser that is getting access</para>
+    /// labels<para>Accesser</para></remarks>
+    /// <seealso href="http://rdf.myexperiment.org/ontologies/snarm/Accesser">http://rdf.myexperiment.org/ontologies/snarm/Accesser</seealso>
+    let Accesser = Prefixed_Name(snarm, "Accesser") |> PrefixedName
     /// <summary>
-    /// The Accesser that is getting access
-    /// <see href="http://rdf.myexperiment.org/ontologies/snarm/Accesser"></see></summary>
-    let Accesser = _prefix "Accesser"
+    ///   <para>snarm:Access</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The Unrestricted Access to an AccessType</para>
+    /// labels<para>Access</para></remarks>
+    /// <seealso href="http://rdf.myexperiment.org/ontologies/snarm/Access">http://rdf.myexperiment.org/ontologies/snarm/Access</seealso>
+    let Access = Prefixed_Name(snarm, "Access") |> PrefixedName
     /// <summary>
-    /// The AccessType that is being giving, e.g. view, edit, download, etc.
-    /// <see href="http://rdf.myexperiment.org/ontologies/snarm/AccessType"></see></summary>
-    let AccessType = _prefix "AccessType"
+    ///   <para>snarm:RestrictedAccess</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The restricted Access to an AccessType</para>
+    /// labels<para>RestrictedAccess</para></remarks>
+    /// <seealso href="http://rdf.myexperiment.org/ontologies/snarm/RestrictedAccess">http://rdf.myexperiment.org/ontologies/snarm/RestrictedAccess</seealso>
+    let RestrictedAccess = Prefixed_Name(snarm, "RestrictedAccess") |> PrefixedName
     /// <summary>
-    /// A Policy for the access rights to an object for users in the social network
-    /// <see href="http://rdf.myexperiment.org/ontologies/snarm/Policy"></see></summary>
-    let Policy = _prefix "Policy"
+    ///   <para>snarm:has-access-type</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The AccessType an Access provides</para>
+    /// labels<para>has-access-type</para></remarks>
+    /// <seealso href="http://rdf.myexperiment.org/ontologies/snarm/has-access-type">http://rdf.myexperiment.org/ontologies/snarm/has-access-type</seealso>
+    let has_access_type = Prefixed_Name(snarm, "has-access-type") |> PrefixedName
     /// <summary>
-    /// The restricted Access to an AccessType
-    /// <see href="http://rdf.myexperiment.org/ontologies/snarm/RestrictedAccess"></see></summary>
-    let RestrictedAccess = _prefix "RestrictedAccess"
+    ///   <para>snarm:AccessType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The AccessType that is being giving, e.g. view, edit, download, etc.</para>
+    /// labels<para>AccessType</para></remarks>
+    /// <seealso href="http://rdf.myexperiment.org/ontologies/snarm/AccessType">http://rdf.myexperiment.org/ontologies/snarm/AccessType</seealso>
+    let AccessType = Prefixed_Name(snarm, "AccessType") |> PrefixedName
     /// <summary>
-    /// An Accesser that a Mode provides access to
-    /// <see href="http://rdf.myexperiment.org/ontologies/snarm/has-accesser"></see></summary>
-    let ``has-accesser`` = _prefix "has-accesser"
+    ///   <para>snarm:Policy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Policy for the access rights to an object for users in the social network</para>
+    /// labels<para>Policy</para></remarks>
+    /// <seealso href="http://rdf.myexperiment.org/ontologies/snarm/Policy">http://rdf.myexperiment.org/ontologies/snarm/Policy</seealso>
+    let Policy = Prefixed_Name(snarm, "Policy") |> PrefixedName
     /// <summary>
-    /// An Access that a Policy provides
-    /// <see href="http://rdf.myexperiment.org/ontologies/snarm/has-access"></see></summary>
-    let ``has-access`` = _prefix "has-access"
+    ///   <para>snarm:has-accesser</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>An Accesser that a Mode provides access to</para>
+    /// labels<para>has-accesser</para></remarks>
+    /// <seealso href="http://rdf.myexperiment.org/ontologies/snarm/has-accesser">http://rdf.myexperiment.org/ontologies/snarm/has-accesser</seealso>
+    let has_accesser = Prefixed_Name(snarm, "has-accesser") |> PrefixedName
+    /// <summary>
+    ///   <para>snarm:has-access</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>An Access that a Policy provides</para>
+    /// labels<para>has-access</para></remarks>
+    /// <seealso href="http://rdf.myexperiment.org/ontologies/snarm/has-access">http://rdf.myexperiment.org/ontologies/snarm/has-access</seealso>
+    let has_access = Prefixed_Name(snarm, "has-access") |> PrefixedName

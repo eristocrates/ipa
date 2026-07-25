@@ -1,122 +1,261 @@
 namespace https.w3id.org.TRO.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module tro =
-    let _namespace_name = "https://w3id.org/TRO#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri tro |> NamespaceIRI
     /// <summary>
-    /// The evidence of a relation. Normally an evidence will be a source of news. This is not legal evidence
-    /// <see href="https://w3id.org/TRO#Evidence"></see></summary>
-    let Evidence = _prefix "Evidence"
-    /// <summary>
-    ///   <see href="https://w3id.org/TRO#url"></see>
+    ///   <para>tro:url</para>
     /// </summary>
-    let url = _prefix "url"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>URL</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#url">https://w3id.org/TRO#url</seealso>
+    let url = Prefixed_Name(tro, "url") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/TRO#cpv_code"></see>
+    ///   <para>tro:profile_url</para>
     /// </summary>
-    let cpv_code = _prefix "cpv_code"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Profile URL</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#profile_url">https://w3id.org/TRO#profile_url</seealso>
+    let profile_url = Prefixed_Name(tro, "profile_url") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/TRO#end_date"></see>
+    ///   <para>tro:Associate</para>
     /// </summary>
-    let end_date = _prefix "end_date"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A person who is connected to another organization in a relationship that is less close or committed than a partnership</para>
+    /// labels<para>Associate</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#Associate">https://w3id.org/TRO#Associate</seealso>
+    let Associate = Prefixed_Name(tro, "Associate") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/TRO#start_date"></see>
+    ///   <para>tro:Director</para>
     /// </summary>
-    let start_date = _prefix "start_date"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The director of an organization</para>
+    /// labels<para>Director</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#Director">https://w3id.org/TRO#Director</seealso>
+    let Director = Prefixed_Name(tro, "Director") |> PrefixedName
     /// <summary>
-    /// The role of a person in a en entity during a given time period, provided in months or years
-    /// <see href="https://w3id.org/TRO#Role"></see></summary>
-    let Role = _prefix "Role"
-    /// <summary>
-    ///   <see href="https://w3id.org/TRO#has_role"></see>
+    ///   <para>tro:Employee</para>
     /// </summary>
-    let has_role = _prefix "has_role"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A person hired by an organization</para>
+    /// labels<para>Employee</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#Employee">https://w3id.org/TRO#Employee</seealso>
+    let Employee = Prefixed_Name(tro, "Employee") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/TRO#profile_url"></see>
+    ///   <para>tro:Member</para>
     /// </summary>
-    let profile_url = _prefix "profile_url"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A person is a member of an organization</para>
+    /// labels<para>Member</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#Member">https://w3id.org/TRO#Member</seealso>
+    let Member = Prefixed_Name(tro, "Member") |> PrefixedName
     /// <summary>
-    /// A person who is connected to another organization in a relationship that is less close or committed than a partnership
-    /// <see href="https://w3id.org/TRO#Associate"></see></summary>
-    let Associate = _prefix "Associate"
-    /// <summary>
-    /// The director of an organization
-    /// <see href="https://w3id.org/TRO#Director"></see></summary>
-    let Director = _prefix "Director"
-    /// <summary>
-    /// A person hired by an organization
-    /// <see href="https://w3id.org/TRO#Employee"></see></summary>
-    let Employee = _prefix "Employee"
-    /// <summary>
-    /// A person within an organization who is responsible for planning, coordinating, and overseeing various activities and resources to achieve specific goals and objectives
-    /// <see href="https://w3id.org/TRO#Manager"></see></summary>
-    let Manager = _prefix "Manager"
-    /// <summary>
-    /// A person is a member of an organization
-    /// <see href="https://w3id.org/TRO#Member"></see></summary>
-    let Member = _prefix "Member"
-    /// <summary>
-    /// In some administrations minor contracts do not have to be justified
-    /// <see href="https://w3id.org/TRO#Minor_contract"></see></summary>
-    let Minor_contract = _prefix "Minor_contract"
-    /// <summary>
-    /// An officer usually belongs to a publica organization
-    /// <see href="https://w3id.org/TRO#Officer"></see></summary>
-    let Officer = _prefix "Officer"
-    /// <summary>
-    /// Data available at an Open Data portal, usually developed by a public administration
-    /// <see href="https://w3id.org/TRO#OpenData"></see></summary>
-    let OpenData = _prefix "OpenData"
-    /// <summary>
-    /// The owner of a company
-    /// <see href="https://w3id.org/TRO#Owner"></see></summary>
-    let Owner = _prefix "Owner"
-    /// <summary>
-    /// The president of an organization
-    /// <see href="https://w3id.org/TRO#President"></see></summary>
-    let President = _prefix "President"
-    /// <summary>
-    /// A public profile in the web (e.g. LinkedIn)
-    /// <see href="https://w3id.org/TRO#PublicProfile"></see></summary>
-    let PublicProfile = _prefix "PublicProfile"
-    /// <summary>
-    ///   <see href="https://w3id.org/TRO#in_entity"></see>
+    ///   <para>tro:Minor_contract</para>
     /// </summary>
-    let in_entity = _prefix "in_entity"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>In some administrations minor contracts do not have to be justified</para>
+    /// labels<para>Kontratu txikia</para><para>Contrato menor</para><para>Minor contract</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#Minor_contract">https://w3id.org/TRO#Minor_contract</seealso>
+    let Minor_contract = Prefixed_Name(tro, "Minor_contract") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/TRO#has_bank_account_in"></see>
+    ///   <para>tro:OpenData</para>
     /// </summary>
-    let has_bank_account_in = _prefix "has_bank_account_in"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Data available at an Open Data portal, usually developed by a public administration</para>
+    /// labels<para>Open data</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#OpenData">https://w3id.org/TRO#OpenData</seealso>
+    let OpenData = Prefixed_Name(tro, "OpenData") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/TRO#pays_to"></see>
+    ///   <para>tro:Owner</para>
     /// </summary>
-    let pays_to = _prefix "pays_to"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The owner of a company</para>
+    /// labels<para>Owner</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#Owner">https://w3id.org/TRO#Owner</seealso>
+    let Owner = Prefixed_Name(tro, "Owner") |> PrefixedName
     /// <summary>
-    /// A company or and individual provides services or products to an institution
-    /// <see href="https://w3id.org/TRO#provider_of"></see></summary>
-    let provider_of = _prefix "provider_of"
-    /// <summary>
-    ///   <see href="https://w3id.org/TRO#registered_in"></see>
+    ///   <para>tro:PublicProfile</para>
     /// </summary>
-    let registered_in = _prefix "registered_in"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A public profile in the web (e.g. LinkedIn)</para>
+    /// labels<para>Public Profile</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#PublicProfile">https://w3id.org/TRO#PublicProfile</seealso>
+    let PublicProfile = Prefixed_Name(tro, "PublicProfile") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/TRO#represents"></see>
+    ///   <para>tro:in_entity</para>
     /// </summary>
-    let represents = _prefix "represents"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>In entity</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#in_entity">https://w3id.org/TRO#in_entity</seealso>
+    let in_entity = Prefixed_Name(tro, "in_entity") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/TRO#sibling"></see>
+    ///   <para>tro:has_bank_account_in</para>
     /// </summary>
-    let sibling = _prefix "sibling"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Has bank account in</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#has_bank_account_in">https://w3id.org/TRO#has_bank_account_in</seealso>
+    let has_bank_account_in = Prefixed_Name(tro, "has_bank_account_in") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/TRO#takes_place_in"></see>
+    ///   <para>tro:pays_to</para>
     /// </summary>
-    let takes_place_in = _prefix "takes_place_in"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Pays to</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#pays_to">https://w3id.org/TRO#pays_to</seealso>
+    let pays_to = Prefixed_Name(tro, "pays_to") |> PrefixedName
     /// <summary>
-    ///   <see href="https://w3id.org/TRO#with_evidence"></see>
+    ///   <para>tro:provider_of</para>
     /// </summary>
-    let with_evidence = _prefix "with_evidence"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A company or and individual provides services or products to an institution</para>
+    /// labels<para>Provider of</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#provider_of">https://w3id.org/TRO#provider_of</seealso>
+    let provider_of = Prefixed_Name(tro, "provider_of") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:represents</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Represents</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#represents">https://w3id.org/TRO#represents</seealso>
+    let represents = Prefixed_Name(tro, "represents") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:sibling</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Sibling</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#sibling">https://w3id.org/TRO#sibling</seealso>
+    let sibling = Prefixed_Name(tro, "sibling") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:with_evidence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>With evidence</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#with_evidence">https://w3id.org/TRO#with_evidence</seealso>
+    let with_evidence = Prefixed_Name(tro, "with_evidence") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:cpv_code</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>CPV code</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#cpv_code">https://w3id.org/TRO#cpv_code</seealso>
+    let cpv_code = Prefixed_Name(tro, "cpv_code") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:end_date</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>End date</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#end_date">https://w3id.org/TRO#end_date</seealso>
+    let end_date = Prefixed_Name(tro, "end_date") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:start_date</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Start date</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#start_date">https://w3id.org/TRO#start_date</seealso>
+    let start_date = Prefixed_Name(tro, "start_date") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:Manager</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A person within an organization who is responsible for planning, coordinating, and overseeing various activities and resources to achieve specific goals and objectives</para>
+    /// labels<para>Manager</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#Manager">https://w3id.org/TRO#Manager</seealso>
+    let Manager = Prefixed_Name(tro, "Manager") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:Officer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An officer usually belongs to a publica organization</para>
+    /// labels<para>Officer</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#Officer">https://w3id.org/TRO#Officer</seealso>
+    let Officer = Prefixed_Name(tro, "Officer") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:President</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The president of an organization</para>
+    /// labels<para>President</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#President">https://w3id.org/TRO#President</seealso>
+    let President = Prefixed_Name(tro, "President") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:registered_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Registered in</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#registered_in">https://w3id.org/TRO#registered_in</seealso>
+    let registered_in = Prefixed_Name(tro, "registered_in") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:takes_place_in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Takes place in</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#takes_place_in">https://w3id.org/TRO#takes_place_in</seealso>
+    let takes_place_in = Prefixed_Name(tro, "takes_place_in") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:Evidence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The evidence of a relation. Normally an evidence will be a source of news. This is not legal evidence</para>
+    /// labels<para>Evidence</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#Evidence">https://w3id.org/TRO#Evidence</seealso>
+    let Evidence = Prefixed_Name(tro, "Evidence") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:Role</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The role of a person in a en entity during a given time period, provided in months or years</para>
+    /// labels<para>Role</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#Role">https://w3id.org/TRO#Role</seealso>
+    let Role = Prefixed_Name(tro, "Role") |> PrefixedName
+    /// <summary>
+    ///   <para>tro:has_role</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Has role</para></remarks>
+    /// <seealso href="https://w3id.org/TRO#has_role">https://w3id.org/TRO#has_role</seealso>
+    let has_role = Prefixed_Name(tro, "has_role") |> PrefixedName

@@ -1,14 +1,14 @@
 namespace http.ns.inria.fr.ludo.v1.gamepresentation.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ludo_gp =
-    let _namespace_name = "http://ns.inria.fr/ludo/v1/gamepresentation#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri ludo_gp |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://ns.inria.fr/ludo/v1/gamepresentation#FrontEndDisplay"></see>
+    ///   <para>ludo-gp:FrontEndDisplay</para>
     /// </summary>
-    let FrontEndDisplay = _prefix "FrontEndDisplay"
+    /// <remarks></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/gamepresentation#FrontEndDisplay">http://ns.inria.fr/ludo/v1/gamepresentation#FrontEndDisplay</seealso>
+    let FrontEndDisplay = Prefixed_Name(ludo_gp, "FrontEndDisplay") |> PrefixedName

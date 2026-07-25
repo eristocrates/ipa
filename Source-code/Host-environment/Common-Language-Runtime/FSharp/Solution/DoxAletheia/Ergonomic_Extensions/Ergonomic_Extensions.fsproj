@@ -12,10 +12,10 @@
 	  <Compile Include="XmlErgonomics.fs" />
 	  
 	  <Compile Include="JsonErgonomics.fs" />
-	  
+	  <Compile Include="PrettierNaming.fs" />
 	  <Compile Include="RdfExtensions.fs" />
 	  
-	  <Compile Include="PrettierNaming.fs" />
+	  
 	  
 	  <Compile Include="IOExtensions.fs" />
 	  

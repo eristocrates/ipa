@@ -1,90 +1,166 @@
 namespace http.www.w3.org.ns.rdfa.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module rdfa =
-    let _namespace_name = "http://www.w3.org/ns/rdfa#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri rdfa |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#DocumentError"></see>
+    ///   <para>rdfa:</para>
     /// </summary>
-    let DocumentError = _prefix "DocumentError"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#">http://www.w3.org/ns/rdfa#</seealso>
+    let _prefix_iri = Prefixed_Name(rdfa, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#Error"></see>
+    ///   <para>rdfa:PGClass</para>
     /// </summary>
-    let Error = _prefix "Error"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#PGClass">http://www.w3.org/ns/rdfa#PGClass</seealso>
+    let PGClass = Prefixed_Name(rdfa, "PGClass") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#PGClass"></see>
+    ///   <para>rdfa:PrefixMapping</para>
     /// </summary>
-    let PGClass = _prefix "PGClass"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#PrefixMapping">http://www.w3.org/ns/rdfa#PrefixMapping</seealso>
+    let PrefixMapping = Prefixed_Name(rdfa, "PrefixMapping") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#Info"></see>
+    ///   <para>rdfa:VocabReferenceError</para>
     /// </summary>
-    let Info = _prefix "Info"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#VocabReferenceError">http://www.w3.org/ns/rdfa#VocabReferenceError</seealso>
+    let VocabReferenceError = Prefixed_Name(rdfa, "VocabReferenceError") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#Pattern"></see>
+    ///   <para>rdfa:prefix</para>
     /// </summary>
-    let Pattern = _prefix "Pattern"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#prefix">http://www.w3.org/ns/rdfa#prefix</seealso>
+    let prefix = Prefixed_Name(rdfa, "prefix") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#PrefixMapping"></see>
+    ///   <para>rdfa:Error</para>
     /// </summary>
-    let PrefixMapping = _prefix "PrefixMapping"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#Error">http://www.w3.org/ns/rdfa#Error</seealso>
+    let Error = Prefixed_Name(rdfa, "Error") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#PrefixOrTermMapping"></see>
+    ///   <para>rdfa:PrefixOrTermMapping</para>
     /// </summary>
-    let PrefixOrTermMapping = _prefix "PrefixOrTermMapping"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#PrefixOrTermMapping">http://www.w3.org/ns/rdfa#PrefixOrTermMapping</seealso>
+    let PrefixOrTermMapping = Prefixed_Name(rdfa, "PrefixOrTermMapping") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#PrefixRedefinition"></see>
+    ///   <para>rdfa:Warning</para>
     /// </summary>
-    let PrefixRedefinition = _prefix "PrefixRedefinition"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#Warning">http://www.w3.org/ns/rdfa#Warning</seealso>
+    let Warning = Prefixed_Name(rdfa, "Warning") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#Warning"></see>
+    ///   <para>rdfa:term</para>
     /// </summary>
-    let Warning = _prefix "Warning"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#term">http://www.w3.org/ns/rdfa#term</seealso>
+    let term = Prefixed_Name(rdfa, "term") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#TermMapping"></see>
+    ///   <para>rdfa:Info</para>
     /// </summary>
-    let TermMapping = _prefix "TermMapping"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#Info">http://www.w3.org/ns/rdfa#Info</seealso>
+    let Info = Prefixed_Name(rdfa, "Info") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#UnresolvedCURIE"></see>
+    ///   <para>rdfa:TermMapping</para>
     /// </summary>
-    let UnresolvedCURIE = _prefix "UnresolvedCURIE"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#TermMapping">http://www.w3.org/ns/rdfa#TermMapping</seealso>
+    let TermMapping = Prefixed_Name(rdfa, "TermMapping") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#UnresolvedTerm"></see>
+    ///   <para>rdfa:UnresolvedTerm</para>
     /// </summary>
-    let UnresolvedTerm = _prefix "UnresolvedTerm"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#UnresolvedTerm">http://www.w3.org/ns/rdfa#UnresolvedTerm</seealso>
+    let UnresolvedTerm = Prefixed_Name(rdfa, "UnresolvedTerm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#VocabReferenceError"></see>
+    ///   <para>rdfa:copy</para>
     /// </summary>
-    let VocabReferenceError = _prefix "VocabReferenceError"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#copy">http://www.w3.org/ns/rdfa#copy</seealso>
+    let copy = Prefixed_Name(rdfa, "copy") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#context"></see>
+    ///   <para>rdfa:vocabulary</para>
     /// </summary>
-    let context = _prefix "context"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#vocabulary">http://www.w3.org/ns/rdfa#vocabulary</seealso>
+    let vocabulary = Prefixed_Name(rdfa, "vocabulary") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#copy"></see>
+    ///   <para>rdfa:DocumentError</para>
     /// </summary>
-    let copy = _prefix "copy"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#DocumentError">http://www.w3.org/ns/rdfa#DocumentError</seealso>
+    let DocumentError = Prefixed_Name(rdfa, "DocumentError") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#prefix"></see>
+    ///   <para>rdfa:Pattern</para>
     /// </summary>
-    let prefix = _prefix "prefix"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#Pattern">http://www.w3.org/ns/rdfa#Pattern</seealso>
+    let Pattern = Prefixed_Name(rdfa, "Pattern") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#term"></see>
+    ///   <para>rdfa:PrefixRedefinition</para>
     /// </summary>
-    let term = _prefix "term"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#PrefixRedefinition">http://www.w3.org/ns/rdfa#PrefixRedefinition</seealso>
+    let PrefixRedefinition = Prefixed_Name(rdfa, "PrefixRedefinition") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#uri"></see>
+    ///   <para>rdfa:UnresolvedCURIE</para>
     /// </summary>
-    let uri = _prefix "uri"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#UnresolvedCURIE">http://www.w3.org/ns/rdfa#UnresolvedCURIE</seealso>
+    let UnresolvedCURIE = Prefixed_Name(rdfa, "UnresolvedCURIE") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#usesVocabulary"></see>
+    ///   <para>rdfa:context</para>
     /// </summary>
-    let usesVocabulary = _prefix "usesVocabulary"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#context">http://www.w3.org/ns/rdfa#context</seealso>
+    let context = Prefixed_Name(rdfa, "context") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/ns/rdfa#vocabulary"></see>
+    ///   <para>rdfa:uri</para>
     /// </summary>
-    let vocabulary = _prefix "vocabulary"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#uri">http://www.w3.org/ns/rdfa#uri</seealso>
+    let uri = Prefixed_Name(rdfa, "uri") |> PrefixedName
+    /// <summary>
+    ///   <para>rdfa:usesVocabulary</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/ns/rdfa#usesVocabulary">http://www.w3.org/ns/rdfa#usesVocabulary</seealso>
+    let usesVocabulary = Prefixed_Name(rdfa, "usesVocabulary") |> PrefixedName

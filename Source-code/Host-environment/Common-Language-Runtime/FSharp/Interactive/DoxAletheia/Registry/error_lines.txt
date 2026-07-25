@@ -1,0 +1,8 @@
+couldn't find prefix id for http://purl.org/cwmo#
+couldn't find prefix id for http://sparql.sstu.ru/speciality/
+xmldoc for iri https://w3id.org/amv#At&TBellLaboratories comments [||] labels [||] failed with '"' is an unexpected token. The expected token is ';'. Line 1, position 57.
+xmldoc for iri http://purl.org/holy/ns#TheHydrogenUtilization&GreenEnergyProject comments [||] labels [|"The Hydrogen Utilization & Green Energy project"|] failed with '"' is an unexpected token. The expected token is ';'. Line 1, position 81.
+couldn't find prefix id for http://purl.org/net/cartcoord#
+couldn't load graph for http://rdfs.co/juso/kr/
+couldn't find prefix id for http://purl.org/net/biol/botany#
+couldn't find prefix id for http://purl.org/net/biol/ns#

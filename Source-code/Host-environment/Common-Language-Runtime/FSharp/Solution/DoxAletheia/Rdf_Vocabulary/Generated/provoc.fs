@@ -1,110 +1,225 @@
 namespace http.ns.inria.fr.provoc.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module provoc =
-    let _namespace_name = "http://ns.inria.fr/provoc#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    let _namespace_iri = Namespace_Iri provoc |> NamespaceIRI
 
     /// <summary>
-    /// This specifies the brand of a range or a product.
-    /// <see href="http://ns.inria.fr/provoc#belongsToBrand"></see></summary>
-    let belongsToBrand = _prefix "belongsToBrand"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/provoc#ProductOrServiceRange"></see>
+    ///   <para>provoc:ProductOrServiceRange</para>
     /// </summary>
-    let ProductOrServiceRange = _prefix "ProductOrServiceRange"
+    /// <remarks></remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#ProductOrServiceRange">http://ns.inria.fr/provoc#ProductOrServiceRange</seealso>
+    let ProductOrServiceRange =
+        Prefixed_Name(provoc, "ProductOrServiceRange") |> PrefixedName
+
     /// <summary>
-    /// This specifies the division that proposes a brand.
-    /// <see href="http://ns.inria.fr/provoc#belongsToDivision"></see></summary>
-    let belongsToDivision = _prefix "belongsToDivision"
-    /// <summary>
-    /// This specifies the group that contains divisions.
-    /// <see href="http://ns.inria.fr/provoc#belongsToGroup"></see></summary>
-    let belongsToGroup = _prefix "belongsToGroup"
-    /// <summary>
-    /// This specifies the package that contains several products,, not neceserraly from the same pv:Range.
-    /// <see href="http://ns.inria.fr/provoc#belongsToPackage"></see></summary>
-    let belongsToPackage = _prefix "belongsToPackage"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/provoc#Package"></see>
+    ///   <para>provoc:belongsToGroup</para>
     /// </summary>
-    let Package = _prefix "Package"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the group that contains divisions.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#belongsToGroup">http://ns.inria.fr/provoc#belongsToGroup</seealso>
+    let belongsToGroup = Prefixed_Name(provoc, "belongsToGroup") |> PrefixedName
     /// <summary>
-    /// This specifies the range of products.
-    /// <see href="http://ns.inria.fr/provoc#belongsToProductOrServiceRange"></see></summary>
-    let belongsToProductOrServiceRange = _prefix "belongsToProductOrServiceRange"
-    /// <summary>
-    /// This specifies the components included in a component.
-    /// <see href="http://ns.inria.fr/provoc#consistsOf"></see></summary>
-    let consistsOf = _prefix "consistsOf"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/provoc#Component"></see>
+    ///   <para>provoc:Component</para>
     /// </summary>
-    let Component = _prefix "Component"
+    /// <remarks></remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#Component">http://ns.inria.fr/provoc#Component</seealso>
+    let Component = Prefixed_Name(provoc, "Component") |> PrefixedName
     /// <summary>
-    /// This specifies the ambassadors of a product, a range of product, a brand, a division, etc...
-    /// <see href="http://ns.inria.fr/provoc#hasAmbassador"></see></summary>
-    let hasAmbassador = _prefix "hasAmbassador"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/provoc#Ambassador"></see>
+    ///   <para>provoc:hasComponent</para>
     /// </summary>
-    let Ambassador = _prefix "Ambassador"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the components included in a product.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasComponent">http://ns.inria.fr/provoc#hasComponent</seealso>
+    let hasComponent = Prefixed_Name(provoc, "hasComponent") |> PrefixedName
     /// <summary>
-    /// This specifies persons who represent a product, a range of product, a brand, a division, etc...
-    /// <see href="http://ns.inria.fr/provoc#hasRepresentative"></see></summary>
-    let hasRepresentative = _prefix "hasRepresentative"
-    /// <summary>
-    /// This specifies the components included in a product.
-    /// <see href="http://ns.inria.fr/provoc#hasComponent"></see></summary>
-    let hasComponent = _prefix "hasComponent"
-    /// <summary>
-    /// This specifies main contributors of the creation of the product.
-    /// <see href="http://ns.inria.fr/provoc#hasCreator"></see></summary>
-    let hasCreator = _prefix "hasCreator"
-    /// <summary>
-    /// This specifies the founder of a group.
-    /// <see href="http://ns.inria.fr/provoc#hasFounder"></see></summary>
-    let hasFounder = _prefix "hasFounder"
-    /// <summary>
-    /// This specifies the creator of a fragrance.
-    /// <see href="http://ns.inria.fr/provoc#hasFragranceCreator"></see></summary>
-    let hasFragranceCreator = _prefix "hasFragranceCreator"
-    /// <summary>
-    /// This specifies the functionalities/roles of a component. For instance "sodium nitrate" is a food preservative.
-    /// <see href="http://ns.inria.fr/provoc#hasFunctionality"></see></summary>
-    let hasFunctionality = _prefix "hasFunctionality"
-    /// <summary>
-    /// This specifies the models who represent a product, a range of product, a brand, a division, etc...
-    /// <see href="http://ns.inria.fr/provoc#hasModel"></see></summary>
-    let hasModel = _prefix "hasModel"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/provoc#Model"></see>
+    ///   <para>provoc:hasCreator</para>
     /// </summary>
-    let Model = _prefix "Model"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies main contributors of the creation of the product.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasCreator">http://ns.inria.fr/provoc#hasCreator</seealso>
+    let hasCreator = Prefixed_Name(provoc, "hasCreator") |> PrefixedName
     /// <summary>
-    /// This specifies the designer of a fragrance.
-    /// <see href="http://ns.inria.fr/provoc#hasPackageDesigner"></see></summary>
-    let hasPackageDesigner = _prefix "hasPackageDesigner"
-    /// <summary>
-    ///   <see href="http://ns.inria.fr/provoc#Designer"></see>
+    ///   <para>provoc:hasModel</para>
     /// </summary>
-    let Designer = _prefix "Designer"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the models who represent a product, a range of product, a brand, a division, etc...</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasModel">http://ns.inria.fr/provoc#hasModel</seealso>
+    let hasModel = Prefixed_Name(provoc, "hasModel") |> PrefixedName
     /// <summary>
-    /// This specifies providers of products incurred by a corporation. for instance Sephora is a provider of L'Oréal.
-    /// <see href="http://ns.inria.fr/provoc#hasProvider"></see></summary>
-    let hasProvider = _prefix "hasProvider"
+    ///   <para>provoc:Model</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#Model">http://ns.inria.fr/provoc#Model</seealso>
+    let Model = Prefixed_Name(provoc, "Model") |> PrefixedName
     /// <summary>
-    /// A product or service may have a target, for example, male or female.
-    /// <see href="http://ns.inria.fr/provoc#hasTarget"></see></summary>
-    let hasTarget = _prefix "hasTarget"
+    ///   <para>provoc:hasVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A product or service may have different versions.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasVersion">http://ns.inria.fr/provoc#hasVersion</seealso>
+    let hasVersion = Prefixed_Name(provoc, "hasVersion") |> PrefixedName
     /// <summary>
-    /// A product or service may have different versions.
-    /// <see href="http://ns.inria.fr/provoc#hasVersion"></see></summary>
-    let hasVersion = _prefix "hasVersion"
+    ///   <para>provoc:healthImpact</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A component/ingredient of a product may have an impact according to health.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#healthImpact">http://ns.inria.fr/provoc#healthImpact</seealso>
+    let healthImpact = Prefixed_Name(provoc, "healthImpact") |> PrefixedName
     /// <summary>
-    /// A component/ingredient of a product may have an impact according to health.
-    /// <see href="http://ns.inria.fr/provoc#healthImpact"></see></summary>
-    let healthImpact = _prefix "healthImpact"
+    ///   <para>provoc:belongsToBrand</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the brand of a range or a product.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#belongsToBrand">http://ns.inria.fr/provoc#belongsToBrand</seealso>
+    let belongsToBrand = Prefixed_Name(provoc, "belongsToBrand") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:belongsToDivision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the division that proposes a brand.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#belongsToDivision">http://ns.inria.fr/provoc#belongsToDivision</seealso>
+    let belongsToDivision = Prefixed_Name(provoc, "belongsToDivision") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:belongsToPackage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the package that contains several products,, not neceserraly from the same pv:Range.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#belongsToPackage">http://ns.inria.fr/provoc#belongsToPackage</seealso>
+    let belongsToPackage = Prefixed_Name(provoc, "belongsToPackage") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:Package</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#Package">http://ns.inria.fr/provoc#Package</seealso>
+    let Package = Prefixed_Name(provoc, "Package") |> PrefixedName
+
+    /// <summary>
+    ///   <para>provoc:belongsToProductOrServiceRange</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the range of products.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#belongsToProductOrServiceRange">http://ns.inria.fr/provoc#belongsToProductOrServiceRange</seealso>
+    let belongsToProductOrServiceRange =
+        Prefixed_Name(provoc, "belongsToProductOrServiceRange") |> PrefixedName
+
+    /// <summary>
+    ///   <para>provoc:consistsOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the components included in a component.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#consistsOf">http://ns.inria.fr/provoc#consistsOf</seealso>
+    let consistsOf = Prefixed_Name(provoc, "consistsOf") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:hasAmbassador</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the ambassadors of a product, a range of product, a brand, a division, etc...</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasAmbassador">http://ns.inria.fr/provoc#hasAmbassador</seealso>
+    let hasAmbassador = Prefixed_Name(provoc, "hasAmbassador") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:Ambassador</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#Ambassador">http://ns.inria.fr/provoc#Ambassador</seealso>
+    let Ambassador = Prefixed_Name(provoc, "Ambassador") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:hasRepresentative</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies persons who represent a product, a range of product, a brand, a division, etc...</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasRepresentative">http://ns.inria.fr/provoc#hasRepresentative</seealso>
+    let hasRepresentative = Prefixed_Name(provoc, "hasRepresentative") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:hasFounder</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the founder of a group.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasFounder">http://ns.inria.fr/provoc#hasFounder</seealso>
+    let hasFounder = Prefixed_Name(provoc, "hasFounder") |> PrefixedName
+
+    /// <summary>
+    ///   <para>provoc:hasFragranceCreator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the creator of a fragrance.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasFragranceCreator">http://ns.inria.fr/provoc#hasFragranceCreator</seealso>
+    let hasFragranceCreator =
+        Prefixed_Name(provoc, "hasFragranceCreator") |> PrefixedName
+
+    /// <summary>
+    ///   <para>provoc:hasFunctionality</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This specifies the functionalities/roles of a component. For instance "sodium nitrate" is a food preservative.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasFunctionality">http://ns.inria.fr/provoc#hasFunctionality</seealso>
+    let hasFunctionality = Prefixed_Name(provoc, "hasFunctionality") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:hasPackageDesigner</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies the designer of a fragrance.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasPackageDesigner">http://ns.inria.fr/provoc#hasPackageDesigner</seealso>
+    let hasPackageDesigner = Prefixed_Name(provoc, "hasPackageDesigner") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:Designer</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#Designer">http://ns.inria.fr/provoc#Designer</seealso>
+    let Designer = Prefixed_Name(provoc, "Designer") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:hasProvider</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This specifies providers of products incurred by a corporation. for instance Sephora is a provider of L'Oréal.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasProvider">http://ns.inria.fr/provoc#hasProvider</seealso>
+    let hasProvider = Prefixed_Name(provoc, "hasProvider") |> PrefixedName
+    /// <summary>
+    ///   <para>provoc:hasTarget</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Un produit ou service peut avoir une cible, par exemple féminine ou masculine.</para>
+    ///   <para>A product or service may have a target, for example, male or female.</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/provoc#hasTarget">http://ns.inria.fr/provoc#hasTarget</seealso>
+    let hasTarget = Prefixed_Name(provoc, "hasTarget") |> PrefixedName

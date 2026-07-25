@@ -1,50 +1,107 @@
 namespace http.purl.org.voc.summa.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module summa =
-    let _namespace_name = "http://purl.org/voc/summa/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri summa |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://purl.org/voc/summa/Summary"></see>
+    ///   <para>summa:</para>
     /// </summary>
-    let Summary = _prefix "Summary"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///
+    /// labels<para>summa</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/">http://purl.org/voc/summa/</seealso>
+    let _prefix_iri = Prefixed_Name(summa, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/voc/summa/SummaryGroup"></see>
+    ///   <para>summa:SummaryGroup</para>
     /// </summary>
-    let SummaryGroup = _prefix "SummaryGroup"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>summary group</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/SummaryGroup">http://purl.org/voc/summa/SummaryGroup</seealso>
+    let SummaryGroup = Prefixed_Name(summa, "SummaryGroup") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/voc/summa/entity"></see>
+    ///   <para>summa:fixedProperty</para>
     /// </summary>
-    let entity = _prefix "entity"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>fixed property</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/fixedProperty">http://purl.org/voc/summa/fixedProperty</seealso>
+    let fixedProperty = Prefixed_Name(summa, "fixedProperty") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/voc/summa/fixedProperty"></see>
+    ///   <para>summa:language</para>
     /// </summary>
-    let fixedProperty = _prefix "fixedProperty"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>langauge</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/language">http://purl.org/voc/summa/language</seealso>
+    let language = Prefixed_Name(summa, "language") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/voc/summa/group"></see>
+    ///   <para>summa:statement</para>
     /// </summary>
-    let group = _prefix "group"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>statement</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/statement">http://purl.org/voc/summa/statement</seealso>
+    let statement = Prefixed_Name(summa, "statement") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/voc/summa/language"></see>
+    ///   <para>summa:entity</para>
     /// </summary>
-    let language = _prefix "language"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>entity</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/entity">http://purl.org/voc/summa/entity</seealso>
+    let entity = Prefixed_Name(summa, "entity") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/voc/summa/maxHops"></see>
+    ///   <para>summa:topK</para>
     /// </summary>
-    let maxHops = _prefix "maxHops"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>top k</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/topK">http://purl.org/voc/summa/topK</seealso>
+    let topK = Prefixed_Name(summa, "topK") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/voc/summa/path"></see>
+    ///   <para>summa:path</para>
     /// </summary>
-    let path = _prefix "path"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>path</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/path">http://purl.org/voc/summa/path</seealso>
+    let path = Prefixed_Name(summa, "path") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/voc/summa/statement"></see>
+    ///   <para>summa:Summary</para>
     /// </summary>
-    let statement = _prefix "statement"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>summary</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/Summary">http://purl.org/voc/summa/Summary</seealso>
+    let Summary = Prefixed_Name(summa, "Summary") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/voc/summa/topK"></see>
+    ///   <para>summa:group</para>
     /// </summary>
-    let topK = _prefix "topK"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>group</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/group">http://purl.org/voc/summa/group</seealso>
+    let group = Prefixed_Name(summa, "group") |> PrefixedName
+    /// <summary>
+    ///   <para>summa:maxHops</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>maximum number of hops</para></remarks>
+    /// <seealso href="http://purl.org/voc/summa/maxHops">http://purl.org/voc/summa/maxHops</seealso>
+    let maxHops = Prefixed_Name(summa, "maxHops") |> PrefixedName

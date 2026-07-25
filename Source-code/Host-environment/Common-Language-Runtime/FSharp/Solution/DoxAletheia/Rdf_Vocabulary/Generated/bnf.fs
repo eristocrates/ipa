@@ -1,72 +1,111 @@
 namespace http.www.w3.org._2000._10.swap.grammar.bnf.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module bnf =
-    let _namespace_name = "http://www.w3.org/2000/10/swap/grammar/bnf#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri bnf |> NamespaceIRI
     /// <summary>
-    /// A terminal, aka atomic, production,
-    /// 	defined as string or regexp
-    /// <see href="http://www.w3.org/2000/10/swap/grammar/bnf#Token"></see></summary>
-    let Token = _prefix "Token"
-    /// <summary>
-    ///   <see href="http://www.w3.org/2000/10/swap/grammar/bnf#Production"></see>
+    ///   <para>bnf:Token</para>
     /// </summary>
-    let Production = _prefix "Production"
+    /// <remarks>
+    ///   <para>A terminal, aka atomic, production,
+    /// 	defined as string or regexp</para>
+    /// labels<para>token</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#Token">http://www.w3.org/2000/10/swap/grammar/bnf#Token</seealso>
+    let Token = Prefixed_Name(bnf, "Token") |> PrefixedName
     /// <summary>
-    /// The production can only start with the given
+    ///   <para>bnf:String</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#String">http://www.w3.org/2000/10/swap/grammar/bnf#String</seealso>
+    let String = Prefixed_Name(bnf, "String") |> PrefixedName
+    /// <summary>
+    ///   <para>bnf:RegularExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#RegularExpression">http://www.w3.org/2000/10/swap/grammar/bnf#RegularExpression</seealso>
+    let RegularExpression = Prefixed_Name(bnf, "RegularExpression") |> PrefixedName
+    /// <summary>
+    ///   <para>bnf:mustBe</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#mustBe">http://www.w3.org/2000/10/swap/grammar/bnf#mustBe</seealso>
+    let mustBe = Prefixed_Name(bnf, "mustBe") |> PrefixedName
+    /// <summary>
+    ///   <para>bnf:zeroOrMore</para>
+    /// </summary>
+    /// <remarks>
+    ///
+    /// labels<para>zero or more</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#zeroOrMore">http://www.w3.org/2000/10/swap/grammar/bnf#zeroOrMore</seealso>
+    let zeroOrMore = Prefixed_Name(bnf, "zeroOrMore") |> PrefixedName
+    /// <summary>
+    ///   <para>bnf:Term</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#Term">http://www.w3.org/2000/10/swap/grammar/bnf#Term</seealso>
+    let Term = Prefixed_Name(bnf, "Term") |> PrefixedName
+    /// <summary>
+    ///   <para>bnf:Production</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#Production">http://www.w3.org/2000/10/swap/grammar/bnf#Production</seealso>
+    let Production = Prefixed_Name(bnf, "Production") |> PrefixedName
+    /// <summary>
+    ///   <para>bnf:matches</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The given token is defined by the
+    /// 		regular expression which a token must match</para>
+    /// labels<para>matches</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#matches">http://www.w3.org/2000/10/swap/grammar/bnf#matches</seealso>
+    let matches = Prefixed_Name(bnf, "matches") |> PrefixedName
+    /// <summary>
+    ///   <para>bnf:canStartWith</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The production can only start with the given
     /// 		representative character. In the case that a token starts
     /// 		with always the same character, that is the one given.
     /// 		In th eevent that it can start with alpha character, 'a'
     /// 		is given; if it can start with a numeric, '0' is given
     /// 		as the value for this predicate.  This predicate is used
-    /// 		only when a predictive parser is possible and desired.
-    /// <see href="http://www.w3.org/2000/10/swap/grammar/bnf#canStartWith"></see></summary>
-    let canStartWith = _prefix "canStartWith"
-    /// <summary>
-    ///   <see href="http://www.w3.org/2000/10/swap/grammar/bnf#String"></see>
-    /// </summary>
-    let String = _prefix "String"
+    /// 		only when a predictive parser is possible and desired.</para>
+    /// labels<para>can start with</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#canStartWith">http://www.w3.org/2000/10/swap/grammar/bnf#canStartWith</seealso>
+    let canStartWith = Prefixed_Name(bnf, "canStartWith") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://www.w3.org/2000/10/swap/grammar/bnf#commaSeparatedPeriodTerminatedListOf"></see>
+    ///   <para>bnf:commaSeparatedPeriodTerminatedListOf</para>
     /// </summary>
+    /// <remarks>
+    ///
+    /// labels<para>comma-separated period-terminated list of</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#commaSeparatedPeriodTerminatedListOf">http://www.w3.org/2000/10/swap/grammar/bnf#commaSeparatedPeriodTerminatedListOf</seealso>
     let commaSeparatedPeriodTerminatedListOf =
-        _prefix "commaSeparatedPeriodTerminatedListOf"
+        Prefixed_Name(bnf, "commaSeparatedPeriodTerminatedListOf") |> PrefixedName
 
     /// <summary>
-    /// The given token is defined by the
-    /// 		regular expression which a token must match
-    /// <see href="http://www.w3.org/2000/10/swap/grammar/bnf#matches"></see></summary>
-    let matches = _prefix "matches"
-    /// <summary>
-    ///   <see href="http://www.w3.org/2000/10/swap/grammar/bnf#RegularExpression"></see>
+    ///   <para>bnf:mustBeOneSequence</para>
     /// </summary>
-    let RegularExpression = _prefix "RegularExpression"
-    /// <summary>
-    ///   <see href="http://www.w3.org/2000/10/swap/grammar/bnf#mustBe"></see>
-    /// </summary>
-    let mustBe = _prefix "mustBe"
-    /// <summary>
-    /// This is the core property you need to define a BNF production.
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>This is the core property you need to define a BNF production.
     /// It defines the list of the only sequences to which a given
     /// term may expand.  Each sequence is just a list of other productions in order.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/grammar/bnf#mustBeOneSequence"></see></summary>
-    let mustBeOneSequence = _prefix "mustBeOneSequence"
+    /// </para>
+    /// labels<para>productions</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#mustBeOneSequence">http://www.w3.org/2000/10/swap/grammar/bnf#mustBeOneSequence</seealso>
+    let mustBeOneSequence = Prefixed_Name(bnf, "mustBeOneSequence") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://www.w3.org/2000/10/swap/grammar/bnf#ListOfSequencesOfProductions"></see>
+    ///   <para>bnf:ListOfSequencesOfProductions</para>
     /// </summary>
-    let ListOfSequencesOfProductions = _prefix "ListOfSequencesOfProductions"
-    /// <summary>
-    ///   <see href="http://www.w3.org/2000/10/swap/grammar/bnf#zeroOrMore"></see>
-    /// </summary>
-    let zeroOrMore = _prefix "zeroOrMore"
-    /// <summary>
-    ///   <see href="http://www.w3.org/2000/10/swap/grammar/bnf#Term"></see>
-    /// </summary>
-    let Term = _prefix "Term"
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#ListOfSequencesOfProductions">http://www.w3.org/2000/10/swap/grammar/bnf#ListOfSequencesOfProductions</seealso>
+    let ListOfSequencesOfProductions =
+        Prefixed_Name(bnf, "ListOfSequencesOfProductions") |> PrefixedName

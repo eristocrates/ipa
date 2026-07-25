@@ -1,38 +1,58 @@
 namespace http.www.w3.org._2000._10.swap.list.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module list =
-    let _namespace_name = "http://www.w3.org/2000/10/swap/list#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri list |> NamespaceIRI
     /// <summary>
-    ///
+    ///   <para>list:in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>
+    /// Iff the object is a list and the subject is in that list, then this is true.
+    /// </para>
+    /// labels<para>in</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/list#in">http://www.w3.org/2000/10/swap/list#in</seealso>
+    let in_ = Prefixed_Name(list, "in") |> PrefixedName
+    /// <summary>
+    ///   <para>list:last</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>
+    /// Iff the suject is a list and the obbject is the last thing that list, then this is true.
+    /// The object can be calculated as a function of the list.
+    /// </para>
+    /// labels<para>in</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/list#last">http://www.w3.org/2000/10/swap/list#last</seealso>
+    let last = Prefixed_Name(list, "last") |> PrefixedName
+    /// <summary>
+    ///   <para>list:append</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>
     /// Iff the subject is a list of lists and the concatenation of all those lists
     /// is the object, then this is true.
     /// eg  ( (1 2) (3 4) ) list:append (1 2 3 4).
     /// The object can be calculated as a function of the subject.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/list#append"></see></summary>
-    let append = _prefix "append"
+    /// </para>
+    /// labels<para>concatenation</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/list#append">http://www.w3.org/2000/10/swap/list#append</seealso>
+    let append = Prefixed_Name(list, "append") |> PrefixedName
     /// <summary>
-    ///
-    /// Iff the object is a list and the subject is in that list, then this is true.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/list#in"></see></summary>
-    let in_ = _prefix "in"
-    /// <summary>
-    ///
-    /// Iff the suject is a list and the obbject is the last thing that list, then this is true.
-    /// The object can be calculated as a function of the list.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/list#last"></see></summary>
-    let last = _prefix "last"
-    /// <summary>
-    ///
+    ///   <para>list:member</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>
     /// Iff the subject is a list and the obbject is in that list, then this is true.
-    ///
-    /// <see href="http://www.w3.org/2000/10/swap/list#member"></see></summary>
-    let member_ = _prefix "member"
+    /// </para>
+    /// labels<para>member</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/list#member">http://www.w3.org/2000/10/swap/list#member</seealso>
+    let member_ = Prefixed_Name(list, "member") |> PrefixedName

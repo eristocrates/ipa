@@ -1,142 +1,329 @@
 namespace https.saref.etsi.org.saref4city.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module s4city =
-    let _namespace_name = "https://saref.etsi.org/saref4city/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri s4city |> NamespaceIRI
     /// <summary>
-    /// has key performance indicator
-    /// <see href="https://saref.etsi.org/saref4city/hasKPI"></see></summary>
-    let hasKPI = _prefix "hasKPI"
-    /// <summary>
-    /// A Key Performance Indicator (KPI) is a type of performance measurement. KPIs evaluate the success of an organization or of a particular activity in which it engages. (Definition taken from FIWARE)
-    /// <see href="https://saref.etsi.org/saref4city/KeyPerformanceIndicator"></see></summary>
-    let KeyPerformanceIndicator = _prefix "KeyPerformanceIndicator"
-    /// <summary>
-    ///   <see href="https://saref.etsi.org/saref4city/v1.1.2/"></see>
+    ///   <para>s4city:Agent</para>
     /// </summary>
-    let ``v1.1.2/`` = _prefix "v1.1.2/"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An agent making an action in the context of a city. An agent could be a person, software, etc.</para>
+    /// labels<para>Agent</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/Agent">https://saref.etsi.org/saref4city/Agent</seealso>
+    let Agent = Prefixed_Name(s4city, "Agent") |> PrefixedName
     /// <summary>
-    /// An administrative division, unit, entity, area or region, also referred to as a subnational entity, constituent unit, or country subdivision, is a portion of a country or other region delineated for the purpose of administration. (https://en.wikipedia.org/wiki/Administrative_division)
-    /// <see href="https://saref.etsi.org/saref4city/AdministrativeArea"></see></summary>
-    let AdministrativeArea = _prefix "AdministrativeArea"
+    ///   <para>s4city:Country</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A country is a region that is identified as a distinct national entity in political geography. (https://en.wikipedia.org/wiki/Country)</para>
+    /// labels<para>Country</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/Country">https://saref.etsi.org/saref4city/Country</seealso>
+    let Country = Prefixed_Name(s4city, "Country") |> PrefixedName
     /// <summary>
-    /// An agent making an action in the context of a city. An agent could be a person, software, etc.
-    /// <see href="https://saref.etsi.org/saref4city/Agent"></see></summary>
-    let Agent = _prefix "Agent"
+    ///   <para>s4city:hasAccesibility</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>has accesibility</para>
+    /// labels<para>has accesibility</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/hasAccesibility">https://saref.etsi.org/saref4city/hasAccesibility</seealso>
+    let hasAccesibility = Prefixed_Name(s4city, "hasAccesibility") |> PrefixedName
     /// <summary>
-    /// Public service is a service which is provided by government either directly (through the public sector) or by financing provision of services. (Definition taken from Wikipedia)
-    /// <see href="https://saref.etsi.org/saref4city/PublicService"></see></summary>
-    let PublicService = _prefix "PublicService"
+    ///   <para>s4city:isOrganizedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>is organized by</para>
+    /// labels<para>is organized by</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/isOrganizedBy">https://saref.etsi.org/saref4city/isOrganizedBy</seealso>
+    let isOrganizedBy = Prefixed_Name(s4city, "isOrganizedBy") |> PrefixedName
+
     /// <summary>
-    /// A city is a large human settlement. A city is distinguished from other human settlements by its relatively great size, but also by its functions and its special symbolic status, which may be conferred by a central authority. (https://en.wikipedia.org/wiki/City)
-    /// <see href="https://saref.etsi.org/saref4city/City"></see></summary>
-    let City = _prefix "City"
+    ///   <para>s4city:hasCalculationPeriod</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>has calculation period</para>
+    /// labels<para>has calculation period</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/hasCalculationPeriod">https://saref.etsi.org/saref4city/hasCalculationPeriod</seealso>
+    let hasCalculationPeriod =
+        Prefixed_Name(s4city, "hasCalculationPeriod") |> PrefixedName
+
     /// <summary>
-    /// Generic class for describing city objects.
-    /// <see href="https://saref.etsi.org/saref4city/CityObject"></see></summary>
-    let CityObject = _prefix "CityObject"
+    ///   <para>s4city:isKPIOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>is key performance indicator of</para>
+    /// labels<para>is key performance indicator of</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/isKPIOf">https://saref.etsi.org/saref4city/isKPIOf</seealso>
+    let isKPIOf = Prefixed_Name(s4city, "isKPIOf") |> PrefixedName
+
     /// <summary>
-    /// A country is a region that is identified as a distinct national entity in political geography. (https://en.wikipedia.org/wiki/Country)
-    /// <see href="https://saref.etsi.org/saref4city/Country"></see></summary>
-    let Country = _prefix "Country"
+    ///   <para>s4city:KeyPerformanceIndicatorAssessment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Key Performance Indicator assessment represents the assessment of a KPI calculated by a given agent in a given time.</para>
+    /// labels<para>Key performance indicator assessment</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/KeyPerformanceIndicatorAssessment">https://saref.etsi.org/saref4city/KeyPerformanceIndicatorAssessment</seealso>
+    let KeyPerformanceIndicatorAssessment =
+        Prefixed_Name(s4city, "KeyPerformanceIndicatorAssessment") |> PrefixedName
+
     /// <summary>
-    /// A district is a type of administrative division that, in some countries, is managed by local government. Across the world, areas known as "districts" vary greatly in size, spanning regions or counties, several municipalities, subdivisions of municipalities, school district, or political district. (https://en.wikipedia.org/wiki/District)
-    /// <see href="https://saref.etsi.org/saref4city/District"></see></summary>
-    let District = _prefix "District"
+    ///   <para>s4city:assesses</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>assesses</para>
+    /// labels<para>assesses</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/assesses">https://saref.etsi.org/saref4city/assesses</seealso>
+    let assesses = Prefixed_Name(s4city, "assesses") |> PrefixedName
     /// <summary>
-    /// Temporary and scheduled event, like a festival or competition. (Definition taken from Wikidata)
-    /// <see href="https://saref.etsi.org/saref4city/Event"></see></summary>
-    let Event = _prefix "Event"
+    ///   <para>s4city:quantifiesKPI</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>quantifies KPI</para>
+    /// labels<para>quantifies KPI</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/quantifiesKPI">https://saref.etsi.org/saref4city/quantifiesKPI</seealso>
+    let quantifiesKPI = Prefixed_Name(s4city, "quantifiesKPI") |> PrefixedName
     /// <summary>
-    /// has accesibility
-    /// <see href="https://saref.etsi.org/saref4city/hasAccesibility"></see></summary>
-    let hasAccesibility = _prefix "hasAccesibility"
+    ///   <para>s4city:involvesFacility</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>involves facility</para>
+    /// labels<para>involves facility</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/involvesFacility">https://saref.etsi.org/saref4city/involvesFacility</seealso>
+    let involvesFacility = Prefixed_Name(s4city, "involvesFacility") |> PrefixedName
+
     /// <summary>
-    /// is organized by
-    /// <see href="https://saref.etsi.org/saref4city/isOrganizedBy"></see></summary>
-    let isOrganizedBy = _prefix "isOrganizedBy"
+    ///   <para>s4city:isAvailableInLanguage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>is available in language</para>
+    /// labels<para>is available in language</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/isAvailableInLanguage">https://saref.etsi.org/saref4city/isAvailableInLanguage</seealso>
+    let isAvailableInLanguage =
+        Prefixed_Name(s4city, "isAvailableInLanguage") |> PrefixedName
+
     /// <summary>
-    /// is subevent of
-    /// <see href="https://saref.etsi.org/saref4city/isSubEventOf"></see></summary>
-    let isSubEventOf = _prefix "isSubEventOf"
+    ///   <para>s4city:refersToFeature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Relation between a KPI assessment and the geographical feature it refers to</para>
+    /// labels<para>refers to feature</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/refersToFeature">https://saref.etsi.org/saref4city/refersToFeature</seealso>
+    let refersToFeature = Prefixed_Name(s4city, "refersToFeature") |> PrefixedName
     /// <summary>
-    /// takes place at facility
-    /// <see href="https://saref.etsi.org/saref4city/takesPlaceAtFacility"></see></summary>
-    let takesPlaceAtFacility = _prefix "takesPlaceAtFacility"
+    ///   <para>s4city:AdministrativeArea</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An administrative division, unit, entity, area or region, also referred to as a subnational entity, constituent unit, or country subdivision, is a portion of a country or other region delineated for the purpose of administration. (https://en.wikipedia.org/wiki/Administrative_division)</para>
+    /// labels<para>Administrative area</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/AdministrativeArea">https://saref.etsi.org/saref4city/AdministrativeArea</seealso>
+    let AdministrativeArea = Prefixed_Name(s4city, "AdministrativeArea") |> PrefixedName
     /// <summary>
-    /// A place, amenity, or piece of equipment provided for a particular purpose. (Definition taken from https://en.oxforddictionaries.com/definition/facility)
-    /// <see href="https://saref.etsi.org/saref4city/Facility"></see></summary>
-    let Facility = _prefix "Facility"
+    ///   <para>s4city:hasKPI</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>has key performance indicator</para>
+    /// labels<para>has key performance indicator</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/hasKPI">https://saref.etsi.org/saref4city/hasKPI</seealso>
+    let hasKPI = Prefixed_Name(s4city, "hasKPI") |> PrefixedName
+
     /// <summary>
-    /// takes place at time
-    /// <see href="https://saref.etsi.org/saref4city/takesPlaceAtTime"></see></summary>
-    let takesPlaceAtTime = _prefix "takesPlaceAtTime"
+    ///   <para>s4city:KeyPerformanceIndicator</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Key Performance Indicator (KPI) is a type of performance measurement. KPIs evaluate the success of an organization or of a particular activity in which it engages. (Definition taken from FIWARE)</para>
+    /// labels<para>Key Performance Indicator</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/KeyPerformanceIndicator">https://saref.etsi.org/saref4city/KeyPerformanceIndicator</seealso>
+    let KeyPerformanceIndicator =
+        Prefixed_Name(s4city, "KeyPerformanceIndicator") |> PrefixedName
+
     /// <summary>
-    /// has calculation period
-    /// <see href="https://saref.etsi.org/saref4city/hasCalculationPeriod"></see></summary>
-    let hasCalculationPeriod = _prefix "hasCalculationPeriod"
+    ///   <para>s4city:hasExpirationDate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>has expiration date</para>
+    /// labels<para>has expiration date</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/hasExpirationDate">https://saref.etsi.org/saref4city/hasExpirationDate</seealso>
+    let hasExpirationDate = Prefixed_Name(s4city, "hasExpirationDate") |> PrefixedName
     /// <summary>
-    /// is key performance indicator of
-    /// <see href="https://saref.etsi.org/saref4city/isKPIOf"></see></summary>
-    let isKPIOf = _prefix "isKPIOf"
+    ///   <para>s4city:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>Information about changes compared to version 1.1.1:
+    ///  - Updated namespaces for compatibility with SAREF v3.</para>
+    /// </remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/">https://saref.etsi.org/saref4city/</seealso>
+    let _prefix_iri = Prefixed_Name(s4city, "") |> PrefixedName
     /// <summary>
-    /// A Key Performance Indicator assessment represents the assessment of a KPI calculated by a given agent in a given time.
-    /// <see href="https://saref.etsi.org/saref4city/KeyPerformanceIndicatorAssessment"></see></summary>
-    let KeyPerformanceIndicatorAssessment = _prefix "KeyPerformanceIndicatorAssessment"
+    ///   <para>s4city:v1.1.2/</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/v1.1.2/">https://saref.etsi.org/saref4city/v1.1.2/</seealso>
+    let ``v1.1.2/`` = Prefixed_Name(s4city, "v1.1.2/") |> PrefixedName
     /// <summary>
-    /// has last update date
-    /// <see href="https://saref.etsi.org/saref4city/hasLastUpdateDate"></see></summary>
-    let hasLastUpdateDate = _prefix "hasLastUpdateDate"
+    ///   <para>s4city:PublicService</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Public service is a service which is provided by government either directly (through the public sector) or by financing provision of services. (Definition taken from Wikipedia)</para>
+    /// labels<para>Public service</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/PublicService">https://saref.etsi.org/saref4city/PublicService</seealso>
+    let PublicService = Prefixed_Name(s4city, "PublicService") |> PrefixedName
     /// <summary>
-    /// has creation date
-    /// <see href="https://saref.etsi.org/saref4city/hasCreationDate"></see></summary>
-    let hasCreationDate = _prefix "hasCreationDate"
+    ///   <para>s4city:City</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A city is a large human settlement. A city is distinguished from other human settlements by its relatively great size, but also by its functions and its special symbolic status, which may be conferred by a central authority. (https://en.wikipedia.org/wiki/City)</para>
+    /// labels<para>City</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/City">https://saref.etsi.org/saref4city/City</seealso>
+    let City = Prefixed_Name(s4city, "City") |> PrefixedName
     /// <summary>
-    /// is derived from
-    /// <see href="https://saref.etsi.org/saref4city/isDerivedFrom"></see></summary>
-    let isDerivedFrom = _prefix "isDerivedFrom"
+    ///   <para>s4city:CityObject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Generic class for describing city objects.</para>
+    /// labels<para>City object</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/CityObject">https://saref.etsi.org/saref4city/CityObject</seealso>
+    let CityObject = Prefixed_Name(s4city, "CityObject") |> PrefixedName
     /// <summary>
-    /// assesses
-    /// <see href="https://saref.etsi.org/saref4city/assesses"></see></summary>
-    let assesses = _prefix "assesses"
+    ///   <para>s4city:District</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A district is a type of administrative division that, in some countries, is managed by local government. Across the world, areas known as "districts" vary greatly in size, spanning regions or counties, several municipalities, subdivisions of municipalities, school district, or political district. (https://en.wikipedia.org/wiki/District)</para>
+    /// labels<para>District</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/District">https://saref.etsi.org/saref4city/District</seealso>
+    let District = Prefixed_Name(s4city, "District") |> PrefixedName
     /// <summary>
-    /// quantifies KPI
-    /// <see href="https://saref.etsi.org/saref4city/quantifiesKPI"></see></summary>
-    let quantifiesKPI = _prefix "quantifiesKPI"
+    ///   <para>s4city:Event</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Temporary and scheduled event, like a festival or competition. (Definition taken from Wikidata)</para>
+    /// labels<para>Event</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/Event">https://saref.etsi.org/saref4city/Event</seealso>
+    let Event = Prefixed_Name(s4city, "Event") |> PrefixedName
     /// <summary>
-    /// has expiration date
-    /// <see href="https://saref.etsi.org/saref4city/hasExpirationDate"></see></summary>
-    let hasExpirationDate = _prefix "hasExpirationDate"
+    ///   <para>s4city:isSubEventOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>is subevent of</para>
+    /// labels<para>is subevent of</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/isSubEventOf">https://saref.etsi.org/saref4city/isSubEventOf</seealso>
+    let isSubEventOf = Prefixed_Name(s4city, "isSubEventOf") |> PrefixedName
+
     /// <summary>
-    /// refers to time
-    /// <see href="https://saref.etsi.org/saref4city/refersToTime"></see></summary>
-    let refersToTime = _prefix "refersToTime"
+    ///   <para>s4city:takesPlaceAtFacility</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>takes place at facility</para>
+    /// labels<para>takes place at facility</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/takesPlaceAtFacility">https://saref.etsi.org/saref4city/takesPlaceAtFacility</seealso>
+    let takesPlaceAtFacility =
+        Prefixed_Name(s4city, "takesPlaceAtFacility") |> PrefixedName
+
     /// <summary>
-    /// is assessed by
-    /// <see href="https://saref.etsi.org/saref4city/isAssessedBy"></see></summary>
-    let isAssessedBy = _prefix "isAssessedBy"
+    ///   <para>s4city:Facility</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A place, amenity, or piece of equipment provided for a particular purpose. (Definition taken from https://en.oxforddictionaries.com/definition/facility)</para>
+    /// labels<para>Facility</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/Facility">https://saref.etsi.org/saref4city/Facility</seealso>
+    let Facility = Prefixed_Name(s4city, "Facility") |> PrefixedName
     /// <summary>
-    /// A neighbourhood (British English), or neighborhood (American English; see spelling differences), is a geographically localised community within a larger city, town, suburb or rural area. (https://en.wikipedia.org/wiki/Neighbourhood)
-    /// <see href="https://saref.etsi.org/saref4city/Neighbourhood"></see></summary>
-    let Neighbourhood = _prefix "Neighbourhood"
+    ///   <para>s4city:takesPlaceAtTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>takes place at time</para>
+    /// labels<para>takes place at time</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/takesPlaceAtTime">https://saref.etsi.org/saref4city/takesPlaceAtTime</seealso>
+    let takesPlaceAtTime = Prefixed_Name(s4city, "takesPlaceAtTime") |> PrefixedName
     /// <summary>
-    /// Public leadership of public affairs directly responsible for executive action. (Definition taken from wikidata)
-    /// <see href="https://saref.etsi.org/saref4city/PublicAdministration"></see></summary>
-    let PublicAdministration = _prefix "PublicAdministration"
+    ///   <para>s4city:hasLastUpdateDate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>has last update date</para>
+    /// labels<para>has last update date</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/hasLastUpdateDate">https://saref.etsi.org/saref4city/hasLastUpdateDate</seealso>
+    let hasLastUpdateDate = Prefixed_Name(s4city, "hasLastUpdateDate") |> PrefixedName
     /// <summary>
-    /// involves facility
-    /// <see href="https://saref.etsi.org/saref4city/involvesFacility"></see></summary>
-    let involvesFacility = _prefix "involvesFacility"
+    ///   <para>s4city:hasCreationDate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>has creation date</para>
+    /// labels<para>has creation date</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/hasCreationDate">https://saref.etsi.org/saref4city/hasCreationDate</seealso>
+    let hasCreationDate = Prefixed_Name(s4city, "hasCreationDate") |> PrefixedName
     /// <summary>
-    /// is available in language
-    /// <see href="https://saref.etsi.org/saref4city/isAvailableInLanguage"></see></summary>
-    let isAvailableInLanguage = _prefix "isAvailableInLanguage"
+    ///   <para>s4city:isDerivedFrom</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>is derived from</para>
+    /// labels<para>is derived from</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/isDerivedFrom">https://saref.etsi.org/saref4city/isDerivedFrom</seealso>
+    let isDerivedFrom = Prefixed_Name(s4city, "isDerivedFrom") |> PrefixedName
     /// <summary>
-    /// Relation between a KPI assessment and the geographical feature it refers to
-    /// <see href="https://saref.etsi.org/saref4city/refersToFeature"></see></summary>
-    let refersToFeature = _prefix "refersToFeature"
+    ///   <para>s4city:refersToTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>refers to time</para>
+    /// labels<para>refers to time</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/refersToTime">https://saref.etsi.org/saref4city/refersToTime</seealso>
+    let refersToTime = Prefixed_Name(s4city, "refersToTime") |> PrefixedName
+    /// <summary>
+    ///   <para>s4city:isAssessedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>is assessed by</para>
+    /// labels<para>is assessed by</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/isAssessedBy">https://saref.etsi.org/saref4city/isAssessedBy</seealso>
+    let isAssessedBy = Prefixed_Name(s4city, "isAssessedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>s4city:Neighbourhood</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A neighbourhood (British English), or neighborhood (American English; see spelling differences), is a geographically localised community within a larger city, town, suburb or rural area. (https://en.wikipedia.org/wiki/Neighbourhood)</para>
+    /// labels<para>Neighbourhood</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/Neighbourhood">https://saref.etsi.org/saref4city/Neighbourhood</seealso>
+    let Neighbourhood = Prefixed_Name(s4city, "Neighbourhood") |> PrefixedName
+
+    /// <summary>
+    ///   <para>s4city:PublicAdministration</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Public leadership of public affairs directly responsible for executive action. (Definition taken from wikidata)</para>
+    /// labels<para>Public administration</para></remarks>
+    /// <seealso href="https://saref.etsi.org/saref4city/PublicAdministration">https://saref.etsi.org/saref4city/PublicAdministration</seealso>
+    let PublicAdministration =
+        Prefixed_Name(s4city, "PublicAdministration") |> PrefixedName

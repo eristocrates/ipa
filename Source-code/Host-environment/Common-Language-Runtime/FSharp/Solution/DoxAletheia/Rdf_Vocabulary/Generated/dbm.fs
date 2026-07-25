@@ -1,98 +1,221 @@
 namespace http.purl.org.net.dbm.ontology.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module dbm =
-    let _namespace_name = "http://purl.org/net/dbm/ontology#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri dbm |> NamespaceIRI
     /// <summary>
-    /// This class represents a Drug entity from the Macedonian Drug Bureau.
-    /// <see href="http://purl.org/net/dbm/ontology#Drug"></see></summary>
-    let Drug = _prefix "Drug"
+    ///   <para>dbm:Drug</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>This class represents a Drug entity from the Macedonian Drug Bureau.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#Drug">http://purl.org/net/dbm/ontology#Drug</seealso>
+    let Drug = Prefixed_Name(dbm, "Drug") |> PrefixedName
     /// <summary>
-    /// This property represents the approval number assigned by the Macedonian Drug Bureau, for the company.
-    /// <see href="http://purl.org/net/dbm/ontology#approvalNumber"></see></summary>
-    let approvalNumber = _prefix "approvalNumber"
+    ///   <para>dbm:approvedOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the date the company was given the approval by the Macedonian Drug Bureau for the drug.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#approvedOn">http://purl.org/net/dbm/ontology#approvedOn</seealso>
+    let approvedOn = Prefixed_Name(dbm, "approvedOn") |> PrefixedName
     /// <summary>
-    /// This property represents the company which holds the approval by the Macedonian Drug Bureau for the drug.
-    /// <see href="http://purl.org/net/dbm/ontology#approvedFor"></see></summary>
-    let approvedFor = _prefix "approvedFor"
+    ///   <para>dbm:atcCodeExtended</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the extended ATC code for the drug, assigned by the Ministry of Health, of the Republic of Macedonia.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#atcCodeExtended">http://purl.org/net/dbm/ontology#atcCodeExtended</seealso>
+    let atcCodeExtended = Prefixed_Name(dbm, "atcCodeExtended") |> PrefixedName
     /// <summary>
-    /// This property represents the date the company was given the approval by the Macedonian Drug Bureau for the drug.
-    /// <see href="http://purl.org/net/dbm/ontology#approvedOn"></see></summary>
-    let approvedOn = _prefix "approvedOn"
+    ///   <para>dbm:brailleSupport</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property indicates wether the drug packaging has Braille support or not.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#brailleSupport">http://purl.org/net/dbm/ontology#brailleSupport</seealso>
+    let brailleSupport = Prefixed_Name(dbm, "brailleSupport") |> PrefixedName
     /// <summary>
-    /// This property represents the expiry date of the approval which the company was given by the Macedonian Drug Bureau for the drug.
-    /// <see href="http://purl.org/net/dbm/ontology#approvedUntil"></see></summary>
-    let approvedUntil = _prefix "approvedUntil"
+    ///   <para>dbm:eanCode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>This property represents the EAN code of the drug.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#eanCode">http://purl.org/net/dbm/ontology#eanCode</seealso>
+    let eanCode = Prefixed_Name(dbm, "eanCode") |> PrefixedName
     /// <summary>
-    /// This property represents the extended ATC code for the drug, assigned by the Ministry of Health, of the Republic of Macedonia.
-    /// <see href="http://purl.org/net/dbm/ontology#atcCodeExtended"></see></summary>
-    let atcCodeExtended = _prefix "atcCodeExtended"
+    ///   <para>dbm:hifmCode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>This is the code that the drug instance has in the local system of the Health Insurance Fund of Macedonia.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#hifmCode">http://purl.org/net/dbm/ontology#hifmCode</seealso>
+    let hifmCode = Prefixed_Name(dbm, "hifmCode") |> PrefixedName
     /// <summary>
-    /// This property indicates wether the drug packaging has Braille support or not.
-    /// <see href="http://purl.org/net/dbm/ontology#brailleSupport"></see></summary>
-    let brailleSupport = _prefix "brailleSupport"
+    ///   <para>dbm:packaging</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the packaging information of the drug.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#packaging">http://purl.org/net/dbm/ontology#packaging</seealso>
+    let packaging = Prefixed_Name(dbm, "packaging") |> PrefixedName
     /// <summary>
-    /// This property represents the brand name of the drug, in cyrillic alphabet.
-    /// <see href="http://purl.org/net/dbm/ontology#brandNameCyrillic"></see></summary>
-    let brandNameCyrillic = _prefix "brandNameCyrillic"
+    ///   <para>dbm:positiveList</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property tells if the drug is featured on the positive list of drugs, or not.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#positiveList">http://purl.org/net/dbm/ontology#positiveList</seealso>
+    let positiveList = Prefixed_Name(dbm, "positiveList") |> PrefixedName
     /// <summary>
-    /// This property represents the dosage information for the drug.
-    /// <see href="http://purl.org/net/dbm/ontology#dosage"></see></summary>
-    let dosage = _prefix "dosage"
+    ///   <para>dbm:priceWithoutVAT</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the price of the drug in Macedonian Denars (MKD), with no VAT calculated.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#priceWithoutVAT">http://purl.org/net/dbm/ontology#priceWithoutVAT</seealso>
+    let priceWithoutVAT = Prefixed_Name(dbm, "priceWithoutVAT") |> PrefixedName
     /// <summary>
-    /// This property represents the EAN code of the drug.
-    /// <see href="http://purl.org/net/dbm/ontology#eanCode"></see></summary>
-    let eanCode = _prefix "eanCode"
+    ///   <para>dbm:referencePrice</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the reference price for the drug, as assigned by the Ministry of Health of the Republic of Macedonia.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#referencePrice">http://purl.org/net/dbm/ontology#referencePrice</seealso>
+    let referencePrice = Prefixed_Name(dbm, "referencePrice") |> PrefixedName
     /// <summary>
-    /// This is the code that the drug instance has in the local system of the Health Insurance Fund of Macedonia.
-    /// <see href="http://purl.org/net/dbm/ontology#hifmCode"></see></summary>
-    let hifmCode = _prefix "hifmCode"
+    ///   <para>dbm:strength</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the strength of the drug.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#strength">http://purl.org/net/dbm/ontology#strength</seealso>
+    let strength = Prefixed_Name(dbm, "strength") |> PrefixedName
     /// <summary>
-    /// This property represents a manufacturer of a drug.
-    /// <see href="http://purl.org/net/dbm/ontology#manufacturer"></see></summary>
-    let manufacturer = _prefix "manufacturer"
+    ///   <para>dbm:summaryReport</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>This property holds the URL to the summary report for the drug, published by the Macedonian Drug Bureau.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#summaryReport">http://purl.org/net/dbm/ontology#summaryReport</seealso>
+    let summaryReport = Prefixed_Name(dbm, "summaryReport") |> PrefixedName
     /// <summary>
-    /// This property represents the packaging information of the drug.
-    /// <see href="http://purl.org/net/dbm/ontology#packaging"></see></summary>
-    let packaging = _prefix "packaging"
+    ///   <para>dbm:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>An ontology for the Drug Bureau of Macedonia (DBM).</para>
+    /// labels<para>DBM Ontology</para></remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#">http://purl.org/net/dbm/ontology#</seealso>
+    let _prefix_iri = Prefixed_Name(dbm, "") |> PrefixedName
     /// <summary>
-    /// This property tells if the drug is featured on the positive list of drugs, or not.
-    /// <see href="http://purl.org/net/dbm/ontology#positiveList"></see></summary>
-    let positiveList = _prefix "positiveList"
+    ///   <para>dbm:approvalNumber</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the approval number assigned by the Macedonian Drug Bureau, for the company.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#approvalNumber">http://purl.org/net/dbm/ontology#approvalNumber</seealso>
+    let approvalNumber = Prefixed_Name(dbm, "approvalNumber") |> PrefixedName
     /// <summary>
-    /// This property represents the price of the drug in Macedonian Denars (MKD), with VAT calculated.
-    /// <see href="http://purl.org/net/dbm/ontology#priceWithVAT"></see></summary>
-    let priceWithVAT = _prefix "priceWithVAT"
+    ///   <para>dbm:approvedFor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the company which holds the approval by the Macedonian Drug Bureau for the drug.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#approvedFor">http://purl.org/net/dbm/ontology#approvedFor</seealso>
+    let approvedFor = Prefixed_Name(dbm, "approvedFor") |> PrefixedName
     /// <summary>
-    /// This property represents the price of the drug in Macedonian Denars (MKD), with no VAT calculated.
-    /// <see href="http://purl.org/net/dbm/ontology#priceWithoutVAT"></see></summary>
-    let priceWithoutVAT = _prefix "priceWithoutVAT"
+    ///   <para>dbm:approvedUntil</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the expiry date of the approval which the company was given by the Macedonian Drug Bureau for the drug.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#approvedUntil">http://purl.org/net/dbm/ontology#approvedUntil</seealso>
+    let approvedUntil = Prefixed_Name(dbm, "approvedUntil") |> PrefixedName
     /// <summary>
-    /// This property represents the reference price for the drug, as assigned by the Ministry of Health of the Republic of Macedonia.
-    /// <see href="http://purl.org/net/dbm/ontology#referencePrice"></see></summary>
-    let referencePrice = _prefix "referencePrice"
+    ///   <para>dbm:brandNameCyrillic</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the brand name of the drug, in cyrillic alphabet.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#brandNameCyrillic">http://purl.org/net/dbm/ontology#brandNameCyrillic</seealso>
+    let brandNameCyrillic = Prefixed_Name(dbm, "brandNameCyrillic") |> PrefixedName
     /// <summary>
-    /// This property is used to represent that the drugs in question are similar in their purpose, i.e. contain the same active substance.
-    /// <see href="http://purl.org/net/dbm/ontology#similarTo"></see></summary>
-    let similarTo = _prefix "similarTo"
+    ///   <para>dbm:dosage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the dosage information for the drug.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#dosage">http://purl.org/net/dbm/ontology#dosage</seealso>
+    let dosage = Prefixed_Name(dbm, "dosage") |> PrefixedName
     /// <summary>
-    /// This property represents the strength of the drug.
-    /// <see href="http://purl.org/net/dbm/ontology#strength"></see></summary>
-    let strength = _prefix "strength"
+    ///   <para>dbm:manufacturer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents a manufacturer of a drug.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#manufacturer">http://purl.org/net/dbm/ontology#manufacturer</seealso>
+    let manufacturer = Prefixed_Name(dbm, "manufacturer") |> PrefixedName
     /// <summary>
-    /// This property holds the URL to the summary report for the drug, published by the Macedonian Drug Bureau.
-    /// <see href="http://purl.org/net/dbm/ontology#summaryReport"></see></summary>
-    let summaryReport = _prefix "summaryReport"
+    ///   <para>dbm:priceWithVAT</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the price of the drug in Macedonian Denars (MKD), with VAT calculated.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#priceWithVAT">http://purl.org/net/dbm/ontology#priceWithVAT</seealso>
+    let priceWithVAT = Prefixed_Name(dbm, "priceWithVAT") |> PrefixedName
     /// <summary>
-    /// This property represents the date the drug data has been updated.
-    /// <see href="http://purl.org/net/dbm/ontology#updateDate"></see></summary>
-    let updateDate = _prefix "updateDate"
+    ///   <para>dbm:similarTo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This property is used to represent that the drugs in question are similar in their purpose, i.e. contain the same active substance.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#similarTo">http://purl.org/net/dbm/ontology#similarTo</seealso>
+    let similarTo = Prefixed_Name(dbm, "similarTo") |> PrefixedName
     /// <summary>
-    /// This property holds the URL to the usage guidelines for the drug, published by the Macedonian Drug Bureau.
-    /// <see href="http://purl.org/net/dbm/ontology#usageGuidelines"></see></summary>
-    let usageGuidelines = _prefix "usageGuidelines"
+    ///   <para>dbm:updateDate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the date the drug data has been updated.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#updateDate">http://purl.org/net/dbm/ontology#updateDate</seealso>
+    let updateDate = Prefixed_Name(dbm, "updateDate") |> PrefixedName
+    /// <summary>
+    ///   <para>dbm:usageGuidelines</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property holds the URL to the usage guidelines for the drug, published by the Macedonian Drug Bureau.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/dbm/ontology#usageGuidelines">http://purl.org/net/dbm/ontology#usageGuidelines</seealso>
+    let usageGuidelines = Prefixed_Name(dbm, "usageGuidelines") |> PrefixedName

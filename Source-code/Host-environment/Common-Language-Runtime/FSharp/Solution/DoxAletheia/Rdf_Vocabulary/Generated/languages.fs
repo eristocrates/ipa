@@ -1,1966 +1,3930 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.languages.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module languages =
-    let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/languages#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri languages |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#aar"></see>
+    ///   <para>languages:aar</para>
     /// </summary>
-    let aar = _prefix "aar"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#aar">http://eulersharp.sourceforge.net/2003/03swap/languages#aar</seealso>
+    let aar = Prefixed_Name(languages, "aar") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-1"></see>
+    ///   <para>languages:iso639-2</para>
     /// </summary>
-    let ``iso639-1`` = _prefix "iso639-1"
+    /// <remarks>
+    ///   <para>skos:ConceptScheme</para>
+    ///
+    /// labels<para>ISO639-2</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-2">http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-2</seealso>
+    let iso639_2 = Prefixed_Name(languages, "iso639-2") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-2"></see>
+    ///   <para>languages:ace</para>
     /// </summary>
-    let ``iso639-2`` = _prefix "iso639-2"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ace">http://eulersharp.sourceforge.net/2003/03swap/languages#ace</seealso>
+    let ace = Prefixed_Name(languages, "ace") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#abk"></see>
+    ///   <para>languages:ach</para>
     /// </summary>
-    let abk = _prefix "abk"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ach">http://eulersharp.sourceforge.net/2003/03swap/languages#ach</seealso>
+    let ach = Prefixed_Name(languages, "ach") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ace"></see>
+    ///   <para>languages:ada</para>
     /// </summary>
-    let ace = _prefix "ace"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ada">http://eulersharp.sourceforge.net/2003/03swap/languages#ada</seealso>
+    let ada = Prefixed_Name(languages, "ada") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ach"></see>
+    ///   <para>languages:afa</para>
     /// </summary>
-    let ach = _prefix "ach"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#afa">http://eulersharp.sourceforge.net/2003/03swap/languages#afa</seealso>
+    let afa = Prefixed_Name(languages, "afa") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ada"></see>
+    ///   <para>languages:bad</para>
     /// </summary>
-    let ada = _prefix "ada"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bad">http://eulersharp.sourceforge.net/2003/03swap/languages#bad</seealso>
+    let bad = Prefixed_Name(languages, "bad") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ady"></see>
+    ///   <para>languages:bak</para>
     /// </summary>
-    let ady = _prefix "ady"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bak">http://eulersharp.sourceforge.net/2003/03swap/languages#bak</seealso>
+    let bak = Prefixed_Name(languages, "bak") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#afa"></see>
+    ///   <para>languages:bre</para>
     /// </summary>
-    let afa = _prefix "afa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bre">http://eulersharp.sourceforge.net/2003/03swap/languages#bre</seealso>
+    let bre = Prefixed_Name(languages, "bre") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#afh"></see>
+    ///   <para>languages:bul</para>
     /// </summary>
-    let afh = _prefix "afh"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bul">http://eulersharp.sourceforge.net/2003/03swap/languages#bul</seealso>
+    let bul = Prefixed_Name(languages, "bul") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#afr"></see>
+    ///   <para>languages:bur</para>
     /// </summary>
-    let afr = _prefix "afr"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bur">http://eulersharp.sourceforge.net/2003/03swap/languages#bur</seealso>
+    let bur = Prefixed_Name(languages, "bur") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ain"></see>
+    ///   <para>languages:byn</para>
     /// </summary>
-    let ain = _prefix "ain"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#byn">http://eulersharp.sourceforge.net/2003/03swap/languages#byn</seealso>
+    let byn = Prefixed_Name(languages, "byn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#aka"></see>
+    ///   <para>languages:cad</para>
     /// </summary>
-    let aka = _prefix "aka"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cad">http://eulersharp.sourceforge.net/2003/03swap/languages#cad</seealso>
+    let cad = Prefixed_Name(languages, "cad") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#akk"></see>
+    ///   <para>languages:cai</para>
     /// </summary>
-    let akk = _prefix "akk"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cai">http://eulersharp.sourceforge.net/2003/03swap/languages#cai</seealso>
+    let cai = Prefixed_Name(languages, "cai") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#alb"></see>
+    ///   <para>languages:car</para>
     /// </summary>
-    let alb = _prefix "alb"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#car">http://eulersharp.sourceforge.net/2003/03swap/languages#car</seealso>
+    let car = Prefixed_Name(languages, "car") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ale"></see>
+    ///   <para>languages:cat</para>
     /// </summary>
-    let ale = _prefix "ale"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cat">http://eulersharp.sourceforge.net/2003/03swap/languages#cat</seealso>
+    let cat = Prefixed_Name(languages, "cat") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#alg"></see>
+    ///   <para>languages:cau</para>
     /// </summary>
-    let alg = _prefix "alg"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cau">http://eulersharp.sourceforge.net/2003/03swap/languages#cau</seealso>
+    let cau = Prefixed_Name(languages, "cau") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#alt"></see>
+    ///   <para>languages:ceb</para>
     /// </summary>
-    let alt = _prefix "alt"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ceb">http://eulersharp.sourceforge.net/2003/03swap/languages#ceb</seealso>
+    let ceb = Prefixed_Name(languages, "ceb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#amh"></see>
+    ///   <para>languages:fry</para>
     /// </summary>
-    let amh = _prefix "amh"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fry">http://eulersharp.sourceforge.net/2003/03swap/languages#fry</seealso>
+    let fry = Prefixed_Name(languages, "fry") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ang"></see>
+    ///   <para>languages:ful</para>
     /// </summary>
-    let ang = _prefix "ang"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ful">http://eulersharp.sourceforge.net/2003/03swap/languages#ful</seealso>
+    let ful = Prefixed_Name(languages, "ful") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#anp"></see>
+    ///   <para>languages:fur</para>
     /// </summary>
-    let anp = _prefix "anp"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fur">http://eulersharp.sourceforge.net/2003/03swap/languages#fur</seealso>
+    let fur = Prefixed_Name(languages, "fur") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#apa"></see>
+    ///   <para>languages:gaa</para>
     /// </summary>
-    let apa = _prefix "apa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gaa">http://eulersharp.sourceforge.net/2003/03swap/languages#gaa</seealso>
+    let gaa = Prefixed_Name(languages, "gaa") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ara"></see>
+    ///   <para>languages:gay</para>
     /// </summary>
-    let ara = _prefix "ara"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gay">http://eulersharp.sourceforge.net/2003/03swap/languages#gay</seealso>
+    let gay = Prefixed_Name(languages, "gay") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#arc"></see>
+    ///   <para>languages:gba</para>
     /// </summary>
-    let arc = _prefix "arc"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gba">http://eulersharp.sourceforge.net/2003/03swap/languages#gba</seealso>
+    let gba = Prefixed_Name(languages, "gba") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#arg"></see>
+    ///   <para>languages:geo</para>
     /// </summary>
-    let arg = _prefix "arg"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#geo">http://eulersharp.sourceforge.net/2003/03swap/languages#geo</seealso>
+    let geo = Prefixed_Name(languages, "geo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#arm"></see>
+    ///   <para>languages:ger</para>
     /// </summary>
-    let arm = _prefix "arm"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ger">http://eulersharp.sourceforge.net/2003/03swap/languages#ger</seealso>
+    let ger = Prefixed_Name(languages, "ger") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#arn"></see>
+    ///   <para>languages:gla</para>
     /// </summary>
-    let arn = _prefix "arn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gla">http://eulersharp.sourceforge.net/2003/03swap/languages#gla</seealso>
+    let gla = Prefixed_Name(languages, "gla") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#arp"></see>
+    ///   <para>languages:gle</para>
     /// </summary>
-    let arp = _prefix "arp"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gle">http://eulersharp.sourceforge.net/2003/03swap/languages#gle</seealso>
+    let gle = Prefixed_Name(languages, "gle") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#art"></see>
+    ///   <para>languages:glg</para>
     /// </summary>
-    let art = _prefix "art"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#glg">http://eulersharp.sourceforge.net/2003/03swap/languages#glg</seealso>
+    let glg = Prefixed_Name(languages, "glg") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#arw"></see>
+    ///   <para>languages:gmh</para>
     /// </summary>
-    let arw = _prefix "arw"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gmh">http://eulersharp.sourceforge.net/2003/03swap/languages#gmh</seealso>
+    let gmh = Prefixed_Name(languages, "gmh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#asm"></see>
+    ///   <para>languages:goh</para>
     /// </summary>
-    let asm = _prefix "asm"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#goh">http://eulersharp.sourceforge.net/2003/03swap/languages#goh</seealso>
+    let goh = Prefixed_Name(languages, "goh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ast"></see>
+    ///   <para>languages:gon</para>
     /// </summary>
-    let ast = _prefix "ast"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gon">http://eulersharp.sourceforge.net/2003/03swap/languages#gon</seealso>
+    let gon = Prefixed_Name(languages, "gon") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ath"></see>
+    ///   <para>languages:jpr</para>
     /// </summary>
-    let ath = _prefix "ath"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#jpr">http://eulersharp.sourceforge.net/2003/03swap/languages#jpr</seealso>
+    let jpr = Prefixed_Name(languages, "jpr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#aus"></see>
+    ///   <para>languages:jrb</para>
     /// </summary>
-    let aus = _prefix "aus"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#jrb">http://eulersharp.sourceforge.net/2003/03swap/languages#jrb</seealso>
+    let jrb = Prefixed_Name(languages, "jrb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ava"></see>
+    ///   <para>languages:kaa</para>
     /// </summary>
-    let ava = _prefix "ava"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kaa">http://eulersharp.sourceforge.net/2003/03swap/languages#kaa</seealso>
+    let kaa = Prefixed_Name(languages, "kaa") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ave"></see>
+    ///   <para>languages:kac</para>
     /// </summary>
-    let ave = _prefix "ave"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kac">http://eulersharp.sourceforge.net/2003/03swap/languages#kac</seealso>
+    let kac = Prefixed_Name(languages, "kac") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#awa"></see>
+    ///   <para>languages:kal</para>
     /// </summary>
-    let awa = _prefix "awa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kal">http://eulersharp.sourceforge.net/2003/03swap/languages#kal</seealso>
+    let kal = Prefixed_Name(languages, "kal") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#aym"></see>
+    ///   <para>languages:kam</para>
     /// </summary>
-    let aym = _prefix "aym"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kam">http://eulersharp.sourceforge.net/2003/03swap/languages#kam</seealso>
+    let kam = Prefixed_Name(languages, "kam") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#aze"></see>
+    ///   <para>languages:kur</para>
     /// </summary>
-    let aze = _prefix "aze"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kur">http://eulersharp.sourceforge.net/2003/03swap/languages#kur</seealso>
+    let kur = Prefixed_Name(languages, "kur") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bad"></see>
+    ///   <para>languages:kut</para>
     /// </summary>
-    let bad = _prefix "bad"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kut">http://eulersharp.sourceforge.net/2003/03swap/languages#kut</seealso>
+    let kut = Prefixed_Name(languages, "kut") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bai"></see>
+    ///   <para>languages:lad</para>
     /// </summary>
-    let bai = _prefix "bai"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lad">http://eulersharp.sourceforge.net/2003/03swap/languages#lad</seealso>
+    let lad = Prefixed_Name(languages, "lad") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bak"></see>
+    ///   <para>languages:lam</para>
     /// </summary>
-    let bak = _prefix "bak"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lam">http://eulersharp.sourceforge.net/2003/03swap/languages#lam</seealso>
+    let lam = Prefixed_Name(languages, "lam") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bal"></see>
+    ///   <para>languages:lao</para>
     /// </summary>
-    let bal = _prefix "bal"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lao">http://eulersharp.sourceforge.net/2003/03swap/languages#lao</seealso>
+    let lao = Prefixed_Name(languages, "lao") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bam"></see>
+    ///   <para>languages:lat</para>
     /// </summary>
-    let bam = _prefix "bam"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lat">http://eulersharp.sourceforge.net/2003/03swap/languages#lat</seealso>
+    let lat = Prefixed_Name(languages, "lat") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ban"></see>
+    ///   <para>languages:lez</para>
     /// </summary>
-    let ban = _prefix "ban"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lez">http://eulersharp.sourceforge.net/2003/03swap/languages#lez</seealso>
+    let lez = Prefixed_Name(languages, "lez") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#baq"></see>
+    ///   <para>languages:lim</para>
     /// </summary>
-    let baq = _prefix "baq"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lim">http://eulersharp.sourceforge.net/2003/03swap/languages#lim</seealso>
+    let lim = Prefixed_Name(languages, "lim") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bas"></see>
+    ///   <para>languages:lin</para>
     /// </summary>
-    let bas = _prefix "bas"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lin">http://eulersharp.sourceforge.net/2003/03swap/languages#lin</seealso>
+    let lin = Prefixed_Name(languages, "lin") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bat"></see>
+    ///   <para>languages:lit</para>
     /// </summary>
-    let bat = _prefix "bat"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lit">http://eulersharp.sourceforge.net/2003/03swap/languages#lit</seealso>
+    let lit = Prefixed_Name(languages, "lit") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bej"></see>
+    ///   <para>languages:lol</para>
     /// </summary>
-    let bej = _prefix "bej"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lol">http://eulersharp.sourceforge.net/2003/03swap/languages#lol</seealso>
+    let lol = Prefixed_Name(languages, "lol") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bel"></see>
+    ///   <para>languages:moh</para>
     /// </summary>
-    let bel = _prefix "bel"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#moh">http://eulersharp.sourceforge.net/2003/03swap/languages#moh</seealso>
+    let moh = Prefixed_Name(languages, "moh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bem"></see>
+    ///   <para>languages:mon</para>
     /// </summary>
-    let bem = _prefix "bem"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mon">http://eulersharp.sourceforge.net/2003/03swap/languages#mon</seealso>
+    let mon = Prefixed_Name(languages, "mon") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ben"></see>
+    ///   <para>languages:mos</para>
     /// </summary>
-    let ben = _prefix "ben"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mos">http://eulersharp.sourceforge.net/2003/03swap/languages#mos</seealso>
+    let mos = Prefixed_Name(languages, "mos") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ber"></see>
+    ///   <para>languages:mul</para>
     /// </summary>
-    let ber = _prefix "ber"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mul">http://eulersharp.sourceforge.net/2003/03swap/languages#mul</seealso>
+    let mul = Prefixed_Name(languages, "mul") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bho"></see>
+    ///   <para>languages:mun</para>
     /// </summary>
-    let bho = _prefix "bho"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mun">http://eulersharp.sourceforge.net/2003/03swap/languages#mun</seealso>
+    let mun = Prefixed_Name(languages, "mun") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bih"></see>
+    ///   <para>languages:mus</para>
     /// </summary>
-    let bih = _prefix "bih"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mus">http://eulersharp.sourceforge.net/2003/03swap/languages#mus</seealso>
+    let mus = Prefixed_Name(languages, "mus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bik"></see>
+    ///   <para>languages:myv</para>
     /// </summary>
-    let bik = _prefix "bik"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#myv">http://eulersharp.sourceforge.net/2003/03swap/languages#myv</seealso>
+    let myv = Prefixed_Name(languages, "myv") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bin"></see>
+    ///   <para>languages:nah</para>
     /// </summary>
-    let bin = _prefix "bin"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nah">http://eulersharp.sourceforge.net/2003/03swap/languages#nah</seealso>
+    let nah = Prefixed_Name(languages, "nah") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bis"></see>
+    ///   <para>languages:nai</para>
     /// </summary>
-    let bis = _prefix "bis"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nai">http://eulersharp.sourceforge.net/2003/03swap/languages#nai</seealso>
+    let nai = Prefixed_Name(languages, "nai") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bla"></see>
+    ///   <para>languages:nap</para>
     /// </summary>
-    let bla = _prefix "bla"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nap">http://eulersharp.sourceforge.net/2003/03swap/languages#nap</seealso>
+    let nap = Prefixed_Name(languages, "nap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bnt"></see>
+    ///   <para>languages:nau</para>
     /// </summary>
-    let bnt = _prefix "bnt"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nau">http://eulersharp.sourceforge.net/2003/03swap/languages#nau</seealso>
+    let nau = Prefixed_Name(languages, "nau") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bos"></see>
+    ///   <para>languages:nav</para>
     /// </summary>
-    let bos = _prefix "bos"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nav">http://eulersharp.sourceforge.net/2003/03swap/languages#nav</seealso>
+    let nav = Prefixed_Name(languages, "nav") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bra"></see>
+    ///   <para>languages:nbl</para>
     /// </summary>
-    let bra = _prefix "bra"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nbl">http://eulersharp.sourceforge.net/2003/03swap/languages#nbl</seealso>
+    let nbl = Prefixed_Name(languages, "nbl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bre"></see>
+    ///   <para>languages:nde</para>
     /// </summary>
-    let bre = _prefix "bre"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nde">http://eulersharp.sourceforge.net/2003/03swap/languages#nde</seealso>
+    let nde = Prefixed_Name(languages, "nde") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#btk"></see>
+    ///   <para>languages:ndo</para>
     /// </summary>
-    let btk = _prefix "btk"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ndo">http://eulersharp.sourceforge.net/2003/03swap/languages#ndo</seealso>
+    let ndo = Prefixed_Name(languages, "ndo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bua"></see>
+    ///   <para>languages:nds</para>
     /// </summary>
-    let bua = _prefix "bua"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nds">http://eulersharp.sourceforge.net/2003/03swap/languages#nds</seealso>
+    let nds = Prefixed_Name(languages, "nds") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bug"></see>
+    ///   <para>languages:nep</para>
     /// </summary>
-    let bug = _prefix "bug"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nep">http://eulersharp.sourceforge.net/2003/03swap/languages#nep</seealso>
+    let nep = Prefixed_Name(languages, "nep") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bul"></see>
+    ///   <para>languages:new</para>
     /// </summary>
-    let bul = _prefix "bul"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#new">http://eulersharp.sourceforge.net/2003/03swap/languages#new</seealso>
+    let new_ = Prefixed_Name(languages, "new") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#bur"></see>
+    ///   <para>languages:sag</para>
     /// </summary>
-    let bur = _prefix "bur"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sag">http://eulersharp.sourceforge.net/2003/03swap/languages#sag</seealso>
+    let sag = Prefixed_Name(languages, "sag") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#byn"></see>
+    ///   <para>languages:sah</para>
     /// </summary>
-    let byn = _prefix "byn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sah">http://eulersharp.sourceforge.net/2003/03swap/languages#sah</seealso>
+    let sah = Prefixed_Name(languages, "sah") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cad"></see>
+    ///   <para>languages:sai</para>
     /// </summary>
-    let cad = _prefix "cad"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sai">http://eulersharp.sourceforge.net/2003/03swap/languages#sai</seealso>
+    let sai = Prefixed_Name(languages, "sai") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cai"></see>
+    ///   <para>languages:sal</para>
     /// </summary>
-    let cai = _prefix "cai"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sal">http://eulersharp.sourceforge.net/2003/03swap/languages#sal</seealso>
+    let sal = Prefixed_Name(languages, "sal") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#car"></see>
+    ///   <para>languages:sam</para>
     /// </summary>
-    let car = _prefix "car"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sam">http://eulersharp.sourceforge.net/2003/03swap/languages#sam</seealso>
+    let sam = Prefixed_Name(languages, "sam") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cat"></see>
+    ///   <para>languages:san</para>
     /// </summary>
-    let cat = _prefix "cat"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#san">http://eulersharp.sourceforge.net/2003/03swap/languages#san</seealso>
+    let san = Prefixed_Name(languages, "san") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cau"></see>
+    ///   <para>languages:suk</para>
     /// </summary>
-    let cau = _prefix "cau"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#suk">http://eulersharp.sourceforge.net/2003/03swap/languages#suk</seealso>
+    let suk = Prefixed_Name(languages, "suk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ceb"></see>
+    ///   <para>languages:sun</para>
     /// </summary>
-    let ceb = _prefix "ceb"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sun">http://eulersharp.sourceforge.net/2003/03swap/languages#sun</seealso>
+    let sun = Prefixed_Name(languages, "sun") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cel"></see>
+    ///   <para>languages:sus</para>
     /// </summary>
-    let cel = _prefix "cel"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sus">http://eulersharp.sourceforge.net/2003/03swap/languages#sus</seealso>
+    let sus = Prefixed_Name(languages, "sus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cha"></see>
+    ///   <para>languages:sux</para>
     /// </summary>
-    let cha = _prefix "cha"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sux">http://eulersharp.sourceforge.net/2003/03swap/languages#sux</seealso>
+    let sux = Prefixed_Name(languages, "sux") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chb"></see>
+    ///   <para>languages:swa</para>
     /// </summary>
-    let chb = _prefix "chb"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#swa">http://eulersharp.sourceforge.net/2003/03swap/languages#swa</seealso>
+    let swa = Prefixed_Name(languages, "swa") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#che"></see>
+    ///   <para>languages:swe</para>
     /// </summary>
-    let che = _prefix "che"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#swe">http://eulersharp.sourceforge.net/2003/03swap/languages#swe</seealso>
+    let swe = Prefixed_Name(languages, "swe") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chg"></see>
+    ///   <para>languages:udm</para>
     /// </summary>
-    let chg = _prefix "chg"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#udm">http://eulersharp.sourceforge.net/2003/03swap/languages#udm</seealso>
+    let udm = Prefixed_Name(languages, "udm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chi"></see>
+    ///   <para>languages:uga</para>
     /// </summary>
-    let chi = _prefix "chi"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#uga">http://eulersharp.sourceforge.net/2003/03swap/languages#uga</seealso>
+    let uga = Prefixed_Name(languages, "uga") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chk"></see>
+    ///   <para>languages:uig</para>
     /// </summary>
-    let chk = _prefix "chk"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#uig">http://eulersharp.sourceforge.net/2003/03swap/languages#uig</seealso>
+    let uig = Prefixed_Name(languages, "uig") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chm"></see>
+    ///   <para>languages:ukr</para>
     /// </summary>
-    let chm = _prefix "chm"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ukr">http://eulersharp.sourceforge.net/2003/03swap/languages#ukr</seealso>
+    let ukr = Prefixed_Name(languages, "ukr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chn"></see>
+    ///   <para>languages:umb</para>
     /// </summary>
-    let chn = _prefix "chn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#umb">http://eulersharp.sourceforge.net/2003/03swap/languages#umb</seealso>
+    let umb = Prefixed_Name(languages, "umb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cho"></see>
+    ///   <para>languages:und</para>
     /// </summary>
-    let cho = _prefix "cho"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#und">http://eulersharp.sourceforge.net/2003/03swap/languages#und</seealso>
+    let und = Prefixed_Name(languages, "und") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chp"></see>
+    ///   <para>languages:uzb</para>
     /// </summary>
-    let chp = _prefix "chp"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#uzb">http://eulersharp.sourceforge.net/2003/03swap/languages#uzb</seealso>
+    let uzb = Prefixed_Name(languages, "uzb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chr"></see>
+    ///   <para>languages:vai</para>
     /// </summary>
-    let chr = _prefix "chr"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#vai">http://eulersharp.sourceforge.net/2003/03swap/languages#vai</seealso>
+    let vai = Prefixed_Name(languages, "vai") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chu"></see>
+    ///   <para>languages:ven</para>
     /// </summary>
-    let chu = _prefix "chu"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ven">http://eulersharp.sourceforge.net/2003/03swap/languages#ven</seealso>
+    let ven = Prefixed_Name(languages, "ven") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chv"></see>
+    ///   <para>languages:vie</para>
     /// </summary>
-    let chv = _prefix "chv"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#vie">http://eulersharp.sourceforge.net/2003/03swap/languages#vie</seealso>
+    let vie = Prefixed_Name(languages, "vie") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#chy"></see>
+    ///   <para>languages:vol</para>
     /// </summary>
-    let chy = _prefix "chy"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#vol">http://eulersharp.sourceforge.net/2003/03swap/languages#vol</seealso>
+    let vol = Prefixed_Name(languages, "vol") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cmc"></see>
+    ///   <para>languages:vot</para>
     /// </summary>
-    let cmc = _prefix "cmc"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#vot">http://eulersharp.sourceforge.net/2003/03swap/languages#vot</seealso>
+    let vot = Prefixed_Name(languages, "vot") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cop"></see>
+    ///   <para>languages:abk</para>
     /// </summary>
-    let cop = _prefix "cop"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#abk">http://eulersharp.sourceforge.net/2003/03swap/languages#abk</seealso>
+    let abk = Prefixed_Name(languages, "abk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cor"></see>
+    ///   <para>languages:cpp</para>
     /// </summary>
-    let cor = _prefix "cor"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cpp">http://eulersharp.sourceforge.net/2003/03swap/languages#cpp</seealso>
+    let cpp = Prefixed_Name(languages, "cpp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cos"></see>
+    ///   <para>languages:csb</para>
     /// </summary>
-    let cos = _prefix "cos"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#csb">http://eulersharp.sourceforge.net/2003/03swap/languages#csb</seealso>
+    let csb = Prefixed_Name(languages, "csb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cpe"></see>
+    ///   <para>languages:ewe</para>
     /// </summary>
-    let cpe = _prefix "cpe"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ewe">http://eulersharp.sourceforge.net/2003/03swap/languages#ewe</seealso>
+    let ewe = Prefixed_Name(languages, "ewe") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cpf"></see>
+    ///   <para>languages:gem</para>
     /// </summary>
-    let cpf = _prefix "cpf"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gem">http://eulersharp.sourceforge.net/2003/03swap/languages#gem</seealso>
+    let gem = Prefixed_Name(languages, "gem") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cpp"></see>
+    ///   <para>languages:lav</para>
     /// </summary>
-    let cpp = _prefix "cpp"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lav">http://eulersharp.sourceforge.net/2003/03swap/languages#lav</seealso>
+    let lav = Prefixed_Name(languages, "lav") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cre"></see>
+    ///   <para>languages:mlt</para>
     /// </summary>
-    let cre = _prefix "cre"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mlt">http://eulersharp.sourceforge.net/2003/03swap/languages#mlt</seealso>
+    let mlt = Prefixed_Name(languages, "mlt") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#crh"></see>
+    ///   <para>languages:snd</para>
     /// </summary>
-    let crh = _prefix "crh"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#snd">http://eulersharp.sourceforge.net/2003/03swap/languages#snd</seealso>
+    let snd = Prefixed_Name(languages, "snd") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#crp"></see>
+    ///   <para>languages:urd</para>
     /// </summary>
-    let crp = _prefix "crp"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#urd">http://eulersharp.sourceforge.net/2003/03swap/languages#urd</seealso>
+    let urd = Prefixed_Name(languages, "urd") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#csb"></see>
+    ///   <para>languages:alb</para>
     /// </summary>
-    let csb = _prefix "csb"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#alb">http://eulersharp.sourceforge.net/2003/03swap/languages#alb</seealso>
+    let alb = Prefixed_Name(languages, "alb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cus"></see>
+    ///   <para>languages:alg</para>
     /// </summary>
-    let cus = _prefix "cus"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#alg">http://eulersharp.sourceforge.net/2003/03swap/languages#alg</seealso>
+    let alg = Prefixed_Name(languages, "alg") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#cze"></see>
+    ///   <para>languages:amh</para>
     /// </summary>
-    let cze = _prefix "cze"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#amh">http://eulersharp.sourceforge.net/2003/03swap/languages#amh</seealso>
+    let amh = Prefixed_Name(languages, "amh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dak"></see>
+    ///   <para>languages:anp</para>
     /// </summary>
-    let dak = _prefix "dak"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#anp">http://eulersharp.sourceforge.net/2003/03swap/languages#anp</seealso>
+    let anp = Prefixed_Name(languages, "anp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dan"></see>
+    ///   <para>languages:ara</para>
     /// </summary>
-    let dan = _prefix "dan"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ara">http://eulersharp.sourceforge.net/2003/03swap/languages#ara</seealso>
+    let ara = Prefixed_Name(languages, "ara") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dar"></see>
+    ///   <para>languages:arg</para>
     /// </summary>
-    let dar = _prefix "dar"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#arg">http://eulersharp.sourceforge.net/2003/03swap/languages#arg</seealso>
+    let arg = Prefixed_Name(languages, "arg") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#day"></see>
+    ///   <para>languages:arp</para>
     /// </summary>
-    let day = _prefix "day"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#arp">http://eulersharp.sourceforge.net/2003/03swap/languages#arp</seealso>
+    let arp = Prefixed_Name(languages, "arp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#del"></see>
+    ///   <para>languages:arw</para>
     /// </summary>
-    let del = _prefix "del"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#arw">http://eulersharp.sourceforge.net/2003/03swap/languages#arw</seealso>
+    let arw = Prefixed_Name(languages, "arw") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#den"></see>
+    ///   <para>languages:ath</para>
     /// </summary>
-    let den = _prefix "den"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ath">http://eulersharp.sourceforge.net/2003/03swap/languages#ath</seealso>
+    let ath = Prefixed_Name(languages, "ath") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dgr"></see>
+    ///   <para>languages:bih</para>
     /// </summary>
-    let dgr = _prefix "dgr"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bih">http://eulersharp.sourceforge.net/2003/03swap/languages#bih</seealso>
+    let bih = Prefixed_Name(languages, "bih") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#din"></see>
+    ///   <para>languages:cha</para>
     /// </summary>
-    let din = _prefix "din"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cha">http://eulersharp.sourceforge.net/2003/03swap/languages#cha</seealso>
+    let cha = Prefixed_Name(languages, "cha") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#div"></see>
+    ///   <para>languages:chb</para>
     /// </summary>
-    let div = _prefix "div"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chb">http://eulersharp.sourceforge.net/2003/03swap/languages#chb</seealso>
+    let chb = Prefixed_Name(languages, "chb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#doi"></see>
+    ///   <para>languages:che</para>
     /// </summary>
-    let doi = _prefix "doi"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#che">http://eulersharp.sourceforge.net/2003/03swap/languages#che</seealso>
+    let che = Prefixed_Name(languages, "che") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dra"></see>
+    ///   <para>languages:chg</para>
     /// </summary>
-    let dra = _prefix "dra"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chg">http://eulersharp.sourceforge.net/2003/03swap/languages#chg</seealso>
+    let chg = Prefixed_Name(languages, "chg") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dsb"></see>
+    ///   <para>languages:chi</para>
     /// </summary>
-    let dsb = _prefix "dsb"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chi">http://eulersharp.sourceforge.net/2003/03swap/languages#chi</seealso>
+    let chi = Prefixed_Name(languages, "chi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dua"></see>
+    ///   <para>languages:chk</para>
     /// </summary>
-    let dua = _prefix "dua"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chk">http://eulersharp.sourceforge.net/2003/03swap/languages#chk</seealso>
+    let chk = Prefixed_Name(languages, "chk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dum"></see>
+    ///   <para>languages:chn</para>
     /// </summary>
-    let dum = _prefix "dum"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chn">http://eulersharp.sourceforge.net/2003/03swap/languages#chn</seealso>
+    let chn = Prefixed_Name(languages, "chn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dut"></see>
+    ///   <para>languages:chp</para>
     /// </summary>
-    let dut = _prefix "dut"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chp">http://eulersharp.sourceforge.net/2003/03swap/languages#chp</seealso>
+    let chp = Prefixed_Name(languages, "chp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dyu"></see>
+    ///   <para>languages:chr</para>
     /// </summary>
-    let dyu = _prefix "dyu"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chr">http://eulersharp.sourceforge.net/2003/03swap/languages#chr</seealso>
+    let chr = Prefixed_Name(languages, "chr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#dzo"></see>
+    ///   <para>languages:chu</para>
     /// </summary>
-    let dzo = _prefix "dzo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chu">http://eulersharp.sourceforge.net/2003/03swap/languages#chu</seealso>
+    let chu = Prefixed_Name(languages, "chu") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#efi"></see>
+    ///   <para>languages:chv</para>
     /// </summary>
-    let efi = _prefix "efi"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chv">http://eulersharp.sourceforge.net/2003/03swap/languages#chv</seealso>
+    let chv = Prefixed_Name(languages, "chv") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#egy"></see>
+    ///   <para>languages:del</para>
     /// </summary>
-    let egy = _prefix "egy"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#del">http://eulersharp.sourceforge.net/2003/03swap/languages#del</seealso>
+    let del = Prefixed_Name(languages, "del") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#eka"></see>
+    ///   <para>languages:fil</para>
     /// </summary>
-    let eka = _prefix "eka"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fil">http://eulersharp.sourceforge.net/2003/03swap/languages#fil</seealso>
+    let fil = Prefixed_Name(languages, "fil") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#elx"></see>
+    ///   <para>languages:fin</para>
     /// </summary>
-    let elx = _prefix "elx"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fin">http://eulersharp.sourceforge.net/2003/03swap/languages#fin</seealso>
+    let fin = Prefixed_Name(languages, "fin") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#eng"></see>
+    ///   <para>languages:gor</para>
     /// </summary>
-    let eng = _prefix "eng"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gor">http://eulersharp.sourceforge.net/2003/03swap/languages#gor</seealso>
+    let gor = Prefixed_Name(languages, "gor") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#enm"></see>
+    ///   <para>languages:got</para>
     /// </summary>
-    let enm = _prefix "enm"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#got">http://eulersharp.sourceforge.net/2003/03swap/languages#got</seealso>
+    let got = Prefixed_Name(languages, "got") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#epo"></see>
+    ///   <para>languages:grb</para>
     /// </summary>
-    let epo = _prefix "epo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#grb">http://eulersharp.sourceforge.net/2003/03swap/languages#grb</seealso>
+    let grb = Prefixed_Name(languages, "grb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#est"></see>
+    ///   <para>languages:kan</para>
     /// </summary>
-    let est = _prefix "est"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kan">http://eulersharp.sourceforge.net/2003/03swap/languages#kan</seealso>
+    let kan = Prefixed_Name(languages, "kan") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ewe"></see>
+    ///   <para>languages:kar</para>
     /// </summary>
-    let ewe = _prefix "ewe"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kar">http://eulersharp.sourceforge.net/2003/03swap/languages#kar</seealso>
+    let kar = Prefixed_Name(languages, "kar") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ewo"></see>
+    ///   <para>languages:kas</para>
     /// </summary>
-    let ewo = _prefix "ewo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kas">http://eulersharp.sourceforge.net/2003/03swap/languages#kas</seealso>
+    let kas = Prefixed_Name(languages, "kas") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fan"></see>
+    ///   <para>languages:kau</para>
     /// </summary>
-    let fan = _prefix "fan"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kau">http://eulersharp.sourceforge.net/2003/03swap/languages#kau</seealso>
+    let kau = Prefixed_Name(languages, "kau") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fao"></see>
+    ///   <para>languages:kaw</para>
     /// </summary>
-    let fao = _prefix "fao"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kaw">http://eulersharp.sourceforge.net/2003/03swap/languages#kaw</seealso>
+    let kaw = Prefixed_Name(languages, "kaw") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fat"></see>
+    ///   <para>languages:kaz</para>
     /// </summary>
-    let fat = _prefix "fat"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kaz">http://eulersharp.sourceforge.net/2003/03swap/languages#kaz</seealso>
+    let kaz = Prefixed_Name(languages, "kaz") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fij"></see>
+    ///   <para>languages:kbd</para>
     /// </summary>
-    let fij = _prefix "fij"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kbd">http://eulersharp.sourceforge.net/2003/03swap/languages#kbd</seealso>
+    let kbd = Prefixed_Name(languages, "kbd") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fil"></see>
+    ///   <para>languages:kha</para>
     /// </summary>
-    let fil = _prefix "fil"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kha">http://eulersharp.sourceforge.net/2003/03swap/languages#kha</seealso>
+    let kha = Prefixed_Name(languages, "kha") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fin"></see>
+    ///   <para>languages:khi</para>
     /// </summary>
-    let fin = _prefix "fin"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#khi">http://eulersharp.sourceforge.net/2003/03swap/languages#khi</seealso>
+    let khi = Prefixed_Name(languages, "khi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fiu"></see>
+    ///   <para>languages:khm</para>
     /// </summary>
-    let fiu = _prefix "fiu"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#khm">http://eulersharp.sourceforge.net/2003/03swap/languages#khm</seealso>
+    let khm = Prefixed_Name(languages, "khm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fon"></see>
+    ///   <para>languages:loz</para>
     /// </summary>
-    let fon = _prefix "fon"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#loz">http://eulersharp.sourceforge.net/2003/03swap/languages#loz</seealso>
+    let loz = Prefixed_Name(languages, "loz") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fre"></see>
+    ///   <para>languages:ltz</para>
     /// </summary>
-    let fre = _prefix "fre"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ltz">http://eulersharp.sourceforge.net/2003/03swap/languages#ltz</seealso>
+    let ltz = Prefixed_Name(languages, "ltz") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#frm"></see>
+    ///   <para>languages:lua</para>
     /// </summary>
-    let frm = _prefix "frm"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lua">http://eulersharp.sourceforge.net/2003/03swap/languages#lua</seealso>
+    let lua = Prefixed_Name(languages, "lua") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fro"></see>
+    ///   <para>languages:mwl</para>
     /// </summary>
-    let fro = _prefix "fro"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mwl">http://eulersharp.sourceforge.net/2003/03swap/languages#mwl</seealso>
+    let mwl = Prefixed_Name(languages, "mwl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#frr"></see>
+    ///   <para>languages:mwr</para>
     /// </summary>
-    let frr = _prefix "frr"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mwr">http://eulersharp.sourceforge.net/2003/03swap/languages#mwr</seealso>
+    let mwr = Prefixed_Name(languages, "mwr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#frs"></see>
+    ///   <para>languages:myn</para>
     /// </summary>
-    let frs = _prefix "frs"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#myn">http://eulersharp.sourceforge.net/2003/03swap/languages#myn</seealso>
+    let myn = Prefixed_Name(languages, "myn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fry"></see>
+    ///   <para>languages:srd</para>
     /// </summary>
-    let fry = _prefix "fry"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#srd">http://eulersharp.sourceforge.net/2003/03swap/languages#srd</seealso>
+    let srd = Prefixed_Name(languages, "srd") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ful"></see>
+    ///   <para>languages:srn</para>
     /// </summary>
-    let ful = _prefix "ful"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#srn">http://eulersharp.sourceforge.net/2003/03swap/languages#srn</seealso>
+    let srn = Prefixed_Name(languages, "srn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#fur"></see>
+    ///   <para>languages:srp</para>
     /// </summary>
-    let fur = _prefix "fur"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#srp">http://eulersharp.sourceforge.net/2003/03swap/languages#srp</seealso>
+    let srp = Prefixed_Name(languages, "srp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gaa"></see>
+    ///   <para>languages:tup</para>
     /// </summary>
-    let gaa = _prefix "gaa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tup">http://eulersharp.sourceforge.net/2003/03swap/languages#tup</seealso>
+    let tup = Prefixed_Name(languages, "tup") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gay"></see>
+    ///   <para>languages:tur</para>
     /// </summary>
-    let gay = _prefix "gay"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tur">http://eulersharp.sourceforge.net/2003/03swap/languages#tur</seealso>
+    let tur = Prefixed_Name(languages, "tur") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gba"></see>
+    ///   <para>languages:tut</para>
     /// </summary>
-    let gba = _prefix "gba"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tut">http://eulersharp.sourceforge.net/2003/03swap/languages#tut</seealso>
+    let tut = Prefixed_Name(languages, "tut") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gem"></see>
+    ///   <para>languages:zen</para>
     /// </summary>
-    let gem = _prefix "gem"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#zen">http://eulersharp.sourceforge.net/2003/03swap/languages#zen</seealso>
+    let zen = Prefixed_Name(languages, "zen") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#geo"></see>
+    ///   <para>languages:zha</para>
     /// </summary>
-    let geo = _prefix "geo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#zha">http://eulersharp.sourceforge.net/2003/03swap/languages#zha</seealso>
+    let zha = Prefixed_Name(languages, "zha") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ger"></see>
+    ///   <para>languages:znd</para>
     /// </summary>
-    let ger = _prefix "ger"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#znd">http://eulersharp.sourceforge.net/2003/03swap/languages#znd</seealso>
+    let znd = Prefixed_Name(languages, "znd") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gez"></see>
+    ///   <para>languages:zul</para>
     /// </summary>
-    let gez = _prefix "gez"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#zul">http://eulersharp.sourceforge.net/2003/03swap/languages#zul</seealso>
+    let zul = Prefixed_Name(languages, "zul") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gil"></see>
+    ///   <para>languages:zun</para>
     /// </summary>
-    let gil = _prefix "gil"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#zun">http://eulersharp.sourceforge.net/2003/03swap/languages#zun</seealso>
+    let zun = Prefixed_Name(languages, "zun") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gla"></see>
+    ///   <para>languages:zxx</para>
     /// </summary>
-    let gla = _prefix "gla"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#zxx">http://eulersharp.sourceforge.net/2003/03swap/languages#zxx</seealso>
+    let zxx = Prefixed_Name(languages, "zxx") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gle"></see>
+    ///   <para>languages:cel</para>
     /// </summary>
-    let gle = _prefix "gle"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cel">http://eulersharp.sourceforge.net/2003/03swap/languages#cel</seealso>
+    let cel = Prefixed_Name(languages, "cel") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#glg"></see>
+    ///   <para>languages:haw</para>
     /// </summary>
-    let glg = _prefix "glg"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#haw">http://eulersharp.sourceforge.net/2003/03swap/languages#haw</seealso>
+    let haw = Prefixed_Name(languages, "haw") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#glv"></see>
+    ///   <para>languages:him</para>
     /// </summary>
-    let glv = _prefix "glv"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#him">http://eulersharp.sourceforge.net/2003/03swap/languages#him</seealso>
+    let him = Prefixed_Name(languages, "him") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gmh"></see>
+    ///   <para>languages:hmn</para>
     /// </summary>
-    let gmh = _prefix "gmh"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hmn">http://eulersharp.sourceforge.net/2003/03swap/languages#hmn</seealso>
+    let hmn = Prefixed_Name(languages, "hmn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#goh"></see>
+    ///   <para>languages:hun</para>
     /// </summary>
-    let goh = _prefix "goh"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hun">http://eulersharp.sourceforge.net/2003/03swap/languages#hun</seealso>
+    let hun = Prefixed_Name(languages, "hun") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gon"></see>
+    ///   <para>languages:hup</para>
     /// </summary>
-    let gon = _prefix "gon"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hup">http://eulersharp.sourceforge.net/2003/03swap/languages#hup</seealso>
+    let hup = Prefixed_Name(languages, "hup") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gor"></see>
+    ///   <para>languages:iba</para>
     /// </summary>
-    let gor = _prefix "gor"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#iba">http://eulersharp.sourceforge.net/2003/03swap/languages#iba</seealso>
+    let iba = Prefixed_Name(languages, "iba") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#got"></see>
+    ///   <para>languages:lah</para>
     /// </summary>
-    let got = _prefix "got"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lah">http://eulersharp.sourceforge.net/2003/03swap/languages#lah</seealso>
+    let lah = Prefixed_Name(languages, "lah") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#grb"></see>
+    ///   <para>languages:min</para>
     /// </summary>
-    let grb = _prefix "grb"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#min">http://eulersharp.sourceforge.net/2003/03swap/languages#min</seealso>
+    let min = Prefixed_Name(languages, "min") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#grc"></see>
+    ///   <para>languages:nym</para>
     /// </summary>
-    let grc = _prefix "grc"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nym">http://eulersharp.sourceforge.net/2003/03swap/languages#nym</seealso>
+    let nym = Prefixed_Name(languages, "nym") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gre"></see>
+    ///   <para>languages:nyn</para>
     /// </summary>
-    let gre = _prefix "gre"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nyn">http://eulersharp.sourceforge.net/2003/03swap/languages#nyn</seealso>
+    let nyn = Prefixed_Name(languages, "nyn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#grn"></see>
+    ///   <para>languages:slo</para>
     /// </summary>
-    let grn = _prefix "grn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#slo">http://eulersharp.sourceforge.net/2003/03swap/languages#slo</seealso>
+    let slo = Prefixed_Name(languages, "slo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gsw"></see>
+    ///   <para>languages:sme</para>
     /// </summary>
-    let gsw = _prefix "gsw"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sme">http://eulersharp.sourceforge.net/2003/03swap/languages#sme</seealso>
+    let sme = Prefixed_Name(languages, "sme") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#guj"></see>
+    ///   <para>languages:smn</para>
     /// </summary>
-    let guj = _prefix "guj"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#smn">http://eulersharp.sourceforge.net/2003/03swap/languages#smn</seealso>
+    let smn = Prefixed_Name(languages, "smn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#gwi"></see>
+    ///   <para>languages:tha</para>
     /// </summary>
-    let gwi = _prefix "gwi"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tha">http://eulersharp.sourceforge.net/2003/03swap/languages#tha</seealso>
+    let tha = Prefixed_Name(languages, "tha") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hai"></see>
+    ///   <para>languages:tib</para>
     /// </summary>
-    let hai = _prefix "hai"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tib">http://eulersharp.sourceforge.net/2003/03swap/languages#tib</seealso>
+    let tib = Prefixed_Name(languages, "tib") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hat"></see>
+    ///   <para>languages:ady</para>
     /// </summary>
-    let hat = _prefix "hat"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ady">http://eulersharp.sourceforge.net/2003/03swap/languages#ady</seealso>
+    let ady = Prefixed_Name(languages, "ady") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hau"></see>
+    ///   <para>languages:afh</para>
     /// </summary>
-    let hau = _prefix "hau"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#afh">http://eulersharp.sourceforge.net/2003/03swap/languages#afh</seealso>
+    let afh = Prefixed_Name(languages, "afh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#haw"></see>
+    ///   <para>languages:aka</para>
     /// </summary>
-    let haw = _prefix "haw"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#aka">http://eulersharp.sourceforge.net/2003/03swap/languages#aka</seealso>
+    let aka = Prefixed_Name(languages, "aka") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#heb"></see>
+    ///   <para>languages:bat</para>
     /// </summary>
-    let heb = _prefix "heb"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bat">http://eulersharp.sourceforge.net/2003/03swap/languages#bat</seealso>
+    let bat = Prefixed_Name(languages, "bat") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#her"></see>
+    ///   <para>languages:egy</para>
     /// </summary>
-    let her = _prefix "her"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#egy">http://eulersharp.sourceforge.net/2003/03swap/languages#egy</seealso>
+    let egy = Prefixed_Name(languages, "egy") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hil"></see>
+    ///   <para>languages:hat</para>
     /// </summary>
-    let hil = _prefix "hil"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hat">http://eulersharp.sourceforge.net/2003/03swap/languages#hat</seealso>
+    let hat = Prefixed_Name(languages, "hat") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#him"></see>
+    ///   <para>languages:ile</para>
     /// </summary>
-    let him = _prefix "him"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ile">http://eulersharp.sourceforge.net/2003/03swap/languages#ile</seealso>
+    let ile = Prefixed_Name(languages, "ile") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hin"></see>
+    ///   <para>languages:pal</para>
     /// </summary>
-    let hin = _prefix "hin"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pal">http://eulersharp.sourceforge.net/2003/03swap/languages#pal</seealso>
+    let pal = Prefixed_Name(languages, "pal") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hit"></see>
+    ///   <para>languages:pam</para>
     /// </summary>
-    let hit = _prefix "hit"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pam">http://eulersharp.sourceforge.net/2003/03swap/languages#pam</seealso>
+    let pam = Prefixed_Name(languages, "pam") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hmn"></see>
+    ///   <para>languages:son</para>
     /// </summary>
-    let hmn = _prefix "hmn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#son">http://eulersharp.sourceforge.net/2003/03swap/languages#son</seealso>
+    let son = Prefixed_Name(languages, "son") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hmo"></see>
+    ///   <para>languages:wak</para>
     /// </summary>
-    let hmo = _prefix "hmo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#wak">http://eulersharp.sourceforge.net/2003/03swap/languages#wak</seealso>
+    let wak = Prefixed_Name(languages, "wak") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hrv"></see>
+    ///   <para>languages:wal</para>
     /// </summary>
-    let hrv = _prefix "hrv"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#wal">http://eulersharp.sourceforge.net/2003/03swap/languages#wal</seealso>
+    let wal = Prefixed_Name(languages, "wal") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hsb"></see>
+    ///   <para>languages:afr</para>
     /// </summary>
-    let hsb = _prefix "hsb"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#afr">http://eulersharp.sourceforge.net/2003/03swap/languages#afr</seealso>
+    let afr = Prefixed_Name(languages, "afr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hun"></see>
+    ///   <para>languages:ain</para>
     /// </summary>
-    let hun = _prefix "hun"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ain">http://eulersharp.sourceforge.net/2003/03swap/languages#ain</seealso>
+    let ain = Prefixed_Name(languages, "ain") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#hup"></see>
+    ///   <para>languages:akk</para>
     /// </summary>
-    let hup = _prefix "hup"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#akk">http://eulersharp.sourceforge.net/2003/03swap/languages#akk</seealso>
+    let akk = Prefixed_Name(languages, "akk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#iba"></see>
+    ///   <para>languages:ale</para>
     /// </summary>
-    let iba = _prefix "iba"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ale">http://eulersharp.sourceforge.net/2003/03swap/languages#ale</seealso>
+    let ale = Prefixed_Name(languages, "ale") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ibo"></see>
+    ///   <para>languages:alt</para>
     /// </summary>
-    let ibo = _prefix "ibo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#alt">http://eulersharp.sourceforge.net/2003/03swap/languages#alt</seealso>
+    let alt = Prefixed_Name(languages, "alt") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ice"></see>
+    ///   <para>languages:ang</para>
     /// </summary>
-    let ice = _prefix "ice"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ang">http://eulersharp.sourceforge.net/2003/03swap/languages#ang</seealso>
+    let ang = Prefixed_Name(languages, "ang") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ido"></see>
+    ///   <para>languages:apa</para>
     /// </summary>
-    let ido = _prefix "ido"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#apa">http://eulersharp.sourceforge.net/2003/03swap/languages#apa</seealso>
+    let apa = Prefixed_Name(languages, "apa") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#iii"></see>
+    ///   <para>languages:arc</para>
     /// </summary>
-    let iii = _prefix "iii"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#arc">http://eulersharp.sourceforge.net/2003/03swap/languages#arc</seealso>
+    let arc = Prefixed_Name(languages, "arc") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ijo"></see>
+    ///   <para>languages:arm</para>
     /// </summary>
-    let ijo = _prefix "ijo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#arm">http://eulersharp.sourceforge.net/2003/03swap/languages#arm</seealso>
+    let arm = Prefixed_Name(languages, "arm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#iku"></see>
+    ///   <para>languages:arn</para>
     /// </summary>
-    let iku = _prefix "iku"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#arn">http://eulersharp.sourceforge.net/2003/03swap/languages#arn</seealso>
+    let arn = Prefixed_Name(languages, "arn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ile"></see>
+    ///   <para>languages:art</para>
     /// </summary>
-    let ile = _prefix "ile"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#art">http://eulersharp.sourceforge.net/2003/03swap/languages#art</seealso>
+    let art = Prefixed_Name(languages, "art") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ilo"></see>
+    ///   <para>languages:asm</para>
     /// </summary>
-    let ilo = _prefix "ilo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#asm">http://eulersharp.sourceforge.net/2003/03swap/languages#asm</seealso>
+    let asm = Prefixed_Name(languages, "asm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ina"></see>
+    ///   <para>languages:ast</para>
     /// </summary>
-    let ina = _prefix "ina"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ast">http://eulersharp.sourceforge.net/2003/03swap/languages#ast</seealso>
+    let ast = Prefixed_Name(languages, "ast") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#inc"></see>
+    ///   <para>languages:aus</para>
     /// </summary>
-    let inc = _prefix "inc"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#aus">http://eulersharp.sourceforge.net/2003/03swap/languages#aus</seealso>
+    let aus = Prefixed_Name(languages, "aus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ind"></see>
+    ///   <para>languages:ava</para>
     /// </summary>
-    let ind = _prefix "ind"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ava">http://eulersharp.sourceforge.net/2003/03swap/languages#ava</seealso>
+    let ava = Prefixed_Name(languages, "ava") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ine"></see>
+    ///   <para>languages:aze</para>
     /// </summary>
-    let ine = _prefix "ine"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#aze">http://eulersharp.sourceforge.net/2003/03swap/languages#aze</seealso>
+    let aze = Prefixed_Name(languages, "aze") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#inh"></see>
+    ///   <para>languages:bai</para>
     /// </summary>
-    let inh = _prefix "inh"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bai">http://eulersharp.sourceforge.net/2003/03swap/languages#bai</seealso>
+    let bai = Prefixed_Name(languages, "bai") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ipk"></see>
+    ///   <para>languages:bal</para>
     /// </summary>
-    let ipk = _prefix "ipk"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bal">http://eulersharp.sourceforge.net/2003/03swap/languages#bal</seealso>
+    let bal = Prefixed_Name(languages, "bal") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ira"></see>
+    ///   <para>languages:bam</para>
     /// </summary>
-    let ira = _prefix "ira"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bam">http://eulersharp.sourceforge.net/2003/03swap/languages#bam</seealso>
+    let bam = Prefixed_Name(languages, "bam") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#iro"></see>
+    ///   <para>languages:ban</para>
     /// </summary>
-    let iro = _prefix "iro"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ban">http://eulersharp.sourceforge.net/2003/03swap/languages#ban</seealso>
+    let ban = Prefixed_Name(languages, "ban") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-1DT"></see>
+    ///   <para>languages:baq</para>
     /// </summary>
-    let ``iso639-1DT`` = _prefix "iso639-1DT"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#baq">http://eulersharp.sourceforge.net/2003/03swap/languages#baq</seealso>
+    let baq = Prefixed_Name(languages, "baq") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-2DT"></see>
+    ///   <para>languages:bas</para>
     /// </summary>
-    let ``iso639-2DT`` = _prefix "iso639-2DT"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bas">http://eulersharp.sourceforge.net/2003/03swap/languages#bas</seealso>
+    let bas = Prefixed_Name(languages, "bas") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ita"></see>
+    ///   <para>languages:bej</para>
     /// </summary>
-    let ita = _prefix "ita"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bej">http://eulersharp.sourceforge.net/2003/03swap/languages#bej</seealso>
+    let bej = Prefixed_Name(languages, "bej") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#jav"></see>
+    ///   <para>languages:bel</para>
     /// </summary>
-    let jav = _prefix "jav"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bel">http://eulersharp.sourceforge.net/2003/03swap/languages#bel</seealso>
+    let bel = Prefixed_Name(languages, "bel") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#jbo"></see>
+    ///   <para>languages:bem</para>
     /// </summary>
-    let jbo = _prefix "jbo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bem">http://eulersharp.sourceforge.net/2003/03swap/languages#bem</seealso>
+    let bem = Prefixed_Name(languages, "bem") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#jpn"></see>
+    ///   <para>languages:ben</para>
     /// </summary>
-    let jpn = _prefix "jpn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ben">http://eulersharp.sourceforge.net/2003/03swap/languages#ben</seealso>
+    let ben = Prefixed_Name(languages, "ben") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#jpr"></see>
+    ///   <para>languages:ber</para>
     /// </summary>
-    let jpr = _prefix "jpr"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ber">http://eulersharp.sourceforge.net/2003/03swap/languages#ber</seealso>
+    let ber = Prefixed_Name(languages, "ber") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#jrb"></see>
+    ///   <para>languages:bho</para>
     /// </summary>
-    let jrb = _prefix "jrb"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bho">http://eulersharp.sourceforge.net/2003/03swap/languages#bho</seealso>
+    let bho = Prefixed_Name(languages, "bho") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kaa"></see>
+    ///   <para>languages:bik</para>
     /// </summary>
-    let kaa = _prefix "kaa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bik">http://eulersharp.sourceforge.net/2003/03swap/languages#bik</seealso>
+    let bik = Prefixed_Name(languages, "bik") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kab"></see>
+    ///   <para>languages:bin</para>
     /// </summary>
-    let kab = _prefix "kab"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bin">http://eulersharp.sourceforge.net/2003/03swap/languages#bin</seealso>
+    let bin = Prefixed_Name(languages, "bin") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kac"></see>
+    ///   <para>languages:bis</para>
     /// </summary>
-    let kac = _prefix "kac"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bis">http://eulersharp.sourceforge.net/2003/03swap/languages#bis</seealso>
+    let bis = Prefixed_Name(languages, "bis") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kal"></see>
+    ///   <para>languages:bnt</para>
     /// </summary>
-    let kal = _prefix "kal"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bnt">http://eulersharp.sourceforge.net/2003/03swap/languages#bnt</seealso>
+    let bnt = Prefixed_Name(languages, "bnt") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kam"></see>
+    ///   <para>languages:bos</para>
     /// </summary>
-    let kam = _prefix "kam"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bos">http://eulersharp.sourceforge.net/2003/03swap/languages#bos</seealso>
+    let bos = Prefixed_Name(languages, "bos") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kan"></see>
+    ///   <para>languages:bra</para>
     /// </summary>
-    let kan = _prefix "kan"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bra">http://eulersharp.sourceforge.net/2003/03swap/languages#bra</seealso>
+    let bra = Prefixed_Name(languages, "bra") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kar"></see>
+    ///   <para>languages:btk</para>
     /// </summary>
-    let kar = _prefix "kar"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#btk">http://eulersharp.sourceforge.net/2003/03swap/languages#btk</seealso>
+    let btk = Prefixed_Name(languages, "btk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kas"></see>
+    ///   <para>languages:bua</para>
     /// </summary>
-    let kas = _prefix "kas"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bua">http://eulersharp.sourceforge.net/2003/03swap/languages#bua</seealso>
+    let bua = Prefixed_Name(languages, "bua") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kau"></see>
+    ///   <para>languages:bug</para>
     /// </summary>
-    let kau = _prefix "kau"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bug">http://eulersharp.sourceforge.net/2003/03swap/languages#bug</seealso>
+    let bug = Prefixed_Name(languages, "bug") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kaw"></see>
+    ///   <para>languages:cmc</para>
     /// </summary>
-    let kaw = _prefix "kaw"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cmc">http://eulersharp.sourceforge.net/2003/03swap/languages#cmc</seealso>
+    let cmc = Prefixed_Name(languages, "cmc") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kaz"></see>
+    ///   <para>languages:cop</para>
     /// </summary>
-    let kaz = _prefix "kaz"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cop">http://eulersharp.sourceforge.net/2003/03swap/languages#cop</seealso>
+    let cop = Prefixed_Name(languages, "cop") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kbd"></see>
+    ///   <para>languages:cor</para>
     /// </summary>
-    let kbd = _prefix "kbd"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cor">http://eulersharp.sourceforge.net/2003/03swap/languages#cor</seealso>
+    let cor = Prefixed_Name(languages, "cor") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kha"></see>
+    ///   <para>languages:cos</para>
     /// </summary>
-    let kha = _prefix "kha"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cos">http://eulersharp.sourceforge.net/2003/03swap/languages#cos</seealso>
+    let cos = Prefixed_Name(languages, "cos") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#khi"></see>
+    ///   <para>languages:cpe</para>
     /// </summary>
-    let khi = _prefix "khi"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cpe">http://eulersharp.sourceforge.net/2003/03swap/languages#cpe</seealso>
+    let cpe = Prefixed_Name(languages, "cpe") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#khm"></see>
+    ///   <para>languages:cpf</para>
     /// </summary>
-    let khm = _prefix "khm"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cpf">http://eulersharp.sourceforge.net/2003/03swap/languages#cpf</seealso>
+    let cpf = Prefixed_Name(languages, "cpf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kho"></see>
+    ///   <para>languages:cre</para>
     /// </summary>
-    let kho = _prefix "kho"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cre">http://eulersharp.sourceforge.net/2003/03swap/languages#cre</seealso>
+    let cre = Prefixed_Name(languages, "cre") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kik"></see>
+    ///   <para>languages:crh</para>
     /// </summary>
-    let kik = _prefix "kik"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#crh">http://eulersharp.sourceforge.net/2003/03swap/languages#crh</seealso>
+    let crh = Prefixed_Name(languages, "crh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kin"></see>
+    ///   <para>languages:crp</para>
     /// </summary>
-    let kin = _prefix "kin"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#crp">http://eulersharp.sourceforge.net/2003/03swap/languages#crp</seealso>
+    let crp = Prefixed_Name(languages, "crp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kir"></see>
+    ///   <para>languages:cus</para>
     /// </summary>
-    let kir = _prefix "kir"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cus">http://eulersharp.sourceforge.net/2003/03swap/languages#cus</seealso>
+    let cus = Prefixed_Name(languages, "cus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kmb"></see>
+    ///   <para>languages:cze</para>
     /// </summary>
-    let kmb = _prefix "kmb"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cze">http://eulersharp.sourceforge.net/2003/03swap/languages#cze</seealso>
+    let cze = Prefixed_Name(languages, "cze") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kok"></see>
+    ///   <para>languages:dak</para>
     /// </summary>
-    let kok = _prefix "kok"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dak">http://eulersharp.sourceforge.net/2003/03swap/languages#dak</seealso>
+    let dak = Prefixed_Name(languages, "dak") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kom"></see>
+    ///   <para>languages:dan</para>
     /// </summary>
-    let kom = _prefix "kom"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dan">http://eulersharp.sourceforge.net/2003/03swap/languages#dan</seealso>
+    let dan = Prefixed_Name(languages, "dan") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kon"></see>
+    ///   <para>languages:dar</para>
     /// </summary>
-    let kon = _prefix "kon"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dar">http://eulersharp.sourceforge.net/2003/03swap/languages#dar</seealso>
+    let dar = Prefixed_Name(languages, "dar") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kor"></see>
+    ///   <para>languages:day</para>
     /// </summary>
-    let kor = _prefix "kor"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#day">http://eulersharp.sourceforge.net/2003/03swap/languages#day</seealso>
+    let day = Prefixed_Name(languages, "day") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kos"></see>
+    ///   <para>languages:den</para>
     /// </summary>
-    let kos = _prefix "kos"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#den">http://eulersharp.sourceforge.net/2003/03swap/languages#den</seealso>
+    let den = Prefixed_Name(languages, "den") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kpe"></see>
+    ///   <para>languages:dgr</para>
     /// </summary>
-    let kpe = _prefix "kpe"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dgr">http://eulersharp.sourceforge.net/2003/03swap/languages#dgr</seealso>
+    let dgr = Prefixed_Name(languages, "dgr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#krc"></see>
+    ///   <para>languages:din</para>
     /// </summary>
-    let krc = _prefix "krc"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#din">http://eulersharp.sourceforge.net/2003/03swap/languages#din</seealso>
+    let din = Prefixed_Name(languages, "din") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#krl"></see>
+    ///   <para>languages:div</para>
     /// </summary>
-    let krl = _prefix "krl"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#div">http://eulersharp.sourceforge.net/2003/03swap/languages#div</seealso>
+    let div = Prefixed_Name(languages, "div") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kro"></see>
+    ///   <para>languages:doi</para>
     /// </summary>
-    let kro = _prefix "kro"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#doi">http://eulersharp.sourceforge.net/2003/03swap/languages#doi</seealso>
+    let doi = Prefixed_Name(languages, "doi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kru"></see>
+    ///   <para>languages:dra</para>
     /// </summary>
-    let kru = _prefix "kru"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dra">http://eulersharp.sourceforge.net/2003/03swap/languages#dra</seealso>
+    let dra = Prefixed_Name(languages, "dra") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kua"></see>
+    ///   <para>languages:dua</para>
     /// </summary>
-    let kua = _prefix "kua"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dua">http://eulersharp.sourceforge.net/2003/03swap/languages#dua</seealso>
+    let dua = Prefixed_Name(languages, "dua") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kum"></see>
+    ///   <para>languages:dum</para>
     /// </summary>
-    let kum = _prefix "kum"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dum">http://eulersharp.sourceforge.net/2003/03swap/languages#dum</seealso>
+    let dum = Prefixed_Name(languages, "dum") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kur"></see>
+    ///   <para>languages:dut</para>
     /// </summary>
-    let kur = _prefix "kur"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dut">http://eulersharp.sourceforge.net/2003/03swap/languages#dut</seealso>
+    let dut = Prefixed_Name(languages, "dut") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#kut"></see>
+    ///   <para>languages:dyu</para>
     /// </summary>
-    let kut = _prefix "kut"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dyu">http://eulersharp.sourceforge.net/2003/03swap/languages#dyu</seealso>
+    let dyu = Prefixed_Name(languages, "dyu") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lad"></see>
+    ///   <para>languages:dzo</para>
     /// </summary>
-    let lad = _prefix "lad"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dzo">http://eulersharp.sourceforge.net/2003/03swap/languages#dzo</seealso>
+    let dzo = Prefixed_Name(languages, "dzo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lah"></see>
+    ///   <para>languages:efi</para>
     /// </summary>
-    let lah = _prefix "lah"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#efi">http://eulersharp.sourceforge.net/2003/03swap/languages#efi</seealso>
+    let efi = Prefixed_Name(languages, "efi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lam"></see>
+    ///   <para>languages:eka</para>
     /// </summary>
-    let lam = _prefix "lam"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#eka">http://eulersharp.sourceforge.net/2003/03swap/languages#eka</seealso>
+    let eka = Prefixed_Name(languages, "eka") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lao"></see>
+    ///   <para>languages:elx</para>
     /// </summary>
-    let lao = _prefix "lao"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#elx">http://eulersharp.sourceforge.net/2003/03swap/languages#elx</seealso>
+    let elx = Prefixed_Name(languages, "elx") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lat"></see>
+    ///   <para>languages:eng</para>
     /// </summary>
-    let lat = _prefix "lat"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#eng">http://eulersharp.sourceforge.net/2003/03swap/languages#eng</seealso>
+    let eng = Prefixed_Name(languages, "eng") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lav"></see>
+    ///   <para>languages:enm</para>
     /// </summary>
-    let lav = _prefix "lav"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#enm">http://eulersharp.sourceforge.net/2003/03swap/languages#enm</seealso>
+    let enm = Prefixed_Name(languages, "enm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lez"></see>
+    ///   <para>languages:epo</para>
     /// </summary>
-    let lez = _prefix "lez"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#epo">http://eulersharp.sourceforge.net/2003/03swap/languages#epo</seealso>
+    let epo = Prefixed_Name(languages, "epo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lim"></see>
+    ///   <para>languages:est</para>
     /// </summary>
-    let lim = _prefix "lim"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#est">http://eulersharp.sourceforge.net/2003/03swap/languages#est</seealso>
+    let est = Prefixed_Name(languages, "est") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lin"></see>
+    ///   <para>languages:ewo</para>
     /// </summary>
-    let lin = _prefix "lin"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ewo">http://eulersharp.sourceforge.net/2003/03swap/languages#ewo</seealso>
+    let ewo = Prefixed_Name(languages, "ewo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lit"></see>
+    ///   <para>languages:fan</para>
     /// </summary>
-    let lit = _prefix "lit"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fan">http://eulersharp.sourceforge.net/2003/03swap/languages#fan</seealso>
+    let fan = Prefixed_Name(languages, "fan") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lol"></see>
+    ///   <para>languages:fao</para>
     /// </summary>
-    let lol = _prefix "lol"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fao">http://eulersharp.sourceforge.net/2003/03swap/languages#fao</seealso>
+    let fao = Prefixed_Name(languages, "fao") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#loz"></see>
+    ///   <para>languages:fat</para>
     /// </summary>
-    let loz = _prefix "loz"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fat">http://eulersharp.sourceforge.net/2003/03swap/languages#fat</seealso>
+    let fat = Prefixed_Name(languages, "fat") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ltz"></see>
+    ///   <para>languages:fij</para>
     /// </summary>
-    let ltz = _prefix "ltz"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fij">http://eulersharp.sourceforge.net/2003/03swap/languages#fij</seealso>
+    let fij = Prefixed_Name(languages, "fij") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lua"></see>
+    ///   <para>languages:fiu</para>
     /// </summary>
-    let lua = _prefix "lua"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fiu">http://eulersharp.sourceforge.net/2003/03swap/languages#fiu</seealso>
+    let fiu = Prefixed_Name(languages, "fiu") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lub"></see>
+    ///   <para>languages:fon</para>
     /// </summary>
-    let lub = _prefix "lub"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fon">http://eulersharp.sourceforge.net/2003/03swap/languages#fon</seealso>
+    let fon = Prefixed_Name(languages, "fon") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lug"></see>
+    ///   <para>languages:fre</para>
     /// </summary>
-    let lug = _prefix "lug"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fre">http://eulersharp.sourceforge.net/2003/03swap/languages#fre</seealso>
+    let fre = Prefixed_Name(languages, "fre") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lui"></see>
+    ///   <para>languages:frm</para>
     /// </summary>
-    let lui = _prefix "lui"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#frm">http://eulersharp.sourceforge.net/2003/03swap/languages#frm</seealso>
+    let frm = Prefixed_Name(languages, "frm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lun"></see>
+    ///   <para>languages:fro</para>
     /// </summary>
-    let lun = _prefix "lun"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#fro">http://eulersharp.sourceforge.net/2003/03swap/languages#fro</seealso>
+    let fro = Prefixed_Name(languages, "fro") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#luo"></see>
+    ///   <para>languages:frr</para>
     /// </summary>
-    let luo = _prefix "luo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#frr">http://eulersharp.sourceforge.net/2003/03swap/languages#frr</seealso>
+    let frr = Prefixed_Name(languages, "frr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#lus"></see>
+    ///   <para>languages:grc</para>
     /// </summary>
-    let lus = _prefix "lus"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#grc">http://eulersharp.sourceforge.net/2003/03swap/languages#grc</seealso>
+    let grc = Prefixed_Name(languages, "grc") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mac"></see>
+    ///   <para>languages:gre</para>
     /// </summary>
-    let mac = _prefix "mac"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gre">http://eulersharp.sourceforge.net/2003/03swap/languages#gre</seealso>
+    let gre = Prefixed_Name(languages, "gre") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mad"></see>
+    ///   <para>languages:grn</para>
     /// </summary>
-    let mad = _prefix "mad"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#grn">http://eulersharp.sourceforge.net/2003/03swap/languages#grn</seealso>
+    let grn = Prefixed_Name(languages, "grn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mag"></see>
+    ///   <para>languages:gsw</para>
     /// </summary>
-    let mag = _prefix "mag"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gsw">http://eulersharp.sourceforge.net/2003/03swap/languages#gsw</seealso>
+    let gsw = Prefixed_Name(languages, "gsw") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mah"></see>
+    ///   <para>languages:guj</para>
     /// </summary>
-    let mah = _prefix "mah"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#guj">http://eulersharp.sourceforge.net/2003/03swap/languages#guj</seealso>
+    let guj = Prefixed_Name(languages, "guj") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mai"></see>
+    ///   <para>languages:gwi</para>
     /// </summary>
-    let mai = _prefix "mai"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gwi">http://eulersharp.sourceforge.net/2003/03swap/languages#gwi</seealso>
+    let gwi = Prefixed_Name(languages, "gwi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mak"></see>
+    ///   <para>languages:ibo</para>
     /// </summary>
-    let mak = _prefix "mak"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ibo">http://eulersharp.sourceforge.net/2003/03swap/languages#ibo</seealso>
+    let ibo = Prefixed_Name(languages, "ibo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mal"></see>
+    ///   <para>languages:ice</para>
     /// </summary>
-    let mal = _prefix "mal"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ice">http://eulersharp.sourceforge.net/2003/03swap/languages#ice</seealso>
+    let ice = Prefixed_Name(languages, "ice") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#man"></see>
+    ///   <para>languages:ido</para>
     /// </summary>
-    let man = _prefix "man"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ido">http://eulersharp.sourceforge.net/2003/03swap/languages#ido</seealso>
+    let ido = Prefixed_Name(languages, "ido") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mao"></see>
+    ///   <para>languages:iii</para>
     /// </summary>
-    let mao = _prefix "mao"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#iii">http://eulersharp.sourceforge.net/2003/03swap/languages#iii</seealso>
+    let iii = Prefixed_Name(languages, "iii") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#map"></see>
+    ///   <para>languages:ijo</para>
     /// </summary>
-    let map = _prefix "map"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ijo">http://eulersharp.sourceforge.net/2003/03swap/languages#ijo</seealso>
+    let ijo = Prefixed_Name(languages, "ijo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mar"></see>
+    ///   <para>languages:iku</para>
     /// </summary>
-    let mar = _prefix "mar"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#iku">http://eulersharp.sourceforge.net/2003/03swap/languages#iku</seealso>
+    let iku = Prefixed_Name(languages, "iku") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mas"></see>
+    ///   <para>languages:ilo</para>
     /// </summary>
-    let mas = _prefix "mas"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ilo">http://eulersharp.sourceforge.net/2003/03swap/languages#ilo</seealso>
+    let ilo = Prefixed_Name(languages, "ilo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#may"></see>
+    ///   <para>languages:ina</para>
     /// </summary>
-    let may = _prefix "may"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ina">http://eulersharp.sourceforge.net/2003/03swap/languages#ina</seealso>
+    let ina = Prefixed_Name(languages, "ina") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mdf"></see>
+    ///   <para>languages:inc</para>
     /// </summary>
-    let mdf = _prefix "mdf"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#inc">http://eulersharp.sourceforge.net/2003/03swap/languages#inc</seealso>
+    let inc = Prefixed_Name(languages, "inc") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mdr"></see>
+    ///   <para>languages:ind</para>
     /// </summary>
-    let mdr = _prefix "mdr"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ind">http://eulersharp.sourceforge.net/2003/03swap/languages#ind</seealso>
+    let ind = Prefixed_Name(languages, "ind") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#men"></see>
+    ///   <para>languages:ine</para>
     /// </summary>
-    let men = _prefix "men"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ine">http://eulersharp.sourceforge.net/2003/03swap/languages#ine</seealso>
+    let ine = Prefixed_Name(languages, "ine") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mga"></see>
+    ///   <para>languages:inh</para>
     /// </summary>
-    let mga = _prefix "mga"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#inh">http://eulersharp.sourceforge.net/2003/03swap/languages#inh</seealso>
+    let inh = Prefixed_Name(languages, "inh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mic"></see>
+    ///   <para>languages:ipk</para>
     /// </summary>
-    let mic = _prefix "mic"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ipk">http://eulersharp.sourceforge.net/2003/03swap/languages#ipk</seealso>
+    let ipk = Prefixed_Name(languages, "ipk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#min"></see>
+    ///   <para>languages:ira</para>
     /// </summary>
-    let min = _prefix "min"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ira">http://eulersharp.sourceforge.net/2003/03swap/languages#ira</seealso>
+    let ira = Prefixed_Name(languages, "ira") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mis"></see>
+    ///   <para>languages:iro</para>
     /// </summary>
-    let mis = _prefix "mis"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#iro">http://eulersharp.sourceforge.net/2003/03swap/languages#iro</seealso>
+    let iro = Prefixed_Name(languages, "iro") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mkh"></see>
+    ///   <para>languages:iso639-1DT</para>
     /// </summary>
-    let mkh = _prefix "mkh"
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-1DT">http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-1DT</seealso>
+    let iso639_1DT = Prefixed_Name(languages, "iso639-1DT") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mlg"></see>
+    ///   <para>languages:iso639-2DT</para>
     /// </summary>
-    let mlg = _prefix "mlg"
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-2DT">http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-2DT</seealso>
+    let iso639_2DT = Prefixed_Name(languages, "iso639-2DT") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mlt"></see>
+    ///   <para>languages:ita</para>
     /// </summary>
-    let mlt = _prefix "mlt"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ita">http://eulersharp.sourceforge.net/2003/03swap/languages#ita</seealso>
+    let ita = Prefixed_Name(languages, "ita") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mnc"></see>
+    ///   <para>languages:kho</para>
     /// </summary>
-    let mnc = _prefix "mnc"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kho">http://eulersharp.sourceforge.net/2003/03swap/languages#kho</seealso>
+    let kho = Prefixed_Name(languages, "kho") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mni"></see>
+    ///   <para>languages:kik</para>
     /// </summary>
-    let mni = _prefix "mni"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kik">http://eulersharp.sourceforge.net/2003/03swap/languages#kik</seealso>
+    let kik = Prefixed_Name(languages, "kik") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mno"></see>
+    ///   <para>languages:kin</para>
     /// </summary>
-    let mno = _prefix "mno"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kin">http://eulersharp.sourceforge.net/2003/03swap/languages#kin</seealso>
+    let kin = Prefixed_Name(languages, "kin") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#moh"></see>
+    ///   <para>languages:kir</para>
     /// </summary>
-    let moh = _prefix "moh"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kir">http://eulersharp.sourceforge.net/2003/03swap/languages#kir</seealso>
+    let kir = Prefixed_Name(languages, "kir") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mon"></see>
+    ///   <para>languages:kmb</para>
     /// </summary>
-    let mon = _prefix "mon"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kmb">http://eulersharp.sourceforge.net/2003/03swap/languages#kmb</seealso>
+    let kmb = Prefixed_Name(languages, "kmb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mos"></see>
+    ///   <para>languages:kok</para>
     /// </summary>
-    let mos = _prefix "mos"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kok">http://eulersharp.sourceforge.net/2003/03swap/languages#kok</seealso>
+    let kok = Prefixed_Name(languages, "kok") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mul"></see>
+    ///   <para>languages:kom</para>
     /// </summary>
-    let mul = _prefix "mul"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kom">http://eulersharp.sourceforge.net/2003/03swap/languages#kom</seealso>
+    let kom = Prefixed_Name(languages, "kom") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mun"></see>
+    ///   <para>languages:kon</para>
     /// </summary>
-    let mun = _prefix "mun"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kon">http://eulersharp.sourceforge.net/2003/03swap/languages#kon</seealso>
+    let kon = Prefixed_Name(languages, "kon") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mus"></see>
+    ///   <para>languages:kor</para>
     /// </summary>
-    let mus = _prefix "mus"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kor">http://eulersharp.sourceforge.net/2003/03swap/languages#kor</seealso>
+    let kor = Prefixed_Name(languages, "kor") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mwl"></see>
+    ///   <para>languages:kos</para>
     /// </summary>
-    let mwl = _prefix "mwl"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kos">http://eulersharp.sourceforge.net/2003/03swap/languages#kos</seealso>
+    let kos = Prefixed_Name(languages, "kos") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#mwr"></see>
+    ///   <para>languages:kpe</para>
     /// </summary>
-    let mwr = _prefix "mwr"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kpe">http://eulersharp.sourceforge.net/2003/03swap/languages#kpe</seealso>
+    let kpe = Prefixed_Name(languages, "kpe") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#myn"></see>
+    ///   <para>languages:lub</para>
     /// </summary>
-    let myn = _prefix "myn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lub">http://eulersharp.sourceforge.net/2003/03swap/languages#lub</seealso>
+    let lub = Prefixed_Name(languages, "lub") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#myv"></see>
+    ///   <para>languages:lug</para>
     /// </summary>
-    let myv = _prefix "myv"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lug">http://eulersharp.sourceforge.net/2003/03swap/languages#lug</seealso>
+    let lug = Prefixed_Name(languages, "lug") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nah"></see>
+    ///   <para>languages:lui</para>
     /// </summary>
-    let nah = _prefix "nah"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lui">http://eulersharp.sourceforge.net/2003/03swap/languages#lui</seealso>
+    let lui = Prefixed_Name(languages, "lui") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nai"></see>
+    ///   <para>languages:lun</para>
     /// </summary>
-    let nai = _prefix "nai"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lun">http://eulersharp.sourceforge.net/2003/03swap/languages#lun</seealso>
+    let lun = Prefixed_Name(languages, "lun") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nap"></see>
+    ///   <para>languages:luo</para>
     /// </summary>
-    let nap = _prefix "nap"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#luo">http://eulersharp.sourceforge.net/2003/03swap/languages#luo</seealso>
+    let luo = Prefixed_Name(languages, "luo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nau"></see>
+    ///   <para>languages:lus</para>
     /// </summary>
-    let nau = _prefix "nau"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#lus">http://eulersharp.sourceforge.net/2003/03swap/languages#lus</seealso>
+    let lus = Prefixed_Name(languages, "lus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nav"></see>
+    ///   <para>languages:mac</para>
     /// </summary>
-    let nav = _prefix "nav"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mac">http://eulersharp.sourceforge.net/2003/03swap/languages#mac</seealso>
+    let mac = Prefixed_Name(languages, "mac") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nbl"></see>
+    ///   <para>languages:mad</para>
     /// </summary>
-    let nbl = _prefix "nbl"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mad">http://eulersharp.sourceforge.net/2003/03swap/languages#mad</seealso>
+    let mad = Prefixed_Name(languages, "mad") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nde"></see>
+    ///   <para>languages:mag</para>
     /// </summary>
-    let nde = _prefix "nde"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mag">http://eulersharp.sourceforge.net/2003/03swap/languages#mag</seealso>
+    let mag = Prefixed_Name(languages, "mag") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ndo"></see>
+    ///   <para>languages:mah</para>
     /// </summary>
-    let ndo = _prefix "ndo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mah">http://eulersharp.sourceforge.net/2003/03swap/languages#mah</seealso>
+    let mah = Prefixed_Name(languages, "mah") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nds"></see>
+    ///   <para>languages:mai</para>
     /// </summary>
-    let nds = _prefix "nds"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mai">http://eulersharp.sourceforge.net/2003/03swap/languages#mai</seealso>
+    let mai = Prefixed_Name(languages, "mai") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nep"></see>
+    ///   <para>languages:mak</para>
     /// </summary>
-    let nep = _prefix "nep"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mak">http://eulersharp.sourceforge.net/2003/03swap/languages#mak</seealso>
+    let mak = Prefixed_Name(languages, "mak") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#new"></see>
+    ///   <para>languages:nia</para>
     /// </summary>
-    let new_ = _prefix "new"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nia">http://eulersharp.sourceforge.net/2003/03swap/languages#nia</seealso>
+    let nia = Prefixed_Name(languages, "nia") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nia"></see>
+    ///   <para>languages:nic</para>
     /// </summary>
-    let nia = _prefix "nia"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nic">http://eulersharp.sourceforge.net/2003/03swap/languages#nic</seealso>
+    let nic = Prefixed_Name(languages, "nic") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nic"></see>
+    ///   <para>languages:niu</para>
     /// </summary>
-    let nic = _prefix "nic"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#niu">http://eulersharp.sourceforge.net/2003/03swap/languages#niu</seealso>
+    let niu = Prefixed_Name(languages, "niu") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#niu"></see>
+    ///   <para>languages:nno</para>
     /// </summary>
-    let niu = _prefix "niu"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nno">http://eulersharp.sourceforge.net/2003/03swap/languages#nno</seealso>
+    let nno = Prefixed_Name(languages, "nno") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nno"></see>
+    ///   <para>languages:nob</para>
     /// </summary>
-    let nno = _prefix "nno"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nob">http://eulersharp.sourceforge.net/2003/03swap/languages#nob</seealso>
+    let nob = Prefixed_Name(languages, "nob") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nob"></see>
+    ///   <para>languages:nog</para>
     /// </summary>
-    let nob = _prefix "nob"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nog">http://eulersharp.sourceforge.net/2003/03swap/languages#nog</seealso>
+    let nog = Prefixed_Name(languages, "nog") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nog"></see>
+    ///   <para>languages:non</para>
     /// </summary>
-    let nog = _prefix "nog"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#non">http://eulersharp.sourceforge.net/2003/03swap/languages#non</seealso>
+    let non = Prefixed_Name(languages, "non") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#non"></see>
+    ///   <para>languages:nor</para>
     /// </summary>
-    let non = _prefix "non"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nor">http://eulersharp.sourceforge.net/2003/03swap/languages#nor</seealso>
+    let nor = Prefixed_Name(languages, "nor") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nor"></see>
+    ///   <para>languages:nqo</para>
     /// </summary>
-    let nor = _prefix "nor"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nqo">http://eulersharp.sourceforge.net/2003/03swap/languages#nqo</seealso>
+    let nqo = Prefixed_Name(languages, "nqo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nqo"></see>
+    ///   <para>languages:nso</para>
     /// </summary>
-    let nqo = _prefix "nqo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nso">http://eulersharp.sourceforge.net/2003/03swap/languages#nso</seealso>
+    let nso = Prefixed_Name(languages, "nso") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nso"></see>
+    ///   <para>languages:nub</para>
     /// </summary>
-    let nso = _prefix "nso"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nub">http://eulersharp.sourceforge.net/2003/03swap/languages#nub</seealso>
+    let nub = Prefixed_Name(languages, "nub") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nub"></see>
+    ///   <para>languages:nwc</para>
     /// </summary>
-    let nub = _prefix "nub"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nwc">http://eulersharp.sourceforge.net/2003/03swap/languages#nwc</seealso>
+    let nwc = Prefixed_Name(languages, "nwc") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nwc"></see>
+    ///   <para>languages:nyo</para>
     /// </summary>
-    let nwc = _prefix "nwc"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nyo">http://eulersharp.sourceforge.net/2003/03swap/languages#nyo</seealso>
+    let nyo = Prefixed_Name(languages, "nyo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nya"></see>
+    ///   <para>languages:nzi</para>
     /// </summary>
-    let nya = _prefix "nya"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nzi">http://eulersharp.sourceforge.net/2003/03swap/languages#nzi</seealso>
+    let nzi = Prefixed_Name(languages, "nzi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nym"></see>
+    ///   <para>languages:oci</para>
     /// </summary>
-    let nym = _prefix "nym"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#oci">http://eulersharp.sourceforge.net/2003/03swap/languages#oci</seealso>
+    let oci = Prefixed_Name(languages, "oci") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nyn"></see>
+    ///   <para>languages:oji</para>
     /// </summary>
-    let nyn = _prefix "nyn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#oji">http://eulersharp.sourceforge.net/2003/03swap/languages#oji</seealso>
+    let oji = Prefixed_Name(languages, "oji") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nyo"></see>
+    ///   <para>languages:ori</para>
     /// </summary>
-    let nyo = _prefix "nyo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ori">http://eulersharp.sourceforge.net/2003/03swap/languages#ori</seealso>
+    let ori = Prefixed_Name(languages, "ori") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#nzi"></see>
+    ///   <para>languages:orm</para>
     /// </summary>
-    let nzi = _prefix "nzi"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#orm">http://eulersharp.sourceforge.net/2003/03swap/languages#orm</seealso>
+    let orm = Prefixed_Name(languages, "orm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#oci"></see>
+    ///   <para>languages:osa</para>
     /// </summary>
-    let oci = _prefix "oci"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#osa">http://eulersharp.sourceforge.net/2003/03swap/languages#osa</seealso>
+    let osa = Prefixed_Name(languages, "osa") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#oji"></see>
+    ///   <para>languages:oss</para>
     /// </summary>
-    let oji = _prefix "oji"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#oss">http://eulersharp.sourceforge.net/2003/03swap/languages#oss</seealso>
+    let oss = Prefixed_Name(languages, "oss") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ori"></see>
+    ///   <para>languages:ota</para>
     /// </summary>
-    let ori = _prefix "ori"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ota">http://eulersharp.sourceforge.net/2003/03swap/languages#ota</seealso>
+    let ota = Prefixed_Name(languages, "ota") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#orm"></see>
+    ///   <para>languages:oto</para>
     /// </summary>
-    let orm = _prefix "orm"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#oto">http://eulersharp.sourceforge.net/2003/03swap/languages#oto</seealso>
+    let oto = Prefixed_Name(languages, "oto") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#osa"></see>
+    ///   <para>languages:paa</para>
     /// </summary>
-    let osa = _prefix "osa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#paa">http://eulersharp.sourceforge.net/2003/03swap/languages#paa</seealso>
+    let paa = Prefixed_Name(languages, "paa") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#oss"></see>
+    ///   <para>languages:pag</para>
     /// </summary>
-    let oss = _prefix "oss"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pag">http://eulersharp.sourceforge.net/2003/03swap/languages#pag</seealso>
+    let pag = Prefixed_Name(languages, "pag") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ota"></see>
+    ///   <para>languages:pan</para>
     /// </summary>
-    let ota = _prefix "ota"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pan">http://eulersharp.sourceforge.net/2003/03swap/languages#pan</seealso>
+    let pan = Prefixed_Name(languages, "pan") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#oto"></see>
+    ///   <para>languages:pap</para>
     /// </summary>
-    let oto = _prefix "oto"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pap">http://eulersharp.sourceforge.net/2003/03swap/languages#pap</seealso>
+    let pap = Prefixed_Name(languages, "pap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#paa"></see>
+    ///   <para>languages:pau</para>
     /// </summary>
-    let paa = _prefix "paa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pau">http://eulersharp.sourceforge.net/2003/03swap/languages#pau</seealso>
+    let pau = Prefixed_Name(languages, "pau") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pag"></see>
+    ///   <para>languages:peo</para>
     /// </summary>
-    let pag = _prefix "pag"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#peo">http://eulersharp.sourceforge.net/2003/03swap/languages#peo</seealso>
+    let peo = Prefixed_Name(languages, "peo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pal"></see>
+    ///   <para>languages:per</para>
     /// </summary>
-    let pal = _prefix "pal"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#per">http://eulersharp.sourceforge.net/2003/03swap/languages#per</seealso>
+    let per = Prefixed_Name(languages, "per") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pam"></see>
+    ///   <para>languages:phi</para>
     /// </summary>
-    let pam = _prefix "pam"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#phi">http://eulersharp.sourceforge.net/2003/03swap/languages#phi</seealso>
+    let phi = Prefixed_Name(languages, "phi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pan"></see>
+    ///   <para>languages:phn</para>
     /// </summary>
-    let pan = _prefix "pan"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#phn">http://eulersharp.sourceforge.net/2003/03swap/languages#phn</seealso>
+    let phn = Prefixed_Name(languages, "phn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pap"></see>
+    ///   <para>languages:pli</para>
     /// </summary>
-    let pap = _prefix "pap"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pli">http://eulersharp.sourceforge.net/2003/03swap/languages#pli</seealso>
+    let pli = Prefixed_Name(languages, "pli") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pau"></see>
+    ///   <para>languages:pol</para>
     /// </summary>
-    let pau = _prefix "pau"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pol">http://eulersharp.sourceforge.net/2003/03swap/languages#pol</seealso>
+    let pol = Prefixed_Name(languages, "pol") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#peo"></see>
+    ///   <para>languages:pon</para>
     /// </summary>
-    let peo = _prefix "peo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pon">http://eulersharp.sourceforge.net/2003/03swap/languages#pon</seealso>
+    let pon = Prefixed_Name(languages, "pon") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#per"></see>
+    ///   <para>languages:por</para>
     /// </summary>
-    let per = _prefix "per"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#por">http://eulersharp.sourceforge.net/2003/03swap/languages#por</seealso>
+    let por = Prefixed_Name(languages, "por") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#phi"></see>
+    ///   <para>languages:pra</para>
     /// </summary>
-    let phi = _prefix "phi"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pra">http://eulersharp.sourceforge.net/2003/03swap/languages#pra</seealso>
+    let pra = Prefixed_Name(languages, "pra") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#phn"></see>
+    ///   <para>languages:que</para>
     /// </summary>
-    let phn = _prefix "phn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#que">http://eulersharp.sourceforge.net/2003/03swap/languages#que</seealso>
+    let que = Prefixed_Name(languages, "que") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pli"></see>
+    ///   <para>languages:raj</para>
     /// </summary>
-    let pli = _prefix "pli"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#raj">http://eulersharp.sourceforge.net/2003/03swap/languages#raj</seealso>
+    let raj = Prefixed_Name(languages, "raj") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pol"></see>
+    ///   <para>languages:rap</para>
     /// </summary>
-    let pol = _prefix "pol"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#rap">http://eulersharp.sourceforge.net/2003/03swap/languages#rap</seealso>
+    let rap = Prefixed_Name(languages, "rap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pon"></see>
+    ///   <para>languages:rar</para>
     /// </summary>
-    let pon = _prefix "pon"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#rar">http://eulersharp.sourceforge.net/2003/03swap/languages#rar</seealso>
+    let rar = Prefixed_Name(languages, "rar") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#por"></see>
+    ///   <para>languages:roa</para>
     /// </summary>
-    let por = _prefix "por"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#roa">http://eulersharp.sourceforge.net/2003/03swap/languages#roa</seealso>
+    let roa = Prefixed_Name(languages, "roa") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pra"></see>
+    ///   <para>languages:roh</para>
     /// </summary>
-    let pra = _prefix "pra"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#roh">http://eulersharp.sourceforge.net/2003/03swap/languages#roh</seealso>
+    let roh = Prefixed_Name(languages, "roh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pro"></see>
+    ///   <para>languages:rom</para>
     /// </summary>
-    let pro = _prefix "pro"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#rom">http://eulersharp.sourceforge.net/2003/03swap/languages#rom</seealso>
+    let rom = Prefixed_Name(languages, "rom") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#pus"></see>
+    ///   <para>languages:rum</para>
     /// </summary>
-    let pus = _prefix "pus"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#rum">http://eulersharp.sourceforge.net/2003/03swap/languages#rum</seealso>
+    let rum = Prefixed_Name(languages, "rum") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#qaa-qtz"></see>
+    ///   <para>languages:run</para>
     /// </summary>
-    let ``qaa-qtz`` = _prefix "qaa-qtz"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#run">http://eulersharp.sourceforge.net/2003/03swap/languages#run</seealso>
+    let run = Prefixed_Name(languages, "run") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#que"></see>
+    ///   <para>languages:rup</para>
     /// </summary>
-    let que = _prefix "que"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#rup">http://eulersharp.sourceforge.net/2003/03swap/languages#rup</seealso>
+    let rup = Prefixed_Name(languages, "rup") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#raj"></see>
+    ///   <para>languages:rus</para>
     /// </summary>
-    let raj = _prefix "raj"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#rus">http://eulersharp.sourceforge.net/2003/03swap/languages#rus</seealso>
+    let rus = Prefixed_Name(languages, "rus") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#rap"></see>
+    ///   <para>languages:sad</para>
     /// </summary>
-    let rap = _prefix "rap"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sad">http://eulersharp.sourceforge.net/2003/03swap/languages#sad</seealso>
+    let sad = Prefixed_Name(languages, "sad") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#rar"></see>
+    ///   <para>languages:sas</para>
     /// </summary>
-    let rar = _prefix "rar"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sas">http://eulersharp.sourceforge.net/2003/03swap/languages#sas</seealso>
+    let sas = Prefixed_Name(languages, "sas") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#roa"></see>
+    ///   <para>languages:sat</para>
     /// </summary>
-    let roa = _prefix "roa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sat">http://eulersharp.sourceforge.net/2003/03swap/languages#sat</seealso>
+    let sat = Prefixed_Name(languages, "sat") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#roh"></see>
+    ///   <para>languages:scn</para>
     /// </summary>
-    let roh = _prefix "roh"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#scn">http://eulersharp.sourceforge.net/2003/03swap/languages#scn</seealso>
+    let scn = Prefixed_Name(languages, "scn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#rom"></see>
+    ///   <para>languages:sco</para>
     /// </summary>
-    let rom = _prefix "rom"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sco">http://eulersharp.sourceforge.net/2003/03swap/languages#sco</seealso>
+    let sco = Prefixed_Name(languages, "sco") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#rum"></see>
+    ///   <para>languages:sel</para>
     /// </summary>
-    let rum = _prefix "rum"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sel">http://eulersharp.sourceforge.net/2003/03swap/languages#sel</seealso>
+    let sel = Prefixed_Name(languages, "sel") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#run"></see>
+    ///   <para>languages:sem</para>
     /// </summary>
-    let run = _prefix "run"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sem">http://eulersharp.sourceforge.net/2003/03swap/languages#sem</seealso>
+    let sem = Prefixed_Name(languages, "sem") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#rup"></see>
+    ///   <para>languages:sga</para>
     /// </summary>
-    let rup = _prefix "rup"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sga">http://eulersharp.sourceforge.net/2003/03swap/languages#sga</seealso>
+    let sga = Prefixed_Name(languages, "sga") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#rus"></see>
+    ///   <para>languages:sgn</para>
     /// </summary>
-    let rus = _prefix "rus"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sgn">http://eulersharp.sourceforge.net/2003/03swap/languages#sgn</seealso>
+    let sgn = Prefixed_Name(languages, "sgn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sad"></see>
+    ///   <para>languages:shn</para>
     /// </summary>
-    let sad = _prefix "sad"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#shn">http://eulersharp.sourceforge.net/2003/03swap/languages#shn</seealso>
+    let shn = Prefixed_Name(languages, "shn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sag"></see>
+    ///   <para>languages:sid</para>
     /// </summary>
-    let sag = _prefix "sag"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sid">http://eulersharp.sourceforge.net/2003/03swap/languages#sid</seealso>
+    let sid = Prefixed_Name(languages, "sid") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sah"></see>
+    ///   <para>languages:sin</para>
     /// </summary>
-    let sah = _prefix "sah"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sin">http://eulersharp.sourceforge.net/2003/03swap/languages#sin</seealso>
+    let sin = Prefixed_Name(languages, "sin") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sai"></see>
+    ///   <para>languages:sio</para>
     /// </summary>
-    let sai = _prefix "sai"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sio">http://eulersharp.sourceforge.net/2003/03swap/languages#sio</seealso>
+    let sio = Prefixed_Name(languages, "sio") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sal"></see>
+    ///   <para>languages:syc</para>
     /// </summary>
-    let sal = _prefix "sal"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#syc">http://eulersharp.sourceforge.net/2003/03swap/languages#syc</seealso>
+    let syc = Prefixed_Name(languages, "syc") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sam"></see>
+    ///   <para>languages:syr</para>
     /// </summary>
-    let sam = _prefix "sam"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#syr">http://eulersharp.sourceforge.net/2003/03swap/languages#syr</seealso>
+    let syr = Prefixed_Name(languages, "syr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#san"></see>
+    ///   <para>languages:tah</para>
     /// </summary>
-    let san = _prefix "san"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tah">http://eulersharp.sourceforge.net/2003/03swap/languages#tah</seealso>
+    let tah = Prefixed_Name(languages, "tah") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sas"></see>
+    ///   <para>languages:tai</para>
     /// </summary>
-    let sas = _prefix "sas"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tai">http://eulersharp.sourceforge.net/2003/03swap/languages#tai</seealso>
+    let tai = Prefixed_Name(languages, "tai") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sat"></see>
+    ///   <para>languages:tam</para>
     /// </summary>
-    let sat = _prefix "sat"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tam">http://eulersharp.sourceforge.net/2003/03swap/languages#tam</seealso>
+    let tam = Prefixed_Name(languages, "tam") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#scn"></see>
+    ///   <para>languages:tat</para>
     /// </summary>
-    let scn = _prefix "scn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tat">http://eulersharp.sourceforge.net/2003/03swap/languages#tat</seealso>
+    let tat = Prefixed_Name(languages, "tat") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sco"></see>
+    ///   <para>languages:tel</para>
     /// </summary>
-    let sco = _prefix "sco"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tel">http://eulersharp.sourceforge.net/2003/03swap/languages#tel</seealso>
+    let tel = Prefixed_Name(languages, "tel") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sel"></see>
+    ///   <para>languages:tem</para>
     /// </summary>
-    let sel = _prefix "sel"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tem">http://eulersharp.sourceforge.net/2003/03swap/languages#tem</seealso>
+    let tem = Prefixed_Name(languages, "tem") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sem"></see>
+    ///   <para>languages:ter</para>
     /// </summary>
-    let sem = _prefix "sem"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ter">http://eulersharp.sourceforge.net/2003/03swap/languages#ter</seealso>
+    let ter = Prefixed_Name(languages, "ter") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sga"></see>
+    ///   <para>languages:tet</para>
     /// </summary>
-    let sga = _prefix "sga"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tet">http://eulersharp.sourceforge.net/2003/03swap/languages#tet</seealso>
+    let tet = Prefixed_Name(languages, "tet") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sgn"></see>
+    ///   <para>languages:tgk</para>
     /// </summary>
-    let sgn = _prefix "sgn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tgk">http://eulersharp.sourceforge.net/2003/03swap/languages#tgk</seealso>
+    let tgk = Prefixed_Name(languages, "tgk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#shn"></see>
+    ///   <para>languages:tgl</para>
     /// </summary>
-    let shn = _prefix "shn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tgl">http://eulersharp.sourceforge.net/2003/03swap/languages#tgl</seealso>
+    let tgl = Prefixed_Name(languages, "tgl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sid"></see>
+    ///   <para>languages:tig</para>
     /// </summary>
-    let sid = _prefix "sid"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tig">http://eulersharp.sourceforge.net/2003/03swap/languages#tig</seealso>
+    let tig = Prefixed_Name(languages, "tig") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sin"></see>
+    ///   <para>languages:tir</para>
     /// </summary>
-    let sin = _prefix "sin"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tir">http://eulersharp.sourceforge.net/2003/03swap/languages#tir</seealso>
+    let tir = Prefixed_Name(languages, "tir") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sio"></see>
+    ///   <para>languages:tiv</para>
     /// </summary>
-    let sio = _prefix "sio"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tiv">http://eulersharp.sourceforge.net/2003/03swap/languages#tiv</seealso>
+    let tiv = Prefixed_Name(languages, "tiv") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sit"></see>
+    ///   <para>languages:tkl</para>
     /// </summary>
-    let sit = _prefix "sit"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tkl">http://eulersharp.sourceforge.net/2003/03swap/languages#tkl</seealso>
+    let tkl = Prefixed_Name(languages, "tkl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sla"></see>
+    ///   <para>languages:tlh</para>
     /// </summary>
-    let sla = _prefix "sla"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tlh">http://eulersharp.sourceforge.net/2003/03swap/languages#tlh</seealso>
+    let tlh = Prefixed_Name(languages, "tlh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#slo"></see>
+    ///   <para>languages:tli</para>
     /// </summary>
-    let slo = _prefix "slo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tli">http://eulersharp.sourceforge.net/2003/03swap/languages#tli</seealso>
+    let tli = Prefixed_Name(languages, "tli") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#slv"></see>
+    ///   <para>languages:tmh</para>
     /// </summary>
-    let slv = _prefix "slv"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tmh">http://eulersharp.sourceforge.net/2003/03swap/languages#tmh</seealso>
+    let tmh = Prefixed_Name(languages, "tmh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sma"></see>
+    ///   <para>languages:tog</para>
     /// </summary>
-    let sma = _prefix "sma"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tog">http://eulersharp.sourceforge.net/2003/03swap/languages#tog</seealso>
+    let tog = Prefixed_Name(languages, "tog") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sme"></see>
+    ///   <para>languages:ton</para>
     /// </summary>
-    let sme = _prefix "sme"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ton">http://eulersharp.sourceforge.net/2003/03swap/languages#ton</seealso>
+    let ton = Prefixed_Name(languages, "ton") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#smi"></see>
+    ///   <para>languages:tpi</para>
     /// </summary>
-    let smi = _prefix "smi"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tpi">http://eulersharp.sourceforge.net/2003/03swap/languages#tpi</seealso>
+    let tpi = Prefixed_Name(languages, "tpi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#smj"></see>
+    ///   <para>languages:tsi</para>
     /// </summary>
-    let smj = _prefix "smj"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tsi">http://eulersharp.sourceforge.net/2003/03swap/languages#tsi</seealso>
+    let tsi = Prefixed_Name(languages, "tsi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#smn"></see>
+    ///   <para>languages:tsn</para>
     /// </summary>
-    let smn = _prefix "smn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tsn">http://eulersharp.sourceforge.net/2003/03swap/languages#tsn</seealso>
+    let tsn = Prefixed_Name(languages, "tsn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#smo"></see>
+    ///   <para>languages:tso</para>
     /// </summary>
-    let smo = _prefix "smo"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tso">http://eulersharp.sourceforge.net/2003/03swap/languages#tso</seealso>
+    let tso = Prefixed_Name(languages, "tso") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sms"></see>
+    ///   <para>languages:wen</para>
     /// </summary>
-    let sms = _prefix "sms"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#wen">http://eulersharp.sourceforge.net/2003/03swap/languages#wen</seealso>
+    let wen = Prefixed_Name(languages, "wen") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sna"></see>
+    ///   <para>languages:wln</para>
     /// </summary>
-    let sna = _prefix "sna"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#wln">http://eulersharp.sourceforge.net/2003/03swap/languages#wln</seealso>
+    let wln = Prefixed_Name(languages, "wln") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#snd"></see>
+    ///   <para>languages:wol</para>
     /// </summary>
-    let snd = _prefix "snd"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#wol">http://eulersharp.sourceforge.net/2003/03swap/languages#wol</seealso>
+    let wol = Prefixed_Name(languages, "wol") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#snk"></see>
+    ///   <para>languages:xal</para>
     /// </summary>
-    let snk = _prefix "snk"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#xal">http://eulersharp.sourceforge.net/2003/03swap/languages#xal</seealso>
+    let xal = Prefixed_Name(languages, "xal") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sog"></see>
+    ///   <para>languages:xho</para>
     /// </summary>
-    let sog = _prefix "sog"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#xho">http://eulersharp.sourceforge.net/2003/03swap/languages#xho</seealso>
+    let xho = Prefixed_Name(languages, "xho") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#som"></see>
+    ///   <para>languages:yao</para>
     /// </summary>
-    let som = _prefix "som"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#yao">http://eulersharp.sourceforge.net/2003/03swap/languages#yao</seealso>
+    let yao = Prefixed_Name(languages, "yao") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#son"></see>
+    ///   <para>languages:yap</para>
     /// </summary>
-    let son = _prefix "son"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#yap">http://eulersharp.sourceforge.net/2003/03swap/languages#yap</seealso>
+    let yap = Prefixed_Name(languages, "yap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sot"></see>
+    ///   <para>languages:yid</para>
     /// </summary>
-    let sot = _prefix "sot"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#yid">http://eulersharp.sourceforge.net/2003/03swap/languages#yid</seealso>
+    let yid = Prefixed_Name(languages, "yid") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#spa"></see>
+    ///   <para>languages:yor</para>
     /// </summary>
-    let spa = _prefix "spa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#yor">http://eulersharp.sourceforge.net/2003/03swap/languages#yor</seealso>
+    let yor = Prefixed_Name(languages, "yor") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#srd"></see>
+    ///   <para>languages:ypk</para>
     /// </summary>
-    let srd = _prefix "srd"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ypk">http://eulersharp.sourceforge.net/2003/03swap/languages#ypk</seealso>
+    let ypk = Prefixed_Name(languages, "ypk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#srn"></see>
+    ///   <para>languages:zap</para>
     /// </summary>
-    let srn = _prefix "srn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#zap">http://eulersharp.sourceforge.net/2003/03swap/languages#zap</seealso>
+    let zap = Prefixed_Name(languages, "zap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#srp"></see>
+    ///   <para>languages:zbl</para>
     /// </summary>
-    let srp = _prefix "srp"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#zbl">http://eulersharp.sourceforge.net/2003/03swap/languages#zbl</seealso>
+    let zbl = Prefixed_Name(languages, "zbl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#srr"></see>
+    ///   <para>languages:zza</para>
     /// </summary>
-    let srr = _prefix "srr"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#zza">http://eulersharp.sourceforge.net/2003/03swap/languages#zza</seealso>
+    let zza = Prefixed_Name(languages, "zza") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ssa"></see>
+    ///   <para>languages:frs</para>
     /// </summary>
-    let ssa = _prefix "ssa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#frs">http://eulersharp.sourceforge.net/2003/03swap/languages#frs</seealso>
+    let frs = Prefixed_Name(languages, "frs") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ssw"></see>
+    ///   <para>languages:hai</para>
     /// </summary>
-    let ssw = _prefix "ssw"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hai">http://eulersharp.sourceforge.net/2003/03swap/languages#hai</seealso>
+    let hai = Prefixed_Name(languages, "hai") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#suk"></see>
+    ///   <para>languages:hau</para>
     /// </summary>
-    let suk = _prefix "suk"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hau">http://eulersharp.sourceforge.net/2003/03swap/languages#hau</seealso>
+    let hau = Prefixed_Name(languages, "hau") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sun"></see>
+    ///   <para>languages:heb</para>
     /// </summary>
-    let sun = _prefix "sun"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#heb">http://eulersharp.sourceforge.net/2003/03swap/languages#heb</seealso>
+    let heb = Prefixed_Name(languages, "heb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sus"></see>
+    ///   <para>languages:her</para>
     /// </summary>
-    let sus = _prefix "sus"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#her">http://eulersharp.sourceforge.net/2003/03swap/languages#her</seealso>
+    let her = Prefixed_Name(languages, "her") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#sux"></see>
+    ///   <para>languages:hil</para>
     /// </summary>
-    let sux = _prefix "sux"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hil">http://eulersharp.sourceforge.net/2003/03swap/languages#hil</seealso>
+    let hil = Prefixed_Name(languages, "hil") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#swa"></see>
+    ///   <para>languages:hin</para>
     /// </summary>
-    let swa = _prefix "swa"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hin">http://eulersharp.sourceforge.net/2003/03swap/languages#hin</seealso>
+    let hin = Prefixed_Name(languages, "hin") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#swe"></see>
+    ///   <para>languages:hit</para>
     /// </summary>
-    let swe = _prefix "swe"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hit">http://eulersharp.sourceforge.net/2003/03swap/languages#hit</seealso>
+    let hit = Prefixed_Name(languages, "hit") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#syc"></see>
+    ///   <para>languages:hmo</para>
     /// </summary>
-    let syc = _prefix "syc"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hmo">http://eulersharp.sourceforge.net/2003/03swap/languages#hmo</seealso>
+    let hmo = Prefixed_Name(languages, "hmo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#syr"></see>
+    ///   <para>languages:hrv</para>
     /// </summary>
-    let syr = _prefix "syr"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hrv">http://eulersharp.sourceforge.net/2003/03swap/languages#hrv</seealso>
+    let hrv = Prefixed_Name(languages, "hrv") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tah"></see>
+    ///   <para>languages:hsb</para>
     /// </summary>
-    let tah = _prefix "tah"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#hsb">http://eulersharp.sourceforge.net/2003/03swap/languages#hsb</seealso>
+    let hsb = Prefixed_Name(languages, "hsb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tai"></see>
+    ///   <para>languages:kab</para>
     /// </summary>
-    let tai = _prefix "tai"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kab">http://eulersharp.sourceforge.net/2003/03swap/languages#kab</seealso>
+    let kab = Prefixed_Name(languages, "kab") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tam"></see>
+    ///   <para>languages:kro</para>
     /// </summary>
-    let tam = _prefix "tam"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kro">http://eulersharp.sourceforge.net/2003/03swap/languages#kro</seealso>
+    let kro = Prefixed_Name(languages, "kro") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tat"></see>
+    ///   <para>languages:kum</para>
     /// </summary>
-    let tat = _prefix "tat"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kum">http://eulersharp.sourceforge.net/2003/03swap/languages#kum</seealso>
+    let kum = Prefixed_Name(languages, "kum") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tel"></see>
+    ///   <para>languages:map</para>
     /// </summary>
-    let tel = _prefix "tel"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#map">http://eulersharp.sourceforge.net/2003/03swap/languages#map</seealso>
+    let map = Prefixed_Name(languages, "map") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tem"></see>
+    ///   <para>languages:mar</para>
     /// </summary>
-    let tem = _prefix "tem"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mar">http://eulersharp.sourceforge.net/2003/03swap/languages#mar</seealso>
+    let mar = Prefixed_Name(languages, "mar") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ter"></see>
+    ///   <para>languages:mdf</para>
     /// </summary>
-    let ter = _prefix "ter"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mdf">http://eulersharp.sourceforge.net/2003/03swap/languages#mdf</seealso>
+    let mdf = Prefixed_Name(languages, "mdf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tet"></see>
+    ///   <para>languages:mdr</para>
     /// </summary>
-    let tet = _prefix "tet"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mdr">http://eulersharp.sourceforge.net/2003/03swap/languages#mdr</seealso>
+    let mdr = Prefixed_Name(languages, "mdr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tgk"></see>
+    ///   <para>languages:nya</para>
     /// </summary>
-    let tgk = _prefix "tgk"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#nya">http://eulersharp.sourceforge.net/2003/03swap/languages#nya</seealso>
+    let nya = Prefixed_Name(languages, "nya") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tgl"></see>
+    ///   <para>languages:sit</para>
     /// </summary>
-    let tgl = _prefix "tgl"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sit">http://eulersharp.sourceforge.net/2003/03swap/languages#sit</seealso>
+    let sit = Prefixed_Name(languages, "sit") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tha"></see>
+    ///   <para>languages:sla</para>
     /// </summary>
-    let tha = _prefix "tha"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sla">http://eulersharp.sourceforge.net/2003/03swap/languages#sla</seealso>
+    let sla = Prefixed_Name(languages, "sla") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tib"></see>
+    ///   <para>languages:slv</para>
     /// </summary>
-    let tib = _prefix "tib"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#slv">http://eulersharp.sourceforge.net/2003/03swap/languages#slv</seealso>
+    let slv = Prefixed_Name(languages, "slv") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tig"></see>
+    ///   <para>languages:sma</para>
     /// </summary>
-    let tig = _prefix "tig"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sma">http://eulersharp.sourceforge.net/2003/03swap/languages#sma</seealso>
+    let sma = Prefixed_Name(languages, "sma") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tir"></see>
+    ///   <para>languages:smi</para>
     /// </summary>
-    let tir = _prefix "tir"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#smi">http://eulersharp.sourceforge.net/2003/03swap/languages#smi</seealso>
+    let smi = Prefixed_Name(languages, "smi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tiv"></see>
+    ///   <para>languages:smj</para>
     /// </summary>
-    let tiv = _prefix "tiv"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#smj">http://eulersharp.sourceforge.net/2003/03swap/languages#smj</seealso>
+    let smj = Prefixed_Name(languages, "smj") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tkl"></see>
+    ///   <para>languages:smo</para>
     /// </summary>
-    let tkl = _prefix "tkl"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#smo">http://eulersharp.sourceforge.net/2003/03swap/languages#smo</seealso>
+    let smo = Prefixed_Name(languages, "smo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tlh"></see>
+    ///   <para>languages:sms</para>
     /// </summary>
-    let tlh = _prefix "tlh"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sms">http://eulersharp.sourceforge.net/2003/03swap/languages#sms</seealso>
+    let sms = Prefixed_Name(languages, "sms") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tli"></see>
+    ///   <para>languages:sna</para>
     /// </summary>
-    let tli = _prefix "tli"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sna">http://eulersharp.sourceforge.net/2003/03swap/languages#sna</seealso>
+    let sna = Prefixed_Name(languages, "sna") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tmh"></see>
+    ///   <para>languages:snk</para>
     /// </summary>
-    let tmh = _prefix "tmh"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#snk">http://eulersharp.sourceforge.net/2003/03swap/languages#snk</seealso>
+    let snk = Prefixed_Name(languages, "snk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tog"></see>
+    ///   <para>languages:sog</para>
     /// </summary>
-    let tog = _prefix "tog"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sog">http://eulersharp.sourceforge.net/2003/03swap/languages#sog</seealso>
+    let sog = Prefixed_Name(languages, "sog") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ton"></see>
+    ///   <para>languages:som</para>
     /// </summary>
-    let ton = _prefix "ton"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#som">http://eulersharp.sourceforge.net/2003/03swap/languages#som</seealso>
+    let som = Prefixed_Name(languages, "som") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tpi"></see>
+    ///   <para>languages:sot</para>
     /// </summary>
-    let tpi = _prefix "tpi"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#sot">http://eulersharp.sourceforge.net/2003/03swap/languages#sot</seealso>
+    let sot = Prefixed_Name(languages, "sot") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tsi"></see>
+    ///   <para>languages:spa</para>
     /// </summary>
-    let tsi = _prefix "tsi"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#spa">http://eulersharp.sourceforge.net/2003/03swap/languages#spa</seealso>
+    let spa = Prefixed_Name(languages, "spa") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tsn"></see>
+    ///   <para>languages:tuk</para>
     /// </summary>
-    let tsn = _prefix "tsn"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tuk">http://eulersharp.sourceforge.net/2003/03swap/languages#tuk</seealso>
+    let tuk = Prefixed_Name(languages, "tuk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tso"></see>
+    ///   <para>languages:tum</para>
     /// </summary>
-    let tso = _prefix "tso"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tum">http://eulersharp.sourceforge.net/2003/03swap/languages#tum</seealso>
+    let tum = Prefixed_Name(languages, "tum") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tuk"></see>
+    ///   <para>languages:war</para>
     /// </summary>
-    let tuk = _prefix "tuk"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#war">http://eulersharp.sourceforge.net/2003/03swap/languages#war</seealso>
+    let war = Prefixed_Name(languages, "war") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tum"></see>
+    ///   <para>languages:was</para>
     /// </summary>
-    let tum = _prefix "tum"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#was">http://eulersharp.sourceforge.net/2003/03swap/languages#was</seealso>
+    let was = Prefixed_Name(languages, "was") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tup"></see>
+    ///   <para>languages:wel</para>
     /// </summary>
-    let tup = _prefix "tup"
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#wel">http://eulersharp.sourceforge.net/2003/03swap/languages#wel</seealso>
+    let wel = Prefixed_Name(languages, "wel") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tur"></see>
+    ///   <para>languages:</para>
     /// </summary>
-    let tur = _prefix "tur"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#">http://eulersharp.sourceforge.net/2003/03swap/languages#</seealso>
+    let _prefix_iri = Prefixed_Name(languages, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tut"></see>
+    ///   <para>languages:iso639-1</para>
     /// </summary>
-    let tut = _prefix "tut"
+    /// <remarks>
+    ///   <para>skos:ConceptScheme</para>
+    ///
+    /// labels<para>ISO639-1</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-1">http://eulersharp.sourceforge.net/2003/03swap/languages#iso639-1</seealso>
+    let iso639_1 = Prefixed_Name(languages, "iso639-1") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tvl"></see>
-    /// </summary>
-    let tvl = _prefix "tvl"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#twi"></see>
-    /// </summary>
-    let twi = _prefix "twi"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#tyv"></see>
-    /// </summary>
-    let tyv = _prefix "tyv"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#udm"></see>
-    /// </summary>
-    let udm = _prefix "udm"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#uga"></see>
-    /// </summary>
-    let uga = _prefix "uga"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#uig"></see>
-    /// </summary>
-    let uig = _prefix "uig"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ukr"></see>
-    /// </summary>
-    let ukr = _prefix "ukr"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#umb"></see>
-    /// </summary>
-    let umb = _prefix "umb"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#und"></see>
-    /// </summary>
-    let und = _prefix "und"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#urd"></see>
-    /// </summary>
-    let urd = _prefix "urd"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#uzb"></see>
-    /// </summary>
-    let uzb = _prefix "uzb"
+    ///   <para>languages:ave</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ave">http://eulersharp.sourceforge.net/2003/03swap/languages#ave</seealso>
+    let ave = Prefixed_Name(languages, "ave") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#vai"></see>
-    /// </summary>
-    let vai = _prefix "vai"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ven"></see>
-    /// </summary>
-    let ven = _prefix "ven"
+    ///   <para>languages:awa</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#awa">http://eulersharp.sourceforge.net/2003/03swap/languages#awa</seealso>
+    let awa = Prefixed_Name(languages, "awa") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#vie"></see>
-    /// </summary>
-    let vie = _prefix "vie"
+    ///   <para>languages:aym</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#aym">http://eulersharp.sourceforge.net/2003/03swap/languages#aym</seealso>
+    let aym = Prefixed_Name(languages, "aym") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#vol"></see>
-    /// </summary>
-    let vol = _prefix "vol"
+    ///   <para>languages:bla</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#bla">http://eulersharp.sourceforge.net/2003/03swap/languages#bla</seealso>
+    let bla = Prefixed_Name(languages, "bla") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#vot"></see>
-    /// </summary>
-    let vot = _prefix "vot"
+    ///   <para>languages:chm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chm">http://eulersharp.sourceforge.net/2003/03swap/languages#chm</seealso>
+    let chm = Prefixed_Name(languages, "chm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#wak"></see>
-    /// </summary>
-    let wak = _prefix "wak"
+    ///   <para>languages:cho</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#cho">http://eulersharp.sourceforge.net/2003/03swap/languages#cho</seealso>
+    let cho = Prefixed_Name(languages, "cho") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#wal"></see>
-    /// </summary>
-    let wal = _prefix "wal"
+    ///   <para>languages:chy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#chy">http://eulersharp.sourceforge.net/2003/03swap/languages#chy</seealso>
+    let chy = Prefixed_Name(languages, "chy") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#war"></see>
-    /// </summary>
-    let war = _prefix "war"
+    ///   <para>languages:dsb</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#dsb">http://eulersharp.sourceforge.net/2003/03swap/languages#dsb</seealso>
+    let dsb = Prefixed_Name(languages, "dsb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#was"></see>
-    /// </summary>
-    let was = _prefix "was"
+    ///   <para>languages:gez</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gez">http://eulersharp.sourceforge.net/2003/03swap/languages#gez</seealso>
+    let gez = Prefixed_Name(languages, "gez") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#wel"></see>
-    /// </summary>
-    let wel = _prefix "wel"
+    ///   <para>languages:gil</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#gil">http://eulersharp.sourceforge.net/2003/03swap/languages#gil</seealso>
+    let gil = Prefixed_Name(languages, "gil") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#wen"></see>
-    /// </summary>
-    let wen = _prefix "wen"
+    ///   <para>languages:glv</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#glv">http://eulersharp.sourceforge.net/2003/03swap/languages#glv</seealso>
+    let glv = Prefixed_Name(languages, "glv") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#wln"></see>
-    /// </summary>
-    let wln = _prefix "wln"
+    ///   <para>languages:jav</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#jav">http://eulersharp.sourceforge.net/2003/03swap/languages#jav</seealso>
+    let jav = Prefixed_Name(languages, "jav") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#wol"></see>
-    /// </summary>
-    let wol = _prefix "wol"
+    ///   <para>languages:jbo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#jbo">http://eulersharp.sourceforge.net/2003/03swap/languages#jbo</seealso>
+    let jbo = Prefixed_Name(languages, "jbo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#xal"></see>
-    /// </summary>
-    let xal = _prefix "xal"
+    ///   <para>languages:jpn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#jpn">http://eulersharp.sourceforge.net/2003/03swap/languages#jpn</seealso>
+    let jpn = Prefixed_Name(languages, "jpn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#xho"></see>
-    /// </summary>
-    let xho = _prefix "xho"
+    ///   <para>languages:krc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#krc">http://eulersharp.sourceforge.net/2003/03swap/languages#krc</seealso>
+    let krc = Prefixed_Name(languages, "krc") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#yao"></see>
-    /// </summary>
-    let yao = _prefix "yao"
+    ///   <para>languages:krl</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#krl">http://eulersharp.sourceforge.net/2003/03swap/languages#krl</seealso>
+    let krl = Prefixed_Name(languages, "krl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#yap"></see>
-    /// </summary>
-    let yap = _prefix "yap"
+    ///   <para>languages:kru</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kru">http://eulersharp.sourceforge.net/2003/03swap/languages#kru</seealso>
+    let kru = Prefixed_Name(languages, "kru") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#yid"></see>
-    /// </summary>
-    let yid = _prefix "yid"
+    ///   <para>languages:kua</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#kua">http://eulersharp.sourceforge.net/2003/03swap/languages#kua</seealso>
+    let kua = Prefixed_Name(languages, "kua") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#yor"></see>
-    /// </summary>
-    let yor = _prefix "yor"
+    ///   <para>languages:mal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mal">http://eulersharp.sourceforge.net/2003/03swap/languages#mal</seealso>
+    let mal = Prefixed_Name(languages, "mal") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#ypk"></see>
-    /// </summary>
-    let ypk = _prefix "ypk"
+    ///   <para>languages:man</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#man">http://eulersharp.sourceforge.net/2003/03swap/languages#man</seealso>
+    let man = Prefixed_Name(languages, "man") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#zap"></see>
-    /// </summary>
-    let zap = _prefix "zap"
+    ///   <para>languages:mao</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mao">http://eulersharp.sourceforge.net/2003/03swap/languages#mao</seealso>
+    let mao = Prefixed_Name(languages, "mao") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#zbl"></see>
-    /// </summary>
-    let zbl = _prefix "zbl"
+    ///   <para>languages:mas</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mas">http://eulersharp.sourceforge.net/2003/03swap/languages#mas</seealso>
+    let mas = Prefixed_Name(languages, "mas") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#zen"></see>
-    /// </summary>
-    let zen = _prefix "zen"
+    ///   <para>languages:may</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#may">http://eulersharp.sourceforge.net/2003/03swap/languages#may</seealso>
+    let may = Prefixed_Name(languages, "may") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#zha"></see>
-    /// </summary>
-    let zha = _prefix "zha"
+    ///   <para>languages:men</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#men">http://eulersharp.sourceforge.net/2003/03swap/languages#men</seealso>
+    let men = Prefixed_Name(languages, "men") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#znd"></see>
-    /// </summary>
-    let znd = _prefix "znd"
+    ///   <para>languages:mga</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mga">http://eulersharp.sourceforge.net/2003/03swap/languages#mga</seealso>
+    let mga = Prefixed_Name(languages, "mga") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#zul"></see>
-    /// </summary>
-    let zul = _prefix "zul"
+    ///   <para>languages:mic</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mic">http://eulersharp.sourceforge.net/2003/03swap/languages#mic</seealso>
+    let mic = Prefixed_Name(languages, "mic") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#zun"></see>
-    /// </summary>
-    let zun = _prefix "zun"
+    ///   <para>languages:mis</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mis">http://eulersharp.sourceforge.net/2003/03swap/languages#mis</seealso>
+    let mis = Prefixed_Name(languages, "mis") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#zxx"></see>
-    /// </summary>
-    let zxx = _prefix "zxx"
+    ///   <para>languages:mkh</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mkh">http://eulersharp.sourceforge.net/2003/03swap/languages#mkh</seealso>
+    let mkh = Prefixed_Name(languages, "mkh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/languages#zza"></see>
-    /// </summary>
-    let zza = _prefix "zza"
+    ///   <para>languages:mlg</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mlg">http://eulersharp.sourceforge.net/2003/03swap/languages#mlg</seealso>
+    let mlg = Prefixed_Name(languages, "mlg") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:mnc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mnc">http://eulersharp.sourceforge.net/2003/03swap/languages#mnc</seealso>
+    let mnc = Prefixed_Name(languages, "mnc") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:mni</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mni">http://eulersharp.sourceforge.net/2003/03swap/languages#mni</seealso>
+    let mni = Prefixed_Name(languages, "mni") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:mno</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#mno">http://eulersharp.sourceforge.net/2003/03swap/languages#mno</seealso>
+    let mno = Prefixed_Name(languages, "mno") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:pro</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pro">http://eulersharp.sourceforge.net/2003/03swap/languages#pro</seealso>
+    let pro = Prefixed_Name(languages, "pro") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:pus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#pus">http://eulersharp.sourceforge.net/2003/03swap/languages#pus</seealso>
+    let pus = Prefixed_Name(languages, "pus") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:qaa-qtz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#qaa-qtz">http://eulersharp.sourceforge.net/2003/03swap/languages#qaa-qtz</seealso>
+    let qaa_qtz = Prefixed_Name(languages, "qaa-qtz") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:srr</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#srr">http://eulersharp.sourceforge.net/2003/03swap/languages#srr</seealso>
+    let srr = Prefixed_Name(languages, "srr") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:ssa</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ssa">http://eulersharp.sourceforge.net/2003/03swap/languages#ssa</seealso>
+    let ssa = Prefixed_Name(languages, "ssa") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:ssw</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#ssw">http://eulersharp.sourceforge.net/2003/03swap/languages#ssw</seealso>
+    let ssw = Prefixed_Name(languages, "ssw") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:tvl</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tvl">http://eulersharp.sourceforge.net/2003/03swap/languages#tvl</seealso>
+    let tvl = Prefixed_Name(languages, "tvl") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:twi</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#twi">http://eulersharp.sourceforge.net/2003/03swap/languages#twi</seealso>
+    let twi = Prefixed_Name(languages, "twi") |> PrefixedName
+    /// <summary>
+    ///   <para>languages:tyv</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>swapfoster:Language</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/languages#tyv">http://eulersharp.sourceforge.net/2003/03swap/languages#tyv</seealso>
+    let tyv = Prefixed_Name(languages, "tyv") |> PrefixedName

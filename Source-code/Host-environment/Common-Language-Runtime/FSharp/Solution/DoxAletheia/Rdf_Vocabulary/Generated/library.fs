@@ -1,146 +1,345 @@
 namespace http.purl.org.library.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module library =
-    let _namespace_name = "http://purl.org/library/"
+    let _namespace_iri = Namespace_Iri library |> NamespaceIRI
+    /// <summary>
+    ///   <para>library:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/library/">http://purl.org/library/</seealso>
+    let _prefix_iri = Prefixed_Name(library, "") |> PrefixedName
+    /// <summary>
+    ///   <para>library:Audiobook</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>schema1:BookFormatType</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>Audio Book</para></remarks>
+    /// <seealso href="http://purl.org/library/Audiobook">http://purl.org/library/Audiobook</seealso>
+    let Audiobook = Prefixed_Name(library, "Audiobook") |> PrefixedName
+    /// <summary>
+    ///   <para>library:CD</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>library:Carrier</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>Compact Disk</para></remarks>
+    /// <seealso href="http://purl.org/library/CD">http://purl.org/library/CD</seealso>
+    let CD = Prefixed_Name(library, "CD") |> PrefixedName
+    /// <summary>
+    ///   <para>library:Game</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Game</para></remarks>
+    /// <seealso href="http://purl.org/library/Game">http://purl.org/library/Game</seealso>
+    let Game = Prefixed_Name(library, "Game") |> PrefixedName
+    /// <summary>
+    ///   <para>library:Image</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Image</para></remarks>
+    /// <seealso href="http://purl.org/library/Image">http://purl.org/library/Image</seealso>
+    let Image = Prefixed_Name(library, "Image") |> PrefixedName
+    /// <summary>
+    ///   <para>library:LP</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>library:Carrier</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>LP</para></remarks>
+    /// <seealso href="http://purl.org/library/LP">http://purl.org/library/LP</seealso>
+    let LP = Prefixed_Name(library, "LP") |> PrefixedName
+    /// <summary>
+    ///   <para>library:MusicalScore</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Musical Score</para></remarks>
+    /// <seealso href="http://purl.org/library/MusicalScore">http://purl.org/library/MusicalScore</seealso>
+    let MusicalScore = Prefixed_Name(library, "MusicalScore") |> PrefixedName
+    /// <summary>
+    ///   <para>library:BlurayDisk</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>library:Carrier</para>
+    ///
+    /// labels<para>Bluray Disk</para></remarks>
+    /// <seealso href="http://purl.org/library/BlurayDisk">http://purl.org/library/BlurayDisk</seealso>
+    let BlurayDisk = Prefixed_Name(library, "BlurayDisk") |> PrefixedName
+    /// <summary>
+    ///   <para>library:ComputerFile</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Computer File</para></remarks>
+    /// <seealso href="http://purl.org/library/ComputerFile">http://purl.org/library/ComputerFile</seealso>
+    let ComputerFile = Prefixed_Name(library, "ComputerFile") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>library:placeOfPublication</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This is the place where the schema:CreativeWork was published.</para>
+    /// labels<para>place of publication</para></remarks>
+    /// <seealso href="http://purl.org/library/placeOfPublication">http://purl.org/library/placeOfPublication</seealso>
+    let placeOfPublication =
+        Prefixed_Name(library, "placeOfPublication") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://purl.org/library/ArchiveMaterial"></see>
+    ///   <para>library:Carrier</para>
     /// </summary>
-    let ArchiveMaterial = _prefix "ArchiveMaterial"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>This class contains a controlled list of "carriers" that can be used to contain a schema:CreativeWork.</para>
+    /// labels<para>Carrier</para></remarks>
+    /// <seealso href="http://purl.org/library/Carrier">http://purl.org/library/Carrier</seealso>
+    let Carrier = Prefixed_Name(library, "Carrier") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/Audiobook"></see>
+    ///   <para>library:CassetteTape</para>
     /// </summary>
-    let Audiobook = _prefix "Audiobook"
+    /// <remarks>
+    ///   <para>library:Carrier</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>Cassette Tape</para></remarks>
+    /// <seealso href="http://purl.org/library/CassetteTape">http://purl.org/library/CassetteTape</seealso>
+    let CassetteTape = Prefixed_Name(library, "CassetteTape") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/BlurayDisk"></see>
+    ///   <para>library:DVD</para>
     /// </summary>
-    let BlurayDisk = _prefix "BlurayDisk"
+    /// <remarks>
+    ///   <para>library:Carrier</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>DVD</para></remarks>
+    /// <seealso href="http://purl.org/library/DVD">http://purl.org/library/DVD</seealso>
+    let DVD = Prefixed_Name(library, "DVD") |> PrefixedName
+
     /// <summary>
-    /// This class contains a controlled list of "carriers" that can be used to contain a schema:CreativeWork.
-    /// <see href="http://purl.org/library/Carrier"></see></summary>
-    let Carrier = _prefix "Carrier"
-    /// <summary>
-    ///   <see href="http://purl.org/library/BrailleBook"></see>
+    ///   <para>library:ContinuallyUpdatedBook</para>
     /// </summary>
-    let BrailleBook = _prefix "BrailleBook"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>schema1:BookFormatType</para>
+    ///
+    /// labels<para>Continually Updated Book</para></remarks>
+    /// <seealso href="http://purl.org/library/ContinuallyUpdatedBook">http://purl.org/library/ContinuallyUpdatedBook</seealso>
+    let ContinuallyUpdatedBook =
+        Prefixed_Name(library, "ContinuallyUpdatedBook") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/library/CD"></see>
+    ///   <para>library:FilmReel</para>
     /// </summary>
-    let CD = _prefix "CD"
+    /// <remarks>
+    ///   <para>library:Carrier</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>Film Reel</para></remarks>
+    /// <seealso href="http://purl.org/library/FilmReel">http://purl.org/library/FilmReel</seealso>
+    let FilmReel = Prefixed_Name(library, "FilmReel") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/CassetteTape"></see>
+    ///   <para>library:LargePrintBook</para>
     /// </summary>
-    let CassetteTape = _prefix "CassetteTape"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>schema1:BookFormatType</para>
+    ///
+    /// labels<para>Large Print Book</para></remarks>
+    /// <seealso href="http://purl.org/library/LargePrintBook">http://purl.org/library/LargePrintBook</seealso>
+    let LargePrintBook = Prefixed_Name(library, "LargePrintBook") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/library/ComputerFile"></see>
+    ///   <para>library:InteractiveMultimedia</para>
     /// </summary>
-    let ComputerFile = _prefix "ComputerFile"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Interactive Multimedia</para></remarks>
+    /// <seealso href="http://purl.org/library/InteractiveMultimedia">http://purl.org/library/InteractiveMultimedia</seealso>
+    let InteractiveMultimedia =
+        Prefixed_Name(library, "InteractiveMultimedia") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/library/ContinuallyUpdatedBook"></see>
+    ///   <para>library:Microform</para>
     /// </summary>
-    let ContinuallyUpdatedBook = _prefix "ContinuallyUpdatedBook"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>library:Carrier</para>
+    ///
+    /// labels<para>Microform</para></remarks>
+    /// <seealso href="http://purl.org/library/Microform">http://purl.org/library/Microform</seealso>
+    let Microform = Prefixed_Name(library, "Microform") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/DVD"></see>
+    ///   <para>library:VHSTape</para>
     /// </summary>
-    let DVD = _prefix "DVD"
+    /// <remarks>
+    ///   <para>library:Carrier</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>VHS Tape</para></remarks>
+    /// <seealso href="http://purl.org/library/VHSTape">http://purl.org/library/VHSTape</seealso>
+    let VHSTape = Prefixed_Name(library, "VHSTape") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/FilmReel"></see>
+    ///   <para>library:VideoGame</para>
     /// </summary>
-    let FilmReel = _prefix "FilmReel"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>VideoGame</para></remarks>
+    /// <seealso href="http://purl.org/library/VideoGame">http://purl.org/library/VideoGame</seealso>
+    let VideoGame = Prefixed_Name(library, "VideoGame") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/Game"></see>
+    ///   <para>library:WWW</para>
     /// </summary>
-    let Game = _prefix "Game"
+    /// <remarks>
+    ///   <para>library:Carrier</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>World Wide Web</para></remarks>
+    /// <seealso href="http://purl.org/library/WWW">http://purl.org/library/WWW</seealso>
+    let WWW = Prefixed_Name(library, "WWW") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/Image"></see>
+    ///   <para>library:hasCarrier</para>
     /// </summary>
-    let Image = _prefix "Image"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has carrier</para></remarks>
+    /// <seealso href="http://purl.org/library/hasCarrier">http://purl.org/library/hasCarrier</seealso>
+    let hasCarrier = Prefixed_Name(library, "hasCarrier") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/InteractiveMultimedia"></see>
+    ///   <para>library:oclcnum</para>
     /// </summary>
-    let InteractiveMultimedia = _prefix "InteractiveMultimedia"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>oclcnum</para></remarks>
+    /// <seealso href="http://purl.org/library/oclcnum">http://purl.org/library/oclcnum</seealso>
+    let oclcnum = Prefixed_Name(library, "oclcnum") |> PrefixedName
     /// <summary>
-    /// a mixture of various components issued as a unit and intended primarily for instructional purposes. No one component is identifiable as the predominant component of the item. Examples are packages of assorted materials, such as a set of K-12 social studies curriculum material (books, workbooks, guides, activities, etc.), or packages of educational test materials (tests, answer sheets, scoring guides, score charts, interpretative manuals, etc.).
-    /// <see href="http://purl.org/library/Kit"></see></summary>
-    let Kit = _prefix "Kit"
-    /// <summary>
-    ///   <see href="http://purl.org/library/LP"></see>
+    ///   <para>library:Kit</para>
     /// </summary>
-    let LP = _prefix "LP"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>a mixture of various components issued as a unit and intended primarily for instructional purposes. No one component is identifiable as the predominant component of the item. Examples are packages of assorted materials, such as a set of K-12 social studies curriculum material (books, workbooks, guides, activities, etc.), or packages of educational test materials (tests, answer sheets, scoring guides, score charts, interpretative manuals, etc.).</para>
+    /// labels<para>Kit</para></remarks>
+    /// <seealso href="http://purl.org/library/Kit">http://purl.org/library/Kit</seealso>
+    let Kit = Prefixed_Name(library, "Kit") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/LargePrintBook"></see>
+    ///   <para>library:Newspaper</para>
     /// </summary>
-    let LargePrintBook = _prefix "LargePrintBook"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Newspaper</para></remarks>
+    /// <seealso href="http://purl.org/library/Newspaper">http://purl.org/library/Newspaper</seealso>
+    let Newspaper = Prefixed_Name(library, "Newspaper") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/Microform"></see>
+    ///   <para>library:Periodical</para>
     /// </summary>
-    let Microform = _prefix "Microform"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Periodical</para></remarks>
+    /// <seealso href="http://purl.org/library/Periodical">http://purl.org/library/Periodical</seealso>
+    let Periodical = Prefixed_Name(library, "Periodical") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/MusicalScore"></see>
+    ///   <para>library:Thesis</para>
     /// </summary>
-    let MusicalScore = _prefix "MusicalScore"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Thesis</para></remarks>
+    /// <seealso href="http://purl.org/library/Thesis">http://purl.org/library/Thesis</seealso>
+    let Thesis = Prefixed_Name(library, "Thesis") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/Newspaper"></see>
+    ///   <para>library:Toy</para>
     /// </summary>
-    let Newspaper = _prefix "Newspaper"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Toy</para></remarks>
+    /// <seealso href="http://purl.org/library/Toy">http://purl.org/library/Toy</seealso>
+    let Toy = Prefixed_Name(library, "Toy") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/Periodical"></see>
+    ///   <para>library:VisualMaterial</para>
     /// </summary>
-    let Periodical = _prefix "Periodical"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Visual Material</para></remarks>
+    /// <seealso href="http://purl.org/library/VisualMaterial">http://purl.org/library/VisualMaterial</seealso>
+    let VisualMaterial = Prefixed_Name(library, "VisualMaterial") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/Thesis"></see>
+    ///   <para>library:Volume</para>
     /// </summary>
-    let Thesis = _prefix "Thesis"
+    /// <remarks>
+    ///   <para>library:Carrier</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///
+    /// labels<para>Volume</para></remarks>
+    /// <seealso href="http://purl.org/library/Volume">http://purl.org/library/Volume</seealso>
+    let Volume = Prefixed_Name(library, "Volume") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/Toy"></see>
+    ///   <para>library:WebSite</para>
     /// </summary>
-    let Toy = _prefix "Toy"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Web Site</para></remarks>
+    /// <seealso href="http://purl.org/library/WebSite">http://purl.org/library/WebSite</seealso>
+    let WebSite = Prefixed_Name(library, "WebSite") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/VHSTape"></see>
+    ///   <para>library:holdingsCount</para>
     /// </summary>
-    let VHSTape = _prefix "VHSTape"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This is the number of identifiable "library" collections that "hold" one or more exemplars (aka copies or "Items").</para>
+    /// labels<para>holdings count</para></remarks>
+    /// <seealso href="http://purl.org/library/holdingsCount">http://purl.org/library/holdingsCount</seealso>
+    let holdingsCount = Prefixed_Name(library, "holdingsCount") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/Video"></see>
+    ///   <para>library:ArchiveMaterial</para>
     /// </summary>
-    let Video = _prefix "Video"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>ArchiveMaterial</para></remarks>
+    /// <seealso href="http://purl.org/library/ArchiveMaterial">http://purl.org/library/ArchiveMaterial</seealso>
+    let ArchiveMaterial = Prefixed_Name(library, "ArchiveMaterial") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/VideoGame"></see>
+    ///   <para>library:BrailleBook</para>
     /// </summary>
-    let VideoGame = _prefix "VideoGame"
+    /// <remarks>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>schema1:BookFormatType</para>
+    ///
+    /// labels<para>Braille Book</para></remarks>
+    /// <seealso href="http://purl.org/library/BrailleBook">http://purl.org/library/BrailleBook</seealso>
+    let BrailleBook = Prefixed_Name(library, "BrailleBook") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/library/VisualMaterial"></see>
+    ///   <para>library:Video</para>
     /// </summary>
-    let VisualMaterial = _prefix "VisualMaterial"
-    /// <summary>
-    ///   <see href="http://purl.org/library/Volume"></see>
-    /// </summary>
-    let Volume = _prefix "Volume"
-    /// <summary>
-    ///   <see href="http://purl.org/library/WWW"></see>
-    /// </summary>
-    let WWW = _prefix "WWW"
-    /// <summary>
-    ///   <see href="http://purl.org/library/WebSite"></see>
-    /// </summary>
-    let WebSite = _prefix "WebSite"
-    /// <summary>
-    ///   <see href="http://purl.org/library/hasCarrier"></see>
-    /// </summary>
-    let hasCarrier = _prefix "hasCarrier"
-    /// <summary>
-    /// This is the number of identifiable "library" collections that "hold" one or more exemplars (aka copies or "Items").
-    /// <see href="http://purl.org/library/holdingsCount"></see></summary>
-    let holdingsCount = _prefix "holdingsCount"
-    /// <summary>
-    ///   <see href="http://purl.org/library/oclcnum"></see>
-    /// </summary>
-    let oclcnum = _prefix "oclcnum"
-    /// <summary>
-    /// This is the place where the schema:CreativeWork was published.
-    /// <see href="http://purl.org/library/placeOfPublication"></see></summary>
-    let placeOfPublication = _prefix "placeOfPublication"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Video</para></remarks>
+    /// <seealso href="http://purl.org/library/Video">http://purl.org/library/Video</seealso>
+    let Video = Prefixed_Name(library, "Video") |> PrefixedName

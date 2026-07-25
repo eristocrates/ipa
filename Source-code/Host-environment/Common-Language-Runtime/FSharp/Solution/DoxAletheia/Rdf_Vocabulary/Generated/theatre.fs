@@ -1,198 +1,446 @@
 namespace http.purl.org.theatre.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module theatre =
-    let _namespace_name = "http://purl.org/theatre#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    let _namespace_iri = Namespace_Iri theatre |> NamespaceIRI
 
     /// <summary>
-    /// A Provision which makes an ev:Event more accessible
-    /// <see href="http://purl.org/theatre#AccessibilityProvision"></see></summary>
-    let AccessibilityProvision = _prefix "AccessibilityProvision"
-    /// <summary>
-    /// An event which involves discussion/planning, often with a formal tone.
-    /// <see href="http://purl.org/theatre#Meeting"></see></summary>
-    let Meeting = _prefix "Meeting"
-    /// <summary>
-    /// A Project which intends to evoke a response from an Audience.
-    /// <see href="http://purl.org/theatre#PerformableProject"></see></summary>
-    let PerformableProject = _prefix "PerformableProject"
-    /// <summary>
-    /// A Position which involes portraying a Character.
-    /// <see href="http://purl.org/theatre#Portrayal"></see></summary>
-    let Portrayal = _prefix "Portrayal"
-    /// <summary>
-    /// A set of responibilities.
-    /// <see href="http://purl.org/theatre#Position"></see></summary>
-    let Position = _prefix "Position"
-    /// <summary>
-    /// A performance which reviewers are encouraged to attend.
-    /// <see href="http://purl.org/theatre#PressNight"></see></summary>
-    let PressNight = _prefix "PressNight"
-    /// <summary>
-    /// The realisation of a theatrical work.
-    /// <see href="http://purl.org/theatre#Production"></see></summary>
-    let Production = _prefix "Production"
-    /// <summary>
-    /// An Organisation which puts on Productions.
-    /// <see href="http://purl.org/theatre#ProductionCompany"></see></summary>
-    let ProductionCompany = _prefix "ProductionCompany"
-    /// <summary>
-    /// An event which involves preparatory work for a Performance.
-    /// <see href="http://purl.org/theatre#Rehearsal"></see></summary>
-    let Rehearsal = _prefix "Rehearsal"
-    /// <summary>
-    /// An unpolished performance in which the cast read from scripts.
-    /// <see href="http://purl.org/theatre#RehearsalReading"></see></summary>
-    let RehearsalReading = _prefix "RehearsalReading"
-    /// <summary>
-    /// An event which involves preparatory work for a Performance.
-    /// <see href="http://purl.org/theatre#Rehersal"></see></summary>
-    let Rehersal = _prefix "Rehersal"
-    /// <summary>
-    /// An unpolished performance in which the cast read from scripts.
-    /// <see href="http://purl.org/theatre#RehersalReading"></see></summary>
-    let RehersalReading = _prefix "RehersalReading"
-    /// <summary>
-    /// A collection of Productions and/or Performances
-    /// <see href="http://purl.org/theatre#Season"></see></summary>
-    let Season = _prefix "Season"
-    /// <summary>
-    /// The writing/devising which may enable a Production.
-    /// <see href="http://purl.org/theatre#Show"></see></summary>
-    let Show = _prefix "Show"
-    /// <summary>
-    /// A Nestable Spatial Thing used for Theatrical Events.
-    /// <see href="http://purl.org/theatre#Venue"></see></summary>
-    let Venue = _prefix "Venue"
-    /// <summary>
-    /// The voice classification for a Singer or singing part.
-    /// <see href="http://purl.org/theatre#Voice"></see></summary>
-    let Voice = _prefix "Voice"
-    /// <summary>
-    /// An event which involves participation, mainly with an educational focus.
-    /// <see href="http://purl.org/theatre#Workshop"></see></summary>
-    let Workshop = _prefix "Workshop"
-    /// <summary>
-    /// Associates an Accessibility Provision with an Event
-    /// <see href="http://purl.org/theatre#accessibility_provision"></see></summary>
-    let accessibility_provision = _prefix "accessibility_provision"
-    /// <summary>
-    /// Associates a Role with an Agent.
-    /// <see href="http://purl.org/theatre#agent"></see></summary>
-    let agent = _prefix "agent"
-    /// <summary>
-    /// A restriction on who can attend a particular performance
-    /// <see href="http://purl.org/theatre#audience_restriction"></see></summary>
-    let audience_restriction = _prefix "audience_restriction"
-    /// <summary>
-    ///   <see href="http://purl.org/theatre#Performance"></see>
+    ///   <para>theatre:AccessibilityProvision</para>
     /// </summary>
-    let Performance = _prefix "Performance"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Provision which makes an ev:Event more accessible</para>
+    /// labels<para>AccessibilityProvision</para></remarks>
+    /// <seealso href="http://purl.org/theatre#AccessibilityProvision">http://purl.org/theatre#AccessibilityProvision</seealso>
+    let AccessibilityProvision =
+        Prefixed_Name(theatre, "AccessibilityProvision") |> PrefixedName
+
     /// <summary>
-    /// Indicates a Work that another Work was based on .
-    /// <see href="http://purl.org/theatre#based_on"></see></summary>
-    let based_on = _prefix "based_on"
-    /// <summary>
-    /// Associates a Project with a Role.
-    /// <see href="http://purl.org/theatre#credit"></see></summary>
-    let credit = _prefix "credit"
-    /// <summary>
-    /// Associates a Role with a Project.
-    /// <see href="http://purl.org/theatre#project"></see></summary>
-    let project = _prefix "project"
-    /// <summary>
-    /// Associates a Project with an Event.
-    /// <see href="http://purl.org/theatre#event"></see></summary>
-    let event_ = _prefix "event"
-    /// <summary>
-    /// Associates a Genre with a Work.
-    /// <see href="http://purl.org/theatre#genre"></see></summary>
-    let genre = _prefix "genre"
-    /// <summary>
-    /// Associates a Performableproject with a Production.
-    /// <see href="http://purl.org/theatre#manifestation"></see></summary>
-    let manifestation = _prefix "manifestation"
-    /// <summary>
-    ///   <see href="http://purl.org/theatre#Performableproject"></see>
+    ///   <para>theatre:Meeting</para>
     /// </summary>
-    let Performableproject = _prefix "Performableproject"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An event which involves discussion/planning, often with a formal tone.</para>
+    /// labels<para>Meeting</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Meeting">http://purl.org/theatre#Meeting</seealso>
+    let Meeting = Prefixed_Name(theatre, "Meeting") |> PrefixedName
+
     /// <summary>
-    /// Associates a season with its commissioning season.
-    /// <see href="http://purl.org/theatre#parent_season"></see></summary>
-    let parent_season = _prefix "parent_season"
-    /// <summary>
-    /// Associates a Venue with its containing Venue.
-    /// <see href="http://purl.org/theatre#parent_venue"></see></summary>
-    let parent_venue = _prefix "parent_venue"
-    /// <summary>
-    /// Indicates that something is part of a season
-    /// <see href="http://purl.org/theatre#part_of_season"></see></summary>
-    let part_of_season = _prefix "part_of_season"
-    /// <summary>
-    /// Associates a Production with a Performance.
-    /// <see href="http://purl.org/theatre#performance"></see></summary>
-    let performance = _prefix "performance"
-    /// <summary>
-    /// Associates a Production with a Performance.
-    /// <see href="http://purl.org/theatre#performance_of"></see></summary>
-    let performance_of = _prefix "performance_of"
-    /// <summary>
-    /// Associates a Portrayal with a Character.
-    /// <see href="http://purl.org/theatre#portrays"></see></summary>
-    let portrays = _prefix "portrays"
-    /// <summary>
-    /// Associates a Role with a Position.
-    /// <see href="http://purl.org/theatre#position"></see></summary>
-    let position = _prefix "position"
-    /// <summary>
-    /// Indicates the first performance of a Show or Production in a particular area.
-    /// <see href="http://purl.org/theatre#premiere"></see></summary>
-    let premiere = _prefix "premiere"
-    /// <summary>
-    /// Associates a production with its commissioning season.
-    /// <see href="http://purl.org/theatre#primary_season"></see></summary>
-    let primary_season = _prefix "primary_season"
-    /// <summary>
-    /// Associates a Season with a Production.
-    /// <see href="http://purl.org/theatre#production"></see></summary>
-    let production = _prefix "production"
-    /// <summary>
-    /// Indicates that a Production is an expression of a given work or production.
-    /// <see href="http://purl.org/theatre#production_of"></see></summary>
-    let production_of = _prefix "production_of"
-    /// <summary>
-    /// The Company which puts on a Production
-    /// <see href="http://purl.org/theatre#put_on_by"></see></summary>
-    let put_on_by = _prefix "put_on_by"
-    /// <summary>
-    /// A performance recorded for either Simulcast or later broadcast.
-    /// <see href="http://purl.org/theatre#recorded_for"></see></summary>
-    let recorded_for = _prefix "recorded_for"
-    /// <summary>
-    /// Indicates the voice classification that a particular Operatic character has been written for.
-    /// <see href="http://purl.org/theatre#scored_voice"></see></summary>
-    let scored_voice = _prefix "scored_voice"
-    /// <summary>
-    /// The Person or Organisation who sponsors a given production or performance
-    /// <see href="http://purl.org/theatre#sponsor"></see></summary>
-    let sponsor = _prefix "sponsor"
-    /// <summary>
-    /// A human readable indication of when in the day a performance occurs
-    /// <see href="http://purl.org/theatre#time_of_day"></see></summary>
-    let time_of_day = _prefix "time_of_day"
-    /// <summary>
-    /// Associates an Event with the Venue it is held in.
-    /// <see href="http://purl.org/theatre#venue"></see></summary>
-    let venue = _prefix "venue"
-    /// <summary>
-    ///   <see href="http://purl.org/theatre#Event"></see>
+    ///   <para>theatre:PerformableProject</para>
     /// </summary>
-    let Event = _prefix "Event"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Project which intends to evoke a response from an Audience.</para>
+    /// labels<para>PerformableProject</para></remarks>
+    /// <seealso href="http://purl.org/theatre#PerformableProject">http://purl.org/theatre#PerformableProject</seealso>
+    let PerformableProject =
+        Prefixed_Name(theatre, "PerformableProject") |> PrefixedName
+
     /// <summary>
-    /// Indicates the first performance of a Show or Production on a particular planet.
-    /// <see href="http://purl.org/theatre#worldPremiere"></see></summary>
-    let worldPremiere = _prefix "worldPremiere"
+    ///   <para>theatre:Position</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A set of responibilities.</para>
+    /// labels<para>Position</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Position">http://purl.org/theatre#Position</seealso>
+    let Position = Prefixed_Name(theatre, "Position") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:Production</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The realisation of a theatrical work.</para>
+    /// labels<para>Production</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Production">http://purl.org/theatre#Production</seealso>
+    let Production = Prefixed_Name(theatre, "Production") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:Rehearsal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An event which involves preparatory work for a Performance.</para>
+    /// labels<para>Rehearsal</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Rehearsal">http://purl.org/theatre#Rehearsal</seealso>
+    let Rehearsal = Prefixed_Name(theatre, "Rehearsal") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:Rehersal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An event which involves preparatory work for a Performance.</para>
+    /// labels<para>Rehersal</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Rehersal">http://purl.org/theatre#Rehersal</seealso>
+    let Rehersal = Prefixed_Name(theatre, "Rehersal") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:RehersalReading</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An unpolished performance in which the cast read from scripts.</para>
+    /// labels<para>RehersalReading</para></remarks>
+    /// <seealso href="http://purl.org/theatre#RehersalReading">http://purl.org/theatre#RehersalReading</seealso>
+    let RehersalReading = Prefixed_Name(theatre, "RehersalReading") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:Show</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The writing/devising which may enable a Production.</para>
+    /// labels<para>Show</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Show">http://purl.org/theatre#Show</seealso>
+    let Show = Prefixed_Name(theatre, "Show") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:Voice</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The voice classification for a Singer or singing part.</para>
+    /// labels<para>Voice</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Voice">http://purl.org/theatre#Voice</seealso>
+    let Voice = Prefixed_Name(theatre, "Voice") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:agent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Role with an Agent.</para>
+    /// labels<para>agent</para></remarks>
+    /// <seealso href="http://purl.org/theatre#agent">http://purl.org/theatre#agent</seealso>
+    let agent = Prefixed_Name(theatre, "agent") |> PrefixedName
+
+    /// <summary>
+    ///   <para>theatre:audience_restriction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A restriction on who can attend a particular performance</para>
+    /// labels<para>audience_restriction</para></remarks>
+    /// <seealso href="http://purl.org/theatre#audience_restriction">http://purl.org/theatre#audience_restriction</seealso>
+    let audience_restriction =
+        Prefixed_Name(theatre, "audience_restriction") |> PrefixedName
+
+    /// <summary>
+    ///   <para>theatre:Performance</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/theatre#Performance">http://purl.org/theatre#Performance</seealso>
+    let Performance = Prefixed_Name(theatre, "Performance") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:project</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Role with a Project.</para>
+    /// labels<para>project</para></remarks>
+    /// <seealso href="http://purl.org/theatre#project">http://purl.org/theatre#project</seealso>
+    let project = Prefixed_Name(theatre, "project") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:event</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Project with an Event.</para>
+    /// labels<para>event</para></remarks>
+    /// <seealso href="http://purl.org/theatre#event">http://purl.org/theatre#event</seealso>
+    let event_ = Prefixed_Name(theatre, "event") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:manifestation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Performableproject with a Production.</para>
+    /// labels<para>manifestation</para></remarks>
+    /// <seealso href="http://purl.org/theatre#manifestation">http://purl.org/theatre#manifestation</seealso>
+    let manifestation = Prefixed_Name(theatre, "manifestation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>theatre:Performableproject</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/theatre#Performableproject">http://purl.org/theatre#Performableproject</seealso>
+    let Performableproject =
+        Prefixed_Name(theatre, "Performableproject") |> PrefixedName
+
+    /// <summary>
+    ///   <para>theatre:parent_season</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a season with its commissioning season.</para>
+    /// labels<para>parent_season</para></remarks>
+    /// <seealso href="http://purl.org/theatre#parent_season">http://purl.org/theatre#parent_season</seealso>
+    let parent_season = Prefixed_Name(theatre, "parent_season") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:position</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Role with a Position.</para>
+    /// labels<para>position</para></remarks>
+    /// <seealso href="http://purl.org/theatre#position">http://purl.org/theatre#position</seealso>
+    let position = Prefixed_Name(theatre, "position") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:premiere</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates the first performance of a Show or Production in a particular area.</para>
+    /// labels<para>premiere</para></remarks>
+    /// <seealso href="http://purl.org/theatre#premiere">http://purl.org/theatre#premiere</seealso>
+    let premiere = Prefixed_Name(theatre, "premiere") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:production_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates that a Production is an expression of a given work or production.</para>
+    /// labels<para>production_of</para></remarks>
+    /// <seealso href="http://purl.org/theatre#production_of">http://purl.org/theatre#production_of</seealso>
+    let production_of = Prefixed_Name(theatre, "production_of") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:venue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates an Event with the Venue it is held in.</para>
+    /// labels<para>venue</para></remarks>
+    /// <seealso href="http://purl.org/theatre#venue">http://purl.org/theatre#venue</seealso>
+    let venue = Prefixed_Name(theatre, "venue") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:Event</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/theatre#Event">http://purl.org/theatre#Event</seealso>
+    let Event = Prefixed_Name(theatre, "Event") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:worldPremiere</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates the first performance of a Show or Production on a particular planet.</para>
+    /// labels<para>worldPremiere</para></remarks>
+    /// <seealso href="http://purl.org/theatre#worldPremiere">http://purl.org/theatre#worldPremiere</seealso>
+    let worldPremiere = Prefixed_Name(theatre, "worldPremiere") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:time_of_day</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A human readable indication of when in the day a performance occurs</para>
+    /// labels<para>time_of_day</para></remarks>
+    /// <seealso href="http://purl.org/theatre#time_of_day">http://purl.org/theatre#time_of_day</seealso>
+    let time_of_day = Prefixed_Name(theatre, "time_of_day") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>A vocabulary for theatrical data.  It defines concepts such as shows, productions, seasons etc.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/theatre#">http://purl.org/theatre#</seealso>
+    let _prefix_iri = Prefixed_Name(theatre, "") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:Portrayal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Position which involes portraying a Character.</para>
+    /// labels<para>Portrayal</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Portrayal">http://purl.org/theatre#Portrayal</seealso>
+    let Portrayal = Prefixed_Name(theatre, "Portrayal") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:PressNight</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A performance which reviewers are encouraged to attend.</para>
+    /// labels<para>PressNight</para></remarks>
+    /// <seealso href="http://purl.org/theatre#PressNight">http://purl.org/theatre#PressNight</seealso>
+    let PressNight = Prefixed_Name(theatre, "PressNight") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:ProductionCompany</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An Organisation which puts on Productions.</para>
+    /// labels<para>ProductionCompany</para></remarks>
+    /// <seealso href="http://purl.org/theatre#ProductionCompany">http://purl.org/theatre#ProductionCompany</seealso>
+    let ProductionCompany = Prefixed_Name(theatre, "ProductionCompany") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:RehearsalReading</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An unpolished performance in which the cast read from scripts.</para>
+    /// labels<para>RehearsalReading</para></remarks>
+    /// <seealso href="http://purl.org/theatre#RehearsalReading">http://purl.org/theatre#RehearsalReading</seealso>
+    let RehearsalReading = Prefixed_Name(theatre, "RehearsalReading") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:Season</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A collection of Productions and/or Performances</para>
+    /// labels<para>Season</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Season">http://purl.org/theatre#Season</seealso>
+    let Season = Prefixed_Name(theatre, "Season") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:Venue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A Nestable Spatial Thing used for Theatrical Events.</para>
+    /// labels<para>Venue</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Venue">http://purl.org/theatre#Venue</seealso>
+    let Venue = Prefixed_Name(theatre, "Venue") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:Workshop</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An event which involves participation, mainly with an educational focus.</para>
+    /// labels<para>Workshop</para></remarks>
+    /// <seealso href="http://purl.org/theatre#Workshop">http://purl.org/theatre#Workshop</seealso>
+    let Workshop = Prefixed_Name(theatre, "Workshop") |> PrefixedName
+
+    /// <summary>
+    ///   <para>theatre:accessibility_provision</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates an Accessibility Provision with an Event</para>
+    /// labels<para>accessibility_provision</para></remarks>
+    /// <seealso href="http://purl.org/theatre#accessibility_provision">http://purl.org/theatre#accessibility_provision</seealso>
+    let accessibility_provision =
+        Prefixed_Name(theatre, "accessibility_provision") |> PrefixedName
+
+    /// <summary>
+    ///   <para>theatre:based_on</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates a Work that another Work was based on .</para>
+    /// labels<para>based_on</para></remarks>
+    /// <seealso href="http://purl.org/theatre#based_on">http://purl.org/theatre#based_on</seealso>
+    let based_on = Prefixed_Name(theatre, "based_on") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:credit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Project with a Role.</para>
+    /// labels<para>credit</para></remarks>
+    /// <seealso href="http://purl.org/theatre#credit">http://purl.org/theatre#credit</seealso>
+    let credit = Prefixed_Name(theatre, "credit") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:genre</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Genre with a Work.</para>
+    /// labels<para>genre</para></remarks>
+    /// <seealso href="http://purl.org/theatre#genre">http://purl.org/theatre#genre</seealso>
+    let genre = Prefixed_Name(theatre, "genre") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:parent_venue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Venue with its containing Venue.</para>
+    /// labels<para>parent_venue</para></remarks>
+    /// <seealso href="http://purl.org/theatre#parent_venue">http://purl.org/theatre#parent_venue</seealso>
+    let parent_venue = Prefixed_Name(theatre, "parent_venue") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:part_of_season</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Indicates that something is part of a season</para>
+    /// labels<para>part_of_season</para></remarks>
+    /// <seealso href="http://purl.org/theatre#part_of_season">http://purl.org/theatre#part_of_season</seealso>
+    let part_of_season = Prefixed_Name(theatre, "part_of_season") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:performance</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Production with a Performance.</para>
+    /// labels<para>performance</para></remarks>
+    /// <seealso href="http://purl.org/theatre#performance">http://purl.org/theatre#performance</seealso>
+    let performance = Prefixed_Name(theatre, "performance") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:performance_of</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Production with a Performance.</para>
+    /// labels<para>performance_of</para></remarks>
+    /// <seealso href="http://purl.org/theatre#performance_of">http://purl.org/theatre#performance_of</seealso>
+    let performance_of = Prefixed_Name(theatre, "performance_of") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:portrays</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Portrayal with a Character.</para>
+    /// labels<para>portrays</para></remarks>
+    /// <seealso href="http://purl.org/theatre#portrays">http://purl.org/theatre#portrays</seealso>
+    let portrays = Prefixed_Name(theatre, "portrays") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:primary_season</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a production with its commissioning season.</para>
+    /// labels<para>primary_season</para></remarks>
+    /// <seealso href="http://purl.org/theatre#primary_season">http://purl.org/theatre#primary_season</seealso>
+    let primary_season = Prefixed_Name(theatre, "primary_season") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:production</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Associates a Season with a Production.</para>
+    /// labels<para>production</para></remarks>
+    /// <seealso href="http://purl.org/theatre#production">http://purl.org/theatre#production</seealso>
+    let production = Prefixed_Name(theatre, "production") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:put_on_by</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The Company which puts on a Production</para>
+    /// labels<para>put_on_by</para></remarks>
+    /// <seealso href="http://purl.org/theatre#put_on_by">http://purl.org/theatre#put_on_by</seealso>
+    let put_on_by = Prefixed_Name(theatre, "put_on_by") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:recorded_for</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A performance recorded for either Simulcast or later broadcast.</para>
+    /// labels<para>recorded_for</para></remarks>
+    /// <seealso href="http://purl.org/theatre#recorded_for">http://purl.org/theatre#recorded_for</seealso>
+    let recorded_for = Prefixed_Name(theatre, "recorded_for") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:scored_voice</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates the voice classification that a particular Operatic character has been written for.</para>
+    /// labels<para>scored_voice</para></remarks>
+    /// <seealso href="http://purl.org/theatre#scored_voice">http://purl.org/theatre#scored_voice</seealso>
+    let scored_voice = Prefixed_Name(theatre, "scored_voice") |> PrefixedName
+    /// <summary>
+    ///   <para>theatre:sponsor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The Person or Organisation who sponsors a given production or performance</para>
+    /// labels<para>sponsor</para></remarks>
+    /// <seealso href="http://purl.org/theatre#sponsor">http://purl.org/theatre#sponsor</seealso>
+    let sponsor = Prefixed_Name(theatre, "sponsor") |> PrefixedName

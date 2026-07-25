@@ -1,98 +1,214 @@
 namespace http.www.w3.org._1999._02._22_rdf_syntax_ns.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module rdf =
-    let _namespace_name = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri rdf |> NamespaceIRI
     /// <summary>
-    /// The subject is an instance of a class.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"></see></summary>
-    let type_ = _prefix "type"
+    ///   <para>rdf:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</seealso>
+    let _prefix_iri = Prefixed_Name(rdf, "") |> PrefixedName
     /// <summary>
-    /// The class of containers of alternatives.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt"></see></summary>
-    let Alt = _prefix "Alt"
+    ///   <para>rdf:HTML</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    ///   <para>The datatype of RDF literals storing fragments of HTML content</para>
+    /// labels<para>HTML</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML</seealso>
+    let HTML = Prefixed_Name(rdf, "HTML") |> PrefixedName
     /// <summary>
-    /// The class of unordered containers.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"></see></summary>
-    let Bag = _prefix "Bag"
+    ///   <para>rdf:JSON</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    ///   <para>The datatype of RDF literals storing JSON content.</para>
+    /// labels<para>JSON</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON">http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON</seealso>
+    let JSON = Prefixed_Name(rdf, "JSON") |> PrefixedName
     /// <summary>
-    /// A class representing a compound literal.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#CompoundLiteral"></see></summary>
-    let CompoundLiteral = _prefix "CompoundLiteral"
+    ///   <para>rdf:List</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The class of RDF Lists.</para>
+    /// labels<para>List</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List">http://www.w3.org/1999/02/22-rdf-syntax-ns#List</seealso>
+    let List = Prefixed_Name(rdf, "List") |> PrefixedName
     /// <summary>
-    /// The datatype of RDF literals storing fragments of HTML content
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"></see></summary>
-    let HTML = _prefix "HTML"
+    ///   <para>rdf:PlainLiteral</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    ///   <para>The class of plain (i.e. untyped) literal values, as used in RIF and OWL 2</para>
+    /// labels<para>PlainLiteral</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral</seealso>
+    let PlainLiteral = Prefixed_Name(rdf, "PlainLiteral") |> PrefixedName
     /// <summary>
-    /// The datatype of RDF literals storing JSON content.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON"></see></summary>
-    let JSON = _prefix "JSON"
+    ///   <para>rdf:Seq</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The class of ordered containers.</para>
+    /// labels<para>Seq</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq">http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq</seealso>
+    let Seq = Prefixed_Name(rdf, "Seq") |> PrefixedName
     /// <summary>
-    /// The class of RDF Lists.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"></see></summary>
-    let List = _prefix "List"
+    ///   <para>rdf:XMLLiteral</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    ///   <para>The datatype of XML literal values.</para>
+    /// labels<para>XMLLiteral</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral</seealso>
+    let XMLLiteral = Prefixed_Name(rdf, "XMLLiteral") |> PrefixedName
     /// <summary>
-    /// The class of plain (i.e. untyped) literal values, as used in RIF and OWL 2
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"></see></summary>
-    let PlainLiteral = _prefix "PlainLiteral"
+    ///   <para>rdf:langString</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    ///   <para>The datatype of language-tagged string values</para>
+    /// labels<para>langString</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString">http://www.w3.org/1999/02/22-rdf-syntax-ns#langString</seealso>
+    let langString = Prefixed_Name(rdf, "langString") |> PrefixedName
     /// <summary>
-    /// The class of RDF properties.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"></see></summary>
-    let Property = _prefix "Property"
+    ///   <para>rdf:first</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The first item in the subject RDF list.</para>
+    /// labels<para>first</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#first">http://www.w3.org/1999/02/22-rdf-syntax-ns#first</seealso>
+    let first = Prefixed_Name(rdf, "first") |> PrefixedName
     /// <summary>
-    /// The class of ordered containers.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"></see></summary>
-    let Seq = _prefix "Seq"
+    ///   <para>rdf:language</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The language component of a CompoundLiteral.</para>
+    /// labels<para>language</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#language">http://www.w3.org/1999/02/22-rdf-syntax-ns#language</seealso>
+    let language = Prefixed_Name(rdf, "language") |> PrefixedName
     /// <summary>
-    /// The class of RDF statements.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"></see></summary>
-    let Statement = _prefix "Statement"
+    ///   <para>rdf:object</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The object of the subject RDF statement.</para>
+    /// labels<para>object</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">http://www.w3.org/1999/02/22-rdf-syntax-ns#object</seealso>
+    let object = Prefixed_Name(rdf, "object") |> PrefixedName
     /// <summary>
-    /// The datatype of XML literal values.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"></see></summary>
-    let XMLLiteral = _prefix "XMLLiteral"
+    ///   <para>rdf:rest</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The rest of the subject RDF list after the first item.</para>
+    /// labels<para>rest</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#rest">http://www.w3.org/1999/02/22-rdf-syntax-ns#rest</seealso>
+    let rest = Prefixed_Name(rdf, "rest") |> PrefixedName
     /// <summary>
-    /// The base direction component of a CompoundLiteral.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#direction"></see></summary>
-    let direction = _prefix "direction"
+    ///   <para>rdf:subject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject of the subject RDF statement.</para>
+    /// labels<para>subject</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">http://www.w3.org/1999/02/22-rdf-syntax-ns#subject</seealso>
+    let subject = Prefixed_Name(rdf, "subject") |> PrefixedName
     /// <summary>
-    /// The first item in the subject RDF list.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#first"></see></summary>
-    let first = _prefix "first"
+    ///   <para>rdf:type</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is an instance of a class.</para>
+    /// labels<para>type</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">http://www.w3.org/1999/02/22-rdf-syntax-ns#type</seealso>
+    let type_ = Prefixed_Name(rdf, "type") |> PrefixedName
     /// <summary>
-    /// The datatype of language-tagged string values
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"></see></summary>
-    let langString = _prefix "langString"
+    ///   <para>rdf:Bag</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The class of unordered containers.</para>
+    /// labels<para>Bag</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag">http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag</seealso>
+    let Bag = Prefixed_Name(rdf, "Bag") |> PrefixedName
     /// <summary>
-    /// The language component of a CompoundLiteral.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#language"></see></summary>
-    let language = _prefix "language"
+    ///   <para>rdf:CompoundLiteral</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A class representing a compound literal.</para>
+    /// labels<para>CompoundLiteral</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#CompoundLiteral">http://www.w3.org/1999/02/22-rdf-syntax-ns#CompoundLiteral</seealso>
+    let CompoundLiteral = Prefixed_Name(rdf, "CompoundLiteral") |> PrefixedName
     /// <summary>
-    /// The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"></see></summary>
-    let nil = _prefix "nil"
+    ///   <para>rdf:Statement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The class of RDF statements.</para>
+    /// labels<para>Statement</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement">http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement</seealso>
+    let Statement = Prefixed_Name(rdf, "Statement") |> PrefixedName
     /// <summary>
-    /// The object of the subject RDF statement.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object"></see></summary>
-    let object = _prefix "object"
+    ///   <para>rdf:direction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The base direction component of a CompoundLiteral.</para>
+    /// labels<para>direction</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#direction">http://www.w3.org/1999/02/22-rdf-syntax-ns#direction</seealso>
+    let direction = Prefixed_Name(rdf, "direction") |> PrefixedName
     /// <summary>
-    /// The predicate of the subject RDF statement.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate"></see></summary>
-    let predicate = _prefix "predicate"
+    ///   <para>rdf:nil</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:List</para>
+    ///   <para>The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it.</para>
+    /// labels<para>nil</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil">http://www.w3.org/1999/02/22-rdf-syntax-ns#nil</seealso>
+    let nil = Prefixed_Name(rdf, "nil") |> PrefixedName
     /// <summary>
-    /// The rest of the subject RDF list after the first item.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"></see></summary>
-    let rest = _prefix "rest"
+    ///   <para>rdf:predicate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The predicate of the subject RDF statement.</para>
+    /// labels<para>predicate</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate</seealso>
+    let predicate = Prefixed_Name(rdf, "predicate") |> PrefixedName
     /// <summary>
-    /// The subject of the subject RDF statement.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"></see></summary>
-    let subject = _prefix "subject"
+    ///   <para>rdf:value</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Idiomatic property used for structured values.</para>
+    /// labels<para>value</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">http://www.w3.org/1999/02/22-rdf-syntax-ns#value</seealso>
+    let value = Prefixed_Name(rdf, "value") |> PrefixedName
     /// <summary>
-    /// Idiomatic property used for structured values.
-    /// <see href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value"></see></summary>
-    let value = _prefix "value"
+    ///   <para>rdf:Alt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The class of containers of alternatives.</para>
+    /// labels<para>Alt</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt">http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt</seealso>
+    let Alt = Prefixed_Name(rdf, "Alt") |> PrefixedName
+    /// <summary>
+    ///   <para>rdf:Property</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The class of RDF properties.</para>
+    /// labels<para>Property</para></remarks>
+    /// <seealso href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</seealso>
+    let Property = Prefixed_Name(rdf, "Property") |> PrefixedName

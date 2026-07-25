@@ -1,196 +1,439 @@
 namespace http.www.europeana.eu.schemas.edm.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module edm =
-    let _namespace_name = "http://www.europeana.eu/schemas/edm/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri edm |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/hasMet"></see>
+    ///   <para>edm:hasType</para>
     /// </summary>
-    let hasMet = _prefix "hasMet"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Has Type</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/hasType">http://www.europeana.eu/schemas/edm/hasType</seealso>
+    let hasType = Prefixed_Name(edm, "hasType") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/hasType"></see>
+    ///   <para>edm:isRelatedTo</para>
     /// </summary>
-    let hasType = _prefix "hasType"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Is Related To</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/isRelatedTo">http://www.europeana.eu/schemas/edm/isRelatedTo</seealso>
+    let isRelatedTo = Prefixed_Name(edm, "isRelatedTo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/isRelatedTo"></see>
+    ///   <para>edm:Event</para>
     /// </summary>
-    let isRelatedTo = _prefix "isRelatedTo"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Event</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/Event">http://www.europeana.eu/schemas/edm/Event</seealso>
+    let Event = Prefixed_Name(edm, "Event") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/isDerivativeOf"></see>
+    ///   <para>edm:PhysicalThing</para>
     /// </summary>
-    let isDerivativeOf = _prefix "isDerivativeOf"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Physical Thing</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/PhysicalThing">http://www.europeana.eu/schemas/edm/PhysicalThing</seealso>
+    let PhysicalThing = Prefixed_Name(edm, "PhysicalThing") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/hasView"></see>
+    ///   <para>edm:ProvidedCHO</para>
     /// </summary>
-    let hasView = _prefix "hasView"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Provided CHO</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/ProvidedCHO">http://www.europeana.eu/schemas/edm/ProvidedCHO</seealso>
+    let ProvidedCHO = Prefixed_Name(edm, "ProvidedCHO") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/begin"></see>
+    ///   <para>edm:year</para>
     /// </summary>
-    let begin_ = _prefix "begin"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Europeana Year</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/year">http://www.europeana.eu/schemas/edm/year</seealso>
+    let year = Prefixed_Name(edm, "year") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/end"></see>
+    ///   <para>edm:isDerivativeOf</para>
     /// </summary>
-    let end_ = _prefix "end"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Is Derivative Of</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/isDerivativeOf">http://www.europeana.eu/schemas/edm/isDerivativeOf</seealso>
+    let isDerivativeOf = Prefixed_Name(edm, "isDerivativeOf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/Agent"></see>
+    ///   <para>edm:hasView</para>
     /// </summary>
-    let Agent = _prefix "Agent"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Has View</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/hasView">http://www.europeana.eu/schemas/edm/hasView</seealso>
+    let hasView = Prefixed_Name(edm, "hasView") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/NonInformationResource"></see>
+    ///   <para>edm:</para>
     /// </summary>
-    let NonInformationResource = _prefix "NonInformationResource"
+    /// <remarks>
+    ///   <para>voaf:Vocabulary</para>
+    ///   <para>owl:Ontology</para>
+    ///   <para>The present specification is based on the document "Definition of the Europeana Data Model elements", originally edited by Carlo Meghini. It is aligned with the version 5.2.4 of these EDM Definitions.</para>
+    /// </remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/">http://www.europeana.eu/schemas/edm/</seealso>
+    let _prefix_iri = Prefixed_Name(edm, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/EuropeanaAggregation"></see>
+    ///   <para>edm:EuropeanaObject</para>
     /// </summary>
-    let EuropeanaAggregation = _prefix "EuropeanaAggregation"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Europeana Object</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/EuropeanaObject">http://www.europeana.eu/schemas/edm/EuropeanaObject</seealso>
+    let EuropeanaObject = Prefixed_Name(edm, "EuropeanaObject") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/EuropeanaObject"></see>
+    ///   <para>edm:WebResource</para>
     /// </summary>
-    let EuropeanaObject = _prefix "EuropeanaObject"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Web Resource</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/WebResource">http://www.europeana.eu/schemas/edm/WebResource</seealso>
+    let WebResource = Prefixed_Name(edm, "WebResource") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/aggregatedCHO"></see>
+    ///   <para>edm:happenedAt</para>
     /// </summary>
-    let aggregatedCHO = _prefix "aggregatedCHO"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Happened At</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/happenedAt">http://www.europeana.eu/schemas/edm/happenedAt</seealso>
+    let happenedAt = Prefixed_Name(edm, "happenedAt") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/WebResource"></see>
+    ///   <para>edm:InformationResource</para>
     /// </summary>
-    let WebResource = _prefix "WebResource"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Information Resource</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/InformationResource">http://www.europeana.eu/schemas/edm/InformationResource</seealso>
+    let InformationResource = Prefixed_Name(edm, "InformationResource") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/Event"></see>
+    ///   <para>edm:Place</para>
     /// </summary>
-    let Event = _prefix "Event"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Place</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/Place">http://www.europeana.eu/schemas/edm/Place</seealso>
+    let Place = Prefixed_Name(edm, "Place") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/happenedAt"></see>
+    ///   <para>edm:TimeSpan</para>
     /// </summary>
-    let happenedAt = _prefix "happenedAt"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Time Span</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/TimeSpan">http://www.europeana.eu/schemas/edm/TimeSpan</seealso>
+    let TimeSpan = Prefixed_Name(edm, "TimeSpan") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/InformationResource"></see>
+    ///   <para>edm:country</para>
     /// </summary>
-    let InformationResource = _prefix "InformationResource"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Country</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/country">http://www.europeana.eu/schemas/edm/country</seealso>
+    let country = Prefixed_Name(edm, "country") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/PhysicalThing"></see>
+    ///   <para>edm:currentLocation</para>
     /// </summary>
-    let PhysicalThing = _prefix "PhysicalThing"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Current Location</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/currentLocation">http://www.europeana.eu/schemas/edm/currentLocation</seealso>
+    let currentLocation = Prefixed_Name(edm, "currentLocation") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/Place"></see>
+    ///   <para>edm:dataProvider</para>
     /// </summary>
-    let Place = _prefix "Place"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Europeana Data Provider</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/dataProvider">http://www.europeana.eu/schemas/edm/dataProvider</seealso>
+    let dataProvider = Prefixed_Name(edm, "dataProvider") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/ProvidedCHO"></see>
+    ///   <para>edm:incorporates</para>
     /// </summary>
-    let ProvidedCHO = _prefix "ProvidedCHO"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Incorporates</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/incorporates">http://www.europeana.eu/schemas/edm/incorporates</seealso>
+    let incorporates = Prefixed_Name(edm, "incorporates") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/TimeSpan"></see>
+    ///   <para>edm:isSimilarTo</para>
     /// </summary>
-    let TimeSpan = _prefix "TimeSpan"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Is Similar To</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/isSimilarTo">http://www.europeana.eu/schemas/edm/isSimilarTo</seealso>
+    let isSimilarTo = Prefixed_Name(edm, "isSimilarTo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/country"></see>
+    ///   <para>edm:isAnnotationOf</para>
     /// </summary>
-    let country = _prefix "country"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Is Annotation Of</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/isAnnotationOf">http://www.europeana.eu/schemas/edm/isAnnotationOf</seealso>
+    let isAnnotationOf = Prefixed_Name(edm, "isAnnotationOf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/currentLocation"></see>
+    ///   <para>edm:isRepresentationOf</para>
     /// </summary>
-    let currentLocation = _prefix "currentLocation"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Is Representation Of</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/isRepresentationOf">http://www.europeana.eu/schemas/edm/isRepresentationOf</seealso>
+    let isRepresentationOf = Prefixed_Name(edm, "isRepresentationOf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/dataProvider"></see>
+    ///   <para>edm:isShownAt</para>
     /// </summary>
-    let dataProvider = _prefix "dataProvider"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Is Shown At</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/isShownAt">http://www.europeana.eu/schemas/edm/isShownAt</seealso>
+    let isShownAt = Prefixed_Name(edm, "isShownAt") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/incorporates"></see>
+    ///   <para>edm:isShownBy</para>
     /// </summary>
-    let incorporates = _prefix "incorporates"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Is Shown By</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/isShownBy">http://www.europeana.eu/schemas/edm/isShownBy</seealso>
+    let isShownBy = Prefixed_Name(edm, "isShownBy") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/isSimilarTo"></see>
+    ///   <para>edm:landingPage</para>
     /// </summary>
-    let isSimilarTo = _prefix "isSimilarTo"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Landing Page</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/landingPage">http://www.europeana.eu/schemas/edm/landingPage</seealso>
+    let landingPage = Prefixed_Name(edm, "landingPage") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/isAnnotationOf"></see>
+    ///   <para>edm:language</para>
     /// </summary>
-    let isAnnotationOf = _prefix "isAnnotationOf"
-    /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/isNextInSequence"></see>
-    /// </summary>
-    let isNextInSequence = _prefix "isNextInSequence"
-    /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/isRepresentationOf"></see>
-    /// </summary>
-    let isRepresentationOf = _prefix "isRepresentationOf"
-    /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/isShownAt"></see>
-    /// </summary>
-    let isShownAt = _prefix "isShownAt"
-    /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/isShownBy"></see>
-    /// </summary>
-    let isShownBy = _prefix "isShownBy"
-    /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/isSuccessorOf"></see>
-    /// </summary>
-    let isSuccessorOf = _prefix "isSuccessorOf"
-    /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/landingPage"></see>
-    /// </summary>
-    let landingPage = _prefix "landingPage"
-    /// <summary>
-    /// The recommended best practice is to use a controlled vocabulary such as
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The recommended best practice is to use a controlled vocabulary such as
     /// RFC 4646 (http://www.rfc-archive.org/getrfc.php?rfc=4646) which, in
-    /// conjunction with ISO 639, defines two- and three-letter primary language tags. Either a coded value or text string can be represented here.
-    /// <see href="http://www.europeana.eu/schemas/edm/language"></see></summary>
-    let language = _prefix "language"
+    /// conjunction with ISO 639, defines two- and three-letter primary language tags. Either a coded value or text string can be represented here.</para>
+    /// labels<para>Europeana Language</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/language">http://www.europeana.eu/schemas/edm/language</seealso>
+    let language = Prefixed_Name(edm, "language") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/object"></see>
+    ///   <para>edm:object</para>
     /// </summary>
-    let object = _prefix "object"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Object</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/object">http://www.europeana.eu/schemas/edm/object</seealso>
+    let object = Prefixed_Name(edm, "object") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/occurredAt"></see>
+    ///   <para>edm:occurredAt</para>
     /// </summary>
-    let occurredAt = _prefix "occurredAt"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Occured At</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/occurredAt">http://www.europeana.eu/schemas/edm/occurredAt</seealso>
+    let occurredAt = Prefixed_Name(edm, "occurredAt") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/preview"></see>
+    ///   <para>edm:preview</para>
     /// </summary>
-    let preview = _prefix "preview"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Preview</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/preview">http://www.europeana.eu/schemas/edm/preview</seealso>
+    let preview = Prefixed_Name(edm, "preview") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/provider"></see>
+    ///   <para>edm:rights</para>
     /// </summary>
-    let provider = _prefix "provider"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Europeana Rights</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/rights">http://www.europeana.eu/schemas/edm/rights</seealso>
+    let rights = Prefixed_Name(edm, "rights") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/realizes"></see>
+    ///   <para>edm:type</para>
     /// </summary>
-    let realizes = _prefix "realizes"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Europeana Type</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/type">http://www.europeana.eu/schemas/edm/type</seealso>
+    let type_ = Prefixed_Name(edm, "type") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/rights"></see>
+    ///   <para>edm:unstored</para>
     /// </summary>
-    let rights = _prefix "rights"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Unstored</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/unstored">http://www.europeana.eu/schemas/edm/unstored</seealso>
+    let unstored = Prefixed_Name(edm, "unstored") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/type"></see>
+    ///   <para>edm:uri</para>
     /// </summary>
-    let type_ = _prefix "type"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Europeana URI</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/uri">http://www.europeana.eu/schemas/edm/uri</seealso>
+    let uri = Prefixed_Name(edm, "uri") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/ugc"></see>
+    ///   <para>edm:userTag</para>
     /// </summary>
-    let ugc = _prefix "ugc"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>User Tag</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/userTag">http://www.europeana.eu/schemas/edm/userTag</seealso>
+    let userTag = Prefixed_Name(edm, "userTag") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/unstored"></see>
+    ///   <para>edm:wasPresentAt</para>
     /// </summary>
-    let unstored = _prefix "unstored"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Was Present At</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/wasPresentAt">http://www.europeana.eu/schemas/edm/wasPresentAt</seealso>
+    let wasPresentAt = Prefixed_Name(edm, "wasPresentAt") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/uri"></see>
+    ///   <para>edm:end</para>
     /// </summary>
-    let uri = _prefix "uri"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>End</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/end">http://www.europeana.eu/schemas/edm/end</seealso>
+    let end_ = Prefixed_Name(edm, "end") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/userTag"></see>
+    ///   <para>edm:NonInformationResource</para>
     /// </summary>
-    let userTag = _prefix "userTag"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Non-Information Resource</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/NonInformationResource">http://www.europeana.eu/schemas/edm/NonInformationResource</seealso>
+    let NonInformationResource =
+        Prefixed_Name(edm, "NonInformationResource") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/wasPresentAt"></see>
+    ///   <para>edm:EuropeanaAggregation</para>
     /// </summary>
-    let wasPresentAt = _prefix "wasPresentAt"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Europeana Aggregation</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/EuropeanaAggregation">http://www.europeana.eu/schemas/edm/EuropeanaAggregation</seealso>
+    let EuropeanaAggregation =
+        Prefixed_Name(edm, "EuropeanaAggregation") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://www.europeana.eu/schemas/edm/year"></see>
+    ///   <para>edm:isNextInSequence</para>
     /// </summary>
-    let year = _prefix "year"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Is Next In Sequence Of</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/isNextInSequence">http://www.europeana.eu/schemas/edm/isNextInSequence</seealso>
+    let isNextInSequence = Prefixed_Name(edm, "isNextInSequence") |> PrefixedName
+    /// <summary>
+    ///   <para>edm:isSuccessorOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Is Successor Of</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/isSuccessorOf">http://www.europeana.eu/schemas/edm/isSuccessorOf</seealso>
+    let isSuccessorOf = Prefixed_Name(edm, "isSuccessorOf") |> PrefixedName
+    /// <summary>
+    ///   <para>edm:provider</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Europeana Provider</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/provider">http://www.europeana.eu/schemas/edm/provider</seealso>
+    let provider = Prefixed_Name(edm, "provider") |> PrefixedName
+    /// <summary>
+    ///   <para>edm:realizes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Realizes</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/realizes">http://www.europeana.eu/schemas/edm/realizes</seealso>
+    let realizes = Prefixed_Name(edm, "realizes") |> PrefixedName
+    /// <summary>
+    ///   <para>edm:ugc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>UGC</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/ugc">http://www.europeana.eu/schemas/edm/ugc</seealso>
+    let ugc = Prefixed_Name(edm, "ugc") |> PrefixedName
+    /// <summary>
+    ///   <para>edm:hasMet</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Has Met</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/hasMet">http://www.europeana.eu/schemas/edm/hasMet</seealso>
+    let hasMet = Prefixed_Name(edm, "hasMet") |> PrefixedName
+    /// <summary>
+    ///   <para>edm:begin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>Begin</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/begin">http://www.europeana.eu/schemas/edm/begin</seealso>
+    let begin_ = Prefixed_Name(edm, "begin") |> PrefixedName
+    /// <summary>
+    ///   <para>edm:Agent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Agent</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/Agent">http://www.europeana.eu/schemas/edm/Agent</seealso>
+    let Agent = Prefixed_Name(edm, "Agent") |> PrefixedName
+    /// <summary>
+    ///   <para>edm:aggregatedCHO</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>Aggregated Cultural Heritage Object</para></remarks>
+    /// <seealso href="http://www.europeana.eu/schemas/edm/aggregatedCHO">http://www.europeana.eu/schemas/edm/aggregatedCHO</seealso>
+    let aggregatedCHO = Prefixed_Name(edm, "aggregatedCHO") |> PrefixedName

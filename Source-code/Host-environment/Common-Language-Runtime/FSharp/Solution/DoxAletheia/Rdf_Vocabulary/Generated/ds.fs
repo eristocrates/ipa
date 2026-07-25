@@ -1,74 +1,165 @@
 namespace http.purl.org.ctic.dcat.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ds =
-    let _namespace_name = "http://purl.org/ctic/dcat#"
+    let _namespace_iri = Namespace_Iri ds |> NamespaceIRI
+    /// <summary>
+    ///   <para>ds:Catalog</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Catalog which have defined datasets in</para>
+    ///   <para>Catálogo donde se expresan conjuntos de datos</para>
+    /// labels<para>Catálogo de datasets</para><para>Catalog of Datasets</para></remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#Catalog">http://purl.org/ctic/dcat#Catalog</seealso>
+    let Catalog = Prefixed_Name(ds, "Catalog") |> PrefixedName
+    /// <summary>
+    ///   <para>ds:accessMode-direct</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#accessMode-direct">http://purl.org/ctic/dcat#accessMode-direct</seealso>
+    let accessMode_direct = Prefixed_Name(ds, "accessMode-direct") |> PrefixedName
+    /// <summary>
+    ///   <para>ds:member</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Propiedad que define que el Catálogo tiene un Dataset como miembro del mismo</para>
+    ///   <para>Property which defines a Dataset member of the Catalog</para>
+    /// labels<para>Un Catálogo tiene un Dataset como miembro del mismo</para><para>A Catalog has a Dataset member</para></remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#member">http://purl.org/ctic/dcat#member</seealso>
+    let member_ = Prefixed_Name(ds, "member") |> PrefixedName
+    /// <summary>
+    ///   <para>ds:status-ldFormat</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#status-ldFormat">http://purl.org/ctic/dcat#status-ldFormat</seealso>
+    let status_ldFormat = Prefixed_Name(ds, "status-ldFormat") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>ds:status-nonProprietaryFormat</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#status-nonProprietaryFormat">http://purl.org/ctic/dcat#status-nonProprietaryFormat</seealso>
+    let status_nonProprietaryFormat =
+        Prefixed_Name(ds, "status-nonProprietaryFormat") |> PrefixedName
 
     /// <summary>
-    /// Catalog which have defined datasets in
-    /// <see href="http://purl.org/ctic/dcat#Catalog"></see></summary>
-    let Catalog = _prefix "Catalog"
-    /// <summary>
-    /// A dataset
-    /// <see href="http://purl.org/ctic/dcat#Dataset"></see></summary>
-    let Dataset = _prefix "Dataset"
-    /// <summary>
-    ///   <see href="http://purl.org/ctic/dcat#accessMode-direct"></see>
+    ///   <para>ds:status-announced</para>
     /// </summary>
-    let ``accessMode-direct`` = _prefix "accessMode-direct"
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#status-announced">http://purl.org/ctic/dcat#status-announced</seealso>
+    let status_announced = Prefixed_Name(ds, "status-announced") |> PrefixedName
     /// <summary>
-    /// Concept scheme of the different access modes to the information distributions
-    /// <see href="http://purl.org/ctic/dcat#accessModeScheme"></see></summary>
-    let accessModeScheme = _prefix "accessModeScheme"
-    /// <summary>
-    ///   <see href="http://purl.org/ctic/dcat#accessMode-indirect"></see>
+    ///   <para>ds:status-linkedData</para>
     /// </summary>
-    let ``accessMode-indirect`` = _prefix "accessMode-indirect"
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#status-linkedData">http://purl.org/ctic/dcat#status-linkedData</seealso>
+    let status_linkedData = Prefixed_Name(ds, "status-linkedData") |> PrefixedName
     /// <summary>
-    /// Property which defines a Dataset member of the Catalog
-    /// <see href="http://purl.org/ctic/dcat#member"></see></summary>
-    let member_ = _prefix "member"
-    /// <summary>
-    /// Property which defines a Catalog that contains the Dataset
-    /// <see href="http://purl.org/ctic/dcat#memberOf"></see></summary>
-    let memberOf = _prefix "memberOf"
-    /// <summary>
-    /// Property which defines the status of the Dataset according to a defined taxonomy
-    /// <see href="http://purl.org/ctic/dcat#status"></see></summary>
-    let status = _prefix "status"
-    /// <summary>
-    ///   <see href="http://purl.org/ctic/dcat#status-announced"></see>
+    ///   <para>ds:</para>
     /// </summary>
-    let ``status-announced`` = _prefix "status-announced"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>Este vocabulario se utiliza para modelar los catálogos de conjuntos de datos y las relaciones con los datasets</para>
+    ///   <para>This vocabulary is used for modelling catalogs of datasets and its relationships with the datasets</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#">http://purl.org/ctic/dcat#</seealso>
+    let _prefix_iri = Prefixed_Name(ds, "") |> PrefixedName
     /// <summary>
-    /// Concept scheme of the different statuses for a catalog
-    /// <see href="http://purl.org/ctic/dcat#statusScheme"></see></summary>
-    let statusScheme = _prefix "statusScheme"
-    /// <summary>
-    ///   <see href="http://purl.org/ctic/dcat#status-data"></see>
+    ///   <para>ds:Dataset</para>
     /// </summary>
-    let ``status-data`` = _prefix "status-data"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Un conjunto de datos</para>
+    ///   <para>A dataset</para>
+    /// labels<para>Dataset</para><para>Dataset</para></remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#Dataset">http://purl.org/ctic/dcat#Dataset</seealso>
+    let Dataset = Prefixed_Name(ds, "Dataset") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/ctic/dcat#status-extinct"></see>
+    ///   <para>ds:accessModeScheme</para>
     /// </summary>
-    let ``status-extinct`` = _prefix "status-extinct"
+    /// <remarks>
+    ///   <para>skos:ConceptScheme</para>
+    ///   <para>Concept scheme of the different access modes to the information distributions</para>
+    ///   <para>Taxonomía de los tipos de acceso a las distribuciones de la información</para>
+    /// labels<para>Taxonomía de los tipos de acceso a la información</para><para>Taxonomy of the information access mode</para></remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#accessModeScheme">http://purl.org/ctic/dcat#accessModeScheme</seealso>
+    let accessModeScheme = Prefixed_Name(ds, "accessModeScheme") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/ctic/dcat#status-ldFormat"></see>
+    ///   <para>ds:accessMode-indirect</para>
     /// </summary>
-    let ``status-ldFormat`` = _prefix "status-ldFormat"
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#accessMode-indirect">http://purl.org/ctic/dcat#accessMode-indirect</seealso>
+    let accessMode_indirect = Prefixed_Name(ds, "accessMode-indirect") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/ctic/dcat#status-linkedData"></see>
+    ///   <para>ds:memberOf</para>
     /// </summary>
-    let ``status-linkedData`` = _prefix "status-linkedData"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Propiedad que define un Catálogo al que pertenece el Dataset</para>
+    ///   <para>Property which defines a Catalog that contains the Dataset</para>
+    /// labels<para>Un Dataset es miembro de un Catálogo</para><para>A Dataset is a member of a Catalog</para></remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#memberOf">http://purl.org/ctic/dcat#memberOf</seealso>
+    let memberOf = Prefixed_Name(ds, "memberOf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/ctic/dcat#status-nonProprietaryFormat"></see>
+    ///   <para>ds:status</para>
     /// </summary>
-    let ``status-nonProprietaryFormat`` = _prefix "status-nonProprietaryFormat"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Property which defines the status of the Dataset according to a defined taxonomy</para>
+    ///   <para>Propiedad que define el estado del catálogo en función de una taxonomía determinada</para>
+    /// labels<para>Estado del catálogo</para><para>Catalog status</para></remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#status">http://purl.org/ctic/dcat#status</seealso>
+    let status = Prefixed_Name(ds, "status") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/ctic/dcat#status-structuredData"></see>
+    ///   <para>ds:statusScheme</para>
     /// </summary>
-    let ``status-structuredData`` = _prefix "status-structuredData"
+    /// <remarks>
+    ///   <para>skos:ConceptScheme</para>
+    ///   <para>Esquema de conceptos de los estados que puede tomar un catálogo</para>
+    ///   <para>Concept scheme of the different statuses for a catalog</para>
+    /// labels<para>Taxonomía de los estados de un catálogo</para><para>Taxonomy of the catalog statuses</para></remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#statusScheme">http://purl.org/ctic/dcat#statusScheme</seealso>
+    let statusScheme = Prefixed_Name(ds, "statusScheme") |> PrefixedName
+    /// <summary>
+    ///   <para>ds:status-data</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#status-data">http://purl.org/ctic/dcat#status-data</seealso>
+    let status_data = Prefixed_Name(ds, "status-data") |> PrefixedName
+    /// <summary>
+    ///   <para>ds:status-extinct</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#status-extinct">http://purl.org/ctic/dcat#status-extinct</seealso>
+    let status_extinct = Prefixed_Name(ds, "status-extinct") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ds:status-structuredData</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ctic/dcat#status-structuredData">http://purl.org/ctic/dcat#status-structuredData</seealso>
+    let status_structuredData =
+        Prefixed_Name(ds, "status-structuredData") |> PrefixedName

@@ -1,46 +1,107 @@
 namespace http.purl.org.ontology.olo.core.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module olo =
-    let _namespace_name = "http://purl.org/ontology/olo/core#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri olo |> NamespaceIRI
     /// <summary>
-    /// An ordered list with a given length an indexed items.
-    /// <see href="http://purl.org/ontology/olo/core#OrderedList"></see></summary>
-    let OrderedList = _prefix "OrderedList"
+    ///   <para>olo:OrderedList</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>owl:Class</para>
+    ///   <para>An ordered list with a given length an indexed items.</para>
+    /// labels<para>Ordered List</para></remarks>
+    /// <seealso href="http://purl.org/ontology/olo/core#OrderedList">http://purl.org/ontology/olo/core#OrderedList</seealso>
+    let OrderedList = Prefixed_Name(olo, "OrderedList") |> PrefixedName
     /// <summary>
-    /// The length of an ordered list.
-    /// <see href="http://purl.org/ontology/olo/core#length"></see></summary>
-    let length = _prefix "length"
+    ///   <para>olo:Slot</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A slot in an ordered list with a fixed index.</para>
+    /// labels<para>Slot</para></remarks>
+    /// <seealso href="http://purl.org/ontology/olo/core#Slot">http://purl.org/ontology/olo/core#Slot</seealso>
+    let Slot = Prefixed_Name(olo, "Slot") |> PrefixedName
     /// <summary>
-    /// A slot in an ordered list with a fixed index.
-    /// <see href="http://purl.org/ontology/olo/core#Slot"></see></summary>
-    let Slot = _prefix "Slot"
+    ///   <para>olo:ordered_list</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>An ordered list of an slot.</para>
+    /// labels<para>has ordered list</para></remarks>
+    /// <seealso href="http://purl.org/ontology/olo/core#ordered_list">http://purl.org/ontology/olo/core#ordered_list</seealso>
+    let ordered_list = Prefixed_Name(olo, "ordered_list") |> PrefixedName
     /// <summary>
-    /// An index of a slot in an ordered list.
-    /// <see href="http://purl.org/ontology/olo/core#index"></see></summary>
-    let index = _prefix "index"
+    ///   <para>olo:previous</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:InverseFunctionalProperty</para>
+    ///   <para>Associates the previous slot in an ordered list</para>
+    /// labels<para>has previous</para></remarks>
+    /// <seealso href="http://purl.org/ontology/olo/core#previous">http://purl.org/ontology/olo/core#previous</seealso>
+    let previous = Prefixed_Name(olo, "previous") |> PrefixedName
     /// <summary>
-    /// Associates the next slot in an ordered list.
-    /// <see href="http://purl.org/ontology/olo/core#next"></see></summary>
-    let next = _prefix "next"
+    ///   <para>olo:item</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An item of a slot in an ordered list.</para>
+    /// labels<para>has item</para></remarks>
+    /// <seealso href="http://purl.org/ontology/olo/core#item">http://purl.org/ontology/olo/core#item</seealso>
+    let item = Prefixed_Name(olo, "item") |> PrefixedName
     /// <summary>
-    /// Associates the previous slot in an ordered list
-    /// <see href="http://purl.org/ontology/olo/core#previous"></see></summary>
-    let previous = _prefix "previous"
+    ///   <para>olo:slot</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A slot in an ordered list.</para>
+    /// labels<para>has slot</para></remarks>
+    /// <seealso href="http://purl.org/ontology/olo/core#slot">http://purl.org/ontology/olo/core#slot</seealso>
+    let slot = Prefixed_Name(olo, "slot") |> PrefixedName
     /// <summary>
-    /// An ordered list of an slot.
-    /// <see href="http://purl.org/ontology/olo/core#ordered_list"></see></summary>
-    let ordered_list = _prefix "ordered_list"
+    ///   <para>olo:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/ontology/olo/core#">http://purl.org/ontology/olo/core#</seealso>
+    let _prefix_iri = Prefixed_Name(olo, "") |> PrefixedName
     /// <summary>
-    /// An item of a slot in an ordered list.
-    /// <see href="http://purl.org/ontology/olo/core#item"></see></summary>
-    let item = _prefix "item"
+    ///   <para>olo:length</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>The length of an ordered list.</para>
+    /// labels<para>has length</para></remarks>
+    /// <seealso href="http://purl.org/ontology/olo/core#length">http://purl.org/ontology/olo/core#length</seealso>
+    let length = Prefixed_Name(olo, "length") |> PrefixedName
     /// <summary>
-    /// A slot in an ordered list.
-    /// <see href="http://purl.org/ontology/olo/core#slot"></see></summary>
-    let slot = _prefix "slot"
+    ///   <para>olo:index</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>An index of a slot in an ordered list.</para>
+    /// labels<para>has index</para></remarks>
+    /// <seealso href="http://purl.org/ontology/olo/core#index">http://purl.org/ontology/olo/core#index</seealso>
+    let index = Prefixed_Name(olo, "index") |> PrefixedName
+    /// <summary>
+    ///   <para>olo:next</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Associates the next slot in an ordered list.</para>
+    /// labels<para>has next</para></remarks>
+    /// <seealso href="http://purl.org/ontology/olo/core#next">http://purl.org/ontology/olo/core#next</seealso>
+    let next = Prefixed_Name(olo, "next") |> PrefixedName

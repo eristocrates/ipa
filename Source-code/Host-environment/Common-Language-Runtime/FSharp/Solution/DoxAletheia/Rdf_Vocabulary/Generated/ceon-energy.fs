@@ -1,122 +1,295 @@
 namespace http.w3id.org.CEON.ontology.energy.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ceon_energy =
-    let _namespace_name = "http://w3id.org/CEON/ontology/energy/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri ceon_energy |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://w3id.org/CEON/ontology/energy/0.2/"></see>
+    ///   <para>ceon-energy:</para>
     /// </summary>
-    let ``_0.2/`` = _prefix "0.2/"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/">http://w3id.org/CEON/ontology/energy/</seealso>
+    let _prefix_iri = Prefixed_Name(ceon_energy, "") |> PrefixedName
     /// <summary>
-    /// Biofuel is a fuel that is produced over a short time span from biomass.
-    /// <see href="http://w3id.org/CEON/ontology/energy/Biofuel"></see></summary>
-    let Biofuel = _prefix "Biofuel"
+    ///   <para>ceon-energy:0.2/</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/0.2/">http://w3id.org/CEON/ontology/energy/0.2/</seealso>
+    let ``_0.2/`` = Prefixed_Name(ceon_energy, "0.2/") |> PrefixedName
     /// <summary>
-    /// Biomass represents matter from recently living (but now dead) organisms such as plants, algae and animals.
-    /// <see href="http://w3id.org/CEON/ontology/energy/Biomass"></see></summary>
-    let Biomass = _prefix "Biomass"
+    ///   <para>ceon-energy:Biofuel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Biofuel is a fuel that is produced over a short time span from biomass.</para>
+    /// labels<para>Biofuel</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/Biofuel">http://w3id.org/CEON/ontology/energy/Biofuel</seealso>
+    let Biofuel = Prefixed_Name(ceon_energy, "Biofuel") |> PrefixedName
     /// <summary>
-    /// Biogas represents an energy source that is produced from raw materials such as agricultural waste, manure, municipal waste, plant material, sewage, green waste, wastewater, and food waste.
-    /// <see href="http://w3id.org/CEON/ontology/energy/Biogas"></see></summary>
-    let Biogas = _prefix "Biogas"
+    ///   <para>ceon-energy:Biomass</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Biomass represents matter from recently living (but now dead) organisms such as plants, algae and animals.</para>
+    /// labels<para>Biomass</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/Biomass">http://w3id.org/CEON/ontology/energy/Biomass</seealso>
+    let Biomass = Prefixed_Name(ceon_energy, "Biomass") |> PrefixedName
     /// <summary>
-    /// An energy source is a resource or system that provides the energy.
-    /// <see href="http://w3id.org/CEON/ontology/energy/EnergySource"></see></summary>
-    let EnergySource = _prefix "EnergySource"
+    ///   <para>ceon-energy:Biogas</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Biogas represents an energy source that is produced from raw materials such as agricultural waste, manure, municipal waste, plant material, sewage, green waste, wastewater, and food waste.</para>
+    /// labels<para>Biogass</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/Biogas">http://w3id.org/CEON/ontology/energy/Biogas</seealso>
+    let Biogas = Prefixed_Name(ceon_energy, "Biogas") |> PrefixedName
     /// <summary>
-    /// Coal is a black or dark-brown combustible mineral substance consisting of carbonized vegetable matter.
-    /// <see href="http://w3id.org/CEON/ontology/energy/Coal"></see></summary>
-    let Coal = _prefix "Coal"
+    ///   <para>ceon-energy:EnergySource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An energy source is a resource or system that provides the energy.</para>
+    /// labels<para>Energy Source</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/EnergySource">http://w3id.org/CEON/ontology/energy/EnergySource</seealso>
+    let EnergySource = Prefixed_Name(ceon_energy, "EnergySource") |> PrefixedName
     /// <summary>
-    /// A fossil fuel is a carbon compound- or hydrocarbon-containing material[2] formed naturally in the Earth's crust from the buried remains of prehistoric organisms (animals, plants or planktons), a process that occurs within geological formations.
-    /// <see href="http://w3id.org/CEON/ontology/energy/FossilFuel"></see></summary>
-    let FossilFuel = _prefix "FossilFuel"
+    ///   <para>ceon-energy:Coal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Coal is a black or dark-brown combustible mineral substance consisting of carbonized vegetable matter.</para>
+    /// labels<para>Coal</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/Coal">http://w3id.org/CEON/ontology/energy/Coal</seealso>
+    let Coal = Prefixed_Name(ceon_energy, "Coal") |> PrefixedName
     /// <summary>
-    /// Energy is an ability or a property of matter or a system, to do work because of its motion, its mass, its electric charge, etc.
-    /// <see href="http://w3id.org/CEON/ontology/energy/Energy"></see></summary>
-    let Energy = _prefix "Energy"
+    ///   <para>ceon-energy:FossilFuel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A fossil fuel is a carbon compound- or hydrocarbon-containing material[2] formed naturally in the Earth's crust from the buried remains of prehistoric organisms (animals, plants or planktons), a process that occurs within geological formations.</para>
+    /// labels<para>Fossil Fuel</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/FossilFuel">http://w3id.org/CEON/ontology/energy/FossilFuel</seealso>
+    let FossilFuel = Prefixed_Name(ceon_energy, "FossilFuel") |> PrefixedName
     /// <summary>
-    /// The relation representing the particpation of an energy as a resource.
-    /// <see href="http://w3id.org/CEON/ontology/energy/EnergyComposition"></see></summary>
-    let EnergyComposition = _prefix "EnergyComposition"
+    ///   <para>ceon-energy:Energy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Energy is an ability or a property of matter or a system, to do work because of its motion, its mass, its electric charge, etc.</para>
+    /// labels<para>Energy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/Energy">http://w3id.org/CEON/ontology/energy/Energy</seealso>
+    let Energy = Prefixed_Name(ceon_energy, "Energy") |> PrefixedName
+
     /// <summary>
-    /// Energy Conversion is a process of transforming energy.
-    /// <see href="http://w3id.org/CEON/ontology/energy/EnergyConversion"></see></summary>
-    let EnergyConversion = _prefix "EnergyConversion"
+    ///   <para>ceon-energy:EnergyComposition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The relation representing the particpation of an energy as a resource.</para>
+    /// labels<para>Energy Composition</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/EnergyComposition">http://w3id.org/CEON/ontology/energy/EnergyComposition</seealso>
+    let EnergyComposition =
+        Prefixed_Name(ceon_energy, "EnergyComposition") |> PrefixedName
+
     /// <summary>
-    /// The infrastructures participating in various energy-related processes, including energy production, transmission or distribution.
-    /// <see href="http://w3id.org/CEON/ontology/energy/EnergyInfrastructure"></see></summary>
-    let EnergyInfrastructure = _prefix "EnergyInfrastructure"
+    ///   <para>ceon-energy:EnergyConversion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Energy Conversion is a process of transforming energy.</para>
+    /// labels<para>Energy Conversion</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/EnergyConversion">http://w3id.org/CEON/ontology/energy/EnergyConversion</seealso>
+    let EnergyConversion =
+        Prefixed_Name(ceon_energy, "EnergyConversion") |> PrefixedName
+
     /// <summary>
-    /// Geothermal Energy Source is the Earth's crust. Geothermal energy is thermal energy extracted from the Earth's crust. It combines energy from the formation of the planet and from radioactive decay.
-    /// <see href="http://w3id.org/CEON/ontology/energy/GeothermalEnergySource"></see></summary>
-    let GeothermalEnergySource = _prefix "GeothermalEnergySource"
+    ///   <para>ceon-energy:EnergyInfrastructure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The infrastructures participating in various energy-related processes, including energy production, transmission or distribution.</para>
+    /// labels<para>Energy Infrastructure</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/EnergyInfrastructure">http://w3id.org/CEON/ontology/energy/EnergyInfrastructure</seealso>
+    let EnergyInfrastructure =
+        Prefixed_Name(ceon_energy, "EnergyInfrastructure") |> PrefixedName
+
     /// <summary>
-    /// Hydropower is the use of falling or fast-running water to produce electricity or to power machines.
-    /// <see href="http://w3id.org/CEON/ontology/energy/Hydropower"></see></summary>
-    let Hydropower = _prefix "Hydropower"
+    ///   <para>ceon-energy:GeothermalEnergySource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Geothermal Energy Source is the Earth's crust. Geothermal energy is thermal energy extracted from the Earth's crust. It combines energy from the formation of the planet and from radioactive decay.</para>
+    /// labels<para>Geothermal Energy Source</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/GeothermalEnergySource">http://w3id.org/CEON/ontology/energy/GeothermalEnergySource</seealso>
+    let GeothermalEnergySource =
+        Prefixed_Name(ceon_energy, "GeothermalEnergySource") |> PrefixedName
+
     /// <summary>
-    /// Natural gas is a combustible gas that is naturally generated and stored under certain geological conditions by ancient animals and plants buried deep underground. It is a gaseous mixture of hydrocarbons and non-hydrocarbons, with methane as its main component.
-    /// <see href="http://w3id.org/CEON/ontology/energy/NaturalGas"></see></summary>
-    let NaturalGas = _prefix "NaturalGas"
+    ///   <para>ceon-energy:Hydropower</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Hydropower is the use of falling or fast-running water to produce electricity or to power machines.</para>
+    /// labels<para>Hydropower</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/Hydropower">http://w3id.org/CEON/ontology/energy/Hydropower</seealso>
+    let Hydropower = Prefixed_Name(ceon_energy, "Hydropower") |> PrefixedName
     /// <summary>
-    /// Nonrenewable energy represents energy that comes from such resources that cannot be replaced onew they are used up.
-    /// <see href="http://w3id.org/CEON/ontology/energy/NonRenewableEnergy"></see></summary>
-    let NonRenewableEnergy = _prefix "NonRenewableEnergy"
+    ///   <para>ceon-energy:NaturalGas</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Natural gas is a combustible gas that is naturally generated and stored under certain geological conditions by ancient animals and plants buried deep underground. It is a gaseous mixture of hydrocarbons and non-hydrocarbons, with methane as its main component.</para>
+    /// labels<para>Natural Gas</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/NaturalGas">http://w3id.org/CEON/ontology/energy/NaturalGas</seealso>
+    let NaturalGas = Prefixed_Name(ceon_energy, "NaturalGas") |> PrefixedName
+
     /// <summary>
-    /// Petroleum is a naturally occurring yellow-black liquid chemical mixture found in geological formations, consisting primarily of hydrocarbons.
-    /// <see href="http://w3id.org/CEON/ontology/energy/Petroleum"></see></summary>
-    let Petroleum = _prefix "Petroleum"
+    ///   <para>ceon-energy:NonRenewableEnergy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Nonrenewable energy represents energy that comes from such resources that cannot be replaced onew they are used up.</para>
+    /// labels<para>NonReneable Energy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/NonRenewableEnergy">http://w3id.org/CEON/ontology/energy/NonRenewableEnergy</seealso>
+    let NonRenewableEnergy =
+        Prefixed_Name(ceon_energy, "NonRenewableEnergy") |> PrefixedName
+
     /// <summary>
-    /// Renewable energy represents energy that comes from renewable resources.
-    /// <see href="http://w3id.org/CEON/ontology/energy/RenewableEnergy"></see></summary>
-    let RenewableEnergy = _prefix "RenewableEnergy"
+    ///   <para>ceon-energy:Petroleum</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Petroleum is a naturally occurring yellow-black liquid chemical mixture found in geological formations, consisting primarily of hydrocarbons.</para>
+    /// labels<para>Petroleum</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/Petroleum">http://w3id.org/CEON/ontology/energy/Petroleum</seealso>
+    let Petroleum = Prefixed_Name(ceon_energy, "Petroleum") |> PrefixedName
     /// <summary>
-    /// Solar Energy Source is the Sun.
-    /// <see href="http://w3id.org/CEON/ontology/energy/SolarEnergySource"></see></summary>
-    let SolarEnergySource = _prefix "SolarEnergySource"
+    ///   <para>ceon-energy:RenewableEnergy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Renewable energy represents energy that comes from renewable resources.</para>
+    /// labels<para>Renewable Energy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/RenewableEnergy">http://w3id.org/CEON/ontology/energy/RenewableEnergy</seealso>
+    let RenewableEnergy = Prefixed_Name(ceon_energy, "RenewableEnergy") |> PrefixedName
+
     /// <summary>
-    /// Wind Energy Source is the Wind.
-    /// <see href="http://w3id.org/CEON/ontology/energy/WindEnergySource"></see></summary>
-    let WindEnergySource = _prefix "WindEnergySource"
+    ///   <para>ceon-energy:SolarEnergySource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Solar Energy Source is the Sun.</para>
+    /// labels<para>Solar Energy Source</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/SolarEnergySource">http://w3id.org/CEON/ontology/energy/SolarEnergySource</seealso>
+    let SolarEnergySource =
+        Prefixed_Name(ceon_energy, "SolarEnergySource") |> PrefixedName
+
     /// <summary>
-    /// hasAnergy represents that energy has part of anergy.
-    /// <see href="http://w3id.org/CEON/ontology/energy/hasAnergy"></see></summary>
-    let hasAnergy = _prefix "hasAnergy"
+    ///   <para>ceon-energy:WindEnergySource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Wind Energy Source is the Wind.</para>
+    /// labels<para>Wind Energy Source</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/WindEnergySource">http://w3id.org/CEON/ontology/energy/WindEnergySource</seealso>
+    let WindEnergySource =
+        Prefixed_Name(ceon_energy, "WindEnergySource") |> PrefixedName
+
     /// <summary>
-    /// hasCarbonIntensity measures how intensive that the carbon is for an energy source.
-    /// <see href="http://w3id.org/CEON/ontology/energy/hasCarbonIntensity"></see></summary>
-    let hasCarbonIntensity = _prefix "hasCarbonIntensity"
+    ///   <para>ceon-energy:hasAnergy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>hasAnergy represents that energy has part of anergy.</para>
+    /// labels<para>has anergy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/hasAnergy">http://w3id.org/CEON/ontology/energy/hasAnergy</seealso>
+    let hasAnergy = Prefixed_Name(ceon_energy, "hasAnergy") |> PrefixedName
+
     /// <summary>
-    /// hasConvertedEnergy represents that an energy transformation process has its final energy.
-    /// <see href="http://w3id.org/CEON/ontology/energy/hasConvertedEnergy"></see></summary>
-    let hasConvertedEnergy = _prefix "hasConvertedEnergy"
+    ///   <para>ceon-energy:hasCarbonIntensity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>hasCarbonIntensity measures how intensive that the carbon is for an energy source.</para>
+    /// labels<para>has carbon intensity</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/hasCarbonIntensity">http://w3id.org/CEON/ontology/energy/hasCarbonIntensity</seealso>
+    let hasCarbonIntensity =
+        Prefixed_Name(ceon_energy, "hasCarbonIntensity") |> PrefixedName
+
     /// <summary>
-    /// hasEnergyComponentPercentage represents the percentage of a particular energy as a composition.
-    /// <see href="http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage"></see></summary>
-    let hasEnergyComponentPercentage = _prefix "hasEnergyComponentPercentage"
+    ///   <para>ceon-energy:hasConvertedEnergy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>hasConvertedEnergy represents that an energy transformation process has its final energy.</para>
+    /// labels<para>has converted energy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/hasConvertedEnergy">http://w3id.org/CEON/ontology/energy/hasConvertedEnergy</seealso>
+    let hasConvertedEnergy =
+        Prefixed_Name(ceon_energy, "hasConvertedEnergy") |> PrefixedName
+
     /// <summary>
-    /// hasEnergySource represents that energy can have some energy sources.
-    /// <see href="http://w3id.org/CEON/ontology/energy/hasEnergySource"></see></summary>
-    let hasEnergySource = _prefix "hasEnergySource"
+    ///   <para>ceon-energy:hasEnergyComponentPercentage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>hasEnergyComponentPercentage represents the percentage of a particular energy as a composition.</para>
+    /// labels<para>has energy component percentage</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage">http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage</seealso>
+    let hasEnergyComponentPercentage =
+        Prefixed_Name(ceon_energy, "hasEnergyComponentPercentage") |> PrefixedName
+
     /// <summary>
-    /// hasExergy represents that energy has part of exergy.
-    /// <see href="http://w3id.org/CEON/ontology/energy/hasExergy"></see></summary>
-    let hasExergy = _prefix "hasExergy"
+    ///   <para>ceon-energy:hasEnergySource</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>hasEnergySource represents that energy can have some energy sources.</para>
+    /// labels<para>has energy source</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/hasEnergySource">http://w3id.org/CEON/ontology/energy/hasEnergySource</seealso>
+    let hasEnergySource = Prefixed_Name(ceon_energy, "hasEnergySource") |> PrefixedName
     /// <summary>
-    /// hasOriginalEnergy represents that an energy transformation process has its initial energy.
-    /// <see href="http://w3id.org/CEON/ontology/energy/hasOriginalEnergy"></see></summary>
-    let hasOriginalEnergy = _prefix "hasOriginalEnergy"
+    ///   <para>ceon-energy:hasExergy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>hasExergy represents that energy has part of exergy.</para>
+    /// labels<para>has exergy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/hasExergy">http://w3id.org/CEON/ontology/energy/hasExergy</seealso>
+    let hasExergy = Prefixed_Name(ceon_energy, "hasExergy") |> PrefixedName
+
     /// <summary>
-    /// hasSustainability measures how sustainable an energy source is.
-    /// <see href="http://w3id.org/CEON/ontology/energy/hasSustainability"></see></summary>
-    let hasSustainability = _prefix "hasSustainability"
+    ///   <para>ceon-energy:hasOriginalEnergy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>hasOriginalEnergy represents that an energy transformation process has its initial energy.</para>
+    /// labels<para>has original energy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/hasOriginalEnergy">http://w3id.org/CEON/ontology/energy/hasOriginalEnergy</seealso>
+    let hasOriginalEnergy =
+        Prefixed_Name(ceon_energy, "hasOriginalEnergy") |> PrefixedName
+
     /// <summary>
-    /// participatingEnergy represents the energy in an energy composition.
-    /// <see href="http://w3id.org/CEON/ontology/energy/participatingEnergy"></see></summary>
-    let participatingEnergy = _prefix "participatingEnergy"
+    ///   <para>ceon-energy:hasSustainability</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>hasSustainability measures how sustainable an energy source is.</para>
+    /// labels<para>has sustainability</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/hasSustainability">http://w3id.org/CEON/ontology/energy/hasSustainability</seealso>
+    let hasSustainability =
+        Prefixed_Name(ceon_energy, "hasSustainability") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ceon-energy:participatingEnergy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>participatingEnergy represents the energy in an energy composition.</para>
+    /// labels<para>participating energy</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/energy/participatingEnergy">http://w3id.org/CEON/ontology/energy/participatingEnergy</seealso>
+    let participatingEnergy =
+        Prefixed_Name(ceon_energy, "participatingEnergy") |> PrefixedName

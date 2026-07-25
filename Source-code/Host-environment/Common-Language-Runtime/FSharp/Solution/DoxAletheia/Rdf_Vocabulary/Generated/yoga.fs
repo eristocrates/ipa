@@ -1,102 +1,224 @@
 namespace https.yogaontology.org.ontology.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module yoga =
-    let _namespace_name = "https://yogaontology.org/ontology/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri yoga |> NamespaceIRI
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/Acidity"></see>
+    ///   <para>yoga:Acidity</para>
     /// </summary>
-    let Acidity = _prefix "Acidity"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Acidity</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Acidity">https://yogaontology.org/ontology/Acidity</seealso>
+    let Acidity = Prefixed_Name(yoga, "Acidity") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/Arm"></see>
+    ///   <para>yoga:BodyPart</para>
     /// </summary>
-    let Arm = _prefix "Arm"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Body part is any part of an organism, such as a limb or an organ.</para>
+    /// labels<para>Body part</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/BodyPart">https://yogaontology.org/ontology/BodyPart</seealso>
+    let BodyPart = Prefixed_Name(yoga, "BodyPart") |> PrefixedName
     /// <summary>
-    /// Body part is any part of an organism, such as a limb or an organ.
-    /// <see href="https://yogaontology.org/ontology/BodyPart"></see></summary>
-    let BodyPart = _prefix "BodyPart"
-    /// <summary>
-    /// Asana is a comfortable and stable body posture in yoga.
-    /// <see href="https://yogaontology.org/ontology/Asana"></see></summary>
-    let Asana = _prefix "Asana"
-    /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/Sequence"></see>
+    ///   <para>yoga:Asana</para>
     /// </summary>
-    let Sequence = _prefix "Sequence"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Asana is a comfortable and stable body posture in yoga.</para>
+    /// labels<para>Asana</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Asana">https://yogaontology.org/ontology/Asana</seealso>
+    let Asana = Prefixed_Name(yoga, "Asana") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/Block"></see>
+    ///   <para>yoga:Props</para>
     /// </summary>
-    let Block = _prefix "Block"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Different equipment that could be used for yoga practice.</para>
+    /// labels<para>Props</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Props">https://yogaontology.org/ontology/Props</seealso>
+    let Props = Prefixed_Name(yoga, "Props") |> PrefixedName
     /// <summary>
-    /// Different equipment that could be used for yoga practice.
-    /// <see href="https://yogaontology.org/ontology/Props"></see></summary>
-    let Props = _prefix "Props"
-    /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/Body"></see>
+    ///   <para>yoga:Condition</para>
     /// </summary>
-    let Body = _prefix "Body"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Health complaints</para>
+    /// labels<para>Condition</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Condition">https://yogaontology.org/ontology/Condition</seealso>
+    let Condition = Prefixed_Name(yoga, "Condition") |> PrefixedName
     /// <summary>
-    /// Health complaints
-    /// <see href="https://yogaontology.org/ontology/Condition"></see></summary>
-    let Condition = _prefix "Condition"
-    /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/LeftArm"></see>
+    ///   <para>yoga:LeftArm</para>
     /// </summary>
-    let LeftArm = _prefix "LeftArm"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>LeftArm</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/LeftArm">https://yogaontology.org/ontology/LeftArm</seealso>
+    let LeftArm = Prefixed_Name(yoga, "LeftArm") |> PrefixedName
     /// <summary>
-    /// Mind is the totality of conscious and unconscious mental processes and activities
-    /// <see href="https://yogaontology.org/ontology/Mind"></see></summary>
-    let Mind = _prefix "Mind"
-    /// <summary>
-    /// Position is the way the body is placed in the space
-    /// <see href="https://yogaontology.org/ontology/Position"></see></summary>
-    let Position = _prefix "Position"
-    /// <summary>
-    /// Prana means the breath, life, vitality, respiration; Ayama could be translated as stretch, extension, restrain or control. Thus pranayama is the control of breath (inhalation and exhalation) in a steady pose.
-    /// <see href="https://yogaontology.org/ontology/Pranayama"></see></summary>
-    let Pranayama = _prefix "Pranayama"
-    /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/Pubis"></see>
+    ///   <para>yoga:Mind</para>
     /// </summary>
-    let Pubis = _prefix "Pubis"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Mind is the totality of conscious and unconscious mental processes and activities</para>
+    /// labels<para>Mind</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Mind">https://yogaontology.org/ontology/Mind</seealso>
+    let Mind = Prefixed_Name(yoga, "Mind") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/Sitting"></see>
+    ///   <para>yoga:Pubis</para>
     /// </summary>
-    let Sitting = _prefix "Sitting"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Pubis</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Pubis">https://yogaontology.org/ontology/Pubis</seealso>
+    let Pubis = Prefixed_Name(yoga, "Pubis") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/Standing"></see>
+    ///   <para>yoga:Sitting</para>
     /// </summary>
-    let Standing = _prefix "Standing"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Sitting</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Sitting">https://yogaontology.org/ontology/Sitting</seealso>
+    let Sitting = Prefixed_Name(yoga, "Sitting") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/Viloma"></see>
+    ///   <para>yoga:consistsOf</para>
     /// </summary>
-    let Viloma = _prefix "Viloma"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>consists of</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/consistsOf">https://yogaontology.org/ontology/consistsOf</seealso>
+    let consistsOf = Prefixed_Name(yoga, "consistsOf") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/consistsOf"></see>
+    ///   <para>yoga:performedInPosition</para>
     /// </summary>
-    let consistsOf = _prefix "consistsOf"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>performed in position</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/performedInPosition">https://yogaontology.org/ontology/performedInPosition</seealso>
+    let performedInPosition = Prefixed_Name(yoga, "performedInPosition") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/hasEffectOn"></see>
+    ///   <para>yoga:preparesFor</para>
     /// </summary>
-    let hasEffectOn = _prefix "hasEffectOn"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>prepares for</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/preparesFor">https://yogaontology.org/ontology/preparesFor</seealso>
+    let preparesFor = Prefixed_Name(yoga, "preparesFor") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/hasPosition"></see>
+    ///   <para>yoga:Block</para>
     /// </summary>
-    let hasPosition = _prefix "hasPosition"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Block</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Block">https://yogaontology.org/ontology/Block</seealso>
+    let Block = Prefixed_Name(yoga, "Block") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/performedInPosition"></see>
+    ///   <para>yoga:Standing</para>
     /// </summary>
-    let performedInPosition = _prefix "performedInPosition"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Standing</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Standing">https://yogaontology.org/ontology/Standing</seealso>
+    let Standing = Prefixed_Name(yoga, "Standing") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/preparesFor"></see>
+    ///   <para>yoga:Pranayama</para>
     /// </summary>
-    let preparesFor = _prefix "preparesFor"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Prana means the breath, life, vitality, respiration; Ayama could be translated as stretch, extension, restrain or control. Thus pranayama is the control of breath (inhalation and exhalation) in a steady pose.</para>
+    /// labels<para>Pranayama</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Pranayama">https://yogaontology.org/ontology/Pranayama</seealso>
+    let Pranayama = Prefixed_Name(yoga, "Pranayama") |> PrefixedName
     /// <summary>
-    ///   <see href="https://yogaontology.org/ontology/uses"></see>
+    ///   <para>yoga:Viloma</para>
     /// </summary>
-    let uses = _prefix "uses"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Viloma</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Viloma">https://yogaontology.org/ontology/Viloma</seealso>
+    let Viloma = Prefixed_Name(yoga, "Viloma") |> PrefixedName
+    /// <summary>
+    ///   <para>yoga:Position</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Position is the way the body is placed in the space</para>
+    /// labels<para>Position</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Position">https://yogaontology.org/ontology/Position</seealso>
+    let Position = Prefixed_Name(yoga, "Position") |> PrefixedName
+    /// <summary>
+    ///   <para>yoga:hasPosition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has position</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/hasPosition">https://yogaontology.org/ontology/hasPosition</seealso>
+    let hasPosition = Prefixed_Name(yoga, "hasPosition") |> PrefixedName
+    /// <summary>
+    ///   <para>yoga:hasEffectOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has effect on</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/hasEffectOn">https://yogaontology.org/ontology/hasEffectOn</seealso>
+    let hasEffectOn = Prefixed_Name(yoga, "hasEffectOn") |> PrefixedName
+    /// <summary>
+    ///   <para>yoga:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>First publication v0.1</para>
+    /// </remarks>
+    /// <seealso href="https://yogaontology.org/ontology/">https://yogaontology.org/ontology/</seealso>
+    let _prefix_iri = Prefixed_Name(yoga, "") |> PrefixedName
+    /// <summary>
+    ///   <para>yoga:Arm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Arm</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Arm">https://yogaontology.org/ontology/Arm</seealso>
+    let Arm = Prefixed_Name(yoga, "Arm") |> PrefixedName
+    /// <summary>
+    ///   <para>yoga:Sequence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Sequence</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Sequence">https://yogaontology.org/ontology/Sequence</seealso>
+    let Sequence = Prefixed_Name(yoga, "Sequence") |> PrefixedName
+    /// <summary>
+    ///   <para>yoga:Body</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///
+    /// labels<para>Body</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/Body">https://yogaontology.org/ontology/Body</seealso>
+    let Body = Prefixed_Name(yoga, "Body") |> PrefixedName
+    /// <summary>
+    ///   <para>yoga:uses</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>uses</para></remarks>
+    /// <seealso href="https://yogaontology.org/ontology/uses">https://yogaontology.org/ontology/uses</seealso>
+    let uses = Prefixed_Name(yoga, "uses") |> PrefixedName

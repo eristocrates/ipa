@@ -6,9 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="Rdf_Distribution\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="Manual_Prefixes.fs" />
-    <Compile Include="Rdf_Distribution\Multi.fs" />
-    <Compile Include="Rdf_Distribution\Single.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 	<ItemGroup>

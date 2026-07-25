@@ -1,1010 +1,2027 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.countries.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module countries =
-    let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/countries#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    let _namespace_iri = Namespace_Iri countries |> NamespaceIRI
 
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ad"></see>
-    /// </summary>
-    let ad = _prefix "ad"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-2"></see>
-    /// </summary>
-    let ``iso3166-1-alpha-2`` = _prefix "iso3166-1-alpha-2"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-3"></see>
-    /// </summary>
-    let ``iso3166-1-alpha-3`` = _prefix "iso3166-1-alpha-3"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ae"></see>
-    /// </summary>
-    let ae = _prefix "ae"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#af"></see>
-    /// </summary>
-    let af = _prefix "af"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ag"></see>
-    /// </summary>
-    let ag = _prefix "ag"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ai"></see>
-    /// </summary>
-    let ai = _prefix "ai"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#al"></see>
-    /// </summary>
-    let al = _prefix "al"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#am"></see>
-    /// </summary>
-    let am = _prefix "am"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#an"></see>
-    /// </summary>
-    let an = _prefix "an"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ao"></see>
-    /// </summary>
-    let ao = _prefix "ao"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#aq"></see>
-    /// </summary>
-    let aq = _prefix "aq"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ar"></see>
-    /// </summary>
-    let ar = _prefix "ar"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#as"></see>
-    /// </summary>
-    let as_ = _prefix "as"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#at"></see>
-    /// </summary>
-    let at = _prefix "at"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#au"></see>
-    /// </summary>
-    let au = _prefix "au"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#aw"></see>
-    /// </summary>
-    let aw = _prefix "aw"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ax"></see>
-    /// </summary>
-    let ax = _prefix "ax"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#az"></see>
-    /// </summary>
-    let az = _prefix "az"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ba"></see>
-    /// </summary>
-    let ba = _prefix "ba"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bb"></see>
-    /// </summary>
-    let bb = _prefix "bb"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bd"></see>
-    /// </summary>
-    let bd = _prefix "bd"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#be"></see>
-    /// </summary>
-    let be = _prefix "be"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bf"></see>
-    /// </summary>
-    let bf = _prefix "bf"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bg"></see>
-    /// </summary>
-    let bg = _prefix "bg"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bh"></see>
-    /// </summary>
-    let bh = _prefix "bh"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bi"></see>
-    /// </summary>
-    let bi = _prefix "bi"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bj"></see>
-    /// </summary>
-    let bj = _prefix "bj"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bl"></see>
-    /// </summary>
-    let bl = _prefix "bl"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bm"></see>
-    /// </summary>
-    let bm = _prefix "bm"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bn"></see>
-    /// </summary>
-    let bn = _prefix "bn"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bo"></see>
-    /// </summary>
-    let bo = _prefix "bo"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#br"></see>
-    /// </summary>
-    let br = _prefix "br"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bs"></see>
-    /// </summary>
-    let bs = _prefix "bs"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bt"></see>
-    /// </summary>
-    let bt = _prefix "bt"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bv"></see>
-    /// </summary>
-    let bv = _prefix "bv"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bw"></see>
-    /// </summary>
-    let bw = _prefix "bw"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#by"></see>
-    /// </summary>
-    let by = _prefix "by"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bz"></see>
-    /// </summary>
-    let bz = _prefix "bz"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ca"></see>
-    /// </summary>
-    let ca = _prefix "ca"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cc"></see>
-    /// </summary>
-    let cc = _prefix "cc"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cd"></see>
-    /// </summary>
-    let cd = _prefix "cd"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cf"></see>
-    /// </summary>
-    let cf = _prefix "cf"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cg"></see>
-    /// </summary>
-    let cg = _prefix "cg"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ch"></see>
-    /// </summary>
-    let ch = _prefix "ch"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ci"></see>
-    /// </summary>
-    let ci = _prefix "ci"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ck"></see>
-    /// </summary>
-    let ck = _prefix "ck"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cl"></see>
-    /// </summary>
-    let cl = _prefix "cl"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cm"></see>
-    /// </summary>
-    let cm = _prefix "cm"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cn"></see>
-    /// </summary>
-    let cn = _prefix "cn"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#co"></see>
-    /// </summary>
-    let co = _prefix "co"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cr"></see>
-    /// </summary>
-    let cr = _prefix "cr"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cu"></see>
-    /// </summary>
-    let cu = _prefix "cu"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cv"></see>
-    /// </summary>
-    let cv = _prefix "cv"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cx"></see>
-    /// </summary>
-    let cx = _prefix "cx"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cy"></see>
-    /// </summary>
-    let cy = _prefix "cy"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cz"></see>
-    /// </summary>
-    let cz = _prefix "cz"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#de"></see>
-    /// </summary>
-    let de = _prefix "de"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#dj"></see>
-    /// </summary>
-    let dj = _prefix "dj"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#dk"></see>
-    /// </summary>
-    let dk = _prefix "dk"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#dm"></see>
-    /// </summary>
-    let dm = _prefix "dm"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#do"></see>
-    /// </summary>
-    let do_ = _prefix "do"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#dz"></see>
-    /// </summary>
-    let dz = _prefix "dz"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ec"></see>
-    /// </summary>
-    let ec = _prefix "ec"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ee"></see>
-    /// </summary>
-    let ee = _prefix "ee"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#eg"></see>
-    /// </summary>
-    let eg = _prefix "eg"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#eh"></see>
-    /// </summary>
-    let eh = _prefix "eh"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#er"></see>
-    /// </summary>
-    let er = _prefix "er"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#es"></see>
-    /// </summary>
-    let es = _prefix "es"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#et"></see>
-    /// </summary>
-    let et = _prefix "et"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fi"></see>
-    /// </summary>
-    let fi = _prefix "fi"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fj"></see>
-    /// </summary>
-    let fj = _prefix "fj"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fk"></see>
-    /// </summary>
-    let fk = _prefix "fk"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fm"></see>
-    /// </summary>
-    let fm = _prefix "fm"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fo"></see>
-    /// </summary>
-    let fo = _prefix "fo"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fr"></see>
-    /// </summary>
-    let fr = _prefix "fr"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ga"></see>
-    /// </summary>
-    let ga = _prefix "ga"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gb"></see>
-    /// </summary>
-    let gb = _prefix "gb"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gd"></see>
-    /// </summary>
-    let gd = _prefix "gd"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ge"></see>
-    /// </summary>
-    let ge = _prefix "ge"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gf"></see>
-    /// </summary>
-    let gf = _prefix "gf"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gg"></see>
-    /// </summary>
-    let gg = _prefix "gg"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gh"></see>
-    /// </summary>
-    let gh = _prefix "gh"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gi"></see>
-    /// </summary>
-    let gi = _prefix "gi"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gl"></see>
-    /// </summary>
-    let gl = _prefix "gl"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gm"></see>
-    /// </summary>
-    let gm = _prefix "gm"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gn"></see>
-    /// </summary>
-    let gn = _prefix "gn"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gp"></see>
-    /// </summary>
-    let gp = _prefix "gp"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gq"></see>
-    /// </summary>
-    let gq = _prefix "gq"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gr"></see>
-    /// </summary>
-    let gr = _prefix "gr"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gs"></see>
-    /// </summary>
-    let gs = _prefix "gs"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gt"></see>
-    /// </summary>
-    let gt = _prefix "gt"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gu"></see>
-    /// </summary>
-    let gu = _prefix "gu"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gw"></see>
-    /// </summary>
-    let gw = _prefix "gw"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gy"></see>
-    /// </summary>
-    let gy = _prefix "gy"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#hk"></see>
-    /// </summary>
-    let hk = _prefix "hk"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#hm"></see>
-    /// </summary>
-    let hm = _prefix "hm"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#hn"></see>
-    /// </summary>
-    let hn = _prefix "hn"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#hr"></see>
-    /// </summary>
-    let hr = _prefix "hr"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ht"></see>
-    /// </summary>
-    let ht = _prefix "ht"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#hu"></see>
-    /// </summary>
-    let hu = _prefix "hu"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#id"></see>
-    /// </summary>
-    let id = _prefix "id"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ie"></see>
-    /// </summary>
-    let ie = _prefix "ie"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#il"></see>
-    /// </summary>
-    let il = _prefix "il"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#im"></see>
-    /// </summary>
-    let im = _prefix "im"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#in"></see>
-    /// </summary>
-    let in_ = _prefix "in"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#io"></see>
-    /// </summary>
-    let io = _prefix "io"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#iq"></see>
-    /// </summary>
-    let iq = _prefix "iq"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ir"></see>
-    /// </summary>
-    let ir = _prefix "ir"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#is"></see>
-    /// </summary>
-    let is = _prefix "is"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-2DT"></see>
-    /// </summary>
-    let ``iso3166-1-alpha-2DT`` = _prefix "iso3166-1-alpha-2DT"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-3DT"></see>
-    /// </summary>
-    let ``iso3166-1-alpha-3DT`` = _prefix "iso3166-1-alpha-3DT"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#it"></see>
-    /// </summary>
-    let it = _prefix "it"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#je"></see>
-    /// </summary>
-    let je = _prefix "je"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#jm"></see>
-    /// </summary>
-    let jm = _prefix "jm"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#jo"></see>
-    /// </summary>
-    let jo = _prefix "jo"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#jp"></see>
-    /// </summary>
-    let jp = _prefix "jp"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ke"></see>
-    /// </summary>
-    let ke = _prefix "ke"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kg"></see>
-    /// </summary>
-    let kg = _prefix "kg"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kh"></see>
-    /// </summary>
-    let kh = _prefix "kh"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ki"></see>
-    /// </summary>
-    let ki = _prefix "ki"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#km"></see>
-    /// </summary>
-    let km = _prefix "km"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kn"></see>
-    /// </summary>
-    let kn = _prefix "kn"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kp"></see>
-    /// </summary>
-    let kp = _prefix "kp"
+    ///   <para>countries:iso3166-1-alpha-2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:ConceptScheme</para>
+    ///
+    /// labels<para>ISO3166-1-alpha-2</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-2">http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-2</seealso>
+    let iso3166_1_alpha_2 =
+        Prefixed_Name(countries, "iso3166-1-alpha-2") |> PrefixedName
+
+    /// <summary>
+    ///   <para>countries:an</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#an">http://eulersharp.sourceforge.net/2003/03swap/countries#an</seealso>
+    let an = Prefixed_Name(countries, "an") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:cd</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cd">http://eulersharp.sourceforge.net/2003/03swap/countries#cd</seealso>
+    let cd = Prefixed_Name(countries, "cd") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:dm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#dm">http://eulersharp.sourceforge.net/2003/03swap/countries#dm</seealso>
+    let dm = Prefixed_Name(countries, "dm") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:gl</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gl">http://eulersharp.sourceforge.net/2003/03swap/countries#gl</seealso>
+    let gl = Prefixed_Name(countries, "gl") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ir</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ir">http://eulersharp.sourceforge.net/2003/03swap/countries#ir</seealso>
+    let ir = Prefixed_Name(countries, "ir") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:me</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#me">http://eulersharp.sourceforge.net/2003/03swap/countries#me</seealso>
+    let me = Prefixed_Name(countries, "me") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:mg</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mg">http://eulersharp.sourceforge.net/2003/03swap/countries#mg</seealso>
+    let mg = Prefixed_Name(countries, "mg") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:mk</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mk">http://eulersharp.sourceforge.net/2003/03swap/countries#mk</seealso>
+    let mk = Prefixed_Name(countries, "mk") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:mm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mm">http://eulersharp.sourceforge.net/2003/03swap/countries#mm</seealso>
+    let mm = Prefixed_Name(countries, "mm") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:mo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mo">http://eulersharp.sourceforge.net/2003/03swap/countries#mo</seealso>
+    let mo = Prefixed_Name(countries, "mo") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pr</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pr">http://eulersharp.sourceforge.net/2003/03swap/countries#pr</seealso>
+    let pr = Prefixed_Name(countries, "pr") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:vn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#vn">http://eulersharp.sourceforge.net/2003/03swap/countries#vn</seealso>
+    let vn = Prefixed_Name(countries, "vn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kr"></see>
+    ///   <para>countries:wf</para>
     /// </summary>
-    let kr = _prefix "kr"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#wf">http://eulersharp.sourceforge.net/2003/03swap/countries#wf</seealso>
+    let wf = Prefixed_Name(countries, "wf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kw"></see>
+    ///   <para>countries:ye</para>
     /// </summary>
-    let kw = _prefix "kw"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ye">http://eulersharp.sourceforge.net/2003/03swap/countries#ye</seealso>
+    let ye = Prefixed_Name(countries, "ye") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ky"></see>
+    ///   <para>countries:za</para>
     /// </summary>
-    let ky = _prefix "ky"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#za">http://eulersharp.sourceforge.net/2003/03swap/countries#za</seealso>
+    let za = Prefixed_Name(countries, "za") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kz"></see>
+    ///   <para>countries:zw</para>
     /// </summary>
-    let kz = _prefix "kz"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#zw">http://eulersharp.sourceforge.net/2003/03swap/countries#zw</seealso>
+    let zw = Prefixed_Name(countries, "zw") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#la"></see>
+    ///   <para>countries:</para>
     /// </summary>
-    let la = _prefix "la"
+    /// <remarks></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#">http://eulersharp.sourceforge.net/2003/03swap/countries#</seealso>
+    let _prefix_iri = Prefixed_Name(countries, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lb"></see>
+    ///   <para>countries:ae</para>
     /// </summary>
-    let lb = _prefix "lb"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ae">http://eulersharp.sourceforge.net/2003/03swap/countries#ae</seealso>
+    let ae = Prefixed_Name(countries, "ae") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lc"></see>
+    ///   <para>countries:eh</para>
     /// </summary>
-    let lc = _prefix "lc"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#eh">http://eulersharp.sourceforge.net/2003/03swap/countries#eh</seealso>
+    let eh = Prefixed_Name(countries, "eh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#li"></see>
+    ///   <para>countries:gs</para>
     /// </summary>
-    let li = _prefix "li"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gs">http://eulersharp.sourceforge.net/2003/03swap/countries#gs</seealso>
+    let gs = Prefixed_Name(countries, "gs") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lk"></see>
+    ///   <para>countries:ki</para>
     /// </summary>
-    let lk = _prefix "lk"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ki">http://eulersharp.sourceforge.net/2003/03swap/countries#ki</seealso>
+    let ki = Prefixed_Name(countries, "ki") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lr"></see>
+    ///   <para>countries:kn</para>
     /// </summary>
-    let lr = _prefix "lr"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#kn">http://eulersharp.sourceforge.net/2003/03swap/countries#kn</seealso>
+    let kn = Prefixed_Name(countries, "kn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ls"></see>
+    ///   <para>countries:kp</para>
     /// </summary>
-    let ls = _prefix "ls"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#kp">http://eulersharp.sourceforge.net/2003/03swap/countries#kp</seealso>
+    let kp = Prefixed_Name(countries, "kp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lt"></see>
+    ///   <para>countries:kw</para>
     /// </summary>
-    let lt = _prefix "lt"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#kw">http://eulersharp.sourceforge.net/2003/03swap/countries#kw</seealso>
+    let kw = Prefixed_Name(countries, "kw") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lu"></see>
+    ///   <para>countries:nc</para>
     /// </summary>
-    let lu = _prefix "lu"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#nc">http://eulersharp.sourceforge.net/2003/03swap/countries#nc</seealso>
+    let nc = Prefixed_Name(countries, "nc") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lv"></see>
+    ///   <para>countries:no</para>
     /// </summary>
-    let lv = _prefix "lv"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#no">http://eulersharp.sourceforge.net/2003/03swap/countries#no</seealso>
+    let no = Prefixed_Name(countries, "no") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ly"></see>
+    ///   <para>countries:sr</para>
     /// </summary>
-    let ly = _prefix "ly"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sr">http://eulersharp.sourceforge.net/2003/03swap/countries#sr</seealso>
+    let sr = Prefixed_Name(countries, "sr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ma"></see>
+    ///   <para>countries:tc</para>
     /// </summary>
-    let ma = _prefix "ma"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tc">http://eulersharp.sourceforge.net/2003/03swap/countries#tc</seealso>
+    let tc = Prefixed_Name(countries, "tc") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mc"></see>
+    ///   <para>countries:td</para>
     /// </summary>
-    let mc = _prefix "mc"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#td">http://eulersharp.sourceforge.net/2003/03swap/countries#td</seealso>
+    let td = Prefixed_Name(countries, "td") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#md"></see>
+    ///   <para>countries:tg</para>
     /// </summary>
-    let md = _prefix "md"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tg">http://eulersharp.sourceforge.net/2003/03swap/countries#tg</seealso>
+    let tg = Prefixed_Name(countries, "tg") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#me"></see>
+    ///   <para>countries:tk</para>
     /// </summary>
-    let me = _prefix "me"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tk">http://eulersharp.sourceforge.net/2003/03swap/countries#tk</seealso>
+    let tk = Prefixed_Name(countries, "tk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mf"></see>
+    ///   <para>countries:tm</para>
     /// </summary>
-    let mf = _prefix "mf"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tm">http://eulersharp.sourceforge.net/2003/03swap/countries#tm</seealso>
+    let tm = Prefixed_Name(countries, "tm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mg"></see>
+    ///   <para>countries:tn</para>
     /// </summary>
-    let mg = _prefix "mg"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tn">http://eulersharp.sourceforge.net/2003/03swap/countries#tn</seealso>
+    let tn = Prefixed_Name(countries, "tn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mh"></see>
+    ///   <para>countries:tr</para>
     /// </summary>
-    let mh = _prefix "mh"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tr">http://eulersharp.sourceforge.net/2003/03swap/countries#tr</seealso>
+    let tr = Prefixed_Name(countries, "tr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mk"></see>
+    ///   <para>countries:tw</para>
     /// </summary>
-    let mk = _prefix "mk"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tw">http://eulersharp.sourceforge.net/2003/03swap/countries#tw</seealso>
+    let tw = Prefixed_Name(countries, "tw") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ml"></see>
+    ///   <para>countries:ua</para>
     /// </summary>
-    let ml = _prefix "ml"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ua">http://eulersharp.sourceforge.net/2003/03swap/countries#ua</seealso>
+    let ua = Prefixed_Name(countries, "ua") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mm"></see>
+    ///   <para>countries:ug</para>
     /// </summary>
-    let mm = _prefix "mm"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ug">http://eulersharp.sourceforge.net/2003/03swap/countries#ug</seealso>
+    let ug = Prefixed_Name(countries, "ug") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mn"></see>
+    ///   <para>countries:uy</para>
     /// </summary>
-    let mn = _prefix "mn"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#uy">http://eulersharp.sourceforge.net/2003/03swap/countries#uy</seealso>
+    let uy = Prefixed_Name(countries, "uy") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mo"></see>
+    ///   <para>countries:uz</para>
     /// </summary>
-    let mo = _prefix "mo"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#uz">http://eulersharp.sourceforge.net/2003/03swap/countries#uz</seealso>
+    let uz = Prefixed_Name(countries, "uz") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mp"></see>
+    ///   <para>countries:af</para>
     /// </summary>
-    let mp = _prefix "mp"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#af">http://eulersharp.sourceforge.net/2003/03swap/countries#af</seealso>
+    let af = Prefixed_Name(countries, "af") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mq"></see>
+    ///   <para>countries:ag</para>
     /// </summary>
-    let mq = _prefix "mq"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ag">http://eulersharp.sourceforge.net/2003/03swap/countries#ag</seealso>
+    let ag = Prefixed_Name(countries, "ag") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mr"></see>
+    ///   <para>countries:bh</para>
     /// </summary>
-    let mr = _prefix "mr"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bh">http://eulersharp.sourceforge.net/2003/03swap/countries#bh</seealso>
+    let bh = Prefixed_Name(countries, "bh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ms"></see>
+    ///   <para>countries:bj</para>
     /// </summary>
-    let ms = _prefix "ms"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bj">http://eulersharp.sourceforge.net/2003/03swap/countries#bj</seealso>
+    let bj = Prefixed_Name(countries, "bj") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mt"></see>
+    ///   <para>countries:bo</para>
     /// </summary>
-    let mt = _prefix "mt"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bo">http://eulersharp.sourceforge.net/2003/03swap/countries#bo</seealso>
+    let bo = Prefixed_Name(countries, "bo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mu"></see>
+    ///   <para>countries:bs</para>
     /// </summary>
-    let mu = _prefix "mu"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bs">http://eulersharp.sourceforge.net/2003/03swap/countries#bs</seealso>
+    let bs = Prefixed_Name(countries, "bs") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mv"></see>
+    ///   <para>countries:bv</para>
     /// </summary>
-    let mv = _prefix "mv"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bv">http://eulersharp.sourceforge.net/2003/03swap/countries#bv</seealso>
+    let bv = Prefixed_Name(countries, "bv") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mw"></see>
+    ///   <para>countries:ma</para>
     /// </summary>
-    let mw = _prefix "mw"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ma">http://eulersharp.sourceforge.net/2003/03swap/countries#ma</seealso>
+    let ma = Prefixed_Name(countries, "ma") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mx"></see>
+    ///   <para>countries:md</para>
     /// </summary>
-    let mx = _prefix "mx"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#md">http://eulersharp.sourceforge.net/2003/03swap/countries#md</seealso>
+    let md = Prefixed_Name(countries, "md") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#my"></see>
+    ///   <para>countries:mf</para>
     /// </summary>
-    let my = _prefix "my"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mf">http://eulersharp.sourceforge.net/2003/03swap/countries#mf</seealso>
+    let mf = Prefixed_Name(countries, "mf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mz"></see>
+    ///   <para>countries:mh</para>
     /// </summary>
-    let mz = _prefix "mz"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mh">http://eulersharp.sourceforge.net/2003/03swap/countries#mh</seealso>
+    let mh = Prefixed_Name(countries, "mh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#na"></see>
+    ///   <para>countries:ml</para>
     /// </summary>
-    let na = _prefix "na"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ml">http://eulersharp.sourceforge.net/2003/03swap/countries#ml</seealso>
+    let ml = Prefixed_Name(countries, "ml") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nc"></see>
+    ///   <para>countries:mn</para>
     /// </summary>
-    let nc = _prefix "nc"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mn">http://eulersharp.sourceforge.net/2003/03swap/countries#mn</seealso>
+    let mn = Prefixed_Name(countries, "mn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ne"></see>
+    ///   <para>countries:mp</para>
     /// </summary>
-    let ne = _prefix "ne"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mp">http://eulersharp.sourceforge.net/2003/03swap/countries#mp</seealso>
+    let mp = Prefixed_Name(countries, "mp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nf"></see>
+    ///   <para>countries:mq</para>
     /// </summary>
-    let nf = _prefix "nf"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mq">http://eulersharp.sourceforge.net/2003/03swap/countries#mq</seealso>
+    let mq = Prefixed_Name(countries, "mq") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ng"></see>
+    ///   <para>countries:mr</para>
     /// </summary>
-    let ng = _prefix "ng"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mr">http://eulersharp.sourceforge.net/2003/03swap/countries#mr</seealso>
+    let mr = Prefixed_Name(countries, "mr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ni"></see>
+    ///   <para>countries:ms</para>
     /// </summary>
-    let ni = _prefix "ni"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ms">http://eulersharp.sourceforge.net/2003/03swap/countries#ms</seealso>
+    let ms = Prefixed_Name(countries, "ms") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nl"></see>
+    ///   <para>countries:mu</para>
     /// </summary>
-    let nl = _prefix "nl"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mu">http://eulersharp.sourceforge.net/2003/03swap/countries#mu</seealso>
+    let mu = Prefixed_Name(countries, "mu") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#no"></see>
+    ///   <para>countries:mw</para>
     /// </summary>
-    let no = _prefix "no"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mw">http://eulersharp.sourceforge.net/2003/03swap/countries#mw</seealso>
+    let mw = Prefixed_Name(countries, "mw") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#np"></see>
+    ///   <para>countries:mx</para>
     /// </summary>
-    let np = _prefix "np"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mx">http://eulersharp.sourceforge.net/2003/03swap/countries#mx</seealso>
+    let mx = Prefixed_Name(countries, "mx") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nr"></see>
+    ///   <para>countries:my</para>
     /// </summary>
-    let nr = _prefix "nr"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#my">http://eulersharp.sourceforge.net/2003/03swap/countries#my</seealso>
+    let my = Prefixed_Name(countries, "my") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nu"></see>
+    ///   <para>countries:mz</para>
     /// </summary>
-    let nu = _prefix "nu"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mz">http://eulersharp.sourceforge.net/2003/03swap/countries#mz</seealso>
+    let mz = Prefixed_Name(countries, "mz") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nz"></see>
+    ///   <para>countries:na</para>
     /// </summary>
-    let nz = _prefix "nz"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#na">http://eulersharp.sourceforge.net/2003/03swap/countries#na</seealso>
+    let na = Prefixed_Name(countries, "na") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#om"></see>
+    ///   <para>countries:ne</para>
     /// </summary>
-    let om = _prefix "om"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ne">http://eulersharp.sourceforge.net/2003/03swap/countries#ne</seealso>
+    let ne = Prefixed_Name(countries, "ne") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pa"></see>
+    ///   <para>countries:nf</para>
     /// </summary>
-    let pa = _prefix "pa"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#nf">http://eulersharp.sourceforge.net/2003/03swap/countries#nf</seealso>
+    let nf = Prefixed_Name(countries, "nf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pe"></see>
+    ///   <para>countries:ng</para>
     /// </summary>
-    let pe = _prefix "pe"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ng">http://eulersharp.sourceforge.net/2003/03swap/countries#ng</seealso>
+    let ng = Prefixed_Name(countries, "ng") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pf"></see>
+    ///   <para>countries:ni</para>
     /// </summary>
-    let pf = _prefix "pf"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ni">http://eulersharp.sourceforge.net/2003/03swap/countries#ni</seealso>
+    let ni = Prefixed_Name(countries, "ni") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pg"></see>
+    ///   <para>countries:nl</para>
     /// </summary>
-    let pg = _prefix "pg"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#nl">http://eulersharp.sourceforge.net/2003/03swap/countries#nl</seealso>
+    let nl = Prefixed_Name(countries, "nl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ph"></see>
+    ///   <para>countries:np</para>
     /// </summary>
-    let ph = _prefix "ph"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#np">http://eulersharp.sourceforge.net/2003/03swap/countries#np</seealso>
+    let np = Prefixed_Name(countries, "np") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pk"></see>
+    ///   <para>countries:nr</para>
     /// </summary>
-    let pk = _prefix "pk"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#nr">http://eulersharp.sourceforge.net/2003/03swap/countries#nr</seealso>
+    let nr = Prefixed_Name(countries, "nr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pl"></see>
+    ///   <para>countries:ai</para>
     /// </summary>
-    let pl = _prefix "pl"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ai">http://eulersharp.sourceforge.net/2003/03swap/countries#ai</seealso>
+    let ai = Prefixed_Name(countries, "ai") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pm"></see>
+    ///   <para>countries:al</para>
     /// </summary>
-    let pm = _prefix "pm"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#al">http://eulersharp.sourceforge.net/2003/03swap/countries#al</seealso>
+    let al = Prefixed_Name(countries, "al") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pn"></see>
+    ///   <para>countries:am</para>
     /// </summary>
-    let pn = _prefix "pn"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#am">http://eulersharp.sourceforge.net/2003/03swap/countries#am</seealso>
+    let am = Prefixed_Name(countries, "am") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pr"></see>
+    ///   <para>countries:ao</para>
     /// </summary>
-    let pr = _prefix "pr"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ao">http://eulersharp.sourceforge.net/2003/03swap/countries#ao</seealso>
+    let ao = Prefixed_Name(countries, "ao") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ps"></see>
+    ///   <para>countries:as</para>
     /// </summary>
-    let ps = _prefix "ps"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#as">http://eulersharp.sourceforge.net/2003/03swap/countries#as</seealso>
+    let as_ = Prefixed_Name(countries, "as") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pt"></see>
+    ///   <para>countries:au</para>
     /// </summary>
-    let pt = _prefix "pt"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#au">http://eulersharp.sourceforge.net/2003/03swap/countries#au</seealso>
+    let au = Prefixed_Name(countries, "au") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pw"></see>
+    ///   <para>countries:ax</para>
     /// </summary>
-    let pw = _prefix "pw"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ax">http://eulersharp.sourceforge.net/2003/03swap/countries#ax</seealso>
+    let ax = Prefixed_Name(countries, "ax") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#py"></see>
+    ///   <para>countries:ba</para>
     /// </summary>
-    let py = _prefix "py"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ba">http://eulersharp.sourceforge.net/2003/03swap/countries#ba</seealso>
+    let ba = Prefixed_Name(countries, "ba") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#qa"></see>
+    ///   <para>countries:bd</para>
     /// </summary>
-    let qa = _prefix "qa"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bd">http://eulersharp.sourceforge.net/2003/03swap/countries#bd</seealso>
+    let bd = Prefixed_Name(countries, "bd") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#re"></see>
+    ///   <para>countries:be</para>
     /// </summary>
-    let re = _prefix "re"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#be">http://eulersharp.sourceforge.net/2003/03swap/countries#be</seealso>
+    let be = Prefixed_Name(countries, "be") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ro"></see>
+    ///   <para>countries:bf</para>
     /// </summary>
-    let ro = _prefix "ro"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bf">http://eulersharp.sourceforge.net/2003/03swap/countries#bf</seealso>
+    let bf = Prefixed_Name(countries, "bf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#rs"></see>
+    ///   <para>countries:bg</para>
     /// </summary>
-    let rs = _prefix "rs"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bg">http://eulersharp.sourceforge.net/2003/03swap/countries#bg</seealso>
+    let bg = Prefixed_Name(countries, "bg") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ru"></see>
+    ///   <para>countries:bi</para>
     /// </summary>
-    let ru = _prefix "ru"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bi">http://eulersharp.sourceforge.net/2003/03swap/countries#bi</seealso>
+    let bi = Prefixed_Name(countries, "bi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#rw"></see>
+    ///   <para>countries:bl</para>
     /// </summary>
-    let rw = _prefix "rw"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bl">http://eulersharp.sourceforge.net/2003/03swap/countries#bl</seealso>
+    let bl = Prefixed_Name(countries, "bl") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sa"></see>
+    ///   <para>countries:bm</para>
     /// </summary>
-    let sa = _prefix "sa"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bm">http://eulersharp.sourceforge.net/2003/03swap/countries#bm</seealso>
+    let bm = Prefixed_Name(countries, "bm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sb"></see>
+    ///   <para>countries:bn</para>
     /// </summary>
-    let sb = _prefix "sb"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bn">http://eulersharp.sourceforge.net/2003/03swap/countries#bn</seealso>
+    let bn = Prefixed_Name(countries, "bn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sc"></see>
+    ///   <para>countries:br</para>
     /// </summary>
-    let sc = _prefix "sc"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#br">http://eulersharp.sourceforge.net/2003/03swap/countries#br</seealso>
+    let br = Prefixed_Name(countries, "br") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sd"></see>
+    ///   <para>countries:bt</para>
     /// </summary>
-    let sd = _prefix "sd"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bt">http://eulersharp.sourceforge.net/2003/03swap/countries#bt</seealso>
+    let bt = Prefixed_Name(countries, "bt") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#se"></see>
+    ///   <para>countries:bw</para>
     /// </summary>
-    let se = _prefix "se"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bw">http://eulersharp.sourceforge.net/2003/03swap/countries#bw</seealso>
+    let bw = Prefixed_Name(countries, "bw") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sg"></see>
+    ///   <para>countries:by</para>
     /// </summary>
-    let sg = _prefix "sg"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#by">http://eulersharp.sourceforge.net/2003/03swap/countries#by</seealso>
+    let by = Prefixed_Name(countries, "by") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sh"></see>
+    ///   <para>countries:ca</para>
     /// </summary>
-    let sh = _prefix "sh"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ca">http://eulersharp.sourceforge.net/2003/03swap/countries#ca</seealso>
+    let ca = Prefixed_Name(countries, "ca") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#si"></see>
+    ///   <para>countries:cc</para>
     /// </summary>
-    let si = _prefix "si"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cc">http://eulersharp.sourceforge.net/2003/03swap/countries#cc</seealso>
+    let cc = Prefixed_Name(countries, "cc") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sj"></see>
+    ///   <para>countries:cf</para>
     /// </summary>
-    let sj = _prefix "sj"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cf">http://eulersharp.sourceforge.net/2003/03swap/countries#cf</seealso>
+    let cf = Prefixed_Name(countries, "cf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sk"></see>
+    ///   <para>countries:cg</para>
     /// </summary>
-    let sk = _prefix "sk"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cg">http://eulersharp.sourceforge.net/2003/03swap/countries#cg</seealso>
+    let cg = Prefixed_Name(countries, "cg") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sl"></see>
+    ///   <para>countries:ch</para>
     /// </summary>
-    let sl = _prefix "sl"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ch">http://eulersharp.sourceforge.net/2003/03swap/countries#ch</seealso>
+    let ch = Prefixed_Name(countries, "ch") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sm"></see>
+    ///   <para>countries:ci</para>
     /// </summary>
-    let sm = _prefix "sm"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ci">http://eulersharp.sourceforge.net/2003/03swap/countries#ci</seealso>
+    let ci = Prefixed_Name(countries, "ci") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sn"></see>
+    ///   <para>countries:ck</para>
     /// </summary>
-    let sn = _prefix "sn"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ck">http://eulersharp.sourceforge.net/2003/03swap/countries#ck</seealso>
+    let ck = Prefixed_Name(countries, "ck") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#so"></see>
+    ///   <para>countries:cm</para>
     /// </summary>
-    let so = _prefix "so"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cm">http://eulersharp.sourceforge.net/2003/03swap/countries#cm</seealso>
+    let cm = Prefixed_Name(countries, "cm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sr"></see>
+    ///   <para>countries:cn</para>
     /// </summary>
-    let sr = _prefix "sr"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cn">http://eulersharp.sourceforge.net/2003/03swap/countries#cn</seealso>
+    let cn = Prefixed_Name(countries, "cn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#st"></see>
+    ///   <para>countries:co</para>
     /// </summary>
-    let st = _prefix "st"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#co">http://eulersharp.sourceforge.net/2003/03swap/countries#co</seealso>
+    let co = Prefixed_Name(countries, "co") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sv"></see>
+    ///   <para>countries:cr</para>
     /// </summary>
-    let sv = _prefix "sv"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cr">http://eulersharp.sourceforge.net/2003/03swap/countries#cr</seealso>
+    let cr = Prefixed_Name(countries, "cr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sy"></see>
+    ///   <para>countries:cu</para>
     /// </summary>
-    let sy = _prefix "sy"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cu">http://eulersharp.sourceforge.net/2003/03swap/countries#cu</seealso>
+    let cu = Prefixed_Name(countries, "cu") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sz"></see>
+    ///   <para>countries:cv</para>
     /// </summary>
-    let sz = _prefix "sz"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cv">http://eulersharp.sourceforge.net/2003/03swap/countries#cv</seealso>
+    let cv = Prefixed_Name(countries, "cv") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tc"></see>
+    ///   <para>countries:cy</para>
     /// </summary>
-    let tc = _prefix "tc"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cy">http://eulersharp.sourceforge.net/2003/03swap/countries#cy</seealso>
+    let cy = Prefixed_Name(countries, "cy") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#td"></see>
+    ///   <para>countries:cz</para>
     /// </summary>
-    let td = _prefix "td"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cz">http://eulersharp.sourceforge.net/2003/03swap/countries#cz</seealso>
+    let cz = Prefixed_Name(countries, "cz") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tf"></see>
+    ///   <para>countries:dj</para>
     /// </summary>
-    let tf = _prefix "tf"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#dj">http://eulersharp.sourceforge.net/2003/03swap/countries#dj</seealso>
+    let dj = Prefixed_Name(countries, "dj") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tg"></see>
+    ///   <para>countries:dk</para>
     /// </summary>
-    let tg = _prefix "tg"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#dk">http://eulersharp.sourceforge.net/2003/03swap/countries#dk</seealso>
+    let dk = Prefixed_Name(countries, "dk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#th"></see>
+    ///   <para>countries:do</para>
     /// </summary>
-    let th = _prefix "th"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#do">http://eulersharp.sourceforge.net/2003/03swap/countries#do</seealso>
+    let do_ = Prefixed_Name(countries, "do") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tj"></see>
+    ///   <para>countries:dz</para>
     /// </summary>
-    let tj = _prefix "tj"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#dz">http://eulersharp.sourceforge.net/2003/03swap/countries#dz</seealso>
+    let dz = Prefixed_Name(countries, "dz") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tk"></see>
+    ///   <para>countries:ec</para>
     /// </summary>
-    let tk = _prefix "tk"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ec">http://eulersharp.sourceforge.net/2003/03swap/countries#ec</seealso>
+    let ec = Prefixed_Name(countries, "ec") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tl"></see>
+    ///   <para>countries:ee</para>
     /// </summary>
-    let tl = _prefix "tl"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ee">http://eulersharp.sourceforge.net/2003/03swap/countries#ee</seealso>
+    let ee = Prefixed_Name(countries, "ee") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tm"></see>
+    ///   <para>countries:eg</para>
     /// </summary>
-    let tm = _prefix "tm"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#eg">http://eulersharp.sourceforge.net/2003/03swap/countries#eg</seealso>
+    let eg = Prefixed_Name(countries, "eg") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tn"></see>
+    ///   <para>countries:er</para>
     /// </summary>
-    let tn = _prefix "tn"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#er">http://eulersharp.sourceforge.net/2003/03swap/countries#er</seealso>
+    let er = Prefixed_Name(countries, "er") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#to"></see>
+    ///   <para>countries:es</para>
     /// </summary>
-    let to_ = _prefix "to"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#es">http://eulersharp.sourceforge.net/2003/03swap/countries#es</seealso>
+    let es = Prefixed_Name(countries, "es") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tr"></see>
+    ///   <para>countries:et</para>
     /// </summary>
-    let tr = _prefix "tr"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#et">http://eulersharp.sourceforge.net/2003/03swap/countries#et</seealso>
+    let et = Prefixed_Name(countries, "et") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tt"></see>
+    ///   <para>countries:fi</para>
     /// </summary>
-    let tt = _prefix "tt"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#fi">http://eulersharp.sourceforge.net/2003/03swap/countries#fi</seealso>
+    let fi = Prefixed_Name(countries, "fi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tv"></see>
+    ///   <para>countries:fj</para>
     /// </summary>
-    let tv = _prefix "tv"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#fj">http://eulersharp.sourceforge.net/2003/03swap/countries#fj</seealso>
+    let fj = Prefixed_Name(countries, "fj") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tw"></see>
+    ///   <para>countries:fm</para>
     /// </summary>
-    let tw = _prefix "tw"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#fm">http://eulersharp.sourceforge.net/2003/03swap/countries#fm</seealso>
+    let fm = Prefixed_Name(countries, "fm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tz"></see>
+    ///   <para>countries:fo</para>
     /// </summary>
-    let tz = _prefix "tz"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#fo">http://eulersharp.sourceforge.net/2003/03swap/countries#fo</seealso>
+    let fo = Prefixed_Name(countries, "fo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ua"></see>
+    ///   <para>countries:fr</para>
     /// </summary>
-    let ua = _prefix "ua"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#fr">http://eulersharp.sourceforge.net/2003/03swap/countries#fr</seealso>
+    let fr = Prefixed_Name(countries, "fr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ug"></see>
+    ///   <para>countries:ga</para>
     /// </summary>
-    let ug = _prefix "ug"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ga">http://eulersharp.sourceforge.net/2003/03swap/countries#ga</seealso>
+    let ga = Prefixed_Name(countries, "ga") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#um"></see>
+    ///   <para>countries:gb</para>
     /// </summary>
-    let um = _prefix "um"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gb">http://eulersharp.sourceforge.net/2003/03swap/countries#gb</seealso>
+    let gb = Prefixed_Name(countries, "gb") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#us"></see>
+    ///   <para>countries:ge</para>
     /// </summary>
-    let us = _prefix "us"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ge">http://eulersharp.sourceforge.net/2003/03swap/countries#ge</seealso>
+    let ge = Prefixed_Name(countries, "ge") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#uy"></see>
+    ///   <para>countries:gf</para>
     /// </summary>
-    let uy = _prefix "uy"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gf">http://eulersharp.sourceforge.net/2003/03swap/countries#gf</seealso>
+    let gf = Prefixed_Name(countries, "gf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#uz"></see>
+    ///   <para>countries:gg</para>
     /// </summary>
-    let uz = _prefix "uz"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gg">http://eulersharp.sourceforge.net/2003/03swap/countries#gg</seealso>
+    let gg = Prefixed_Name(countries, "gg") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#va"></see>
+    ///   <para>countries:gh</para>
     /// </summary>
-    let va = _prefix "va"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gh">http://eulersharp.sourceforge.net/2003/03swap/countries#gh</seealso>
+    let gh = Prefixed_Name(countries, "gh") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#vc"></see>
+    ///   <para>countries:gi</para>
     /// </summary>
-    let vc = _prefix "vc"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gi">http://eulersharp.sourceforge.net/2003/03swap/countries#gi</seealso>
+    let gi = Prefixed_Name(countries, "gi") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ve"></see>
+    ///   <para>countries:gm</para>
     /// </summary>
-    let ve = _prefix "ve"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gm">http://eulersharp.sourceforge.net/2003/03swap/countries#gm</seealso>
+    let gm = Prefixed_Name(countries, "gm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#vg"></see>
+    ///   <para>countries:gn</para>
     /// </summary>
-    let vg = _prefix "vg"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gn">http://eulersharp.sourceforge.net/2003/03swap/countries#gn</seealso>
+    let gn = Prefixed_Name(countries, "gn") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#vi"></see>
+    ///   <para>countries:gp</para>
     /// </summary>
-    let vi = _prefix "vi"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gp">http://eulersharp.sourceforge.net/2003/03swap/countries#gp</seealso>
+    let gp = Prefixed_Name(countries, "gp") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#vn"></see>
+    ///   <para>countries:gq</para>
     /// </summary>
-    let vn = _prefix "vn"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gq">http://eulersharp.sourceforge.net/2003/03swap/countries#gq</seealso>
+    let gq = Prefixed_Name(countries, "gq") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#vu"></see>
+    ///   <para>countries:gr</para>
     /// </summary>
-    let vu = _prefix "vu"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gr">http://eulersharp.sourceforge.net/2003/03swap/countries#gr</seealso>
+    let gr = Prefixed_Name(countries, "gr") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#wf"></see>
+    ///   <para>countries:gt</para>
     /// </summary>
-    let wf = _prefix "wf"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gt">http://eulersharp.sourceforge.net/2003/03swap/countries#gt</seealso>
+    let gt = Prefixed_Name(countries, "gt") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ws"></see>
+    ///   <para>countries:gu</para>
     /// </summary>
-    let ws = _prefix "ws"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gu">http://eulersharp.sourceforge.net/2003/03swap/countries#gu</seealso>
+    let gu = Prefixed_Name(countries, "gu") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ye"></see>
+    ///   <para>countries:gw</para>
     /// </summary>
-    let ye = _prefix "ye"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gw">http://eulersharp.sourceforge.net/2003/03swap/countries#gw</seealso>
+    let gw = Prefixed_Name(countries, "gw") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#yt"></see>
+    ///   <para>countries:gy</para>
     /// </summary>
-    let yt = _prefix "yt"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gy">http://eulersharp.sourceforge.net/2003/03swap/countries#gy</seealso>
+    let gy = Prefixed_Name(countries, "gy") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#za"></see>
+    ///   <para>countries:hk</para>
     /// </summary>
-    let za = _prefix "za"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#hk">http://eulersharp.sourceforge.net/2003/03swap/countries#hk</seealso>
+    let hk = Prefixed_Name(countries, "hk") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#zm"></see>
+    ///   <para>countries:hm</para>
     /// </summary>
-    let zm = _prefix "zm"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#hm">http://eulersharp.sourceforge.net/2003/03swap/countries#hm</seealso>
+    let hm = Prefixed_Name(countries, "hm") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#zw"></see>
+    ///   <para>countries:hn</para>
     /// </summary>
-    let zw = _prefix "zw"
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#hn">http://eulersharp.sourceforge.net/2003/03swap/countries#hn</seealso>
+    let hn = Prefixed_Name(countries, "hn") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:hr</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#hr">http://eulersharp.sourceforge.net/2003/03swap/countries#hr</seealso>
+    let hr = Prefixed_Name(countries, "hr") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ht</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ht">http://eulersharp.sourceforge.net/2003/03swap/countries#ht</seealso>
+    let ht = Prefixed_Name(countries, "ht") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:hu</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#hu">http://eulersharp.sourceforge.net/2003/03swap/countries#hu</seealso>
+    let hu = Prefixed_Name(countries, "hu") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:id</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#id">http://eulersharp.sourceforge.net/2003/03swap/countries#id</seealso>
+    let id = Prefixed_Name(countries, "id") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:il</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#il">http://eulersharp.sourceforge.net/2003/03swap/countries#il</seealso>
+    let il = Prefixed_Name(countries, "il") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:im</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#im">http://eulersharp.sourceforge.net/2003/03swap/countries#im</seealso>
+    let im = Prefixed_Name(countries, "im") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#in">http://eulersharp.sourceforge.net/2003/03swap/countries#in</seealso>
+    let in_ = Prefixed_Name(countries, "in") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:io</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#io">http://eulersharp.sourceforge.net/2003/03swap/countries#io</seealso>
+    let io = Prefixed_Name(countries, "io") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:iq</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#iq">http://eulersharp.sourceforge.net/2003/03swap/countries#iq</seealso>
+    let iq = Prefixed_Name(countries, "iq") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:is</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#is">http://eulersharp.sourceforge.net/2003/03swap/countries#is</seealso>
+    let is = Prefixed_Name(countries, "is") |> PrefixedName
+
+    /// <summary>
+    ///   <para>countries:iso3166-1-alpha-2DT</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-2DT">http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-2DT</seealso>
+    let iso3166_1_alpha_2DT =
+        Prefixed_Name(countries, "iso3166-1-alpha-2DT") |> PrefixedName
+
+    /// <summary>
+    ///   <para>countries:iso3166-1-alpha-3DT</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Datatype</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-3DT">http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-3DT</seealso>
+    let iso3166_1_alpha_3DT =
+        Prefixed_Name(countries, "iso3166-1-alpha-3DT") |> PrefixedName
+
+    /// <summary>
+    ///   <para>countries:it</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#it">http://eulersharp.sourceforge.net/2003/03swap/countries#it</seealso>
+    let it = Prefixed_Name(countries, "it") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:je</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#je">http://eulersharp.sourceforge.net/2003/03swap/countries#je</seealso>
+    let je = Prefixed_Name(countries, "je") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:jm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#jm">http://eulersharp.sourceforge.net/2003/03swap/countries#jm</seealso>
+    let jm = Prefixed_Name(countries, "jm") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:jo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#jo">http://eulersharp.sourceforge.net/2003/03swap/countries#jo</seealso>
+    let jo = Prefixed_Name(countries, "jo") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:jp</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#jp">http://eulersharp.sourceforge.net/2003/03swap/countries#jp</seealso>
+    let jp = Prefixed_Name(countries, "jp") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ke</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ke">http://eulersharp.sourceforge.net/2003/03swap/countries#ke</seealso>
+    let ke = Prefixed_Name(countries, "ke") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:kg</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#kg">http://eulersharp.sourceforge.net/2003/03swap/countries#kg</seealso>
+    let kg = Prefixed_Name(countries, "kg") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:kh</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#kh">http://eulersharp.sourceforge.net/2003/03swap/countries#kh</seealso>
+    let kh = Prefixed_Name(countries, "kh") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ky</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ky">http://eulersharp.sourceforge.net/2003/03swap/countries#ky</seealso>
+    let ky = Prefixed_Name(countries, "ky") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:kz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#kz">http://eulersharp.sourceforge.net/2003/03swap/countries#kz</seealso>
+    let kz = Prefixed_Name(countries, "kz") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:la</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#la">http://eulersharp.sourceforge.net/2003/03swap/countries#la</seealso>
+    let la = Prefixed_Name(countries, "la") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:lb</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#lb">http://eulersharp.sourceforge.net/2003/03swap/countries#lb</seealso>
+    let lb = Prefixed_Name(countries, "lb") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:lc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#lc">http://eulersharp.sourceforge.net/2003/03swap/countries#lc</seealso>
+    let lc = Prefixed_Name(countries, "lc") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:li</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#li">http://eulersharp.sourceforge.net/2003/03swap/countries#li</seealso>
+    let li = Prefixed_Name(countries, "li") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:lk</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#lk">http://eulersharp.sourceforge.net/2003/03swap/countries#lk</seealso>
+    let lk = Prefixed_Name(countries, "lk") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:lr</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#lr">http://eulersharp.sourceforge.net/2003/03swap/countries#lr</seealso>
+    let lr = Prefixed_Name(countries, "lr") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ls</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ls">http://eulersharp.sourceforge.net/2003/03swap/countries#ls</seealso>
+    let ls = Prefixed_Name(countries, "ls") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:lt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#lt">http://eulersharp.sourceforge.net/2003/03swap/countries#lt</seealso>
+    let lt = Prefixed_Name(countries, "lt") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:lu</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#lu">http://eulersharp.sourceforge.net/2003/03swap/countries#lu</seealso>
+    let lu = Prefixed_Name(countries, "lu") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:nu</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#nu">http://eulersharp.sourceforge.net/2003/03swap/countries#nu</seealso>
+    let nu = Prefixed_Name(countries, "nu") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:nz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#nz">http://eulersharp.sourceforge.net/2003/03swap/countries#nz</seealso>
+    let nz = Prefixed_Name(countries, "nz") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:om</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#om">http://eulersharp.sourceforge.net/2003/03swap/countries#om</seealso>
+    let om = Prefixed_Name(countries, "om") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pa</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pa">http://eulersharp.sourceforge.net/2003/03swap/countries#pa</seealso>
+    let pa = Prefixed_Name(countries, "pa") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pe</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pe">http://eulersharp.sourceforge.net/2003/03swap/countries#pe</seealso>
+    let pe = Prefixed_Name(countries, "pe") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pf">http://eulersharp.sourceforge.net/2003/03swap/countries#pf</seealso>
+    let pf = Prefixed_Name(countries, "pf") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pg</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pg">http://eulersharp.sourceforge.net/2003/03swap/countries#pg</seealso>
+    let pg = Prefixed_Name(countries, "pg") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ph</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ph">http://eulersharp.sourceforge.net/2003/03swap/countries#ph</seealso>
+    let ph = Prefixed_Name(countries, "ph") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pk</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pk">http://eulersharp.sourceforge.net/2003/03swap/countries#pk</seealso>
+    let pk = Prefixed_Name(countries, "pk") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pl</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pl">http://eulersharp.sourceforge.net/2003/03swap/countries#pl</seealso>
+    let pl = Prefixed_Name(countries, "pl") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pm">http://eulersharp.sourceforge.net/2003/03swap/countries#pm</seealso>
+    let pm = Prefixed_Name(countries, "pm") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ps</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ps">http://eulersharp.sourceforge.net/2003/03swap/countries#ps</seealso>
+    let ps = Prefixed_Name(countries, "ps") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pt">http://eulersharp.sourceforge.net/2003/03swap/countries#pt</seealso>
+    let pt = Prefixed_Name(countries, "pt") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pw</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pw">http://eulersharp.sourceforge.net/2003/03swap/countries#pw</seealso>
+    let pw = Prefixed_Name(countries, "pw") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:py</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#py">http://eulersharp.sourceforge.net/2003/03swap/countries#py</seealso>
+    let py = Prefixed_Name(countries, "py") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:qa</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#qa">http://eulersharp.sourceforge.net/2003/03swap/countries#qa</seealso>
+    let qa = Prefixed_Name(countries, "qa") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:re</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#re">http://eulersharp.sourceforge.net/2003/03swap/countries#re</seealso>
+    let re = Prefixed_Name(countries, "re") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ro</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ro">http://eulersharp.sourceforge.net/2003/03swap/countries#ro</seealso>
+    let ro = Prefixed_Name(countries, "ro") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:rs</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#rs">http://eulersharp.sourceforge.net/2003/03swap/countries#rs</seealso>
+    let rs = Prefixed_Name(countries, "rs") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ru</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ru">http://eulersharp.sourceforge.net/2003/03swap/countries#ru</seealso>
+    let ru = Prefixed_Name(countries, "ru") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:rw</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#rw">http://eulersharp.sourceforge.net/2003/03swap/countries#rw</seealso>
+    let rw = Prefixed_Name(countries, "rw") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sa</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sa">http://eulersharp.sourceforge.net/2003/03swap/countries#sa</seealso>
+    let sa = Prefixed_Name(countries, "sa") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sc">http://eulersharp.sourceforge.net/2003/03swap/countries#sc</seealso>
+    let sc = Prefixed_Name(countries, "sc") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sd</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sd">http://eulersharp.sourceforge.net/2003/03swap/countries#sd</seealso>
+    let sd = Prefixed_Name(countries, "sd") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:se</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#se">http://eulersharp.sourceforge.net/2003/03swap/countries#se</seealso>
+    let se = Prefixed_Name(countries, "se") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sg</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sg">http://eulersharp.sourceforge.net/2003/03swap/countries#sg</seealso>
+    let sg = Prefixed_Name(countries, "sg") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sh</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sh">http://eulersharp.sourceforge.net/2003/03swap/countries#sh</seealso>
+    let sh = Prefixed_Name(countries, "sh") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:si</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#si">http://eulersharp.sourceforge.net/2003/03swap/countries#si</seealso>
+    let si = Prefixed_Name(countries, "si") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sj</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sj">http://eulersharp.sourceforge.net/2003/03swap/countries#sj</seealso>
+    let sj = Prefixed_Name(countries, "sj") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sk</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sk">http://eulersharp.sourceforge.net/2003/03swap/countries#sk</seealso>
+    let sk = Prefixed_Name(countries, "sk") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sl</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sl">http://eulersharp.sourceforge.net/2003/03swap/countries#sl</seealso>
+    let sl = Prefixed_Name(countries, "sl") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sm">http://eulersharp.sourceforge.net/2003/03swap/countries#sm</seealso>
+    let sm = Prefixed_Name(countries, "sm") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sn">http://eulersharp.sourceforge.net/2003/03swap/countries#sn</seealso>
+    let sn = Prefixed_Name(countries, "sn") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:fk</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#fk">http://eulersharp.sourceforge.net/2003/03swap/countries#fk</seealso>
+    let fk = Prefixed_Name(countries, "fk") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:km</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#km">http://eulersharp.sourceforge.net/2003/03swap/countries#km</seealso>
+    let km = Prefixed_Name(countries, "km") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:kr</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#kr">http://eulersharp.sourceforge.net/2003/03swap/countries#kr</seealso>
+    let kr = Prefixed_Name(countries, "kr") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:vu</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#vu">http://eulersharp.sourceforge.net/2003/03swap/countries#vu</seealso>
+    let vu = Prefixed_Name(countries, "vu") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ws</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ws">http://eulersharp.sourceforge.net/2003/03swap/countries#ws</seealso>
+    let ws = Prefixed_Name(countries, "ws") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:yt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#yt">http://eulersharp.sourceforge.net/2003/03swap/countries#yt</seealso>
+    let yt = Prefixed_Name(countries, "yt") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:zm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#zm">http://eulersharp.sourceforge.net/2003/03swap/countries#zm</seealso>
+    let zm = Prefixed_Name(countries, "zm") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:cx</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cx">http://eulersharp.sourceforge.net/2003/03swap/countries#cx</seealso>
+    let cx = Prefixed_Name(countries, "cx") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:gd</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#gd">http://eulersharp.sourceforge.net/2003/03swap/countries#gd</seealso>
+    let gd = Prefixed_Name(countries, "gd") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ie</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ie">http://eulersharp.sourceforge.net/2003/03swap/countries#ie</seealso>
+    let ie = Prefixed_Name(countries, "ie") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:lv</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#lv">http://eulersharp.sourceforge.net/2003/03swap/countries#lv</seealso>
+    let lv = Prefixed_Name(countries, "lv") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ly</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ly">http://eulersharp.sourceforge.net/2003/03swap/countries#ly</seealso>
+    let ly = Prefixed_Name(countries, "ly") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:mc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mc">http://eulersharp.sourceforge.net/2003/03swap/countries#mc</seealso>
+    let mc = Prefixed_Name(countries, "mc") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:pn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#pn">http://eulersharp.sourceforge.net/2003/03swap/countries#pn</seealso>
+    let pn = Prefixed_Name(countries, "pn") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:bz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bz">http://eulersharp.sourceforge.net/2003/03swap/countries#bz</seealso>
+    let bz = Prefixed_Name(countries, "bz") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:de</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#de">http://eulersharp.sourceforge.net/2003/03swap/countries#de</seealso>
+    let de = Prefixed_Name(countries, "de") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:mt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mt">http://eulersharp.sourceforge.net/2003/03swap/countries#mt</seealso>
+    let mt = Prefixed_Name(countries, "mt") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:mv</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#mv">http://eulersharp.sourceforge.net/2003/03swap/countries#mv</seealso>
+    let mv = Prefixed_Name(countries, "mv") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sb</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sb">http://eulersharp.sourceforge.net/2003/03swap/countries#sb</seealso>
+    let sb = Prefixed_Name(countries, "sb") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ad</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ad">http://eulersharp.sourceforge.net/2003/03swap/countries#ad</seealso>
+    let ad = Prefixed_Name(countries, "ad") |> PrefixedName
+
+    /// <summary>
+    ///   <para>countries:iso3166-1-alpha-3</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:ConceptScheme</para>
+    ///
+    /// labels<para>ISO3166-1-alpha-3</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-3">http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-3</seealso>
+    let iso3166_1_alpha_3 =
+        Prefixed_Name(countries, "iso3166-1-alpha-3") |> PrefixedName
+
+    /// <summary>
+    ///   <para>countries:aq</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#aq">http://eulersharp.sourceforge.net/2003/03swap/countries#aq</seealso>
+    let aq = Prefixed_Name(countries, "aq") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ar</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ar">http://eulersharp.sourceforge.net/2003/03swap/countries#ar</seealso>
+    let ar = Prefixed_Name(countries, "ar") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:at</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#at">http://eulersharp.sourceforge.net/2003/03swap/countries#at</seealso>
+    let at = Prefixed_Name(countries, "at") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:aw</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#aw">http://eulersharp.sourceforge.net/2003/03swap/countries#aw</seealso>
+    let aw = Prefixed_Name(countries, "aw") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:az</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#az">http://eulersharp.sourceforge.net/2003/03swap/countries#az</seealso>
+    let az = Prefixed_Name(countries, "az") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:bb</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#bb">http://eulersharp.sourceforge.net/2003/03swap/countries#bb</seealso>
+    let bb = Prefixed_Name(countries, "bb") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:cl</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#cl">http://eulersharp.sourceforge.net/2003/03swap/countries#cl</seealso>
+    let cl = Prefixed_Name(countries, "cl") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:so</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#so">http://eulersharp.sourceforge.net/2003/03swap/countries#so</seealso>
+    let so = Prefixed_Name(countries, "so") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:st</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#st">http://eulersharp.sourceforge.net/2003/03swap/countries#st</seealso>
+    let st = Prefixed_Name(countries, "st") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sv</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sv">http://eulersharp.sourceforge.net/2003/03swap/countries#sv</seealso>
+    let sv = Prefixed_Name(countries, "sv") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sy">http://eulersharp.sourceforge.net/2003/03swap/countries#sy</seealso>
+    let sy = Prefixed_Name(countries, "sy") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:sz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#sz">http://eulersharp.sourceforge.net/2003/03swap/countries#sz</seealso>
+    let sz = Prefixed_Name(countries, "sz") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:tf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tf">http://eulersharp.sourceforge.net/2003/03swap/countries#tf</seealso>
+    let tf = Prefixed_Name(countries, "tf") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:th</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#th">http://eulersharp.sourceforge.net/2003/03swap/countries#th</seealso>
+    let th = Prefixed_Name(countries, "th") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:tj</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tj">http://eulersharp.sourceforge.net/2003/03swap/countries#tj</seealso>
+    let tj = Prefixed_Name(countries, "tj") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:tl</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tl">http://eulersharp.sourceforge.net/2003/03swap/countries#tl</seealso>
+    let tl = Prefixed_Name(countries, "tl") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#to">http://eulersharp.sourceforge.net/2003/03swap/countries#to</seealso>
+    let to_ = Prefixed_Name(countries, "to") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:tt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tt">http://eulersharp.sourceforge.net/2003/03swap/countries#tt</seealso>
+    let tt = Prefixed_Name(countries, "tt") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:tv</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tv">http://eulersharp.sourceforge.net/2003/03swap/countries#tv</seealso>
+    let tv = Prefixed_Name(countries, "tv") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:tz</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#tz">http://eulersharp.sourceforge.net/2003/03swap/countries#tz</seealso>
+    let tz = Prefixed_Name(countries, "tz") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:um</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#um">http://eulersharp.sourceforge.net/2003/03swap/countries#um</seealso>
+    let um = Prefixed_Name(countries, "um") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:us</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#us">http://eulersharp.sourceforge.net/2003/03swap/countries#us</seealso>
+    let us = Prefixed_Name(countries, "us") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:va</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#va">http://eulersharp.sourceforge.net/2003/03swap/countries#va</seealso>
+    let va = Prefixed_Name(countries, "va") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:vc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#vc">http://eulersharp.sourceforge.net/2003/03swap/countries#vc</seealso>
+    let vc = Prefixed_Name(countries, "vc") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:ve</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#ve">http://eulersharp.sourceforge.net/2003/03swap/countries#ve</seealso>
+    let ve = Prefixed_Name(countries, "ve") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:vg</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#vg">http://eulersharp.sourceforge.net/2003/03swap/countries#vg</seealso>
+    let vg = Prefixed_Name(countries, "vg") |> PrefixedName
+    /// <summary>
+    ///   <para>countries:vi</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>jur:Country</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/countries#vi">http://eulersharp.sourceforge.net/2003/03swap/countries#vi</seealso>
+    let vi = Prefixed_Name(countries, "vi") |> PrefixedName

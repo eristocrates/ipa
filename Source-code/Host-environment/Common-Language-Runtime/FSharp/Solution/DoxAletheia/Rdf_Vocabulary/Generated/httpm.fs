@@ -1,46 +1,80 @@
 namespace http.www.w3.org._2011.http_methods.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module httpm =
-    let _namespace_name = "http://www.w3.org/2011/http-methods#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri httpm |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://www.w3.org/2011/http-methods#CONNECT"></see>
+    ///   <para>httpm:DELETE</para>
     /// </summary>
-    let CONNECT = _prefix "CONNECT"
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#DELETE">http://www.w3.org/2011/http-methods#DELETE</seealso>
+    let DELETE = Prefixed_Name(httpm, "DELETE") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/2011/http-methods#DELETE"></see>
+    ///   <para>httpm:OPTIONS</para>
     /// </summary>
-    let DELETE = _prefix "DELETE"
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#OPTIONS">http://www.w3.org/2011/http-methods#OPTIONS</seealso>
+    let OPTIONS = Prefixed_Name(httpm, "OPTIONS") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/2011/http-methods#GET"></see>
+    ///   <para>httpm:GET</para>
     /// </summary>
-    let GET = _prefix "GET"
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#GET">http://www.w3.org/2011/http-methods#GET</seealso>
+    let GET = Prefixed_Name(httpm, "GET") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/2011/http-methods#HEAD"></see>
+    ///   <para>httpm:PUT</para>
     /// </summary>
-    let HEAD = _prefix "HEAD"
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#PUT">http://www.w3.org/2011/http-methods#PUT</seealso>
+    let PUT = Prefixed_Name(httpm, "PUT") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/2011/http-methods#OPTIONS"></see>
+    ///   <para>httpm:CONNECT</para>
     /// </summary>
-    let OPTIONS = _prefix "OPTIONS"
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#CONNECT">http://www.w3.org/2011/http-methods#CONNECT</seealso>
+    let CONNECT = Prefixed_Name(httpm, "CONNECT") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/2011/http-methods#PATCH"></see>
+    ///   <para>httpm:HEAD</para>
     /// </summary>
-    let PATCH = _prefix "PATCH"
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#HEAD">http://www.w3.org/2011/http-methods#HEAD</seealso>
+    let HEAD = Prefixed_Name(httpm, "HEAD") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/2011/http-methods#POST"></see>
+    ///   <para>httpm:PATCH</para>
     /// </summary>
-    let POST = _prefix "POST"
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#PATCH">http://www.w3.org/2011/http-methods#PATCH</seealso>
+    let PATCH = Prefixed_Name(httpm, "PATCH") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/2011/http-methods#PUT"></see>
+    ///   <para>httpm:POST</para>
     /// </summary>
-    let PUT = _prefix "PUT"
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#POST">http://www.w3.org/2011/http-methods#POST</seealso>
+    let POST = Prefixed_Name(httpm, "POST") |> PrefixedName
     /// <summary>
-    ///   <see href="http://www.w3.org/2011/http-methods#TRACE"></see>
+    ///   <para>httpm:TRACE</para>
     /// </summary>
-    let TRACE = _prefix "TRACE"
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#TRACE">http://www.w3.org/2011/http-methods#TRACE</seealso>
+    let TRACE = Prefixed_Name(httpm, "TRACE") |> PrefixedName

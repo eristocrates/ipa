@@ -1,46 +1,74 @@
 namespace http.purl.org.LiMo._0._1.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module limoo =
-    let _namespace_name = "http://purl.org/LiMo/0.1#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    let _namespace_iri = Namespace_Iri limoo |> NamespaceIRI
 
     /// <summary>
-    ///   <see href="http://purl.org/LiMo/0.1#attributionCondition"></see>
+    ///   <para>limoo:attributionCondition</para>
     /// </summary>
-    let attributionCondition = _prefix "attributionCondition"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/LiMo/0.1#attributionCondition">http://purl.org/LiMo/0.1#attributionCondition</seealso>
+    let attributionCondition =
+        Prefixed_Name(limoo, "attributionCondition") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/LiMo/0.1#createCondition"></see>
+    ///   <para>limoo:createCondition</para>
     /// </summary>
-    let createCondition = _prefix "createCondition"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/LiMo/0.1#createCondition">http://purl.org/LiMo/0.1#createCondition</seealso>
+    let createCondition = Prefixed_Name(limoo, "createCondition") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/LiMo/0.1#noCopyrightCondition"></see>
+    ///   <para>limoo:remixCondition</para>
     /// </summary>
-    let noCopyrightCondition = _prefix "noCopyrightCondition"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/LiMo/0.1#remixCondition">http://purl.org/LiMo/0.1#remixCondition</seealso>
+    let remixCondition = Prefixed_Name(limoo, "remixCondition") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/LiMo/0.1#nonCommercialCondition"></see>
+    ///   <para>limoo:noCopyrightCondition</para>
     /// </summary>
-    let nonCommercialCondition = _prefix "nonCommercialCondition"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/LiMo/0.1#noCopyrightCondition">http://purl.org/LiMo/0.1#noCopyrightCondition</seealso>
+    let noCopyrightCondition =
+        Prefixed_Name(limoo, "noCopyrightCondition") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/LiMo/0.1#nonDerivativeWorksCondition"></see>
+    ///   <para>limoo:nonCommercialCondition</para>
     /// </summary>
-    let nonDerivativeWorksCondition = _prefix "nonDerivativeWorksCondition"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/LiMo/0.1#nonCommercialCondition">http://purl.org/LiMo/0.1#nonCommercialCondition</seealso>
+    let nonCommercialCondition =
+        Prefixed_Name(limoo, "nonCommercialCondition") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/LiMo/0.1#remixCondition"></see>
+    ///   <para>limoo:nonDerivativeWorksCondition</para>
     /// </summary>
-    let remixCondition = _prefix "remixCondition"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/LiMo/0.1#nonDerivativeWorksCondition">http://purl.org/LiMo/0.1#nonDerivativeWorksCondition</seealso>
+    let nonDerivativeWorksCondition =
+        Prefixed_Name(limoo, "nonDerivativeWorksCondition") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/LiMo/0.1#shareAlikeCondition"></see>
+    ///   <para>limoo:shareAlikeCondition</para>
     /// </summary>
-    let shareAlikeCondition = _prefix "shareAlikeCondition"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/LiMo/0.1#shareAlikeCondition">http://purl.org/LiMo/0.1#shareAlikeCondition</seealso>
+    let shareAlikeCondition =
+        Prefixed_Name(limoo, "shareAlikeCondition") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/LiMo/0.1#shareCondition"></see>
+    ///   <para>limoo:shareCondition</para>
     /// </summary>
-    let shareCondition = _prefix "shareCondition"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/LiMo/0.1#shareCondition">http://purl.org/LiMo/0.1#shareCondition</seealso>
+    let shareCondition = Prefixed_Name(limoo, "shareCondition") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/LiMo/0.1#compatibleWith"></see>
+    ///   <para>limoo:compatibleWith</para>
     /// </summary>
-    let compatibleWith = _prefix "compatibleWith"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/LiMo/0.1#compatibleWith">http://purl.org/LiMo/0.1#compatibleWith</seealso>
+    let compatibleWith = Prefixed_Name(limoo, "compatibleWith") |> PrefixedName

@@ -1,162 +1,372 @@
 namespace https.data.nasa.gov.ontologies.atmonto.general.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module atts =
-    let _namespace_name = "https://data.nasa.gov/ontologies/atmonto/general#"
+    let _namespace_iri = Namespace_Iri atts |> NamespaceIRI
+    /// <summary>
+    ///   <para>atts:CircularRegion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A two-dimensional region defined by a geographic centerpoint and radius.</para>
+    /// </remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#CircularRegion">https://data.nasa.gov/ontologies/atmonto/general#CircularRegion</seealso>
+    let CircularRegion = Prefixed_Name(atts, "CircularRegion") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:Location</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A place defined by a point or a contiguous geographic region.</para>
+    /// labels<para>Location</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#Location">https://data.nasa.gov/ontologies/atmonto/general#Location</seealso>
+    let Location = Prefixed_Name(atts, "Location") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:PolygonBoundary</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An ordered sequence of point locations where the last point connects back to the first point, closing the polygon.</para>
+    /// labels<para>Polygon boundary</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#PolygonBoundary">https://data.nasa.gov/ontologies/atmonto/general#PolygonBoundary</seealso>
+    let PolygonBoundary = Prefixed_Name(atts, "PolygonBoundary") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:hasLastItem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links a sequence to the last item being sequenced.</para>
+    /// labels<para>hasLastItem</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#hasLastItem">https://data.nasa.gov/ontologies/atmonto/general#hasLastItem</seealso>
+    let hasLastItem = Prefixed_Name(atts, "hasLastItem") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:Region3D</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A three-dimensional geographic region.</para>
+    /// </remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#Region3D">https://data.nasa.gov/ontologies/atmonto/general#Region3D</seealso>
+    let Region3D = Prefixed_Name(atts, "Region3D") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:centerpoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Links to the center point of the 2-D circular region.</para>
+    /// labels<para>centerpoint</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#centerpoint">https://data.nasa.gov/ontologies/atmonto/general#centerpoint</seealso>
+    let centerpoint = Prefixed_Name(atts, "centerpoint") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:Region2D</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A two-dimensional geographic region.</para>
+    /// </remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#Region2D">https://data.nasa.gov/ontologies/atmonto/general#Region2D</seealso>
+    let Region2D = Prefixed_Name(atts, "Region2D") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:parameterValue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The numeric value of a parameter.</para>
+    /// labels<para>parameter value</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#parameterValue">https://data.nasa.gov/ontologies/atmonto/general#parameterValue</seealso>
+    let parameterValue = Prefixed_Name(atts, "parameterValue") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:GeographicRegion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A class representing a demarcated region on or above the surface of the Earth.</para>
+    /// </remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#GeographicRegion">https://data.nasa.gov/ontologies/atmonto/general#GeographicRegion</seealso>
+    let GeographicRegion = Prefixed_Name(atts, "GeographicRegion") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:IntegerParameter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A subclass of NumericParameter representing parameters with interger values.</para>
+    /// labels<para>Integer Parameter</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#IntegerParameter">https://data.nasa.gov/ontologies/atmonto/general#IntegerParameter</seealso>
+    let IntegerParameter = Prefixed_Name(atts, "IntegerParameter") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:PointLocation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A location in three-space defined by a latitude, longitude, and altitude.</para>
+    /// </remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#PointLocation">https://data.nasa.gov/ontologies/atmonto/general#PointLocation</seealso>
+    let PointLocation = Prefixed_Name(atts, "PointLocation") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:hasSequencedItem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links a sequence to each of the items being sequenced.</para>
+    /// labels<para>hasSequencedItem</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#hasSequencedItem">https://data.nasa.gov/ontologies/atmonto/general#hasSequencedItem</seealso>
+    let hasSequencedItem = Prefixed_Name(atts, "hasSequencedItem") |> PrefixedName
+    /// <summary>
+    ///   <para>atts:Polygonal2DRegion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A two-dimensional region defined by a polygonal boundary.</para>
+    /// </remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#Polygonal2DRegion">https://data.nasa.gov/ontologies/atmonto/general#Polygonal2DRegion</seealso>
+    let Polygonal2DRegion = Prefixed_Name(atts, "Polygonal2DRegion") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>atts:ShearSidedPolygonalVolume</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A three-dimensional volume defined by a two-dimensional polygon plus a length component that stretches the polygon along an axis perpendicular to the polygon surface.</para>
+    /// labels<para>Shear sided polygonal volume</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#ShearSidedPolygonalVolume">https://data.nasa.gov/ontologies/atmonto/general#ShearSidedPolygonalVolume</seealso>
+    let ShearSidedPolygonalVolume =
+        Prefixed_Name(atts, "ShearSidedPolygonalVolume") |> PrefixedName
 
     /// <summary>
-    /// A two-dimensional region defined by a geographic centerpoint and radius.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#CircularRegion"></see></summary>
-    let CircularRegion = _prefix "CircularRegion"
+    ///   <para>atts:TimeInterval</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A time interval with starting and ending time points. Intervals can be open (including the end points) or closed including the end points) or mixed including one but not the other end point).</para>
+    /// labels<para>Time interval</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#TimeInterval">https://data.nasa.gov/ontologies/atmonto/general#TimeInterval</seealso>
+    let TimeInterval = Prefixed_Name(atts, "TimeInterval") |> PrefixedName
     /// <summary>
-    /// A two-dimensional geographic region.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#Region2D"></see></summary>
-    let Region2D = _prefix "Region2D"
+    ///   <para>atts:altitude</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>The altitude of a point location.</para>
+    /// labels<para>altitude</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#altitude">https://data.nasa.gov/ontologies/atmonto/general#altitude</seealso>
+    let altitude = Prefixed_Name(atts, "altitude") |> PrefixedName
+
     /// <summary>
-    /// A subclass of NumericParameter representing parameters with floating-point values.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#FloatParameter"></see></summary>
-    let FloatParameter = _prefix "FloatParameter"
+    ///   <para>atts:closedStartTimeInterval</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A boolean property that specifies whether or not the starting point of the time interval is closed (inclusive of the point).</para>
+    /// labels<para>closed start time interval</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#closedStartTimeInterval">https://data.nasa.gov/ontologies/atmonto/general#closedStartTimeInterval</seealso>
+    let closedStartTimeInterval =
+        Prefixed_Name(atts, "closedStartTimeInterval") |> PrefixedName
+
     /// <summary>
-    /// The numeric value of a parameter.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#parameterValue"></see></summary>
-    let parameterValue = _prefix "parameterValue"
+    ///   <para>atts:hasPolygonBoundary</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links a polygonal region to its boundary representation.</para>
+    /// labels<para>has polygon boundary</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#hasPolygonBoundary">https://data.nasa.gov/ontologies/atmonto/general#hasPolygonBoundary</seealso>
+    let hasPolygonBoundary = Prefixed_Name(atts, "hasPolygonBoundary") |> PrefixedName
     /// <summary>
-    /// A class representing numeric parameters explicitly as objects (versus representing them as datatype properties). These parameters can be inserted into containers and sequenced. This enables reuse of the same parameter value in multiple sequences.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#NumericParameter"></see></summary>
-    let NumericParameter = _prefix "NumericParameter"
+    ///   <para>atts:latitude</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>The latitude of a point location.</para>
+    /// labels<para>latitude</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#latitude">https://data.nasa.gov/ontologies/atmonto/general#latitude</seealso>
+    let latitude = Prefixed_Name(atts, "latitude") |> PrefixedName
     /// <summary>
-    /// A class representing a demarcated region on or above the surface of the Earth.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#GeographicRegion"></see></summary>
-    let GeographicRegion = _prefix "GeographicRegion"
+    ///   <para>atts:polygonHeight</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Specifies the length dimension of a polygonal volume.</para>
+    /// labels<para>polygon height</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#polygonHeight">https://data.nasa.gov/ontologies/atmonto/general#polygonHeight</seealso>
+    let polygonHeight = Prefixed_Name(atts, "polygonHeight") |> PrefixedName
     /// <summary>
-    /// A place defined by a point or a contiguous geographic region.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#Location"></see></summary>
-    let Location = _prefix "Location"
+    ///   <para>atts:radius</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The radius of a circular region. Note: Unfortunately, the units are currently dependent the type of circular region defined. This needs to be improved.</para>
+    /// labels<para>radius</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#radius">https://data.nasa.gov/ontologies/atmonto/general#radius</seealso>
+    let radius = Prefixed_Name(atts, "radius") |> PrefixedName
     /// <summary>
-    /// A subclass of NumericParameter representing parameters with interger values.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#IntegerParameter"></see></summary>
-    let IntegerParameter = _prefix "IntegerParameter"
+    ///   <para>atts:sequenceNumber</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Indicates the ordered position of this item within the sequence, where 1 signifies the first position in the sequence.</para>
+    /// labels<para>sequenceNumber</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#sequenceNumber">https://data.nasa.gov/ontologies/atmonto/general#sequenceNumber</seealso>
+    let sequenceNumber = Prefixed_Name(atts, "sequenceNumber") |> PrefixedName
     /// <summary>
-    /// A location in three-space defined by a latitude, longitude, and altitude.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#PointLocation"></see></summary>
-    let PointLocation = _prefix "PointLocation"
+    ///   <para>atts:subsequenceOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Links a subsequence to its base sequence.</para>
+    /// labels<para>subsequence of</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#subsequenceOf">https://data.nasa.gov/ontologies/atmonto/general#subsequenceOf</seealso>
+    let subsequenceOf = Prefixed_Name(atts, "subsequenceOf") |> PrefixedName
+
     /// <summary>
-    /// The set of items that can be sequenced.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#SequencedItem"></see></summary>
-    let SequencedItem = _prefix "SequencedItem"
+    ///   <para>atts:subsequenceStartIndex</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A numeric position within a base sequence that represents the start of the subsequence.</para>
+    /// labels<para>subsequence start index</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#subsequenceStartIndex">https://data.nasa.gov/ontologies/atmonto/general#subsequenceStartIndex</seealso>
+    let subsequenceStartIndex =
+        Prefixed_Name(atts, "subsequenceStartIndex") |> PrefixedName
+
     /// <summary>
-    /// An ordered sequence of point locations where the last point connects back to the first point, closing the polygon.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#PolygonBoundary"></see></summary>
-    let PolygonBoundary = _prefix "PolygonBoundary"
+    ///   <para>atts:FloatParameter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A subclass of NumericParameter representing parameters with floating-point values.</para>
+    /// labels<para>Float parameter</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#FloatParameter">https://data.nasa.gov/ontologies/atmonto/general#FloatParameter</seealso>
+    let FloatParameter = Prefixed_Name(atts, "FloatParameter") |> PrefixedName
     /// <summary>
-    /// Links a sequence to each of the items being sequenced.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#hasSequencedItem"></see></summary>
-    let hasSequencedItem = _prefix "hasSequencedItem"
+    ///   <para>atts:NumericParameter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A class representing numeric parameters explicitly as objects (versus representing them as datatype properties). These parameters can be inserted into containers and sequenced. This enables reuse of the same parameter value in multiple sequences.</para>
+    /// labels<para>Numeric Parameter</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#NumericParameter">https://data.nasa.gov/ontologies/atmonto/general#NumericParameter</seealso>
+    let NumericParameter = Prefixed_Name(atts, "NumericParameter") |> PrefixedName
     /// <summary>
-    /// Links a sequence to the last item being sequenced.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#hasLastItem"></see></summary>
-    let hasLastItem = _prefix "hasLastItem"
+    ///   <para>atts:SequencedItem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The set of items that can be sequenced.</para>
+    /// labels<para>Sequenced item</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#SequencedItem">https://data.nasa.gov/ontologies/atmonto/general#SequencedItem</seealso>
+    let SequencedItem = Prefixed_Name(atts, "SequencedItem") |> PrefixedName
     /// <summary>
-    /// Links a sequence to the first item being sequenced.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#hasFirstItem"></see></summary>
-    let hasFirstItem = _prefix "hasFirstItem"
+    ///   <para>atts:hasFirstItem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links a sequence to the first item being sequenced.</para>
+    /// labels<para>hasFirstItem</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#hasFirstItem">https://data.nasa.gov/ontologies/atmonto/general#hasFirstItem</seealso>
+    let hasFirstItem = Prefixed_Name(atts, "hasFirstItem") |> PrefixedName
     /// <summary>
-    /// An ordered sequence of items.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#Sequence"></see></summary>
-    let Sequence = _prefix "Sequence"
+    ///   <para>atts:Sequence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An ordered sequence of items.</para>
+    /// labels<para>Sequence</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#Sequence">https://data.nasa.gov/ontologies/atmonto/general#Sequence</seealso>
+    let Sequence = Prefixed_Name(atts, "Sequence") |> PrefixedName
     /// <summary>
-    /// A two-dimensional region defined by a polygonal boundary.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#Polygonal2DRegion"></see></summary>
-    let Polygonal2DRegion = _prefix "Polygonal2DRegion"
+    ///   <para>atts:SubSequence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Represents a subsequence of existing base sequence. The subsequence does not replicate the items of the sequence, but merely points to the start and end positions within the base sequence.</para>
+    /// labels<para>Subsequence</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#SubSequence">https://data.nasa.gov/ontologies/atmonto/general#SubSequence</seealso>
+    let SubSequence = Prefixed_Name(atts, "SubSequence") |> PrefixedName
+
     /// <summary>
-    /// A three-dimensional geographic region.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#Region3D"></see></summary>
-    let Region3D = _prefix "Region3D"
+    ///   <para>atts:WKTgeoRepresentation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The WKT string representation of a location. Well-known text (WKT) is a text markup language for representing vector geometry objects on a map, spatial reference systems of spatial objects and transformations between spatial reference systems. WKT is a standards-based representation stored as an alternative to the explicit polygon boundary representation employed in the Ontology (see gen:PolygonBoundary).</para>
+    /// labels<para>Well-Known Text geographic representation</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#WKTgeoRepresentation">https://data.nasa.gov/ontologies/atmonto/general#WKTgeoRepresentation</seealso>
+    let WKTgeoRepresentation =
+        Prefixed_Name(atts, "WKTgeoRepresentation") |> PrefixedName
+
     /// <summary>
-    /// A three-dimensional volume defined by a two-dimensional polygon plus a length component that stretches the polygon along an axis perpendicular to the polygon surface.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#ShearSidedPolygonalVolume"></see></summary>
-    let ShearSidedPolygonalVolume = _prefix "ShearSidedPolygonalVolume"
+    ///   <para>atts:closedEndTimeInterval</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A boolean property that specifies whether or not the endpoint of the time interval is closes (inclusive of the point).</para>
+    /// labels<para>closed end time interval</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#closedEndTimeInterval">https://data.nasa.gov/ontologies/atmonto/general#closedEndTimeInterval</seealso>
+    let closedEndTimeInterval =
+        Prefixed_Name(atts, "closedEndTimeInterval") |> PrefixedName
+
     /// <summary>
-    /// Represents a subsequence of existing base sequence. The subsequence does not replicate the items of the sequence, but merely points to the start and end positions within the base sequence.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#SubSequence"></see></summary>
-    let SubSequence = _prefix "SubSequence"
+    ///   <para>atts:endTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The ending time of a defined time interval.</para>
+    /// labels<para>end time</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#endTime">https://data.nasa.gov/ontologies/atmonto/general#endTime</seealso>
+    let endTime = Prefixed_Name(atts, "endTime") |> PrefixedName
     /// <summary>
-    /// A time interval with starting and ending time points. Intervals can be open (including the end points) or closed including the end points) or mixed including one but not the other end point).
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#TimeInterval"></see></summary>
-    let TimeInterval = _prefix "TimeInterval"
+    ///   <para>atts:hasNextItem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links an item in a sequence to the subsequent item in the sequence.</para>
+    /// labels<para>hasNext</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#hasNextItem">https://data.nasa.gov/ontologies/atmonto/general#hasNextItem</seealso>
+    let hasNextItem = Prefixed_Name(atts, "hasNextItem") |> PrefixedName
     /// <summary>
-    /// The WKT string representation of a location. Well-known text (WKT) is a text markup language for representing vector geometry objects on a map, spatial reference systems of spatial objects and transformations between spatial reference systems. WKT is a standards-based representation stored as an alternative to the explicit polygon boundary representation employed in the Ontology (see gen:PolygonBoundary).
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#WKTgeoRepresentation"></see></summary>
-    let WKTgeoRepresentation = _prefix "WKTgeoRepresentation"
+    ///   <para>atts:longitude</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The longitude of a point location.</para>
+    /// labels<para>longitude</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#longitude">https://data.nasa.gov/ontologies/atmonto/general#longitude</seealso>
+    let longitude = Prefixed_Name(atts, "longitude") |> PrefixedName
     /// <summary>
-    /// The altitude of a point location.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#altitude"></see></summary>
-    let altitude = _prefix "altitude"
+    ///   <para>atts:sequenceLength</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The number of items in the ordered sequence.</para>
+    /// labels<para>sequence length</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#sequenceLength">https://data.nasa.gov/ontologies/atmonto/general#sequenceLength</seealso>
+    let sequenceLength = Prefixed_Name(atts, "sequenceLength") |> PrefixedName
     /// <summary>
-    /// Links to the center point of the 2-D circular region.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#centerpoint"></see></summary>
-    let centerpoint = _prefix "centerpoint"
+    ///   <para>atts:startTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The starting time of a defined time interval.</para>
+    /// labels<para>start time</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#startTime">https://data.nasa.gov/ontologies/atmonto/general#startTime</seealso>
+    let startTime = Prefixed_Name(atts, "startTime") |> PrefixedName
     /// <summary>
-    /// A boolean property that specifies whether or not the endpoint of the time interval is closes (inclusive of the point).
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#closedEndTimeInterval"></see></summary>
-    let closedEndTimeInterval = _prefix "closedEndTimeInterval"
-    /// <summary>
-    /// A boolean property that specifies whether or not the starting point of the time interval is closed (inclusive of the point).
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#closedStartTimeInterval"></see></summary>
-    let closedStartTimeInterval = _prefix "closedStartTimeInterval"
-    /// <summary>
-    /// The ending time of a defined time interval.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#endTime"></see></summary>
-    let endTime = _prefix "endTime"
-    /// <summary>
-    /// Links an item in a sequence to the subsequent item in the sequence.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#hasNextItem"></see></summary>
-    let hasNextItem = _prefix "hasNextItem"
-    /// <summary>
-    /// Links a polygonal region to its boundary representation.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#hasPolygonBoundary"></see></summary>
-    let hasPolygonBoundary = _prefix "hasPolygonBoundary"
-    /// <summary>
-    /// The latitude of a point location.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#latitude"></see></summary>
-    let latitude = _prefix "latitude"
-    /// <summary>
-    /// The longitude of a point location.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#longitude"></see></summary>
-    let longitude = _prefix "longitude"
-    /// <summary>
-    /// Specifies the length dimension of a polygonal volume.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#polygonHeight"></see></summary>
-    let polygonHeight = _prefix "polygonHeight"
-    /// <summary>
-    /// The radius of a circular region. Note: Unfortunately, the units are currently dependent the type of circular region defined. This needs to be improved.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#radius"></see></summary>
-    let radius = _prefix "radius"
-    /// <summary>
-    /// The number of items in the ordered sequence.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#sequenceLength"></see></summary>
-    let sequenceLength = _prefix "sequenceLength"
-    /// <summary>
-    /// Indicates the ordered position of this item within the sequence, where 1 signifies the first position in the sequence.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#sequenceNumber"></see></summary>
-    let sequenceNumber = _prefix "sequenceNumber"
-    /// <summary>
-    /// The starting time of a defined time interval.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#startTime"></see></summary>
-    let startTime = _prefix "startTime"
-    /// <summary>
-    /// A numeric position within a base sequence that represents the end of the subsequence.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#subsequenceEndIndex"></see></summary>
-    let subsequenceEndIndex = _prefix "subsequenceEndIndex"
-    /// <summary>
-    /// Links a subsequence to its base sequence.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#subsequenceOf"></see></summary>
-    let subsequenceOf = _prefix "subsequenceOf"
-    /// <summary>
-    /// A numeric position within a base sequence that represents the start of the subsequence.
-    /// <see href="https://data.nasa.gov/ontologies/atmonto/general#subsequenceStartIndex"></see></summary>
-    let subsequenceStartIndex = _prefix "subsequenceStartIndex"
+    ///   <para>atts:subsequenceEndIndex</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A numeric position within a base sequence that represents the end of the subsequence.</para>
+    /// labels<para>subsequence end index</para></remarks>
+    /// <seealso href="https://data.nasa.gov/ontologies/atmonto/general#subsequenceEndIndex">https://data.nasa.gov/ontologies/atmonto/general#subsequenceEndIndex</seealso>
+    let subsequenceEndIndex = Prefixed_Name(atts, "subsequenceEndIndex") |> PrefixedName

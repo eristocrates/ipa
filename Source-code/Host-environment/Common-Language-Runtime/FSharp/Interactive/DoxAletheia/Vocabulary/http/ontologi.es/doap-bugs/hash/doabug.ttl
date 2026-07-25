@@ -1,0 +1,155 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix doabug: <http://ontologi.es/doap-bugs#>.
+
+doabug: <http://purl.org/dc/terms/created> "2010-01-08"^^xsd:date;
+        <http://purl.org/dc/terms/creator> <http://tobyinkster.co.uk/#i>;
+        <http://purl.org/dc/terms/issued> "2010-01-08"^^xsd:date;
+        <http://purl.org/dc/terms/modified> "2011-02-15"^^xsd:date,
+                                            "2010-08-31"^^xsd:date;
+        <http://purl.org/vocab/vann/preferredNamespacePrefix> "dbug";
+        <http://purl.org/vocab/vann/preferredNamespaceUri> "http://ontologi.es/doap-bugs#";
+        a <http://www.w3.org/2002/07/owl#Ontology>;
+        rdfs:comment "EvoOnt BOM is way too overcomplicated. Let's subclass it..."@en;
+        rdfs:label "DOAP Bugs"@en.
+doabug:Bug a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "Bug"@en;
+           rdfs:subClassOf <http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Defect>,
+                           doabug:Issue.
+doabug:Enhancement a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Enhancement"@en;
+                   rdfs:subClasssOf <http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Enhancement>,
+                                    doabug:Issue.
+doabug:Issue a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Provide a quick summary as an rdfs:label and a more extensive summary (if necessary) as an rdfs:comment."@en;
+             rdfs:label "Issue"@en;
+             rdfs:subClassOf <http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Issue>;
+             <http://www.w3.org/2002/07/owl#disjointWith> <http://xmlns.com/foaf/0.1/Document>.
+doabug:SEVERITY_LEVELS a <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                       rdfs:comment "Please use these unless you have an important requirement to use your own severity level scheme. If you do design your own scheme, use skos:closeMatch, skos:exactMatch and so on to link to the definitions here."@en;
+                       rdfs:label "Built-in Severity Levels"@en.
+doabug:STATUS_TYPES a <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                    rdfs:comment "Please use these unless you have an important requirement to use your own status scheme. If you do design your own scheme, use skos:closeMatch, skos:exactMatch and so on to link to the definitions here."@en;
+                    rdfs:label "Built-in Status Types"@en.
+doabug:SecurityIssue a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "An issue that in some way compromises the security of affected versions of its project."@en;
+                     rdfs:label "Security Issue"@en;
+                     rdfs:subClassOf <http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Defect>,
+                                     doabug:Issue.
+doabug:SeverityLevel a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Severity Level"@en;
+                     rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>,
+                                     <http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#Severity>.
+doabug:StatusType a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "Status Type"@en;
+                  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+doabug:affects a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain doabug:Issue;
+               rdfs:label "affects"@en;
+               rdfs:range <http://usefulinc.com/ns/doap#Version>.
+doabug:assignee a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain doabug:Issue;
+                rdfs:label "assignee"@en;
+                rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                rdfs:subPropertyOf <http://www.w3.org/2005/01/wf/flow#assignee>.
+doabug:blocks a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain doabug:Issue;
+              rdfs:label "blocks"@en;
+              rdfs:range doabug:Issue;
+              rdfs:subPropertyOf [<http://www.w3.org/2002/07/owl#inverseOf> <http://www.w3.org/2005/01/wf/flow#dependent>],
+                                 <http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#blocks>.
+doabug:classification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain doabug:Issue;
+                      rdfs:label "classification"@en;
+                      rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>.
+doabug:comment a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain doabug:Issue;
+               rdfs:label "comment"@en;
+               rdfs:range <http://rdfs.org/sioc/ns#Post>;
+               rdfs:subPropertyOf [<http://www.w3.org/2002/07/owl#inverseOf> <http://xmlns.com/foaf/0.1/topic>],
+                                  <http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#hasComment>.
+doabug:confirmed a doabug:StatusType;
+                 rdfs:label "confirmed"@en;
+                 <http://www.w3.org/2004/02/skos/core#inScheme> doabug:STATUS_TYPES;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "confirmed"@en.
+doabug:critical a doabug:SeverityLevel;
+                rdfs:label "critical"@en;
+                <http://www.w3.org/2004/02/skos/core#inScheme> doabug:SEVERITY_LEVELS;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "critical"@en.
+doabug:fixed a doabug:StatusType;
+             rdfs:label "fixed"@en;
+             <http://www.w3.org/2004/02/skos/core#inScheme> doabug:STATUS_TYPES;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "fixed"@en.
+doabug:fixed-in a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain doabug:Issue;
+                rdfs:label "fixed in"@en;
+                rdfs:range <http://usefulinc.com/ns/doap#Version>.
+doabug:id a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:domain doabug:Issue;
+          rdfs:label "identifier"@en;
+          rdfs:range xsd:string;
+          rdfs:subPropertyOf <http://purl.org/dc/terms/identifier>.
+doabug:in-progress a doabug:StatusType;
+                   rdfs:label "in progress"@en;
+                   <http://www.w3.org/2004/02/skos/core#inScheme> doabug:STATUS_TYPES;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "in progress"@en.
+doabug:invalid a doabug:StatusType;
+               rdfs:label "invalid"@en;
+               <http://www.w3.org/2004/02/skos/core#inScheme> doabug:STATUS_TYPES;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "invalid"@en.
+doabug:issue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain <http://usefulinc.com/ns/doap#Project>;
+             rdfs:label "issue"@en;
+             rdfs:range doabug:Issue.
+doabug:major a doabug:SeverityLevel;
+             rdfs:label "major"@en;
+             <http://www.w3.org/2004/02/skos/core#inScheme> doabug:SEVERITY_LEVELS;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "major"@en.
+doabug:minor a doabug:SeverityLevel;
+             rdfs:label "minor"@en;
+             <http://www.w3.org/2004/02/skos/core#inScheme> doabug:SEVERITY_LEVELS;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "minor"@en.
+doabug:new a doabug:StatusType;
+           rdfs:label "new"@en;
+           <http://www.w3.org/2004/02/skos/core#inScheme> doabug:STATUS_TYPES;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "new"@en.
+doabug:page a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain doabug:Issue;
+            rdfs:label "page"@en;
+            rdfs:range <http://xmlns.com/foaf/0.1/Document>;
+            rdfs:subPropertyOf rdfs:seeAlso,
+                               <http://xmlns.com/foaf/0.1/page>,
+                               <http://xmlns.com/foaf/0.1/isPrimaryTopicOf>.
+doabug:reporter a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain doabug:Issue;
+                rdfs:label "reporter"@en;
+                rdfs:range <http://xmlns.com/foaf/0.1/Agent>.
+doabug:severity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain doabug:Issue;
+                rdfs:label "severity"@en;
+                rdfs:range doabug:SeverityLevel;
+                rdfs:subPropertyOf doabug:classification,
+                                   <http://www.ifi.uzh.ch/ddis/evoont/2008/11/bom#hasSeverity>.
+doabug:status a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain doabug:Issue;
+              rdfs:label "status"@en;
+              rdfs:range doabug:StatusType;
+              rdfs:subPropertyOf doabug:classification.
+doabug:third-party a doabug:StatusType;
+                   rdfs:label "third-party"@en;
+                   <http://www.w3.org/2004/02/skos/core#definition> "The issue is related to a third-party component."@en;
+                   <http://www.w3.org/2004/02/skos/core#inScheme> doabug:STATUS_TYPES;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "third-party"@en.
+doabug:trivial a doabug:SeverityLevel;
+               rdfs:label "trivial"@en;
+               <http://www.w3.org/2004/02/skos/core#inScheme> doabug:SEVERITY_LEVELS;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "trivial"@en.
+doabug:wont-fix a doabug:StatusType;
+                rdfs:label "won't fix"@en;
+                <http://www.w3.org/2004/02/skos/core#inScheme> doabug:STATUS_TYPES;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "won't fix"@en.
+doabug:works-for-me a doabug:StatusType;
+                    rdfs:label "works for me"@en;
+                    <http://www.w3.org/2004/02/skos/core#inScheme> doabug:STATUS_TYPES;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "works for me"@en.

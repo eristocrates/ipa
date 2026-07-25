@@ -1,190 +1,444 @@
 namespace http.w3id.org.CEON.ontology.material.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ceon_material =
-    let _namespace_name = "http://w3id.org/CEON/ontology/material/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri ceon_material |> NamespaceIRI
     /// <summary>
-    ///   <see href="http://w3id.org/CEON/ontology/material/0.4/"></see>
+    ///   <para>ceon-material:Nickel</para>
     /// </summary>
-    let ``_0.4/`` = _prefix "0.4/"
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Nickel is a chemical element with the symbol Ni and atomic number 28.</para>
+    /// labels<para>Nickel</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Nickel">http://w3id.org/CEON/ontology/material/Nickel</seealso>
+    let Nickel = Prefixed_Name(ceon_material, "Nickel") |> PrefixedName
     /// <summary>
-    /// Aluminum is a chemical element with the symbol Al and atomic number 13.
-    /// <see href="http://w3id.org/CEON/ontology/material/Aluminum"></see></summary>
-    let Aluminum = _prefix "Aluminum"
+    ///   <para>ceon-material:Scandium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Scandium is a chemical element with the symbol Sc and atomic number 21.</para>
+    /// labels<para>Scandium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Scandium">http://w3id.org/CEON/ontology/material/Scandium</seealso>
+    let Scandium = Prefixed_Name(ceon_material, "Scandium") |> PrefixedName
     /// <summary>
-    /// A chemical element is a chemical substance whose atoms all have the same number of protons.
-    /// <see href="http://w3id.org/CEON/ontology/material/ChemicalElement"></see></summary>
-    let ChemicalElement = _prefix "ChemicalElement"
+    ///   <para>ceon-material:Titanium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Titanium is a chemical element with the symbol Ti and atomic number 22.</para>
+    /// labels<para>Titanium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Titanium">http://w3id.org/CEON/ontology/material/Titanium</seealso>
+    let Titanium = Prefixed_Name(ceon_material, "Titanium") |> PrefixedName
     /// <summary>
-    /// Boron is a chemical element with the symbol B and atomic number 5.
-    /// <see href="http://w3id.org/CEON/ontology/material/Boron"></see></summary>
-    let Boron = _prefix "Boron"
+    ///   <para>ceon-material:Material</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of.</para>
+    /// labels<para>Material</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Material">http://w3id.org/CEON/ontology/material/Material</seealso>
+    let Material = Prefixed_Name(ceon_material, "Material") |> PrefixedName
     /// <summary>
-    /// Cellulose is an organic compound with chemical formula (C6H10O5)n.
-    /// <see href="http://w3id.org/CEON/ontology/material/Cellulose"></see></summary>
-    let Cellulose = _prefix "Cellulose"
+    ///   <para>ceon-material:Cerium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Cerium is a chemical element with the symbol Ce and atomic number 58.</para>
+    /// labels<para>Cerium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Cerium">http://w3id.org/CEON/ontology/material/Cerium</seealso>
+    let Cerium = Prefixed_Name(ceon_material, "Cerium") |> PrefixedName
     /// <summary>
-    /// Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of.
-    /// <see href="http://w3id.org/CEON/ontology/material/Material"></see></summary>
-    let Material = _prefix "Material"
+    ///   <para>ceon-material:Iron</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Iron is a chemical element with the symbol Fe and atomic number 26.</para>
+    /// labels<para>Iron</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Iron">http://w3id.org/CEON/ontology/material/Iron</seealso>
+    let Iron = Prefixed_Name(ceon_material, "Iron") |> PrefixedName
     /// <summary>
-    /// Cerium is a chemical element with the symbol Ce and atomic number 58.
-    /// <see href="http://w3id.org/CEON/ontology/material/Cerium"></see></summary>
-    let Cerium = _prefix "Cerium"
+    ///   <para>ceon-material:Magnesium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Magnesium is a chemical element with the symbol Mg and atomic number 12.</para>
+    /// labels<para>Magnesium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Magnesium">http://w3id.org/CEON/ontology/material/Magnesium</seealso>
+    let Magnesium = Prefixed_Name(ceon_material, "Magnesium") |> PrefixedName
     /// <summary>
-    /// Rare earth elements is a set of 17 nearly indistinguishable lustrous silvery-white soft heavy metals.
-    /// <see href="http://w3id.org/CEON/ontology/material/RareEarthElement"></see></summary>
-    let RareEarthElement = _prefix "RareEarthElement"
+    ///   <para>ceon-material:Manganese</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Manganese is a chemical element with the symbol Mn and atomic number 25.</para>
+    /// labels<para>Manganese</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Manganese">http://w3id.org/CEON/ontology/material/Manganese</seealso>
+    let Manganese = Prefixed_Name(ceon_material, "Manganese") |> PrefixedName
+
     /// <summary>
-    /// A chemical substance is made up of a collection of molecular entities.
-    /// <see href="http://w3id.org/CEON/ontology/material/ChemicalSubstance"></see></summary>
-    let ChemicalSubstance = _prefix "ChemicalSubstance"
+    ///   <para>ceon-material:hasChemicalEntity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>hasChemicalEntity intends to represent that a material can have a collection of chemical entities.</para>
+    /// labels<para>has chemical entity</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/hasChemicalEntity">http://w3id.org/CEON/ontology/material/hasChemicalEntity</seealso>
+    let hasChemicalEntity =
+        Prefixed_Name(ceon_material, "hasChemicalEntity") |> PrefixedName
+
     /// <summary>
-    /// A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance.
-    /// <see href="http://w3id.org/CEON/ontology/material/ChemicalEntity"></see></summary>
-    let ChemicalEntity = _prefix "ChemicalEntity"
+    ///   <para>ceon-material:Neodymium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Neodymium is a chemical element with the symbol Nd and atomic number 60.</para>
+    /// labels<para>Neodymium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Neodymium">http://w3id.org/CEON/ontology/material/Neodymium</seealso>
+    let Neodymium = Prefixed_Name(ceon_material, "Neodymium") |> PrefixedName
     /// <summary>
-    /// Chromium is a chemical element with the symbol Cr and atomic number 24.
-    /// <see href="http://w3id.org/CEON/ontology/material/Chromium"></see></summary>
-    let Chromium = _prefix "Chromium"
+    ///   <para>ceon-material:Niobium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Niobium is a chemical element with the symbol Nb and atomic number 41.</para>
+    /// labels<para>Niobium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Niobium">http://w3id.org/CEON/ontology/material/Niobium</seealso>
+    let Niobium = Prefixed_Name(ceon_material, "Niobium") |> PrefixedName
     /// <summary>
-    /// Copper is a chemical element with the symbol Cu and atomic number 29.
-    /// <see href="http://w3id.org/CEON/ontology/material/Copper"></see></summary>
-    let Copper = _prefix "Copper"
+    ///   <para>ceon-material:Samarium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Samarium is a chemical element with the symbol Sm and atomic number 62.</para>
+    /// labels<para>Samarium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Samarium">http://w3id.org/CEON/ontology/material/Samarium</seealso>
+    let Samarium = Prefixed_Name(ceon_material, "Samarium") |> PrefixedName
     /// <summary>
-    /// Dysprosium is a chemical element with the symbol Dy and atomic number 66.
-    /// <see href="http://w3id.org/CEON/ontology/material/Dysprosium"></see></summary>
-    let Dysprosium = _prefix "Dysprosium"
+    ///   <para>ceon-material:Thulium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Thulium is a chemical element with the symbol Tm and atomic number 69.</para>
+    /// labels<para>Thulium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Thulium">http://w3id.org/CEON/ontology/material/Thulium</seealso>
+    let Thulium = Prefixed_Name(ceon_material, "Thulium") |> PrefixedName
     /// <summary>
-    /// Erbium is a chemical element with the symbol Er and atomic number 68.
-    /// <see href="http://w3id.org/CEON/ontology/material/Erbium"></see></summary>
-    let Erbium = _prefix "Erbium"
+    ///   <para>ceon-material:Ytterbium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Yteerbium is a chemical element with the symbol Yb and atomic number 70.</para>
+    /// labels<para>Ytterbium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Ytterbium">http://w3id.org/CEON/ontology/material/Ytterbium</seealso>
+    let Ytterbium = Prefixed_Name(ceon_material, "Ytterbium") |> PrefixedName
+
     /// <summary>
-    /// Europium is a chemical element with the symbol Eu and atomic number 63.
-    /// <see href="http://w3id.org/CEON/ontology/material/Europium"></see></summary>
-    let Europium = _prefix "Europium"
+    ///   <para>ceon-material:hasMaterialComponent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>hasMaterialComponent intends to represent that a material can have a collection of components.</para>
+    /// labels<para>has material component</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/hasMaterialComponent">http://w3id.org/CEON/ontology/material/hasMaterialComponent</seealso>
+    let hasMaterialComponent =
+        Prefixed_Name(ceon_material, "hasMaterialComponent") |> PrefixedName
+
     /// <summary>
-    /// Gadolinium is a chemical element with the symbol Gd and atomic number 64.
-    /// <see href="http://w3id.org/CEON/ontology/material/Gadolinium"></see></summary>
-    let Gadolinium = _prefix "Gadolinium"
+    ///   <para>ceon-material:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/">http://w3id.org/CEON/ontology/material/</seealso>
+    let _prefix_iri = Prefixed_Name(ceon_material, "") |> PrefixedName
     /// <summary>
-    /// Holmium is a chemical element with the symbol Ho and atomic number 67.
-    /// <see href="http://w3id.org/CEON/ontology/material/Holmium"></see></summary>
-    let Holmium = _prefix "Holmium"
+    ///   <para>ceon-material:0.4/</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/0.4/">http://w3id.org/CEON/ontology/material/0.4/</seealso>
+    let ``_0.4/`` = Prefixed_Name(ceon_material, "0.4/") |> PrefixedName
     /// <summary>
-    /// Iron is a chemical element with the symbol Fe and atomic number 26.
-    /// <see href="http://w3id.org/CEON/ontology/material/Iron"></see></summary>
-    let Iron = _prefix "Iron"
+    ///   <para>ceon-material:Aluminum</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Aluminum is a chemical element with the symbol Al and atomic number 13.</para>
+    /// labels<para>Aluminum</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Aluminum">http://w3id.org/CEON/ontology/material/Aluminum</seealso>
+    let Aluminum = Prefixed_Name(ceon_material, "Aluminum") |> PrefixedName
+
     /// <summary>
-    /// Lanthanum is a chemical element with the symbol Lal and atomic number 57.
-    /// <see href="http://w3id.org/CEON/ontology/material/Lanthanum"></see></summary>
-    let Lanthanum = _prefix "Lanthanum"
+    ///   <para>ceon-material:ChemicalElement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A chemical element is a chemical substance whose atoms all have the same number of protons.</para>
+    /// labels<para>Chemical Element</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/ChemicalElement">http://w3id.org/CEON/ontology/material/ChemicalElement</seealso>
+    let ChemicalElement =
+        Prefixed_Name(ceon_material, "ChemicalElement") |> PrefixedName
+
     /// <summary>
-    /// Lutetium is a chemical element with the symbol Lu and atomic number 71.
-    /// <see href="http://w3id.org/CEON/ontology/material/Lutetium"></see></summary>
-    let Lutetium = _prefix "Lutetium"
+    ///   <para>ceon-material:Boron</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Boron is a chemical element with the symbol B and atomic number 5.</para>
+    /// labels<para>Boron</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Boron">http://w3id.org/CEON/ontology/material/Boron</seealso>
+    let Boron = Prefixed_Name(ceon_material, "Boron") |> PrefixedName
     /// <summary>
-    /// Magnesium is a chemical element with the symbol Mg and atomic number 12.
-    /// <see href="http://w3id.org/CEON/ontology/material/Magnesium"></see></summary>
-    let Magnesium = _prefix "Magnesium"
+    ///   <para>ceon-material:Cellulose</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Cellulose is an organic compound with chemical formula (C6H10O5)n.</para>
+    /// labels<para>Cellulose</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Cellulose">http://w3id.org/CEON/ontology/material/Cellulose</seealso>
+    let Cellulose = Prefixed_Name(ceon_material, "Cellulose") |> PrefixedName
+
     /// <summary>
-    /// Manganese is a chemical element with the symbol Mn and atomic number 25.
-    /// <see href="http://w3id.org/CEON/ontology/material/Manganese"></see></summary>
-    let Manganese = _prefix "Manganese"
+    ///   <para>ceon-material:RareEarthElement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Rare earth elements is a set of 17 nearly indistinguishable lustrous silvery-white soft heavy metals.</para>
+    /// labels<para>Rare Earth Element</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/RareEarthElement">http://w3id.org/CEON/ontology/material/RareEarthElement</seealso>
+    let RareEarthElement =
+        Prefixed_Name(ceon_material, "RareEarthElement") |> PrefixedName
+
     /// <summary>
-    /// hasChemicalEntity intends to represent that a material can have a collection of chemical entities.
-    /// <see href="http://w3id.org/CEON/ontology/material/hasChemicalEntity"></see></summary>
-    let hasChemicalEntity = _prefix "hasChemicalEntity"
+    ///   <para>ceon-material:ChemicalSubstance</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A chemical substance is made up of a collection of molecular entities.</para>
+    /// labels<para>Chemical Substance</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/ChemicalSubstance">http://w3id.org/CEON/ontology/material/ChemicalSubstance</seealso>
+    let ChemicalSubstance =
+        Prefixed_Name(ceon_material, "ChemicalSubstance") |> PrefixedName
+
     /// <summary>
-    /// A material component is a part of a material.
-    /// <see href="http://w3id.org/CEON/ontology/material/MaterialComponent"></see></summary>
-    let MaterialComponent = _prefix "MaterialComponent"
+    ///   <para>ceon-material:ChemicalEntity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance.</para>
+    /// labels<para>Chemical Entity</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/ChemicalEntity">http://w3id.org/CEON/ontology/material/ChemicalEntity</seealso>
+    let ChemicalEntity = Prefixed_Name(ceon_material, "ChemicalEntity") |> PrefixedName
     /// <summary>
-    /// A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion.
-    /// <see href="http://w3id.org/CEON/ontology/material/MolecularEntity"></see></summary>
-    let MolecularEntity = _prefix "MolecularEntity"
+    ///   <para>ceon-material:Chromium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Chromium is a chemical element with the symbol Cr and atomic number 24.</para>
+    /// labels<para>Chromium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Chromium">http://w3id.org/CEON/ontology/material/Chromium</seealso>
+    let Chromium = Prefixed_Name(ceon_material, "Chromium") |> PrefixedName
     /// <summary>
-    /// Neodymium is a chemical element with the symbol Nd and atomic number 60.
-    /// <see href="http://w3id.org/CEON/ontology/material/Neodymium"></see></summary>
-    let Neodymium = _prefix "Neodymium"
+    ///   <para>ceon-material:Copper</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Copper is a chemical element with the symbol Cu and atomic number 29.</para>
+    /// labels<para>Copper</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Copper">http://w3id.org/CEON/ontology/material/Copper</seealso>
+    let Copper = Prefixed_Name(ceon_material, "Copper") |> PrefixedName
     /// <summary>
-    /// Nickel is a chemical element with the symbol Ni and atomic number 28.
-    /// <see href="http://w3id.org/CEON/ontology/material/Nickel"></see></summary>
-    let Nickel = _prefix "Nickel"
+    ///   <para>ceon-material:Dysprosium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Dysprosium is a chemical element with the symbol Dy and atomic number 66.</para>
+    /// labels<para>Dysorisium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Dysprosium">http://w3id.org/CEON/ontology/material/Dysprosium</seealso>
+    let Dysprosium = Prefixed_Name(ceon_material, "Dysprosium") |> PrefixedName
     /// <summary>
-    /// Niobium is a chemical element with the symbol Nb and atomic number 41.
-    /// <see href="http://w3id.org/CEON/ontology/material/Niobium"></see></summary>
-    let Niobium = _prefix "Niobium"
+    ///   <para>ceon-material:Erbium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Erbium is a chemical element with the symbol Er and atomic number 68.</para>
+    /// labels<para>Erbium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Erbium">http://w3id.org/CEON/ontology/material/Erbium</seealso>
+    let Erbium = Prefixed_Name(ceon_material, "Erbium") |> PrefixedName
     /// <summary>
-    /// Praseodymium is a chemical element with the symbol Pr and atomic number 59.
-    /// <see href="http://w3id.org/CEON/ontology/material/Praseodymium"></see></summary>
-    let Praseodymium = _prefix "Praseodymium"
+    ///   <para>ceon-material:Europium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Europium is a chemical element with the symbol Eu and atomic number 63.</para>
+    /// labels<para>Europium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Europium">http://w3id.org/CEON/ontology/material/Europium</seealso>
+    let Europium = Prefixed_Name(ceon_material, "Europium") |> PrefixedName
     /// <summary>
-    /// Promethium is a chemical element with the symbol Pm and atomic number 61.
-    /// <see href="http://w3id.org/CEON/ontology/material/Promethium"></see></summary>
-    let Promethium = _prefix "Promethium"
+    ///   <para>ceon-material:Gadolinium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Gadolinium is a chemical element with the symbol Gd and atomic number 64.</para>
+    /// labels<para>Gadolinium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Gadolinium">http://w3id.org/CEON/ontology/material/Gadolinium</seealso>
+    let Gadolinium = Prefixed_Name(ceon_material, "Gadolinium") |> PrefixedName
     /// <summary>
-    /// Samarium is a chemical element with the symbol Sm and atomic number 62.
-    /// <see href="http://w3id.org/CEON/ontology/material/Samarium"></see></summary>
-    let Samarium = _prefix "Samarium"
+    ///   <para>ceon-material:Holmium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Holmium is a chemical element with the symbol Ho and atomic number 67.</para>
+    /// labels<para>Holmium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Holmium">http://w3id.org/CEON/ontology/material/Holmium</seealso>
+    let Holmium = Prefixed_Name(ceon_material, "Holmium") |> PrefixedName
     /// <summary>
-    /// Scandium is a chemical element with the symbol Sc and atomic number 21.
-    /// <see href="http://w3id.org/CEON/ontology/material/Scandium"></see></summary>
-    let Scandium = _prefix "Scandium"
+    ///   <para>ceon-material:Lanthanum</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Lanthanum is a chemical element with the symbol Lal and atomic number 57.</para>
+    /// labels<para>Lanthanum</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Lanthanum">http://w3id.org/CEON/ontology/material/Lanthanum</seealso>
+    let Lanthanum = Prefixed_Name(ceon_material, "Lanthanum") |> PrefixedName
     /// <summary>
-    /// Silicon is a chemical element with the symbol Si and atomic number 14.
-    /// <see href="http://w3id.org/CEON/ontology/material/Silicon"></see></summary>
-    let Silicon = _prefix "Silicon"
+    ///   <para>ceon-material:Lutetium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Lutetium is a chemical element with the symbol Lu and atomic number 71.</para>
+    /// labels<para>Lutetium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Lutetium">http://w3id.org/CEON/ontology/material/Lutetium</seealso>
+    let Lutetium = Prefixed_Name(ceon_material, "Lutetium") |> PrefixedName
+
     /// <summary>
-    /// Tantalum is a chemical element with the symbol Ta and atomic number 73.
-    /// <see href="http://w3id.org/CEON/ontology/material/Tantalum"></see></summary>
-    let Tantalum = _prefix "Tantalum"
+    ///   <para>ceon-material:MaterialComponent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A material component is a part of a material.</para>
+    /// labels<para>Material Component</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/MaterialComponent">http://w3id.org/CEON/ontology/material/MaterialComponent</seealso>
+    let MaterialComponent =
+        Prefixed_Name(ceon_material, "MaterialComponent") |> PrefixedName
+
     /// <summary>
-    /// Terbium is a chemical element with the symbol Tb and atomic number 65.
-    /// <see href="http://w3id.org/CEON/ontology/material/Terbium"></see></summary>
-    let Terbium = _prefix "Terbium"
+    ///   <para>ceon-material:MolecularEntity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion.</para>
+    /// labels<para>Molecular Entity</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/MolecularEntity">http://w3id.org/CEON/ontology/material/MolecularEntity</seealso>
+    let MolecularEntity =
+        Prefixed_Name(ceon_material, "MolecularEntity") |> PrefixedName
+
     /// <summary>
-    /// Thulium is a chemical element with the symbol Tm and atomic number 69.
-    /// <see href="http://w3id.org/CEON/ontology/material/Thulium"></see></summary>
-    let Thulium = _prefix "Thulium"
+    ///   <para>ceon-material:Praseodymium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Praseodymium is a chemical element with the symbol Pr and atomic number 59.</para>
+    /// labels<para>Praseodymium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Praseodymium">http://w3id.org/CEON/ontology/material/Praseodymium</seealso>
+    let Praseodymium = Prefixed_Name(ceon_material, "Praseodymium") |> PrefixedName
     /// <summary>
-    /// Titanium is a chemical element with the symbol Ti and atomic number 22.
-    /// <see href="http://w3id.org/CEON/ontology/material/Titanium"></see></summary>
-    let Titanium = _prefix "Titanium"
+    ///   <para>ceon-material:Promethium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Promethium is a chemical element with the symbol Pm and atomic number 61.</para>
+    /// labels<para>Promethium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Promethium">http://w3id.org/CEON/ontology/material/Promethium</seealso>
+    let Promethium = Prefixed_Name(ceon_material, "Promethium") |> PrefixedName
     /// <summary>
-    /// Yteerbium is a chemical element with the symbol Yb and atomic number 70.
-    /// <see href="http://w3id.org/CEON/ontology/material/Ytterbium"></see></summary>
-    let Ytterbium = _prefix "Ytterbium"
+    ///   <para>ceon-material:Silicon</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Silicon is a chemical element with the symbol Si and atomic number 14.</para>
+    /// labels<para>Silicon</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Silicon">http://w3id.org/CEON/ontology/material/Silicon</seealso>
+    let Silicon = Prefixed_Name(ceon_material, "Silicon") |> PrefixedName
     /// <summary>
-    /// Yttrium is a chemical element with the symbol Y and atomic number 39.
-    /// <see href="http://w3id.org/CEON/ontology/material/Yttrium"></see></summary>
-    let Yttrium = _prefix "Yttrium"
+    ///   <para>ceon-material:Tantalum</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Tantalum is a chemical element with the symbol Ta and atomic number 73.</para>
+    /// labels<para>Tantalum</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Tantalum">http://w3id.org/CEON/ontology/material/Tantalum</seealso>
+    let Tantalum = Prefixed_Name(ceon_material, "Tantalum") |> PrefixedName
     /// <summary>
-    /// Zinc is a chemical element with the symbol Zn and atomic number 30.
-    /// <see href="http://w3id.org/CEON/ontology/material/Zinc"></see></summary>
-    let Zinc = _prefix "Zinc"
+    ///   <para>ceon-material:Terbium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Terbium is a chemical element with the symbol Tb and atomic number 65.</para>
+    /// labels<para>Terbium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Terbium">http://w3id.org/CEON/ontology/material/Terbium</seealso>
+    let Terbium = Prefixed_Name(ceon_material, "Terbium") |> PrefixedName
     /// <summary>
-    /// anonymousFormula represents that a molecular entity has the anonymous formula in a string.
-    /// <see href="http://w3id.org/CEON/ontology/material/anonymousFormula"></see></summary>
-    let anonymousFormula = _prefix "anonymousFormula"
+    ///   <para>ceon-material:Yttrium</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Yttrium is a chemical element with the symbol Y and atomic number 39.</para>
+    /// labels<para>Yttrium</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Yttrium">http://w3id.org/CEON/ontology/material/Yttrium</seealso>
+    let Yttrium = Prefixed_Name(ceon_material, "Yttrium") |> PrefixedName
     /// <summary>
-    /// descriptiveFormula represents that a molecular entity has the descriptive formula in a string.
-    /// <see href="http://w3id.org/CEON/ontology/material/descriptiveFormula"></see></summary>
-    let descriptiveFormula = _prefix "descriptiveFormula"
+    ///   <para>ceon-material:Zinc</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Zinc is a chemical element with the symbol Zn and atomic number 30.</para>
+    /// labels<para>Zinc</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/Zinc">http://w3id.org/CEON/ontology/material/Zinc</seealso>
+    let Zinc = Prefixed_Name(ceon_material, "Zinc") |> PrefixedName
+
     /// <summary>
-    /// hasMaterialComponent intends to represent that a material can have a collection of components.
-    /// <see href="http://w3id.org/CEON/ontology/material/hasMaterialComponent"></see></summary>
-    let hasMaterialComponent = _prefix "hasMaterialComponent"
+    ///   <para>ceon-material:anonymousFormula</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>anonymousFormula represents that a molecular entity has the anonymous formula in a string.</para>
+    /// labels<para>anonymous formula</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/anonymousFormula">http://w3id.org/CEON/ontology/material/anonymousFormula</seealso>
+    let anonymousFormula =
+        Prefixed_Name(ceon_material, "anonymousFormula") |> PrefixedName
+
     /// <summary>
-    /// hillFormula represents that a composition has the hill formula in a string.
-    /// <see href="http://w3id.org/CEON/ontology/material/hillFormula"></see></summary>
-    let hillFormula = _prefix "hillFormula"
+    ///   <para>ceon-material:descriptiveFormula</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>descriptiveFormula represents that a molecular entity has the descriptive formula in a string.</para>
+    /// labels<para>descriptive formula</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/descriptiveFormula">http://w3id.org/CEON/ontology/material/descriptiveFormula</seealso>
+    let descriptiveFormula =
+        Prefixed_Name(ceon_material, "descriptiveFormula") |> PrefixedName
+
     /// <summary>
-    /// reducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string.
-    /// <see href="http://w3id.org/CEON/ontology/material/reducedChemicalFormula"></see></summary>
-    let reducedChemicalFormula = _prefix "reducedChemicalFormula"
+    ///   <para>ceon-material:hillFormula</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>hillFormula represents that a composition has the hill formula in a string.</para>
+    /// labels<para>hill formula</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/hillFormula">http://w3id.org/CEON/ontology/material/hillFormula</seealso>
+    let hillFormula = Prefixed_Name(ceon_material, "hillFormula") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ceon-material:reducedChemicalFormula</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>reducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string.</para>
+    /// labels<para>reduced chemical formula</para></remarks>
+    /// <seealso href="http://w3id.org/CEON/ontology/material/reducedChemicalFormula">http://w3id.org/CEON/ontology/material/reducedChemicalFormula</seealso>
+    let reducedChemicalFormula =
+        Prefixed_Name(ceon_material, "reducedChemicalFormula") |> PrefixedName

@@ -1,50 +1,104 @@
 namespace http.purl.org.rss._1._0.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module rss =
-    let _namespace_name = "http://purl.org/rss/1.0/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
-
+    let _namespace_iri = Namespace_Iri rss |> NamespaceIRI
     /// <summary>
-    /// An RSS information channel.
-    /// <see href="http://purl.org/rss/1.0/channel"></see></summary>
-    let channel = _prefix "channel"
+    ///   <para>rss:</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/">http://purl.org/rss/1.0/</seealso>
+    let _prefix_iri = Prefixed_Name(rss, "") |> PrefixedName
     /// <summary>
-    /// A short text description of the subject.
-    /// <see href="http://purl.org/rss/1.0/description"></see></summary>
-    let description = _prefix "description"
+    ///   <para>rss:description</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A short text description of the subject.</para>
+    /// labels<para>Description</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/description">http://purl.org/rss/1.0/description</seealso>
+    let description = Prefixed_Name(rss, "description") |> PrefixedName
     /// <summary>
-    /// An RSS image.
-    /// <see href="http://purl.org/rss/1.0/image"></see></summary>
-    let image = _prefix "image"
+    ///   <para>rss:item</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An RSS item.</para>
+    /// labels<para>Item</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/item">http://purl.org/rss/1.0/item</seealso>
+    let item = Prefixed_Name(rss, "item") |> PrefixedName
     /// <summary>
-    /// An RSS item.
-    /// <see href="http://purl.org/rss/1.0/item"></see></summary>
-    let item = _prefix "item"
+    ///   <para>rss:textinput</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An RSS text input.</para>
+    /// labels<para>Text Input</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/textinput">http://purl.org/rss/1.0/textinput</seealso>
+    let textinput = Prefixed_Name(rss, "textinput") |> PrefixedName
     /// <summary>
-    /// Points to a list of rss:item elements that are members of the subject channel.
-    /// <see href="http://purl.org/rss/1.0/items"></see></summary>
-    let items = _prefix "items"
+    ///   <para>rss:url</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The URL of the image to used in the 'src' attribute of the channel's image tag when rendered as HTML.</para>
+    /// labels<para>URL</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/url">http://purl.org/rss/1.0/url</seealso>
+    let url = Prefixed_Name(rss, "url") |> PrefixedName
     /// <summary>
-    /// The URL to which an HTML rendering of the subject will link.
-    /// <see href="http://purl.org/rss/1.0/link"></see></summary>
-    let link = _prefix "link"
+    ///   <para>rss:link</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The URL to which an HTML rendering of the subject will link.</para>
+    /// labels<para>Link</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/link">http://purl.org/rss/1.0/link</seealso>
+    let link = Prefixed_Name(rss, "link") |> PrefixedName
     /// <summary>
-    /// The text input field's (variable) name.
-    /// <see href="http://purl.org/rss/1.0/name"></see></summary>
-    let name = _prefix "name"
+    ///   <para>rss:channel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An RSS information channel.</para>
+    /// labels<para>Channel</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/channel">http://purl.org/rss/1.0/channel</seealso>
+    let channel = Prefixed_Name(rss, "channel") |> PrefixedName
     /// <summary>
-    /// An RSS text input.
-    /// <see href="http://purl.org/rss/1.0/textinput"></see></summary>
-    let textinput = _prefix "textinput"
+    ///   <para>rss:image</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An RSS image.</para>
+    /// labels<para>Image</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/image">http://purl.org/rss/1.0/image</seealso>
+    let image = Prefixed_Name(rss, "image") |> PrefixedName
     /// <summary>
-    /// A descriptive title for the channel.
-    /// <see href="http://purl.org/rss/1.0/title"></see></summary>
-    let title = _prefix "title"
+    ///   <para>rss:items</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Points to a list of rss:item elements that are members of the subject channel.</para>
+    /// labels<para>Items</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/items">http://purl.org/rss/1.0/items</seealso>
+    let items = Prefixed_Name(rss, "items") |> PrefixedName
     /// <summary>
-    /// The URL of the image to used in the 'src' attribute of the channel's image tag when rendered as HTML.
-    /// <see href="http://purl.org/rss/1.0/url"></see></summary>
-    let url = _prefix "url"
+    ///   <para>rss:name</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The text input field's (variable) name.</para>
+    /// labels<para>Name</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/name">http://purl.org/rss/1.0/name</seealso>
+    let name = Prefixed_Name(rss, "name") |> PrefixedName
+    /// <summary>
+    ///   <para>rss:title</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A descriptive title for the channel.</para>
+    /// labels<para>Title</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/title">http://purl.org/rss/1.0/title</seealso>
+    let title = Prefixed_Name(rss, "title") |> PrefixedName

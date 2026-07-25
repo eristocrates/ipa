@@ -1,30 +1,64 @@
 namespace https.w3id.org.inrupt._namespace.vocab.authn_provider.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module authn_provider =
-    let _namespace_name = "https://w3id.org/inrupt/namespace/vocab/authn_provider/"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    let _namespace_iri = Namespace_Iri authn_provider |> NamespaceIRI
 
     /// <summary>
-    ///   <see href="https://w3id.org/inrupt/namespace/vocab/authn_provider/1.0.0"></see>
+    ///   <para>authn_provider:AuthenticationProvider</para>
     /// </summary>
-    let ``_1.0.0`` = _prefix "1.0.0"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An authentication provider.</para>
+    /// labels<para>Authentication Provider</para></remarks>
+    /// <seealso href="https://w3id.org/inrupt/namespace/vocab/authn_provider/AuthenticationProvider">https://w3id.org/inrupt/namespace/vocab/authn_provider/AuthenticationProvider</seealso>
+    let AuthenticationProvider =
+        Prefixed_Name(authn_provider, "AuthenticationProvider") |> PrefixedName
+
     /// <summary>
-    /// An authentication provider.
-    /// <see href="https://w3id.org/inrupt/namespace/vocab/authn_provider/AuthenticationProvider"></see></summary>
-    let AuthenticationProvider = _prefix "AuthenticationProvider"
+    ///   <para>authn_provider:hasMfaEnforced</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Has multi-factor authentication (MFA) been enforced?</para>
+    /// labels<para>MFA enforced</para></remarks>
+    /// <seealso href="https://w3id.org/inrupt/namespace/vocab/authn_provider/hasMfaEnforced">https://w3id.org/inrupt/namespace/vocab/authn_provider/hasMfaEnforced</seealso>
+    let hasMfaEnforced = Prefixed_Name(authn_provider, "hasMfaEnforced") |> PrefixedName
     /// <summary>
-    /// Refers to an authentication provider.
-    /// <see href="https://w3id.org/inrupt/namespace/vocab/authn_provider/hasAuthenticationProvider"></see></summary>
-    let hasAuthenticationProvider = _prefix "hasAuthenticationProvider"
+    ///   <para>authn_provider:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="https://w3id.org/inrupt/namespace/vocab/authn_provider/">https://w3id.org/inrupt/namespace/vocab/authn_provider/</seealso>
+    let _prefix_iri = Prefixed_Name(authn_provider, "") |> PrefixedName
+
     /// <summary>
-    /// Has multi-factor authentication (MFA) been enabled?
-    /// <see href="https://w3id.org/inrupt/namespace/vocab/authn_provider/hasMfaEnabled"></see></summary>
-    let hasMfaEnabled = _prefix "hasMfaEnabled"
+    ///   <para>authn_provider:hasAuthenticationProvider</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Refers to an authentication provider.</para>
+    /// labels<para>Authentication Provider</para></remarks>
+    /// <seealso href="https://w3id.org/inrupt/namespace/vocab/authn_provider/hasAuthenticationProvider">https://w3id.org/inrupt/namespace/vocab/authn_provider/hasAuthenticationProvider</seealso>
+    let hasAuthenticationProvider =
+        Prefixed_Name(authn_provider, "hasAuthenticationProvider") |> PrefixedName
+
     /// <summary>
-    /// Has multi-factor authentication (MFA) been enforced?
-    /// <see href="https://w3id.org/inrupt/namespace/vocab/authn_provider/hasMfaEnforced"></see></summary>
-    let hasMfaEnforced = _prefix "hasMfaEnforced"
+    ///   <para>authn_provider:1.0.0</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="https://w3id.org/inrupt/namespace/vocab/authn_provider/1.0.0">https://w3id.org/inrupt/namespace/vocab/authn_provider/1.0.0</seealso>
+    let ``_1.0.0`` = Prefixed_Name(authn_provider, "1.0.0") |> PrefixedName
+    /// <summary>
+    ///   <para>authn_provider:hasMfaEnabled</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Has multi-factor authentication (MFA) been enabled?</para>
+    /// labels<para>MFA enabled</para></remarks>
+    /// <seealso href="https://w3id.org/inrupt/namespace/vocab/authn_provider/hasMfaEnabled">https://w3id.org/inrupt/namespace/vocab/authn_provider/hasMfaEnabled</seealso>
+    let hasMfaEnabled = Prefixed_Name(authn_provider, "hasMfaEnabled") |> PrefixedName

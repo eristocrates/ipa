@@ -1,102 +1,248 @@
 namespace https.www.w3.org._2019.wot.security.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module wotsec =
-    let _namespace_name = "https://www.w3.org/2019/wot/security#"
-
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    let _namespace_iri = Namespace_Iri wotsec |> NamespaceIRI
 
     /// <summary>
-    /// API key authentication security configuration identified by the term &lt;code&gt;apikey&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "apikey"&lt;/code&gt;).  This is for the case where the access token is opaque and is not using a standard token format.
-    /// <see href="https://www.w3.org/2019/wot/security#APIKeySecurityScheme"></see></summary>
-    let APIKeySecurityScheme = _prefix "APIKeySecurityScheme"
+    ///   <para>wotsec:APIKeySecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>API key authentication security configuration identified by the term &lt;code&gt;apikey&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "apikey"&lt;/code&gt;).  This is for the case where the access token is opaque and is not using a standard token format.</para>
+    /// labels<para>APIKeySecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#APIKeySecurityScheme">https://www.w3.org/2019/wot/security#APIKeySecurityScheme</seealso>
+    let APIKeySecurityScheme =
+        Prefixed_Name(wotsec, "APIKeySecurityScheme") |> PrefixedName
+
     /// <summary>
-    /// Metadata describing the configuration of a security mechanism.  &lt;span class="rfc2119-assertion" id="td-security-scheme-name"&gt;The value assigned to the name &lt;code&gt;scheme&lt;/code&gt; MUST be defined within a vocabulary included in the Thing Description, either in the present vocabulary or in a TD context extension.
-    /// <see href="https://www.w3.org/2019/wot/security#SecurityScheme"></see></summary>
-    let SecurityScheme = _prefix "SecurityScheme"
+    ///   <para>wotsec:BasicSecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Basic authentication security configuration identified by the term &lt;code&gt;basic&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "basic"&lt;/code&gt;), using an unencrypted username and password.  This scheme should be used with some other security mechanism providing confidentiality, for example, TLS.</para>
+    /// labels<para>BasicSecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#BasicSecurityScheme">https://www.w3.org/2019/wot/security#BasicSecurityScheme</seealso>
+    let BasicSecurityScheme =
+        Prefixed_Name(wotsec, "BasicSecurityScheme") |> PrefixedName
+
     /// <summary>
-    /// Basic authentication security configuration identified by the term &lt;code&gt;basic&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "basic"&lt;/code&gt;), using an unencrypted username and password.  This scheme should be used with some other security mechanism providing confidentiality, for example, TLS.
-    /// <see href="https://www.w3.org/2019/wot/security#BasicSecurityScheme"></see></summary>
-    let BasicSecurityScheme = _prefix "BasicSecurityScheme"
+    ///   <para>wotsec:DigestSecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Digest authentication security configuration identified by the term &lt;code&gt;digest&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "digest"&lt;/code&gt;). This scheme is similar to basic authentication but with added features to avoid man-in-the-middle attacks.</para>
+    /// labels<para>DigestSecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#DigestSecurityScheme">https://www.w3.org/2019/wot/security#DigestSecurityScheme</seealso>
+    let DigestSecurityScheme =
+        Prefixed_Name(wotsec, "DigestSecurityScheme") |> PrefixedName
+
     /// <summary>
-    /// Bearer token authentication security configuration identified by the term &lt;code&gt;bearer&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "bearer"&lt;/code&gt;).  This scheme is intended for situations where bearer tokens are used independently of OAuth2.  If the &lt;code&gt;oauth2&lt;/code&gt; scheme is specified it is not generally necessary to specify this scheme as well as it is implied.  For &lt;code&gt;format&lt;/code&gt;, the value &lt;code&gt;jwt&lt;/code&gt; indicates conformance with RFC7519, &lt;code&gt;jws&lt;/code&gt; indicates conformance with RFC7797, &lt;code&gt;cwt&lt;/code&gt; indicates conformance with RFC8392, and &lt;code&gt;jwe&lt;/code&gt; indicates conformance with !RFC7516, with values for &lt;code&gt;alg&lt;/code&gt; interpreted consistently with those standards. &lt;span class="rfc2119-assertion" id="td-security-bearer-format-extensions"&gt;Other formats and algorithms for bearer tokens MAY be specified in vocabulary extensions.&lt;/span&gt;
-    /// <see href="https://www.w3.org/2019/wot/security#BearerSecurityScheme"></see></summary>
-    let BearerSecurityScheme = _prefix "BearerSecurityScheme"
+    ///   <para>wotsec:OAuth2SecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>owl:Class</para>
+    ///   <para>OAuth2 authentication security configuration for systems conformant with !RFC6749 and !RFC8252, identified by the term &lt;code&gt;oauth2&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "oauth2"&lt;/code&gt;).  &lt;span class="rfc2119-assertion" id="td-security-oauth2-implicit-flow"&gt;For the &lt;code&gt;implicit&lt;/code&gt; flow &lt;code&gt;authorization&lt;/code&gt; MUST be included.&lt;/span&gt;  &lt;span class="rfc2119-assertion" id="td-security-oauth2-password-client-flow"&gt;For the &lt;code&gt;password&lt;/code&gt; and &lt;code&gt;client&lt;/code&gt; flows &lt;code&gt;token&lt;/code&gt; MUST be included.&lt;/span&gt;  &lt;span class="rfc2119-assertion" id="td-security-oauth2-code-flow"&gt;For the &lt;code&gt;code&lt;/code&gt; flow both &lt;code&gt;authorization&lt;/code&gt; and &lt;code&gt;token&lt;/code&gt; MUST be included.&lt;/span&gt;  If no &lt;code&gt;scopes&lt;/code&gt; are defined in the &lt;code&gt;SecurityScheme&lt;/code&gt; then they are considered to be empty.</para>
+    /// labels<para>OAuth2SecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#OAuth2SecurityScheme">https://www.w3.org/2019/wot/security#OAuth2SecurityScheme</seealso>
+    let OAuth2SecurityScheme =
+        Prefixed_Name(wotsec, "OAuth2SecurityScheme") |> PrefixedName
+
     /// <summary>
-    /// Certificate-based asymmetric key security configuration conformant with X509V3 identified by the term &lt;code&gt;cert&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "cert"&lt;/code&gt;).
-    /// <see href="https://www.w3.org/2019/wot/security#CertSecurityScheme"></see></summary>
-    let CertSecurityScheme = _prefix "CertSecurityScheme"
+    ///   <para>wotsec:PublicSecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Raw public key asymmetric key security configuration identified by the term &lt;code&gt;public&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "public"&lt;/code&gt;).</para>
+    /// labels<para>PublicSecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#PublicSecurityScheme">https://www.w3.org/2019/wot/security#PublicSecurityScheme</seealso>
+    let PublicSecurityScheme =
+        Prefixed_Name(wotsec, "PublicSecurityScheme") |> PrefixedName
+
     /// <summary>
-    /// Digest authentication security configuration identified by the term &lt;code&gt;digest&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "digest"&lt;/code&gt;). This scheme is similar to basic authentication but with added features to avoid man-in-the-middle attacks.
-    /// <see href="https://www.w3.org/2019/wot/security#DigestSecurityScheme"></see></summary>
-    let DigestSecurityScheme = _prefix "DigestSecurityScheme"
+    ///   <para>wotsec:flow</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Authorization flow.</para>
+    /// labels<para>flow</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#flow">https://www.w3.org/2019/wot/security#flow</seealso>
+    let flow = Prefixed_Name(wotsec, "flow") |> PrefixedName
     /// <summary>
-    /// A security configuration corresponding to identified by the term &lt;code&gt;nosec&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "nosec"&lt;/code&gt;), indicating there is no authentication or other mechanism required to access the resource.
-    /// <see href="https://www.w3.org/2019/wot/security#NoSecurityScheme"></see></summary>
-    let NoSecurityScheme = _prefix "NoSecurityScheme"
+    ///   <para>wotsec:format</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Specifies format of security authentication information.</para>
+    /// labels<para>format</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#format">https://www.w3.org/2019/wot/security#format</seealso>
+    let format = Prefixed_Name(wotsec, "format") |> PrefixedName
     /// <summary>
-    /// OAuth2 authentication security configuration for systems conformant with !RFC6749 and !RFC8252, identified by the term &lt;code&gt;oauth2&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "oauth2"&lt;/code&gt;).  &lt;span class="rfc2119-assertion" id="td-security-oauth2-implicit-flow"&gt;For the &lt;code&gt;implicit&lt;/code&gt; flow &lt;code&gt;authorization&lt;/code&gt; MUST be included.&lt;/span&gt;  &lt;span class="rfc2119-assertion" id="td-security-oauth2-password-client-flow"&gt;For the &lt;code&gt;password&lt;/code&gt; and &lt;code&gt;client&lt;/code&gt; flows &lt;code&gt;token&lt;/code&gt; MUST be included.&lt;/span&gt;  &lt;span class="rfc2119-assertion" id="td-security-oauth2-code-flow"&gt;For the &lt;code&gt;code&lt;/code&gt; flow both &lt;code&gt;authorization&lt;/code&gt; and &lt;code&gt;token&lt;/code&gt; MUST be included.&lt;/span&gt;  If no &lt;code&gt;scopes&lt;/code&gt; are defined in the &lt;code&gt;SecurityScheme&lt;/code&gt; then they are considered to be empty.
-    /// <see href="https://www.w3.org/2019/wot/security#OAuth2SecurityScheme"></see></summary>
-    let OAuth2SecurityScheme = _prefix "OAuth2SecurityScheme"
+    ///   <para>wotsec:identity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Identifier providing information which can be used for selection or confirmation.</para>
+    /// labels<para>identity</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#identity">https://www.w3.org/2019/wot/security#identity</seealso>
+    let identity = Prefixed_Name(wotsec, "identity") |> PrefixedName
+
     /// <summary>
-    /// Pre-shared key authentication security configuration identified by the term &lt;code&gt;psk&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "psk"&lt;/code&gt;).
-    /// <see href="https://www.w3.org/2019/wot/security#PSKSecurityScheme"></see></summary>
-    let PSKSecurityScheme = _prefix "PSKSecurityScheme"
+    ///   <para>wotsec:BearerSecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Bearer token authentication security configuration identified by the term &lt;code&gt;bearer&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "bearer"&lt;/code&gt;).  This scheme is intended for situations where bearer tokens are used independently of OAuth2.  If the &lt;code&gt;oauth2&lt;/code&gt; scheme is specified it is not generally necessary to specify this scheme as well as it is implied.  For &lt;code&gt;format&lt;/code&gt;, the value &lt;code&gt;jwt&lt;/code&gt; indicates conformance with RFC7519, &lt;code&gt;jws&lt;/code&gt; indicates conformance with RFC7797, &lt;code&gt;cwt&lt;/code&gt; indicates conformance with RFC8392, and &lt;code&gt;jwe&lt;/code&gt; indicates conformance with !RFC7516, with values for &lt;code&gt;alg&lt;/code&gt; interpreted consistently with those standards. &lt;span class="rfc2119-assertion" id="td-security-bearer-format-extensions"&gt;Other formats and algorithms for bearer tokens MAY be specified in vocabulary extensions.&lt;/span&gt;</para>
+    /// labels<para>BearerSecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#BearerSecurityScheme">https://www.w3.org/2019/wot/security#BearerSecurityScheme</seealso>
+    let BearerSecurityScheme =
+        Prefixed_Name(wotsec, "BearerSecurityScheme") |> PrefixedName
+
     /// <summary>
-    /// Proof-of-possession (PoP) token authentication security configuration identified by the term &lt;code&gt;pop&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "pop"&lt;/code&gt;). Here &lt;code&gt;jwt&lt;/code&gt; indicates conformance with !RFC7519, &lt;code&gt;jws&lt;/code&gt; indicates conformance with !RFC7797, &lt;code&gt;cwt&lt;/code&gt; indicates conformance with !RFC8392, and &lt;code&gt;jwe&lt;/code&gt; indicates conformance with RFC7516, with values for &lt;code&gt;alg&lt;/code&gt; interpreted consistently with those standards. &lt;span class="rfc2119-assertion" id="td-security-pop-format-extensions"&gt;Other formats and algorithms for PoP tokens MAY be specified in vocabulary extensions.&lt;/span&gt;
-    /// <see href="https://www.w3.org/2019/wot/security#PoPSecurityScheme"></see></summary>
-    let PoPSecurityScheme = _prefix "PoPSecurityScheme"
+    ///   <para>wotsec:PSKSecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Pre-shared key authentication security configuration identified by the term &lt;code&gt;psk&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "psk"&lt;/code&gt;).</para>
+    /// labels<para>PSKSecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#PSKSecurityScheme">https://www.w3.org/2019/wot/security#PSKSecurityScheme</seealso>
+    let PSKSecurityScheme = Prefixed_Name(wotsec, "PSKSecurityScheme") |> PrefixedName
     /// <summary>
-    /// Raw public key asymmetric key security configuration identified by the term &lt;code&gt;public&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "public"&lt;/code&gt;).
-    /// <see href="https://www.w3.org/2019/wot/security#PublicSecurityScheme"></see></summary>
-    let PublicSecurityScheme = _prefix "PublicSecurityScheme"
+    ///   <para>wotsec:scopes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Set of authorization scope identifiers provided as an array.  These are provided in tokens returned by an authorization server and associated with forms in order to identify what resources a client may access and how.  The values associated with a form should be chosen from those defined in an &lt;code&gt;OAuth2SecurityScheme&lt;/code&gt; active on that form.  &lt;br/&gt;This feature is at risk.</para>
+    /// labels<para>scopes</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#scopes">https://www.w3.org/2019/wot/security#scopes</seealso>
+    let scopes = Prefixed_Name(wotsec, "scopes") |> PrefixedName
     /// <summary>
-    /// Encoding, encryption, or digest algorithm.
-    /// <see href="https://www.w3.org/2019/wot/security#alg"></see></summary>
-    let alg = _prefix "alg"
+    ///   <para>wotsec:authorization</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>URI of the authorization server.</para>
+    /// labels<para>authorization</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#authorization">https://www.w3.org/2019/wot/security#authorization</seealso>
+    let authorization = Prefixed_Name(wotsec, "authorization") |> PrefixedName
     /// <summary>
-    /// URI of the authorization server.
-    /// <see href="https://www.w3.org/2019/wot/security#authorization"></see></summary>
-    let authorization = _prefix "authorization"
+    ///   <para>wotsec:in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Specifies the location of security authentication information.</para>
+    /// labels<para>in</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#in">https://www.w3.org/2019/wot/security#in</seealso>
+    let in_ = Prefixed_Name(wotsec, "in") |> PrefixedName
     /// <summary>
-    /// Authorization flow.
-    /// <see href="https://www.w3.org/2019/wot/security#flow"></see></summary>
-    let flow = _prefix "flow"
+    ///   <para>wotsec:name</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Name for query, header, or cookie parameters.</para>
+    /// labels<para>name</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#name">https://www.w3.org/2019/wot/security#name</seealso>
+    let name = Prefixed_Name(wotsec, "name") |> PrefixedName
     /// <summary>
-    /// Specifies format of security authentication information.
-    /// <see href="https://www.w3.org/2019/wot/security#format"></see></summary>
-    let format = _prefix "format"
+    ///   <para>wotsec:qop</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Quality of protection.  &lt;br/&gt;This feature is at risk.</para>
+    /// labels<para>qop</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#qop">https://www.w3.org/2019/wot/security#qop</seealso>
+    let qop = Prefixed_Name(wotsec, "qop") |> PrefixedName
     /// <summary>
-    /// Identifier providing information which can be used for selection or confirmation.
-    /// <see href="https://www.w3.org/2019/wot/security#identity"></see></summary>
-    let identity = _prefix "identity"
+    ///   <para>wotsec:alg</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Encoding, encryption, or digest algorithm.</para>
+    /// labels<para>alg</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#alg">https://www.w3.org/2019/wot/security#alg</seealso>
+    let alg = Prefixed_Name(wotsec, "alg") |> PrefixedName
     /// <summary>
-    /// Specifies the location of security authentication information.
-    /// <see href="https://www.w3.org/2019/wot/security#in"></see></summary>
-    let in_ = _prefix "in"
+    ///   <para>wotsec:token</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>URI of the token server.</para>
+    /// labels<para>token</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#token">https://www.w3.org/2019/wot/security#token</seealso>
+    let token = Prefixed_Name(wotsec, "token") |> PrefixedName
     /// <summary>
-    /// Name for query, header, or cookie parameters.
-    /// <see href="https://www.w3.org/2019/wot/security#name"></see></summary>
-    let name = _prefix "name"
+    ///   <para>wotsec:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#">https://www.w3.org/2019/wot/security#</seealso>
+    let _prefix_iri = Prefixed_Name(wotsec, "") |> PrefixedName
     /// <summary>
-    /// URI of the proxy server this security configuration provides access to.  If not given, the corresponding security configuration is for the endpoint.  &lt;br/&gt;This feature is at risk.
-    /// <see href="https://www.w3.org/2019/wot/security#proxy"></see></summary>
-    let proxy = _prefix "proxy"
+    ///   <para>wotsec:SecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Metadata describing the configuration of a security mechanism.  &lt;span class="rfc2119-assertion" id="td-security-scheme-name"&gt;The value assigned to the name &lt;code&gt;scheme&lt;/code&gt; MUST be defined within a vocabulary included in the Thing Description, either in the present vocabulary or in a TD context extension.</para>
+    /// labels<para>SecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#SecurityScheme">https://www.w3.org/2019/wot/security#SecurityScheme</seealso>
+    let SecurityScheme = Prefixed_Name(wotsec, "SecurityScheme") |> PrefixedName
     /// <summary>
-    /// Quality of protection.  &lt;br/&gt;This feature is at risk.
-    /// <see href="https://www.w3.org/2019/wot/security#qop"></see></summary>
-    let qop = _prefix "qop"
+    ///   <para>wotsec:CertSecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Certificate-based asymmetric key security configuration conformant with X509V3 identified by the term &lt;code&gt;cert&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "cert"&lt;/code&gt;).</para>
+    /// labels<para>CertSecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#CertSecurityScheme">https://www.w3.org/2019/wot/security#CertSecurityScheme</seealso>
+    let CertSecurityScheme = Prefixed_Name(wotsec, "CertSecurityScheme") |> PrefixedName
     /// <summary>
-    /// URI of the refresh server.
-    /// <see href="https://www.w3.org/2019/wot/security#refresh"></see></summary>
-    let refresh = _prefix "refresh"
+    ///   <para>wotsec:NoSecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>owl:Class</para>
+    ///   <para>A security configuration corresponding to identified by the term &lt;code&gt;nosec&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "nosec"&lt;/code&gt;), indicating there is no authentication or other mechanism required to access the resource.</para>
+    /// labels<para>NoSecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#NoSecurityScheme">https://www.w3.org/2019/wot/security#NoSecurityScheme</seealso>
+    let NoSecurityScheme = Prefixed_Name(wotsec, "NoSecurityScheme") |> PrefixedName
     /// <summary>
-    /// Set of authorization scope identifiers provided as an array.  These are provided in tokens returned by an authorization server and associated with forms in order to identify what resources a client may access and how.  The values associated with a form should be chosen from those defined in an &lt;code&gt;OAuth2SecurityScheme&lt;/code&gt; active on that form.  &lt;br/&gt;This feature is at risk.
-    /// <see href="https://www.w3.org/2019/wot/security#scopes"></see></summary>
-    let scopes = _prefix "scopes"
+    ///   <para>wotsec:PoPSecurityScheme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Proof-of-possession (PoP) token authentication security configuration identified by the term &lt;code&gt;pop&lt;/code&gt; (i.e., &lt;code&gt;"scheme": "pop"&lt;/code&gt;). Here &lt;code&gt;jwt&lt;/code&gt; indicates conformance with !RFC7519, &lt;code&gt;jws&lt;/code&gt; indicates conformance with !RFC7797, &lt;code&gt;cwt&lt;/code&gt; indicates conformance with !RFC8392, and &lt;code&gt;jwe&lt;/code&gt; indicates conformance with RFC7516, with values for &lt;code&gt;alg&lt;/code&gt; interpreted consistently with those standards. &lt;span class="rfc2119-assertion" id="td-security-pop-format-extensions"&gt;Other formats and algorithms for PoP tokens MAY be specified in vocabulary extensions.&lt;/span&gt;</para>
+    /// labels<para>PoPSecurityScheme</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#PoPSecurityScheme">https://www.w3.org/2019/wot/security#PoPSecurityScheme</seealso>
+    let PoPSecurityScheme = Prefixed_Name(wotsec, "PoPSecurityScheme") |> PrefixedName
     /// <summary>
-    /// URI of the token server.
-    /// <see href="https://www.w3.org/2019/wot/security#token"></see></summary>
-    let token = _prefix "token"
+    ///   <para>wotsec:proxy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>URI of the proxy server this security configuration provides access to.  If not given, the corresponding security configuration is for the endpoint.  &lt;br/&gt;This feature is at risk.</para>
+    /// labels<para>proxy</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#proxy">https://www.w3.org/2019/wot/security#proxy</seealso>
+    let proxy = Prefixed_Name(wotsec, "proxy") |> PrefixedName
+    /// <summary>
+    ///   <para>wotsec:refresh</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>URI of the refresh server.</para>
+    /// labels<para>refresh</para></remarks>
+    /// <seealso href="https://www.w3.org/2019/wot/security#refresh">https://www.w3.org/2019/wot/security#refresh</seealso>
+    let refresh = Prefixed_Name(wotsec, "refresh") |> PrefixedName

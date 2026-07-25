@@ -1,162 +1,259 @@
 namespace http.linked.opendata.cz.ontology.ldvm.slash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module ldvm =
-    let _namespace_name = "http://linked.opendata.cz/ontology/ldvm/"
+    let _namespace_iri = Namespace_Iri ldvm |> NamespaceIRI
+    /// <summary>
+    ///   <para>ldvm:AnalyzerTemplate</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/AnalyzerTemplate">http://linked.opendata.cz/ontology/ldvm/AnalyzerTemplate</seealso>
+    let AnalyzerTemplate = Prefixed_Name(ldvm, "AnalyzerTemplate") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>ldvm:ComponentConfiguration</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/ComponentConfiguration">http://linked.opendata.cz/ontology/ldvm/ComponentConfiguration</seealso>
+    let ComponentConfiguration =
+        Prefixed_Name(ldvm, "ComponentConfiguration") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/AnalyzerInstance"></see>
+    ///   <para>ldvm:DataSourceTemplate</para>
     /// </summary>
-    let AnalyzerInstance = _prefix "AnalyzerInstance"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/DataSourceTemplate">http://linked.opendata.cz/ontology/ldvm/DataSourceTemplate</seealso>
+    let DataSourceTemplate = Prefixed_Name(ldvm, "DataSourceTemplate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/AnalyzerTemplate"></see>
+    ///   <para>ldvm:Descriptor</para>
     /// </summary>
-    let AnalyzerTemplate = _prefix "AnalyzerTemplate"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/Descriptor">http://linked.opendata.cz/ontology/ldvm/Descriptor</seealso>
+    let Descriptor = Prefixed_Name(ldvm, "Descriptor") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/ComponentConfiguration"></see>
+    ///   <para>ldvm:Feature</para>
     /// </summary>
-    let ComponentConfiguration = _prefix "ComponentConfiguration"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/Feature">http://linked.opendata.cz/ontology/ldvm/Feature</seealso>
+    let Feature = Prefixed_Name(ldvm, "Feature") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/ComponentInstance"></see>
+    ///   <para>ldvm:InputDataPortTemplate</para>
     /// </summary>
-    let ComponentInstance = _prefix "ComponentInstance"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/InputDataPortTemplate">http://linked.opendata.cz/ontology/ldvm/InputDataPortTemplate</seealso>
+    let InputDataPortTemplate =
+        Prefixed_Name(ldvm, "InputDataPortTemplate") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/ComponentTemplate"></see>
+    ///   <para>ldvm:appliesTo</para>
     /// </summary>
-    let ComponentTemplate = _prefix "ComponentTemplate"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/appliesTo">http://linked.opendata.cz/ontology/ldvm/appliesTo</seealso>
+    let appliesTo = Prefixed_Name(ldvm, "appliesTo") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/DataPortInstance"></see>
+    ///   <para>ldvm:boundTo</para>
     /// </summary>
-    let DataPortInstance = _prefix "DataPortInstance"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/boundTo">http://linked.opendata.cz/ontology/ldvm/boundTo</seealso>
+    let boundTo = Prefixed_Name(ldvm, "boundTo") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/DataPortTemplate"></see>
+    ///   <para>ldvm:componentConfigurationInstance</para>
     /// </summary>
-    let DataPortTemplate = _prefix "DataPortTemplate"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/componentConfigurationInstance">http://linked.opendata.cz/ontology/ldvm/componentConfigurationInstance</seealso>
+    let componentConfigurationInstance =
+        Prefixed_Name(ldvm, "componentConfigurationInstance") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/DataSourceInstance"></see>
+    ///   <para>ldvm:componentConfigurationTemplate</para>
     /// </summary>
-    let DataSourceInstance = _prefix "DataSourceInstance"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/componentConfigurationTemplate">http://linked.opendata.cz/ontology/ldvm/componentConfigurationTemplate</seealso>
+    let componentConfigurationTemplate =
+        Prefixed_Name(ldvm, "componentConfigurationTemplate") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/DataSourceTemplate"></see>
+    ///   <para>ldvm:ComponentInstance</para>
     /// </summary>
-    let DataSourceTemplate = _prefix "DataSourceTemplate"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/ComponentInstance">http://linked.opendata.cz/ontology/ldvm/ComponentInstance</seealso>
+    let ComponentInstance = Prefixed_Name(ldvm, "ComponentInstance") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/Descriptor"></see>
+    ///   <para>ldvm:MandatoryFeature</para>
     /// </summary>
-    let Descriptor = _prefix "Descriptor"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/MandatoryFeature">http://linked.opendata.cz/ontology/ldvm/MandatoryFeature</seealso>
+    let MandatoryFeature = Prefixed_Name(ldvm, "MandatoryFeature") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/Feature"></see>
+    ///   <para>ldvm:TransformerTemplate</para>
     /// </summary>
-    let Feature = _prefix "Feature"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/TransformerTemplate">http://linked.opendata.cz/ontology/ldvm/TransformerTemplate</seealso>
+    let TransformerTemplate = Prefixed_Name(ldvm, "TransformerTemplate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/InputDataPortTemplate"></see>
+    ///   <para>ldvm:configurationSPARQL</para>
     /// </summary>
-    let InputDataPortTemplate = _prefix "InputDataPortTemplate"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/configurationSPARQL">http://linked.opendata.cz/ontology/ldvm/configurationSPARQL</seealso>
+    let configurationSPARQL = Prefixed_Name(ldvm, "configurationSPARQL") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/MandatoryFeature"></see>
+    ///   <para>ldvm:inputInstance</para>
     /// </summary>
-    let MandatoryFeature = _prefix "MandatoryFeature"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/inputInstance">http://linked.opendata.cz/ontology/ldvm/inputInstance</seealso>
+    let inputInstance = Prefixed_Name(ldvm, "inputInstance") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/OptionalFeature"></see>
+    ///   <para>ldvm:instanceOf</para>
     /// </summary>
-    let OptionalFeature = _prefix "OptionalFeature"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/instanceOf">http://linked.opendata.cz/ontology/ldvm/instanceOf</seealso>
+    let instanceOf = Prefixed_Name(ldvm, "instanceOf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/OutputDataPortTemplate"></see>
+    ///   <para>ldvm:outputDataSample</para>
     /// </summary>
-    let OutputDataPortTemplate = _prefix "OutputDataPortTemplate"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/outputDataSample">http://linked.opendata.cz/ontology/ldvm/outputDataSample</seealso>
+    let outputDataSample = Prefixed_Name(ldvm, "outputDataSample") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/Pipeline"></see>
+    ///   <para>ldvm:outputInstance</para>
     /// </summary>
-    let Pipeline = _prefix "Pipeline"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/outputInstance">http://linked.opendata.cz/ontology/ldvm/outputInstance</seealso>
+    let outputInstance = Prefixed_Name(ldvm, "outputInstance") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/TransformerInstance"></see>
+    ///   <para>ldvm:DataPortTemplate</para>
     /// </summary>
-    let TransformerInstance = _prefix "TransformerInstance"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/DataPortTemplate">http://linked.opendata.cz/ontology/ldvm/DataPortTemplate</seealso>
+    let DataPortTemplate = Prefixed_Name(ldvm, "DataPortTemplate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/TransformerTemplate"></see>
+    ///   <para>ldvm:Pipeline</para>
     /// </summary>
-    let TransformerTemplate = _prefix "TransformerTemplate"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/Pipeline">http://linked.opendata.cz/ontology/ldvm/Pipeline</seealso>
+    let Pipeline = Prefixed_Name(ldvm, "Pipeline") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/VisualizerInstance"></see>
+    ///   <para>ldvm:VisualizerInstance</para>
     /// </summary>
-    let VisualizerInstance = _prefix "VisualizerInstance"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/VisualizerInstance">http://linked.opendata.cz/ontology/ldvm/VisualizerInstance</seealso>
+    let VisualizerInstance = Prefixed_Name(ldvm, "VisualizerInstance") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/VisualizerTemplate"></see>
+    ///   <para>ldvm:dataportInstanceOf</para>
     /// </summary>
-    let VisualizerTemplate = _prefix "VisualizerTemplate"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/dataportInstanceOf">http://linked.opendata.cz/ontology/ldvm/dataportInstanceOf</seealso>
+    let dataportInstanceOf = Prefixed_Name(ldvm, "dataportInstanceOf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/appliesTo"></see>
+    ///   <para>ldvm:inputTemplate</para>
     /// </summary>
-    let appliesTo = _prefix "appliesTo"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/inputTemplate">http://linked.opendata.cz/ontology/ldvm/inputTemplate</seealso>
+    let inputTemplate = Prefixed_Name(ldvm, "inputTemplate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/boundTo"></see>
+    ///   <para>ldvm:outputTemplate</para>
     /// </summary>
-    let boundTo = _prefix "boundTo"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/outputTemplate">http://linked.opendata.cz/ontology/ldvm/outputTemplate</seealso>
+    let outputTemplate = Prefixed_Name(ldvm, "outputTemplate") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/componentConfigurationInstance"></see>
+    ///   <para>ldvm:OutputDataPortTemplate</para>
     /// </summary>
-    let componentConfigurationInstance = _prefix "componentConfigurationInstance"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/OutputDataPortTemplate">http://linked.opendata.cz/ontology/ldvm/OutputDataPortTemplate</seealso>
+    let OutputDataPortTemplate =
+        Prefixed_Name(ldvm, "OutputDataPortTemplate") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/componentConfigurationTemplate"></see>
+    ///   <para>ldvm:nestedPipeline</para>
     /// </summary>
-    let componentConfigurationTemplate = _prefix "componentConfigurationTemplate"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/nestedPipeline">http://linked.opendata.cz/ontology/ldvm/nestedPipeline</seealso>
+    let nestedPipeline = Prefixed_Name(ldvm, "nestedPipeline") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/configurationSPARQL"></see>
+    ///   <para>ldvm:query</para>
     /// </summary>
-    let configurationSPARQL = _prefix "configurationSPARQL"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/query">http://linked.opendata.cz/ontology/ldvm/query</seealso>
+    let query = Prefixed_Name(ldvm, "query") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/dataportInstanceOf"></see>
+    ///   <para>ldvm:</para>
     /// </summary>
-    let dataportInstanceOf = _prefix "dataportInstanceOf"
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>voaf:Vocabulary</para>
+    /// </remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/">http://linked.opendata.cz/ontology/ldvm/</seealso>
+    let _prefix_iri = Prefixed_Name(ldvm, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/descriptor"></see>
+    ///   <para>ldvm:AnalyzerInstance</para>
     /// </summary>
-    let descriptor = _prefix "descriptor"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/AnalyzerInstance">http://linked.opendata.cz/ontology/ldvm/AnalyzerInstance</seealso>
+    let AnalyzerInstance = Prefixed_Name(ldvm, "AnalyzerInstance") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/feature"></see>
+    ///   <para>ldvm:ComponentTemplate</para>
     /// </summary>
-    let feature = _prefix "feature"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/ComponentTemplate">http://linked.opendata.cz/ontology/ldvm/ComponentTemplate</seealso>
+    let ComponentTemplate = Prefixed_Name(ldvm, "ComponentTemplate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/inputInstance"></see>
+    ///   <para>ldvm:DataPortInstance</para>
     /// </summary>
-    let inputInstance = _prefix "inputInstance"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/DataPortInstance">http://linked.opendata.cz/ontology/ldvm/DataPortInstance</seealso>
+    let DataPortInstance = Prefixed_Name(ldvm, "DataPortInstance") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/inputTemplate"></see>
+    ///   <para>ldvm:DataSourceInstance</para>
     /// </summary>
-    let inputTemplate = _prefix "inputTemplate"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/DataSourceInstance">http://linked.opendata.cz/ontology/ldvm/DataSourceInstance</seealso>
+    let DataSourceInstance = Prefixed_Name(ldvm, "DataSourceInstance") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/instanceOf"></see>
+    ///   <para>ldvm:OptionalFeature</para>
     /// </summary>
-    let instanceOf = _prefix "instanceOf"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/OptionalFeature">http://linked.opendata.cz/ontology/ldvm/OptionalFeature</seealso>
+    let OptionalFeature = Prefixed_Name(ldvm, "OptionalFeature") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/member"></see>
+    ///   <para>ldvm:TransformerInstance</para>
     /// </summary>
-    let member_ = _prefix "member"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/TransformerInstance">http://linked.opendata.cz/ontology/ldvm/TransformerInstance</seealso>
+    let TransformerInstance = Prefixed_Name(ldvm, "TransformerInstance") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/nestedBoundTo"></see>
+    ///   <para>ldvm:VisualizerTemplate</para>
     /// </summary>
-    let nestedBoundTo = _prefix "nestedBoundTo"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/VisualizerTemplate">http://linked.opendata.cz/ontology/ldvm/VisualizerTemplate</seealso>
+    let VisualizerTemplate = Prefixed_Name(ldvm, "VisualizerTemplate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/nestedPipeline"></see>
+    ///   <para>ldvm:descriptor</para>
     /// </summary>
-    let nestedPipeline = _prefix "nestedPipeline"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/descriptor">http://linked.opendata.cz/ontology/ldvm/descriptor</seealso>
+    let descriptor = Prefixed_Name(ldvm, "descriptor") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/outputDataSample"></see>
+    ///   <para>ldvm:feature</para>
     /// </summary>
-    let outputDataSample = _prefix "outputDataSample"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/feature">http://linked.opendata.cz/ontology/ldvm/feature</seealso>
+    let feature = Prefixed_Name(ldvm, "feature") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/outputInstance"></see>
+    ///   <para>ldvm:member</para>
     /// </summary>
-    let outputInstance = _prefix "outputInstance"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/member">http://linked.opendata.cz/ontology/ldvm/member</seealso>
+    let member_ = Prefixed_Name(ldvm, "member") |> PrefixedName
     /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/outputTemplate"></see>
+    ///   <para>ldvm:nestedBoundTo</para>
     /// </summary>
-    let outputTemplate = _prefix "outputTemplate"
-    /// <summary>
-    ///   <see href="http://linked.opendata.cz/ontology/ldvm/query"></see>
-    /// </summary>
-    let query = _prefix "query"
+    /// <remarks></remarks>
+    /// <seealso href="http://linked.opendata.cz/ontology/ldvm/nestedBoundTo">http://linked.opendata.cz/ontology/ldvm/nestedBoundTo</seealso>
+    let nestedBoundTo = Prefixed_Name(ldvm, "nestedBoundTo") |> PrefixedName

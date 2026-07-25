@@ -1,250 +1,562 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.organism.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module organism =
-    let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/organism#"
+    let _namespace_iri = Namespace_Iri organism |> NamespaceIRI
+    /// <summary>
+    ///   <para>organism:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#">http://eulersharp.sourceforge.net/2003/03swap/organism#</seealso>
+    let _prefix_iri = Prefixed_Name(organism, "") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Ascendant</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Organism that is an earlier form of another organism.</para>
+    /// labels<para>biological ascendant</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Ascendant">http://eulersharp.sourceforge.net/2003/03swap/organism#Ascendant</seealso>
+    let Ascendant = Prefixed_Name(organism, "Ascendant") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Sequencing</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>sequencing</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Sequencing">http://eulersharp.sourceforge.net/2003/03swap/organism#Sequencing</seealso>
+    let Sequencing = Prefixed_Name(organism, "Sequencing") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:hasBirthTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///
+    /// labels<para>has birth time</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthTime">http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthTime</seealso>
+    let hasBirthTime = Prefixed_Name(organism, "hasBirthTime") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Ancestry</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Ancestry">http://eulersharp.sourceforge.net/2003/03swap/organism#Ancestry</seealso>
+    let Ancestry = Prefixed_Name(organism, "Ancestry") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Eukaryote</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>eukaryote</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Eukaryote">http://eulersharp.sourceforge.net/2003/03swap/organism#Eukaryote</seealso>
+    let Eukaryote = Prefixed_Name(organism, "Eukaryote") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Genome</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>genome</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Genome">http://eulersharp.sourceforge.net/2003/03swap/organism#Genome</seealso>
+    let Genome = Prefixed_Name(organism, "Genome") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:ImmatureOrganism</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>immature organism</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#ImmatureOrganism">http://eulersharp.sourceforge.net/2003/03swap/organism#ImmatureOrganism</seealso>
+    let ImmatureOrganism = Prefixed_Name(organism, "ImmatureOrganism") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Karyotype</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>karyotype</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Karyotype">http://eulersharp.sourceforge.net/2003/03swap/organism#Karyotype</seealso>
+    let Karyotype = Prefixed_Name(organism, "Karyotype") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:hasDeathDateTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///
+    /// labels<para>has death date time</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathDateTime">http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathDateTime</seealso>
+    let hasDeathDateTime = Prefixed_Name(organism, "hasDeathDateTime") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:hasFather</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasFather">http://eulersharp.sourceforge.net/2003/03swap/organism#hasFather</seealso>
+    let hasFather = Prefixed_Name(organism, "hasFather") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:hasKaryotype</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has karyotype</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasKaryotype">http://eulersharp.sourceforge.net/2003/03swap/organism#hasKaryotype</seealso>
+    let hasKaryotype = Prefixed_Name(organism, "hasKaryotype") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:hasTaxon</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasTaxon">http://eulersharp.sourceforge.net/2003/03swap/organism#hasTaxon</seealso>
+    let hasTaxon = Prefixed_Name(organism, "hasTaxon") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Organism</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>organism</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Organism">http://eulersharp.sourceforge.net/2003/03swap/organism#Organism</seealso>
+    let Organism = Prefixed_Name(organism, "Organism") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:DNA</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>deoxyribonucleic acid </para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#DNA">http://eulersharp.sourceforge.net/2003/03swap/organism#DNA</seealso>
+    let DNA = Prefixed_Name(organism, "DNA") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Sequence</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>sequence</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Sequence">http://eulersharp.sourceforge.net/2003/03swap/organism#Sequence</seealso>
+    let Sequence = Prefixed_Name(organism, "Sequence") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Dead</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>dead</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Dead">http://eulersharp.sourceforge.net/2003/03swap/organism#Dead</seealso>
+    let Dead = Prefixed_Name(organism, "Dead") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Death</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>death</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Death">http://eulersharp.sourceforge.net/2003/03swap/organism#Death</seealso>
+    let Death = Prefixed_Name(organism, "Death") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:DevelopmentState</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>development state</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#DevelopmentState">http://eulersharp.sourceforge.net/2003/03swap/organism#DevelopmentState</seealso>
+    let DevelopmentState = Prefixed_Name(organism, "DevelopmentState") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Parent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Organism that produces another.</para>
+    /// labels<para>biological parent</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Parent">http://eulersharp.sourceforge.net/2003/03swap/organism#Parent</seealso>
+    let Parent = Prefixed_Name(organism, "Parent") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Pregnant</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>organism:Gravidity</para>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>pregnant</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Pregnant">http://eulersharp.sourceforge.net/2003/03swap/organism#Pregnant</seealso>
+    let Pregnant = Prefixed_Name(organism, "Pregnant") |> PrefixedName
+    /// <summary>
+    ///   <para>organism:Immature</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>organism:DevelopmentState</para>
+    ///
+    /// labels<para>immature</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Immature">http://eulersharp.sourceforge.net/2003/03swap/organism#Immature</seealso>
+    let Immature = Prefixed_Name(organism, "Immature") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>organism:hasDevelopmentState</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDevelopmentState">http://eulersharp.sourceforge.net/2003/03swap/organism#hasDevelopmentState</seealso>
+    let hasDevelopmentState =
+        Prefixed_Name(organism, "hasDevelopmentState") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Alive"></see>
+    ///   <para>organism:IndividualLife</para>
     /// </summary>
-    let Alive = _prefix "Alive"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>individual life</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#IndividualLife">http://eulersharp.sourceforge.net/2003/03swap/organism#IndividualLife</seealso>
+    let IndividualLife = Prefixed_Name(organism, "IndividualLife") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Ancestry"></see>
+    ///   <para>organism:MatureOrganism</para>
     /// </summary>
-    let Ancestry = _prefix "Ancestry"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>mature organism</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#MatureOrganism">http://eulersharp.sourceforge.net/2003/03swap/organism#MatureOrganism</seealso>
+    let MatureOrganism = Prefixed_Name(organism, "MatureOrganism") |> PrefixedName
     /// <summary>
-    /// Organism that is an earlier form of another organism.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Ascendant"></see></summary>
-    let Ascendant = _prefix "Ascendant"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Organism"></see>
+    ///   <para>organism:hasMother</para>
     /// </summary>
-    let Organism = _prefix "Organism"
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasMother">http://eulersharp.sourceforge.net/2003/03swap/organism#hasMother</seealso>
+    let hasMother = Prefixed_Name(organism, "hasMother") |> PrefixedName
     /// <summary>
-    /// Organism that is produced by another.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Child"></see></summary>
-    let Child = _prefix "Child"
-    /// <summary>
-    /// Organism deriving from an earlier form.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Descendant"></see></summary>
-    let Descendant = _prefix "Descendant"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasParent"></see>
+    ///   <para>organism:hasSequence</para>
     /// </summary>
-    let hasParent = _prefix "hasParent"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has sequence</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasSequence">http://eulersharp.sourceforge.net/2003/03swap/organism#hasSequence</seealso>
+    let hasSequence = Prefixed_Name(organism, "hasSequence") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Children"></see>
+    ///   <para>organism:hasParent</para>
     /// </summary>
-    let Children = _prefix "Children"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasParent">http://eulersharp.sourceforge.net/2003/03swap/organism#hasParent</seealso>
+    let hasParent = Prefixed_Name(organism, "hasParent") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Offspring"></see>
+    ///   <para>organism:PregnantOrganism</para>
     /// </summary>
-    let Offspring = _prefix "Offspring"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>pregnant organism</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#PregnantOrganism">http://eulersharp.sourceforge.net/2003/03swap/organism#PregnantOrganism</seealso>
+    let PregnantOrganism = Prefixed_Name(organism, "PregnantOrganism") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#DNA"></see>
+    ///   <para>organism:Mortal</para>
     /// </summary>
-    let DNA = _prefix "DNA"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>mortal</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Mortal">http://eulersharp.sourceforge.net/2003/03swap/organism#Mortal</seealso>
+    let Mortal = Prefixed_Name(organism, "Mortal") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#DNASequence"></see>
+    ///   <para>organism:DNASequence</para>
     /// </summary>
-    let DNASequence = _prefix "DNASequence"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>DNA sequence</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#DNASequence">http://eulersharp.sourceforge.net/2003/03swap/organism#DNASequence</seealso>
+    let DNASequence = Prefixed_Name(organism, "DNASequence") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Sequence"></see>
+    ///   <para>organism:DeathCause</para>
     /// </summary>
-    let Sequence = _prefix "Sequence"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>cause of death</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#DeathCause">http://eulersharp.sourceforge.net/2003/03swap/organism#DeathCause</seealso>
+    let DeathCause = Prefixed_Name(organism, "DeathCause") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#DNASequencing"></see>
+    ///   <para>organism:Father</para>
     /// </summary>
-    let DNASequencing = _prefix "DNASequencing"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>biological father</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Father">http://eulersharp.sourceforge.net/2003/03swap/organism#Father</seealso>
+    let Father = Prefixed_Name(organism, "Father") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#sequenceOf"></see>
+    ///   <para>organism:Gravidity</para>
     /// </summary>
-    let sequenceOf = _prefix "sequenceOf"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>gravidity</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Gravidity">http://eulersharp.sourceforge.net/2003/03swap/organism#Gravidity</seealso>
+    let Gravidity = Prefixed_Name(organism, "Gravidity") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Sequencing"></see>
+    ///   <para>organism:Nonpregnant</para>
     /// </summary>
-    let Sequencing = _prefix "Sequencing"
+    /// <remarks>
+    ///   <para>organism:Gravidity</para>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>nonpregnant</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Nonpregnant">http://eulersharp.sourceforge.net/2003/03swap/organism#Nonpregnant</seealso>
+    let Nonpregnant = Prefixed_Name(organism, "Nonpregnant") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Dead"></see>
+    ///   <para>organism:Life</para>
     /// </summary>
-    let Dead = _prefix "Dead"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>life</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Life">http://eulersharp.sourceforge.net/2003/03swap/organism#Life</seealso>
+    let Life = Prefixed_Name(organism, "Life") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Death"></see>
+    ///   <para>organism:Karyotyping</para>
     /// </summary>
-    let Death = _prefix "Death"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>karyotyping</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Karyotyping">http://eulersharp.sourceforge.net/2003/03swap/organism#Karyotyping</seealso>
+    let Karyotyping = Prefixed_Name(organism, "Karyotyping") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#DeathCause"></see>
+    ///   <para>organism:Mature</para>
     /// </summary>
-    let DeathCause = _prefix "DeathCause"
+    /// <remarks>
+    ///   <para>organism:DevelopmentState</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A criterium can be: capable of reproduction.</para>
+    /// labels<para>mature</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Mature">http://eulersharp.sourceforge.net/2003/03swap/organism#Mature</seealso>
+    let Mature = Prefixed_Name(organism, "Mature") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#DevelopmentState"></see>
+    ///   <para>organism:Mother</para>
     /// </summary>
-    let DevelopmentState = _prefix "DevelopmentState"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>biological mother</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Mother">http://eulersharp.sourceforge.net/2003/03swap/organism#Mother</seealso>
+    let Mother = Prefixed_Name(organism, "Mother") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Eukaryote"></see>
+    ///   <para>organism:hasChild</para>
     /// </summary>
-    let Eukaryote = _prefix "Eukaryote"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasChild">http://eulersharp.sourceforge.net/2003/03swap/organism#hasChild</seealso>
+    let hasChild = Prefixed_Name(organism, "hasChild") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Father"></see>
+    ///   <para>organism:Parents</para>
     /// </summary>
-    let Father = _prefix "Father"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Parents">http://eulersharp.sourceforge.net/2003/03swap/organism#Parents</seealso>
+    let Parents = Prefixed_Name(organism, "Parents") |> PrefixedName
     /// <summary>
-    /// Organism that produces another.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Parent"></see></summary>
-    let Parent = _prefix "Parent"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Genome"></see>
+    ///   <para>organism:hasGravidity</para>
     /// </summary>
-    let Genome = _prefix "Genome"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasGravidity">http://eulersharp.sourceforge.net/2003/03swap/organism#hasGravidity</seealso>
+    let hasGravidity = Prefixed_Name(organism, "hasGravidity") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Gravidity"></see>
+    ///   <para>organism:UnbranchedBioPolymer</para>
     /// </summary>
-    let Gravidity = _prefix "Gravidity"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>unbranched bioPolymer</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#UnbranchedBioPolymer">http://eulersharp.sourceforge.net/2003/03swap/organism#UnbranchedBioPolymer</seealso>
+    let UnbranchedBioPolymer =
+        Prefixed_Name(organism, "UnbranchedBioPolymer") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Pregnant"></see>
+    ///   <para>organism:beginDate</para>
     /// </summary>
-    let Pregnant = _prefix "Pregnant"
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#beginDate">http://eulersharp.sourceforge.net/2003/03swap/organism#beginDate</seealso>
+    let beginDate = Prefixed_Name(organism, "beginDate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Nonpregnant"></see>
+    ///   <para>organism:endDate</para>
     /// </summary>
-    let Nonpregnant = _prefix "Nonpregnant"
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#endDate">http://eulersharp.sourceforge.net/2003/03swap/organism#endDate</seealso>
+    let endDate = Prefixed_Name(organism, "endDate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Immature"></see>
+    ///   <para>organism:ends</para>
     /// </summary>
-    let Immature = _prefix "Immature"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#ends">http://eulersharp.sourceforge.net/2003/03swap/organism#ends</seealso>
+    let ends = Prefixed_Name(organism, "ends") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#ImmatureOrganism"></see>
+    ///   <para>organism:hasBirthDate</para>
     /// </summary>
-    let ImmatureOrganism = _prefix "ImmatureOrganism"
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///
+    /// labels<para>has birth date</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthDate">http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthDate</seealso>
+    let hasBirthDate = Prefixed_Name(organism, "hasBirthDate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDevelopmentState"></see>
+    ///   <para>organism:hasBirthDateTime</para>
     /// </summary>
-    let hasDevelopmentState = _prefix "hasDevelopmentState"
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has birth date time</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthDateTime">http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthDateTime</seealso>
+    let hasBirthDateTime = Prefixed_Name(organism, "hasBirthDateTime") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#IndividualLife"></see>
+    ///   <para>organism:hasCauseOfDeath</para>
     /// </summary>
-    let IndividualLife = _prefix "IndividualLife"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasCauseOfDeath">http://eulersharp.sourceforge.net/2003/03swap/organism#hasCauseOfDeath</seealso>
+    let hasCauseOfDeath = Prefixed_Name(organism, "hasCauseOfDeath") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Life"></see>
+    ///   <para>organism:hasDNASequence</para>
     /// </summary>
-    let Life = _prefix "Life"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>has DNA Sequence</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDNASequence">http://eulersharp.sourceforge.net/2003/03swap/organism#hasDNASequence</seealso>
+    let hasDNASequence = Prefixed_Name(organism, "hasDNASequence") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Karyotype"></see>
+    ///   <para>organism:hasDeathDate</para>
     /// </summary>
-    let Karyotype = _prefix "Karyotype"
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has death date</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathDate">http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathDate</seealso>
+    let hasDeathDate = Prefixed_Name(organism, "hasDeathDate") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Karyotyping"></see>
+    ///   <para>organism:hasDeathTime</para>
     /// </summary>
-    let Karyotyping = _prefix "Karyotyping"
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///
+    /// labels<para>has death time</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathTime">http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathTime</seealso>
+    let hasDeathTime = Prefixed_Name(organism, "hasDeathTime") |> PrefixedName
     /// <summary>
-    /// A criterium can be: capable of reproduction.
-    /// <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Mature"></see></summary>
-    let Mature = _prefix "Mature"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#MatureOrganism"></see>
+    ///   <para>organism:Alive</para>
     /// </summary>
-    let MatureOrganism = _prefix "MatureOrganism"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>alive</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Alive">http://eulersharp.sourceforge.net/2003/03swap/organism#Alive</seealso>
+    let Alive = Prefixed_Name(organism, "Alive") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Mortal"></see>
+    ///   <para>organism:Child</para>
     /// </summary>
-    let Mortal = _prefix "Mortal"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Organism that is produced by another.</para>
+    /// labels<para>biological child</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Child">http://eulersharp.sourceforge.net/2003/03swap/organism#Child</seealso>
+    let Child = Prefixed_Name(organism, "Child") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Mother"></see>
+    ///   <para>organism:Descendant</para>
     /// </summary>
-    let Mother = _prefix "Mother"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Organism deriving from an earlier form.</para>
+    /// labels<para>biological descendant</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Descendant">http://eulersharp.sourceforge.net/2003/03swap/organism#Descendant</seealso>
+    let Descendant = Prefixed_Name(organism, "Descendant") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasChild"></see>
+    ///   <para>organism:Children</para>
     /// </summary>
-    let hasChild = _prefix "hasChild"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Children">http://eulersharp.sourceforge.net/2003/03swap/organism#Children</seealso>
+    let Children = Prefixed_Name(organism, "Children") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Parents"></see>
+    ///   <para>organism:Offspring</para>
     /// </summary>
-    let Parents = _prefix "Parents"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>biological offspring</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#Offspring">http://eulersharp.sourceforge.net/2003/03swap/organism#Offspring</seealso>
+    let Offspring = Prefixed_Name(organism, "Offspring") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#PregnantOrganism"></see>
+    ///   <para>organism:DNASequencing</para>
     /// </summary>
-    let PregnantOrganism = _prefix "PregnantOrganism"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>DNA sequencing</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#DNASequencing">http://eulersharp.sourceforge.net/2003/03swap/organism#DNASequencing</seealso>
+    let DNASequencing = Prefixed_Name(organism, "DNASequencing") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasGravidity"></see>
+    ///   <para>organism:sequenceOf</para>
     /// </summary>
-    let hasGravidity = _prefix "hasGravidity"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>sequence of</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#sequenceOf">http://eulersharp.sourceforge.net/2003/03swap/organism#sequenceOf</seealso>
+    let sequenceOf = Prefixed_Name(organism, "sequenceOf") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#UnbranchedBioPolymer"></see>
+    ///   <para>organism:begins</para>
     /// </summary>
-    let UnbranchedBioPolymer = _prefix "UnbranchedBioPolymer"
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#begins">http://eulersharp.sourceforge.net/2003/03swap/organism#begins</seealso>
+    let begins = Prefixed_Name(organism, "begins") |> PrefixedName
     /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#beginDate"></see>
+    ///   <para>organism:lives</para>
     /// </summary>
-    let beginDate = _prefix "beginDate"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#begins"></see>
-    /// </summary>
-    let begins = _prefix "begins"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#endDate"></see>
-    /// </summary>
-    let endDate = _prefix "endDate"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#ends"></see>
-    /// </summary>
-    let ends = _prefix "ends"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthDate"></see>
-    /// </summary>
-    let hasBirthDate = _prefix "hasBirthDate"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#lives"></see>
-    /// </summary>
-    let lives = _prefix "lives"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthDateTime"></see>
-    /// </summary>
-    let hasBirthDateTime = _prefix "hasBirthDateTime"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthTime"></see>
-    /// </summary>
-    let hasBirthTime = _prefix "hasBirthTime"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasCauseOfDeath"></see>
-    /// </summary>
-    let hasCauseOfDeath = _prefix "hasCauseOfDeath"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDNASequence"></see>
-    /// </summary>
-    let hasDNASequence = _prefix "hasDNASequence"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathDate"></see>
-    /// </summary>
-    let hasDeathDate = _prefix "hasDeathDate"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathDateTime"></see>
-    /// </summary>
-    let hasDeathDateTime = _prefix "hasDeathDateTime"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathTime"></see>
-    /// </summary>
-    let hasDeathTime = _prefix "hasDeathTime"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasFather"></see>
-    /// </summary>
-    let hasFather = _prefix "hasFather"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasKaryotype"></see>
-    /// </summary>
-    let hasKaryotype = _prefix "hasKaryotype"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasMother"></see>
-    /// </summary>
-    let hasMother = _prefix "hasMother"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasSequence"></see>
-    /// </summary>
-    let hasSequence = _prefix "hasSequence"
-    /// <summary>
-    ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasTaxon"></see>
-    /// </summary>
-    let hasTaxon = _prefix "hasTaxon"
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/organism#lives">http://eulersharp.sourceforge.net/2003/03swap/organism#lives</seealso>
+    let lives = Prefixed_Name(organism, "lives") |> PrefixedName

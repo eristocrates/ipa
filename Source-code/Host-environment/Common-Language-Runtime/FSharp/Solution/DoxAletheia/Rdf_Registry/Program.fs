@@ -1,4 +1,4 @@
-﻿module DoxAletheia.Rdf_Registry
+﻿module DoxAletheia.DotNetRDFSharp
 
 
 open System
@@ -41,16 +41,607 @@ open Manual_Prefixes
 open Rdf_Distribution.Single
 open Rdf_Distribution.Multi
 
-[<Literal>]
-let prefix_file_path= @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Namespace_Prefixes\namespace_prefixes.json"
+
+open System
+open System.Net
+open System.Globalization
+open System.Text
+open System.IO
+open System.Linq
+open System.Xml
+open System.Collections
+
+open System.IO.Compression
+
+
+open StringExtensions
+
+open ArrayErgonomics
+open GrammarErgonomics
+
+open IntervalErgonomics
+
+
+
+
+
+open FSharp.Collections.ParallelSeq
+
+
+open FSharp.Data
+open FSharp.Data.Adaptive.Transaction
+
+
+open FSharp.Json
+open VDS.RDF
+open VDS.RDF.Nodes
+open VDS.RDF.Query.Builder
+open VDS.RDF.Query.Patterns
+
+open VDS.RDF
+open VDS.RDF.Parsing
+open VDS.RDF.JsonLd
+open VDS.RDF.Query.Datasets
+open VDS.RDF.Storage
+open VDS.RDF.Query.Builder
+open VDS.RDF.Query
+open VDS.RDF.Query.Patterns
+open VDS.RDF.Parsing.Tokens
+
+open FSharp.Data
+open type Prefix_ID
+
+
+
+
+
+
+open System
+open System.IO
+open System.IO.Compression
+
+open DoxAletheia
+open Manual_Prefixes
+open IOExtensions
+open RdfExtensions
+open Rdf_Distribution.Single
+open Rdf_Distribution.Multi
+open JsonErgonomics
+
+open PrettierNaming
+open PrettierNaming.FSharp_Keywords
+open Swensen.Unquote.Assertions
+
+open FsHttp
+
+open VDS.RDF
+open VDS.RDF.Parsing
+
+let well_known_base =  $"https://eristocrates.dev/.well-known/genid/"
+
+
+
+
+
+
+
+
+let log_lines = new ResizeArray<string>()
+module fibo =
+    let distribution_probe = 
+        http {
+            GET "https://github.com/edmcouncil/fibo/releases/latest"
+        }
+        |> Request.send
+    let download_distribution (distribution:string) =
+        http {
+
+            GET distribution
+
+        }
+        |> Request.send
+
+    let extraction_directory = Folder.Vocabulary ./ @"https\spec.edmcouncil.org"
+
+    let latest_source = distribution_probe.originalHttpResponseMessage.RequestMessage.RequestUri.OriginalString + ".zip"
+    printfn "latest fibo source: %s" latest_source
+
+        
+
+    let file_name = 
+        (iri_to_relative_path latest_source).Replace("\\bare", "").Split("\\")
+        |> Array.last
+    let version = 
+        let master_ = "master_" 
+        let zip = ".zip" 
+        file_name[master_.Length..file_name.Length-zip.Length-1]
+    printfn "latest fibo version: %s" version
+
+    let content_directory = extraction_directory ./ $@"fibo\ontology\master\{version}"
+    if not content_directory.as_directory.Exists then 
+        Directory.CreateDirectory(content_directory.path) |> ignore
+
+    let fibo_zip = content_directory ./ @"prod.ttl.zip"
+
+    if not fibo_zip.as_file.Exists then 
+        let distribution = $"https://spec.edmcouncil.org/fibo/ontology/master/{version}/prod.ttl.zip"
+        printfn "downloading fibo version %s" version
+        let response = download_distribution distribution
+
+        if response.originalHttpResponseMessage.IsSuccessStatusCode then
+            Response.saveFile fibo_zip.as_file.FullName response
+            if not Folder.fibo.as_directory.Exists then
+                Directory.CreateDirectory(Folder.fibo.path) |> ignore
+            ZipFile.ExtractToDirectory(fibo_zip.as_file.FullName, Folder.fibo.as_directory.FullName)
+        printfn "fibo version %s download complete" version
+    else 
+        printfn "fibo version %s already downloaded" version
+
+    let vocabulary_files =
+        content_directory.descendant_files "*.ttl"
+    
+
+    let namespaces_from_files =
+        vocabulary_files
+        // |> Array.randomSample 10
+        |> Array.Parallel.collect (fun rdf_file ->
+
+            try
+
+                let file_graph = new ThreadSafeGraph()
+                FileLoader.Load(file_graph, rdf_file)
+
+                file_graph.NamespaceMap.Prefixes
+                |> Seq.map (fun prefix ->
+                    let namespace_uri = file_graph.NamespaceMap.GetNamespaceUri prefix
+
+                    (namespace_uri.OriginalString, prefix)
+
+                )
+                |> Seq.toArray
+
+            with 
+            | err -> 
+                log_lines.Add(sprintf "%s %s   errored with %s" (nameof rdf_file) rdf_file err.Message) 
+                [||]
+        )
+        |> Array.distinct
+
+    let metadata =
+        printfn "processing fibo metadata"
+        vocabulary_files
+        |> Array.Parallel.choose (fun ttl_path ->
+            let file_stem = Path.GetFileNameWithoutExtension ttl_path
+
+            let type_binding =
+                match file_stem with
+                | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
+                | _ -> file_stem.Replace('-', '_').Replace('.', '_')
+
+            let from_index = Folder.https.path.Length + 1
+
+            let to_index =
+                ttl_path.ToCharArray()
+                |> Array.reversible_index -4
+
+            let subpath =
+                ttl_path[from_index..to_index]
+                    .Replace("\\", "/")
+                    .Replace($"/master/{version}", "")
+
+            let reconstructed_namespace = $"https://{subpath}/"
+
+            let maybe_namespace_prefix =
+                namespaces_from_files
+                |> Array.Parallel.tryFind (fun (namespace_name, prefix_label) ->
+                    namespace_name = reconstructed_namespace
+
+                )
+
+            match maybe_namespace_prefix with
+            | Some (namespace_name, prefix_label) -> 
+                    Some {
+                            namespace_prefix = prefix_label
+                            namespace_name = namespace_name
+                        }
+            | None -> None)
+
+    test <@ vocabulary_files.Length = metadata.Length @>
+    printfn "fibo metadata complete"
+
+
+
+
+
+
+
+
 
     
 
-let global_prefix_declarations = 
-    JsonProvider<prefix_file_path>.Load(prefix_file_path).Mappings
-    |> Array.map (fun Mapping -> Mapping.NamespaceName, Mapping.PrefixLabel)
 
-let should_overwrite = false
+
+
+    
+
+
+let manual_namespace_names = 
+                    manual_distributions
+                            |> Array.map (fun (namespace_name,_) -> namespace_name)
+let prefixcc_namespace_names = 
+
+                Document.prefixcc.json.JsonValue.AsRecord
+                |> Array.Parallel.map (fun (key,value) -> value.AsString())
+
+let lov_namespace_names =
+    Document.lov.json
+    |> Array.Parallel.map (fun vocabulary -> vocabulary.Nsp)
+
+let filesystem_namespace_names = 
+    Folder.Vocabulary.descendant_files "*.ttl"
+    |> Array.Parallel.filter (fun file_path -> not (file_path.Contains(@"https\spec.edmcouncil.org\fibo")))
+    |> Array.Parallel.collect (fun file_path ->
+        try
+
+
+            let file_graph = new ThreadSafeGraph()
+            FileLoader.Load(file_graph, file_path)
+
+            file_graph.NamespaceMap.Prefixes
+            |> Seq.map (fun prefix ->
+                let namespace_uri = file_graph.NamespaceMap.GetNamespaceUri prefix
+
+                namespace_uri.OriginalString
+
+            )
+            |> Seq.toArray
+        with 
+        | err -> 
+            log_lines.Add(sprintf "filepath %s   errored with %s" file_path err.Message) 
+            [||]
+    )
+
+
+
+
+
+let prefixcc_namespace_pair = 
+
+                Document.prefixcc.json.JsonValue.AsRecord
+                |> Array.Parallel.map (fun (key,value) -> value.AsString(), key)
+
+let lov_namespace_pair =
+    Document.lov.json
+    |> Array.Parallel.map (fun vocabulary -> vocabulary.Nsp, vocabulary.Prefix)
+
+let filesystem_namespace_pair = 
+    Folder.Vocabulary.descendant_files "*.ttl"
+    |> Array.Parallel.filter (fun file_path -> not (file_path.Contains(@"https\spec.edmcouncil.org\fibo")))
+    |> Array.Parallel.collect (fun file_path ->
+
+        try
+
+            let file_graph = new ThreadSafeGraph()
+            FileLoader.Load(file_graph, file_path)
+
+            file_graph.NamespaceMap.Prefixes
+            |> Seq.map (fun prefix ->
+                let namespace_uri = file_graph.NamespaceMap.GetNamespaceUri prefix
+
+                namespace_uri.OriginalString, prefix
+
+            )
+            |> Seq.toArray
+
+        with 
+        | err -> 
+            log_lines.Add(sprintf "filepath %s   errored with %s" file_path err.Message) 
+            [||]
+    )
+
+
+let normalize_namespace_name (namespace_name: string) =
+    let normalized = namespace_name.circumtrimmed
+
+    if String.IsNullOrWhiteSpace normalized then
+        invalidArg (nameof namespace_name) "A namespace IRI cannot be empty."
+
+    normalized
+
+let normalize_prefix_label (prefix_label: string) =
+    let normalized = prefix_label.circumtrimmed
+
+    if String.IsNullOrWhiteSpace normalized then
+        invalidArg (nameof prefix_label) "A prefix label cannot be empty."
+
+    normalized
+
+let namespace_names = 
+    Array.concat [|
+        manual_namespace_names
+        prefixcc_namespace_names
+        lov_namespace_names
+        filesystem_namespace_names
+    |]
+    |> Array.filter (fun namespace_name -> not (String.IsNullOrWhiteSpace namespace_name))
+    |> Array.map normalize_namespace_name
+    |> Array.distinct
+    |> Array.sortBy (fun namespace_name -> namespace_name.Length)
+    |> Array.rev
+
+let namespace_pairs = 
+    Array.concat [|
+        prefixcc_namespace_pair
+        lov_namespace_pair
+        filesystem_namespace_pair
+    |]
+    |> Array.filter (fun (namespace_name, prefix_label ) -> not (String.IsNullOrWhiteSpace prefix_label))
+    |> Array.map (fun (namespace_name, prefix_label ) -> normalize_namespace_name namespace_name,normalize_prefix_label prefix_label)
+    |> Array.distinct
+    |> Array.sort
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let prefixes_grouped_by_namespace =
+    namespace_pairs
+    |> Array.groupBy(fun (namespace_name, prefix_label) -> namespace_name)
+    |> Array.map (fun (namespace_name,pairs) -> namespace_name, pairs |> Array.map (fun (_,prefix_label) -> prefix_label) |> Array.sortBy(fun prefix_label -> prefix_label.Length))
+let namespaces_grouped_by_prefix =
+    namespace_pairs
+    |> Array.groupBy(fun (namespace_name, prefix_label) -> prefix_label)
+    |> Array.map (fun (prefix_label,pairs) -> prefix_label, pairs |> Array.map (fun (namespace_name,_) -> namespace_name) |> Array.sort)
+
+
+
+
+
+
+
+
+
+
+type Unresolved_Namespace =
+    | No_Prefix_Candidates of namespace_name: string
+    | All_Prefix_Candidates_Claimed of
+        namespace_name: string *
+        prefix_candidates: string array
+    member this.namespace_name = 
+        match this with 
+        | No_Prefix_Candidates name -> name
+        | All_Prefix_Candidates_Claimed (name,_) -> name
+
+type Namespace_Prefix_Resolution =
+    {
+        resolved: (string * string) array
+        unresolved: Unresolved_Namespace array
+    }
+
+let resolve_namespace_prefixes
+    (namespace_names: string array)
+    (namespace_pairs: (string * string) array)
+    (manual_overrides: Map<string, string>)
+    : Namespace_Prefix_Resolution
+    =
+
+    let order_prefixes prefixes =
+        prefixes
+        |> Array.distinct
+        |> Array.sortWith (fun (left:string) (right:string) ->
+            let by_length =
+                compare right.Length left.Length
+
+            if by_length <> 0 then
+                by_length
+            else
+                StringComparer.Ordinal.Compare(left, right)
+        )
+
+    let prefixes_by_namespace =
+        namespace_pairs
+        |> Array.groupBy fst
+        |> Array.map (fun (namespace_name, pairs) ->
+            namespace_name,
+            pairs
+            |> Array.map snd
+            |> order_prefixes
+        )
+        |> Map.ofArray
+
+    let all_namespaces =
+        Array.concat [|
+            namespace_names
+            namespace_pairs |> Array.map fst
+            manual_overrides |> Map.toArray |> Array.map fst
+        |]
+        |> Array.distinct
+        |> Array.sort
+
+    let conflicting_manual_overrides =
+        manual_overrides
+        |> Map.toArray
+        |> Array.groupBy snd
+        |> Array.filter (fun (_, assignments) ->
+            assignments.Length > 1
+        )
+
+    if conflicting_manual_overrides.Length > 0 then
+        let conflicts =
+            conflicting_manual_overrides
+            |> Array.map (fun (prefix_label, assignments) ->
+                let namespaces =
+                    assignments
+                    |> Array.map fst
+                    |> String.concat ", "
+
+                sprintf "%s → %s" prefix_label namespaces
+            )
+            |> String.concat Environment.NewLine
+
+        failwithf
+            "Manual overrides assign the same prefix to multiple namespaces:%s%s"
+            Environment.NewLine
+            conflicts
+
+    let used_prefixes = Generic.HashSet<string>(StringComparer.Ordinal)
+
+    let resolved =
+        ResizeArray<string * string>()
+
+    let unresolved =
+        ResizeArray<Unresolved_Namespace>()
+
+    // Manual overrides are authoritative and reserve their prefixes first.
+    for KeyValue(namespace_name, prefix_label) in manual_overrides do
+        if String.IsNullOrWhiteSpace prefix_label then
+            invalidArg
+                (nameof manual_overrides)
+                (sprintf
+                    "The manual prefix for %s is empty."
+                    namespace_name)
+
+        used_prefixes.Add prefix_label
+        |> ignore
+
+        resolved.Add(namespace_name, prefix_label)
+
+    let automatically_resolved_namespaces =
+        all_namespaces
+        |> Array.filter (fun namespace_name ->
+            not (manual_overrides.ContainsKey namespace_name)
+        )
+        |> Array.sortBy (fun namespace_name ->
+            let candidate_count =
+                prefixes_by_namespace
+                |> Map.tryFind namespace_name
+                |> Option.map Array.length
+                |> Option.defaultValue 0
+
+            // Resolve namespaces with fewer alternatives first.
+            candidate_count,
+            namespace_name
+        )
+
+    for namespace_name in automatically_resolved_namespaces do
+        let candidates =
+            prefixes_by_namespace
+            |> Map.tryFind namespace_name
+            |> Option.defaultValue [||]
+
+        match candidates with
+        | [||] ->
+            unresolved.Add(
+                No_Prefix_Candidates namespace_name
+            )
+
+        | _ ->
+            match
+                candidates
+                |> Array.tryFind (fun prefix_label ->
+                    not (used_prefixes.Contains prefix_label)
+                )
+            with
+            | Some prefix_label ->
+                used_prefixes.Add prefix_label
+                |> ignore
+
+                resolved.Add(namespace_name, prefix_label)
+
+            | None ->
+                unresolved.Add(
+                    All_Prefix_Candidates_Claimed(
+                        namespace_name,
+                        candidates
+                    )
+                )
+
+    {
+        resolved =
+            resolved
+            |> Seq.sortBy fst
+            |> Seq.toArray
+
+        unresolved =
+            unresolved
+            |> Seq.toArray
+    }
+
+
+let resolution =
+    resolve_namespace_prefixes
+        namespace_names
+        namespace_pairs
+        manual_prefix_overrides
+
+
+let unresolved_namespaces =
+    resolution.unresolved
+
+let all_prefixes_taken =
+    unresolved_namespaces
+    |> Array.filter (fun unresolved -> unresolved.IsAll_Prefix_Candidates_Claimed )
+    |> Array.map (fun unresolved -> unresolved.namespace_name)
+    |> Array.map  (fun namespace_name -> new Uri(namespace_name))
+    |> Array.map (fun namespace_uri -> 
+        match namespace_uri.OriginalString, namespace_uri.Segments |> Array.last  with 
+        | namespace_name, "" -> sprintf "\"%s\", \"%s\"" namespace_name (namespace_uri.Segments[namespace_uri.Segments.Length - 1].Replace("/",""))
+        | namespace_name, prefix_label -> sprintf "\"%s\", \"%s\"" namespace_name (prefix_label.Replace("/",""))
+    
+        )
+    
+    
+
+
+
+let no_prefixes_found =
+    unresolved_namespaces
+    |> Array.filter (fun unresolved -> unresolved.IsNo_Prefix_Candidates )
+    |> Array.map (fun unresolved -> unresolved.namespace_name)
+    |> Array.map  (fun namespace_name -> new Uri(namespace_name))
+    |> Array.map (fun namespace_uri -> 
+        match namespace_uri.OriginalString, namespace_uri.Segments |> Array.last  with 
+        | namespace_name, "" -> sprintf "\"%s\", \"%s\"" namespace_name (namespace_uri.Segments[namespace_uri.Segments.Length - 1].Replace("/",""))
+        | namespace_name, prefix_label -> sprintf "\"%s\", \"%s\"" namespace_name (prefix_label.Replace("/",""))
+    
+        )
+
+
+
+let unresolved_namespace_names = 
+    resolution.unresolved
+    |> Array.map (fun unresolved -> unresolved.namespace_name)
+
+
+
+
+
+
+
+
+
+let namespace_map =
+    resolution.resolved
+    |> Map.ofArray
+
+
+
+
+
+
+
+
+    
 
 let default_graph = new ThreadSafeGraph()
 
@@ -80,167 +671,9 @@ let rdfs_comment =
     default_graph.CreateUriNode(UriFactory.Create("http://www.w3.org/2000/01/rdf-schema#comment"))
 
 
-let DoxAletheia_directory =
-    Directory.CreateDirectory(
-        @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia"
-    )
 
 
-
-let Vocabulary_directory = DoxAletheia_directory.CreateChildDirectory "Vocabulary"
-let https_directory = Vocabulary_directory.CreateChildDirectory "https"
-
-
-let manual_namespace_names_with_multiple_distributions =
-    manual_distributions
-    |> Array.Parallel.groupBy (fun (namespace_name, namespace_distribution) -> namespace_name)
-    |> Array.Parallel.filter (fun (namespace_name, distributions) -> distributions.Length > 1)
-
-test <@ manual_namespace_names_with_multiple_distributions.Length = 0 @>
-
-
-
-
-
-
-
-
-
-module fibo =
-    // TODO deal with quarter and release later
-    [<RequireQualifiedAccess>]
-    type Release_Kind =
-        | prod
-        | dev
-
-    let directory =
-        Vocabulary_directory.CreateChildDirectory @"https\spec.edmcouncil.org"
-
-    let download_link =
-        "https://spec.edmcouncil.org/fibo/ontology/master/2026Q1/prod.ttl.zip"
-
-    let path_segments =
-        (iri_to_relative_path download_link)
-            .Replace("\\bare", "")
-            .Split("\\")
-
-    let file_name = path_segments |> Array.last
-
-    let relative_directory_path =
-        $"{path_segments[0]}//"
-        + (path_segments
-           |> Array.string_slice 1 -1
-           |> String.concat "\\")
-
-    let zip_directory =
-        Vocabulary_directory.CreateChildDirectory relative_directory_path
-
-
-
-
-    let zip_file = zip_directory.CreateChildFile file_name
-
-    let zip () =
-        http {
-
-            GET download_link
-
-        }
-        |> Request.send
-
-    let refresh () =
-        let response = zip ()
-
-        if response.originalHttpResponseMessage.IsSuccessStatusCode then
-            Response.saveFile zip_file.FullName response
-            ZipFile.ExtractToDirectory(zip_file.FullName, directory.FullName)
-
-    let vocabulary_files =
-        Directory.GetFiles(directory.FullName, "*.ttl", SearchOption.AllDirectories)
-
-    let namespaces_from_files =
-        vocabulary_files
-        // |> Array.randomSample 10
-        |> Array.Parallel.collect (fun rdf_file ->
-
-
-            let file_graph = new ThreadSafeGraph()
-            FileLoader.Load(file_graph, rdf_file)
-
-            file_graph.NamespaceMap.Prefixes
-            |> Seq.map (fun prefix ->
-                let namespace_uri = file_graph.NamespaceMap.GetNamespaceUri prefix
-
-                (namespace_uri.OriginalString, prefix)
-
-            )
-            |> Seq.toArray
-
-        )
-        |> Array.distinct
-
-    let content =
-        vocabulary_files
-        |> Array.Parallel.choose (fun ttl_path ->
-            let file_stem = Path.GetFileNameWithoutExtension ttl_path
-
-            let type_binding =
-                match file_stem with
-                | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
-                | _ -> file_stem.Replace('-', '_').Replace('.', '_')
-
-            let from_index = https_directory.FullName.Length + 1
-
-            let to_index =
-                ttl_path.ToCharArray()
-                |> Array.reversible_index -4
-
-            let subpath =
-                ttl_path[from_index..to_index]
-                    .Replace("\\", "/")
-                    .Replace("/master/2026Q1", "")
-
-            let reconstructed_namespace = $"https://{subpath}/"
-
-            let maybe_namespace_prefix =
-                namespaces_from_files
-                |> Array.Parallel.tryFind (fun (namespace_name, prefix_label) ->
-                    namespace_name = reconstructed_namespace
-
-                )
-
-            match maybe_namespace_prefix with
-            | Some (namespace_name, prefix_label) -> Some(namespace_name, ttl_path)
-            | None -> None)
-
-    test <@ vocabulary_files.Length = content.Length @>
-
-
-(*
-
-
-fibo.vocabulary_files
-|> String.concat "\n"
-|> clip
-
-
-fibo.namespaces_from_files
-|> Array.map (fun (namespace_name,prefix_label) -> $"\"{namespace_name}\",\"{prefix_label}\"")
-|> String.concat "\n"
-|> clip
-
-*)
-// fibo.refresh()
-// namespace_name, ttl_path
-
-
-
-module prefixcc =
-    [<Literal>]
-    let filePath =
-        @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\prefix.cc.json"
-
-    let json = JsonProvider<filePath>.Load filePath
+    
 
 
 module lov =
@@ -256,11 +689,6 @@ module lov =
                ]
 
     module vocabulary =
-        [<Literal>]
-        let filePath =
-            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\lov.vocabulary.json"
-
-        let json = JsonProvider<filePath>.Load filePath
 
         [<Literal>]
         let list_path =
@@ -290,18 +718,24 @@ module lov =
                 @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\lov.n3.meta.json"
 
             let refresh () =
-                let response = gz ()
+                try
+                    let response = gz ()
+                    printfn "downloading lov.n3.gz"
 
-                if response.originalHttpResponseMessage.IsSuccessStatusCode then
-                    Response.saveFile gz_path response
-                    decompress_gzip_file gz_path file_path
-                    let last_meta = { last_meta = DateTimeOffset.Now }
-                    let meta_file_content = Json.serialize last_meta
-                    File.WriteAllText(meta_file_path, meta_file_content)
+                    if response.originalHttpResponseMessage.IsSuccessStatusCode then
+                        Response.saveFile gz_path response
+                        decompress_gzip_file gz_path file_path
+                        let last_meta = { last_meta = DateTimeOffset.Now }
+                        let meta_file_content = Json.serialize last_meta
+                        File.WriteAllText(meta_file_path, meta_file_content)
+                        printfn "lov.n3.gz download complete"
+                with 
+                | err -> log_lines.Add(sprintf "lov_refresh errored with %s" err.Message)
 
             let json = JsonProvider<meta_file_path>.Load meta_file_path
 
             if json.LastMeta.Date < DateTime.Now.Date then
+                printfn "updating lov.n3.gz from %A to current" json.LastMeta.Date
                 refresh ()
 
             let graph = new ThreadSafeGraph()
@@ -385,20 +819,27 @@ module lov =
                 @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\lov.nq.meta.json"
 
             let refresh () =
-                let response = gz ()
+                try
+            
+                    let response = gz ()
+                    printfn "downloading lov.nq.gz"
 
-                if response.originalHttpResponseMessage.IsSuccessStatusCode then
-                    Response.saveFile gz_path response
-                    decompress_gzip_file gz_path file_path
-                    normalize_nquads_file file_path normalized_path
-                    write_valid_nquads_only normalized_path cleaned_path
-                    let last_meta = { last_meta = DateTimeOffset.Now }
-                    let meta_file_content = Json.serialize last_meta
-                    File.WriteAllText(meta_file_path, meta_file_content)
+                    if response.originalHttpResponseMessage.IsSuccessStatusCode then
+                        Response.saveFile gz_path response
+                        decompress_gzip_file gz_path file_path
+                        normalize_nquads_file file_path normalized_path
+                        write_valid_nquads_only normalized_path cleaned_path
+                        let last_meta = { last_meta = DateTimeOffset.Now }
+                        let meta_file_content = Json.serialize last_meta
+                        File.WriteAllText(meta_file_path, meta_file_content)
+                        printfn "lov.nq.gz download complete"
 
+                with 
+                | err -> log_lines.Add(sprintf "lov_refresh errored with %s" err.Message)
             let json = JsonProvider<meta_file_path>.Load meta_file_path
 
             if json.LastMeta.Date < DateTime.Now.Date then
+                printfn "updating lov.nq.gz from %A to current" json.LastMeta.Date
                 refresh ()
 
             let dataset = new DatasetFileManager(cleaned_path, false)
@@ -476,38 +917,8 @@ module lov =
 
 
 
-let label_from_namespaceIriString (namespaceIriString: string) =
-
-    let label_from_prefixcc =
-        prefixcc.json.JsonValue.Properties()
-        |> Array.Parallel.tryPick (fun (jsonKey, jsonValue) ->
-
-            if (jsonValue.AsString() = namespaceIriString) then
-                Some(jsonKey)
-            else
-                None)
-
-    match label_from_prefixcc with
-    | _ when label_from_prefixcc.IsNone ->
-        let label_from_lov =
-            lov.vocabulary.json
-            |> Array.Parallel.tryPick (fun vocabulary ->
-
-                if vocabulary.Nsp = namespaceIriString then
-                    Some(vocabulary.Prefix)
-                else
-                    None
-
-            )
-
-        label_from_lov
-
-    | _ -> label_from_prefixcc
 
 
-
-let namespace_directory_path_from_namespace_name namespace_name = Vocabulary_directory.CreateChildDirectory(iri_to_relative_path namespace_name)
-    
 
 
 
@@ -525,339 +936,106 @@ let absolute_graph_names =
     |> Array.Parallel.filter (fun graph_name -> graph_name |> is_not_terminal_delimited)
 
 
+namespace_names |> Array.tryFind(fun name  -> name.StartsWith "http://contsem.unizar.es/def/sector-publico/pproc")
 
+lov.dump.nq.graph_names
+|> Array.Parallel.filter (fun graph_name -> graph_name |> is_terminal_delimited)
+let terminated_graph_namespace = 
+    lov.dump.nq.graph_names
+    |> Array.Parallel.filter(fun graph_name -> is_terminal_delimited graph_name)
+    |> Array.Parallel.map (fun graph_name -> graph_name,graph_name )
 
+let bare_graph_names = 
+    lov.dump.nq.graph_names
+    |> Array.Parallel.filter(fun graph_name -> is_not_terminal_delimited graph_name)
 
-
-
-
-
-let graph_namespace_name_prefixes =
-    let graph_names =
-        lov.dump.nq.graph_names
-        |> Array.Parallel.filter (fun graph_name -> graph_name |> is_terminal_delimited)
-        |> Array.Parallel.map (fun graph_name -> graph_name, graph_name)
-
-    let preferred_namespaces =
-        absolute_graph_names
-        |> Array.Parallel.map (fun graph_name ->
-
-            graph_name,
-            lov.dump.n3.vocabulary'preferredNamespaceUri
-            |> Array.pick (fun (vocabulary, preferred_namespace) ->
-
-                if vocabulary.Uri.OriginalString = graph_name then
-                    Some preferred_namespace.Value
-                else
-                    None)
-
-        )
-
-    Array.concat [|
-
-                    graph_names
-                    preferred_namespaces
-
-                     |]
-    |> Array.Parallel.map (fun (graph_name, namespace_name) ->
-
-        lov.dump.n3.vocabulary'preferredNamespaceUri'preferredNamespacePrefixes
-        |> Array.pick (fun (vocabulary, preferred_namespace, preferred_prefix) ->
-
-            if vocabulary.Uri.OriginalString = graph_name then
-                Some(graph_name, preferred_namespace.Value, preferred_prefix.Value)
+let bare_graph_namespace_names =
+    bare_graph_names
+    |> Array.map(fun graph_name  -> 
+        graph_name, namespace_names 
+        |> Array.Parallel.choose(fun namespace_name  -> 
+            if namespace_name.StartsWith(graph_name) then 
+                Some (namespace_name)
             else
                 None
-
-
-        )
-
-
     )
-
-
-
-let lov_prefixes =
-    lov.vocabulary.json
-    |> Array.Parallel.map (fun vocabulary -> vocabulary.Nsp, vocabulary.Prefix)
-
-let prefixcc_prefixes =
-    prefixcc.json.JsonValue.Properties()
-    |> Array.Parallel.map (fun (jsonKey, jsonValue) -> jsonValue.AsString(), jsonKey)
-
-let all_prefixes() =
-    Array.concat [|
-
-                    lov_prefixes
-                    prefixcc_prefixes
-
-                     |]
-    |> Array.distinct
-    |> Array.sortBy (fun (namespace_name, preferred_prefix) -> namespace_name)
-
-let all_prefix_groupings =
-    all_prefixes()
-    |> Array.Parallel.groupBy (fun (namespace_name, preferred_prefix) -> namespace_name)
-
-
-
-
-let singular_prefix_namespaces =
-    all_prefix_groupings
-    |> Array.Parallel.filter (fun (namespace_name, prefix_groupings) -> prefix_groupings.Length = 1)
-
-
-let multiple_prefix_namespaces =
-    all_prefix_groupings
-    |> Array.Parallel.filter (fun (namespace_name, prefix_groupings) -> prefix_groupings.Length > 1)
-    |> Array.Parallel.map (fun (namespace_name, prefix_groupings) ->
-        let prefixes =
-            prefix_groupings
-            |> Array.Parallel.map (fun (namespace_name, preferred_prefix) -> preferred_prefix)
-            |> Array.Parallel.sortBy (fun prefix -> prefix.Length)
-            |> Array.distinct
-            |> Array.rev
-
-        namespace_name, prefixes
-
     )
-    |> Array.Parallel.sortBy (fun (namespace_name, prefixes) -> prefixes.Length)
-    |> Array.rev
+let bare_graph_namespace = 
+    bare_graph_namespace_names
+    |> Array.Parallel.filter (fun (graph_name, namespace_names) -> namespace_names.Length > 1)
+    |> Array.Parallel.map  (fun (graph_name, namespace_names) -> graph_name, namespace_names |> Array.sortBy (fun namespace_name -> namespace_name.Length) |> Array.head)
+
+
+let graph_names_missing_namespace_names = 
+    bare_graph_namespace_names
+    |> Array.filter (fun (graph_name, namespace_names) -> namespace_names.Length < 1)
+    |> Array.map (fun (graph_name, namespace_names) -> graph_name)
+
+
+
+let map_prefixes (prefix_label:string)(namespace_name:string)(graph: IGraph) =
+            
+            let uri_nodes =
+                graph.AllNodes
+                |> Seq.toArray
+                |> Array.Parallel.choose (fun inode ->
+                    if inode.NodeType = NodeType.Uri then
+                        Some(inode :?> UriNode)
+                    else
+                        None
+
+                )
+
+            let term_is_namespaced =
+                uri_nodes
+                |> Array.Parallel.exists (fun uri_node ->
+
+                    uri_node.Uri.OriginalString.StartsWith(namespace_name)
+
+                )
+
+            if term_is_namespaced then
+                graph.NamespaceMap.AddNamespace(prefix_label, new Uri(namespace_name))
 
 
 
 
-
-let singular_match_content =
-    singular_prefix_namespaces
-    |> Array.sortBy (fun (namespace_name, preferred_prefix) -> namespace_name)
-    |> Array.collect (fun (namespace_name, prefix_groupings) ->
-        prefix_groupings
-        |> Array.map (fun (namespace_name, preferred_prefix) ->
-            let prefix_match =
-                match namespace_name with
-                | "http://www.loc.gov/premis/rdf/v1#" -> "premisv1"
-                | "http://www.lexinfo.net/ontology/2.0/lexinfo#" -> "lexinfov2"
-                | "http://spdx.org/rdf/terms#" -> "spdxv1"
-                | "http://purl.org/swan/1.2/discourse-elements/" -> "swandev1_2"
-                | "http://ns.ottr.xyz/templates#" -> "ottr_tpl"
-                | "http://www.ontologyrepository.com/CommonCoreOntologies/" -> "comcore"
-                | "http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#" -> "obs"
-                | "http://opendata.caceres.es/def/ontomunicipio#" -> "ontomun"
-
-                | _ when namespace_name.Contains('.') -> preferred_prefix.Replace('.', '_')
-                | _ -> preferred_prefix
-            Some (namespace_name,prefix_match)
-
-        )
-
-    )
-
-let targeted_match target_prefix namespace_name preferred_prefix =
-    if preferred_prefix = target_prefix then
-        Some(namespace_name,preferred_prefix)
-    else
-        None
-
-let multiple_match_content =
-    multiple_prefix_namespaces
-    |> Array.sortBy (fun (namespace_name, preferred_prefix) -> namespace_name)
-    |> Array.collect (fun (namespace_name, prefixes) ->
-        prefixes
-        |> Array.mapi (fun index preferred_prefix ->
-            match namespace_name with
-            | "http://www.w3.org/ns/dcat#" -> targeted_match "dcat" namespace_name preferred_prefix
-            | "http://www.w3.org/2001/XMLSchema#" -> targeted_match "xsd" namespace_name preferred_prefix
-            | "http://www.w3.org/2011/http#" -> targeted_match "http" namespace_name preferred_prefix
-            | "http://www.w3.org/XML/1998/namespace/" -> targeted_match "xml" namespace_name preferred_prefix
-            | "http://www.w3.org/ns/pim/space#" -> targeted_match "pim" namespace_name preferred_prefix
-            | "http://www.w3.org/ns/prov#" -> targeted_match "prov" namespace_name preferred_prefix
-            | _ ->
-                if index = 0 then
-                    Some(namespace_name,preferred_prefix)
-                else
-                    None
-
-        )
-
-    )
-
-let manual_namespace_names =
-    Array.concat [|
-
-                    manual_distributions
-                    |> Array.map (fun (namespace_name, _) -> namespace_name)
-                    multipart_distributions
-                    |> Array.map (fun (namespace_name, _) -> namespace_name) |]
-
-(*
-
-
-let unmatched_namespaces =
-    manual_namespace_names
-    |> Array.Parallel.choose (fun namespace_name ->
-
-        let namespace_exists =
-            global_prefix_declarations
-            |> Array.exists (fun (global_namespace, global_prefix) -> namespace_name = global_namespace)
-        if namespace_exists then
-            None
-        else
-            Some namespace_name
-
-    )
-    *)
-type Prefix_Map = 
-    {
-        namespace_name:string
-        prefix_label:string
-    }
-type Namespace_Prefixes  =
-    {
-        mappings: Prefix_Map array
-    }
-let match_content =
-    { mappings = 
+let lov_metadata =
         Array.concat [|
-                    singular_match_content
-                    multiple_match_content
-                    manual_match_content
+            terminated_graph_namespace
+            bare_graph_namespace
 
-     
-                     |]
-                |> Array.choose (fun maybe_match -> maybe_match)
-                |> Array.map (fun (namespace_name, prefix_label) -> { namespace_name = namespace_name ; prefix_label = prefix_label })
-    }
+        |]
+        |> Array.Parallel.choose (fun (graph_name, namespace_name) -> 
 
-let file_path = Path.Combine(__SOURCE_DIRECTORY__,"namespace_prefixes.json")
-File.WriteAllText(file_path , Json.serialize match_content)
+        try
+            let namespace_directory = Folder.Vocabulary ./ iri_to_relative_path namespace_name
 
 
-// TODO handle the ~90 duplicate prefixes
-// maybe lazy _ suffix?
-let duplicate_prefixes =
-    global_prefix_declarations
-    |> Array.Parallel.groupBy (fun (namespace_name, prefix_label) -> prefix_label)
-    |> Array.Parallel.filter (fun (prefix_label, namespace_groupings) -> namespace_groupings.Length > 1
-    // test <@ namespace_groupings.Length = 1 @>
-    (*
-        namespace_groupings
-        |> Array.Parallel.choose (fun namespace_grouping ->
-        if namespace_groupings.Length > 1 then
-            Some namespace_grouping
-        else None
+            let prefix_label = namespace_map[namespace_name]
+            let ttl_file = namespace_directory ./ $"{prefix_label}.ttl"
+
+
+            if not (ttl_file.as_file.Exists) then
+                let graph = new ThreadSafeGraph()
+
+                lov.dump.nq.dataset.LoadGraph(graph, graph_name)
+                graph |> map_prefixes prefix_label namespace_name
+                Console.WriteLine $"Saving {namespace_name} as {prefix_label}.ttl"
+                Directory.CreateDirectory(ttl_file.parent_directory.FullName) |> ignore
+                Turtle.write ttl_file.path graph
+
+            Some {
+                namespace_prefix = prefix_label
+                namespace_name = namespace_name
+
+            }
+
+        with
+        | err ->
+            log_lines.Add(sprintf "lov graph_name %s  namespace_name %s errored with %s" graph_name namespace_name err.Message) 
+            None
         )
-
-        *)
-
-
-    )
-    |> Array.sortBy (fun (prefix_label, namespace_groupings) -> prefix_label)
-
-// test <@ duplicate_prefixes.Length = 0 @>
-
-
-
-
-let singular_namespace_prefixes =
-    all_prefixes()
-    |> Array.Parallel.groupBy (fun (namespace_name, preferred_prefix) -> preferred_prefix)
-    |> Array.Parallel.filter (fun (preferred_prefix, namespace_groupings) -> namespace_groupings.Length = 1)
-
-
-let multiple_namespace_prefixes =
-    all_prefixes()
-    |> Array.Parallel.groupBy (fun (namespace_name, preferred_prefix) -> preferred_prefix)
-    |> Array.Parallel.filter (fun (preferred_prefix, namespace_groupings) -> namespace_groupings.Length > 1)
-    |> Array.Parallel.map (fun (preferred_prefix, namespace_groupings) ->
-        let namespaces =
-            namespace_groupings
-            |> Array.Parallel.map (fun (namespace_name, preferred_prefix) -> namespace_name)
-            |> Array.Parallel.sort
-            |> Array.distinct
-
-        preferred_prefix, namespaces
-
-    )
-    |> Array.Parallel.sortBy (fun (preferred_prefix, namespaces) -> namespaces.Length)
-    |> Array.rev
-
-let map_prefixes (graph: IGraph) =
-    global_prefix_declarations
-    |> Array.Parallel.iter (fun (namespace_name, prefix_label) ->
-
-        let uri_nodes =
-            graph.AllNodes
-            |> Seq.toArray
-            |> Array.Parallel.choose (fun inode ->
-                if inode.NodeType = NodeType.Uri then
-                    Some(inode :?> UriNode)
-                else
-                    None
-
-            )
-
-        let term_is_namespaced =
-            uri_nodes
-            |> Array.Parallel.exists (fun uri_node ->
-
-                uri_node.Uri.OriginalString.StartsWith(namespace_name)
-
-            )
-
-        if term_is_namespaced then
-            graph.NamespaceMap.AddNamespace(prefix_label, new Uri(namespace_name)))
-
-
-
-let lov_content =
-    graph_namespace_name_prefixes
-    |> Array.Parallel.map (fun (graph_name, namespace_name, preferred_prefix) ->
-
-        let namespace_directory_path =
-            namespace_directory_path_from_namespace_name namespace_name
-
-        let prefix_declaration =
-            global_prefix_declarations
-            |> Array.pick (fun (vocabulary, prefix) ->
-
-                if vocabulary = namespace_name then
-                    Some prefix
-                else
-                    None
-
-            )
-
-        let file_stem =
-            match namespace_name with
-            | "http://www.w3.org/2001/sw/hcls/ns/transmed/" -> prefix_declaration
-            | _ -> preferred_prefix
-        let ttl_path = namespace_directory_path.CreateChildFile $"{file_stem}.ttl"
-
-
-        match File.Exists(ttl_path.FullName), should_overwrite with
-        | false, _
-        | true, true
-
-         ->
-            let graph = new ThreadSafeGraph()
-
-            lov.dump.nq.dataset.LoadGraph(graph, graph_name)
-            map_prefixes graph
-            Console.WriteLine $"Saving {namespace_name} as {file_stem}.ttl"
-            Turtle.write ttl_path.FullName graph
-        | _, _ -> ()
-
-        let type_binding =
-            match file_stem with
-            | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
-            | _ -> file_stem.Replace('-', '_').Replace('.', '_')
-
-        namespace_name, ttl_path.FullName
-
-    )
-
-
 
 
 
@@ -913,21 +1091,6 @@ rdf_loader.FollowRedirects <- true
 
 
 
-let file_stem_from_name_distribution namespace_name namespace_distribution =
-
-    let distribution_uri = new Uri(namespace_distribution)
-    let distribution_stem = distribution_uri.Segments |> Array.last
-
-    match label_from_namespaceIriString namespace_name with
-    | _ when namespace_name = "http://www.w3.org/2001/XMLSchema#" -> "xsd"
-    | Some prefix_label when namespace_name <> namespace_distribution -> $"{prefix_label}-{distribution_stem}"
-    | Some prefix_label -> prefix_label
-    | None -> distribution_stem
-
-
-let errored_namespaces = new ResizeArray<string>()
-
-
 let distribution_http_response (distribution: string) : HttpResponseMessage option =
     try
         let http_response =
@@ -943,192 +1106,179 @@ let distribution_http_response (distribution: string) : HttpResponseMessage opti
 
     with
     | err ->
-        errored_namespaces.Add $"HTTP failed for {distribution}: {err.Message}"
+        log_lines.Add $"HTTP failed for {distribution}: {err.Message}"
         None
 
+// TODO obo 
 let manual_content =
     manual_distributions
-    |> Array.Parallel.map (fun (namespace_name, namespace_distribution) ->
-        let namespace_uri = new Uri(namespace_name)
-        let distribution_uri = new Uri(namespace_distribution)
+    |> Array.Parallel.choose (fun (namespace_name, namespace_distribution) ->
+        try
 
-        let namespace_directory_path =
-            namespace_directory_path_from_namespace_name namespace_name
+            let namespace_uri = new Uri(namespace_name)
+            let distribution_uri = new Uri(namespace_distribution)
 
-        let prefix_declaration =
-            try
-                global_prefix_declarations
-                |> Array.pick (fun (vocabulary, prefix) ->
-
-                    if vocabulary = namespace_name then
-                        Some prefix
-                    else
-                        None
-
-                )
-            with
-            | err -> failwith $"{namespace_name} {namespace_distribution} failed with error {err.Message}"
-
-        let file_stem =
-            match namespace_name with
-            | "http://www.w3.org/2001/XMLSchema#" -> "xsd"
-            | "http://www.w3.org/ns/dcat#" -> "dcat"
-            | _ -> prefix_declaration
-
-
-        let ttl_path = namespace_directory_path.CreateChildFile $"{file_stem}.ttl"
+            let namespace_directory = Folder.Vocabulary ./ iri_to_relative_path namespace_name
+            let prefix_label = namespace_map[namespace_name]
 
 
 
-        match File.Exists(ttl_path.FullName), should_overwrite with
-        | false, _
-        | true, true
+            let ttl_file = namespace_directory ./ $"{prefix_label}.ttl"
 
-         ->
-            let graph = new ThreadSafeGraph()
 
-            try
-                match namespace_name with
-                | "http://www.essepuntato.it/2011/02/argumentmodel/"
-                | "http://example.org/dctap#"
-                | "http://www.opengis.net/ont/geosparql#"
-                | "https://www.commoncoreontologies.org/"
-                | "https://w3id.org/linkml/"
-                | "http://data.europa.eu/m8g/"
-                | "http://www.w3.org/2001/XMLSchema#" -> rdf_loader.LoadGraph(graph, distribution_uri, TurtleParser())
-                | "http://id.loc.gov/ontologies/bflc/"
-                | "http://id.loc.gov/ontologies/bibframe/"
-                | "http://www.w3.org/2002/12/cal/icaltzd#"
-                | "http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#"
-                | "http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#"
-                | "http://www.loc.gov/premis/rdf/v3/"
-                | "http://www.essepuntato.it/2008/12/earmark#"
-                | "https://raw.githubusercontent.com/tetherless-world/explanation-ontology/master/Ontologies/v2/explanation-ontology.owl"
-                | "http://aims.fao.org/aos/agrontology#" -> rdf_loader.LoadGraph(graph, distribution_uri, RdfXmlParser())
-                | _ when namespace_name.StartsWith("http://tracker.api.gnome.org/ontology/v3/") -> rdf_loader.LoadGraph(graph, distribution_uri, TurtleParser())
-                | _ when namespace_name.StartsWith("http://eulersharp.sourceforge.net/2003/03swap/") -> rdf_loader.LoadGraph(graph, distribution_uri, TurtleParser())
-                | _ when namespace_name.StartsWith("http://www.semanticdesktop.org/ontologies") ->
-                    let dataset = new ThreadSafeTripleStore()
-                    rdf_loader.LoadDataset(dataset, distribution_uri, TriGParser())
-                    for dataset_graph in dataset.Graphs do
-                        graph.Merge(dataset_graph, false)
-                | _ -> rdf_loader.LoadGraph(graph, distribution_uri)
 
-                Console.WriteLine $"Saving {namespace_name} as {file_stem}.ttl"
-                map_prefixes graph
-                Turtle.write ttl_path.FullName graph
-            with
-            | err ->
-                // errored_namespaces.Add $"{namespace_name} {namespace_distribution} failed with error {err.Message}"
-                match distribution_http_response namespace_distribution with
+            if not (ttl_file.as_file.Exists) then
+                let graph = new ThreadSafeGraph()
 
-                | Some http_response when http_response.IsSuccessStatusCode ->
+                try
+                    match namespace_name with
+                    | "http://www.essepuntato.it/2011/02/argumentmodel/"
+                    | "http://example.org/dctap#"
+                    | "http://www.opengis.net/ont/geosparql#"
+                    | "https://www.commoncoreontologies.org/"
+                    | "https://w3id.org/linkml/"
+                    | "http://data.europa.eu/m8g/"
+                    | "http://www.w3.org/2001/XMLSchema#" -> rdf_loader.LoadGraph(graph, distribution_uri, TurtleParser())
+                    | "http://id.loc.gov/ontologies/bflc/"
+                    | "http://id.loc.gov/ontologies/bibframe/"
+                    | "http://www.w3.org/2002/12/cal/icaltzd#"
+                    | "http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#"
+                    | "http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#"
+                    | "http://www.loc.gov/premis/rdf/v3/"
+                    | "http://www.essepuntato.it/2008/12/earmark#"
+                    | "https://raw.githubusercontent.com/tetherless-world/explanation-ontology/master/Ontologies/v2/explanation-ontology.owl"
+                    | "http://aims.fao.org/aos/agrontology#" -> rdf_loader.LoadGraph(graph, distribution_uri, RdfXmlParser())
+                    | _ when namespace_name.StartsWith("http://tracker.api.gnome.org/ontology/v3/") -> rdf_loader.LoadGraph(graph, distribution_uri, TurtleParser())
+                    | _ when namespace_name.StartsWith("http://eulersharp.sourceforge.net/2003/03swap/") -> rdf_loader.LoadGraph(graph, distribution_uri, TurtleParser())
+                    | _ when namespace_name.StartsWith("http://www.semanticdesktop.org/ontologies") ->
+                        let dataset = new ThreadSafeTripleStore()
+                        rdf_loader.LoadDataset(dataset, distribution_uri, TriGParser())
+                        for dataset_graph in dataset.Graphs do
+                            graph.Merge(dataset_graph, false)
+                    | _ -> rdf_loader.LoadGraph(graph, distribution_uri)
 
-                    let file_text =
-                        http_response.Content.ReadAsStringAsync()
-                        |> Async.AwaitTask
-                        |> Async.RunSynchronously
-                    try
-                        StringParser.Parse(graph, file_text)
-                        Console.WriteLine $"Saving {namespace_name} as {file_stem}.ttl"
-                        map_prefixes graph
-                        Turtle.write ttl_path.FullName graph
-                    with
-                    | err -> errored_namespaces.Add $"{namespace_name} {namespace_distribution} failed with error {err.Message}"
-                | _ -> errored_namespaces.Add $"No http response for {namespace_name} distribution {namespace_distribution}"
-        | _, _ -> ()
+                    Console.WriteLine $"Saving {namespace_name} as {prefix_label}.ttl"
+                    graph |> map_prefixes prefix_label namespace_name
+                    Directory.CreateDirectory(ttl_file.parent_directory.FullName) |> ignore
+                    Turtle.write ttl_file.path graph
+                with
+                | err ->
+                    // errored_namespaces.Add $"{namespace_name} {namespace_distribution} failed with error {err.Message}"
+                    match distribution_http_response namespace_distribution with
 
-        let type_binding =
-            match file_stem with
-            | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
-            | _ -> file_stem.Replace('-', '_').Replace('.', '_')
+                    | Some http_response when http_response.IsSuccessStatusCode ->
 
-        namespace_name, ttl_path.FullName
+                        let file_text =
+                            http_response.Content.ReadAsStringAsync()
+                            |> Async.AwaitTask
+                            |> Async.RunSynchronously
+                        try
+                            StringParser.Parse(graph, file_text)
+                            Console.WriteLine $"Saving {namespace_name} as {prefix_label}.ttl"
+                            graph |> map_prefixes prefix_label namespace_name
+                            Directory.CreateDirectory(ttl_file.parent_directory.FullName) |> ignore
+                            Turtle.write ttl_file.path graph
+                        with
+                        | err -> log_lines.Add $"{namespace_name} {namespace_distribution} failed with error {err.Message}"
+                    | _ -> log_lines.Add $"No http response for {namespace_name} distribution {namespace_distribution}"
 
+            Some {
+                    namespace_prefix = prefix_label
+                    namespace_name = namespace_name
+                }
+
+        with
+        | err ->
+            log_lines.Add(sprintf "manual  namespace_name %s distribution %s errored with %s" namespace_name namespace_distribution err.Message) 
+            None
     )
+
+let file_stem_from_name_distribution namespace_name namespace_distribution =
+
+    let distribution_uri = new Uri(namespace_distribution)
+    let distribution_stem = distribution_uri.Segments |> Array.last
+
+    match namespace_map[namespace_name] with
+    | _ when namespace_name = "http://www.w3.org/2001/XMLSchema#" -> "xsd"
+    | prefix_label when namespace_name <> namespace_distribution -> $"{prefix_label}-{distribution_stem}"
+    | prefix_label -> prefix_label
 
 
 let multipart_content =
-
     multipart_distributions
-    |> Array.Parallel.map (fun (namespace_name, namespace_distributions) ->
-        let ttl_paths =
-            namespace_distributions
-            |> Array.Parallel.map (fun namespace_distribution ->
-                let namespace_uri = new Uri(namespace_name)
-                let distribution_uri = new Uri(namespace_distribution)
+    |> Array.Parallel.choose (fun (namespace_name, namespace_distributions) ->
+        try
 
-                let namespace_directory_path =
-                    namespace_directory_path_from_namespace_name namespace_name
+            let ttl_paths =
+                namespace_distributions
+                |> Array.Parallel.map (fun namespace_distribution ->
+                    let namespace_uri = new Uri(namespace_name)
+                    let distribution_uri = new Uri(namespace_distribution)
+
+                    let namespace_directory = Folder.Vocabulary ./ iri_to_relative_path namespace_name
+                    let file_stem =
+                        let file_name = 
+                                let distribution_uri = new Uri(namespace_distribution)
+                                let distribution_stem = distribution_uri.Segments |> Array.last
+
+                                match namespace_map[namespace_name] with
+                                | _ when namespace_name = "http://www.w3.org/2001/XMLSchema#" -> "xsd"
+                                | prefix_label when namespace_name <> namespace_distribution -> $"{prefix_label}-{distribution_stem}"
+                                | prefix_label -> prefix_label
+
+                        file_name.Replace(".ttl", "")
+                    let prefix_label = namespace_map[namespace_name]
+                    let ttl_file = namespace_directory ./ $"{file_stem}.ttl"
 
 
-                let file_stem =
-                    let file_name =
-                        file_stem_from_name_distribution namespace_name namespace_distribution
-                    file_name.Replace(".ttl", "")
-
-                let ttl_path = namespace_directory_path.CreateChildFile $"{file_stem}.ttl"
 
 
+                    if not (ttl_file.as_file.Exists) then
+                        let graph = new ThreadSafeGraph()
 
-                match File.Exists(ttl_path.FullName), should_overwrite with
-                | false, _
-                | true, true
+                        match namespace_name with
+                        | _ ->
+                            try
+                                rdf_loader.LoadGraph(graph, distribution_uri)
+                                Console.WriteLine $"Saving {namespace_name} as {file_stem}.ttl"
+                                graph |> map_prefixes prefix_label namespace_name
+                                Directory.CreateDirectory(ttl_file.parent_directory.FullName) |> ignore
+                                Turtle.write ttl_file.path graph
+                            with
+                            | err ->
+                                // errored_namespaces.Add $"{namespace_name} {namespace_distribution} failed with error {err.Message}"
+                                match distribution_http_response namespace_distribution with
 
-                 ->
-                    let graph = new ThreadSafeGraph()
+                                | Some http_response when http_response.IsSuccessStatusCode ->
 
-                    match namespace_name with
-                    | _ ->
-                        try
-                            rdf_loader.LoadGraph(graph, distribution_uri)
-                            Console.WriteLine $"Saving {namespace_name} as {file_stem}.ttl"
-                            map_prefixes graph
-                            Turtle.write ttl_path.FullName graph
-                        with
-                        | err ->
-                            // errored_namespaces.Add $"{namespace_name} {namespace_distribution} failed with error {err.Message}"
-                            match distribution_http_response namespace_distribution with
+                                    let file_text =
+                                        http_response.Content.ReadAsStringAsync()
+                                        |> Async.AwaitTask
+                                        |> Async.RunSynchronously
+                                    try
+                                        StringParser.Parse(graph, file_text)
+                                        Console.WriteLine $"Saving {namespace_name} as {prefix_label}.ttl"
+                                        graph |> map_prefixes prefix_label namespace_name
+                                        Directory.CreateDirectory(ttl_file.parent_directory.FullName) |> ignore
+                                        Turtle.write ttl_file.path graph
 
-                            | Some http_response when http_response.IsSuccessStatusCode ->
+                                    with
+                                    | err -> log_lines.Add $"{namespace_name} {namespace_distribution} failed with error {err.Message}"
+                                | _ -> log_lines.Add $"No http response for {namespace_name} distribution {namespace_distribution}"
+                    ttl_file.path
+                )
 
-                                let file_text =
-                                    http_response.Content.ReadAsStringAsync()
-                                    |> Async.AwaitTask
-                                    |> Async.RunSynchronously
-                                try
-                                    StringParser.Parse(graph, file_text)
-                                    Console.WriteLine $"Saving {namespace_name} as {file_stem}.ttl"
-                                    map_prefixes graph
-                                    Turtle.write ttl_path.FullName graph
 
-                                with
-                                | err -> errored_namespaces.Add $"{namespace_name} {namespace_distribution} failed with error {err.Message}"
-                            | _ -> errored_namespaces.Add $"No http response for {namespace_name} distribution {namespace_distribution}"
-                    ttl_path.FullName
-                | _, _ -> "")
-            |> Array.filter (fun ttl_path -> ttl_path <> "")
-            |> String.concat ";"
+            Some {
+                namespace_prefix = namespace_map[namespace_name]
+                namespace_name = namespace_name
 
-        let prefix_declaration =
-            global_prefix_declarations
-            |> Array.pick (fun (vocabulary, prefix) ->
+            }
 
-                if vocabulary = namespace_name then
-                    Some prefix
-                else
-                    None
-
-            )
-        let type_binding =
-            match prefix_declaration with
-            | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
-            | _ ->
-                prefix_declaration
-                    .Replace('-', '_')
-                    .Replace('.', '_')
-
-        namespace_name, ttl_paths
+        with
+        | err ->
+            log_lines.Add(sprintf "multipart namespace_name %s distributions %A errored with %s" namespace_name namespace_distributions err.Message) 
+            None
 
     )
 
@@ -1140,217 +1290,57 @@ let multipart_content =
 
 
 
-let rdfsharp_namespace (iri:string) = 
-    let uri = Uri(iri)
-    let terminal = 
-        match iri[iri.Length - 1] with 
-        | '#' -> "hash"
-        | '/' -> "slash"
-        | _ -> "bare"
-    let segments = 
-        Array.concat [|
-            [|uri.Scheme|]
-            (uri.Host.Split("."))
-            (uri.Segments
-            |> Array.collect (fun segment -> segment.Split(".")))
-            [|terminal|]
 
-        |]
-    segments
-            |> Array.map (fun segment -> segment.Replace("/","").Replace("-","_").Replace("~","_"))
-            |> Array.filter (fun segment -> segment <> "")
-            |> Array.map (fun segment -> 
-                let lead = 
-                    match segment with 
-                    | _ when Char.IsAsciiDigit segment[0] -> "_"
-                    |_ when FSharp_Keywords.keyword_names.Contains segment -> "_"
-                    | _ -> ""
-                lead + segment
-            )
-            |> String.concat "."
+type Prefix_Registry = 
+    {
+        prefix_ids : Prefix_ID array
+    }
+
+let prefix_registry = 
+    {
+        prefix_ids = 
+            Array.concat [|
+                        fibo.metadata
+                        lov_metadata
+                        manual_content
+                        resolution.resolved |> Array.map (fun (namespace_name, prefix_label) -> 
+                                                                                    {
+                                                                                        namespace_prefix = prefix_label
+                                                                                        namespace_name = namespace_name
+                                                                                    }
+                        )
+                    |]
+                    |> Array.distinct
+
+    }
 
 
-let generated_directory = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\Generated"
-let project_directory = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\"
+(*
 
-module IriDocs = 
-    open Xml_Documentation_Comments
-    let xmldoc (comments:string array)(iri:string) =
-        let comment = comments |> String.concat "\n"
-        summary {
-            // printfn "\n%s\n" comment
-            sprintf "\n%s\n" comment
-            see { 
-                FSharp.ViewEngine.Html._href iri
-                }
-        
-        }
-        |> Render.toXElement
-        |> fun xelement -> xelement.ToString()
-        |> fun xelement_string -> xelement_string.Split("\n")
+prefix_registry.prefix_ids 
+|> Array.Parallel.map (fun prefix_id -> 
+sprintf """    static member %s = {namespace_prefix = "%s" ; namespace_name = "%s"}""" prefix_id.namespace_prefix.normalize_identifier prefix_id.namespace_prefix prefix_id.namespace_name
+)
+|> Array.sort
+|> String.concat "\n"
+|> clip
+
+*)
 
 
 
-        
-// TODO keep parity with real namespace
-
-let my_namespace = "DoxAletheia"
-
-let global_prefix_map = global_prefix_declarations |> Map.ofArray
-let generate_vocabulary (rdf_namespace_name: string) (rdf_sources: string) =
-    let prefix_label = global_prefix_map[rdf_namespace_name]
-    
-    let term_label_comments =
-        let isEnglishOrUnspecified (literal: LiteralNode) =
-            String.IsNullOrWhiteSpace literal.Language
-            || literal.Language.StartsWith("en", StringComparison.OrdinalIgnoreCase)
-
-        let literalValuesForPredicate predicateFilter (graph: ThreadSafeGraph) subject predicate =
-            graph.GetTriplesWithSubjectPredicate(subject, predicate)
-            |> Seq.choose (fun triple ->
-                match triple.Object with
-                | :? LiteralNode as literal when predicateFilter literal ->
-                    Some literal.Value
-                | _ ->
-                    None
-            )
-            |> Seq.distinct
-            |> Seq.toArray
-
-        rdf_sources.Split([| ';' |], StringSplitOptions.RemoveEmptyEntries)
-        |> Array.map _.Trim()
-        |> Array.filter (String.IsNullOrWhiteSpace >> not)
-        |> Array.Parallel.filter (fun rdf_source -> File.Exists(rdf_source))
-        |> Array.Parallel.collect (fun rdf_source ->
-
-            let graph = new ThreadSafeGraph()
-            FileLoader.Load(graph, rdf_source)
-
-            let rdfs_label =
-                graph.CreateUriNode(UriFactory.Create("http://www.w3.org/2000/01/rdf-schema#label"))
-
-            let rdfs_comment =
-                let comment = 
-                    match rdf_namespace_name with 
-                    | "https://w3id.org/linkml/" -> "https://w3id.org/linkml/comments"
-                    | _ -> "http://www.w3.org/2000/01/rdf-schema#comment"
-                graph.CreateUriNode(UriFactory.Create(comment))
-
-            let vocabulary_terms =
-                graph.AllNodes
-                |> Seq.choose (fun node ->
-                    match node with
-                    | :? UriNode as iri -> Some iri
-                    | _ -> None
-                )
-                |> Seq.filter (fun iri ->
-                    iri.Uri.OriginalString.StartsWith(rdf_namespace_name)
-                    && iri.Uri.OriginalString <> rdf_namespace_name
-                )
-                |> Seq.distinctBy (fun iri -> iri.Uri.OriginalString)
-                |> Seq.toArray
-
-            vocabulary_terms
-            |> Array.Parallel.map (fun vocabulary_term ->
-                let labels =
-                    literalValuesForPredicate
-                        (fun (_: LiteralNode) -> true)
-                        graph
-                        vocabulary_term
-                        rdfs_label
-
-                let comments =
-                    literalValuesForPredicate
-                        isEnglishOrUnspecified
-                        graph
-                        vocabulary_term
-                        rdfs_comment
-
-                vocabulary_term.Uri.OriginalString, labels, comments
-            )
-        )
-        |> Array.groupBy (fun (iri_string, _, _) -> iri_string)
-        |> Array.map (fun (iri_string, rows) ->
-            let labels =
-                rows
-                |> Array.collect (fun (_, labels, _) -> labels)
-                |> Array.distinct
-
-            let comments =
-                rows
-                |> Array.collect (fun (_, _, comments) -> comments)
-                |> Array.distinct
-
-            iri_string, labels, comments
-        )
-    let fs_text =
-        try
-            Oak() {
-                Namespace(rdfsharp_namespace rdf_namespace_name) {
-                    Open($"{my_namespace}")
-                    Module(prefix_label.Replace("-","_").normalize_identifier){
-                        Value("_namespace_name",String(rdf_namespace_name))
-                        Function("_prefix", ParameterPat("local_name"), "Namespaced_IRI.parse _namespace_name local_name |> NamespacedName")
-
-                        for iri_string, labels, comments in term_label_comments do
-                            let local_part = iri_string[rdf_namespace_name.Length..]
-
-                            let property_name =
-                                match rdf_namespace_name, labels with
-                                | "", labels when labels.Length > 0 -> labels.[0]
-                                | _ -> local_part
-                            Value(property_name.normalize_identifier, $"_prefix \"{local_part}\"")
-                            |> _.xmlDocs(IriDocs.xmldoc comments iri_string)
 
 
-                    }
-
-                }
-            }
-            |> Gen.mkOak
-            |> Gen.run
-        with 
-        | err -> failwithf "namespace name %s\n\trdf sources %s\n failed with error %s" rdf_namespace_name rdf_sources err.Message
-    let relative_path = iri_to_relative_path rdf_namespace_name
-    let fs_file = 
-        match prefix_label with 
-        | "xsd" -> Path.Combine(project_directory, $"{prefix_label}.fs")
-        | _ -> Path.Combine(generated_directory, $"{prefix_label}.fs")
-
-    File.WriteAllText(fs_file,fs_text)
-    sprintf "<Compile Include=\"%s.fs\" />" prefix_label
-    
-
-let item_group = 
-    Array.concat [|
-
-                    lov_content
-                    manual_content
-                    multipart_content
-                    fibo.content
-
-                     |]
-                     |> Array.filter (fun (rdf_namespace_name, rdf_sources) -> not (errored_namespaces.Contains(rdf_namespace_name)))
-                     |> Array.map (fun (rdf_namespace_name, rdf_sources) -> 
-
-                        try 
-                             generate_vocabulary rdf_namespace_name  rdf_sources
-                        with 
-                        | err -> 
-                            errored_namespaces.Add(sprintf "namespace %s sources %s errored with %s" rdf_namespace_name rdf_sources err.Message)
-                            String.Empty
-
-                     )
-                    |> Array.filter (fun item -> item <> "")
 
 
-File.WriteAllLines(Path.Combine(__SOURCE_DIRECTORY__, "ErroredNamespaces.txt"), errored_namespaces)
+let prefix_map= 
+    prefix_registry.prefix_ids
+    |> Array.Parallel.map (fun prefix_id -> prefix_id.namespace_name,prefix_id)
+    |> Map.ofArray
 
 
-// TODO investigate linkml output
-// TODO consider a prefix refresh of all ttl files
-// TODO investigate windows xsd files like event xsd in C:\Program Files (x86)\Windows Kits\10\Include
-// TODO find a way to parse omg spec catalog for all files
-// https://www.omg.org/spec/
+File.WriteAllText(@"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Registry\PrefixRegistry.json", Json.serialize prefix_registry)
+
+
 
 

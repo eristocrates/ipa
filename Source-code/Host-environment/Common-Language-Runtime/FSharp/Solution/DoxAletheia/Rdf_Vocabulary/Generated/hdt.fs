@@ -1,210 +1,448 @@
 namespace http.purl.org.HDT.hdt.hash
 
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
 
 module hdt =
-    let _namespace_name = "http://purl.org/HDT/hdt#"
+    let _namespace_iri = Namespace_Iri hdt |> NamespaceIRI
+    /// <summary>
+    ///   <para>hdt:Dataset</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#Dataset">http://purl.org/HDT/hdt#Dataset</seealso>
+    let Dataset = Prefixed_Name(hdt, "Dataset") |> PrefixedName
+    /// <summary>
+    ///   <para>hdt:streamItem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#streamItem">http://purl.org/HDT/hdt#streamItem</seealso>
+    let streamItem = Prefixed_Name(hdt, "streamItem") |> PrefixedName
+    /// <summary>
+    ///   <para>hdt:bitmapItem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#bitmapItem">http://purl.org/HDT/hdt#bitmapItem</seealso>
+    let bitmapItem = Prefixed_Name(hdt, "bitmapItem") |> PrefixedName
 
-    let _prefix local_name =
-        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+    /// <summary>
+    ///   <para>hdt:dictionaryItemCollection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#dictionaryItemCollection">http://purl.org/HDT/hdt#dictionaryItemCollection</seealso>
+    let dictionaryItemCollection =
+        Prefixed_Name(hdt, "dictionaryItemCollection") |> PrefixedName
 
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#Dataset"></see>
+    ///   <para>hdt:dictionaryEncoding</para>
     /// </summary>
-    let Dataset = _prefix "Dataset"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#dictionaryEncoding">http://purl.org/HDT/hdt#dictionaryEncoding</seealso>
+    let dictionaryEncoding = Prefixed_Name(hdt, "dictionaryEncoding") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#IDCodification"></see>
+    ///   <para>hdt:namespace</para>
     /// </summary>
-    let IDCodification = _prefix "IDCodification"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#namespace">http://purl.org/HDT/hdt#namespace</seealso>
+    let namespace_ = Prefixed_Name(hdt, "namespace") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#streamItem"></see>
+    ///   <para>hdt:additionalInformation</para>
     /// </summary>
-    let streamItem = _prefix "streamItem"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#additionalInformation">http://purl.org/HDT/hdt#additionalInformation</seealso>
+    let additionalInformation =
+        Prefixed_Name(hdt, "additionalInformation") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#additionalInformation"></see>
+    ///   <para>hdt:formatInformation</para>
     /// </summary>
-    let additionalInformation = _prefix "additionalInformation"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#formatInformation">http://purl.org/HDT/hdt#formatInformation</seealso>
+    let formatInformation = Prefixed_Name(hdt, "formatInformation") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#additionalItemCollection"></see>
+    ///   <para>hdt:dictionaryNamespacesCollection</para>
     /// </summary>
-    let additionalItemCollection = _prefix "additionalItemCollection"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#dictionaryNamespacesCollection">http://purl.org/HDT/hdt#dictionaryNamespacesCollection</seealso>
+    let dictionaryNamespacesCollection =
+        Prefixed_Name(hdt, "dictionaryNamespacesCollection") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#bitmapItem"></see>
+    ///   <para>hdt:dictionarySeparator</para>
     /// </summary>
-    let bitmapItem = _prefix "bitmapItem"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#dictionarySeparator">http://purl.org/HDT/hdt#dictionarySeparator</seealso>
+    let dictionarySeparator = Prefixed_Name(hdt, "dictionarySeparator") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#dictionary"></see>
+    ///   <para>hdt:dictionaryOrder</para>
     /// </summary>
-    let dictionary = _prefix "dictionary"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#dictionaryOrder">http://purl.org/HDT/hdt#dictionaryOrder</seealso>
+    let dictionaryOrder = Prefixed_Name(hdt, "dictionaryOrder") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#formatInformation"></see>
+    ///   <para>hdt:formatItemCollection</para>
     /// </summary>
-    let formatInformation = _prefix "formatInformation"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#formatItemCollection">http://purl.org/HDT/hdt#formatItemCollection</seealso>
+    let formatItemCollection =
+        Prefixed_Name(hdt, "formatItemCollection") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#dictionaryItemCollection"></see>
+    ///   <para>hdt:namespaceItem</para>
     /// </summary>
-    let dictionaryItemCollection = _prefix "dictionaryItemCollection"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#namespaceItem">http://purl.org/HDT/hdt#namespaceItem</seealso>
+    let namespaceItem = Prefixed_Name(hdt, "namespaceItem") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#dictionaryEncoding"></see>
+    ///   <para>hdt:numberOfPredicates</para>
     /// </summary>
-    let dictionaryEncoding = _prefix "dictionaryEncoding"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#numberOfPredicates">http://purl.org/HDT/hdt#numberOfPredicates</seealso>
+    let numberOfPredicates = Prefixed_Name(hdt, "numberOfPredicates") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#dictionaryNamespaces"></see>
+    ///   <para>hdt:triplesItemCollection</para>
     /// </summary>
-    let dictionaryNamespaces = _prefix "dictionaryNamespaces"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#triplesItemCollection">http://purl.org/HDT/hdt#triplesItemCollection</seealso>
+    let triplesItemCollection =
+        Prefixed_Name(hdt, "triplesItemCollection") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#dictionaryNamespacesCollection"></see>
+    ///   <para>hdt:logBits</para>
     /// </summary>
-    let dictionaryNamespacesCollection = _prefix "dictionaryNamespacesCollection"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#logBits">http://purl.org/HDT/hdt#logBits</seealso>
+    let logBits = Prefixed_Name(hdt, "logBits") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#dictionaryOrder"></see>
+    ///   <para>hdt:objectBitmap</para>
     /// </summary>
-    let dictionaryOrder = _prefix "dictionaryOrder"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#objectBitmap">http://purl.org/HDT/hdt#objectBitmap</seealso>
+    let objectBitmap = Prefixed_Name(hdt, "objectBitmap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#dictionarySeparator"></see>
+    ///   <para>hdt:predicateBitmap</para>
     /// </summary>
-    let dictionarySeparator = _prefix "dictionarySeparator"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#predicateBitmap">http://purl.org/HDT/hdt#predicateBitmap</seealso>
+    let predicateBitmap = Prefixed_Name(hdt, "predicateBitmap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#fileLocation"></see>
+    ///   <para>hdt:prefixLabel</para>
     /// </summary>
-    let fileLocation = _prefix "fileLocation"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#prefixLabel">http://purl.org/HDT/hdt#prefixLabel</seealso>
+    let prefixLabel = Prefixed_Name(hdt, "prefixLabel") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#formatItemCollection"></see>
+    ///   <para>hdt:statisticalItemCollection</para>
     /// </summary>
-    let formatItemCollection = _prefix "formatItemCollection"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#statisticalItemCollection">http://purl.org/HDT/hdt#statisticalItemCollection</seealso>
+    let statisticalItemCollection =
+        Prefixed_Name(hdt, "statisticalItemCollection") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#logBits"></see>
+    ///   <para>hdt:streamsOrders</para>
     /// </summary>
-    let logBits = _prefix "logBits"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#streamsOrders">http://purl.org/HDT/hdt#streamsOrders</seealso>
+    let streamsOrders = Prefixed_Name(hdt, "streamsOrders") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#namespace"></see>
+    ///   <para>hdt:streamsOrder_POS</para>
     /// </summary>
-    let namespace_ = _prefix "namespace"
+    /// <remarks>
+    ///   <para>hdt:streamsOrders</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#streamsOrder_POS">http://purl.org/HDT/hdt#streamsOrder_POS</seealso>
+    let streamsOrder_POS = Prefixed_Name(hdt, "streamsOrder_POS") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#namespaceItem"></see>
+    ///   <para>hdt:subjectBitmap</para>
     /// </summary>
-    let namespaceItem = _prefix "namespaceItem"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#subjectBitmap">http://purl.org/HDT/hdt#subjectBitmap</seealso>
+    let subjectBitmap = Prefixed_Name(hdt, "subjectBitmap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#numberOfCommonSubjectObjects"></see>
+    ///   <para>hdt:subjectObjectRatio</para>
     /// </summary>
-    let numberOfCommonSubjectObjects = _prefix "numberOfCommonSubjectObjects"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#subjectObjectRatio">http://purl.org/HDT/hdt#subjectObjectRatio</seealso>
+    let subjectObjectRatio = Prefixed_Name(hdt, "subjectObjectRatio") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#numberOfPredicates"></see>
+    ///   <para>hdt:triplesBitmap</para>
     /// </summary>
-    let numberOfPredicates = _prefix "numberOfPredicates"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#triplesBitmap">http://purl.org/HDT/hdt#triplesBitmap</seealso>
+    let triplesBitmap = Prefixed_Name(hdt, "triplesBitmap") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#objectBitmap"></see>
+    ///   <para>hdt:triplesPlain</para>
     /// </summary>
-    let objectBitmap = _prefix "objectBitmap"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#triplesPlain">http://purl.org/HDT/hdt#triplesPlain</seealso>
+    let triplesPlain = Prefixed_Name(hdt, "triplesPlain") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#triplesItemCollection"></see>
+    ///   <para>hdt:fileLocation</para>
     /// </summary>
-    let triplesItemCollection = _prefix "triplesItemCollection"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#fileLocation">http://purl.org/HDT/hdt#fileLocation</seealso>
+    let fileLocation = Prefixed_Name(hdt, "fileLocation") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#objectCodification"></see>
+    ///   <para>hdt:numberOfCommonSubjectObjects</para>
     /// </summary>
-    let objectCodification = _prefix "objectCodification"
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#numberOfCommonSubjectObjects">http://purl.org/HDT/hdt#numberOfCommonSubjectObjects</seealso>
+    let numberOfCommonSubjectObjects =
+        Prefixed_Name(hdt, "numberOfCommonSubjectObjects") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#objectStream"></see>
+    ///   <para>hdt:objectStream</para>
     /// </summary>
-    let objectStream = _prefix "objectStream"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#objectStream">http://purl.org/HDT/hdt#objectStream</seealso>
+    let objectStream = Prefixed_Name(hdt, "objectStream") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#predicateBitmap"></see>
+    ///   <para>hdt:predicateCodification</para>
     /// </summary>
-    let predicateBitmap = _prefix "predicateBitmap"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#predicateCodification">http://purl.org/HDT/hdt#predicateCodification</seealso>
+    let predicateCodification =
+        Prefixed_Name(hdt, "predicateCodification") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#predicateCodification"></see>
+    ///   <para>hdt:prefixURI</para>
     /// </summary>
-    let predicateCodification = _prefix "predicateCodification"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#prefixURI">http://purl.org/HDT/hdt#prefixURI</seealso>
+    let prefixURI = Prefixed_Name(hdt, "prefixURI") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#predicateStream"></see>
+    ///   <para>hdt:statisticalInformation</para>
     /// </summary>
-    let predicateStream = _prefix "predicateStream"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#statisticalInformation">http://purl.org/HDT/hdt#statisticalInformation</seealso>
+    let statisticalInformation =
+        Prefixed_Name(hdt, "statisticalInformation") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#prefixLabel"></see>
+    ///   <para>hdt:streamsOrder_OSP</para>
     /// </summary>
-    let prefixLabel = _prefix "prefixLabel"
+    /// <remarks>
+    ///   <para>hdt:streamsOrders</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#streamsOrder_OSP">http://purl.org/HDT/hdt#streamsOrder_OSP</seealso>
+    let streamsOrder_OSP = Prefixed_Name(hdt, "streamsOrder_OSP") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#prefixURI"></see>
+    ///   <para>hdt:streamsOrder_PSO</para>
     /// </summary>
-    let prefixURI = _prefix "prefixURI"
+    /// <remarks>
+    ///   <para>hdt:streamsOrders</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#streamsOrder_PSO">http://purl.org/HDT/hdt#streamsOrder_PSO</seealso>
+    let streamsOrder_PSO = Prefixed_Name(hdt, "streamsOrder_PSO") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#publicationInformation"></see>
+    ///   <para>hdt:streamsOrder_SPO</para>
     /// </summary>
-    let publicationInformation = _prefix "publicationInformation"
+    /// <remarks>
+    ///   <para>hdt:streamsOrders</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#streamsOrder_SPO">http://purl.org/HDT/hdt#streamsOrder_SPO</seealso>
+    let streamsOrder_SPO = Prefixed_Name(hdt, "streamsOrder_SPO") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#publicationItemCollection"></see>
+    ///   <para>hdt:subjectCodification</para>
     /// </summary>
-    let publicationItemCollection = _prefix "publicationItemCollection"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#subjectCodification">http://purl.org/HDT/hdt#subjectCodification</seealso>
+    let subjectCodification = Prefixed_Name(hdt, "subjectCodification") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#statisticalInformation"></see>
+    ///   <para>hdt:triples</para>
     /// </summary>
-    let statisticalInformation = _prefix "statisticalInformation"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#triples">http://purl.org/HDT/hdt#triples</seealso>
+    let triples = Prefixed_Name(hdt, "triples") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#statisticalItemCollection"></see>
+    ///   <para>hdt:objectCodification</para>
     /// </summary>
-    let statisticalItemCollection = _prefix "statisticalItemCollection"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#objectCodification">http://purl.org/HDT/hdt#objectCodification</seealso>
+    let objectCodification = Prefixed_Name(hdt, "objectCodification") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#streamsOrder"></see>
+    ///   <para>hdt:predicateStream</para>
     /// </summary>
-    let streamsOrder = _prefix "streamsOrder"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#predicateStream">http://purl.org/HDT/hdt#predicateStream</seealso>
+    let predicateStream = Prefixed_Name(hdt, "predicateStream") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#streamsOrders"></see>
+    ///   <para>hdt:publicationItemCollection</para>
     /// </summary>
-    let streamsOrders = _prefix "streamsOrders"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#publicationItemCollection">http://purl.org/HDT/hdt#publicationItemCollection</seealso>
+    let publicationItemCollection =
+        Prefixed_Name(hdt, "publicationItemCollection") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#streamsOrder_OPS"></see>
+    ///   <para>hdt:publicationInformation</para>
     /// </summary>
-    let streamsOrder_OPS = _prefix "streamsOrder_OPS"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#publicationInformation">http://purl.org/HDT/hdt#publicationInformation</seealso>
+    let publicationInformation =
+        Prefixed_Name(hdt, "publicationInformation") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#streamsOrder_OSP"></see>
+    ///   <para>hdt:streamsOrder</para>
     /// </summary>
-    let streamsOrder_OSP = _prefix "streamsOrder_OSP"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#streamsOrder">http://purl.org/HDT/hdt#streamsOrder</seealso>
+    let streamsOrder = Prefixed_Name(hdt, "streamsOrder") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#streamsOrder_POS"></see>
+    ///   <para>hdt:streamsOrder_OPS</para>
     /// </summary>
-    let streamsOrder_POS = _prefix "streamsOrder_POS"
+    /// <remarks>
+    ///   <para>hdt:streamsOrders</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#streamsOrder_OPS">http://purl.org/HDT/hdt#streamsOrder_OPS</seealso>
+    let streamsOrder_OPS = Prefixed_Name(hdt, "streamsOrder_OPS") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#streamsOrder_PSO"></see>
+    ///   <para>hdt:streamsOrder_SOP</para>
     /// </summary>
-    let streamsOrder_PSO = _prefix "streamsOrder_PSO"
+    /// <remarks>
+    ///   <para>hdt:streamsOrders</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#streamsOrder_SOP">http://purl.org/HDT/hdt#streamsOrder_SOP</seealso>
+    let streamsOrder_SOP = Prefixed_Name(hdt, "streamsOrder_SOP") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#streamsOrder_SOP"></see>
+    ///   <para>hdt:</para>
     /// </summary>
-    let streamsOrder_SOP = _prefix "streamsOrder_SOP"
+    /// <remarks>
+    ///   <para>To comment on this schema, please contact rdfhdt@gmail.com.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#">http://purl.org/HDT/hdt#</seealso>
+    let _prefix_iri = Prefixed_Name(hdt, "") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#streamsOrder_SPO"></see>
+    ///   <para>hdt:IDCodification</para>
     /// </summary>
-    let streamsOrder_SPO = _prefix "streamsOrder_SPO"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#IDCodification">http://purl.org/HDT/hdt#IDCodification</seealso>
+    let IDCodification = Prefixed_Name(hdt, "IDCodification") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#subjectBitmap"></see>
+    ///   <para>hdt:additionalItemCollection</para>
     /// </summary>
-    let subjectBitmap = _prefix "subjectBitmap"
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#additionalItemCollection">http://purl.org/HDT/hdt#additionalItemCollection</seealso>
+    let additionalItemCollection =
+        Prefixed_Name(hdt, "additionalItemCollection") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#subjectCodification"></see>
+    ///   <para>hdt:dictionary</para>
     /// </summary>
-    let subjectCodification = _prefix "subjectCodification"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#dictionary">http://purl.org/HDT/hdt#dictionary</seealso>
+    let dictionary = Prefixed_Name(hdt, "dictionary") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#subjectObjectRatio"></see>
+    ///   <para>hdt:dictionaryNamespaces</para>
     /// </summary>
-    let subjectObjectRatio = _prefix "subjectObjectRatio"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#dictionaryNamespaces">http://purl.org/HDT/hdt#dictionaryNamespaces</seealso>
+    let dictionaryNamespaces =
+        Prefixed_Name(hdt, "dictionaryNamespaces") |> PrefixedName
+
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#subjectStream"></see>
+    ///   <para>hdt:subjectStream</para>
     /// </summary>
-    let subjectStream = _prefix "subjectStream"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#subjectStream">http://purl.org/HDT/hdt#subjectStream</seealso>
+    let subjectStream = Prefixed_Name(hdt, "subjectStream") |> PrefixedName
     /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#triples"></see>
+    ///   <para>hdt:triplesCompact</para>
     /// </summary>
-    let triples = _prefix "triples"
-    /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#triplesBitmap"></see>
-    /// </summary>
-    let triplesBitmap = _prefix "triplesBitmap"
-    /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#triplesCompact"></see>
-    /// </summary>
-    let triplesCompact = _prefix "triplesCompact"
-    /// <summary>
-    ///   <see href="http://purl.org/HDT/hdt#triplesPlain"></see>
-    /// </summary>
-    let triplesPlain = _prefix "triplesPlain"
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/HDT/hdt#triplesCompact">http://purl.org/HDT/hdt#triplesCompact</seealso>
+    let triplesCompact = Prefixed_Name(hdt, "triplesCompact") |> PrefixedName
