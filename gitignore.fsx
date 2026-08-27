@@ -4,9 +4,15 @@ open System
 open System.IO
 
 
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Ergonomic_Extensions\ArrayExtensions.fs"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Ergonomic_Extensions\DiagnosticsErgonomics.fs"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Ergonomic_Extensions\StringExtensions.fs"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Ergonomic_Extensions\obj\Release\net10.0\Ergonomic_Extensions.dll"
+open DoxAletheia
+open PrettierNaming.FSharp_Keywords
+open JsonErgonomics
+open IOExtensions
+open ArrayErgonomics
+open RdfExtensions
+open StringExtensions
+open System.Net.Http
 open DoxAletheia
 open ArrayExtensions
 open DiagnosticsErgonomics
@@ -25,6 +31,7 @@ Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAleth
 Source-code/Host-environment/Common-Language-Runtime/FSharp/Project/MyProvider/packages/
 Application/MMT/content/MMT/examples
 Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/Vocabulary/http/www.w3.org/2000/10/swap/pim/contact/hash/con.ttl
+Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/ArcGIS/test_graph/
     """
 
 let rootDirectory = @"C:\Repositories\eristocrates\ipa"
