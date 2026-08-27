@@ -64,6 +64,7 @@ type Xml =
     static member void_element(name: string) = VoidBuilder(name)
     static member inline _attribute (key: string) (value: string) = { Name = key; Value = ValueSome value }
 
+    static member raw(value: string) = RawElement(value) :> HtmlElement
 
 module XDocument =
     let Name (name: string) = XName.Get(name)

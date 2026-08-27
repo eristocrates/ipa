@@ -1,0 +1,195 @@
+{
+  "id": 119354036,
+  "number": 49408,
+  "name": "Create Infor Public Sector email notification to lcg_infor_assets_created@leoncountyfl.gov when an address is updated",
+  "description": "\u003Cp\u003EIn Infor Public Sector:\u0026nbsp; when any of the following address fields are updated, please send an email notification to \u003Cstrong\u003E\u003Cspan class=\u0022contentLine-502\u0022\u003Elcg_infor_assets_created@leoncountyfl.gov\u003C/span\u003E\u003C/strong\u003E\u003Cspan class=\u0022contentLine-502\u0022\u003E modelling after the email notification sent when a new address is added:\u003C/span\u003E\u003C/p\u003E\n\u003Col\u003E\n\u003Cli\u003E\u003Cspan class=\u0022contentLine-502\u0022\u003EStreet No\u003C/span\u003E\u003C/li\u003E\n\u003Cli\u003EPre Dir\u003C/li\u003E\n\u003Cli\u003EStreet Name\u003C/li\u003E\n\u003Cli\u003ESuffix\u003C/li\u003E\n\u003Cli\u003EPost Dir\u003C/li\u003E\n\u003Cli\u003ESubdesignation\u003C/li\u003E\n\u003C/ol\u003E\n\u003Cdiv\u003E\u0026nbsp;\u003C/div\u003E",
+  "description_no_html": "In Infor Public Sector: when any of the following address fields are updated, please send an email notification to lcg_infor_assets_created@leoncountyfl.gov modelling after the email notification sent when a new address is added: Street No Pre Dir\nStreet Name\nSuffix\nPost Dir\nSubdesignation",
+  "state": "Closed",
+  "priority": "Medium",
+  "category": {
+    "id": 1448839,
+    "name": "County Applications",
+    "default_tags": "",
+    "parent_id": null,
+    "deleted": false,
+    "default_assignee_id": 6706997
+  },
+  "subcategory": {
+    "id": 1448912,
+    "name": "Infor Hansen",
+    "default_tags": "",
+    "parent_id": 1448839,
+    "deleted": false,
+    "default_assignee_id": 6706982
+  },
+  "assignee": {
+    "group_id": 10744815,
+    "is_user": true,
+    "id": 9894151,
+    "name": "Brandon Collier",
+    "email": "collierb@leoncountyfl.gov",
+    "avatar": {
+      "type": "initials",
+      "initials": "BC",
+      "color": "var(--colors-foreground-7-800)"
+    },
+    "reports_to": {
+      "group_id": 6693028,
+      "is_user": true,
+      "id": 6249833,
+      "name": "Drew Nagy-Kato",
+      "email": "NagyKatoD@leoncountyfl.gov",
+      "avatar": {
+        "type": "initials",
+        "initials": "DN",
+        "color": "var(--colors-foreground-7-200)"
+      }
+    }
+  },
+  "requester": {
+    "id": 6524047,
+    "account_id": 76804,
+    "user_id": 6249857,
+    "email": "redmonds@leoncountyfl.gov",
+    "name": "Susan Redmond",
+    "disabled": true,
+    "site_id": null,
+    "site": null,
+    "department_id": 233802,
+    "department": "LCG - Management Information Services",
+    "has_gravatar": false,
+    "customer_satisfaction_survey_time": "2024-10-07T09:08:13.000-04:00",
+    "avatar": {
+      "type": "initials",
+      "initials": "SR",
+      "color": "var(--colors-foreground-7-200)"
+    }
+  },
+  "created_at": "2023-09-27T11:10:31.000-04:00",
+  "updated_at": "2023-11-08T13:40:39.000-05:00",
+  "due_at": "2023-10-30T00:00:00.000-04:00",
+  "sla_violations": [],
+  "number_of_comments": 2,
+  "user_saw_all_comments": true,
+  "is_service_request": false,
+  "created_by": {
+    "id": 6524047,
+    "account_id": 76804,
+    "user_id": 6249857,
+    "email": "redmonds@leoncountyfl.gov",
+    "name": "Susan Redmond",
+    "disabled": true,
+    "site_id": null,
+    "site": null,
+    "department_id": 233802,
+    "department": "LCG - Management Information Services",
+    "has_gravatar": false,
+    "customer_satisfaction_survey_time": "2024-10-07T09:08:13.000-04:00",
+    "avatar": {
+      "type": "initials",
+      "initials": "SR",
+      "color": "var(--colors-foreground-7-200)"
+    }
+  },
+  "resolved_by": {
+    "id": 9894151,
+    "name": "Brandon Collier",
+    "disabled": false,
+    "title": "Applications Systems Analyst I",
+    "email": "collierb@leoncountyfl.gov",
+    "created_at": "2023-10-17T10:59:00.000-04:00",
+    "updated_at": "2026-08-13T10:04:24.000-04:00",
+    "last_login": "2026-08-13T10:04:24.000-04:00",
+    "phone": "850-606-1562",
+    "mobile_phone": "",
+    "role": {
+      "id": 582186,
+      "name": "Service Agent User",
+      "description": "Similar to an administrator but no access to setup.",
+      "portal": false,
+      "show_my_tasks": false
+    },
+    "group_ids": [
+      10744815,
+      6750145,
+      7525994,
+      6750101
+    ],
+    "available_for_assignment": false,
+    "can_be_available_for_assignment": true,
+    "provider": "SAML",
+    "custom_fields_values": [],
+    "site": {
+      "id": 184152,
+      "name": "Public Works - Admin Building",
+      "location": "2280 Miccosukee Rd",
+      "description": "",
+      "time_zone": "Eastern Time (US \u0026 Canada)",
+      "language": "-1",
+      "business_record": null
+    },
+    "department": {
+      "id": 233802,
+      "name": "LCG - Management Information Services",
+      "description": "171",
+      "default_assignee_id": -1
+    },
+    "avatar": {
+      "type": "initials",
+      "initials": "BC",
+      "color": "var(--colors-foreground-7-800)"
+    },
+    "reports_to": {
+      "group_id": 6693028,
+      "is_user": true,
+      "id": 6249833,
+      "name": "Drew Nagy-Kato",
+      "email": "NagyKatoD@leoncountyfl.gov",
+      "avatar": {
+        "type": "initials",
+        "initials": "DN",
+        "color": "var(--colors-foreground-7-200)"
+      }
+    }
+  },
+  "resolution_description": "Updated existing trigger to include all fields",
+  "resolution_code": "Solved_permanently",
+  "group_assignee": null,
+  "customer_satisfaction_survey_sent_at": null,
+  "customer_satisfaction_survey_completed_at": null,
+  "custom": null,
+  "href": "https://leoncountyfl.samanage.com/incidents/119354036-create-infor-public-sector-email-notification-to-lcg_infor_assets_created-leoncountyfl-gov-when-an-address-is-updated.json",
+  "href_account_domain": "https://leoncountyfl.samanage.com/incidents/119354036-create-infor-public-sector-email-notification-to-lcg_infor_assets_created-leoncountyfl-gov-when-an-address-is-updated",
+  "site": {
+    "id": 184748,
+    "name": "171",
+    "location": "301 S Monroe Street",
+    "description": "MIS",
+    "time_zone": "",
+    "language": "-1",
+    "business_record": null
+  },
+  "department": {
+    "id": 233802,
+    "name": "LCG - Management Information Services",
+    "description": "171",
+    "default_assignee_id": -1
+  },
+  "cc": [],
+  "custom_fields_values": [],
+  "origin": "web",
+  "releases": [],
+  "problems": [],
+  "problem": [],
+  "incidents": [],
+  "changes": [],
+  "tasks": [],
+  "time_tracks": [],
+  "solutions": [],
+  "assets": [],
+  "mobiles": [],
+  "other_assets": [],
+  "configuration_items": [],
+  "discovery_hardwares": [],
+  "purchase_orders": []
+}

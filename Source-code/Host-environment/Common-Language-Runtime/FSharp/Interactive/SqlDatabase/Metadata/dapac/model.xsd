@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DataSchemaModel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Model">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Element">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="Property">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="Value">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="QuotedIdentifiers" type="xs:boolean" use="optional" />
+                                  <xs:attribute name="AnsiNulls" type="xs:boolean" use="optional" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Name" type="xs:string" use="required" />
+                        <xs:attribute name="Value" type="xs:string" use="optional" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="Relationship">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Entry">
+                            <xs:complexType>
+                              <xs:sequence minOccurs="0">
+                                <xs:element minOccurs="0" maxOccurs="unbounded" name="Annotation">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="Property">
+                                        <xs:complexType>
+                                          <xs:attribute name="Name" type="xs:string" use="required" />
+                                          <xs:attribute name="Value" type="xs:string" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="Type" type="xs:string" use="required" />
+                                    <xs:attribute name="Name" type="xs:string" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="Element">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="Property">
+                                        <xs:complexType>
+                                          <xs:sequence minOccurs="0">
+                                            <xs:element name="Value">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute name="QuotedIdentifiers" type="xs:boolean" use="required" />
+                                                    <xs:attribute name="AnsiNulls" type="xs:boolean" use="required" />
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute name="Name" type="xs:string" use="required" />
+                                          <xs:attribute name="Value" type="xs:string" use="optional" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="Relationship">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element maxOccurs="unbounded" name="Entry">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="Annotation">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element maxOccurs="unbounded" name="Property">
+                                                          <xs:complexType>
+                                                            <xs:attribute name="Name" type="xs:string" use="required" />
+                                                            <xs:attribute name="Value" type="xs:string" use="required" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                      <xs:attribute name="Type" type="xs:string" use="required" />
+                                                      <xs:attribute name="Name" type="xs:string" use="required" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element minOccurs="0" name="Element">
+                                                    <xs:complexType>
+                                                      <xs:sequence minOccurs="0">
+                                                        <xs:element minOccurs="0" maxOccurs="unbounded" name="Property">
+                                                          <xs:complexType>
+                                                            <xs:attribute name="Name" type="xs:string" use="required" />
+                                                            <xs:attribute name="Value" type="xs:string" use="required" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="Relationship">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="Entry">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element minOccurs="0" name="Element">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element minOccurs="0" maxOccurs="unbounded" name="Property">
+                                                                            <xs:complexType>
+                                                                              <xs:attribute name="Name" type="xs:string" use="required" />
+                                                                              <xs:attribute name="Value" type="xs:unsignedShort" use="required" />
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element name="Relationship">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="Entry">
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="References">
+                                                                                        <xs:complexType>
+                                                                                          <xs:attribute name="ExternalSource" type="xs:string" use="required" />
+                                                                                          <xs:attribute name="Name" type="xs:string" use="required" />
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                              </xs:sequence>
+                                                                              <xs:attribute name="Name" type="xs:string" use="required" />
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="Type" type="xs:string" use="required" />
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                    <xs:element minOccurs="0" name="References">
+                                                                      <xs:complexType>
+                                                                        <xs:attribute name="ExternalSource" type="xs:string" use="optional" />
+                                                                        <xs:attribute name="Name" type="xs:string" use="required" />
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                            <xs:attribute name="Name" type="xs:string" use="required" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                      <xs:attribute name="Type" type="xs:string" use="required" />
+                                                      <xs:attribute name="Name" type="xs:string" use="optional" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element minOccurs="0" name="References">
+                                                    <xs:complexType>
+                                                      <xs:attribute name="Name" type="xs:string" use="required" />
+                                                      <xs:attribute name="ExternalSource" type="xs:string" use="optional" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute name="Name" type="xs:string" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="AttachedAnnotation">
+                                        <xs:complexType>
+                                          <xs:attribute name="Disambiguator" type="xs:unsignedShort" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="Annotation">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element maxOccurs="unbounded" name="Property">
+                                              <xs:complexType>
+                                                <xs:attribute name="Name" type="xs:string" use="required" />
+                                                <xs:attribute name="Value" type="xs:string" use="required" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute name="Type" type="xs:string" use="required" />
+                                          <xs:attribute name="Name" type="xs:string" use="optional" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="Type" type="xs:string" use="required" />
+                                    <xs:attribute name="Name" type="xs:string" use="optional" />
+                                    <xs:attribute name="Disambiguator" type="xs:unsignedByte" use="optional" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="References">
+                                  <xs:complexType>
+                                    <xs:attribute name="ExternalSource" type="xs:string" use="optional" />
+                                    <xs:attribute name="Name" type="xs:string" use="required" />
+                                    <xs:attribute name="Disambiguator" type="xs:unsignedByte" use="optional" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="AttachedAnnotation">
+                      <xs:complexType>
+                        <xs:attribute name="Disambiguator" type="xs:unsignedShort" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="Annotation">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element maxOccurs="unbounded" name="Property">
+                            <xs:complexType>
+                              <xs:attribute name="Name" type="xs:string" use="required" />
+                              <xs:attribute name="Value" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Type" type="xs:string" use="required" />
+                        <xs:attribute name="Name" type="xs:string" use="optional" />
+                        <xs:attribute name="Disambiguator" type="xs:unsignedShort" use="optional" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Type" type="xs:string" use="required" />
+                  <xs:attribute name="Name" type="xs:string" use="optional" />
+                  <xs:attribute name="Disambiguator" type="xs:unsignedByte" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="FileFormatVersion" type="xs:decimal" use="required" />
+      <xs:attribute name="SchemaVersion" type="xs:decimal" use="required" />
+      <xs:attribute name="DspName" type="xs:string" use="required" />
+      <xs:attribute name="CollationLcid" type="xs:unsignedShort" use="required" />
+      <xs:attribute name="CollationCaseSensitive" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

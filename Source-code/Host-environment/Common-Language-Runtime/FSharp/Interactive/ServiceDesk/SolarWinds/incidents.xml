@@ -1,0 +1,1681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents>
+    <incident>
+        <id>190086805</id>
+        <number>88667</number>
+        <name>Help with Document Margins</name>
+        <description> Unable to format text in template </description>
+        <description_no_html>Unable to format text in template</description_no_html>
+        <state>Resolved</state>
+        <priority>Medium</priority>
+        <category>
+            <id>1448839</id>
+            <name>County Applications</name>
+            <default_tags></default_tags>
+            <parent_id nil="true"></parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706997</default_assignee_id>
+        </category>
+        <subcategory>
+            <id>4595652</id>
+            <name>Word - Microsoft</name>
+            <default_tags></default_tags>
+            <parent_id>1448839</parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706997</default_assignee_id>
+        </subcategory>
+        <assignee>
+            <group_id>10744815</group_id>
+            <is_user>true</is_user>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <email>collierb@leoncountyfl.gov</email>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </assignee>
+        <requester>
+            <id>6579027</id>
+            <account_id>76804</account_id>
+            <user_id>6300465</user_id>
+            <email>RichardsD@leoncountyfl.gov</email>
+            <name>Dean Richards, Jr.</name>
+            <disabled>false</disabled>
+            <site_id nil="true"></site_id>
+            <site nil="true"></site>
+            <department_id>236148</department_id>
+            <department>LCG - Operations</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-02-10T10:51:23-05:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>DJ</initials>
+                <color>var(--colors-foreground-7-200)</color>
+            </avatar>
+        </requester>
+        <created_at>2026-08-12T08:38:02-04:00</created_at>
+        <updated_at>2026-08-12T08:38:17-04:00</updated_at>
+        <due_at nil="true"></due_at>
+        <sla_violations></sla_violations>
+        <number_of_comments>0</number_of_comments>
+        <user_saw_all_comments>true</user_saw_all_comments>
+        <is_service_request>false</is_service_request>
+        <created_by>
+            <id>10899501</id>
+            <account_id>76804</account_id>
+            <user_id>9894151</user_id>
+            <email>collierb@leoncountyfl.gov</email>
+            <name>Brandon Collier</name>
+            <disabled>false</disabled>
+            <site_id>184152</site_id>
+            <site>Public Works - Admin Building</site>
+            <department_id>233802</department_id>
+            <department>LCG - Management Information Services</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-03-12T11:42:36-04:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+        </created_by>
+        <resolved_by>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <disabled>false</disabled>
+            <title>Applications Systems Analyst I</title>
+            <email>collierb@leoncountyfl.gov</email>
+            <created_at>2023-10-17T10:59:00-04:00</created_at>
+            <updated_at>2026-08-10T08:46:29-04:00</updated_at>
+            <last_login>2026-08-10T08:46:29-04:00</last_login>
+            <phone>850-606-1562</phone>
+            <mobile_phone></mobile_phone>
+            <role>
+                <id>582186</id>
+                <name>Service Agent User</name>
+                <description>Similar to an administrator but no access to setup.</description>
+                <portal>false</portal>
+                <show_my_tasks>false</show_my_tasks>
+            </role>
+            <group_ids>
+                <group_id>10744815</group_id>
+                <group_id>6750145</group_id>
+                <group_id>7525994</group_id>
+                <group_id>6750101</group_id>
+            </group_ids>
+            <available_for_assignment>false</available_for_assignment>
+            <can_be_available_for_assignment>true</can_be_available_for_assignment>
+            <provider>SAML</provider>
+            <custom_fields_values></custom_fields_values>
+            <site>
+                <id>184152</id>
+                <name>Public Works - Admin Building</name>
+                <location>2280 Miccosukee Rd</location>
+                <description></description>
+                <time_zone>Eastern Time (US &amp; Canada)</time_zone>
+                <language>-1</language>
+                <business_record nil="true"></business_record>
+            </site>
+            <department>
+                <id>233802</id>
+                <name>LCG - Management Information Services</name>
+                <description>171</description>
+                <default_assignee_id>-1</default_assignee_id>
+            </department>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </resolved_by>
+        <resolution_description nil="true"></resolution_description>
+        <resolution_code>Solved_permanently</resolution_code>
+        <group_assignee nil="true"></group_assignee>
+        <customer_satisfaction_survey_sent_at nil="true"></customer_satisfaction_survey_sent_at>
+        <customer_satisfaction_survey_completed_at nil="true"></customer_satisfaction_survey_completed_at>
+        <custom nil="true"></custom>
+        <href>https://leoncountyfl.samanage.com/incidents/190086805-help-with-document-margins.xml</href>
+        <href_account_domain>https://leoncountyfl.samanage.com/incidents/190086805-help-with-document-margins</href_account_domain>
+        <site nil="true"></site>
+        <department>
+            <id>236148</id>
+            <name>LCG - Operations</name>
+            <description>PW Ops</description>
+            <default_assignee_id>-1</default_assignee_id>
+        </department>
+        <cc></cc>
+        <custom_fields_values></custom_fields_values>
+        <origin>web</origin>
+        <comments></comments>
+        <attachments></attachments>
+        <statistics>
+            <statistic>
+                <statistic_type>last_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-12T08:38:17-04:00","history":[{"id":10744815,"title":"Brandon Collier","startTime":"2026-08-12T08:38:02.000-04:00","endTime":"2026-08-12T12:38:17.606+00:00","timeSpent":16,"timeSpentBH":16,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false}],"summary":{"-1":0.552677607,"10744815":15.635949771},"bh_summary":{"10744815":16}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_state_change</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-12T08:38:17-04:00","history":[{"id":758496,"title":"","startTime":"2026-08-12T08:38:02.000-04:00","endTime":"2026-08-12T12:38:17.704+00:00","timeSpent":16,"timeSpentBH":16,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false}],"summary":{"758496":15.725711028},"bh_summary":{"758496":16}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_assignment</statistic_type>
+                <time>00:01</time>
+                <time_elapsed>00:01</time_elapsed>
+                <business_time_elapsed>00:01</business_time_elapsed>
+                <value>2026-08-12 12:38:02 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>State Changed</statistic_type>
+                <time>00:01</time>
+                <time_elapsed>00:01</time_elapsed>
+                <business_time_elapsed>00:01</business_time_elapsed>
+                <value>2026-08-12 12:38:17 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>assignee_opened_show</statistic_type>
+                <time>00:01</time>
+                <time_elapsed>00:01</time_elapsed>
+                <business_time_elapsed>00:01</business_time_elapsed>
+                <value>10744815</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_group_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-12T08:38:17-04:00","history":[],"summary":{}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_resolve</statistic_type>
+                <time>00:01</time>
+                <time_elapsed>00:01</time_elapsed>
+                <business_time_elapsed>00:01</business_time_elapsed>
+                <value>2026-08-12 12:38:17 UTC</value>
+            </statistic>
+        </statistics>
+        <tags>
+            <tag>
+                <name>LCG - Operations</name>
+            </tag>
+        </tags>
+        <incidents></incidents>
+        <changes></changes>
+        <solutions></solutions>
+        <associated_sla_names></associated_sla_names>
+        <is_customer_satisfied nil="true"></is_customer_satisfied>
+        <customer_satisfaction_response nil="true"></customer_satisfaction_response>
+        <total_time_spent>0</total_time_spent>
+        <resolution nil="true"></resolution>
+        <resolution_type>Solved_permanently</resolution_type>
+        <tasks></tasks>
+        <time_tracks></time_tracks>
+        <assets></assets>
+        <mobiles></mobiles>
+        <other_assets></other_assets>
+        <configuration_items></configuration_items>
+        <discovery_hardwares></discovery_hardwares>
+        <purchase_orders></purchase_orders>
+        <releases></releases>
+        <problems></problems>
+        <request_variables></request_variables>
+    </incident>
+    <incident>
+        <id>189121880</id>
+        <number>88498</number>
+        <name>Access to the FASTER System</name>
+        <description>
+            With the retirement of Debbie Warren, I will need access to the Fleet FASTER system to run reports.  How do I get a user name and password?
+            Tim
+        </description>
+        <description_no_html>With the retirement of Debbie Warren, I will need access to the Fleet FASTER system to run reports. How do I get a user name and password? Tim</description_no_html>
+        <state>Resolved</state>
+        <priority>Medium</priority>
+        <category>
+            <id>1448839</id>
+            <name>County Applications</name>
+            <default_tags></default_tags>
+            <parent_id nil="true"></parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706997</default_assignee_id>
+        </category>
+        <subcategory nil="true"></subcategory>
+        <assignee>
+            <group_id>10744815</group_id>
+            <is_user>true</is_user>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <email>collierb@leoncountyfl.gov</email>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </assignee>
+        <requester>
+            <id>6576709</id>
+            <account_id>76804</account_id>
+            <user_id>6298177</user_id>
+            <email>BardenT@leoncountyfl.gov</email>
+            <name>Timothy Barden</name>
+            <disabled>false</disabled>
+            <site_id nil="true"></site_id>
+            <site nil="true"></site>
+            <department_id>236156</department_id>
+            <department>LCG - PW Support Services</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-02-07T13:10:41-05:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>TB</initials>
+                <color>var(--colors-foreground-7-200)</color>
+            </avatar>
+        </requester>
+        <created_at>2026-08-06T11:36:02-04:00</created_at>
+        <updated_at>2026-08-07T09:07:16-04:00</updated_at>
+        <due_at nil="true"></due_at>
+        <sla_violations></sla_violations>
+        <number_of_comments>1</number_of_comments>
+        <user_saw_all_comments>true</user_saw_all_comments>
+        <is_service_request>false</is_service_request>
+        <created_by>
+            <id>6437430</id>
+            <account_id>76804</account_id>
+            <user_id>6188123</user_id>
+            <email>LanierD@leoncountyfl.gov</email>
+            <name>Derek Lanier</name>
+            <disabled>false</disabled>
+            <site_id nil="true"></site_id>
+            <site nil="true"></site>
+            <department_id>233802</department_id>
+            <department>LCG - Management Information Services</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-02-17T13:21:48-05:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>DL</initials>
+                <color>var(--colors-foreground-7-400)</color>
+            </avatar>
+        </created_by>
+        <resolved_by>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <disabled>false</disabled>
+            <title>Applications Systems Analyst I</title>
+            <email>collierb@leoncountyfl.gov</email>
+            <created_at>2023-10-17T10:59:00-04:00</created_at>
+            <updated_at>2026-08-10T08:46:29-04:00</updated_at>
+            <last_login>2026-08-10T08:46:29-04:00</last_login>
+            <phone>850-606-1562</phone>
+            <mobile_phone></mobile_phone>
+            <role>
+                <id>582186</id>
+                <name>Service Agent User</name>
+                <description>Similar to an administrator but no access to setup.</description>
+                <portal>false</portal>
+                <show_my_tasks>false</show_my_tasks>
+            </role>
+            <group_ids>
+                <group_id>10744815</group_id>
+                <group_id>6750145</group_id>
+                <group_id>7525994</group_id>
+                <group_id>6750101</group_id>
+            </group_ids>
+            <available_for_assignment>false</available_for_assignment>
+            <can_be_available_for_assignment>true</can_be_available_for_assignment>
+            <provider>SAML</provider>
+            <custom_fields_values></custom_fields_values>
+            <site>
+                <id>184152</id>
+                <name>Public Works - Admin Building</name>
+                <location>2280 Miccosukee Rd</location>
+                <description></description>
+                <time_zone>Eastern Time (US &amp; Canada)</time_zone>
+                <language>-1</language>
+                <business_record nil="true"></business_record>
+            </site>
+            <department>
+                <id>233802</id>
+                <name>LCG - Management Information Services</name>
+                <description>171</description>
+                <default_assignee_id>-1</default_assignee_id>
+            </department>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </resolved_by>
+        <resolution_description>Provided ACD Change form hyperlink</resolution_description>
+        <resolution_code>Solved_permanently</resolution_code>
+        <group_assignee nil="true"></group_assignee>
+        <customer_satisfaction_survey_sent_at nil="true"></customer_satisfaction_survey_sent_at>
+        <customer_satisfaction_survey_completed_at nil="true"></customer_satisfaction_survey_completed_at>
+        <custom nil="true"></custom>
+        <href>https://leoncountyfl.samanage.com/incidents/189121880-access-to-the-faster-system.xml</href>
+        <href_account_domain>https://leoncountyfl.samanage.com/incidents/189121880-access-to-the-faster-system</href_account_domain>
+        <site nil="true"></site>
+        <department>
+            <id>236156</id>
+            <name>LCG - PW Support Services</name>
+            <description></description>
+            <default_assignee_id>-1</default_assignee_id>
+        </department>
+        <cc></cc>
+        <custom_fields_values></custom_fields_values>
+        <origin>web</origin>
+        <comments>
+            <comment>
+                <id>325844719</id>
+                <body> You can fill out an ACD change form by clicking on this link  &lt;a href="https://leoncountyfl.samanage.com/catalog_items/1332138-acd-change-employee-information-or-access/service_requests/new.portal" target="_blank"&gt;https://leoncountyfl.samanage.com/catalog_items/1332138-acd-change-employee-information-or-access/service_requests/new.portal&lt;/a&gt; </body>
+                <user>
+                    <id>9894151</id>
+                    <name>Brandon Collier</name>
+                    <email>collierb@leoncountyfl.gov</email>
+                    <avatar>
+                        <type>initials</type>
+                        <initials>BC</initials>
+                        <color>var(--colors-foreground-7-800)</color>
+                    </avatar>
+                </user>
+                <created_at>2026-08-07T09:06:45-04:00</created_at>
+                <updated_at>2026-08-07T09:06:45-04:00</updated_at>
+                <attachments></attachments>
+                <inline_attachments></inline_attachments>
+                <shared_attachments></shared_attachments>
+                <is_private>false</is_private>
+                <seen_by>
+                    <seen_by>9894151</seen_by>
+                </seen_by>
+                <isTask>false</isTask>
+                <task_info></task_info>
+                <requester nil="true"></requester>
+                <commenter_id>189121880</commenter_id>
+                <commenter_type>Incident</commenter_type>
+                <origin>1</origin>
+            </comment>
+        </comments>
+        <attachments></attachments>
+        <statistics>
+            <statistic>
+                <statistic_type>last_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-07T09:07:16-04:00","history":[{"id":10744815,"title":"Brandon Collier","startTime":"2026-08-06T11:36:02.000-04:00","endTime":"2026-08-07T13:07:15.986+00:00","timeSpent":77474,"timeSpentBH":23474,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false}],"summary":{"-1":0.747836563,"10744815":77474.025389383},"bh_summary":{"10744815":23474}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_state_change</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-07T09:07:16-04:00","history":[{"id":758496,"title":"","startTime":"2026-08-06T11:36:02.000-04:00","endTime":"2026-08-07T13:07:16.085+00:00","timeSpent":77474,"timeSpentBH":23474,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false}],"summary":{"758496":77474.120607149},"bh_summary":{"758496":23474}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_assignment</statistic_type>
+                <time>00:01</time>
+                <time_elapsed>00:01</time_elapsed>
+                <business_time_elapsed>00:01</business_time_elapsed>
+                <value>2026-08-06 15:36:02 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>State Changed</statistic_type>
+                <time>21:32</time>
+                <time_elapsed>21:32</time_elapsed>
+                <business_time_elapsed>06:32</business_time_elapsed>
+                <value>2026-08-07 13:07:15 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>assignee_opened_show</statistic_type>
+                <time>21:16</time>
+                <time_elapsed>21:16</time_elapsed>
+                <business_time_elapsed>06:16</business_time_elapsed>
+                <value>10744815</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_first_response</statistic_type>
+                <time>21:31</time>
+                <time_elapsed>21:31</time_elapsed>
+                <business_time_elapsed>06:31</business_time_elapsed>
+                <value>2026-08-07 13:06:45 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_group_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-07T09:07:16-04:00","history":[],"summary":{}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_resolve</statistic_type>
+                <time>21:32</time>
+                <time_elapsed>21:32</time_elapsed>
+                <business_time_elapsed>06:32</business_time_elapsed>
+                <value>2026-08-07 13:07:15 UTC</value>
+            </statistic>
+        </statistics>
+        <tags>
+            <tag>
+                <name>LCG - PW Support Services</name>
+            </tag>
+        </tags>
+        <incidents></incidents>
+        <changes></changes>
+        <solutions></solutions>
+        <associated_sla_names></associated_sla_names>
+        <is_customer_satisfied nil="true"></is_customer_satisfied>
+        <customer_satisfaction_response nil="true"></customer_satisfaction_response>
+        <total_time_spent>0</total_time_spent>
+        <resolution>Provided ACD Change form hyperlink</resolution>
+        <resolution_type>Solved_permanently</resolution_type>
+        <tasks></tasks>
+        <time_tracks></time_tracks>
+        <assets></assets>
+        <mobiles></mobiles>
+        <other_assets></other_assets>
+        <configuration_items></configuration_items>
+        <discovery_hardwares></discovery_hardwares>
+        <purchase_orders></purchase_orders>
+        <releases></releases>
+        <problems></problems>
+        <request_variables></request_variables>
+    </incident>
+    <incident>
+        <id>188829518</id>
+        <number>88412</number>
+        <name>Public Records Request — Stormwater Facilities P0225 and P0227</name>
+        <description>
+            Attached, please find correspondence pertaining to the above-mentioned public records request from Stephen Kreyenbuhl.
+            
+            In particular, information about work orders for 2 the individual ponds from Infor
+        </description>
+        <description_no_html>Attached, please find correspondence pertaining to the above-mentioned public records request from Stephen Kreyenbuhl. In particular, information about work orders for 2 the individual ponds from Infor</description_no_html>
+        <state>Resolved</state>
+        <priority>Medium</priority>
+        <category>
+            <id>1449664</id>
+            <name>Servers Administration &amp; Support</name>
+            <default_tags></default_tags>
+            <parent_id nil="true"></parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706945</default_assignee_id>
+        </category>
+        <subcategory>
+            <id>1450835</id>
+            <name>Public Records Request Support</name>
+            <default_tags></default_tags>
+            <parent_id>1449664</parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706945</default_assignee_id>
+        </subcategory>
+        <assignee>
+            <group_id>10744815</group_id>
+            <is_user>true</is_user>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <email>collierb@leoncountyfl.gov</email>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </assignee>
+        <requester>
+            <id>6576693</id>
+            <account_id>76804</account_id>
+            <user_id>6298162</user_id>
+            <email>BassCh@leoncountyfl.gov</email>
+            <name>Christopher Bass</name>
+            <disabled>false</disabled>
+            <site_id nil="true"></site_id>
+            <site nil="true"></site>
+            <department_id>236148</department_id>
+            <department>LCG - Operations</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2024-10-16T07:38:55-04:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>CB</initials>
+                <color>var(--colors-foreground-7-300)</color>
+            </avatar>
+        </requester>
+        <created_at>2026-08-05T10:11:24-04:00</created_at>
+        <updated_at>2026-08-12T08:35:18-04:00</updated_at>
+        <due_at nil="true"></due_at>
+        <sla_violations></sla_violations>
+        <number_of_comments>0</number_of_comments>
+        <user_saw_all_comments>true</user_saw_all_comments>
+        <is_service_request>false</is_service_request>
+        <created_by>
+            <id>10899501</id>
+            <account_id>76804</account_id>
+            <user_id>9894151</user_id>
+            <email>collierb@leoncountyfl.gov</email>
+            <name>Brandon Collier</name>
+            <disabled>false</disabled>
+            <site_id>184152</site_id>
+            <site>Public Works - Admin Building</site>
+            <department_id>233802</department_id>
+            <department>LCG - Management Information Services</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-03-12T11:42:36-04:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+        </created_by>
+        <resolved_by>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <disabled>false</disabled>
+            <title>Applications Systems Analyst I</title>
+            <email>collierb@leoncountyfl.gov</email>
+            <created_at>2023-10-17T10:59:00-04:00</created_at>
+            <updated_at>2026-08-10T08:46:29-04:00</updated_at>
+            <last_login>2026-08-10T08:46:29-04:00</last_login>
+            <phone>850-606-1562</phone>
+            <mobile_phone></mobile_phone>
+            <role>
+                <id>582186</id>
+                <name>Service Agent User</name>
+                <description>Similar to an administrator but no access to setup.</description>
+                <portal>false</portal>
+                <show_my_tasks>false</show_my_tasks>
+            </role>
+            <group_ids>
+                <group_id>10744815</group_id>
+                <group_id>6750145</group_id>
+                <group_id>7525994</group_id>
+                <group_id>6750101</group_id>
+            </group_ids>
+            <available_for_assignment>false</available_for_assignment>
+            <can_be_available_for_assignment>true</can_be_available_for_assignment>
+            <provider>SAML</provider>
+            <custom_fields_values></custom_fields_values>
+            <site>
+                <id>184152</id>
+                <name>Public Works - Admin Building</name>
+                <location>2280 Miccosukee Rd</location>
+                <description></description>
+                <time_zone>Eastern Time (US &amp; Canada)</time_zone>
+                <language>-1</language>
+                <business_record nil="true"></business_record>
+            </site>
+            <department>
+                <id>233802</id>
+                <name>LCG - Management Information Services</name>
+                <description>171</description>
+                <default_assignee_id>-1</default_assignee_id>
+            </department>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </resolved_by>
+        <resolution_description nil="true"></resolution_description>
+        <resolution_code>Solved_permanently</resolution_code>
+        <group_assignee nil="true"></group_assignee>
+        <customer_satisfaction_survey_sent_at nil="true"></customer_satisfaction_survey_sent_at>
+        <customer_satisfaction_survey_completed_at nil="true"></customer_satisfaction_survey_completed_at>
+        <custom nil="true"></custom>
+        <href>https://leoncountyfl.samanage.com/incidents/188829518-public-records-request-stormwater-facilities-p0225-and-p0227.xml</href>
+        <href_account_domain>https://leoncountyfl.samanage.com/incidents/188829518-public-records-request-stormwater-facilities-p0225-and-p0227</href_account_domain>
+        <site nil="true"></site>
+        <department>
+            <id>236148</id>
+            <name>LCG - Operations</name>
+            <description>PW Ops</description>
+            <default_assignee_id>-1</default_assignee_id>
+        </department>
+        <cc></cc>
+        <custom_fields_values></custom_fields_values>
+        <origin>web</origin>
+        <comments></comments>
+        <attachments>
+            <attachment>
+                <id>296433247</id>
+                <content_type>application/pdf</content_type>
+                <size>660793</size>
+                <filename>GKB initials -- PRR Memo - Stephen Kreyenbuhl.pdf</filename>
+                <url>/attachments/68002f47a620b82f3381/stream</url>
+                <shared_attachment>false</shared_attachment>
+                <attachable_id>188829518</attachable_id>
+                <attachable_type>Incident</attachable_type>
+                <attachment_type>attachment</attachment_type>
+                <thumb_url>/attachments/68002f47a620b82f3381/gkb-initials-prr-memo-stephen-kreyenbuhl.pdf?thumb=true</thumb_url>
+                <secure_url>/attachments/68002f47a620b82f3381/gkb-initials-prr-memo-stephen-kreyenbuhl.pdf</secure_url>
+                <link_uuid_url>/attachments/68002f47a620b82f3381/stream</link_uuid_url>
+                <uuid>68002f47a620b82f3381</uuid>
+            </attachment>
+            <attachment>
+                <id>296433248</id>
+                <content_type>application/pdf</content_type>
+                <size>8547115</size>
+                <filename>LSW0700035 Pointe East Subdivision.pdf</filename>
+                <url>/attachments/6afa9fb88511c8530830/stream</url>
+                <shared_attachment>false</shared_attachment>
+                <attachable_id>188829518</attachable_id>
+                <attachable_type>Incident</attachable_type>
+                <attachment_type>attachment</attachment_type>
+                <thumb_url>/attachments/6afa9fb88511c8530830/lsw0700035-pointe-east-subdivision.pdf?thumb=true</thumb_url>
+                <secure_url>/attachments/6afa9fb88511c8530830/lsw0700035-pointe-east-subdivision.pdf</secure_url>
+                <link_uuid_url>/attachments/6afa9fb88511c8530830/stream</link_uuid_url>
+                <uuid>6afa9fb88511c8530830</uuid>
+            </attachment>
+        </attachments>
+        <statistics>
+            <statistic>
+                <statistic_type>to_assignment</statistic_type>
+                <time>00:00</time>
+                <time_elapsed>00:00</time_elapsed>
+                <business_time_elapsed>00:00</business_time_elapsed>
+                <value>2026-08-05 14:11:24 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-12T08:35:18-04:00","history":[{"id":10744815,"title":"Brandon Collier","startTime":"2026-08-05T10:11:24.000-04:00","endTime":"2026-08-12T12:35:18.202+00:00","timeSpent":599034,"timeSpentBH":372234,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false}],"summary":{"-1":0.493097345,"10744815":599034.239690077},"bh_summary":{"10744815":372234}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_state_change</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-12T08:35:18-04:00","history":[{"id":758496,"title":"","startTime":"2026-08-05T10:11:24.000-04:00","endTime":"2026-08-05T14:11:50.043+00:00","timeSpent":26,"timeSpentBH":26,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false},{"id":815857,"title":"","startTime":"2026-08-05T10:11:50.000-04:00","endTime":"2026-08-12T12:35:18.309+00:00","timeSpent":599008,"timeSpentBH":372208,"timeSinceCreation":26,"timeSinceCreationBH":26,"isCurrent":false,"isDeleted":false}],"summary":{"758496":26.066202503,"815857":599008.343911985},"bh_summary":{"758496":26,"815857":372208}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>State Changed</statistic_type>
+                <time>00:01</time>
+                <time_elapsed>00:01</time_elapsed>
+                <business_time_elapsed>00:01</business_time_elapsed>
+                <value>2026-08-05 14:11:49 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>assignee_opened_show</statistic_type>
+                <time>00:01</time>
+                <time_elapsed>00:01</time_elapsed>
+                <business_time_elapsed>00:01</business_time_elapsed>
+                <value>10744815</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_group_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-12T08:35:18-04:00","history":[],"summary":{}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_resolve</statistic_type>
+                <time>166:24</time>
+                <time_elapsed>166:24</time_elapsed>
+                <business_time_elapsed>43:24</business_time_elapsed>
+                <value>2026-08-12 12:35:18 UTC</value>
+            </statistic>
+        </statistics>
+        <tags>
+            <tag>
+                <name>LCG - Operations</name>
+            </tag>
+        </tags>
+        <incidents></incidents>
+        <changes></changes>
+        <solutions></solutions>
+        <associated_sla_names></associated_sla_names>
+        <is_customer_satisfied nil="true"></is_customer_satisfied>
+        <customer_satisfaction_response nil="true"></customer_satisfaction_response>
+        <total_time_spent>0</total_time_spent>
+        <resolution nil="true"></resolution>
+        <resolution_type>Solved_permanently</resolution_type>
+        <tasks></tasks>
+        <time_tracks></time_tracks>
+        <assets></assets>
+        <mobiles></mobiles>
+        <other_assets></other_assets>
+        <configuration_items></configuration_items>
+        <discovery_hardwares></discovery_hardwares>
+        <purchase_orders></purchase_orders>
+        <releases></releases>
+        <problems></problems>
+        <request_variables></request_variables>
+    </incident>
+    <incident>
+        <id>187909988</id>
+        <number>88270</number>
+        <name>Infor not Loading</name>
+        <description> Screen stays blank when trying to open Infor </description>
+        <description_no_html>Screen stays blank when trying to open Infor</description_no_html>
+        <state>Closed</state>
+        <priority>Medium</priority>
+        <category>
+            <id>1448839</id>
+            <name>County Applications</name>
+            <default_tags></default_tags>
+            <parent_id nil="true"></parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706997</default_assignee_id>
+        </category>
+        <subcategory>
+            <id>1448912</id>
+            <name>Infor Hansen</name>
+            <default_tags></default_tags>
+            <parent_id>1448839</parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706982</default_assignee_id>
+        </subcategory>
+        <assignee>
+            <group_id>10744815</group_id>
+            <is_user>true</is_user>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <email>collierb@leoncountyfl.gov</email>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </assignee>
+        <requester>
+            <id>9959207</id>
+            <account_id>76804</account_id>
+            <user_id>9131641</user_id>
+            <email>HallTa@leoncountyfl.gov</email>
+            <name>Talia Hall</name>
+            <disabled>false</disabled>
+            <site_id nil="true"></site_id>
+            <site nil="true"></site>
+            <department_id>236148</department_id>
+            <department>LCG - Operations</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-03-21T13:56:13-04:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>TH</initials>
+                <color>var(--colors-foreground-7-200)</color>
+            </avatar>
+        </requester>
+        <created_at>2026-07-31T12:54:04-04:00</created_at>
+        <updated_at>2026-08-04T08:06:57-04:00</updated_at>
+        <due_at nil="true"></due_at>
+        <sla_violations></sla_violations>
+        <number_of_comments>0</number_of_comments>
+        <user_saw_all_comments>true</user_saw_all_comments>
+        <is_service_request>false</is_service_request>
+        <created_by>
+            <id>10899501</id>
+            <account_id>76804</account_id>
+            <user_id>9894151</user_id>
+            <email>collierb@leoncountyfl.gov</email>
+            <name>Brandon Collier</name>
+            <disabled>false</disabled>
+            <site_id>184152</site_id>
+            <site>Public Works - Admin Building</site>
+            <department_id>233802</department_id>
+            <department>LCG - Management Information Services</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-03-12T11:42:36-04:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+        </created_by>
+        <resolved_by>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <disabled>false</disabled>
+            <title>Applications Systems Analyst I</title>
+            <email>collierb@leoncountyfl.gov</email>
+            <created_at>2023-10-17T10:59:00-04:00</created_at>
+            <updated_at>2026-08-10T08:46:29-04:00</updated_at>
+            <last_login>2026-08-10T08:46:29-04:00</last_login>
+            <phone>850-606-1562</phone>
+            <mobile_phone></mobile_phone>
+            <role>
+                <id>582186</id>
+                <name>Service Agent User</name>
+                <description>Similar to an administrator but no access to setup.</description>
+                <portal>false</portal>
+                <show_my_tasks>false</show_my_tasks>
+            </role>
+            <group_ids>
+                <group_id>10744815</group_id>
+                <group_id>6750145</group_id>
+                <group_id>7525994</group_id>
+                <group_id>6750101</group_id>
+            </group_ids>
+            <available_for_assignment>false</available_for_assignment>
+            <can_be_available_for_assignment>true</can_be_available_for_assignment>
+            <provider>SAML</provider>
+            <custom_fields_values></custom_fields_values>
+            <site>
+                <id>184152</id>
+                <name>Public Works - Admin Building</name>
+                <location>2280 Miccosukee Rd</location>
+                <description></description>
+                <time_zone>Eastern Time (US &amp; Canada)</time_zone>
+                <language>-1</language>
+                <business_record nil="true"></business_record>
+            </site>
+            <department>
+                <id>233802</id>
+                <name>LCG - Management Information Services</name>
+                <description>171</description>
+                <default_assignee_id>-1</default_assignee_id>
+            </department>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </resolved_by>
+        <resolution_description>It turns out something specifically about chrome was the issue. Strangely, chrome seems to work fine for other websites, but Infor also loads fine on other browsers, so it's hard to say what the root cause is.   In any case, I updated the infor shortcut to use edge instead of chrome so she could continue work as needed </resolution_description>
+        <resolution_code>Solved_work_around</resolution_code>
+        <group_assignee nil="true"></group_assignee>
+        <customer_satisfaction_survey_sent_at nil="true"></customer_satisfaction_survey_sent_at>
+        <customer_satisfaction_survey_completed_at nil="true"></customer_satisfaction_survey_completed_at>
+        <custom nil="true"></custom>
+        <href>https://leoncountyfl.samanage.com/incidents/187909988-infor-not-loading.xml</href>
+        <href_account_domain>https://leoncountyfl.samanage.com/incidents/187909988-infor-not-loading</href_account_domain>
+        <site nil="true"></site>
+        <department>
+            <id>236148</id>
+            <name>LCG - Operations</name>
+            <description>PW Ops</description>
+            <default_assignee_id>-1</default_assignee_id>
+        </department>
+        <cc></cc>
+        <custom_fields_values></custom_fields_values>
+        <origin>web</origin>
+        <comments></comments>
+        <attachments></attachments>
+        <statistics>
+            <statistic>
+                <statistic_type>last_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-04T08:06:57-04:00","history":[{"id":10744815,"title":"Brandon Collier","startTime":"2026-07-31T12:54:04.000-04:00","endTime":"2026-07-31T16:55:41.116+00:00","timeSpent":97,"timeSpentBH":97,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false},{"id":10744815,"title":"Brandon Collier","startTime":"2026-07-31T12:55:41.000-04:00","endTime":"2026-08-04T12:06:57.573+00:00","timeSpent":328277,"timeSpentBH":47477,"timeSinceCreation":97,"timeSinceCreationBH":97,"isCurrent":false,"isDeleted":false}],"summary":{"-1":0.82954278,"10744815":328373.767835266},"bh_summary":{"10744815":47574}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_state_change</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-04T12:06:57+00:00","history":[{"id":758496,"title":"","startTime":"2026-07-31T12:54:04.000-04:00","endTime":"2026-07-31T16:55:41.228+00:00","timeSpent":97,"timeSpentBH":97,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false},{"id":758501,"title":"","startTime":"2026-07-31T12:55:41.000-04:00","endTime":"2026-08-04T12:06:57.718+00:00","timeSpent":328277,"timeSpentBH":47477,"timeSinceCreation":97,"timeSinceCreationBH":97,"isCurrent":false,"isDeleted":false}],"summary":{"758496":97.263553191,"758501":328276.754287957},"bh_summary":{"758496":97,"758501":47477}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_assignment</statistic_type>
+                <time>00:01</time>
+                <time_elapsed>00:01</time_elapsed>
+                <business_time_elapsed>00:01</business_time_elapsed>
+                <value>2026-07-31 16:54:04 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>State Changed</statistic_type>
+                <time>00:02</time>
+                <time_elapsed>00:02</time_elapsed>
+                <business_time_elapsed>00:02</business_time_elapsed>
+                <value>2026-07-31 16:55:41 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>assignee_opened_show</statistic_type>
+                <time>00:01</time>
+                <time_elapsed>00:01</time_elapsed>
+                <business_time_elapsed>00:01</business_time_elapsed>
+                <value>10744815</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_group_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-04T08:06:57-04:00","history":[],"summary":{"-1":328276.625384},"bh_summary":{}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_resolve</statistic_type>
+                <time>00:02</time>
+                <time_elapsed>00:02</time_elapsed>
+                <business_time_elapsed>00:02</business_time_elapsed>
+                <value>2026-07-31 16:55:41 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_close</statistic_type>
+                <time>91:13</time>
+                <time_elapsed>91:13</time_elapsed>
+                <business_time_elapsed>13:13</business_time_elapsed>
+                <value>2026-08-04 12:06:57 UTC</value>
+            </statistic>
+        </statistics>
+        <tags>
+            <tag>
+                <name>LCG - Operations</name>
+            </tag>
+        </tags>
+        <incidents></incidents>
+        <changes></changes>
+        <solutions></solutions>
+        <associated_sla_names></associated_sla_names>
+        <is_customer_satisfied nil="true"></is_customer_satisfied>
+        <customer_satisfaction_response nil="true"></customer_satisfaction_response>
+        <total_time_spent>0</total_time_spent>
+        <resolution>It turns out something specifically about chrome was the issue. Strangely, chrome seems to work fine for other websites, but Infor also loads fine on other browsers, so it's hard to say what the root cause is.   In any case, I updated the infor shortcut to use edge instead of chrome so she could continue work as needed </resolution>
+        <resolution_type>Solved_work_around</resolution_type>
+        <tasks></tasks>
+        <time_tracks></time_tracks>
+        <assets></assets>
+        <mobiles></mobiles>
+        <other_assets></other_assets>
+        <configuration_items></configuration_items>
+        <discovery_hardwares></discovery_hardwares>
+        <purchase_orders></purchase_orders>
+        <releases></releases>
+        <problems></problems>
+        <request_variables></request_variables>
+    </incident>
+    <incident>
+        <id>187909700</id>
+        <number>88269</number>
+        <name>Not able to view Citizen's Connect Emails</name>
+        <description> When trying to open emails, nothing loads </description>
+        <description_no_html>When trying to open emails, nothing loads</description_no_html>
+        <state>Closed</state>
+        <priority>Medium</priority>
+        <category>
+            <id>1448839</id>
+            <name>County Applications</name>
+            <default_tags></default_tags>
+            <parent_id nil="true"></parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706997</default_assignee_id>
+        </category>
+        <subcategory>
+            <id>1448912</id>
+            <name>Infor Hansen</name>
+            <default_tags></default_tags>
+            <parent_id>1448839</parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706982</default_assignee_id>
+        </subcategory>
+        <assignee>
+            <group_id>10744815</group_id>
+            <is_user>true</is_user>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <email>collierb@leoncountyfl.gov</email>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </assignee>
+        <requester>
+            <id>6579012</id>
+            <account_id>76804</account_id>
+            <user_id>6300450</user_id>
+            <email>RileyA@leoncountyfl.gov</email>
+            <name>Andrew Riley</name>
+            <disabled>false</disabled>
+            <site_id nil="true"></site_id>
+            <site nil="true"></site>
+            <department_id>236148</department_id>
+            <department>LCG - Operations</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-03-07T09:56:16-05:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>AR</initials>
+                <color>var(--colors-foreground-7-300)</color>
+            </avatar>
+        </requester>
+        <created_at>2026-07-31T12:51:09-04:00</created_at>
+        <updated_at>2026-08-04T08:06:56-04:00</updated_at>
+        <due_at nil="true"></due_at>
+        <sla_violations></sla_violations>
+        <number_of_comments>0</number_of_comments>
+        <user_saw_all_comments>true</user_saw_all_comments>
+        <is_service_request>false</is_service_request>
+        <created_by>
+            <id>10899501</id>
+            <account_id>76804</account_id>
+            <user_id>9894151</user_id>
+            <email>collierb@leoncountyfl.gov</email>
+            <name>Brandon Collier</name>
+            <disabled>false</disabled>
+            <site_id>184152</site_id>
+            <site>Public Works - Admin Building</site>
+            <department_id>233802</department_id>
+            <department>LCG - Management Information Services</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-03-12T11:42:36-04:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+        </created_by>
+        <resolved_by>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <disabled>false</disabled>
+            <title>Applications Systems Analyst I</title>
+            <email>collierb@leoncountyfl.gov</email>
+            <created_at>2023-10-17T10:59:00-04:00</created_at>
+            <updated_at>2026-08-10T08:46:29-04:00</updated_at>
+            <last_login>2026-08-10T08:46:29-04:00</last_login>
+            <phone>850-606-1562</phone>
+            <mobile_phone></mobile_phone>
+            <role>
+                <id>582186</id>
+                <name>Service Agent User</name>
+                <description>Similar to an administrator but no access to setup.</description>
+                <portal>false</portal>
+                <show_my_tasks>false</show_my_tasks>
+            </role>
+            <group_ids>
+                <group_id>10744815</group_id>
+                <group_id>6750145</group_id>
+                <group_id>7525994</group_id>
+                <group_id>6750101</group_id>
+            </group_ids>
+            <available_for_assignment>false</available_for_assignment>
+            <can_be_available_for_assignment>true</can_be_available_for_assignment>
+            <provider>SAML</provider>
+            <custom_fields_values></custom_fields_values>
+            <site>
+                <id>184152</id>
+                <name>Public Works - Admin Building</name>
+                <location>2280 Miccosukee Rd</location>
+                <description></description>
+                <time_zone>Eastern Time (US &amp; Canada)</time_zone>
+                <language>-1</language>
+                <business_record nil="true"></business_record>
+            </site>
+            <department>
+                <id>233802</id>
+                <name>LCG - Management Information Services</name>
+                <description>171</description>
+                <default_assignee_id>-1</default_assignee_id>
+            </department>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </resolved_by>
+        <resolution_description>It turns out the culprit was firefox in general, not any website specifically. I replaced firefox with chrome as the default browser, and he was able to connect without issue</resolution_description>
+        <resolution_code>Solved_work_around</resolution_code>
+        <group_assignee nil="true"></group_assignee>
+        <customer_satisfaction_survey_sent_at nil="true"></customer_satisfaction_survey_sent_at>
+        <customer_satisfaction_survey_completed_at nil="true"></customer_satisfaction_survey_completed_at>
+        <custom nil="true"></custom>
+        <href>https://leoncountyfl.samanage.com/incidents/187909700-not-able-to-view-citizen-s-connect-emails.xml</href>
+        <href_account_domain>https://leoncountyfl.samanage.com/incidents/187909700-not-able-to-view-citizen-s-connect-emails</href_account_domain>
+        <site nil="true"></site>
+        <department>
+            <id>236148</id>
+            <name>LCG - Operations</name>
+            <description>PW Ops</description>
+            <default_assignee_id>-1</default_assignee_id>
+        </department>
+        <cc></cc>
+        <custom_fields_values></custom_fields_values>
+        <origin>web</origin>
+        <comments></comments>
+        <attachments></attachments>
+        <statistics>
+            <statistic>
+                <statistic_type>last_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-04T08:06:56-04:00","history":[{"id":10744815,"title":"Brandon Collier","startTime":"2026-07-31T12:51:09.000-04:00","endTime":"2026-07-31T16:52:14.754+00:00","timeSpent":66,"timeSpentBH":66,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false},{"id":10744815,"title":"Brandon Collier","startTime":"2026-07-31T12:52:14.000-04:00","endTime":"2026-08-04T12:06:56.597+00:00","timeSpent":328483,"timeSpentBH":47683,"timeSinceCreation":65,"timeSinceCreationBH":65,"isCurrent":false,"isDeleted":false}],"summary":{"-1":0.313576773,"10744815":328548.419545818},"bh_summary":{"10744815":47749}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_state_change</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-04T12:06:56+00:00","history":[{"id":758496,"title":"","startTime":"2026-07-31T12:51:09.000-04:00","endTime":"2026-07-31T16:52:14.829+00:00","timeSpent":66,"timeSpentBH":66,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false},{"id":758501,"title":"","startTime":"2026-07-31T12:52:14.000-04:00","endTime":"2026-08-04T12:06:56.755+00:00","timeSpent":328483,"timeSpentBH":47683,"timeSinceCreation":65,"timeSinceCreationBH":65,"isCurrent":false,"isDeleted":false}],"summary":{"758496":65.850653537,"758501":328482.791468875},"bh_summary":{"758496":66,"758501":47683}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_assignment</statistic_type>
+                <time>00:00</time>
+                <time_elapsed>00:00</time_elapsed>
+                <business_time_elapsed>00:00</business_time_elapsed>
+                <value>2026-07-31 16:51:09 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>State Changed</statistic_type>
+                <time>00:02</time>
+                <time_elapsed>00:02</time_elapsed>
+                <business_time_elapsed>00:02</business_time_elapsed>
+                <value>2026-07-31 16:52:14 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>assignee_opened_show</statistic_type>
+                <time>00:01</time>
+                <time_elapsed>00:01</time_elapsed>
+                <business_time_elapsed>00:01</business_time_elapsed>
+                <value>10744815</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_group_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-04T08:06:56-04:00","history":[],"summary":{"-1":328482.652612274},"bh_summary":{}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_resolve</statistic_type>
+                <time>00:02</time>
+                <time_elapsed>00:02</time_elapsed>
+                <business_time_elapsed>00:02</business_time_elapsed>
+                <value>2026-07-31 16:52:14 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_close</statistic_type>
+                <time>91:16</time>
+                <time_elapsed>91:16</time_elapsed>
+                <business_time_elapsed>13:16</business_time_elapsed>
+                <value>2026-08-04 12:06:56 UTC</value>
+            </statistic>
+        </statistics>
+        <tags>
+            <tag>
+                <name>LCG - Operations</name>
+            </tag>
+        </tags>
+        <incidents></incidents>
+        <changes></changes>
+        <solutions></solutions>
+        <associated_sla_names></associated_sla_names>
+        <is_customer_satisfied nil="true"></is_customer_satisfied>
+        <customer_satisfaction_response nil="true"></customer_satisfaction_response>
+        <total_time_spent>0</total_time_spent>
+        <resolution>It turns out the culprit was firefox in general, not any website specifically. I replaced firefox with chrome as the default browser, and he was able to connect without issue</resolution>
+        <resolution_type>Solved_work_around</resolution_type>
+        <tasks></tasks>
+        <time_tracks></time_tracks>
+        <assets></assets>
+        <mobiles></mobiles>
+        <other_assets></other_assets>
+        <configuration_items></configuration_items>
+        <discovery_hardwares></discovery_hardwares>
+        <purchase_orders></purchase_orders>
+        <releases></releases>
+        <problems></problems>
+        <request_variables></request_variables>
+    </incident>
+    <incident>
+        <id>187459089</id>
+        <number>88231</number>
+        <name>INFOR Report &amp; Service Requests</name>
+        <description>
+            When using the following INFOR Report, Service Request Numbers populate, but when I input those service request numbers into lookup service requests it doesn’t pull anything up.
+            Please review and advise.
+        </description>
+        <description_no_html>When using the following INFOR Report, Service Request Numbers populate, but when I input those service request numbers into lookup service requests it doesn’t pull anything up. Please review and advise.</description_no_html>
+        <state>Closed</state>
+        <priority>Medium</priority>
+        <category>
+            <id>1448839</id>
+            <name>County Applications</name>
+            <default_tags></default_tags>
+            <parent_id nil="true"></parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706997</default_assignee_id>
+        </category>
+        <subcategory>
+            <id>1448912</id>
+            <name>Infor Hansen</name>
+            <default_tags></default_tags>
+            <parent_id>1448839</parent_id>
+            <deleted>false</deleted>
+            <default_assignee_id>6706982</default_assignee_id>
+        </subcategory>
+        <assignee>
+            <group_id>10744815</group_id>
+            <is_user>true</is_user>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <email>collierb@leoncountyfl.gov</email>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </assignee>
+        <requester>
+            <id>6577600</id>
+            <account_id>76804</account_id>
+            <user_id>6299058</user_id>
+            <email>FordA@leoncountyfl.gov</email>
+            <name>Aaron Ford</name>
+            <disabled>false</disabled>
+            <site_id nil="true"></site_id>
+            <site nil="true"></site>
+            <department_id>236148</department_id>
+            <department>LCG - Operations</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-03-05T12:48:15-05:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>AF</initials>
+                <color>var(--colors-foreground-7-300)</color>
+            </avatar>
+        </requester>
+        <created_at>2026-07-30T16:33:12-04:00</created_at>
+        <updated_at>2026-08-04T08:06:43-04:00</updated_at>
+        <due_at nil="true"></due_at>
+        <sla_violations></sla_violations>
+        <number_of_comments>2</number_of_comments>
+        <user_saw_all_comments>true</user_saw_all_comments>
+        <is_service_request>false</is_service_request>
+        <created_by>
+            <id>11696539</id>
+            <account_id>76804</account_id>
+            <user_id>10580790</user_id>
+            <email>SampsonB@leoncountyfl.gov</email>
+            <name>Brandon Sampson</name>
+            <disabled>false</disabled>
+            <site_id nil="true"></site_id>
+            <site nil="true"></site>
+            <department_id>233802</department_id>
+            <department>LCG - Management Information Services</department>
+            <has_gravatar>false</has_gravatar>
+            <customer_satisfaction_survey_time>2025-03-13T15:25:29-04:00</customer_satisfaction_survey_time>
+            <avatar>
+                <type>initials</type>
+                <initials>BS</initials>
+                <color>var(--colors-foreground-7-700)</color>
+            </avatar>
+        </created_by>
+        <resolved_by>
+            <id>9894151</id>
+            <name>Brandon Collier</name>
+            <disabled>false</disabled>
+            <title>Applications Systems Analyst I</title>
+            <email>collierb@leoncountyfl.gov</email>
+            <created_at>2023-10-17T10:59:00-04:00</created_at>
+            <updated_at>2026-08-10T08:46:29-04:00</updated_at>
+            <last_login>2026-08-10T08:46:29-04:00</last_login>
+            <phone>850-606-1562</phone>
+            <mobile_phone></mobile_phone>
+            <role>
+                <id>582186</id>
+                <name>Service Agent User</name>
+                <description>Similar to an administrator but no access to setup.</description>
+                <portal>false</portal>
+                <show_my_tasks>false</show_my_tasks>
+            </role>
+            <group_ids>
+                <group_id>10744815</group_id>
+                <group_id>6750145</group_id>
+                <group_id>7525994</group_id>
+                <group_id>6750101</group_id>
+            </group_ids>
+            <available_for_assignment>false</available_for_assignment>
+            <can_be_available_for_assignment>true</can_be_available_for_assignment>
+            <provider>SAML</provider>
+            <custom_fields_values></custom_fields_values>
+            <site>
+                <id>184152</id>
+                <name>Public Works - Admin Building</name>
+                <location>2280 Miccosukee Rd</location>
+                <description></description>
+                <time_zone>Eastern Time (US &amp; Canada)</time_zone>
+                <language>-1</language>
+                <business_record nil="true"></business_record>
+            </site>
+            <department>
+                <id>233802</id>
+                <name>LCG - Management Information Services</name>
+                <description>171</description>
+                <default_assignee_id>-1</default_assignee_id>
+            </department>
+            <avatar>
+                <type>initials</type>
+                <initials>BC</initials>
+                <color>var(--colors-foreground-7-800)</color>
+            </avatar>
+            <reports_to>
+                <group_id>6693028</group_id>
+                <is_user>true</is_user>
+                <id>6249833</id>
+                <name>Drew Nagy-Kato</name>
+                <email>NagyKatoD@leoncountyfl.gov</email>
+                <avatar>
+                    <type>initials</type>
+                    <initials>DN</initials>
+                    <color>var(--colors-foreground-7-200)</color>
+                </avatar>
+            </reports_to>
+        </resolved_by>
+        <resolution_description>The requests are linked, but in order to see linked service requests in search results, a checkbox must be selected. After checking the box, the expected service requests were present</resolution_description>
+        <resolution_code>Solved_permanently</resolution_code>
+        <group_assignee nil="true"></group_assignee>
+        <customer_satisfaction_survey_sent_at nil="true"></customer_satisfaction_survey_sent_at>
+        <customer_satisfaction_survey_completed_at nil="true"></customer_satisfaction_survey_completed_at>
+        <custom nil="true"></custom>
+        <href>https://leoncountyfl.samanage.com/incidents/187459089-infor-report-service-requests.xml</href>
+        <href_account_domain>https://leoncountyfl.samanage.com/incidents/187459089-infor-report-service-requests</href_account_domain>
+        <site nil="true"></site>
+        <department>
+            <id>236148</id>
+            <name>LCG - Operations</name>
+            <description>PW Ops</description>
+            <default_assignee_id>-1</default_assignee_id>
+        </department>
+        <cc></cc>
+        <custom_fields_values></custom_fields_values>
+        <origin>web</origin>
+        <comments>
+            <comment>
+                <id>324862846</id>
+                <body> I'll join you in your office tomorrow morning to see what can be done </body>
+                <user>
+                    <id>9894151</id>
+                    <name>Brandon Collier</name>
+                    <email>collierb@leoncountyfl.gov</email>
+                    <avatar>
+                        <type>initials</type>
+                        <initials>BC</initials>
+                        <color>var(--colors-foreground-7-800)</color>
+                    </avatar>
+                </user>
+                <created_at>2026-07-30T16:45:23-04:00</created_at>
+                <updated_at>2026-07-30T16:45:23-04:00</updated_at>
+                <attachments></attachments>
+                <inline_attachments></inline_attachments>
+                <shared_attachments></shared_attachments>
+                <is_private>false</is_private>
+                <seen_by>
+                    <seen_by>9894151</seen_by>
+                    <seen_by>6191577</seen_by>
+                    <seen_by>10580790</seen_by>
+                </seen_by>
+                <isTask>false</isTask>
+                <task_info></task_info>
+                <requester nil="true"></requester>
+                <commenter_id>187459089</commenter_id>
+                <commenter_type>Incident</commenter_type>
+                <origin>1</origin>
+            </comment>
+            <comment>
+                <id>324861908</id>
+                <body> I'll see if i can catch aaron right now </body>
+                <user>
+                    <id>9894151</id>
+                    <name>Brandon Collier</name>
+                    <email>collierb@leoncountyfl.gov</email>
+                    <avatar>
+                        <type>initials</type>
+                        <initials>BC</initials>
+                        <color>var(--colors-foreground-7-800)</color>
+                    </avatar>
+                </user>
+                <created_at>2026-07-30T16:40:46-04:00</created_at>
+                <updated_at>2026-07-30T16:40:46-04:00</updated_at>
+                <attachments></attachments>
+                <inline_attachments></inline_attachments>
+                <shared_attachments></shared_attachments>
+                <is_private>true</is_private>
+                <seen_by>
+                    <seen_by>9894151</seen_by>
+                    <seen_by>6191577</seen_by>
+                    <seen_by>10580790</seen_by>
+                </seen_by>
+                <isTask>false</isTask>
+                <task_info></task_info>
+                <requester nil="true"></requester>
+                <commenter_id>187459089</commenter_id>
+                <commenter_type>Incident</commenter_type>
+                <origin>1</origin>
+            </comment>
+        </comments>
+        <attachments></attachments>
+        <statistics>
+            <statistic>
+                <statistic_type>last_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-04T08:06:43-04:00","history":[{"id":6706982,"title":"APP - Work Order Support Queue","startTime":"2026-07-30T16:33:12.000-04:00","endTime":"2026-07-30T20:46:51.256+00:00","timeSpent":819,"timeSpentBH":819,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false},{"id":10744815,"title":"Brandon Collier","startTime":"2026-07-30T16:46:51.000-04:00","endTime":"2026-07-31T16:49:28.118+00:00","timeSpent":72157,"timeSpentBH":18157,"timeSinceCreation":819,"timeSinceCreationBH":819,"isCurrent":false,"isDeleted":false},{"id":10744815,"title":"Brandon Collier","startTime":"2026-07-31T12:49:28.000-04:00","endTime":"2026-08-04T12:06:43.204+00:00","timeSpent":328635,"timeSpentBH":47835,"timeSinceCreation":72976,"timeSinceCreationBH":18976,"isCurrent":false,"isDeleted":false}],"summary":{"-1":0.823676576,"6706982":819.280655818,"10744815":400792.39497456996},"bh_summary":{"6706982":819,"10744815":65992}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_state_change</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-04T12:06:43+00:00","history":[{"id":758497,"title":"","startTime":"2026-07-30T16:33:12.000-04:00","endTime":"2026-07-30T20:46:51.282+00:00","timeSpent":819,"timeSpentBH":819,"timeSinceCreation":0,"timeSinceCreationBH":0,"isCurrent":false,"isDeleted":false},{"id":758498,"title":"","startTime":"2026-07-30T16:46:51.000-04:00","endTime":"2026-07-31T16:49:28.212+00:00","timeSpent":72157,"timeSpentBH":18157,"timeSinceCreation":819,"timeSinceCreationBH":819,"isCurrent":false,"isDeleted":false},{"id":758501,"title":"","startTime":"2026-07-31T12:49:28.000-04:00","endTime":"2026-08-04T12:06:43.353+00:00","timeSpent":328635,"timeSpentBH":47835,"timeSinceCreation":72976,"timeSinceCreationBH":31768,"isCurrent":false,"isDeleted":false}],"summary":{"758497":819.304462746,"758498":72157.242519857,"758501":328635.389078454},"bh_summary":{"758497":819,"758498":18157,"758501":47835}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>State Changed</statistic_type>
+                <time>20:17</time>
+                <time_elapsed>20:17</time_elapsed>
+                <business_time_elapsed>05:17</business_time_elapsed>
+                <value>2026-07-31 16:49:28 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_first_response</statistic_type>
+                <time>00:13</time>
+                <time_elapsed>00:13</time_elapsed>
+                <business_time_elapsed>00:13</business_time_elapsed>
+                <value>2026-07-30 20:45:23 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_assignment</statistic_type>
+                <time>00:14</time>
+                <time_elapsed>00:14</time_elapsed>
+                <business_time_elapsed>00:14</business_time_elapsed>
+                <value>2026-07-30 20:46:51 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>reassignments</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>1</value>
+            </statistic>
+            <statistic>
+                <statistic_type>assignee_opened_show</statistic_type>
+                <time>20:16</time>
+                <time_elapsed>20:16</time_elapsed>
+                <business_time_elapsed>05:16</business_time_elapsed>
+                <value>10744815</value>
+            </statistic>
+            <statistic>
+                <statistic_type>last_group_reassigned</statistic_type>
+                <time nil="true"></time>
+                <time_elapsed nil="true"></time_elapsed>
+                <business_time_elapsed nil="true"></business_time_elapsed>
+                <value>{"last_updated":"2026-08-04T08:06:43-04:00","history":[],"summary":{"-1":328635.255656483},"bh_summary":{}}</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_resolve</statistic_type>
+                <time>20:17</time>
+                <time_elapsed>20:17</time_elapsed>
+                <business_time_elapsed>05:17</business_time_elapsed>
+                <value>2026-07-31 16:49:28 UTC</value>
+            </statistic>
+            <statistic>
+                <statistic_type>to_close</statistic_type>
+                <time>111:34</time>
+                <time_elapsed>111:34</time_elapsed>
+                <business_time_elapsed>18:34</business_time_elapsed>
+                <value>2026-08-04 12:06:43 UTC</value>
+            </statistic>
+        </statistics>
+        <tags>
+            <tag>
+                <name>LCG - Operations</name>
+            </tag>
+        </tags>
+        <incidents></incidents>
+        <changes></changes>
+        <solutions></solutions>
+        <associated_sla_names></associated_sla_names>
+        <is_customer_satisfied nil="true"></is_customer_satisfied>
+        <customer_satisfaction_response nil="true"></customer_satisfaction_response>
+        <total_time_spent>0</total_time_spent>
+        <resolution>The requests are linked, but in order to see linked service requests in search results, a checkbox must be selected. After checking the box, the expected service requests were present</resolution>
+        <resolution_type>Solved_permanently</resolution_type>
+        <tasks></tasks>
+        <time_tracks></time_tracks>
+        <assets></assets>
+        <mobiles></mobiles>
+        <other_assets></other_assets>
+        <configuration_items></configuration_items>
+        <discovery_hardwares></discovery_hardwares>
+        <purchase_orders></purchase_orders>
+        <releases></releases>
+        <problems></problems>
+        <request_variables></request_variables>
+    </incident>
+    <page>1</page>
+    <per_page>1000000000</per_page>
+    <total_entries>6</total_entries>
+</incidents>

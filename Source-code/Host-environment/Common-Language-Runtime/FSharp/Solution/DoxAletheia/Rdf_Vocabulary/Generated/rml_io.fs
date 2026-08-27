@@ -7,7 +7,7 @@ open type Prefix_ID
 module rml_io =
     let _namespace_iri = Namespace_Iri rml_io |> NamespaceIRI
     /// <summary>
-    ///   <para>rml_io:</para>
+    ///   <para>rml:io/</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Ontology</para>

@@ -1,0 +1,5723 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ArcGISMapImageLayer",
+  "definitions": {
+    "ArcGISMapServiceInfo": {
+      "type": "object",
+      "description": "The metadata for an ArcGIS map service.",
+      "additionalProperties": false,
+      "properties": {
+        "Attribution": {
+          "type": "string",
+          "description": "Gets the map service's copyright information."
+        },
+        "Capabilities": {
+          "description": "Gets the capabilities supported by this map service, such as export, data, and query operations.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/MapServiceCapabilities"
+            }
+          ]
+        },
+        "CurrentVersion": {
+          "type": "string",
+          "description": "Gets the map service version."
+        },
+        "Description": {
+          "type": "string",
+          "description": "Gets the map description."
+        },
+        "DocumentInfo": {
+          "description": "Gets the document information, such as the title, author, and comments.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/ServiceDocumentInfo"
+            }
+          ]
+        },
+        "ExportTileCacheCompactV2Allowed": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether exporting tiles in compact version 2 format (.tpkx) is supported."
+        },
+        "ExportTilesAllowed": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether exporting tiles in compact format (.tpk) is supported."
+        },
+        "FullExtent": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the full extent of the map service."
+        },
+        "InitialExtent": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the initial extent of the map service."
+        },
+        "MapName": {
+          "type": "string",
+          "description": "Gets the map name."
+        },
+        "MaxExportTilesCount": {
+          "type": "integer",
+          "description": "Gets the maximum number of tiles supported for exporting tiles.",
+          "format": "int32"
+        },
+        "MaxImageHeight": {
+          "type": "integer",
+          "description": "Gets the max height supported for an image export.",
+          "format": "int32"
+        },
+        "MaxImageWidth": {
+          "type": "integer",
+          "description": "Gets the max width supported for an image export.",
+          "format": "int32"
+        },
+        "MaxRecordCount": {
+          "type": "integer",
+          "description": "Gets the maximum number of records that will be returned at once for a query",
+          "format": "int32"
+        },
+        "MaxScale": {
+          "type": "number",
+          "description": "Gets the maximum scale for the map service.",
+          "format": "double"
+        },
+        "MinScale": {
+          "type": "number",
+          "description": "Gets the minimum scale for the map service.",
+          "format": "double"
+        },
+        "ServiceDescription": {
+          "type": "string",
+          "description": "Gets the map service description."
+        },
+        "SupportedImageFormatTypes": {
+          "type": "array",
+          "description": "Gets the list of supported image format types.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "SupportsDynamicLayers": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the ArcGIS map service supports dynamically defined layers."
+        },
+        "TileInfo": {
+          "description": "Gets the information about the map tile cache if the map service is cached.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TileInfo"
+            }
+          ]
+        },
+        "TileServers": {
+          "type": "array",
+          "description": "Gets the tile servers that allow distributing load to multiple endpoints (optional)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "TimeInfo": {
+          "description": "Gets the time information for a time-enabled map service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/ServiceTimeInfo"
+            }
+          ]
+        },
+        "LayerInfos": {
+          "type": "array",
+          "description": "Gets the service's layers;",
+          "items": {
+            "$ref": "#/definitions/IdInfo"
+          }
+        },
+        "TableInfos": {
+          "type": "array",
+          "description": "Gets the collection of table infos that represent tables of the service.",
+          "items": {
+            "$ref": "#/definitions/IdInfo"
+          }
+        },
+        "Unit": {
+          "description": "Gets the unit map service uses for it's default spatial reference.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Unit"
+            }
+          ]
+        },
+        "ServiceSourceType": {
+          "description": "Gets the service type of the service info.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ServiceType"
+            }
+          ]
+        },
+        "SingleFusedMapCache": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the ArcGIS map service has a single fused map cache."
+        },
+        "SpatialReference": {
+          "description": "Gets the SpatialReference of the map service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SpatialReference"
+            }
+          ]
+        },
+        "Source": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the ArcGIS REST service endpoint.",
+          "format": "uri"
+        }
+      }
+    },
+    "MapServiceCapabilities": {
+      "type": "object",
+      "description": "Describes the capabilities of an ArcGIS map service, including whether it supports exporting map images, data and query operations.",
+      "additionalProperties": false,
+      "properties": {
+        "SupportsData": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the map service supports data operations, such as find, query, and related records."
+        },
+        "SupportsMap": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the map service supports map operations, such as exporting map images and listing all layers and tables."
+        },
+        "SupportsQuery": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the map service supports query operations, such as identify and access attachment data."
+        },
+        "SupportsTilemap": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the map service supports tiles."
+        },
+        "SupportsTilesOnly": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the map service supports tile requests only."
+        }
+      }
+    },
+    "ServiceDocumentInfo": {
+      "type": "object",
+      "description": "Contains detailed metadata information about an ArcGIS Server MapServer when a map service is published. Some of the document information for the service include: title, author, keywords, whether to use anti-aliasing on graphics, etc..",
+      "additionalProperties": false,
+      "properties": {
+        "AntialiasingMode": {
+          "description": "Gets the anti aliasing mode of the document information.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AntialiasingMode"
+            }
+          ]
+        },
+        "Author": {
+          "type": "string",
+          "description": "Gets the author of the document information."
+        },
+        "Category": {
+          "type": "string",
+          "description": "Gets the category of the document information."
+        },
+        "Comments": {
+          "type": "string",
+          "description": "Gets the comments of the document information."
+        },
+        "Keywords": {
+          "type": "array",
+          "description": "Gets the keywords of the document information.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Subject": {
+          "type": "string",
+          "description": "Gets the subject of the document information."
+        },
+        "TextAntialiasingMode": {
+          "description": "Gets the text aliasing mode of the document information.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/TextAntialiasingMode"
+            }
+          ]
+        },
+        "Title": {
+          "type": "string",
+          "description": "Gets the title of the document information."
+        }
+      }
+    },
+    "AntialiasingMode": {
+      "type": "integer",
+      "description": "An enumeration of various antialiasing modes.",
+      "x-enumNames": [
+        "None",
+        "Fastest",
+        "Fast",
+        "Normal",
+        "Best"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "TextAntialiasingMode": {
+      "type": "integer",
+      "description": "An enumeration of various text antialiasing modes.",
+      "x-enumNames": [
+        "None",
+        "Normal",
+        "Force"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "TileInfo": {
+      "type": "object",
+      "description": "Describes a map tile cache.",
+      "additionalProperties": false,
+      "properties": {
+        "Dpi": {
+          "type": "integer",
+          "description": "Gets the DPI (dots per inch) that the tile cache has been generated for.",
+          "format": "int32"
+        },
+        "LevelsOfDetail": {
+          "type": "array",
+          "description": "Gets the levels of details contained in the map cache.",
+          "items": {
+            "$ref": "#/definitions/LevelOfDetail"
+          }
+        },
+        "Origin": {
+          "description": "Gets the origin (upper left corner) of the tiling scheme.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MapPoint"
+            }
+          ]
+        },
+        "SpatialReference": {
+          "description": "Gets the spatial reference of the map cache.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SpatialReference"
+            }
+          ]
+        },
+        "TileHeight": {
+          "type": "integer",
+          "description": "Gets the height of each tile, in pixels.",
+          "format": "int32"
+        },
+        "TileWidth": {
+          "type": "integer",
+          "description": "Gets the width of each tile, in pixels.",
+          "format": "int32"
+        },
+        "CompressionQuality": {
+          "type": "number",
+          "description": "Gets the compression quality.",
+          "format": "double"
+        },
+        "Format": {
+          "description": "Gets the format of the tile images.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/TileImageFormat"
+            }
+          ]
+        }
+      }
+    },
+    "LevelOfDetail": {
+      "type": "object",
+      "description": "A ImageTiledLayer has a number of LODs (Levels of Detail). Each LOD corresponds to a map at a given scale or resolution.",
+      "additionalProperties": false,
+      "properties": {
+        "Level": {
+          "type": "integer",
+          "description": "Gets the ID for the level. The top most level is 0.",
+          "format": "int32"
+        },
+        "Resolution": {
+          "type": "number",
+          "description": "Gets the resolution in map units of each pixel for the level.",
+          "format": "double"
+        },
+        "Scale": {
+          "type": "number",
+          "description": "Gets the scale for the level.",
+          "format": "double"
+        }
+      }
+    },
+    "MapPoint": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Geometry"
+        },
+        {
+          "type": "object",
+          "description": "Represents a location defined by x and y (and optionally z) coordinates.",
+          "additionalProperties": false,
+          "properties": {
+            "GeometryType": {
+              "description": "Gets the geometry type.",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/GeometryType"
+                }
+              ]
+            },
+            "Dimension": {
+              "$ref": "#/definitions/GeometryDimension"
+            },
+            "X": {
+              "type": "number",
+              "description": "Gets the x-coordinate for the map point.",
+              "format": "double"
+            },
+            "Y": {
+              "type": "number",
+              "description": "Gets the y-coordinate for the map point.",
+              "format": "double"
+            },
+            "Z": {
+              "type": "number",
+              "description": "Gets the z-value for the map point.",
+              "format": "double"
+            },
+            "M": {
+              "type": "number",
+              "description": "Gets the optional coordinate to define a measure value for the point.",
+              "format": "double"
+            },
+            "HasZ": {
+              "type": "boolean",
+              "description": "Gets a value indicating whether the geometry has a z-value."
+            },
+            "HasM": {
+              "type": "boolean",
+              "description": "Gets a value indicating whether the geometry has an m-value."
+            },
+            "IsEmpty": {
+              "type": "boolean",
+              "description": "Gets a value indicating whether or not the geometry is empty."
+            },
+            "HasCurves": {
+              "type": "boolean"
+            },
+            "Extent": {
+              "type": "string",
+              "description": "Gets the minimum enclosing envelope of the instance."
+            }
+          }
+        }
+      ]
+    },
+    "GeometryType": {
+      "type": "integer",
+      "description": "Geometry Type Enumeration",
+      "x-enumNames": [
+        "Point",
+        "Envelope",
+        "Polyline",
+        "Polygon",
+        "Multipoint",
+        "Unknown"
+      ],
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1
+      ]
+    },
+    "GeometryDimension": {
+      "type": "integer",
+      "description": "Indicates the dimensionality of a Geometry, relating to the number of spatial dimensions in which the geometry may have a size.",
+      "x-enumNames": [
+        "Point",
+        "Curve",
+        "Area",
+        "Volume",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        -1
+      ]
+    },
+    "Geometry": {
+      "type": "object",
+      "description": "Base class for all classes that represent geometric shapes.",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "properties": {
+        "HasCurves": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the geometry has any curves."
+        },
+        "SpatialReference": {
+          "description": "Gets the spatial reference of this geometry.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SpatialReference"
+            }
+          ]
+        }
+      }
+    },
+    "SpatialReference": {
+      "type": "object",
+      "description": "Instances of this class specifies how geometry coordinates relate to real-world space.",
+      "additionalProperties": false,
+      "properties": {
+        "IsGeographic": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether this is a geographic coordinate system."
+        },
+        "IsPannable": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the coordinate system is horizontally pannable."
+        },
+        "IsProjected": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the spatial reference is a Projected Coordinate System."
+        },
+        "BaseGeographic": {
+          "description": "Gets the base geographic coordinate system if this is a projected coordinate system.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SpatialReference"
+            }
+          ]
+        },
+        "Unit": {
+          "description": "Gets the unit of measure for this spatial reference system.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Unit"
+            }
+          ]
+        },
+        "VerticalUnit": {
+          "description": "Gets the unit of measure for the vertical coordinate system of this spatial reference.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LinearUnit"
+            }
+          ]
+        },
+        "Wkid": {
+          "type": "integer",
+          "description": "Gets the well-known ID for the horizontal coordinate system, or 0 if the spatial reference has a custom horizontal coordinate system.",
+          "format": "int32"
+        },
+        "VerticalWkid": {
+          "type": "integer",
+          "description": "Gets the well-known ID for the vertical coordinate system (VCS), or 0 if the spatial reference has no VCS or has a custom VCS.",
+          "format": "int32"
+        },
+        "WkText": {
+          "type": "string",
+          "description": "Gets the well-known text for the horizontal and vertical coordinate system."
+        },
+        "WkText2": {
+          "type": "string",
+          "description": "Gets the well-known text for the horizontal and vertical coordinate systems as defined by the OGC standard."
+        },
+        "HasVertical": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether spatial reference has a vertical coordinate system set."
+        },
+        "Resolution": {
+          "type": "number",
+          "description": "Gets the minimum distance that separates unique x,y coordinate values when stored in an ArcGISFeatureTable.",
+          "format": "double"
+        },
+        "Tolerance": {
+          "type": "number",
+          "description": "Gets the minimum distance that determines if two x,y coordinates are considered to be at the same location for relational and topological GeometryEngine operations.",
+          "format": "double"
+        },
+        "VerticalResolution": {
+          "type": "number",
+          "description": "Gets the minimum distance that separates unique z-values when stored in an ArcGISFeatureTable.",
+          "format": "double"
+        },
+        "VerticalTolerance": {
+          "type": "number",
+          "description": "Gets the minimum distance that determines if two z-values are considered to be at the same location for GeometryEngine operations that compare z-values.",
+          "format": "double"
+        }
+      }
+    },
+    "Unit": {
+      "type": "object",
+      "description": "Defines a base class for units of measurement.",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "properties": {
+        "Wkid": {
+          "type": "integer",
+          "description": "Gets the well-known ID for the unit, or 0 for a custom unit.",
+          "format": "int32"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the name of the unit."
+        },
+        "Abbreviation": {
+          "type": "string",
+          "description": "Gets the abbreviation of the unit."
+        },
+        "DisplayName": {
+          "type": "string",
+          "description": "Gets the display name of the unit."
+        },
+        "PluralDisplayName": {
+          "type": "string",
+          "description": "Gets the display name of the unit."
+        }
+      }
+    },
+    "LinearUnit": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Unit"
+        },
+        {
+          "type": "object",
+          "description": "Represents a linear unit of measure used by a Geometry or SpatialReference, or in measurement conversion functions.",
+          "additionalProperties": false,
+          "properties": {
+            "UnitType": {
+              "description": "Gets the type of unit.",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/UnitType"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "UnitType": {
+      "type": "integer",
+      "description": "Enumeration of unit types.",
+      "x-enumNames": [
+        "Linear",
+        "Angular",
+        "Area"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "TileImageFormat": {
+      "type": "integer",
+      "description": "The image formats supported by ArcGIS tiled map services.",
+      "x-enumNames": [
+        "Png",
+        "Png8",
+        "Png24",
+        "Png32",
+        "Jpg",
+        "Mixed",
+        "Lerc",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        -1
+      ]
+    },
+    "ServiceTimeInfo": {
+      "type": "object",
+      "description": "Service Time Info",
+      "additionalProperties": false,
+      "properties": {
+        "DefaultInterval": {
+          "description": "Gets the default amount of time to use as an interval when stepping through the service's features by time",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TimeValue"
+            }
+          ]
+        },
+        "TimeWindow": {
+          "description": "Gets the service's default time window",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TimeValue"
+            }
+          ]
+        },
+        "HasLiveData": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service has live data."
+        },
+        "TimeReference": {
+          "description": "Gets the time reference.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TimeReference"
+            }
+          ]
+        },
+        "TimeRelation": {
+          "description": "Gets the value that indicates how the start and end time of the time slider extent are processed.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/TimeRelation"
+            }
+          ]
+        },
+        "TimeExtent": {
+          "description": "Gets the temporal window that includes all the data in the service",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TimeExtent"
+            }
+          ]
+        }
+      }
+    },
+    "TimeValue": {
+      "type": "object",
+      "description": "Represents an amount of time.",
+      "additionalProperties": false,
+      "properties": {
+        "Duration": {
+          "type": "number",
+          "description": "Gets the numeric quantity of time represented by the TimeValue instance.",
+          "format": "double"
+        },
+        "Unit": {
+          "description": "Gets the temporal unit to apply to the specified Duration.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/TimeUnit"
+            }
+          ]
+        }
+      }
+    },
+    "TimeUnit": {
+      "type": "integer",
+      "description": "TimeUnit",
+      "x-enumNames": [
+        "Centuries",
+        "Days",
+        "Decades",
+        "Hours",
+        "Milliseconds",
+        "Minutes",
+        "Months",
+        "Seconds",
+        "Weeks",
+        "Years",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        -1
+      ]
+    },
+    "TimeReference": {
+      "type": "object",
+      "description": "Time Reference Info",
+      "additionalProperties": false,
+      "properties": {
+        "TimeZone": {
+          "type": "string",
+          "description": "Gets the name of the time zone."
+        },
+        "RespectsDaylightSavings": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the time reference respects daylight savings time."
+        }
+      }
+    },
+    "TimeRelation": {
+      "type": "integer",
+      "description": "TimeRelation",
+      "x-enumNames": [
+        "Overlaps",
+        "AfterStartOverlapsEnd",
+        "OverlapsStartWithinEnd",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        -1
+      ]
+    },
+    "TimeExtent": {
+      "type": "object",
+      "description": "Represents either a span between a defined start and end time or a particular instant in time.",
+      "additionalProperties": false,
+      "properties": {
+        "EndTime": {
+          "type": "string",
+          "description": "Gets the end time.",
+          "format": "date-time"
+        },
+        "StartTime": {
+          "type": "string",
+          "description": "Gets the start time.",
+          "format": "date-time"
+        }
+      }
+    },
+    "IdInfo": {
+      "type": "object",
+      "description": "A handle that represents the sub layer metadata for a Feature service or a Map service.",
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "description": "Gets the id info's id.",
+          "format": "int64"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the id info's name."
+        }
+      }
+    },
+    "ServiceType": {
+      "type": "integer",
+      "description": "An enumeration of various types of web services.",
+      "x-enumNames": [
+        "FeatureService",
+        "ImageService",
+        "MapService",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        -1
+      ]
+    },
+    "MapServiceImageFormat": {
+      "type": "integer",
+      "description": "The image formats supported by ArcGIS map services and ArcGIS image services.",
+      "x-enumNames": [
+        "Default",
+        "Png",
+        "Png8",
+        "Png24",
+        "Png32",
+        "Jpg",
+        "JpgPng",
+        "Bmp",
+        "Gif",
+        "Tiff",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        -1
+      ]
+    },
+    "ArcGISSublayer": {
+      "type": "object",
+      "description": "The base class for ArcGIS sublayer classes such as ArcGISMapImageSublayer, ArcGISTiledSublayer, and SubtypeSublayer.",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "description": "Gets an id that uniquely identifies this sublayer instance.",
+          "format": "int64"
+        },
+        "Sublayers": {
+          "type": "array",
+          "description": "Gets the collection of sublayers of this sublayer.",
+          "items": {
+            "$ref": "#/definitions/ArcGISSublayer"
+          }
+        },
+        "MaxScale": {
+          "type": "number",
+          "description": "Gets the maximum scale at which this sublayer is visible.",
+          "format": "double"
+        },
+        "MinScale": {
+          "type": "number",
+          "description": "Gets the minimum scale at which this sublayer is visible.",
+          "format": "double"
+        },
+        "DefinitionExpression": {
+          "type": "string",
+          "description": "Gets a SQL statement where clause that stipulates a subset of features to be displayed."
+        },
+        "MapServiceSublayerInfo": {
+          "description": "Gets this sublayer's metadata.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/ArcGISMapServiceSublayerInfo"
+            }
+          ]
+        },
+        "Opacity": {
+          "type": "number",
+          "description": "Gets the opacity of this sublayer.",
+          "format": "double"
+        },
+        "Renderer": {
+          "description": "Gets this sublayer's Renderer.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Renderer"
+            }
+          ]
+        },
+        "ScaleSymbols": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether this sublayer renders its symbols based on scale."
+        },
+        "LabelsEnabled": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether labels should be displayed on this sublayer."
+        },
+        "IsPopupEnabled": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the PopupDefinition defined is enabled."
+        },
+        "PopupDefinition": {
+          "description": "Gets or sets the popup definition for the sublayer.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PopupDefinition"
+            }
+          ]
+        },
+        "CanChangeVisibility": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer content's visibility can be changed."
+        },
+        "IsVisible": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the sublayer content is visible."
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the name of the sublayer."
+        },
+        "ShowInLegend": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the sublayer participates in the legend."
+        },
+        "SublayerContents": {
+          "type": "array",
+          "description": "Gets a read-only collection of ILayerContent for this sublayer.",
+          "items": {
+            "$ref": "#/definitions/ILayerContent"
+          }
+        },
+        "LoadStatus": {
+          "$ref": "#/definitions/LoadStatus"
+        },
+        "LoadError": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Exception"
+            }
+          ]
+        }
+      }
+    },
+    "ArcGISMapServiceSublayerInfo": {
+      "type": "object",
+      "description": "The metadata of an ArcGIS map service sublayer.",
+      "additionalProperties": false,
+      "properties": {
+        "Source": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the endpoint URL of the ArcGIS Map Service for the sublayer.",
+          "format": "uri"
+        },
+        "Version": {
+          "type": "string",
+          "description": "Gets the sublayer's version string (currentVersion)."
+        },
+        "ServiceLayerId": {
+          "type": "integer",
+          "description": "Gets the sublayer's ID.",
+          "format": "int64"
+        },
+        "ServiceLayerName": {
+          "type": "string",
+          "description": "Gets the sublayer's name."
+        },
+        "SublayerType": {
+          "description": "Gets the sublayer's service type.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ArcGISMapServiceSublayerType"
+            }
+          ]
+        },
+        "Description": {
+          "type": "string",
+          "description": "Gets the sublayer's description string."
+        },
+        "DisplayFieldExpression": {
+          "description": "Gets the layer's display field expression, or null if the default display field is used.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/ArcadeExpression"
+            }
+          ]
+        },
+        "DefinitionExpression": {
+          "type": "string",
+          "description": "Gets the sublayer's definition expression."
+        },
+        "GeometryType": {
+          "description": "Gets the GeometryType of features in the sublayer.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GeometryType"
+            }
+          ]
+        },
+        "HasM": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer has m-values."
+        },
+        "HasZ": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer has z-values."
+        },
+        "Attribution": {
+          "type": "string",
+          "description": "Gets the sublayer's attribution (copyright text)."
+        },
+        "MinScale": {
+          "type": "number",
+          "description": "Gets the minimum scale at which the sublayer is visible.",
+          "format": "double"
+        },
+        "MaxScale": {
+          "type": "number",
+          "description": "Gets the maximum scale at which the sublayer is visible.",
+          "format": "double"
+        },
+        "EffectiveMinScale": {
+          "type": "number",
+          "description": "Gets the effective minimum scale at which the sublayer is visible.",
+          "format": "double"
+        },
+        "EffectiveMaxScale": {
+          "type": "number",
+          "description": "Gets the effective maximum scale at which the sublayer is visible.",
+          "format": "double"
+        },
+        "DefaultVisibility": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer is visible by default."
+        },
+        "Extent": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the sublayer's extent."
+        },
+        "TimeInfo": {
+          "description": "Gets the sublayer's TimeInfo.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LayerTimeInfo"
+            }
+          ]
+        },
+        "DrawingInfo": {
+          "description": "Gets the sublayer's drawing info.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/DrawingInfo"
+            }
+          ]
+        },
+        "HasAttachments": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer supports attachments."
+        },
+        "DisplayFieldName": {
+          "type": "string",
+          "description": "Gets the name of this sublayer's display field (displayField)."
+        },
+        "TypeIdFieldName": {
+          "type": "string",
+          "description": "Gets the name of the sublayer's type ID field (typeIdField)."
+        },
+        "Fields": {
+          "type": "array",
+          "description": "Gets a list of field definitions for the sublayer.",
+          "items": {
+            "$ref": "#/definitions/Field"
+          }
+        },
+        "FeatureTypes": {
+          "type": "array",
+          "description": "Gets a list of feature types for the sublayer.",
+          "items": {
+            "$ref": "#/definitions/FeatureType"
+          }
+        },
+        "MaxRecordCount": {
+          "type": "integer",
+          "description": "Gets the maximum number of records that can be returned by query, find, and identify operations on this sublayer.",
+          "format": "int64"
+        },
+        "CanModifyLayer": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer supports modifying its renderer and/or its data source."
+        },
+        "SupportsStatistics": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer supports statistical functions in query operations."
+        },
+        "SupportsAdvancedQueries": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer supports advanced queries, such as order-by fields."
+        },
+        "HasLabels": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer has labels defined on it."
+        },
+        "CanScaleSymbols": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer renders its symbols based on scale."
+        },
+        "Capabilities": {
+          "description": "Gets the sublayer's capabilities.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MapServiceCapabilities"
+            }
+          ]
+        },
+        "IsDataVersioned": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer has versioned data."
+        },
+        "OwnershipBasedAccessControl": {
+          "description": "Gets the sublayer's ownership-based access control information.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/OwnershipBasedAccessControlInfo"
+            }
+          ]
+        },
+        "UseStandardizedQueries": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the sublayer requires the use of standardized queries."
+        },
+        "ParentLayerInfo": {
+          "description": "Gets the parent layer ID.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/IdInfo"
+            }
+          ]
+        },
+        "SublayerInfos": {
+          "type": "array",
+          "description": "Gets a collection of sublayer IDs.",
+          "items": {
+            "$ref": "#/definitions/IdInfo"
+          }
+        },
+        "RelationshipInfos": {
+          "type": "array",
+          "description": "Gets a list of RelationshipInfo of sublayer.",
+          "items": {
+            "$ref": "#/definitions/RelationshipInfo"
+          }
+        },
+        "FeatureSubtypes": {
+          "type": "array",
+          "description": "Gets a list of FeatureSubtype of this layer.",
+          "items": {
+            "$ref": "#/definitions/FeatureSubtype"
+          }
+        },
+        "SubtypeField": {
+          "type": "string",
+          "description": "Gets the layer's subtype field."
+        },
+        "DefaultSubtypeCode": {
+          "description": "Gets the layer's default subtype code.",
+          "oneOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "ArcGISMapServiceSublayerType": {
+      "type": "integer",
+      "description": "The type of sublayer in the ArcGIS map service.",
+      "x-enumNames": [
+        "FeatureLayer",
+        "Table",
+        "GroupLayer",
+        "RasterLayer",
+        "NetworkAnalysisLayer"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "ArcadeExpression": {
+      "type": "object",
+      "description": "An Arcade expression object, containing an expression, a name, a return type and a title.",
+      "additionalProperties": false,
+      "properties": {
+        "Expression": {
+          "type": "string",
+          "description": "Gets the Arcade expression string."
+        },
+        "Title": {
+          "type": "string",
+          "description": "Gets the title that the author uses to describe the expression."
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the name that the author uses to refer to the expression."
+        },
+        "ReturnType": {
+          "description": "Gets the expected return type of the expression.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ArcadeExpressionReturnType"
+            }
+          ]
+        }
+      }
+    },
+    "ArcadeExpressionReturnType": {
+      "type": "integer",
+      "description": "The expected type of the result calculated by an expression described within an ArcadeExpression",
+      "x-enumNames": [
+        "Automatic",
+        "Number",
+        "String",
+        "Dictionary",
+        "Any",
+        "Boolean",
+        "Date",
+        "DateOnly",
+        "TimeOnly",
+        "TimestampOffset"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "LayerTimeInfo": {
+      "type": "object",
+      "description": "Defines various temporal settings on a feature service layer.",
+      "additionalProperties": false,
+      "properties": {
+        "EndTimeField": {
+          "type": "string",
+          "description": "Gets the name of the end time field."
+        },
+        "HasLiveData": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether there is live data."
+        },
+        "StartTimeField": {
+          "type": "string",
+          "description": "Gets the name of the start time field."
+        },
+        "Interval": {
+          "description": "Gets the default temporal interval to use when stepping through the layer's data by time",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TimeValue"
+            }
+          ]
+        },
+        "TimeReference": {
+          "description": "Gets the information about the time reference used for time values in the layer.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TimeReference"
+            }
+          ]
+        },
+        "TrackIdField": {
+          "type": "string",
+          "description": "Gets the name of the track ID field."
+        },
+        "TimeExtent": {
+          "description": "Gets the temporal range that encompasses all the layer's data",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TimeExtent"
+            }
+          ]
+        }
+      }
+    },
+    "DrawingInfo": {
+      "type": "object",
+      "description": "Provides various information on how to render features in a feature layer.",
+      "additionalProperties": false,
+      "properties": {
+        "LabelingInfo": {
+          "type": "array",
+          "description": "Gets a list of LabelingInfo of this drawing info.",
+          "items": {
+            "$ref": "#/definitions/LabelingInfo"
+          }
+        },
+        "Renderer": {
+          "description": "Gets the renderer attached to this drawing info.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Renderer"
+            }
+          ]
+        },
+        "ScaleSymbols": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether symbols should be scaled."
+        },
+        "ShowLabels": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether labels should be displayed."
+        },
+        "Transparency": {
+          "type": "number",
+          "description": "Gets the transparency.",
+          "format": "double"
+        }
+      }
+    },
+    "LabelingInfo": {
+      "type": "object",
+      "description": "Defines the text, appearance and position of labels for features for a given scale range.",
+      "additionalProperties": false,
+      "properties": {
+        "LabelExpression": {
+          "type": "string",
+          "description": "Gets the simple expression describing how to build the text label for a feature, often using attributes of the feature."
+        },
+        "LabelPlacement": {
+          "description": "Gets the preferred position of the text label, with respect to its feature geometry.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/LabelingPlacement"
+            }
+          ]
+        },
+        "MaxScale": {
+          "type": "number",
+          "description": "Gets the largest viewing scale at which labels should be visible. If set, labels will disappear when the view is zoomed in beyond the maximum scale.",
+          "format": "double"
+        },
+        "MinScale": {
+          "type": "number",
+          "description": "Gets the smallest viewing scale at which labels should be visible. If set, labels will disappear when the view is zoomed out beyond the minimum scale.",
+          "format": "double"
+        },
+        "UseCodedValues": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether label should use coded values."
+        },
+        "Where": {
+          "type": "string",
+          "description": "Gets the where clause used to filter which features will be labeled."
+        }
+      }
+    },
+    "LabelingPlacement": {
+      "type": "integer",
+      "description": "An enumeration of labeling placement options, which is used to determine where the label for a feature should be positioned.",
+      "x-enumNames": [
+        "LineAboveAfter",
+        "LineAboveAlong",
+        "LineAboveBefore",
+        "LineAboveEnd",
+        "LineAboveStart",
+        "LineBelowAfter",
+        "LineBelowAlong",
+        "LineBelowBefore",
+        "LineBelowEnd",
+        "LineBelowStart",
+        "LineCenterAfter",
+        "LineCenterAlong",
+        "LineCenterBefore",
+        "LineCenterEnd",
+        "LineCenterStart",
+        "PointAboveCenter",
+        "PointAboveLeft",
+        "PointAboveRight",
+        "PointBelowCenter",
+        "PointBelowLeft",
+        "PointBelowRight",
+        "PointCenterCenter",
+        "PointCenterLeft",
+        "PointCenterRight",
+        "PolygonAlwaysHorizontal",
+        "Automatic"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        -2
+      ]
+    },
+    "Renderer": {
+      "type": "object",
+      "description": "A base class for renderers that use a collection of one or more symbols to display features in a Layer or graphics in a GraphicsOverlay.",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "properties": {
+        "RotationExpression": {
+          "type": "string",
+          "description": "Gets or sets the expression describing how GeoElement's attributes are translated into a rotation to be applied to the GeoElement."
+        },
+        "RotationType": {
+          "description": "Gets or sets whether the rotation calculated from the RotationExpression is relative to the screen or map.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/RotationType"
+            }
+          ]
+        },
+        "SceneProperties": {
+          "description": "Gets or sets the scene properties for the renderer.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/RendererSceneProperties"
+            }
+          ]
+        }
+      }
+    },
+    "RotationType": {
+      "type": "integer",
+      "description": "The RotationType enum controls the origin and direction of rotation given by the rotation expression.",
+      "x-enumNames": [
+        "Arithmetic",
+        "Geographic"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "RendererSceneProperties": {
+      "type": "object",
+      "description": "Collection of properties for renderers that participate in a Scene.",
+      "additionalProperties": false,
+      "properties": {
+        "ExtrusionExpression": {
+          "type": "string",
+          "description": "Gets or sets the extrusion expression."
+        },
+        "ExtrusionMode": {
+          "description": "Gets or sets the extrusion mode.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExtrusionMode"
+            }
+          ]
+        },
+        "HeadingExpression": {
+          "type": "string",
+          "description": "Gets or sets the heading expression."
+        },
+        "PitchExpression": {
+          "type": "string",
+          "description": "Gets or sets the pitch expression."
+        },
+        "RollExpression": {
+          "type": "string",
+          "description": "Gets or sets the roll expression."
+        }
+      }
+    },
+    "ExtrusionMode": {
+      "type": "integer",
+      "description": "The options for handling extrusion values.",
+      "x-enumNames": [
+        "None",
+        "Minimum",
+        "Maximum",
+        "AbsoluteHeight",
+        "BaseHeight"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "Field": {
+      "type": "object",
+      "description": "Contains information about an attribute field in a Feature",
+      "additionalProperties": false,
+      "properties": {
+        "Alias": {
+          "type": "string",
+          "description": "Gets the alias of field."
+        },
+        "Domain": {
+          "description": "Gets the domain of field.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Domain"
+            }
+          ]
+        },
+        "FieldType": {
+          "description": "Gets the data type of field.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/FieldType"
+            }
+          ]
+        },
+        "IsEditable": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether field is editable."
+        },
+        "IsNullable": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether field is nullable."
+        },
+        "Length": {
+          "type": "integer",
+          "description": "Gets the length of the field.",
+          "format": "int32"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the name of the field."
+        }
+      }
+    },
+    "Domain": {
+      "type": "object",
+      "description": "Specifies the set of valid values for a Field.",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "Gets the name of the domain."
+        },
+        "FieldType": {
+          "description": "Gets the field type of the domain.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/FieldType"
+            }
+          ]
+        }
+      }
+    },
+    "FieldType": {
+      "type": "integer",
+      "description": "The data format of an attribute field.",
+      "x-enumNames": [
+        "Int16",
+        "Int32",
+        "Int64",
+        "Guid",
+        "Float32",
+        "Float64",
+        "Date",
+        "Text",
+        "OID",
+        "GlobalID",
+        "Blob",
+        "Geometry",
+        "Raster",
+        "Xml",
+        "DateOnly",
+        "TimeOnly",
+        "TimestampOffset",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        -1
+      ]
+    },
+    "FeatureType": {
+      "type": "object",
+      "description": "Defines the domains and feature templates that are used to create a new feature.",
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "description": "Gets the ID of the feature type.",
+          "oneOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "Domains": {
+          "type": "object",
+          "description": "Gets the associated Domains with this feature type.",
+          "additionalProperties": {
+            "$ref": "#/definitions/Domain"
+          }
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the name of the feature type."
+        },
+        "Templates": {
+          "type": "array",
+          "description": "Gets a list of FeatureTemplate of the feature type.",
+          "items": {
+            "$ref": "#/definitions/FeatureTemplate"
+          }
+        }
+      }
+    },
+    "FeatureTemplate": {
+      "type": "object",
+      "description": "Defines the default attribute values for the fields of a newly created ArcGISFeature and suggests a type of drawing tool to sketch the feature's geometry.",
+      "additionalProperties": false,
+      "properties": {
+        "Description": {
+          "type": "string",
+          "description": "Gets the description of the feature template."
+        },
+        "DrawingTool": {
+          "description": "Gets the type of drawing tool that could be used to draw this feature in an editing application.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DrawingTool"
+            }
+          ]
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the name of the feature template."
+        },
+        "PrototypeAttributes": {
+          "type": "object",
+          "description": "Gets the default attribute values used when creating a Feature",
+          "additionalProperties": {}
+        }
+      }
+    },
+    "DrawingTool": {
+      "type": "integer",
+      "description": "An enumeration of available drawing tools.",
+      "x-enumNames": [
+        "AutoCompletePolygon",
+        "Circle",
+        "DownArrow",
+        "Ellipse",
+        "FreeHand",
+        "LeftArrow",
+        "Line",
+        "None",
+        "Point",
+        "Polygon",
+        "Rectangle",
+        "RightArrow",
+        "Text",
+        "Triangle",
+        "UpArrow"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    "OwnershipBasedAccessControlInfo": {
+      "type": "object",
+      "description": "Defines the ownership-based access control settings of a feature service.",
+      "additionalProperties": false,
+      "properties": {
+        "AllowOthersToDelete": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether others are allowed to delete features."
+        },
+        "AllowOthersToQuery": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether others are allowed to query features."
+        },
+        "AllowOthersToUpdate": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether others are allowed to update features."
+        },
+        "AllowAnonymousToDelete": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether anonymous users are allowed to delete features."
+        },
+        "AllowAnonymousToUpdate": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether anonymous users are allowed to update features."
+        }
+      }
+    },
+    "RelationshipInfo": {
+      "type": "object",
+      "description": "Defines information about the relationship between tables.",
+      "additionalProperties": false,
+      "properties": {
+        "Cardinality": {
+          "description": "Gets the cardinality of this relationship.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/RelationshipCardinality"
+            }
+          ]
+        },
+        "Id": {
+          "type": "integer",
+          "description": "Gets the ID of this relationship.",
+          "format": "int64"
+        },
+        "IsComposite": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether this is a composite relationship."
+        },
+        "KeyField": {
+          "type": "string",
+          "description": "Gets the key field, the field that links the origin and destination tables of this relationship."
+        },
+        "KeyFieldInRelationshipTable": {
+          "type": "string",
+          "description": "Gets the key field in the relationship table."
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the name of the relationship."
+        },
+        "RelatedTableId": {
+          "type": "integer",
+          "description": "Gets the ID of the related table.",
+          "format": "int64"
+        },
+        "RelationshipTableId": {
+          "type": "integer",
+          "description": "Gets the ID of the relationship table. The default value is -1, indicating that no table exists.",
+          "format": "int64"
+        },
+        "Role": {
+          "description": "Gets the role that this table has in this relationship.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/RelationshipRole"
+            }
+          ]
+        }
+      }
+    },
+    "RelationshipCardinality": {
+      "type": "integer",
+      "description": "An enumeration of the different cardinalities of feature table relationships.",
+      "x-enumNames": [
+        "ManyToMany",
+        "OneToMany",
+        "OneToOne"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "RelationshipRole": {
+      "type": "integer",
+      "description": "An enumeration of the different roles of Feature Table relationships.",
+      "x-enumNames": [
+        "Destination",
+        "Origin"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "FeatureSubtype": {
+      "type": "object",
+      "description": "Describes a subset of features in an ArcGISFeatureTable that share the same integer attribute value.",
+      "additionalProperties": false,
+      "properties": {
+        "Code": {
+          "description": "Gets the feature subtype's code.",
+          "oneOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the name of the feature subtype."
+        },
+        "PrototypeAttributes": {
+          "type": "object",
+          "description": "Gets the prototype for creating a Feature with this subtype.",
+          "additionalProperties": {}
+        },
+        "FieldOverrides": {
+          "type": "array",
+          "description": "Gets the fields defined for this feature subtype.",
+          "items": {
+            "$ref": "#/definitions/Field"
+          }
+        }
+      }
+    },
+    "PopupDefinition": {
+      "type": "object",
+      "description": "Defines the appearance and format of popups. Also includes which fields to display.",
+      "additionalProperties": false,
+      "properties": {
+        "AllowDelete": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the popup should allow the associated GeoElement to be deleted."
+        },
+        "AllowEdit": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the popup should allow the associated GeoElement to be edited."
+        },
+        "AllowEditGeometry": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the popup should allow the geometry of the associated GeoElement to be edited."
+        },
+        "Description": {
+          "type": "string",
+          "description": "Gets or sets a string that appears in the body of the popup window as a description."
+        },
+        "Fields": {
+          "type": "array",
+          "description": "Gets a mutable list of PopupField which defines how each field participates in the pop-up window.",
+          "items": {
+            "$ref": "#/definitions/PopupField"
+          }
+        },
+        "Media": {
+          "type": "array",
+          "description": "Gets a mutable list of PopupMedia which defines images and charts displayed in the pop-up window.",
+          "items": {
+            "$ref": "#/definitions/PopupMedia"
+          }
+        },
+        "ShowAttachments": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether attachments will be loaded for layers with attachments."
+        },
+        "ShowEditSummary": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the popup should display the edit summary of the associated GeoElement."
+        },
+        "Title": {
+          "type": "string",
+          "description": "Gets or sets a string that defines the popup's title."
+        },
+        "RelatedFeaturesDefinition": {
+          "description": "Gets or sets the related features definition.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PopupRelatedFeaturesDefinition"
+            }
+          ]
+        },
+        "Expressions": {
+          "type": "array",
+          "description": "Gets a collection of PopupExpression defining the various arcade expressions on the popup.",
+          "items": {
+            "$ref": "#/definitions/PopupExpression"
+          }
+        },
+        "Elements": {
+          "type": "array",
+          "description": "Gets a mutable, ordered list of pop-up elements.",
+          "items": {
+            "$ref": "#/definitions/PopupElement"
+          }
+        }
+      }
+    },
+    "PopupField": {
+      "type": "object",
+      "description": "Represents how a geoelement's attribute (field) should be displayed in a popup.",
+      "additionalProperties": false,
+      "properties": {
+        "FieldName": {
+          "type": "string",
+          "description": "Gets or sets the field name."
+        },
+        "Format": {
+          "description": "Gets or sets the format used to display the field.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PopupFieldFormat"
+            }
+          ]
+        },
+        "IsEditable": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether users can edit the field."
+        },
+        "IsVisible": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the field is visible in the popup."
+        },
+        "Label": {
+          "type": "string",
+          "description": "Gets or sets the field label. The field label (alias) can be overridden by the map author."
+        },
+        "StringFieldOption": {
+          "description": "Gets or sets the type of input box (e.g. SingleLine, MultiLine) presented when editing the field.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PopupStringFieldOption"
+            }
+          ]
+        },
+        "Tooltip": {
+          "type": "string",
+          "description": "Gets or sets a string providing hints for editors of the field. This string can provide a short description of the field and how editors should format or supply its value."
+        }
+      }
+    },
+    "PopupFieldFormat": {
+      "type": "object",
+      "description": "Represents the formatting of a field when displayed. Applies only to fields of type date or number (float, double, integer).",
+      "additionalProperties": false,
+      "properties": {
+        "DateFormat": {
+          "description": "Gets or sets the format used to display a date field in a popup.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PopupDateFormat"
+            }
+          ]
+        },
+        "DecimalPlaces": {
+          "type": "integer",
+          "description": "Gets or sets the number of supported decimal places for displaying a numerical field in a popup.",
+          "format": "int64"
+        },
+        "UseThousandsSeparator": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether a numerical field may use the thousands (or digit) separator when displayed in a popup."
+        }
+      }
+    },
+    "PopupDateFormat": {
+      "type": "integer",
+      "description": "Format that controls how a date field is displayed in a popup.",
+      "x-enumNames": [
+        "DayShortMonthYear",
+        "LongDate",
+        "LongMonthDayYear",
+        "LongMonthYear",
+        "ShortDate",
+        "ShortDateLE",
+        "ShortDateLELongTime",
+        "ShortDateLELongTime24",
+        "ShortDateLEShortTime",
+        "ShortDateLEShortTime24",
+        "ShortDateLongTime",
+        "ShortDateLongTime24",
+        "ShortDateShortTime",
+        "ShortDateShortTime24",
+        "ShortMonthYear",
+        "Year",
+        "DayShortMonthYearLongTime",
+        "DayShortMonthYearLongTime24",
+        "DayShortMonthYearShortTime",
+        "DayShortMonthYearShortTime24",
+        "LongDateLongTime",
+        "LongDateLongTime24",
+        "LongDateShortTime",
+        "LongDateShortTime24",
+        "LongMonthDayYearLongTime",
+        "LongMonthDayYearLongTime24",
+        "LongMonthDayYearShortTime",
+        "LongMonthDayYearShortTime24",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        -1
+      ]
+    },
+    "PopupStringFieldOption": {
+      "type": "integer",
+      "description": "Type of input box presented when editing the field in a popup.",
+      "x-enumNames": [
+        "SingleLine",
+        "MultiLine",
+        "RichText",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        -1
+      ]
+    },
+    "PopupMedia": {
+      "type": "object",
+      "description": "Represents an image or a chart that is displayed in a pop-up for a GeoElement.",
+      "additionalProperties": false,
+      "properties": {
+        "Caption": {
+          "type": "string",
+          "description": "Gets or sets the caption that is displayed for the media."
+        },
+        "Title": {
+          "type": "string",
+          "description": "Gets or sets the title that is displayed for the media."
+        },
+        "Type": {
+          "description": "Gets or sets the type of media.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PopupMediaType"
+            }
+          ]
+        },
+        "Value": {
+          "description": "Gets or sets the media contents.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PopupMediaValue"
+            }
+          ]
+        },
+        "ImageRefreshInterval": {
+          "type": "string",
+          "description": "Gets or sets the image refresh interval. This property is useful only for a pop-up media of type Image.",
+          "format": "duration"
+        }
+      }
+    },
+    "PopupMediaType": {
+      "type": "integer",
+      "description": "Type of media in a popup.",
+      "x-enumNames": [
+        "Image",
+        "BarChart",
+        "ColumnChart",
+        "LineChart",
+        "PieChart",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        -1
+      ]
+    },
+    "PopupMediaValue": {
+      "type": "object",
+      "description": "Represents contents of an individual media element in a popup.",
+      "additionalProperties": false,
+      "properties": {
+        "FieldNames": {
+          "type": "array",
+          "description": "Gets a mutable list of Field which defines fields used in the chart.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ChartColors": {
+          "type": "array",
+          "description": "Gets a mutable list of colors to be used in charts, where each \"color\" sequentially corresponds to a field in the FieldNames property.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "LinkUrl": {
+          "type": "string",
+          "description": "Gets or sets the link URL for an image."
+        },
+        "NormalizeFieldName": {
+          "type": "string",
+          "description": "Gets or sets the optional field used to normalize the chart."
+        },
+        "SourceUrl": {
+          "type": "string",
+          "description": "Gets or sets the source URL for an image."
+        },
+        "TooltipFieldName": {
+          "type": "string",
+          "description": "Gets or sets the tooltip field."
+        },
+        "Data": {
+          "type": "array",
+          "description": "Gets the attribute values for the pop-up media's fields defined in FieldNames. This property is populated when EvaluateExpressionsAsync is called.",
+          "items": {
+            "oneOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "Labels": {
+          "type": "array",
+          "description": "Gets the user-friendly display names for the pop-up media's fields defined in FieldNames. This property is populated when EvaluateExpressionsAsync is called.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PopupRelatedFeaturesDefinition": {
+      "type": "object",
+      "description": "Contains information about displaying related features in a popup.",
+      "additionalProperties": false,
+      "properties": {
+        "ShowRelatedFeatures": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the popup should show features that are related to this popup's feature."
+        },
+        "SortOrder": {
+          "type": "array",
+          "description": "Gets an array of objects which dictate the order in which the relationships and related features in each relationship should be displayed.",
+          "items": {
+            "$ref": "#/definitions/PopupRelatedFeaturesSortOrder"
+          }
+        }
+      }
+    },
+    "PopupRelatedFeaturesSortOrder": {
+      "type": "object",
+      "description": "Defines the order in which related features of a particular relationship are sorted for display.",
+      "additionalProperties": false,
+      "properties": {
+        "OrderByField": {
+          "description": "Gets or sets the field in the related table by which the related features should be sorted for display.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/OrderBy"
+            }
+          ]
+        },
+        "RelationshipId": {
+          "type": "integer",
+          "description": "Gets or sets the identifier of the relationship for which related features should be sorted for display.",
+          "format": "int64"
+        }
+      }
+    },
+    "OrderBy": {
+      "type": "object",
+      "description": "Represents an ordering in a query's order by clause.",
+      "additionalProperties": false,
+      "properties": {
+        "FieldName": {
+          "type": "string",
+          "description": "Gets or sets the name of the field being ordered."
+        },
+        "SortOrder": {
+          "description": "Gets or sets the type of ordering that should be applied.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SortOrder"
+            }
+          ]
+        }
+      }
+    },
+    "SortOrder": {
+      "type": "integer",
+      "description": "Describes the various ways a query result can be ordered by.",
+      "x-enumNames": [
+        "Ascending",
+        "Descending"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "PopupExpression": {
+      "type": "object",
+      "description": "Defines an Arcade expression within a pop-up.",
+      "additionalProperties": false,
+      "properties": {
+        "Expression": {
+          "type": "string",
+          "description": "Gets or sets the Arcade expression defined in this expression."
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets or sets the name of this expression."
+        },
+        "ReturnType": {
+          "description": "Gets or sets the return type of this expression.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PopupExpressionReturnType"
+            }
+          ]
+        },
+        "Title": {
+          "type": "string",
+          "description": "Gets or sets the title of this expression."
+        }
+      }
+    },
+    "PopupExpressionReturnType": {
+      "type": "integer",
+      "description": "The type of the result returned by an Arcade expression.",
+      "x-enumNames": [
+        "String",
+        "Number",
+        "Dictionary"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "PopupElement": {
+      "type": "object",
+      "description": "A pop-up element displays information about a GeoElement in a pop-up.",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "properties": {
+        "IsEvaluated": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the popup element is contained in the EvaluatedElements."
+        }
+      }
+    },
+    "ILayerContent": {
+      "type": "object",
+      "description": "An interface for building a Table of Contents.",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "properties": {
+        "CanChangeVisibility": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer content's visibility can be changed."
+        },
+        "IsVisible": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the layer content is visible."
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the name of the layer content."
+        },
+        "ShowInLegend": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the layer content participates in the legend."
+        },
+        "SublayerContents": {
+          "type": "array",
+          "description": "Gets the sub layer contents of a layer content.",
+          "items": {
+            "$ref": "#/definitions/ILayerContent"
+          }
+        }
+      }
+    },
+    "LoadStatus": {
+      "type": "integer",
+      "description": "The load status for a loadable object.",
+      "x-enumNames": [
+        "Loaded",
+        "Loading",
+        "FailedToLoad",
+        "NotLoaded"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "Exception": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Message": {
+          "type": "string"
+        },
+        "InnerException": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Exception"
+            }
+          ]
+        },
+        "Source": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "StackTrace": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "ServiceFeatureTable": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ArcGISFeatureTable"
+        },
+        {
+          "type": "object",
+          "description": "A table of features that typically represent real-world objects created from an ArcGIS map or feature service.",
+          "additionalProperties": false,
+          "properties": {
+            "Source": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Gets the ArcGIS REST service endpoint.",
+              "format": "uri"
+            },
+            "BufferFactor": {
+              "type": "number",
+              "description": "Gets or sets the factor used to calculate a buffered extent around the current visible area when requesting new features from the service.",
+              "format": "double"
+            },
+            "FeatureRequestMode": {
+              "description": "Gets or sets the mode defining when features are requested from the service.",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/FeatureRequestMode"
+                }
+              ]
+            },
+            "GeodatabaseVersion": {
+              "type": "string",
+              "description": "Gets or sets the geodatabase version."
+            },
+            "Item": {
+              "description": "Gets the ArcGIS Item",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/definitions/Item"
+                }
+              ]
+            },
+            "DefinitionExpression": {
+              "type": "string",
+              "description": "Gets or sets the expression which is a SQL statement WHERE clause to filter out the features to be queried."
+            },
+            "ServiceGeodatabase": {
+              "description": "Gets the ServiceGeodatabase this service feature table is part of.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/definitions/ServiceGeodatabase"
+                }
+              ]
+            },
+            "ApiKey": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "FeatureRequestMode": {
+      "type": "integer",
+      "description": "Describes the feature request mode for a ServiceFeatureTable. It determines (1) whether features are cached locally (for quicker access by map and scene layers) and (2) whether queries are performed on the local cache or on the server.",
+      "x-enumNames": [
+        "Undefined",
+        "OnInteractionCache",
+        "OnInteractionNoCache",
+        "ManualCache"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "Item": {
+      "type": "object",
+      "description": "Base class for PortalItem and LocalItem",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "properties": {
+        "ItemId": {
+          "type": "string",
+          "description": "Gets or sets the unique id for this item."
+        },
+        "Created": {
+          "type": "string",
+          "description": "Gets the date the item was created.",
+          "format": "date-time"
+        },
+        "Modified": {
+          "type": "string",
+          "description": "Gets the date the item was modified.",
+          "format": "date-time"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets the name of the item"
+        },
+        "Title": {
+          "type": "string",
+          "description": "Gets or sets the item title. This is the name that is displayed to users and by which they refer to the item. Every item must have a title."
+        },
+        "Description": {
+          "type": "string",
+          "description": "Gets or sets the detailed description of the item."
+        },
+        "Tags": {
+          "type": "array",
+          "description": "Gets the mutable list of user defined tags that are words or short phrases that describe the item.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Snippet": {
+          "type": "string",
+          "description": "Gets or sets the summary description of the item."
+        },
+        "Thumbnail": {
+          "description": "Gets this item's thumbnail image.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/RuntimeImage"
+            }
+          ]
+        },
+        "Extent": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets or sets the bounding extent of the item (in geographical coordinates)"
+        },
+        "SpatialReferenceName": {
+          "type": "string",
+          "description": "Gets or sets the item's spatial reference name."
+        },
+        "AccessInformation": {
+          "type": "string",
+          "description": "Gets or sets the information on the source of the item."
+        },
+        "TermsOfUse": {
+          "type": "string",
+          "description": "Gets or sets the terms of use of the item."
+        },
+        "TypeKeywords": {
+          "type": "array",
+          "description": "Gets the mutable list of keywords that further describes the type of this item. Each item is tagged with a set of type keywords that are derived based on its primary type. Update this list only if you wish to add additional type keywords.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RuntimeImage": {
+      "type": "object",
+      "description": "An image data container used with several image input and outputs in the API. Supports opening PNG and JPEG images.",
+      "additionalProperties": false,
+      "properties": {
+        "Source": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the URI endpoint for this image, or null if it's a local in-memory image.",
+          "format": "uri"
+        },
+        "Width": {
+          "type": "integer",
+          "description": "Gets the width of the image in physical pixels",
+          "format": "int32"
+        },
+        "Height": {
+          "type": "integer",
+          "description": "Gets the height of the image in physical pixels",
+          "format": "int32"
+        },
+        "LoadError": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Exception"
+            }
+          ]
+        },
+        "LoadStatus": {
+          "$ref": "#/definitions/LoadStatus"
+        }
+      }
+    },
+    "ServiceGeodatabase": {
+      "type": "object",
+      "description": "A container for a collection of ServiceFeatureTable connected to a feature service.",
+      "additionalProperties": false,
+      "properties": {
+        "Uri": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the URL of the feature service or the portal item to connect to.",
+          "format": "uri"
+        },
+        "PortalItem": {
+          "description": "Gets the PortalItem which the ServiceGeodatabase was created from.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PortalItem"
+            }
+          ]
+        },
+        "ConnectedTables": {
+          "type": "array",
+          "description": "Gets the collection of feature tables managed by the ServiceGeodatabase.",
+          "items": {
+            "$ref": "#/definitions/ServiceFeatureTable"
+          }
+        },
+        "ServiceInfo": {
+          "description": "Gets the metadata of the service this ServiceGeodatabase is connected to.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/ArcGISFeatureServiceInfo"
+            }
+          ]
+        },
+        "SupportsBranchVersioning": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service supports branch versioning."
+        },
+        "DefaultVersionName": {
+          "type": "string",
+          "description": "Gets the name of the default version."
+        },
+        "VersionName": {
+          "type": "string",
+          "description": "Gets the name of the version the ServiceGeodatabase is currently connected to."
+        },
+        "SessionType": {
+          "description": "Gets or sets the type of read and edit sessions to use when working with the service.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/FeatureServiceSessionType"
+            }
+          ]
+        },
+        "LoadError": {
+          "description": "Gets the exception associated with a failed load. This property remains null if load is successful.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Exception"
+            }
+          ]
+        },
+        "LoadStatus": {
+          "description": "Gets the current load status.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/LoadStatus"
+            }
+          ]
+        }
+      }
+    },
+    "PortalItem": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Item"
+        },
+        {
+          "type": "object",
+          "description": "An item (a unit of content) stored in an ArcGIS portal, such as a layer, web map, package file, or map service.",
+          "additionalProperties": false,
+          "properties": {
+            "Portal": {
+              "description": "Gets the ArcGIS portal containing the item.",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/ArcGISPortal"
+                }
+              ]
+            },
+            "Url": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Gets the URL of this portal item.",
+              "format": "uri"
+            },
+            "Name": {
+              "type": "string",
+              "description": "Gets or sets the name of this portal item."
+            },
+            "TypeName": {
+              "type": "string",
+              "description": "Gets the type name of this portal item."
+            },
+            "Owner": {
+              "type": "string",
+              "description": "Gets the username of the user who owns this portal item."
+            },
+            "ServiceUrl": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Gets the URL of the service that this portal item represents. Applies only to items that represent web-accessible resources such as map services.",
+              "format": "uri"
+            },
+            "Type": {
+              "description": "Gets the GIS content type of this portal item. A portal item's type cannot be changed once it has an item ID; create a new portal item if you wish to change the type.",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/PortalItemType"
+                }
+              ]
+            },
+            "TermsOfUse": {
+              "type": "string",
+              "description": "Gets or sets the terms of use of this portal item."
+            },
+            "Culture": {
+              "type": "string",
+              "description": "Gets the item locale (language and country) information."
+            },
+            "Access": {
+              "description": "Gets or sets the access level on the item. Private is the default and only the item owner can access. Shared allows the item to be shared with a specific group. Setting to Organization restricts item access to members of your organization. If Public, all users can access the item.",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/PortalAccess"
+                }
+              ]
+            },
+            "FolderId": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Gets or sets the ID of the folder in which the owner has stored the item. The ID is only returned to the item owner or an administrator for the organization."
+            },
+            "Size": {
+              "type": "integer",
+              "description": "Gets the size of the portal item.",
+              "format": "int64"
+            },
+            "IsCommentsEnabled": {
+              "type": "boolean",
+              "description": "Gets a value indicating whether comments are allowed on this portal item."
+            },
+            "CommentCount": {
+              "type": "integer",
+              "description": "Gets the number of comments on the portal item.",
+              "format": "int32"
+            },
+            "RatingCount": {
+              "type": "integer",
+              "description": "Gets the number of ratings on the portal item.",
+              "format": "int32"
+            },
+            "AverageRating": {
+              "type": "number",
+              "description": "Gets the average rating for this portal item.",
+              "format": "double"
+            },
+            "ViewCount": {
+              "type": "integer",
+              "description": "Gets the number of views of this portal item.",
+              "format": "int32"
+            },
+            "Classification": {
+              "description": "Gets the classification information that describes the level of sensitivity for the item's content.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/definitions/ClassificationInfo"
+                }
+              ]
+            },
+            "Thumbnail": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/definitions/RuntimeImage"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "ArcGISPortal": {
+      "type": "object",
+      "description": "The entry point into the ArcGIS portal services hosted by ArcGIS Online and ArcGIS Enterprise.",
+      "additionalProperties": false,
+      "properties": {
+        "Uri": {
+          "type": "string",
+          "description": "Gets the URI of this portal.",
+          "format": "uri"
+        },
+        "PortalInfo": {
+          "description": "Gets the details about this ArcGISPortal, such as the name, logo, featured items and supported protocols (http vs https).",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PortalInfo"
+            }
+          ]
+        },
+        "User": {
+          "description": "Gets the current user. Available only to authenticated users after initialization.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PortalUser"
+            }
+          ]
+        },
+        "CultureInfo": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the information that specifies culture-specific formatting to use when accessing ArcGISPortal content. Must be set using the appropriate CreateAsync method."
+        }
+      }
+    },
+    "PortalInfo": {
+      "type": "object",
+      "description": "Includes information such as the name, logo, featured items and supported protocols (http vs https) for this portal.",
+      "additionalProperties": false,
+      "properties": {
+        "user": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PortalUser"
+            }
+          ]
+        },
+        "portalName": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the name of the portal."
+        },
+        "portalMode": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "access": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "thumbnail": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "id": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the id of the organization, if the user belongs to one."
+        },
+        "name": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the name of the organization. In the case of non-organizational users of ArcGIS Online or a multi-tenant portal, this will be null."
+        },
+        "description": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the description of the organization. In the case of non-organizational users of ArcGIS Online or a multi-tenant portal, this will be null."
+        },
+        "customBaseUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the custom base URL for the organization."
+        },
+        "urlKey": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the portion of the URL's host component that identifies a specific organization subscription within a portal."
+        },
+        "commentsEnabled": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether comments are enabled."
+        },
+        "defaultExtent": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/ExtentInfo"
+            }
+          ]
+        },
+        "canSharePublic": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether members of the organization can share resources outside of the organization."
+        },
+        "canShareBingPublic": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Gets a flag indicating whether the bing key can be shared to the public and will be returned as part of a PortalInfo description.",
+          "x-deprecated": true,
+          "x-deprecatedMessage": "Bing Maps for Enterprise is deprecated and will be retired."
+        },
+        "canSearchPublic": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether members of the organization can search outside of the organization."
+        },
+        "featuredItemsGroupQuery": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the query expression used to determine which group's featured items are displayed."
+        },
+        "basemapGalleryGroupQuery": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the query expression used to determine which group's basemaps are displayed."
+        },
+        "devBasemapGalleryGroupQuery": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the query that identifies the group containing developer basemaps."
+        },
+        "3DBasemapGalleryGroupQuery": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the query that identifies the group containing 3D basemaps."
+        },
+        "default3DBasemapQuery": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the query that identifies the default 3D basemap."
+        },
+        "use3dBasemaps": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the organization uses 3D basemaps in supported ArcGIS apps."
+        },
+        "useDefault3dBasemap": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the organization uses the default 3D basemap in supported ArcGIS apps."
+        },
+        "vectorBasemapGalleryGroupQuery": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the query expression used to determine which group's vector basemaps are displayed."
+        },
+        "useVectorBasemaps": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether an organization should use the Esri vector basemaps in supported ArcGIS apps."
+        },
+        "featuredGroups": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/GroupInfo"
+          }
+        },
+        "livingAtlasGroupQuery": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the query that identifies the group containing the Living Atlas layers to be displayed."
+        },
+        "subscriptionInfo": {
+          "description": "Gets information about the user's subscription.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SubscriptionInfo"
+            }
+          ]
+        },
+        "supportsOAuth": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the portal supports OAuth."
+        },
+        "bingKey": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the Bing key required for web maps using Bing.",
+          "x-deprecated": true,
+          "x-deprecatedMessage": "Bing Maps for Enterprise is deprecated and will be retired."
+        },
+        "helperServices": {
+          "description": "Gets a class that provides access to various services. These include \"GeocodeService\", \"GeometryService\", \"ClosestFacilityService\", etc",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperServices"
+            }
+          ]
+        },
+        "isReadOnly": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the portal is currently in read-only mode."
+        },
+        "allSSL": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the access to the portal resources must occur over SSL."
+        },
+        "authorizedCrossOriginDomains": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Gets the array of trusted servers that clients can send credentials to when making cross-origin resource sharing (CORS) requests to access web-tier secured services.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "created": {
+          "type": "number",
+          "format": "double"
+        },
+        "culture": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the organization default locale (language and country) information."
+        },
+        "ipCntryCode": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the ISO Country Code of the client's IP address (online only - Not used in on premises Portal)."
+        },
+        "isPortal": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the portal is on premises."
+        },
+        "modified": {
+          "type": "number",
+          "format": "double"
+        },
+        "portalThumbnail": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "readOnlyMessage": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets an explanatory message that can be displayed to the user if the portal is currently in read-only mode."
+        },
+        "portalHostname": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the portal host's URL."
+        },
+        "eueiEnabled": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the organization allows ArcGIS Online to collect usage information from its members to improve user experience."
+        },
+        "appInfo": {
+          "description": "Gets the information about the application through which this resource was accessed. This information is based on the token used to access this resource.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PortalAppInfo"
+            }
+          ]
+        },
+        "stylesGroupQuery": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the query that identifies the group containing a variety of styles that contain references to symbology that can be used in the ArcGIS platform."
+        },
+        "symbolSetsGroupQuery": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the query that identifies the symbol sets group."
+        },
+        "currentVersion": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the current version of the portal."
+        },
+        "hasClassificationSchema": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the portal has a classification schema enabled."
+        }
+      }
+    },
+    "PortalUser": {
+      "type": "object",
+      "description": "Represents a registered user of the portal. Personal details of the user, such as email and groups, are returned only to the user or the administrator of the user's organization. A user is not visible to any other users (except their organization's administrator) if their access setting is set to 'private'.",
+      "additionalProperties": false,
+      "required": [
+        "username"
+      ],
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "Gets the name of the user."
+        },
+        "access": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "role": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "privileges": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "fullName": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the full name of the user."
+        },
+        "firstName": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the first name of the user."
+        },
+        "lastName": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the last name of the user."
+        },
+        "description": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the description or profile of the user."
+        },
+        "orgId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the id of the organization the user belongs to."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "groups": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/PortalGroup"
+          }
+        },
+        "created": {
+          "type": "number",
+          "format": "double"
+        },
+        "modified": {
+          "type": "number",
+          "format": "double"
+        },
+        "favGroupId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the user's favorites group that is created automatically for each user."
+        },
+        "units": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "thumbnail": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "culture": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the default culture for the user."
+        },
+        "availableCredits": {
+          "type": [
+            "null",
+            "number"
+          ],
+          "description": "Gets the number of credits available to the user",
+          "format": "double"
+        },
+        "categories": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the ID of the user."
+        }
+      }
+    },
+    "PortalGroup": {
+      "type": "object",
+      "description": "Represents a group within the portal (e.g., \"San Bernardino Fires\" ).",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Gets the group id."
+        },
+        "title": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the group title. This is the name that is displayed to users and by which they refer to the group."
+        },
+        "owner": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the username of the group's owner."
+        },
+        "description": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the detailed description of the group."
+        },
+        "snippet": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets a short summary that describes the group."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "created": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "modified": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "access": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "isInvitationOnly": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether this instance is invitation only."
+        },
+        "thumbnail": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "sortField": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "sortOrder": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "isViewOnly": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the group members are not able to share items to the group."
+        },
+        "phone": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the contact phone number for the group."
+        }
+      }
+    },
+    "ExtentInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "spatialReference": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SpatialReferenceInfo"
+            }
+          ]
+        },
+        "xmax": {
+          "type": "number",
+          "format": "double"
+        },
+        "xmin": {
+          "type": "number",
+          "format": "double"
+        },
+        "ymax": {
+          "type": "number",
+          "format": "double"
+        },
+        "ymin": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "SpatialReferenceInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wkid": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GroupInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "owner": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "title": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "SubscriptionInfo": {
+      "type": "object",
+      "description": "Provides information about the user's subscription.",
+      "additionalProperties": false,
+      "properties": {
+        "expDate": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "HelperServices": {
+      "type": "object",
+      "description": "Various services needed by clients.",
+      "additionalProperties": false,
+      "properties": {
+        "geocode": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/GeocodeService"
+          }
+        },
+        "route": {
+          "description": "Gets the route service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "geometry": {
+          "description": "Gets the geometry service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "printTask": {
+          "description": "Gets the print task service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "closestFacility": {
+          "description": "Gets the ArcGIS NAServer closest facility service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "asyncClosestFacility": {
+          "description": "Gets the asynchronous ArcGIS NAServer closest facility service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "serviceArea": {
+          "description": "Gets the ArcGIS NAServer service area service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "asyncServiceArea": {
+          "description": "Gets the ArcGIS NAServer service area service with asynchronous functionality.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "syncVRP": {
+          "description": "Gets the ArcGIS NAServer service for synchronous Vehicle routing problem services.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "asyncVRP": {
+          "description": "Gets the ArcGIS NAServer service for asynchronous Vehicle routing problem services.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "asyncLocationAllocation": {
+          "description": "Gets the ArcGIS geoprocessing service for asynchronous location-allocation network analysis.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "asyncODCostMatrix": {
+          "description": "Gets the ArcGIS geoprocessing service for generating origin-destination cost matrices asynchronously.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "analysis": {
+          "description": "Gets the hosted GP services that perform analysis.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "geoenrichment": {
+          "description": "Gets the ArcGIS GeoEnrichment server.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "traffic": {
+          "description": "Gets the ArcGIS TrafficMapServer service for traffic functionality.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "elevation": {
+          "description": "Gets the ArcGIS Geoprocessing services for elevation analysis.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "elevationSync": {
+          "description": "Gets the synchronous ArcGIS Geoprocessing services for elevation analysis.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "defaultElevationLayers": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/ElevationServiceInfo"
+          }
+        },
+        "hydrology": {
+          "description": "Gets the ArcGIS Geoprocessing services for hydrologic analysis.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        },
+        "locationTracking": {
+          "description": "Gets the ArcGIS location tracking service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HelperService"
+            }
+          ]
+        }
+      }
+    },
+    "GeocodeService": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/HelperService"
+        },
+        {
+          "type": "object",
+          "description": "An ArcGIS GeocodeServer to use for Geocoding functionality.",
+          "additionalProperties": false,
+          "properties": {
+            "northLat": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "southLat": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "eastLon": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "westLon": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "name": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Gets the geocoder name. For example 'Esri World Geocoder'."
+            },
+            "placeholder": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Gets the place holder. This text can serve as a hint to application users about the type of information they can enter in the search box."
+            },
+            "placefinding": {
+              "type": "boolean",
+              "description": "Gets a value indicating whether the geocoder can be used for place finding."
+            },
+            "batch": {
+              "type": "boolean",
+              "description": "Gets a value indicating whether the geocoder can be used for batch geocoding."
+            },
+            "zoomScale": {
+              "type": "number",
+              "description": "Gets the default zoom scale for custom geocoders. An application can use this scale to zoom to a point returned by the geocoder.",
+              "format": "double"
+            },
+            "singleLineFieldName": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Gets the name of the single line field."
+            },
+            "suggest": {
+              "type": "boolean",
+              "description": "Gets a value indicating whether the geocoder supports the suggest API for autocomplete results."
+            }
+          }
+        }
+      ]
+    },
+    "HelperService": {
+      "type": "object",
+      "description": "Represents a generic helper service providing the Url of the service.",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the URL of the service."
+        }
+      }
+    },
+    "ElevationServiceInfo": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/HelperService"
+        },
+        {
+          "type": "object",
+          "description": "Represents a Limited Error Raster Compression (LERC) elevation service that is provided by the portal.",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Gets an identifying string for the service."
+            },
+            "layerType": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Gets a string indicating the layer type for the service."
+            }
+          }
+        }
+      ]
+    },
+    "PortalAppInfo": {
+      "type": "object",
+      "description": "The information about the application through which this resource was accessed. This information is based on the token used to access this resource.",
+      "additionalProperties": false,
+      "required": [
+        "appId"
+      ],
+      "properties": {
+        "appId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the AppID of the registered application. This is also the OAuth client_id."
+        },
+        "itemId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the item ID of the registered application."
+        },
+        "appOwner": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the owner of the application."
+        },
+        "orgId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the organization to which the application owner belongs."
+        },
+        "appTitle": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the title of the application."
+        },
+        "privileges": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PortalItemType": {
+      "type": "integer",
+      "description": "An enumeration of various types of portal items.",
+      "x-enumNames": [
+        "ArcGISProAddIn",
+        "ArcPadPackage",
+        "CADDrawing",
+        "CSV",
+        "CityEngineWebScene",
+        "CodeAttachment",
+        "CodeSample",
+        "ColorSet",
+        "DesktopAddIn",
+        "DesktopApplication",
+        "DesktopApplicationTemplate",
+        "DesktopStyle",
+        "DocumentLink",
+        "ExplorerAddIn",
+        "ExplorerLayer",
+        "ExplorerMap",
+        "FeatureCollection",
+        "FeatureCollectionTemplate",
+        "FeatureService",
+        "FileGeodatabase",
+        "Form",
+        "GeocodingService",
+        "GeodataService",
+        "GeometryService",
+        "GeoprocessingPackage",
+        "GeoprocessingPackageProVersion",
+        "GeoprocessingSample",
+        "GeoprocessingService",
+        "GlobeDocument",
+        "GlobeService",
+        "Image",
+        "ImageCollection",
+        "ImageService",
+        "InsightsModel",
+        "InsightsPage",
+        "InsightsWorkbook",
+        "IWorkKeynote",
+        "IWorkNumbers",
+        "IWorkPages",
+        "KML",
+        "KMLCollection",
+        "Layer",
+        "LayerPackage",
+        "Layout",
+        "LocatorPackage",
+        "MapDocument",
+        "MapPackage",
+        "MapService",
+        "MapTemplate",
+        "MicrosoftExcel",
+        "MicrosoftPowerpoint",
+        "MicrosoftWord",
+        "MobileApplication",
+        "MobileBasemapPackage",
+        "MobileMapPackage",
+        "NativeApplication",
+        "NativeApplicationInstaller",
+        "NativeApplicationTemplate",
+        "NetCDF",
+        "NetworkAnalysisService",
+        "OperationView",
+        "OperationsDashboardAddIn",
+        "OperationsDashboardExtension",
+        "PDF",
+        "ProjectPackage",
+        "ProjectTemplate",
+        "ProMap",
+        "PublishedMap",
+        "RasterFunctionTemplate",
+        "RelationalDatabaseConnection",
+        "ReportTemplate",
+        "RulePackage",
+        "SceneDocument",
+        "ScenePackage",
+        "SceneService",
+        "ServiceDefinition",
+        "ShapeFile",
+        "StatisticalDataCollection",
+        "SymbolSet",
+        "TaskFile",
+        "TilePackage",
+        "VectorTilePackage",
+        "VectorTileService",
+        "VisioDocument",
+        "Vr360Experience",
+        "WFS",
+        "WMS",
+        "WMTS",
+        "WebMap",
+        "WebMappingApplication",
+        "WebScene",
+        "WindowsMobilePackage",
+        "WorkflowManagerPackage",
+        "WorkflowManagerService",
+        "WorkforceProject",
+        "SQLiteGeodatabase",
+        "MapArea",
+        "HubInitiative",
+        "HubSiteApplication",
+        "HubPage",
+        "AppBuilderExtension",
+        "AppBuilderWidgetPackage",
+        "Dashboard",
+        "ArcGISProConfiguration",
+        "ContentCategorySet",
+        "InsightsTheme",
+        "MobileScenePackage",
+        "OrientedImageryCatalog",
+        "OrthoMappingProject",
+        "OrthoMappingTemplate",
+        "Solution",
+        "BuildingSceneLayer",
+        "CompactTilePackage",
+        "DataStore",
+        "DeepLearningPackage",
+        "ExcaliburImageryProject",
+        "GeoPackage",
+        "Mission",
+        "SiteApplication",
+        "SitePage",
+        "BigDataAnalytic",
+        "Feed",
+        "RealTimeAnalytic",
+        "ProReport",
+        "QuickCaptureProject",
+        "Survey123AddIn",
+        "UrbanModel",
+        "WebExperience",
+        "WebExperienceTemplate",
+        "StoryMap",
+        "Workflow",
+        "InsightsScript",
+        "KernelGatewayConnection",
+        "KnowledgeGraph",
+        "LinkChart",
+        "Style",
+        "AdministrativeReport",
+        "ExportPackage",
+        "GeoJSON",
+        "GML",
+        "HubEvent",
+        "HubInitiativeTemplate",
+        "StoryMapTheme",
+        "WebAppBuilderWidget",
+        "EarthConfiguration",
+        "OGCFeatureServer",
+        "OGC3DTilesService",
+        "StreamService",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        -1
+      ]
+    },
+    "PortalAccess": {
+      "type": "integer",
+      "description": "Indicates the level of access to a portal object: private, shared, organization, or public.",
+      "x-enumNames": [
+        "Organization",
+        "Private",
+        "Public",
+        "Shared",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        -1
+      ]
+    },
+    "ClassificationInfo": {
+      "type": "object",
+      "description": "Provides the classification values applied to a portal item, along with the related banner text to display.",
+      "additionalProperties": false,
+      "properties": {
+        "Attributes": {
+          "type": "object",
+          "description": "Gets the item's classification attribute values.",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "Banner": {
+          "type": "string",
+          "description": "Gets the classification banner text indicating the sensitivity level of the item."
+        }
+      }
+    },
+    "ArcGISFeatureServiceInfo": {
+      "type": "object",
+      "description": "The metadata for an ArcGIS feature service.",
+      "additionalProperties": false,
+      "properties": {
+        "Source": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the ArcGIS REST service endpoint.",
+          "format": "uri"
+        },
+        "AllowGeometryUpdates": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service allows geometry updates."
+        },
+        "Attribution": {
+          "type": "string",
+          "description": "Gets the attribution of the service."
+        },
+        "Version": {
+          "type": "string",
+          "description": "Gets the version of the service."
+        },
+        "Description": {
+          "type": "string",
+          "description": "Gets the description of the service."
+        },
+        "DocumentInfo": {
+          "description": "Gets the document information of the service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/ServiceDocumentInfo"
+            }
+          ]
+        },
+        "EditorTrackingInfo": {
+          "description": "Gets the feature service's editor tracking settings.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/EditorTrackingInfo"
+            }
+          ]
+        },
+        "IsZDefaultsEnabled": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service defaults Z-values."
+        },
+        "FullExtent": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the full extent of the service."
+        },
+        "HasStaticData": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service has static data."
+        },
+        "HasVersionedData": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service has versioned data."
+        },
+        "InitialExtent": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the initial extent of the service."
+        },
+        "LayerInfos": {
+          "type": "array",
+          "description": "Gets the service's layers;",
+          "items": {
+            "$ref": "#/definitions/IdInfo"
+          }
+        },
+        "MaxRecordCount": {
+          "type": "integer",
+          "description": "Gets the maximum record count of the service.",
+          "format": "int64"
+        },
+        "FeatureServiceCapabilities": {
+          "description": "Gets the FeatureServiceCapabilities of the service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/FeatureServiceCapabilities"
+            }
+          ]
+        },
+        "ServiceDescription": {
+          "type": "string",
+          "description": "Gets the service description of the service."
+        },
+        "SpatialReference": {
+          "description": "Gets the SpatialReference of the service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SpatialReference"
+            }
+          ]
+        },
+        "SupportsDisconnectedEditing": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service supports disconnected editing."
+        },
+        "SyncCapabilities": {
+          "description": "Gets the supported SyncCapabilities of the service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SyncCapabilities"
+            }
+          ]
+        },
+        "SyncEnabled": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service supports synchronization."
+        },
+        "TableInfos": {
+          "type": "array",
+          "description": "Gets the collection of table infos that represent tables in the service.",
+          "items": {
+            "$ref": "#/definitions/IdInfo"
+          }
+        },
+        "Unit": {
+          "description": "Gets the units supported by the service.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Unit"
+            }
+          ]
+        },
+        "ZDefault": {
+          "type": "number",
+          "description": "Gets the default Z-value for the service.",
+          "format": "double"
+        },
+        "AllowTrueCurvesUpdates": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service allows curve geometries to be updated."
+        },
+        "OnlyAllowTrueCurveUpdatesByTrueCurveClients": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service only allows curve geometries to be updated by client code that identifies itself as a true curve-enabled client, indicating that client editing workflows account for curve segments correctly."
+        },
+        "SupportsTrueCurve": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service supports curve segments in feature geometries."
+        },
+        "CanUseServiceGeodatabaseApplyEdits": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether you can use ServiceGeodatabase.ApplyEditsAsync() to commit changes back to the service, false otherwise."
+        },
+        "SupportedCurveTypes": {
+          "type": "array",
+          "description": "Gets the types of true curve segments supported in geometries in the service.",
+          "items": {
+            "$ref": "#/definitions/CurveType"
+          }
+        }
+      }
+    },
+    "EditorTrackingInfo": {
+      "type": "object",
+      "description": "Editor tracking information indicates who edited features of an ArcGIS feature service.",
+      "additionalProperties": false,
+      "properties": {
+        "AllowAnonymousToDelete": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether anonymous users are allowed to delete."
+        },
+        "AllowAnonymousToUpdate": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether anonymous users are allowed to update."
+        },
+        "AllowOthersToDelete": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether others are allowed to delete features."
+        },
+        "AllowOthersToUpdate": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether others are allowed to update features."
+        },
+        "EditorTrackingEnabled": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether editor tracking is enabled."
+        },
+        "OwnershipBasedAccessControlEnabled": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether ownership-based access control is enabled."
+        }
+      }
+    },
+    "FeatureServiceCapabilities": {
+      "type": "object",
+      "description": "The capabilities of an ArcGIS feature service.",
+      "additionalProperties": false,
+      "properties": {
+        "SupportsCreate": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether creation of features is supported."
+        },
+        "SupportsDelete": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether deletion of features is supported."
+        },
+        "SupportsEditing": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether editing of features is supported."
+        },
+        "SupportsQuery": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether querying of features is supported."
+        },
+        "SupportsSync": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether synchronization is supported."
+        },
+        "SupportsUpdate": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether updating features is supported."
+        }
+      }
+    },
+    "SyncCapabilities": {
+      "type": "object",
+      "description": "The synchronization capabilities supported by a sync-enabled ArcGIS feature service.",
+      "additionalProperties": false,
+      "properties": {
+        "SupportsAsync": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the feature service supports executing sync operations asynchronously."
+        },
+        "SupportsSyncModelGeodatabase": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether per-replica synchronization is supported."
+        },
+        "SupportsSyncModelLayer": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether per-layer synchronization is supported."
+        },
+        "SupportsRegisteringExistingData": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether registering existing data is supported."
+        },
+        "SupportsRollbackOnFailure": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether rollback on failure is supported."
+        },
+        "SupportsSyncDirectionControl": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether synchronization direction control is supported."
+        },
+        "SupportsSyncModelNone": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether a sync model is supported."
+        },
+        "SupportsAttachmentsSyncDirection": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the feature service supports options to define how attachments will be synced."
+        },
+        "SupportsUtilityNetworkSystem": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the Utility Network System data is available."
+        },
+        "SupportsUtilityNetworkTopology": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether utility network topology data is available."
+        },
+        "SupportsUtilityNetworkTopologySync": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the available utility network topology data support synchronization in any direction."
+        },
+        "SupportsUtilityNetworkTopologySyncDownloadOnly": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the available utility network topology data support download-only synchronization."
+        },
+        "SupportsContingentValues": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether Contingent Value data is available."
+        },
+        "SupportsAnnotations": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether Annotation data is available for downloading."
+        },
+        "SupportsDimensions": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether Dimension data is available."
+        },
+        "SupportsBranchVersionReconcile": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether reconciling replica branch versions with default branch upon sync is supported."
+        },
+        "SupportsAttributeRules": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service supports creating a replica with attribute rule data."
+        }
+      }
+    },
+    "CurveType": {
+      "type": "integer",
+      "description": "Types of true curve segment that a service can support.",
+      "x-enumNames": [
+        "CircularArc",
+        "EllipticArc",
+        "Bezier3Curve"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "FeatureServiceSessionType": {
+      "type": "integer",
+      "description": "An enumeration of the session types that control how multiple users access branch versioned data.",
+      "x-enumNames": [
+        "Transient",
+        "Persistent"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "ArcGISFeatureTable": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FeatureTable"
+        },
+        {
+          "type": "object",
+          "description": "A table of features that typically represent real-world objects created from an ArcGIS feature service or an ArcGIS geodatabase.",
+          "additionalProperties": false,
+          "properties": {
+            "EditableAttributeFields": {
+              "type": "array",
+              "description": "Gets the editable fields of this feature table.",
+              "items": {
+                "$ref": "#/definitions/Field"
+              }
+            },
+            "FeatureTemplates": {
+              "type": "array",
+              "description": "Gets a list of FeatureTemplate of this feature table.",
+              "items": {
+                "$ref": "#/definitions/FeatureTemplate"
+              }
+            },
+            "FeatureTypes": {
+              "type": "array",
+              "description": "Gets a list of FeatureType of this feature table.",
+              "items": {
+                "$ref": "#/definitions/FeatureType"
+              }
+            },
+            "GlobalIdField": {
+              "type": "string",
+              "description": "Gets the name of the global ID field."
+            },
+            "HasAttachments": {
+              "type": "boolean",
+              "description": "Gets a value indicating whether the features in this table support attachments."
+            },
+            "ObjectIdField": {
+              "type": "string",
+              "description": "Gets the name of the object ID field."
+            },
+            "LayerInfo": {
+              "description": "Gets the ArcGISFeatureLayerInfo of this feature table.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/definitions/ArcGISFeatureLayerInfo"
+                }
+              ]
+            },
+            "ServiceLayerId": {
+              "type": "integer",
+              "description": "Gets the layer ID in the feature service that this table was created from.",
+              "format": "int64"
+            },
+            "TypeIdField": {
+              "type": "string",
+              "description": "Gets the name of the type ID field."
+            },
+            "UseAdvancedSymbology": {
+              "type": "boolean",
+              "description": "Gets or sets a value indicating whether the table is using advanced symbology."
+            },
+            "FeatureSubtypes": {
+              "type": "array",
+              "description": "Gets a list of FeatureSubtype of this feature table.",
+              "items": {
+                "$ref": "#/definitions/FeatureSubtype"
+              }
+            },
+            "SubtypeField": {
+              "type": "string",
+              "description": "Gets the table's subtype field."
+            },
+            "DefaultSubtypeCode": {
+              "description": "Gets the table's default subtype code.",
+              "oneOf": [
+                {},
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "ContingentValuesDefinition": {
+              "description": "Gets the table's contingent values definition.",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/ContingentValuesDefinition"
+                }
+              ]
+            },
+            "Username": {
+              "type": "string",
+              "description": "Gets the username of the feature table."
+            },
+            "FeatureFormDefinition": {
+              "description": "Gets the definition of a user interface to display when editing a feature in this table.",
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/definitions/FeatureFormDefinition"
+                }
+              ]
+            },
+            "SubtypeSubtables": {
+              "type": "array",
+              "description": "Gets the mutable collection of SubtypeSubtable objects that provide access to features with the same subtype.",
+              "items": {
+                "$ref": "#/definitions/SubtypeSubtable"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ArcGISFeatureLayerInfo": {
+      "type": "object",
+      "description": "The metadata for an individual layer or table in an ArcGIS feature service.",
+      "additionalProperties": false,
+      "properties": {
+        "ServiceLayerId": {
+          "type": "integer",
+          "description": "Gets the ID of the layer.",
+          "format": "int64"
+        },
+        "Source": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the ArcGIS REST service endpoint.",
+          "format": "uri"
+        },
+        "AllowGeometryUpdates": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer allows geometry updates."
+        },
+        "Attribution": {
+          "type": "string",
+          "description": "Gets the attribution"
+        },
+        "Capabilities": {
+          "description": "Gets the FeatureServiceCapabilities of the layer or table's ArcGIS feature service.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/FeatureServiceCapabilities"
+            }
+          ]
+        },
+        "DataVersioned": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer has versioned data."
+        },
+        "DefaultVisibility": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether layer is visible by default."
+        },
+        "ZDefault": {
+          "type": "number",
+          "description": "Gets the default z-value for the layer.",
+          "format": "double"
+        },
+        "IsZDefaultsEnabled": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer provides default z-values."
+        },
+        "DefinitionQuery": {
+          "type": "string",
+          "description": "Gets an optional SQL clause that limits the features returned by the service for this layer."
+        },
+        "Description": {
+          "type": "string",
+          "description": "Gets the description of the layer."
+        },
+        "DisplayFieldExpression": {
+          "description": "Gets the layer's display field expression, or null if the default display field is used.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/ArcadeExpression"
+            }
+          ]
+        },
+        "DisplayFieldName": {
+          "type": "string",
+          "description": "Gets the name of the display field."
+        },
+        "DrawingInfo": {
+          "description": "Gets the DrawingInfo.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/DrawingInfo"
+            }
+          ]
+        },
+        "EditFieldsInfo": {
+          "description": "Gets the layer's EditFieldsInfo.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/EditFieldsInfo"
+            }
+          ]
+        },
+        "EffectiveMaxScale": {
+          "type": "number",
+          "description": "Gets the effective maximum scale of the layer.",
+          "format": "double"
+        },
+        "EffectiveMinScale": {
+          "type": "number",
+          "description": "Gets the effective minimum scale of the layer.",
+          "format": "double"
+        },
+        "Extent": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the extent of the layer."
+        },
+        "FeatureTemplates": {
+          "type": "array",
+          "description": "Gets a list of FeatureTemplate of this layer.",
+          "items": {
+            "$ref": "#/definitions/FeatureTemplate"
+          }
+        },
+        "FeatureTypes": {
+          "type": "array",
+          "description": "Gets the layer's FeatureTypes.",
+          "items": {
+            "$ref": "#/definitions/FeatureType"
+          }
+        },
+        "Fields": {
+          "type": "array",
+          "description": "Gets a list of Field of this layer.",
+          "items": {
+            "$ref": "#/definitions/Field"
+          }
+        },
+        "GeometryType": {
+          "description": "Gets the GeometryType of features in this layer.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GeometryType"
+            }
+          ]
+        },
+        "GlobalIdFieldName": {
+          "type": "string",
+          "description": "Gets the name of the global ID field."
+        },
+        "HasAttachments": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer supports attachments."
+        },
+        "HasM": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer supports m-values."
+        },
+        "HasZ": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether layer supports z-values."
+        },
+        "ServiceType": {
+          "description": "Gets the type of service, which is layer, table, or group layer. ArcGISFeatureLayerInfoServiceType",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ArcGISFeatureLayerInfoServiceType"
+            }
+          ]
+        },
+        "MaxRecordCount": {
+          "type": "integer",
+          "description": "Gets the maximum record count of the layer.",
+          "format": "int64"
+        },
+        "MaxScale": {
+          "type": "number",
+          "description": "Gets the maximum scale of the layer.",
+          "format": "double"
+        },
+        "MinScale": {
+          "type": "number",
+          "description": "Gets the minimum scale of the layer.",
+          "format": "double"
+        },
+        "ServiceLayerName": {
+          "type": "string",
+          "description": "Gets the name of the layer."
+        },
+        "ServiceSourceType": {
+          "description": "Gets the service type of the layer.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ServiceType"
+            }
+          ]
+        },
+        "ObjectIdFieldName": {
+          "type": "string",
+          "description": "Gets the name of the object ID field."
+        },
+        "OwnershipBasedAccessControl": {
+          "description": "Gets the OwnershipBasedAccessControlInfo.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/OwnershipBasedAccessControlInfo"
+            }
+          ]
+        },
+        "RelationshipInfos": {
+          "type": "array",
+          "description": "Gets a list of RelationshipInfo objects that describe this layer or table's relationship with another layer or table in the service.",
+          "items": {
+            "$ref": "#/definitions/RelationshipInfo"
+          }
+        },
+        "SupportsAdvancedQueries": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer supports advanced queries."
+        },
+        "SupportsQueryExtent": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer supports extent-only queries."
+        },
+        "SupportsPagination": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer supports paginated queries (with a record count and offset)."
+        },
+        "SupportsRollbackOnFailureParameter": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer supports rollback on failure parameter."
+        },
+        "SupportsStatistics": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer supports statistical queries."
+        },
+        "SupportsQuantizationEditMode": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service supports quantization edit mode."
+        },
+        "SupportsCoordinatesQuantization": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service supports coordinates quantization."
+        },
+        "SupportsQueryWithResultType": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service supports query with result type."
+        },
+        "TimeInfo": {
+          "description": "Gets the TimeInfo.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LayerTimeInfo"
+            }
+          ]
+        },
+        "TypeIdFieldName": {
+          "type": "string",
+          "description": "Gets the name of the type ID field."
+        },
+        "Version": {
+          "type": "string",
+          "description": "Gets the version of the layer."
+        },
+        "SupportsObacForAnonymousUsers": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer supports Ownership-based access control (OBAC) for anonymous users."
+        },
+        "SupportedCurveTypes": {
+          "type": "array",
+          "description": "Gets the types of true curve segments supported in geometries in the service.",
+          "items": {
+            "$ref": "#/definitions/CurveType"
+          }
+        },
+        "SupportsAttachmentKeywords": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the service supports attachment keywords."
+        },
+        "CimVersion": {
+          "type": "string",
+          "description": "Gets the layer's Cartography Information Model (CIM) version."
+        },
+        "FeatureSubtypes": {
+          "type": "array",
+          "description": "Gets a list of FeatureSubtype of this layer.",
+          "items": {
+            "$ref": "#/definitions/FeatureSubtype"
+          }
+        },
+        "SubtypeField": {
+          "type": "string",
+          "description": "Gets the layer's subtype field."
+        },
+        "DefaultSubtypeCode": {
+          "description": "Gets the layer's default subtype code.",
+          "oneOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "EditFieldsInfo": {
+      "type": "object",
+      "description": "The fields that record who adds or edits the features and when the edits are made.",
+      "additionalProperties": false,
+      "properties": {
+        "CreationDateField": {
+          "type": "string",
+          "description": "Gets the name of the creation date field."
+        },
+        "CreatorField": {
+          "type": "string",
+          "description": "Gets the name of the creator field."
+        },
+        "EditDateField": {
+          "type": "string",
+          "description": "Gets the name of the edit date field."
+        },
+        "EditorField": {
+          "type": "string",
+          "description": "Gets the name of the editor field."
+        },
+        "Realm": {
+          "type": "string",
+          "description": "Gets a string that uniquely identifies an editor and how they edited the data."
+        }
+      }
+    },
+    "ArcGISFeatureLayerInfoServiceType": {
+      "type": "integer",
+      "description": "The type of the dataset underlying an ArcGISFeatureLayerInfo.",
+      "x-enumNames": [
+        "Layer",
+        "Table",
+        "GroupLayer",
+        "AnnotationLayer",
+        "DimensionLayer",
+        "OrientedImageryLayer",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1
+      ]
+    },
+    "ContingentValuesDefinition": {
+      "type": "object",
+      "description": "Defines a contingent values definition.",
+      "additionalProperties": false,
+      "properties": {
+        "FieldGroups": {
+          "type": "array",
+          "description": "Gets a list of field groups participating in this contingent values definition.",
+          "items": {
+            "$ref": "#/definitions/FieldGroup"
+          }
+        },
+        "LoadError": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Exception"
+            }
+          ]
+        },
+        "LoadStatus": {
+          "$ref": "#/definitions/LoadStatus"
+        }
+      }
+    },
+    "FieldGroup": {
+      "type": "object",
+      "description": "Defines a field group.",
+      "additionalProperties": false,
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "Gets the name that uniquely identifies this field group."
+        },
+        "IsEditingRestrictive": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether fields in this field group are restricted to this field group's contingent values."
+        },
+        "Contingencies": {
+          "type": "array",
+          "description": "Gets a collection of contingencies that define possible values for fields in this field group.",
+          "items": {
+            "$ref": "#/definitions/Contingency"
+          }
+        },
+        "Fields": {
+          "type": "array",
+          "description": "Gets the collection of names of fields that participate in this field group.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Contingency": {
+      "type": "object",
+      "description": "Defines a contingency.",
+      "additionalProperties": false,
+      "properties": {
+        "ContingencyId": {
+          "type": "integer",
+          "description": "Gets the contingency's unique ID.",
+          "format": "int32"
+        },
+        "IsRetired": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the contingency is retired."
+        },
+        "Subtype": {
+          "description": "Gets the subtype to which this contingency is applied.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/FeatureSubtype"
+            }
+          ]
+        },
+        "Values": {
+          "type": "object",
+          "description": "Gets the contingency's values.",
+          "additionalProperties": {
+            "$ref": "#/definitions/ContingentValue"
+          }
+        }
+      }
+    },
+    "ContingentValue": {
+      "type": "object",
+      "description": "Defines possible values for fields participating in contingent field groups.",
+      "x-abstract": true,
+      "additionalProperties": false
+    },
+    "FeatureFormDefinition": {
+      "type": "object",
+      "description": "Provides the user interface definition needed to create a FeatureForm.",
+      "additionalProperties": false,
+      "properties": {
+        "Description": {
+          "type": "string",
+          "description": "Gets a description of the form."
+        },
+        "Title": {
+          "type": "string",
+          "description": "Gets the form title."
+        }
+      }
+    },
+    "SubtypeSubtable": {
+      "type": "object",
+      "description": "A child table that allows custom editing of features of a particular subtype.",
+      "additionalProperties": false,
+      "properties": {
+        "AllowsEditing": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether editing is allowed for this subtype, when editing is supported; false, otherwise."
+        },
+        "FeatureFormDefinition": {
+          "description": "Gets the user interface to display when editing a feature in this layer or table.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/FeatureFormDefinition"
+            }
+          ]
+        },
+        "FeatureTemplates": {
+          "type": "array",
+          "description": "Gets the collection of FeatureTemplate objects applicable to this subtype.",
+          "items": {
+            "$ref": "#/definitions/FeatureTemplate"
+          }
+        },
+        "IsPopupEnabled": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the PopupDefinition defined on the IPopupSource is enable / disable."
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets or sets a user-friendly name that can be displayed in the UI (for example, in a Table of Contents)."
+        },
+        "PopupDefinition": {
+          "description": "Gets or sets the pop-up definition.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PopupDefinition"
+            }
+          ]
+        },
+        "Subtype": {
+          "description": "Gets the subtype in the ArcGIS data source that this table represents.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/FeatureSubtype"
+            }
+          ]
+        }
+      }
+    },
+    "FeatureTable": {
+      "type": "object",
+      "description": "Represents a table from a database",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "properties": {
+        "Layer": {
+          "description": "Gets the layer this table is associated with, or created from, if any.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Layer"
+            }
+          ]
+        },
+        "SublayerContent": {
+          "description": "Gets the sublayer ILayerContent that displays this table, if any.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/ILayerContent"
+            }
+          ]
+        },
+        "Extent": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the geographic extent of features within the table."
+        },
+        "IsPopupEnabled": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the PopupDefinition defined is enabled."
+        },
+        "Fields": {
+          "type": "array",
+          "description": "Gets the fields of the feature table.",
+          "items": {
+            "$ref": "#/definitions/Field"
+          }
+        },
+        "GeometryType": {
+          "description": "Gets the GeometryType of features in this table.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GeometryType"
+            }
+          ]
+        },
+        "HasGeometry": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether this table has geometry data."
+        },
+        "IsEditable": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether this table is editable."
+        },
+        "LoadError": {
+          "description": "Gets the exception associated with a failed load. This property remains null if load is successful.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Exception"
+            }
+          ]
+        },
+        "LoadStatus": {
+          "description": "Gets the current load status.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/LoadStatus"
+            }
+          ]
+        },
+        "NumberOfFeatures": {
+          "type": "integer",
+          "description": "Gets the number of features in this table.",
+          "format": "int64"
+        },
+        "SpatialReference": {
+          "description": "Gets the SpatialReference of this table.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SpatialReference"
+            }
+          ]
+        },
+        "TableName": {
+          "type": "string",
+          "description": "Gets the name of the table."
+        },
+        "HasM": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the shapefile geometries have m-values."
+        },
+        "HasZ": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the shapefile geometries have z-values."
+        },
+        "PopupDefinition": {
+          "description": "Gets or sets the pop-up definition for the table.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PopupDefinition"
+            }
+          ]
+        },
+        "DisplayName": {
+          "type": "string",
+          "description": "Gets or sets a user-friendly name that can be displayed in the UI (for example, in a Table of Contents)."
+        }
+      }
+    },
+    "Layer": {
+      "type": "object",
+      "description": "A base class for classes that represent layers.",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "properties": {
+        "LoadStatus": {
+          "description": "Gets the load status of the layer.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/LoadStatus"
+            }
+          ]
+        },
+        "LoadError": {
+          "description": "Gets the load error of the layer, if there is one.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Exception"
+            }
+          ]
+        },
+        "Item": {
+          "description": "Gets the ArcGIS Item",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Item"
+            }
+          ]
+        },
+        "Attribution": {
+          "type": "string",
+          "description": "Gets the attribution text for the layer."
+        },
+        "Description": {
+          "type": "string",
+          "description": "Gets the description for the layer."
+        },
+        "MaxScale": {
+          "type": "number",
+          "description": "Gets or sets the maximum scale where the layer is visible.",
+          "format": "double"
+        },
+        "MinScale": {
+          "type": "number",
+          "description": "Gets or sets the minimum scale where the layer is visible.",
+          "format": "double"
+        },
+        "SpatialReference": {
+          "description": "Gets the spatial reference of the layer.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SpatialReference"
+            }
+          ]
+        },
+        "Opacity": {
+          "type": "number",
+          "description": "Gets or sets the opacity of the layer.",
+          "format": "double"
+        },
+        "Id": {
+          "type": "string",
+          "description": "Gets or sets the unique identifying string for the layer, for example specified in a map or scene."
+        },
+        "FullExtent": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the full extent of the layer, which is the extent where all the data in the layer is contained."
+        },
+        "CanChangeVisibility": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer content's visibility can be changed."
+        },
+        "IsVisible": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the layer content is visible."
+        },
+        "IsIdentifyEnabled": {
+          "type": "boolean",
+          "description": "Gets a value indicating whether the layer supports the identify operation."
+        },
+        "Name": {
+          "type": "string",
+          "description": "Gets or sets the name of the layer content."
+        },
+        "ShowInLegend": {
+          "type": "boolean",
+          "description": "Gets or sets a value indicating whether the layer content participates in the legend."
+        },
+        "SublayerContents": {
+          "type": "array",
+          "description": "Gets the sub layer contents of a layer content.",
+          "items": {
+            "$ref": "#/definitions/ILayerContent"
+          }
+        }
+      }
+    },
+    "ImageAdjustmentLayer": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Layer"
+        },
+        {
+          "type": "object",
+          "description": "A base class for raster layer type that allows for per-pixel adjustments.",
+          "x-abstract": true,
+          "additionalProperties": false,
+          "properties": {
+            "Brightness": {
+              "type": "number",
+              "description": "Gets or sets layer brightness level.",
+              "format": "double"
+            },
+            "Contrast": {
+              "type": "number",
+              "description": "Gets or sets layer contrast level.",
+              "format": "double"
+            },
+            "Gamma": {
+              "type": "number",
+              "description": "Gets or sets layer gamma level.",
+              "format": "double"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/ImageAdjustmentLayer"
+    },
+    {
+      "type": "object",
+      "description": "A layer that can display data from an ArcGIS Map service by using dynamically generated map images.",
+      "additionalProperties": false,
+      "properties": {
+        "Source": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Gets the URI of the map service.",
+          "format": "uri"
+        },
+        "ServiceInfo": {
+          "description": "Gets the map service information.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/ArcGISMapServiceInfo"
+            }
+          ]
+        },
+        "GeodatabaseVersion": {
+          "type": "string",
+          "description": "Gets or sets the geodatabase version of the map image layer."
+        },
+        "ImageFormat": {
+          "description": "Gets or sets the MapServiceImageFormat used to generate map images for this layer.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MapServiceImageFormat"
+            }
+          ]
+        },
+        "Sublayers": {
+          "type": "array",
+          "description": "Gets a list of sublayers of this map image layer.",
+          "items": {
+            "$ref": "#/definitions/ArcGISSublayer"
+          }
+        },
+        "RefreshInterval": {
+          "type": "string",
+          "description": "Gets or sets the refresh interval on an ArcGISMapImageLayer.",
+          "format": "duration"
+        },
+        "FullTimeExtent": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TimeExtent"
+            }
+          ]
+        },
+        "IsTimeFilteringEnabled": {
+          "type": "boolean"
+        },
+        "SupportsTimeFiltering": {
+          "type": "boolean"
+        },
+        "TimeInterval": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TimeValue"
+            }
+          ]
+        },
+        "TimeOffset": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TimeValue"
+            }
+          ]
+        },
+        "Tables": {
+          "type": "array",
+          "description": "Gets a read-only list of non-spatial tables in the map image layer.",
+          "items": {
+            "$ref": "#/definitions/ServiceFeatureTable"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -111,10 +111,14 @@ module Hansen =
         module Security =
             module Login =
                 [<Literal>]
-                let uri =
+                let asmx_uri =
+                    "https://infortest.leoncountyfl.gov/update_webservices/Core/Security/Hansen.Core.Security.Login.asmx"
+                type asmx = WsdlProvider<asmx_uri>
+                [<Literal>]
+                let wsdl_uri =
                     "https://infortest.leoncountyfl.gov/update_webservices/Core/Security/Hansen.Core.Security.Login.asmx?WSDL"
 
-                type wsdl = WsdlProvider<uri>
+                type wsdl = WsdlProvider<wsdl_uri>
 
 // Build configuration from user secrets
 let config =
@@ -127,13 +131,12 @@ let mutable ticket = String.Empty
 let binding = new BasicHttpBinding(BasicHttpSecurityMode.None)
 
 let endpoint =
-    new EndpointAddress(Hansen.Core.Security.Login.uri.Replace("https", "http"))
+    new EndpointAddress(Hansen.Core.Security.Login.wsdl_uri.Replace("https", "http"))
 
 let loginClient =
     new Hansen.Core.Security.Login.wsdl.LoginSoapClient(binding, endpoint)
 
-let serviceLogin =
-    Hansen.Core.Security.Login.wsdl.ServiceLogin("Hansen8", config.["user"], config.["password"], ticket)
+let serviceLogin = Hansen.Core.Security.Login.wsdl.ServiceLogin("Hansen8", config.["user"], config.["password"], ticket)
 
 
 // let response = loginClient.ServiceLogin(serviceLogin)

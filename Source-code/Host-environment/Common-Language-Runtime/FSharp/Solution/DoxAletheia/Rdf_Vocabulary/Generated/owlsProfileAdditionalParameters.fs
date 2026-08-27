@@ -18,28 +18,6 @@ module owlsProfileAdditionalParameters =
         Prefixed_Name(owlsProfileAdditionalParameters, "AverageResponseTime") |> PrefixedName
 
     /// <summary>
-    ///   <para>owlsProfileAdditionalParameters:NAICS</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>
-    ///       Hook to the NAICS taxonomy
-    ///     </para>
-    /// </remarks>
-    /// <seealso href="http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#NAICS">http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#NAICS</seealso>
-    let NAICS = Prefixed_Name(owlsProfileAdditionalParameters, "NAICS") |> PrefixedName
-
-    /// <summary>
-    ///   <para>owlsProfileAdditionalParameters:MaxResponseTime</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#MaxResponseTime">http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#MaxResponseTime</seealso>
-    let MaxResponseTime =
-        Prefixed_Name(owlsProfileAdditionalParameters, "MaxResponseTime") |> PrefixedName
-
-    /// <summary>
     ///   <para>owlsProfileAdditionalParameters:Duration</para>
     /// </summary>
     /// <remarks>
@@ -60,13 +38,35 @@ module owlsProfileAdditionalParameters =
         Prefixed_Name(owlsProfileAdditionalParameters, "GeographicRadius") |> PrefixedName
 
     /// <summary>
+    ///   <para>owlsProfileAdditionalParameters:MaxResponseTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#MaxResponseTime">http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#MaxResponseTime</seealso>
+    let MaxResponseTime =
+        Prefixed_Name(owlsProfileAdditionalParameters, "MaxResponseTime") |> PrefixedName
+
+    /// <summary>
+    ///   <para>owlsProfileAdditionalParameters:NAICS</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>"
+    ///       Hook to the NAICS taxonomy
+    ///     "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// </remarks>
+    /// <seealso href="http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#NAICS">http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#NAICS</seealso>
+    let NAICS = Prefixed_Name(owlsProfileAdditionalParameters, "NAICS") |> PrefixedName
+
+    /// <summary>
     ///   <para>owlsProfileAdditionalParameters:UNSPSC</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>
+    ///   <para>"
     ///       Hook to the UNSPSC taxonomy
-    ///       </para>
+    ///       "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
     /// </remarks>
     /// <seealso href="http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#UNSPSC">http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#UNSPSC</seealso>
     let UNSPSC =

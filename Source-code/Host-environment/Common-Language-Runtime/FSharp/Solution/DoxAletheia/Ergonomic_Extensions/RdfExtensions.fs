@@ -48,6 +48,7 @@ let rdfsharp_namespace (iri:string) =
                 lead + segment
             )
             |> String.concat "."
+            |> _.Replace(":","").Replace("+","_")
 
 
 

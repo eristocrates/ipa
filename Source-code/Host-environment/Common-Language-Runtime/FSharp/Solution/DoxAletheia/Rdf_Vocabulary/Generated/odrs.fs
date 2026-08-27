@@ -11,110 +11,100 @@ module odrs =
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A legal document that describes the legal terms for re-use of some information. A licence might be applicable to content, data, or both. This definition of licence used here is deliberately loose, and is intended to also cover waiver documents that indicate that the owner waives all rights over some information, e.g. public domain dedications.</para>
-    /// labels<para>License</para></remarks>
+    ///   <para>"A legal document that describes the legal terms for re-use of some information. A licence might be applicable to content, data, or both. This definition of licence used here is deliberately loose, and is intended to also cover waiver documents that indicate that the owner waives all rights over some information, e.g. public domain dedications."</para>
+    /// labels<para>"License"</para></remarks>
     /// <seealso href="http://schema.theodi.org/odrs#License">http://schema.theodi.org/odrs#License</seealso>
     let License = Prefixed_Name(odrs, "License") |> PrefixedName
-    /// <summary>
-    ///   <para>odrs:compatibleWith</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>This property is used to indicates that one license is compatible with another. A re-use that meets the requirements, permissions and prohibitions of the first license should also meet the requirements, permissions and prohibitions of the second, compatible license. The inverse is not necessarily true: the compatible license might have stricter requirements. This statement can be used as an indicator that a re-user could publish a derivative dataset under the compatible license, e.g. to help drive automated selection and guidance licenses for publishers of derived data. However it is not a substitute for properly reading and understanding the text of either license.</para>
-    /// labels<para>compatible with</para></remarks>
-    /// <seealso href="http://schema.theodi.org/odrs#compatibleWith">http://schema.theodi.org/odrs#compatibleWith</seealso>
-    let compatibleWith = Prefixed_Name(odrs, "compatibleWith") |> PrefixedName
-    /// <summary>
-    ///   <para>odrs:copyrightHolder</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>A reference to the organization that holds copyright over the content of the dataset</para>
-    /// labels<para>copyright holder</para></remarks>
-    /// <seealso href="http://schema.theodi.org/odrs#copyrightHolder">http://schema.theodi.org/odrs#copyrightHolder</seealso>
-    let copyrightHolder = Prefixed_Name(odrs, "copyrightHolder") |> PrefixedName
     /// <summary>
     ///   <para>odrs:RightsStatement</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A description of the rights and terms of re-use for a dataset. A rights statement will include a reference to one or more licences copyright notices, and attribution requirements. Where a Rights Statement refers to several licences the intention is that these should separately apply to the data and content associated with the dataset. An individual Rights Statement may be specific to a dataset or could be applied to a
-    /// number of datasets published by the same organisation or person, where the rights associated with each dataset are identical.</para>
-    /// labels<para>Rights Statement</para></remarks>
+    ///   <para>"A description of the rights and terms of re-use for a dataset. A rights statement will include a reference to one or more licences copyright notices, and attribution requirements. Where a Rights Statement refers to several licences the intention is that these should separately apply to the data and content associated with the dataset. An individual Rights Statement may be specific to a dataset or could be applied to a
+    /// number of datasets published by the same organisation or person, where the rights associated with each dataset are identical."</para>
+    /// labels<para>"Rights Statement"</para></remarks>
     /// <seealso href="http://schema.theodi.org/odrs#RightsStatement">http://schema.theodi.org/odrs#RightsStatement</seealso>
     let RightsStatement = Prefixed_Name(odrs, "RightsStatement") |> PrefixedName
-    /// <summary>
-    ///   <para>odrs:databaseRightYear</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The year from which a database right over the dataset is asserted.</para>
-    /// labels<para>database right year</para></remarks>
-    /// <seealso href="http://schema.theodi.org/odrs#databaseRightYear">http://schema.theodi.org/odrs#databaseRightYear</seealso>
-    let databaseRightYear = Prefixed_Name(odrs, "databaseRightYear") |> PrefixedName
-    /// <summary>
-    ///   <para>odrs:reuserGuidelines</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Link to a document that provides guidelines for re-users of data that is covered by a specific rights statement. The guidelines
-    /// may include more detail on attribution guidelines, a fuller copyright statement, and general guidance on how the data might be re-used</para>
-    /// labels<para>guidelines for re-users</para></remarks>
-    /// <seealso href="http://schema.theodi.org/odrs#reuserGuidelines">http://schema.theodi.org/odrs#reuserGuidelines</seealso>
-    let reuserGuidelines = Prefixed_Name(odrs, "reuserGuidelines") |> PrefixedName
     /// <summary>
     ///   <para>odrs:attributionText</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The text to use in an attribution link. This may be the name of the publisher or a reference to a community or group of contributors</para>
-    /// labels<para>attribution text</para></remarks>
+    ///   <para>"The text to use in an attribution link. This may be the name of the publisher or a reference to a community or group of contributors"</para>
+    /// labels<para>"attribution text"</para></remarks>
     /// <seealso href="http://schema.theodi.org/odrs#attributionText">http://schema.theodi.org/odrs#attributionText</seealso>
     let attributionText = Prefixed_Name(odrs, "attributionText") |> PrefixedName
-    /// <summary>
-    ///   <para>odrs:contentLicense</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The contents of a database might be covered by a separate license, e.g. a database containing copyrightable material (e.g. text, images) might have different rights for the dataset and the contents. This property can be used to refer to a license that applies to the content of the dataset. In some cases the same license can be applied to both content and data, but in others a data publisher may choose to use a separate license for content. The value of the property will be the URI of the license that is being applied to the content.</para>
-    /// labels<para>content license</para></remarks>
-    /// <seealso href="http://schema.theodi.org/odrs#contentLicense">http://schema.theodi.org/odrs#contentLicense</seealso>
-    let contentLicense = Prefixed_Name(odrs, "contentLicense") |> PrefixedName
     /// <summary>
     ///   <para>odrs:attributionURL</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>The link which should be used when attributing a data source. The URL could be a reference to the dataset or publisher
-    /// homepage, but may also be a dedicated attribution page. This is useful when providing onward attribution to upstream sources.</para>
-    /// labels<para>attribution url</para></remarks>
+    ///   <para>"The link which should be used when attributing a data source. The URL could be a reference to the dataset or publisher
+    /// homepage, but may also be a dedicated attribution page. This is useful when providing onward attribution to upstream sources."</para>
+    /// labels<para>"attribution url"</para></remarks>
     /// <seealso href="http://schema.theodi.org/odrs#attributionURL">http://schema.theodi.org/odrs#attributionURL</seealso>
     let attributionURL = Prefixed_Name(odrs, "attributionURL") |> PrefixedName
     /// <summary>
-    ///   <para>odrs:copyrightStatement</para>
+    ///   <para>odrs:compatibleWith</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>A link to a document that includes a statement about the copyright status of the content of a dataset. The web page might include both a copyright notice for a dataset, and any relevant guidance for re-users.</para>
-    /// labels<para>copyright statement</para></remarks>
-    /// <seealso href="http://schema.theodi.org/odrs#copyrightStatement">http://schema.theodi.org/odrs#copyrightStatement</seealso>
-    let copyrightStatement = Prefixed_Name(odrs, "copyrightStatement") |> PrefixedName
+    ///   <para>"This property is used to indicates that one license is compatible with another. A re-use that meets the requirements, permissions and prohibitions of the first license should also meet the requirements, permissions and prohibitions of the second, compatible license. The inverse is not necessarily true: the compatible license might have stricter requirements. This statement can be used as an indicator that a re-user could publish a derivative dataset under the compatible license, e.g. to help drive automated selection and guidance licenses for publishers of derived data. However it is not a substitute for properly reading and understanding the text of either license."</para>
+    /// labels<para>"compatible with"</para></remarks>
+    /// <seealso href="http://schema.theodi.org/odrs#compatibleWith">http://schema.theodi.org/odrs#compatibleWith</seealso>
+    let compatibleWith = Prefixed_Name(odrs, "compatibleWith") |> PrefixedName
+    /// <summary>
+    ///   <para>odrs:contentLicense</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"The contents of a database might be covered by a separate license, e.g. a database containing copyrightable material (e.g. text, images) might have different rights for the dataset and the contents. This property can be used to refer to a license that applies to the content of the dataset. In some cases the same license can be applied to both content and data, but in others a data publisher may choose to use a separate license for content. The value of the property will be the URI of the license that is being applied to the content."</para>
+    /// labels<para>"content license"</para></remarks>
+    /// <seealso href="http://schema.theodi.org/odrs#contentLicense">http://schema.theodi.org/odrs#contentLicense</seealso>
+    let contentLicense = Prefixed_Name(odrs, "contentLicense") |> PrefixedName
+    /// <summary>
+    ///   <para>odrs:copyrightHolder</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"A reference to the organization that holds copyright over the content of the dataset"</para>
+    /// labels<para>"copyright holder"</para></remarks>
+    /// <seealso href="http://schema.theodi.org/odrs#copyrightHolder">http://schema.theodi.org/odrs#copyrightHolder</seealso>
+    let copyrightHolder = Prefixed_Name(odrs, "copyrightHolder") |> PrefixedName
     /// <summary>
     ///   <para>odrs:copyrightNotice</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The copyright notice associated with a rights statement. A notice must typically be preserved and displayed when acknowledging the source of some data. This property is expressed as a simple literal value and so is suitable for simple copyright notices. Where a data publisher needs to reference a larger copyright statement and/or related guidance then the copyrightStatement property should be used instead.</para>
-    /// labels<para>copyright notice</para></remarks>
+    ///   <para>"The copyright notice associated with a rights statement. A notice must typically be preserved and displayed when acknowledging the source of some data. This property is expressed as a simple literal value and so is suitable for simple copyright notices. Where a data publisher needs to reference a larger copyright statement and/or related guidance then the copyrightStatement property should be used instead."</para>
+    /// labels<para>"copyright notice"</para></remarks>
     /// <seealso href="http://schema.theodi.org/odrs#copyrightNotice">http://schema.theodi.org/odrs#copyrightNotice</seealso>
     let copyrightNotice = Prefixed_Name(odrs, "copyrightNotice") |> PrefixedName
+    /// <summary>
+    ///   <para>odrs:copyrightStatement</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"A link to a document that includes a statement about the copyright status of the content of a dataset. The web page might include both a copyright notice for a dataset, and any relevant guidance for re-users."</para>
+    /// labels<para>"copyright statement"</para></remarks>
+    /// <seealso href="http://schema.theodi.org/odrs#copyrightStatement">http://schema.theodi.org/odrs#copyrightStatement</seealso>
+    let copyrightStatement = Prefixed_Name(odrs, "copyrightStatement") |> PrefixedName
+    /// <summary>
+    ///   <para>odrs:copyrightYear</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>"The year from which copyright over the content of the dataset is asserted."</para>
+    /// labels<para>"copyright year"</para></remarks>
+    /// <seealso href="http://schema.theodi.org/odrs#copyrightYear">http://schema.theodi.org/odrs#copyrightYear</seealso>
+    let copyrightYear = Prefixed_Name(odrs, "copyrightYear") |> PrefixedName
     /// <summary>
     ///   <para>odrs:dataLicense</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>This property is used to indicate which license covers reuse of the dataset(s) associated with this rights statement object. Typically this license will refer to a standard open license, e.g. as published by Creative Commons or Open Data Commons. The value of the property will be the URI of the license that is being applied to the data</para>
-    /// labels<para>data license</para></remarks>
+    ///   <para>"This property is used to indicate which license covers reuse of the dataset(s) associated with this rights statement object. Typically this license will refer to a standard open license, e.g. as published by Creative Commons or Open Data Commons. The value of the property will be the URI of the license that is being applied to the data"</para>
+    /// labels<para>"data license"</para></remarks>
     /// <seealso href="http://schema.theodi.org/odrs#dataLicense">http://schema.theodi.org/odrs#dataLicense</seealso>
     let dataLicense = Prefixed_Name(odrs, "dataLicense") |> PrefixedName
     /// <summary>
@@ -122,8 +112,8 @@ module odrs =
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>A reference to the organization that holds database rights over the dataset</para>
-    /// labels<para>database right holder</para></remarks>
+    ///   <para>"A reference to the organization that holds database rights over the dataset"</para>
+    /// labels<para>"database right holder"</para></remarks>
     /// <seealso href="http://schema.theodi.org/odrs#databaseRightHolder">http://schema.theodi.org/odrs#databaseRightHolder</seealso>
     let databaseRightHolder = Prefixed_Name(odrs, "databaseRightHolder") |> PrefixedName
 
@@ -132,36 +122,46 @@ module odrs =
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>A link to a document that includes a statement about the database rights that apply to this dataset. The web page might include both a statement on the applicable rights and any relevant guidance for re-users.</para>
-    /// labels<para>database right statement</para></remarks>
+    ///   <para>"A link to a document that includes a statement about the database rights that apply to this dataset. The web page might include both a statement on the applicable rights and any relevant guidance for re-users."</para>
+    /// labels<para>"database right statement"</para></remarks>
     /// <seealso href="http://schema.theodi.org/odrs#databaseRightStatement">http://schema.theodi.org/odrs#databaseRightStatement</seealso>
     let databaseRightStatement =
         Prefixed_Name(odrs, "databaseRightStatement") |> PrefixedName
 
     /// <summary>
-    ///   <para>odrs:copyrightYear</para>
+    ///   <para>odrs:databaseRightYear</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The year from which copyright over the content of the dataset is asserted.</para>
-    /// labels<para>copyright year</para></remarks>
-    /// <seealso href="http://schema.theodi.org/odrs#copyrightYear">http://schema.theodi.org/odrs#copyrightYear</seealso>
-    let copyrightYear = Prefixed_Name(odrs, "copyrightYear") |> PrefixedName
+    ///   <para>"The year from which a database right over the dataset is asserted."</para>
+    /// labels<para>"database right year"</para></remarks>
+    /// <seealso href="http://schema.theodi.org/odrs#databaseRightYear">http://schema.theodi.org/odrs#databaseRightYear</seealso>
+    let databaseRightYear = Prefixed_Name(odrs, "databaseRightYear") |> PrefixedName
     /// <summary>
     ///   <para>odrs:jurisdiction</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>A reference to the jurisdiction in which copyright and/or database rights have been asserts. It is recommended that this refer to the URI for a country or region.</para>
-    /// labels<para>jurisdiction</para></remarks>
+    ///   <para>"A reference to the jurisdiction in which copyright and/or database rights have been asserts. It is recommended that this refer to the URI for a country or region."</para>
+    /// labels<para>"jurisdiction"</para></remarks>
     /// <seealso href="http://schema.theodi.org/odrs#jurisdiction">http://schema.theodi.org/odrs#jurisdiction</seealso>
     let jurisdiction = Prefixed_Name(odrs, "jurisdiction") |> PrefixedName
+    /// <summary>
+    ///   <para>odrs:reuserGuidelines</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"Link to a document that provides guidelines for re-users of data that is covered by a specific rights statement. The guidelines
+    /// may include more detail on attribution guidelines, a fuller copyright statement, and general guidance on how the data might be re-used"</para>
+    /// labels<para>"guidelines for re-users"</para></remarks>
+    /// <seealso href="http://schema.theodi.org/odrs#reuserGuidelines">http://schema.theodi.org/odrs#reuserGuidelines</seealso>
+    let reuserGuidelines = Prefixed_Name(odrs, "reuserGuidelines") |> PrefixedName
     /// <summary>
     ///   <para>odrs:rights</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Associates a rights statement with a dataset. This property is equivalent to the Dublin Core rights property</para>
-    /// labels<para>rights</para></remarks>
+    ///   <para>"Associates a rights statement with a dataset. This property is equivalent to the Dublin Core rights property"</para>
+    /// labels<para>"rights"</para></remarks>
     /// <seealso href="http://schema.theodi.org/odrs#rights">http://schema.theodi.org/odrs#rights</seealso>
     let rights = Prefixed_Name(odrs, "rights") |> PrefixedName

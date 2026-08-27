@@ -1,0 +1,1134 @@
+{
+  "customQuery": {
+    "requireAll": {
+      "criteria": [
+        {
+          "nested": {
+            "path": "locations",
+            "score_mode": "max",
+            "query": {
+              "relevancyByDistance": {
+                "field": "locations.address.search_coordinates",
+                "origin": "27.0052532, -82.1500689",
+                "scale": "300mi",
+                "offset": "0mi",
+                "decay": "0.5",
+                "minDistanceScore": "0.1",
+                "query": {
+                  "requireAll": {
+                    "criteria": [
+                      {
+                        "constantScore": {
+                          "boost": 1,
+                          "query": {
+                            "nested": {
+                              "path": "locations.eligibleForDisplay",
+                              "query": {
+                                "constantScore": {
+                                  "boost": 1,
+                                  "query": {
+                                    "requireAll": {
+                                      "criteria": [
+                                        {
+                                          "value": {
+                                            "field": "locations.eligibleForDisplay.eligibleIndicator",
+                                            "value": "Y"
+                                          }
+                                        },
+                                        {
+                                          "range": {
+                                            "field": "locations.eligibleForDisplay.startDate",
+                                            "type": "date",
+                                            "lte": "2026-08-06"
+                                          }
+                                        },
+                                        {
+                                          "range": {
+                                            "field": "locations.eligibleForDisplay.endDate",
+                                            "type": "date",
+                                            "gte": "2026-08-06"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "matchedList": {
+              "name": "testInnerHits",
+              "restrictedMatchedList": "Y",
+              "size": 50,
+              "determineDistance": {
+                "field": "locations.address.search_coordinates",
+                "origin": "27.0052532, -82.1500689"
+              },
+              "fields": [
+                "locations.locationId",
+                "locations.address.addressLine1",
+                "locations.address.state"
+              ]
+            }
+          }
+        },
+        {
+          "requireAll": {
+            "criteria": [
+              {
+                "constantScore": {
+                  "boost": 1,
+                  "query": {
+                    "values": {
+                      "field": "network.product.networkId",
+                      "values": [
+                        "14069",
+                        "70",
+                        "7674"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "aggs": [
+    {
+      "name": "ppgFilter",
+      "aggType": {
+        "filter": {
+          "requireAll": {
+            "criteria": [
+              {
+                "value": {
+                  "field": "providerType",
+                  "value": "PPG"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "aggs": [
+        {
+          "name": "ppgName",
+          "aggType": {
+            "valuesAgg": {
+              "field": "providerName",
+              "size": 1000
+            }
+          },
+          "aggs": [
+            {
+              "name": "ppgIdentifierNested",
+              "aggType": {
+                "nested": {
+                  "path": "participatingPhysicianGroupIdentifiers"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "ppgIdentifiers",
+                  "aggType": {
+                    "valuesAgg": {
+                      "field": "participatingPhysicianGroupIdentifiers.ppgId",
+                      "size": 100
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nestedLocationProviderTier",
+      "aggType": {
+        "nested": {
+          "path": "locations"
+        }
+      },
+      "aggs": [
+        {
+          "name": "locationsFilter",
+          "aggType": {
+            "filter": {
+              "value": {
+                "field": "locations.eligibleForDisplay.eligibleIndicator",
+                "value": "Y"
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "nestedNetworkLocationCycles",
+              "aggType": {
+                "nested": {
+                  "path": "locations.networkLocationCycles"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "nestedNetworkLocationCyclesAttributes",
+                  "aggType": {
+                    "nested": {
+                      "path": "locations.networkLocationCycles.attributes"
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "practitionerTierFilter",
+                      "aggType": {
+                        "filter": {
+                          "value": {
+                            "field": "locations.networkLocationCycles.attributes.name",
+                            "value": "Practitioner Tier"
+                          }
+                        }
+                      },
+                      "aggs": [
+                        {
+                          "name": "practitionerTierField",
+                          "aggType": {
+                            "nested": {
+                              "path": "locations.networkLocationCycles.attributes.fields"
+                            }
+                          },
+                          "aggs": [
+                            {
+                              "name": "practitionerTierFieldFilter",
+                              "aggType": {
+                                "filter": {
+                                  "value": {
+                                    "field": "locations.networkLocationCycles.attributes.fields.name",
+                                    "value": "Tier"
+                                  }
+                                }
+                              },
+                              "aggs": [
+                                {
+                                  "name": "practitionerTierFieldValues",
+                                  "aggType": {
+                                    "valuesAgg": {
+                                      "field": "locations.networkLocationCycles.attributes.fields.value_number",
+                                      "size": 2
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "providerTierFilter",
+                      "aggType": {
+                        "filter": {
+                          "value": {
+                            "field": "locations.networkLocationCycles.attributes.name",
+                            "value": "Provider Tier"
+                          }
+                        }
+                      },
+                      "aggs": [
+                        {
+                          "name": "providerTierField",
+                          "aggType": {
+                            "nested": {
+                              "path": "locations.networkLocationCycles.attributes.fields"
+                            }
+                          },
+                          "aggs": [
+                            {
+                              "name": "providerTierFieldFilter",
+                              "aggType": {
+                                "filter": {
+                                  "value": {
+                                    "field": "locations.networkLocationCycles.attributes.fields.name",
+                                    "value": "Tier"
+                                  }
+                                }
+                              },
+                              "aggs": [
+                                {
+                                  "name": "providerTierFieldValues",
+                                  "aggType": {
+                                    "valuesAgg": {
+                                      "field": "locations.networkLocationCycles.attributes.fields.value_number",
+                                      "size": 2
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nestedNetworkCycles",
+      "aggType": {
+        "nested": {
+          "path": "network.networkCycles"
+        }
+      },
+      "aggs": [
+        {
+          "name": "nestedNetworkCyclesAttributes",
+          "aggType": {
+            "nested": {
+              "path": "network.networkCycles.attributes"
+            }
+          },
+          "aggs": [
+            {
+              "name": "planTierFilter",
+              "aggType": {
+                "filter": {
+                  "value": {
+                    "field": "network.networkCycles.attributes.name",
+                    "value": "Plan Tier"
+                  }
+                }
+              },
+              "aggs": [
+                {
+                  "name": "planTierField",
+                  "aggType": {
+                    "nested": {
+                      "path": "network.networkCycles.attributes.fields"
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "planTierFieldFilter",
+                      "aggType": {
+                        "filter": {
+                          "value": {
+                            "field": "network.networkCycles.attributes.fields.name",
+                            "value": "Tier"
+                          }
+                        }
+                      },
+                      "aggs": [
+                        {
+                          "name": "planTierFieldValues",
+                          "aggType": {
+                            "valuesAgg": {
+                              "field": "network.networkCycles.attributes.fields.value_number",
+                              "size": 2
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hospitalAffiliationsNested",
+      "aggType": {
+        "nested": {
+          "path": "hospitalAffiliations"
+        }
+      },
+      "aggs": [
+        {
+          "name": "hospitalAffilNames",
+          "aggType": {
+            "valuesAgg": {
+              "field": "hospitalAffiliations.name",
+              "size": 1000
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "nestedLocation",
+      "aggType": {
+        "nested": {
+          "path": "locations"
+        }
+      },
+      "aggs": [
+        {
+          "name": "locationsFilter",
+          "aggType": {
+            "filter": {
+              "value": {
+                "field": "locations.eligibleForDisplay.eligibleIndicator",
+                "value": "Y"
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "nestedLocationSpecialties",
+              "aggType": {
+                "nested": {
+                  "path": "locations.specialties"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "categoryEnglish",
+                  "aggType": {
+                    "valuesAgg": {
+                      "field": "locations.specialties.category",
+                      "size": 100000
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "categorySpanish",
+                      "aggType": {
+                        "valuesAgg": {
+                          "field": "locations.specialties.categorySpanish",
+                          "size": 100000
+                        }
+                      }
+                    },
+                    {
+                      "name": "groupingEnglish",
+                      "aggType": {
+                        "valuesAgg": {
+                          "field": "locations.specialties.grouping",
+                          "size": 100000
+                        }
+                      },
+                      "aggs": [
+                        {
+                          "name": "groupingSpanish",
+                          "aggType": {
+                            "valuesAgg": {
+                              "field": "locations.specialties.groupingSpanish",
+                              "size": 100000
+                            }
+                          }
+                        },
+                        {
+                          "name": "specialtiesEnglish",
+                          "aggType": {
+                            "valuesAgg": {
+                              "field": "locations.specialties.descriptionDisplay",
+                              "size": 100000
+                            }
+                          },
+                          "aggs": [
+                            {
+                              "name": "specialtiesSpanish",
+                              "aggType": {
+                                "valuesAgg": {
+                                  "field": "locations.specialties.descriptionSpanish",
+                                  "size": 100000
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "groupAffiliationsAgg",
+              "aggType": {
+                "valuesAgg": {
+                  "field": "locations.name",
+                  "size": 3000
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "officeLanguagesNested",
+      "aggType": {
+        "nested": {
+          "path": "locations.attributes"
+        }
+      },
+      "aggs": [
+        {
+          "name": "languagesAttributeFilter",
+          "aggType": {
+            "filter": {
+              "value": {
+                "field": "locations.attributes.name",
+                "value": "Provider Language"
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "languagesAttributeField",
+              "aggType": {
+                "nested": {
+                  "path": "locations.attributes.fields"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "languagesAttributeFieldFilter",
+                  "aggType": {
+                    "filter": {
+                      "value": {
+                        "field": "locations.attributes.fields.name",
+                        "value": "Provider Language"
+                      }
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "languagesAttributeFieldValues",
+                      "aggType": {
+                        "valuesAgg": {
+                          "field": "locations.attributes.fields.value",
+                          "size": 10000
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "additionalLanguagesNested",
+      "aggType": {
+        "nested": {
+          "path": "attributes"
+        }
+      },
+      "aggs": [
+        {
+          "name": "languagesAttributeFilter",
+          "aggType": {
+            "filter": {
+              "value": {
+                "field": "attributes.name",
+                "value": "Language"
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "languagesAttributeField",
+              "aggType": {
+                "nested": {
+                  "path": "attributes.fields"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "languagesAttributeFieldFilter",
+                  "aggType": {
+                    "filter": {
+                      "value": {
+                        "field": "attributes.fields.name",
+                        "value": "Language"
+                      }
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "languagesAttributeFieldValues",
+                      "aggType": {
+                        "valuesAgg": {
+                          "field": "attributes.fields.value",
+                          "size": 10000
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "modalitiesFilter",
+      "aggType": {
+        "filter": {
+          "requireAll": {
+            "criteria": [
+              {
+                "exists": {
+                  "field": "modalities"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "aggs": [
+        {
+          "name": "modalityName",
+          "aggType": {
+            "valuesAgg": {
+              "field": "modalities.modalityDescriptionFull",
+              "size": 1000
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "disordersFilter",
+      "aggType": {
+        "filter": {
+          "requireAll": {
+            "criteria": [
+              {
+                "exists": {
+                  "field": "disorders"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "aggs": [
+        {
+          "name": "disordersDescription",
+          "aggType": {
+            "valuesAgg": {
+              "field": "disorders.disorderDescriptionFull",
+              "size": 1000
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "certificationsFilter",
+      "aggType": {
+        "filter": {
+          "requireAll": {
+            "criteria": [
+              {
+                "exists": {
+                  "field": "badgeCertifications"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "aggs": [
+        {
+          "name": "badgeOrCertTypeDescription",
+          "aggType": {
+            "valuesAgg": {
+              "field": "badgeCertifications.badgeOrCertTypeDescriptionFull",
+              "size": 1000
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "enhancedCareManagement",
+      "aggType": {
+        "nested": {
+          "path": "locations.attributes"
+        }
+      },
+      "aggs": [
+        {
+          "name": "enhancedCareManagementAttrFilter",
+          "aggType": {
+            "filter": {
+              "requireAll": {
+                "criteria": [
+                  {
+                    "value": {
+                      "field": "locations.attributes.fields.name",
+                      "value": "Active"
+                    }
+                  },
+                  {
+                    "value": {
+                      "field": "locations.attributes.fields.value",
+                      "value": "Yes"
+                    }
+                  },
+                  {
+                    "value": {
+                      "field": "locations.attributes.name",
+                      "value": "Provider Enhanced Care Management (ECM) Information"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "enhancedCareManagementAttrField",
+              "aggType": {
+                "nested": {
+                  "path": "locations.attributes.fields"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "enhancedCareManagementAttrFieldFilter",
+                  "aggType": {
+                    "filter": {
+                      "value": {
+                        "field": "locations.attributes.fields.name",
+                        "value": "Population"
+                      }
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "enhancedCareManagementAttrFieldValues",
+                      "aggType": {
+                        "valuesAgg": {
+                          "field": "locations.attributes.fields.value",
+                          "size": 10000
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "communitySupports",
+      "aggType": {
+        "nested": {
+          "path": "locations.attributes"
+        }
+      },
+      "aggs": [
+        {
+          "name": "communitySupportsFilter",
+          "aggType": {
+            "filter": {
+              "requireAll": {
+                "criteria": [
+                  {
+                    "value": {
+                      "field": "locations.attributes.fields.name",
+                      "value": "Active"
+                    }
+                  },
+                  {
+                    "value": {
+                      "field": "locations.attributes.fields.value",
+                      "value": "Yes"
+                    }
+                  },
+                  {
+                    "value": {
+                      "field": "locations.attributes.name",
+                      "value": "Provider Community Supports"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "communitySupportsField",
+              "aggType": {
+                "nested": {
+                  "path": "locations.attributes.fields"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "communitySupportsFieldFilter",
+                  "aggType": {
+                    "filter": {
+                      "value": {
+                        "field": "locations.attributes.fields.name",
+                        "value": "Service"
+                      }
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "communitySupportsFieldValues",
+                      "aggType": {
+                        "valuesAgg": {
+                          "field": "locations.attributes.fields.value",
+                          "size": 1000
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ipaAffiliations",
+      "aggType": {
+        "nested": {
+          "path": "attributes"
+        }
+      },
+      "aggs": [
+        {
+          "name": "ipaAffiliationsFilter",
+          "aggType": {
+            "filter": {
+              "value": {
+                "field": "attributes.name",
+                "value": "WCG IPA Affiliations"
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "ipaAffiliationsValues",
+              "aggType": {
+                "nested": {
+                  "path": "attributes.fields"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "ipaAffiliationsValue",
+                  "aggType": {
+                    "valuesAgg": {
+                      "field": "attributes.fields.value",
+                      "size": 1000
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "providerServiceTypes",
+      "aggType": {
+        "nested": {
+          "path": "locations"
+        }
+      },
+      "aggs": [
+        {
+          "name": "providerServiceTypesFilter",
+          "aggType": {
+            "filter": {
+              "requireAll": {
+                "criteria": [
+                  {
+                    "value": {
+                      "field": "locations.eligibleForDisplay.eligibleIndicator",
+                      "value": "Y"
+                    }
+                  },
+                  {
+                    "value": {
+                      "field": "locations.attributes.name",
+                      "value": "Provider Service Types"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "providerServiceTypesValues",
+              "aggType": {
+                "nested": {
+                  "path": "locations.attributes.fields"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "providerServiceTypesValue",
+                  "aggType": {
+                    "filter": {
+                      "value": {
+                        "field": "locations.attributes.fields.name",
+                        "value": "Service Types"
+                      }
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "providerServiceTypesAttributeFieldValues",
+                      "aggType": {
+                        "valuesAgg": {
+                          "field": "locations.attributes.fields.value",
+                          "size": 1000
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hospitalServices",
+      "aggType": {
+        "nested": {
+          "path": "locations.attributes"
+        }
+      },
+      "aggs": [
+        {
+          "name": "hospitalServicesFilter",
+          "aggType": {
+            "filter": {
+              "value": {
+                "field": "locations.attributes.name",
+                "value": "Provider Hospital Service Capability"
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "hospitalServicesValues",
+              "aggType": {
+                "nested": {
+                  "path": "locations.attributes.fields"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "hospitalServicesValue",
+                  "aggType": {
+                    "filter": {
+                      "value": {
+                        "field": "locations.attributes.fields.name",
+                        "value": "Service"
+                      }
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "hospitalServicesAttributeFieldValues",
+                      "aggType": {
+                        "valuesAgg": {
+                          "field": "locations.attributes.fields.value",
+                          "size": 1000
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "affirmingCareServices",
+      "aggType": {
+        "nested": {
+          "path": "attributes"
+        }
+      },
+      "aggs": [
+        {
+          "name": "affirmingCareServicesAttrFilter",
+          "aggType": {
+            "filter": {
+              "requireAll": {
+                "criteria": [
+                  {
+                    "values": {
+                      "field": "attributes.name",
+                      "values": [
+                        "Provider Gender Affirming Care",
+                        "Practitioner Gender Affirming Care"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "affirmingCareServicesAttrField",
+              "aggType": {
+                "nested": {
+                  "path": "attributes.fields"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "affirmingCareServicesAttrFieldFilter",
+                  "aggType": {
+                    "filter": {
+                      "value": {
+                        "field": "attributes.fields.name",
+                        "value": "Gender Affirming Services"
+                      }
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "affirmingCareServicesAttrFieldValues",
+                      "aggType": {
+                        "valuesAgg": {
+                          "field": "attributes.fields.value",
+                          "size": 10000
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nestedServicesOfferedLocations",
+      "aggType": {
+        "nested": {
+          "path": "locations"
+        }
+      },
+      "aggs": [
+        {
+          "name": "nestedEligibleForDisplay",
+          "aggType": {
+            "filter": {
+              "nested": {
+                "path": "locations.eligibleForDisplay",
+                "query": {
+                  "requireAll": {
+                    "criteria": [
+                      {
+                        "value": {
+                          "field": "locations.eligibleForDisplay.eligibleIndicator",
+                          "value": "Y"
+                        }
+                      },
+                      {
+                        "range": {
+                          "field": "locations.eligibleForDisplay.startDate",
+                          "type": "date",
+                          "lte": "2026-08-06"
+                        }
+                      },
+                      {
+                        "range": {
+                          "field": "locations.eligibleForDisplay.endDate",
+                          "type": "date",
+                          "gte": "2026-08-06"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "aggs": [
+            {
+              "name": "nestedAreaNetworkServices",
+              "aggType": {
+                "nested": {
+                  "path": "locations.areaNetworkServices"
+                }
+              },
+              "aggs": [
+                {
+                  "name": "nestedAreaNetworkServicesFilter",
+                  "aggType": {
+                    "filter": {
+                      "requireAll": {
+                        "criteria": [
+                          {
+                            "value": {
+                              "field": "locations.areaNetworkServices.area",
+                              "value": "FL,Charlotte"
+                            }
+                          },
+                          {
+                            "value": {
+                              "field": "locations.areaNetworkServices.areaType",
+                              "value": "County"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "aggs": [
+                    {
+                      "name": "servicesOffered",
+                      "aggType": {
+                        "valuesAgg": {
+                          "field": "locations.areaNetworkServices.service",
+                          "size": 1000
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "size": 0
+}

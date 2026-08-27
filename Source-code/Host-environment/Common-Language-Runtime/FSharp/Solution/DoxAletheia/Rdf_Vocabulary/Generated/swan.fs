@@ -6,22 +6,13 @@ open type Prefix_ID
 
 module swan =
     let _namespace_iri = Namespace_Iri swan |> NamespaceIRI
-
-    /// <summary>
-    ///   <para>swan:discourse-relationships/</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://purl.org/swan/2.0/discourse-relationships/">http://purl.org/swan/2.0/discourse-relationships/</seealso>
-    let ``discourse_relationships/`` =
-        Prefixed_Name(swan, "discourse-relationships/") |> PrefixedName
-
     /// <summary>
     ///   <para>swan:</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Ontology</para>
     ///
-    /// labels<para>SWAN ontology v. 2.0</para></remarks>
+    /// labels<para>"SWAN ontology v. 2.0"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para></remarks>
     /// <seealso href="http://purl.org/swan/2.0/">http://purl.org/swan/2.0/</seealso>
     let _prefix_iri = Prefixed_Name(swan, "") |> PrefixedName
     /// <summary>
@@ -30,11 +21,9 @@ module swan =
     /// <remarks></remarks>
     /// <seealso href="http://purl.org/swan/2.0/agents/">http://purl.org/swan/2.0/agents/</seealso>
     let ``agents/`` = Prefixed_Name(swan, "agents/") |> PrefixedName
-
     /// <summary>
-    ///   <para>swan:discourse-elements/</para>
+    ///   <para>swan:foaf-essential/</para>
     /// </summary>
     /// <remarks></remarks>
-    /// <seealso href="http://purl.org/swan/2.0/discourse-elements/">http://purl.org/swan/2.0/discourse-elements/</seealso>
-    let ``discourse_elements/`` =
-        Prefixed_Name(swan, "discourse-elements/") |> PrefixedName
+    /// <seealso href="http://purl.org/swan/2.0/foaf-essential/">http://purl.org/swan/2.0/foaf-essential/</seealso>
+    let ``foaf_essential/`` = Prefixed_Name(swan, "foaf-essential/") |> PrefixedName

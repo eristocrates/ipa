@@ -7,7 +7,7 @@ open type Prefix_ID
 module rml_fnml =
     let _namespace_iri = Namespace_Iri rml_fnml |> NamespaceIRI
     /// <summary>
-    ///   <para>rml_fnml:</para>
+    ///   <para>rml:fnml/</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Ontology</para>

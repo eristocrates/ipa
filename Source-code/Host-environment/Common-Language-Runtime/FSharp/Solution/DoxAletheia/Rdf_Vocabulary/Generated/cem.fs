@@ -7,7 +7,7 @@ open type Prefix_ID
 module cem =
     let _namespace_iri = Namespace_Iri cem |> NamespaceIRI
     /// <summary>
-    ///   <para>cem:</para>
+    ///   <para>w3id:CEMontology/</para>
     /// </summary>
     /// <remarks></remarks>
     /// <seealso href="https://w3id.org/CEMontology/">https://w3id.org/CEMontology/</seealso>

@@ -1,5 +1,12 @@
 {
   "powerquery.client.additionalSymbolsDirectories": [
     "c:/Repositories/eristocrates/ipa/Source-code/Host-environment/Common-Language-Runtime/FSharp/Solution/DoxAletheia/.vscode/excel-pq-symbols"
+  ],
+  "vbnetcompanion.enableLanguageClientBridge": true,
+  "vbnetcompanion.enableBridgeForCSharp": true,
+  "vbnetcompanion.enableBridgeForVisualBasic": true,
+  "vbnetcompanion.languageClientServerCommand": "c:\\Users\\CollierB\\.vscode\\extensions\\roies.vbnet-companion-0.1.47\\server\\VBNetCompanion.LanguageServer\\publish\\VBNetCompanion.LanguageServer.exe",
+  "vbnetcompanion.languageClientServerArgs": [
+    "--stdio"
   ]
 }

@@ -2,7 +2,8 @@ module DoxAletheia.Manual_Prefixes
 
 let manual_prefix_overrides =
     Map.ofArray [|
-        
+
+                   "http://www.w3.org/2000/", "www2k"
                    "http://www.ietf.org/rfc/", "rfc"
                    "http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#", "infreal"
                    "http://purl.org/cwmo#", "cwmoo"
@@ -249,5 +250,4 @@ let manual_prefix_overrides =
                    "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/",
                    "ISO3166-2-SubdivisionCodes-US"
                    "https://www.w3.org/ns/posix/stat#", "stat"
-                   "http://www.w3.org/ns/posix/stat#", "postat"
-                    |]
+                   "http://www.w3.org/ns/posix/stat#", "postat" |]

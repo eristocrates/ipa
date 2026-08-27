@@ -1,0 +1,667 @@
+{
+  "product": {
+    "name": "Medicaid Plan",
+    "values": [
+      "989604"
+    ],
+    "activeDate": "2026-08-06",
+    "displayDate": "2024-01-01",
+    "displayed": true,
+    "endDate": "9999-12-31",
+    "pm v2 format": {
+      "dataSourceIdentifier": "259",
+      "directoryProductCode": null,
+      "fapNetworkBenefitTypeCode": null,
+      "fapNetworkCode": "989604",
+      "fapNetworkDisplayEndDate": "9999-12-31",
+      "fapNetworkDisplayStartDate": "2024-01-01",
+      "fapNetworkEndDate": "9999-12-31",
+      "fapNetworkIdentifier": "989604",
+      "fapNetworkName": "Medicaid Plan",
+      "fapNetworkStartDate": "2024-01-01",
+      "fapNetworkStatusCode": "ACTIVE",
+      "fapNetworkTypeCode": "Medicaid",
+      "fapNetworkURLText": "sunshinehealth.com",
+      "noteText": "",
+      "planContract": null,
+      "popularSearch": [
+        {
+          "popularSearchKey": "2",
+          "popularSearchName": {
+            "en": "Primary Care",
+            "es": "Atención primaria"
+          }
+        },
+        {
+          "popularSearchKey": "3",
+          "popularSearchName": {
+            "en": "Clinic or Urgent Care",
+            "es": "Clínica o atención urgente"
+          }
+        },
+        {
+          "popularSearchKey": "4",
+          "popularSearchName": {
+            "en": "Pediatrics (Babies, Children)",
+            "es": "Pediatría (bebés, niños)"
+          }
+        },
+        {
+          "popularSearchKey": "5",
+          "popularSearchName": {
+            "en": "Dental Professionals",
+            "es": "Profesionales dentales"
+          }
+        }
+      ],
+      "ppgIndicator": "N",
+      "serviceAreaRestrictionFlag": "N",
+      "sites": [
+        {
+          "domainURL": "findaprovider.sunshinehealth.com",
+          "tag": "FAPv4",
+          "modes": [
+            {
+              "mode": "pcp",
+              "collapseFeatureIndicator": "N"
+            },
+            {
+              "mode": "public",
+              "collapseFeatureIndicator": "N"
+            }
+          ]
+        },
+        {
+          "domainURL": "member.sunshinehealth.com",
+          "tag": "member",
+          "modes": [
+            {
+              "mode": "pcp",
+              "collapseFeatureIndicator": "N"
+            }
+          ]
+        }
+      ],
+      "stateCode": "FL",
+      "sysLastModifiedDate": "2025-11-14"
+    }
+  },
+  "productMapping": {
+    "porticoProgramIds": [
+      "14069",
+      "70",
+      "7674"
+    ]
+  },
+  "countyNetworks": [
+    {
+      "name": "HIV/AIDS Specialty Program",
+      "values": [
+        "990902"
+      ],
+      "activeDate": "2024-10-01",
+      "displayDate": "2024-10-01",
+      "displayed": true,
+      "endDate": "9999-12-31",
+      "pm v2 format": {
+        "dataSourceIdentifier": "259",
+        "directoryProductCode": null,
+        "fapNetworkBenefitTypeCode": null,
+        "fapNetworkCode": "990902",
+        "fapNetworkDisplayEndDate": "9999-12-31",
+        "fapNetworkDisplayStartDate": "2024-10-01",
+        "fapNetworkEndDate": "9999-12-31",
+        "fapNetworkIdentifier": "990902",
+        "fapNetworkName": "HIV/AIDS Specialty Program",
+        "fapNetworkStartDate": "2024-10-01",
+        "fapNetworkStatusCode": "ACTIVE",
+        "fapNetworkTypeCode": "Medicaid",
+        "fapNetworkURLText": "sunshinehealth.com",
+        "noteText": "",
+        "planContract": null,
+        "popularSearch": [
+          {
+            "popularSearchKey": "2",
+            "popularSearchName": {
+              "en": "Primary Care",
+              "es": "Atención primaria"
+            }
+          },
+          {
+            "popularSearchKey": "3",
+            "popularSearchName": {
+              "en": "Clinic or Urgent Care",
+              "es": "Clínica o atención urgente"
+            }
+          },
+          {
+            "popularSearchKey": "4",
+            "popularSearchName": {
+              "en": "Pediatrics (Babies, Children)",
+              "es": "Pediatría (bebés, niños)"
+            }
+          },
+          {
+            "popularSearchKey": "5",
+            "popularSearchName": {
+              "en": "Dental Professionals",
+              "es": "Profesionales dentales"
+            }
+          }
+        ],
+        "ppgIndicator": "N",
+        "serviceAreaRestrictionFlag": "N",
+        "sites": [
+          {
+            "domainURL": "findaprovider.sunshinehealth.com",
+            "tag": "FAPv4",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              },
+              {
+                "mode": "public",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          },
+          {
+            "domainURL": "member.sunshinehealth.com",
+            "tag": "member",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          }
+        ],
+        "stateCode": "FL",
+        "sysLastModifiedDate": "2025-11-14"
+      }
+    },
+    {
+      "name": "Medicaid Plan",
+      "values": [
+        "989604"
+      ],
+      "activeDate": "2024-01-01",
+      "displayDate": "2024-01-01",
+      "displayed": true,
+      "endDate": "9999-12-31",
+      "pm v2 format": {
+        "dataSourceIdentifier": "259",
+        "directoryProductCode": null,
+        "fapNetworkBenefitTypeCode": null,
+        "fapNetworkCode": "989604",
+        "fapNetworkDisplayEndDate": "9999-12-31",
+        "fapNetworkDisplayStartDate": "2024-01-01",
+        "fapNetworkEndDate": "9999-12-31",
+        "fapNetworkIdentifier": "989604",
+        "fapNetworkName": "Medicaid Plan",
+        "fapNetworkStartDate": "2024-01-01",
+        "fapNetworkStatusCode": "ACTIVE",
+        "fapNetworkTypeCode": "Medicaid",
+        "fapNetworkURLText": "sunshinehealth.com",
+        "noteText": "",
+        "planContract": null,
+        "popularSearch": [
+          {
+            "popularSearchKey": "2",
+            "popularSearchName": {
+              "en": "Primary Care",
+              "es": "Atención primaria"
+            }
+          },
+          {
+            "popularSearchKey": "3",
+            "popularSearchName": {
+              "en": "Clinic or Urgent Care",
+              "es": "Clínica o atención urgente"
+            }
+          },
+          {
+            "popularSearchKey": "4",
+            "popularSearchName": {
+              "en": "Pediatrics (Babies, Children)",
+              "es": "Pediatría (bebés, niños)"
+            }
+          },
+          {
+            "popularSearchKey": "5",
+            "popularSearchName": {
+              "en": "Dental Professionals",
+              "es": "Profesionales dentales"
+            }
+          }
+        ],
+        "ppgIndicator": "N",
+        "serviceAreaRestrictionFlag": "N",
+        "sites": [
+          {
+            "domainURL": "findaprovider.sunshinehealth.com",
+            "tag": "FAPv4",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              },
+              {
+                "mode": "public",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          },
+          {
+            "domainURL": "member.sunshinehealth.com",
+            "tag": "member",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          }
+        ],
+        "stateCode": "FL",
+        "sysLastModifiedDate": "2025-11-14"
+      }
+    },
+    {
+      "name": "Child Welfare Specialty Plan",
+      "values": [
+        "989605"
+      ],
+      "activeDate": "2024-01-01",
+      "displayDate": "2024-01-01",
+      "displayed": true,
+      "endDate": "9999-12-31",
+      "pm v2 format": {
+        "dataSourceIdentifier": "259",
+        "directoryProductCode": null,
+        "fapNetworkBenefitTypeCode": null,
+        "fapNetworkCode": "989605",
+        "fapNetworkDisplayEndDate": "9999-12-31",
+        "fapNetworkDisplayStartDate": "2024-01-01",
+        "fapNetworkEndDate": "9999-12-31",
+        "fapNetworkIdentifier": "989605",
+        "fapNetworkName": "Child Welfare Specialty Plan",
+        "fapNetworkStartDate": "2024-01-01",
+        "fapNetworkStatusCode": "ACTIVE",
+        "fapNetworkTypeCode": "Medicaid",
+        "fapNetworkURLText": "sunshinehealth.com",
+        "noteText": "",
+        "planContract": null,
+        "popularSearch": [
+          {
+            "popularSearchKey": "2",
+            "popularSearchName": {
+              "en": "Primary Care",
+              "es": "Atención primaria"
+            }
+          },
+          {
+            "popularSearchKey": "3",
+            "popularSearchName": {
+              "en": "Clinic or Urgent Care",
+              "es": "Clínica o atención urgente"
+            }
+          },
+          {
+            "popularSearchKey": "4",
+            "popularSearchName": {
+              "en": "Pediatrics (Babies, Children)",
+              "es": "Pediatría (bebés, niños)"
+            }
+          },
+          {
+            "popularSearchKey": "5",
+            "popularSearchName": {
+              "en": "Dental Professionals",
+              "es": "Profesionales dentales"
+            }
+          }
+        ],
+        "ppgIndicator": "N",
+        "serviceAreaRestrictionFlag": "N",
+        "sites": [
+          {
+            "domainURL": "findaprovider.sunshinehealth.com",
+            "tag": "FAPv4",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              },
+              {
+                "mode": "public",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          },
+          {
+            "domainURL": "member.sunshinehealth.com",
+            "tag": "member",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          }
+        ],
+        "stateCode": "FL",
+        "sysLastModifiedDate": "2025-11-14"
+      }
+    },
+    {
+      "name": "Children's Medical Services Health Plan",
+      "values": [
+        "989606"
+      ],
+      "activeDate": "2024-01-01",
+      "displayDate": "2024-01-01",
+      "displayed": true,
+      "endDate": "9999-12-31",
+      "pm v2 format": {
+        "dataSourceIdentifier": "259",
+        "directoryProductCode": null,
+        "fapNetworkBenefitTypeCode": null,
+        "fapNetworkCode": "989606",
+        "fapNetworkDisplayEndDate": "9999-12-31",
+        "fapNetworkDisplayStartDate": "2024-01-01",
+        "fapNetworkEndDate": "9999-12-31",
+        "fapNetworkIdentifier": "989606",
+        "fapNetworkName": "Children's Medical Services Health Plan",
+        "fapNetworkStartDate": "2024-01-01",
+        "fapNetworkStatusCode": "ACTIVE",
+        "fapNetworkTypeCode": "Medicaid",
+        "fapNetworkURLText": "sunshinehealth.com",
+        "noteText": "",
+        "planContract": null,
+        "popularSearch": [
+          {
+            "popularSearchKey": "2",
+            "popularSearchName": {
+              "en": "Primary Care",
+              "es": "Atención primaria"
+            }
+          },
+          {
+            "popularSearchKey": "3",
+            "popularSearchName": {
+              "en": "Clinic or Urgent Care",
+              "es": "Clínica o atención urgente"
+            }
+          },
+          {
+            "popularSearchKey": "4",
+            "popularSearchName": {
+              "en": "Pediatrics (Babies, Children)",
+              "es": "Pediatría (bebés, niños)"
+            }
+          },
+          {
+            "popularSearchKey": "5",
+            "popularSearchName": {
+              "en": "Dental Professionals",
+              "es": "Profesionales dentales"
+            }
+          }
+        ],
+        "ppgIndicator": "N",
+        "serviceAreaRestrictionFlag": "N",
+        "sites": [
+          {
+            "domainURL": "findaprovider.sunshinehealth.com",
+            "tag": "FAPv4",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              },
+              {
+                "mode": "public",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          },
+          {
+            "domainURL": "member.sunshinehealth.com",
+            "tag": "member",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          }
+        ],
+        "stateCode": "FL",
+        "sysLastModifiedDate": "2025-11-14"
+      }
+    },
+    {
+      "name": "Florida Long Term Care",
+      "values": [
+        "989607"
+      ],
+      "activeDate": "2024-01-01",
+      "displayDate": "2024-01-01",
+      "displayed": true,
+      "endDate": "9999-12-31",
+      "pm v2 format": {
+        "dataSourceIdentifier": "259",
+        "directoryProductCode": null,
+        "fapNetworkBenefitTypeCode": null,
+        "fapNetworkCode": "989607",
+        "fapNetworkDisplayEndDate": "9999-12-31",
+        "fapNetworkDisplayStartDate": "2024-01-01",
+        "fapNetworkEndDate": "9999-12-31",
+        "fapNetworkIdentifier": "989607",
+        "fapNetworkName": "Florida Long Term Care",
+        "fapNetworkStartDate": "2024-01-01",
+        "fapNetworkStatusCode": "ACTIVE",
+        "fapNetworkTypeCode": "Medicaid",
+        "fapNetworkURLText": "sunshinehealth.com",
+        "noteText": "",
+        "planContract": null,
+        "popularSearch": [
+          {
+            "popularSearchKey": "2",
+            "popularSearchName": {
+              "en": "Primary Care",
+              "es": "Atención primaria"
+            }
+          },
+          {
+            "popularSearchKey": "3",
+            "popularSearchName": {
+              "en": "Clinic or Urgent Care",
+              "es": "Clínica o atención urgente"
+            }
+          },
+          {
+            "popularSearchKey": "4",
+            "popularSearchName": {
+              "en": "Pediatrics (Babies, Children)",
+              "es": "Pediatría (bebés, niños)"
+            }
+          },
+          {
+            "popularSearchKey": "5",
+            "popularSearchName": {
+              "en": "Dental Professionals",
+              "es": "Profesionales dentales"
+            }
+          }
+        ],
+        "ppgIndicator": "N",
+        "serviceAreaRestrictionFlag": "N",
+        "sites": [
+          {
+            "domainURL": "findaprovider.sunshinehealth.com",
+            "tag": "FAPv4",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              },
+              {
+                "mode": "public",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          },
+          {
+            "domainURL": "member.sunshinehealth.com",
+            "tag": "member",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          }
+        ],
+        "stateCode": "FL",
+        "sysLastModifiedDate": "2025-11-14"
+      }
+    },
+    {
+      "name": "SMI Specialty Plan",
+      "values": [
+        "989608"
+      ],
+      "activeDate": "2024-01-01",
+      "displayDate": "2024-01-01",
+      "displayed": true,
+      "endDate": "9999-12-31",
+      "pm v2 format": {
+        "dataSourceIdentifier": "259",
+        "directoryProductCode": null,
+        "fapNetworkBenefitTypeCode": null,
+        "fapNetworkCode": "989608",
+        "fapNetworkDisplayEndDate": "9999-12-31",
+        "fapNetworkDisplayStartDate": "2024-01-01",
+        "fapNetworkEndDate": "9999-12-31",
+        "fapNetworkIdentifier": "989608",
+        "fapNetworkName": "SMI Specialty Plan",
+        "fapNetworkStartDate": "2024-01-01",
+        "fapNetworkStatusCode": "ACTIVE",
+        "fapNetworkTypeCode": "Medicaid",
+        "fapNetworkURLText": "sunshinehealth.com",
+        "noteText": "",
+        "planContract": null,
+        "popularSearch": [
+          {
+            "popularSearchKey": "2",
+            "popularSearchName": {
+              "en": "Primary Care",
+              "es": "Atención primaria"
+            }
+          },
+          {
+            "popularSearchKey": "3",
+            "popularSearchName": {
+              "en": "Clinic or Urgent Care",
+              "es": "Clínica o atención urgente"
+            }
+          },
+          {
+            "popularSearchKey": "4",
+            "popularSearchName": {
+              "en": "Pediatrics (Babies, Children)",
+              "es": "Pediatría (bebés, niños)"
+            }
+          },
+          {
+            "popularSearchKey": "5",
+            "popularSearchName": {
+              "en": "Dental Professionals",
+              "es": "Profesionales dentales"
+            }
+          }
+        ],
+        "ppgIndicator": "N",
+        "serviceAreaRestrictionFlag": "N",
+        "sites": [
+          {
+            "domainURL": "findaprovider.sunshinehealth.com",
+            "tag": "FAPv4",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              },
+              {
+                "mode": "public",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          },
+          {
+            "domainURL": "member.sunshinehealth.com",
+            "tag": "member",
+            "modes": [
+              {
+                "mode": "pcp",
+                "collapseFeatureIndicator": "N"
+              }
+            ]
+          }
+        ],
+        "stateCode": "FL",
+        "sysLastModifiedDate": "2025-11-14"
+      }
+    }
+  ],
+  "fipsCountyCodes": [
+    {
+      "countyName": "Alachua",
+      "dataSourceidentifier": "259",
+      "fipsCountyCode": "12001",
+      "stateCode": "FL"
+    }
+  ],
+  "medicaidProgramIds": [],
+  "programCodes": {
+    "70": [
+      "989604"
+    ],
+    "656": [
+      "989607"
+    ],
+    "7670": [
+      "989607"
+    ],
+    "7674": [
+      "989604"
+    ],
+    "8036": [
+      "989605"
+    ],
+    "8080": [
+      "989605"
+    ],
+    "11476": [
+      "989606"
+    ],
+    "11477": [
+      "989608"
+    ],
+    "14069": [
+      "989604",
+      "989605",
+      "989606",
+      "989607",
+      "989608",
+      "990902"
+    ],
+    "14794": [
+      "990902"
+    ]
+  },
+  "pnids": []
+}

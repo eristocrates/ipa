@@ -93,9 +93,15 @@ module Document =
         [<Literal>]
         let literal_path = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Registry\PrefixRegistry.json"
         
-    
-    module Bioregistry = 
-        let registry = JsonProvider<"https://github.com/biopragmatics/bioregistry/raw/refs/heads/main/src/bioregistry/data/bioregistry.json">.Load "https://github.com/biopragmatics/bioregistry/raw/refs/heads/main/src/bioregistry/data/bioregistry.json"
+    // TODO never add a dereferencing type provider ever again
+    (*
+    System.TypeInitializationException: The type initializer for 'DoxAletheia.IOExtensions' threw an exception.
+ ---> System.TypeInitializationException: The type initializer for '<StartupCode$Ergonomic_Extensions>.$DoxAletheia.IOExtensions' threw an exception.
+ ---> System.Net.WebException: The remote server returned an error: (502) Bad Gateway or Proxy Error.
+Response from https://github.com/biopragmatics/bioregistry/raw/refs/heads/main/src/bioregistry/data/bioregistry.json:
+    *)
+    //module Bioregistry = 
+        // let registry = JsonProvider<"https://github.com/biopragmatics/bioregistry/raw/refs/heads/main/src/bioregistry/data/bioregistry.json">.Load "https://github.com/biopragmatics/bioregistry/raw/refs/heads/main/src/bioregistry/data/bioregistry.json"
     module lov = 
     
         [<Literal>]

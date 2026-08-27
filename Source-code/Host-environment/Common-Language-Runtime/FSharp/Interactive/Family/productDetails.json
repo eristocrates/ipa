@@ -1,0 +1,87 @@
+{
+  "name": "Medicaid Plan",
+  "values": [
+    "989604"
+  ],
+  "activeDate": "2024-01-01",
+  "displayDate": "2024-01-01",
+  "displayed": true,
+  "endDate": "9999-12-31",
+  "pm v2 format": {
+    "dataSourceIdentifier": "259",
+    "directoryProductCode": null,
+    "fapNetworkBenefitTypeCode": null,
+    "fapNetworkCode": "989604",
+    "fapNetworkDisplayEndDate": "9999-12-31",
+    "fapNetworkDisplayStartDate": "2024-01-01",
+    "fapNetworkEndDate": "9999-12-31",
+    "fapNetworkIdentifier": "989604",
+    "fapNetworkName": "Medicaid Plan",
+    "fapNetworkStartDate": "2024-01-01",
+    "fapNetworkStatusCode": "ACTIVE",
+    "fapNetworkTypeCode": "Medicaid",
+    "fapNetworkURLText": "sunshinehealth.com",
+    "noteText": "",
+    "planContract": null,
+    "popularSearch": [
+      {
+        "popularSearchKey": "2",
+        "popularSearchName": {
+          "en": "Primary Care",
+          "es": "Atención primaria"
+        }
+      },
+      {
+        "popularSearchKey": "3",
+        "popularSearchName": {
+          "en": "Clinic or Urgent Care",
+          "es": "Clínica o atención urgente"
+        }
+      },
+      {
+        "popularSearchKey": "4",
+        "popularSearchName": {
+          "en": "Pediatrics (Babies, Children)",
+          "es": "Pediatría (bebés, niños)"
+        }
+      },
+      {
+        "popularSearchKey": "5",
+        "popularSearchName": {
+          "en": "Dental Professionals",
+          "es": "Profesionales dentales"
+        }
+      }
+    ],
+    "ppgIndicator": "N",
+    "serviceAreaRestrictionFlag": "N",
+    "sites": [
+      {
+        "domainURL": "findaprovider.sunshinehealth.com",
+        "tag": "FAPv4",
+        "modes": [
+          {
+            "mode": "pcp",
+            "collapseFeatureIndicator": "N"
+          },
+          {
+            "mode": "public",
+            "collapseFeatureIndicator": "N"
+          }
+        ]
+      },
+      {
+        "domainURL": "member.sunshinehealth.com",
+        "tag": "member",
+        "modes": [
+          {
+            "mode": "pcp",
+            "collapseFeatureIndicator": "N"
+          }
+        ]
+      }
+    ],
+    "stateCode": "FL",
+    "sysLastModifiedDate": "2025-11-14"
+  }
+}

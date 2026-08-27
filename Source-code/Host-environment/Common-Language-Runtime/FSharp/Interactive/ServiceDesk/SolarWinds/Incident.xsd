@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    <xs:element name="incidents">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="incident"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="page"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="per_page"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="total_entries"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="incident">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="number"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="description"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="description_no_html"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="state"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="priority"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="category"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="subcategory"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="assignee"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="requester"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="created_at"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="updated_at"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="due_at"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="sla_violations"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="number_of_comments"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="user_saw_all_comments"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="is_service_request"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="created_by"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="resolved_by"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="resolution_description"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="resolution_code"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="group_assignee"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="customer_satisfaction_survey_sent_at"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="customer_satisfaction_survey_completed_at"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="custom"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="href"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="href_account_domain"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="site"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="department"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="cc"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="custom_fields_values"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="origin"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="comments"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="attachments"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="statistics"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="tags"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="incidents"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="changes"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="solutions"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="associated_sla_names"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="is_customer_satisfied"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="customer_satisfaction_response"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="total_time_spent"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="resolution"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="resolution_type"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="tasks"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="time_tracks"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="assets"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="mobiles"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="other_assets"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="configuration_items"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="discovery_hardwares"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="purchase_orders"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="releases"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="problems"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="request_variables"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="id">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="number">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="name">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="description">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="description_no_html">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="state">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="priority">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="category">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="default_tags"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="parent_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="deleted"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="default_assignee_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="default_tags"></xs:element>
+    <xs:element name="parent_id">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:integer">
+                    <xs:attribute name="nil"
+                                  type="xs:string"></xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleted">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="default_assignee_id">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="subcategory">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="default_tags"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="parent_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="deleted"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="default_assignee_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+            <xs:attribute name="nil"
+                          type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="assignee">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="group_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="is_user"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="email"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="avatar"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="reports_to"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="group_id">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="is_user">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="email">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="avatar">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="type"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="initials"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="color"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="type">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="initials">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="color">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="reports_to">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="group_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="is_user"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="email"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="avatar"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="requester">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="account_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="user_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="email"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="disabled"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="site_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="site"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="department_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="department"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="has_gravatar"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="customer_satisfaction_survey_time"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="avatar"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+            <xs:attribute name="nil"
+                          type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="account_id">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="user_id">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="disabled">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="site_id">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:integer">
+                    <xs:attribute name="nil"
+                                  type="xs:string"></xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="site">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="location"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="description"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="time_zone"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="language"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="business_record"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="location">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="time_zone">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="language">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="business_record">
+        <xs:complexType>
+            <xs:attribute name="nil"
+                          type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="department_id">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="department">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="description"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="default_assignee_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="has_gravatar">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="customer_satisfaction_survey_time">
+        <xs:simpleType>
+            <xs:restriction base="xs:date"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="created_at">
+        <xs:simpleType>
+            <xs:restriction base="xs:date"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="updated_at">
+        <xs:simpleType>
+            <xs:restriction base="xs:date"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="due_at">
+        <xs:complexType>
+            <xs:attribute name="nil"
+                          type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="sla_violations"></xs:element>
+    <xs:element name="number_of_comments">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="user_saw_all_comments">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="is_service_request">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="created_by">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="account_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="user_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="email"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="disabled"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="site_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="site"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="department_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="department"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="has_gravatar"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="customer_satisfaction_survey_time"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="avatar"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="resolved_by">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="disabled"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="title"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="email"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="created_at"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="updated_at"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="last_login"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="phone"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="mobile_phone"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="role"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="group_ids"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="available_for_assignment"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="can_be_available_for_assignment"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="provider"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="custom_fields_values"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="site"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="department"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="avatar"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="reports_to"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="title">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="last_login">
+        <xs:simpleType>
+            <xs:restriction base="xs:date"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="phone">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="mobile_phone"></xs:element>
+    <xs:element name="role">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="description"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="portal"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="show_my_tasks"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="portal">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="show_my_tasks">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="group_ids">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="group_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="available_for_assignment">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="can_be_available_for_assignment">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="provider">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="custom_fields_values"></xs:element>
+    <xs:element name="resolution_description">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="nil"
+                                  type="xs:string"></xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="resolution_code">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="group_assignee">
+        <xs:complexType>
+            <xs:attribute name="nil"
+                          type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="customer_satisfaction_survey_sent_at">
+        <xs:complexType>
+            <xs:attribute name="nil"
+                          type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="customer_satisfaction_survey_completed_at">
+        <xs:complexType>
+            <xs:attribute name="nil"
+                          type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="custom">
+        <xs:complexType>
+            <xs:attribute name="nil"
+                          type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="href">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="href_account_domain">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="cc"></xs:element>
+    <xs:element name="origin">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="comments">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="comment"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="comment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="body"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="user"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="created_at"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="updated_at"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="attachments"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="inline_attachments"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="shared_attachments"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="is_private"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="seen_by"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="isTask"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="task_info"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="requester"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="commenter_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="commenter_type"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="origin"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="body">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="user">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="email"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="avatar"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="attachments">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="attachment"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="attachment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="content_type"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="size"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="filename"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="url"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="shared_attachment"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="attachable_id"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="attachable_type"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="attachment_type"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="thumb_url"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="secure_url"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="link_uuid_url"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="uuid"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="content_type">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="size">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="filename">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="url">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="shared_attachment">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="attachable_id">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="attachable_type">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="attachment_type">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="thumb_url">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="secure_url">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="link_uuid_url">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="uuid">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="inline_attachments"></xs:element>
+    <xs:element name="shared_attachments"></xs:element>
+    <xs:element name="is_private">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="seen_by">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="seen_by"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="isTask">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="task_info"></xs:element>
+    <xs:element name="commenter_id">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="commenter_type">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="statistics">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="statistic"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="statistic">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="statistic_type"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="time"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="time_elapsed"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="business_time_elapsed"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+                <xs:element ref="value"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="statistic_type">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="time">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="nil"
+                                  type="xs:string"></xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="time_elapsed">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="nil"
+                                  type="xs:string"></xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="business_time_elapsed">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="nil"
+                                  type="xs:string"></xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="value">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="tags">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tag"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="tag">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name"
+                            minOccurs="0"
+                            maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="changes"></xs:element>
+    <xs:element name="solutions"></xs:element>
+    <xs:element name="associated_sla_names"></xs:element>
+    <xs:element name="is_customer_satisfied">
+        <xs:complexType>
+            <xs:attribute name="nil"
+                          type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="customer_satisfaction_response">
+        <xs:complexType>
+            <xs:attribute name="nil"
+                          type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="total_time_spent">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="resolution">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="nil"
+                                  type="xs:string"></xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="resolution_type">
+        <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="tasks"></xs:element>
+    <xs:element name="time_tracks"></xs:element>
+    <xs:element name="assets"></xs:element>
+    <xs:element name="mobiles"></xs:element>
+    <xs:element name="other_assets"></xs:element>
+    <xs:element name="configuration_items"></xs:element>
+    <xs:element name="discovery_hardwares"></xs:element>
+    <xs:element name="purchase_orders"></xs:element>
+    <xs:element name="releases"></xs:element>
+    <xs:element name="problems"></xs:element>
+    <xs:element name="request_variables"></xs:element>
+    <xs:element name="page">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="per_page">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="total_entries">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+</xs:schema>

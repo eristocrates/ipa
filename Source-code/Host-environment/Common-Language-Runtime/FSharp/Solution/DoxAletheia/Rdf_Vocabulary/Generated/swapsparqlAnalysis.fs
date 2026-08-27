@@ -6,38 +6,14 @@ open type Prefix_ID
 
 module swapsparqlAnalysis =
     let _namespace_iri = Namespace_Iri swapsparqlAnalysis |> NamespaceIRI
-
     /// <summary>
-    ///   <para>swapsparqlAnalysis:CancelledClinicalAnalysisQuery</para>
+    ///   <para>swapsparqlAnalysis:</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>cancelled clinical analysis SPARQL query</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#CancelledClinicalAnalysisQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#CancelledClinicalAnalysisQuery</seealso>
-    let CancelledClinicalAnalysisQuery =
-        Prefixed_Name(swapsparqlAnalysis, "CancelledClinicalAnalysisQuery") |> PrefixedName
-
-    /// <summary>
-    ///   <para>swapsparqlAnalysis:hasDataSetQuery</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:Ontology</para>
     /// </remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#hasDataSetQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#hasDataSetQuery</seealso>
-    let hasDataSetQuery =
-        Prefixed_Name(swapsparqlAnalysis, "hasDataSetQuery") |> PrefixedName
-
-    /// <summary>
-    ///   <para>swapsparqlAnalysis:ClinicalDataSetQuery</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>clinical data set SPARQL query</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#ClinicalDataSetQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#ClinicalDataSetQuery</seealso>
-    let ClinicalDataSetQuery =
-        Prefixed_Name(swapsparqlAnalysis, "ClinicalDataSetQuery") |> PrefixedName
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#</seealso>
+    let _prefix_iri = Prefixed_Name(swapsparqlAnalysis, "") |> PrefixedName
 
     /// <summary>
     ///   <para>swapsparqlAnalysis:AnalysisQuery</para>
@@ -45,10 +21,32 @@ module swapsparqlAnalysis =
     /// <remarks>
     ///   <para>rdfs:Class</para>
     ///
-    /// labels<para>analysis SPARQL query</para></remarks>
+    /// labels<para>"analysis SPARQL query"</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#AnalysisQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#AnalysisQuery</seealso>
     let AnalysisQuery =
         Prefixed_Name(swapsparqlAnalysis, "AnalysisQuery") |> PrefixedName
+
+    /// <summary>
+    ///   <para>swapsparqlAnalysis:CancelledClinicalAnalysisQuery</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>"cancelled clinical analysis SPARQL query"</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#CancelledClinicalAnalysisQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#CancelledClinicalAnalysisQuery</seealso>
+    let CancelledClinicalAnalysisQuery =
+        Prefixed_Name(swapsparqlAnalysis, "CancelledClinicalAnalysisQuery") |> PrefixedName
+
+    /// <summary>
+    ///   <para>swapsparqlAnalysis:ClinicalAnalysisQuery</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>"clinical analysis SPARQL query"</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#ClinicalAnalysisQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#ClinicalAnalysisQuery</seealso>
+    let ClinicalAnalysisQuery =
+        Prefixed_Name(swapsparqlAnalysis, "ClinicalAnalysisQuery") |> PrefixedName
 
     /// <summary>
     ///   <para>swapsparqlAnalysis:ClinicalAnalysisResult</para>
@@ -56,20 +54,10 @@ module swapsparqlAnalysis =
     /// <remarks>
     ///   <para>rdfs:Class</para>
     ///
-    /// labels<para>clinical analysis result</para></remarks>
+    /// labels<para>"clinical analysis result"</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#ClinicalAnalysisResult">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#ClinicalAnalysisResult</seealso>
     let ClinicalAnalysisResult =
         Prefixed_Name(swapsparqlAnalysis, "ClinicalAnalysisResult") |> PrefixedName
-
-    /// <summary>
-    ///   <para>swapsparqlAnalysis:DataSetQuery</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>data set SPARQL query</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#DataSetQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#DataSetQuery</seealso>
-    let DataSetQuery = Prefixed_Name(swapsparqlAnalysis, "DataSetQuery") |> PrefixedName
 
     /// <summary>
     ///   <para>swapsparqlAnalysis:ClinicalDataRepository</para>
@@ -82,12 +70,23 @@ module swapsparqlAnalysis =
         Prefixed_Name(swapsparqlAnalysis, "ClinicalDataRepository") |> PrefixedName
 
     /// <summary>
+    ///   <para>swapsparqlAnalysis:ClinicalDataSetQuery</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>"clinical data set SPARQL query"</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#ClinicalDataSetQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#ClinicalDataSetQuery</seealso>
+    let ClinicalDataSetQuery =
+        Prefixed_Name(swapsparqlAnalysis, "ClinicalDataSetQuery") |> PrefixedName
+
+    /// <summary>
     ///   <para>swapsparqlAnalysis:CompletedClinicalAnalysisQuery</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
     ///
-    /// labels<para>completed clinical analysis SPARQL query</para></remarks>
+    /// labels<para>"completed clinical analysis SPARQL query"</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#CompletedClinicalAnalysisQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#CompletedClinicalAnalysisQuery</seealso>
     let CompletedClinicalAnalysisQuery =
         Prefixed_Name(swapsparqlAnalysis, "CompletedClinicalAnalysisQuery") |> PrefixedName
@@ -103,15 +102,14 @@ module swapsparqlAnalysis =
         Prefixed_Name(swapsparqlAnalysis, "DataRepository") |> PrefixedName
 
     /// <summary>
-    ///   <para>swapsparqlAnalysis:InvalidClinicalDataSetQuery</para>
+    ///   <para>swapsparqlAnalysis:DataSetQuery</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
     ///
-    /// labels<para>invalid clinical data set SPARQL query</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#InvalidClinicalDataSetQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#InvalidClinicalDataSetQuery</seealso>
-    let InvalidClinicalDataSetQuery =
-        Prefixed_Name(swapsparqlAnalysis, "InvalidClinicalDataSetQuery") |> PrefixedName
+    /// labels<para>"data set SPARQL query"</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#DataSetQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#DataSetQuery</seealso>
+    let DataSetQuery = Prefixed_Name(swapsparqlAnalysis, "DataSetQuery") |> PrefixedName
 
     /// <summary>
     ///   <para>swapsparqlAnalysis:InvalidClinicalAnalysisResult</para>
@@ -119,10 +117,21 @@ module swapsparqlAnalysis =
     /// <remarks>
     ///   <para>rdfs:Class</para>
     ///
-    /// labels<para>invalid clinical analysis result</para></remarks>
+    /// labels<para>"invalid clinical analysis result"</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#InvalidClinicalAnalysisResult">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#InvalidClinicalAnalysisResult</seealso>
     let InvalidClinicalAnalysisResult =
         Prefixed_Name(swapsparqlAnalysis, "InvalidClinicalAnalysisResult") |> PrefixedName
+
+    /// <summary>
+    ///   <para>swapsparqlAnalysis:InvalidClinicalDataSetQuery</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>"invalid clinical data set SPARQL query"</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#InvalidClinicalDataSetQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#InvalidClinicalDataSetQuery</seealso>
+    let InvalidClinicalDataSetQuery =
+        Prefixed_Name(swapsparqlAnalysis, "InvalidClinicalDataSetQuery") |> PrefixedName
 
     /// <summary>
     ///   <para>swapsparqlAnalysis:SubmittedClinicalAnalysisQuery</para>
@@ -130,20 +139,10 @@ module swapsparqlAnalysis =
     /// <remarks>
     ///   <para>rdfs:Class</para>
     ///
-    /// labels<para>submitted clinical analysis SPARQL query</para></remarks>
+    /// labels<para>"submitted clinical analysis SPARQL query"</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#SubmittedClinicalAnalysisQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#SubmittedClinicalAnalysisQuery</seealso>
     let SubmittedClinicalAnalysisQuery =
         Prefixed_Name(swapsparqlAnalysis, "SubmittedClinicalAnalysisQuery") |> PrefixedName
-
-    /// <summary>
-    ///   <para>swapsparqlAnalysis:hasDataRepository</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    /// </remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#hasDataRepository">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#hasDataRepository</seealso>
-    let hasDataRepository =
-        Prefixed_Name(swapsparqlAnalysis, "hasDataRepository") |> PrefixedName
 
     /// <summary>
     ///   <para>swapsparqlAnalysis:dataRepositoryOf</para>
@@ -166,21 +165,21 @@ module swapsparqlAnalysis =
         Prefixed_Name(swapsparqlAnalysis, "dataSetQueryOf") |> PrefixedName
 
     /// <summary>
-    ///   <para>swapsparqlAnalysis:</para>
+    ///   <para>swapsparqlAnalysis:hasDataRepository</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Ontology</para>
+    ///   <para>owl:ObjectProperty</para>
     /// </remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#</seealso>
-    let _prefix_iri = Prefixed_Name(swapsparqlAnalysis, "") |> PrefixedName
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#hasDataRepository">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#hasDataRepository</seealso>
+    let hasDataRepository =
+        Prefixed_Name(swapsparqlAnalysis, "hasDataRepository") |> PrefixedName
 
     /// <summary>
-    ///   <para>swapsparqlAnalysis:ClinicalAnalysisQuery</para>
+    ///   <para>swapsparqlAnalysis:hasDataSetQuery</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>clinical analysis SPARQL query</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#ClinicalAnalysisQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#ClinicalAnalysisQuery</seealso>
-    let ClinicalAnalysisQuery =
-        Prefixed_Name(swapsparqlAnalysis, "ClinicalAnalysisQuery") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#hasDataSetQuery">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#hasDataSetQuery</seealso>
+    let hasDataSetQuery =
+        Prefixed_Name(swapsparqlAnalysis, "hasDataSetQuery") |> PrefixedName

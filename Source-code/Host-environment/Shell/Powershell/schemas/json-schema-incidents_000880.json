@@ -1,0 +1,809 @@
+{
+  "type": "array",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "minItems": 1,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "number",
+      "name",
+      "description",
+      "description_no_html",
+      "state",
+      "priority",
+      "category",
+      "subcategory",
+      "assignee",
+      "requester",
+      "created_at",
+      "updated_at",
+      "sla_violations",
+      "number_of_comments",
+      "user_saw_all_comments",
+      "is_service_request",
+      "created_by",
+      "resolved_by",
+      "resolution_description",
+      "resolution_code",
+      "href",
+      "href_account_domain",
+      "department",
+      "cc",
+      "custom_fields_values",
+      "origin",
+      "releases",
+      "problems",
+      "problem",
+      "incidents",
+      "changes",
+      "tasks",
+      "time_tracks",
+      "solutions",
+      "assets",
+      "mobiles",
+      "other_assets",
+      "configuration_items",
+      "discovery_hardwares",
+      "purchase_orders"
+    ],
+    "properties": {
+      "id": {
+        "type": "number"
+      },
+      "number": {
+        "type": "number"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description_no_html": {
+        "type": "string",
+        "minLength": 1
+      },
+      "state": {
+        "type": "string",
+        "minLength": 1
+      },
+      "priority": {
+        "type": "string",
+        "minLength": 1
+      },
+      "category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default_tags": {
+            "type": "string"
+          },
+          "parent_id": {},
+          "deleted": {
+            "type": "boolean"
+          },
+          "default_assignee_id": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "default_tags",
+          "deleted",
+          "default_assignee_id"
+        ]
+      },
+      "subcategory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default_tags": {
+            "type": "string"
+          },
+          "parent_id": {
+            "type": "number"
+          },
+          "deleted": {
+            "type": "boolean"
+          },
+          "default_assignee_id": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "default_tags",
+          "parent_id",
+          "deleted",
+          "default_assignee_id"
+        ]
+      },
+      "assignee": {
+        "type": "object",
+        "properties": {
+          "group_id": {
+            "type": "number"
+          },
+          "is_user": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "avatar": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1
+              },
+              "initials": {
+                "type": "string",
+                "minLength": 1
+              },
+              "color": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "type",
+              "initials",
+              "color"
+            ]
+          },
+          "reports_to": {
+            "type": "object",
+            "properties": {
+              "group_id": {
+                "type": "number"
+              },
+              "is_user": {
+                "type": "boolean"
+              },
+              "id": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "email": {
+                "type": "string",
+                "minLength": 1
+              },
+              "avatar": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "image_class": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sso_image_class": {
+                    "type": "string"
+                  },
+                  "avatar_url": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "type",
+                  "image_class",
+                  "sso_image_class",
+                  "avatar_url"
+                ]
+              }
+            },
+            "required": [
+              "group_id",
+              "is_user",
+              "id",
+              "name",
+              "email",
+              "avatar"
+            ]
+          }
+        },
+        "required": [
+          "group_id",
+          "is_user",
+          "id",
+          "name",
+          "email",
+          "avatar",
+          "reports_to"
+        ]
+      },
+      "requester": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "account_id": {
+            "type": "number"
+          },
+          "user_id": {
+            "type": "number"
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "disabled": {
+            "type": "boolean"
+          },
+          "site_id": {},
+          "site": {},
+          "department_id": {
+            "type": "number"
+          },
+          "department": {
+            "type": "string",
+            "minLength": 1
+          },
+          "has_gravatar": {
+            "type": "boolean"
+          },
+          "customer_satisfaction_survey_time": {
+            "type": "string",
+            "minLength": 1
+          },
+          "avatar": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1
+              },
+              "initials": {
+                "type": "string",
+                "minLength": 1
+              },
+              "color": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "type",
+              "initials",
+              "color"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "account_id",
+          "user_id",
+          "email",
+          "name",
+          "disabled",
+          "department_id",
+          "department",
+          "has_gravatar",
+          "customer_satisfaction_survey_time",
+          "avatar"
+        ]
+      },
+      "created_at": {
+        "type": "string",
+        "minLength": 1
+      },
+      "updated_at": {
+        "type": "string",
+        "minLength": 1
+      },
+      "due_at": {},
+      "sla_violations": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "number_of_comments": {
+        "type": "number"
+      },
+      "user_saw_all_comments": {
+        "type": "boolean"
+      },
+      "is_service_request": {
+        "type": "boolean"
+      },
+      "created_by": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "account_id": {
+            "type": "number"
+          },
+          "user_id": {
+            "type": "number"
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "disabled": {
+            "type": "boolean"
+          },
+          "site_id": {},
+          "site": {},
+          "department_id": {
+            "type": "number"
+          },
+          "department": {
+            "type": "string",
+            "minLength": 1
+          },
+          "has_gravatar": {
+            "type": "boolean"
+          },
+          "customer_satisfaction_survey_time": {
+            "type": "string",
+            "minLength": 1
+          },
+          "avatar": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1
+              },
+              "initials": {
+                "type": "string",
+                "minLength": 1
+              },
+              "color": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "type",
+              "initials",
+              "color"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "account_id",
+          "user_id",
+          "email",
+          "name",
+          "disabled",
+          "department_id",
+          "department",
+          "has_gravatar",
+          "customer_satisfaction_survey_time",
+          "avatar"
+        ]
+      },
+      "resolved_by": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "disabled": {
+            "type": "boolean"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "created_at": {
+            "type": "string",
+            "minLength": 1
+          },
+          "updated_at": {
+            "type": "string",
+            "minLength": 1
+          },
+          "last_login": {
+            "type": "string",
+            "minLength": 1
+          },
+          "phone": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mobile_phone": {
+            "type": "string"
+          },
+          "role": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "portal": {
+                "type": "boolean"
+              },
+              "show_my_tasks": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "description",
+              "portal",
+              "show_my_tasks"
+            ]
+          },
+          "group_ids": {
+            "type": "array",
+            "items": {
+              "required": [],
+              "properties": {}
+            }
+          },
+          "available_for_assignment": {
+            "type": "boolean"
+          },
+          "can_be_available_for_assignment": {
+            "type": "boolean"
+          },
+          "provider": {
+            "type": "string",
+            "minLength": 1
+          },
+          "custom_fields_values": {
+            "type": "array",
+            "items": {
+              "required": [],
+              "properties": {}
+            }
+          },
+          "site": {},
+          "department": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "default_assignee_id": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "description",
+              "default_assignee_id"
+            ]
+          },
+          "avatar": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1
+              },
+              "initials": {
+                "type": "string",
+                "minLength": 1
+              },
+              "color": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "type",
+              "initials",
+              "color"
+            ]
+          },
+          "reports_to": {
+            "type": "object",
+            "properties": {
+              "group_id": {
+                "type": "number"
+              },
+              "is_user": {
+                "type": "boolean"
+              },
+              "id": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "email": {
+                "type": "string",
+                "minLength": 1
+              },
+              "avatar": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "image_class": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sso_image_class": {
+                    "type": "string"
+                  },
+                  "avatar_url": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "type",
+                  "image_class",
+                  "sso_image_class",
+                  "avatar_url"
+                ]
+              }
+            },
+            "required": [
+              "group_id",
+              "is_user",
+              "id",
+              "name",
+              "email",
+              "avatar"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "disabled",
+          "title",
+          "email",
+          "created_at",
+          "updated_at",
+          "last_login",
+          "phone",
+          "mobile_phone",
+          "role",
+          "group_ids",
+          "available_for_assignment",
+          "can_be_available_for_assignment",
+          "provider",
+          "custom_fields_values",
+          "department",
+          "avatar",
+          "reports_to"
+        ]
+      },
+      "resolution_description": {
+        "type": "string",
+        "minLength": 1
+      },
+      "resolution_code": {
+        "type": "string",
+        "minLength": 1
+      },
+      "group_assignee": {},
+      "customer_satisfaction_survey_sent_at": {},
+      "customer_satisfaction_survey_completed_at": {},
+      "custom": {},
+      "href": {
+        "type": "string",
+        "minLength": 1
+      },
+      "href_account_domain": {
+        "type": "string",
+        "minLength": 1
+      },
+      "site": {},
+      "department": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string"
+          },
+          "default_assignee_id": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "default_assignee_id"
+        ]
+      },
+      "cc": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "custom_fields_values": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "origin": {
+        "type": "string",
+        "minLength": 1
+      },
+      "releases": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "problems": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "problem": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "incidents": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "changes": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "tasks": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "time_tracks": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "solutions": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "assets": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "mobiles": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "other_assets": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "configuration_items": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "discovery_hardwares": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      },
+      "purchase_orders": {
+        "type": "array",
+        "items": {
+          "required": [],
+          "properties": {}
+        }
+      }
+    }
+  }
+}

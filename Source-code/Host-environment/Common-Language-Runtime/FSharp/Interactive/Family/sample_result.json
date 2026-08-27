@@ -1,0 +1,2015 @@
+{
+  "carrierEntity": {
+    "_id": "5cb9f4e4481f13c4fbf528be",
+    "affiliations": [
+      {
+        "affiliationNumber": "P100001492290001",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2020-03-31T00:00:00Z",
+        "groupPracticeNumber": "7740",
+        "hatCode": "PC",
+        "irsNumber": "562451616",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "375424",
+        "networkLocationCycleIdRef": "365449",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "24303",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2010-04-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290003",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2020-03-31T00:00:00Z",
+        "groupPracticeNumber": "M916",
+        "hatCode": "PC",
+        "irsNumber": "205454152",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "375424",
+        "networkLocationCycleIdRef": "5863250",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "103073",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2013-08-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290005",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2015-07-20T00:00:00Z",
+        "groupPracticeNumber": "YVZT",
+        "hatCode": "PC",
+        "irsNumber": "461906675",
+        "medicaidNumber": "003100300",
+        "medicareNumber": "FK316Z",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "375424",
+        "networkLocationCycleIdRef": "7463573",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "1243226",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2014-04-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290003",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2020-11-30T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "M916",
+        "hatCode": "PC",
+        "irsNumber": "205454152",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "375424",
+        "networkLocationCycleIdRef": "5863250",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "103073",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2020-04-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290001",
+        "alternateQualifier": "EI",
+        "area": "FM",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2020-11-30T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "7740",
+        "hatCode": "PC",
+        "irsNumber": "562451616",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "375424",
+        "networkLocationCycleIdRef": "365449",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "24303",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2020-04-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290003",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2022-03-31T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "M916",
+        "hatCode": "PC",
+        "irsNumber": "205454152",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "375424",
+        "networkLocationCycleIdRef": "5863250",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "103073",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2020-12-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290001",
+        "alternateQualifier": "EI",
+        "area": "FM",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2024-06-04T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "7740",
+        "hatCode": "PC",
+        "irsNumber": "562451616",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "375424",
+        "networkLocationCycleIdRef": "365449",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "24303",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2020-12-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290003",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2024-06-04T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "M916",
+        "hatCode": "PC",
+        "irsNumber": "205454152",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "375424",
+        "networkLocationCycleIdRef": "5863250",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "103073",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2022-04-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290003",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2024-06-05T00:00:00Z",
+        "groupPracticeNumber": "M916",
+        "hatCode": "PC",
+        "irsNumber": "205454152",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "375424",
+        "networkLocationCycleIdRef": "5863250",
+        "payClass": "DENY-NPI",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "103073",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2024-06-05T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290001",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2024-06-05T00:00:00Z",
+        "groupPracticeNumber": "7740",
+        "hatCode": "PC",
+        "irsNumber": "562451616",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "375424",
+        "networkLocationCycleIdRef": "365449",
+        "payClass": "DENY-NPI",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "24303",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2024-06-05T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290010",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "capCycle": "FL",
+        "capKey": "FC",
+        "capMethod": "02",
+        "capStatus": "01",
+        "capType": "PCP",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "SE",
+        "endDate": "2016-08-01T00:00:00Z",
+        "fundClass": "FLM1FUND",
+        "groupPracticeNumber": "YVZT",
+        "hatCode": "PC",
+        "irsNumber": "461906675",
+        "medicaidNumber": "003100300",
+        "medicareNumber": "FK316Z",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "7752875",
+        "patientLoad": "1500",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "periodTable": "0001",
+        "poolClass": "FLPC",
+        "program": "GP",
+        "providerId": "1243226",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2015-07-21T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290013",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2020-03-31T00:00:00Z",
+        "groupPracticeNumber": "YVZT",
+        "hatCode": "PC",
+        "irsNumber": "461906675",
+        "medicaidNumber": "003100300",
+        "medicareNumber": "FK316Z",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "7752875",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "1243226",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2016-08-02T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290015",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2017-02-28T00:00:00Z",
+        "groupPracticeNumber": "EWOT",
+        "hatCode": "SP",
+        "irsNumber": "208153119",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "11055789",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "2086003",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2016-01-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290015",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "QM",
+        "endDate": "2021-09-30T00:00:00Z",
+        "groupPracticeNumber": "EWOT",
+        "hatCode": "SP",
+        "irsNumber": "208153119",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "11055789",
+        "payClass": "FLPS100N",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "2086003",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2017-03-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290020",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2020-03-31T00:00:00Z",
+        "groupPracticeNumber": "CQCS",
+        "hatCode": "PC",
+        "irsNumber": "474155305",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "14002237",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "1581854",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2012-06-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290013",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2020-11-30T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "YVZT",
+        "hatCode": "PC",
+        "irsNumber": "461906675",
+        "medicaidNumber": "003100300",
+        "medicareNumber": "FK316Z",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "7752875",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "1243226",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2020-04-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290020",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2020-11-30T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "CQCS",
+        "hatCode": "PC",
+        "irsNumber": "474155305",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "14002237",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "1581854",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2020-04-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290013",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2021-04-30T00:00:00Z",
+        "groupPracticeNumber": "YVZT",
+        "hatCode": "PC",
+        "irsNumber": "461906675",
+        "medicaidNumber": "003100300",
+        "medicareNumber": "FK316Z",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "7752875",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "1243226",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2020-12-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290020",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2021-09-30T00:00:00Z",
+        "groupPracticeNumber": "CQCS",
+        "hatCode": "PC",
+        "irsNumber": "474155305",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "14002237",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "1581854",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2020-12-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290029",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "capCycle": "FL",
+        "capKey": "FC",
+        "capMethod": "02",
+        "capStatus": "01",
+        "capType": "PCP",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "SI",
+        "endDate": "2021-09-30T00:00:00Z",
+        "fundClass": "FLM1FUND",
+        "groupPracticeNumber": "YVZT",
+        "hatCode": "PC",
+        "irsNumber": "461906675",
+        "medicaidNumber": "003100300",
+        "medicareNumber": "FK316Z",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "7752875",
+        "patientLoad": "1500",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "periodTable": "0001",
+        "poolClass": "FLPC",
+        "program": "GP",
+        "providerId": "1243226",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2021-05-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290015",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "QM",
+        "endDate": "2023-03-31T00:00:00Z",
+        "groupPracticeNumber": "EWOT",
+        "hatCode": "SP",
+        "irsNumber": "208153119",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "11055789",
+        "payClass": "FLPS100N",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "2086003",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2021-10-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290029",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "capCycle": "FL",
+        "capKey": "FC",
+        "capMethod": "02",
+        "capStatus": "01",
+        "capType": "PCP",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "SI",
+        "endDate": "2025-04-30T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "fundClass": "FLM1FUND",
+        "groupPracticeNumber": "YVZT",
+        "hatCode": "PC",
+        "irsNumber": "461906675",
+        "medicaidNumber": "003100300",
+        "medicareNumber": "FK316Z",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "7752875",
+        "patientLoad": "1500",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "periodTable": "0001",
+        "poolClass": "FLPC",
+        "program": "GP",
+        "providerId": "1243226",
+        "providerType": "90",
+        "region": "99",
+        "spec1": "2005",
+        "startDate": "2021-12-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290029",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "capCycle": "FL",
+        "capKey": "FC",
+        "capMethod": "02",
+        "capStatus": "01",
+        "capType": "PCP",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "SI",
+        "endDate": "2021-11-30T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "fundClass": "FLM1FUND",
+        "groupPracticeNumber": "YVZT",
+        "hatCode": "PC",
+        "irsNumber": "461906675",
+        "medicaidNumber": "003100300",
+        "medicareNumber": "FK316Z",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "7752875",
+        "patientLoad": "1500",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "periodTable": "0001",
+        "poolClass": "FLPC",
+        "program": "GP",
+        "providerId": "1243226",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2021-10-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290041",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "capCycle": "FL",
+        "capKey": "FC",
+        "capMethod": "02",
+        "capStatus": "01",
+        "capType": "PCP",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "SI",
+        "endDate": "2022-06-30T00:00:00Z",
+        "fundClass": "FLM1FUND",
+        "groupPracticeNumber": "5BRG",
+        "hatCode": "PC",
+        "irsNumber": "474155305",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "56171845",
+        "patientLoad": "1500",
+        "payClass": "FLWCPCP",
+        "payTo": "G",
+        "periodTable": "0001",
+        "poolClass": "FLPC",
+        "program": "GP",
+        "providerId": "5233233",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2021-10-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliatedAgency": "Lee Memorial Health System",
+        "affiliationNumber": "P100001492290046",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "cnrReason": "DEL",
+        "endDate": "2023-10-31T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "8719",
+        "hatCode": "SP",
+        "irsNumber": "590714812",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "56499864",
+        "payClass": "FLPS120",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "22773",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2022-04-27T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290041",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "capCycle": "FL",
+        "capKey": "FC",
+        "capMethod": "02",
+        "capStatus": "01",
+        "capType": "PCP",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "SI",
+        "exceptionFee": "FLPS-PIP",
+        "fundClass": "FLM1FUND",
+        "groupPracticeNumber": "5BRG",
+        "hatCode": "PC",
+        "irsNumber": "474155305",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "56171845",
+        "patientLoad": "1500",
+        "payClass": "FLPS095",
+        "payTo": "G",
+        "periodTable": "0001",
+        "poolClass": "FLPC",
+        "program": "GP",
+        "providerId": "5233233",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2022-07-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliatedAgency": "Lee Memorial Health System",
+        "affiliationNumber": "P100001492290055",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "cnrReason": "DEL",
+        "credRequired": "No",
+        "endDate": "2023-01-31T00:00:00Z",
+        "groupPracticeNumber": "SZTJ",
+        "hatCode": "SP",
+        "irsNumber": "590714812",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "62778541",
+        "payClass": "FLPS120",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "3181659",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2022-04-27T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliatedAgency": "Lee Memorial Health System",
+        "affiliationNumber": "P100001492290055",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "cnrReason": "DEL",
+        "credRequired": "No",
+        "endDate": "2024-06-04T00:00:00Z",
+        "groupPracticeNumber": "SZTJ",
+        "hatCode": "SP",
+        "irsNumber": "590714812",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "62778541",
+        "payClass": "DENY-GRP",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "3181659",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2023-02-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290015",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "QM",
+        "endDate": "2023-10-31T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "EWOT",
+        "hatCode": "SP",
+        "irsNumber": "208153119",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "11055789",
+        "payClass": "FLPS100N",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "2086003",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2023-04-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290015",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "QM",
+        "endDate": "2024-06-04T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "EWOT",
+        "hatCode": "SP",
+        "irsNumber": "208153119",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "11055789",
+        "payClass": "FLPS100N",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "2086003",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2023-11-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliatedAgency": "Lee Memorial Health System",
+        "affiliationNumber": "P100001492290046",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "cnrReason": "DEL",
+        "endDate": "2024-06-04T00:00:00Z",
+        "groupPracticeNumber": "8719",
+        "hatCode": "SP",
+        "irsNumber": "590714812",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "56499864",
+        "payClass": "DENY-GRP",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "22773",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2023-11-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290067",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2024-06-05T00:00:00Z",
+        "groupPracticeNumber": "YVZT",
+        "hatCode": "PC",
+        "irsNumber": "461906675",
+        "medicaidNumber": "003100300",
+        "medicareNumber": "FK316Z",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "7752875",
+        "payClass": "DENY-NPI",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "1243226",
+        "providerType": "90",
+        "region": "99",
+        "spec1": "2005",
+        "startDate": "2024-06-05T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290071",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2024-06-05T00:00:00Z",
+        "groupPracticeNumber": "5BRG",
+        "hatCode": "PC",
+        "irsNumber": "474155305",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "56171845",
+        "payClass": "DENY-NPI",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "5233233",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2024-06-05T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290055",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2025-06-10T00:00:00Z",
+        "groupPracticeNumber": "SZTJ",
+        "hatCode": "SP",
+        "irsNumber": "590714812",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "62778541",
+        "payClass": "DENY-GRP",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "3181659",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2024-06-05T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliatedAgency": "Lee Memorial Health System",
+        "affiliationNumber": "P100001492290046",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "cnrReason": "DEL",
+        "endDate": "2024-10-30T00:00:00Z",
+        "groupPracticeNumber": "8719",
+        "hatCode": "SP",
+        "irsNumber": "590714812",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "56499864",
+        "payClass": "DENY-GRP",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "22773",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2024-06-05T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290015",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "QM",
+        "endDate": "2026-02-18T00:00:00Z",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "EWOT",
+        "hatCode": "SP",
+        "irsNumber": "208153119",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "11055789",
+        "payClass": "FLPS100N",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "2086003",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2024-06-05T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290046",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2025-06-10T00:00:00Z",
+        "groupPracticeNumber": "8719",
+        "hatCode": "SP",
+        "irsNumber": "590714812",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "56499864",
+        "payClass": "DENY-GRP",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "22773",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2024-10-31T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290029",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "capCycle": "FL",
+        "capKey": "FC",
+        "capMethod": "02",
+        "capStatus": "01",
+        "capType": "PCP",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "SI",
+        "exceptionFee": "FLPS-PIP",
+        "fundClass": "FLM1FUND",
+        "groupPracticeNumber": "YVZT",
+        "hatCode": "PC",
+        "irsNumber": "461906675",
+        "medicaidNumber": "003100300",
+        "medicareNumber": "FK316Z",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "7752875",
+        "patientLoad": "1500",
+        "payClass": "FLPS100",
+        "payTo": "G",
+        "periodTable": "0001",
+        "poolClass": "FLPC",
+        "program": "GP",
+        "providerId": "1243226",
+        "providerType": "90",
+        "region": "99",
+        "spec1": "2005",
+        "startDate": "2025-05-01T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290081",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2024-07-11T00:00:00Z",
+        "groupPracticeNumber": "JF15",
+        "hatCode": "SP",
+        "irsNumber": "992646504",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "91522673",
+        "payClass": "DENY-GRP",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "6208610",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2024-07-09T00:00:00Z",
+        "status": "NP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290081",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "endDate": "2024-10-30T00:00:00Z",
+        "groupPracticeNumber": "JF15",
+        "hatCode": "SP",
+        "irsNumber": "992646504",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "91522673",
+        "payClass": "DENY-GRP",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "6208610",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2024-07-12T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290081",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "JF15",
+        "hatCode": "SP",
+        "irsNumber": "992646504",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "91522673",
+        "payClass": "FLPS120",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "6208610",
+        "providerType": "90",
+        "spec1": "2005",
+        "startDate": "2024-10-31T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "207R00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290015",
+        "alternateQualifier": "EI",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "QM",
+        "endDate": "2026-03-31T00:00:00Z",
+        "groupPracticeNumber": "EWOT",
+        "hatCode": "SP",
+        "irsNumber": "208153119",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "11055789",
+        "payClass": "FLPS100N",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "2086003",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2026-02-19T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      },
+      {
+        "affiliationNumber": "P100001492290015",
+        "alternateQualifier": "EI",
+        "area": "FL",
+        "businessUnit": "FL",
+        "carrier": "MD",
+        "claimType": "M",
+        "classX": "QM",
+        "exceptionFee": "FLPS-PIP",
+        "groupPracticeNumber": "EWOT",
+        "hatCode": "SP",
+        "irsNumber": "208153119",
+        "medicaidNumber": "003100300",
+        "nationalProviderIdentifier": "1093972713",
+        "networkCycleIdRef": "5799077",
+        "networkLocationCycleIdRef": "11055789",
+        "payClass": "FLPS100N",
+        "payTo": "G",
+        "program": "GP",
+        "providerId": "2086003",
+        "providerType": "90",
+        "spec1": "1987",
+        "startDate": "2026-04-01T00:00:00Z",
+        "status": "IP",
+        "taxonomy": "208M00000X"
+      }
+    ],
+    "attributes": [
+      {
+        "name": "Language",
+        "fields": [
+          {
+            "name": "Language",
+            "value": "Spanish"
+          }
+        ]
+      },
+      {
+        "name": "Language",
+        "fields": [
+          {
+            "name": "Language",
+            "value": "English"
+          }
+        ]
+      },
+      {
+        "name": "Contains demographics, such as Ethnicity, Minority Status.",
+        "fields": [
+          {
+            "name": "Minority Status",
+            "value": "Ethnic"
+          },
+          {
+            "name": "Ethnicity",
+            "value": "Hispanic or Latino"
+          }
+        ]
+      },
+      {
+        "name": "DEA Information",
+        "fields": [
+          {
+            "name": "Expiration Date",
+            "value_date": "2025-09-30T00:00:00Z"
+          },
+          {
+            "name": "DEA Number",
+            "value": "FG2309474"
+          },
+          {
+            "name": "State",
+            "value": "FL"
+          }
+        ]
+      },
+      {
+        "name": "Medical License Certificate",
+        "fields": [
+          {
+            "name": "State",
+            "value": "Florida"
+          },
+          {
+            "name": "License Number",
+            "value": "ME108449"
+          },
+          {
+            "name": "Expiration Date",
+            "value_date": "2027-01-31T00:00:00Z"
+          },
+          {
+            "name": "Licensure Status",
+            "value": "AC"
+          },
+          {
+            "name": "Effective Date",
+            "value_date": "2010-10-20T00:00:00Z"
+          }
+        ]
+      },
+      {
+        "name": "Telemedicine Participant",
+        "fields": [
+          {
+            "name": "Telemdcn Participant",
+            "value": "Y"
+          }
+        ]
+      },
+      {
+        "name": "ACA Payment Eligibility",
+        "fields": [
+          {
+            "name": "Health Plan",
+            "value": "Sunshine"
+          },
+          {
+            "name": "ACA Payment Elig",
+            "value": "Yes"
+          },
+          {
+            "name": "Effective Date",
+            "value_date": "2013-01-01T00:00:00Z"
+          },
+          {
+            "name": "Termination Date",
+            "value_date": "2014-12-31T00:00:00Z"
+          },
+          {
+            "name": "Qualifier",
+            "value": "A"
+          },
+          {
+            "name": "Region",
+            "value": "FM"
+          },
+          {
+            "name": "ACA ymdtrans",
+            "value_date": "2013-08-07T00:00:00Z"
+          }
+        ]
+      },
+      {
+        "name": "Telehealth Participant",
+        "fields": [
+          {
+            "name": "Participating",
+            "value": "Yes"
+          }
+        ]
+      },
+      {
+        "name": "Cultural Competence Training",
+        "fields": [
+          {
+            "name": "Cultural Training",
+            "value": "Y"
+          },
+          {
+            "name": "African American",
+            "value": "Y"
+          },
+          {
+            "name": "Other",
+            "value": "Y"
+          },
+          {
+            "name": "Alaskan Native",
+            "value": "Y"
+          },
+          {
+            "name": "American Indian",
+            "value": "Y"
+          },
+          {
+            "name": "Asian",
+            "value": "Y"
+          },
+          {
+            "name": "Pacific Islander",
+            "value": "Y"
+          },
+          {
+            "name": "Hispanic or Latino",
+            "value": "Y"
+          },
+          {
+            "name": "Training Completed",
+            "value": "Y"
+          }
+        ]
+      },
+      {
+        "name": "MMA Physician Incentive",
+        "fields": [
+          {
+            "name": "Physician Eligible",
+            "value": "Yes"
+          },
+          {
+            "name": "TIN",
+            "value_number": 208153119
+          },
+          {
+            "name": "Effective Date",
+            "value_date": "2021-10-01T00:00:00Z"
+          },
+          {
+            "name": "End Date",
+            "value_date": "4000-01-01T00:00:00Z"
+          },
+          {
+            "name": "Specialty Code",
+            "value": "PQ"
+          }
+        ]
+      },
+      {
+        "name": "MMA Physician Incentive",
+        "fields": [
+          {
+            "name": "Physician Eligible",
+            "value": "Yes"
+          },
+          {
+            "name": "TIN",
+            "value_number": 461906675
+          },
+          {
+            "name": "Effective Date",
+            "value_date": "2021-10-01T00:00:00Z"
+          },
+          {
+            "name": "End Date",
+            "value_date": "4000-01-01T00:00:00Z"
+          },
+          {
+            "name": "Specialty Code",
+            "value": "PQ"
+          }
+        ]
+      },
+      {
+        "name": "MMA Physician Incentive",
+        "fields": [
+          {
+            "name": "Physician Eligible",
+            "value": "Yes"
+          },
+          {
+            "name": "TIN",
+            "value_number": 474155305
+          },
+          {
+            "name": "Effective Date",
+            "value_date": "2022-07-01T00:00:00Z"
+          },
+          {
+            "name": "End Date",
+            "value_date": "4000-01-01T00:00:00Z"
+          },
+          {
+            "name": "Specialty Code",
+            "value": "PQ"
+          }
+        ]
+      },
+      {
+        "name": "MMA Physician Incentive",
+        "fields": [
+          {
+            "name": "Physician Eligible",
+            "value": "Yes"
+          },
+          {
+            "name": "TIN",
+            "value_number": 590714812
+          },
+          {
+            "name": "Effective Date",
+            "value_date": "2023-02-01T00:00:00Z"
+          },
+          {
+            "name": "End Date",
+            "value_date": "4000-01-01T00:00:00Z"
+          },
+          {
+            "name": "Specialty Code",
+            "value": "PM"
+          }
+        ]
+      },
+      {
+        "name": "MMA Physician Incentive",
+        "fields": [
+          {
+            "name": "Physician Eligible",
+            "value": "Yes"
+          },
+          {
+            "name": "TIN",
+            "value_number": 992646504
+          },
+          {
+            "name": "Effective Date",
+            "value_date": "2025-09-01T00:00:00Z"
+          },
+          {
+            "name": "End Date",
+            "value_date": "4000-01-01T00:00:00Z"
+          },
+          {
+            "name": "Specialty Code",
+            "value": "SP"
+          }
+        ]
+      },
+      {
+        "name": "Medicaid Provider Type",
+        "fields": [
+          {
+            "name": "Medicaid Prov Type",
+            "value": "FL25 - PHYSICIAN (DOCTOR OF MEDICINE - M.D.)"
+          },
+          {
+            "name": "Provider Specialty Code",
+            "value": "FL018"
+          },
+          {
+            "name": "Date Verified",
+            "value_date": "2023-11-01T00:00:00Z"
+          }
+        ]
+      }
+    ],
+    "carrierId": "71",
+    "dateOfBirth": "1963-10-22T00:00:00Z",
+    "degree": "MD",
+    "email": "BELLO2263@GMAIL.COM",
+    "entityId": "159507",
+    "entitySimilarityId": "50e42915-ac97-3918-9758-9dac14ae9f5f",
+    "entityType": "prac",
+    "gender": "M",
+    "hatCode": "SP",
+    "hospitalAffiliations": [
+      {
+        "name": "Cape Coral Hospital",
+        "networkEligible_derived": "Y",
+        "primary": "N",
+        "privilege": "ACTIVE",
+        "privilegeEffectiveDate": "2012-06-28T00:00:00Z",
+        "provId": "24173"
+      },
+      {
+        "name": "Homestead Hospital",
+        "networkEligible_derived": "Y",
+        "primary": "Y",
+        "privilege": "ACTIVE",
+        "privilegeEffectiveDate": "2011-01-01T00:00:00Z",
+        "provId": "24473"
+      },
+      {
+        "name": "Gulf Coast Medical Center",
+        "networkEligible_derived": "N",
+        "primary": "N",
+        "privilege": "ACTIVE",
+        "privilegeEffectiveDate": "2012-06-28T00:00:00Z",
+        "provId": "116838"
+      },
+      {
+        "name": "Healthpark Medical Center",
+        "networkEligible_derived": "Y",
+        "primary": "N",
+        "privilege": "ACTIVE",
+        "privilegeEffectiveDate": "2012-06-28T00:00:00Z",
+        "provId": "116839"
+      },
+      {
+        "name": "Lee Memorial Hospital",
+        "networkEligible_derived": "N",
+        "primary": "N",
+        "privilege": "ACTIVE",
+        "privilegeEffectiveDate": "2012-06-28T00:00:00Z",
+        "provId": "1162822"
+      }
+    ],
+    "licenses": [
+      {
+        "effectiveDate": "2010-10-20T00:00:00Z",
+        "expirationDate": "2027-01-31T00:00:00Z",
+        "licenseNumber": "ME108449",
+        "licensureStatus": "Active",
+        "state": "Florida"
+      }
+    ],
+    "locations": [
+      {
+        "address": {
+          "addressLine1": "2400 Harbor Blvd",
+          "addressLine2": "Ste 14",
+          "city": "Port Charlotte",
+          "country": "United States",
+          "county": "Charlotte",
+          "fipsCountyCode": "12015",
+          "latitude": "26.9909060",
+          "longitude": "-82.0962680",
+          "state": "Florida",
+          "stateCode": "FL",
+          "type": "MAIN",
+          "zipCode": "33952",
+          "zipPlus4": "5038"
+        },
+        "attributes": [
+          {
+            "name": "Provider Panel Questions",
+            "fields": [
+              {
+                "name": "ADA ASL",
+                "value": "Y"
+              },
+              {
+                "name": "CMS Med Equip Access",
+                "value": "Y"
+              },
+              {
+                "name": "Meets ADA Accessibility",
+                "value": "Y"
+              },
+              {
+                "name": "ADA Parking",
+                "value": "Y"
+              },
+              {
+                "name": "ADA Exterior Bldg",
+                "value": "Y"
+              },
+              {
+                "name": "ADA Interior Bldg",
+                "value": "Y"
+              },
+              {
+                "name": "ADA Restroom",
+                "value": "Y"
+              },
+              {
+                "name": "ADA Exam Room",
+                "value": "Y"
+              },
+              {
+                "name": "ADA Exam TableScale",
+                "value": "Y"
+              }
+            ]
+          }
+        ],
+        "eligibleForDisplay": [
+          {
+            "eligibleIndicator": "Y",
+            "endDate": "4000-01-01T00:00:00Z",
+            "geoCoordsDisplay": "Y",
+            "parDisplay": "Y",
+            "printDisplay": "Y",
+            "specialtyDisplay": "Y",
+            "startDate": "2022-07-01T00:00:00Z",
+            "validationDisplay": "Y"
+          }
+        ],
+        "handicap": "N",
+        "locSimilarityId": "fdd2442f-bed2-3a6f-8649-f3f154fb1e92",
+        "locationId": "7876538",
+        "locationStartDate": "2021-10-01T00:00:00Z",
+        "name": "TLC Medical Center LLC",
+        "networkLocationCycles": [
+          {
+            "endDate": "4000-01-01T00:00:00Z",
+            "excludeFromDirectory": "N",
+            "networkCycleIdRef": "5799077",
+            "networkLocationCycleId": "56171851",
+            "startDate": "2021-10-01T00:00:00Z"
+          }
+        ],
+        "phone": {
+          "phone": "941-421-7804"
+        },
+        "practitionerOfficeHours": {
+          "monday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "tuesday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "wednesday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "thursday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "friday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          }
+        },
+        "priScore": "300.0",
+        "primary": "N",
+        "provPhones": {
+          "phone": "941-421-7804"
+        },
+        "providerId": "5233233",
+        "providerName": "TLC Medical Center LLC",
+        "providerOfficeHours": {
+          "monday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "tuesday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "wednesday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "thursday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "friday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          }
+        },
+        "smartyKey": "812076465",
+        "specialties": [
+          {
+            "boardCertExp": "2022-12-31T00:00:00.000Z",
+            "boardCertIssued": "2012-08-16T00:00:00.000Z",
+            "boardStatus": "NA",
+            "category": "Medical Professionals",
+            "categorySpanish": "Profesionales médicos",
+            "description": "Internal Medicine",
+            "descriptionDisplay": "Internal Medicine (General Medical Care)",
+            "descriptionSpanish": "Medicina interna (atención médica general)",
+            "grouping": "Primary Care",
+            "groupingSpanish": "Atención primaria",
+            "hatCode": "PC",
+            "networkStatus": "Par",
+            "primary": "Y",
+            "specialtyId": "2005"
+          },
+          {
+            "boardStatus": "Unknown",
+            "description": "Hospitalist",
+            "hatCode": "PC",
+            "networkStatus": "Par",
+            "primary": "Y",
+            "specialtyId": "1987"
+          }
+        ],
+        "taxIdNumber": "47-4155305"
+      },
+      {
+        "address": {
+          "addressLine1": "2180 Maravilla Ln",
+          "addressLine2": "Ste 2",
+          "city": "Fort Myers",
+          "country": "United States",
+          "county": "Lee",
+          "fipsCountyCode": "12071",
+          "latitude": "26.6151520",
+          "longitude": "-81.8711170",
+          "state": "Florida",
+          "stateCode": "FL",
+          "type": "MAIN",
+          "zipCode": "33901",
+          "zipPlus4": "7221"
+        },
+        "attributes": [
+          {
+            "name": "Provider Panel Questions",
+            "fields": [
+              {
+                "name": "Accept New?",
+                "value": "Y"
+              },
+              {
+                "name": "Existing Patients Only?",
+                "value": "N"
+              },
+              {
+                "name": "Closed Panel?",
+                "value": "N"
+              }
+            ]
+          }
+        ],
+        "eligibleForDisplay": [
+          {
+            "eligibleIndicator": "Y",
+            "endDate": "4000-01-01T00:00:00Z",
+            "geoCoordsDisplay": "Y",
+            "parDisplay": "Y",
+            "printDisplay": "Y",
+            "specialtyDisplay": "Y",
+            "startDate": "2022-07-01T00:00:00Z",
+            "validationDisplay": "Y"
+          }
+        ],
+        "handicap": "N",
+        "locSimilarityId": "05c217a8-4a66-3c89-8145-7caea26bc75d",
+        "locationId": "7876482",
+        "locationStartDate": "2021-10-01T00:00:00Z",
+        "name": "TLC Medical Center LLC",
+        "networkLocationCycles": [
+          {
+            "endDate": "4000-01-01T00:00:00Z",
+            "excludeFromDirectory": "N",
+            "networkCycleIdRef": "5799077",
+            "networkLocationCycleId": "56171845",
+            "startDate": "2021-10-01T00:00:00Z"
+          }
+        ],
+        "panelCycles": [
+          {
+            "genderLimitation": "NO",
+            "highestAge": "120",
+            "highestUnits": "Y",
+            "lowestAge": "18",
+            "lowestUnits": "Y",
+            "panelCode": "PC",
+            "panelLimit": "1500",
+            "panelStatus": "O",
+            "startDate": "2022-03-28T00:00:00Z"
+          }
+        ],
+        "phone": {
+          "phone": "239-208-7756"
+        },
+        "practitionerOfficeHours": {
+          "monday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "tuesday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "wednesday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "thursday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "friday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          }
+        },
+        "priScore": "300.0",
+        "primary": "N",
+        "provPhones": {
+          "phone": "239-208-7756"
+        },
+        "providerId": "5233233",
+        "providerName": "TLC Medical Center LLC",
+        "providerOfficeHours": {
+          "monday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "tuesday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "wednesday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "thursday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          },
+          "friday": {
+            "open": "0800",
+            "close": "1700",
+            "isoOpen": "0001-01-01T08:00:00Z",
+            "isoClose": "0001-01-01T17:00:00Z"
+          }
+        },
+        "smartyKey": "414586180",
+        "specialties": [
+          {
+            "boardCertExp": "2022-12-31T00:00:00.000Z",
+            "boardCertIssued": "2012-08-16T00:00:00.000Z",
+            "boardStatus": "NA",
+            "category": "Medical Professionals",
+            "categorySpanish": "Profesionales médicos",
+            "description": "Internal Medicine",
+            "descriptionDisplay": "Internal Medicine (General Medical Care)",
+            "descriptionSpanish": "Medicina interna (atención médica general)",
+            "grouping": "Primary Care",
+            "groupingSpanish": "Atención primaria",
+            "hatCode": "PC",
+            "networkStatus": "Par",
+            "primary": "Y",
+            "specialtyId": "2005"
+          },
+          {
+            "boardStatus": "Unknown",
+            "description": "Hospitalist",
+            "hatCode": "PC",
+            "networkStatus": "Par",
+            "primary": "Y",
+            "specialtyId": "1987"
+          }
+        ],
+        "taxIdNumber": "47-4155305"
+      }
+    ],
+    "medicaidNumbers": [
+      {
+        "effectiveDate": "2011-01-07T00:00:00Z",
+        "expirationDate": "2299-12-31T00:00:00Z",
+        "number": "003100300",
+        "state": "FL"
+      },
+      {
+        "effectiveDate": "2011-01-07T00:00:00Z",
+        "expirationDate": "2299-12-31T00:00:00Z",
+        "number": "003100300",
+        "state": "FL"
+      },
+      {
+        "effectiveDate": "2011-01-07T00:00:00Z",
+        "expirationDate": "2299-12-31T00:00:00Z",
+        "number": "003100300",
+        "state": "FL"
+      },
+      {
+        "number": "003100300",
+        "state": "FL"
+      }
+    ],
+    "medicareNumbers": [
+      {
+        "number": "FK316Z"
+      }
+    ],
+    "name": {
+      "firstName": "Alfonso",
+      "lastName": "Garcia-Bello",
+      "salutation": " "
+    },
+    "nationalProviderIdentifiers": [
+      {
+        "effectiveDate": "2022-02-22T00:00:00Z",
+        "number": "1093972713",
+        "terminationDate": "4000-01-01T00:00:00Z",
+        "type": "Type 1"
+      }
+    ],
+    "network": {
+      "amisysInstance": "AMISYS FLORIDA",
+      "businessUnit": {
+        "code": "FL",
+        "name": "Florida",
+        "networkId": "68"
+      },
+      "carrier": {
+        "code": "MD",
+        "name": "Medicaid FL",
+        "networkId": "71"
+      },
+      "company": {
+        "code": "Centene",
+        "name": "Centene",
+        "networkId": "28"
+      },
+      "healthPlan": {
+        "code": "Sunshine",
+        "name": "Sunshine",
+        "networkId": "69"
+      },
+      "networkCycles": [
+        {
+          "endDate": "2015-07-20T00:00:00Z",
+          "networkCycleId": "375424",
+          "startDate": "2010-04-01T00:00:00Z",
+          "status": "Nonpar"
+        },
+        {
+          "endDate": "4000-01-01T00:00:00Z",
+          "networkCycleId": "5799077",
+          "startDate": "2015-07-21T00:00:00Z",
+          "status": "Par"
+        }
+      ],
+      "product": {
+        "code": "GP",
+        "name": "Medicaid/Child Welfare - FL",
+        "networkId": "70"
+      }
+    },
+    "trainings": [
+      {
+        "completed": "Y",
+        "degree": "MD",
+        "endDate": "1988-08-01T00:00:00Z",
+        "institutionName": "Instituto Superior De Ciencias Medicas De La Habana",
+        "startDate": "1982-09-01T00:00:00Z",
+        "type": "Foreign University"
+      },
+      {
+        "completed": "Y",
+        "endDate": "2010-11-01T00:00:00Z",
+        "institutionName": "Albert Einstein College of Medicine - Yeshiva University",
+        "specialty": "Internal Medicine",
+        "startDate": "2007-08-01T00:00:00Z",
+        "type": "INTERN"
+      }
+    ],
+    "updateTime": "2026-08-06T16:05:38.790Z"
+  }
+}

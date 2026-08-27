@@ -1,32 +1,21 @@
-xmldoc for iri https://w3id.org/amv#At&TBellLaboratories comments [||] labels [||] failed with '"' is an unexpected token. The expected token is ';'. Line 1, position 57.
-xmldoc for iri http://purl.org/holy/ns#TheHydrogenUtilization&GreenEnergyProject comments [||] labels [|"The Hydrogen Utilization & Green Energy project"|] failed with '"' is an unexpected token. The expected token is ';'. Line 1, position 81.
-couldn't find prefix id for http://purl.org/NET/cartCoord#
-couldn't find prefix id for http://purl.org/NET/lio#
-couldn't find prefix id for http://purl.org/NET/p-plan#
-couldn't find prefix id for http://purl.org/NET/po#
-couldn't find prefix id for http://purl.org/NET/soron/
-couldn't find prefix id for http://purl.org/NET/step#
-couldn't find prefix id for http://purl.org/NET/tsn#
-couldn't find prefix id for http://purl.org/NET/tsnchange#
-couldn't find prefix id for http://purl.org/NET/VideoGameOntology#
-couldn't find prefix id for http://purl.org/NET/wf-invocation#
-couldn't find prefix id for http://purl.org/NET/wf-motifs#
-xmldoc for iri http://qudt.org/schema/qudt/QuantityKindDimensionVector comments [|"<p class="lm-para">A  <em>Quantity Kind Dimension Vector</em> describes the dimensionality of a quantity kind in the context of a system of units. In the SI system of units, the dimensions of a quantity kind are expressed as a product of the basic physical dimensions mass (\\(M\\)), length (\\(L\\)), time (\\(T\\)) current (\\(I\\)), amount of substance (\\(N\\)), luminous intensity (\\(J\\)) and absolute temperature (\\(\	heta\\)) as \\(dim \\, Q = L^{\\alpha} \\, M^{\eta} \\, T^{\\gamma} \\, I ^{\\delta} \\, \	heta ^{\\epsilon} \\, N^{\\eta} \\, J ^{\
-u}\\).</p>
-
-<p class="lm-para">The rational powers of the dimensional exponents, \\(\\alpha, \\, \eta, \\, \\gamma, \\, \\delta, \\, \\epsilon, \\, \\eta, \\, \
-u\\), are positive, negative, or zero.</p>
-
-<p class="lm-para">For example, the dimension of the physical quantity kind \\(\\it{speed}\\) is \\(\oxed{length/time}\\), \\(L/T\\) or \\(LT^{-1}\\), and the dimension of the physical quantity kind force is \\(\oxed{mass \	imes acceleration}\\) or \\(\oxed{mass \	imes (length/time)/time}\\), \\(ML/T^2\\) or \\(MLT^{-2}\\) respectively.</p>"|] labels [|"Quantity Kind Dimension Vector"|] failed with '', hexadecimal value 0x08, is an invalid character. Line 2, position 509.
-couldn't load graph for http://rdfs.co/juso/kr/
-couldn't find prefix id for http://www.tele.pw.edu.pl/_sims-onto/ConnectivityType.owl#
-couldn't find prefix id for http://purl.org/NET/biol/ns#
-couldn't find prefix id for http://purl.org/NET/dbm/ontology#
-couldn't find prefix id for http://purl.org/NET/hifm/ontology#
-couldn't find prefix id for http://purl.org/NET/ns/ex#
-couldn't find prefix id for http://purl.org/NET/ns/ontology-annot#
-couldn't find prefix id for http://purl.org/NET/opmv/ns#
-couldn't find prefix id for http://purl.org/NET/provenance/ns#
-couldn't find prefix id for http://purl.org/NET/provenance/types#
-couldn't find prefix id for http://purl.org/NET/nknouf/ns/bibtex#
-couldn't find prefix id for http://purl.org/NET/vocab/2004/03/label#
+xmldoc for vocabulary_term { iri = PrefixedName DoxAletheia.DotNetRDFSharp+Prefixed_Name
+  rdf_types =
+   [|PrefixedName DoxAletheia.DotNetRDFSharp+Prefixed_Name;
+     PrefixedName DoxAletheia.DotNetRDFSharp+Prefixed_Name|]
+  rdfs_comments = [||]
+  rdfs_labels = [||] } failed with '"' is an unexpected token. The expected token is ';'. Line 1, position 57.
+xmldoc for vocabulary_term { iri = PrefixedName DoxAletheia.DotNetRDFSharp+Prefixed_Name
+  rdf_types = [|PrefixedName DoxAletheia.DotNetRDFSharp+Prefixed_Name|]
+  rdfs_comments =
+   [|TypedLiteral
+       (DatatypedLiteral DoxAletheia.DotNetRDFSharp+Datatyped_Literal)|]
+  rdfs_labels =
+   [|TypedLiteral
+       (DatatypedLiteral DoxAletheia.DotNetRDFSharp+Datatyped_Literal)|] } failed with '', hexadecimal value 0x08, is an invalid character. Line 2, position 515.
+xmldoc for vocabulary_term { iri = PrefixedName DoxAletheia.DotNetRDFSharp+Prefixed_Name
+  rdf_types =
+   [|PrefixedName DoxAletheia.DotNetRDFSharp+Prefixed_Name;
+     PrefixedName DoxAletheia.DotNetRDFSharp+Prefixed_Name|]
+  rdfs_comments = [||]
+  rdfs_labels =
+   [|StringLiteral (SimpleString DoxAletheia.DotNetRDFSharp+Simple_String)|] } failed with '"' is an unexpected token. The expected token is ';'. Line 1, position 81.

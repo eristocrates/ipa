@@ -1,5 +1,5 @@
 #time on
-fsi.ShowDeclarationValues <- true
+fsi.ShowDeclarationValues <- false
 fsi.PrintLength <- 10
 
 
@@ -47,6 +47,8 @@ open VDS.RDF.Storage
 open VDS.RDF.Query.Builder
 open VDS.RDF.Query
 open VDS.RDF.Query.Patterns
+open VDS.RDF.Query.Inference
+
 
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\PowershellErgonomics.fsx"
@@ -244,8 +246,8 @@ module fibo =
 
 
 
-
-
+// TODO add yago
+// https://yago-knowledge.org/data/
 
 
 
@@ -1504,6 +1506,7 @@ FileLoader.Load(lov_graph, Document.lov.n3.path)
 
 
 
+(*
 
 let vocabulary_graph = 
     sparql.discover [ vocabulary_variable ] {
@@ -1515,41 +1518,220 @@ let triples_by_vocabulary =
     |> Seq.toArray
     |> Array.groupBy (fun triple -> triple.curSubject)
 let random_vocabulary = triples_by_vocabulary |> Array.randomChoice
+*)
+
 let should_overwrite = true
 let error_lines = new ResizeArray<string>()
 let in_memory_dataset = new InMemoryDataset(new DiskDemandTripleStore(), true, false)
 let fibo_substring = @"https\spec.edmcouncil.org\fibo"
+
+let default_graph  =
+    Folder.Vocabulary.descendant_files "*.ttl"
+    // |> Array.Parallel.filter (fun file_path -> not (file_path.Contains(fibo_substring) ))
+    |> Array.Parallel.iter (fun ttl_file_path -> 
+        let ttl_file = PathInfo.from_string ttl_file_path
+        let vocabulary_name = Iri_Reference(ttl_file.path) |> IRIREF
+        in_memory_dataset.HasGraph(vocabulary_name.vds_node) |> ignore
+        )
+    let graph = new ThreadSafeGraph()
+    graph.Assert(in_memory_dataset.Triples) |> ignore
+    graph
+// let reasoner = RdfsReasoner()
+// reasoner.Apply(default_graph)
+
+
+let iris = 
+    default_graph.AllNodes
+    |> PSeq.choose (fun vds_node -> 
+        if vds_node.NodeType = NodeType.Uri then 
+            Some (vds_node :?> UriNode |> Iri.from_vds_node)
+        else 
+            None
+        
+        )
+    |> PSeq.distinctBy (fun iri -> iri.nt)
+    |> PSeq.sortBy (fun iri -> iri.lexical_form)
+    |> Seq.toArray
+    |> Array.rev
+    
+iris.Length
+let prefix_id'iri = 
+    iris
+    |> Array.Parallel.choose (fun iri -> 
+            let maybe_prefix_id = 
+                prefix_registry.prefix_ids 
+                |> Array.sortBy (fun prefix_id -> prefix_id.namespace_name)
+                |> Array.rev
+                |> Array.tryFind (fun prefix_id -> iri.lexical_form.StartsWith(prefix_id.namespace_name))
+            match maybe_prefix_id with 
+            | None -> None
+            | Some prefix_id -> Some(prefix_id,iri)
+    )
+    |> Array.groupBy (fun (prefix_id,iri) -> prefix_id)
+    |> Array.map (fun (prefix_id,group) -> prefix_id,group |> Array.map (fun (_,iri) -> iri))
+
+
+
+let iri'prefix_id = 
+    iris
+    |> Array.Parallel.choose (fun iri -> 
+    
+            let maybe_prefix_id = 
+                prefix_registry.prefix_ids 
+                |> Array.sortBy (fun prefix_id -> prefix_id.namespace_name)
+                |> Array.rev
+                |> Array.tryFind (fun prefix_id -> iri.lexical_form.StartsWith(prefix_id.namespace_name))
+            match maybe_prefix_id with 
+            | None -> None
+            | Some prefix_id -> 
+                let describe_graph = 
+                    sparql.describe [iri] {
+                    from default_graph
+                    } |> RDF_Graph.from_vds_graph
+                
+                let describe_triples = 
+                    describe_graph.triples
+                    |> Seq.toArray
+
+                Some(iri,prefix_id,describe_triples)
+    
+    )
+
+    // |> Array.groupBy (fun (iri,prefix_id) -> prefix_id.namespace_name)
+
+// TODO add lexical form to subject predicate object!!
+
+
+type Vocabulary_Term = 
+    {
+        iri:Iri
+        rdf_types: Iri array
+        rdfs_comments: RDF_Literal array
+        rdfs_labels: RDF_Literal array
+    }
+type Vocabulary = 
+    {
+        prefix_id:Prefix_ID
+        vocabulary_terms: Vocabulary_Term array
+    }
+
+let rdf_vocabularies = 
+    iri'prefix_id
+    |> Array.Parallel.groupBy (fun (iri,prefix_id,describe_triples) -> prefix_id)
+    |> Array.Parallel.map (fun (prefix_id, grouped) -> 
+        let vocabulary_terms = 
+            grouped |> Array.Parallel.map (fun (iri,prefix_id,describe_triples) -> 
+            let rdf_types = 
+                describe_triples |> Array.choose (fun triple -> 
+                    match triple.curPredicate with 
+                    | IriPredicate rdf_type when rdf_type.lexical_form = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" -> 
+                        Some(triple.curObject)
+                    | _ -> None
+                    )
+                    |> Array.choose (fun rdf_type_object -> 
+                        match rdf_type_object with 
+                        | IriObject rdf_type -> Some rdf_type
+                        | _ -> None
+                        )
+                    |> Array.distinctBy (fun iri -> iri.nt)
+                    |> Array.filter (fun iri -> iri.curie <> "owl:Restriction")
+            let rdfs_comments = 
+                describe_triples |> Array.choose (fun triple -> 
+                    match triple.curPredicate with 
+                    | IriPredicate rdfs_comment when rdfs_comment.lexical_form = "http://www.w3.org/2000/01/rdf-schema#comment" -> 
+                        Some(triple.curObject)
+                    | _ -> None
+                )
+                |> Array.choose (fun rdfs_comment_object -> 
+                        match rdfs_comment_object with 
+                        | LiteralObject rdfs_comment -> Some rdfs_comment
+                        | _ -> None
+                        )
+                |> Array.distinctBy (fun literal -> literal.nt)
+            let rdfs_labels = 
+                describe_triples |> Array.choose (fun triple -> 
+                    match triple.curPredicate with 
+                    | IriPredicate rdfs_label when rdfs_label.lexical_form = "http://www.w3.org/2000/01/rdf-schema#label" -> 
+                        Some(triple.curObject)
+                    | _ -> None
+                )
+                |> Array.choose (fun rdfs_label_object -> 
+                        match rdfs_label_object with 
+                        | LiteralObject rdfs_label -> Some rdfs_label
+                        | _ -> None
+                        )
+
+                |> Array.distinctBy (fun literal -> literal.nt)
+
+                
+            {
+                iri = iri
+                rdf_types = rdf_types
+                rdfs_comments = rdfs_comments
+                rdfs_labels = rdfs_labels
+            }
+                )
+        {
+            prefix_id = prefix_id
+            vocabulary_terms = vocabulary_terms
+        }
+
+                
+                
+                )
+
+
+
+
+
+
+let foaf_Person = 
+    rdf_vocabularies
+    |> Array.choose (fun vocabulary ->  
+        vocabulary.vocabulary_terms |> Array.tryFind (fun vocabulary_term -> vocabulary_term.iri.lexical_form = "http://xmlns.com/foaf/0.1/Person" ))
+        |> Array.exactlyOne
+
+
+
+
+foaf_Person.rdf_types
+    |> Array.iter (fun rdf_type -> printfn "%s" rdf_type.curie)
+
+
+
+
+
 
 
 
 
 module IriDocs = 
     open Xml_Documentation_Comments
-    let xmldoc (rdf_classes:Iri array)(comments:string array)(labels:string array)(iri:Iri) =
+    let xmldoc (vocabulary_term:Vocabulary_Term)=
         try
             [|
                 summary {
-                    if iri.curie <> iri.lexical_form then 
-                        para { iri.curie }
+                    if vocabulary_term.iri.curie <> vocabulary_term.iri.lexical_form then 
+                        para { vocabulary_term.iri.curie }
                     "\n"
                     }
 
                 remarks {
-                    for rdf_class in rdf_classes do 
-                        para { rdf_class.curie }
+                    for rdf_type in vocabulary_term.rdf_types do 
+                        para { rdf_type.curie }
                     "\n"
-                    for comment in comments do
-                        para { comment }
+                    for comment in vocabulary_term.rdfs_comments do
+                        para { comment.nt }
                     "\n"
-                    if labels.Length > 0 then
+                    if vocabulary_term.rdfs_labels.Length > 0 then
                         "labels"
-                        for label in labels do
-                            para { label }
+                        for label in vocabulary_term.rdfs_labels do
+                            para { label.nt }
                     "\n"
                     }
                 seealso { 
-                        FSharp.ViewEngine.Html._href iri.lexical_form 
-                        iri.lexical_form
+                        FSharp.ViewEngine.Html._href vocabulary_term.iri.lexical_form 
+                        vocabulary_term.iri.lexical_form
                         }
 
             |]
@@ -1563,14 +1745,352 @@ module IriDocs =
                 )
         with
         | err -> 
-            error_lines.Add(sprintf "xmldoc for iri %s comments %A labels %A failed with %s" iri.lexical_form comments labels err.Message)
+            error_lines.Add(sprintf "xmldoc for vocabulary_term %A failed with %s" vocabulary_term err.Message)
             [||]
 
-    
+
+
+
+rdf_vocabularies
+|> Array.Parallel.filter (fun rdf_vocabulary -> rdf_vocabulary.prefix_id.namespace_name <> "http://www.w3.org/")
+|> Array.Parallel.map (fun rdf_vocabulary -> 
+            let fs_file = Folder.Generated ./ $"{rdf_vocabulary.prefix_id.namespace_prefix}.fs"
+            if should_overwrite || fs_file.does_NOT_exist then 
+
+                let fs_text =
+                    Oak() {
+                    Namespace(rdfsharp_namespace rdf_vocabulary.prefix_id.namespace_name) {
+                        Open("DoxAletheia")
+                        Open("DotNetRDFSharp")
+                        OpenType("Prefix_ID")
+                        Module(rdf_vocabulary.prefix_id.namespace_prefix.normalize_identifier){
+                            Value("_namespace_iri",$"Namespace_Iri {rdf_vocabulary.prefix_id.namespace_prefix.normalize_identifier} |> NamespaceIRI")
+                            let mutable iri_index = 0
+
+                            for vocabulary_term in rdf_vocabulary.vocabulary_terms do
+                                iri_index <- iri_index + 1
+                                printfn "%s\t\t%d of %d"   rdf_vocabulary.prefix_id.namespace_name iri_index rdf_vocabulary.vocabulary_terms.Length 
+
+                                let local_name = vocabulary_term.iri.lexical_form[rdf_vocabulary.prefix_id.namespace_name.Length..]
+                                let identifier = 
+                                    let temp_identifier =
+                                        match rdf_vocabulary.prefix_id.namespace_name with 
+                                        | namespace_name when namespace_name.StartsWith("http://purl.obolibrary.org/obo") && vocabulary_term.rdfs_labels.Length > 0 && vocabulary_term.rdfs_labels[0].lexical_form <> local_name  -> sprintf "%s'%s" vocabulary_term.rdfs_labels[0].lexical_form local_name
+                                        | _ when String.IsNullOrEmpty local_name -> "_prefix_iri"
+                                        | _ -> local_name
+                                    if temp_identifier = rdf_vocabulary.prefix_id.namespace_prefix then 
+                                        temp_identifier + "_"
+                                    else 
+                                        temp_identifier
+
+
+                                Value(identifier.normalize_identifier, $"Prefixed_Name({rdf_vocabulary.prefix_id.namespace_prefix.normalize_identifier}, \"{local_name}\") |> PrefixedName")
+                                |> _.xmlDocs( IriDocs.xmldoc vocabulary_term)
+
+
+                        }
+
+                        }
+                    }
+                    |> Gen.mkOak
+                    |> Gen.run
+            
+                fs_file.save_file_text fs_text
+
+)
+
+
+File.WriteAllLines(Path.Combine(__SOURCE_DIRECTORY__, "error_lines.txt"), error_lines)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(*
+
+
+
+
+let subject_variable = !? "subject"
+
+let rdf_class_varible = !? "rdf_class"
+let rdf_class_pattern =  !> subject_variable --- rdf_type --> rdf_class_varible
+
+
+let comment_varible = !? "comment"
+let comment_pattern =  !> subject_variable --- rdfscomment --> comment_varible
+
+let label_variable = !? "label"
+let label_pattern =  !> subject_variable --- rdfslabel --> label_variable
+
+
+
 
 let graph_files = 
     Folder.Vocabulary.descendant_files "*.ttl"
     |> Array.filter (fun file_path -> not (file_path.Contains(fibo_substring) ))
+let ttl_files = 
+    Folder.Vocabulary.descendant_files "*.ttl"
+    |> Array.Parallel.filter (fun file_path -> not (file_path.Contains(fibo_substring) ))
+    |> Array.Parallel.map (fun ttl_file_path -> PathInfo.from_string ttl_file_path)
+let ttl_file'prefix_id = 
+    ttl_files
+    |> Array.choose (fun ttl_file -> 
+            let namespace_name = 
+                match ttl_file.parent_directory.FullName[Folder.Vocabulary.path.Length+1..] |> relative_path_to_iri with 
+                // | namespace_name when namespace_name.StartsWith("http://purl.org/NET") -> namespace_name.ToLowerInvariant()
+                | namespace_name -> namespace_name
+            match prefix_map.TryFind namespace_name with 
+            | Some prefix_id -> Some(ttl_file,prefix_id)
+            | None -> 
+                error_lines.Add(sprintf "couldn't find prefix id for %s" namespace_name)
+                None
+
+    )
+
+
+
+
+let ttl_file'prefix_id'vocabulary_name = 
+    ttl_file'prefix_id
+    |> Array.choose (fun  (ttl_file,prefix_id) -> 
+            let vocabulary_name = Iri_Reference(ttl_file.path) |> IRIREF
+            match in_memory_dataset.HasGraph(vocabulary_name.vds_node) with 
+            | true -> Some(ttl_file, prefix_id,vocabulary_name)
+            | false -> 
+                error_lines.Add(sprintf "couldn't load graph for %s" prefix_id.namespace_name)
+                None
+
+    )
+let ttl_file'prefix_id'vocabulary_name'vocabulary_vds_graph'vocabulary_iris = 
+    ttl_file'prefix_id'vocabulary_name
+    |> Array.choose (fun (ttl_file, prefix_id,vocabulary_name) -> 
+    let vocabulary_vds_graph = in_memory_dataset[vocabulary_name.vds_node]
+    let iris =
+        vocabulary_vds_graph.AllNodes
+        |> PSeq.filter (fun node -> node.NodeType = NodeType.Uri)
+        |> PSeq.map (fun node -> node.ToString())
+        |> PSeq.filter (fun iri_string -> iri_string.StartsWith(prefix_id.namespace_name))
+        |> PSeq.map (fun iri_string -> 
+            Prefixed_Name(prefix_id,iri_string[prefix_id.namespace_name.Length..])  |> PrefixedName
+        )
+        |> PSeq.toArray
+
+    printfn "found %d iris in namespace_name %s" iris.Length prefix_id.namespace_name
+    if iris.Length > 0 then 
+        Some (ttl_file, prefix_id,vocabulary_name,vocabulary_vds_graph,iris)
+        else
+            None
+
+    )
+
+let ttl_file'prefix_id'vocabulary_name'vocabulary_vds_graph'vocabulary_iris'vocabulary_classes'vocabulary_comments'vocabulary_labels = 
+    ttl_file'prefix_id'vocabulary_name'vocabulary_vds_graph'vocabulary_iris
+    |> Array.map (fun (ttl_file, prefix_id,vocabulary_name,vocabulary_vds_graph,iris) -> 
+    
+    
+    let rdf_class_graph =
+        sparql.construct rdf_class_pattern {
+            where rdf_class_pattern
+            from vocabulary_vds_graph
+        } |> RDF_Graph.from_vds_graph
+    let vocabulary_classes = 
+        rdf_class_graph.triples
+        |> Array.ofSeq
+        |> Array.choose (fun triple -> 
+            if triple.curSubject.IsIriSubject && triple.curObject.IsIriObject then
+                let (IriSubject iri) = triple.curSubject
+                let (IriObject rdf_class) = triple.curObject
+                Some(iri.lexical_form,rdf_class)
+            else
+                None
+        )
+        |> Array.filter (fun (iri,rdf_class) -> iri.StartsWith(prefix_id.namespace_name))
+    let comment_graph =
+                sparql.construct comment_pattern {
+                    where comment_pattern
+                    from vocabulary_vds_graph
+                } |> RDF_Graph.from_vds_graph
+
+    let vocabulary_comments = 
+            comment_graph.triples
+            |> Array.ofSeq
+            |> Array.choose (fun triple -> 
+                if triple.curSubject.IsIriSubject && triple.curObject.IsLiteralObject then
+                    let (IriSubject iri) = triple.curSubject
+                    let (LiteralObject literal) = triple.curObject
+                    Some(iri.lexical_form,literal.lexical_form)
+                else
+                    None
+            )
+            |> Array.filter (fun (iri,literal) -> iri.StartsWith(prefix_id.namespace_name))
+
+
+
+
+    let label_graph =
+        sparql.construct label_pattern {
+            where label_pattern
+            from vocabulary_vds_graph
+        } |> RDF_Graph.from_vds_graph
+    let vocabulary_labels = 
+        label_graph.triples
+        |> Array.ofSeq
+        |> Array.choose (fun triple -> 
+            if triple.curSubject.IsIriSubject && triple.curObject.IsLiteralObject then
+                let (IriSubject iri) = triple.curSubject
+                let (LiteralObject literal) = triple.curObject
+                Some(iri.lexical_form,literal.lexical_form)
+            else
+                None
+        )
+        |> Array.filter (fun (iri,literal) -> iri.StartsWith(prefix_id.namespace_name))
+    (ttl_file, prefix_id,vocabulary_name,vocabulary_vds_graph,iris,vocabulary_classes,vocabulary_comments,vocabulary_labels)
+    
+    )
+
+
+
+let foaf_Person_metadata =  
+    ttl_file'prefix_id'vocabulary_name'vocabulary_vds_graph'vocabulary_iris'vocabulary_classes'vocabulary_comments'vocabulary_labels
+    |> Array.Parallel.choose (fun (ttl_file, prefix_id,vocabulary_name,vocabulary_vds_graph,iris,vocabulary_classes,vocabulary_comments,vocabulary_labels) -> 
+        let iri = iris  |> Array.tryFind(fun iri -> iri.lexical_form = "http://xmlns.com/foaf/0.1/Person")
+        let maybe_vocabulary_class = vocabulary_classes  |> Array.tryFind(fun (form, iri) -> form = "http://xmlns.com/foaf/0.1/Person")
+        match maybe_vocabulary_class with 
+        | Some(_,vocabulary_class) ->
+
+            Some (
+                sparql.describe [vocabulary_class] {
+                from default_graph
+                } 
+            
+            )
+        | None -> None
+    )
+let vds_metadata_graph = foaf_Person_metadata[0]
+let vds_triples = 
+    vds_metadata_graph.GetTriplesWithSubject(new Uri("http://www.w3.org/2000/01/rdf-schema#Class"))
+    |> Seq.toArray
+let metadata_graph = 
+    vds_metadata_graph
+    |> RDF_Graph.from_vds_graph
+let metadata_triples = 
+    metadata_graph.triples
+    |> Seq.toArray
+    //|> Array.iter (fun triple -> printfn "%s %s %s . " triple.curSubject.curie triple.curPredicate.curie triple.curObject.curie)
+
+
+(*
+
+    |> Array.mapi (fun file_index file_path -> 
+        let graph_file =  PathInfo.from_string file_path
+
+        let namespace_name = 
+            match graph_file.parent_directory.FullName[Folder.Vocabulary.path.Length+1..] |> relative_path_to_iri with 
+            // | namespace_name when namespace_name.StartsWith("http://purl.org/NET") -> namespace_name.ToLowerInvariant()
+            | namespace_name -> namespace_name
+        printfn "file_path %s has namespace_name %s" file_path namespace_name
+        match prefix_map.TryFind namespace_name with 
+        | None -> error_lines.Add(sprintf "couldn't find prefix id for %s" namespace_name)
+        | Some prefix_id ->
+            let graph_name = Iri_Reference(graph_file.path) |> IRIREF
+            match in_memory_dataset.HasGraph(graph_name.vds_node) with 
+            | false -> error_lines.Add(sprintf "couldn't load graph for %s" namespace_name)
+            | true ->
+
+                let test_graph = in_memory_dataset[graph_name.vds_node]
+
+
+                let iris =
+                    test_graph.AllNodes
+                    |> PSeq.filter (fun node -> node.NodeType = NodeType.Uri)
+                    |> PSeq.map (fun node -> node.ToString())
+                    |> PSeq.filter (fun iri_string -> iri_string.StartsWith(prefix_id.namespace_name))
+                    |> PSeq.map (fun iri_string -> 
+                        Prefixed_Name(prefix_id,iri_string[prefix_id.namespace_name.Length..])  |> PrefixedName
+                    )
+                    |> PSeq.toArray
+
+                printfn "found %d iris in namespace_name %s" iris.Length namespace_name
+
+
+                let subject_variable = !? "subject"
+
+                let rdf_class_varible = !? "rdf_class"
+                let rdf_class_pattern =  !> subject_variable --- rdf_type --> rdf_class_varible
+                let rdf_class_graph =
+                    sparql.construct rdf_class_pattern {
+                        where rdf_class_pattern
+                        from test_graph
+                    } |> RDF_Graph.from_vds_graph
+
+                rdf_class_graph.triples
+                |> Array.ofSeq
+                |> Array.choose (fun triple -> 
+                    if triple.curSubject.IsIriSubject && triple.curObject.IsIriObject then
+                        let (IriSubject iri) = triple.curSubject
+                        let (IriObject rdf_class) = triple.curObject
+                        Some(iri.lexical_form,rdf_class)
+                    else
+                        None
+                )
+                |> Array.filter (fun (iri,rdf_class) -> iri.StartsWith(prefix_id.namespace_name))
+    )
+
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
 graph_files
 |> Array.iteri (fun file_index file_path -> 
     printfn "found file_path %s" file_path
@@ -1692,9 +2212,9 @@ graph_files
                                 printfn "file# %d of %d %s\t\t#%d of %d"  file_index graph_files.Length prefix_id.namespace_name iri_index iris.Length 
                                 let iri_classes = 
                                     rdf_classes
-                                    |> Array.choose (fun (iri_subject,comment) -> 
+                                    |> Array.choose (fun (iri_subject,rdf_class) -> 
                                         if iri_subject = iri.lexical_form then 
-                                            Some comment
+                                            Some rdf_class
                                         else
                                             None
                                             )
@@ -1750,3 +2270,4 @@ graph_files
 File.WriteAllLines(Path.Combine(__SOURCE_DIRECTORY__, "error_lines.txt"), error_lines)
 
 
+*)

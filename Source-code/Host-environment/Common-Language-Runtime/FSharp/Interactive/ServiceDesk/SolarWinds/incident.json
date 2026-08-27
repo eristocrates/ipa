@@ -1,0 +1,97 @@
+{
+  "data": [
+    {
+      "id": 188911185,
+      "select": {
+        "type": "select",
+        "name": "Unable to access the original GIS Land Information map",
+        "number": 88487,
+        "hidden": null
+      },
+      "requester": {
+        "type": "user",
+        "id": 6299152,
+        "name": "Charlene Green",
+        "avatar": {
+          "type": "initials",
+          "initials": "CG",
+          "color": "var(--colors-foreground-7-100)",
+          "klass": "User"
+        }
+      },
+      "title": {
+        "type": "link",
+        "value": "Unable to access the original GIS Land Information map",
+        "link": "/incidents/188911185-unable-to-access-the-original-gis-land-information-map",
+        "augmented": true,
+        "external": false
+      },
+      "state": {
+        "color_set": "5",
+        "value": "Closed",
+        "type": "pill"
+      },
+      "sub_type": null,
+      "type": {
+        "type": "text",
+        "value": "GIS Support"
+      },
+      "site": null,
+      "department": {
+        "type": "text",
+        "value": "LCG - Operations"
+      },
+      "assigned_to": {
+        "type": "user",
+        "id": 6249860,
+        "name": "Tricia McClenahan",
+        "avatar": {
+          "type": "initials",
+          "initials": "TM",
+          "color": "var(--colors-foreground-7-500)",
+          "klass": "User"
+        }
+      },
+      "priority": {
+        "type": "text",
+        "value": "Medium",
+        "translate": true
+      },
+      "created_at": {
+        "type": "text",
+        "value": "Aug 06, 2026"
+      },
+      "created_by": {
+        "type": "user",
+        "id": 9894151,
+        "name": "Brandon Collier",
+        "avatar": {
+          "type": "initials",
+          "initials": "BC",
+          "color": "var(--colors-foreground-7-800)",
+          "klass": "User"
+        }
+      },
+      "tag_list": {
+        "type": "text",
+        "value": "LCG - Operations"
+      },
+      "number": {
+        "type": "text",
+        "value": 88487
+      },
+      "slm": null,
+      "preview": {
+        "type": "eagle_eye"
+      }
+    }
+  ],
+  "pagination": {
+    "perPage": 100,
+    "offset": 0,
+    "currentPage": 1
+  },
+  "count": 1,
+  "related": null,
+  "is_empty_db": false
+}

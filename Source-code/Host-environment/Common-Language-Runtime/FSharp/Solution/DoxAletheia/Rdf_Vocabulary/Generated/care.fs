@@ -13,21 +13,12 @@ module care =
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#">http://eulersharp.sourceforge.net/2003/03swap/care#</seealso>
     let _prefix_iri = Prefixed_Name(care, "") |> PrefixedName
     /// <summary>
-    ///   <para>care:Environment</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>care environment</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#Environment">http://eulersharp.sourceforge.net/2003/03swap/care#Environment</seealso>
-    let Environment = Prefixed_Name(care, "Environment") |> PrefixedName
-    /// <summary>
     ///   <para>care:Caring</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
     ///
-    /// labels<para>caring</para></remarks>
+    /// labels<para>"caring"</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#Caring">http://eulersharp.sourceforge.net/2003/03swap/care#Caring</seealso>
     let Caring = Prefixed_Name(care, "Caring") |> PrefixedName
     /// <summary>
@@ -35,10 +26,20 @@ module care =
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
+    ///   <para>skos:Concept</para>
     ///
-    /// labels<para>home for the elderly</para></remarks>
+    /// labels<para>"home for the elderly"</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#ElderlyHome">http://eulersharp.sourceforge.net/2003/03swap/care#ElderlyHome</seealso>
     let ElderlyHome = Prefixed_Name(care, "ElderlyHome") |> PrefixedName
+    /// <summary>
+    ///   <para>care:Environment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>"care environment"</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#Environment">http://eulersharp.sourceforge.net/2003/03swap/care#Environment</seealso>
+    let Environment = Prefixed_Name(care, "Environment") |> PrefixedName
     /// <summary>
     ///   <para>care:caresFor</para>
     /// </summary>

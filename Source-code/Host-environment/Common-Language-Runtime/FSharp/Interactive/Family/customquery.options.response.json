@@ -1,0 +1,5406 @@
+{
+  "totalHits": 824,
+  "queryTime": "603ms",
+  "results": [],
+  "aggs": [
+    {
+      "name": "hospitalServices",
+      "type": "nested",
+      "docCount": 16905,
+      "aggs": [
+        {
+          "name": "hospitalServicesFilter",
+          "type": "filter",
+          "docCount": 0,
+          "aggs": [
+            {
+              "name": "hospitalServicesValues",
+              "type": "nested",
+              "docCount": 0,
+              "aggs": [
+                {
+                  "name": "hospitalServicesValue",
+                  "type": "filter",
+                  "docCount": 0,
+                  "aggs": [
+                    {
+                      "name": "hospitalServicesAttributeFieldValues",
+                      "type": "values",
+                      "buckets": [],
+                      "otherDocs": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nestedLocation",
+      "type": "nested",
+      "docCount": 5906,
+      "aggs": [
+        {
+          "name": "locationsFilter",
+          "type": "filter",
+          "docCount": 1095,
+          "aggs": [
+            {
+              "name": "groupAffiliationsAgg",
+              "type": "values",
+              "buckets": [
+                {
+                  "key": "Orlando Health Physician Associates",
+                  "docCount": 32
+                },
+                {
+                  "key": "Tenet Florida Physician Services, LLC",
+                  "docCount": 28
+                },
+                {
+                  "key": "UMiami Medicine - General Medicine",
+                  "docCount": 22
+                },
+                {
+                  "key": "Tampa General Medical Group",
+                  "docCount": 16
+                },
+                {
+                  "key": "UMiami Medicine - Cardiology",
+                  "docCount": 14
+                },
+                {
+                  "key": "Health First Privia Medical Group, LLC",
+                  "docCount": 12
+                },
+                {
+                  "key": "Millennium Physician Group LLC",
+                  "docCount": 12
+                },
+                {
+                  "key": "SMH Physician Services, Inc",
+                  "docCount": 12
+                },
+                {
+                  "key": "Cleveland Clinic Florida",
+                  "docCount": 11
+                },
+                {
+                  "key": "Family Health Centers of Southwest Florida",
+                  "docCount": 11
+                },
+                {
+                  "key": "Lakeland Regional Health",
+                  "docCount": 11
+                },
+                {
+                  "key": "Tenet Florida Physician Services LLC",
+                  "docCount": 10
+                },
+                {
+                  "key": "AdventHealth Medical Group Psychiatry at Orlando",
+                  "docCount": 9
+                },
+                {
+                  "key": "Holy Cross Medical Group",
+                  "docCount": 9
+                },
+                {
+                  "key": "PHYSICIAN PRACTICES OF MSMC, LLC",
+                  "docCount": 9
+                },
+                {
+                  "key": "Premier Medical Associates All Florida, LLC",
+                  "docCount": 9
+                },
+                {
+                  "key": "UMiami Medicine - Nephrology",
+                  "docCount": 9
+                },
+                {
+                  "key": "Orlando Health Medical Group Internal and Family Medicine",
+                  "docCount": 8
+                },
+                {
+                  "key": "UF Health Internal Medicine Kanapaha",
+                  "docCount": 8
+                },
+                {
+                  "key": "UMiami Medicine - Community Health Delivery System (CHDS)",
+                  "docCount": 7
+                },
+                {
+                  "key": "Professional Healthcare",
+                  "docCount": 6
+                },
+                {
+                  "key": "Desai Sethi Medical Center",
+                  "docCount": 5
+                },
+                {
+                  "key": "LPG Family Internal Medicine at College Pointe",
+                  "docCount": 5
+                },
+                {
+                  "key": "Lakeland Regional Medical Center, Inc.",
+                  "docCount": 5
+                },
+                {
+                  "key": "Neighborhood Medical Center",
+                  "docCount": 5
+                },
+                {
+                  "key": "Physician Practices of MSMC, LLC",
+                  "docCount": 5
+                },
+                {
+                  "key": "SMH Physician Services, Inc.",
+                  "docCount": 5
+                },
+                {
+                  "key": "Tenet Florida Phys Svcs",
+                  "docCount": 5
+                },
+                {
+                  "key": "UCF Health",
+                  "docCount": 5
+                },
+                {
+                  "key": "West Florida Medical Associates PA",
+                  "docCount": 5
+                },
+                {
+                  "key": "Whole Family Health Center, Inc.",
+                  "docCount": 5
+                },
+                {
+                  "key": "BH Physicians Main",
+                  "docCount": 4
+                },
+                {
+                  "key": "Bayfront Health Medical Group",
+                  "docCount": 4
+                },
+                {
+                  "key": "Collier HMA Physician Management, LLC",
+                  "docCount": 4
+                },
+                {
+                  "key": "HCA Florida Aventura Primary Care",
+                  "docCount": 4
+                },
+                {
+                  "key": "Holy Cross Medical Group Real Vista",
+                  "docCount": 4
+                },
+                {
+                  "key": "JFK Internal Medicine Faculty & Resident Practice",
+                  "docCount": 4
+                },
+                {
+                  "key": "JMG Specialty Physicians",
+                  "docCount": 4
+                },
+                {
+                  "key": "LPG Family Internal Medicine At Coconut Point",
+                  "docCount": 4
+                },
+                {
+                  "key": "LPG Family Internal Medicine at Bass Road",
+                  "docCount": 4
+                },
+                {
+                  "key": "LPG Family Internal Medicine at Pine Island",
+                  "docCount": 4
+                },
+                {
+                  "key": "NCH Physician Group - Internal Medicine",
+                  "docCount": 4
+                },
+                {
+                  "key": "Nova Southeastern University Inc",
+                  "docCount": 4
+                },
+                {
+                  "key": "The Clark Clinic",
+                  "docCount": 4
+                },
+                {
+                  "key": "UMiami Medicine - General Pediatrics",
+                  "docCount": 4
+                },
+                {
+                  "key": "UMiami Medicine - Multi-Specialty Services",
+                  "docCount": 4
+                },
+                {
+                  "key": "USF Health Morsani Center for Advanced Healthcare",
+                  "docCount": 4
+                },
+                {
+                  "key": "Watson Clinic LLP",
+                  "docCount": 4
+                },
+                {
+                  "key": "AIDS Healthcare Foundation",
+                  "docCount": 3
+                },
+                {
+                  "key": "Accord Medical Group PLLC",
+                  "docCount": 3
+                },
+                {
+                  "key": "Accord Medical Group, PLLC",
+                  "docCount": 3
+                },
+                {
+                  "key": "AdventHealth Medical Group Family & Internal Medicine at DeLand",
+                  "docCount": 3
+                },
+                {
+                  "key": "AdventHealth Medical Group Family and Internal Medicine at New Tampa",
+                  "docCount": 3
+                },
+                {
+                  "key": "AssociatesMD Medical Group, Inc",
+                  "docCount": 3
+                },
+                {
+                  "key": "BH Physicians Imperial Point",
+                  "docCount": 3
+                },
+                {
+                  "key": "BayCare Medical Group, Inc.",
+                  "docCount": 3
+                },
+                {
+                  "key": "Community Medical Group",
+                  "docCount": 3
+                },
+                {
+                  "key": "Complete Local Specialty Care",
+                  "docCount": 3
+                },
+                {
+                  "key": "DSMC",
+                  "docCount": 3
+                },
+                {
+                  "key": "Family Medical Center",
+                  "docCount": 3
+                },
+                {
+                  "key": "GME Clinic NCH",
+                  "docCount": 3
+                },
+                {
+                  "key": "Holy Cross Medical Group - Pompano Beach",
+                  "docCount": 3
+                },
+                {
+                  "key": "LPG Adult Primary Care at Bimini Square",
+                  "docCount": 3
+                },
+                {
+                  "key": "LPG Family Internal Medicine AT Matthew Drive",
+                  "docCount": 3
+                },
+                {
+                  "key": "Medhealth Clinical, Inc.",
+                  "docCount": 3
+                },
+                {
+                  "key": "Memorial Primary Care",
+                  "docCount": 3
+                },
+                {
+                  "key": "Memorial Primary Care-Silver Lakes",
+                  "docCount": 3
+                },
+                {
+                  "key": "Miami Beach Community Health Center",
+                  "docCount": 3
+                },
+                {
+                  "key": "North Florida Surgical Associates LLC",
+                  "docCount": 3
+                },
+                {
+                  "key": "Northwest Florida Healthcare, Inc.",
+                  "docCount": 3
+                },
+                {
+                  "key": "PCC Medical Holdings LLC",
+                  "docCount": 3
+                },
+                {
+                  "key": "Palm Beach Health Network Physician Group",
+                  "docCount": 3
+                },
+                {
+                  "key": "Palm Beach Sports Medicine & Orthopaedic Center - Palm Beach Health Network Physician Group",
+                  "docCount": 3
+                },
+                {
+                  "key": "PanCare of Florida, Inc.",
+                  "docCount": 3
+                },
+                {
+                  "key": "Professional Healthcare of Pinellas",
+                  "docCount": 3
+                },
+                {
+                  "key": "Revere Medical Primary Care",
+                  "docCount": 3
+                },
+                {
+                  "key": "Sacred Heart Medical Group",
+                  "docCount": 3
+                },
+                {
+                  "key": "TGH Healthpark",
+                  "docCount": 3
+                },
+                {
+                  "key": "Tallahassee Memorial Healthcare Inc",
+                  "docCount": 3
+                },
+                {
+                  "key": "UF Health Endocrinology - Jacksonville",
+                  "docCount": 3
+                },
+                {
+                  "key": "UF Health Internal Medicine Springhill 2",
+                  "docCount": 3
+                },
+                {
+                  "key": "UF Health Primary Care - Whetstone Place",
+                  "docCount": 3
+                },
+                {
+                  "key": "UHealth at Kendall",
+                  "docCount": 3
+                },
+                {
+                  "key": "WWMC FWB",
+                  "docCount": 3
+                },
+                {
+                  "key": "West Florida Medical Asso",
+                  "docCount": 3
+                },
+                {
+                  "key": "AdventHealth Medical Group Family Medicine at Port Orange",
+                  "docCount": 2
+                },
+                {
+                  "key": "AdventHealth Medical Group Family and Internal Medicine at Bloomingdale",
+                  "docCount": 2
+                },
+                {
+                  "key": "AdventHealth Medical Group Family and Internal Medicine at Heathbrook",
+                  "docCount": 2
+                },
+                {
+                  "key": "AdventHealth Medical Group Internal Medicine",
+                  "docCount": 2
+                },
+                {
+                  "key": "AdventHealth Medical Group Internal Medicine at Orlando",
+                  "docCount": 2
+                },
+                {
+                  "key": "AdventHealth Medical Group Internal Medicine at Sun N Lake",
+                  "docCount": 2
+                },
+                {
+                  "key": "AdventHealth Medical Group Internal Medicine at Volusia Avenue",
+                  "docCount": 2
+                },
+                {
+                  "key": "Ascension Medical Group St. Vincents Primary Care-Branan Field",
+                  "docCount": 2
+                },
+                {
+                  "key": "Atwood and Clark Associates, LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "Baptist Medical Group, LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "Bond Community Health Center, Inc.",
+                  "docCount": 2
+                },
+                {
+                  "key": "Brevard Health Alliance",
+                  "docCount": 2
+                },
+                {
+                  "key": "Complete Local Specialty Care INC",
+                  "docCount": 2
+                },
+                {
+                  "key": "Complete Local Specialty Care at Hallandale",
+                  "docCount": 2
+                },
+                {
+                  "key": "East Florida Premium Medical Care",
+                  "docCount": 2
+                },
+                {
+                  "key": "Family Health CENTERS SW",
+                  "docCount": 2
+                },
+                {
+                  "key": "Family Health Centers of SW FL, INC",
+                  "docCount": 2
+                },
+                {
+                  "key": "First Physicians Group UPW",
+                  "docCount": 2
+                },
+                {
+                  "key": "Florida Keys Medical Associates",
+                  "docCount": 2
+                },
+                {
+                  "key": "Gainesville Physicians LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "HCA FL North Florida Bone Marrow Transplant",
+                  "docCount": 2
+                },
+                {
+                  "key": "HCA FL St Lucie Medical Specialists",
+                  "docCount": 2
+                },
+                {
+                  "key": "HCA Florida Gainesville Surgical Group",
+                  "docCount": 2
+                },
+                {
+                  "key": "HCA Florida JFK Primary Care",
+                  "docCount": 2
+                },
+                {
+                  "key": "HCA Florida Lake Monroe Internal Medicine",
+                  "docCount": 2
+                },
+                {
+                  "key": "HCA Florida North Florida Maternal Fetal Care",
+                  "docCount": 2
+                },
+                {
+                  "key": "HCA Florida Ocala Primary Care",
+                  "docCount": 2
+                },
+                {
+                  "key": "HCA Florida Orange Park Family Care",
+                  "docCount": 2
+                },
+                {
+                  "key": "Harvey S. Kleiner, DO, LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "Health Specialists of Central Florida, Inc.",
+                  "docCount": 2
+                },
+                {
+                  "key": "Heart of Florida Health Center",
+                  "docCount": 2
+                },
+                {
+                  "key": "Holy Cross Medical Group Internal Medicine",
+                  "docCount": 2
+                },
+                {
+                  "key": "I and B Medical Associates",
+                  "docCount": 2
+                },
+                {
+                  "key": "Internal Medical Associates",
+                  "docCount": 2
+                },
+                {
+                  "key": "JFK Internal Medicine Faculty Practice LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "JMH",
+                  "docCount": 2
+                },
+                {
+                  "key": "Jackson Memorial Hospital",
+                  "docCount": 2
+                },
+                {
+                  "key": "Jose R Mole, M.D. P.A.",
+                  "docCount": 2
+                },
+                {
+                  "key": "LPG Internal Medicine Residency Program at Cape Coral",
+                  "docCount": 2
+                },
+                {
+                  "key": "Lakeland Physicians Group LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "Medicine Specialists at Florida Hospital",
+                  "docCount": 2
+                },
+                {
+                  "key": "Millennium Physician Group, LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "Mohammed Touheed, MD PA dba All in One Healthcare",
+                  "docCount": 2
+                },
+                {
+                  "key": "NCHMD Inc",
+                  "docCount": 2
+                },
+                {
+                  "key": "Navnit U Patel Md Pa Holiday",
+                  "docCount": 2
+                },
+                {
+                  "key": "Omni Healthcare, Inc",
+                  "docCount": 2
+                },
+                {
+                  "key": "Orlando Health Medical Group FHV Health",
+                  "docCount": 2
+                },
+                {
+                  "key": "PP Cardiac & Internal Medicine Specialists",
+                  "docCount": 2
+                },
+                {
+                  "key": "Palm Beach Health Network Primary Care - Palm Beach Health Network Physician Group",
+                  "docCount": 2
+                },
+                {
+                  "key": "Palm Beach Neuroscience Institute",
+                  "docCount": 2
+                },
+                {
+                  "key": "Palm Medical Center",
+                  "docCount": 2
+                },
+                {
+                  "key": "Palm Medical Center North Lakeland",
+                  "docCount": 2
+                },
+                {
+                  "key": "Parrish Medical Group",
+                  "docCount": 2
+                },
+                {
+                  "key": "Peace River Center - Wellness",
+                  "docCount": 2
+                },
+                {
+                  "key": "Physician Practice Of MSMC, LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "Piris Medical Center, LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "Premier Medical Clinic",
+                  "docCount": 2
+                },
+                {
+                  "key": "Professional Health Care of Pinellas",
+                  "docCount": 2
+                },
+                {
+                  "key": "QMC Cares",
+                  "docCount": 2
+                },
+                {
+                  "key": "SMH Physician Services Inc",
+                  "docCount": 2
+                },
+                {
+                  "key": "Sacred Heart Hospital",
+                  "docCount": 2
+                },
+                {
+                  "key": "Seven Rivers Regional Medical Center, Citrus Memor",
+                  "docCount": 2
+                },
+                {
+                  "key": "Sierra Vista Medical",
+                  "docCount": 2
+                },
+                {
+                  "key": "St Vincent's Primary Care- Baymeadows",
+                  "docCount": 2
+                },
+                {
+                  "key": "Sun N Lake Medical Group",
+                  "docCount": 2
+                },
+                {
+                  "key": "Suncoast Community Health Center",
+                  "docCount": 2
+                },
+                {
+                  "key": "TLC Medical Center LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "Tomsich Health and Medical Center of Palm Beach County",
+                  "docCount": 2
+                },
+                {
+                  "key": "UF Health Community and Family Medicine Jacksonville",
+                  "docCount": 2
+                },
+                {
+                  "key": "UF Health Endocrinology Deerwood Park",
+                  "docCount": 2
+                },
+                {
+                  "key": "UF Health General Internal Medicine - Jacksonville",
+                  "docCount": 2
+                },
+                {
+                  "key": "UF Health Internal Medicine Deerwood Park",
+                  "docCount": 2
+                },
+                {
+                  "key": "UF Health Senior Care Springhill 2",
+                  "docCount": 2
+                },
+                {
+                  "key": "UHealth Primary Care at Doral",
+                  "docCount": 2
+                },
+                {
+                  "key": "UHealth SoLe Mia",
+                  "docCount": 2
+                },
+                {
+                  "key": "UMiami Medicine - Mailman Psychology",
+                  "docCount": 2
+                },
+                {
+                  "key": "UMiami Medicine - Pedi Endocrinology",
+                  "docCount": 2
+                },
+                {
+                  "key": "Victor Toledano MD PA",
+                  "docCount": 2
+                },
+                {
+                  "key": "White Wilson Medical Center - FWB 1005",
+                  "docCount": 2
+                },
+                {
+                  "key": "Zephyrhills Family Practice and Geriatric Care, LLC",
+                  "docCount": 2
+                },
+                {
+                  "key": "ASCENSION Sacred Heart Internal Medicine Residency Program",
+                  "docCount": 1
+                },
+                {
+                  "key": "Abella Family Medical Group Corp",
+                  "docCount": 1
+                },
+                {
+                  "key": "Abu Azizullah MD",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ace medical LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Family Medicine Wauchula",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Coordinated Care for Children",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Diabetes & Endocrinology At Kissimmee",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Family & Internal Medicine at Avalon Park",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Family Medicine at Leesburg",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Family and Internal Medicine at Landmark",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Family and Internal Medicine at Parsons Park",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Family and Internal Medicine at South Street",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Family and Internal Medicine at Westchase",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Family and Internal Medicine at Winter Haven",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Mulitspecialty at Fletcher",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Medical Group Primary Care at Ocala",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Primary Care Celebration",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Primary Care Ormond Beaach",
+                  "docCount": 1
+                },
+                {
+                  "key": "AdventHealth Primary Care Riverview",
+                  "docCount": 1
+                },
+                {
+                  "key": "Adventhealth Medical Group Primary Care at Deltona",
+                  "docCount": 1
+                },
+                {
+                  "key": "Aju George MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Alberto Manzor, MD P.A.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Alejandro Eloy De La Cruz MD P.A.",
+                  "docCount": 1
+                },
+                {
+                  "key": "All American Family And Geriatric Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "All Care Medical Consultants",
+                  "docCount": 1
+                },
+                {
+                  "key": "All Care Medical Consultants, PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Antonio A Pena Md Pa",
+                  "docCount": 1
+                },
+                {
+                  "key": "Arcadia Medical Associates, PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ascension Internal Medicine Of Florida, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ascension Medical Group Sacred Heart",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ascension Medical Group St Vincent's Primary Care - Park Ave",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ascension Medical Group St Vincents Primary Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ascension Medical Group St. Vincent's Internal Medicine- Southside",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ascension Medical Group St. Vincent's Primary Care- CR",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ascension Medical Group at Sacred Heart Primary Care Niceville",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ascension Sacred Heart",
+                  "docCount": 1
+                },
+                {
+                  "key": "Aspire Health Partners, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Associated Medical Managers, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Aventura Hosp And Med Center-ip",
+                  "docCount": 1
+                },
+                {
+                  "key": "Avenue Pediatrics  & Internal Medicine",
+                  "docCount": 1
+                },
+                {
+                  "key": "Axel Health Primary Care, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Azzam Adhal Md",
+                  "docCount": 1
+                },
+                {
+                  "key": "B.A.R. Medical Corporation",
+                  "docCount": 1
+                },
+                {
+                  "key": "BH Physicians Main PCP 09",
+                  "docCount": 1
+                },
+                {
+                  "key": "BOUZA & MIRALLES MEDICAL ASSOC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Baker Community Health Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Baptist Health Care Corporation",
+                  "docCount": 1
+                },
+                {
+                  "key": "Baptist Health Medical Group Upper Keys, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Baptist Medical Group Primary Care  East Hill",
+                  "docCount": 1
+                },
+                {
+                  "key": "Baptist Primary Care Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Bardmoor IV",
+                  "docCount": 1
+                },
+                {
+                  "key": "BayCare Medical Group, Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Baycare Medical Group, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Beach Medical Specialist",
+                  "docCount": 1
+                },
+                {
+                  "key": "Best Treatment Network",
+                  "docCount": 1
+                },
+                {
+                  "key": "Boringquen Health Care Center Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Borinquen Health Care Center Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Borinquen Health Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Brevard Health Alliance at Malabar",
+                  "docCount": 1
+                },
+                {
+                  "key": "Bridgeway Center, INC",
+                  "docCount": 1
+                },
+                {
+                  "key": "CAN Community Health, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Capital Regional Medical Group at Southwood",
+                  "docCount": 1
+                },
+                {
+                  "key": "Cardiac Clinic Of Sunil M. Kakkar, M.D, P.A",
+                  "docCount": 1
+                },
+                {
+                  "key": "Cardiovascular Care - Palm Beach Health Network Physician Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Caremed Urgent Care LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Carlos L Dominguez MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Celebration Pediatrics",
+                  "docCount": 1
+                },
+                {
+                  "key": "CenterPlace Health",
+                  "docCount": 1
+                },
+                {
+                  "key": "CenterPlace Health, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Centerplace Health",
+                  "docCount": 1
+                },
+                {
+                  "key": "Central Clinic",
+                  "docCount": 1
+                },
+                {
+                  "key": "Central Florida Family Health Center Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Central Florida Health Center INC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Century Clinical Family Medicine Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Certmedicals Walk In Clinic and Wound Care PLLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Charlton Family Care Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Chipola Surgical & Medical Specialties  Internal Medicine",
+                  "docCount": 1
+                },
+                {
+                  "key": "Citrus Health Network Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Citrus Health Network, INC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Citrus Health Network, Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Citrus Internal Medicine Associates",
+                  "docCount": 1
+                },
+                {
+                  "key": "Citrus Med",
+                  "docCount": 1
+                },
+                {
+                  "key": "Citrus Palm Center Clinic",
+                  "docCount": 1
+                },
+                {
+                  "key": "Clark Clinic Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "ClearMedica Medical Centers, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Clermont Walk In Clinic",
+                  "docCount": 1
+                },
+                {
+                  "key": "Cleveland Clinic Florida Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Cloud Care Medicine",
+                  "docCount": 1
+                },
+                {
+                  "key": "Coastal Health",
+                  "docCount": 1
+                },
+                {
+                  "key": "Coastal Health Primary Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "Coastal Internal Medicine, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Community Health Centers - Groveland Family",
+                  "docCount": 1
+                },
+                {
+                  "key": "Community Health Centers, Inc. - Pine Hills Family",
+                  "docCount": 1
+                },
+                {
+                  "key": "Community Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Community Medical Center - DeLand Office",
+                  "docCount": 1
+                },
+                {
+                  "key": "Community Medical Center - Orange City Office",
+                  "docCount": 1
+                },
+                {
+                  "key": "Compassionate Health and Wellness Of Broward, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Complete Health of Tampa Bay",
+                  "docCount": 1
+                },
+                {
+                  "key": "Comprehensive Hematology Oncology, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Convenient Medical & Health Services",
+                  "docCount": 1
+                },
+                {
+                  "key": "Crestview Hospital Corporation",
+                  "docCount": 1
+                },
+                {
+                  "key": "DE SOUZA, MICHAEL P MD",
+                  "docCount": 1
+                },
+                {
+                  "key": "Davis Medical Building",
+                  "docCount": 1
+                },
+                {
+                  "key": "Delray Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Destiny Medical Associates Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Diagnostic & Clinical Care Services Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Doctor Today Bartow",
+                  "docCount": 1
+                },
+                {
+                  "key": "Doctor Today TLC Auburndale",
+                  "docCount": 1
+                },
+                {
+                  "key": "Doctor Today TLC Haines City",
+                  "docCount": 1
+                },
+                {
+                  "key": "Doctor Today TLC North",
+                  "docCount": 1
+                },
+                {
+                  "key": "Doctor for Adults, Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Doctors Inlet Pediatrics",
+                  "docCount": 1
+                },
+                {
+                  "key": "Downtown Doctor Care Corp",
+                  "docCount": 1
+                },
+                {
+                  "key": "Dr Frank J. Aranda",
+                  "docCount": 1
+                },
+                {
+                  "key": "Dr Ngo Medical Clinic PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Dr O L Hernandez, Pllc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Dr Ralph Patrick Page MD",
+                  "docCount": 1
+                },
+                {
+                  "key": "Dr. Eid MD LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Dr. Ira Fialko DO",
+                  "docCount": 1
+                },
+                {
+                  "key": "Dzung Nguyen M.D.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Excellence Health, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "FE Medical Center of Miami, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "FIRST COAST PRIMARY CARE INC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Familiy Health Centers of Southwest Florida Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Family Health Center of Southwest Florida",
+                  "docCount": 1
+                },
+                {
+                  "key": "Family Health Center of Southwest Florida, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Family Health Centers Of Southwest Florida, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Family Health Ctrs Of Southwest Florida, Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Flomed Infusion Services Delray",
+                  "docCount": 1
+                },
+                {
+                  "key": "Florida Heart and Lung Institute",
+                  "docCount": 1
+                },
+                {
+                  "key": "Florida International University Board of Trustees",
+                  "docCount": 1
+                },
+                {
+                  "key": "Florida Medical Associates, LLC dba VIPcare",
+                  "docCount": 1
+                },
+                {
+                  "key": "Florida Medical Center PL",
+                  "docCount": 1
+                },
+                {
+                  "key": "Florida Medical Clinic Orlando Health",
+                  "docCount": 1
+                },
+                {
+                  "key": "Florida Medical Clinic Orlando Health Primary Care and Sports Medicine",
+                  "docCount": 1
+                },
+                {
+                  "key": "Florida Nephrology PLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Frontline Primary Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "GUIDO GONZALEZ NP LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Gables Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Gainesville Internal Medicine Physicians",
+                  "docCount": 1
+                },
+                {
+                  "key": "Gallagh ER Pediatrics",
+                  "docCount": 1
+                },
+                {
+                  "key": "Galt Family Practice",
+                  "docCount": 1
+                },
+                {
+                  "key": "Gastro Health, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Genesis Community Health, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Genesis Communty Health Inc Boca Raton Medical",
+                  "docCount": 1
+                },
+                {
+                  "key": "Good Samaritan Med Ctr",
+                  "docCount": 1
+                },
+                {
+                  "key": "Graceville Clinic",
+                  "docCount": 1
+                },
+                {
+                  "key": "Gulf Coast Internist, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Gulfcoast MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Gutleber Administration",
+                  "docCount": 1
+                },
+                {
+                  "key": "HCA Florida Gainesville Internal Medicine Physicia",
+                  "docCount": 1
+                },
+                {
+                  "key": "HCA Florida Gainesville Neurosurgery",
+                  "docCount": 1
+                },
+                {
+                  "key": "HCA Florida Heart and Lung",
+                  "docCount": 1
+                },
+                {
+                  "key": "HCA Florida Oak Hill Internal Medicine",
+                  "docCount": 1
+                },
+                {
+                  "key": "HCA Florida Osceola Primary Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "HCA Florida Pulmonary and Sleep Medicine",
+                  "docCount": 1
+                },
+                {
+                  "key": "HCA Florida West Primary Care- GME",
+                  "docCount": 1
+                },
+                {
+                  "key": "HOLY CROSS HOSPITAL",
+                  "docCount": 1
+                },
+                {
+                  "key": "Hana J Clements MD LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Hana J. Clements, MD, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Hardwick Area Health Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Health Care District Community Health Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Healthcare Network",
+                  "docCount": 1
+                },
+                {
+                  "key": "Heart & Family Health Institute",
+                  "docCount": 1
+                },
+                {
+                  "key": "Heart Of Florida Health Center, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Heart and Health Institute Westside",
+                  "docCount": 1
+                },
+                {
+                  "key": "Heathrow Internal Medicine, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Hendry Regional Convenient Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "Hendry Regional Convenient Care Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Heriberto Fernandez MD, PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "High Springs Pediatrics",
+                  "docCount": 1
+                },
+                {
+                  "key": "Hispano Medical Center, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Holy Cross Medical Group - Lighthouse Point",
+                  "docCount": 1
+                },
+                {
+                  "key": "Holy Cross Medical Group - Oakland Park",
+                  "docCount": 1
+                },
+                {
+                  "key": "Holy Cross Medical Group - Wilton Manors",
+                  "docCount": 1
+                },
+                {
+                  "key": "Holy Cross Medical Group EKHY",
+                  "docCount": 1
+                },
+                {
+                  "key": "Holy Cross Medical Group- Bayview",
+                  "docCount": 1
+                },
+                {
+                  "key": "Homero Rivero, MD, P.A.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Horizon Health Medical Clinic",
+                  "docCount": 1
+                },
+                {
+                  "key": "Hyde Medical Services",
+                  "docCount": 1
+                },
+                {
+                  "key": "Infections and Travel Medicine Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "Infectious Disease Consultants, MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Infectious Diseases Specialty Associates PLLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Insite Radiology- Orange Park",
+                  "docCount": 1
+                },
+                {
+                  "key": "Insite Radiology-South Miami",
+                  "docCount": 1
+                },
+                {
+                  "key": "Internal Medicine & Pediatrics Wellness Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Internal Medicine And Pediatrics Associatesof Tallahassee Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Internal Medicine Md Llc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Internal Medicine Residency Program",
+                  "docCount": 1
+                },
+                {
+                  "key": "Internal Medicine and Cardiology",
+                  "docCount": 1
+                },
+                {
+                  "key": "Internal Medicine and Pediatrics Associates of Tallahassee, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Internal Medicine and Pediatrics of Tampa Bay",
+                  "docCount": 1
+                },
+                {
+                  "key": "JMG Specialty Physicians.",
+                  "docCount": 1
+                },
+                {
+                  "key": "JWH Miami Lakes I, LLC.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Jackson West Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Javier Perez MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Jay Medical Clinic",
+                  "docCount": 1
+                },
+                {
+                  "key": "Jessie Furlow Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Joanne F Mahoney MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Johnny Michel, MD PLLC dba Harvest SS Health",
+                  "docCount": 1
+                },
+                {
+                  "key": "Joseph I Chi MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Kendall GME Program",
+                  "docCount": 1
+                },
+                {
+                  "key": "Kenneth S Jaffe  Md PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "LA Medical Associates",
+                  "docCount": 1
+                },
+                {
+                  "key": "LA Medical Associates - Okeechobee",
+                  "docCount": 1
+                },
+                {
+                  "key": "LA Medical Associates, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "LARGO PRIMARY CARE LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "LPG Family Internal Medicine At Surfside",
+                  "docCount": 1
+                },
+                {
+                  "key": "LPG Family Internal Medicine at Coconut Point",
+                  "docCount": 1
+                },
+                {
+                  "key": "La Medical Associates LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Lakeland Internal Medicine",
+                  "docCount": 1
+                },
+                {
+                  "key": "Lakeland Physicians Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Lakeland Regional Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Larkin Community Hospital",
+                  "docCount": 1
+                },
+                {
+                  "key": "Latino Medical Center 3 Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Latino Medical Center IV, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Lilia M Beer MD",
+                  "docCount": 1
+                },
+                {
+                  "key": "Lilia Roque-Guerrero MD",
+                  "docCount": 1
+                },
+                {
+                  "key": "Live Better Health Center, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "MHM Medical Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Manatee County Rural Health Services, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Md4Er, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Medical Associates of Brevard LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Medical Group - Moorings Park Concierge",
+                  "docCount": 1
+                },
+                {
+                  "key": "Medical Specialists of NE Florida PLLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Medical Village Healthcare Group - Orlando",
+                  "docCount": 1
+                },
+                {
+                  "key": "Mel Bay Health Care Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Memorial Hospital Jacksonville",
+                  "docCount": 1
+                },
+                {
+                  "key": "Memorial Primary Care Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Memorial Prmary Care Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Meraki Primary Care Corp",
+                  "docCount": 1
+                },
+                {
+                  "key": "Merges Medical Services, Health First Privia Medical Group, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Merit Medical Care Llc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Metro Inclusive Health",
+                  "docCount": 1
+                },
+                {
+                  "key": "Metropolitan Charities Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Metropolitan Health Care Group Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Miami Beach Community Health Center INC.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Miami Beach Community Health Center Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Millennium Physician Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Millennium Physician Group JACKSONVILLE 4131 UNIVERSITY BLVD",
+                  "docCount": 1
+                },
+                {
+                  "key": "Millennium Physician Group Jacksonville N Main Street",
+                  "docCount": 1
+                },
+                {
+                  "key": "Millennium Physician Group Jacksonville Timuquana Rd",
+                  "docCount": 1
+                },
+                {
+                  "key": "Millennium Physician Group Orange Park",
+                  "docCount": 1
+                },
+                {
+                  "key": "Mitta Primary Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "Morsani Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Mother Daughter Primary Care LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "NORTH MIAMI HEALTH CENTER",
+                  "docCount": 1
+                },
+                {
+                  "key": "NORTHEAST FLORIDA LUNG CLINIC",
+                  "docCount": 1
+                },
+                {
+                  "key": "NUZHAT ABBASI",
+                  "docCount": 1
+                },
+                {
+                  "key": "Navarro  Medical",
+                  "docCount": 1
+                },
+                {
+                  "key": "Nemours Children's Health, Pensacola, Specialty Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "Nemours Childrens Health, Fort Walton Beach, Specialty Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "Nest Medical Center, PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "New River CHC at Union",
+                  "docCount": 1
+                },
+                {
+                  "key": "New World Health Centers",
+                  "docCount": 1
+                },
+                {
+                  "key": "Nile Medical Clinic",
+                  "docCount": 1
+                },
+                {
+                  "key": "Norman S Novis MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "North Broward Hospital District/Broward Health,",
+                  "docCount": 1
+                },
+                {
+                  "key": "North Florida Medical Centers INC.",
+                  "docCount": 1
+                },
+                {
+                  "key": "North Florida Primary Care, PLLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "North Florida Regional Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "North Florida Surgical Associates, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "North Florida Surgical Associates, LLS",
+                  "docCount": 1
+                },
+                {
+                  "key": "North Monroe Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Northwest Florida Community Hospital",
+                  "docCount": 1
+                },
+                {
+                  "key": "Northwest Florida Healthcare, Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Nova SE University Davie",
+                  "docCount": 1
+                },
+                {
+                  "key": "Nova Southeastern University, Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Nu Wave Medical Center, P.A.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ocala Florida Physician Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ocala Florida Physicians Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Omni Healthcare",
+                  "docCount": 1
+                },
+                {
+                  "key": "Omni Healthcare, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Omni Healthcare- Indian Harbour Beach",
+                  "docCount": 1
+                },
+                {
+                  "key": "Optimal Care Pediatrics, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Osama Shuaib Ismail",
+                  "docCount": 1
+                },
+                {
+                  "key": "Osceola Community Health Service - Mobile Unit",
+                  "docCount": 1
+                },
+                {
+                  "key": "Osceola Community Health Services at Poinciana",
+                  "docCount": 1
+                },
+                {
+                  "key": "Osceola Community Health Services at Stadium Place",
+                  "docCount": 1
+                },
+                {
+                  "key": "PHYSICIANS GROUP SERVICE",
+                  "docCount": 1
+                },
+                {
+                  "key": "Palm Bay",
+                  "docCount": 1
+                },
+                {
+                  "key": "Palm Beach Children's Surgical Specialists - Palm Beach Health Network Physician Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Palm Beach HCC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Palm Medical Center - Bartow",
+                  "docCount": 1
+                },
+                {
+                  "key": "Palm Medical Centers",
+                  "docCount": 1
+                },
+                {
+                  "key": "Palm Medical Centers GRP PILK",
+                  "docCount": 1
+                },
+                {
+                  "key": "PanCare Jackson County",
+                  "docCount": 1
+                },
+                {
+                  "key": "Panama Internal Medicine",
+                  "docCount": 1
+                },
+                {
+                  "key": "Partners Family Medicine Practice & Recovery Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Pediatric & Internal Medicine Specialists",
+                  "docCount": 1
+                },
+                {
+                  "key": "Pedro P Ylisastigui MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Pedro P. Carballo, MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Penate Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Philogene & Samuel Mds",
+                  "docCount": 1
+                },
+                {
+                  "key": "Phoenix Medical Clinic",
+                  "docCount": 1
+                },
+                {
+                  "key": "Physician Practices of MSMC LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Pinnacle Medical Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Plantation Medical Clinic",
+                  "docCount": 1
+                },
+                {
+                  "key": "Pointe Medical Services, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Premier Community HealthCare Group, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Premier Medical Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Premier Medical Pediatric Clinic Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Premier Pediatrics LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Premier Pediatrics, LLC Main",
+                  "docCount": 1
+                },
+                {
+                  "key": "Premium Healthcare Holdings, LLLP",
+                  "docCount": 1
+                },
+                {
+                  "key": "Primary Care Physicians Of South Florida",
+                  "docCount": 1
+                },
+                {
+                  "key": "Primary Care Services at Aspire Health Partners, Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Primary Care of Central Florida, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Primary Florida Practice",
+                  "docCount": 1
+                },
+                {
+                  "key": "Prime Hospitalist Group PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Prime Vascular Institute",
+                  "docCount": 1
+                },
+                {
+                  "key": "Quick Primary Care PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "RAMSES VEGA",
+                  "docCount": 1
+                },
+                {
+                  "key": "RELIANCE MEDICAL ASSOCIATES OF JAX, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "RENAMED LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Rajendra A Karkare MD PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Raphael Bones",
+                  "docCount": 1
+                },
+                {
+                  "key": "Restora Medical, Health First Privia Medical Group, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Ridge Medical Associates",
+                  "docCount": 1
+                },
+                {
+                  "key": "Rosa Laura Medical Clinic LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "SBCHS - Pembroke",
+                  "docCount": 1
+                },
+                {
+                  "key": "SMH Phisician Services INC",
+                  "docCount": 1
+                },
+                {
+                  "key": "SMH Physician Services Inc...",
+                  "docCount": 1
+                },
+                {
+                  "key": "Sacred Heart Health System.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Sacred Heart Hospital of Pensacola",
+                  "docCount": 1
+                },
+                {
+                  "key": "San Jose Clinic Pa",
+                  "docCount": 1
+                },
+                {
+                  "key": "Sanjay A Patel",
+                  "docCount": 1
+                },
+                {
+                  "key": "Santa Rosa Medical Group - Navarre",
+                  "docCount": 1
+                },
+                {
+                  "key": "Santa Rosa Medical Group-Dogwood",
+                  "docCount": 1
+                },
+                {
+                  "key": "Sarasota Healthcare",
+                  "docCount": 1
+                },
+                {
+                  "key": "Seventh Avenue Family Health Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Shands JAX Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Shaun E Laurie  Md",
+                  "docCount": 1
+                },
+                {
+                  "key": "Sidi A Elalaoui MD",
+                  "docCount": 1
+                },
+                {
+                  "key": "Solace Medical Group LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Sole Health Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Soma Medical Center PA 6",
+                  "docCount": 1
+                },
+                {
+                  "key": "Soriano Physician Services, Health First Privia Me",
+                  "docCount": 1
+                },
+                {
+                  "key": "South Dade Primary Care, Llc",
+                  "docCount": 1
+                },
+                {
+                  "key": "South Florida Internists Group PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "South Florida Palliative Medicine Specialists Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Spine Institute of South Florida",
+                  "docCount": 1
+                },
+                {
+                  "key": "St Marys Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Stanley C. Myers Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Steps Therapy Center Corp.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Steward Medical Group",
+                  "docCount": 1
+                },
+                {
+                  "key": "Steward Medical Group Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Sun N Lake Medical Group PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "Suncoast Community Health Centers, Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Suncoast Premier Medical",
+                  "docCount": 1
+                },
+                {
+                  "key": "Suncoast Premier Medical, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "TAMPA GENERAL MEDICAL GROUP , INC",
+                  "docCount": 1
+                },
+                {
+                  "key": "TGH Family Care Center Healthpark",
+                  "docCount": 1
+                },
+                {
+                  "key": "TGH Family Care Center Kennedy",
+                  "docCount": 1
+                },
+                {
+                  "key": "TGMG Apollo Beach",
+                  "docCount": 1
+                },
+                {
+                  "key": "TGMG Brandon",
+                  "docCount": 1
+                },
+                {
+                  "key": "TGMG Seminole",
+                  "docCount": 1
+                },
+                {
+                  "key": "Tallahassee Memorial Health Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "Tampa Family Health Centers, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Tampa General Medical Group, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Tenet Florida Physician Services",
+                  "docCount": 1
+                },
+                {
+                  "key": "Tenet Florida Physician Services II, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Tenet Florida Physician Services LLC.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Tenet Florida Physician Services, LLC-",
+                  "docCount": 1
+                },
+                {
+                  "key": "The Family Clinic of Lynn Haven, Health First Privia Medical Group, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "The Health Associates of Tampa",
+                  "docCount": 1
+                },
+                {
+                  "key": "The Listening Doctor Pllc",
+                  "docCount": 1
+                },
+                {
+                  "key": "The Medical Center of Blountstown",
+                  "docCount": 1
+                },
+                {
+                  "key": "Thomas B. Nguyen, M.D., P.A.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Titusville Rehab And Nursing",
+                  "docCount": 1
+                },
+                {
+                  "key": "Total MD Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "Total MD Care - Rockledge",
+                  "docCount": 1
+                },
+                {
+                  "key": "Treasure Coast Community Health, Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Tri County Primary Care Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Trinity Point Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "True Health - Sanford",
+                  "docCount": 1
+                },
+                {
+                  "key": "True Health - Southside",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF CARES - Rainbow Jacksonville",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Endocrinology Kanapaha",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Family Medicine - Amelia Island",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Family Medicine - Eastside",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Family Medicine Magnolia Parke",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Family Medicine Merrill Road",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Family Medicine and Pediatrics - Monument Landing",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Family Medicine at Old Town",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Internal Medicine - Kanapaha",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Internal Medicine - Springhill 2",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Medical Group Primary Care Mount Dora",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Medical Group Primary Care Summerfield",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Primary Care - Greenbriar",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Primary Care - Treaty Oaks",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Total Care Clinic - Jacksonville",
+                  "docCount": 1
+                },
+                {
+                  "key": "UF Health Women's Specialists",
+                  "docCount": 1
+                },
+                {
+                  "key": "UHealth - FAU at Boca Raton",
+                  "docCount": 1
+                },
+                {
+                  "key": "UHealth - SoLe Mia",
+                  "docCount": 1
+                },
+                {
+                  "key": "UHealth Doral Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "UHealth at Doral B -",
+                  "docCount": 1
+                },
+                {
+                  "key": "UMHC - Lennar",
+                  "docCount": 1
+                },
+                {
+                  "key": "UMHC - UHealth Tower",
+                  "docCount": 1
+                },
+                {
+                  "key": "UMiami Medicine - Hematology",
+                  "docCount": 1
+                },
+                {
+                  "key": "UMiami Medicine - Medical Oncology",
+                  "docCount": 1
+                },
+                {
+                  "key": "UMiami Medicine - OB/GYN",
+                  "docCount": 1
+                },
+                {
+                  "key": "UMiami Medicine - One Medical",
+                  "docCount": 1
+                },
+                {
+                  "key": "UMiami Medicine - Student Health Services",
+                  "docCount": 1
+                },
+                {
+                  "key": "UMiami Medicine - Urology",
+                  "docCount": 1
+                },
+                {
+                  "key": "USF PRACTITIONER GROUP",
+                  "docCount": 1
+                },
+                {
+                  "key": "Umatilla Family Practice",
+                  "docCount": 1
+                },
+                {
+                  "key": "Unconditional Love Inc. DBA Comprehensive Health Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "United Medical Specialties, Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "VG Primary Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "VIDAMAX MEDICAL CENTER",
+                  "docCount": 1
+                },
+                {
+                  "key": "Valerie C Smart Md Pa",
+                  "docCount": 1
+                },
+                {
+                  "key": "Verad Minute Clinic, LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Vie Medical Center Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Viera Heart And Vascular Clinic",
+                  "docCount": 1
+                },
+                {
+                  "key": "VivaMas Medical Center Westchester",
+                  "docCount": 1
+                },
+                {
+                  "key": "Volusia Medical Center Deland",
+                  "docCount": 1
+                },
+                {
+                  "key": "Volusia Medical Center LLC",
+                  "docCount": 1
+                },
+                {
+                  "key": "Volusia Medical Center New Smyrna Beach",
+                  "docCount": 1
+                },
+                {
+                  "key": "WWMC CSV",
+                  "docCount": 1
+                },
+                {
+                  "key": "Weirsdale Family Health Center, Inc.",
+                  "docCount": 1
+                },
+                {
+                  "key": "Wekiva Springs Hospital",
+                  "docCount": 1
+                },
+                {
+                  "key": "Wellington",
+                  "docCount": 1
+                },
+                {
+                  "key": "Wellington Physician Alliances Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Wellington Physicians Alliances Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Wellington Physicians Alliances Inc*",
+                  "docCount": 1
+                },
+                {
+                  "key": "Wellington Wound Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "Wesley Chapel Internal",
+                  "docCount": 1
+                },
+                {
+                  "key": "West Coast Medical Associates Pasco PA",
+                  "docCount": 1
+                },
+                {
+                  "key": "West Fl Medical Associates PA...",
+                  "docCount": 1
+                },
+                {
+                  "key": "West Florida Medical Associates",
+                  "docCount": 1
+                },
+                {
+                  "key": "West Florida Medical Associates P A",
+                  "docCount": 1
+                },
+                {
+                  "key": "West Florida Medical Associates, P.A",
+                  "docCount": 1
+                },
+                {
+                  "key": "West Orlando Internal Medicine",
+                  "docCount": 1
+                },
+                {
+                  "key": "White Wilson Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Yunus Rural Health",
+                  "docCount": 1
+                },
+                {
+                  "key": "Z Medical Center",
+                  "docCount": 1
+                },
+                {
+                  "key": "Zanfar Hussain Internal Medicine Inc",
+                  "docCount": 1
+                },
+                {
+                  "key": "Zubair Farooqui",
+                  "docCount": 1
+                },
+                {
+                  "key": "cHIpola Surgical & Medical Specialties-Family Care",
+                  "docCount": 1
+                },
+                {
+                  "key": "prime care medical clinic",
+                  "docCount": 1
+                }
+              ],
+              "otherDocs": 0
+            },
+            {
+              "name": "nestedLocationSpecialties",
+              "type": "nested",
+              "docCount": 1455,
+              "aggs": [
+                {
+                  "name": "categoryEnglish",
+                  "type": "values",
+                  "buckets": [
+                    {
+                      "key": "Medical Professionals",
+                      "aggs": [
+                        {
+                          "name": "groupingEnglish",
+                          "type": "values",
+                          "buckets": [
+                            {
+                              "key": "Primary Care",
+                              "aggs": [
+                                {
+                                  "name": "specialtiesEnglish",
+                                  "type": "values",
+                                  "buckets": [
+                                    {
+                                      "key": "Internal Medicine (General Medical Care)",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina interna (atención médica general)",
+                                              "docCount": 984
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 984
+                                    },
+                                    {
+                                      "key": "Pediatrics (Babies, Children)",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Pediatría (Bebés, niños)",
+                                              "docCount": 45
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 45
+                                    },
+                                    {
+                                      "key": "Geriatric Medicine",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina Geriátrica",
+                                              "docCount": 19
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 19
+                                    },
+                                    {
+                                      "key": "Family Medicine",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina Familiar",
+                                              "docCount": 14
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 14
+                                    },
+                                    {
+                                      "key": "General Practice",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina General",
+                                              "docCount": 14
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 14
+                                    },
+                                    {
+                                      "key": "Physician Assistant",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Asistente Médico",
+                                              "docCount": 1
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 1
+                                    }
+                                  ],
+                                  "otherDocs": 0
+                                },
+                                {
+                                  "name": "groupingSpanish",
+                                  "type": "values",
+                                  "buckets": [
+                                    {
+                                      "key": "Atención primaria",
+                                      "docCount": 1077
+                                    }
+                                  ],
+                                  "otherDocs": 0
+                                }
+                              ],
+                              "docCount": 1077
+                            },
+                            {
+                              "key": "Medical Specialist",
+                              "aggs": [
+                                {
+                                  "name": "specialtiesEnglish",
+                                  "type": "values",
+                                  "buckets": [
+                                    {
+                                      "key": "Internal Medicine (General Medical Care)",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina interna (atención médica general)",
+                                              "docCount": 26
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 26
+                                    },
+                                    {
+                                      "key": "Single Specialty Group",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Grupo de una sola especialidad",
+                                              "docCount": 18
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 18
+                                    },
+                                    {
+                                      "key": "Sleep Medicine",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina del sueño",
+                                              "docCount": 4
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 4
+                                    },
+                                    {
+                                      "key": "Endocrinology, Diabetes & Metabolism",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Endocrinología, Diabetes y Metabolismo",
+                                              "docCount": 2
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 2
+                                    },
+                                    {
+                                      "key": "General Practice",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina General",
+                                              "docCount": 2
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 2
+                                    },
+                                    {
+                                      "key": "Pediatrics (Babies, Children)",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Pediatría (Bebés, niños)",
+                                              "docCount": 2
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 2
+                                    },
+                                    {
+                                      "key": "Pediatrics (Babies, Children) Pulmonology",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Pediatría (Bebés, Niños) Neumología",
+                                              "docCount": 2
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 2
+                                    },
+                                    {
+                                      "key": "Gastroenterology",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Gastroenterología",
+                                              "docCount": 1
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 1
+                                    },
+                                    {
+                                      "key": "Geriatric Medicine",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina Geriátrica",
+                                              "docCount": 1
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 1
+                                    },
+                                    {
+                                      "key": "Hospice and Palliative Medicine",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Hospicio y medicina paliativa",
+                                              "docCount": 1
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 1
+                                    }
+                                  ],
+                                  "otherDocs": 0
+                                },
+                                {
+                                  "name": "groupingSpanish",
+                                  "type": "values",
+                                  "buckets": [
+                                    {
+                                      "key": "Especialista médico",
+                                      "docCount": 59
+                                    }
+                                  ],
+                                  "otherDocs": 0
+                                }
+                              ],
+                              "docCount": 59
+                            }
+                          ],
+                          "otherDocs": 0
+                        },
+                        {
+                          "name": "categorySpanish",
+                          "type": "values",
+                          "buckets": [
+                            {
+                              "key": "Profesionales médicos",
+                              "docCount": 1136
+                            }
+                          ],
+                          "otherDocs": 0
+                        }
+                      ],
+                      "docCount": 1136
+                    },
+                    {
+                      "key": "Behavioral Health",
+                      "aggs": [
+                        {
+                          "name": "groupingEnglish",
+                          "type": "values",
+                          "buckets": [
+                            {
+                              "key": "Professionals",
+                              "aggs": [
+                                {
+                                  "name": "specialtiesEnglish",
+                                  "type": "values",
+                                  "buckets": [
+                                    {
+                                      "key": "Internal Medicine (General Medical Care)",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina interna (atención médica general)",
+                                              "docCount": 88
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 88
+                                    },
+                                    {
+                                      "key": "Family Medicine",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina Familiar",
+                                              "docCount": 9
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 9
+                                    },
+                                    {
+                                      "key": "Addiction Medicine",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Medicina de adicción",
+                                              "docCount": 3
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 3
+                                    }
+                                  ],
+                                  "otherDocs": 0
+                                },
+                                {
+                                  "name": "groupingSpanish",
+                                  "type": "values",
+                                  "buckets": [
+                                    {
+                                      "key": "Profesionales",
+                                      "docCount": 100
+                                    }
+                                  ],
+                                  "otherDocs": 0
+                                }
+                              ],
+                              "docCount": 100
+                            }
+                          ],
+                          "otherDocs": 0
+                        },
+                        {
+                          "name": "categorySpanish",
+                          "type": "values",
+                          "buckets": [
+                            {
+                              "key": "Salud conductual",
+                              "docCount": 100
+                            }
+                          ],
+                          "otherDocs": 0
+                        }
+                      ],
+                      "docCount": 100
+                    },
+                    {
+                      "key": "Medical Facilities",
+                      "aggs": [
+                        {
+                          "name": "groupingEnglish",
+                          "type": "values",
+                          "buckets": [
+                            {
+                              "key": "Lab or Other Facility",
+                              "aggs": [
+                                {
+                                  "name": "specialtiesEnglish",
+                                  "type": "values",
+                                  "buckets": [
+                                    {
+                                      "key": "Multi-Specialty Group",
+                                      "aggs": [
+                                        {
+                                          "name": "specialtiesSpanish",
+                                          "type": "values",
+                                          "buckets": [
+                                            {
+                                              "key": "Grupo de múltiples especialidades",
+                                              "docCount": 82
+                                            }
+                                          ],
+                                          "otherDocs": 0
+                                        }
+                                      ],
+                                      "docCount": 82
+                                    }
+                                  ],
+                                  "otherDocs": 0
+                                },
+                                {
+                                  "name": "groupingSpanish",
+                                  "type": "values",
+                                  "buckets": [
+                                    {
+                                      "key": "Laboratorios u otras instalaciones",
+                                      "docCount": 82
+                                    }
+                                  ],
+                                  "otherDocs": 0
+                                }
+                              ],
+                              "docCount": 82
+                            }
+                          ],
+                          "otherDocs": 0
+                        },
+                        {
+                          "name": "categorySpanish",
+                          "type": "values",
+                          "buckets": [
+                            {
+                              "key": "Instalaciones médicas",
+                              "docCount": 82
+                            }
+                          ],
+                          "otherDocs": 0
+                        }
+                      ],
+                      "docCount": 82
+                    }
+                  ],
+                  "otherDocs": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "certificationsFilter",
+      "type": "filter",
+      "docCount": 0,
+      "aggs": [
+        {
+          "name": "badgeOrCertTypeDescription",
+          "type": "values",
+          "buckets": [],
+          "otherDocs": 0
+        }
+      ]
+    },
+    {
+      "name": "communitySupports",
+      "type": "nested",
+      "docCount": 16905,
+      "aggs": [
+        {
+          "name": "communitySupportsFilter",
+          "type": "filter",
+          "docCount": 0,
+          "aggs": [
+            {
+              "name": "communitySupportsField",
+              "type": "nested",
+              "docCount": 0,
+              "aggs": [
+                {
+                  "name": "communitySupportsFieldFilter",
+                  "type": "filter",
+                  "docCount": 0,
+                  "aggs": [
+                    {
+                      "name": "communitySupportsFieldValues",
+                      "type": "values",
+                      "buckets": [],
+                      "otherDocs": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "officeLanguagesNested",
+      "type": "nested",
+      "docCount": 16905,
+      "aggs": [
+        {
+          "name": "languagesAttributeFilter",
+          "type": "filter",
+          "docCount": 10,
+          "aggs": [
+            {
+              "name": "languagesAttributeField",
+              "type": "nested",
+              "docCount": 10,
+              "aggs": [
+                {
+                  "name": "languagesAttributeFieldFilter",
+                  "type": "filter",
+                  "docCount": 10,
+                  "aggs": [
+                    {
+                      "name": "languagesAttributeFieldValues",
+                      "type": "values",
+                      "buckets": [
+                        {
+                          "key": "English",
+                          "docCount": 5
+                        },
+                        {
+                          "key": "Spanish",
+                          "docCount": 4
+                        },
+                        {
+                          "key": "Portuguese",
+                          "docCount": 1
+                        }
+                      ],
+                      "otherDocs": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nestedServicesOfferedLocations",
+      "type": "nested",
+      "docCount": 5906,
+      "aggs": [
+        {
+          "name": "nestedEligibleForDisplay",
+          "type": "filter",
+          "docCount": 1085,
+          "aggs": [
+            {
+              "name": "nestedAreaNetworkServices",
+              "type": "nested",
+              "docCount": 0,
+              "aggs": [
+                {
+                  "name": "nestedAreaNetworkServicesFilter",
+                  "type": "filter",
+                  "docCount": 0,
+                  "aggs": [
+                    {
+                      "name": "servicesOffered",
+                      "type": "values",
+                      "buckets": [],
+                      "otherDocs": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "additionalLanguagesNested",
+      "type": "nested",
+      "docCount": 6470,
+      "aggs": [
+        {
+          "name": "languagesAttributeFilter",
+          "type": "filter",
+          "docCount": 712,
+          "aggs": [
+            {
+              "name": "languagesAttributeField",
+              "type": "nested",
+              "docCount": 712,
+              "aggs": [
+                {
+                  "name": "languagesAttributeFieldFilter",
+                  "type": "filter",
+                  "docCount": 712,
+                  "aggs": [
+                    {
+                      "name": "languagesAttributeFieldValues",
+                      "type": "values",
+                      "buckets": [
+                        {
+                          "key": "Spanish",
+                          "docCount": 195
+                        },
+                        {
+                          "key": "English",
+                          "docCount": 179
+                        },
+                        {
+                          "key": "Hindi",
+                          "docCount": 53
+                        },
+                        {
+                          "key": "French",
+                          "docCount": 37
+                        },
+                        {
+                          "key": "Urdu",
+                          "docCount": 25
+                        },
+                        {
+                          "key": "Arabic",
+                          "docCount": 21
+                        },
+                        {
+                          "key": "Creole",
+                          "docCount": 18
+                        },
+                        {
+                          "key": "Haitian Creole",
+                          "docCount": 10
+                        },
+                        {
+                          "key": "Portuguese",
+                          "docCount": 10
+                        },
+                        {
+                          "key": "Gujarati",
+                          "docCount": 9
+                        },
+                        {
+                          "key": "Italian",
+                          "docCount": 8
+                        },
+                        {
+                          "key": "Punjabi",
+                          "docCount": 8
+                        },
+                        {
+                          "key": "Russian",
+                          "docCount": 8
+                        },
+                        {
+                          "key": "Telugu",
+                          "docCount": 8
+                        },
+                        {
+                          "key": "Bengali",
+                          "docCount": 6
+                        },
+                        {
+                          "key": "Tagalog",
+                          "docCount": 6
+                        },
+                        {
+                          "key": "Vietnamese",
+                          "docCount": 6
+                        },
+                        {
+                          "key": "Chinese",
+                          "docCount": 5
+                        },
+                        {
+                          "key": "Farsi",
+                          "docCount": 5
+                        },
+                        {
+                          "key": "German",
+                          "docCount": 5
+                        },
+                        {
+                          "key": "Kannada",
+                          "docCount": 5
+                        },
+                        {
+                          "key": "Korean",
+                          "docCount": 5
+                        },
+                        {
+                          "key": "Panjabi",
+                          "docCount": 5
+                        },
+                        {
+                          "key": "Tamil",
+                          "docCount": 5
+                        },
+                        {
+                          "key": "Burmese",
+                          "docCount": 4
+                        },
+                        {
+                          "key": "Malayalam",
+                          "docCount": 4
+                        },
+                        {
+                          "key": "Polish",
+                          "docCount": 4
+                        },
+                        {
+                          "key": "Sindhi",
+                          "docCount": 4
+                        },
+                        {
+                          "key": "Armenian",
+                          "docCount": 3
+                        },
+                        {
+                          "key": "Bangla",
+                          "docCount": 3
+                        },
+                        {
+                          "key": "Greek",
+                          "docCount": 3
+                        },
+                        {
+                          "key": "Hebrew",
+                          "docCount": 3
+                        },
+                        {
+                          "key": "Persian",
+                          "docCount": 3
+                        },
+                        {
+                          "key": "Romanian",
+                          "docCount": 3
+                        },
+                        {
+                          "key": "Thai",
+                          "docCount": 3
+                        },
+                        {
+                          "key": "American Sign Language",
+                          "docCount": 2
+                        },
+                        {
+                          "key": "Cambodian",
+                          "docCount": 2
+                        },
+                        {
+                          "key": "French Creole",
+                          "docCount": 2
+                        },
+                        {
+                          "key": "Hmong",
+                          "docCount": 2
+                        },
+                        {
+                          "key": "Hungarian",
+                          "docCount": 2
+                        },
+                        {
+                          "key": "Japanese",
+                          "docCount": 2
+                        },
+                        {
+                          "key": "Laotian",
+                          "docCount": 2
+                        },
+                        {
+                          "key": "Mandarin",
+                          "docCount": 2
+                        },
+                        {
+                          "key": "Other",
+                          "docCount": 2
+                        },
+                        {
+                          "key": "Cantonese",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Croatian",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Egyptian Arabic",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Haitian",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Indonesian",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Kashmiri",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Malay",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Marathi",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Nepali",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Serbo-Croatian",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Sign Language",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Sinhalese",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Turkish",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Uigur",
+                          "docCount": 1
+                        },
+                        {
+                          "key": "Ukrainian",
+                          "docCount": 1
+                        }
+                      ],
+                      "otherDocs": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nestedLocationProviderTier",
+      "type": "nested",
+      "docCount": 5906,
+      "aggs": [
+        {
+          "name": "locationsFilter",
+          "type": "filter",
+          "docCount": 1095,
+          "aggs": [
+            {
+              "name": "nestedNetworkLocationCycles",
+              "type": "nested",
+              "docCount": 1277,
+              "aggs": [
+                {
+                  "name": "nestedNetworkLocationCyclesAttributes",
+                  "type": "nested",
+                  "docCount": 48,
+                  "aggs": [
+                    {
+                      "name": "providerTierFilter",
+                      "type": "filter",
+                      "docCount": 0,
+                      "aggs": [
+                        {
+                          "name": "providerTierField",
+                          "type": "nested",
+                          "docCount": 0,
+                          "aggs": [
+                            {
+                              "name": "providerTierFieldFilter",
+                              "type": "filter",
+                              "docCount": 0,
+                              "aggs": [
+                                {
+                                  "name": "providerTierFieldValues",
+                                  "type": "values",
+                                  "buckets": [],
+                                  "otherDocs": 0
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "practitionerTierFilter",
+                      "type": "filter",
+                      "docCount": 0,
+                      "aggs": [
+                        {
+                          "name": "practitionerTierField",
+                          "type": "nested",
+                          "docCount": 0,
+                          "aggs": [
+                            {
+                              "name": "practitionerTierFieldFilter",
+                              "type": "filter",
+                              "docCount": 0,
+                              "aggs": [
+                                {
+                                  "name": "practitionerTierFieldValues",
+                                  "type": "values",
+                                  "buckets": [],
+                                  "otherDocs": 0
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "providerServiceTypes",
+      "type": "nested",
+      "docCount": 5906,
+      "aggs": [
+        {
+          "name": "providerServiceTypesFilter",
+          "type": "filter",
+          "docCount": 0,
+          "aggs": [
+            {
+              "name": "providerServiceTypesValues",
+              "type": "nested",
+              "docCount": 0,
+              "aggs": [
+                {
+                  "name": "providerServiceTypesValue",
+                  "type": "filter",
+                  "docCount": 0,
+                  "aggs": [
+                    {
+                      "name": "providerServiceTypesAttributeFieldValues",
+                      "type": "values",
+                      "buckets": [],
+                      "otherDocs": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "enhancedCareManagement",
+      "type": "nested",
+      "docCount": 16905,
+      "aggs": [
+        {
+          "name": "enhancedCareManagementAttrFilter",
+          "type": "filter",
+          "docCount": 0,
+          "aggs": [
+            {
+              "name": "enhancedCareManagementAttrField",
+              "type": "nested",
+              "docCount": 0,
+              "aggs": [
+                {
+                  "name": "enhancedCareManagementAttrFieldFilter",
+                  "type": "filter",
+                  "docCount": 0,
+                  "aggs": [
+                    {
+                      "name": "enhancedCareManagementAttrFieldValues",
+                      "type": "values",
+                      "buckets": [],
+                      "otherDocs": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "modalitiesFilter",
+      "type": "filter",
+      "docCount": 3,
+      "aggs": [
+        {
+          "name": "modalityName",
+          "type": "values",
+          "buckets": [
+            {
+              "key": "Medication Management\n",
+              "docCount": 3
+            },
+            {
+              "key": "Stress Management",
+              "docCount": 3
+            },
+            {
+              "key": "Addictive Disorders",
+              "docCount": 2
+            },
+            {
+              "key": "Evaluation/Assessment",
+              "docCount": 2
+            },
+            {
+              "key": "Alcohol/Substance Abuse Treatment",
+              "docCount": 1
+            },
+            {
+              "key": "Chemical Dependency Assessment\n",
+              "docCount": 1
+            },
+            {
+              "key": "Client Center Therapy",
+              "docCount": 1
+            },
+            {
+              "key": "Cognitive Therapy",
+              "docCount": 1
+            },
+            {
+              "key": "Community Support Program",
+              "docCount": 1
+            },
+            {
+              "key": "Crisis Intervention",
+              "docCount": 1
+            },
+            {
+              "key": "Crisis Stabilization",
+              "docCount": 1
+            },
+            {
+              "key": "Critical Incident Debriefing",
+              "docCount": 1
+            },
+            {
+              "key": "Group Therapy",
+              "docCount": 1
+            },
+            {
+              "key": "Individual Therapy",
+              "docCount": 1
+            },
+            {
+              "key": "Intake Assessment",
+              "docCount": 1
+            },
+            {
+              "key": "Methadone/Suboxone Medication Services\n",
+              "docCount": 1
+            },
+            {
+              "key": "Pain Management",
+              "docCount": 1
+            },
+            {
+              "key": "Relapse Prevention",
+              "docCount": 1
+            },
+            {
+              "key": "Tobacco Cessation",
+              "docCount": 1
+            },
+            {
+              "key": "Weight Management",
+              "docCount": 1
+            }
+          ],
+          "otherDocs": 0
+        }
+      ]
+    },
+    {
+      "name": "affirmingCareServices",
+      "type": "nested",
+      "docCount": 6470,
+      "aggs": [
+        {
+          "name": "affirmingCareServicesAttrFilter",
+          "type": "filter",
+          "docCount": 0,
+          "aggs": [
+            {
+              "name": "affirmingCareServicesAttrField",
+              "type": "nested",
+              "docCount": 0,
+              "aggs": [
+                {
+                  "name": "affirmingCareServicesAttrFieldFilter",
+                  "type": "filter",
+                  "docCount": 0,
+                  "aggs": [
+                    {
+                      "name": "affirmingCareServicesAttrFieldValues",
+                      "type": "values",
+                      "buckets": [],
+                      "otherDocs": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nestedNetworkCycles",
+      "type": "nested",
+      "docCount": 1617,
+      "aggs": [
+        {
+          "name": "nestedNetworkCyclesAttributes",
+          "type": "nested",
+          "docCount": 0,
+          "aggs": [
+            {
+              "name": "planTierFilter",
+              "type": "filter",
+              "docCount": 0,
+              "aggs": [
+                {
+                  "name": "planTierField",
+                  "type": "nested",
+                  "docCount": 0,
+                  "aggs": [
+                    {
+                      "name": "planTierFieldFilter",
+                      "type": "filter",
+                      "docCount": 0,
+                      "aggs": [
+                        {
+                          "name": "planTierFieldValues",
+                          "type": "values",
+                          "buckets": [],
+                          "otherDocs": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "disordersFilter",
+      "type": "filter",
+      "docCount": 17,
+      "aggs": [
+        {
+          "name": "disordersDescription",
+          "type": "values",
+          "buckets": [
+            {
+              "key": "HIV/AIDS",
+              "docCount": 8
+            },
+            {
+              "key": "Substance Use Disorder",
+              "docCount": 8
+            },
+            {
+              "key": "Chronic Illness",
+              "docCount": 7
+            },
+            {
+              "key": "Co-Occurring Disorders",
+              "docCount": 5
+            },
+            {
+              "key": "Substance Abuse",
+              "docCount": 3
+            },
+            {
+              "key": "Addictive Disorders",
+              "docCount": 2
+            },
+            {
+              "key": "Addictive Medicine",
+              "docCount": 2
+            },
+            {
+              "key": "Anxiety Disorder",
+              "docCount": 2
+            },
+            {
+              "key": "Depression",
+              "docCount": 2
+            },
+            {
+              "key": "Medical Evaluation",
+              "docCount": 2
+            },
+            {
+              "key": "Mood Disorders",
+              "docCount": 2
+            },
+            {
+              "key": "Stress Management",
+              "docCount": 2
+            },
+            {
+              "key": "ADD/ADHD",
+              "docCount": 1
+            },
+            {
+              "key": "Anger Management",
+              "docCount": 1
+            },
+            {
+              "key": "Bipolar Disorders",
+              "docCount": 1
+            },
+            {
+              "key": "Chemical Dependency",
+              "docCount": 1
+            },
+            {
+              "key": "Chronic Pain/Pain Management",
+              "docCount": 1
+            },
+            {
+              "key": "Cognitive Disorder",
+              "docCount": 1
+            },
+            {
+              "key": "Dementia Disorder",
+              "docCount": 1
+            },
+            {
+              "key": "Dual Diagnosis",
+              "docCount": 1
+            },
+            {
+              "key": "Eating Disorders",
+              "docCount": 1
+            },
+            {
+              "key": "Grief/Loss/Bereavement",
+              "docCount": 1
+            },
+            {
+              "key": "Impulse Disorders",
+              "docCount": 1
+            },
+            {
+              "key": "Other",
+              "docCount": 1
+            },
+            {
+              "key": "Phobias",
+              "docCount": 1
+            },
+            {
+              "key": "Relapse Prevention",
+              "docCount": 1
+            },
+            {
+              "key": "Sleep Disorder",
+              "docCount": 1
+            },
+            {
+              "key": "Tobacco Cessation",
+              "docCount": 1
+            },
+            {
+              "key": "Trauma/PTSD",
+              "docCount": 1
+            }
+          ],
+          "otherDocs": 0
+        }
+      ]
+    },
+    {
+      "name": "ppgFilter",
+      "type": "filter",
+      "docCount": 0,
+      "aggs": [
+        {
+          "name": "ppgName",
+          "type": "values",
+          "buckets": [],
+          "otherDocs": 0
+        }
+      ]
+    },
+    {
+      "name": "ipaAffiliations",
+      "type": "nested",
+      "docCount": 6470,
+      "aggs": [
+        {
+          "name": "ipaAffiliationsFilter",
+          "type": "filter",
+          "docCount": 0,
+          "aggs": [
+            {
+              "name": "ipaAffiliationsValues",
+              "type": "nested",
+              "docCount": 0,
+              "aggs": [
+                {
+                  "name": "ipaAffiliationsValue",
+                  "type": "values",
+                  "buckets": [],
+                  "otherDocs": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hospitalAffiliationsNested",
+      "type": "nested",
+      "docCount": 887,
+      "aggs": [
+        {
+          "name": "hospitalAffilNames",
+          "type": "values",
+          "buckets": [
+            {
+              "key": "Holy Cross Hospital",
+              "docCount": 81
+            },
+            {
+              "key": "Jackson Memorial Hospital",
+              "docCount": 15
+            },
+            {
+              "key": "Holy Cross Hospital, Inc",
+              "docCount": 14
+            },
+            {
+              "key": "North Broward Hospital District/Broward Health",
+              "docCount": 14
+            },
+            {
+              "key": "Sarasota Memorial Hospital FL",
+              "docCount": 13
+            },
+            {
+              "key": "University Of Miami Hospital & Clinics",
+              "docCount": 13
+            },
+            {
+              "key": "University Of Miami Hospital",
+              "docCount": 12
+            },
+            {
+              "key": "Mount Sinai Medical Center",
+              "docCount": 11
+            },
+            {
+              "key": "Florida Hospital",
+              "docCount": 10
+            },
+            {
+              "key": "Broward Health Imperial Point",
+              "docCount": 9
+            },
+            {
+              "key": "FLORIDA HOSPITAL",
+              "docCount": 8
+            },
+            {
+              "key": "Lee Memorial Hospital",
+              "docCount": 8
+            },
+            {
+              "key": "North Florida Regional Medical Center",
+              "docCount": 8
+            },
+            {
+              "key": "Tampa General Hospital",
+              "docCount": 8
+            },
+            {
+              "key": "University of Miami Hospital",
+              "docCount": 8
+            },
+            {
+              "key": "Ascension St. Vincent's Riverside",
+              "docCount": 7
+            },
+            {
+              "key": "Baptist Medical Center",
+              "docCount": 7
+            },
+            {
+              "key": "Gulf Coast Medical Center",
+              "docCount": 7
+            },
+            {
+              "key": "Memorial Hospital Jacksonville",
+              "docCount": 7
+            },
+            {
+              "key": "North Shore Medical Center",
+              "docCount": 7
+            },
+            {
+              "key": "Ocala Regional Medical Center",
+              "docCount": 7
+            },
+            {
+              "key": "AdventHealth DeLand",
+              "docCount": 6
+            },
+            {
+              "key": "AdventHealth Fish Memorial",
+              "docCount": 6
+            },
+            {
+              "key": "AdventHealth Orlando",
+              "docCount": 6
+            },
+            {
+              "key": "Adventist Health Orlando",
+              "docCount": 6
+            },
+            {
+              "key": "JFK Medical Center",
+              "docCount": 6
+            },
+            {
+              "key": "Jackson Hospital",
+              "docCount": 6
+            },
+            {
+              "key": "Kendall Regional Medical Center",
+              "docCount": 6
+            },
+            {
+              "key": "Northwest Community Hospital",
+              "docCount": 6
+            },
+            {
+              "key": "Orlando Regional Medical Center,",
+              "docCount": 6
+            },
+            {
+              "key": "Sacred Heart Health System",
+              "docCount": 6
+            },
+            {
+              "key": "AdventHealth Tampa",
+              "docCount": 5
+            },
+            {
+              "key": "Holmes Regional Medical Center",
+              "docCount": 5
+            },
+            {
+              "key": "Memorial Hospital of Jacksonville",
+              "docCount": 5
+            },
+            {
+              "key": "Osceola Regional Medical Center",
+              "docCount": 5
+            },
+            {
+              "key": "Tallahassee Memorial Hospital",
+              "docCount": 5
+            },
+            {
+              "key": "UF Health The Villages Hospital",
+              "docCount": 5
+            },
+            {
+              "key": "Ann Bates Leach Eye Hospital",
+              "docCount": 4
+            },
+            {
+              "key": "Ascension St. Vincent's Southside",
+              "docCount": 4
+            },
+            {
+              "key": "Bay Medical Center",
+              "docCount": 4
+            },
+            {
+              "key": "Charleston Area Medical Center",
+              "docCount": 4
+            },
+            {
+              "key": "Fort Walton Beach Medical Center",
+              "docCount": 4
+            },
+            {
+              "key": "Hialeah Hospital Inc.",
+              "docCount": 4
+            },
+            {
+              "key": "Imperial Point Medical Center",
+              "docCount": 4
+            },
+            {
+              "key": "JFK Medical Center 1326085424",
+              "docCount": 4
+            },
+            {
+              "key": "JFK Medical Center North Campus",
+              "docCount": 4
+            },
+            {
+              "key": "Mercy Hospital",
+              "docCount": 4
+            },
+            {
+              "key": "Morton Plant Hospital",
+              "docCount": 4
+            },
+            {
+              "key": "Munroe Regional Medical Center",
+              "docCount": 4
+            },
+            {
+              "key": "Seven Rivers Regional Med Center",
+              "docCount": 4
+            },
+            {
+              "key": "Shands Jacksonville Medical Center Inc",
+              "docCount": 4
+            },
+            {
+              "key": "St Lucie Medical Center",
+              "docCount": 4
+            },
+            {
+              "key": "Tallahassee Memorial Hospital AWSE",
+              "docCount": 4
+            },
+            {
+              "key": "AdventHealth Waterman",
+              "docCount": 3
+            },
+            {
+              "key": "AdventHealth Zephyrhills",
+              "docCount": 3
+            },
+            {
+              "key": "Ascension St. Vincents Southside",
+              "docCount": 3
+            },
+            {
+              "key": "Cedars-Sinai Medical Center",
+              "docCount": 3
+            },
+            {
+              "key": "Good Samaritan Hospital",
+              "docCount": 3
+            },
+            {
+              "key": "HIALEAH HOSPITAL",
+              "docCount": 3
+            },
+            {
+              "key": "Healthpark Medical Center",
+              "docCount": 3
+            },
+            {
+              "key": "Jackson North Medical Center",
+              "docCount": 3
+            },
+            {
+              "key": "Lakeland Regional Medical Center",
+              "docCount": 3
+            },
+            {
+              "key": "Loyola University Medical Center",
+              "docCount": 3
+            },
+            {
+              "key": "Mease Dunedin Hospital",
+              "docCount": 3
+            },
+            {
+              "key": "Medical Center of Trinity",
+              "docCount": 3
+            },
+            {
+              "key": "Memorial Hospital West",
+              "docCount": 3
+            },
+            {
+              "key": "Memorial Regional Hospital",
+              "docCount": 3
+            },
+            {
+              "key": "Naples Community Hospital",
+              "docCount": 3
+            },
+            {
+              "key": "Parrish Medical Center..",
+              "docCount": 3
+            },
+            {
+              "key": "St. Josephs Hospital",
+              "docCount": 3
+            },
+            {
+              "key": "St. Mary Medical Center",
+              "docCount": 3
+            },
+            {
+              "key": "Tallahassee Memorial Behavioral Health Center",
+              "docCount": 3
+            },
+            {
+              "key": "Tallahassee Memorial Health Care",
+              "docCount": 3
+            },
+            {
+              "key": "Tallahassee Memorial Healthcare INC",
+              "docCount": 3
+            },
+            {
+              "key": "Touchette Regional Hospital",
+              "docCount": 3
+            },
+            {
+              "key": "UCF Lake Nona Medical Center",
+              "docCount": 3
+            },
+            {
+              "key": "Wellington Regional Medical Center",
+              "docCount": 3
+            },
+            {
+              "key": "Westside Regional Medical Center",
+              "docCount": 3
+            },
+            {
+              "key": "1 Kendall Regional Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "AdventHealth Ocala",
+              "docCount": 2
+            },
+            {
+              "key": "AdventHealth Palm Coast",
+              "docCount": 2
+            },
+            {
+              "key": "Aiken Regional Medical Centers",
+              "docCount": 2
+            },
+            {
+              "key": "Ascension Sacred Heart Emerald Coast",
+              "docCount": 2
+            },
+            {
+              "key": "Ascension Sacred Heart Hospital Emerald Coast",
+              "docCount": 2
+            },
+            {
+              "key": "Ascension Sacred Heart Pensacola",
+              "docCount": 2
+            },
+            {
+              "key": "Ascension St Vincent's Clay County Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Aspirus Stevens Point Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Aventura Hospital & Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "BLAKE MEDICAL CENTER",
+              "docCount": 2
+            },
+            {
+              "key": "Bacon County Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Baptist Hospital Of Miami",
+              "docCount": 2
+            },
+            {
+              "key": "Bay Medical Center Sacred Heart Health System",
+              "docCount": 2
+            },
+            {
+              "key": "Bayfront Health St. Petersburg",
+              "docCount": 2
+            },
+            {
+              "key": "Baystate Franklin Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Bert Fish Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Bethesda Hospital Inc",
+              "docCount": 2
+            },
+            {
+              "key": "Blake Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Brooks Rehabilitation Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Broward Health Medical Center-Psych",
+              "docCount": 2
+            },
+            {
+              "key": "Cape Coral Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Capital Regional Med Ctr",
+              "docCount": 2
+            },
+            {
+              "key": "Central Florida Regional Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Childrens Healthcare of Atlanta at Scottish Rite",
+              "docCount": 2
+            },
+            {
+              "key": "Citrus Memorial Health",
+              "docCount": 2
+            },
+            {
+              "key": "Citrus Memorial Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Community Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Coral Gables Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Delray Medical Center Inc",
+              "docCount": 2
+            },
+            {
+              "key": "Doctors Hospital Of Sarasota",
+              "docCount": 2
+            },
+            {
+              "key": "Edward White Hospital.",
+              "docCount": 2
+            },
+            {
+              "key": "Ephrata Community Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Evanston Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Fairview Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Florida Hospital Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Fort Walton Beach Medical Center1",
+              "docCount": 2
+            },
+            {
+              "key": "Geisinger Community Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Good Samaritan Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Gulf Coast Regional Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "HCA FLORIDA OSCEOLA HOSPITAL",
+              "docCount": 2
+            },
+            {
+              "key": "HCA Florida Oak Hill Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Health Central - Termed See other record",
+              "docCount": 2
+            },
+            {
+              "key": "Heart Of Florida Regional Medical",
+              "docCount": 2
+            },
+            {
+              "key": "Heart Of Florida Regional Medical Hosp",
+              "docCount": 2
+            },
+            {
+              "key": "Highlands Regional Med Ctr",
+              "docCount": 2
+            },
+            {
+              "key": "Jackson Memorial Hospital..",
+              "docCount": 2
+            },
+            {
+              "key": "Kendall Medical Center-Psychiatric Unit",
+              "docCount": 2
+            },
+            {
+              "key": "Lakeside Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Lawnwood Reg Med Ctr & Heart Institute",
+              "docCount": 2
+            },
+            {
+              "key": "Lee Memorial Health System",
+              "docCount": 2
+            },
+            {
+              "key": "Leesburg Regional Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Leesburg Regional Medical Center Inc",
+              "docCount": 2
+            },
+            {
+              "key": "Leesburg Regional Medical Center*",
+              "docCount": 2
+            },
+            {
+              "key": "Lutheran General Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "MEMORIAL HOSPITAL JACKSONVILLE",
+              "docCount": 2
+            },
+            {
+              "key": "Magnolia Regional Health Center",
+              "docCount": 2
+            },
+            {
+              "key": "Marion County Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Memorial Health University Medical Center Inc",
+              "docCount": 2
+            },
+            {
+              "key": "Memorial Hospital Pembroke",
+              "docCount": 2
+            },
+            {
+              "key": "Memorial Hospital-Jacksonville LA",
+              "docCount": 2
+            },
+            {
+              "key": "Munroe Regional Health System Inc",
+              "docCount": 2
+            },
+            {
+              "key": "NCH Healthcare",
+              "docCount": 2
+            },
+            {
+              "key": "North Okaloosa Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Northwest Florida Community Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Not Applicable",
+              "docCount": 2
+            },
+            {
+              "key": "Oak Hill Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Orlando Health Bayfront",
+              "docCount": 2
+            },
+            {
+              "key": "Orlando Health Inc",
+              "docCount": 2
+            },
+            {
+              "key": "Orlando Health, Inc.",
+              "docCount": 2
+            },
+            {
+              "key": "Orlando Regional Medical Center******",
+              "docCount": 2
+            },
+            {
+              "key": "Osceola Regional Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Palm Bay Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Palm Beach Gardens Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "Palmetto General Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Plantation General Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Raulerson Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Sacred Heart Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Sebastian River Medical Center",
+              "docCount": 2
+            },
+            {
+              "key": "South Lake Hospital Outpatient Rehabilitation,",
+              "docCount": 2
+            },
+            {
+              "key": "St Cloud Hospital",
+              "docCount": 2
+            },
+            {
+              "key": "Tampa General Hospital3",
+              "docCount": 2
+            },
+            {
+              "key": "Tampa General Hospital4",
+              "docCount": 2
+            },
+            {
+              "key": "Tgh Family Care Center- Healthpark",
+              "docCount": 2
+            },
+            {
+              "key": "Venice Regional Bayfront Health",
+              "docCount": 2
+            },
+            {
+              "key": "Wuesthoff Health System",
+              "docCount": 2
+            },
+            {
+              "key": "no hospital affiliations",
+              "docCount": 2
+            },
+            {
+              "key": "(CHEL) Ascension St. Vincent's Clay County Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "*Larkin Community Hospital Inc",
+              "docCount": 1
+            },
+            {
+              "key": "AdventHealth Dade City",
+              "docCount": 1
+            },
+            {
+              "key": "AdventHealth Daytona Beach",
+              "docCount": 1
+            },
+            {
+              "key": "AdventHealth Hendersonville1",
+              "docCount": 1
+            },
+            {
+              "key": "AdventHealth Lake Wales",
+              "docCount": 1
+            },
+            {
+              "key": "Adventhealth Heart Of Florida",
+              "docCount": 1
+            },
+            {
+              "key": "Adventist Health System Sunbelt Inc 1306938",
+              "docCount": 1
+            },
+            {
+              "key": "Adventist Health System Sunbelt Inc......",
+              "docCount": 1
+            },
+            {
+              "key": "Affinity Medical Center Massillon ...",
+              "docCount": 1
+            },
+            {
+              "key": "Alameda County Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Alameda Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Appling Healthcare System",
+              "docCount": 1
+            },
+            {
+              "key": "Ascension Medical Group Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Ascension Saint Thomas Rutherford Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Ascension St Vincents Riverside",
+              "docCount": 1
+            },
+            {
+              "key": "Ascension St Vincents Southside",
+              "docCount": 1
+            },
+            {
+              "key": "Aspirus Rhinelander Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Atlanticare Regional Medical Center City Division***",
+              "docCount": 1
+            },
+            {
+              "key": "Aultman Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Aventura Hosp & Med Ctr",
+              "docCount": 1
+            },
+            {
+              "key": "BARTOW MEMORIAL HOSPITAL",
+              "docCount": 1
+            },
+            {
+              "key": "Baptist Hospital -  Florida",
+              "docCount": 1
+            },
+            {
+              "key": "Baptist Hospital - IL",
+              "docCount": 1
+            },
+            {
+              "key": "Baptist Medical Center Beaches",
+              "docCount": 1
+            },
+            {
+              "key": "Baptist Medical Center South",
+              "docCount": 1
+            },
+            {
+              "key": "Bartow Regional Medical Center, Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Bartow Regional Medical Center...",
+              "docCount": 1
+            },
+            {
+              "key": "Bayfront Medical Center Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Baystate Mary Lane Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Baystate Medical Center Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Bradley Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Broward General Med Ctr",
+              "docCount": 1
+            },
+            {
+              "key": "Broward Health Imperial",
+              "docCount": 1
+            },
+            {
+              "key": "CANNON MEMORIAL HOSPITAL",
+              "docCount": 1
+            },
+            {
+              "key": "CLEVELAND CLINIC MERCY HOSPITAL",
+              "docCount": 1
+            },
+            {
+              "key": "CORAL GABLES HOSPITAL",
+              "docCount": 1
+            },
+            {
+              "key": "Calhoun-Liberty Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Cannon Memorial Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Cincinnati Childrens Hospital Medical Center MS",
+              "docCount": 1
+            },
+            {
+              "key": "Citrus Memorial Hosp",
+              "docCount": 1
+            },
+            {
+              "key": "Citrus Memorial Hospital Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Cleveland Clinic Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Cleveland Clinic Martin S Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Colquitt Regional Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Community Health of South Florida",
+              "docCount": 1
+            },
+            {
+              "key": "Community Hospital of New Port",
+              "docCount": 1
+            },
+            {
+              "key": "Cooperman Barnabas Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Covenant Healthcare System",
+              "docCount": 1
+            },
+            {
+              "key": "Covenant Hospital Levelland",
+              "docCount": 1
+            },
+            {
+              "key": "Curahealth Jacksonville LLC",
+              "docCount": 1
+            },
+            {
+              "key": "Desoto Memorial Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Doctors Memorial Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Doctors Memorial Hospital - Holmes",
+              "docCount": 1
+            },
+            {
+              "key": "Doctors Memorial Hospital Inc - Taylor",
+              "docCount": 1
+            },
+            {
+              "key": "Doctors Memorial Hospital, Inc.",
+              "docCount": 1
+            },
+            {
+              "key": "ENCOMPASS HEALTH REHABILITATION HOSPITAL OF OCALA",
+              "docCount": 1
+            },
+            {
+              "key": "East Pasco Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Eastside Psychiatric Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Ed Fraser Memorial Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Elmhurst Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Encompass Health Rehabilitation Hospital of Concord Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Endeavor Health Clinical Operations - DBA Glenbrook Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Eskenazi Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "FAIRFIELD MEDICAL CENTER",
+              "docCount": 1
+            },
+            {
+              "key": "FLORIDA HOSPITAL - KISSIMMEE",
+              "docCount": 1
+            },
+            {
+              "key": "FLORIDA HOSPITAL EAST ORLANDO",
+              "docCount": 1
+            },
+            {
+              "key": "Fairfield Medical Center.",
+              "docCount": 1
+            },
+            {
+              "key": "Fawcett Memorial Hospital Inc-Rehab Unit",
+              "docCount": 1
+            },
+            {
+              "key": "Florida Hospital Deland",
+              "docCount": 1
+            },
+            {
+              "key": "Florida Hospital Heartland",
+              "docCount": 1
+            },
+            {
+              "key": "Florida Hospital Tampa 1053321919",
+              "docCount": 1
+            },
+            {
+              "key": "Florida Hospital Waterman",
+              "docCount": 1
+            },
+            {
+              "key": "Florida Hospital Zephyrhills.",
+              "docCount": 1
+            },
+            {
+              "key": "Franciscan St Anthony Hlth Crown Po",
+              "docCount": 1
+            },
+            {
+              "key": "Franciscan St Francis Health - Beech Grove",
+              "docCount": 1
+            },
+            {
+              "key": "GOTTLIEB MEMORIAL HOSPITAL",
+              "docCount": 1
+            },
+            {
+              "key": "GUTHRIE TOWANDA MEMORIAL HOSPITAL",
+              "docCount": 1
+            },
+            {
+              "key": "Genesis Medical Center Aledo",
+              "docCount": 1
+            },
+            {
+              "key": "Gilmore Memorial Regional Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Golisano Children's Hospital of SW Florida",
+              "docCount": 1
+            },
+            {
+              "key": "Gottlieb Memorial Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Gulf Coast Medical Center1",
+              "docCount": 1
+            },
+            {
+              "key": "Gwinnett Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "HCA Florida Brandon Regional",
+              "docCount": 1
+            },
+            {
+              "key": "HCA Florida Pasadena Hospital, A part of HCA Florida St. Petersburg Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "HCA Florida West Tampa Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "HCA Florida Woodmont Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Health Central.",
+              "docCount": 1
+            },
+            {
+              "key": "Health Good Samaritan Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Heart of Florida Regional Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Henry County Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Hialeah Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Highland Park Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Hollywood Presbyterian Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Holmes Regional Medical Center, Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Homestead Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Indian River Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Indian River Medical Center,",
+              "docCount": 1
+            },
+            {
+              "key": "Jackson South Community Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Jay Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Jay Hospital.",
+              "docCount": 1
+            },
+            {
+              "key": "Jfk Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Keralty Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Kettering Health Main Campus",
+              "docCount": 1
+            },
+            {
+              "key": "Kindred Hospital Central Tampa",
+              "docCount": 1
+            },
+            {
+              "key": "Kindred Hospital Tampa",
+              "docCount": 1
+            },
+            {
+              "key": "LAKELAND REGIONAL MEDICAL CENTER, INC.",
+              "docCount": 1
+            },
+            {
+              "key": "Lake City Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Lakeland Regional Medical Center, Inc.",
+              "docCount": 1
+            },
+            {
+              "key": "Largo Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Lawnwood Reg Med Center",
+              "docCount": 1
+            },
+            {
+              "key": "Lawnwood Reg Med Center   .",
+              "docCount": 1
+            },
+            {
+              "key": "Legent Orthopedic Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Lowell General Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Lower Florida Keys Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Magnolia Regional Health Center 1",
+              "docCount": 1
+            },
+            {
+              "key": "Magnolia Regional Health Center MS",
+              "docCount": 1
+            },
+            {
+              "key": "Manatee Memorial Hospital FL",
+              "docCount": 1
+            },
+            {
+              "key": "Manatee Memorial Hospital LP",
+              "docCount": 1
+            },
+            {
+              "key": "Marina Del Rey Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Mariners Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Massachusetts General Hospital Tertiary and Quarternary Auto",
+              "docCount": 1
+            },
+            {
+              "key": "Mease Countryside Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Medical Center of Trinity West Pasco Campus",
+              "docCount": 1
+            },
+            {
+              "key": "Medical City Las Colinas",
+              "docCount": 1
+            },
+            {
+              "key": "Memorial Hospital Pembroke 1",
+              "docCount": 1
+            },
+            {
+              "key": "Memorial Hospital of Tampa",
+              "docCount": 1
+            },
+            {
+              "key": "Monroe Health Services Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Morton Plant North Bay Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Moses Taylor Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Mount Carmel St Anns",
+              "docCount": 1
+            },
+            {
+              "key": "Mount Sinai Medical Center OF Florida, Inc.",
+              "docCount": 1
+            },
+            {
+              "key": "Mount Sinai Medical Center of Florida",
+              "docCount": 1
+            },
+            {
+              "key": "New World Health Centers",
+              "docCount": 1
+            },
+            {
+              "key": "Newark Beth Israel Med Ctr",
+              "docCount": 1
+            },
+            {
+              "key": "North Okaloosa MED Center",
+              "docCount": 1
+            },
+            {
+              "key": "North Shore Medical Center Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Northside Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Northside Hospital-",
+              "docCount": 1
+            },
+            {
+              "key": "OSF Saint Francis Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Ocala Regional Med Center",
+              "docCount": 1
+            },
+            {
+              "key": "Orange Park Medical CTR",
+              "docCount": 1
+            },
+            {
+              "key": "Orange Park Medical Center, Inc.",
+              "docCount": 1
+            },
+            {
+              "key": "Orange Park Medical Ctr",
+              "docCount": 1
+            },
+            {
+              "key": "Orlando Health Central, Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Orlando Health Central, Inc.",
+              "docCount": 1
+            },
+            {
+              "key": "Orlando Health St. Cloud Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Orlando Vamc",
+              "docCount": 1
+            },
+            {
+              "key": "Overlook Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Palms Of Pasadena Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Palms West Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Palms of Pasadena Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Parkland Health",
+              "docCount": 1
+            },
+            {
+              "key": "Parrish Medical Center....",
+              "docCount": 1
+            },
+            {
+              "key": "Pasco Community Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Physicians Regional Medical Center-Pine Ridge",
+              "docCount": 1
+            },
+            {
+              "key": "Poplar Bluff Regional Medical Ctr",
+              "docCount": 1
+            },
+            {
+              "key": "Regional Med Ctr At Bayonet Point",
+              "docCount": 1
+            },
+            {
+              "key": "Saint Vincent Hospital*",
+              "docCount": 1
+            },
+            {
+              "key": "Saint Vincent Physician Services, Inc....",
+              "docCount": 1
+            },
+            {
+              "key": "Salem Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Santa Rosa Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Scottish Rite Children's Medical Center - Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Seven Rivers Regional Medical Ctr",
+              "docCount": 1
+            },
+            {
+              "key": "Shands At Live Oak",
+              "docCount": 1
+            },
+            {
+              "key": "Shands University of Florida Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Shands at Lake Shore",
+              "docCount": 1
+            },
+            {
+              "key": "South Bay Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "South Central Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "South Central Regional Med Ctr",
+              "docCount": 1
+            },
+            {
+              "key": "South Lake Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Southern NH Medical Center Group Practice",
+              "docCount": 1
+            },
+            {
+              "key": "Southern New Hampshire Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "St Joseph Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "St Joseph's Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "St Josephs Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "St Lukes Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "St Petersburg General Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "St Vincent's Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "St. Josephs Womens Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "St. Vincent Hospital and Health Care Center, Inc.",
+              "docCount": 1
+            },
+            {
+              "key": "St. Vincent's Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "Steward Melbourne Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "TAMPA GENERAL HOSPITAL",
+              "docCount": 1
+            },
+            {
+              "key": "Tallahassee Memorial HealthCare, Inc.",
+              "docCount": 1
+            },
+            {
+              "key": "Tampa General Hospital.5",
+              "docCount": 1
+            },
+            {
+              "key": "Tampa General Hospital6",
+              "docCount": 1
+            },
+            {
+              "key": "The Cleveland Clinic Hospital Foundation",
+              "docCount": 1
+            },
+            {
+              "key": "The Villages Regional Hospital*",
+              "docCount": 1
+            },
+            {
+              "key": "Tift Regional Medical Center",
+              "docCount": 1
+            },
+            {
+              "key": "University Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "University Hospital - Cincinnati",
+              "docCount": 1
+            },
+            {
+              "key": "University Hospital-Psychiatric Unit",
+              "docCount": 1
+            },
+            {
+              "key": "University Medical Center of El Paso",
+              "docCount": 1
+            },
+            {
+              "key": "Viera Hospital Inc",
+              "docCount": 1
+            },
+            {
+              "key": "WEST BOCA MEDICAL CENTER",
+              "docCount": 1
+            },
+            {
+              "key": "WESTSIDE REGIONAL MEDICAL CENTER",
+              "docCount": 1
+            },
+            {
+              "key": "Warsaw Health System LLC dba Lutheran Kosciusko Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "Wayne Memorial Hospital",
+              "docCount": 1
+            },
+            {
+              "key": "West Boca Medica",
+              "docCount": 1
+            },
+            {
+              "key": "West Kendall Baptist Hospital Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Westchester General Hospital, INC",
+              "docCount": 1
+            },
+            {
+              "key": "Winter Haven Hospital Inc",
+              "docCount": 1
+            },
+            {
+              "key": "Winter Haven Hospital, Inc.",
+              "docCount": 1
+            },
+            {
+              "key": "Wishard Health Services",
+              "docCount": 1
+            },
+            {
+              "key": "Wuesthoff Hospital - Rockledge",
+              "docCount": 1
+            },
+            {
+              "key": "Wuesthoff Medical Center  Melbourne....",
+              "docCount": 1
+            },
+            {
+              "key": "Wuesthoff Medical Center Melbourne.",
+              "docCount": 1
+            }
+          ],
+          "otherDocs": 0
+        }
+      ]
+    }
+  ]
+}

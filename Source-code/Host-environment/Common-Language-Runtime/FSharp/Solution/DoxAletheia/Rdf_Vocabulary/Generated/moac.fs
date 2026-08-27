@@ -10,8 +10,9 @@ module moac =
     ///   <para>moac:</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Ontology</para>
     ///   <para>hartigprov:DataItem</para>
+    ///   <para>hartigprov:DataCreation</para>
+    ///   <para>owl:Ontology</para>
     /// </remarks>
     /// <seealso href="http://www.observedchange.com/moac/ns#">http://www.observedchange.com/moac/ns#</seealso>
     let _prefix_iri = Prefixed_Name(moac, "") |> PrefixedName

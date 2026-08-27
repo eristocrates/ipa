@@ -10,18 +10,11 @@ module coun =
     ///   <para>coun:Country</para>
     /// </summary>
     /// <remarks>
+    ///   <para>daml:Restriction</para>
     ///   <para>rdfs:Class</para>
     /// </remarks>
     /// <seealso href="http://www.daml.org/2001/09/countries/iso-3166-ont#Country">http://www.daml.org/2001/09/countries/iso-3166-ont#Country</seealso>
     let Country = Prefixed_Name(coun, "Country") |> PrefixedName
-    /// <summary>
-    ///   <para>coun:name</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>daml:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://www.daml.org/2001/09/countries/iso-3166-ont#name">http://www.daml.org/2001/09/countries/iso-3166-ont#name</seealso>
-    let name = Prefixed_Name(coun, "name") |> PrefixedName
     /// <summary>
     ///   <para>coun:code</para>
     /// </summary>
@@ -30,3 +23,11 @@ module coun =
     /// </remarks>
     /// <seealso href="http://www.daml.org/2001/09/countries/iso-3166-ont#code">http://www.daml.org/2001/09/countries/iso-3166-ont#code</seealso>
     let code = Prefixed_Name(coun, "code") |> PrefixedName
+    /// <summary>
+    ///   <para>coun:name</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>daml:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://www.daml.org/2001/09/countries/iso-3166-ont#name">http://www.daml.org/2001/09/countries/iso-3166-ont#name</seealso>
+    let name = Prefixed_Name(coun, "name") |> PrefixedName

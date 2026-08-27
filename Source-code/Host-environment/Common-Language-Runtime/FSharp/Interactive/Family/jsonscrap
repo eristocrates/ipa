@@ -1,0 +1,1394 @@
+# time on
+fsi.PrintLength <- 10
+fsi.ShowDeclarationValues <- true
+open System
+open System.IO
+open System.Net.Http
+
+#r "nuget: Humanizer.Core"
+open Humanizer
+
+#r "nuget: CaseConverter"
+open CaseConverter
+
+#r "nuget: FsHttp"
+open FsHttp
+#r "nuget: Fli"
+open Fli
+
+#r "nuget: FSharp.Literals, 2.2.15"
+open FSharp.Literals
+
+#r "nuget: FSharp.Data"
+open FSharp.Data
+open FSharp.Data.JsonExtensions
+
+#r "nuget: SwaggerProvider"
+
+open SwaggerProvider
+
+
+#r "nuget: Hl7.Fhir.R4"
+
+open Hl7.Fhir.Model
+open Hl7.Fhir.Rest
+
+
+#r "nuget: Focal.Json, 0.10.0"
+
+open Focal.Core
+open Focal.Json
+
+
+#r "nuget: Newtonsoft.Json"
+
+open Newtonsoft.Json.Linq
+#r "nuget: Fabulous.AST" 
+open Fabulous.AST
+
+
+#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Ergonomic_Extensions\obj\Release\net10.0"
+// #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\DotNetRDFSharp\obj\Release\net10.0"
+// #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\obj\Release\net10.0"
+#r "Ergonomic_Extensions.dll"
+// #r "DotNetRDFSharp.dll"
+// #r "Rdf_Vocabulary.dll"
+open DoxAletheia.PrettierNaming
+open DoxAletheia.PrettierNaming.FSharp_Keywords
+
+
+
+
+module Centene = 
+    module API_Catalog = 
+            module Provider_Directory = 
+                let uri = new Uri "https://iopc-pd.api.centene.com/iopc/pd/fhir/providerdirectory/"
+                module openapi = 
+
+                    [<Literal>]
+                    let file_path =
+                        @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Family\pd-swagger-PP-2023-12-12_15_52_39-PP-2024-10-10_21_48_31.json"
+                    let json = JsonProvider<file_path>.Load file_path
+                type Provider = OpenApiClientProvider<openapi.file_path>
+                module Client = 
+                    let http = new HttpClient()
+                    http.BaseAddress <- uri
+                    let swagger = Provider.Client(http)
+                    let fhir = new FhirClient("https://iopc-pd.api.centene.com/iopc/pd/fhir/providerdirectory/" )
+                    fhir.Settings.PreferredFormat <- ResourceFormat.Xml
+                    fhir.Settings.ReturnPreference <- ReturnPreference.Representation
+
+
+
+
+open Centene.API_Catalog.Provider_Directory.Client
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(*
+
+
+type Json_Value = 
+    | JsonScalarValue of JsonScalar
+    | JsonObjectValue of JsonObject
+    | JsonArrayValue of JsonArray
+    member this.maybe_scalar = 
+      match this with 
+      | JsonScalarValue json_scalar -> Some json_scalar
+      | JsonObjectValue json_object -> None
+      | JsonArrayValue json_array -> None
+    member this.maybe_object = 
+      match this with 
+      | JsonScalarValue json_scalar -> None
+      | JsonObjectValue json_object -> Some json_object
+      | JsonArrayValue json_array -> None
+    member this.maybe_array = 
+      match this with 
+      | JsonScalarValue json_scalar -> None
+      | JsonObjectValue json_object -> None
+      | JsonArrayValue json_array ->  Some json_array
+
+    static member from_json_key_value (key:string)(json_value:JsonValue) = 
+        match json_value with 
+        | JsonValue.String value -> JsonString(key,value) |> JsonScalarValue
+        | JsonValue.Number value -> JsonNumber(key,value) |> JsonScalarValue
+        | JsonValue.Float value -> JsonFloat(key,value) |> JsonScalarValue
+        | JsonValue.Boolean value -> JsonBoolean(key,value) |> JsonScalarValue
+        | JsonValue.Null -> JsonNull(key,()) |> JsonScalarValue
+        | JsonValue.Array values -> JsonArray.from_json_key_values key values |> JsonArrayValue
+        | JsonValue.Record members -> 
+
+            let scalar_members = 
+                members
+                |> Array.choose (fun (member_key,member_value) -> 
+                      match member_value with 
+                        | JsonValue.String value -> Some(JsonString( member_key, value))
+                        | JsonValue.Number value -> Some(JsonNumber( member_key, value))
+                        | JsonValue.Float value -> Some(JsonFloat( member_key, value))
+                        | JsonValue.Record value -> None
+                        | JsonValue.Array value -> None
+                        | JsonValue.Boolean value -> Some(JsonBoolean( member_key, value))
+                        | JsonValue.Null -> None
+                    )
+            let array_members = 
+                members
+                |> Array.choose (fun (array_key,json_value) -> 
+                
+                      match json_value with 
+                      | JsonValue.String value -> None
+                      | JsonValue.Number value -> None
+                      | JsonValue.Float value -> None
+                      | JsonValue.Record value -> None
+                      | JsonValue.Array values -> Some(JsonArray.from_json_key_values  array_key values)
+                      | JsonValue.Boolean value -> None
+                      | JsonValue.Null -> None
+
+                
+                )
+            let object_members = 
+                members
+                |> Array.filter( fun (key, json_value) -> json_value.IsRecord )
+                |> Array.map (fun (object_key, object_value) -> Json_Value.from_json_key_value object_key object_value)
+                |> Array.map (fun (JsonObjectValue json_object) -> json_object)
+            
+
+            
+            JsonObjectValue (
+                              {
+                  json_key = key
+                  scalar_members = scalar_members
+                  array_members = array_members
+                  object_members = object_members
+
+                }            
+
+            )
+
+and JsonArray = 
+    {
+      json_key:string
+      element_values: Json_Value array
+    }
+    member this.array_elements = this.element_values |> Array.choose (fun element -> element.maybe_array)
+    member this.object_elements = this.element_values |> Array.choose (fun element -> element.maybe_object)
+    member this.scalar_elements = this.element_values |> Array.choose (fun element -> element.maybe_scalar)
+    member this.string_elements = this.scalar_elements |> Array.filter (fun scalar_element -> scalar_element.IsJsonString)
+    member this.decimal_elements = this.scalar_elements |> Array.filter (fun scalar_element -> scalar_element.IsJsonString)
+    member this.double_elements = this.scalar_elements |> Array.filter (fun scalar_element -> scalar_element.IsJsonString)
+    member this.bool_elements = this.scalar_elements |> Array.filter (fun scalar_element -> scalar_element.IsJsonString)
+    member this.null_elements = this.scalar_elements |> Array.filter (fun scalar_element -> scalar_element.IsJsonString)
+    static member from_json_key_values (key:string)(json_values:JsonValue array) = 
+        {
+          json_key = key
+          element_values = json_values |> Array.map(fun array_element -> Json_Value.from_json_key_value key array_element)
+        }
+
+and JsonScalar = 
+      | JsonString of string * string
+      | JsonNumber of string * decimal 
+      | JsonFloat of string * float
+      | JsonBoolean of string * bool
+      | JsonNull of string * unit
+      member this.as_binding = 
+          match this with 
+            | JsonString(key,value) -> Ast.Value(key, Ast.String(value))
+            | JsonNumber(key,value) -> Ast.Value(key, Ast.Decimal(value))
+            | JsonFloat(key,value) -> Ast.Value(key, Ast.Double(value))
+            | JsonBoolean(key,value) -> Ast.Value(key, Ast.Bool(value))
+            | JsonNull(key,value) -> Ast.Value(key, "()")
+     
+and JsonObject =
+    {
+      json_key:string
+      scalar_members: JsonScalar array
+      array_members: JsonArray array
+      object_members: JsonObject array
+
+
+    }
+    
+    
+    member this.as_module = 
+          Ast.Module(this.json_key){
+              for scalar_member in this.scalar_members do
+                scalar_member.as_binding
+              for object_member in this.object_members do 
+                  object_member.as_module
+
+          }
+
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+type JsonValue with 
+
+
+    member this.array_properties = 
+      this.Properties
+      |> Array.filter( fun (key, json_value) -> json_value.IsArray)
+      |> Array.map (fun (key,(JsonValue.Array json_array)) -> key, json_array)
+    member this.string_array_properties = 
+      this.array_properties
+      |> Array.choose (fun (key,json_array) -> 
+
+        let string_array = json_array |> Array.choose (fun json_value -> 
+            if json_value.IsString then 
+              Some (json_value.AsString())
+            else None
+            )
+        if string_array.Length > 0 then 
+          Some (key,string_array)
+        else 
+          None
+      
+      )
+    member this.decimal_array_properties = 
+      this.array_properties
+      |> Array.choose (fun (key,json_array) -> 
+
+        let decimal_array = json_array |> Array.choose (fun json_value -> 
+            if json_value.IsNumber then 
+              Some (json_value.AsDecimal())
+            else None
+            )
+        if decimal_array.Length > 0 then 
+          Some (key,decimal_array)
+        else 
+          None
+      
+      )
+
+    member this.float_array_properties = 
+      this.array_properties
+      |> Array.choose (fun (key,json_array) -> 
+
+        let float_array = json_array |> Array.choose (fun json_value -> 
+            if json_value.IsFloat then 
+              Some (json_value.AsFloat())
+            else None
+            )
+        if float_array.Length > 0 then 
+          Some (key,float_array)
+        else 
+          None
+      
+      )
+
+    member this.boolean_array_properties = 
+      this.array_properties
+      |> Array.choose (fun (key,json_array) -> 
+
+        let boolean_array = json_array |> Array.choose (fun json_value -> 
+            if json_value.IsBoolean then 
+              Some (json_value.AsBoolean())
+            else None
+            )
+        if boolean_array.Length > 0 then 
+          Some (key,boolean_array)
+        else 
+          None
+      
+      )
+
+    member this.null_array_properties = 
+      this.array_properties
+      |> Array.choose (fun (key,json_array) -> 
+
+        let null_array = json_array |> Array.choose (fun json_value -> 
+            if json_value.IsNull then 
+              Some (json_value.AsString())
+            else None
+            )
+        if null_array.Length > 0 then 
+          Some (key)
+        else 
+          None
+      
+      )
+    member this.record_array_properties = 
+      this.array_properties
+      |> Array.choose (fun (key,json_array) -> 
+
+        let record_array = json_array |> Array.choose (fun json_value -> 
+            if json_value.IsRecord then 
+              Some json_value
+            else None
+            )
+        if record_array.Length > 0 then 
+          Some (key,record_array)
+        else 
+          None
+      
+      )
+
+
+    member this.emit_value (key:string) = 
+      match this with 
+        | JsonValue.String value -> Ast.Value(key, Ast.String(value))
+        | JsonValue.Number value -> Ast.Value(key, Ast.Decimal(value))
+        | JsonValue.Float value -> Ast.Value(key, Ast.Double(value))
+        | JsonValue.Record value -> Ast.Value(key, "record")
+        | JsonValue.Array value -> Ast.Value(key, "array")
+        | JsonValue.Boolean value -> Ast.Value(key, Ast.Bool(value))
+        | JsonValue.Null -> Ast.Value(key, "null")
+    member this.clr_type = 
+      match this with 
+        | JsonValue.String value -> value.GetType()
+        | JsonValue.Number value -> value.GetType()
+        | JsonValue.Float value -> value.GetType()
+        | JsonValue.Record value -> value.GetType()
+        | JsonValue.Array value -> value.GetType()
+        | JsonValue.Boolean value -> value.GetType()
+        | JsonValue.Null -> typeof<obj>
+    member this.fsharp_type_name = Literal.stringifyTypeDynamic this.clr_type
+    member this.emit_field_definition (key:string)  = Ast.Field(key, this.fsharp_type_name)
+    
+    member this.emit_record_definition (key:string) = 
+              Ast.Record(Converters.FirstCharToUpperCase key){
+                  for property_key, (property_value: JsonValue) in this.datatype_properties do 
+                    property_key |> property_value.emit_field_definition 
+              }
+    member this.emit_record_field (key:string) = 
+      match this with 
+        | JsonValue.String value -> Ast.RecordFieldExpr(key, Ast.String(value))
+        | JsonValue.Number value -> Ast.RecordFieldExpr(key, Ast.Decimal(value))
+        | JsonValue.Float value -> Ast.RecordFieldExpr(key, Ast.Double(value))
+        | JsonValue.Record value -> Ast.RecordFieldExpr(key, "record")
+        | JsonValue.Array value -> Ast.RecordFieldExpr(key, "array")
+        | JsonValue.Boolean value -> Ast.RecordFieldExpr(key, Ast.Bool(value))
+        | JsonValue.Null -> Ast.RecordFieldExpr(key, "null")
+    member this.emit_record_expression (key:string) = 
+          Ast.Value(key, Ast.RecordExpr([
+                  for property_key, property_value in this.datatype_properties do 
+                      property_key |> property_value.emit_record_field
+            ])
+          )
+
+    member this.maybe_scalar = 
+      match this with 
+        | JsonValue.String value -> Some this
+        | JsonValue.Number value -> Some this
+        | JsonValue.Float value -> Some this
+        | JsonValue.Record value -> None
+        | JsonValue.Array value -> None
+        | JsonValue.Boolean value -> Some this
+        | JsonValue.Null -> None
+
+    member this.datatype_properties = 
+      
+      this.Properties
+      |> Array.choose( fun (key, json_value) -> 
+        if json_value.maybe_scalar.IsSome then 
+          Some (key,json_value.maybe_scalar.Value)
+        else 
+          None
+      )
+      
+    member this.as_string = this.AsString()
+    member this.keys = 
+      this.Properties
+      |> Array.map( fun (key, json_value) -> key)
+    member this.string_properties = 
+        this.Properties |> Array.choose (fun (key,json_value) ->
+          match json_value with 
+            | JsonValue.String value -> Some(key,value)
+            | JsonValue.Number value -> None
+            | JsonValue.Float value -> None
+            | JsonValue.Record value -> None
+            | JsonValue.Array values -> None
+            | JsonValue.Boolean value -> None
+            | JsonValue.Null -> None
+        
+        )
+
+    member this.decimal_properties = 
+      this.Properties
+      |> Array.choose( fun (key, json_value) -> 
+      match json_value with 
+        | JsonValue.String value -> None
+        | JsonValue.Number value -> Some(key,value)
+        | JsonValue.Float value -> None
+        | JsonValue.Record value -> None
+        | JsonValue.Array value -> None
+        | JsonValue.Boolean value -> None
+        | JsonValue.Null -> None
+      )
+    member this.float_properties = 
+      this.Properties
+      |> Array.choose( fun (key, json_value) -> 
+      match json_value with 
+        | JsonValue.String value -> None
+        | JsonValue.Number value -> None
+        | JsonValue.Float value -> Some(key,value)
+        | JsonValue.Record value -> None
+        | JsonValue.Array value -> None
+        | JsonValue.Boolean value -> None
+        | JsonValue.Null -> None
+      )
+      
+    member this.record_properties = 
+      this.Properties
+      |> Array.filter( fun (key, json_value) -> json_value.IsRecord)
+    member this.record_properties_with_scalar_values = 
+      this.record_properties
+      |> Array.filter (fun (record_key,record_value) -> record_value.has_scalar_properties)
+    member this.record_properties_with_nested_records = 
+      this.record_properties
+      |> Array.filter (fun (record_key,record_value) -> record_value.has_nested_records)
+    member this.record_properties_with_nested_arrays = 
+      this.record_properties
+      |> Array.filter (fun (record_key,record_value) -> record_value.has_nested_arrays)
+    member this.has_nested_non_scalar_properties = this.has_nested_arrays || this.has_nested_records
+    member this.is_scalar_property_collection_record = not this.has_nested_non_scalar_properties
+    member this.non_scalar_record_properties = 
+      this.record_properties
+      |> Array.choose (fun (record_key,record_value) -> 
+          let non_scalar_properties = record_value.Properties |> Array.filter (fun (property_key,property_value) -> property_value.IsArray || property_value.IsRecord)
+          if non_scalar_properties.Length > 0 then
+              Some(record_key,JsonValue.Record non_scalar_properties)
+          else 
+              None
+      )
+    member this.boolean_properties = 
+      this.Properties
+      |> Array.choose( fun (key, json_value) -> 
+      match json_value with 
+        | JsonValue.String value -> None
+        | JsonValue.Number value -> None
+        | JsonValue.Float value -> None
+        | JsonValue.Record value -> None
+        | JsonValue.Array value -> None
+        | JsonValue.Boolean value -> Some(key,value)
+        | JsonValue.Null -> None
+      )
+    member this.null_properties = 
+      this.Properties
+      |> Array.choose( fun (key, json_value) -> 
+      match json_value with 
+        | JsonValue.String value -> None
+        | JsonValue.Number value -> None
+        | JsonValue.Float value -> None
+        | JsonValue.Record value -> None
+        | JsonValue.Array value -> None
+        | JsonValue.Boolean value -> None
+        | JsonValue.Null -> Some(key)
+      )
+      
+    member this.has_scalar_properties = 
+              this.string_properties.Length > 0
+              || this.decimal_properties.Length > 0
+              || this.float_properties.Length > 0
+              || this.boolean_properties.Length > 0
+              || this.null_properties.Length > 0
+    member this.has_nested_records = 
+              this.record_properties.Length > 0
+    member this.has_nested_arrays = 
+              this.array_properties.Length > 0 
+              || this.string_array_properties.Length > 0 
+              || this.decimal_array_properties.Length > 0 
+              || this.float_array_properties.Length > 0 
+              || this.boolean_array_properties.Length > 0 
+              || this.null_array_properties.Length > 0 
+              || this.record_array_properties.Length > 0 
+
+
+
+
+
+Centene.API_Catalog.Provider_Directory.openapi.json.JsonValue.datatype_properties
+
+
+
+
+(*
+
+
+
+
+
+type Json_Record = 
+  {
+    
+    json_key:string
+    json_scalar: JsonValue option
+    string_properties : array<string * string>
+    decimal_properties : array<string * decimal>
+    double_properties : array<string * double>
+    record_properties : array<string * array<string * JsonValue> >
+    array_properties : array<string * Json_Record array >
+    boolean_properties : array<string * bool>
+    null_properties :string array
+
+  }
+  static member nested_from_value (jsonvalue:JsonValue) : Json_Record array = 
+                jsonvalue.record_properties
+                |> Array.collect (fun (key,records) -> 
+                        records |> Array.map (fun (record_key,record_value) -> Json_Record.from_key_value record_key record_value )
+                    
+                        )
+
+
+  static member from_key_value (json_key:string)(jsonvalue :JsonValue) = 
+    {
+    
+        json_key = json_key
+        json_scalar = jsonvalue.maybe_scalar
+        string_properties = jsonvalue.string_properties
+        decimal_properties = jsonvalue.decimal_properties
+        double_properties = jsonvalue.double_properties
+        record_properties = jsonvalue.record_properties
+        array_properties = 
+            jsonvalue.array_properties 
+            |> Array.map (fun (key,json_array) -> 
+                key, json_array |> Array.mapi (fun index record_value -> Json_Record.from_key_value $"{key}'{index}" record_value )
+            
+            )
+        boolean_properties = jsonvalue.boolean_properties
+        null_properties = jsonvalue.null_properties
+
+      }
+
+
+
+let root_record = Json_Record.from_key_value "swagger" Centene.API_Catalog.Provider_Directory.openapi.json.JsonValue
+let schemas = Centene.API_Catalog.Provider_Directory.openapi.json.Components.Schemas.JsonValue.Properties
+let key, value = schemas |> Array.find (fun (key,value) -> key = "PractitionerRole")
+let properties = value?properties |> _.Properties
+let test = value?required |> _.AsArray()
+HealthcareService
+
+
+root_record
+
+
+root_record.array_properties[1]
+root_record.record_properties[0]
+
+root_record.string_properties
+root_record.decimal_properties
+root_record.double_properties
+root_record.record_properties
+root_record.boolean_properties
+root_record.null_properties
+
+root_record.array_properties
+
+
+
+
+let rec emit_json_record (json_record:Json_Record) = 
+    Ast.Module(json_record.json_key.TrimStart('/').normalize_identifier){
+            if json_record.json_scalar.IsSome then 
+                Ast.Value($"{json_record.json_key}_value", Ast.String(json_record.json_scalar.Value.as_string))
+    
+            for key,value in json_record.string_properties do 
+              Ast.Value(key, Ast.String(value))
+            for key,value in json_record.decimal_properties do 
+              Ast.Value(key,Ast.Decimal(value))
+            for key,value in json_record.double_properties do 
+              Ast.Value(key,Ast.Double(value))
+            for key,value in json_record.boolean_properties do 
+              Ast.Value(key,Ast.Bool(value))
+            for key in json_record.null_properties do 
+              Ast.Value(key, "None")
+           
+            for key,nested_records in json_record.array_properties do 
+                for nested_record in nested_records do 
+                    emit_json_record nested_record
+            for key,nested_key_jsonvalues in json_record.record_properties do 
+                    Ast.Module(key.TrimStart('/').normalize_identifier){
+
+                    let nested_records = nested_key_jsonvalues |> Array.map (fun (nested_key,value) ->  Json_Record.from_key_value nested_key value )
+                    for nested_record in nested_records do 
+
+                          emit_json_record nested_record
+                    }
+
+    }
+
+*)
+
+
+
+
+
+
+type String with 
+    member this.singular_form = this.Singularize()
+    member this.Capitalized = Converters.FirstCharToUpperCase this
+
+
+
+
+
+let is_option_field (field_name:string)(json_array:JsonValue array) = json_array |> Array.exists (fun json_value -> json_value.TryGetProperty field_name = None) 
+
+
+
+
+
+type JsonArrayElementKind =
+    | StringArrayElements
+    | DecimalArrayElements
+    | FloatArrayElements
+    | BooleanArrayElements
+    | NullArrayElements
+    | RecordArrayElements
+    | NestedArrayElements
+    | UnknownArrayElements
+
+
+let classify_json_array_element (json_value: JsonValue) =
+    match json_value with
+    | JsonValue.String _ ->
+        StringArrayElements
+
+    | JsonValue.Number _ ->
+        DecimalArrayElements
+
+    | JsonValue.Float _ ->
+        FloatArrayElements
+
+    | JsonValue.Boolean _ ->
+        BooleanArrayElements
+
+    | JsonValue.Null ->
+        NullArrayElements
+
+    | JsonValue.Record _ ->
+        RecordArrayElements
+
+    | JsonValue.Array _ ->
+        NestedArrayElements
+
+
+
+let try_get_array_property
+    (property_key: string)
+    (json_record: JsonValue)
+    =
+    match json_record.TryGetProperty property_key with
+    | Some (JsonValue.Array json_array) ->
+        Some json_array
+
+    | Some non_array_value ->
+        failwithf
+            "Property '%s' was expected to be an array, but its value was %A."
+            property_key
+            non_array_value
+
+    | None ->
+        None
+
+let infer_array_element_kind
+    (property_key: string)
+    (json_records: JsonValue array)
+    =
+    let observed_element_kinds =
+        json_records
+        |> Array.choose (try_get_array_property property_key)
+        |> Array.collect id
+        |> Array.map classify_json_array_element
+        |> Array.distinct
+
+    match observed_element_kinds with
+    | [||] ->
+        // Every observed array was empty.
+        //
+        // JSON supplies no element-type information in this case.
+        UnknownArrayElements
+
+    | [| single_element_kind |] ->
+        single_element_kind
+
+    | conflicting_element_kinds ->
+        failwithf
+            "Array property '%s' contains conflicting element kinds: %A."
+            property_key
+            conflicting_element_kinds
+let emit_json_array
+    (property_key: string)
+    (element_kind: JsonArrayElementKind)
+    (json_array: JsonValue array)
+    =
+    match element_kind with
+    | StringArrayElements ->
+        Ast.ArrayExpr([
+            for json_value in json_array do
+                Ast.String(json_value.AsString())
+        ])
+
+    | DecimalArrayElements ->
+        Ast.ArrayExpr([
+            for json_value in json_array do
+                Ast.Decimal(json_value.AsDecimal())
+        ])
+
+    | FloatArrayElements ->
+        Ast.ArrayExpr([
+            for json_value in json_array do
+                Ast.Float(json_value.AsFloat())
+        ])
+
+    | BooleanArrayElements ->
+        Ast.ArrayExpr([
+            for json_value in json_array do
+                Ast.Bool(json_value.AsBoolean())
+        ])
+
+    | NullArrayElements ->
+        Ast.ArrayExpr([
+            for _json_value in json_array do
+                Ast.ConstantExpr("()")
+        ])
+
+    | UnknownArrayElements ->
+        if Array.isEmpty json_array then
+            Ast.ConstantExpr("([||] : obj array)")
+        else
+            failwithf
+                "Array property '%s' was classified as unknown, but it contains values."
+                property_key
+
+    | RecordArrayElements ->
+        failwithf
+            "Array property '%s' contains records. Nested record-array emission has not yet been defined here."
+            property_key
+
+    | NestedArrayElements ->
+        failwithf
+            "Array property '%s' contains nested arrays. Nested-array emission has not yet been defined here."
+            property_key
+
+
+
+
+
+
+
+let swagger_json =  Centene.API_Catalog.Provider_Directory.openapi.json.JsonValue
+let emit_anonymous_record (json_object:JsonValue) = 
+                                          Ast.AnonRecordExpr([
+                                              for key,value in json_object.string_properties -> Ast.RecordFieldExpr(key, Ast.String(value))
+                                              for key,value in json_object.decimal_properties -> Ast.RecordFieldExpr(key, Ast.Decimal(value))
+                                              for key,value in json_object.float_properties -> Ast.RecordFieldExpr(key, Ast.Float(value))
+                                              for key,value in json_object.boolean_properties -> Ast.RecordFieldExpr(key, Ast.Bool(value))
+                                              for key in json_object.null_properties -> Ast.RecordFieldExpr(key, "()")
+                                              ])
+                  
+
+
+let emit_string_option (maybe_string:string option) =
+  match maybe_string with 
+  | Some value -> Ast.AppExpr("Some", Ast.String(value))
+  | None -> Ast.ConstantExpr("None")
+let emit_decimal_option (maybe_decimal:decimal option) =
+  match maybe_decimal with 
+  | Some value -> Ast.AppExpr("Some", Ast.Decimal(value))
+  | None -> Ast.ConstantExpr("None")
+
+let emit_float_option (maybe_float:float option) =
+  match maybe_float with 
+  | Some value -> Ast.AppExpr("Some", Ast.Float(value))
+  | None -> Ast.ConstantExpr("None")
+
+let emit_boolean_option (maybe_boolean:bool option) =
+  match maybe_boolean with 
+  | Some value -> Ast.AppExpr("Some", Ast.Bool(value))
+  | None -> Ast.ConstantExpr("None")
+let emit_null_option (maybe_json_value:JsonValue option) =
+  match maybe_json_value with 
+  | Some value -> Ast.AppExpr("Some", value.AsString())
+  | None -> Ast.ConstantExpr("None")
+
+
+
+let root_binding = "example"
+let rec emit_module (module_binding:string) (json_value:JsonValue) = 
+        
+        Ast.Module(module_binding.TrimStart('/').normalize_identifier){
+
+              for key,value in json_value.string_properties -> Ast.Value(key, Ast.String(value))
+              for key,value in json_value.decimal_properties -> Ast.Value(key, Ast.Decimal(value))
+              for key,value in json_value.float_properties -> Ast.Value(key, Ast.Float(value))
+              for key,value in json_value.boolean_properties -> Ast.Value(key, Ast.Bool(value))
+              for key in json_value.null_properties -> Ast.Value(key, "()")
+
+
+
+              // for object_key, json_object in json_value.record_properties_with_scalar_values -> Ast.Value(object_key, emit_anonymous_record json_object )
+
+
+
+
+              for array_key,string_array in json_value.string_array_properties ->
+                    Ast.Value(array_key, Ast.ArrayExpr([ for string_value in string_array -> Ast.String(string_value) ]))
+              for array_key,decimal_array in json_value.decimal_array_properties ->
+                    Ast.Value(array_key, Ast.ArrayExpr([ for decimal_value in decimal_array -> Ast.Decimal(decimal_value) ]))
+              for array_key,float_array in json_value.float_array_properties ->
+                    Ast.Value(array_key, Ast.ArrayExpr([ for float_value in float_array -> Ast.Float(float_value) ]))
+              for array_key,boolean_array in json_value.boolean_array_properties ->
+                    Ast.Value(array_key, Ast.ArrayExpr([ for boolean_value in boolean_array -> Ast.Bool(boolean_value) ]))
+              for array_key in json_value.null_array_properties ->
+                    Ast.Value(array_key, "[||]")
+              for array_key, record_array in json_value.record_array_properties ->
+              
+                    let string_keys = 
+                      record_array
+                      |> Array.collect (fun json_value -> json_value.string_properties)
+                      |> Array.map (fun (key,_) -> key)
+                      |> Array.distinct
+                    let decimal_keys = 
+                      record_array
+                      |> Array.collect (fun json_value -> json_value.decimal_properties)
+                      |> Array.map (fun (key,_) -> key)
+                      |> Array.distinct
+                    let float_keys = 
+                      record_array
+                      |> Array.collect (fun json_value -> json_value.float_properties)
+                      |> Array.map (fun (key,_) -> key)
+                      |> Array.distinct
+                    let boolean_keys = 
+                      record_array
+                      |> Array.collect (fun json_value -> json_value.boolean_properties)
+                      |> Array.map (fun (key,_) -> key)
+                      |> Array.distinct
+                    let null_keys = 
+                      record_array
+                      |> Array.collect (fun json_value -> json_value.null_properties)
+                      |> Array.distinct
+                    let nested_array_keys =
+                        record_array
+                        |> Array.collect (fun json_record ->
+                            json_record.array_properties
+                            |> Array.map fst
+                        )
+                        |> Array.distinct
+                    let nested_array_fields =
+                        nested_array_keys
+                        |> Array.map (fun property_key ->
+                            let element_kind =
+                                infer_array_element_kind
+                                    property_key
+                                    record_array
+
+                            let is_optional =
+                                is_option_field
+                                    property_key
+                                    record_array
+
+                            property_key, element_kind, is_optional
+                        )
+
+
+                    Ast.Value(array_key, Ast.ArrayExpr([
+                      for record_value in record_array -> 
+                          let string_key_values = string_keys |> Array.map (fun string_key -> string_key, record_value.TryGetProperty string_key |> Option.map (fun value -> value.AsString()) )
+                          let string_fields = string_key_values |> Array.choose (fun (key,maybe_string) -> 
+                            if is_option_field key record_array then 
+                              None
+                            else 
+                              Some (key,maybe_string.Value)
+  
+                            )
+                          let string_option_fields = string_key_values |> Array.choose (fun (key,maybe_string) -> 
+                            if is_option_field key record_array then 
+                              Some (key,maybe_string)
+                            else 
+                              None
+                            )
+                          let decimal_key_values = decimal_keys |> Array.map (fun decimal_key -> decimal_key, record_value.TryGetProperty decimal_key |> Option.map (fun value -> value.AsDecimal()) )
+                          let decimal_fields = decimal_key_values |> Array.choose (fun (key,maybe_decimal) -> 
+                            if is_option_field key record_array then 
+                              None
+                            else 
+                              Some (key,maybe_decimal.Value)
+  
+                            )
+                          let decimal_option_fields = decimal_key_values |> Array.choose (fun (key,maybe_decimal) -> 
+                            if is_option_field key record_array then 
+                              Some (key,maybe_decimal)
+                            else 
+                              None
+                            )
+                          
+                          let float_key_values = float_keys |> Array.map (fun float_key -> float_key, record_value.TryGetProperty float_key |> Option.map (fun value -> value.AsFloat()) )
+                          let float_fields = float_key_values |> Array.choose (fun (key,maybe_float) -> 
+                            if is_option_field key record_array then 
+                              None
+                            else 
+                              Some (key,maybe_float.Value)
+  
+                            )
+                          let float_option_fields = float_key_values |> Array.choose (fun (key,maybe_float) -> 
+                            if is_option_field key record_array then 
+                              Some (key,maybe_float)
+                            else 
+                              None
+                            )
+                          let boolean_key_values = boolean_keys |> Array.map (fun boolean_key -> boolean_key, record_value.TryGetProperty boolean_key |> Option.map (fun value -> value.AsBoolean()) )
+                          let boolean_fields = boolean_key_values |> Array.choose (fun (key,maybe_boolean) -> 
+                            if is_option_field key record_array then 
+                              None
+                            else 
+                              Some (key,maybe_boolean.Value)
+  
+                            )
+                          let boolean_option_fields = boolean_key_values |> Array.choose (fun (key,maybe_boolean) -> 
+                            if is_option_field key record_array then 
+                              Some (key,maybe_boolean)
+                            else 
+                              None
+                            )
+                          let null_key_values = null_keys |> Array.map (fun null_key -> null_key, record_value.TryGetProperty null_key)
+                          let null_fields = null_key_values |> Array.choose (fun (key,maybe_null) -> 
+                            if is_option_field key record_array then 
+                              None
+                            else 
+                              Some (key,maybe_null.Value)
+  
+                            )
+                          let null_option_fields = null_key_values |> Array.choose (fun (key,maybe_null) -> 
+                            if is_option_field key record_array then 
+                              Some (key,maybe_null)
+                            else 
+                              None
+                            )
+                          Ast.AnonRecordExpr([
+                              for key,value in string_fields -> Ast.RecordFieldExpr(key, Ast.String(value))
+                              for key,value in string_option_fields -> Ast.RecordFieldExpr(key, emit_string_option value)
+                              for key,value in decimal_fields -> Ast.RecordFieldExpr(key, Ast.Decimal(value))
+                              for key,value in decimal_option_fields -> Ast.RecordFieldExpr(key, emit_decimal_option value)
+                              for key,value in float_fields -> Ast.RecordFieldExpr(key, Ast.Float(value))
+                              for key,value in float_option_fields -> Ast.RecordFieldExpr(key, emit_float_option value)
+                              for key,value in boolean_fields -> Ast.RecordFieldExpr(key, Ast.Bool(value))
+                              for key,value in boolean_option_fields -> Ast.RecordFieldExpr(key, emit_boolean_option value)
+                              for key,value in null_fields -> Ast.RecordFieldExpr(key, value.AsString())
+                              for key,value in null_option_fields -> Ast.RecordFieldExpr(key, emit_null_option value)
+                              for array_key, array_element_kind, array_is_optional in nested_array_fields ->
+                                  match try_get_array_property array_key record_value with
+                                  | Some json_array ->
+                                      let emitted_array =
+                                          emit_json_array
+                                              array_key
+                                              array_element_kind
+                                              json_array
+
+                                      if array_is_optional then
+                                          Ast.RecordFieldExpr(
+                                              array_key,
+                                              Ast.AppExpr("Some", emitted_array)
+                                          )
+                                      else
+                                          Ast.RecordFieldExpr(
+                                              array_key,
+                                              emitted_array
+                                          )
+
+                                  | None ->
+                                      if array_is_optional then
+                                          Ast.RecordFieldExpr(
+                                              array_key,
+                                              Ast.ConstantExpr("None")
+                                          )
+                                      else
+                                          failwithf
+                                              "Required array property '%s' was absent from a record."
+                                              array_key
+
+                              ])
+                    ])) 
+                       
+              for object_key, json_object in json_value.record_properties ->
+                let module_key = 
+                    match object_key with 
+                    | "*/*" ->  "asterisk_solidus_asterisk"
+                    | _ -> object_key
+                emit_module module_key json_object
+        }
+
+let example_json_text = 
+  """
+{
+  "title": "Diagnostic document",
+  "revision": 3,
+  "ratio": 1.25,
+  "enabled": true,
+  "description": null,
+
+  "tags": [
+    "alpha",
+    "beta"
+  ],
+
+  "counts": [
+    1,
+    2,
+    3
+  ],
+
+  "weights": [
+    1.5,
+    2.75
+  ],
+
+  "flags": [
+    true,
+    false
+  ],
+
+  "items": [
+    {
+      "name": "first",
+      "count": 10,
+      "score": 0.5,
+      "active": true,
+      "aliases": [
+        "one",
+        "primary"
+      ],
+      "details": {
+        "code": "A"
+      }
+    },
+    {
+      "name": "second",
+      "score": 0.75,
+      "aliases": [
+        "two"
+      ]
+    }
+  ],
+
+  "metadata": {
+    "source": "generated",
+    "sequence": 42,
+    "verified": false,
+
+    "labels": [
+      "internal",
+      "diagnostic"
+    ],
+
+    "content": {
+      "*/*": {
+        "description": "fallback representation"
+      }
+    }
+  }
+}
+  """ 
+let example_json_value = JsonValue.Parse example_json_text
+
+// | Object = 1
+// | Array = 2
+// | Constructor = 3
+// | Property = 4
+// | Comment = 5
+// | Integer = 6
+// | Float = 7
+// | String = 8
+// | Boolean = 9
+// | Null = 10
+// | Undefined = 11
+// | Date = 12
+// | Raw = 13
+// | Bytes = 14
+// | Guid = 15
+// | Uri = 16
+// | TimeSpan = 17
+
+
+
+
+
+
+type Json_Token = 
+    | JsonObject of Json_Object
+and Json_Property = 
+  {
+    property_name:string
+  }
+and Json_Object = 
+  {
+    // ChildrenTokens
+    count:int
+    // First
+    // HasValues
+    // "Item [ Object ]"
+    // "Item [ String ]"
+    // Last
+    // Next
+    // Parent
+    // Path
+    // Previous
+    // Root
+    // Type
+  }
+  static member from_jobject(jobject:JObject) = 
+    {
+      count = jobject.Count
+    }
+// let example_json_object = Json_Object.from_jobject example_jobject
+
+let example_jtoken = JToken.Parse example_json_text
+example_jtoken.Type
+let first = example_jtoken.First
+
+
+
+let test = example_jtoken.Properties() |> Seq.head
+test.Name
+test.Value
+
+
+let fs_text = 
+      Ast.Oak() {
+        Ast.Namespace("https.dev_int_api_gw.centene.com.fhir.v4.providerdirectory") {
+              emit_module "swagger" swagger_json
+              // emit_module "Diagnostic_document" example_json_value
+
+        } |> _.toImplicit()
+      }
+      |> Gen.mkOak
+      |> Gen.run
+File.WriteAllText(@"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Family\swagger.fsx", fs_text)
+
+
+
+
+let document =
+    JToken.Parse """
+    {
+      "metadata": {
+        "source": "generated",
+        "verified": false
+      }
+    }
+    """
+
+
+example_json_value.record_properties
+example_json_value.record_properties_with_scalar_values
+example_json_value.record_properties_with_nested_records
+let nested_key, nested_value = 
+    let _, value0 = example_json_value.record_properties_with_nested_records[0]
+    value0.record_properties_with_nested_records[0]
+nested_value.record_properties
+nested_value.record_properties_with_scalar_values
+nested_value.record_properties_with_nested_records
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+          (*
+          for scalar_property in json_root.scalar_properties -> scalar_property.as_binding
+          for array_key, array_values in json_root.array_properties do
+              let field_name_types = 
+                array_values
+                |> Array.collect (fun array_value -> 
+                      array_value.datatype_properties
+                      |> Array.map (fun (element_key,element_value) -> element_key, element_value.fsharp_type_name)
+                      )
+                |> Array.distinct
+              yield Ast.Record(array_key.singular_form.Capitalized){
+                for field_name, field_type in field_name_types  -> Ast.Field(field_name, field_type) 
+              }
+              
+
+
+          for array_key, array_values in json_root.array_properties do 
+              for array_value in array_values do
+                  for property_key, property_value in array_value.datatype_properties -> property_value.emit_value property_key
+          *)
+
+// TODO start tweaking this to be specifically catered to generating swagger code
+
+type Bundle with 
+  static member inline as_resource<'T when 'T :> Resource> (bundle:Bundle)  =
+    bundle.Entry
+    |> Seq.choose (fun entry ->
+        match entry.Resource with
+        | :? 'T as resource -> Some resource
+        | _ -> None)
+    |> Seq.toArray
+
+type Location with 
+    member this.practitioner_roles = 
+      fhir.SearchAsync<PractitionerRole>(
+          criteria =
+              [|
+                  $"location=Location/{this.Id}"
+              |]
+      )
+      |> Async.AwaitTask
+      |> Async.RunSynchronously
+      |> Bundle.as_resource<PractitionerRole>
+
+
+
+
+
+let sunshine_health_plan = 
+    fhir.SearchAsync<InsurancePlan>(
+        [| "name:contains=Sunshine" |]
+    )
+    |> Async.AwaitTask
+    |> Async.RunSynchronously
+    |> Bundle.as_resource<InsurancePlan>
+
+
+let locations = 
+    fhir.SearchAsync<Location>(
+        [|
+
+              "address=18200 Cochran Blvd, Port Charlotte, FL 33948"
+
+        |]
+    )
+    |> Async.AwaitTask
+    |> Async.RunSynchronously
+    |> Bundle.as_resource<Location>
+    |> Array.filter (fun location -> location.practitioner_roles.Length > 0)
+
+let practitioner_roles = 
+    fhir.SearchAsync<PractitionerRole>(
+        criteria =
+            [|
+                "location.address-city=Port Charlotte"
+                "location.address-state=FL"
+            |]
+        )
+      |> Async.AwaitTask
+      |> Async.RunSynchronously
+      |> Bundle.as_resource<PractitionerRole>
+// type PractitionerRole with 
+locations.Length
+
+let random_location = locations |> Array.randomChoice
+random_location.practitioner_roles
+let random_practitioner_role = random_location.practitioner_roles |> Array.randomChoice 
+random_location.ManagingOrganization
+

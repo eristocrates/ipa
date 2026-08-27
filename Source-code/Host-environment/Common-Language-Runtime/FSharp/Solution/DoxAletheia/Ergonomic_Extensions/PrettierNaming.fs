@@ -59,7 +59,18 @@ module Prettier_Naming =
         || Syntax.PrettyNaming.DoesIdentifierNeedBackticks identifier
 
     let rec normalize_identifier (identifier: string) =
+        
+        
         match identifier with
+        | _ when identifier.Contains('}') ->
+            identifier.Replace("}", "")
+            |> normalize_identifier
+        | _ when identifier.Contains('{') ->
+            identifier.Replace("{", "")
+            |> normalize_identifier
+        | _ when identifier.Contains('/') ->
+            identifier.Replace("/", "'")
+            |> normalize_identifier
         | _ when identifier.Contains('-') ->
             identifier.Replace("-", "_")
             |> normalize_identifier

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DacOrigin xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <PackageProperties>
+    <Version>3.0.0.0</Version>
+    <ContainsExportedData>false</ContainsExportedData>
+    <StreamVersions>
+      <Version StreamName="Data">2.0.0.0</Version>
+      <Version StreamName="DeploymentContributors">1.0.0.0</Version>
+    </StreamVersions>
+  </PackageProperties>
+  <Operation>
+    <Identity>2adde8e1-e1ff-47e3-97f4-a927fc825930</Identity>
+    <Start>2026-05-15T15:18:18.0887233-04:00</Start>
+    <End>0001-01-01T00:00:00.0000000</End>
+    <ProductName>Microsoft.SqlServer.Dac, Version=170.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</ProductName>
+    <ProductVersion>170.3.93.6</ProductVersion>
+    <ProductSchema>http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02</ProductSchema>
+  </Operation>
+  <Server>
+    <ServerVersion>Microsoft SQL Server 2022 (RTM-CU24-GDR) (KB5083252) - 16.0.4250.1 (X64) 
+	Mar 13 2026 00:15:17 
+	Copyright (C) 2022 Microsoft Corporation
+	Enterprise Edition (64-bit) on Windows Server 2022 Standard 10.0 &lt;X64&gt; (Build 20348: ) (Hypervisor)
+</ServerVersion>
+    <ObjectCounts>
+      <CheckConstraint>3215</CheckConstraint>
+      <ComputedColumn>3268</ComputedColumn>
+      <DatabaseOptions>1</DatabaseOptions>
+      <DefaultConstraint>17943</DefaultConstraint>
+      <DmlTrigger>40</DmlTrigger>
+      <ExtendedProperty>32</ExtendedProperty>
+      <ForeignKeyConstraint>11957</ForeignKeyConstraint>
+      <Index>3973</Index>
+      <InlineTableValuedFunction>5</InlineTableValuedFunction>
+      <Login>3</Login>
+      <MultiStatementTableValuedFunction>1</MultiStatementTableValuedFunction>
+      <PrimaryKeyConstraint>4351</PrimaryKeyConstraint>
+      <Procedure>87</Procedure>
+      <Role>2</Role>
+      <RoleMembership>64</RoleMembership>
+      <ScalarFunction>78</ScalarFunction>
+      <Schema>104</Schema>
+      <ScriptFunctionImplementation>84</ScriptFunctionImplementation>
+      <SimpleColumn>57682</SimpleColumn>
+      <Statistic>327</Statistic>
+      <SubroutineParameter>1581</SubroutineParameter>
+      <Synonym>10</Synonym>
+      <Table>4385</Table>
+      <TableType>1</TableType>
+      <TableTypeSimpleColumn>1</TableTypeSimpleColumn>
+      <UniqueConstraint>905</UniqueConstraint>
+      <User>65</User>
+      <View>148</View>
+    </ObjectCounts>
+  </Server>
+  <ExportStatistics>
+    <SourceDatabaseSize>182392920</SourceDatabaseSize>
+    <TableRowCountTotalTag>81552371</TableRowCountTotalTag>
+  </ExportStatistics>
+  <Checksums>
+    <Checksum Uri="/model.xml">B661C7EFBA4C4A988952E748EF8507B239FF3CA2536355495577A95DD202154A</Checksum>
+  </Checksums>
+  <ModelSchemaVersion>3.5</ModelSchemaVersion>
+</DacOrigin>

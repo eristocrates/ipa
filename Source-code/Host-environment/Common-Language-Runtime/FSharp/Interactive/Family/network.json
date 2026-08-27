@@ -1,0 +1,195 @@
+{
+  "dataSourceIdentifier": "259",
+  "directoryProductCode": null,
+  "fapNetworkBenefitTypeCode": null,
+  "fapNetworkCode": "989604",
+  "fapNetworkDisplayEndDate": "9999-12-31",
+  "fapNetworkDisplayStartDate": "2024-01-01",
+  "fapNetworkEndDate": "9999-12-31",
+  "fapNetworkIdentifier": "989604",
+  "fapNetworkName": "Medicaid Plan",
+  "fapNetworkStartDate": "2024-01-01",
+  "fapNetworkStatusCode": "ACTIVE",
+  "fapNetworkTypeCode": "Medicaid",
+  "fapNetworkURLText": "sunshinehealth.com",
+  "memberAttributes": [
+    {
+      "counties": [
+        {
+          "countyName": "Alachua",
+          "dataSourceidentifier": "259",
+          "fipsCountyCode": "12001",
+          "stateCode": "FL"
+        }
+      ],
+      "memberAttributeCode": "1979",
+      "memberAttributeDescription": "Medicaid",
+      "memberAttributeIdentifier": "330164",
+      "memberAttributeName": "Sunshine Medicaid",
+      "memberAttributeType": "Plan Product Code"
+    },
+    {
+      "counties": [
+        {
+          "countyName": "Alachua",
+          "dataSourceidentifier": "259",
+          "fipsCountyCode": "12001",
+          "stateCode": "FL"
+        }
+      ],
+      "memberAttributeCode": "1981",
+      "memberAttributeDescription": "Medicaid",
+      "memberAttributeIdentifier": "330166",
+      "memberAttributeName": "Sunshine Medicaid",
+      "memberAttributeType": "Plan Product Code"
+    },
+    {
+      "counties": [
+        {
+          "countyName": "Alachua",
+          "dataSourceidentifier": "259",
+          "fipsCountyCode": "12001",
+          "stateCode": "FL"
+        }
+      ],
+      "memberAttributeCode": "1982",
+      "memberAttributeDescription": "Medicaid",
+      "memberAttributeIdentifier": "330167",
+      "memberAttributeName": "Sunshine Medicaid",
+      "memberAttributeType": "Plan Product Code"
+    },
+    {
+      "counties": [
+        {
+          "countyName": "Alachua",
+          "dataSourceidentifier": "259",
+          "fipsCountyCode": "12001",
+          "stateCode": "FL"
+        }
+      ],
+      "memberAttributeCode": "1983",
+      "memberAttributeDescription": "Medicaid",
+      "memberAttributeIdentifier": "330168",
+      "memberAttributeName": "Sunshine Medicaid",
+      "memberAttributeType": "Plan Product Code"
+    },
+    {
+      "counties": [
+        {
+          "countyName": "Alachua",
+          "dataSourceidentifier": "259",
+          "fipsCountyCode": "12001",
+          "stateCode": "FL"
+        }
+      ],
+      "memberAttributeCode": "1989",
+      "memberAttributeDescription": "Medicaid",
+      "memberAttributeIdentifier": "330170",
+      "memberAttributeName": "Sunshine Medicaid",
+      "memberAttributeType": "Plan Product Code"
+    },
+    {
+      "counties": [
+        {
+          "countyName": "Alachua",
+          "dataSourceidentifier": "259",
+          "fipsCountyCode": "12001",
+          "stateCode": "FL"
+        }
+      ],
+      "memberAttributeCode": "3118",
+      "memberAttributeDescription": "Medicaid",
+      "memberAttributeIdentifier": "331082",
+      "memberAttributeName": "Sunshine Medicaid",
+      "memberAttributeType": "Plan Product Code"
+    }
+  ],
+  "noteText": "",
+  "planContract": null,
+  "popularSearch": [
+    {
+      "popularSearchKey": "2",
+      "popularSearchName": {
+        "en": "Primary Care",
+        "es": "Atención primaria"
+      }
+    },
+    {
+      "popularSearchKey": "3",
+      "popularSearchName": {
+        "en": "Clinic or Urgent Care",
+        "es": "Clínica o atención urgente"
+      }
+    },
+    {
+      "popularSearchKey": "4",
+      "popularSearchName": {
+        "en": "Pediatrics (Babies, Children)",
+        "es": "Pediatría (bebés, niños)"
+      }
+    },
+    {
+      "popularSearchKey": "5",
+      "popularSearchName": {
+        "en": "Dental Professionals",
+        "es": "Profesionales dentales"
+      }
+    }
+  ],
+  "ppgIndicator": "N",
+  "providerPrograms": [
+    {
+      "dataSourceIdentifier": "259",
+      "providerProgramCode": "14069",
+      "providerProgramIdentifier": "225922",
+      "providerProgramName": "Sunshine Health Plan Vendor",
+      "providerProgramTypeCode": "ALT",
+      "providerProgramDescription": null
+    },
+    {
+      "dataSourceIdentifier": "259",
+      "providerProgramCode": "70",
+      "providerProgramIdentifier": "220005",
+      "providerProgramName": "70",
+      "providerProgramTypeCode": "MED",
+      "providerProgramDescription": null
+    },
+    {
+      "dataSourceIdentifier": "259",
+      "providerProgramCode": "7674",
+      "providerProgramIdentifier": "220120",
+      "providerProgramName": "7674",
+      "providerProgramTypeCode": "BEH",
+      "providerProgramDescription": null
+    }
+  ],
+  "serviceAreaRestrictionFlag": "N",
+  "sites": [
+    {
+      "domainURL": "findaprovider.sunshinehealth.com",
+      "tag": "FAPv4",
+      "modes": [
+        {
+          "mode": "pcp",
+          "collapseFeatureIndicator": "N"
+        },
+        {
+          "mode": "public",
+          "collapseFeatureIndicator": "N"
+        }
+      ]
+    },
+    {
+      "domainURL": "member.sunshinehealth.com",
+      "tag": "member",
+      "modes": [
+        {
+          "mode": "pcp",
+          "collapseFeatureIndicator": "N"
+        }
+      ]
+    }
+  ],
+  "stateCode": "FL",
+  "sysLastModifiedDate": "2025-11-14"
+}

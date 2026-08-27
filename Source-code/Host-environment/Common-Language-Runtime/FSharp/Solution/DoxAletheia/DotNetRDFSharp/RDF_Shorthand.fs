@@ -191,6 +191,7 @@ let inline (->=|) (predicate: ^PredicateType when ^PredicateType: (member as_pre
 
     PredicateObjectList.from_terms predicate.as_predicate objects
 
+    // object adders
 
 let inline (-->) (draft: Formula) (object_term: ^ObjectType when ^ObjectType: (member as_object: RDF_Object)) =
     draft.add_object object_term.as_object

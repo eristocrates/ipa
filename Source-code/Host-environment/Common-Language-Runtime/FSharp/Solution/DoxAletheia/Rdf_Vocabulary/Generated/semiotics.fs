@@ -7,6 +7,36 @@ open type Prefix_ID
 module semiotics =
     let _namespace_iri = Namespace_Iri semiotics |> NamespaceIRI
     /// <summary>
+    ///   <para>semiotics:Expression</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>"Any information that either dul:expresses a Meaning or denotes a Reference"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"Expression"</para><para>"expression"</para></remarks>
+    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Expression">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Expression</seealso>
+    let Expression = Prefixed_Name(semiotics, "Expression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>semiotics:InformationEntity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>"Either an information object (expression) or its realization (manifestation)."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"InformationEntity"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para></remarks>
+    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#InformationEntity">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#InformationEntity</seealso>
+    let InformationEntity =
+        Prefixed_Name(semiotics, "InformationEntity") |> PrefixedName
+
+    /// <summary>
+    ///   <para>semiotics:LinguisticAct</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>"A communicative situation including expressions, agents, and the semiotic elements: physical (manifestations), conceptual (meanings), and referential (references)."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"Linguistic act"</para><para>"Atto linguistico"</para></remarks>
+    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#LinguisticAct">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#LinguisticAct</seealso>
+    let LinguisticAct = Prefixed_Name(semiotics, "LinguisticAct") |> PrefixedName
+    /// <summary>
     ///   <para>semiotics:Manifestation</para>
     /// </summary>
     /// <remarks>
@@ -19,8 +49,8 @@ module semiotics =
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>Any conceptualization that isExpressedBy an Expression, or isInterpretationOf a Reference</para>
-    /// labels<para>Meaning</para></remarks>
+    ///   <para>"Any conceptualization that isExpressedBy an Expression, or isInterpretationOf a Reference"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"meaning"</para><para>"Meaning"</para></remarks>
     /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Meaning">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Meaning</seealso>
     let Meaning = Prefixed_Name(semiotics, "Meaning") |> PrefixedName
     /// <summary>
@@ -28,28 +58,28 @@ module semiotics =
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>Anything that isDenotedBy an Expression, or that hasInterpretation some Meaning</para>
-    /// labels<para>Reference</para></remarks>
+    ///   <para>"Anything that isDenotedBy an Expression, or that hasInterpretation some Meaning"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"Reference"</para></remarks>
     /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Reference">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Reference</seealso>
     let Reference = Prefixed_Name(semiotics, "Reference") |> PrefixedName
-
     /// <summary>
-    ///   <para>semiotics:InformationEntity</para>
+    ///   <para>semiotics:denotes</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Either an information object (expression) or its realization (manifestation).</para>
-    /// labels<para>InformationEntity</para></remarks>
-    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#InformationEntity">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#InformationEntity</seealso>
-    let InformationEntity =
-        Prefixed_Name(semiotics, "InformationEntity") |> PrefixedName
-
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"A relation between expressions and anything (including expressions).
+    /// It can be used to talk about e.g. entities denoted by proper nouns: the proper noun 'Leonardo da Vinci' denotes the person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun 'person' denotes the collection of all persons in a domain of discourse. In OWL2, punning can be used to represent denotation of concept names with owl class extensions, e.g. 'mouse' denotes owl:Class:Mouse."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"denotes"</para></remarks>
+    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#denotes">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#denotes</seealso>
+    let denotes = Prefixed_Name(semiotics, "denotes") |> PrefixedName
     /// <summary>
     ///   <para>semiotics:expresses</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>This is a large comment field for those who want to investigate the different uses of the 'expresses' relation for modeling different approaches to meaning characterization and modeling.
+    ///   <para>"A relation between an Expression and a Meaning. For example: 'A Beehive is a structure in which bees are kept, typically in the form of a dome or box.' (Oxford dictionary)'; 'the term Beehive expresses the concept Beehive in my apiculture ontology'.
+    /// The intuition for 'meaning' is intended to be very broad. A separate, large comment is included for those who want to investigate more on what kind of meaning can be represented in what form."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    ///   <para>"This is a large comment field for those who want to investigate the different uses of the 'expresses' relation for modeling different approaches to meaning characterization and modeling.
     /// For example, in all these cases, some aspect of meaning is involved:
     ///
     /// - Beehive means "a structure in which bees are kept, typically in the form of a dome or box." (Oxford dictionary)
@@ -88,109 +118,64 @@ module semiotics =
     /// (2) Formal meaning (as for logic and formal semantics: no distinction is assumed between informal meaning and reference, therefore between 'expresses' and 'isAbout', which can be used interchangeably)
     /// 	- Object-level formal meaning (as in the traditional first-order logic semantics). Here it is modelled as the expresses relation between an instance of Expression and an instance of a collection that is a grounding for (in most cases) a set
     ///
-    /// This is only a first step to provide a framework, in which one can model different aspects of Meaning. A more developed ontology should approach the problem of integrating the different uses of 'expresses', so that different theories, resources, and methods can interoperate.</para>
-    ///   <para>A relation between an Expression and a Meaning. For example: 'A Beehive is a structure in which bees are kept, typically in the form of a dome or box.' (Oxford dictionary)'; 'the term Beehive expresses the concept Beehive in my apiculture ontology'.
-    /// The intuition for 'meaning' is intended to be very broad. A separate, large comment is included for those who want to investigate more on what kind of meaning can be represented in what form.</para>
-    /// labels<para>expresses</para><para>esprime</para></remarks>
+    /// This is only a first step to provide a framework, in which one can model different aspects of Meaning. A more developed ontology should approach the problem of integrating the different uses of 'expresses', so that different theories, resources, and methods can interoperate."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"expresses"</para><para>"esprime"</para></remarks>
     /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#expresses">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#expresses</seealso>
     let expresses = Prefixed_Name(semiotics, "expresses") |> PrefixedName
-    /// <summary>
-    ///   <para>semiotics:hasManifestation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///
-    /// labels<para>semiotics.owl#hasManifestation</para></remarks>
-    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasManifestation">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasManifestation</seealso>
-    let hasManifestation = Prefixed_Name(semiotics, "hasManifestation") |> PrefixedName
-    /// <summary>
-    ///   <para>semiotics:denotes</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>A relation between expressions and anything (including expressions).
-    /// It can be used to talk about e.g. entities denoted by proper nouns: the proper noun 'Leonardo da Vinci' denotes the person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun 'person' denotes the collection of all persons in a domain of discourse. In OWL2, punning can be used to represent denotation of concept names with owl class extensions, e.g. 'mouse' denotes owl:Class:Mouse.</para>
-    /// labels<para>denotes</para></remarks>
-    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#denotes">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#denotes</seealso>
-    let denotes = Prefixed_Name(semiotics, "denotes") |> PrefixedName
-    /// <summary>
-    ///   <para>semiotics:LinguisticAct</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A communicative situation including expressions, agents, and the semiotic elements: physical (manifestations), conceptual (meanings), and referential (references).</para>
-    /// labels<para>Atto linguistico</para><para>Linguistic act</para></remarks>
-    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#LinguisticAct">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#LinguisticAct</seealso>
-    let LinguisticAct = Prefixed_Name(semiotics, "LinguisticAct") |> PrefixedName
-    /// <summary>
-    ///   <para>semiotics:hasInterpretant</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The Peircean interpretant relation, widely adopted in semiotics: an Expression isInterpretantFor another, e.g. fourLeggedFriendOfHumans isInterpretantFor dog.
-    /// Synonymy, translation, associativity, and topical proximity are all sources for interpretants, e.g.: domestic dog isInterpretantFor dog (synonymy); cane isInterpretantFor dog (translation); bark isInterpretantFor dog (associativity); veterinary isInterpretantFor dog (topical proximity).
-    /// Semantic mechanisms such as metonymy depend on the interpretant relation.
-    /// The interpretant relation is here taken as very broad, also accepting Manifestation(s) as interpretants.</para>
-    /// labels<para>has interpretant</para><para>has meaning</para></remarks>
-    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasInterpretant">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasInterpretant</seealso>
-    let hasInterpretant = Prefixed_Name(semiotics, "hasInterpretant") |> PrefixedName
-
-    /// <summary>
-    ///   <para>semiotics:isManifestationOf</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///
-    /// labels<para>semiotics.owl#isManifestationOf</para></remarks>
-    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isManifestationOf">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isManifestationOf</seealso>
-    let isManifestationOf =
-        Prefixed_Name(semiotics, "isManifestationOf") |> PrefixedName
-
-    /// <summary>
-    ///   <para>semiotics:isInterpretantFor</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The Peircean interpretant relation, widely adopted in semiotics: an Expression isInterpretantFor another, e.g. fourLeggedFriendOfHumans isInterpretantFor dog.
-    /// Synonymy, translation, associativity, and topical proximity are all sources for interpretants, e.g.: domestic dog isInterpretantFor dog (synonymy); cane isInterpretantFor dog (translation); bark isInterpretantFor dog (associativity); veterinary isInterpretantFor dog (topical proximity).
-    /// Semantic mechanisms such as metonymy depend on the interpretant relation.
-    /// The interpretant relation is here taken as very broad, also accepting Manifestation(s) as interpretants.</para>
-    /// </remarks>
-    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isInterpretantFor">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isInterpretantFor</seealso>
-    let isInterpretantFor =
-        Prefixed_Name(semiotics, "isInterpretantFor") |> PrefixedName
-
-    /// <summary>
-    ///   <para>semiotics:isConceptualizationOf</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The relation between a Meaning and a Reference : a Meaning conceptualizes an entity or a collection of entities.
-    /// A same Reference can be given different conceptualizations, for example, an old cradle can be given a unifying Meaning based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot. Example: myoldcradle hasConceptualization FlowerPot. In OWL2, punning can be used to use the intension of an OWL class as a meaning, e.g. myoldcradle hasConceptualization owl:Class:FlowerPot.</para>
-    /// labels<para>is conceptualization of</para></remarks>
-    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isConceptualizationOf">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isConceptualizationOf</seealso>
-    let isConceptualizationOf =
-        Prefixed_Name(semiotics, "isConceptualizationOf") |> PrefixedName
 
     /// <summary>
     ///   <para>semiotics:hasConceptualization</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>The relation between a Meaning and a Reference : a Meaning conceptualizes an entity or a collection of entities.
-    /// A same Reference can be given different conceptualizations, for example, an old cradle can be given a unifying Meaning based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot. Example: myoldcradle hasConceptualization FlowerPot. In OWL2, punning can be used to use the intension of an OWL class as a meaning, e.g. myoldcradle hasConceptualization owl:Class:FlowerPot.</para>
-    /// labels<para>has conceptualization</para></remarks>
+    ///   <para>"The relation between a Meaning and a Reference : a Meaning conceptualizes an entity or a collection of entities.
+    /// A same Reference can be given different conceptualizations, for example, an old cradle can be given a unifying Meaning based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot. Example: myoldcradle hasConceptualization FlowerPot. In OWL2, punning can be used to use the intension of an OWL class as a meaning, e.g. myoldcradle hasConceptualization owl:Class:FlowerPot."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"has conceptualization"</para></remarks>
     /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasConceptualization">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasConceptualization</seealso>
     let hasConceptualization =
         Prefixed_Name(semiotics, "hasConceptualization") |> PrefixedName
+
+    /// <summary>
+    ///   <para>semiotics:hasInterpretant</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"The Peircean interpretant relation, widely adopted in semiotics: an Expression isInterpretantFor another, e.g. fourLeggedFriendOfHumans isInterpretantFor dog.
+    /// Synonymy, translation, associativity, and topical proximity are all sources for interpretants, e.g.: domestic dog isInterpretantFor dog (synonymy); cane isInterpretantFor dog (translation); bark isInterpretantFor dog (associativity); veterinary isInterpretantFor dog (topical proximity).
+    /// Semantic mechanisms such as metonymy depend on the interpretant relation.
+    /// The interpretant relation is here taken as very broad, also accepting Manifestation(s) as interpretants."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"has interpretant"</para><para>"has meaning"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para></remarks>
+    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasInterpretant">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasInterpretant</seealso>
+    let hasInterpretant = Prefixed_Name(semiotics, "hasInterpretant") |> PrefixedName
+    /// <summary>
+    ///   <para>semiotics:hasManifestation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>"semiotics.owl#hasManifestation"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para></remarks>
+    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasManifestation">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasManifestation</seealso>
+    let hasManifestation = Prefixed_Name(semiotics, "hasManifestation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>semiotics:isConceptualizationOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"The relation between a Meaning and a Reference : a Meaning conceptualizes an entity or a collection of entities.
+    /// A same Reference can be given different conceptualizations, for example, an old cradle can be given a unifying Meaning based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot. Example: myoldcradle hasConceptualization FlowerPot. In OWL2, punning can be used to use the intension of an OWL class as a meaning, e.g. myoldcradle hasConceptualization owl:Class:FlowerPot."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"is conceptualization of"</para></remarks>
+    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isConceptualizationOf">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isConceptualizationOf</seealso>
+    let isConceptualizationOf =
+        Prefixed_Name(semiotics, "isConceptualizationOf") |> PrefixedName
 
     /// <summary>
     ///   <para>semiotics:isDenotedBy</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>A relation between expressions and anything (including expressions).
-    /// It can be used to talk about e.g. entities denoted by proper nouns: the proper noun 'Leonardo da Vinci' denotes the person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun 'person' denotes the collection of all persons in a domain of discourse. In OWL2, punning can be used to represent denotation of concept names with owl class extensions, e.g. 'mouse' denotes owl:Class:Mouse.</para>
+    ///   <para>"A relation between expressions and anything (including expressions).
+    /// It can be used to talk about e.g. entities denoted by proper nouns: the proper noun 'Leonardo da Vinci' denotes the person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun 'person' denotes the collection of all persons in a domain of discourse. In OWL2, punning can be used to represent denotation of concept names with owl class extensions, e.g. 'mouse' denotes owl:Class:Mouse."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
     /// </remarks>
     /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isDenotedBy">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isDenotedBy</seealso>
     let isDenotedBy = Prefixed_Name(semiotics, "isDenotedBy") |> PrefixedName
@@ -199,27 +184,44 @@ module semiotics =
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>A relation between an Expression and a Meaning. For example: 'A Beehive is a structure in which bees are kept, typically in the form of a dome or box.' (Oxford dictionary)'; 'the term Beehive expresses the concept Beehive in my apiculture ontology'.
-    /// The intuition for 'meaning' is intended to be very broad. A separate, large comment is included for those who want to investigate more on what kind of meaning can be represented in what form.</para>
+    ///   <para>"A relation between an Expression and a Meaning. For example: 'A Beehive is a structure in which bees are kept, typically in the form of a dome or box.' (Oxford dictionary)'; 'the term Beehive expresses the concept Beehive in my apiculture ontology'.
+    /// The intuition for 'meaning' is intended to be very broad. A separate, large comment is included for those who want to investigate more on what kind of meaning can be represented in what form."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
     /// </remarks>
     /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isExpressedBy">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isExpressedBy</seealso>
     let isExpressedBy = Prefixed_Name(semiotics, "isExpressedBy") |> PrefixedName
+
+    /// <summary>
+    ///   <para>semiotics:isInterpretantFor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"The Peircean interpretant relation, widely adopted in semiotics: an Expression isInterpretantFor another, e.g. fourLeggedFriendOfHumans isInterpretantFor dog.
+    /// Synonymy, translation, associativity, and topical proximity are all sources for interpretants, e.g.: domestic dog isInterpretantFor dog (synonymy); cane isInterpretantFor dog (translation); bark isInterpretantFor dog (associativity); veterinary isInterpretantFor dog (topical proximity).
+    /// Semantic mechanisms such as metonymy depend on the interpretant relation.
+    /// The interpretant relation is here taken as very broad, also accepting Manifestation(s) as interpretants."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// </remarks>
+    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isInterpretantFor">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isInterpretantFor</seealso>
+    let isInterpretantFor =
+        Prefixed_Name(semiotics, "isInterpretantFor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>semiotics:isManifestationOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>"semiotics.owl#isManifestationOf"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para></remarks>
+    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isManifestationOf">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isManifestationOf</seealso>
+    let isManifestationOf =
+        Prefixed_Name(semiotics, "isManifestationOf") |> PrefixedName
+
     /// <summary>
     ///   <para>semiotics:relatedMeaning</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:SymmetricProperty</para>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>A relation between any two Meaning(s).</para>
-    /// labels<para>related meaning</para></remarks>
+    ///   <para>owl:SymmetricProperty</para>
+    ///   <para>"A relation between any two Meaning(s)."^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// labels<para>"related meaning"</para></remarks>
     /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#relatedMeaning">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#relatedMeaning</seealso>
     let relatedMeaning = Prefixed_Name(semiotics, "relatedMeaning") |> PrefixedName
-    /// <summary>
-    ///   <para>semiotics:Expression</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Any information that either dul:expresses a Meaning or denotes a Reference</para>
-    /// labels<para>Expression</para></remarks>
-    /// <seealso href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Expression">http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Expression</seealso>
-    let Expression = Prefixed_Name(semiotics, "Expression") |> PrefixedName

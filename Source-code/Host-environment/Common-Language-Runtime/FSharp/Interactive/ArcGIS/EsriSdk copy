@@ -1,0 +1,2198 @@
+#time on
+
+fsi.PrintLength <- 10
+fsi.ShowDeclarationValues <- false
+// fsi.ShowDeclarationValues <- true
+
+
+#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics"
+#load "CaseConverterErgonomics.fsx"
+#load @"C:\Secret\InforSecrets.fsx"
+#r "nuget: CaseConverter"
+#r "nuget: Deedle"
+#r "nuget: Esri.ArcGISRuntime, 300.0.0"
+#r "nuget: Fabulous.AST"
+#r "nuget: Fli"
+#r "nuget: FSharp.Charting"
+#r "nuget: FSharp.Collections.ParallelSeq"
+#r "nuget: FSharp.Literals, 2.2.15"
+#r "nuget: Humanizer.Core"
+#r "nuget: SQLProvider.MsSql, 1.5.18"
+#r "nuget: TextCopy"
+#r "nuget: TypeShape"
+#r "nuget: FSharp.Compiler.Service, 43.10.102"
+open FSharp.Compiler
+open TypeShape.Core
+module FSharp_Literal = FSharp.Literals.Literal
+
+open CaseConverter
+open CaseConverterErgonomics
+open Deedle
+open Esri.ArcGISRuntime
+open Esri.ArcGISRuntime.ArcGISServices
+open Esri.ArcGISRuntime.Data
+open Esri.ArcGISRuntime.Geometry
+open Esri.ArcGISRuntime.Mapping
+open Esri.ArcGISRuntime.Mapping.FeatureForms
+open Esri.ArcGISRuntime.Mapping.Popups
+open Esri.ArcGISRuntime.Portal
+open Esri.ArcGISRuntime.Symbology
+open Fabulous.AST
+open Fantomas.Core
+open Fli
+open FSharp
+open FSharp_Literal
+open FSharp.Charting
+open FSharp.Collections.ParallelSeq
+open FSharp.Data.Sql
+open FSharp.Data.Sql.MsSql
+open Humanizer
+open InforSecrets
+open Microsoft.FSharp.Reflection
+open System
+open System.Collections
+open System.IO
+open System.Collections.Generic
+open System.Globalization
+open System.Reflection
+open TextCopy
+
+open System.Reflection
+open System
+open System.ComponentModel
+open System.ComponentModel.Design.Serialization
+
+let clipboard = new Clipboard()
+let clip (text:string) = clipboard.SetText text
+
+type InforProdSql = SqlDataProvider<ConnectionString=Prod.connection_string, IndividualsAmount=10000, UseOptionTypes=Common.NullableColumnType.OPTION>
+let mapserver_uri = new Uri "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/MapServer"
+ArcGISRuntimeEnvironment.Initialize()
+
+
+type Field_Type =
+    | OIDField of string
+    | TextField of string
+    | GlobalIDField of string
+    | Int16Field of int16
+    | Float64Field of double
+    | DateField of DateTime
+    | Int32Field of int
+    | UnknownField of obj
+
+    member this.boxed_value : obj =
+        match this with
+        | OIDField value -> box value
+        | TextField value -> box value
+        | GlobalIDField value -> box value
+        | Int16Field value -> box value
+        | Float64Field value -> box value
+        | DateField value -> box value
+        | Int32Field value -> box value
+        | UnknownField value -> value
+
+
+    member this.as_string : string =
+        Convert.ToString(
+            this.boxed_value,
+            CultureInfo.InvariantCulture
+        )
+
+    member this.as_int16 : int16 =
+        Convert.ToInt16(
+            this.boxed_value,
+            CultureInfo.InvariantCulture
+        )
+
+    member this.as_double : double =
+        Convert.ToDouble(
+            this.boxed_value,
+            CultureInfo.InvariantCulture
+        )
+
+    member this.as_date_time : DateTime =
+        Convert.ToDateTime(
+            this.boxed_value,
+            CultureInfo.InvariantCulture
+        )
+
+    member this.as_int32 : int =
+        Convert.ToInt32(
+            this.boxed_value,
+            CultureInfo.InvariantCulture
+        )
+
+    member this.as_object : obj =
+        this.boxed_value
+
+type Attribute_Field = 
+    {
+        attribute:Field_Type
+        field:Field
+    }
+type Feature with 
+    member this.attribute_fields = 
+        this.Attributes
+        |> Seq.map (|KeyValue|)
+        |> Seq.filter (fun (key,value) -> value <> null )
+        |> Seq.filter (fun (key,value) -> not (String.IsNullOrWhiteSpace (string value)))
+        |> Seq.map (fun (key,value) -> 
+            let field = this.FeatureTable.GetField key
+            let attribute = 
+                    match field.FieldType.ToString() with 
+                    | "OID" ->  string value |> OIDField
+                    | "GlobalID" ->  string value |> GlobalIDField
+                    | "Int16" ->  string value |> Int16.Parse  |> Int16Field
+                    | "Float64" ->  string value |> Double.Parse  |> Float64Field
+                    | "Date" ->  string value |> DateTime.Parse  |> DateField
+                    | "Int32" ->  string value |> Int32.Parse  |> Int32Field
+                    | "Text" ->  string value   |> TextField
+                    | _ ->  UnknownField value
+
+            {
+                attribute = attribute
+                field = field
+            }
+        )
+        |> Seq.toArray
+    static member Query = 
+            let feature_query = QueryParameters()
+            feature_query.WhereClause <- "1 = 1"
+            feature_query.ReturnGeometry <- true
+            feature_query
+
+type ServiceFeatureTable with
+    member this.fields = this.Fields |> Seq.toArray
+    member this.domain_fields = this.Fields |> Seq.filter (fun field -> field.Domain <> null) |> Seq.toArray
+    member this.aliased_fields = this.Fields |> Seq.filter (fun field -> field.Name <> field.Alias) |> Seq.toArray
+    member this.features = 
+        this.QueryFeaturesAsync(
+            Feature.Query,
+            QueryFeatureFields.LoadAll
+        )
+        |> Async.AwaitTask
+        |> Async.RunSynchronously
+        |> Seq.toArray
+
+
+type ArcGISMapImageLayer with
+    member this.sublayers = this.Sublayers |> Seq.map (fun layer -> layer :?> ArcGISMapImageSublayer) |> Seq.toArray
+    member this.sublayer_infos = this.sublayers |> Array.map (fun layer -> layer.MapServiceSublayerInfo) 
+    member this.ungrouped_layers = this.sublayers  |> Array.filter (fun layer -> layer.MapServiceSublayerInfo.SublayerType = ArcGISMapServiceSublayerType.FeatureLayer)
+    member this.ungrouped_tables = this.ungrouped_layers |> Array.map (fun feature_layer -> feature_layer.Table)
+    member this.ungrouped_fields = this.ungrouped_tables |> Array.collect (fun table -> table.Fields |> Seq.toArray)
+    member this.ungrouped_layer_infos = this.ungrouped_layers |> Array.map (fun layer -> layer.MapServiceSublayerInfo) 
+    member this.ungrouped_layer_infos_by_name (name:string) = this.ungrouped_layer_infos |> Array.filter (fun feature_layer_info -> feature_layer_info.ServiceLayerName = name)
+    member this.group_layers = this.sublayers  |> Array.filter (fun layer -> layer.MapServiceSublayerInfo.SublayerType = ArcGISMapServiceSublayerType.GroupLayer)
+    member this.group_layer_infos = this.group_layers |> Array.map (fun layer -> layer.MapServiceSublayerInfo) 
+    member this.group_layer_infos_by_name (name:string) = this.group_layer_infos |> Array.filter (fun group_layer_info -> group_layer_info.ServiceLayerName = name)
+    member this.drainage_network_layers = this.group_layers[0].Sublayers |> Seq.map (fun layer -> layer :?> ArcGISMapImageSublayer) |> Seq.toArray 
+    member this.drainage_network_tables = this.drainage_network_layers |> Array.map (fun feature_layer -> feature_layer.Table)
+    member this.drainage_network_fields = this.drainage_network_tables |> Array.collect (fun table -> table.Fields |> Seq.toArray)
+    member this.drainage_network_layer_infos = this.drainage_network_layers |> Array.map (fun layer -> layer.MapServiceSublayerInfo) 
+    member this.drainage_network_layer_infos_by_name (name:string) = this.drainage_network_layer_infos |> Array.filter (fun drainage_network_layer_info -> drainage_network_layer_info.ServiceLayerName = name)
+    member this.nondrainage_network_layers = this.group_layers[1].Sublayers |> Seq.map (fun layer -> layer :?> ArcGISMapImageSublayer) |> Seq.toArray 
+    member this.nondrainage_network_tables = this.nondrainage_network_layers |> Array.map (fun feature_layer -> feature_layer.Table)
+    member this.nondrainage_network_fields = this.nondrainage_network_tables |> Array.collect (fun table -> table.Fields |> Seq.toArray)
+    member this.nondrainage_network_layer_infos = this.nondrainage_network_layers |> Array.map (fun layer -> layer.MapServiceSublayerInfo) 
+    member this.nondrainage_network_layer_infos_by_name (name:string) = this.nondrainage_network_layer_infos |> Array.filter (fun nondrainage_network_layer_info -> nondrainage_network_layer_info.ServiceLayerName = name)
+    member this.feature_layers = 
+        Array.concat [|
+            this.ungrouped_layers
+            this.drainage_network_layers
+            this.nondrainage_network_layers
+        |]
+    member this.feature_layer_infos = 
+        Array.concat [|
+            this.ungrouped_layer_infos
+            this.drainage_network_layer_infos
+            this.nondrainage_network_layer_infos
+        |]
+    member this.feature_layer_infos_by_name (name:string) = this.feature_layer_infos |> Array.filter (fun feature_layer_info -> feature_layer_info.ServiceLayerName = name)
+    member this.tables = 
+        let tables = 
+            Array.concat [|
+                this.ungrouped_tables
+                this.drainage_network_tables
+                this.nondrainage_network_tables
+            |]
+        tables |> Array.iter (fun table -> table.FeatureRequestMode <- FeatureRequestMode.OnInteractionCache)
+        tables
+    member this.tables_by_name (name:string) = this.tables |> Array.filter (fun table -> table.LayerInfo.ServiceLayerName = name)
+    member this.fields = 
+        Array.concat [|
+            this.ungrouped_fields
+            this.drainage_network_fields
+            this.nondrainage_network_fields
+        |]
+    member this.fields_by_table (table_name:string) = 
+        let table = this.tables_by_name table_name  |> Array.exactlyOne 
+        table.Fields |> Seq.toArray
+    member this.fields_by_qualified_name (table_name:string)(field_name:string) = 
+        let table = this.tables_by_name table_name  |> Array.exactlyOne 
+        table.Fields |> Seq.find (fun field -> field.Name = field_name) 
+    member this.features = this.tables |> Array.collect (fun table -> table.features)
+
+
+
+
+
+
+
+
+
+let MapServer = ArcGISMapImageLayer(mapserver_uri)
+MapServer.LoadTablesAndLayersAsync()
+    |> Async.AwaitTask
+    |> Async.RunSynchronously
+
+
+
+
+
+
+
+
+
+type Binder = 
+    | TypeBinder of identifier:string
+    | CaseBinder of identifier:string
+    | ModuleBinder of identifier:string
+    | NamespaceBinder of identifier:string
+    | VariableBinder of identifier:string
+    member this.identifier = 
+        match this with 
+        | TypeBinder identifier -> identifier
+        | CaseBinder identifier -> identifier
+        | ModuleBinder identifier -> identifier
+        | NamespaceBinder identifier -> identifier
+        | VariableBinder identifier -> identifier
+    static member BackTickExclusions = 
+        [|
+            '.'
+            '+'
+            '$'
+            '&'
+            '['
+            ']'
+            '/'
+            '\\'
+            '*'
+            '\"'
+            '`'
+        |]
+    static member IdentKeywords = 
+        set [
+            "abstract"
+            "and"
+            "as"
+            "assert"
+            "base"
+            "begin"
+            "class"
+            "const"
+            "default"
+            "delegate"
+            "do"
+            "done"
+            "downcast"
+            "downto"
+            "elif"
+            "else"
+            "end"
+            "exception"
+            "extern"
+            "false"
+            "finally"
+            "fixed"
+            "for"
+            "fun"
+            "function"
+            "global"
+            "if"
+            "in"
+            "inherit"
+            "inline"
+            "interface"
+            "internal"
+            "lazy"
+            "let"
+            "match"
+            "member"
+            "module"
+            "mutable"
+            "namespace"
+            "new"
+            "null"
+            "of"
+            "open"
+            "or"
+            "override"
+            "private"
+            "public"
+            "rec"
+            "return"
+            "sig"
+            "static"
+            "struct"
+            "then"
+            "to"
+            "true"
+            "try"
+            "type"
+            "upcast"
+            "use"
+            "val"
+            "void"
+            "when"
+            "while"
+            "with"
+            "yield"
+            
+        ]
+    static member OCamlKeywords = 
+            set [
+
+              "asr"
+              "land"
+              "lor"
+              "lsl"
+              "lsr"
+              "lxor"
+              "mod"
+              "sig"
+
+               ]
+    static member ReservedKeywords = 
+    
+        set [
+
+              "break"
+              "checked"
+              "component"
+              "const"
+              "constraint"
+              "continue"
+              "event"
+              "external"
+              "include"
+              "mixin"
+              "parallel"
+              "process"
+              "protected"
+              "pure"
+              "sealed"
+              "tailcall"
+              "trait"
+              "virtual"
+
+               ]
+    static member KeywordNames = Binder.IdentKeywords + Binder.OCamlKeywords + Binder.ReservedKeywords
+
+    member this.Contains(character:char) = this.identifier.Contains(character)
+    member this.isBackTickRestricted =
+        match this with 
+        | TypeBinder identifier -> true
+        | CaseBinder identifier -> true
+        | ModuleBinder identifier -> true
+        | NamespaceBinder identifier -> true
+        | VariableBinder identifier -> false
+    static member NormalizeIdentifier (is_restricted:bool) (identifier: string)  =
+        match identifier with
+        | _ when identifier.Contains(' ') ->
+            Converters.ReplaceWhitespace(identifier,  "_")
+            |> Binder.NormalizeIdentifier is_restricted
+        | _ when identifier.Contains('-') ->
+            identifier.Replace("-", "_")
+            |> Binder.NormalizeIdentifier is_restricted
+        | _ when not (Syntax.PrettyNaming.IsIdentifierFirstCharacter identifier[0]) ->
+            "_" + identifier |> Binder.NormalizeIdentifier is_restricted
+        | _ when Binder.KeywordNames.Contains(identifier) -> identifier + "_" |> Binder.NormalizeIdentifier is_restricted
+        | _ when Syntax.PrettyNaming.DoesIdentifierNeedBackticks identifier && is_restricted  ->
+            let backtickableIdentifier = identifier.Replace(Binder.BackTickExclusions,"")
+            Syntax.PrettyNaming.NormalizeIdentifierBackticks backtickableIdentifier |> Binder.NormalizeIdentifier is_restricted
+        | _ when Syntax.PrettyNaming.DoesIdentifierNeedBackticks identifier   ->
+            Syntax.PrettyNaming.NormalizeIdentifierBackticks identifier |> Binder.NormalizeIdentifier is_restricted
+        | _ -> identifier
+    member this.binding = Binder.NormalizeIdentifier this.isBackTickRestricted this.identifier
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let SomeUnit = Some() // avoid allocating all the time
+let inline typeTest<'T> (s : TypeShape) =
+    match s with
+    | :? TypeShape<'T> -> SomeUnit
+    | _ -> None
+
+module Shape = 
+    let (|BoolTest|_|) s = typeTest<bool> s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let wouldEmitEmptyRecord<'ValueType>
+    (pocoDepth: int)
+    (maximumPocoDepth: int)
+    =
+    match shapeof<'ValueType> with
+    | Shape.BigInt
+    | Shape.Bool
+    | Shape.Byte
+    | Shape.Char
+    | Shape.Decimal
+    | Shape.Double
+    | Shape.Guid
+    | Shape.Int16
+    | Shape.Int32
+    | Shape.Int64
+    | Shape.SByte
+    | Shape.Single
+    | Shape.String
+    | Shape.UInt32
+    | Shape.UInt64
+    | Shape.Unit
+    | Shape.Uri
+    | Shape.Enum _
+    | Shape.TimeSpan
+    | Shape.Enumerable _ ->
+        false
+
+    | Shape.Poco _ ->
+        pocoDepth + 1 >= maximumPocoDepth
+
+    | _ ->
+        false
+
+let isEmptyEnumerable (value: 'ValueType) =
+    match box value with
+    | :? System.Collections.ICollection as collection ->
+        collection.Count = 0
+
+    | :? System.Collections.IEnumerable as enumerable ->
+        let enumerator = enumerable.GetEnumerator()
+        not (enumerator.MoveNext())
+
+    | _ ->
+        false
+
+
+let excludedProperties = 
+    set [
+            "ArcGISMapImageLayer", "Sublayers"
+            "ArcGISMapImageLayer", "SublayerContents"
+            "ArcGISMapImageLayer", "LayerInfos"
+            "ArcGISMapImageLayer", "LoadStatus"
+            "ArcGISMapImageSublayer", "SublayerContents"
+            "ArcGISMapImageSublayer", "LoadStatus"
+            "ArcGISMapImageSublayer", "Sublayers"
+            "ArcGISMapImageSublayer", "LayerInfos"
+    ]
+
+
+let rec emitValue<'ValueType>  (pocoDepth: int)(maximumPocoDepth:int)(value: 'ValueType) : WidgetBuilder<SyntaxOak.Expr> =
+    let projectValue (projection: 'Type -> WidgetBuilder<SyntaxOak.Expr>)
+        =
+        let project = unbox<'ValueType -> WidgetBuilder<SyntaxOak.Expr>> projection
+
+        project value
+    match shapeof<'ValueType> with
+    // | Shape.Array -> 
+    | Shape.BigInt ->
+        projectValue(fun (value: bigint) ->
+            stringify value
+            |> Ast.ConstantExpr
+        )
+    | Shape.Bool ->
+        projectValue(fun (value: bool) ->
+            Ast.Bool(value)
+            |> Ast.ConstantExpr
+        )
+    | Shape.Byte ->
+        projectValue(fun (value: byte) ->
+        stringify value
+        |> Ast.ConstantExpr
+        )
+    // | Shape.ByteArray -> 
+    | Shape.Char ->
+        projectValue(fun (value: char) ->
+            stringify value
+            |> Ast.ConstantExpr
+        )
+    // | Shape.CliMutable -> 
+    // | Shape.Collection -> 
+    // | Shape.Comparison -> 
+    // | Shape.DateTime -> 
+    // | Shape.DateTimeOffset -> 
+    | Shape.Decimal ->
+        projectValue(fun (value: decimal) ->
+            Ast.Decimal(value)
+            |> Ast.ConstantExpr
+        )
+    // | Shape.DefaultConstructor -> 
+    // | Shape.Delegate -> 
+    | Shape.Double ->
+        projectValue(fun (value: float) ->
+            match value with 
+            | _ when Double.IsNaN value -> Ast.ConstantExpr("Double.NaN")
+            | _ when Double.IsPositiveInfinity value -> Ast.ConstantExpr("Double.PositiveInfinity")
+            | _ when Double.IsNegativeInfinity value -> Ast.ConstantExpr("Double.NegativeInfinity")
+            | _ when Double.IsNaN value -> Ast.ConstantExpr("Double.NaN")
+            | _ -> Ast.Float(value) |> Ast.ConstantExpr
+        )
+    // | Shape.Equality -> 
+    // | Shape.FSharpFunc -> 
+    // | Shape.FSharpList -> 
+    // | Shape.FSharpMap -> 
+    // | Shape.FSharpOption -> 
+    // | Shape.FSharpRecord -> 
+    // | Shape.FSharpRef -> 
+    // | Shape.FSharpSet -> 
+    // | Shape.FSharpUnion -> 
+    // | Shape.FSharpUnit -> 
+    | Shape.Guid ->
+        projectValue(fun (value: Guid) ->
+            Ast.NewExpr(
+                Ast.LongIdent("Guid"),
+                Ast.String(value.ToString())
+            )
+        ) 
+    // | Shape.HashSet -> 
+    | Shape.Int16 ->
+        projectValue(fun (value: int16) ->
+            stringify value
+            |> Ast.ConstantExpr
+        )
+ 
+    | Shape.Int32 ->
+        projectValue(fun (value: int) ->
+            Ast.Int value 
+            |> Ast.ConstantExpr
+        )
+    | Shape.Int64 ->
+        projectValue(fun (value: int64) ->
+            stringify value
+            |> Ast.ConstantExpr
+        )
+    // | Shape.IntPtr -> 
+    // | Shape.ISerializable -> 
+    // | Shape.KeyValuePair -> 
+    // | Shape.Primitive -> 
+    // | Shape.ResizeArray -> 
+    | Shape.SByte ->
+        projectValue(fun (value: sbyte) ->
+            stringify value
+            |> Ast.ConstantExpr
+        )
+ 
+    | Shape.Single ->
+        projectValue(fun (value: single) ->
+            match value with
+            | value when Single.IsNaN value ->
+                Ast.ConstantExpr("Single.NaN")
+
+            | value when Single.IsPositiveInfinity value ->
+                Ast.ConstantExpr("Single.PositiveInfinity")
+
+            | value when Single.IsNegativeInfinity value ->
+                Ast.ConstantExpr("Single.NegativeInfinity")
+
+            | value ->
+                stringify value
+                |> Ast.ConstantExpr
+        )
+    | Shape.String ->
+        projectValue(fun (value: string) ->
+            Ast.String(value)
+            |> Ast.ConstantExpr
+        )
+    // | Shape.Struct -> 
+    // | Shape.SystemArray -> 
+    // | Shape.Tuple -> 
+    // | Shape.UInt16 -> 
+    | Shape.UInt32 ->
+        projectValue(fun (value: uint32) ->
+            stringify value
+            |> Ast.ConstantExpr
+        )
+    | Shape.UInt64 ->
+        projectValue(fun (value: uint64) ->
+            stringify value
+            |> Ast.ConstantExpr
+        )
+    // | Shape.UIntPtr -> 
+    | Shape.Unit ->
+        projectValue(fun (value:unit) ->
+            Ast.ConstantExpr("()")
+        )
+    | Shape.Uri ->
+        projectValue(fun (value: Uri) ->
+            Ast.NewExpr(
+                Ast.LongIdent("Uri"),
+                Ast.String(value.OriginalString)
+            )
+        )
+    | Shape.Enum shape ->
+    shape.Accept {
+        new IEnumVisitor<WidgetBuilder<SyntaxOak.Expr>> with
+            member _.Visit<
+                'Enum,
+                'Underlying
+                    when 'Enum : enum<'Underlying>
+                    and 'Enum : struct
+                    and 'Enum :> ValueType
+                    and 'Enum : (new : unit -> 'Enum)
+            > () =
+
+                projectValue(fun (value: 'Enum) ->
+                    stringify value
+                    |> Ast.ConstantExpr
+                )
+    } 
+    | Shape.TimeSpan ->
+        projectValue(fun (value: TimeSpan) ->
+            $"TimeSpan({value.Ticks}L)"
+            |> Ast.ConstantExpr
+        ) 
+    // | Shape.Dictionary -> 
+    | Shape.Enumerable shape ->
+        shape.Accept {
+            new IEnumerableVisitor<WidgetBuilder<SyntaxOak.Expr>> with
+                member _.Visit<
+                    'Enumerable,
+                    'Element
+                        when 'Enumerable :> seq<'Element>
+                > () =
+
+                    projectValue(fun (values: 'Enumerable) ->
+                        Ast.ArrayExpr([
+                            for value in values do
+                                emitValue pocoDepth maximumPocoDepth value
+                        ])
+                    )
+        } 
+    // | Shape.Exception -> 
+
+    | Shape.Poco (:? ShapePoco<'ValueType> as shape) ->
+
+        if pocoDepth >= maximumPocoDepth then
+            Ast.AnonRecordExpr([])
+        else
+            shape.Properties
+            |> Array.filter (fun property -> property.IsPublic)
+            |> Array.choose (fun property ->
+
+                match typeof<'ValueType>.Name, property.Label with
+                | typeName, propertyName when excludedProperties.Contains(typeName, propertyName) -> None
+
+                | _, _ ->
+                    property.Accept {
+                        new IReadOnlyMemberVisitor< 'ValueType, WidgetBuilder<SyntaxOak.RecordFieldNode> option > with
+                            member _.Visit
+                                (
+                                    property:
+                                        ReadOnlyMember<
+                                            'ValueType,
+                                            'PropertyType
+                                        >
+                                ) =
+
+                                let propertyValue = property.Get value
+                                
+
+                                match typeof<'ValueType>.Name, typeof<'PropertyType>.Name, shapeof<'PropertyType>, property.Label, box propertyValue  with
+                                | valueTypeName, propertyTypeName, Shape.Enumerable _, propertyIdentifier, propertyBoxedValue when isEmptyEnumerable propertyValue -> None
+                                | valueTypeName, propertyTypeName, propertyTypeShape, propertyIdentifier, null   -> None
+                                | valueTypeName, propertyTypeName, propertyTypeShape, propertyIdentifier, propertyBoxedValue when String.IsNullOrWhiteSpace(string propertyBoxedValue)   -> None
+                                | ("ArcGISMapImageLayer" | "ArcGISMapImageSublayer"), propertyTypeName, propertyTypeShape, "Sublayers", propertyBoxedValue   -> 
+                                            let sublayers =
+                                                propertyValue
+                                                |> box
+                                                :?> IList<ArcGISSublayer>
+
+                                            if sublayers.Count = 0 then
+                                                None
+
+                                            else
+                                                Some(
+                                                    Ast.RecordFieldExpr(
+                                                        property.Label,
+                                                        Ast.ArrayExpr([
+                                                            for sublayer in sublayers do
+                                                                emitValue
+                                                                    (pocoDepth + 1)
+                                                                    maximumPocoDepth
+                                                                    (sublayer :?> ArcGISMapImageSublayer)
+                                                        ])
+                                                    )
+                                                )
+
+                                | valueTypeName, propertyTypeName, propertyTypeShape, propertyIdentifier, propertyBoxedValue when wouldEmitEmptyRecord<'PropertyType> (pocoDepth + 1) maximumPocoDepth -> None
+                                | valueTypeName, propertyTypeName, propertyTypeShape, propertyIdentifier, propertyBoxedValue   -> 
+                                            Some(
+                                                Ast.RecordFieldExpr(
+                                                    property.Label,
+                                                    emitValue (pocoDepth + 1 ) maximumPocoDepth propertyValue
+                                                )
+                                            )
+                    }
+            )
+            |> Array.toList
+            |> Ast.AnonRecordExpr
+
+    | _ ->
+        Ast.VerbatimString(
+            sprintf
+                "ERROR: value of unsupported type\n\n\t%O : %s"
+                value
+                typeof<'ValueType>.Name
+        )
+        |> Ast.ConstantExpr
+
+let test_file_path =
+    Path.Combine(__SOURCE_DIRECTORY__, "test.fsx")
+
+
+let recordDepth = 1
+
+let emitBinding  (value:'ValueType) (binder:Binder) = 
+            match binder, value with
+            | _, _  when String.IsNullOrWhiteSpace (string value) -> Ast.Value(binder.binding, "()").xmlDocs(Ast.Summary("value was unbound"))
+            | _, _ -> Ast.Value(binder.binding, emitValue 0 recordDepth value )
+        
+    
+
+
+let collectTypeNamespaces
+    (maximumDepth: int)
+    (propertyExclusions: Set<string * string>)
+    (rootType: Type)
+    =
+
+    let visitedTypes =
+        HashSet<Type>()
+
+    let rec collect
+        (depth: int)
+        (clrType: Type)
+        : Set<string> =
+
+        if
+            depth > maximumDepth
+            || not (visitedTypes.Add clrType)
+        then
+            Set.empty
+
+        else
+            let ownNamespace =
+                match clrType.Namespace with
+                | null ->
+                    Set.empty
+
+                | namespaceName ->
+                    Set.singleton namespaceName
+
+            let genericArgumentNamespaces =
+                clrType.GetGenericArguments()
+                |> Array.map (collect depth)
+                |> Set.unionMany
+
+            let elementTypeNamespaces =
+                match clrType.GetElementType() with
+                | null ->
+                    Set.empty
+
+                | elementType ->
+                    collect depth elementType
+
+            let propertyNamespaces =
+                clrType.GetProperties()
+                |> Array.filter (fun property ->
+                    not (
+                        propertyExclusions.Contains(
+                            clrType.Name,
+                            property.Name
+                        )
+                    )
+                )
+                |> Array.map (fun property ->
+                    collect
+                        (depth + 1)
+                        property.PropertyType
+                )
+                |> Set.unionMany
+
+            Set.unionMany [
+                ownNamespace
+                genericArgumentNamespaces
+                elementTypeNamespaces
+                propertyNamespaces
+            ]
+
+    collect 0 rootType
+
+let property_namespaces = collectTypeNamespaces recordDepth Set.empty typeof<ArcGISMapImageLayer>
+
+
+
+
+
+
+
+let test_text = 
+    Ast.Oak() {
+        Ast.AnonymousModule() {
+            Ast.HashDirective(
+                "r",
+                "\"nuget: Esri.ArcGISRuntime, 300.0.0\""
+            )
+            for property_namespace in property_namespaces do
+                Ast.Open(property_namespace)
+
+            VariableBinder MapServer.Name |> emitBinding MapServer
+        }
+    }
+    |> Gen.mkOak
+    |> Gen.run
+
+File.WriteAllText(test_file_path, test_text)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sprintf "%s : %s" MapServer.Name (MapServer.GetType() |> stringifyTypeDynamic)
+
+typeof<ArcGISMapImageLayer>.GetProperties() |> Array.map (fun property -> sprintf "%s : %s" property.Name (stringifyTypeDynamic property.PropertyType))
+|> Array.distinct
+|> Array.sort
+|> String.concat "\n"
+|> clip
+
+
+(*
+    | Shape.Unit -> wrap(fun () -> "()")
+    | Shape.Bool -> wrap(sprintf "%b")
+    | Shape.Byte -> wrap(fun (b:byte) -> sprintf "%duy" b)
+    | Shape.Int32 -> wrap(sprintf "%d")
+    | Shape.Int64 -> wrap(fun (b:int64) -> sprintf "%dL" b)
+    | Shape.String -> wrap(sprintf "\"%s\"")
+    | Shape.FSharpOption s ->
+        s.Element.Accept {
+            new ITypeVisitor<'Type -> string> with
+                member _.Visit<'a> () =
+                    let tp = emit_value<'a>()
+                    wrap(function None -> "None" | Some t -> sprintf "Some (%s)" (tp t))
+        }
+
+    | Shape.FSharpList s ->
+        s.Element.Accept {
+            new ITypeVisitor<'Type -> string> with
+                member _.Visit<'a> () =
+                    let tp = emit_value<'a>()
+                    wrap(fun ts -> ts |> List.map tp |> String.concat "; " |> sprintf "[%s]")
+        }
+
+    | Shape.Array s when s.Rank = 1 ->
+        s.Element.Accept {
+            new ITypeVisitor<'Type -> string> with
+                member _.Visit<'a> () =
+                    let tp = emit_value<'a> ()
+                    wrap(fun ts -> ts |> Array.map tp |> String.concat "; " |> sprintf "[|%s|]")
+        }
+        
+    | Shape.Tuple (:? ShapeTuple<'Type> as shape) ->
+        let mkElemPrinter (shape : IShapeMember<'Type>) =
+           shape.Accept { new IMemberVisitor<'Type, 'Type -> string> with
+               member _.Visit (shape : ShapeMember<'DeclaringType, 'Field>) =
+                   let fieldPrinter = emit_value<'Field>()
+                   fieldPrinter << shape.Get }
+
+        let elemPrinters : ('Type -> string) [] = shape.Elements |> Array.map mkElemPrinter
+
+        fun (r:'Type) ->
+            elemPrinters
+            |> Seq.map (fun ep -> ep r)
+            |> String.concat ", "
+            |> sprintf "(%s)"
+
+    | Shape.FSharpSet s ->
+        s.Accept {
+            new IFSharpSetVisitor<'Type -> string> with
+                member _.Visit<'a when 'a : comparison> () =
+                    let tp = emit_value<'a>()
+                    wrap(fun (s:Set<'a>) -> s |> Seq.map tp |> String.concat "; " |> sprintf "set [%s]")
+        }
+
+    | _ -> failwithf "unsupported type '%O'" typeof<'Type>
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+type String with 
+    member this.snake_case = Converters.to_snake_case this
+    member this.normalize_binding = Converters.ReplaceWhitespace(this,  "_").Replace("-","_")
+
+
+type Property_Type =
+    | NonsequentialType of Type
+    | SequentialType of sequence_type:Type * element_type:Type
+    static member from_property_info (property_info :PropertyInfo) = 
+        match property_info.PropertyType with 
+        | property_type when property_type.IsGenericType ->
+                 match property_type.GetGenericTypeDefinition() with 
+                 | property_generic_type when property_generic_type = typedefof<IList<_>> -> SequentialType(property_info.PropertyType, property_info.PropertyType.GetGenericArguments()[0])
+                 | property_generic_type when property_generic_type = typedefof<IReadOnlyList<_>> -> SequentialType(property_info.PropertyType, property_info.PropertyType.GetGenericArguments()[0])
+                 | property_generic_type -> NonsequentialType property_type
+        | property_type -> NonsequentialType property_type
+    member this.fsharp_name = 
+        match this with 
+        | NonsequentialType property_type -> FSharp_Literal.stringifyTypeDynamic property_type
+        | SequentialType (sequence_type,_) -> stringifyTypeDynamic sequence_type
+
+type Property_Info = 
+    | OptionalProperty of PropertyInfo
+    | MandatoryProperty of PropertyInfo
+    | UninferredProperty of PropertyInfo
+    member this.info = 
+        match this with 
+        | OptionalProperty propertyinfo -> propertyinfo
+        | MandatoryProperty propertyinfo -> propertyinfo
+        | UninferredProperty propertyinfo -> propertyinfo
+    member this.clr_name :string = this.info.Name
+
+
+
+        
+type Type with
+    member this.fsharp_name =
+        FSharp_Literal.stringifyTypeDynamic this
+    member this.properties = this.GetProperties() |> Array.map (fun property -> UninferredProperty property)
+    member this.property_namespaces = 
+                        this.properties |> Array.map (fun property -> 
+                            match Property_Type.from_property_info property.info with 
+                            | SequentialType(sequence_type,element_type) -> element_type.Namespace
+                            | _ -> property.info.PropertyType.Namespace
+                        )
+                        |> Array.distinct
+                        |> Array.sort
+    member this.infer_properties (instances: 'Type array) = 
+        if instances.Length < 1 then 
+            this.properties
+        else 
+            this.GetProperties()
+            |> Array.map (fun property -> 
+                    property, instances
+                    |> Array.map (fun instance ->  property.GetValue instance)
+            )
+            |> Array.filter (fun (property, values) -> not (Array.TrueForAll(values,   (fun value -> String.IsNullOrWhiteSpace(string value)))))
+            |> Array.map(fun (property, values) -> 
+                    let null_exists = values |> Array.exists (fun value -> String.IsNullOrWhiteSpace(string value))
+                
+                    if null_exists then 
+                        OptionalProperty property
+                    else 
+                        MandatoryProperty property
+            )
+
+
+
+let inline emit_literal_value (value: obj)(property:Property_Info) =
+    match value with
+    | null -> Ast.ConstantExpr("()")
+    | :? string as value -> Ast.String(value) |> Ast.ConstantExpr 
+    | :? bool as value -> Ast.Bool(value) |> Ast.ConstantExpr 
+    | :? decimal as value -> Ast.Decimal(value) |> Ast.ConstantExpr 
+    | :? float as value when Double.IsNaN value -> Ast.ConstantExpr("Double.NaN")
+    | :? float as value -> Ast.Float(value) |> Ast.ConstantExpr 
+    | :? int as value -> string value |> Ast.ConstantExpr 
+    | :? int64 as value -> $"{value}L" |> Ast.ConstantExpr 
+    | :? Uri as value ->     Ast.NewExpr( Ast.LongIdent("Uri"), Ast.String(value.OriginalString) )
+    | :? Enum as value ->
+        let enum_type_name = FSharp_Literal.stringifyTypeDynamic(value.GetType())
+        Ast.ConstantExpr( $"{enum_type_name}.{value}" )
+
+    | :? MapServiceImageFormat as value -> Ast.String(value.ToString()) |> Ast.ConstantExpr
+
+
+    | value ->
+        failwithf
+            "No emitted literal representation has been defined for \ntype_binding: %s \nproperty.clr_name: %s \nPropertyType.Name: %s" this.type_binding property.clr_name property.info.PropertyType.Name
+let emit_present_value (clr_type:Type)(property:Property_Info)(instance:'Type) =
+
+    let property_value = property.info.GetValue(instance)
+    match
+        clr_type.Name,
+        property.clr_name,
+        Property_Type.from_property_info property.info
+    with
+
+
+    | _, _, SequentialType _ ->
+
+        let values =
+            property_value :?> IEnumerable
+
+        Ast.ArrayExpr([
+            for value in values do
+                property |> emit_literal_value value
+        ])
+
+    | _, _, NonsequentialType _ ->
+        property |> emit_literal_value property_value
+
+
+let inline emit_property_value (property: Property_Info) (instance: 'Type) : WidgetBuilder<SyntaxOak.Expr> =
+        let clr_type = instance.GetType()
+        let property_value =
+            property.info.GetValue(instance)
+
+        if property.IsOptionalProperty then
+
+            if String.IsNullOrWhiteSpace(string property_value) then
+                Ast.ConstantExpr("None")
+
+            else
+                Ast.AppExpr(
+                    "Some",
+                    emit_present_value clr_type property instance
+                )
+
+        else
+            emit_present_value clr_type property instance
+            
+let inline emit_value  (type_binding:string) (slug_property_name:string) (excluded_properties: Set<string>) (instances: 'Type array) (entity:'Type) =
+    let clr_type = entity.GetType()
+    let properties = clr_type.infer_properties instances
+
+    let slug_property =
+        match clr_type.GetProperty( slug_property_name ) with 
+        | null -> failwithf "Type %s does not contain slug property %s." clr_type.FullName slug_property_name
+        | property -> property
+
+    let slug_value = slug_property.GetValue(entity) |> string
+    if String.IsNullOrWhiteSpace(slug_value) then
+        failwithf "The slug property %s on %s produced no usable binding name." slug_property_name clr_type.FullName
+        
+    let entity_binding = 
+        match type_binding,slug_value with 
+        | "MapService","Layers" -> "LCPW_OverlayStormwaterInfrastructure_D_WM"
+        | _,_ -> slug_value.normalize_binding
+    Ast.Value(
+    entity_binding,
+    Ast.AnonRecordExpr([
+        for (property:Property_Info) in properties do
+
+            Ast.RecordFieldExpr(
+                property.clr_name, emit_property_value property entity
+            )
+        match type_binding with 
+        | _ -> ()
+
+    ])
+)
+
+
+
+
+
+
+
+
+let try_get_sequence_element_type (clr_type: Type) =
+    if clr_type.IsArray then
+        Some(clr_type.GetElementType())
+
+    elif clr_type.IsGenericType then
+        match clr_type.GetGenericTypeDefinition() with
+        | generic_type
+            when generic_type = typedefof<IList<_>>
+              || generic_type = typedefof<IReadOnlyList<_>>
+              || generic_type = typedefof<IEnumerable<_>> ->
+
+            Some(clr_type.GetGenericArguments()[0])
+
+        | _ ->
+            None
+
+    else
+        None
+
+
+let rec emit_runtime_value
+    (excluded_properties: Set<string>)
+    (declared_type: Type)
+    (value: obj)
+    =
+    match value with
+    | null ->
+        Ast.ConstantExpr("()")
+
+    | :? Uri as uri ->
+        Ast.NewExpr(
+            Ast.LongIdent("Uri"),
+            Ast.String(uri.OriginalString)
+        )
+
+    | _ ->
+        match try_get_sequence_element_type declared_type with
+        | Some element_type ->
+
+            let values =
+                value :?> IEnumerable
+
+            Ast.ArrayExpr([
+                for element in values do
+                    emit_runtime_value
+                        Set.empty
+                        element_type
+                        element
+            ])
+
+        | None when
+            declared_type.IsPrimitive
+            || declared_type.IsEnum
+            || declared_type = typeof<string>
+            || declared_type = typeof<decimal>
+            || declared_type = typeof<DateTime>
+            || declared_type = typeof<DateTimeOffset>
+            || declared_type = typeof<TimeSpan>
+            || declared_type = typeof<Guid> ->
+
+            FSharp_Literal.stringifyDynamic
+                declared_type
+                value
+            |> Ast.ConstantExpr
+
+        | None ->
+
+            Ast.AnonRecordExpr([
+                for property in declared_type.GetProperties() do
+                    if not (
+                        excluded_properties.Contains property.Name
+                    ) then
+
+                        let property_value =
+                            property.GetValue(value)
+
+                        Ast.RecordFieldExpr(
+                            property.Name,
+                            emit_runtime_value
+                                Set.empty
+                                property.PropertyType
+                                property_value
+                        )
+            ])
+
+
+let try_instance_descriptor (value: 'Type) =
+    if isNull (box value) then
+        None
+    else
+        let converter =
+            TypeDescriptor.GetConverter(value.GetType())
+
+        if converter.CanConvertTo(typeof<InstanceDescriptor>) then
+            match converter.ConvertTo(
+                value,
+                typeof<InstanceDescriptor>
+            ) with
+            | :? InstanceDescriptor as descriptor ->
+                Some descriptor
+
+            | _ ->
+                None
+        else
+            None
+
+
+
+
+stringify MapServer.RefreshInterval
+
+let rec inline emit_literal (value: 'Type) (instances: 'Type array) =
+    let stringified_value = stringify value
+    let fallback_value = sprintf "%A" value
+
+    match stringified_value with
+    | "null" ->
+        Ast.ConstantExpr("None")
+
+    | constant_expression
+        when constant_expression <> fallback_value ->
+        Ast.ConstantExpr(constant_expression)
+
+    | _ ->
+        match box value with
+        | :? Uri as uri ->
+            Ast.NewExpr(
+                Ast.LongIdent("Uri"),
+                Ast.String(uri.OriginalString)
+            )
+
+        | :? System.Collections.IEnumerable as values ->
+            Ast.ArrayExpr([
+                for item in values do
+                    emit_literal item [||]
+            ])
+
+        | _ ->
+            Ast.ConstantExpr("()")
+            
+let test_uri = new Uri ("https://www.google.com")
+stringifyDynamic typeof<Uri> test_uri
+let descriptor = try_instance_descriptor test_uri |> Option.get 
+let constructor = descriptor.MemberInfo :?> ConstructorInfo
+
+constructor.DeclaringType
+let parameters = constructor.GetParameters()
+parameters[0].ParameterType.fsharp_name
+parameters[1].ParameterType.fsharp_name
+
+descriptor.Arguments.SyncRoot 
+descriptor.MemberInfo.MemberType
+descriptor.MemberInfo.DeclaringType
+descriptor.MemberInfo.ReflectedType
+descriptor.IsComplete
+descriptor.MemberInfo
+descriptor.Arguments
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module Folder = 
+    let Generated = Directory.CreateDirectory @"C:\Repositories\appsdb\IPS_Sites\integration\StormwaterInfrastructure\Generated"
+
+
+
+
+
+type Type_Projection = 
+    {
+        clr_type :Type
+        type_binding :string
+        slug_property_name :string
+        excluded_properties: Set<string>
+    }
+    static member implemented_type_names = 
+                set [
+                    "string"
+                    "bool"
+                    "decimal"
+                    "float"
+                    "float"
+                    "int"
+                    "int64"
+                    "Uri"
+                    "MapServiceImageFormat"
+                    "Enum"
+                ]
+
+
+    member this.emit_literal_value (value: obj)(property:Property_Info) =
+        match value with
+        | null -> Ast.ConstantExpr("()")
+        | :? string as value -> Ast.String(value) |> Ast.ConstantExpr 
+        | :? bool as value -> Ast.Bool(value) |> Ast.ConstantExpr 
+        | :? decimal as value -> Ast.Decimal(value) |> Ast.ConstantExpr 
+        | :? float as value when Double.IsNaN value -> Ast.ConstantExpr("Double.NaN")
+        | :? float as value -> Ast.Float(value) |> Ast.ConstantExpr 
+        | :? int as value -> string value |> Ast.ConstantExpr 
+        | :? int64 as value -> $"{value}L" |> Ast.ConstantExpr 
+        | :? Uri as value ->     Ast.NewExpr( Ast.LongIdent("Uri"), Ast.String(value.OriginalString) )
+        | :? Enum as value ->
+            let enum_type_name = FSharp_Literal.stringifyTypeDynamic(value.GetType())
+            Ast.ConstantExpr( $"{enum_type_name}.{value}" )
+
+        | :? MapServiceImageFormat as value -> Ast.String(value.ToString()) |> Ast.ConstantExpr
+        | :? MapServiceCapabilities as value -> Ast.String(value.ToString()) |> Ast.ConstantExpr
+
+
+        | value ->
+            failwithf
+                "No emitted literal representation has been defined for \ntype_binding: %s \nproperty.clr_name: %s \nPropertyType.Name: %s" this.type_binding property.clr_name property.info.PropertyType.Name
+    member this.emit_property_value 
+        (property: Property_Info)
+        (instance: obj)
+        : WidgetBuilder<SyntaxOak.Expr>  
+        =
+
+        let property_value =
+            property.info.GetValue(instance)
+
+        let emit_present_value () =
+            match
+                this.clr_type.Name,
+                property.clr_name,
+                Property_Type.from_property_info property.info
+            with
+
+
+            | _, _, SequentialType _ ->
+
+                let values =
+                    property_value :?> IEnumerable
+
+                Ast.ArrayExpr([
+                    for value in values do
+                        property |> this.emit_literal_value value
+                ])
+
+            | _, _, NonsequentialType _ ->
+                property |> this.emit_literal_value property_value
+
+
+        if property.IsOptionalProperty then
+
+            if String.IsNullOrWhiteSpace(string property_value) then
+                Ast.ConstantExpr("None")
+
+            else
+                Ast.AppExpr(
+                    "Some",
+                    emit_present_value()
+                )
+
+        else
+            emit_present_value()
+            
+    member inline this.emit_instances (instances: 'Type array) =
+
+        let properties =
+            this.properties instances
+
+        let slug_property =
+            this.clr_type.GetProperty(
+                this.slug_property_name
+            )
+
+        if isNull slug_property then
+            failwithf
+                "Type %s does not contain slug property %s."
+                this.clr_type.FullName
+                this.slug_property_name
+
+        instances
+        |> Array.map (fun instance ->
+
+            let slug_value =
+                slug_property.GetValue(instance) |> string
+
+            if String.IsNullOrWhiteSpace(slug_value) then
+                failwithf
+                    "The slug property %s on %s produced no usable binding name."
+                    this.slug_property_name
+                    this.clr_type.FullName
+            let instance_binding = 
+                match this.type_binding,slug_value with 
+                | "MapService","Layers" -> "LCPW_OverlayStormwaterInfrastructure_D_WM"
+                | _,_ -> slug_value.normalize_binding
+
+                
+
+            Ast.Value(
+                instance_binding,
+                Ast.AnonRecordExpr([
+                    for (property:Property_Info) in properties do
+
+                        Ast.RecordFieldExpr(
+                            property.clr_name, this.emit_property_value property instance
+                        )
+                    match this.type_binding with 
+                    | _ -> ()
+
+                ])
+            )
+        )
+    member this.emit_record (instances: 'Type array) =
+
+        let properties = this.properties instances
+        let source_parameter_name = Converters.toCamelCase this.clr_type.Name
+
+        (Ast.Record(this.type_binding) {
+            for property in properties do
+
+                let field_name =
+                    match this.clr_type.Name, property.clr_name with
+                    | _, _ -> property.clr_name
+
+                let type_name =
+                    match Property_Type.from_property_info property.info with
+                    | NonsequentialType property_type -> property_type.fsharp_name
+                    | SequentialType (sequence_type, element_type) when sequence_type = typeof<IList<ArcGISSublayer>> -> "Feature_Dataset array"
+                    | SequentialType (_, element_type) -> $"{element_type.fsharp_name} array"
+
+                let field_type_name =
+                    match this.clr_type.Name, property.clr_name with
+                    | "ArcGISMapImageLayer", "ImageFormat" -> "string"
+                    
+
+                    | _, _ when property.IsOptionalProperty -> $"{type_name} option"
+
+                    | _, _ ->
+                        type_name
+
+                Ast.Field(field_name, field_type_name)
+            match this.type_binding with 
+            | _ -> ()
+        })
+            .members() {
+                Ast.Member(
+                    $"from_clr({source_parameter_name}: {this.clr_type.fsharp_name})",
+                    Ast.AnonRecordExpr([
+                        for property in properties do
+
+                            let field_name =
+                                property.clr_name
+
+                            let source_property_expression =
+                                $"{source_parameter_name}.{property.clr_name}"
+
+                            let projected_expression =
+                                match this.clr_type.Name, property.clr_name, Property_Type.from_property_info property.info with
+                                | "ArcGISMapImageLayer", "ImageFormat", _ -> $"{source_property_expression}.ToString()"
+                                | _,_,SequentialType _ -> $"{source_property_expression} |> Seq.toArray"
+                                | _,_,NonsequentialType _ -> source_property_expression
+
+                            if property.IsOptionalProperty
+                                then
+                                    Ast.RecordFieldExpr(
+                                        field_name,
+                                        Ast.AppExpr( "Some", projected_expression ) 
+                                    )
+                                else
+                                    Ast.RecordFieldExpr(
+                                        field_name,
+                                        projected_expression
+                                    )
+                        match this.type_binding with 
+                        | _ -> ()
+
+                    ]),
+                    this.type_binding
+                )
+                    .toStatic()
+            }
+
+    member this.properties (instances: 'Type array) =
+        this.clr_type.infer_properties instances
+        |> Array.filter (fun property ->
+            not (this.excluded_properties.Contains(property.clr_name))
+        )
+
+
+type Module_Projection = 
+    {
+        namespace_binding:string
+        module_binding:string
+        type_projections:Type_Projection array
+        instance_projections:Type_Projection array
+    }
+    member this.relative_path = this.namespace_binding.Split('.') |> String.concat "\\"
+    member this.directory = Directory.CreateDirectory(Path.Combine(Folder.Generated.FullName,this.relative_path))
+    member this.file =  Path.Combine(this.directory.FullName,$"{this.module_binding}.fs") |> FileInfo
+    member this.properties = 
+                        Array.concat [|
+                            this.type_projections 
+                            this.instance_projections
+                        |]
+                        |> Array.collect (fun type_projection -> 
+                                match type_projection.clr_type.Name with 
+                                | "ArcGISMapImageLayer" -> type_projection.clr_type.infer_properties [|MapServer|]
+                                | _ -> type_projection.clr_type.properties
+                        )
+
+    member this.property_namespaces = 
+                        this.properties |> Array.map (fun property -> 
+                            match Property_Type.from_property_info property.info with 
+                            | SequentialType(sequence_type,element_type) -> element_type.Namespace
+                            | _ -> property.info.PropertyType.Namespace
+                        )
+                        |> Array.distinct
+                        |> Array.sort
+    member this.emit_module = 
+            Ast.Oak() {
+                Ast.Namespace($"{this.namespace_binding.normalize_binding}.{this.module_binding.normalize_binding}") {
+                    match this.namespace_binding with 
+                    | "gov.leoncountyfl" -> ()
+                    | _ -> Ast.Open ("gov.leoncountyfl.interraster")
+                    for property_namespace in this.property_namespaces do
+                        Ast.Open(property_namespace)
+                    
+
+                    for index = 0  to this.type_projections.Length - 1 do
+                        let type_projection = this.type_projections[index]
+                        let record = 
+                            match type_projection.type_binding with
+
+                            | "MapService" -> type_projection.emit_record [| MapServer.ServiceInfo |]
+                            | "GroupLayer" -> MapServer.group_layer_infos_by_name this.module_binding |> type_projection.emit_record
+                            | "FeatureLayer" -> MapServer.feature_layer_infos_by_name this.module_binding |> type_projection.emit_record 
+                            | "FeatureTable" -> MapServer.tables_by_name this.module_binding |> type_projection.emit_record 
+                            | "FeatureField" -> MapServer.fields_by_table this.module_binding |> type_projection.emit_record 
+
+                            | _ -> type_projection.emit_record [||]
+
+
+
+                        if index = 0 then 
+                            record
+                        else 
+                            record.toRecursive()
+
+
+                    for type_projection in this.instance_projections do
+                        match type_projection.type_binding with  
+                        |  "MapService" ->
+                            for emitted_instance in type_projection.emit_instances [| MapServer.ServiceInfo |] do
+                                emitted_instance
+
+                        | "GroupLayer" ->
+                            let instances = MapServer.group_layer_infos_by_name this.module_binding |> type_projection.emit_instances  
+                            for emitted_instance in instances do
+                                emitted_instance
+                        | "FeatureLayer" ->
+                            let instances = MapServer.feature_layer_infos_by_name this.module_binding |> type_projection.emit_instances  
+                            for emitted_instance in instances do
+                                emitted_instance
+                        | "FeatureTable" ->
+                            let instances = MapServer.tables_by_name this.module_binding |> type_projection.emit_instances  
+                            for emitted_instance in instances do
+                                emitted_instance
+                                
+                        | "FeatureField" ->
+                            let instances = MapServer.fields_by_table this.module_binding |> type_projection.emit_instances  
+                            for emitted_instance in instances do
+                                emitted_instance
+                        | _ -> ()
+
+                }|> _.toImplicit()
+            }
+            |> Gen.mkOak
+            |> Gen.run
+
+
+    member this.write_text() = File.WriteAllText(this.file.FullName, this.emit_module)
+
+
+let map_server_projection = 
+
+                                        { 
+
+                                            clr_type = typeof<ArcGISMapServiceInfo>
+                                            type_binding = "MapService"
+                                            slug_property_name = "MapName"
+                                            excluded_properties = set [
+                                                    // "FullExtent" // Envelope
+                                                    // "FullTimeExtent" // TimeExtent
+                                                    "Item" // Item
+                                                    "LoadError" // Exception
+                                                    // "RefreshInterval" // TimeSpan
+                                                    // "ServiceInfo" // ArcGISMapServiceInfo
+                                                    // "SpatialReference" // SpatialReference
+                                                    // "SublayerContents" // IReadOnlyList<ILayerContent>
+                                                    // "Sublayers" // IList<ArcGISSublayer>
+                                                    // "Tables" // IReadOnlyList<ServiceFeatureTable>
+                                                    // "TimeInterval" // TimeValue
+                                                    // "TimeOffset" // TimeValue
+                                             ]
+
+                                        }
+
+let group_layer_projection = 
+
+                                        { 
+
+                                            clr_type = typeof<ArcGISMapServiceSublayerInfo>
+                                            type_binding = "GroupLayer"
+                                            slug_property_name = "ServiceLayerName"
+                                            excluded_properties = set [
+                                                "Table"
+                                                "Sublayers"
+                                                "MapServiceSublayerInfo"
+                                                "SublayerContents"
+                                                "DefinitionExpression"
+                                                "Renderer"
+                                                "Source"
+                                                "PopupDefinition"
+                                                "LabelDefinitions"
+                                                "LoadStatus"
+                                                "Extent"
+                                                "Capabilities"
+                                                "OwnershipBasedAccessControl"
+                                                "SublayerInfos"
+                                                "Fields"
+                                                "FeatureTypes"
+                                                "MaxRecordCount"
+                                                "RelationshipInfos"
+                                                "FeatureSubtypes"
+                                                "EffectiveMinScale"
+                                                "EffectiveMaxScale"
+                                                "GeometryType"
+                                             ]
+
+                                        }
+let feature_layer_projection = 
+
+                                        { 
+
+                                            clr_type = typeof<ArcGISMapServiceSublayerInfo>
+                                            type_binding = "FeatureLayer"
+                                            slug_property_name = "ServiceLayerName"
+                                            excluded_properties = set [
+                                                "Table"
+                                                "Sublayers"
+                                                "MapServiceSublayerInfo"
+                                                "SublayerContents"
+                                                "DefinitionExpression"
+                                                "Renderer"
+                                                "Source"
+                                                "PopupDefinition"
+                                                "LabelDefinitions"
+                                                "LoadStatus"
+                                                "Extent"
+                                                "Capabilities"
+                                                "OwnershipBasedAccessControl"
+                                                "SublayerInfos"
+                                                "Fields"
+                                                "FeatureTypes"
+                                                "MaxRecordCount"
+                                                "RelationshipInfos"
+                                                "FeatureSubtypes"
+                                                "EffectiveMinScale"
+                                                "EffectiveMaxScale"
+                                                "GeometryType"
+                                                "DrawingInfo"
+                                                "DefaultSubtypeCode"
+                                                "ParentLayerInfo"
+                                             ]
+
+                                        }
+
+let table_projection = 
+                        { 
+                            clr_type = typeof<ServiceFeatureTable>
+                            type_binding = "FeatureTable"
+                            slug_property_name = "DisplayName"
+                            excluded_properties = set [
+                                "LoadStatus"
+                                "ContingentValuesDefinition" // ContingentValuesDefinition
+                                "DefaultSubtypeCode" // Object
+                                "EditableAttributeFields" // IReadOnlyList<Field>
+                                "Extent" // Envelope
+                                "FeatureFormDefinition" // FeatureFormDefinition
+                                "FeatureSubtypes" // IReadOnlyList<FeatureSubtype>
+                                "FeatureTemplates" // IReadOnlyList<FeatureTemplate>
+                                "FeatureTypes" // IReadOnlyList<FeatureType>
+                                "Fields" // IReadOnlyList<Field>
+                                "Item" // Item
+                                "Layer" // Layer
+                                "LayerInfo" // ArcGISFeatureLayerInfo
+                                "LoadError" // Exception
+                                "PopupDefinition" // PopupDefinition
+                                "ServiceGeodatabase" // ServiceGeodatabase
+                                "SpatialReference" // SpatialReference
+                                "SublayerContent" // ILayerContent
+                                "SubtypeSubtables" // IList<SubtypeSubtable>
+                                                    ]
+
+                        }
+
+let coded_value_projection = 
+                        { 
+                            clr_type = typeof<CodedValue>
+                            type_binding = "CodedValue"
+                            slug_property_name = "Name"
+                            excluded_properties = set [
+                                                    ]
+                        }
+
+let domain_projection = 
+                        { 
+                            clr_type = typeof<Domain>
+                            type_binding = "FieldDomain"
+                            slug_property_name = "Name"
+                            excluded_properties = set [
+                                                    ]
+
+                        }
+let field_projection = 
+                        { 
+                            clr_type = typeof<Field>
+                            type_binding = "FeatureField"
+                            slug_property_name = "Name"
+                            excluded_properties = set [
+                                                    ]
+
+                        }
+
+let interraster_module :Module_Projection = 
+            {
+
+                namespace_binding = "gov.leoncountyfl"
+                module_binding = "interraster"
+                type_projections = 
+                                    [|
+                                        
+                                    |]
+                instance_projections = 
+                                    [|
+                                        map_server_projection
+                                    |]
+
+            }
+
+
+let map_server_module = 
+
+            {
+
+                namespace_binding = "gov.leoncountyfl.interraster.MapService"
+                module_binding = "LCPW_OverlayStormwaterInfrastructure_D_WM"
+                type_projections = 
+                                    [|
+                                        group_layer_projection
+                                    |]
+                instance_projections = 
+                                    [|
+                                        map_server_projection
+                                        group_layer_projection
+                                    |]
+
+            }
+
+
+
+let group_layer_modules = 
+            MapServer.group_layers
+            |> Array.map (fun group_layer -> 
+                {
+
+                    namespace_binding = "gov.leoncountyfl.interraster.MapService.LCPW_OverlayStormwaterInfrastructure_D_WM"
+                    module_binding = group_layer.Name
+                    type_projections = 
+                                        [| 
+                                            feature_layer_projection 
+                                        |]
+                    instance_projections = 
+                                        [|
+                                            group_layer_projection
+                                        |]
+
+                }
+            )
+
+let feature_class_modules  =
+            MapServer.group_layers
+            |> Array.collect (fun group_layer -> 
+            group_layer.Sublayers
+            |> Seq.toArray 
+            |> Array.map (fun feature_layer -> 
+                {
+
+                    namespace_binding = $"gov.leoncountyfl.interraster.MapService.LCPW_OverlayStormwaterInfrastructure_D_WM.{group_layer.Name.normalize_binding}"
+                    module_binding = feature_layer.Name
+                    type_projections =
+                                        [|
+                                            feature_layer_projection
+                                            table_projection
+                                            field_projection
+                                        |]
+                    instance_projections = 
+                                        [|
+                                            feature_layer_projection
+                                            table_projection
+                                            field_projection
+                                        |]
+                }
+            ))
+
+
+typeof<ArcGISMapImageLayer>.GetProperties()
+        |> Array.filter (fun property -> not property.PropertyType.IsEnum)
+        |> Array.map (fun property ->
+        property, property |> Property_Type.from_property_info
+        )
+        |> Array.choose (fun (property,property_type) -> 
+            if Type_Projection.implemented_type_names.Contains(property_type.fsharp_name) then 
+                None
+            else 
+                Some (sprintf "\"%s\" // %s" property.Name property_type.fsharp_name)
+        )
+        |> Array.distinct
+        |> Array.sort
+        |> Array.iter (fun type_string -> Console.WriteLine type_string)
+    
+
+
+
+interraster_module.write_text()
+
+
+
+
+
+map_server_module.write_text()
+group_layer_modules |> Array.iter (fun group_layer_module -> group_layer_module.write_text())
+feature_class_modules |> Array.iter (fun feature_layer_module -> feature_layer_module.write_text())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let attribute_fields = 
+    features
+    |> Array.Parallel.collect (fun feature -> feature.attribute_fields)
+attribute_fields
+|> Array.map (fun attribute_field -> attribute_field.field.Name)
+|> Array.distinct
+
+let related_features = 
+        features 
+        |> Array.Parallel.choose (fun feature -> 
+            let found_fields = 
+                feature.attribute_fields
+                |> Array.choose (fun attribute_field -> 
+                    match attribute_field.attribute.as_string with 
+                    | "P0225" 
+                    | "P0227" -> Some(attribute_field)
+                    | _ -> None
+                )
+            if found_fields.Length > 0 then 
+                Some(feature)
+            else 
+                None
+            )
+                
+            
+related_features[0].attribute_fields
+
+
+
+
+
+
+
+
+
+
+
+
+MapServer.Sublayers[0].Id
+
+
+
+
+
+
+
+type Feature_Class = 
+    {
+        layer:ArcGISMapImageSublayer
+        table: ServiceFeatureTable
+        features: Feature array
+    }
+
+
+
+let feature_classes = 
+    MapServer.Sublayers
+    // |> Seq.filter (fun layer -> target_layers.Contains(layer.Name))
+    |> Seq.toArray
+    |> Array.Parallel.collect (fun layer -> layer.Sublayers |> Seq.toArray )
+    |> Array.append (MapServer.Sublayers |> Seq.toArray) 
+    |> Array.Parallel.map (fun layer -> layer :?> ArcGISMapImageSublayer)
+    |> Array.Parallel.filter (fun layer -> layer.Table <> null)
+    |> Array.sortBy (fun layer -> layer.Table.NumberOfFeatures)
+    |> Array.Parallel.filter (fun layer -> layer.Table <> null)
+    |> Array.Parallel.map (fun layer -> 
+        {
+            layer = layer
+            table = layer.Table
+            features = 
+                            layer.Table.QueryFeaturesAsync(
+                                Feature.Query,
+                                QueryFeatureFields.LoadAll
+                            )
+                            |> Async.AwaitTask
+                            |> Async.RunSynchronously
+                            |> Seq.toArray
+        }
+        
+        
+        
+        )
+    |> Array.filter (fun feature_class -> feature_class.features.Length > 0)
+    |> Array.sortBy (fun feature_class -> feature_class.features.Length)
+
+
+
+
+
+
+
+let fields_grouped_by_name = 
+    feature_classes
+    |> Array.collect (fun feature_class -> feature_class.table.fields)
+    |> Array.groupBy(fun field -> field.Name)
+fields_grouped_by_name.Length
+let singleton_fields =  
+    fields_grouped_by_name
+    |> Array.filter (fun (field_name, fields) -> fields.Length = 1)
+    |> Array.map (fun (field_name, fields) -> fields[0])
+    |> Array.sortBy (fun field -> field.Name)
+singleton_fields.Length
+singleton_fields |> Array.iter (fun field -> Console.WriteLine field.Name)
+let multiton_fields_grouped_by_name = 
+    fields_grouped_by_name
+    |> Array.filter (fun (field_name, fields) -> fields.Length > 1)
+    |> Array.sortBy (fun (field_name, fields) -> field_name)
+multiton_fields_grouped_by_name |> Array.iter (fun (name,_) -> Console.WriteLine name)
+let pond_fields = fields_grouped_by_name |> Array.filter (fun (field_name,_) -> field_name.Contains("POND"))
+
+let target_unit_ids = 
+    set [
+        "P0225"
+        "P0227"
+    ]
+
+let target_features =
+    feature_classes
+    |> Array.Parallel.collect (fun feature_class -> 
+        feature_class.features
+        |> Array.Parallel.choose (fun feature -> 
+            feature.attribute_fields
+            |> Array.tryFind (fun attribute_field -> 
+                    match attribute_field.attribute, attribute_field.field.Name with 
+                    | TextField unit_id, "POND_ID" when target_unit_ids.Contains(unit_id) -> true
+                    | _,_ -> false)
+        )
+    )
+
+
+
+    (*
+                                    | ("ArcGISMapImageLayer" | "ArcGISMapImageSublayer"), propertyTypeName, propertyTypeShape, "Sublayers", propertyBoxedValue   -> 
+                                                let sublayers = 
+                                                        propertyValue
+                                                        |> box :?> IList<ArcGISSublayer>
+                                                        |> Seq.map (fun value -> value :?> ArcGISMapImageSublayer)
+                                                        |> Seq.toArray
+                                                let sublayerIds =
+                                                        sublayers
+                                                        |> Array.map (fun layer -> layer.Id)
+                                                match sublayerIds with 
+                                                | ids when ids = MapServer.drainage_network_sublayer_ids  -> 
+                                                    Some(
+                                                        Ast.RecordFieldExpr(
+                                                            property.Label,
+                                                            Ast.ArrayExpr([
+                                                                for sublayer in MapServer.drainage_network_layers do
+                                                                    let binder = VariableBinder sublayer.Name
+                                                                    Ast.ConstantExpr $"{binder.binding}.featureLayer"
+                                                            ])
+                                                        )
+                                                    )
+                                                
+                                                | ids when ids = MapServer.nondrainage_network_sublayer_ids  -> 
+                                                    Some(
+                                                        Ast.RecordFieldExpr(
+                                                            property.Label,
+                                                            Ast.ArrayExpr([
+                                                                for sublayer in MapServer.drainage_network_layers do
+                                                                    let binder = VariableBinder sublayer.Name
+                                                                    Ast.ConstantExpr $"{binder.binding}.featureLayer"
+                                                            ])
+                                                        )
+                                                    )
+                                                
+
+                                                | _ when typeof<'ValueType>.Name = "ArcGISMapImageLayer" -> 
+                                            
+                                                    Some(
+                                                        Ast.RecordFieldExpr(
+                                                            property.Label,
+                                                            Ast.ArrayExpr([
+                                                                for sublayer in MapServer.group_layers do
+                                                                    let binder = VariableBinder sublayer.Name
+                                                                    Ast.ConstantExpr $"{binder.binding}.groupLayer"
+                                                            ])
+                                                        )
+                                                    )
+                                                | [||] ->  None
+                                                | _ -> 
+                                            
+                                                    Some(
+                                                        Ast.RecordFieldExpr(
+                                                            property.Label,
+                                                            Ast.ArrayExpr([
+                                                                for sublayer in sublayers do
+                                                                    let binder = VariableBinder sublayer.Name
+                                                                    Ast.ConstantExpr $"{binder.binding}.featureLayer"
+                                                            ])
+                                                        )
+                                                    )
+
+                                    // | valueTypeName, propertyTypeName, propertyTypeShape, propertyIdentifier, propertyBoxedValue when wouldEmitEmptyRecord<'PropertyType> (pocoDepth + 1) maximumPocoDepth -> None
+    *)

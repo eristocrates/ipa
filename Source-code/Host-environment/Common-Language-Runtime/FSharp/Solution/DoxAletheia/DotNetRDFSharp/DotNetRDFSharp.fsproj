@@ -22,14 +22,16 @@
 	  <Compile Include="LanguageTag\Variant_Subtags.fs" />
 	  <Compile Include="LanguageTag\LanguageTags.fs" />
 	  <Compile Include="DotNetRDFSharp.fs" />
-	  <Compile Include="Graph_Data.fs" />
-	  <Compile Include="RDF_Shorthand.fs" />
-	  <Compile Include="RDF_Query.fs" />
 	  <Compile Include="Iana\Iana.fs" />
 	  <Compile Include="Iana\Iana_Schemes.fs" />
 	  <Compile Include="Iana\MimePath.fs" />
 	  <Compile Include="Iana\MimeSubstring.fs" />
 	  <Compile Include="Iana\MimeTypes.fs" />
+	  <Compile Include="Graph_Data.fs" />
+	  <Compile Include="RDF_Shorthand.fs" />
+	  <Compile Include="RDF_Query.fs" />	  
+
+	  
 	  
 
 
@@ -44,6 +46,14 @@
 		<PackageReference Include="FSharp.Json" Version="0.4.1" />
 	  <PackageReference Include="FSharp.Data" Version="8.1.14" /> 
 		<PackageReference Include="FSharp.Data.Adaptive" Version="1.2.26" />
+		<PackageReference Include="Yog.FSharp" Version="0.6.0" />
+		<PackageReference Include="GraphShape" Version="1.2.1" />
+		<PackageReference Include="QuikGraph" Version="2.5.0" />
+		<PackageReference Include="QuikGraph.Graphviz" Version="2.5.0" />
+		<PackageReference Include="QuikGraph.Serialization" Version="2.5.0" />
+		<PackageReference Include="QuikGraph.Data" Version="2.5.0" />
+		<PackageReference Include="QuikGraph.MSAGL" Version="2.5.0" />
+		<PackageReference Include="QuikGraph.Petri" Version="2.5.0" />
 	</ItemGroup>
 	<ItemGroup>
 

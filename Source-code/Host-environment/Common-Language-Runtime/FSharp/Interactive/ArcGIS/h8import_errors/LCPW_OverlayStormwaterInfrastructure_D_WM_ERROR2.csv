@@ -1,0 +1,2 @@
+AddressQualifier,ID,UnitDesc,XCoordinate,YCoordinate,ZCoordinate,_ERRORS_
+LOTHIAN DR,IN833,None,NaN,NaN,103.53170013,"CDBProvider:Commit Error attempting to roll back, This SqlTransaction has completed; it is no longer usable."

@@ -1073,10 +1073,6 @@
       "namespace_name": "http://purl.org/NET/biol/botany#"
     },
     {
-      "namespace_prefix": "biol",
-      "namespace_name": "http://purl.org/NET/biol/ns#"
-    },
-    {
       "namespace_prefix": "taxon",
       "namespace_name": "http://purl.org/biodiversity/taxon/"
     },
@@ -1671,10 +1667,6 @@
     {
       "namespace_prefix": "san-lod",
       "namespace_name": "http://dati.san.beniculturali.it/SAN/"
-    },
-    {
-      "namespace_prefix": "losp",
-      "namespace_name": "http://sparql.sstu.ru:3030/speciality/"
     },
     {
       "namespace_prefix": "cwmo",

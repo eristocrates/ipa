@@ -2,6 +2,12 @@ open System
 open System.IO
 open System.Threading
 
+#r "nuget: FAKE.Core, 5.16.0"
+#r "nuget: Fake.Sql.SqlPackage, 6.1.4"
+
+open Fake.Core
+open Fake.Sql
+
 #r "nuget: FSharp.Collections.ParallelSeq"
 open FSharp.Collections.ParallelSeq
 #r "nuget: Microsoft.SqlServer.DacFx"
@@ -24,12 +30,27 @@ module Dacpac =
 
 
 module Extraction =
-    open System.Threading
+
+    Target.create "ExportBacpac" (fun _ ->
+        let sourceConnection =
+            "Data Source=MyServer;Initial Catalog=MySourceDb;Integrated Security=True;"
+
+        let destinationBacpac = "path/to/backup.bacpac"
+
+        SqlPackage.exec (fun args ->
+            { args with
+                Action = SqlPackage.Action.Export
+                Source = sourceConnection
+                Destination = destinationBacpac }))
+
 
     let extract () =
         let services = new DacServices(Database.connectionString)
 
         let extractOptions = DacExtractOptions()
+        extractOptions.ExtractAllTableData <- true
+        extractOptions.ExtractReferencedServerScopedElements <- true
+        extractOptions.ExtractUsageProperties <- true
 
         services.Extract(
             targetPath = Dacpac.path,

@@ -7,7 +7,7 @@ open type Prefix_ID
 module rml_cc =
     let _namespace_iri = Namespace_Iri rml_cc |> NamespaceIRI
     /// <summary>
-    ///   <para>rml_cc:</para>
+    ///   <para>rml:cc/</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Ontology</para>

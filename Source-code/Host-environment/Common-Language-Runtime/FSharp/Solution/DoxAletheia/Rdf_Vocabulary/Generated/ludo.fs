@@ -16,12 +16,39 @@ module ludo =
         Prefixed_Name(ludo, "/images/ludo_in_a_nutshell.png") |> PrefixedName
 
     /// <summary>
+    ///   <para>ludo:/v1/gamemodel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/gamemodel">http://ns.inria.fr/ludo/v1/gamemodel</seealso>
+    let ``_/v1/gamemodel`` = Prefixed_Name(ludo, "/v1/gamemodel") |> PrefixedName
+
+    /// <summary>
     ///   <para>ludo:/v1/gamemodel.rdf</para>
     /// </summary>
     /// <remarks></remarks>
     /// <seealso href="http://ns.inria.fr/ludo/v1/gamemodel.rdf">http://ns.inria.fr/ludo/v1/gamemodel.rdf</seealso>
     let ``_/v1/gamemodel.rdf`` =
         Prefixed_Name(ludo, "/v1/gamemodel.rdf") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ludo:/v1/gamepresentation.rdf</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/gamepresentation.rdf">http://ns.inria.fr/ludo/v1/gamepresentation.rdf</seealso>
+    let ``_/v1/gamepresentation.rdf`` =
+        Prefixed_Name(ludo, "/v1/gamepresentation.rdf") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ludo:/v1/virtualcontext</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/virtualcontext">http://ns.inria.fr/ludo/v1/virtualcontext</seealso>
+    let ``_/v1/virtualcontext`` =
+        Prefixed_Name(ludo, "/v1/virtualcontext") |> PrefixedName
 
     /// <summary>
     ///   <para>ludo:/v1/virtualcontext.rdf</para>
@@ -32,16 +59,16 @@ module ludo =
         Prefixed_Name(ludo, "/v1/virtualcontext.rdf") |> PrefixedName
 
     /// <summary>
+    ///   <para>ludo:/v1/xapi</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://ns.inria.fr/ludo/v1/xapi">http://ns.inria.fr/ludo/v1/xapi</seealso>
+    let ``_/v1/xapi`` = Prefixed_Name(ludo, "/v1/xapi") |> PrefixedName
+    /// <summary>
     ///   <para>ludo:/v1/xapi.rdf</para>
     /// </summary>
     /// <remarks></remarks>
     /// <seealso href="http://ns.inria.fr/ludo/v1/xapi.rdf">http://ns.inria.fr/ludo/v1/xapi.rdf</seealso>
     let ``_/v1/xapi.rdf`` = Prefixed_Name(ludo, "/v1/xapi.rdf") |> PrefixedName
-
-    /// <summary>
-    ///   <para>ludo:/v1/gamepresentation.rdf</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://ns.inria.fr/ludo/v1/gamepresentation.rdf">http://ns.inria.fr/ludo/v1/gamepresentation.rdf</seealso>
-    let ``_/v1/gamepresentation.rdf`` =
-        Prefixed_Name(ludo, "/v1/gamepresentation.rdf") |> PrefixedName

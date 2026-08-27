@@ -7,6 +7,14 @@ open type Prefix_ID
 module httpm =
     let _namespace_iri = Namespace_Iri httpm |> NamespaceIRI
     /// <summary>
+    ///   <para>httpm:CONNECT</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#CONNECT">http://www.w3.org/2011/http-methods#CONNECT</seealso>
+    let CONNECT = Prefixed_Name(httpm, "CONNECT") |> PrefixedName
+    /// <summary>
     ///   <para>httpm:DELETE</para>
     /// </summary>
     /// <remarks>
@@ -31,14 +39,6 @@ module httpm =
     /// <seealso href="http://www.w3.org/2011/http-methods#HEAD">http://www.w3.org/2011/http-methods#HEAD</seealso>
     let HEAD = Prefixed_Name(httpm, "HEAD") |> PrefixedName
     /// <summary>
-    ///   <para>httpm:PUT</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>htir:Method</para>
-    /// </remarks>
-    /// <seealso href="http://www.w3.org/2011/http-methods#PUT">http://www.w3.org/2011/http-methods#PUT</seealso>
-    let PUT = Prefixed_Name(httpm, "PUT") |> PrefixedName
-    /// <summary>
     ///   <para>httpm:OPTIONS</para>
     /// </summary>
     /// <remarks>
@@ -55,14 +55,6 @@ module httpm =
     /// <seealso href="http://www.w3.org/2011/http-methods#PATCH">http://www.w3.org/2011/http-methods#PATCH</seealso>
     let PATCH = Prefixed_Name(httpm, "PATCH") |> PrefixedName
     /// <summary>
-    ///   <para>httpm:TRACE</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>htir:Method</para>
-    /// </remarks>
-    /// <seealso href="http://www.w3.org/2011/http-methods#TRACE">http://www.w3.org/2011/http-methods#TRACE</seealso>
-    let TRACE = Prefixed_Name(httpm, "TRACE") |> PrefixedName
-    /// <summary>
     ///   <para>httpm:POST</para>
     /// </summary>
     /// <remarks>
@@ -71,10 +63,18 @@ module httpm =
     /// <seealso href="http://www.w3.org/2011/http-methods#POST">http://www.w3.org/2011/http-methods#POST</seealso>
     let POST = Prefixed_Name(httpm, "POST") |> PrefixedName
     /// <summary>
-    ///   <para>httpm:CONNECT</para>
+    ///   <para>httpm:PUT</para>
     /// </summary>
     /// <remarks>
     ///   <para>htir:Method</para>
     /// </remarks>
-    /// <seealso href="http://www.w3.org/2011/http-methods#CONNECT">http://www.w3.org/2011/http-methods#CONNECT</seealso>
-    let CONNECT = Prefixed_Name(httpm, "CONNECT") |> PrefixedName
+    /// <seealso href="http://www.w3.org/2011/http-methods#PUT">http://www.w3.org/2011/http-methods#PUT</seealso>
+    let PUT = Prefixed_Name(httpm, "PUT") |> PrefixedName
+    /// <summary>
+    ///   <para>httpm:TRACE</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>htir:Method</para>
+    /// </remarks>
+    /// <seealso href="http://www.w3.org/2011/http-methods#TRACE">http://www.w3.org/2011/http-methods#TRACE</seealso>
+    let TRACE = Prefixed_Name(httpm, "TRACE") |> PrefixedName

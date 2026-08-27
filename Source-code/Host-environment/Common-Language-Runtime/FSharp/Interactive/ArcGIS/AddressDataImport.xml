@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataImport Name="DataImportGisAddressInformation"
+            Target="H8">
+    <Information>
+        <Version>1.0.0</Version>
+        <ChangeBy>Pedro Luis Montoya</ChangeBy>
+        <ChangeDate>2026-08-17</ChangeDate>
+        <ChangeComment>Import data into Hansen.Property.Address</ChangeComment>
+        <Reference>NA</Reference>
+    </Information>
+    <Steps RootQuery="/Property/Address">
+        <Step Id="1"
+              TargetBusinessObject="Hansen.Property.Address"
+              Action="Create">
+            <Outputs>
+                <Output Id="ADDRESS_KEY"
+                        Source="AddressKey"></Output>
+            </Outputs>
+            <Mappings>
+                <!-- Source is the name of the xml node; Target is the CommonID of the property in the business object -->
+                <!-- <Map Source="@ADDRKEY" Target="AddressKey" /> -->
+                <Map Source="CITY"
+                     Target="City"
+                     Optional="true"></Map>
+                <Map Source="GPSX"
+                     Target="GPSXCoordinate"
+                     Optional="true"></Map>
+                <Map Source="GPSY"
+                     Target="GPSYCoordinate"
+                     Optional="true"></Map>
+                <Map Source="OPTA"
+                     Target="OptionA"
+                     Optional="true"></Map>
+                <Map Source="POSTDIR"
+                     Target="PostDirection"
+                     Optional="true"></Map>
+                <Map Source="PREDIR"
+                     Target="PreDirection"
+                     Optional="true"></Map>
+                <Map Source="STATE"
+                     Target="State"
+                     Optional="true"></Map>
+                <Map Source="STNAME"
+                     Target="StreetName"></Map>
+                <Map Source="STNO"
+                     Target="StreetNumber"></Map>
+                <Map Source="STSUB"
+                     Target="StreetSubDesignation"
+                     Optional="true"></Map>
+                <Map Source="SUFFIX"
+                     Target="Suffix"
+                     Optional="true"></Map>
+                <Map Source="ZIP"
+                     Target="ZIP"
+                     Optional="true"></Map>
+            </Mappings>
+        </Step>
+        <Step Id="2"
+              TargetBusinessObject="LeonCounty.Prop.GisAddressInformation"
+              Action="Create, Update"
+              UpdateCheck="AddressKey">
+            <Link StepId="1"
+                  RelativeQuery="."></Link>
+            <Inputs>
+                <Input VariableId="ADDRESS_KEY"
+                       Target="AddressKey"></Input>
+            </Inputs>
+            <Mappings>
+                <Map Source="ADDRID"
+                     Target="ADDRID"></Map>
+            </Mappings>
+        </Step>
+    </Steps>
+</DataImport>

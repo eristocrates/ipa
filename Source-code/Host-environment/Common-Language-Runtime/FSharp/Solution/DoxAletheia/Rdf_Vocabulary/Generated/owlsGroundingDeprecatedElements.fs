@@ -6,33 +6,49 @@ open type Prefix_ID
 
 module owlsGroundingDeprecatedElements =
     let _namespace_iri = Namespace_Iri owlsGroundingDeprecatedElements |> NamespaceIRI
-
     /// <summary>
-    ///   <para>owlsGroundingDeprecatedElements:#damlsParameter</para>
+    ///   <para>owlsGroundingDeprecatedElements:</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>
-    ///     Deprecated as of OWL-S 1.0.  owlsParameter should be used.
-    ///   </para>
+    ///   <para>owl:Ontology</para>
+    ///   <para>"
+    ///     Upper-level OWL ontology for Groundings that employ WSDL.
+    ///     Part of the OWL-S ontology; see http://www.daml.org/services/.
+    ///
+    ///     This version is intended for use with WSDL 1.1.  The OWL-S
+    ///     Coalition plans to produce a future version for use with WSDL 2.0,
+    ///     when it has been finalized (or nearly so).
+    ///
+    ///     Note that other approaches to grounding may be accommodated
+    ///     within the OWL-S framework.  This is the only approach produced
+    ///     to date by the OWL-S Coalition.
+    ///
+    ///     For notes on version history, see
+    ///         http://www.daml.org/services/owl-s/1.2/status.html.
+    ///   "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
     /// </remarks>
-    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#damlsParameter">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#damlsParameter</seealso>
-    let ``_#damlsParameter`` =
-        Prefixed_Name(owlsGroundingDeprecatedElements, "#damlsParameter") |> PrefixedName
+    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl</seealso>
+    let _prefix_iri = Prefixed_Name(owlsGroundingDeprecatedElements, "") |> PrefixedName
 
     /// <summary>
-    ///   <para>owlsGroundingDeprecatedElements:#wsdlInputMessageParts</para>
+    ///   <para>owlsGroundingDeprecatedElements:#WsdlInputMessageMap</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#WsdlInputMessageMap">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#WsdlInputMessageMap</seealso>
+    let ``_#WsdlInputMessageMap`` =
+        Prefixed_Name(owlsGroundingDeprecatedElements, "#WsdlInputMessageMap") |> PrefixedName
+
+    /// <summary>
+    ///   <para>owlsGroundingDeprecatedElements:#WsdlInputMessageMapList</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>
-    ///     Deprecated as of DAML-S 0.9.
-    ///   </para>
+    ///   <para>owl:Class</para>
+    ///   <para>" A list of WsdlInputMessageMap instances "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    ///   <para>" Deprecated as of version 1.1; no longer needed "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
     /// </remarks>
-    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlInputMessageParts">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlInputMessageParts</seealso>
-    let ``_#wsdlInputMessageParts`` =
-        Prefixed_Name(owlsGroundingDeprecatedElements, "#wsdlInputMessageParts") |> PrefixedName
+    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#WsdlInputMessageMapList">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#WsdlInputMessageMapList</seealso>
+    let ``_#WsdlInputMessageMapList`` =
+        Prefixed_Name(owlsGroundingDeprecatedElements, "#WsdlInputMessageMapList") |> PrefixedName
 
     /// <summary>
     ///   <para>owlsGroundingDeprecatedElements:#WsdlOutputMessageMap</para>
@@ -47,27 +63,54 @@ module owlsGroundingDeprecatedElements =
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para> A list of WsdlOutputMessageMap instances </para>
-    ///   <para> Deprecated as of version 1.1; no longer needed </para>
+    ///   <para>" A list of WsdlOutputMessageMap instances "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    ///   <para>" Deprecated as of version 1.1; no longer needed "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
     /// </remarks>
     /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#WsdlOutputMessageMapList">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#WsdlOutputMessageMapList</seealso>
     let ``_#WsdlOutputMessageMapList`` =
         Prefixed_Name(owlsGroundingDeprecatedElements, "#WsdlOutputMessageMapList") |> PrefixedName
 
     /// <summary>
+    ///   <para>owlsGroundingDeprecatedElements:#damlsParameter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"
+    ///     Deprecated as of OWL-S 1.0.  owlsParameter should be used.
+    ///   "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// </remarks>
+    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#damlsParameter">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#damlsParameter</seealso>
+    let ``_#damlsParameter`` =
+        Prefixed_Name(owlsGroundingDeprecatedElements, "#damlsParameter") |> PrefixedName
+
+    /// <summary>
     ///   <para>owlsGroundingDeprecatedElements:#otherReference</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>
+    ///   <para>"
     ///     A URI indicating a relevant standards document (other than that
     ///     for WSDL).
     ///     Deprecated as of DAML-S 0.9; no longer recommended or supported.
-    ///   </para>
+    ///   "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
     /// </remarks>
     /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#otherReference">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#otherReference</seealso>
     let ``_#otherReference`` =
         Prefixed_Name(owlsGroundingDeprecatedElements, "#otherReference") |> PrefixedName
+
+    /// <summary>
+    ///   <para>owlsGroundingDeprecatedElements:#wsdlInputMessageParts</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"
+    ///     Deprecated as of DAML-S 0.9.
+    ///   "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// </remarks>
+    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlInputMessageParts">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlInputMessageParts</seealso>
+    let ``_#wsdlInputMessageParts`` =
+        Prefixed_Name(owlsGroundingDeprecatedElements, "#wsdlInputMessageParts") |> PrefixedName
 
     /// <summary>
     ///   <para>owlsGroundingDeprecatedElements:#wsdlInputs</para>
@@ -75,17 +118,31 @@ module owlsGroundingDeprecatedElements =
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
     ///   <para>owl:FunctionalProperty</para>
-    ///   <para>
+    ///   <para>"
+    ///     Deprecated as of OWL-S 1.0.  wsdlInput should be used.
+    ///   "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    ///   <para>"
     ///     A list of WsdlMessageMap instances, one for each
     ///     message part of the WSDL input message.
-    ///   </para>
-    ///   <para>
-    ///     Deprecated as of OWL-S 1.0.  wsdlInput should be used.
-    ///   </para>
+    ///   "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
     /// </remarks>
     /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlInputs">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlInputs</seealso>
     let ``_#wsdlInputs`` =
         Prefixed_Name(owlsGroundingDeprecatedElements, "#wsdlInputs") |> PrefixedName
+
+    /// <summary>
+    ///   <para>owlsGroundingDeprecatedElements:#wsdlOutputMessageParts</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>"
+    ///     Deprecated as of DAML-S 0.9; wsdlOutputs should now be used.
+    ///   "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    /// </remarks>
+    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlOutputMessageParts">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlOutputMessageParts</seealso>
+    let ``_#wsdlOutputMessageParts`` =
+        Prefixed_Name(owlsGroundingDeprecatedElements, "#wsdlOutputMessageParts") |> PrefixedName
 
     /// <summary>
     ///   <para>owlsGroundingDeprecatedElements:#wsdlOutputs</para>
@@ -93,86 +150,28 @@ module owlsGroundingDeprecatedElements =
     /// <remarks>
     ///   <para>owl:FunctionalProperty</para>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>
+    ///   <para>"
     ///     Deprecated as of OWL-S 1.0.  wsdlOutput should be used.
-    ///   </para>
-    ///   <para>
+    ///   "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
+    ///   <para>"
     ///     A list of WsdlMessageMap instances, one for each
     ///     output of the atomic process.
-    ///   </para>
+    ///   "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
     /// </remarks>
     /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlOutputs">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlOutputs</seealso>
     let ``_#wsdlOutputs`` =
         Prefixed_Name(owlsGroundingDeprecatedElements, "#wsdlOutputs") |> PrefixedName
 
     /// <summary>
-    ///   <para>owlsGroundingDeprecatedElements:#wsdlOutputMessageParts</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>
-    ///     Deprecated as of DAML-S 0.9; wsdlOutputs should now be used.
-    ///   </para>
-    /// </remarks>
-    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlOutputMessageParts">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlOutputMessageParts</seealso>
-    let ``_#wsdlOutputMessageParts`` =
-        Prefixed_Name(owlsGroundingDeprecatedElements, "#wsdlOutputMessageParts") |> PrefixedName
-
-    /// <summary>
     ///   <para>owlsGroundingDeprecatedElements:#wsdlReference</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:FunctionalProperty</para>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>"
     ///     Deprecated as of DAML-S 0.9; wsdlVersion should now be used.
-    ///   </para>
+    ///   "^^&lt;http://www.w3.org/2001/XMLSchema#string&gt;</para>
     /// </remarks>
     /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlReference">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#wsdlReference</seealso>
     let ``_#wsdlReference`` =
         Prefixed_Name(owlsGroundingDeprecatedElements, "#wsdlReference") |> PrefixedName
-
-    /// <summary>
-    ///   <para>owlsGroundingDeprecatedElements:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Ontology</para>
-    ///   <para>
-    ///     Upper-level OWL ontology for Groundings that employ WSDL.
-    ///     Part of the OWL-S ontology; see http://www.daml.org/services/.
-    ///
-    ///     This version is intended for use with WSDL 1.1.  The OWL-S
-    ///     Coalition plans to produce a future version for use with WSDL 2.0,
-    ///     when it has been finalized (or nearly so).
-    ///
-    ///     Note that other approaches to grounding may be accommodated
-    ///     within the OWL-S framework.  This is the only approach produced
-    ///     to date by the OWL-S Coalition.
-    ///
-    ///     For notes on version history, see
-    ///         http://www.daml.org/services/owl-s/1.2/status.html.
-    ///   </para>
-    /// </remarks>
-    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl</seealso>
-    let _prefix_iri = Prefixed_Name(owlsGroundingDeprecatedElements, "") |> PrefixedName
-
-    /// <summary>
-    ///   <para>owlsGroundingDeprecatedElements:#WsdlInputMessageMapList</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para> A list of WsdlInputMessageMap instances </para>
-    ///   <para> Deprecated as of version 1.1; no longer needed </para>
-    /// </remarks>
-    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#WsdlInputMessageMapList">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#WsdlInputMessageMapList</seealso>
-    let ``_#WsdlInputMessageMapList`` =
-        Prefixed_Name(owlsGroundingDeprecatedElements, "#WsdlInputMessageMapList") |> PrefixedName
-
-    /// <summary>
-    ///   <para>owlsGroundingDeprecatedElements:#WsdlInputMessageMap</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#WsdlInputMessageMap">http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl#WsdlInputMessageMap</seealso>
-    let ``_#WsdlInputMessageMap`` =
-        Prefixed_Name(owlsGroundingDeprecatedElements, "#WsdlInputMessageMap") |> PrefixedName

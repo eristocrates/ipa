@@ -1,0 +1,5 @@
+digraph G {
+0 [label="dbug:Bob"];
+1 [label="foaf:Person"];
+0 -> 1 [label="rdf:type"];
+}

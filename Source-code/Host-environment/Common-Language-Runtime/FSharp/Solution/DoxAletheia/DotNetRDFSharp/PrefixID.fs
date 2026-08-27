@@ -7,6 +7,7 @@ type Prefix_ID =
         namespace_prefix:string
         namespace_name:string
     }
+    static member www2k = {namespace_prefix = "www2k" ; namespace_name = "http://www.w3.org/2000/"}
     static member xdt = {namespace_prefix = "xdt" ; namespace_name = "https://www.w3.org/2003/05/xpath-datatypes#"}
     static member xml = {namespace_prefix = "xml" ; namespace_name = "http://www.w3.org/XML/1998/namespace#"}
     static member commonplace = {namespace_prefix = "commonplace" ; namespace_name =  "https://eristocrates.dev/ontology/commonplace/" }
@@ -1612,7 +1613,7 @@ type Prefix_ID =
     static member incident = {namespace_prefix = "incident" ; namespace_name = "http://vocab.resc.info/incident#"}
     static member ind = {namespace_prefix = "ind" ; namespace_name = "https://w3id.org/inesdata#"}
     static member infection = {namespace_prefix = "infection" ; namespace_name = "http://www.agfa.com/w3c/2009/infectiousDisorder#"}
-    static member infor = {namespace_prefix = "infor" ; namespace_name = "http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#"}
+    static member infreal = {namespace_prefix = "infreal" ; namespace_name = "http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#"}
     static member infosys = {namespace_prefix = "infosys" ; namespace_name = "http://www.infosys.com/"}
     static member ingredient = {namespace_prefix = "ingredient" ; namespace_name = "http://www.owl-ontologies.com/test.owl/ingredient/"}
     static member inno = {namespace_prefix = "inno" ; namespace_name = "http://purl.org/innovation/ns#"}
@@ -2858,6 +2859,7 @@ type Prefix_ID =
     static member rev = {namespace_prefix = "rev" ; namespace_name = "http://purl.org/stuff/rev#"}
     static member reve = {namespace_prefix = "reve" ; namespace_name = "http://data.eurecom.fr/ontology/reve#"}
     static member rex = {namespace_prefix = "rex" ; namespace_name = "http://purl.obolibrary.org/obo/REX_"}
+    static member rfc = {namespace_prefix = "rfc" ; namespace_name = "http://www.ietf.org/rfc/"}
     static member rfd = {namespace_prefix = "rfd" ; namespace_name = "http://com.intrinsec//ontology#"}
     static member rgml = {namespace_prefix = "rgml" ; namespace_name = "http://purl.org/puninj/2001/05/rgml-schema#"}
     static member rich = {namespace_prefix = "rich" ; namespace_name = "http://rdf.data-vocabulary.org/"}
