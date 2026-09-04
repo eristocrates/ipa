@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>OBO.NET.CodeGeneration</name></assembly>
+<members>
+<member name="M:OBO.NET.CodeGeneration.CodeGeneration.fromOboFileToSourceFile(System.String,System.String,System.String)">
+<summary>
+ Takes a module name and the path to an OBO file and writes the ontology&apos;s terms as F# code for structural ontology libraries as a source file at the given output path.
+</summary>
+</member>
+<member name="M:OBO.NET.CodeGeneration.CodeGeneration.toFile(System.String,OBO.NET.OboOntology,System.String)">
+<summary>
+ Takes a module name and an OboOntology and writes the ontology&apos;s terms as F# code for structural ontology libraries as a source file at the given path.
+</summary>
+</member>
+<member name="M:OBO.NET.CodeGeneration.CodeGeneration.toSourceCode(System.String,OBO.NET.OboOntology)">
+<summary>
+ Takes a module name and an OboOntology and returns the F# code of the whole term list for structural ontology libraries.
+</summary>
+</member>
+<member name="M:OBO.NET.CodeGeneration.CodeGeneration.toCodeString(OBO.NET.OboTerm)">
+<summary>
+ Takes an OboTerm and transforms it into an F# code string for structural ontology libraries.
+</summary>
+</member>
+<member name="M:OBO.NET.CodeGeneration.CodeGeneration.toTermSourceRef(OBO.NET.OboTerm)">
+<summary>
+ Takes an OboTerm and returns its TermSourceRef as string.
+</summary>
+</member>
+<member name="M:OBO.NET.CodeGeneration.CodeGeneration.addBackTicks``1(``0)">
+<summary>
+ Takes a string and returns it with back ticks (&quot;``&quot;) at the beginning and the end.
+</summary>
+</member>
+<member name="M:OBO.NET.CodeGeneration.CodeGeneration.checkForSpecialCharacters(System.String)">
+<summary>
+ Returns true if a string contains special characters or starts with a number.
+</summary>
+</member>
+<member name="M:OBO.NET.CodeGeneration.CodeGeneration.toUnderscoredName(OBO.NET.OboTerm)">
+<summary>
+ Takes an OboTerm and returns its name but with all spaces replaced by underscores.
+</summary>
+</member>
+</members>
+</doc>

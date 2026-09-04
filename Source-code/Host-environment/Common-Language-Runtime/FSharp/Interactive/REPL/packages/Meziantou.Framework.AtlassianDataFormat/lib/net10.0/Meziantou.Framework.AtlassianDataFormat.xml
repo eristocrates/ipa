@@ -1,0 +1,1149 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.AtlassianDataFormat</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfAlignmentMark">
+            <summary>Represents an alignment applied to a paragraph or heading.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfAlignmentMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfAlignmentMark.Align">
+            <summary>Gets the alignment, either <c>center</c> or <c>end</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfAnnotationMark">
+            <summary>Represents an inline comment annotation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfAnnotationMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfAnnotationMark.Id">
+            <summary>Gets the identifier of the annotation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfAnnotationMark.AnnotationType">
+            <summary>Gets the type of the annotation.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfBackgroundColorMark">
+            <summary>Represents text with a background color.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBackgroundColorMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBackgroundColorMark.Color">
+            <summary>Gets the color, as a <c>#rrggbb</c> string.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfBlockCard">
+            <summary>Represents a smart link rendered as a block.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBlockCard.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBlockCard.Url">
+            <summary>Gets the URL of the linked resource, when the card is defined by a URL.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBlockCard.Data">
+            <summary>Gets the JSON-LD description of the linked resource, when the card is defined by data.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBlockCard.Datasource">
+            <summary>Gets the datasource of the card, when the card is backed by a query.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBlockCard.Layout">
+            <summary>Gets the layout of the card.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBlockCard.Width">
+            <summary>Gets the width of the card.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfBlockquote">
+            <summary>Represents a block quotation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBlockquote.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfBodiedExtension">
+            <summary>Represents a macro that wraps document content.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBodiedExtension.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBodiedExtension.ExtensionKey">
+            <summary>Gets the key of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBodiedExtension.ExtensionType">
+            <summary>Gets the type of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBodiedExtension.Text">
+            <summary>Gets the fallback text of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBodiedExtension.Layout">
+            <summary>Gets the layout of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBodiedExtension.Parameters">
+            <summary>Gets the parameters of the extension.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfBorderMark">
+            <summary>Represents a border applied to a media item.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBorderMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBorderMark.Size">
+            <summary>Gets the border size, between 1 and 3.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBorderMark.Color">
+            <summary>Gets the border color.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfBreakoutMark">
+            <summary>Represents a breakout applied to a top-level node.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBreakoutMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBreakoutMark.Mode">
+            <summary>Gets the breakout mode, either <c>wide</c> or <c>full-width</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBreakoutMark.Width">
+            <summary>Gets the breakout width.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfBulletList">
+            <summary>Represents an unordered list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfBulletList.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfCaption">
+            <summary>Represents the caption of a media item.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfCaption.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfCodeBlock">
+            <summary>Represents a block of preformatted code.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfCodeBlock.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfCodeBlock.Language">
+            <summary>Gets the language of the code, or <see langword="null"/> when unspecified.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfCodeBlockStyle">
+            <summary>The style used for code blocks.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfCodeBlockStyle.Fenced">
+            <summary>A fenced code block, which can carry a language.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfCodeBlockStyle.Indented">
+            <summary>A code block indented with four spaces.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfCodeMark">
+            <summary>Represents inline code.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfCodeMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfDate">
+            <summary>Represents a date.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfDate.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfDate.Timestamp">
+            <summary>Gets the date, as the number of milliseconds since the Unix epoch.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDate.GetDateTimeOffset">
+            <summary>
+            Converts <see cref="P:Meziantou.Framework.AtlassianDataFormat.AdfDate.Timestamp"/> to a <see cref="T:System.DateTimeOffset"/>, or returns
+            <see langword="null"/> when it does not hold a number.
+            </summary>
+            <remarks>
+            The Atlassian documentation shows an example that looks like a number of seconds, but the
+            APIs return milliseconds. Values small enough to be implausible as milliseconds are read as
+            seconds.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfDecisionItem">
+            <summary>Represents a single decision.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfDecisionItem.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfDecisionItem.State">
+            <summary>Gets the state of the decision, usually <c>DECIDED</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfDecisionList">
+            <summary>Represents a list of decisions.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfDecisionList.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfDecisionListStyle">
+            <summary>How an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfDecisionList"/> is converted.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfDecisionListStyle.BulletList">
+            <summary>A bullet list.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfDecisionListStyle.PlainText">
+            <summary>One paragraph per decision.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfDocument">
+            <summary>Represents an Atlassian Document Format document.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfDocument.Version">
+            <summary>Gets the version of the document. The only version defined today is <c>1</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfDocument.Content">
+            <summary>Gets the top-level nodes of the document.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDocument.Parse(System.String)">
+            <summary>Parses an ADF document from its JSON representation.</summary>
+            <param name="json">The JSON representation of the document.</param>
+            <exception cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException">The value is not a valid ADF document.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDocument.Parse(System.Text.Json.JsonElement)">
+            <summary>Parses an ADF document from an already parsed JSON value.</summary>
+            <param name="element">The JSON representation of the document.</param>
+            <exception cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException">The value is not a valid ADF document.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDocument.Parse(System.Text.Json.Nodes.JsonNode)">
+            <summary>Parses an ADF document from an already parsed JSON value.</summary>
+            <param name="node">The JSON representation of the document.</param>
+            <exception cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException">The value is not a valid ADF document.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDocument.TryParse(System.String,Meziantou.Framework.AtlassianDataFormat.AdfDocument@)">
+            <summary>Tries to parse an ADF document from its JSON representation.</summary>
+            <param name="json">The JSON representation of the document.</param>
+            <param name="result">The parsed document, or <see langword="null"/> when the value is not a valid ADF document.</param>
+            <returns><see langword="true"/> when the value was parsed.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDocument.TryParse(System.Text.Json.JsonElement,Meziantou.Framework.AtlassianDataFormat.AdfDocument@)">
+            <summary>Tries to parse an ADF document from an already parsed JSON value.</summary>
+            <param name="element">The JSON representation of the document.</param>
+            <param name="result">The parsed document, or <see langword="null"/> when the value is not a valid ADF document.</param>
+            <returns><see langword="true"/> when the value was parsed.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDocument.WriteTo(System.Text.Json.Utf8JsonWriter)">
+            <summary>Writes the JSON representation of the document.</summary>
+            <param name="writer">The writer to write to.</param>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDocument.ToJsonString(System.Boolean)">
+            <summary>Returns the JSON representation of the document.</summary>
+            <param name="indented">Whether the JSON is indented.</param>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDocument.ToMarkdown">
+            <summary>Converts the document to Markdown using the default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDocument.ToMarkdown(Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions)">
+            <summary>Converts the document to Markdown.</summary>
+            <param name="options">The conversion options.</param>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfDocument.Descendants">
+            <summary>Enumerates every node of the document, depth first.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfEmbedCard">
+            <summary>Represents an embedded smart link rendered as a block.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfEmbedCard.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfEmbedCard.Url">
+            <summary>Gets the URL of the embedded resource.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfEmbedCard.Layout">
+            <summary>Gets the layout of the card.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfEmbedCard.Width">
+            <summary>Gets the width of the card, as a percentage.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfEmoji">
+            <summary>Represents an emoji.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfEmoji.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfEmoji.ShortName">
+            <summary>Gets the shortcode of the emoji, such as <c>:smile:</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfEmoji.Id">
+            <summary>Gets the identifier of the emoji.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfEmoji.Text">
+            <summary>Gets the literal characters of the emoji.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfEmoji.Fallback">
+            <summary>
+            Gets the literal characters of the emoji, as stored by the products that write the
+            <c>fallback</c> attribute instead of <c>text</c>.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfEmojiRendering">
+            <summary>How an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfEmoji"/> is converted.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfEmojiRendering.Text">
+            <summary>The literal characters of the emoji, falling back to its shortcode.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfEmojiRendering.ShortName">
+            <summary>The shortcode of the emoji, such as <c>:smile:</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfEmphasisMark">
+            <summary>Represents emphasis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfEmphasisMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfEmphasisMarker">
+            <summary>The marker used for emphasis.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfEmphasisMarker.Asterisk">
+            <summary><c>*</c> and <c>**</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfEmphasisMarker.Underscore">
+            <summary><c>_</c> and <c>__</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfException">
+            <summary>The exception thrown when a document cannot be parsed or converted.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfException.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException"/> class.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException"/> class.</summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException"/> class.</summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that caused the current exception.</param>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfExpand">
+            <summary>Represents a collapsible section.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfExpand.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfExpand.Title">
+            <summary>Gets the title shown on the collapsed section.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfExpandStyle">
+            <summary>How an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfExpand"/> is converted.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfExpandStyle.Blockquote">
+            <summary>A block quotation whose first line is the bold title.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfExpandStyle.HtmlDetails">
+            <summary>An HTML <c>&lt;details&gt;</c> element.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfExpandStyle.Heading">
+            <summary>A level 3 heading followed by the content.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfExtension">
+            <summary>Represents a macro rendered as a block, such as a diagram or a report.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfExtension.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfExtension.ExtensionKey">
+            <summary>Gets the key of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfExtension.ExtensionType">
+            <summary>Gets the type of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfExtension.Text">
+            <summary>Gets the fallback text of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfExtension.Layout">
+            <summary>Gets the layout of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfExtension.Parameters">
+            <summary>Gets the parameters of the extension.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfHardBreak">
+            <summary>Represents an explicit line break.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfHardBreak.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfHeading">
+            <summary>Represents a heading.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfHeading.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfHeading.Level">
+            <summary>Gets the heading level, between 1 and 6.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfHeadingStyle">
+            <summary>The style used for headings.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfHeadingStyle.Atx">
+            <summary><c>#</c> prefixed headings.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfHeadingStyle.Setext">
+            <summary>Headings underlined with <c>=</c> or <c>-</c>. Only levels 1 and 2 can be represented; deeper levels fall back to ATX.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfIndentationMark">
+            <summary>Represents an indentation applied to a paragraph or heading.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfIndentationMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfIndentationMark.Level">
+            <summary>Gets the indentation level, between 1 and 6.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfInlineCard">
+            <summary>Represents a smart link rendered inline with surrounding text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfInlineCard.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfInlineCard.Url">
+            <summary>Gets the URL of the linked resource, when the card is defined by a URL.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfInlineCard.Data">
+            <summary>Gets the JSON-LD description of the linked resource, when the card is defined by data.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfInlineExtension">
+            <summary>Represents a macro rendered inline with surrounding text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfInlineExtension.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfInlineExtension.ExtensionKey">
+            <summary>Gets the key of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfInlineExtension.ExtensionType">
+            <summary>Gets the type of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfInlineExtension.Text">
+            <summary>Gets the fallback text of the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfInlineExtension.Parameters">
+            <summary>Gets the parameters of the extension.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfLayoutColumn">
+            <summary>Represents a column of a multi-column layout.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfLayoutColumn.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfLayoutColumn.Width">
+            <summary>Gets the width of the column, as a percentage.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfLayoutSection">
+            <summary>Represents a multi-column layout.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfLayoutSection.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfLineBreakStyle">
+            <summary>The style used for explicit line breaks.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfLineBreakStyle.TrailingSpaces">
+            <summary>Two trailing spaces followed by a line feed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfLineBreakStyle.Backslash">
+            <summary>A backslash followed by a line feed.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfLinkMark">
+            <summary>Represents a hyperlink.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfLinkMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfLinkMark.Href">
+            <summary>Gets the target of the link.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfLinkMark.Title">
+            <summary>Gets the title of the link.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfLinkMark.Id">
+            <summary>Gets the identifier of the linked resource.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfLinkMark.Collection">
+            <summary>Gets the collection of the linked resource.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfLinkMark.OccurrenceKey">
+            <summary>Gets the occurrence key of the linked resource.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfListItem">
+            <summary>Represents an item of a bullet or ordered list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfListItem.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfMark">
+            <summary>Represents a mark applied to an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfNode"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMark.Kind">
+            <summary>Gets the type of the mark.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfMarkKind">
+            <summary>Identifies the type of an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfMark"/>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfMarkKind.Unknown">
+            <summary>A mark type that is not part of the supported schema.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfMedia">
+            <summary>Represents a media item such as an image or an attachment.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.Type">
+            <summary>Gets the kind of media item.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.Id">
+            <summary>Gets the identifier of the item in the Atlassian media store.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.Collection">
+            <summary>Gets the collection of the item in the Atlassian media store.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.Url">
+            <summary>
+            Gets the URL of the item. It is only set when <see cref="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.Type"/> is
+            <see cref="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaType.External"/>; media stored by Atlassian must be resolved
+            through the media API.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.Alt">
+            <summary>Gets the alternative text of the item.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.Width">
+            <summary>Gets the width of the item, in pixels.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.Height">
+            <summary>Gets the height of the item, in pixels.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.OccurrenceKey">
+            <summary>Gets the occurrence key of the item.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfMediaGroup">
+            <summary>Represents a group of media items rendered as a list of attachments.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaGroup.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfMediaInline">
+            <summary>Represents a media item rendered inline with surrounding text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaInline.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaInline.Type">
+            <summary>Gets the kind of media item.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaInline.Id">
+            <summary>Gets the identifier of the item in the Atlassian media store.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaInline.Collection">
+            <summary>Gets the collection of the item in the Atlassian media store.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaInline.Alt">
+            <summary>Gets the alternative text of the item.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaInline.Width">
+            <summary>Gets the width of the item, in pixels.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaInline.Height">
+            <summary>Gets the height of the item, in pixels.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaInline.OccurrenceKey">
+            <summary>Gets the occurrence key of the item.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfMediaRendering">
+            <summary>How a media item is converted.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaRendering.Image">
+            <summary>An image, falling back to a link when the item is not an image and to the alternative text when no URL is known.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaRendering.Link">
+            <summary>A link, falling back to the alternative text when no URL is known.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaRendering.AltText">
+            <summary>The alternative text of the item.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaRendering.Skip">
+            <summary>Nothing.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfMediaSingle">
+            <summary>Represents a single media item, optionally with a caption.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaSingle.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaSingle.Layout">
+            <summary>Gets the layout of the media item.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaSingle.Width">
+            <summary>Gets the width of the media item.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaSingle.WidthType">
+            <summary>Gets the unit of <see cref="P:Meziantou.Framework.AtlassianDataFormat.AdfMediaSingle.Width"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfMediaType">
+            <summary>The kind of an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfMedia"/> item.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaType.Unknown">
+            <summary>A media type that is not part of the supported schema.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaType.File">
+            <summary>A file stored in the Atlassian media store. The document contains no URL for it.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaType.Link">
+            <summary>A link stored in the Atlassian media store. The document contains no URL for it.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaType.External">
+            <summary>A file hosted outside of Atlassian. <see cref="P:Meziantou.Framework.AtlassianDataFormat.AdfMedia.Url"/> is set.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaType.Image">
+            <summary>An image, only used by <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfMediaInline"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfMention">
+            <summary>Represents a mention of a user.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMention.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMention.Id">
+            <summary>Gets the Atlassian account identifier of the mentioned user.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMention.Text">
+            <summary>Gets the display text of the mention, usually the name prefixed with <c>@</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMention.AccessLevel">
+            <summary>Gets the access level of the mentioned user.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfMention.UserType">
+            <summary>Gets the type of the mentioned user.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfNestedExpand">
+            <summary>Represents a collapsible section nested inside another node.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfNestedExpand.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfNestedExpand.Title">
+            <summary>Gets the title shown on the collapsed section.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfNode">
+            <summary>Represents a node of an Atlassian Document Format document.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfNode.Kind">
+            <summary>Gets the type of the node.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfNode.LocalId">
+            <summary>Gets the identifier of the node inside the document, when the document defines one.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfNode.Content">
+            <summary>Gets the child nodes. The list is empty for leaf nodes.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfNode.Marks">
+            <summary>Gets the marks applied to the node. The list is empty when the node carries no mark.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfNode.GetMark``1">
+            <summary>Gets the first mark of the specified type, or <see langword="null"/> when the node does not carry one.</summary>
+            <typeparam name="T">The type of the mark to find.</typeparam>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfNode.DescendantsAndSelf">
+            <summary>Enumerates this node and all its descendants, depth first.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfNodeKind">
+            <summary>Identifies the type of an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfNode"/>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfNodeKind.Unknown">
+            <summary>A node type that is not part of the supported schema.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfOrderedList">
+            <summary>Represents an ordered list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfOrderedList.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfOrderedList.Order">
+            <summary>Gets the number the list starts at, or <see langword="null"/> to start at 1.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfPanel">
+            <summary>Represents a callout panel.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfPanel.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfPanel.PanelType">
+            <summary>Gets the kind of panel.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfPanel.PanelIcon">
+            <summary>Gets the icon of a custom panel.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfPanel.PanelIconText">
+            <summary>Gets the icon text of a custom panel.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfPanel.PanelColor">
+            <summary>Gets the color of a custom panel.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfPanelStyle">
+            <summary>How an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfPanel"/> is converted.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfPanelStyle.Blockquote">
+            <summary>A block quotation prefixed with an emoji matching the panel type.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfPanelStyle.GitHubAlert">
+            <summary>A GitHub alert, such as <c>&gt; [!NOTE]</c>. Panel types with no matching alert fall back to <see cref="F:Meziantou.Framework.AtlassianDataFormat.AdfPanelStyle.Blockquote"/>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfPanelStyle.PlainText">
+            <summary>A block quotation with no marker.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfPanelStyle.Html">
+            <summary>An HTML <c>&lt;div&gt;</c> carrying the panel type.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfPanelType">
+            <summary>The kind of an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfPanel"/>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfPanelType.Unknown">
+            <summary>A panel type that is not part of the supported schema.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfPanelType.Custom">
+            <summary>A panel with a caller-defined icon and color.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfParagraph">
+            <summary>Represents a paragraph of inline content.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfParagraph.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfPlaceholder">
+            <summary>Represents editor-only placeholder text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfPlaceholder.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfPlaceholder.Text">
+            <summary>Gets the placeholder text.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfRule">
+            <summary>Represents a horizontal rule.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfRule.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfStatus">
+            <summary>Represents a status lozenge.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfStatus.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfStatus.Text">
+            <summary>Gets the text of the status lozenge.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfStatus.Color">
+            <summary>Gets the color of the status lozenge.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfStatus.Style">
+            <summary>Gets the style of the status lozenge.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfStrikeMark">
+            <summary>Represents struck-through text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfStrikeMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfStrongMark">
+            <summary>Represents strong emphasis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfStrongMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfSubSupMark">
+            <summary>Represents subscript or superscript text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfSubSupMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfSubSupMark.Type">
+            <summary>Gets whether the text is subscript or superscript.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfSubSupType">
+            <summary>The kind of an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfSubSupMark"/>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfSubSupType.Subscript">
+            <summary>The text is rendered as subscript.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfSubSupType.Superscript">
+            <summary>The text is rendered as superscript.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfTable">
+            <summary>Represents a table.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTable.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTable.IsNumberColumnEnabled">
+            <summary>Gets whether the table renders an implicit auto-numbered first column.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTable.Layout">
+            <summary>Gets the table layout.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTable.Width">
+            <summary>Gets the table width, in pixels.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTable.DisplayMode">
+            <summary>Gets the table display mode.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfTableCell">
+            <summary>Represents a table data cell.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableCell.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableCell.ColSpan">
+            <summary>Gets the number of columns the cell spans.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableCell.RowSpan">
+            <summary>Gets the number of rows the cell spans.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableCell.Background">
+            <summary>Gets the background color of the cell.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableCell.VerticalAlignment">
+            <summary>Gets the vertical alignment of the cell content.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfTableHeader">
+            <summary>Represents a table header cell.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableHeader.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableHeader.ColSpan">
+            <summary>Gets the number of columns the cell spans.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableHeader.RowSpan">
+            <summary>Gets the number of rows the cell spans.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableHeader.Background">
+            <summary>Gets the background color of the cell.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableHeader.VerticalAlignment">
+            <summary>Gets the vertical alignment of the cell content.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfTableRow">
+            <summary>Represents a table row.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTableRow.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfTableStyle">
+            <summary>How an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfTable"/> is converted.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfTableStyle.PipeTable">
+            <summary>A GitHub pipe table. Cells holding more than inline content are flattened, separated by <c>&lt;br&gt;</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfTableStyle.Html">
+            <summary>An HTML table, which preserves cells spanning several rows or columns.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfTableStyle.Auto">
+            <summary>A pipe table when every cell holds only inline content and no cell spans several rows or columns, an HTML table otherwise.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfTaskItem">
+            <summary>Represents a single task.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTaskItem.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTaskItem.State">
+            <summary>Gets whether the task is done.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfTaskList">
+            <summary>Represents a list of tasks.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTaskList.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfTaskListStyle">
+            <summary>How an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfTaskList"/> is converted.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfTaskListStyle.Checkbox">
+            <summary>A GitHub task list, using <c>- [ ]</c> and <c>- [x]</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfTaskListStyle.PlainText">
+            <summary>A bullet list with no checkbox.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfTaskState">
+            <summary>The state of an <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfTaskItem"/>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfTaskState.ToDo">
+            <summary>The task is not done.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfTaskState.Done">
+            <summary>The task is done.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfText">
+            <summary>Represents a run of text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfText.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfText.Text">
+            <summary>Gets the text of the node.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfTextColorMark">
+            <summary>Represents colored text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTextColorMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfTextColorMark.Color">
+            <summary>Gets the color, as a <c>#rrggbb</c> string.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdown">
+            <summary>Converts Atlassian Document Format documents to Markdown.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdown.Convert(System.String)">
+            <summary>Converts an ADF document to Markdown using the default options.</summary>
+            <param name="json">The JSON representation of the document.</param>
+            <exception cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException">The value is not a valid ADF document.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdown.Convert(System.String,Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions)">
+            <summary>Converts an ADF document to Markdown.</summary>
+            <param name="json">The JSON representation of the document.</param>
+            <param name="options">The conversion options.</param>
+            <exception cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException">The value is not a valid ADF document.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdown.Convert(System.Text.Json.JsonElement)">
+            <summary>Converts an ADF document to Markdown using the default options.</summary>
+            <param name="element">The JSON representation of the document.</param>
+            <exception cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException">The value is not a valid ADF document.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdown.Convert(System.Text.Json.JsonElement,Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions)">
+            <summary>Converts an ADF document to Markdown.</summary>
+            <param name="element">The JSON representation of the document.</param>
+            <param name="options">The conversion options.</param>
+            <exception cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException">The value is not a valid ADF document.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdown.Convert(System.Text.Json.Nodes.JsonNode)">
+            <summary>Converts an ADF document to Markdown using the default options.</summary>
+            <param name="node">The JSON representation of the document.</param>
+            <exception cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException">The value is not a valid ADF document.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdown.Convert(System.Text.Json.Nodes.JsonNode,Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions)">
+            <summary>Converts an ADF document to Markdown.</summary>
+            <param name="node">The JSON representation of the document.</param>
+            <param name="options">The conversion options.</param>
+            <exception cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException">The value is not a valid ADF document.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdown.Convert(Meziantou.Framework.AtlassianDataFormat.AdfDocument)">
+            <summary>Converts an ADF document to Markdown using the default options.</summary>
+            <param name="document">The document to convert.</param>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdown.Convert(Meziantou.Framework.AtlassianDataFormat.AdfDocument,Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions)">
+            <summary>Converts an ADF document to Markdown.</summary>
+            <param name="document">The document to convert.</param>
+            <param name="options">The conversion options.</param>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions">
+            <summary>Options that control how an ADF document is converted to Markdown.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.HeadingStyle">
+            <summary>Gets or sets the heading style to use in Markdown output.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.EmphasisMarker">
+            <summary>Gets or sets the marker used for emphasis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.CodeBlockStyle">
+            <summary>Gets or sets the style used for code blocks.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.CodeBlockFenceCharacter">
+            <summary>Gets or sets the fence character used for fenced code blocks.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.UnorderedListMarker">
+            <summary>Gets or sets the marker used for unordered lists.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.ThematicBreak">
+            <summary>Gets or sets the thematic break text to emit for horizontal rules.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.LineBreakStyle">
+            <summary>Gets or sets the style used for explicit line breaks.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.PanelStyle">
+            <summary>Gets or sets how panels are converted.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.ExpandStyle">
+            <summary>Gets or sets how collapsible sections are converted.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.TableStyle">
+            <summary>Gets or sets how tables are converted.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.MediaRendering">
+            <summary>Gets or sets how media items are converted.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.EmojiRendering">
+            <summary>Gets or sets how emoji are converted.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.TaskListStyle">
+            <summary>Gets or sets how task lists are converted.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.DecisionListStyle">
+            <summary>Gets or sets how decision lists are converted.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.UnknownNodeHandling">
+            <summary>Gets or sets how nodes whose type is not part of the supported schema are converted.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.MentionFormat">
+            <summary>
+            Gets or sets the format used for mentions. The <c>{text}</c> placeholder is replaced with the
+            display name of the mentioned user, and <c>{id}</c> with their account identifier.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.StatusFormat">
+            <summary>
+            Gets or sets the format used for status lozenges. The <c>{text}</c> placeholder is replaced
+            with the text of the lozenge, and <c>{color}</c> with its color.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.DateFormat">
+            <summary>
+            Gets or sets the format used for dates. The value is a standard or custom
+            <see cref="T:System.DateTimeOffset"/> format string, applied with the invariant culture.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.MediaUrlResolver">
+            <summary>
+            Gets or sets a callback that returns the URL of a media item, or <see langword="null"/> when
+            it cannot be resolved.
+            </summary>
+            <remarks>
+            Only media items of type <see cref="F:Meziantou.Framework.AtlassianDataFormat.AdfMediaType.External"/> carry a URL in the document.
+            Items stored by Atlassian only carry an identifier and a collection, and resolving them
+            requires an authenticated call to the media API.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfToMarkdownOptions.MentionResolver">
+            <summary>
+            Gets or sets a callback that returns the display name of a mentioned user, or
+            <see langword="null"/> to use the text stored in the document.
+            </summary>
+            <remarks>Documents returned by the APIs often omit the display name of a mention.</remarks>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfUnderlineMark">
+            <summary>Represents underlined text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfUnderlineMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfUnknownMark">
+            <summary>
+            Represents a mark whose type is not part of the supported schema. The original JSON is
+            preserved so the mark round-trips unchanged.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfUnknownMark.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfUnknownMark.TypeName">
+            <summary>Gets the value of the <c>type</c> property of the mark.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfUnknownMark.RawJson">
+            <summary>Gets the original JSON of the mark.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfUnknownNode">
+            <summary>
+            Represents a node whose type is not part of the supported schema. Atlassian regularly adds
+            node types, and documents returned by the APIs contain nodes such as <c>unsupportedBlock</c>,
+            so parsing never fails on an unknown type. The original JSON is preserved so the node
+            round-trips unchanged.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfUnknownNode.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfUnknownNode.TypeName">
+            <summary>Gets the value of the <c>type</c> property of the node.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.AtlassianDataFormat.AdfUnknownNode.RawJson">
+            <summary>Gets the original JSON of the node.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfUnknownNodeHandling">
+            <summary>How nodes whose type is not part of the supported schema are converted.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfUnknownNodeHandling.Skip">
+            <summary>The node and its content are dropped.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfUnknownNodeHandling.KeepContent">
+            <summary>The node is dropped but its content is converted.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AtlassianDataFormat.AdfUnknownNodeHandling.Throw">
+            <summary>An <see cref="T:Meziantou.Framework.AtlassianDataFormat.AdfException"/> is thrown.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.AdfJsonWriter.AttributeScope">
+            <summary>
+            Writes an <c>attrs</c> object lazily, so nodes whose attributes are all unset do not emit an
+            empty object.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfJsonWriter.AttributeScope.#ctor(System.Text.Json.Utf8JsonWriter)">
+            <summary>
+            Writes an <c>attrs</c> object lazily, so nodes whose attributes are all unset do not emit an
+            empty object.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.AdfJsonWriter.AttributeScope.End">
+            <summary>Closes the <c>attrs</c> object when one was started.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.AtlassianDataFormat.JsonElementExtensions">
+            <summary>
+            Helpers to read optional ADF attributes. The receiver may be <see langword="default"/> when the
+            node has no <c>attrs</c> property, in which case every method returns <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.MarkdownConverter.ConvertItemContent(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.AtlassianDataFormat.AdfNode})">
+            <summary>
+            Converts the content of a task or decision item. The schema says it holds inline nodes, but
+            documents returned by the APIs wrap it in paragraphs.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.MarkdownHelper.Escape(System.String)">
+            <summary>Escapes the characters that would otherwise be read as Markdown syntax.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.MarkdownHelper.PrefixLines(System.String,System.String,System.String,System.String)">
+            <summary>Prefixes every line of <paramref name="content"/>, used for block quotes and list items.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.MarkdownHelper.CreateFence(System.String,System.Char,System.Int32)">
+            <summary>
+            Returns a fence long enough to wrap <paramref name="content"/>: it must be longer than the
+            longest run of the fence character inside the content.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.MarkdownHelper.Delimit(System.String,System.String)">
+            <summary>
+            Wraps <paramref name="text"/> between two delimiters, keeping the leading and trailing
+            whitespace outside: <c>** bold **</c> is not emphasis, <c> **bold** </c> is.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.MarkdownHelper.CodeSpan(System.String)">
+            <summary>Wraps text in a code span, using a backtick fence long enough for the content.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.MarkdownHelper.Flatten(System.String)">
+            <summary>Collapses a block into a single line, for contexts that cannot hold block content.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.MarkdownHelper.JoinBlocks(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>Joins blocks with a blank line, dropping the empty ones.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.MarkdownHelper.LinkDestination(System.String)">
+            <summary>Formats a link destination, wrapping it in angle brackets when it needs them.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AtlassianDataFormat.MarkdownHelper.Link(System.String,System.String,System.String)">
+            <summary>Formats an inline link, including its optional title.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+    </members>
+</doc>

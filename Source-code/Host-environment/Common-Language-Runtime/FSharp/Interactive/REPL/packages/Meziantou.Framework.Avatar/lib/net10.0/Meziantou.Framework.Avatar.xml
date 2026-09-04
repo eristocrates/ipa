@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Avatar</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.AvatarColorPair">
+            <summary>
+            Represents a foreground/background color pair used to render an avatar.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AvatarColorPair.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.AvatarColorPair"/> struct.
+            </summary>
+            <param name="backgroundColor">The background color.</param>
+            <param name="foregroundColor">The foreground color.</param>
+        </member>
+        <member name="P:Meziantou.Framework.AvatarColorPair.BackgroundColor">
+            <summary>
+            Gets the background color.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AvatarColorPair.ForegroundColor">
+            <summary>
+            Gets the foreground color.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.AvatarGenerator">
+            <summary>
+            Generates SVG avatars from names and options.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AvatarGenerator.CreateSvg(System.String,Meziantou.Framework.AvatarOptions)">
+            <summary>
+            Creates an avatar SVG string for the specified name and options.
+            </summary>
+            <param name="name">The full name used to compute the color and default bigram.</param>
+            <param name="options">The generation options.</param>
+            <returns>The generated SVG string.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.AvatarOptions">
+            <summary>
+            Provides options used to generate an avatar SVG.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.AvatarOptions.DefaultSize">
+            <summary>
+            The default avatar size (64x64).
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AvatarOptions.Palette">
+            <summary>
+            Gets the list of colors used for rendering.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AvatarOptions.Bigram">
+            <summary>
+            Gets or sets the explicit bigram to render. If null, the bigram is extracted from the name.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AvatarOptions.Shape">
+            <summary>
+            Gets or sets the shape of the avatar.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.AvatarOptions.Size">
+            <summary>
+            Gets or sets the size of the generated SVG in pixels.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AvatarOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.AvatarOptions"/> class.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.AvatarShape">
+            <summary>
+            Indicates the avatar background shape.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.AvatarShape.Round">
+            <summary>
+            Use a circle background.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.AvatarShape.Square">
+            <summary>
+            Use a square background.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.AvatarShape.RoundedSquare">
+            <summary>
+            Use a square background with rounded corners.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+    </members>
+</doc>

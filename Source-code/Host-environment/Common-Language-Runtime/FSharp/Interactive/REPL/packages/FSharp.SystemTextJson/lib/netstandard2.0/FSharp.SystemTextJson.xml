@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharp.SystemTextJson</name></assembly>
+<members>
+<member name="M:System.Text.Json.Serialization.Skippable`1.op_LessMultiplyGreater``2(System.Text.Json.Serialization.Skippable{Microsoft.FSharp.Core.FSharpFunc{``0,``1}},System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Infix operator for Skippable.apply.
+ Applies the Skippable-wrapped function to the Skippable-wrapped value,
+ returning Skip if either is Skip.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable`1.op_LessBangGreater``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Infix operator for Skippable.map.
+ Transforms the input using the specified function.
+</summary>
+</member>
+<member name="P:System.Text.Json.Serialization.Skippable`1.isSkip">
+<summary>
+ Returns true if the value is Skip.
+</summary>
+</member>
+<member name="P:System.Text.Json.Serialization.Skippable`1.isInclude">
+<summary>
+ Returns true if the value is not Skip.
+</summary>
+</member>
+<member name="T:System.Text.Json.Serialization.Skippable`1">
+<summary>
+ Represents a value that can be represented as an absent field in JSON.
+ In particular, Skippable&lt;&apos;T option&gt; allows distinguishing between absent field and null field.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnwrapOption(System.Boolean)">
+<summary>
+ If set, `None` is represented as null,
+ and `Some x`  is represented the same as `x`.
+ This flag is included in Default.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionUnwrapSingleFieldCases(System.Boolean)">
+<summary>
+ If set, the field of a single-field union case is encoded as just the value
+ rather than a single-value array or object.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionUnwrapSingleCaseUnions(System.Boolean)">
+<summary>
+ If set, single-case single-field unions are serialized as the single field&apos;s value.
+ This flag is included in Default.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionUnwrapRecordCases(System.Boolean)">
+<summary>
+ Implicitly sets NamedFields. If set, when a union case has a single field which is a record,
+ the fields of this record are encoded directly as fields of the object representing the union.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionUnwrapFieldlessTags(System.Boolean)">
+<summary>
+ If set, union cases that don&apos;t have fields are encoded as a bare string.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionUntagged">
+<summary>
+ Encode unions as a n-valued object:
+ the union tag is not encoded, only the union fields are.
+ Deserialization is only possible if the fields of all cases have different names.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionNamedFields(System.Boolean)">
+<summary>
+ If unset, union fields are encoded as an array.
+ If set, union fields are encoded as an object using their field names.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionInternalTag">
+<summary>
+ Encode unions as a (n+1)-valued object or array (depending on NamedFields):
+ the first value (named `unionTagName`, defaulting to &quot;Case&quot;, if NamedFields is set)
+ is the union tag, the rest are the union fields.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionFieldNamesFromTypes(System.Boolean)">
+<summary>
+ When a union field doesn&apos;t have an explicit name, use its type as name.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionExternalTag">
+<summary>
+ Encode unions as a 1-valued object:
+ The field name is the union tag, and the value is the union fields.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionAllowUnorderedTag(System.Boolean)">
+<summary>
+ In AdjacentTag and InternalTag mode, allow deserializing unions
+ where the tag is not the first field in the JSON object.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.JsonFSharpOptions.WithUnionAdjacentTag">
+<summary>
+ Encode unions as a 2-valued object:
+ `unionTagName` (defaults to &quot;Case&quot;) contains the union tag,
+ and `unionFieldsName` (defaults to &quot;Fields&quot;) contains the union fields.
+ If the case doesn&apos;t have fields, &quot;Fields&quot;: [] is omitted.
+ This flag is included in Default.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.MapFormat.ObjectOrArrayOfPairs">
+<summary>
+ Serialize Maps as JSON objects if the key type is string or a single-case union wrapping string;
+ otherwise, serialize Maps as JSON arrays whose items are [key, value] JSON arrays.
+ Supports all key types.
+ This is the default format.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.MapFormat.ArrayOfPairs">
+<summary>
+ Always serialize Maps as JSON arrays whose items are [key, value] JSON arrays.
+ Supports all key types.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.MapFormat.Object">
+<summary>
+ Always serialize Maps as JSON objects.
+ Only supports the same key types as the built-in serializer for Dictionary.
+ Requires System.Text.Json 8.0 or newer.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.SkippableOptionFields.Always">
+<summary>
+ None and ValueNone fields in records and unions are always skippable.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.SkippableOptionFields.Never">
+<summary>
+ None and ValueNone fields in records and unions are never skippable.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.SkippableOptionFields.FromJsonSerializerOptions">
+<summary>
+ None and ValueNone fields in records and unions are skippable if the JsonSerializerOptions has DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.All">
+<summary>
+ All supported types.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.Minimal">
+<summary>
+ All types not already fully supported by System.Text.Json.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.Collections">
+<summary>
+ F# lists, sets and maps.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.OptionalTypes">
+<summary>
+ F# options and value options.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.ValueOptions">
+<summary>
+ F# value options.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.Options">
+<summary>
+ F# options.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.Maps">
+<summary>
+ F# maps, including those with non-string keys.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.Sets">
+<summary>
+ F# sets.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.Lists">
+<summary>
+ F# lists.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.Tuples">
+<summary>
+ Tuples and struct tuples.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.Unions">
+<summary>
+ F# discriminated unions and struct discriminated unions.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonFSharpTypes.Records">
+<summary>
+ F# records, struct records and anonymous records.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.UnionFieldNamesFromTypes">
+<summary>
+ When a union field doesn&apos;t have an explicit name, use its type as name.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.AllowUnorderedTag">
+<summary>
+ In AdjacentTag and InternalTag mode, allow deserializing unions
+ where the tag is not the first field in the JSON object.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.UnwrapRecordCases">
+<summary>
+ Implicitly sets NamedFields. If set, when a union case has a single field which is a record,
+ the fields of this record are encoded directly as fields of the object representing the union.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.UnwrapSingleFieldCases">
+<summary>
+ If set, the field of a single-field union case is encoded as just the value
+ rather than a single-value array or object.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.EraseSingleCaseUnions">
+<summary>
+ Obsolete: use UnwrapSingleCaseUnions instead.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.UnwrapSingleCaseUnions">
+<summary>
+ If set, single-case single-field unions are serialized as the single field&apos;s value.
+ This flag is included in Default.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.SuccintOption">
+<summary>
+ Obsolete: use UnwrapOption instead.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.UnwrapOption">
+<summary>
+ If set, `None` is represented as null,
+ and `Some x`  is represented the same as `x`.
+ This flag is included in Default.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.BareFieldlessTags">
+<summary>
+ Obsolete: use UnwrapFieldlessTags instead.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.UnwrapFieldlessTags">
+<summary>
+ If set, union cases that don&apos;t have fields are encoded as a bare string.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.NamedFields">
+<summary>
+ If unset, union fields are encoded as an array.
+ If set, union fields are encoded as an object using their field names.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.Inherit">
+<summary>
+ When set on an FSharpJsonConverterAttribute (true if no encoding is passed),
+ inherit the union encoding from the FSharpJsonConverter, if any.
+ When set on an FSharpJsonConverter object, this flag is ignored.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.Untagged">
+<summary>
+ Encode unions as a n-valued object:
+ the union tag is not encoded, only the union fields are.
+ Deserialization is only possible if the fields of all cases have different names.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.InternalTag">
+<summary>
+ Encode unions as a (n+1)-valued object or array (depending on NamedFields):
+ the first value (named `unionTagName`, defaulting to &quot;Case&quot;, if NamedFields is set)
+ is the union tag, the rest are the union fields.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.ExternalTag">
+<summary>
+ Encode unions as a 1-valued object:
+ The field name is the union tag, and the value is the union fields.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonUnionEncoding.AdjacentTag">
+<summary>
+ Encode unions as a 2-valued object:
+ `unionTagName` (defaults to &quot;Case&quot;) contains the union tag,
+ and `unionFieldsName` (defaults to &quot;Fields&quot;) contains the union fields.
+ If the case doesn&apos;t have fields, &quot;Fields&quot;: [] is omitted.
+ This flag is included in Default.
+</summary>
+</member>
+<member name="F:System.Text.Json.Serialization.JsonNameAttribute.Field@">
+<summary>
+ The name of the union field that this name applies to.
+</summary>
+</member>
+<member name="P:System.Text.Json.Serialization.JsonNameAttribute.Field(System.String)">
+<summary>
+ The name of the union field that this name applies to.
+</summary>
+</member>
+<member name="P:System.Text.Json.Serialization.JsonNameAttribute.Field">
+<summary>
+ The name of the union field that this name applies to.
+</summary>
+</member>
+<member name="P:System.Text.Json.Serialization.TypeCache.getKind">
+<summary>
+ cached access to FSharpType.* and System.Type to prevent repeated access to reflection members
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.isInclude``1(System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Returns true if the value is not Skip.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.isSkip``1(System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Returns true if the value is Skip.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.filter``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Converts Include to Skip if the wrapped value does not match the predicate.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.iter``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Calls the specified function on the Skippable&apos;s wrapped value.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.ofValueOption``1(Microsoft.FSharp.Core.FSharpValueOption{``0})">
+<summary>
+ Converts the ValueOption to a Skippable.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.toValueOption``1(System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Converts the Skippable to a ValueOption.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.ofOption``1(Microsoft.FSharp.Core.FSharpOption{``0})">
+<summary>
+ Converts the option to a Skippable.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.toOption``1(System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Converts the Skippable to an option.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.orElse``1(System.Text.Json.Serialization.Skippable{``0},System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Returns the Skippable if it is Include, otherwise returns ifSkip.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.defaultWith``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,``0},System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Gets the value of the Skippable if the input is Include, otherwise evaluates
+ valueThunk and returns the result.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.defaultValue``1(``0,System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Gets the value of the Skippable if the input is Include, otherwise returns
+ the specified default value.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.apply``2(System.Text.Json.Serialization.Skippable{Microsoft.FSharp.Core.FSharpFunc{``0,``1}},System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Applies the Skippable-wrapped function to the Skippable-wrapped value,
+ returning Skip if either is Skip.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.bind``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.Text.Json.Serialization.Skippable{``1}},System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Applies the Skippable-returning function to the Skippable-wrapped value.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.map3``4(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.FSharpFunc{``2,``3}}},System.Text.Json.Serialization.Skippable{``0},System.Text.Json.Serialization.Skippable{``1},System.Text.Json.Serialization.Skippable{``2})">
+<summary>
+ Transforms the input using the specified function.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.map2``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}},System.Text.Json.Serialization.Skippable{``0},System.Text.Json.Serialization.Skippable{``1})">
+<summary>
+ Transforms the input using the specified function.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Skippable.map``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Text.Json.Serialization.Skippable{``0})">
+<summary>
+ Transforms the input using the specified function.
+</summary>
+</member>
+<member name="M:System.Text.Json.Serialization.Helpers.tryGetNullValue(System.Text.Json.Serialization.JsonFSharpOptionsRecord,System.Type)">
+<summary>
+ If null is a valid JSON representation for ty,
+ then return ValueSome with the value represented by null,
+ else return ValueNone.
+</summary>
+</member>
+</members>
+</doc>

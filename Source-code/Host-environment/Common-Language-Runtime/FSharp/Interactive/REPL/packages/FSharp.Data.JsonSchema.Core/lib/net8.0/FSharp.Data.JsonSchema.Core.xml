@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharp.Data.JsonSchema.Core</name></assembly>
+<members>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaDocument.Definitions">
+<summary>
+ Named schema definitions in insertion order (typeId * schema).
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaDocument.Root">
+<summary>
+ The root schema node.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaDocument">
+<summary>
+ The result of analyzing a type: a root schema plus named definitions.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.Any">
+<summary>
+ Permissive schema with no type constraint.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.Const">
+<summary>
+ A constant value (used for discriminator tags).
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.Map">
+<summary>
+ A map/dictionary with string keys and typed values.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.Ref">
+<summary>
+ A reference to a named definition.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.Enum">
+<summary>
+ An enumeration of allowed values.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.Primitive">
+<summary>
+ A primitive type with optional format.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.Nullable">
+<summary>
+ Nullable wrapper around an inner schema.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.OneOf">
+<summary>
+ One of the given schemas with optional discriminator.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.AnyOf">
+<summary>
+ Any of the given schemas (untagged union).
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.Array">
+<summary>
+ An array of items with a single item schema.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode.Object">
+<summary>
+ An object with named properties.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaNode">
+<summary>
+ A node in the JSON Schema intermediate representation.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.Discriminator.Mapping">
+<summary>
+ Mapping from discriminator value to type identifier.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.Discriminator.PropertyName">
+<summary>
+ Name of the discriminator property.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.Discriminator">
+<summary>
+ Discriminator for oneOf/anyOf schemas.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.ObjectSchema.Title">
+<summary>
+ Optional title.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.ObjectSchema.Description">
+<summary>
+ Optional description.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.ObjectSchema.TypeId">
+<summary>
+ Type identifier for $ref generation.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.ObjectSchema.AdditionalProperties">
+<summary>
+ Whether additional properties are allowed.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.ObjectSchema.Required">
+<summary>
+ Names of required properties.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.ObjectSchema.Properties">
+<summary>
+ Ordered list of properties.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.ObjectSchema">
+<summary>
+ Schema for a JSON object type.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.PropertySchema.Description">
+<summary>
+ Optional description.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.PropertySchema.Schema">
+<summary>
+ Schema for the property value.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.PropertySchema.Name">
+<summary>
+ Property name (after naming policy applied).
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.PropertySchema">
+<summary>
+ A single property within an object schema.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.OptionSchemaStyle">
+<summary>
+ How option fields are represented in the schema.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.UnionEncodingStyle">
+<summary>
+ Discriminated union encoding styles for JSON serialization.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.PrimitiveType">
+<summary>
+ Primitive JSON Schema types.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig.UnwrapFieldlessTags">
+<summary>
+ Whether fieldless DUs are represented as string enums.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig.RecordFieldsRequired">
+<summary>
+ Whether record fields are all marked as required.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig.UnwrapSingleCaseDU">
+<summary>
+ Whether single-case DUs with fields are unwrapped to the inner field schema.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig.OptionStyle">
+<summary>
+ How option types are represented in the schema.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig.TypeIdResolver">
+<summary>
+ Resolves a type to a string identifier for $ref generation.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig.AdditionalPropertiesDefault">
+<summary>
+ Whether objects allow additional properties by default.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig.PropertyNamingPolicy">
+<summary>
+ Naming policy for record fields and DU case fields.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig.DiscriminatorPropertyName">
+<summary>
+ Discriminator property name for tagged unions.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig.UnionEncoding">
+<summary>
+ Union encoding style.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig">
+<summary>
+ Configuration controlling schema analyzer behavior.
+</summary>
+</member>
+<member name="P:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfigModule.defaults">
+<summary>
+ Default configuration matching current library behavior:
+ InternalTag encoding, &quot;kind&quot; discriminator, camelCase naming,
+ additionalProperties true, nullable options, no single-case unwrap,
+ record fields required, fieldless tags unwrapped.
+</summary>
+</member>
+<member name="M:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfigModule.defaultTypeIdResolver(System.Type)">
+<summary>
+ Default type ID resolver: uses the type&apos;s short name with PascalCase first character.
+ For generic types, appends &quot;Of&quot; + type argument names (e.g., &quot;PaginatedResultOfTestRecord&quot;).
+</summary>
+</member>
+<member name="M:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfigModule.pascalCase(System.String)">
+<summary>
+ Capitalize the first character (matching NJsonSchema&apos;s DefaultTypeNameGenerator behavior).
+</summary>
+</member>
+<member name="M:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfigModule.camelCase(System.String)">
+<summary>
+ Convert the first character of a string to lowercase (camelCase).
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaGeneratorConfigModule">
+<summary>
+ Functions for creating and working with SchemaGeneratorConfig.
+</summary>
+</member>
+<member name="M:FSharp.Data.JsonSchema.Core.SchemaAnalyzer.analyze(FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig,System.Type)">
+<summary>
+ Analyze an F# type and produce a SchemaDocument.
+</summary>
+</member>
+<member name="M:FSharp.Data.JsonSchema.Core.SchemaAnalyzer.isSimpleType(FSharp.Data.JsonSchema.Core.SchemaGeneratorConfig,System.Type)">
+<summary>
+ Returns true if a type is &quot;simple&quot; and should be inlined rather than referenced.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Core.SchemaAnalyzer">
+<summary>
+ Analyzes F# types and produces SchemaDocument values.
+</summary>
+</member>
+</members>
+</doc>

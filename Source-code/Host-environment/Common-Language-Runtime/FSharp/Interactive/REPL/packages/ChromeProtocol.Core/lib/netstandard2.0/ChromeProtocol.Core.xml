@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ChromeProtocol.Core</name>
+    </assembly>
+    <members>
+        <member name="T:ChromeProtocol.Core.ArrayTypeConverter">
+            <summary>
+            A converter that converts JSON array into <see cref="T:ChromeProtocol.Core.IArrayType"/>,
+            wrapping items into property <see cref="P:ChromeProtocol.Core.IArrayType.Items"/>.
+            </summary>
+        </member>
+        <member name="M:ChromeProtocol.Core.ArrayTypeConverter.CanConvert(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChromeProtocol.Core.ArrayTypeConverter.Write(System.Text.Json.Utf8JsonWriter,ChromeProtocol.Core.IArrayType,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChromeProtocol.Core.ArrayTypeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChromeProtocol.Core.SyncDomainEventHandler`1">
+            <summary>
+            Synchronous CDP event handler delegate.
+            </summary>
+            <typeparam name="TEvent">Type of the event from CDP.</typeparam>
+        </member>
+        <member name="T:ChromeProtocol.Core.AsyncDomainEventHandler`1">
+            <summary>
+            Asynchronous CDP event handler delegate.
+            </summary>
+            <typeparam name="TEvent">Type of the event from CDP.</typeparam>
+        </member>
+        <member name="T:ChromeProtocol.Core.IArrayType">
+            <summary>
+            An interface that represents generic array of JSON objects in CDP.
+            </summary>
+        </member>
+        <member name="P:ChromeProtocol.Core.IArrayType.Items">
+            <summary>
+            A property containing array's items as JSON objects.
+            </summary>
+        </member>
+        <member name="T:ChromeProtocol.Core.ICommand">
+            <summary>
+            An interface that represents CDP domain command without typed response.
+            </summary>
+        </member>
+        <member name="T:ChromeProtocol.Core.ICommand`1">
+            <summary>
+            An interface that represents CDP domain command with a typed response.
+            </summary>
+        </member>
+        <member name="T:ChromeProtocol.Core.IEvent">
+            <summary>
+            An interface that represents CDP domain event.
+            </summary>
+        </member>
+        <member name="T:ChromeProtocol.Core.IObjectType">
+            <summary>
+            An interface that represents JSON object in CDP.
+            </summary>
+        </member>
+        <member name="P:ChromeProtocol.Core.IObjectType.Properties">
+            <summary>
+            A property containing object's root properties as JSON objects.
+            </summary>
+        </member>
+        <member name="T:ChromeProtocol.Core.IType">
+            <summary>
+            An interface that represents CDP domain type.
+            </summary>
+        </member>
+        <member name="T:ChromeProtocol.Core.MethodNameAttribute">
+            <summary>
+            Specifies method name to be used in context of given domain command or event.
+            </summary>
+        </member>
+        <member name="P:ChromeProtocol.Core.MethodNameAttribute.MethodName">
+            <summary>
+            A name of the domain method to be used with the command or event.
+            </summary>
+        </member>
+        <member name="M:ChromeProtocol.Core.MethodNameAttribute.#ctor(System.String)">
+            <summary>
+            Creates instance of type <see cref="T:ChromeProtocol.Core.MethodNameAttribute"/>.
+            </summary>
+            <param name="methodName">A name of the domain method.</param>
+        </member>
+        <member name="T:ChromeProtocol.Core.ObjectTypeConverter">
+            <summary>
+            A converter that converts JSON object into <see cref="T:ChromeProtocol.Core.IObjectType"/>,
+            wrapping root properties into <see cref="P:ChromeProtocol.Core.IObjectType.Properties"/>.
+            </summary>
+        </member>
+        <member name="M:ChromeProtocol.Core.ObjectTypeConverter.CanConvert(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChromeProtocol.Core.ObjectTypeConverter.Write(System.Text.Json.Utf8JsonWriter,ChromeProtocol.Core.IObjectType,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChromeProtocol.Core.ObjectTypeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChromeProtocol.Core.PolymorphicTypeResolver">
+            <summary>
+            A JSON type resolver that uses pre-computed CDP type derivatives to handle cases when System.Text.Json
+            can't resolve proper inherited type.
+            </summary>
+        </member>
+        <member name="M:ChromeProtocol.Core.PolymorphicTypeResolver.#ctor(System.Collections.Generic.Dictionary{System.Type,System.Type[]})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChromeProtocol.Core.PolymorphicTypeResolver.GetTypeInfo(System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChromeProtocol.Core.IPrimitiveType">
+            <summary>
+            An interface that represents a wrapper over CDP primitive (single-value) type.
+            </summary>
+        </member>
+        <member name="P:ChromeProtocol.Core.IPrimitiveType.RawValue">
+            <summary>
+            A raw untyped value of the object.
+            </summary>
+        </member>
+        <member name="T:ChromeProtocol.Core.PrimitiveType`1">
+            <summary>
+            An interface that represents a typed wrapper over CDP primitive (single-value) type.
+            </summary>
+        </member>
+        <member name="M:ChromeProtocol.Core.PrimitiveType`1.#ctor(`0)">
+            <summary>
+            An interface that represents a typed wrapper over CDP primitive (single-value) type.
+            </summary>
+        </member>
+        <member name="P:ChromeProtocol.Core.PrimitiveType`1.ChromeProtocol#Core#IPrimitiveType#RawValue">
+            <inheritdoc />
+        </member>
+        <member name="T:ChromeProtocol.Core.PrimitiveTypeConverter">
+            <summary>
+            A converter that converts CDP primitive (single-value) types.
+            </summary>
+        </member>
+        <member name="M:ChromeProtocol.Core.PrimitiveTypeConverter.CanConvert(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChromeProtocol.Core.PrimitiveTypeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChromeProtocol.Core.PrimitiveTypeConverter.Write(System.Text.Json.Utf8JsonWriter,System.Object,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>
+            Reserved to be used by the compiler for tracking metadata.
+            This class should not be used by developers in source code.
+            </summary>
+        </member>
+    </members>
+</doc>

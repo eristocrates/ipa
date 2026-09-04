@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharp.Data.JsonSchema.OpenApi</name></assembly>
+<members>
+<member name="M:FSharp.Data.JsonSchema.OpenApi.FSharpSchemaTransformer.#ctor">
+<summary>
+ Create with default configuration.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.OpenApi.FSharpSchemaTransformer">
+<summary>
+ Schema transformer that detects F# types and generates correct OpenAPI schemas
+ using FSharp.Data.JsonSchema.Core&apos;s SchemaAnalyzer and OpenApiSchemaTranslator.
+</summary>
+</member>
+<member name="M:FSharp.Data.JsonSchema.OpenApi.OpenApiSchemaTranslator.translate(FSharp.Data.JsonSchema.Core.SchemaDocument)">
+<summary>
+ Translate a SchemaDocument to an OpenApiSchema and component schemas.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.OpenApi.OpenApiSchemaTranslator">
+<summary>
+ Translates a SchemaDocument (Core IR) to OpenApiSchema.
+</summary>
+</member>
+</members>
+</doc>

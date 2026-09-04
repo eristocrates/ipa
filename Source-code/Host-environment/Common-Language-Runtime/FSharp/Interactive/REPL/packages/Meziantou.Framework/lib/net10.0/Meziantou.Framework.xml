@@ -1,0 +1,2298 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework</name>
+    </assembly>
+    <members>
+        <member name="M:Meziantou.Framework.AssemblyUtilities.GetInformationalVersion(System.Reflection.Assembly)">
+            <summary>Gets the informational version of an assembly.</summary>
+            <param name="assembly">The assembly. May not be null.</param>
+            <returns>The version represented as a string. May not be null.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.AssemblyUtilities.GetLinkerTimestampUtc(System.Reflection.Assembly)">
+            <summary>Gets the linker timestamp of a specified assembly.</summary>
+            <param name="assembly">The assembly. May not be null.</param>
+            <returns>A valid date time or null if an error occurred.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.AssemblyUtilities.GetLinkerTimestampUtc(System.String)">
+            <summary>Gets the linker timestamp of a specified assembly.</summary>
+            <param name="filePath">The assembly file path.</param>
+            <returns>A valid date time, or <see langword="null"/> if the file has no meaningful timestamp or could not be read.</returns>
+            <remarks>
+            Deterministic builds, which the .NET SDK produces by default, store a hash of the content in the
+            COFF <c>TimeDateStamp</c> field instead of a date. Those are reported as <see langword="null"/>
+            rather than as the arbitrary date the hash decodes to.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.AssemblyUtilities.GetRequiredManifestResourceStream(System.Reflection.Assembly,System.String)">
+            <summary>Gets a manifest resource stream, throwing an exception if not found.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.AssemblyUtilities.GetRequiredManifestResourceStream(System.Reflection.Assembly,System.Type,System.String)">
+            <summary>Gets a manifest resource stream scoped to the specified type's namespace, throwing an exception if not found.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.CachedEnumerable">
+            <summary>Provides factory methods for creating cached enumerables that store enumeration results to prevent multiple enumerations.</summary>
+            <example>
+            <code>
+            var source = GetExpensiveEnumerable();
+            var cached = CachedEnumerable.Create(source);
+            foreach (var item in cached) { } // First enumeration
+            foreach (var item in cached) { } // Uses cached results
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.CachedEnumerable.Create``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+            <summary>Creates a cached enumerable that stores enumeration results.</summary>
+            <param name="threadSafe">Whether the cached enumerable should be thread-safe.</param>
+        </member>
+        <member name="M:Meziantou.Framework.CachedEnumerable.Create``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Boolean)">
+            <summary>Creates a cached async enumerable that stores enumeration results.</summary>
+            <param name="threadSafe">Whether the cached async enumerable should be thread-safe.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.AppendOnlyCollectionSegment`1.Items">
+            <summary>
+            The backing array of the segment. Only the first <see cref="P:Meziantou.Framework.Collections.AppendOnlyCollectionSegment`1.Count"/> items are initialized.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.AppendOnlyCollectionSegment`1.StartIndex">
+            <summary>
+            Index of the first item of the segment in the owning collection.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Collections.CircularBuffer`1">
+            <summary>A circular buffer (ring buffer) collection that maintains a fixed-size buffer and overwrites old items when full.</summary>
+            <example>
+            <code>
+            var buffer = new CircularBuffer&lt;int&gt;(3) { AllowOverwrite = true };
+            buffer.Add(1); // [1]
+            buffer.Add(2); // [1, 2]
+            buffer.Add(3); // [1, 2, 3]
+            buffer.Add(4); // [2, 3, 4] - overwrites 1
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.CircularBuffer`1.Capacity">
+            <summary>Gets or sets the maximum number of items the buffer can hold.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.CircularBuffer`1.Count">
+            <summary>Gets the current number of items in the buffer.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.CircularBuffer`1.AllowOverwrite">
+            <summary>Gets or sets a value indicating whether old items should be overwritten when the buffer is full.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.CircularBuffer`1.#ctor(System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Collections.CircularBuffer`1"/> class with the specified capacity.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.CircularBuffer`1.AddFirst(`0)">
+            <summary>Adds an item to the beginning of the buffer.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Collections.DoubleEndedQueue`1">
+            <summary>Represents a growable double-ended queue.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.DoubleEndedQueue`1.#ctor(System.Int32)">
+            <summary>Initializes a new instance of <see cref="T:Meziantou.Framework.Collections.DoubleEndedQueue`1"/> with the specified initial capacity.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.DoubleEndedQueue`1.Count">
+            <summary>Gets the number of elements contained in the collection.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.DoubleEndedQueue`1.AddFirst(`0)">
+            <summary>Adds an item at the beginning of the collection.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.DoubleEndedQueue`1.AddLast(`0)">
+            <summary>Adds an item at the end of the collection.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.DoubleEndedQueue`1.RemoveFirst">
+            <summary>Removes and returns the first item.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.DoubleEndedQueue`1.RemoveLast">
+            <summary>Removes and returns the last item.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.DoubleEndedQueue`1.Item(System.Int32)">
+            <summary>Gets the item at the specified index.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Collections.PruningRadixTree">
+             <summary>
+             Represents a case-sensitive radix-compressed trie optimized for ranked prefix autocomplete.
+             </summary>
+             <remarks>
+             <para>
+             This collection stores terms with a frequency score and can efficiently retrieve the top-k completions for a prefix.
+             It augments each node with the maximum frequency in its subtree so low-ranking branches can be pruned during lookup.
+             </para>
+             <para>Typical use cases include search-box suggestions, query completion, and dictionary-backed command palettes.</para>
+             <para>The structure is case-sensitive. If you need case-insensitive behavior, normalize input before adding or querying.</para>
+             <para>Example:</para>
+             <code>
+             var tree = new PruningRadixTree();
+             tree.Add("car", 10);
+             tree.Add("cart", 5);
+             tree.Add("cat", 7);
+            
+             var suggestions = tree.GetTopTermsByPrefix("ca", topK: 2, out _);
+             // suggestions: [("car", 10), ("cat", 7)]
+             </code>
+             </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.PruningRadixTree.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Meziantou.Framework.Collections.PruningRadixTree"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.PruningRadixTree.Count">
+            <summary>
+            Gets the number of stored terms.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.PruningRadixTree.Add(System.String,System.Int64)">
+            <summary>
+            Adds a term and its frequency to the tree.
+            </summary>
+            <param name="term">The term to add.</param>
+            <param name="frequency">The positive frequency value to add to the term.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="term"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="frequency"/> is less than or equal to 0.</exception>
+            <remarks>
+            If the term already exists, <paramref name="frequency"/> is added to the existing value.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.PruningRadixTree.AddRange(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Int64}})">
+            <summary>
+            Adds a sequence of terms and frequencies to the tree.
+            </summary>
+            <param name="terms">The terms to add.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="terms"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException">One of the term keys is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">One of the frequencies is less than or equal to 0.</exception>
+            <remarks>
+            This method is optimized for bulk loading by aggregating duplicate keys and building the radix tree from sorted entries.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.PruningRadixTree.Remove(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Removes a term from the tree.
+            </summary>
+            <param name="term">The term to remove.</param>
+            <returns><see langword="true"/> when the term existed and was removed; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.PruningRadixTree.TryGetValue(System.ReadOnlySpan{System.Char},System.Int64@)">
+            <summary>
+            Gets the frequency associated with a term.
+            </summary>
+            <param name="term">The term to find.</param>
+            <param name="frequency">When this method returns, contains the associated frequency if found; otherwise, 0.</param>
+            <returns><see langword="true"/> if the term exists; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.PruningRadixTree.ContainsKey(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Determines whether the tree contains a specific term.
+            </summary>
+            <param name="term">The term to locate.</param>
+            <returns><see langword="true"/> if the term exists; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.PruningRadixTree.GetTopTermsByPrefix(System.ReadOnlySpan{System.Char},System.Int32,System.Int64@,System.Boolean)">
+            <summary>
+            Gets the top terms for a given prefix, sorted by frequency descending.
+            </summary>
+            <param name="prefix">The prefix to search.</param>
+            <param name="topK">The maximum number of suggestions to return.</param>
+            <param name="prefixFrequency">
+            When this method returns, contains the exact frequency of <paramref name="prefix"/> if it is a stored term; otherwise, 0.
+            </param>
+            <param name="pruning">
+            <see langword="true"/> to prune non-promising branches using subtree metadata; otherwise, <see langword="false"/>.
+            </param>
+            <returns>A ranked list of matching terms.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="topK"/> is negative.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.PruningRadixTree.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through all terms in the tree.
+            </summary>
+            <returns>An enumerator for all stored terms and frequencies.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Collections.SkipList`1">
+            <summary>
+            Represents a sorted skip list that stores unique values.
+            </summary>
+            <typeparam name="T">The type of elements in the skip list.</typeparam>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.Collections.SkipList`1"/> class using <see cref="P:System.Collections.Generic.Comparer`1.Default"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.#ctor(System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.Collections.SkipList`1"/> class with a custom comparer.
+            </summary>
+            <param name="comparer">The comparer used to order elements.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.Collections.SkipList`1"/> class that contains elements copied from the specified collection.
+            </summary>
+            <param name="collection">The collection whose elements are copied to the new skip list.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.Collections.SkipList`1"/> class that contains elements copied from the specified collection and uses a custom comparer.
+            </summary>
+            <param name="collection">The collection whose elements are copied to the new skip list.</param>
+            <param name="comparer">The comparer used to order elements.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.SkipList`1.Count">
+            <summary>
+            Gets the number of elements contained in the skip list.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.SkipList`1.Comparer">
+            <summary>
+            Gets the comparer used to order elements.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.Add(`0)">
+            <summary>
+            Adds an element to the skip list if it does not already exist.
+            </summary>
+            <param name="item">The element to add.</param>
+            <returns><see langword="true"/> if the element was added; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.Remove(`0)">
+            <summary>
+            Removes the specified element from the skip list.
+            </summary>
+            <param name="item">The element to remove.</param>
+            <returns><see langword="true"/> if the element was removed; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.Contains(`0)">
+            <summary>
+            Determines whether the skip list contains a specific element.
+            </summary>
+            <param name="item">The element to locate.</param>
+            <returns><see langword="true"/> if the element is found; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.TryGetValue(`0,`0@)">
+            <summary>
+            Searches for an element equal to the specified value and returns the stored value when found.
+            </summary>
+            <param name="equalValue">The value to search for.</param>
+            <param name="actualValue">When this method returns, contains the matching value from the skip list, if found.</param>
+            <returns><see langword="true"/> if a matching element was found; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.Clear">
+            <summary>
+            Removes all elements from the skip list.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the elements of the skip list to an array, starting at the specified index.
+            </summary>
+            <param name="array">The destination array.</param>
+            <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the skip list.
+            </summary>
+            <returns>An enumerator for the skip list.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Collections.SkipList`1.Enumerator">
+            <summary>
+            Enumerates the elements of a <see cref="T:Meziantou.Framework.Collections.SkipList`1"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.Enumerator.Dispose">
+            <summary>
+            Releases all resources used by the enumerator.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Collections.SkipList`1.Enumerator.MoveNext">
+            <summary>
+            Advances the enumerator to the next element of the skip list.
+            </summary>
+            <returns><see langword="true"/> if the enumerator was successfully advanced; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="P:Meziantou.Framework.Collections.SkipList`1.Enumerator.Current">
+            <summary>
+            Gets the element in the skip list at the current position of the enumerator.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Collections.UnsafeListDictionary`2">
+            <summary>
+            This dictionary doesn't ensure the items are unique.
+            For instance, you can use it to create a list of values to serialize without spending time validating the items.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.ConcurrentQueueExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Collections.Concurrent.ConcurrentQueue`1"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.ConcurrentQueueExtensions.EnqueueRange``1(System.Collections.Concurrent.ConcurrentQueue{``0},``0[])">
+            <summary>Enqueues multiple items to the queue.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ConcurrentQueueExtensions.EnqueueRange``1(System.Collections.Concurrent.ConcurrentQueue{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>Enqueues all items from an enumerable to the queue.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ConcurrentQueueExtensions.EnqueueRange``1(System.Collections.Concurrent.ConcurrentQueue{``0},System.ReadOnlySpan{``0})">
+            <summary>Enqueues all items from a span to the queue.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Country">
+            <summary>Provides utilities for working with countries and region information.</summary>
+            <example>
+            <code>
+            var region = new RegionInfo("US");
+            string flag = Country.GetUnicodeFlag(region); // Returns "🇺🇸"
+            string flag2 = Country.GetUnicodeFlag("FR"); // Returns "🇫🇷"
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.Country.GetUnicodeFlag(System.Globalization.RegionInfo)">
+            <summary>Gets the Unicode flag emoji for the specified region.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Country.GetUnicodeFlag(System.String)">
+            <summary>Gets the Unicode flag emoji for the specified two-letter ISO region code.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.CultureInfoUtilities">
+            <summary>
+            Provides utility methods for working with <see cref="T:System.Globalization.CultureInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.CultureInfoUtilities.SetCurrentThreadCulture(System.Globalization.CultureInfo)">
+            <summary>Sets the current thread's culture and UI culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.CultureInfoUtilities.UseCulture(System.Globalization.CultureInfo,System.Action)">
+            <summary>Executes an action with a temporary culture, then restores the original culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.CultureInfoUtilities.UseCulture(System.String,System.Action)">
+            <summary>Executes an action with a temporary culture specified by name, then restores the original culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.CultureInfoUtilities.UseCulture``1(System.Globalization.CultureInfo,System.Func{``0})">
+            <summary>Executes a function with a temporary culture, then restores the original culture and returns the result.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.CultureInfoUtilities.UseCulture``1(System.String,System.Func{``0})">
+            <summary>Executes a function with a temporary culture specified by name, then restores the original culture and returns the result.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.CultureInfoUtilities.GetCulture(System.String)">
+            <summary>Gets a culture by name or LCID, returning null if not found.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.CultureInfoUtilities.GetNeutralCulture(System.Globalization.CultureInfo)">
+            <summary>Gets the neutral culture for a specific culture (e.g., "en" for "en-US").</summary>
+        </member>
+        <member name="M:Meziantou.Framework.CultureInfoUtilities.NeutralEquals(System.Globalization.CultureInfo,System.Globalization.CultureInfo)">
+            <summary>Determines whether two cultures have the same neutral culture.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.CustomAttributeExtensions">
+            <summary>Provides extension methods for checking custom attributes on reflection types.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute``1(System.Type)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the type.</summary>
+            <typeparam name="T">The type of attribute to search for.</typeparam>
+            <param name="type">The type to check.</param>
+            <returns><see langword="true"/> if the attribute is applied to the type; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute``1(System.Type,System.Boolean)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the type.</summary>
+            <typeparam name="T">The type of attribute to search for.</typeparam>
+            <param name="type">The type to check.</param>
+            <param name="inherit"><see langword="true"/> to search the type's inheritance chain to find the attributes; otherwise, <see langword="false"/>.</param>
+            <returns><see langword="true"/> if the attribute is applied to the type; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute(System.Type,System.Type)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the type.</summary>
+            <param name="type">The type to check.</param>
+            <param name="attributeType">The type of attribute to search for.</param>
+            <returns><see langword="true"/> if the attribute is applied to the type; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute(System.Type,System.Type,System.Boolean)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the type.</summary>
+            <param name="type">The type to check.</param>
+            <param name="attributeType">The type of attribute to search for.</param>
+            <param name="inherit"><see langword="true"/> to search the type's inheritance chain to find the attributes; otherwise, <see langword="false"/>.</param>
+            <returns><see langword="true"/> if the attribute is applied to the type; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute``1(System.Reflection.Assembly)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the assembly.</summary>
+            <typeparam name="T">The type of attribute to search for.</typeparam>
+            <param name="assembly">The assembly to check.</param>
+            <returns><see langword="true"/> if the attribute is applied to the assembly; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute``1(System.Reflection.Assembly,System.Boolean)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the assembly.</summary>
+            <typeparam name="T">The type of attribute to search for.</typeparam>
+            <param name="assembly">The assembly to check.</param>
+            <param name="inherit">This parameter is ignored for assemblies.</param>
+            <returns><see langword="true"/> if the attribute is applied to the assembly; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute(System.Reflection.Assembly,System.Type)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the assembly.</summary>
+            <param name="assembly">The assembly to check.</param>
+            <param name="attributeType">The type of attribute to search for.</param>
+            <returns><see langword="true"/> if the attribute is applied to the assembly; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the assembly.</summary>
+            <param name="assembly">The assembly to check.</param>
+            <param name="attributeType">The type of attribute to search for.</param>
+            <param name="inherit">This parameter is ignored for assemblies.</param>
+            <returns><see langword="true"/> if the attribute is applied to the assembly; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute``1(System.Reflection.Module)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the module.</summary>
+            <typeparam name="T">The type of attribute to search for.</typeparam>
+            <param name="module">The module to check.</param>
+            <returns><see langword="true"/> if the attribute is applied to the module; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute``1(System.Reflection.Module,System.Boolean)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the module.</summary>
+            <typeparam name="T">The type of attribute to search for.</typeparam>
+            <param name="module">The module to check.</param>
+            <param name="inherit">This parameter is ignored for modules.</param>
+            <returns><see langword="true"/> if the attribute is applied to the module; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute(System.Reflection.Module,System.Type)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the module.</summary>
+            <param name="module">The module to check.</param>
+            <param name="attributeType">The type of attribute to search for.</param>
+            <returns><see langword="true"/> if the attribute is applied to the module; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the module.</summary>
+            <param name="module">The module to check.</param>
+            <param name="attributeType">The type of attribute to search for.</param>
+            <param name="inherit">This parameter is ignored for modules.</param>
+            <returns><see langword="true"/> if the attribute is applied to the module; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute``1(System.Reflection.MemberInfo)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the member.</summary>
+            <typeparam name="T">The type of attribute to search for.</typeparam>
+            <param name="member">The member to check.</param>
+            <returns><see langword="true"/> if the attribute is applied to the member; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute``1(System.Reflection.MemberInfo,System.Boolean)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the member.</summary>
+            <typeparam name="T">The type of attribute to search for.</typeparam>
+            <param name="member">The member to check.</param>
+            <param name="inherit"><see langword="true"/> to search the member's inheritance chain to find the attributes; otherwise, <see langword="false"/>.</param>
+            <returns><see langword="true"/> if the attribute is applied to the member; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute(System.Reflection.MemberInfo,System.Type)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the member.</summary>
+            <param name="member">The member to check.</param>
+            <param name="attributeType">The type of attribute to search for.</param>
+            <returns><see langword="true"/> if the attribute is applied to the member; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the member.</summary>
+            <param name="member">The member to check.</param>
+            <param name="attributeType">The type of attribute to search for.</param>
+            <param name="inherit"><see langword="true"/> to search the member's inheritance chain to find the attributes; otherwise, <see langword="false"/>.</param>
+            <returns><see langword="true"/> if the attribute is applied to the member; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute``1(System.Reflection.ParameterInfo)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the parameter.</summary>
+            <typeparam name="T">The type of attribute to search for.</typeparam>
+            <param name="parameter">The parameter to check.</param>
+            <returns><see langword="true"/> if the attribute is applied to the parameter; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute``1(System.Reflection.ParameterInfo,System.Boolean)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the parameter.</summary>
+            <typeparam name="T">The type of attribute to search for.</typeparam>
+            <param name="parameter">The parameter to check.</param>
+            <param name="inherit"><see langword="true"/> to search the parameter's inheritance chain to find the attributes; otherwise, <see langword="false"/>.</param>
+            <returns><see langword="true"/> if the attribute is applied to the parameter; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute(System.Reflection.ParameterInfo,System.Type)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the parameter.</summary>
+            <param name="parameter">The parameter to check.</param>
+            <param name="attributeType">The type of attribute to search for.</param>
+            <returns><see langword="true"/> if the attribute is applied to the parameter; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.CustomAttributeExtensions.HasCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)">
+            <summary>Determines whether a custom attribute of the specified type is applied to the parameter.</summary>
+            <param name="parameter">The parameter to check.</param>
+            <param name="attributeType">The type of attribute to search for.</param>
+            <param name="inherit"><see langword="true"/> to search the parameter's inheritance chain to find the attributes; otherwise, <see langword="false"/>.</param>
+            <returns><see langword="true"/> if the attribute is applied to the parameter; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.DataAnnotations.AbsoluteUriAttribute">
+            <summary>Validates that a string property contains an absolute URI.</summary>
+            <example>
+            <code>
+            public class MyModel
+            {
+                [AbsoluteUri]
+                public string? Url { get; set; }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.DataAnnotations.ValidateCollectionItemsAttribute">
+            <summary>Validates each item in a collection by running validation on each item.</summary>
+            <example>
+            <code>
+            public class MyModel
+            {
+                [ValidateCollectionItems]
+                public List&lt;ChildModel&gt;? Items { get; set; }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.DateTimeExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.DateTime"/> to perform common date manipulations.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DateTimeExtensions.StartOfWeek(System.DateTime)">
+            <summary>Returns the start of the week for the specified date using the current culture's first day of week.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DateTimeExtensions.StartOfWeek(System.DateTime,System.DayOfWeek)">
+            <summary>Returns the start of the week for the specified date using the specified first day of week.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DateTimeExtensions.StartOfMonth(System.DateTime)">
+            <summary>Returns the first day of the month for the specified date at midnight.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DateTimeExtensions.StartOfMonth(System.DateTime,System.Boolean)">
+            <summary>Returns the first day of the month for the specified date, optionally keeping the time component.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DateTimeExtensions.EndOfMonth(System.DateTime)">
+            <summary>Returns the last day of the month for the specified date at midnight.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DateTimeExtensions.StartOfYear(System.DateTime)">
+            <summary>Returns the first day of the year for the specified date at midnight.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DateTimeExtensions.StartOfYear(System.DateTime,System.Boolean)">
+            <summary>Returns the first day of the year for the specified date, optionally keeping the time component.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DateTimeExtensions.TruncateMilliseconds(System.DateTime)">
+            <summary>Returns a new DateTime with the milliseconds component set to zero.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DebounceExtensions">
+            <summary>
+            Provides extension methods to debounce <see cref="T:System.Action"/> delegates so that they are only invoked
+            after a specified interval has elapsed without a new call.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce(System.Action,System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce(System.Action,System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``1(System.Action{``0},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``1(System.Action{``0},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``2(System.Action{``0,``1},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``2(System.Action{``0,``1},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``3(System.Action{``0,``1,``2},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``3(System.Action{``0,``1,``2},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``4(System.Action{``0,``1,``2,``3},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``4(System.Action{``0,``1,``2,``3},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``5(System.Action{``0,``1,``2,``3,``4},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``5(System.Action{``0,``1,``2,``3,``4},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``6(System.Action{``0,``1,``2,``3,``4,``5},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``6(System.Action{``0,``1,``2,``3,``4,``5},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``7(System.Action{``0,``1,``2,``3,``4,``5,``6},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``7(System.Action{``0,``1,``2,``3,``4,``5,``6},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``8(System.Action{``0,``1,``2,``3,``4,``5,``6,``7},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <typeparam name="T7">The type of the parameter 7 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``8(System.Action{``0,``1,``2,``3,``4,``5,``6,``7},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <typeparam name="T7">The type of the parameter 7 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``9(System.Action{``0,``1,``2,``3,``4,``5,``6,``7,``8},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <typeparam name="T7">The type of the parameter 7 of the action.</typeparam>
+            <typeparam name="T8">The type of the parameter 8 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DebounceExtensions.Debounce``9(System.Action{``0,``1,``2,``3,``4,``5,``6,``7,``8},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is only invoked once <paramref name="interval"/>
+            has elapsed since the last call. If the returned delegate is called again before the interval elapses,
+            the timer is reset and only the most recent call is executed.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <typeparam name="T7">The type of the parameter 7 of the action.</typeparam>
+            <typeparam name="T8">The type of the parameter 8 of the action.</typeparam>
+            <param name="action">The action to debounce.</param>
+            <param name="interval">The amount of time to wait after the last call before invoking <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A debounced delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.DeterministicGuid">
+            <summary>
+            Provides methods for generating deterministic (version 3 and version 5) GUIDs according to <see href="https://www.ietf.org/rfc/rfc4122.txt">RFC 4122</see>.
+            </summary>
+            <example>
+            <code>
+            // Generate a GUID from a DNS name
+            var guid = DeterministicGuid.Create(DeterministicGuid.DnsNamespace, "example.com", DeterministicGuidVersion.Version5);
+            // The same input will always generate the same GUID
+            var guid2 = DeterministicGuid.Create(DeterministicGuid.DnsNamespace, "example.com", DeterministicGuidVersion.Version5);
+            Assert.Equal(guid, guid2);
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.DeterministicGuid.DnsNamespace">
+            <summary>Gets the DNS namespace UUID as defined in RFC 4122.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DeterministicGuid.UrlNamespace">
+            <summary>Gets the URL namespace UUID as defined in RFC 4122.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DeterministicGuid.OidNamespace">
+            <summary>Gets the ISO OID namespace UUID as defined in RFC 4122.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DeterministicGuid.X500Namespace">
+            <summary>Gets the X.500 Distinguished Name namespace UUID as defined in RFC 4122.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DeterministicGuid.Create(System.Guid,System.String,Meziantou.Framework.DeterministicGuidVersion)">
+            <summary>Creates a deterministic GUID from a namespace and name using the specified version.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DeterministicGuid.Create(System.Guid,System.ReadOnlySpan{System.Byte},Meziantou.Framework.DeterministicGuidVersion)">
+            <summary>Creates a deterministic GUID from a namespace and name bytes using the specified version.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DeterministicGuidVersion">
+            <summary>Specifies the version of the deterministic GUID generation algorithm.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DeterministicGuidVersion.Version3">
+            <summary>UUID version 3 using MD5 hashing.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DeterministicGuidVersion.Version5">
+            <summary>UUID version 5 using SHA-1 hashing.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DictionaryExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Collections.Generic.Dictionary`2"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DictionaryExtensions.GetOrAdd``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <summary>Gets the value associated with the specified key or adds it if it doesn't exist.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DictionaryExtensions.GetOrAdd``2(System.Collections.Generic.Dictionary{``0,``1},``0,System.Func{``0,``1})">
+            <summary>Gets the value associated with the specified key or adds it using the factory function if it doesn't exist.</summary>
+            <remarks>The key is only added once <paramref name="valueFactory"/> has returned, so a factory that throws leaves the dictionary unchanged.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DictionaryExtensions.TryUpdate``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <summary>Attempts to update the value associated with the specified key.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DictionaryExtensions.TryUpdate``2(System.Collections.Generic.Dictionary{``0,``1},``0,System.Func{``0,``1,``1})">
+            <summary>Attempts to update the value associated with the specified key using the factory function.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.EncodingExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Text.Encoding"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.EncodingExtensions.get_UTF8WithoutPreamble">
+            <inheritdoc cref="P:Meziantou.Framework.EncodingExtensions.&lt;G&gt;$A5D28129F600FD77FB6D3E157F75B0E3.UTF8WithoutPreamble"/>
+        </member>
+        <member name="P:Meziantou.Framework.EncodingExtensions.&lt;G&gt;$A5D28129F600FD77FB6D3E157F75B0E3.UTF8WithoutPreamble">
+            <summary>Gets a UTF-8 encoding without a byte order mark (BOM).</summary>
+        </member>
+        <member name="M:Meziantou.Framework.EnumerableExtensions.GetEnumerator``1(System.Collections.Generic.IEnumerator{``0})">
+            <summary>Allow to use the foreach keyword with an IEnumerator</summary>
+        </member>
+        <member name="M:Meziantou.Framework.EnumerableExtensions.GetAsyncEnumerator``1(System.Collections.Generic.IAsyncEnumerator{``0})">
+            <summary>Allow to use the foreach keyword with an IAsyncEnumerator</summary>
+        </member>
+        <member name="M:Meziantou.Framework.EnumerableExtensions.AsEnumerableOnce``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>Ensure the enumerable instance is enumerated only once.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.EnumeratorExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Collections.Generic.IEnumerator`1"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.EnumeratorExtensions.ToList``1(System.Collections.Generic.IEnumerator{``0})">
+            <summary>Creates a <see cref="T:System.Collections.Generic.List`1"/> from the remaining elements in an enumerator.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.EnumeratorExtensions.AsEnumerable``1(System.Collections.Generic.IEnumerator{``0})">
+            <summary>Wraps an enumerator as an enumerable.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.EnumExtensions.Parse``1(System.String,System.Boolean)">
+            <inheritdoc cref="M:Meziantou.Framework.EnumExtensions.&lt;G&gt;$1AEBB925A470955AA56007A9C9196757`1.Parse(System.String,System.Boolean)"/>
+        </member>
+        <member name="M:Meziantou.Framework.EnumExtensions.Parse``1(System.ReadOnlySpan{System.Char},System.Boolean)">
+            <inheritdoc cref="M:Meziantou.Framework.EnumExtensions.&lt;G&gt;$1AEBB925A470955AA56007A9C9196757`1.Parse(System.ReadOnlySpan{System.Char},System.Boolean)"/>
+        </member>
+        <member name="M:Meziantou.Framework.EnumExtensions.TryParse``1(System.String,System.Boolean,``0@)">
+            <inheritdoc cref="M:Meziantou.Framework.EnumExtensions.&lt;G&gt;$1AEBB925A470955AA56007A9C9196757`1.TryParse(System.String,System.Boolean,`0@)"/>
+        </member>
+        <member name="M:Meziantou.Framework.EnumExtensions.TryParse``1(System.ReadOnlySpan{System.Char},System.Boolean,``0@)">
+            <inheritdoc cref="M:Meziantou.Framework.EnumExtensions.&lt;G&gt;$1AEBB925A470955AA56007A9C9196757`1.TryParse(System.ReadOnlySpan{System.Char},System.Boolean,`0@)"/>
+        </member>
+        <member name="M:Meziantou.Framework.EnumExtensions.&lt;G&gt;$1AEBB925A470955AA56007A9C9196757`1.Parse(System.String,System.Boolean)">
+            <summary>
+            Converts the string representation of the name or numeric value of one or more enumerated constants specified by <typeparamref name="TEnum"/> to an equivalent enumerated object.
+            A parameter specifies whether the operation is case-insensitive.
+            </summary>
+            <param name="value">A string containing the name or value to convert.</param>
+            <param name="ignoreCase"><see langword="true"/> to ignore case; <see langword="false"/> to regard case.</param>
+            <returns><typeparamref name="TEnum"/> An object of type <typeparamref name="TEnum"/> whose value is represented by <paramref name="value"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><typeparamref name="TEnum"/> is not an <see cref="T:System.Enum"/> type</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="value"/> does not contain enumeration information</exception>
+        </member>
+        <member name="M:Meziantou.Framework.EnumExtensions.&lt;G&gt;$1AEBB925A470955AA56007A9C9196757`1.Parse(System.ReadOnlySpan{System.Char},System.Boolean)">
+            <summary>
+            Converts the span of chars representation of the name or numeric value of one or more enumerated constants specified by <typeparamref name="TEnum"/> to an equivalent enumerated object.
+            A parameter specifies whether the operation is case-insensitive.
+            </summary>
+            <param name="value">A span containing the name or value to convert.</param>
+            <param name="ignoreCase"><see langword="true"/> to ignore case; <see langword="false"/> to regard case.</param>
+            <returns><typeparamref name="TEnum"/> An object of type <typeparamref name="TEnum"/> whose value is represented by <paramref name="value"/>.</returns>
+            <exception cref="T:System.ArgumentException"><typeparamref name="TEnum"/> is not an <see cref="T:System.Enum"/> type</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="value"/> does not contain enumeration information</exception>
+        </member>
+        <member name="M:Meziantou.Framework.EnumExtensions.&lt;G&gt;$1AEBB925A470955AA56007A9C9196757`1.TryParse(System.String,System.Boolean,`0@)">
+            <summary>
+            Converts the string representation of the name or numeric value of one or more enumerated constants to an equivalent enumerated object.
+            A parameter specifies whether the operation is case-sensitive.
+            </summary>
+            <param name="value">The string representation of the name or numeric value of one or more enumerated constants.</param>
+            <param name="ignoreCase"><see langword="true"/> to ignore case; <see langword="false"/> to consider case.</param>
+            <param name="result">When this method returns <see langword="true"/>, an object containing an enumeration constant representing the parsed value.</param>
+            <returns><see langword="true"/> if the conversion succeeded; <see langword="false"/> otherwise.</returns>
+            <exception cref="T:System.ArgumentException"><typeparamref name="TEnum"/> is not an enumeration type</exception>
+        </member>
+        <member name="M:Meziantou.Framework.EnumExtensions.&lt;G&gt;$1AEBB925A470955AA56007A9C9196757`1.TryParse(System.ReadOnlySpan{System.Char},System.Boolean,`0@)">
+            <summary>
+            Converts the span of chars representation of the name or numeric value of one or more enumerated constants to an equivalent enumerated object.
+            A parameter specifies whether the operation is case-sensitive.
+            </summary>
+            <param name="value">The span representation of the name or numeric value of one or more enumerated constants.</param>
+            <param name="ignoreCase"><see langword="true"/> to ignore case; <see langword="false"/> to consider case.</param>
+            <param name="result">When this method returns <see langword="true"/>, an object containing an enumeration constant representing the parsed value.</param>
+            <returns><see langword="true"/> if the conversion succeeded; <see langword="false"/> otherwise.</returns>
+            <exception cref="T:System.ArgumentException"><typeparamref name="TEnum"/> is not an enumeration type</exception>
+        </member>
+        <member name="T:Meziantou.Framework.EnvironmentExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Environment"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.EnvironmentExtensions.GetRequiredEnvironmentVariable(System.String)">
+            <inheritdoc cref="M:Meziantou.Framework.EnvironmentExtensions.&lt;G&gt;$57DD63EC381B40E0D8049D1E01FA2D1C.GetRequiredEnvironmentVariable(System.String)"/>
+        </member>
+        <member name="M:Meziantou.Framework.EnvironmentExtensions.GetEnvironmentVariableOrDefault(System.String,System.String)">
+            <inheritdoc cref="M:Meziantou.Framework.EnvironmentExtensions.&lt;G&gt;$57DD63EC381B40E0D8049D1E01FA2D1C.GetEnvironmentVariableOrDefault(System.String,System.String)"/>
+        </member>
+        <member name="M:Meziantou.Framework.EnvironmentExtensions.&lt;G&gt;$57DD63EC381B40E0D8049D1E01FA2D1C.GetRequiredEnvironmentVariable(System.String)">
+            <summary>Gets the value of an environment variable, throwing an exception if it doesn't exist.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.EnvironmentExtensions.&lt;G&gt;$57DD63EC381B40E0D8049D1E01FA2D1C.GetEnvironmentVariableOrDefault(System.String,System.String)">
+            <summary>Gets the value of an environment variable or returns a default value if it doesn't exist.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.ExceptionExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Exception"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.ExceptionExtensions.ToString(System.Exception,System.Boolean)">
+            <summary>Converts the exception to a string representation, optionally including all inner exceptions.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.ExecutableFinder">
+            <summary>Provides methods to locate executables in the system PATH.</summary>
+            <example>
+            <code>
+            string? gitPath = ExecutableFinder.GetFullExecutablePath("git");
+            if (gitPath is not null)
+            {
+                Console.WriteLine($"Git found at: {gitPath}");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.ExecutableFinder.GetFullExecutablePath(System.String,System.String)">
+            <summary>Searches for an executable in the system PATH and returns its full path if found.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ExpressionExtensions.AndAlso``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Combines two expressions with a logical AND, properly rebinding parameters.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.ExpressionExtensions.OrElse``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Combines two expressions with a logical OR, properly rebinding parameters.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.ExpressionExtensions.Negate``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Negates an expression.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.FormattableExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.IFormattable"/> types to format values using the invariant culture.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.FormattableExtensions.ToStringInvariant``1(``0)">
+            <summary>Converts the value to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FormattableExtensions.ToStringInvariant``1(``0,System.String)">
+            <summary>Converts the value to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HashCodeExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.HashCode"/> to efficiently add multiple values.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HashCodeExtensions.AddValues``1(System.HashCode@,``0[],System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>Adds all values from an array to the hash code.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HashCodeExtensions.AddValues``1(System.HashCode@,System.ReadOnlySpan{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>Adds all values from a span to the hash code.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HashCodeExtensions.AddValues``1(System.HashCode@,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>Adds all values from an enumerable to the hash code.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.ICachedAsyncEnumerable`1">
+            <summary>Represents an async enumerable that caches its results to avoid re-enumeration of the underlying source.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.ICachedEnumerable`1">
+            <summary>Represents an enumerable that caches its results to avoid re-enumeration of the underlying source.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.IOUtilities.PathCreateDirectory(System.String)">
+            <summary>Makes sure a directory exists for a given file path.</summary>
+            <param name="filePath">The file path. Note this is not to be confused with the directory path. May not be null.</param>
+        </member>
+        <member name="M:Meziantou.Framework.IOUtilities.PathUnprotect(System.String)">
+            <summary>Unprotects the given file path.</summary>
+            <param name="path">The file path. May not be null.</param>
+        </member>
+        <member name="M:Meziantou.Framework.IOUtilities.ToValidFileName(System.String,System.String,System.String)">
+            <summary>Converts a text into a valid file name.</summary>
+            <param name="fileName">The file name.</param>
+            <param name="reservedNameFormat">The reserved format to use for reserved names. If null '_{0}_' will be used.</param>
+            <param name="reservedCharFormat">The reserved format to use for reserved characters. If null '_x{0}_' will be used.</param>
+            <returns>A valid file name.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.IOUtilities.IsSharingViolation(System.IO.IOException)">
+            <summary>Determines whether the specified exception is a sharing violation exception.</summary>
+            <param name="exception">The exception. May not be null.</param>
+            <returns>
+            <see langword="true"/> if the specified exception is a sharing violation exception; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="T:Meziantou.Framework.NumberExtensions">
+            <summary>Provides extension methods for numeric types.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.MakeSameSignAs(System.Decimal,System.Decimal)">
+            <summary>Returns the number with the same sign as the specified value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.MakeSameSignAs(System.Int32,System.Int32)">
+            <summary>Returns the number with the same sign as the specified value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.MakeSameSignAs(System.Int64,System.Int64)">
+            <summary>Returns the number with the same sign as the specified value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.MakeSameSignAs(System.Single,System.Single)">
+            <summary>Returns the number with the same sign as the specified value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.MakeSameSignAs(System.Double,System.Double)">
+            <summary>Returns the number with the same sign as the specified value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToEnglishOrdinal(System.Int32)">
+            <summary>Converts an integer to its English ordinal representation (e.g., 1st, 2nd, 3rd).</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToEnglishOrdinal(System.Int32,System.IFormatProvider)">
+            <summary>Converts an integer to its English ordinal representation using the specified format provider.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToFrenchOrdinal(System.Int32)">
+            <summary>Converts an integer to its French ordinal representation (e.g., 1er, 2e, 3e).</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToFrenchOrdinal(System.Int32,System.IFormatProvider)">
+            <summary>Converts an integer to its French ordinal representation using the specified format provider.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Byte)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Byte,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.SByte)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.SByte,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Int16)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Int16,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.UInt16)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.UInt16,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Int32)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Int32,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.UInt32)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.UInt32,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Int64)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Int64,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.UInt64)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.UInt64,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Half)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Half,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Single)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Single,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Double)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Double,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Decimal)">
+            <summary>Converts the number to its string representation using the invariant culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.NumberExtensions.ToStringInvariant(System.Decimal,System.String)">
+            <summary>Converts the number to its string representation using the invariant culture and the specified format.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.ProcessEntry">
+            <summary>Represents a process and its parent process relationship.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.ProcessEntry.ProcessId">
+            <summary>Gets the process identifier.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.ProcessEntry.ParentProcessId">
+            <summary>Gets the parent process identifier.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ProcessEntry.ToProcess">
+            <summary>Gets the <see cref="T:System.Diagnostics.Process"/> instance for this process entry.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.QueueExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Collections.Generic.Queue`1"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.QueueExtensions.EnqueueRange``1(System.Collections.Generic.Queue{``0},``0[])">
+            <summary>Enqueues multiple items to the queue.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QueueExtensions.EnqueueRange``1(System.Collections.Generic.Queue{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>Enqueues all items from an enumerable to the queue.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QueueExtensions.EnqueueRange``1(System.Collections.Generic.Queue{``0},System.ReadOnlySpan{``0})">
+            <summary>Enqueues all items from a span to the queue.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.RandomExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Random"/> to generate various types of random values.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextFromList``1(System.Random,``0[])">
+            <summary>Returns a random element from an array.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextFromList``1(System.Random,System.Collections.Generic.IList{``0})">
+            <summary>Returns a random element from a list.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextFromList``1(System.Random,System.Collections.Generic.ICollection{``0})">
+            <summary>Returns a random element from a collection.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextFromList``1(System.Random,System.ReadOnlySpan{``0})">
+            <summary>Returns a random element from a span.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextFromList``1(System.Random,System.ReadOnlyMemory{``0})">
+            <summary>Returns a random element from a memory.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextFromList``1(System.Random,System.Collections.Generic.IReadOnlyList{``0})">
+            <summary>Returns a random element from a read-only list.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextFromList``1(System.Random,System.Collections.Generic.IReadOnlyCollection{``0})">
+            <summary>Returns a random element from a read-only collection.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextBoolean(System.Random)">
+            <summary>Returns a random boolean value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextByte(System.Random,System.Byte,System.Byte)">
+            <summary>Returns a random byte value within the specified range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextSByte(System.Random,System.SByte,System.SByte)">
+            <summary>Returns a random signed byte value within the specified range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextDateTime(System.Random,System.DateTime,System.DateTime)">
+            <summary>Returns a random <see cref="T:System.DateTime"/> value within the specified range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextDouble(System.Random,System.Double,System.Double)">
+            <summary>Returns a random double value within the specified range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextInt16(System.Random,System.Int16,System.Int16)">
+            <summary>Returns a random 16-bit signed integer within the specified range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextInt32(System.Random,System.Int32,System.Int32)">
+            <summary>Returns a random 32-bit signed integer within the specified range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextInt64(System.Random,System.Int64,System.Int64)">
+            <summary>Returns a random 64-bit signed integer within the specified range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextSingle(System.Random,System.Single,System.Single)">
+            <summary>Returns a random single-precision floating point value within the specified range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextUInt16(System.Random,System.UInt16,System.UInt16)">
+            <summary>Returns a random 16-bit unsigned integer within the specified range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextUInt32(System.Random,System.UInt32,System.UInt32)">
+            <summary>Returns a random 32-bit unsigned integer within the specified range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextUInt64(System.Random,System.UInt64,System.UInt64)">
+            <summary>Returns a random 64-bit unsigned integer greater than or equal to <paramref name="min"/> and less than <paramref name="max"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextDecimal(System.Random,System.Decimal,System.Decimal)">
+            <summary>Returns a random decimal value greater than or equal to <paramref name="min"/> and less than <paramref name="max"/>.</summary>
+            <remarks>The value is derived from <see cref="M:System.Random.NextDouble"/>, so it carries the granularity of a double rather than that of a decimal.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextString(System.Random,System.Int32,System.String)">
+            <summary>Returns a random string of the specified length using characters from the provided character set.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RandomExtensions.NextString(System.Random,System.Int32,System.Int32,System.String)">
+            <summary>Returns a random string with length between the specified range using characters from the provided character set.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Range">
+            <summary>Provides factory methods for creating typed range instances.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Range.Create``1(``0,``0)">
+            <summary>Creates a range with the specified start and end values.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Range`1">
+            <summary>Represents a range of comparable values with support for various inclusion/exclusion boundary checks.</summary>
+            <example>
+            <code>
+            var range = new Range&lt;int&gt;(1, 10);
+            bool isInRange = range.IsInRangeInclusive(5); // true
+            bool isOutOfRange = range.IsInRangeInclusive(15); // false
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Range`1.From">
+            <summary>Gets the start value of the range.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Range`1.To">
+            <summary>Gets the end value of the range.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Range`1.IsInRangeInclusive(`0)">
+            <summary>Determines whether the specified value is within this range, inclusive of boundaries.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Range`1.IsInRangeExclusive(`0)">
+            <summary>Determines whether the specified value is within this range, exclusive of boundaries.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Range`1.IsInRangeLowerInclusive(`0)">
+            <summary>Determines whether the specified value is within this range, inclusive of the lower bound and exclusive of the upper bound.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Range`1.IsInRangeUpperInclusive(`0)">
+            <summary>Determines whether the specified value is within this range, exclusive of the lower bound and inclusive of the upper bound.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Range`1.IsInRangeInclusive(Meziantou.Framework.Range{`0})">
+            <summary>Determines whether the specified range is fully contained within this range, inclusive of boundaries.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Range`1.IsInRangeExclusive(Meziantou.Framework.Range{`0})">
+            <summary>Determines whether the specified range is fully contained within this range, exclusive of boundaries.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Range`1.IsInRangeLowerInclusive(Meziantou.Framework.Range{`0})">
+            <summary>Determines whether the specified range is fully contained within this range, inclusive of the lower bound and exclusive of the upper bound.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Range`1.IsInRangeUpperInclusive(Meziantou.Framework.Range{`0})">
+            <summary>Determines whether the specified range is fully contained within this range, exclusive of the lower bound and inclusive of the upper bound.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ReflectionUtilities.GetMethodLocation(System.Reflection.MethodInfo)">
+            <summary>Retrieves the source file path and the first sequence point for the specified method using portable PDB information if available.</summary>
+            <remarks>This method requires that the target assembly has an accessible portable PDBs (embedded or next to the dll). If the method
+            or its assembly does not meet this requirement, an exception is thrown. The returned sequence point typically
+            corresponds to the first executable line of the method in the source file.</remarks>
+            <param name="methodInfo">The reflection metadata for the method whose source location is to be determined.</param>
+            <returns>A tuple containing the source file path and the first sequence point for the method, or null if the assembly location is unavailable.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ReflectionUtilities.GetMethodLocationAsync(System.Reflection.MethodInfo)">
+            <summary>Retrieves the source file path and the first sequence point for the specified method using portable PDB information if available.</summary>
+            <remarks>This method requires that the target assembly has an accessible portable PDBs (embedded or next to the dll). If the method
+            or its assembly does not meet this requirement, an exception is thrown. The returned sequence point typically
+            corresponds to the first executable line of the method in the source file.</remarks>
+            <param name="methodInfo">The reflection metadata for the method whose source location is to be determined.</param>
+            <returns>A tuple containing the source file path and the first sequence point for the method, or null if the assembly location is unavailable.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.RegexExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Text.RegularExpressions.Regex"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.RegexExtensions.ReplaceAsync(System.Text.RegularExpressions.Regex,System.String,System.Func{System.Text.RegularExpressions.Match,System.Threading.Tasks.Task{System.String}})">
+            <summary>Replaces all matches in the input string using an asynchronous replacement function.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.RestrictedStream">
+            <summary>A wrapper stream that restricts access to specific operations based on configured options.</summary>
+            <param name="stream">The underlying stream to wrap.</param>
+            <param name="options">The options that control which operations are allowed.</param>
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.#ctor(System.IO.Stream,Meziantou.Framework.RestrictedStreamOptions)">
+            <summary>A wrapper stream that restricts access to specific operations based on configured options.</summary>
+            <param name="stream">The underlying stream to wrap.</param>
+            <param name="options">The options that control which operations are allowed.</param>
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStream.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStream.CanSeek">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStream.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStream.Length">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStream.Position">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.Flush">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.SetLength(System.Int64)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.CopyTo(System.IO.Stream,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.CopyToAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.DisposeAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.EndRead(System.IAsyncResult)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.EndWrite(System.IAsyncResult)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.Read(System.Span{System.Byte})">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.ReadAsync(System.Memory{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.ReadByte">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.Write(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.WriteAsync(System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.RestrictedStream.WriteByte(System.Byte)">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.RestrictedStreamOptions">
+            <summary>
+            Specifies options for controlling which operations are allowed on a <see cref="T:Meziantou.Framework.RestrictedStream"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStreamOptions.AllowSynchronousCalls">
+            <summary>Gets or sets a value indicating whether synchronous operations are allowed on the stream.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStreamOptions.AllowAsynchronousCalls">
+            <summary>Gets or sets a value indicating whether asynchronous operations are allowed on the stream.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStreamOptions.AllowReading">
+            <summary>Gets or sets a value indicating whether reading operations are allowed on the stream.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStreamOptions.AllowWriting">
+            <summary>Gets or sets a value indicating whether writing operations are allowed on the stream.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStreamOptions.AllowSeeking">
+            <summary>Gets or sets a value indicating whether seeking operations are allowed on the stream.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RestrictedStreamOptions.MaxReadLength">
+            <summary>Gets or sets the maximum number of bytes that can be read per read operation. A negative value or 0 means no limit.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.SafeHandleExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Runtime.InteropServices.SafeHandle"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.SafeHandleExtensions.CreateHandleScope(System.Runtime.InteropServices.SafeHandle)">
+            <summary>Creates a scope that safely increments and decrements the reference count of a safe handle.</summary>
+            <example>
+            <code>
+            using var scope = safeHandle.CreateHandleScope();
+            nint handle = scope.Value;
+            // Use handle safely
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.SafeHandleValue">
+            <summary>
+            A disposable struct that safely holds a reference to a <see cref="T:System.Runtime.InteropServices.SafeHandle"/> and its underlying handle value.
+            Automatically increments the reference count on creation and decrements it on disposal.
+            </summary>
+            <example>
+            <code>
+            using var scope = safeHandle.CreateHandleScope();
+            nint handle = scope.Value;
+            // Use handle safely
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.SafeHandleValue.HasValue">
+            <summary>Gets a value indicating whether the handle has a valid value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.SafeHandleValue.Value">
+            <summary>Gets the underlying handle value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.ShortName">
+            <summary>A utility class to compute unique short names for a given collection of names.</summary>
+            <example>
+            <code>
+            // Create short names for a collection
+            var names = new[] { "CustomerName", "CustomerNumber", "CustomerAddress" };
+            var shortNames = ShortName.Create(names, maxLength: 5);
+            // Result: { "CustomerName" = "Custo", "CustomerNumber" = "Custo0", "CustomerAddress" = "Custo1" }
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.ShortName.Create(System.Collections.Generic.ISet{System.String},System.Int32,System.String)">
+            <summary>Create a short name, making sure it does not collide with an existing collection of short names.</summary>
+            <param name="shortNames">The set of existing short names.</param>
+            <param name="maxLength">Maximum length of computed short name.</param>
+            <param name="name">The name to shorten.</param>
+            <returns>A string representing the short name; <see langword="null"/> if the short name cannot be created</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ShortName.Create(System.Collections.Generic.IEnumerable{System.String},System.Int32,System.String)">
+            <summary>Create a short name, making sure it does not collide with an existing collection of short names.</summary>
+            <param name="shortNames">The list of existing short names.</param>
+            <param name="maxLength">Maximum length of computed short name.</param>
+            <param name="name">The shorten name.</param>
+            <returns>A string representing the short name; <see langword="null"/> if the short name cannot be created</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ShortName.Create(System.Collections.Generic.IReadOnlyCollection{System.String},System.Int32)">
+            <summary>Builds a short names collection.</summary>
+            <param name="names">The input collection of names to shorten. May not be null.</param>
+            <param name="maxLength">Maximum length of computed short names.</param>
+            <returns>A dictionary of shorten names</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ShortName.Create(System.Collections.Generic.IReadOnlyCollection{System.String},System.Int32,System.Collections.Generic.IEqualityComparer{System.String})">
+            <summary>Builds a short names collection.</summary>
+            <param name="names">The input collection of names to shorten. May not be null.</param>
+            <param name="maxLength">Maximum length of computed short names.</param>
+            <param name="comparer">Comparer use to compare short names</param>
+            <returns>A dictionary of shorten names</returns>
+        </member>
+        <member name="T:Meziantou.Framework.SpanExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Span`1"/>, arrays, and lists.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.StreamExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.IO.Stream"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.StreamExtensions.TryReadAll(System.IO.Stream,System.Byte[],System.Int32,System.Int32)">
+            <summary>Attempts to read all requested bytes from the stream into the buffer.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.StreamExtensions.TryReadAll(System.IO.Stream,System.Span{System.Byte})">
+            <summary>Attempts to read all requested bytes from the stream into the buffer span.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.StreamExtensions.TryReadAllAsync(System.IO.Stream,System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>Asynchronously attempts to read all requested bytes from the stream into the buffer.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.StreamExtensions.TryReadAllAsync(System.IO.Stream,System.Memory{System.Byte},System.Threading.CancellationToken)">
+            <summary>Asynchronously attempts to read all requested bytes from the stream into the buffer memory.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.StreamExtensions.ReadToEnd(System.IO.Stream)">
+            <summary>Reads all remaining bytes from the stream.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.StreamExtensions.ReadToEndAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>Asynchronously reads all remaining bytes from the stream.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.StreamExtensions.ToMemoryStreamAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>Asynchronously copies the stream to a new <see cref="T:System.IO.MemoryStream"/> and returns it positioned at the beginning.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.StringExtensions.RemoveSuffix(System.String,System.String)">
+            <summary>Removes the trailing occurrence of a specified string from the current string.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.StringExtensions.RemoveSuffix(System.String,System.String,System.StringComparison)">
+            <summary>Removes the trailing occurrence of a specified string from the current string.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.StringExtensions.RemovePrefix(System.String,System.String)">
+            <summary>Removes the leading occurrence of a specified string from the current string.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.StringExtensions.RemovePrefix(System.String,System.String,System.StringComparison)">
+            <summary>Removes the leading occurrence of a specified string from the current string.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.LineBreakMode">
+            <summary>
+            Specifies which line break characters are recognized by <c>SplitLines</c>.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.LineBreakMode.Standard">
+            <summary>
+            Uses only CR (<c>\r</c>) and LF (<c>\n</c>) line breaks.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.LineBreakMode.Unicode">
+            <summary>
+            Uses Unicode line breaks: CR (<c>\r</c>), LF (<c>\n</c>), NEL (<c>\u0085</c>), LS (<c>\u2028</c>), and PS (<c>\u2029</c>).
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.LineBreakMode.UnicodeWithLegacyControls">
+            <summary>
+            Uses Unicode line breaks and legacy control characters VT (<c>\v</c>) and FF (<c>\f</c>).
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.Hamming(System.UInt32,System.UInt32)">
+            <summary>Compute the <see href="http://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</see>.</summary>
+            <param name="word1"> The first word.</param>
+            <param name="word2"> The second word.</param>
+            <returns> The hamming distance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.Hamming(System.String,System.String)">
+            <summary>Compute the <see href="http://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</see>.</summary>
+            <param name="word1">The first word.</param>
+            <param name="word2">The second word.</param>
+            <exception cref="T:System.ArgumentException">Lists must have the same length.</exception>
+            <returns> The hamming distance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.Hamming``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>Compute the <see href="http://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</see>.</summary>
+            <typeparam name="T">Type of elements.</typeparam>
+            <param name="word1">The first list.</param>
+            <param name="word2">The second most.</param>
+            <exception cref="T:System.ArgumentException">Lists must have the same length.</exception>
+            <returns> The hamming distance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.Levenshtein(System.String,System.String)">
+            <summary>Compute the <see href="http://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</see>.</summary>
+            <param name="word1"> The first word.</param>
+            <param name="word2"> The second word.</param>
+            <returns> The Levenshtein distance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.Levenshtein(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <summary>Compute the <see href="http://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</see>.</summary>
+            <param name="word1">The first word.</param>
+            <param name="word2">The second word.</param>
+            <returns>The Levenshtein distance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.Levenshtein(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Int32)">
+            <summary>Compute the <see href="http://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</see> with a maximum distance threshold.</summary>
+            <param name="word1">The first word.</param>
+            <param name="word2">The second word.</param>
+            <param name="maxDistance">Maximum accepted distance. If the computed distance is greater, this method returns <c>maxDistance + 1</c>.</param>
+            <returns>The Levenshtein distance, or <c>maxDistance + 1</c> when the distance is greater than <paramref name="maxDistance"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.LevenshteinBatch(System.String,System.Collections.Generic.IReadOnlyList{System.String},System.Int32)">
+            <summary>Compute Levenshtein distance between one word and multiple candidates.</summary>
+            <param name="word">Word used as reference.</param>
+            <param name="candidates">Candidate words.</param>
+            <param name="maxDegreeOfParallelism">Maximum number of worker threads, or <c>-1</c> for default.</param>
+            <returns>An array containing one distance per candidate.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.Soundex(System.String,System.Collections.Generic.IReadOnlyDictionary{System.Char,System.Byte},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Char})">
+            <summary>Compute the soundex of a string.</summary>
+            <param name="s"> The string.</param>
+            <param name="dic"> Dictionary containing value of characters.</param>
+            <param name="replace"> List of replacement to do before computing the soundex.</param>
+            <returns> The soundex.</returns>
+            <exception cref="T:System.ArgumentException">Dictionary does not contain character a character of the string <paramref name="s" /></exception>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.Soundex2(System.String)">
+            <summary>Compute an improved French soundex.</summary>
+            <param name="s"> The string. </param>
+            <returns> The soundex. </returns>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.SoundexEnglish(System.String)">
+            <summary>Compute English soundex.</summary>
+            <param name="s"> The string. </param>
+            <returns> The soundex. </returns>
+        </member>
+        <member name="M:Meziantou.Framework.StringSearchUtilities.SoundexFrench(System.String)">
+            <summary>Compute French soundex.</summary>
+            <param name="s"> The string. </param>
+            <returns> The soundex. </returns>
+        </member>
+        <member name="T:Meziantou.Framework.ThrottleExtensions">
+            <summary>
+            Provides extension methods to throttle <see cref="T:System.Action"/> delegates so that they are invoked at most
+            once per specified interval, regardless of how many times the returned delegate is called.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle(System.Action,System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle(System.Action,System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``1(System.Action{``0},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``1(System.Action{``0},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``2(System.Action{``0,``1},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``2(System.Action{``0,``1},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``3(System.Action{``0,``1,``2},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``3(System.Action{``0,``1,``2},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``4(System.Action{``0,``1,``2,``3},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``4(System.Action{``0,``1,``2,``3},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``5(System.Action{``0,``1,``2,``3,``4},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``5(System.Action{``0,``1,``2,``3,``4},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``6(System.Action{``0,``1,``2,``3,``4,``5},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``6(System.Action{``0,``1,``2,``3,``4,``5},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``7(System.Action{``0,``1,``2,``3,``4,``5,``6},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``7(System.Action{``0,``1,``2,``3,``4,``5,``6},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``8(System.Action{``0,``1,``2,``3,``4,``5,``6,``7},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <typeparam name="T7">The type of the parameter 7 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``8(System.Action{``0,``1,``2,``3,``4,``5,``6,``7},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <typeparam name="T7">The type of the parameter 7 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``9(System.Action{``0,``1,``2,``3,``4,``5,``6,``7,``8},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <typeparam name="T7">The type of the parameter 7 of the action.</typeparam>
+            <typeparam name="T8">The type of the parameter 8 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``9(System.Action{``0,``1,``2,``3,``4,``5,``6,``7,``8},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <typeparam name="T7">The type of the parameter 7 of the action.</typeparam>
+            <typeparam name="T8">The type of the parameter 8 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``10(System.Action{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9},System.TimeSpan)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <typeparam name="T7">The type of the parameter 7 of the action.</typeparam>
+            <typeparam name="T8">The type of the parameter 8 of the action.</typeparam>
+            <typeparam name="T9">The type of the parameter 9 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ThrottleExtensions.Throttle``10(System.Action{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9},System.TimeSpan,System.TimeProvider)">
+            <summary>
+            Wraps the specified <paramref name="action"/> so that it is invoked at most once per <paramref name="interval"/>.
+            The first call schedules an invocation after the interval using the most recent arguments; calls made while
+            an invocation is pending are ignored except for updating the arguments.
+            </summary>
+            <typeparam name="T0">The type of the parameter 0 of the action.</typeparam>
+            <typeparam name="T1">The type of the parameter 1 of the action.</typeparam>
+            <typeparam name="T2">The type of the parameter 2 of the action.</typeparam>
+            <typeparam name="T3">The type of the parameter 3 of the action.</typeparam>
+            <typeparam name="T4">The type of the parameter 4 of the action.</typeparam>
+            <typeparam name="T5">The type of the parameter 5 of the action.</typeparam>
+            <typeparam name="T6">The type of the parameter 6 of the action.</typeparam>
+            <typeparam name="T7">The type of the parameter 7 of the action.</typeparam>
+            <typeparam name="T8">The type of the parameter 8 of the action.</typeparam>
+            <typeparam name="T9">The type of the parameter 9 of the action.</typeparam>
+            <param name="action">The action to throttle.</param>
+            <param name="interval">The minimum amount of time between invocations of <paramref name="action"/>.</param>
+            <param name="timeProvider">The <see cref="T:System.TimeProvider"/> used to measure the <paramref name="interval"/>.</param>
+            <returns>A throttled delegate that wraps <paramref name="action"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> or <paramref name="timeProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.TupleExtensions">
+            <summary>Provides extension methods for tuple types.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.TupleExtensions.ToArray``1(``0)">
+            <summary>Converts a tuple to an array of objects.</summary>
+            <example>
+            <code>
+            var tuple = (1, "hello", true);
+            object?[] array = tuple.ToArray(); // [1, "hello", true]
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.UriExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Uri"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.UriExtensions.IsHttpOrHttps(System.Uri)">
+            <summary>Determines whether the URI uses the HTTP or HTTPS scheme.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.X509CertificateExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.X509CertificateExtensions.get_NotAfterUtc(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <inheritdoc cref="P:Meziantou.Framework.X509CertificateExtensions.&lt;G&gt;$3F3B0651449E0C09C68CB6B4A73AF8FA.NotAfterUtc"/>
+        </member>
+        <member name="M:Meziantou.Framework.X509CertificateExtensions.get_NotBeforeUtc(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <inheritdoc cref="P:Meziantou.Framework.X509CertificateExtensions.&lt;G&gt;$3F3B0651449E0C09C68CB6B4A73AF8FA.NotBeforeUtc"/>
+        </member>
+        <member name="P:Meziantou.Framework.X509CertificateExtensions.&lt;G&gt;$3F3B0651449E0C09C68CB6B4A73AF8FA.NotAfterUtc">
+            <summary>Gets the certificate validity end date in UTC.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.X509CertificateExtensions.&lt;G&gt;$3F3B0651449E0C09C68CB6B4A73AF8FA.NotBeforeUtc">
+            <summary>Gets the certificate validity start date in UTC.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+        <member name="P:Windows.Win32.Foundation.__CHAR_260.Length">
+            <summary>The length of the inline array.</summary>
+        </member>
+        <member name="M:Windows.Win32.Foundation.__CHAR_260.AsSpan">
+            <summary>
+            Gets this inline array as a span.
+            </summary>
+            <remarks>
+            ⚠ Important ⚠: When this struct is on the stack, do not let the returned span outlive the stack frame that defines it.
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.Foundation.__CHAR_260.AsReadOnlySpan">
+            <summary>
+            Gets this inline array as a span.
+            </summary>
+            <remarks>
+            ⚠ Important ⚠: When this struct is on the stack, do not let the returned span outlive the stack frame that defines it.
+            </remarks>
+        </member>
+        <member name="T:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32">
+            <summary>The PROCESSENTRY32 (tlhelp32.h) structure describes an entry from a list of the processes residing in the system address space when a snapshot was taken.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32.dwSize">
+            <summary>
+            <para>The size of the structure, in bytes. Before calling the <a href="https://docs.microsoft.com/windows/desktop/api/tlhelp32/nf-tlhelp32-process32first">Process32First</a> function, set this member to <c>sizeof(PROCESSENTRY32)</c>. If you do not initialize <b>dwSize</b>, <b>Process32First</b> fails.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32.cntUsage">
+            <summary>This member is no longer used and is always set to zero.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32.th32ProcessID">
+            <summary>The process identifier.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32.th32DefaultHeapID">
+            <summary>This member is no longer used and is always set to zero.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32.th32ModuleID">
+            <summary>This member is no longer used and is always set to zero.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32.cntThreads">
+            <summary>The number of execution threads started by the process.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32.th32ParentProcessID">
+            <summary>The identifier of the process that created this process (its parent process).</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32.pcPriClassBase">
+            <summary>The base priority of any threads created by this process.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32.dwFlags">
+            <summary>This member is no longer used and is always set to zero.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32.szExeFile">
+            <summary>The name of the executable file for the process. To retrieve the full path to the executable file, call the <a href="https://docs.microsoft.com/windows/desktop/api/tlhelp32/nf-tlhelp32-module32first">Module32First</a> function and check the <b>szExePath</b> member of the <a href="https://docs.microsoft.com/windows/desktop/api/tlhelp32/ns-tlhelp32-moduleentry32">MODULEENTRY32</a> structure that is returned. However, if the calling process is a 32-bit process, you must call the <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-queryfullprocessimagenamea">QueryFullProcessImageName</a> function to retrieve the full path of the executable file for a 64-bit process.</summary>
+        </member>
+        <member name="T:Windows.Win32.PInvoke">
+            <content>
+            Contains extern methods from "KERNEL32.dll".
+            </content>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.CloseHandle(Windows.Win32.Foundation.HANDLE)">
+            <summary>Closes an open object handle.</summary>
+            <param name="hObject">A valid handle to an open object.</param>
+            <returns>
+            <para>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>. If the application is running under a debugger,  the function will throw an exception if it receives either a  handle value that is not valid  or a pseudo-handle value. This can happen if you close a handle twice, or if you  call <b>CloseHandle</b> on a handle returned by the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findfirstfilea">FindFirstFile</a> function instead of calling the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findclose">FindClose</a> function.</para>
+            </returns>
+            <remarks>
+            <para>The <b>CloseHandle</b> function closes handles to the following objects: </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/handleapi/nf-handleapi-closehandle#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.CreateToolhelp32Snapshot_SafeHandle(Windows.Win32.System.Diagnostics.ToolHelp.CREATE_TOOLHELP_SNAPSHOT_FLAGS,System.UInt32)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.CreateToolhelp32Snapshot(Windows.Win32.System.Diagnostics.ToolHelp.CREATE_TOOLHELP_SNAPSHOT_FLAGS,System.UInt32)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.CreateToolhelp32Snapshot(Windows.Win32.System.Diagnostics.ToolHelp.CREATE_TOOLHELP_SNAPSHOT_FLAGS,System.UInt32)">
+            <summary>Takes a snapshot of the specified processes, as well as the heaps, modules, and threads used by these processes.</summary>
+            <param name="dwFlags"></param>
+            <param name="th32ProcessID">
+            <para>The process identifier of the process to be included in the snapshot. This parameter can be zero to indicate the current process. This parameter is used when the <b>TH32CS_SNAPHEAPLIST</b>, <b>TH32CS_SNAPMODULE</b>, <b>TH32CS_SNAPMODULE32</b>, or <b>TH32CS_SNAPALL</b> value is specified. Otherwise, it is ignored and all processes are included in the snapshot. If the specified process is the Idle process or one of the CSRSS processes, this function fails and the last error code is <b>ERROR_ACCESS_DENIED</b> because their access restrictions prevent user-level code from opening them. If the specified process is a 64-bit process and the caller is a 32-bit process, this function fails and the last error code is <b>ERROR_PARTIAL_COPY</b> (299).</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>If the function succeeds, it returns an open handle to the specified snapshot. If the function fails, it returns <b>INVALID_HANDLE_VALUE</b>. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>. Possible error codes include <b>ERROR_BAD_LENGTH</b>.</para>
+            </returns>
+            <remarks>
+            <para>The snapshot taken by this function is examined by the other tool help functions to provide their results. Access to the snapshot is read only. The snapshot handle acts as an object handle and is subject to the same rules regarding which processes and threads it is valid in. To enumerate the heap or module states for all processes, specify <b>TH32CS_SNAPALL</b> and set <i>th32ProcessID</i> to zero. Then, for each additional process in the snapshot, call <b>CreateToolhelp32Snapshot</b> again, specifying its process identifier and the <b>TH32CS_SNAPHEAPLIST</b> or <b>TH32_SNAPMODULE</b> value. When taking snapshots that include heaps and modules for a process other than the current process, the <b>CreateToolhelp32Snapshot</b> function can fail or return incorrect information for a variety of reasons. For example, if the loader data table in the target process is corrupted or not initialized, or if the module list changes during the function call as a result of DLLs being loaded or unloaded, the function might fail with <b>ERROR_BAD_LENGTH</b> or other error code. Ensure that the target process was not started in a suspended state,  and try calling the function again.  If the function fails with <b>ERROR_BAD_LENGTH</b> when called with <b>TH32CS_SNAPMODULE</b> or <b>TH32CS_SNAPMODULE32</b>,   call the function again until it succeeds. The <b>TH32CS_SNAPMODULE</b> and <b>TH32CS_SNAPMODULE32</b> flags do not retrieve handles for modules that were loaded with the <b>LOAD_LIBRARY_AS_DATAFILE</b> or similar flags. For more information, see <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-loadlibraryexa">LoadLibraryEx</a>. To destroy the snapshot, use the <a href="https://docs.microsoft.com/windows/desktop/api/handleapi/nf-handleapi-closehandle">CloseHandle</a> function. Note that you can use the <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-queryfullprocessimagenamea">QueryFullProcessImageName</a> function to retrieve the full name of an executable image for both 32- and 64-bit processes from a 32-bit process.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.Process32First(System.Runtime.InteropServices.SafeHandle,Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32@)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.Process32First(Windows.Win32.Foundation.HANDLE,Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.Process32First(Windows.Win32.Foundation.HANDLE,Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32*)">
+            <summary>The Process32First function (tlhelp32.h) retrieves information about the first process encountered in a system snapshot.</summary>
+            <param name="hSnapshot">
+            <para>A handle to the snapshot returned from a previous call to the <a href="https://docs.microsoft.com/windows/desktop/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot">CreateToolhelp32Snapshot</a> function.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-process32first#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lppe">
+            <para>A pointer to a <a href="https://docs.microsoft.com/windows/desktop/api/tlhelp32/ns-tlhelp32-processentry32">PROCESSENTRY32</a> structure. It contains process information such as the name of the executable file, the process identifier, and the process identifier of the parent process.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-process32first#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Returns <b>TRUE</b> if the first entry of the process list has been copied to the buffer or <b>FALSE</b> otherwise. The <b>ERROR_NO_MORE_FILES</b> error value is returned by the <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> function if no processes exist or the snapshot does not contain process information.</para>
+            </returns>
+            <remarks>
+            <para>The calling application must set the <b>dwSize</b> member of <a href="https://docs.microsoft.com/windows/desktop/api/tlhelp32/ns-tlhelp32-processentry32">PROCESSENTRY32</a> to the size, in bytes, of the structure.</para>
+            <para>To retrieve information about other processes recorded in the same snapshot, use the <a href="https://docs.microsoft.com/windows/desktop/api/tlhelp32/nf-tlhelp32-process32next">Process32Next</a> function.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-process32first#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.Process32Next(System.Runtime.InteropServices.SafeHandle,Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32@)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.Process32Next(Windows.Win32.Foundation.HANDLE,Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.Process32Next(Windows.Win32.Foundation.HANDLE,Windows.Win32.System.Diagnostics.ToolHelp.PROCESSENTRY32*)">
+            <summary>The Process32Next function (tlhelp32.h) retrieves information about the next process recorded in a system snapshot.</summary>
+            <param name="hSnapshot">
+            <para>A handle to the snapshot returned from a previous call to the <a href="https://docs.microsoft.com/windows/desktop/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot">CreateToolhelp32Snapshot</a> function.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-process32next#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lppe">
+            <para>A pointer to a <a href="https://docs.microsoft.com/windows/desktop/api/tlhelp32/ns-tlhelp32-processentry32">PROCESSENTRY32</a> structure.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-process32next#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Returns <b>TRUE</b> if the next entry of the process list has been copied to the buffer or <b>FALSE</b> otherwise. The <b>ERROR_NO_MORE_FILES</b> error value is returned by the <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> function if no processes exist or the snapshot does not contain process information.</para>
+            </returns>
+            <remarks>
+            <para>To retrieve information about the first process recorded in a snapshot, use the <a href="https://docs.microsoft.com/windows/desktop/api/tlhelp32/nf-tlhelp32-process32first">Process32First</a> function.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-process32next#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+    </members>
+</doc>

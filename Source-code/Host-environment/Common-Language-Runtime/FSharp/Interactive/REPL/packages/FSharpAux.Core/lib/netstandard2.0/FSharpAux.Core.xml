@@ -1,0 +1,1432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharpAux.Core</name></assembly>
+<members>
+<member name="M:FSharpAux.ArrayDivvy`1.Iter(Microsoft.FSharp.Core.FSharpFunc{`0,Microsoft.FSharp.Core.Unit})">
+<summary>
+Applies the given function to each element of the divvy array.
+</summary>
+</member>
+<member name="M:FSharpAux.ArrayDivvy`1.Fold``2(Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.FSharpFunc{`0,``1}},``1)">
+<summary>
+Applies a function to each element of the collection, threading an accumulator argument through the computation.
+</summary>
+</member>
+<member name="P:FSharpAux.BidirectionalDictionary`2.GetArrayOfValues">
+<summary>
+Returns all keys of the reverse dictionary
+</summary>
+</member>
+<member name="P:FSharpAux.BidirectionalDictionary`2.GetArrayOfKeys">
+<summary>
+Retuns all keys of the forward dictionary
+</summary>
+</member>
+<member name="M:FSharpAux.BidirectionalDictionary`2.TryGetByValue(`1)">
+<summary>
+Returns all values of the reverse dictionary associated with key k
+</summary>
+</member>
+<member name="M:FSharpAux.BidirectionalDictionary`2.TryGetByKey(`0)">
+<summary>
+Returns all values of the forward dictionary associated with key k
+</summary>
+</member>
+<member name="M:FSharpAux.BidirectionalDictionary`2.RemoveKey(`0)">
+<summary>
+Removes the key key and all values associated to it from forward dictionary. Removes the value key from all keys from reverse dictionary.
+</summary>
+</member>
+<member name="M:FSharpAux.BidirectionalDictionary`2.ContainsValue(`1)">
+<summary>
+Returns true if the reverse dictionary contains the key k
+</summary>
+</member>
+<member name="M:FSharpAux.BidirectionalDictionary`2.ContainsKey(`0)">
+<summary>
+Returns true if the forward dictionary contains the key k
+</summary>
+</member>
+<member name="M:FSharpAux.BidirectionalDictionary`2.Add(`0,`1)">
+<summary>
+Adds a value v to the set of values already associated with key k to the forward dictionary. Adds a value k to the set of values already associated with key v to the reverse dictionary. 
+</summary>
+</member>
+<member name="M:FSharpAux.BidirectionalDictionary`2.#ctor">
+<summary>
+Creates a new empty bidirectional dictionary
+</summary>
+</member>
+<member name="T:FSharpAux.BidirectionalDictionary`2">
+<summary>
+ The bidirectional dictionary allows effective search of keys and values
+</summary>
+</member>
+<member name="P:FSharpAux.Colors.Color.B">
+<summary>
+ The blue component value of this Color structure.
+</summary>
+</member>
+<member name="P:FSharpAux.Colors.Color.G">
+<summary>
+ The green component value of this Color structure.
+</summary>
+</member>
+<member name="P:FSharpAux.Colors.Color.R">
+<summary>
+ The red component value of this Color structure.
+</summary>
+</member>
+<member name="P:FSharpAux.Colors.Color.A">
+<summary>
+ The alpha component value of this Color structure.
+</summary>
+</member>
+<member name="T:FSharpAux.Colors.Color">
+<summary>
+ Color structure
+</summary>
+</member>
+<member name="T:FSharpAux.Colors.ColorComponent">
+<summary>
+ Color component ARGB
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.toString(FSharpAux.Colors.Color)">
+<summary>
+ Converts this Color structure to a human-readable string.
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.fromWebColor(System.String)">
+<summary>
+ Gets color from web color (#FFFFFF)
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.toWebColor(FSharpAux.Colors.Color)">
+<summary>
+ Gets the web color representataion (#FFFFFF)
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.fromHex(System.String)">
+<summary>
+ Gets color from hex representataion (FFFFFF) or (0xFFFFFF)
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.toHex(System.Boolean,FSharpAux.Colors.Color)">
+<summary>
+ Gets the hex representataion (FFFFFF) of a color (with valid prefix &quot;0xFFFFFF&quot;)
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.toArgb(FSharpAux.Colors.Color)">
+<summary>
+ Gets the 32-bit ARGB value of this Color structure.
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.getSaturation(FSharpAux.Colors.Color)">
+<summary>
+ Gets the hue-saturation-brightness (HSB) saturation value for this Color structure.
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.getHue(FSharpAux.Colors.Color)">
+<summary>
+ Gets the hue-saturation-brightness (HSB) hue value, in degrees, for this Color structure.
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.fromRgb(System.Int32,System.Int32,System.Int32)">
+<summary>
+ Creates a Color structure from the specified color values (red, green, and blue).
+ The alpha value is implicitly 255 (fully opaque).
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.fromArgb(System.Int32,System.Int32,System.Int32,System.Int32)">
+<summary>
+ Creates a Color structure from the four ARGB component (alpha, red, green, and blue) values.
+</summary>
+</member>
+<member name="M:FSharpAux.Colors.Table.StatisticalGraphics24.getRandomColor(System.Random)">
+<summary>
+ Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="T:FSharpAux.Colors.Table.Office">
+<summary>
+ Color palette from Microsoft office 2016
+</summary>
+</member>
+<member name="T:FSharpAux.Colors">
+<summary>
+ Represents an ARGB (alpha, red, green, blue) color
+</summary>
+</member>
+<member name="T:FSharpAux.Graph.AdjacencyGraph`3">
+<summary>
+ A Graph is a Vertex list.  The nextNode allows for consistent addressing of nodes
+</summary>
+</member>
+<member name="T:FSharpAux.Graph.AdjacencyNode`3">
+<summary>
+ Alias for a single node with its edges
+</summary>
+</member>
+<member name="T:FSharpAux.Graph.Adjacency`2">
+<summary>
+ Alias for a list of edges
+</summary>
+</member>
+<member name="T:FSharpAux.Graph.IEdge`1">
+<summary>
+ Interface needs to be implemented by every edge (connection; link; line; arc) in a graph
+</summary>
+</member>
+<member name="T:FSharpAux.Graph.INode`1">
+<summary>
+ Interface needs to be implemented by every node (vertex; point) in a graph
+</summary>
+</member>
+<member name="M:FSharpAux.Graph.removeVertex``3(``0,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``1,Microsoft.FSharp.Collections.FSharpList{``2}}})">
+<summary>
+ Removes a node from a graph by id and removes any related edges
+</summary>
+</member>
+<member name="M:FSharpAux.Graph.removeEdge``3(``0,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``1,Microsoft.FSharp.Collections.FSharpList{``2}}})">
+<summary>
+ Removes an edge from a graph by id
+</summary>
+</member>
+<member name="M:FSharpAux.Graph.addEdge``3(``0,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``2,Microsoft.FSharp.Collections.FSharpList{``0}}})">
+<summary>
+ Add a new Edge
+</summary>
+</member>
+<member name="M:FSharpAux.Graph.addAdjacencyNode``3(``0,Microsoft.FSharp.Collections.FSharpList{``2},Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,Microsoft.FSharp.Collections.FSharpList{``2}}})">
+<summary>
+ Add a new adjacency node
+</summary>
+</member>
+<member name="M:FSharpAux.Graph.tryGetEdges``3(``0,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``1,Microsoft.FSharp.Collections.FSharpList{``2}}})">
+<summary>
+ Getting all edges (adjacency) from a graph by a vertex id
+</summary>
+</member>
+<member name="M:FSharpAux.Graph.tryGetNodeById``3(``0,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``1,Microsoft.FSharp.Collections.FSharpList{``2}}})">
+<summary>
+ Tries to get a node from a graph by id 
+</summary>
+</member>
+<member name="M:FSharpAux.Graph.getAdjacencyNode``3(``0,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``1,Microsoft.FSharp.Collections.FSharpList{``2}}})">
+<summary>
+ Getting a node and its edges from a graph by id 
+</summary>
+</member>
+<member name="M:FSharpAux.Graph.tryGetAdjacencyNode``3(``0,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``1,Microsoft.FSharp.Collections.FSharpList{``2}}})">
+<summary>
+ Tries to get a node and its edges from a graph by id 
+</summary>
+</member>
+<member name="M:FSharpAux.Graph.getEdgesFromAdjacencyNode``2(FSharpAux.Graph.INode{``0},Microsoft.FSharp.Collections.FSharpList{``1})">
+<summary>
+ Gets node from adjacencyNode
+</summary>
+</member>
+<member name="M:FSharpAux.Graph.getNodeFromAdjacencyNode``3(``0,Microsoft.FSharp.Collections.FSharpList{``2})">
+<summary>
+ Gets node from adjacencyNode
+</summary>
+</member>
+<member name="M:FSharpAux.Array.[]`1.TryFindDefault``2(``0[],``1[],``1,System.Int32)">
+<summary>
+ Look up an element in an array by index, returning a value if the index is in the domain of the array and default value if not
+</summary>
+</member>
+<member name="M:FSharpAux.Array.intersect``1(``0[],``0[])">
+<summary>
+ Computes the intersection of two arrays.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.groupWhen``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},``0[])">
+<summary>
+ Iterates over elements of the input array and groups adjacent elements.
+ A new group is started when the specified predicate holds about the element
+ of the array (and at the beginning of the iteration).
+
+ For example: 
+    Array.groupWhen isOdd [|3;3;2;4;1;2|] = [|[|3|]; [|3; 2; 4|]; [|1; 2|]|]
+</summary>
+</member>
+<member name="M:FSharpAux.Array.skipNth``1(System.Int32,``0[])">
+<summary>
+ Returns an array without every nth element of the input array.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.takeNth``1(System.Int32,``0[])">
+<summary>
+ Returns an array comprised of every nth element of the input array.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.findIndicesBack``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},``0[])">
+<summary>
+ Returns a reversed array with the indices of the elements in the input array that satisfy the given predicate.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.findIndices``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},``0[])">
+<summary>
+ Returns an array with the indices of the elements in the input array that satisfy the given predicate.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.choosei``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpOption{``1}}},``0[])">
+<summary>
+ Applies the given function to each element of the array. Returns the array comprised of the results x for each element where the function returns Some x.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.countiByPredicate``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean}},``0[])">
+<summary>
+ Returns the length of an array containing only the elements of the input array for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.countByPredicate``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},``0[])">
+<summary>
+ Returns the length of an array containing only the elements of the input array for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.filteri``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean}},``0[])">
+<summary>
+ Returns a new array containing only the elements of the input array for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.iterUntili``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean}},System.Int32,System.Int32,``0[])">
+<summary>
+ Iterates the data array beginning from the startIdx. 
+ The step size and direction are implied by magnitude and sign of stepSize. The function returns
+ the idx of the first value for which predicate returns true or the end/start of the collection
+ is reached (returning None). The predicate function takes the idx of the current value as an additional
+ parameter.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.iterUntil``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.Int32,System.Int32,``0[])">
+<summary>
+ Iterates the data array beginning from the startIdx. 
+ The step size and direction are implied by magnitude and sign of stepSize. The function returns
+ the idx of the first value for which predicate returns true or the end/start of the collection
+ is reached (returning None). 
+</summary>
+</member>
+<member name="M:FSharpAux.Array.binarySearchIndexBy``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Int32},``0[])">
+<summary>
+ Uses a binary search to retrieve an element out of the sorted array arr that fullfills a condition defined by the function compare.
+ The compare function has to be implemented in the following way:
+  let find findThis elementOfArray = 
+      if abs (findThis - elementOfArray) &lt; 0.001  then 0 
+      elif findThis &lt; elementOfArray then -1 
+      else 1
+ If an element in the array is found that satisfies the condition returning 0, the index is returned.
+ If the search ends within the array, the negative bitwise complement of the closest larger element is returned.
+ If the element is bigger than the largest element of the array, the negative bitwise complement of the arr.lenght+1 is returned.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.countDistinctBy``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0[])">
+<summary>
+ Applies a keyfunction to each element and counts the amount of each distinct resulting key
+</summary>
+</member>
+<member name="M:FSharpAux.Array.foldi``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}}},``0,``1[])">
+<summary>
+Applies a function to each element and its index of the array, threading an accumulator argument through the computation
+</summary>
+</member>
+<member name="M:FSharpAux.Array.centeredWindow``1(System.Int32,``0[])">
+<summary>
+ Returns an array of sliding windows of data drawn from the source array.
+ Each window contains the n elements surrounding the current element.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.tryFindDefault``1(``0[],``0,System.Int32)">
+<summary>
+ Look up an element in an array by index, returning a value if the index is in the domain of the array and default value if not
+</summary>
+</member>
+<member name="M:FSharpAux.Array.shuffleInPlace``1(System.Random,``0[])">
+<summary>
+ Shuffels the input array (method: Fisher-Yates) in place. Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.shuffleFisherYates``1(System.Random,``0[])">
+<summary>
+ Shuffels the input array (method: Fisher-Yates). Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.scanReduceBack``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},``0[])">
+<summary>
+ Applies a function to each element of the array, starting from the end, threading an accumulator argument through the computation. If the input function is f and the elements are i0...iN then computes f i0 (...(f iN-1 iN)) and returns the intermediary and final results.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.scanReduce``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},``0[])">
+<summary>
+ Applies a function to each element of the array, threading an accumulator argument through the computation. If the input function is f and the elements are i0...iN then computes f (... (f i0 i1)...) iN and returns the intermediary and final results. Raises ArgumentException if the array has size zero.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.scanSubLeft``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},``0,``1[],System.Int32,System.Int32)">
+<summary>
+ Applies a function to each element in between inclusively start and fin indices of the array, threading an accumulator argument through the computation. If the input function is f and the elements are i(start)...i(fin) then computes f (... (f i(start) i(start + 1))...) i(fin). Raises ArgumentException if the array has size zero.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.scanSubRight``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``1}},``0[],System.Int32,System.Int32,``1)">
+<summary>
+ Applies a function to each element of the array in between inclusively start and fin indices of the array, going backwards (from the end to the start), threading an accumulator argument through the computation. If the input function is f and the elements are i(start)...i(fin) then computes f i(start) (...(f i(fin)-1 i(fin))).
+</summary>
+</member>
+<member name="M:FSharpAux.Array.removeIndex``1(System.Int32,``0[])">
+<summary>
+ Builds a new array that contains every element of the input array except for that on position index.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.checkNonNull``1(System.String,``0)">
+<summary>
+ Checks if a give argument is not null and fails if it is.
+</summary>
+</member>
+<member name="M:FSharpAux.ArrayDivvy.filter``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},FSharpAux.ArrayDivvy{``0})">
+<summary>
+Returns a new collection containing only the elements of the collection for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharpAux.ArrayDivvy.map``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},FSharpAux.ArrayDivvy{``0})">
+<summary>
+Builds a new divvy array whose elements are the results of applying the given function to each of the elements of the array.
+</summary>
+</member>
+<member name="M:FSharpAux.ArrayDivvy.count``1(FSharpAux.ArrayDivvy{``0})">
+<summary>
+Returns the length of a mutable array segment.
+</summary>
+</member>
+<member name="M:FSharpAux.ArrayDivvy.fold``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},``0,FSharpAux.ArrayDivvy{``1})">
+<summary>
+Applies a function to each element of the collection, threading an accumulator argument through the computation.
+</summary>
+</member>
+<member name="M:FSharpAux.ArrayDivvy.iter``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},FSharpAux.ArrayDivvy{``0})">
+<summary>
+Applies the given function to each element of the divvy array.
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.isSameWithConversion(System.DateTimeKind,System.DateTime,System.DateTime)">
+<summary>
+Compares two instances of DateTime and returns true if the first instance is is the same as the second instance, and false otherwise. 
+Performs a conversion of the two input times to the specified DateTimeKind before comparing
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.isSame(System.DateTime,System.DateTime)">
+<summary>
+Compares two instances of DateTime and returns true if the first instance is the same as the second instance, and false otherwise. 
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.isLaterWithConversion(System.DateTimeKind,System.DateTime,System.DateTime)">
+<summary>
+Compares two instances of DateTime and returns true if the first instance is later than the second instance, and false otherwise. 
+Performs a conversion of the two input times to the specified DateTimeKind before comparing
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.isLater(System.DateTime,System.DateTime)">
+<summary>
+Compares two instances of DateTime and returns true if the first instance is later than the second instance, and false otherwise. 
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.isEarlierWithConversion(System.DateTimeKind,System.DateTime,System.DateTime)">
+<summary>
+Compares two instances of DateTime and returns true if the first instance is earlier than the second instance, and false otherwise. 
+Performs a conversion of the two input times to the specified DateTimeKind before comparing
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.isEarlier(System.DateTime,System.DateTime)">
+<summary>
+Compares two instances of DateTime and returns true if the first instance is earlier than the second instance, and false otherwise. 
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.compareWithConversion(System.DateTimeKind,System.DateTime,System.DateTime)">
+<summary>
+Compares two instances of DateTime and returns an integer that indicates whether the first instance is earlier than, the same as, or later than the second instance. 
+Performs a conversion of the two input times to the specified DateTimeKind before comparing
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.compare(System.DateTime,System.DateTime)">
+<summary>
+Compares two instances of DateTime and returns an integer that indicates whether the first instance is earlier than, the same as, or later than the second instance.
+Before comparing DateTime objects, ensure that the objects represent times in the same time zone.
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.toLocal(System.DateTime)">
+<summary>
+Converts the value of the current DateTime object to local time.
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.toUtc(System.DateTime)">
+<summary>
+Converts the value of the current DateTime object to Coordinated Universal Time (UTC).
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.tryParse(System.String)">
+<summary>
+Converts the specified string representation of a date and time to its DateTime equivalent. Returns Some value if the conversion succeeded, and otherwise None.
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.parse(System.String)">
+<summary>
+Converts the string representation of a date and time to its DateTime equivalent. Throws an exception if the string is not in correct format.
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.isUnspecified(System.DateTime)">
+<summary>
+Returns true when the time represented by the input is based on neither local time or Coordinated Universal Time (UTC), otherwise false.
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.isUtc(System.DateTime)">
+<summary>
+Returns true when the time represented by the input is based on Coordinated Universal Time (UTC), otherwise false.
+</summary>
+</member>
+<member name="M:FSharpAux.DateTime.isLocal(System.DateTime)">
+<summary>
+Returns true when the time represented by the input is based on local time, otherwise false.
+</summary>
+</member>
+<member name="T:FSharpAux.Dict">
+<summary>
+ Read-only view of the dictionary called dict
+</summary>
+</member>
+<member name="M:FSharpAux.Dictionary.merge``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.FSharpFunc{``1,``1}}})">
+<summary>
+ Merge two Dictionaries
+</summary>
+</member>
+<member name="M:FSharpAux.Dictionary.tryFind``2(``0,System.Collections.Generic.IDictionary{``0,``1})">
+ <summary>Lookup an element in the dictionary, returning a <c>Some</c> value if the element is in the domain 
+ of the dictionary and <c>None</c> if not.</summary>
+ <param name="key">The input key.</param>
+ <returns>The mapped value, or None if the key is not in the dictionary.</returns>
+</member>
+<member name="M:FSharpAux.Dictionary.remove``2(``0,System.Collections.Generic.IDictionary{``0,``1})">
+ <summary>Removes an element from the domain of the dictionary. No exception is raised if the element is not present.</summary>
+ <param name="key">The input key.</param>
+ <returns>The resulting dictionary.</returns>
+</member>
+<member name="M:FSharpAux.Dictionary.item``2(``0,System.Collections.Generic.IDictionary{``0,``1})">
+ <summary>Lookup an element in the dictionary. Raise <c>KeyNotFoundException</c> if no binding
+ exists in the dictionary.</summary>
+ <param name="key">The input key.</param>
+ <exception cref="System.Collections.Generic.KeyNotFoundException">Thrown when the key is not found.</exception>
+ <returns>The value mapped to the key.</returns>
+</member>
+<member name="M:FSharpAux.Dictionary.count``2(System.Collections.Generic.IDictionary{``0,``1})">
+ <summary>The number of bindings in the dictionary.</summary>
+</member>
+<member name="M:FSharpAux.Dictionary.containsKey``2(``0,System.Collections.Generic.IDictionary{``0,``1})">
+ <summary>Tests if an element is in the domain of the dictionary.</summary>
+ <param name="key">The input key.</param>
+ <returns>True if the dictionary contains the given key.</returns>
+</member>
+<member name="M:FSharpAux.Dictionary.isEmpty``2(System.Collections.Generic.IDictionary{``0,``1})">
+ <summary>Returns true if there are no bindings in the dictionary.</summary>
+</member>
+<member name="M:FSharpAux.Dictionary.addOrUpdateInPlaceBy``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},``1,``0,System.Collections.Generic.IDictionary{``1,``0})">
+ <summary>Returns the dictionary with the binding added to the given dictionary.
+ If a binding with the given key already exists in the input dictionary, the existing binding is replaced by the result of the given function.</summary>
+ <param name="f">The function to aggregate old value and new value.</param>
+ <param name="key">The input key.</param>    
+ <returns>The dictionary with change in place.</returns>
+</member>
+<member name="M:FSharpAux.Dictionary.addOrUpdateInPlace``2(``0,``1,System.Collections.Generic.IDictionary{``0,``1})">
+ <summary>Returns the dictionary with the binding added to the given dictionary.
+ If a binding with the given key already exists in the input dictionary, the existing binding is replaced by the new binding in the result dictionary.</summary>
+ <param name="key">The input key.</param>
+ <returns>The dictionary with change in place.</returns>
+</member>
+<member name="M:FSharpAux.Dictionary.addInPlace``2(``0,``1,System.Collections.Generic.IDictionary{``0,``1})">
+ <summary>Returns the dictionary with the binding added to the given dictionary.
+ If a binding with the given key already exists in the input dictionary, System.ArgumentException is thrown.</summary>
+ <param name="key">The input key.</param>
+ <returns>The dictionary with change in place.</returns>
+</member>
+<member name="M:FSharpAux.Dictionary.ofArray``2(System.Tuple{``0,``1}[])">
+ <summary>Builds a dictionary that contains the bindings of the given array.</summary>
+ <param name="elements">The input array of key/value pairs.</param>
+ <returns>The resulting dictionary.</returns> 
+</member>
+<member name="M:FSharpAux.Dictionary.ofSeq``2(System.Collections.Generic.IEnumerable{System.Tuple{``0,``1}})">
+ <summary>Builds a dictionary that contains the bindings of the given IEnumerable.</summary>
+ <param name="elements">The input sequence of key/value pairs.</param>
+ <returns>The resulting dictionary.</returns> 
+</member>
+<member name="M:FSharpAux.Dictionary.ofList``2(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``1}})">
+ <summary>Builds a dictionary that contains the bindings of the given list.</summary>
+ <param name="elements">The input list of key/value pairs.</param>
+ <returns>The resulting dictionary.</returns> 
+</member>
+<member name="M:FSharpAux.Dictionary.ofMap``2(Microsoft.FSharp.Collections.FSharpMap{``0,``1})">
+ <summary>Builds a dictionary that contains the bindings of the given dictionary.</summary>
+ <param name="elements">The input map.</param>
+ <returns>The resulting dictionary.</returns> 
+</member>
+<member name="M:FSharpAux.Dictionary.toList``2(System.Collections.Generic.IDictionary{``0,``1})">
+ <summary>Returns a new dictionary made from the given bindings.</summary>
+ <param name="elements">The input list of key/value pairs.</param>
+ <returns>The resulting dictionary.</returns>  
+</member>
+<member name="M:FSharpAux.Dictionary.toArray``2(System.Collections.Generic.IDictionary{``0,``1})">
+ <summary>Returns a new dictionary made from the given bindings.</summary>
+ <param name="elements">The input array of key/value pairs.</param>
+ <returns>The resulting dictionary.</returns>  
+</member>
+<member name="M:FSharpAux.Dictionary.toSeq``2(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,``1}})">
+ <summary>Views the collection as an enumerable sequence of pairs.
+ The sequence will be ordered by the keys of the dictionary.</summary>
+ <param name="table">The input dictionary.</param>
+ <returns>The sequence of key/value pairs.</returns>   
+</member>
+<member name="T:FSharpAux.Dictionary">
+<summary>
+ .Net Dictionary
+</summary>
+</member>
+<member name="P:FSharpAux.Guid.create">
+<summary>
+ Creates a new unique Syste.Guid
+</summary>
+</member>
+<member name="M:FSharpAux.Guid.ofString(System.String)">
+<summary>
+ Parse a string to a System.Guid
+</summary>
+</member>
+<member name="P:FSharpAux.Guid.empty">
+<summary>
+ Empty System.Guid
+</summary>
+</member>
+<member name="T:FSharpAux.Guid">
+<summary>
+ Wrapper to use System Guid
+</summary>
+</member>
+<member name="M:FSharpAux.Interop.ofFunc``2(System.Func{``0,``1},``0)">
+<summary>
+ Converts System.Func to an fsharp function
+</summary>
+</member>
+<member name="M:FSharpAux.Interop.toFunc``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1})">
+<summary>
+ Converts an fsharp function to a System.Func
+</summary>
+</member>
+<member name="T:FSharpAux.Interop">
+<summary>
+ Module for facilitated .net interop erability
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedList.init``1(System.Int32,System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,``0}})">
+<summary>
+ Creates a jagged list given the dimensions and a generator function to compute the elements.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedList.innerChoose``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpOption{``1}},Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Applies the given function to each element in the inner lists of the jagged List. Returns the jagged list whose inner lists are comprised of the results x for each element where the function returns Some(x).
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedList.innerFilter``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Returns a new jagged list whose inner lists only contain the elements for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedList.fold``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},Microsoft.FSharp.Core.FSharpFunc{``2,Microsoft.FSharp.Core.FSharpFunc{``0,``2}},``0,``2,Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``1}})">
+<summary>
+ Applies a function to each element of the inner lists of the jagged list, threading an accumulator argument through the computation. 
+ A second function is the applied to each result of the predeceding computation, again passing an accumulater through the computation.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedList.innerFold``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},``0,Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``1}})">
+<summary>
+ Applies a function to each element of the inner lists of the jagged list, threading an accumulator argument through the computation.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedList.mapi``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``1}},Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Builds a new jagged list whose inner lists are the results of applying the given function to each of their elements. The integer index passed to the function indicates the index of element in the inner list being transformed.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedList.map3``4(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.FSharpFunc{``2,``3}}},Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}},Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``1}},Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``2}})">
+<summary>
+ Builds a new jagged list whose inner lists are the results of applying the given function to the corresponding elements of the inner lists of the tree jagged lists triplewise. 
+ All corresponding inner lists must be of the same length, otherwise ArgumentException is raised.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedList.map2``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}},Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}},Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``1}})">
+<summary>
+ Builds a new jagged list whose inner lists are the results of applying the given function to the corresponding elements of the inner lists of the two jagged lists pairwise. 
+ All corresponding inner lists must be of the same length, otherwise ArgumentException is raised.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedList.map``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Builds a new jagged list whose inner lists are the results of applying the given function to each of their elements.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.toIndexedArray``1(``0[][])">
+<summary>
+ Transforms a jagged array to an array where each position is indexed (first index: prior rows, second index: prior columns).
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.init``1(System.Int32,System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,``0}})">
+<summary>
+ Creates a jagged array given the dimensions and a generator function to compute the elements.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.shuffleInPlace``1(System.Random,``0[][])">
+<summary>
+ Shuffels a jagged array (method: Fisher-Yates) in place. Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.shuffleRowWiseInPlace``1(System.Random,``0[][])">
+<summary>
+ Shuffles each row of a jagged array separately (method: Fisher-Yates) in place. Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.shuffleColumnWiseInPlace``1(System.Random,``0[][])">
+<summary>
+ Shuffles each column of a jagged array separately (method: Fisher-Yates) in place. Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.shuffle``1(System.Random,``0[][])">
+<summary>
+ Shuffels a jagged array (method: Fisher-Yates). Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.shuffleRowWise``1(System.Random,``0[][])">
+<summary>
+ Shuffles each row of a jagged array separately  (method: Fisher-Yates). Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.shuffleColumnWise``1(System.Random,``0[][])">
+<summary>
+ Shuffles each column of a jagged array separately  (method: Fisher-Yates). Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.innerChoose``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpOption{``1}},``0[][])">
+<summary>
+ Applies the given function to each element in the inner arrays of the jagged array. Returns the jagged array whose inner arrays are comprised of the results x for each element where the function returns Some(x).
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.innerFilter``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},``0[][])">
+<summary>
+ Returns a new jagged array whose inner arrays only contain the elements for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.fold``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},Microsoft.FSharp.Core.FSharpFunc{``2,Microsoft.FSharp.Core.FSharpFunc{``0,``2}},``0,``2,``1[][])">
+<summary>
+ Applies a function to each element of the inner arrays of the jagged array, threading an accumulator argument through the computation. 
+ A second function is the applied to each result of the predeceding computation, again passing an accumulater through the computation.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.innerFold``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},``0,``1[][])">
+<summary>
+ Applies a function to each element of the inner arrays of the jagged array, threading an accumulator argument through the computation.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.mapi``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``1}},``0[][])">
+<summary>
+ Builds a new jagged array whose inner arrays are the results of applying the given function to each of their elements. The integer index passed to the function indicates the index of element in the inner array being transformed.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.map3``4(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.FSharpFunc{``2,``3}}},``0[][],``1[][],``2[][])">
+<summary>
+ Builds a new jagged array whose inner arrays are the results of applying the given function to the corresponding elements of the inner arrays of the tree jagged arrays triplewise. 
+ All corresponding inner arrays must be of the same length, otherwise ArgumentException is raised.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.map2``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}},``0[][],``1[][])">
+<summary>
+ Builds a new jagged array whose inner arrays are the results of applying the given function to the corresponding elements of the inner arrays of the two jagged arrays pairwise. 
+ All corresponding inner arrays must be of the same length, otherwise ArgumentException is raised.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.map``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0[][])">
+<summary>
+ Builds a new jagged array whose inner arrays are the results of applying the given function to each of their elements.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.toJaggedSeq``1(``0[][])">
+<summary>
+ Creates a jagged seq from a jagged array.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.copy``1(``0[][])">
+<summary>
+ Copies the jagged array.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.ofJaggedSeq``2(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Creates a jagged array from a jagged seq.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.toJaggedList``1(``0[][])">
+<summary>
+ Creates a jagged list from a jagged array.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.ofJaggedList``1(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Creates a jagged array from a jagged list.
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.transpose``1(``0[][])">
+<summary>
+ Transposes a jagged array.
+</summary>
+</member>
+<member name="T:FSharpAux.KdTree.KdTree`2">
+<summary>
+ k -dimension tree    
+</summary>
+</member>
+<member name="M:FSharpAux.KdTree.rangeSearch``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,System.Double}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{System.Int32,System.Double}},FSharpAux.KdTree.KdTree{``1,``0},System.Double,``0)">
+<summary>
+ Searches query coordinates within a given radius
+</summary>
+</member>
+<member name="M:FSharpAux.KdTree.print``2(FSharpAux.KdTree.KdTree{``0,``1})">
+<summary>
+ Prints kd tree
+</summary>
+</member>
+<member name="M:FSharpAux.KdTree.toList``2(FSharpAux.KdTree.KdTree{``0,``1})">
+<summary>
+ Flattens KdTree
+</summary>
+</member>
+<member name="M:FSharpAux.KdTree.ofArrayBy``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.FSharpFunc{System.Int32,``2}},System.Int32,``0[])">
+<summary>
+ Create KD Tree from list
+</summary>
+</member>
+<member name="T:FSharpAux.KdTree">
+<summary>
+ Module for k -dimension trees  
+</summary>
+</member>
+<member name="M:FSharpAux.List.intersect``1(Microsoft.FSharp.Collections.FSharpList{``0},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Computes the intersection of two lists.
+</summary>
+</member>
+<member name="M:FSharpAux.List.groupWhen``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Iterates over elements of the input list and groups adjacent elements.
+ A new group is started when the specified predicate holds about the element
+ of the list (and at the beginning of the iteration).
+
+ For example: 
+    List.groupWhen isOdd [3;3;2;4;1;2] = [[3]; [3; 2; 4]; [1; 2]]
+</summary>
+</member>
+<member name="M:FSharpAux.List.skipNth``1(System.Int32,Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Returns a list without every nth element of the input list.
+</summary>
+</member>
+<member name="M:FSharpAux.List.takeNth``1(System.Int32,Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Returns a list comprised of every nth element of the input list.
+</summary>
+</member>
+<member name="M:FSharpAux.List.findIndices``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Returns a list with the indices of the elements in the input array that satisfy the given predicate.
+</summary>
+</member>
+<member name="M:FSharpAux.List.findIndicesBack``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Returns a reversed list with the indices of the elements in the input array that satisfy the given predicate.
+</summary>
+</member>
+<member name="M:FSharpAux.List.choosei``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpOption{``1}}},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Applies the given function to each element of the list. Returns the list comprised of the results x for each element where the function returns Some x.
+</summary>
+</member>
+<member name="M:FSharpAux.List.countiByPredicate``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean}},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Returns the length of an array containing only the elements of the input array for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharpAux.List.countByPredicate``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Returns the length of an array containing only the elements of the input array for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharpAux.List.filteri``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean}},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Returns a new list containing only the elements of the list for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharpAux.List.drawExaustively``1(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Treats l as a series of turns of which elements can be drawed from. Returns
+ a list including all combinations (different order is not considered) 
+ of elements if in one cycle one item is drawed of each turn.
+</summary>
+</member>
+<member name="M:FSharpAux.List.powerSetOf``1(Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Returns the power set of l (not including the empty set).
+</summary>
+</member>
+<member name="M:FSharpAux.List.countDistinctBy``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Applies a keyfunction to each element and counts the amount of each distinct resulting key.
+</summary>
+</member>
+<member name="M:FSharpAux.List.foldi``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}}},``0,Microsoft.FSharp.Collections.FSharpList{``1})">
+<summary>
+ Applies a function to each element and its index of the list, threading an accumulator argument through the computation.
+</summary>
+</member>
+<member name="M:FSharpAux.List.insertAt``1(System.Int32,``0,Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Inserts an element into a list at a given index.
+ (Not recommended list operation)
+</summary>
+</member>
+<member name="M:FSharpAux.List.removeAt``1(System.Int32,Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Removes an element from a list at a given index.
+ (Not recommended list operation)
+</summary>
+</member>
+<member name="M:FSharpAux.List.applyEachPairwiseWith``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``1}},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Applies function f two each unique compination of items in the input list.
+</summary>
+</member>
+<member name="M:FSharpAux.List.applyEachPairwise``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``1}},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Applies function f to each unique compination of items in the input list.
+</summary>
+</member>
+<member name="M:FSharpAux.List.groupEquals``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean}},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Groups elements in the input list according to function f.
+</summary>
+</member>
+<member name="M:FSharpAux.List.cut``1(Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Cuts a list into two parts
+</summary>
+</member>
+<member name="M:FSharpAux.List.cutAfterN``1(System.Int32,Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Cuts a list after N and returns both parts.
+</summary>
+</member>
+<member name="M:FSharpAux.List.scanReduceBack``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Applies a function to each element of the list, starting from the end, threading an accumulator argument through the computation. If the input function is f and the elements are i0...iN then computes f i0 (...(f iN-1 iN)) and returns the intermediary and final results.
+</summary>
+</member>
+<member name="M:FSharpAux.List.scanArraySubRight``2(Microsoft.FSharp.Core.OptimizedClosures.FSharpFunc{``0,``1,``1},``0[],System.Int32,System.Int32,``1)">
+<summary>
+ Applies a function to each element of the array in between (inclusively) start and fin indices of the array, going backwards (from the end to the start), threading an accumulator argument through the computation. If the input function is f and the elements are i(start)...i(fin) then computes f i(start) (...(f i(fin)-1 i(fin))). Returns the result as a list.
+</summary>
+</member>
+<member name="M:FSharpAux.List.scanReduce``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Applies a function to each element of the list, threading an accumulator argument through the computation. If the input function is f and the elements are i0...iN then computes f (... (f i0 i1)...) iN and returns the intermediary and final results. Raises ArgumentException if the list has size zero.
+</summary>
+</member>
+<member name="M:FSharpAux.FsharpMapExtensions.Map`2.TryFindDefault``2(Microsoft.FSharp.Collections.FSharpMap{``0,``1},``1,``0)">
+<summary>
+ Look up an element in a map, returning a value if the element is in the domain of the map and default value if not
+</summary>
+</member>
+<member name="M:FSharpAux.Map.tryFindDefault``2(Microsoft.FSharp.Collections.FSharpMap{``0,``1},``1,``0)">
+<summary>
+ Look up an element in a map, returning a value if the element is in the domain of the map and default value if not
+</summary>
+</member>
+<member name="M:FSharpAux.Map.compose``2(System.Collections.Generic.IEnumerable{System.Tuple{``0,``1}})">
+<summary>
+ Compose a seq of key*value pairs with dublicate keys
+ to a key*value list
+</summary>
+</member>
+<member name="M:FSharpAux.Map.merge``2(Microsoft.FSharp.Collections.FSharpMap{``0,``1},Microsoft.FSharp.Collections.FSharpMap{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{System.Tuple{``1,``1},``1}})">
+<summary>
+ Merge two maps of the same type 
+ f is the function how to handel key conflicts
+</summary>
+</member>
+<member name="M:FSharpAux.Math.round(System.Int32,System.Double)">
+<summary>
+ Rounds a double-precision floating-point value to a specified number of fractional digits.  
+</summary>
+</member>
+<member name="M:FSharpAux.Math.square``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``1}},``0)">
+<summary>
+ Returns x squared (x^2)
+</summary>
+</member>
+<member name="M:FSharpAux.Math.revLog2(System.Double)">
+<summary>
+ Returns the reverted log2 (2^x)
+</summary>
+</member>
+<member name="M:FSharpAux.Math.log2(System.Double)">
+<summary>
+ Returns the logarithm of x to base 2
+</summary>
+</member>
+<member name="M:FSharpAux.Math.nthRoot``2(Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.FSharpFunc{System.Double,``1}},Microsoft.FSharp.Core.FSharpFunc{``0,System.Double},``0,``1)">
+<summary>
+ Returns the nth root of x.
+</summary>
+</member>
+<member name="T:FSharpAux.MultiMap.MultiMap`2">
+<summary>
+ Type abreviation for Map&lt;&apos;key,&apos;value list&gt;
+</summary>
+</member>
+<member name="M:FSharpAux.MultiMap.ofSeq``2(System.Collections.Generic.IEnumerable{System.Tuple{``0,``1}})">
+<summary>
+ Compose a seq of key*value pairs with dublicate keys to a key*value list
+</summary>
+</member>
+<member name="M:FSharpAux.MultiMap.tryFind``2(``0,Microsoft.FSharp.Collections.FSharpMap{``0,``1})">
+<summary>
+ Lookup anb element in the map, returning a Some value list if the value is in the domain of the MultiMap else None
+</summary>
+</member>
+<member name="M:FSharpAux.MultiMap.add``2(``0,``1,Microsoft.FSharp.Collections.FSharpMap{``0,Microsoft.FSharp.Collections.FSharpList{``1}})">
+<summary>
+ Returns a new MultiMap with binding added
+</summary>
+</member>
+<member name="M:FSharpAux.MultiMap.emptyMultiMap``2">
+<summary>
+ Empty formula
+</summary>
+</member>
+<member name="T:FSharpAux.MultiMap">
+<summary>
+ A MultiMap is a special case of a map where value is a list of values
+</summary>
+</member>
+<member name="M:FSharpAux.Regex.createRegex(FSharpAux.Regex.RegexOptions,System.String)">
+<summary>
+ Creates a regex 
+</summary>
+</member>
+<member name="M:FSharpAux.Regex.parseAll(System.String,System.String)">
+<summary>
+ Returns a seq of group values matching the pattern 
+</summary>
+</member>
+<member name="M:FSharpAux.Regex.parse(System.String,System.String)">
+<summary>
+ Returns the group values of the first occurencing match
+</summary>
+</member>
+<member name="M:FSharpAux.Regex.tryParseValue(System.String,System.String)">
+<summary>
+ Returns the first occurencing value of the match 
+</summary>
+</member>
+<member name="M:FSharpAux.Regex.Active.|RegexGroupValues|_|(System.String,System.String)">
+<summary>
+ Returns the matching group values of all occurences of the pattern
+</summary>
+</member>
+<member name="M:FSharpAux.Regex.Active.|RegexValues|_|(System.String,System.String)">
+<summary>
+ Returns the matching values of all occurences of the pattern
+</summary>
+</member>
+<member name="M:FSharpAux.Regex.Active.|RegexValue|_|(System.String,System.String)">
+<summary>
+ Returns the matching values the first occurence of the pattern 
+</summary>
+</member>
+<member name="M:FSharpAux.Regex.Active.|RegexGroups|_|(System.String,System.String)">
+<summary>
+ Returns the matching group of all occurences of the pattern
+</summary>
+</member>
+<member name="M:FSharpAux.Regex.Active.|RegexMatchValue|_|(System.Text.RegularExpressions.Regex,System.String)">
+<summary>
+ Returns the first occurencing match of the pattern 
+</summary>
+</member>
+<member name="T:FSharpAux.Regex">
+<summary>
+ Regex module for functional use of regular expressions
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.countDistinctBy``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Applies a keyfunction to each element and counts the amount of each distinct resulting key.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.unzip3``3(System.Collections.Generic.IEnumerable{System.Tuple{``0,``1,``2}})">
+<summary>
+ Splits a sequence of triples into three sequences.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.unzip``2(System.Collections.Generic.IEnumerable{System.Tuple{``0,``1}})">
+<summary>
+ Splits a sequence of pairs into two sequences.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.headOrDefault``1(``0,System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Returns head of a seq or default value if seq is empty.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.tryHead``1(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Returns head of a seq as option or None if seq is empty.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.countIf``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Iterates over elements of the input sequence and increase the counter
+ if the function returens true.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.groupsOfAtMost``1(System.Int32,System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Break sequence into n-element subsequences.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.intersect``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Computes the intersection of two sequences.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.groupWhen``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Iterates over elements of the input sequence and groups adjacent elements.
+ A new group is started when the specified predicate holds about the element
+ of the sequence (and at the beginning of the iteration).
+
+ For example: 
+    Seq.groupWhen isOdd [3;3;2;4;1;2] = seq [[3]; [3; 2; 4]; [1; 2]]
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.groupAfter``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Iterates over the elements of the input sequence and groups adjacent
+ elements. A new group is started after the specified predicate holds 
+ about the element of the sequence (and at the beginning of the iteration).
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.initRepeatValues``1(System.Int32,System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Initialize a sequence of length and repeated values (like R! repeat: but swapped input).
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.initRepeatValue``1(System.Int32,``0)">
+<summary>
+ Initialize a sequence of length and repeated value (like R! repeat : but swapped input).
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.consSingleton``1(System.Collections.Generic.IEnumerable{``0},``0)">
+<summary>
+Adds a value to the front of a sequence.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.appendSingleton``1(System.Collections.Generic.IEnumerable{``0},``0)">
+<summary>
+Adds a value to the back of a sequence.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.Double.existsNanBy``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Double},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Returns true if the input sequence contains nan after applying f to every element.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.Double.existsNaN(System.Collections.Generic.IEnumerable{System.Double})">
+<summary>
+ Returns true if the input sequence contains nan.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.Double.filterNanAndInfinityBy``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Double},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Returns the copy of an input sequence where nans and infinitys were filtered out after applying f to every element.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.Double.filterNanAndInfinity(System.Collections.Generic.IEnumerable{System.Double})">
+<summary>
+ Returns the copy of an input sequence where nans and infinitys were filtered out.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.Double.filterInfinityBy``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Double},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ /// Returns the copy of an input sequence where infinitys were filtered out after applying f to every element.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.Double.filterInfinity(System.Collections.Generic.IEnumerable{System.Double})">
+<summary>
+ Returns the copy of an input sequence where infinitys were filtered out.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.Double.filterNanBy``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Double},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Returns the copy of an input sequence where nans were filtered out after applying f to every element.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.Double.filterNaN(System.Collections.Generic.IEnumerable{System.Double})">
+<summary>
+ Returns the copy of an input sequence where nans were filtered out.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.Double.seqInitStepWidth(System.Double,System.Double,System.Double)">
+<summary>
+ Generates sequence given step width (like R! seq).
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.Double.seqInit(System.Double,System.Double,System.Double)">
+<summary>
+ Generates a sequence (like R! seq.int).
+</summary>
+</member>
+<member name="T:FSharpAux.Seq.Double">
+<summary>
+ Seq module extensions specialized for seq&lt;float&gt;.
+</summary>
+</member>
+<member name="M:FSharpAux.Set.symmetricDifference``1(Microsoft.FSharp.Collections.FSharpSet{``0},Microsoft.FSharp.Collections.FSharpSet{``0})">
+<summary>
+Computes the symmteric difference of the two sets, which is the set of elements which are in either of the sets and not in their intersection
+</summary>
+</member>
+<member name="M:FSharpAux.String.skipWhile(Microsoft.FSharp.Core.FSharpFunc{System.Char,System.Boolean},System.String)">
+<summary>
+ Iterates through the string and returns a string that starts at the char of the input where the predicate returned false the first time.
+</summary>
+</member>
+<member name="M:FSharpAux.String.takeWhile(Microsoft.FSharp.Core.FSharpFunc{System.Char,System.Boolean},System.String)">
+<summary>
+ Iterates through the string and returns a string with the chars of the input until the predicate returned false the first time.
+</summary>
+</member>
+<member name="M:FSharpAux.String.findIndicesBack(System.Char,System.String)">
+<summary>
+ Returns the indices of a char in a string sorted backwards.
+</summary>
+</member>
+<member name="M:FSharpAux.String.findIndices(System.Char,System.String)">
+<summary>
+ Returns the indices of a char in a string.
+</summary>
+</member>
+<member name="M:FSharpAux.String.findIndex(System.Char,System.String)">
+<summary>
+ Returns the first index of a char in a string.
+</summary>
+</member>
+<member name="M:FSharpAux.String.findIndexBack(System.Char,System.String)">
+<summary>
+ Returns the last index of a char in a string.
+</summary>
+</member>
+<member name="M:FSharpAux.String.splitS(System.String,System.String)">
+<summary>
+ Splits an input string at a given delimiter (substring).
+</summary>
+</member>
+<member name="M:FSharpAux.String.last(System.String)">
+<summary>
+ Returns the last char of a string.
+</summary>
+</member>
+<member name="M:FSharpAux.String.first(System.String)">
+<summary>
+ Returns the first char of a string.
+</summary>
+</member>
+<member name="M:FSharpAux.String.skip(System.Int32,System.String)">
+<summary>
+ Skips the first n characters of string.
+</summary>
+</member>
+<member name="M:FSharpAux.String.take(System.Int32,System.String)">
+<summary>
+ Takes the first n characters of string.
+</summary>
+</member>
+<member name="M:FSharpAux.String.rev(System.String)">
+<summary>
+ Reverts a string
+</summary>
+</member>
+<member name="M:FSharpAux.String.inferType(System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Checks whether all values of the sequence can be inferred to a special type
+</summary>
+</member>
+<member name="M:FSharpAux.String.isFloat(System.String)">
+<summary>
+ Checks whether the string is a float
+</summary>
+</member>
+<member name="M:FSharpAux.String.isInt64(System.String)">
+<summary>
+ Checks whether the string is an int64
+</summary>
+</member>
+<member name="M:FSharpAux.String.isInt(System.String)">
+<summary>
+ Checks whether the string is an int32
+</summary>
+</member>
+<member name="M:FSharpAux.String.isBool(System.String)">
+<summary>
+ Checks whether the string is a boolean value
+</summary>
+</member>
+<member name="M:FSharpAux.String.tryParseGuidDefault(System.Guid,System.String)">
+<summary>
+ Try to parse GUID else return default value    
+</summary>
+</member>
+<member name="M:FSharpAux.String.tryParseFloatDefault(System.Double,System.String)">
+<summary>
+ Try to parse float else return default value    
+</summary>
+</member>
+<member name="M:FSharpAux.String.tryParseInt64Default(System.Int64,System.String)">
+<summary>
+ Try to parse int64 else return default value    
+</summary>
+</member>
+<member name="M:FSharpAux.String.tryParseIntDefault(System.Int32,System.String)">
+<summary>
+ Try to parse int else return default value    
+</summary>
+</member>
+<member name="M:FSharpAux.String.tryParseBoolDefault(System.Boolean,System.String)">
+<summary>
+ Try to parse bool else return default value    
+</summary>
+</member>
+<member name="M:FSharpAux.String.niceName(System.String)">
+<summary>
+ Turns a string into a nice PascalCase identifier
+</summary>
+</member>
+<member name="M:FSharpAux.String.implode(System.Collections.Generic.IEnumerable{System.Char})">
+<summary>
+ Converts a list of characters into a string.
+</summary>
+</member>
+<member name="M:FSharpAux.String.isNullOrEmpty(System.String)">
+<summary>
+ Returns if the string is null or empty
+</summary>
+</member>
+<member name="M:FSharpAux.String.trim(System.String)">
+<summary>
+ Takes a string and returns its copy with all leading and trailing white-space characters removed.
+</summary>
+</member>
+<member name="M:FSharpAux.String.joinWords(Microsoft.FSharp.Collections.FSharpList{System.String})">
+<summary>
+ Folds the string list by seperating entries with a single space
+</summary>
+</member>
+<member name="M:FSharpAux.String.toWords(System.String)">
+<summary>
+ Splits a string based on whitespace (spaces, tabs, and newlines)
+</summary>
+</member>
+<member name="M:FSharpAux.String.joinLines(Microsoft.FSharp.Collections.FSharpList{System.String})">
+<summary>
+ Creates newline seperated string from the string list
+</summary>
+</member>
+<member name="M:FSharpAux.String.toLines(System.String)">
+<summary>
+ Splits a string based on newlines 
+</summary>
+</member>
+<member name="M:FSharpAux.String.splitBy(Microsoft.FSharp.Core.FSharpFunc{System.Char,System.Boolean},System.String)">
+<summary>
+ Returns a sequence of strings split by the predicate
+</summary>
+</member>
+<member name="M:FSharpAux.String.fromCharArray(System.Char[])">
+<summary>
+ Converts an array of characters to a string
+</summary>
+</member>
+<member name="M:FSharpAux.String.toCharArray(System.String)">
+<summary>
+ Converts an string to a array of characters
+</summary>
+</member>
+<member name="M:FSharpAux.String.separatedBy(System.String,System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Converts a sequence of strings to a single string separated with the delimiters
+</summary>
+</member>
+<member name="M:FSharpAux.String.subString(System.Int32,System.Int32,System.String)">
+<summary>
+ Retrieves a substring. The substring starts at a specified character position and has a specified length.
+</summary>
+</member>
+<member name="M:FSharpAux.String.split(System.Char,System.String)">
+<summary>
+ Splits the given string at the given delimiter
+</summary>
+</member>
+<member name="M:FSharpAux.String.contains(System.String,System.String)">
+<summary>
+ Returns a value indicating whether the specified substring occurs within this string
+</summary>
+</member>
+<member name="M:FSharpAux.String.replace(System.String,System.String,System.String)">
+<summary>
+ Replaces the given &quot;replacement&quot; for every occurence of the pattern in the given text 
+</summary>
+</member>
+<member name="M:FSharpAux.String.startsWith(System.String,System.String)">
+<summary>
+ Checks whether the given text starts with the given prefix
+</summary>
+</member>
+<member name="T:FSharpAux.Tree.GenericNode`2">
+<summary>
+ Generic tree node containing member list and child map
+</summary>
+</member>
+<member name="M:FSharpAux.Tree.contains``2(Microsoft.FSharp.Collections.FSharpList{``0},``1,FSharpAux.Tree.GenericNode{``0,``1})">
+<summary>
+ Contains 
+</summary>
+</member>
+<member name="M:FSharpAux.Tree.createTree``2(Microsoft.FSharp.Collections.FSharpList{System.Tuple{Microsoft.FSharp.Collections.FSharpList{``0},``1}})">
+<summary>
+ Create tree out of keyPath*item list 
+</summary>
+</member>
+<member name="M:FSharpAux.Tree.add``2(Microsoft.FSharp.Collections.FSharpList{``0},``1,FSharpAux.Tree.GenericNode{``0,``1})">
+<summary>
+ Add item to tree having keyPath as list of keys
+</summary>
+</member>
+<member name="M:FSharpAux.Tree.empty``2">
+<summary>
+ Generic tree node empty
+</summary>
+</member>
+</members>
+</doc>

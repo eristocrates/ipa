@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Language.Xml</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Language.Xml.Formatter">
+            <summary>
+            Formats XML syntax trees/documents using <see cref="T:Meziantou.Framework.Language.Xml.XmlFormattingOptions"/>.
+            </summary>
+            <example>
+            <code>
+            var tree = XmlSyntaxTree.ParseText("&lt;root&gt;&lt;item/&gt;&lt;/root&gt;");
+            var formatted = Formatter.Format(tree);
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.SourceText">
+            <summary>Represents immutable XML text with line information and text-change application helpers.</summary>
+            <example>
+            <code>
+            var source = SourceText.From("&lt;root/&gt;");
+            var updated = source.WithChanges([new XmlTextChange(new TextSpan(1, 4), "item")]);
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SourceText.ToString">
+            <summary>Returns the source text.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.SyntaxFactory">
+            <summary>Creates syntax nodes, tokens, and trivia programmatically.</summary>
+            <example>
+            <code>
+            var node = SyntaxFactory.Element("package", [SyntaxFactory.Attribute("version", "1.0.0")], [], isSelfClosing: true);
+            var document = SyntaxFactory.Document(node);
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.TextLine">
+            <summary>
+            Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.Xml.SourceText"/> instance.
+            </summary>
+            <example>
+            <code>
+            var line = SourceText.From("&lt;root/&gt;").Lines[0];
+            var text = line.Text;
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.TextLine.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.Xml.SourceText"/> instance.
+            </summary>
+            <example>
+            <code>
+            var line = SourceText.From("&lt;root/&gt;").Lines[0];
+            var text = line.Text;
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.TextSpan">
+            <summary>Represents a contiguous character range in text.</summary>
+            <example>
+            <code>
+            var span = new TextSpan(start: 5, length: 3);
+            var sameSpan = TextSpan.FromBounds(5, 8);
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlAttributeSyntax">
+            <summary>Represents an XML attribute in a start tag.</summary>
+            <example>
+            <code>
+            var attribute = SyntaxFactory.Attribute("version", "1.0.0");
+            var updated = attribute.WithValue("2.0.0");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlCDataSectionSyntax">
+            <summary>Represents an XML CDATA section node.</summary>
+            <example>
+            <code>
+            var cdata = SyntaxFactory.CDataSection("raw &lt;content&gt;");
+            var updated = cdata.WithText("other");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlCommentSyntax">
+            <summary>Represents an XML comment node.</summary>
+            <example>
+            <code>
+            var comment = SyntaxFactory.Comment("generated");
+            var updated = comment.WithText("updated");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlDeclarationSyntax">
+            <summary>
+            Represents an XML declaration (for example <c>&lt;?xml version="1.0"?&gt;</c>).
+            </summary>
+            <example>
+            <code>
+            var declaration = SyntaxFactory.Declaration("1.0", "utf-8", "yes");
+            var updated = declaration.WithEncoding("utf-16");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlDiagnostic">
+            <summary>Represents a parser or analyzer diagnostic produced while reading XML syntax.</summary>
+            <example>
+            <code>
+            var tree = XmlSyntaxTree.ParseText("&lt;root&gt;&lt;item&gt;&lt;/root&gt;");
+            var diagnostic = tree.Diagnostics.First();
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDiagnostic.#ctor(System.String,System.String,Meziantou.Framework.Language.Xml.XmlDiagnosticSeverity,Meziantou.Framework.Language.Xml.TextSpan)">
+            <summary>Represents a parser or analyzer diagnostic produced while reading XML syntax.</summary>
+            <example>
+            <code>
+            var tree = XmlSyntaxTree.ParseText("&lt;root&gt;&lt;item&gt;&lt;/root&gt;");
+            var diagnostic = tree.Diagnostics.First();
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlDiagnosticDescriptor">
+            <summary>Describes a diagnostic definition (id, title, message template, and default severity).</summary>
+            <example>
+            <code>
+            var descriptor = new XmlDiagnosticDescriptor("XML0001", "Missing end tag", "Missing end tag for '{0}'", XmlDiagnosticSeverity.Error);
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlDiagnosticSeverity">
+            <summary>
+            Indicates the severity level of an <see cref="T:Meziantou.Framework.Language.Xml.XmlDiagnostic"/>.
+            </summary>
+            <example>
+            <code>
+            if (diagnostic.Severity == XmlDiagnosticSeverity.Error)
+            {
+                // stop processing
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlDocumentSyntax">
+            <summary>Represents the root XML document node and provides XPath-based selection/editing helpers.</summary>
+            <example>
+            <code>
+            var document = XmlSyntaxTree.ParseText("&lt;root&gt;&lt;item/&gt;&lt;/root&gt;").Root;
+            var node = document.SelectSingleSyntaxNode("/root/item");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlDocumentTypeSyntax">
+            <summary>
+            Represents a document type declaration (<c>&lt;!DOCTYPE ...&gt;</c>).
+            </summary>
+            <example>
+            <code>
+            var doctype = SyntaxFactory.DocumentType("html", null);
+            var updated = doctype.WithName("root");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlElementSyntax">
+            <summary>Represents an XML element, including its attributes and child content.</summary>
+            <example>
+            <code>
+            var element = SyntaxFactory.Element("package", [], [new XmlTextSyntax("value")]);
+            var updated = element.WithName("dependency");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlEndTagSyntax">
+            <summary>
+            Represents an XML end tag (for example <c>&lt;/item&gt;</c>).
+            </summary>
+            <example>
+            <code>
+            var endTag = new XmlEndTagSyntax("item", "&lt;/item&gt;");
+            var updated = endTag.WithName("other");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlFormattingOptions">
+            <summary>
+            Controls whitespace and layout decisions used by <see cref="T:Meziantou.Framework.Language.Xml.Formatter"/>.
+            </summary>
+            <example>
+            <code>
+            var options = new XmlFormattingOptions { IndentationSize = 4, SpaceAroundEquals = true };
+            var formatted = Formatter.Format(tree, options);
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlProcessingInstructionSyntax">
+            <summary>Represents an XML processing instruction node.</summary>
+            <example>
+            <code>
+            var instruction = SyntaxFactory.ProcessingInstruction("xml-stylesheet", "type=\"text/xsl\" href=\"a.xsl\"");
+            var updated = instruction.WithData("type=\"text/xsl\" href=\"b.xsl\"");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSkippedTextSyntax">
+            <summary>Represents source text that could not be parsed into a valid XML construct.</summary>
+            <example>
+            <code>
+            var node = new XmlSkippedTextSyntax("&lt;invalid");
+            var updated = node.WithText("&lt;still-invalid");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxAnnotation">
+            <summary>Represents user-defined metadata attached to syntax.</summary>
+            <example>
+            <code>
+            var annotation = new XmlSyntaxAnnotation("source", "generated");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxKind">
+            <summary>Identifies the kind of XML syntax node, token, or trivia.</summary>
+            <example>
+            <code>
+            if (node.Kind == XmlSyntaxKind.XmlElement)
+            {
+                // handle element
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxNavigator">
+            <summary>
+            <see cref="T:System.Xml.XPath.XPathNavigator"/> implementation backed directly by <see cref="T:Meziantou.Framework.Language.Xml.XmlSyntaxNode"/> instances.
+            </summary>
+            <example>
+            <code>
+            var navigator = new XmlSyntaxNavigator(document);
+            var result = navigator.SelectSingleNode("/root/item");
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxNode">
+            <summary>Base type for all XML syntax nodes in the immutable syntax tree.</summary>
+            <example>
+            <code>
+            foreach (var node in tree.Root.DescendantNodes())
+            {
+                _ = node.Kind;
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxNodeOrToken">
+            <summary>Represents either a syntax node or a syntax token in traversal APIs.</summary>
+            <example>
+            <code>
+            foreach (var item in tree.Root.DescendantNodesAndTokens())
+            {
+                var kind = item.Kind;
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxRewriter">
+            <summary>Visitor that can produce a rewritten XML syntax tree.</summary>
+            <example>
+            <code>
+            sealed class RenameRoot : XmlSyntaxRewriter
+            {
+                public override XmlSyntaxNode? VisitElement(XmlElementSyntax node)
+                    => node.Name == "root" ? node.WithName("renamed") : base.VisitElement(node);
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxToken">
+            <summary>Represents a lexical token that belongs to a syntax node.</summary>
+            <example>
+            <code>
+            var token = element.Tokens.First();
+            var text = token.ToFullString();
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxTree">
+            <summary>Represents an immutable XML syntax tree with source text and diagnostics.</summary>
+            <example>
+            <code>
+            var tree = XmlSyntaxTree.ParseText(xml);
+            var updated = tree.WithChanges(new XmlTextChange(new TextSpan(0, 0), "&lt;!--generated--&gt;"));
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxTrivia">
+            <summary>Represents trivia (for example whitespace or line breaks) attached to a token.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxVisitor">
+            <summary>Base visitor for walking XML syntax trees without returning a value.</summary>
+            <example>
+            <code>
+            sealed class Counter : XmlSyntaxVisitor
+            {
+                public int Count { get; private set; }
+                public override void VisitElement(XmlElementSyntax node) => Count++;
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxVisitor`1">
+            <summary>Base visitor for walking XML syntax trees and returning a value.</summary>
+            <typeparam name="TResult">Type returned by visit methods.</typeparam>
+            <example>
+            <code>
+            sealed class ElementNameVisitor : XmlSyntaxVisitor&lt;string?&gt;
+            {
+                public override string? VisitElement(XmlElementSyntax node) => node.Name;
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlTextChange">
+            <summary>
+            Represents a text replacement operation applied to a <see cref="T:Meziantou.Framework.Language.Xml.SourceText"/> or <see cref="T:Meziantou.Framework.Language.Xml.XmlSyntaxTree"/>.
+            </summary>
+            <example>
+            <code>
+            var change = new XmlTextChange(new TextSpan(10, 5), "2.0.0");
+            var updated = tree.WithChanges(change);
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlTextSyntax">
+            <summary>Represents plain text content inside an XML element.</summary>
+            <example>
+            <code>
+            var text = new XmlTextSyntax("hello");
+            var updated = text.WithText("world");
+            </code>
+            </example>
+        </member>
+    </members>
+</doc>

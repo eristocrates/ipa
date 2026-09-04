@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ReactiveExtensionsSharp</id>
+    <version>0.3.0</version>
+    <title>ReactiveExtensionsSharp</title>
+    <authors>Darío Kondratiuk</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/hardkoded/ReactiveExtensions-Sharp</projectUrl>
+    <description>A .NET port of RxJS (Reactive Extensions for JavaScript).</description>
+    <tags>rxjs reactive observable rx async</tags>
+    <repository type="git" url="https://github.com/hardkoded/ReactiveExtensions-Sharp" commit="787712268f4bedf5945d43082d450042be275bce" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+      <group targetFramework="net8.0" />
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

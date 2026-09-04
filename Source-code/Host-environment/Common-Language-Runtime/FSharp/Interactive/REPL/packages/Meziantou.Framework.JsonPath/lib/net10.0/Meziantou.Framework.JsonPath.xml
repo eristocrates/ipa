@@ -1,0 +1,713 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.JsonPath</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Json.Internals.AbsoluteFilterQuery">
+            <summary>An absolute filter query starting with $ (root node).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.Comparable">
+            <summary>Base class for comparable values used in filter comparison expressions.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.FilterQuery">
+            <summary>Base class for filter queries (@-relative or $-absolute) used in filter selectors.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.FilterSelector">
+            <summary>Filter selector: selects children matching a logical expression.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.FunctionArgument">
+            <summary>Represents an argument passed to a function call in a filter expression.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Json.Internals.FunctionArgument.Value">
+            <summary>
+            The argument value. Type depends on <see cref="P:Meziantou.Framework.Json.Internals.FunctionArgument.Kind"/>:
+            <list type="bullet">
+            <item><see cref="F:Meziantou.Framework.Json.Internals.FunctionArgumentKind.Literal"/>: an <see cref="T:System.Object"/> (null, bool, string, double, or long)</item>
+            <item><see cref="F:Meziantou.Framework.Json.Internals.FunctionArgumentKind.FilterQuery"/>: a <see cref="T:Meziantou.Framework.Json.Internals.FilterQuery"/></item>
+            <item><see cref="F:Meziantou.Framework.Json.Internals.FunctionArgumentKind.LogicalExpression"/>: a <see cref="T:Meziantou.Framework.Json.Internals.LogicalExpression"/></item>
+            <item><see cref="F:Meziantou.Framework.Json.Internals.FunctionArgumentKind.FunctionCall"/>: a <see cref="T:Meziantou.Framework.Json.Internals.FunctionCallExpression"/></item>
+            </list>
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.FunctionCallComparable">
+            <summary>A function call expression used as a comparable (must have ValueType result).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.FunctionCallExpression._regexCache">
+            <summary>
+            Cached <see cref="T:System.Text.RegularExpressions.Regex"/> for a <c>match()</c>/<c>search()</c> call whose pattern is a literal, which is
+            the overwhelmingly common case. A miss stores <see cref="F:Meziantou.Framework.Json.Internals.FunctionCallExpression.RegexCacheEntry.Unusable"/> so an invalid pattern
+            is not re-translated per node either.
+            </summary>
+            <remarks>
+            A parsed <see cref="T:Meziantou.Framework.Json.JsonPath"/> is documented as thread-safe and reusable. Publishing this field races
+            benignly: <see cref="T:Meziantou.Framework.Json.Internals.FunctionCallExpression.RegexCacheEntry"/> is immutable, reference assignment is atomic, and the worst case
+            is that two threads each build an equivalent entry and one wins.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Json.Internals.FunctionCallExpression.GetOrCreateRegex(System.Func{System.String,Meziantou.Framework.Json.Internals.FunctionCallExpression.RegexCacheEntry})">
+            <summary>Gets the cached regex for this call, building it with <paramref name="factory"/> on first use.</summary>
+            <param name="factory">Builds the entry from the literal pattern.</param>
+            <returns>The cached entry.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.FunctionCallExpression.RegexCacheEntry">
+            <summary>An immutable compiled-pattern result: either a usable <see cref="P:Meziantou.Framework.Json.Internals.FunctionCallExpression.RegexCacheEntry.Regex"/> or a known failure.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.FunctionCallExpression.RegexCacheEntry.Unusable">
+            <summary>A pattern that cannot be evaluated, which RFC 9535 maps to LogicalFalse.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.FunctionExpressionType">
+            <summary>The declared type system for function expressions (RFC 9535 §2.4.1).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.FunctionExpressionType.ValueType">
+            <summary>JSON values or Nothing.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.FunctionExpressionType.LogicalType">
+            <summary>LogicalTrue or LogicalFalse.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.FunctionExpressionType.NodesType">
+            <summary>Nodelists.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.IndexSelector">
+            <summary>Index selector: selects an element of an array by index (may be negative).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.JsonPathExpression">
+            <summary>Root AST node for a parsed JSONPath query: $ followed by zero or more segments.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.LiteralComparable">
+            <summary>A literal value in a filter expression (number, string, true, false, null).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.LiteralComparable.Null">
+            <summary>
+            Represents JSON null.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.LiteralComparable.True">
+            <summary>
+            Represents JSON true.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.LiteralComparable.False">
+            <summary>
+            Represents JSON false.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Json.Internals.LiteralComparable.Value">
+            <summary>The literal value: null, bool, string, or double/long.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.LogicalExpression">
+            <summary>Base class for logical expressions used in filter selectors.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.NameSelector">
+            <summary>Name selector: selects a member of an object by name.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.RelativeFilterQuery">
+            <summary>A relative filter query starting with @ (current node).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.Segment">
+            <summary>Represents a child segment [selectors] or descendant segment ..[selectors].</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.Selector">
+            <summary>Base class for all selector types in a JSONPath segment.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.SingularQuery">
+            <summary>A singular query (selects at most one node) used in comparisons.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.SingularQueryComparable">
+            <summary>A singular query used as a comparable in a filter expression.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.SliceSelector">
+            <summary>Slice selector: selects a range of elements from an array (start:end:step).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.WildcardSelector">
+            <summary>Wildcard selector: selects all children of an object or array.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.JsonPathEvaluator">
+            <summary>Evaluates a parsed JSONPath AST against a JSON value tree.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.JsonPathEvaluator.MaxRecursionDepth">
+            <summary>
+            Maximum node depth visited by a descendant segment or a deep equality comparison. Both walks are
+            recursive, so an unbounded depth would overflow the stack, which cannot be caught and terminates the
+            process. It also terminates cycles, which a custom <see cref="T:Meziantou.Framework.Json.JsonPathNavigator`1"/> may expose.
+            The value leaves ample room above the default <see cref="P:System.Text.Json.JsonDocumentOptions.MaxDepth"/>
+            of 64 that bounds any document produced by System.Text.Json's own parsers.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.JsonPathEvaluator.UntrackedPath">
+            <summary>
+            Stand-in path used when path tracking is off. Filter subqueries discard paths, so they all share this
+            instance instead of each allocating and copying their own.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.JsonPathEvaluator.RegexTimeout">
+            <summary>
+            Backstop for a single <c>match()</c>/<c>search()</c> evaluation. <see cref="F:System.Text.RegularExpressions.RegexOptions.NonBacktracking"/>
+            already guarantees linear time, so this only bounds pathologically long inputs. It is applied per node,
+            so it must stay small: a filter over a large array multiplies it by the node count.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Json.Internals.JsonPathEvaluator.Extend(System.Collections.Generic.List{Meziantou.Framework.Json.Internals.PathComponent},Meziantou.Framework.Json.Internals.PathComponent,System.Boolean)">
+            <summary>Appends a component to a path, or returns it untouched when path tracking is off.</summary>
+            <param name="path">The path so far.</param>
+            <param name="component">The component to append.</param>
+            <param name="trackPaths">Whether the caller will read the resulting paths.</param>
+            <returns>The extended path, or <paramref name="path"/> when tracking is off.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.Internals.JsonPathEvaluator.IsRegexMatch(Meziantou.Framework.Json.Internals.FunctionCallExpression,System.String,System.String,System.Boolean)">
+            <summary>
+            Runs an I-Regexp pattern (RFC 9485) against a string. Per RFC 9535 §2.4.6/§2.4.7, a pattern that
+            cannot be evaluated yields LogicalFalse rather than an error, so every failure mode returns
+            <see langword="false"/> instead of propagating out of <c>Evaluate</c>.
+            </summary>
+            <param name="func">The call being evaluated, used to cache the compiled pattern.</param>
+            <param name="input">The string to test.</param>
+            <param name="iRegexp">The I-Regexp pattern.</param>
+            <param name="anchored">Whether the pattern must match the whole string (<c>match()</c>) or any substring (<c>search()</c>).</param>
+            <returns><see langword="true"/> when the pattern matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.Internals.JsonPathLexer.PeekChar(System.Int32)">
+            <summary>
+            Peeks at the character at the given offset from the current position without consuming tokens.
+            Returns '\0' if at end of input.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Json.Internals.JsonPathLexer.PeekNonWhitespaceChar">
+            <summary>Peeks at the next non-whitespace character without consuming it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Json.Internals.JsonPathLexer.SavePosition">
+            <summary>Saves the current lexer position for backtracking.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Json.Internals.JsonPathLexer.RestorePosition(System.Int32)">
+            <summary>Restores the lexer to a previously saved position.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Json.Internals.JsonPathLexer.TryReadNameCodePoint(System.Int32,System.Boolean,System.Int32@,System.Int32@)">
+            <summary>
+            Reads the code point at <paramref name="index"/> when it is a valid member-name-shorthand character.
+            Code points above the BMP are encoded as a surrogate pair, so they are decoded here rather than
+            tested one UTF-16 char at a time \u2014 a lone surrogate half is never a name character.
+            </summary>
+            <param name="index">The position to read from.</param>
+            <param name="isFirst">Whether the code point is the first of the name, which excludes DIGIT.</param>
+            <param name="codePoint">When this method returns, contains the decoded code point.</param>
+            <param name="length">When this method returns, contains the number of UTF-16 chars consumed (1 or 2).</param>
+            <returns><see langword="true"/> when a valid name code point was read; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.Internals.JsonPathLexer.IsNameFirst(System.Int32)">
+            <summary>name-first = ALPHA / "_" / %x80-D7FF / %xE000-10FFFF</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Json.Internals.JsonPathLexer.IsNameChar(System.Int32)">
+            <summary>name-char = name-first / DIGIT</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.JsonPathParser">
+            <summary>
+            Recursive descent parser for JSONPath expressions (RFC 9535).
+            Follows the ABNF grammar from Appendix A.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.Internals.JsonPathParser.MaxNestingDepth">
+            <summary>
+            Maximum nesting depth of filter expressions and function calls. The parser is recursive, so an
+            unbounded nesting level would overflow the stack, which cannot be caught and terminates the process.
+            The value matches <see cref="P:System.Text.Json.JsonDocumentOptions.MaxDepth"/>'s default and is far
+            above any practical query.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Json.Internals.JsonPathToken.IsIntegerLiteral">
+            <summary>
+            Indicates whether this number literal was lexed as a pure integer
+            (no decimal point, no exponent, no leading negative zero).
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.NormalizedPath">
+            <summary>
+            Holds the components of a matched node's normalized path and renders them on first use.
+            </summary>
+            <remarks>
+            Evaluation produces one of these per match, but most callers only read <c>Value</c> on some of them —
+            often none at all, as with <c>EvaluateValue</c>. Rendering eagerly made every evaluation pay for a string
+            per match whether or not anyone looked at it. This is a class rather than a struct so that the readonly
+            match structs can still cache the rendered string through the shared reference.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Json.Internals.NormalizedPath.Value">
+            <summary>Gets the normalized path, building it on first access.</summary>
+            <remarks>
+            A benign race can render the same string twice; both are equal, so no lock is needed.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Json.Internals.NormalizedPathBuilder">
+            <summary>
+            Builds normalized paths per RFC 9535 §2.7.
+            Format: $['name'][index]
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPath">
+            <summary>
+            Represents a parsed JSONPath expression that can be evaluated against JSON values.
+            This class is immutable and thread-safe; a single instance can be reused to evaluate
+            multiple JSON documents.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.Parse(System.String)">
+            <summary>Parses a JSONPath expression.</summary>
+            <param name="expression">A valid JSONPath expression string (must start with <c>$</c>).</param>
+            <returns>A parsed <see cref="T:Meziantou.Framework.Json.JsonPath"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="expression"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.FormatException">The expression is not a well-formed or valid JSONPath query.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.Parse(System.ReadOnlySpan{System.Char})">
+            <summary>Parses a JSONPath expression from a character span.</summary>
+            <param name="expression">A valid JSONPath expression (must start with <c>$</c>).</param>
+            <returns>A parsed <see cref="T:Meziantou.Framework.Json.JsonPath"/> instance.</returns>
+            <exception cref="T:System.FormatException">The expression is not a well-formed or valid JSONPath query.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.TryParse(System.String,Meziantou.Framework.Json.JsonPath@)">
+            <summary>Tries to parse a JSONPath expression.</summary>
+            <param name="expression">A JSONPath expression string.</param>
+            <param name="result">When this method returns, contains the parsed <see cref="T:Meziantou.Framework.Json.JsonPath"/> if parsing succeeded, or <see langword="null"/> if it failed.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.TryParse(System.ReadOnlySpan{System.Char},Meziantou.Framework.Json.JsonPath@)">
+            <summary>Tries to parse a JSONPath expression from a character span.</summary>
+            <param name="expression">A JSONPath expression.</param>
+            <param name="result">When this method returns, contains the parsed <see cref="T:Meziantou.Framework.Json.JsonPath"/> if parsing succeeded, or <see langword="null"/> if it failed.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.Evaluate``1(``0,Meziantou.Framework.Json.JsonPathNavigator{``0})">
+            <summary>Evaluates this JSONPath expression against a custom object model.</summary>
+            <typeparam name="TValue">The node type used by the JSONPath navigator.</typeparam>
+            <param name="root">The root value to query. May be <see langword="null"/> when the root value is JSON <c language="json">null</c>.</param>
+            <param name="navigator">The navigator used to inspect values.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult`1"/> containing all matched nodes.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="navigator"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.Evaluate``1(``0,Meziantou.Framework.Json.JsonPathNavigator{``0},Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>Evaluates this JSONPath expression against a custom object model.</summary>
+            <typeparam name="TValue">The node type used by the JSONPath navigator.</typeparam>
+            <param name="root">The root value to query. May be <see langword="null"/> when the root value is JSON <c language="json">null</c>.</param>
+            <param name="navigator">The navigator used to inspect values.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult`1"/> containing all matched nodes.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="navigator"/> is <see langword="null"/>.</exception>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.Evaluate(System.Text.Json.Nodes.JsonNode)">
+            <summary>Evaluates this JSONPath expression against a JSON value.</summary>
+            <param name="root">The root JSON value to query. May be <see langword="null"/>.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult"/> containing all matched nodes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.Evaluate(System.Text.Json.Nodes.JsonNode,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>Evaluates this JSONPath expression against a JSON value.</summary>
+            <param name="root">The root JSON value to query. May be <see langword="null"/>.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult"/> containing all matched nodes.</returns>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.Evaluate(System.Text.Json.JsonDocument)">
+            <summary>Evaluates this JSONPath expression against a JSON document.</summary>
+            <param name="root">The root JSON document to query. May be <see langword="null"/>.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult`1"/> containing all matched nodes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.Evaluate(System.Text.Json.JsonDocument,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>Evaluates this JSONPath expression against a JSON document.</summary>
+            <param name="root">The root JSON document to query. May be <see langword="null"/>.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult`1"/> containing all matched nodes.</returns>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.Evaluate(System.Text.Json.JsonElement)">
+            <summary>Evaluates this JSONPath expression against a JSON element.</summary>
+            <param name="root">The root JSON element to query.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult`1"/> containing all matched nodes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.Evaluate(System.Text.Json.JsonElement,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>Evaluates this JSONPath expression against a JSON element.</summary>
+            <param name="root">The root JSON element to query.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult`1"/> containing all matched nodes.</returns>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.EvaluateValue``1(``0,Meziantou.Framework.Json.JsonPathNavigator{``0})">
+            <summary>
+            Evaluates this JSONPath expression and returns the first matched custom value, or <see langword="null"/> when there is no match.
+            </summary>
+            <typeparam name="TValue">The node type used by the JSONPath navigator.</typeparam>
+            <param name="root">The root value to query. May be <see langword="null"/> when the root value is JSON <c language="json">null</c>.</param>
+            <param name="navigator">The navigator used to inspect values.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="navigator"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.EvaluateValue``1(``0,Meziantou.Framework.Json.JsonPathNavigator{``0},Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>
+            Evaluates this JSONPath expression and returns the first matched custom value, or <see langword="null"/> when there is no match.
+            </summary>
+            <typeparam name="TValue">The node type used by the JSONPath navigator.</typeparam>
+            <param name="root">The root value to query. May be <see langword="null"/> when the root value is JSON <c language="json">null</c>.</param>
+            <param name="navigator">The navigator used to inspect values.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="navigator"/> is <see langword="null"/>.</exception>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.EvaluateValue(System.Text.Json.Nodes.JsonNode)">
+            <summary>
+            Evaluates this JSONPath expression and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON value to query. May be <see langword="null"/>.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.EvaluateValue(System.Text.Json.Nodes.JsonNode,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>
+            Evaluates this JSONPath expression and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON value to query. May be <see langword="null"/>.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.EvaluateValue(System.Text.Json.JsonDocument)">
+            <summary>
+            Evaluates this JSONPath expression and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON document to query. May be <see langword="null"/>.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.EvaluateValue(System.Text.Json.JsonDocument,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>
+            Evaluates this JSONPath expression and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON document to query. May be <see langword="null"/>.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.EvaluateValue(System.Text.Json.JsonElement)">
+            <summary>
+            Evaluates this JSONPath expression and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON element to query.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.EvaluateValue(System.Text.Json.JsonElement,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>
+            Evaluates this JSONPath expression and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON element to query.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPath.ToString">
+            <summary>Returns the original JSONPath expression string.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPathEvaluationException">
+            <summary>
+            The exception that is thrown when JSONPath evaluation fails.
+            </summary>
+            <remarks>
+            This is thrown for a path error in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode, and — in either mode —
+            when a value is nested more deeply than the evaluator will recurse, which also covers a
+            <see cref="T:Meziantou.Framework.Json.JsonPathNavigator`1"/> that exposes a cycle.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPathEvaluationMode">
+            <summary>Controls how JSONPath evaluation handles path errors.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Lax">
+            <summary>
+            Tolerant evaluation. Path errors (such as missing members or invalid indexes) produce no match.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict">
+            <summary>
+            Strict evaluation. Path errors raise a <see cref="T:Meziantou.Framework.Json.JsonPathEvaluationException"/>.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPathExtensions">
+            <summary>Provides JSONPath evaluation helpers for JSON values.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.Evaluate(System.Text.Json.Nodes.JsonNode,Meziantou.Framework.Json.JsonPath)">
+            <summary>Evaluates a JSONPath expression against this JSON value.</summary>
+            <param name="root">The root JSON value to query. May be <see langword="null"/>.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult"/> containing all matched nodes.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.Evaluate(System.Text.Json.Nodes.JsonNode,Meziantou.Framework.Json.JsonPath,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>Evaluates a JSONPath expression against this JSON value.</summary>
+            <param name="root">The root JSON value to query. May be <see langword="null"/>.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult"/> containing all matched nodes.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.Evaluate(System.Text.Json.JsonDocument,Meziantou.Framework.Json.JsonPath)">
+            <summary>Evaluates a JSONPath expression against this JSON document.</summary>
+            <param name="root">The root JSON document to query. May be <see langword="null"/>.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult`1"/> containing all matched nodes.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.Evaluate(System.Text.Json.JsonDocument,Meziantou.Framework.Json.JsonPath,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>Evaluates a JSONPath expression against this JSON document.</summary>
+            <param name="root">The root JSON document to query. May be <see langword="null"/>.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult`1"/> containing all matched nodes.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.Evaluate(System.Text.Json.JsonElement,Meziantou.Framework.Json.JsonPath)">
+            <summary>Evaluates a JSONPath expression against this JSON element.</summary>
+            <param name="root">The root JSON element to query.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult`1"/> containing all matched nodes.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.Evaluate(System.Text.Json.JsonElement,Meziantou.Framework.Json.JsonPath,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>Evaluates a JSONPath expression against this JSON element.</summary>
+            <param name="root">The root JSON element to query.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Json.JsonPathResult`1"/> containing all matched nodes.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.EvaluateValue(System.Text.Json.Nodes.JsonNode,Meziantou.Framework.Json.JsonPath)">
+            <summary>
+            Evaluates a JSONPath expression against this JSON value and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON value to query. May be <see langword="null"/>.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.EvaluateValue(System.Text.Json.Nodes.JsonNode,Meziantou.Framework.Json.JsonPath,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>
+            Evaluates a JSONPath expression against this JSON value and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON value to query. May be <see langword="null"/>.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.EvaluateValue(System.Text.Json.JsonDocument,Meziantou.Framework.Json.JsonPath)">
+            <summary>
+            Evaluates a JSONPath expression against this JSON document and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON document to query. May be <see langword="null"/>.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.EvaluateValue(System.Text.Json.JsonDocument,Meziantou.Framework.Json.JsonPath,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>
+            Evaluates a JSONPath expression against this JSON document and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON document to query. May be <see langword="null"/>.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.EvaluateValue(System.Text.Json.JsonElement,Meziantou.Framework.Json.JsonPath)">
+            <summary>
+            Evaluates a JSONPath expression against this JSON element and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON element to query.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathExtensions.EvaluateValue(System.Text.Json.JsonElement,Meziantou.Framework.Json.JsonPath,Meziantou.Framework.Json.JsonPathEvaluationMode)">
+            <summary>
+            Evaluates a JSONPath expression against this JSON element and returns the first matched value, or <see langword="null"/> when there is no match.
+            </summary>
+            <param name="root">The root JSON element to query.</param>
+            <param name="path">The JSONPath expression to evaluate.</param>
+            <param name="mode">The evaluation mode.</param>
+            <returns>The first matched value, or <see langword="null"/> when there is no match.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+            <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPathMatch">
+            <summary>Represents a single node matched by a JSONPath evaluation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathMatch.Value">
+            <summary>
+            Gets the JSON value of the matched node. May be <see langword="null"/> when the matched value is JSON <c language="json">null</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathMatch.Path">
+            <summary>
+            Gets the normalized path of the matched node (e.g. <c>$['store']['book'][0]</c>).
+            </summary>
+            <remarks>The path is rendered on first access and cached, so evaluations that never read it do not pay for it.</remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPathMatch`1">
+            <summary>Represents a single value matched by a JSONPath evaluation.</summary>
+            <typeparam name="TValue">The node type used by the JSONPath navigator.</typeparam>
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathMatch`1.Value">
+            <summary>
+            Gets the value of the matched node. May be <see langword="null"/> when the navigator represents JSON <c language="json">null</c> as <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathMatch`1.Path">
+            <summary>
+            Gets the normalized path of the matched node (e.g. <c>$['store']['book'][0]</c>).
+            </summary>
+            <remarks>The path is rendered on first access and cached, so evaluations that never read it do not pay for it.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathMatch`1.RawPath">
+            <summary>Gets the unrendered path, so adapters can hand it on without forcing it to a string.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPathNavigator`1">
+            <summary>Provides JSONPath navigation services for a custom object model.</summary>
+            <typeparam name="TValue">The node type used by the custom object model.</typeparam>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathNavigator`1.GetKind(`0)">
+            <summary>Gets the JSON node kind represented by <paramref name="value"/>.</summary>
+            <param name="value">The value to inspect. Navigators may use <see langword="null"/> or a model-specific value to represent JSON <c language="json">null</c>.</param>
+            <returns>The JSON node kind represented by <paramref name="value"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathNavigator`1.TryGetPropertyValue(`0,System.String,`0@)">
+            <summary>Gets an object property value.</summary>
+            <param name="value">The object value.</param>
+            <param name="name">The property name.</param>
+            <param name="result">When this method returns, contains the property value if it exists.</param>
+            <returns><see langword="true"/> when the property exists; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathNavigator`1.GetProperties(`0)">
+            <summary>Gets object properties in enumeration order.</summary>
+            <param name="value">The object value.</param>
+            <returns>The object properties in enumeration order.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathNavigator`1.GetArrayLength(`0)">
+            <summary>Gets an array length.</summary>
+            <param name="value">The array value.</param>
+            <returns>The array length.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathNavigator`1.TryGetElement(`0,System.Int32,`0@)">
+            <summary>Gets an array element by zero-based index.</summary>
+            <param name="value">The array value.</param>
+            <param name="index">The zero-based array index.</param>
+            <param name="result">When this method returns, contains the element value if it exists.</param>
+            <returns><see langword="true"/> when the element exists; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathNavigator`1.TryGetString(`0,System.String@)">
+            <summary>Gets a string scalar value.</summary>
+            <param name="value">The scalar value.</param>
+            <param name="result">When this method returns, contains the string value.</param>
+            <returns><see langword="true"/> when <paramref name="value"/> represents a string; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathNavigator`1.TryGetNumber(`0,System.Double@)">
+            <summary>Gets a number scalar value.</summary>
+            <param name="value">The scalar value.</param>
+            <param name="result">When this method returns, contains the number value.</param>
+            <returns><see langword="true"/> when <paramref name="value"/> represents a number; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathNavigator`1.TryGetBoolean(`0,System.Boolean@)">
+            <summary>Gets a boolean scalar value.</summary>
+            <param name="value">The scalar value.</param>
+            <param name="result">When this method returns, contains the boolean value.</param>
+            <returns><see langword="true"/> when <paramref name="value"/> represents a boolean; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPathNodeKind">
+            <summary>Represents the JSON node kind exposed by a <see cref="T:Meziantou.Framework.Json.JsonPathNavigator`1"/>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.JsonPathNodeKind.Null">
+            <summary>A JSON null value.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.JsonPathNodeKind.Boolean">
+            <summary>A JSON boolean value.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.JsonPathNodeKind.Number">
+            <summary>A JSON number value.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.JsonPathNodeKind.String">
+            <summary>A JSON string value.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.JsonPathNodeKind.Array">
+            <summary>A JSON array value.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Json.JsonPathNodeKind.Object">
+            <summary>A JSON object value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPathProperty`1">
+            <summary>Represents an object property exposed by a <see cref="T:Meziantou.Framework.Json.JsonPathNavigator`1"/>.</summary>
+            <typeparam name="TValue">The node type used by the JSONPath navigator.</typeparam>
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathProperty`1.#ctor(System.String,`0)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Json.JsonPathProperty`1"/> struct.</summary>
+            <param name="name">The property name.</param>
+            <param name="value">The property value.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathProperty`1.Name">
+            <summary>Gets the property name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathProperty`1.Value">
+            <summary>Gets the property value. May be <see langword="null"/> when the navigator represents JSON <c language="json">null</c> as <see langword="null"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPathResult">
+            <summary>
+            Represents the result of evaluating a JSONPath expression against a JSON value.
+            Contains the ordered list of matched nodes.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathResult.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathResult.Item(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathResult.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathResult.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathResult.ToJsonArray">
+            <summary>
+            Returns the values of all matched nodes as a <see cref="T:System.Text.Json.Nodes.JsonArray"/>.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Json.JsonPathResult`1">
+            <summary>
+            Represents the result of evaluating a JSONPath expression against a custom object model.
+            Contains the ordered list of matched nodes.
+            </summary>
+            <typeparam name="TValue">The node type used by the JSONPath navigator.</typeparam>
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathResult`1.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.Json.JsonPathResult`1.Item(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathResult`1.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.Json.JsonPathResult`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+    </members>
+</doc>

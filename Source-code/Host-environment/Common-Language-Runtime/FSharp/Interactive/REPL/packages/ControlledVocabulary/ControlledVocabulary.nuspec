@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ControlledVocabulary</id>
+    <version>1.2.0</version>
+    <authors>Oliver Maus, Kevin Schneider, Heinrich Lukas Weil, Timo Muehlhaus, Kevin Frey</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <description>A generic data model for representing controlled vocabularies</description>
+    <releaseNotes>- Additions:
+- [Function in module `CvTerm` to get a TSR (term source ref) directly from a TAN (term accession number)](https://github.com/nfdi4plants/ARCTokenization/pull/74)</releaseNotes>
+    <tags>F# FSharp datascience rdm arc dataplant nfdi4plants</tags>
+    <repository type="git" url="https://github.com/nfdi4plants/ArcGraphModel" commit="4e0dd5912b3a8c4459eed89de33ee382fb42e827" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="8.0.100" exclude="Build,Analyzers" />
+        <dependency id="FSharpAux.Core" version="[2.0.0]" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

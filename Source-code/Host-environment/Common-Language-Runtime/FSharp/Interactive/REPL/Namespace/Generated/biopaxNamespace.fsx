@@ -1,0 +1,1185 @@
+#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL"
+#load @".paket/load/main.group.fsx"
+#r @"RdfAsm.dll"
+open RdfAsm
+#r @"RdfIO.dll"
+open RdfIO
+
+module biopax =
+    let _prefixId =
+        PrefixId.fromNamespaceLabel "http://www.biopax.org/release/biopax-level3.owl#" "biopax"
+
+    /// <summary>
+    ///   <para>rdfs:comment : Definition : An entity feature that represent the bound state of a physical entity. A pair of binding features represents a bond.
+    ///
+    /// Rationale: A physical entity in a molecular complex is considered as a new state of an entity as it is structurally and functionally different. Binding features provide facilities for describing these states. Similar to other features, a molecule can have bound and not-bound states.
+    ///
+    /// Usage: Typically, binding features are present in pairs, each describing the binding characteristic for one of the interacting physical entities. One exception is using a binding feature with no paired feature to describe any potential binding. For example, an unbound receptor can be described by using a "not-feature" property with an unpaired binding feature as its value.  BindingSiteType and featureLocation allows annotating the binding location.
+    ///
+    /// IntraMolecular property should be set to "true" if the bond links two parts of the same molecule. A pair of binding features are still used where they are owned by the same physical entity.
+    ///
+    /// If the binding is due to the covalent interactions, for example in the case of lipoproteins, CovalentBindingFeature subclass should be used instead of this class.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#BindingFeature">biopax:BindingFeature</a>
+    /// </summary>
+    let BindingFeature = _prefixId.prefix "BindingFeature"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: The biological source (organism, tissue or cell type) of an Entity.
+    ///
+    /// Usage: Some entities are considered source-neutral (e.g. small molecules), and the biological source of others can be deduced from their constituentss (e.g. complex, pathway).
+    ///
+    /// Instances: HeLa cells, Homo sapiens, and mouse liver tissue.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#BioSource">biopax:BioSource</a>
+    /// </summary>
+    let BioSource = _prefixId.prefix "BioSource"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: Imposes ordering on a step in a biochemical pathway.
+    /// Retionale: A biochemical reaction can be reversible by itself, but can be physiologically directed in the context of a pathway, for instance due to flux of reactants and products.
+    /// Usage: Only one conversion interaction can be ordered at a time, but multiple catalysis or modulation instances can be part of one step.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#BiochemicalPathwayStep">biopax:BiochemicalPathwayStep</a>
+    /// </summary>
+    let BiochemicalPathwayStep = _prefixId.prefix "BiochemicalPathwayStep"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A conversion in which molecules of one or more physicalEntity pools, undergo covalent modifications and become a member of one or more other physicalEntity pools. The substrates of biochemical reactions are defined in terms of sums of species. This is a convention in biochemistry, and, in principle, all EC reactions should be biochemical reactions.
+    ///
+    /// Examples: ATP + H2O = ADP + Pi
+    ///
+    /// Comment: In the example reaction above, ATP is considered to be an equilibrium mixture of several species, namely ATP4-, HATP3-, H2ATP2-, MgATP2-, MgHATP-, and Mg2ATP. Additional species may also need to be considered if other ions (e.g. Ca2+) that bind ATP are present. Similar considerations apply to ADP and to inorganic phosphate (Pi). When writing biochemical reactions, it is not necessary to attach charges to the biochemical reactants or to include ions such as H+ and Mg2+ in the equation. The reaction is written in the direction specified by the EC nomenclature system, if applicable, regardless of the physiological direction(s) in which the reaction proceeds. Polymerization reactions involving large polymers whose structure is not explicitly captured should generally be represented as unbalanced reactions in which the monomer is consumed but the polymer remains unchanged, e.g. glycogen + glucose = glycogen. A better coverage for polymerization will be developed.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#BiochemicalReaction">biopax:BiochemicalReaction</a>
+    /// </summary>
+    let BiochemicalReaction = _prefixId.prefix "BiochemicalReaction"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A control interaction in which a physical entity (a catalyst) increases the rate of a conversion interaction by lowering its activation energy. Instances of this class describe a pairing between a catalyzing entity and a catalyzed conversion.
+    /// Rationale: Catalysis, theoretically, is always bidirectional since it acts by lowering the activation energy. Physiologically, however, it can have a direction because of the concentration of the participants. For example, the oxidative decarboxylation catalyzed by Isocitrate dehydrogenase always happens in one direction under physiological conditions since the produced carbon dioxide is constantly removed from the system.
+    ///
+    /// Usage: A separate catalysis instance should be created for each different conversion that a physicalEntity may catalyze and for each different physicalEntity that may catalyze a conversion. For example, a bifunctional enzyme that catalyzes two different biochemical reactions would be linked to each of those biochemical reactions by two separate instances of the catalysis class. Also, catalysis reactions from multiple different organisms could be linked to the same generic biochemical reaction (a biochemical reaction is generic if it only includes small molecules). Generally, the enzyme catalyzing a conversion is known and the use of this class is obvious, however, in the cases where a catalyzed reaction is known to occur but the enzyme is not known, a catalysis instance can be created without a controller specified.
+    /// Synonyms: facilitation, acceleration.
+    /// Examples: The catalysis of a biochemical reaction by an enzyme, the enabling of a transport interaction by a membrane pore complex, and the facilitation of a complex assembly by a scaffold protein. Hexokinase -&gt; (The "Glucose + ATP -&gt; Glucose-6-phosphate +ADP" reaction). A plasma membrane Na+/K+ ATPase is an active transporter (antiport pump) using the energy of ATP to pump Na+ out of the cell and K+ in. Na+ from cytoplasm to extracellular space would be described in a transport instance. K+ from extracellular space to cytoplasm would be described in a transport instance. The ATPase pump would be stored in a catalysis instance controlling each of the above transport instances. A biochemical reaction that does not occur by itself under physiological conditions, but has been observed to occur in the presence of cell extract, likely via one or more unknown enzymes present in the extract, would be stored in the CONTROLLED property, with the CONTROLLER property empty.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Catalysis">biopax:Catalysis</a>
+    /// </summary>
+    let Catalysis = _prefixId.prefix "Catalysis"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A reference to the Cell Type Ontology (CL). Homepage at http://obofoundry.org/cgi-bin/detail.cgi?cell.  Browse at http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=CL^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#CellVocabulary">biopax:CellVocabulary</a>
+    /// </summary>
+    let CellVocabulary = _prefixId.prefix "CellVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A reference to the Gene Ontology Cellular Component (GO CC) ontology. Homepage at http://www.geneontology.org.  Browse at http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=GO^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#CellularLocationVocabulary">biopax:CellularLocationVocabulary</a>
+    /// </summary>
+    let CellularLocationVocabulary = _prefixId.prefix "CellularLocationVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: The chemical structure of a small molecule.
+    ///
+    /// Usage: Structure information is stored in the property structureData, in one of three formats: the CML format (see www.xml-cml.org), the SMILES format (see  www.daylight.com/dayhtml/smiles/) or the InChI format (http://www.iupac.org/inchi/). The structureFormat property specifies which format is used.
+    ///
+    /// Examples: The following SMILES string describes the structure of glucose-6-phosphate:
+    /// 'C(OP(=O)(O)O)[CH]1([CH](O)[CH](O)[CH](O)[CH](O)O1)'.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#ChemicalStructure">biopax:ChemicalStructure</a>
+    /// </summary>
+    let ChemicalStructure = _prefixId.prefix "ChemicalStructure"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A physical entity whose structure is comprised of other physical entities bound to each other covalently or non-covalently, at least one of which is a macromolecule (e.g. protein, DNA, or RNA) and the Stoichiometry of the components are known.
+    ///
+    /// Comment: Complexes must be stable enough to function as a biological unit; in general, the temporary association of an enzyme with its substrate(s) should not be considered or represented as a complex. A complex is the physical product of an interaction (complexAssembly) and is not itself considered an interaction.
+    /// The boundaries on the size of complexes described by this class are not defined here, although possible, elements of the cell  such a mitochondria would typically not be described using this class (later versions of this ontology may include a cellularComponent class to represent these). The strength of binding cannot be described currently, but may be included in future versions of the ontology, depending on community need.
+    /// Examples: Ribosome, RNA polymerase II. Other examples of this class include complexes of multiple protein monomers and complexes of proteins and small molecules.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Complex">biopax:Complex</a>
+    /// </summary>
+    let Complex = _prefixId.prefix "Complex"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A conversion interaction in which a set of physical entities, at least one being a macromolecule (e.g. protein, RNA, DNA), aggregate to from a complex physicalEntity. One of the participants of a complexAssembly must be an instance of the class Complex. The modification of the physicalentities involved in the ComplexAssembly is captured via BindingFeature class.
+    ///
+    /// Usage: This class is also used to represent complex disassembly. The assembly or disassembly of a complex is often a spontaneous process, in which case the direction of the complexAssembly (toward either assembly or disassembly) should be specified via the SPONTANEOUS property. Conversions in which participants obtain or lose CovalentBindingFeatures ( e.g. glycolysation of proteins) should be modeled with BiochemicalReaction.
+    ///
+    /// Synonyms: aggregation, complex formation
+    ///
+    /// Examples: Assembly of the TFB2 and TFB3 proteins into the TFIIH complex, and assembly of the ribosome through aggregation of its subunits.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#ComplexAssembly">biopax:ComplexAssembly</a>
+    /// </summary>
+    let ComplexAssembly = _prefixId.prefix "ComplexAssembly"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: An interaction in which one entity regulates, modifies, or otherwise influences a continuant entity, i.e. pathway or interaction.
+    ///
+    /// Usage: Conceptually, physical entities are involved in interactions (or events) and the events are controlled or modified, not the physical entities themselves. For example, a kinase activating a protein is a frequent event in signaling pathways and is usually represented as an 'activation' arrow from the kinase to the substrate in signaling diagrams. This is an abstraction, called "Activity Flow" representation,  that can be ambiguous without context. In BioPAX, this information should be captured as the kinase catalyzing (via an instance of the catalysis class) a Biochemical Reaction in which the substrate is phosphorylated.
+    /// Subclasses of control define types specific to the biological process that is being controlled and should be used instead of the generic "control" class when applicable.
+    ///
+    /// A control can potentially have multiple controllers. This acts as a logical AND, i.e. both controllers are needed to regulate the  controlled event. Alternatively multiple controllers can control the same event and this acts as a logical OR, i.e. any one of them is sufficient to regulate the controlled event. Using this structure it is possible to describe arbitrary control logic using BioPAX.
+    ///
+    /// Rationale: Control can be temporally non-atomic, for example a pathway can control another pathway in BioPAX.
+    /// Synonyms: regulation, mediation
+    ///
+    /// Examples: A small molecule that inhibits a pathway by an unknown mechanism.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Control">biopax:Control</a>
+    /// </summary>
+    let Control = _prefixId.prefix "Control"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: This class represents a term from an external controlled vocabulary (CV).
+    /// Rationale: Controlled Vocabularies mark cases where BioPAX delegates the representation of a complex biological phenomena to an external controlled vocabulary development effort such as Gene Ontology. Each subclass of this class represents one such case and often has an associated "Best-Practice" external resource to use. See the documentation of each subclass for more specific information. Correct usage of controlled vocabularies are critical to data exchange and integration.
+    /// Usage: The individuals belonging to this class must unambiguously refer to the source controlled vocabulary. This can be achieved in two manners:
+    /// The xref property of this class is restricted to the unification xref class. It must point to the source controlled vocabulary.
+    /// Alternatively the rdf-id of the member individuals can be set to the designated MIRIAM URN.
+    /// It is a best practice to do both whenever possible.
+    /// Although it is possible to use multiple unification xrefs to identify semantically identical terms across alternative controlled vocabularies, this is not a recommended practice as it might lead to maintenance issues as the controlled vocabularies change.
+    /// There is no recommended use-case for directly instantiating this class. Please use its subclasses instead.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#ControlledVocabulary">biopax:ControlledVocabulary</a>
+    /// </summary>
+    let ControlledVocabulary = _prefixId.prefix "ControlledVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: An interaction in which molecules of one or more PhysicalEntity pools are physically transformed and become a member of one or more other PhysicalEntity pools.
+    /// Rationale: Conversion is Comments: Conversions in BioPAX are stoichiometric and closed world, i.e. it is assumed that all of the participants are listed. Both properties are due to the law of mass conservation.
+    /// Usage: Subclasses of conversion represent different types of transformation reflected by the properties of different physicalEntity. BiochemicalReactions will change the ModificationFeatures on a PhysicalEntity, Transport will change the Cellular Location and ComplexAssembly will change BindingFeatures. Generic Conversion class should only be used when the modification does not fit into a any of these classes.
+    /// Example: Opening of a voltage gated channel.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Conversion">biopax:Conversion</a>
+    /// </summary>
+    let Conversion = _prefixId.prefix "Conversion"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition : An entity feature that represent the covalently bound state of  a physical entity.
+    ///
+    /// Rationale: Most frequent covalent modifications to proteins and DNA, such as phosphorylation and metylation are covered by the ModificationFeature class. In these cases, the added groups are simple and stateless therefore they can be captured by a controlled vocabulary. In other cases, such as ThiS-Thilacyl-disulfide, the covalently linked molecules are best represented as a molecular complex. CovalentBindingFeature should be used to model such covalently linked complexes.
+    ///
+    /// Usage: Using this construct, it is possible to represent small molecules as a covalent complex of two other small molecules. The demarcation of small molecules is a general problem and is delegated to small molecule databases.The best practice is not to model using covalent complexes unless at least one of the participants is a protein, DNA or RNA.
+    ///
+    /// Examples:
+    /// disulfide bond
+    /// UhpC + glc-6P -&gt; Uhpc-glc-6p
+    /// acetyl-ACP -&gt; decenoyl-ACP
+    /// charged tRNA^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#CovalentBindingFeature">biopax:CovalentBindingFeature</a>
+    /// </summary>
+    let CovalentBindingFeature = _prefixId.prefix "CovalentBindingFeature"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A conversion in which a pool of macromolecules are degraded into their elementary units.
+    ///
+    /// Usage: This conversion always has a direction of left-to-right and is irreversible. Degraded molecules are always represented on the left, degradation products on the right.
+    ///
+    /// Comments: Degradation is a complex abstraction over multiple reactions. Although it obeys law of mass conservation and stoichiometric, the products are rarely specified since they are ubiquitous.
+    ///
+    /// Example:  Degradation of a protein to amino acids.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Degradation">biopax:Degradation</a>
+    /// </summary>
+    let Degradation = _prefixId.prefix "Degradation"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: Standard transformed Gibbs energy change for a reaction written in terms of biochemical reactants.
+    /// Usage: Delta-G is represented as a 5-tuple of delta-G'&lt;sup&gt;0&lt;/sup&gt;, temperature, ionic strength , pH, and pMg . A conversion in BioPAX may have multiple Delta-G values, representing different measurements for delta-G'&lt;sup&gt;0&lt;/sup&gt; obtained under the different experimental conditions.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#DeltaG">biopax:DeltaG</a>
+    /// </summary>
+    let DeltaG = _prefixId.prefix "DeltaG"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A physical entity consisting of a sequence of deoxyribonucleotide monophosphates; a deoxyribonucleic acid.
+    /// Usage: DNA should be used for pools of individual DNA molecules. For describing subregions on those molecules use DNARegion.
+    /// Examples: a chromosome, a plasmid. A specific example is chromosome 7 of Homo sapiens.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Dna">biopax:Dna</a>
+    /// </summary>
+    let Dna = _prefixId.prefix "Dna"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A DNA reference is a grouping of several DNA entities that are common in sequence.  Members can differ in celular location, sequence features, SNPs, mutations and bound partners.
+    ///
+    /// Comments : Note that this is not a reference gene. Genes are non-physical,stateless continuants. Their physical manifestations can span multiple DNA molecules, sometimes even across chromosomes due to regulatory regions. Similarly a gene is not necessarily made up of deoxyribonucleic acid and can be present in multiple copies ( which are different DNA regions).^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#DnaReference">biopax:DnaReference</a>
+    /// </summary>
+    let DnaReference = _prefixId.prefix "DnaReference"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A region on a DNA molecule.
+    /// Usage:  DNARegion is not a pool of independent molecules but a subregion on these molecules. As such, every DNARegion has a defining DNA molecule.
+    /// Examples: Protein encoding region, promoter^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#DnaRegion">biopax:DnaRegion</a>
+    /// </summary>
+    let DnaRegion = _prefixId.prefix "DnaRegion"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A DNARegionReference is a grouping of several DNARegion entities that are common in sequence and genomic position.  Members can differ in cellular location, sequence features, SNPs, mutations and bound partners.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#DnaRegionReference">biopax:DnaRegionReference</a>
+    /// </summary>
+    let DnaRegionReference = _prefixId.prefix "DnaRegionReference"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A discrete biological unit used when describing pathways.
+    ///
+    /// Rationale: Entity is the most abstract class for representing components of  a pathway. It includes both occurents (interactions and  pathways) and continuants (physical entities and genes). Loosely speaking, BioPAX Entity is an atomic scientific statement with an associated source, evidence and references.
+    /// Usage: There is no recommended use-cases for instantiating this class. Please, use its subclasses instead.
+    /// Synonyms: element, thing,biological unit, statement, observable.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Entity">biopax:Entity</a>
+    /// </summary>
+    let Entity = _prefixId.prefix "Entity"
+    /// <summary>
+    ///   <para>rdfs:comment : Description: A characteristic of a physical entity that can change while the entity still retains its biological identity.
+    ///
+    /// Rationale: Two phosphorylated forms of a protein are strictly speaking different chemical  molecules. It is, however, standard in biology to treat them as different states of the same entity, where the entity is loosely defined based on sequence. Entity Feature class and its subclassses captures these variable characteristics. A Physical Entity in BioPAX represents a pool of  molecules rather than an individual molecule. This is a notion imported from chemistry( See PhysicalEntity). Pools are defined by a set of Entity Features in the sense that a single molecule must have all of the features in the set in order to be considered a member of the pool. Since it is impossible to list and experimentally test all potential features for an  entity, features that are not listed in the selection criteria is neglected Pools can also be defined by the converse by specifying features  that are known to NOT exist in a specific context. As DNA, RNA and Proteins can be hierarchically organized into families based on sequence homology so can entity features. The memberFeature property allows capturing such hierarchical classifications among entity features.
+    ///
+    ///
+    /// Usage: Subclasses of entity feature describe most common biological instances and should be preferred whenever possible. One common usecase for instantiating  entity feature is, for describing active/inactive states of proteins where more specific feature information is not available.
+    ///
+    /// Examples: Open/close conformational state of channel proteins, "active"/"inactive" states, excited states of photoreactive groups.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#EntityFeature">biopax:EntityFeature</a>
+    /// </summary>
+    let EntityFeature = _prefixId.prefix "EntityFeature"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: An entity reference is a grouping of several physical entities across different contexts and molecular states, that share common physical properties and often named and treated as a single entity with multiple states by biologists.
+    ///
+    /// Rationale:   Many protein, small molecule and gene databases share this point of view, and such a grouping is an important prerequisite for interoperability with those databases. Biologists would often group different pools of molecules in different contexts under the same name. For example cytoplasmic and extracellular calcium have different effects on the cell's behavior, but they are still called calcium. For DNA, RNA and Proteins the grouping is defined based on a wildtype sequence, for small molecules it is defined by the chemical structure.
+    ///
+    /// Usage: Entity references store the information common to a set of molecules in various states described in the BioPAX document, including database cross-references. For instance, the P53 protein can be phosphorylated in multiple different ways. Each separate P53 protein (pool) in a phosphorylation state would be represented as a different protein (child of physicalEntity) and all things common to all P53 proteins, including all possible phosphorylation sites, the sequence common to all of them and common references to protein databases containing more information about P53 would be stored in a Entity Reference.
+    ///
+    /// Comments: This grouping has three semantic implications:
+    ///
+    /// 1.  Members of different pools share many physical and biochemical properties. This includes their chemical structure, sequence, organism and set of molecules they react with. They will also share a lot of secondary information such as their names, functional groupings, annotation terms and database identifiers.
+    ///
+    /// 2. A small number of transitions seperates these pools. In other words it is relatively easy and frequent for a molecule to transform from one physical entity to another that belong to the same reference entity. For example an extracellular calcium can become cytoplasmic, and p53 can become phosphorylated. However no calcium virtually becomes sodium, or no p53 becomes mdm2. In the former it is the sheer energy barrier of a nuclear reaction, in the latter sheer statistical improbability of synthesizing the same sequence without a template. If one thinks about the biochemical network as molecules transforming into each other, and remove edges that respond to transcription, translation, degradation and covalent modification of small molecules, each remaining component is a reference entity.
+    ///
+    /// 3. Some of the pools in the same group can overlap. p53-p@ser15 can overlap with p53-p@thr18. Most of the experiments in molecular biology will only check for one state variable, rarely multiple, and never for the all possible combinations. So almost all statements that refer to the state of the molecule talk about a pool that can overlap with other pools. However no overlaps is possible between molecules of different groups.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#EntityReference">biopax:EntityReference</a>
+    /// </summary>
+    let EntityReference = _prefixId.prefix "EntityReference"
+    /// <summary>
+    ///   <para>rdfs:comment : Definiiton: A reference to a term from an entity reference group ontology. As of the writing of this documentation, there is no standard ontology of these terms, though a common type is ‘homology’.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#EntityReferenceTypeVocabulary">biopax:EntityReferenceTypeVocabulary</a>
+    /// </summary>
+    let EntityReferenceTypeVocabulary = _prefixId.prefix "EntityReferenceTypeVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: The support for a particular assertion, such as the existence of an interaction or pathway.
+    /// Usage: At least one of confidence, evidenceCode, or experimentalForm must be instantiated when creating an evidence instance. XREF may reference a publication describing the experimental evidence using a publicationXref or may store a description of the experiment in an experimental description database using a unificationXref (if the referenced experiment is the same) or relationshipXref (if it is not identical, but similar in some way e.g. similar in protocol). Evidence is meant to provide more information than just an xref to the source paper.
+    /// Examples: A description of a molecular binding assay that was used to detect a protein-protein interaction.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Evidence">biopax:Evidence</a>
+    /// </summary>
+    let Evidence = _prefixId.prefix "Evidence"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A reference to the PSI Molecular Interaction ontology (MI) experimental method types, including "interaction detection method", "participant identification method", "feature detection method". Homepage at http://www.psidev.info/.  Browse at http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=MI
+    ///
+    /// Terms from the Pathway Tools Evidence Ontology may also be used. Homepage http://brg.ai.sri.com/evidence-ontology/^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#EvidenceCodeVocabulary">biopax:EvidenceCodeVocabulary</a>
+    /// </summary>
+    let EvidenceCodeVocabulary = _prefixId.prefix "EvidenceCodeVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: The form of a physical entity in a particular experiment, as it may be modified for purposes of experimental design.
+    /// Examples: A His-tagged protein in a binding assay. A protein can be tagged by multiple tags, so can have more than 1 experimental form type terms^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#ExperimentalForm">biopax:ExperimentalForm</a>
+    /// </summary>
+    let ExperimentalForm = _prefixId.prefix "ExperimentalForm"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A reference to the PSI Molecular Interaction ontology (MI) participant identification method (e.g. mass spectrometry), experimental role (e.g. bait, prey), experimental preparation (e.g. expression level) type. Homepage at http://www.psidev.info/.  Browse http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=MI&amp;termId=MI%3A0002&amp;termName=participant%20identification%20method
+    ///
+    /// http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=MI&amp;termId=MI%3A0495&amp;termName=experimental%20role
+    ///
+    /// http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=MI&amp;termId=MI%3A0346&amp;termName=experimental%20preparation^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#ExperimentalFormVocabulary">biopax:ExperimentalFormVocabulary</a>
+    /// </summary>
+    let ExperimentalFormVocabulary = _prefixId.prefix "ExperimentalFormVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: An entity feature that represents the resulting physical entity subsequent to a cleavage or degradation event.
+    ///
+    /// Usage: Fragment Feature can be used to cover multiple types of modfications to the sequence of the physical entity:
+    /// 1.    A protein with a single cleavage site that converts the protein into two fragments (e.g. pro-insulin converted to insulin and C-peptide). TODO: CV term for sequence fragment?  PSI-MI CV term for cleavage site?
+    /// 2.    A protein with two cleavage sites that removes an internal sequence e.g. an intein i.e. ABC -&gt; A
+    /// 3.    Cleavage of a circular sequence e.g. a plasmid.
+    ///
+    /// In the case of removal ( e.g. intron)  the fragment that is *removed* is specified in the feature location property. In the case of a "cut" (e.g. restriction enzyme cut site) the location of the cut is specified instead.
+    /// Examples: Insulin Hormone^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#FragmentFeature">biopax:FragmentFeature</a>
+    /// </summary>
+    let FragmentFeature = _prefixId.prefix "FragmentFeature"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A continuant that encodes information that can be inherited through replication.
+    /// Rationale: Gene is an abstract continuant that can be best described as a "schema", a common conception commonly used by biologists to demark a component within genome. In BioPAX, Gene is considered a generalization over eukaryotic and prokaryotic genes and is used only in genetic interactions.  Gene is often confused with DNA and RNA fragments, however, these are considered the physical encoding of a gene.  N.B. Gene expression regulation makes use of DNA and RNA physical entities and not this class.
+    /// Usage: Gene should only be used for describing GeneticInteractions.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Gene">biopax:Gene</a>
+    /// </summary>
+    let Gene = _prefixId.prefix "Gene"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition : Genetic interactions between genes occur when two genetic perturbations (e.g. mutations) have a combined phenotypic effect not caused by either perturbation alone. A gene participant in a genetic interaction represents the gene that is perturbed. Genetic interactions are not physical interactions but logical (AND) relationships. Their physical manifestations can be complex and span an arbitarily long duration.
+    ///
+    /// Rationale: Currently,  BioPAX provides a simple definition that can capture most genetic interactions described in the literature. In the future, if required, the definition can be extended to capture other logical relationships and different, participant specific phenotypes.
+    ///
+    /// Example: A synthetic lethal interaction occurs when cell growth is possible without either gene A OR B, but not without both gene A AND B. If you knock out A and B together, the cell will die.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#GeneticInteraction">biopax:GeneticInteraction</a>
+    /// </summary>
+    let GeneticInteraction = _prefixId.prefix "GeneticInteraction"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A biological relationship between two or more entities.
+    ///
+    /// Rationale: In BioPAX, interactions are atomic from a database modeling perspective, i.e. interactions can not be decomposed into sub-interactions. When representing non-atomic continuants with explicit subevents the pathway class should be used instead. Interactions are not necessarily  temporally atomic, for example genetic interactions cover a large span of time. Interactions as a formal concept is a continuant, it retains its identitiy regardless of time, or any differences in specific states or properties.
+    ///
+    /// Usage: Interaction is a highly abstract class and in almost all cases it is more appropriate to use one of the subclasses of interaction.
+    /// It is partially possible to define generic reactions by using generic participants. A more comprehensive method is planned for BioPAX L4 for covering all generic cases like oxidization of a generic alcohol.
+    ///
+    /// Synonyms: Process, relationship, event.
+    ///
+    /// Examples: protein-protein interaction, biochemical reaction, enzyme catalysis^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Interaction">biopax:Interaction</a>
+    /// </summary>
+    let Interaction = _prefixId.prefix "Interaction"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A reference to the PSI Molecular Interaction ontology (MI) interaction type. Homepage at http://www.psidev.info/.  Browse at http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=MI&amp;termId=MI%3A0190&amp;termName=interaction%20type^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#InteractionVocabulary">biopax:InteractionVocabulary</a>
+    /// </summary>
+    let InteractionVocabulary = _prefixId.prefix "InteractionVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: The apparent equilibrium constant, K', and associated values.
+    /// Usage: Concentrations in the equilibrium constant equation refer to the total concentrations of  all forms of particular biochemical reactants. For example, in the equilibrium constant equation for the biochemical reaction in which ATP is hydrolyzed to ADP and inorganic phosphate:
+    ///
+    /// K' = [ADP][P&lt;sub&gt;i&lt;/sub&gt;]/[ATP],
+    ///
+    /// The concentration of ATP refers to the total concentration of all of the following species:
+    ///
+    /// [ATP] = [ATP&lt;sup&gt;4-&lt;/sup&gt;] + [HATP&lt;sup&gt;3-&lt;/sup&gt;] + [H&lt;sub&gt;2&lt;/sub&gt;ATP&lt;sup&gt;2-&lt;/sup&gt;] + [MgATP&lt;sup&gt;2-&lt;/sup&gt;] + [MgHATP&lt;sup&gt;-&lt;/sup&gt;] + [Mg&lt;sub&gt;2&lt;/sub&gt;ATP].
+    ///
+    /// The apparent equilibrium constant is formally dimensionless, and can be kept so by inclusion of as many of the terms (1 mol/dm&lt;sup&gt;3&lt;/sup&gt;) in the numerator or denominator as necessary.  It is a function of temperature (T), ionic strength (I), pH, and pMg (pMg = -log&lt;sub&gt;10&lt;/sub&gt;[Mg&lt;sup&gt;2+&lt;/sup&gt;]). Therefore, these quantities must be specified to be precise, and values for KEQ for biochemical reactions may be represented as 5-tuples of the form (K' T I pH pMg).  This property may have multiple values, representing different measurements for K' obtained under the different experimental conditions listed in the 5-tuple. (This definition adapted from EcoCyc)
+    ///
+    /// See http://www.chem.qmul.ac.uk/iubmb/thermod/ for a thermodynamics tutorial.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#KPrime">biopax:KPrime</a>
+    /// </summary>
+    let KPrime = _prefixId.prefix "KPrime"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: An entity feature that represents  the covalently modified state of a dna, rna or a protein.
+    ///
+    /// Rationale: In Biology, identity of DNA, RNA and Protein entities are defined around a wildtype sequence. Covalent modifications to this basal sequence are represented using modificaton features. Since small molecules are identified based on their chemical structure, not sequence, a covalent modification to a small molecule would result in a different molecule.
+    ///
+    /// Usage: The added groups should be simple and stateless, such as phosphate or methyl groups and are captured by the modificationType controlled vocabulary. In other cases, such as covalently linked proteins, use CovalentBindingFeature instead.
+    ///
+    /// Instances: A phosphorylation on a protein, a methylation on a DNA.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#ModificationFeature">biopax:ModificationFeature</a>
+    /// </summary>
+    let ModificationFeature = _prefixId.prefix "ModificationFeature"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A control interaction in which a physical entity modulates a catalysis interaction.
+    ///
+    /// Rationale: Biologically, most modulation interactions describe an interaction in which a small molecule alters the ability of an enzyme to catalyze a specific reaction. Instances of this class describe a pairing between a modulating entity and a catalysis interaction.
+    ///
+    /// Usage:  A typical modulation instance has a small molecule as the controller entity and a catalysis instance as the controlled entity. A separate modulation instance should be created for each different catalysis instance that a physical entity may modulate, and for each different physical entity that may modulate a catalysis instance.
+    /// Examples: Allosteric activation and competitive inhibition of an enzyme's ability to catalyze a specific reaction.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Modulation">biopax:Modulation</a>
+    /// </summary>
+    let Modulation = _prefixId.prefix "Modulation"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: An interaction in which participants bind physically to each other, directly or indirectly through intermediary molecules.
+    ///
+    /// Rationale: There is a large body of interaction data, mostly produced by high throughput systems, that does not satisfy the level of detail required to model them with ComplexAssembly class. Specifically, what is lacking is the stoichiometric information and completeness (closed-world) of participants required to model them as chemical processes. Nevertheless interaction data is extremely useful and can be captured in BioPAX using this class.
+    ///
+    /// Usage: This class should be used by default for representing molecular interactions such as those defined by PSI-MI level 2.5. The participants in a molecular interaction should be listed in the PARTICIPANT slot. Note that this is one of the few cases in which the PARTICPANT slot should be directly populated with instances (see comments on the PARTICPANTS property in the interaction class description). If all participants are known with exact stoichiometry, ComplexAssembly class should be used instead.
+    ///
+    /// Example: Two proteins observed to interact in a yeast-two-hybrid experiment where there is not enough experimental evidence to suggest that the proteins are forming a complex by themselves without any indirect involvement of other proteins. This is the case for most large-scale yeast two-hybrid screens.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#MolecularInteraction">biopax:MolecularInteraction</a>
+    /// </summary>
+    let MolecularInteraction = _prefixId.prefix "MolecularInteraction"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A set or series of interactions, often forming a network, which biologists have found useful to group together for organizational, historic, biophysical or other reasons.
+    ///
+    /// Usage: Pathways can be used for demarcating any subnetwork of a BioPAX model. It is also possible to define a pathway without specifying the interactions within the pathway. In this case, the pathway instance could consist simply of a name and could be treated as a 'black box'.  Pathways can also soverlap, i.e. a single interaction might belong to multiple pathways. Pathways can also contain sub-pathways. Pathways are continuants.
+    ///
+    /// Synonyms: network, module, cascade,
+    /// Examples: glycolysis, valine biosynthesis, EGFR signaling^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Pathway">biopax:Pathway</a>
+    /// </summary>
+    let Pathway = _prefixId.prefix "Pathway"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A step in an ordered pathway.
+    /// Rationale: Some pathways can have a temporal order. For example,  if the pathway boundaries are based on a perturbation phenotype link, the pathway might start with the perturbing agent and end at gene expression leading to the observed changes. Pathway steps can represent directed compound graphs.
+    /// Usage: Multiple interactions may occur in a pathway step, each should be listed in the stepProcess property. Order relationships between pathway steps may be established with the nextStep slot. If the reaction contained in the step is a reversible biochemical reaction but physiologically has a direction in the context of this pathway, use the subclass BiochemicalPathwayStep.
+    ///
+    /// Example: A metabolic pathway may contain a pathway step composed of one biochemical reaction (BR1) and one catalysis (CAT1) instance, where CAT1 describes the catalysis of BR1. The M phase of the cell cycle, defined as a pathway, precedes the G1 phase, also defined as a pathway.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#PathwayStep">biopax:PathwayStep</a>
+    /// </summary>
+    let PathwayStep = _prefixId.prefix "PathwayStep"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: The phenotype measured in the experiment e.g. growth rate or viability of a cell. This is only the type, not the value e.g. for a synthetic lethal interaction, the phenotype is viability, specified by ID: PATO:0000169, "viability", not the value (specified by ID: PATO:0000718, "lethal (sensu genetics)". A single term in a phenotype controlled vocabulary can be referenced using the xref, or the PhenoXML describing the PATO EQ model phenotype description can be stored as a string in PATO-DATA.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#PhenotypeVocabulary">biopax:PhenotypeVocabulary</a>
+    /// </summary>
+    let PhenotypeVocabulary = _prefixId.prefix "PhenotypeVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A pool of molecules or molecular complexes.
+    ///
+    /// Comments: Each PhysicalEntity is defined by a  sequence or structure based on an EntityReference AND any set of Features that are given. For example,  ser46 phosphorylated p53 is a physical entity in BioPAX defined by the p53 sequence and the phosphorylation feature on the serine at position 46 in the sequence.  Features are any combination of cellular location, covalent and non-covalent bonds with other molecules and covalent modifications.
+    ///
+    /// For a specific molecule to be a member of the pool it has to satisfy all of the specified features. Unspecified features are treated as unknowns or unneccesary. Features that are known to not be on the molecules should be explicitly stated with the "not feature" property.
+    /// A physical entity in BioPAX  never represents a specific molecular instance.
+    ///
+    /// Physical Entity can be heterogenous and potentially overlap, i.e. a single molecule can be counted as a member of multiple pools. This makes BioPAX semantics different than regular chemical notation but is necessary for dealing with combinatorial complexity.
+    ///
+    /// Synonyms: part, interactor, object, species
+    ///
+    /// Examples: extracellular calcium, ser 64 phosphorylated p53^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#PhysicalEntity">biopax:PhysicalEntity</a>
+    /// </summary>
+    let PhysicalEntity = _prefixId.prefix "PhysicalEntity"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A physical entity consisting of a sequence of amino acids; a protein monomer; a single polypeptide chain.
+    /// Examples: The epidermal growth factor receptor (EGFR) protein.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Protein">biopax:Protein</a>
+    /// </summary>
+    let Protein = _prefixId.prefix "Protein"
+    /// <summary>
+    ///   <para>rdfs:comment : Description: A protein reference is a grouping of several protein entities that are encoded by the same genetic sequence. Members can differ in any combination of cellular location, sequence features and bound partners.
+    /// Rationale: Protein molecules, encoded by the same genetic sequence can be present in (combinatorially many) different states, as a result of post translational modifications and non-covalent bonds. Each state, chemically, is a different pool of molecules. They are, however, related to each other because:
+    /// They all share the same "base" genetic sequence.
+    /// They can only be converted to each other but not to any other protein
+    /// Comments:Most Protein databases, including UniProt would map one to one with ProteinReferences in BioPAX.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#ProteinReference">biopax:ProteinReference</a>
+    /// </summary>
+    let ProteinReference = _prefixId.prefix "ProteinReference"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: The direct source of pathway data or score.
+    /// Usage: This does not store the trail of sources from the generation of the data to this point, only the last known source, such as a database, tool or algorithm. The xref property may contain a publicationXref referencing a publication describing the data source (e.g. a database publication). A unificationXref may be used when pointing to an entry in a database of databases describing this database.
+    /// Examples: A database, scoring method or person name.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Provenance">biopax:Provenance</a>
+    /// </summary>
+    let Provenance = _prefixId.prefix "Provenance"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: An xref that defines a reference to a publication such as a book, journal article, web page, or software manual.
+    /// Usage:  The reference may or may not be in a database, although references to PubMed are preferred when possible. The publication should make a direct reference to the instance it is attached to. Publication xrefs should make use of PubMed IDs wherever possible. The DB property of an xref to an entry in PubMed should use the string "PubMed" and not "MEDLINE".
+    /// Examples: PubMed:10234245^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#PublicationXref">biopax:PublicationXref</a>
+    /// </summary>
+    let PublicationXref = _prefixId.prefix "PublicationXref"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: Vocabulary for defining relationship Xref types. A reference to the PSI Molecular Interaction ontology (MI) Cross Reference type. Homepage at http://www.psidev.info/.  Browse at http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=MI&amp;termId=MI%3A0353&amp;termName=cross-reference%20type^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#RelationshipTypeVocabulary">biopax:RelationshipTypeVocabulary</a>
+    /// </summary>
+    let RelationshipTypeVocabulary = _prefixId.prefix "RelationshipTypeVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: An xref that defines a reference to an entity in an external resource that does not have the same biological identity as the referring entity.
+    /// Usage: There is currently no controlled vocabulary of relationship types for BioPAX, although one will be created in the future if a need develops.
+    /// Examples: A link between a gene G in a BioPAX data collection, and the protein product P of that gene in an external database. This is not a unification xref because G and P are different biological entities (one is a gene and one is a protein). Another example is a relationship xref for a protein that refers to the Gene Ontology biological process, e.g. 'immune response,' that the protein is involved in.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#RelationshipXref">biopax:RelationshipXref</a>
+    /// </summary>
+    let RelationshipXref = _prefixId.prefix "RelationshipXref"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A physical entity consisting of a sequence of ribonucleotide monophosphates; a ribonucleic acid.
+    /// Usage: RNA should be used for pools of individual RNA molecules. For describing subregions on those molecules use RNARegion.
+    /// Examples: messengerRNA, microRNA, ribosomalRNA. A specific example is the let-7 microRNA.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Rna">biopax:Rna</a>
+    /// </summary>
+    let Rna = _prefixId.prefix "Rna"
+    /// <summary>
+    ///   <para>rdfs:comment : Defintion: A RNA  reference is a grouping of several RNA entities that are either encoded by the same gene or replicates of the same genome.  Members can differ in celular location, sequence features and bound partners. Currently conformational states (such as hairpin) are not covered.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#RnaReference">biopax:RnaReference</a>
+    /// </summary>
+    let RnaReference = _prefixId.prefix "RnaReference"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A region on a RNA molecule.
+    /// Usage: RNARegion is not a pool of independent molecules but a subregion on these molecules. As such, every RNARegion has a defining RNA molecule.
+    /// Examples: CDS, 3' UTR, Hairpin^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#RnaRegion">biopax:RnaRegion</a>
+    /// </summary>
+    let RnaRegion = _prefixId.prefix "RnaRegion"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A RNARegion reference is a grouping of several RNARegion entities that are common in sequence and genomic position.  Members can differ in celular location, sequence features, mutations and bound partners.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#RnaRegionReference">biopax:RnaRegionReference</a>
+    /// </summary>
+    let RnaRegionReference = _prefixId.prefix "RnaRegionReference"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A score associated with a publication reference describing how the score was determined, the name of the method and a comment briefly describing the method.
+    /// Usage:  The xref must contain at least one publication that describes the method used to determine the score value. There is currently no standard way of describing  values, so any string is valid.
+    /// Examples: The statistical significance of a result, e.g. "p&lt;0.05".^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Score">biopax:Score</a>
+    /// </summary>
+    let Score = _prefixId.prefix "Score"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: An interval on a sequence.
+    /// Usage: Interval is defined as an ordered pair of SequenceSites. All of the sequence from the begin site to the end site (inclusive) is described, not any subset.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#SequenceInterval">biopax:SequenceInterval</a>
+    /// </summary>
+    let SequenceInterval = _prefixId.prefix "SequenceInterval"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A location on a nucleotide or amino acid sequence.
+    /// Usage: For most purposes it is more appropriate to use subclasses of this class. Direct instances of SequenceLocation can be used for uknown locations that can not be classified neither as an interval nor a site.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#SequenceLocation">biopax:SequenceLocation</a>
+    /// </summary>
+    let SequenceLocation = _prefixId.prefix "SequenceLocation"
+
+    /// <summary>
+    ///   <para>rdfs:comment : Definiiton: A reference to the PSI Molecular Interaction ontology (MI) of covalent sequence modifications. Homepage at http://www.psidev.info/.  Browse at http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=MI&amp;termId=MI%3A0252&amp;termName=biological%20feature. Only children that are covelent modifications at specific positions can be used.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#SequenceModificationVocabulary">biopax:SequenceModificationVocabulary</a>
+    /// </summary>
+    let SequenceModificationVocabulary =
+        _prefixId.prefix "SequenceModificationVocabulary"
+
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A reference to a controlled vocabulary of sequence regions, such as InterPro or Sequence Ontology (SO). Homepage at http://www.sequenceontology.org/.  Browse at http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=SO^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#SequenceRegionVocabulary">biopax:SequenceRegionVocabulary</a>
+    /// </summary>
+    let SequenceRegionVocabulary = _prefixId.prefix "SequenceRegionVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: Describes a site on a sequence, i.e. the position of a single nucleotide or amino acid.
+    /// Usage: A sequence site is always defined based on the reference sequence of the owning entity. For DNARegion and RNARegion it is relative to the region itself not the genome or full RNA molecule.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#SequenceSite">biopax:SequenceSite</a>
+    /// </summary>
+    let SequenceSite = _prefixId.prefix "SequenceSite"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A pool of molecules that are neither complexes nor are genetically encoded.
+    ///
+    /// Rationale: Identity of small molecules are based on structure, rather than sequence as in the case of DNA, RNA or Protein. A small molecule reference is a grouping of several small molecule entities  that have the same chemical structure.
+    ///
+    /// Usage : Smalle Molecules can have a cellular location and binding features. They can't have modification features as covalent modifications of small molecules are not considered as state changes but treated as different molecules.
+    /// Some non-genomic macromolecules, such as large complex carbohydrates are currently covered by small molecules despite they lack a static structure. Better coverage for such molecules require representation of generic stoichiometry and polymerization, currently planned for BioPAX level 4.
+    ///
+    /// Examples: glucose, penicillin, phosphatidylinositol^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#SmallMolecule">biopax:SmallMolecule</a>
+    /// </summary>
+    let SmallMolecule = _prefixId.prefix "SmallMolecule"
+    /// <summary>
+    ///   <para>rdfs:comment : A small molecule reference is a grouping of several small molecule entities  that have the same chemical structure.  Members can differ in celular location and bound partners. Covalent modifications of small molecules are not considered as state changes but treated as different molecules.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#SmallMoleculeReference">biopax:SmallMoleculeReference</a>
+    /// </summary>
+    let SmallMoleculeReference = _prefixId.prefix "SmallMoleculeReference"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: Stoichiometric coefficient of a physical entity in the context of a conversion or complex.
+    /// Usage: For each participating element there must be 0 or 1 stoichiometry element. A non-existing stoichiometric element is treated as unknown.
+    /// This is an n-ary bridge for left, right and component properties. Relative stoichiometries ( e.g n, n+1) often used for describing polymerization is not supported.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Stoichiometry">biopax:Stoichiometry</a>
+    /// </summary>
+    let Stoichiometry = _prefixId.prefix "Stoichiometry"
+    /// <summary>
+    ///   <para>rdfs:comment : Definiton: An interaction where a macromolecule is polymerized from a
+    ///     template macromolecule.
+    ///
+    /// Rationale: This is an abstraction over multiple (not explicitly stated) biochemical
+    ///     reactions. The ubiquitous molecules (NTP and amino acids) consumed are also usually
+    ///     omitted. Template reaction is non-stoichiometric, does not obey law of
+    ///     mass conservation and temporally non-atomic. It, however, provides a
+    ///     mechanism to capture processes that are central to all living organisms.
+    ///
+    /// Usage: Regulation of TemplateReaction, e.g. via a transcription factor can be
+    ///     captured using TemplateReactionRegulation. TemplateReaction can also be
+    ///     indirect  for example, it is not necessary to represent intermediary mRNA
+    ///     for describing expression of a protein. It was decided to not subclass
+    ///     TemplateReaction to subtypes such as transcription of translation for the
+    ///     sake of  simplicity. If needed these subclasses can be added in the
+    ///     future.
+    ///
+    /// Examples: Transcription, translation, replication, reverse transcription. E.g.
+    ///     DNA to RNA is transcription, RNA to protein is translation and DNA to
+    ///     protein is protein expression from DNA.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#TemplateReaction">biopax:TemplateReaction</a>
+    /// </summary>
+    let TemplateReaction = _prefixId.prefix "TemplateReaction"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: Regulation of an expression reaction by a controlling element such as a transcription factor or microRNA.
+    ///
+    /// Usage: To represent the binding of the transcription factor to a regulatory element in the TemplateReaction, create a complex of the transcription factor and the regulatory element and set that as the controller.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#TemplateReactionRegulation">biopax:TemplateReactionRegulation</a>
+    /// </summary>
+    let TemplateReactionRegulation = _prefixId.prefix "TemplateReactionRegulation"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A reference to the BRENDA (BTO). Homepage at http://www.brenda-enzymes.info/.  Browse at http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=BTO^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#TissueVocabulary">biopax:TissueVocabulary</a>
+    /// </summary>
+    let TissueVocabulary = _prefixId.prefix "TissueVocabulary"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: An conversion in which molecules of one or more physicalEntity pools change their subcellular location and become a member of one or more other physicalEntity pools. A transport interaction does not include the transporter entity, even if one is required in order for the transport to occur. Instead, transporters are linked to transport interactions via the catalysis class.
+    ///
+    /// Usage: If there is a simultaneous chemical modification of the participant(s), use transportWithBiochemicalReaction class.
+    ///
+    /// Synonyms: translocation.
+    ///
+    /// Examples: The movement of Na+ into the cell through an open voltage-gated channel.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Transport">biopax:Transport</a>
+    /// </summary>
+    let Transport = _prefixId.prefix "Transport"
+
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A conversion interaction that is both a biochemicalReaction and a transport. In transportWithBiochemicalReaction interactions, one or more of the substrates changes both their location and their physical structure. Active transport reactions that use ATP as an energy source fall under this category, even if the only covalent change is the hydrolysis of ATP to ADP.
+    ///
+    /// Rationale: This class was added to support a large number of transport events in pathway databases that have a biochemical reaction during the transport process. It is not expected that other double inheritance subclasses will be added to the ontology at the same level as this class.
+    ///
+    /// Examples: In the PEP-dependent phosphotransferase system, transportation of sugar into an E. coli cell is accompanied by the sugar's phosphorylation as it crosses the plasma membrane.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#TransportWithBiochemicalReaction">biopax:TransportWithBiochemicalReaction</a>
+    /// </summary>
+    let TransportWithBiochemicalReaction =
+        _prefixId.prefix "TransportWithBiochemicalReaction"
+
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A unification xref defines a reference to an entity in an external resource that has the same biological identity as the referring entity
+    /// Rationale: Unification xrefs are critically important for data integration. In the future they may be replaced by direct miriam links and rdf:id based identity management.
+    ///
+    /// Usage: For example, if one wished to link from a database record, C, describing a chemical compound in a BioPAX data collection to a record, C', describing the same chemical compound in an external database, one would use a unification xref since records C and C' describe the same biological identity. Generally, unification xrefs should be used whenever possible, although there are cases where they might not be useful, such as application to application data exchange.Identity of interactions can be computed based on the  identity of its participants. An xref in a protein pointing to a gene, e.g. in the LocusLink database17, would not be a unification xref since the two entities do not have the same biological identity (one is a protein, the other is a gene). Instead, this link should be a captured as a relationship xref. References to an external controlled vocabulary term within the OpenControlledVocabulary class should use a unification xref where possible (e.g. GO:0005737).
+    /// Examples: An xref in a protein instance pointing to an entry in the Swiss-Prot database, and an xref in an RNA instance pointing to the corresponding RNA sequence in the RefSeq database..^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#UnificationXref">biopax:UnificationXref</a>
+    /// </summary>
+    let UnificationXref = _prefixId.prefix "UnificationXref"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: This is a placeholder for classes, used for annotating the "Entity" and its subclasses. Mostly, these are not  an "Entity" themselves. Examples include references to external databases, controlled vocabularies, evidence and provenance.
+    ///
+    /// Rationale: Utility classes are created when simple slots are insufficient to describe an aspect of an entity or to increase compatibility of this ontology with other standards.
+    ///
+    /// Usage: The utilityClass class is actually a metaclass and is only present to organize the other helper classes under one class hierarchy; instances of utilityClass should never be created.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#UtilityClass">biopax:UtilityClass</a>
+    /// </summary>
+    let UtilityClass = _prefixId.prefix "UtilityClass"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition: A reference from an instance of a class in this ontology to an object in an external resource.
+    /// Rationale: Xrefs in the future can be removed in the future in favor of explicit miram links.
+    /// Usage: For most cases one of the subclasses of xref should be used.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#Xref">biopax:Xref</a>
+    /// </summary>
+    let Xref = _prefixId.prefix "Xref"
+    /// <summary>
+    ///   <para>rdfs:comment : Absolute location as defined by the referenced sequence database record. E.g. an operon has a absolute region on the DNA molecule referenced by the UnificationXref.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#absoluteRegion">biopax:absoluteRegion</a>
+    /// </summary>
+    let absoluteRegion = _prefixId.prefix "absoluteRegion"
+    /// <summary>
+    ///   <para>rdfs:comment : The authors of this publication, one per property value.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#author">biopax:author</a>
+    /// </summary>
+    let author = _prefixId.prefix "author"
+    /// <summary>
+    ///   <para>rdfs:comment : Describes the availability of this data (e.g. a copyright statement).</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#availability">biopax:availability</a>
+    /// </summary>
+    let availability = _prefixId.prefix "availability"
+    /// <summary>
+    ///   <para>rdfs:comment : A binding feature represents a "half" of the bond between two entities. This property points to another binding feature which represents the other half. The bond can be covalent or non-covalent.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#bindsTo">biopax:bindsTo</a>
+    /// </summary>
+    let bindsTo = _prefixId.prefix "bindsTo"
+    /// <summary>
+    ///   <para>rdfs:comment : This property represents the direction of this catalysis under all
+    /// physiological conditions if there is one.
+    ///
+    /// Note that chemically a catalyst will increase the rate of the reaction
+    /// in both directions. In biology, however, there are cases where the
+    /// enzyme is expressed only when the controlled bidirectional conversion is
+    /// on one side of the chemical equilibrium. For example E.Coli's lac operon ensures that lacZ gene is only synthesized when there is enough lactose in the medium.  If that is the case and the controller, under biological conditions, is always catalyzing the conversion in one direction then this fact can be
+    /// captured using this property. If the enzyme is active for both
+    /// directions, or the conversion is not bidirectional, this property should
+    /// be left empty.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#catalysisDirection">biopax:catalysisDirection</a>
+    /// </summary>
+    let catalysisDirection = _prefixId.prefix "catalysisDirection"
+    /// <summary>
+    ///   <para>rdfs:comment : A cell type, e.g. 'HeLa'. This should reference a term in a controlled vocabulary of cell types. Best practice is to refer to OBO Cell Ontology. http://www.obofoundry.org/cgi-bin/detail.cgi?id=cell</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#cellType">biopax:cellType</a>
+    /// </summary>
+    let cellType = _prefixId.prefix "cellType"
+    /// <summary>
+    ///   <para>rdfs:comment : A cellular location, e.g. 'cytoplasm'. This should reference a term in the Gene Ontology Cellular Component ontology. The location referred to by this property should be as specific as is known. If an interaction is known to occur in multiple locations, separate interactions (and physicalEntities) must be created for each different location.  If the location of a participant in a complex is unspecified, it may be assumed to be the same location as that of the complex.
+    ///
+    ///  A molecule in two different cellular locations are considered two different physical entities.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#cellularLocation">biopax:cellularLocation</a>
+    /// </summary>
+    let cellularLocation = _prefixId.prefix "cellularLocation"
+    /// <summary>
+    ///   <para>rdfs:comment : The chemical formula of the small molecule. Note: chemical formula can also be stored in the STRUCTURE property (in CML). In case of disagreement between the value of this property and that in the CML file, the CML value takes precedence.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#chemicalFormula">biopax:chemicalFormula</a>
+    /// </summary>
+    let chemicalFormula = _prefixId.prefix "chemicalFormula"
+    /// <summary>
+    ///   <para>rdfs:comment : Any cofactor(s) or coenzyme(s) required for catalysis of the conversion by the enzyme. This is a suproperty of participants.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#cofactor">biopax:cofactor</a>
+    /// </summary>
+    let cofactor = _prefixId.prefix "cofactor"
+    /// <summary>
+    ///   <para>rdfs:comment : Comment on the data in the container class. This property should be used instead of the OWL documentation elements (rdfs:comment) for instances because information in 'comment' is data to be exchanged, whereas the rdfs:comment field is used for metadata about the structure of the BioPAX ontology.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#comment">biopax:comment</a>
+    /// </summary>
+    let comment = _prefixId.prefix "comment"
+    let component_ = _prefixId.prefix "component"
+    /// <summary>
+    ///   <para>rdfs:comment : The stoichiometry of components in a complex^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#componentStoichiometry">biopax:componentStoichiometry</a>
+    /// </summary>
+    let componentStoichiometry = _prefixId.prefix "componentStoichiometry"
+    /// <summary>
+    ///   <para>rdfs:comment : Confidence in the containing instance.  Usually a statistical measure.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#confidence">biopax:confidence</a>
+    /// </summary>
+    let confidence = _prefixId.prefix "confidence"
+    /// <summary>
+    ///   <para>rdfs:comment : Defines the nature of the control relationship between the controller and the controlled entities.
+    ///
+    /// The following terms are possible values:
+    ///
+    /// ACTIVATION: General activation. Compounds that activate the specified enzyme activity by an unknown mechanism. The mechanism is defined as unknown, because either the mechanism has yet to be elucidated in the experimental literature, or the paper(s) curated thus far do not define the mechanism, and a full literature search has yet to be performed.
+    ///
+    /// The following term can not be used in the catalysis class:
+    /// INHIBITION: General inhibition. Compounds that inhibit the specified enzyme activity by an unknown mechanism. The mechanism is defined as unknown, because either the mechanism has yet to be elucidated in the experimental literature, or the paper(s) curated thus far do not define the mechanism, and a full literature search has yet to be performed.
+    ///
+    /// The following terms can only be used in the modulation class (these definitions from EcoCyc):
+    /// INHIBITION-ALLOSTERIC
+    /// Allosteric inhibitors decrease the specified enzyme activity by binding reversibly to the enzyme and inducing a conformational change that decreases the affinity of the enzyme to its substrates without affecting its VMAX. Allosteric inhibitors can be competitive or noncompetitive inhibitors, therefore, those inhibition categories can be used in conjunction with this category.
+    ///
+    /// INHIBITION-COMPETITIVE
+    /// Competitive inhibitors are compounds that competitively inhibit the specified enzyme activity by binding reversibly to the enzyme and preventing the substrate from binding. Binding of the inhibitor and substrate are mutually exclusive because it is assumed that the inhibitor and substrate can both bind only to the free enzyme. A competitive inhibitor can either bind to the active site of the enzyme, directly excluding the substrate from binding there, or it can bind to another site on the enzyme, altering the conformation of the enzyme such that the substrate can not bind to the active site.
+    ///
+    /// INHIBITION-IRREVERSIBLE
+    /// Irreversible inhibitors are compounds that irreversibly inhibit the specified enzyme activity by binding to the enzyme and dissociating so slowly that it is considered irreversible. For example, alkylating agents, such as iodoacetamide, irreversibly inhibit the catalytic activity of some enzymes by modifying cysteine side chains.
+    ///
+    /// INHIBITION-NONCOMPETITIVE
+    /// Noncompetitive inhibitors are compounds that noncompetitively inhibit the specified enzyme by binding reversibly to both the free enzyme and to the enzyme-substrate complex. The inhibitor and substrate may be bound to the enzyme simultaneously and do not exclude each other. However, only the enzyme-substrate complex (not the enzyme-substrate-inhibitor complex) is catalytically active.
+    ///
+    /// INHIBITION-OTHER
+    /// Compounds that inhibit the specified enzyme activity by a mechanism that has been characterized, but that cannot be clearly classified as irreversible, competitive, noncompetitive, uncompetitive, or allosteric.
+    ///
+    /// INHIBITION-UNCOMPETITIVE
+    /// Uncompetitive inhibitors are compounds that uncompetitively inhibit the specified enzyme activity by binding reversibly to the enzyme-substrate complex but not to the enzyme alone.
+    ///
+    /// ACTIVATION-NONALLOSTERIC
+    /// Nonallosteric activators increase the specified enzyme activity by means other than allosteric.
+    ///
+    /// ACTIVATION-ALLOSTERIC
+    /// Allosteric activators increase the specified enzyme activity by binding reversibly to the enzyme and inducing a conformational change that increases the affinity of the enzyme to its substrates without affecting its VMAX.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#controlType">biopax:controlType</a>
+    /// </summary>
+    let controlType = _prefixId.prefix "controlType"
+    /// <summary>
+    ///   <para>rdfs:comment : The entity that is controlled, e.g., in a biochemical reaction, the reaction is controlled by an enzyme. Controlled is a sub-property of participants.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#controlled">biopax:controlled</a>
+    /// </summary>
+    let controlled = _prefixId.prefix "controlled"
+    /// <summary>
+    ///   <para>rdfs:comment : The controlling entity, e.g., in a biochemical reaction, an enzyme is the controlling entity of the reaction. CONTROLLER is a sub-property of PARTICIPANTS.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#controller">biopax:controller</a>
+    /// </summary>
+    let controller = _prefixId.prefix "controller"
+    /// <summary>
+    ///   <para>rdfs:comment : This property represents the direction of the reaction. If a reaction will run in a single direction under all biological contexts then it is considered irreversible and has a direction. Otherwise it is reversible.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#conversionDirection">biopax:conversionDirection</a>
+    /// </summary>
+    let conversionDirection = _prefixId.prefix "conversionDirection"
+    /// <summary>
+    ///   <para>rdfs:comment : A free text description of the source of this data, e.g. a database or person name. This property should be used to describe the source of the data. This is meant to be used by databases that export their data to the BioPAX format or by systems that are integrating data from multiple sources. The granularity of use (specifying the data source in many or few instances) is up to the user. It is intended that this property report the last data source, not all data sources that the data has passed through from creation.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#dataSource">biopax:dataSource</a>
+    /// </summary>
+    let dataSource = _prefixId.prefix "dataSource"
+    /// <summary>
+    ///   <para>rdfs:comment : The name of the external database to which this xref refers.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#db">biopax:db</a>
+    /// </summary>
+    let db = _prefixId.prefix "db"
+    /// <summary>
+    ///   <para>rdfs:comment : The version of the external database in which this xref was last known to be valid. Resources may have recommendations for referencing dataset versions. For instance, the Gene Ontology recommends listing the date the GO terms were downloaded.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#dbVersion">biopax:dbVersion</a>
+    /// </summary>
+    let dbVersion = _prefixId.prefix "dbVersion"
+    /// <summary>
+    ///   <para>rdfs:comment : For biochemical reactions, this property refers to the standard transformed Gibbs energy change for a reaction written in terms of biochemical reactants (sums of species), delta-G
+    ///
+    /// Since Delta-G can change based on multiple factors including ionic strength and temperature a reaction can have multiple DeltaG values.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#deltaG">biopax:deltaG</a>
+    /// </summary>
+    let deltaG = _prefixId.prefix "deltaG"
+    /// <summary>
+    ///   <para>rdfs:comment : For biochemical reactions, this property refers to the standard transformed Gibbs energy change for a reaction written in terms of biochemical reactants (sums of species), delta-G'&lt;sup&gt;o&lt;/sup&gt;.
+    ///
+    ///   delta-G'&lt;sup&gt;o&lt;/sup&gt; = -RT lnK'
+    /// and
+    ///   delta-G'&lt;sup&gt;o&lt;/sup&gt; = delta-H'&lt;sup&gt;o&lt;/sup&gt; - T delta-S'&lt;sup&gt;o&lt;/sup&gt;
+    ///
+    /// delta-G'&lt;sup&gt;o&lt;/sup&gt; has units of kJ/mol.  Like K', it is a function of temperature (T), ionic strength (I), pH, and pMg (pMg = -log&lt;sub&gt;10&lt;/sub&gt;[Mg&lt;sup&gt;2+&lt;/sup&gt;]). Therefore, these quantities must be specified, and values for DELTA-G for biochemical reactions are represented as 5-tuples of the form (delta-G'&lt;sup&gt;o&lt;/sup&gt; T I pH pMg).^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#deltaGPrime0">biopax:deltaGPrime0</a>
+    /// </summary>
+    let deltaGPrime0 = _prefixId.prefix "deltaGPrime0"
+    /// <summary>
+    ///   <para>rdfs:comment : For biochemical reactions, this property refers to the standard transformed enthalpy change for a reaction written in terms of biochemical reactants (sums of species), delta-H'&lt;sup&gt;o&lt;/sup&gt;.
+    ///
+    ///   delta-G'&lt;sup&gt;o&lt;/sup&gt; = delta-H'&lt;sup&gt;o&lt;/sup&gt; - T delta-S'&lt;sup&gt;o&lt;/sup&gt;
+    ///
+    /// Units: kJ/mole
+    ///
+    /// (This definition from EcoCyc)^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#deltaH">biopax:deltaH</a>
+    /// </summary>
+    let deltaH = _prefixId.prefix "deltaH"
+    /// <summary>
+    ///   <para>rdfs:comment : For biochemical reactions, this property refers to the standard transformed entropy change for a reaction written in terms of biochemical reactants (sums of species), delta-S'&lt;sup&gt;o&lt;/sup&gt;.
+    ///
+    ///   delta-G'&lt;sup&gt;o&lt;/sup&gt; = delta-H'&lt;sup&gt;o&lt;/sup&gt; - T delta-S'&lt;sup&gt;o&lt;/sup&gt;
+    ///
+    /// (This definition from EcoCyc)^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#deltaS">biopax:deltaS</a>
+    /// </summary>
+    let deltaS = _prefixId.prefix "deltaS"
+    /// <summary>
+    ///   <para>rdfs:comment : An abbreviated name for this entity, preferably a name that is short enough to be used in a visualization application to label a graphical element that represents this entity. If no short name is available, an xref may be used for this purpose by the visualization application.
+    ///
+    /// Warning:  Subproperties of name are functional, that is we expect to have only one standardName and shortName for a given entity. If a user decides to assign a different name to standardName or shortName, they have to remove the old triplet from the model too. If the old name should be retained as a synonym a regular "name" property should also be introduced with the old name.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#displayName">biopax:displayName</a>
+    /// </summary>
+    let displayName = _prefixId.prefix "displayName"
+    /// <summary>
+    ///   <para>rdfs:comment : The unique number assigned to a reaction by the Enzyme Commission of the International Union of Biochemistry and Molecular Biology.
+    ///
+    /// Note that not all biochemical reactions currently have EC numbers assigned to them.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#eCNumber">biopax:eCNumber</a>
+    /// </summary>
+    let eCNumber = _prefixId.prefix "eCNumber"
+    /// <summary>
+    ///   <para>rdfs:comment : Variable features that are observed for the entities of this entityReference - such as known PTM or methylation sites and non-covalent bonds. Note that this is an aggregate list of all known features and it does not represent a state itself.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#entityFeature">biopax:entityFeature</a>
+    /// </summary>
+    let entityFeature = _prefixId.prefix "entityFeature"
+    /// <summary>
+    ///   <para>rdfs:comment : Reference entity for this physical entity.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#entityReference">biopax:entityReference</a>
+    /// </summary>
+    let entityReference = _prefixId.prefix "entityReference"
+    /// <summary>
+    ///   <para>rdfs:comment : A controlled vocabulary term that is used to describe the type of grouping such as homology or functional group.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#entityReferenceType">biopax:entityReferenceType</a>
+    /// </summary>
+    let entityReferenceType = _prefixId.prefix "entityReferenceType"
+    /// <summary>
+    ///   <para>rdfs:comment : Scientific evidence supporting the existence of the entity as described.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#evidence">biopax:evidence</a>
+    /// </summary>
+    let evidence = _prefixId.prefix "evidence"
+    /// <summary>
+    ///   <para>rdfs:comment : A pointer to a term in an external controlled vocabulary, such as the GO, PSI-MI or BioCyc evidence codes, that describes the nature of the support, such as 'traceable author statement' or 'yeast two-hybrid'.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#evidenceCode">biopax:evidenceCode</a>
+    /// </summary>
+    let evidenceCode = _prefixId.prefix "evidenceCode"
+    /// <summary>
+    ///   <para>rdfs:comment : A feature of the experimental form of the participant of the interaction, such as a protein tag. It is not expected to occur in vivo or be necessary for the interaction.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#experimentalFeature">biopax:experimentalFeature</a>
+    /// </summary>
+    let experimentalFeature = _prefixId.prefix "experimentalFeature"
+    /// <summary>
+    ///   <para>rdfs:comment : The experimental forms associated with an evidence instance.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#experimentalForm">biopax:experimentalForm</a>
+    /// </summary>
+    let experimentalForm = _prefixId.prefix "experimentalForm"
+    /// <summary>
+    ///   <para>rdfs:comment : Descriptor of this experimental form from a controlled vocabulary.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#experimentalFormDescription">biopax:experimentalFormDescription</a>
+    /// </summary>
+    let experimentalFormDescription = _prefixId.prefix "experimentalFormDescription"
+    /// <summary>
+    ///   <para>rdfs:comment : The gene or physical entity that this experimental form describes.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#experimentalFormEntity">biopax:experimentalFormEntity</a>
+    /// </summary>
+    let experimentalFormEntity = _prefixId.prefix "experimentalFormEntity"
+    /// <summary>
+    ///   <para>rdfs:comment : Sequence features of the owner physical entity.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#feature">biopax:feature</a>
+    /// </summary>
+    let feature = _prefixId.prefix "feature"
+    /// <summary>
+    ///   <para>rdfs:comment : Location of the feature on the sequence of the interactor.
+    /// For modification features this is the modified base or residue. For binding features this is the binding site and for fragment features this is the location of the fragment on the "base" sequence.
+    /// One feature may have more than one location, used e.g. for features which involve sequence positions close in the folded, three-dimensional state of a protein, but non-continuous along the sequence.
+    /// Small Molecules can have binding features but currently it is not possible to define the binding site on the small molecules. In those cases this property should not be specified.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#featureLocation">biopax:featureLocation</a>
+    /// </summary>
+    let featureLocation = _prefixId.prefix "featureLocation"
+    /// <summary>
+    ///   <para>rdfs:comment : A controlled vocabulary term describing the type of the sequence location of the feature such as C-Terminal or SH2 Domain.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#featureLocationType">biopax:featureLocationType</a>
+    /// </summary>
+    let featureLocationType = _prefixId.prefix "featureLocationType"
+    /// <summary>
+    ///   <para>rdfs:comment : The primary identifier in the external database of the object to which this xref refers.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#id">biopax:id</a>
+    /// </summary>
+    let id = _prefixId.prefix "id"
+    /// <summary>
+    ///   <para>rdfs:comment : The version number of the identifier (ID). E.g. The RefSeq accession number NM_005228.3 should be split into NM_005228 as the ID and 3 as the ID-VERSION.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#idVersion">biopax:idVersion</a>
+    /// </summary>
+    let idVersion = _prefixId.prefix "idVersion"
+    /// <summary>
+    ///   <para>rdfs:comment : The score of an interaction e.g. a genetic interaction score.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#interactionScore">biopax:interactionScore</a>
+    /// </summary>
+    let interactionScore = _prefixId.prefix "interactionScore"
+    /// <summary>
+    ///   <para>rdfs:comment : Controlled vocabulary annotating the interaction type for example, "phosphorylation reaction". This annotation is meant to be human readable and may not be suitable for computing tasks, like reasoning, that require formal vocabulary systems. For instance, this information would be useful for display on a web page or for querying a database. The PSI-MI interaction type controlled vocabulary should be used. This is browsable at:
+    /// http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=MI&amp;termId=MI%3A0190&amp;termName=interaction%20type^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#interactionType">biopax:interactionType</a>
+    /// </summary>
+    let interactionType = _prefixId.prefix "interactionType"
+    /// <summary>
+    ///   <para>rdfs:comment : This flag represents whether the binding feature is within the same molecule or not. A true value implies that the entityReferences of this feature and its binding partner are the same.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#intraMolecular">biopax:intraMolecular</a>
+    /// </summary>
+    let intraMolecular = _prefixId.prefix "intraMolecular"
+    /// <summary>
+    ///   <para>rdfs:comment : The ionic strength is defined as half of the total sum of the concentration (ci) of every ionic species (i) in the solution times the square of its charge (zi). For example, the ionic strength of a 0.1 M solution of CaCl2 is 0.5 x (0.1 x 22 + 0.2 x 12) = 0.3 M^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#ionicStrength">biopax:ionicStrength</a>
+    /// </summary>
+    let ionicStrength = _prefixId.prefix "ionicStrength"
+    /// <summary>
+    ///   <para>rdfs:comment : This quantity is dimensionless and is usually a single number. The measured equilibrium constant for a biochemical reaction, encoded by the slot KEQ, is actually the apparent equilibrium constant, K'.  Concentrations in the equilibrium constant equation refer to the total concentrations of  all forms of particular biochemical reactants. For example, in the equilibrium constant equation for the biochemical reaction in which ATP is hydrolyzed to ADP and inorganic phosphate:
+    ///
+    /// K' = [ADP][P&lt;sub&gt;i&lt;/sub&gt;]/[ATP],
+    ///
+    /// The concentration of ATP refers to the total concentration of all of the following species:
+    ///
+    /// [ATP] = [ATP&lt;sup&gt;4-&lt;/sup&gt;] + [HATP&lt;sup&gt;3-&lt;/sup&gt;] + [H&lt;sub&gt;2&lt;/sub&gt;ATP&lt;sup&gt;2-&lt;/sup&gt;] + [MgATP&lt;sup&gt;2-&lt;/sup&gt;] + [MgHATP&lt;sup&gt;-&lt;/sup&gt;] + [Mg&lt;sub&gt;2&lt;/sub&gt;ATP].
+    ///
+    /// The apparent equilibrium constant is formally dimensionless, and can be kept so by inclusion of as many of the terms (1 mol/dm&lt;sup&gt;3&lt;/sup&gt;) in the numerator or denominator as necessary.  It is a function of temperature (T), ionic strength (I), pH, and pMg (pMg = -log&lt;sub&gt;10&lt;/sub&gt;[Mg&lt;sup&gt;2+&lt;/sup&gt;]). Therefore, these quantities must be specified to be precise, and values for KEQ for biochemical reactions may be represented as 5-tuples of the form (K' T I pH pMg).  This property may have multiple values, representing different measurements for K' obtained under the different experimental conditions listed in the 5-tuple. (This definition adapted from EcoCyc)^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#kEQ">biopax:kEQ</a>
+    /// </summary>
+    let kEQ = _prefixId.prefix "kEQ"
+    /// <summary>
+    ///   <para>rdfs:comment : The apparent equilibrium constant K'. Concentrations in the equilibrium constant equation refer to the total concentrations of  all forms of particular biochemical reactants. For example, in the equilibrium constant equation for the biochemical reaction in which ATP is hydrolyzed to ADP and inorganic phosphate:
+    ///
+    /// K' = [ADP][P&lt;sub&gt;i&lt;/sub&gt;]/[ATP],
+    ///
+    /// The concentration of ATP refers to the total concentration of all of the following species:
+    ///
+    /// [ATP] = [ATP&lt;sup&gt;4-&lt;/sup&gt;] + [HATP&lt;sup&gt;3-&lt;/sup&gt;] + [H&lt;sub&gt;2&lt;/sub&gt;ATP&lt;sup&gt;2-&lt;/sup&gt;] + [MgATP&lt;sup&gt;2-&lt;/sup&gt;] + [MgHATP&lt;sup&gt;-&lt;/sup&gt;] + [Mg&lt;sub&gt;2&lt;/sub&gt;ATP].
+    ///
+    /// The apparent equilibrium constant is formally dimensionless, and can be kept so by inclusion of as many of the terms (1 mol/dm&lt;sup&gt;3&lt;/sup&gt;) in the numerator or denominator as necessary.  It is a function of temperature (T), ionic strength (I), pH, and pMg (pMg = -log&lt;sub&gt;10&lt;/sub&gt;[Mg&lt;sup&gt;2+&lt;/sup&gt;]).
+    /// (Definition from EcoCyc)^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#kPrime">biopax:kPrime</a>
+    /// </summary>
+    let kPrime = _prefixId.prefix "kPrime"
+    /// <summary>
+    ///   <para>rdfs:comment : The participants on the left side of the conversion interaction. Since conversion interactions may proceed in either the left-to-right or right-to-left direction, occupants of the left property may be either reactants or products. left is a sub-property of participants.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#left">biopax:left</a>
+    /// </summary>
+    let left = _prefixId.prefix "left"
+    /// <summary>
+    ///   <para>rdfs:comment : An entity reference that qualifies for the definition of this group. For example a member of a PFAM protein family.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#memberEntityReference">biopax:memberEntityReference</a>
+    /// </summary>
+    let memberEntityReference = _prefixId.prefix "memberEntityReference"
+    /// <summary>
+    ///   <para>rdfs:comment : An entity feature that belongs to this homology grouping.
+    /// These features should be of the same class of this EntityFeature
+    /// These features should be an EntityFeature of an EntityReference which is a memberEntityReference of the EntityReference of this feature.
+    /// If this set is not empty than the sequenceLocation of this feature should be non-specified.
+    /// Example: a homologous phosphorylation site across a protein family.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#memberFeature">biopax:memberFeature</a>
+    /// </summary>
+    let memberFeature = _prefixId.prefix "memberFeature"
+    /// <summary>
+    ///   <para>rdfs:comment : This property stores the members of a generic physical entity.
+    ///
+    /// For representing homology generics a better way is to use generic entity references and generic features. However not all generic logic can be captured by this, such as complex generics or rare cases where feature cardinality is variable. Usages of this property should be limited to such cases.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#memberPhysicalEntity">biopax:memberPhysicalEntity</a>
+    /// </summary>
+    let memberPhysicalEntity = _prefixId.prefix "memberPhysicalEntity"
+    /// <summary>
+    ///   <para>rdfs:comment : Description and classification of the feature.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#modificationType">biopax:modificationType</a>
+    /// </summary>
+    let modificationType = _prefixId.prefix "modificationType"
+    /// <summary>
+    ///   <para>rdfs:comment : Defines the molecular weight of the molecule, in daltons.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#molecularWeight">biopax:molecularWeight</a>
+    /// </summary>
+    let molecularWeight = _prefixId.prefix "molecularWeight"
+    /// <summary>
+    ///   <para>rdfs:comment : Synonyms for this entity.  standardName and shortName are subproperties of this property and if declared they are automatically considered as names.
+    ///
+    /// Warning:  Subproperties of name are functional, that is we expect to have only one standardName and shortName for a given entity. If a user decides to assign a different name to standardName or shortName, they have to remove the old triplet from the model too. If the old name should be retained as a synonym a regular "name" property should also be introduced with the old name.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#name">biopax:name</a>
+    /// </summary>
+    let name = _prefixId.prefix "name"
+    /// <summary>
+    ///   <para>rdfs:comment : The next step(s) of the pathway.  Contains zero or more pathwayStep instances.  If there is no next step, this property is empty. Multiple pathwayStep instances indicate pathway branching.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#nextStep">biopax:nextStep</a>
+    /// </summary>
+    let nextStep = _prefixId.prefix "nextStep"
+    /// <summary>
+    ///   <para>rdfs:comment : Sequence features where the owner physical entity has a feature. If not specified, other potential features are not known.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#notFeature">biopax:notFeature</a>
+    /// </summary>
+    let notFeature = _prefixId.prefix "notFeature"
+    /// <summary>
+    ///   <para>rdfs:comment : An organism, e.g. 'Homo sapiens'. This is the organism that the entity is found in. Pathways may not have an organism associated with them, for instance, reference pathways from KEGG. Sequence-based entities (DNA, protein, RNA) may contain an xref to a sequence database that contains organism information, in which case the information should be consistent with the value for ORGANISM.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#organism">biopax:organism</a>
+    /// </summary>
+    let organism = _prefixId.prefix "organism"
+    /// <summary>
+    ///   <para>rdfs:comment : A measure of the concentration of magnesium (Mg) in solution. (pMg = -log&lt;sub&gt;10&lt;/sub&gt;[Mg&lt;sup&gt;2+&lt;/sup&gt;])^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#pMg">biopax:pMg</a>
+    /// </summary>
+    let pMg = _prefixId.prefix "pMg"
+    /// <summary>
+    ///   <para>rdfs:comment : This property lists the entities that participate in this interaction. For example, in a biochemical reaction, the participants are the union of the reactants and the products of the reaction. This property has a number of sub-properties, such as LEFT and RIGHT used in the biochemicalInteraction class. Any participant listed in a sub-property will automatically be assumed to also be in PARTICIPANTS by a number of software systems, including Protege, so this property should not contain any instances if there are instances contained in a sub-property.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#participant">biopax:participant</a>
+    /// </summary>
+    let participant = _prefixId.prefix "participant"
+    /// <summary>
+    ///   <para>rdfs:comment : Stoichiometry of the left and right participants.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#participantStoichiometry">biopax:participantStoichiometry</a>
+    /// </summary>
+    let participantStoichiometry = _prefixId.prefix "participantStoichiometry"
+    /// <summary>
+    ///   <para>rdfs:comment : The set of interactions and/or pathwaySteps in this pathway/network. Each instance of the pathwayStep class defines: 1) a set of interactions that together define a particular step in the pathway, for example a catalysis instance and the conversion that it catalyzes; 2) an order relationship to one or more other pathway steps (via the NEXT-STEP property). Note: This ordering is not necessarily temporal - the order described may simply represent connectivity between adjacent steps. Temporal ordering information should only be inferred from the direction of each interaction.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#pathwayComponent">biopax:pathwayComponent</a>
+    /// </summary>
+    let pathwayComponent = _prefixId.prefix "pathwayComponent"
+    /// <summary>
+    ///   <para>rdfs:comment : The ordering of components (interactions and pathways) in the context of this pathway. This is useful to specific circular or branched pathways or orderings when component biochemical reactions are normally reversible, but are directed in the context of this pathway.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#pathwayOrder">biopax:pathwayOrder</a>
+    /// </summary>
+    let pathwayOrder = _prefixId.prefix "pathwayOrder"
+    /// <summary>
+    ///   <para>rdfs:comment : The phenotype data from PATO, formatted as PhenoXML (defined at http://www.fruitfly.org/~cjm/obd/formats.html)^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#patoData">biopax:patoData</a>
+    /// </summary>
+    let patoData = _prefixId.prefix "patoData"
+    /// <summary>
+    ///   <para>rdfs:comment : A measure of acidity and alkalinity of a solution that is a number on a scale on which a value of 7 represents neutrality and lower numbers indicate increasing acidity and higher numbers increasing alkalinity and on which each unit of change represents a tenfold change in acidity or alkalinity and that is the negative logarithm of the effective hydrogen-ion concentration or hydrogen-ion activity in gram equivalents per liter of the solution. (Definition from Merriam-Webster Dictionary)^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#ph">biopax:ph</a>
+    /// </summary>
+    let ph = _prefixId.prefix "ph"
+    /// <summary>
+    ///   <para>rdfs:comment : The phenotype quality used to define this genetic interaction e.g. viability.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#phenotype">biopax:phenotype</a>
+    /// </summary>
+    let phenotype = _prefixId.prefix "phenotype"
+    /// <summary>
+    ///   <para>rdfs:comment : The physical entity to be annotated with stoichiometry.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#physicalEntity">biopax:physicalEntity</a>
+    /// </summary>
+    let physicalEntity = _prefixId.prefix "physicalEntity"
+    /// <summary>
+    ///   <para>rdfs:comment : The confidence status of the sequence position. This could be:
+    /// EQUAL: The SEQUENCE-POSITION is known to be at the SEQUENCE-POSITION.
+    /// GREATER-THAN: The site is greater than the SEQUENCE-POSITION.
+    /// LESS-THAN: The site is less than the SEQUENCE-POSITION.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#positionStatus">biopax:positionStatus</a>
+    /// </summary>
+    let positionStatus = _prefixId.prefix "positionStatus"
+    /// <summary>
+    ///   <para>rdfs:comment : The product of a template reaction.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#product">biopax:product</a>
+    /// </summary>
+    let product = _prefixId.prefix "product"
+    let regionType = _prefixId.prefix "regionType"
+    /// <summary>
+    ///   <para>rdfs:comment : Definition:A controlled vocabulary term that defines the type of relationship that this xref defines.
+    /// Usage: There is currently no controlled vocabulary of relationship types for BioPAX, although one will be created in the future as the usage of this property increases.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#relationshipType">biopax:relationshipType</a>
+    /// </summary>
+    let relationshipType = _prefixId.prefix "relationshipType"
+    /// <summary>
+    ///   <para>rdfs:comment : The participants on the right side of the conversion interaction. Since conversion interactions may proceed in either the left-to-right or right-to-left direction, occupants of the RIGHT property may be either reactants or products. RIGHT is a sub-property of PARTICIPANTS.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#right">biopax:right</a>
+    /// </summary>
+    let right = _prefixId.prefix "right"
+    /// <summary>
+    ///   <para>rdfs:comment : This property defines the source of the scoring methodology --
+    /// a publication or web site describing the scoring methodology and the range of values.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#scoreSource">biopax:scoreSource</a>
+    /// </summary>
+    let scoreSource = _prefixId.prefix "scoreSource"
+    /// <summary>
+    ///   <para>rdfs:comment : Polymer sequence in uppercase letters. For DNA, usually A,C,G,T letters representing the nucleosides of adenine, cytosine, guanine and thymine, respectively; for RNA, usually A, C, U, G; for protein, usually the letters corresponding to the 20 letter IUPAC amino acid code.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#sequence">biopax:sequence</a>
+    /// </summary>
+    let sequence = _prefixId.prefix "sequence"
+    /// <summary>
+    ///   <para>rdfs:comment : The begin position of a sequence interval.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#sequenceIntervalBegin">biopax:sequenceIntervalBegin</a>
+    /// </summary>
+    let sequenceIntervalBegin = _prefixId.prefix "sequenceIntervalBegin"
+    /// <summary>
+    ///   <para>rdfs:comment : The end position of a sequence interval.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#sequenceIntervalEnd">biopax:sequenceIntervalEnd</a>
+    /// </summary>
+    let sequenceIntervalEnd = _prefixId.prefix "sequenceIntervalEnd"
+    /// <summary>
+    ///   <para>rdfs:comment : The integer listed gives the position. The first base or amino acid is position 1. In combination with the numeric value, the property 'POSITION-STATUS' allows to express fuzzy positions, e.g. 'less than 4'.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#sequencePosition">biopax:sequencePosition</a>
+    /// </summary>
+    let sequencePosition = _prefixId.prefix "sequencePosition"
+    /// <summary>
+    ///   <para>rdfs:comment : The source  in which the reference was published, such as: a book title, or a journal title and volume and pages.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#source">biopax:source</a>
+    /// </summary>
+    let source = _prefixId.prefix "source"
+    /// <summary>
+    ///   <para>rdfs:comment : Specifies whether a conversion occurs spontaneously or not. If the spontaneity is not known, the SPONTANEOUS property should be left empty.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#spontaneous">biopax:spontaneous</a>
+    /// </summary>
+    let spontaneous = _prefixId.prefix "spontaneous"
+    /// <summary>
+    ///   <para>rdfs:comment : The preferred full name for this entity, if exists assigned by a standard nomenclature organization such as HUGO Gene Nomenclature Committee.
+    ///
+    /// Warning:  Subproperties of name are functional, that is we expect to have only one standardName and shortName for a given entity. If a user decides to assign a different name to standardName or shortName, they have to remove the old triplet from the model too. If the old name should be retained as a synonym a regular "name" property should also be introduced with the old name.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#standardName">biopax:standardName</a>
+    /// </summary>
+    let standardName = _prefixId.prefix "standardName"
+    /// <summary>
+    ///   <para>rdfs:comment : The central process that take place at this step of the biochemical pathway.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#stepConversion">biopax:stepConversion</a>
+    /// </summary>
+    let stepConversion = _prefixId.prefix "stepConversion"
+    /// <summary>
+    ///   <para>rdfs:comment : Direction of the conversion in this particular pathway context.
+    /// This property can be used for annotating direction of enzymatic activity. Even if an enzyme catalyzes a reaction reversibly, the flow of matter through the pathway will force the equilibrium in a given direction for that particular pathway.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#stepDirection">biopax:stepDirection</a>
+    /// </summary>
+    let stepDirection = _prefixId.prefix "stepDirection"
+    /// <summary>
+    ///   <para>rdfs:comment : An interaction or a pathway that are a part of this pathway step.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#stepProcess">biopax:stepProcess</a>
+    /// </summary>
+    let stepProcess = _prefixId.prefix "stepProcess"
+    /// <summary>
+    ///   <para>rdfs:comment : Stoichiometric coefficient for one of the entities in an interaction or complex. This value can be any rational number. Generic values such as "n" or "n+1" should not be used - polymers are currently not covered.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#stoichiometricCoefficient">biopax:stoichiometricCoefficient</a>
+    /// </summary>
+    let stoichiometricCoefficient = _prefixId.prefix "stoichiometricCoefficient"
+    /// <summary>
+    ///   <para>rdfs:comment : Defines the chemical structure and other information about this molecule, using an instance of class chemicalStructure.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#structure">biopax:structure</a>
+    /// </summary>
+    let structure = _prefixId.prefix "structure"
+    /// <summary>
+    ///   <para>rdfs:comment : This property holds a string of data defining chemical structure,in one of the three formats:&lt;a href ="www.xml-cml.org"&gt;CML&lt;/a&gt;, &lt;a href = "www.daylight.com/dayhtml/smiles/"&gt;SMILES&lt;/a&gt; or &lt;a href="http://www.iupac.org/inchi/"&gt;InChI&lt;/a&gt;. If, for example,the CML format is used, then the value of this property is a string containing the XML encoding of the CML data.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#structureData">biopax:structureData</a>
+    /// </summary>
+    let structureData = _prefixId.prefix "structureData"
+    /// <summary>
+    ///   <para>rdfs:comment : This property specifies which format is used to define chemical structure data.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#structureFormat">biopax:structureFormat</a>
+    /// </summary>
+    let structureFormat = _prefixId.prefix "structureFormat"
+    /// <summary>
+    ///   <para>rdfs:comment : The sub region of a region or nucleic acid molecule. The sub region must be wholly part of the region, not outside of it.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#subRegion">biopax:subRegion</a>
+    /// </summary>
+    let subRegion = _prefixId.prefix "subRegion"
+    /// <summary>
+    ///   <para>rdfs:comment : Temperature in Celsius^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#temperature">biopax:temperature</a>
+    /// </summary>
+    let temperature = _prefixId.prefix "temperature"
+    /// <summary>
+    ///   <para>rdfs:comment : The template molecule that is used in this template reaction.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#template">biopax:template</a>
+    /// </summary>
+    let template = _prefixId.prefix "template"
+    /// <summary>
+    ///   <para>rdfs:comment : The direction of the template reaction on the template.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#templateDirection">biopax:templateDirection</a>
+    /// </summary>
+    let templateDirection = _prefixId.prefix "templateDirection"
+    /// <summary>
+    ///   <para>rdfs:comment : The external controlled vocabulary term.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#term">biopax:term</a>
+    /// </summary>
+    let term = _prefixId.prefix "term"
+    /// <summary>
+    ///   <para>rdfs:comment : An external controlled vocabulary of tissue types.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#tissue">biopax:tissue</a>
+    /// </summary>
+    let tissue = _prefixId.prefix "tissue"
+    /// <summary>
+    ///   <para>rdfs:comment : The title of the publication.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#title">biopax:title</a>
+    /// </summary>
+    let title = _prefixId.prefix "title"
+    /// <summary>
+    ///   <para>rdfs:comment : The URL at which the publication can be found, if it is available through the Web.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#url">biopax:url</a>
+    /// </summary>
+    let url = _prefixId.prefix "url"
+    /// <summary>
+    ///   <para>rdfs:comment : The value of the score. This can be a numerical or categorical value.^^xsd:string</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#value">biopax:value</a>
+    /// </summary>
+    let value = _prefixId.prefix "value"
+    /// <summary>
+    ///   <para>rdfs:comment : Values of this property define external cross-references from this entity to entities in external databases.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#xref">biopax:xref</a>
+    /// </summary>
+    let xref = _prefixId.prefix "xref"
+    /// <summary>
+    ///   <para>rdfs:comment : The year in which this publication was published.</para>
+    ///   <a href="http://www.biopax.org/release/biopax-level3.owl#year">biopax:year</a>
+    /// </summary>
+    let year = _prefixId.prefix "year"

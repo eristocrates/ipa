@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>HashDepot</id>
+    <version>3.2.0</version>
+    <authors>Sedat Kapanoglu</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <description>Tested and performant implementations of xxHash, SipHash (SipHash-2-4), MurmurHash (MurmurHash3), FNV (FNV-1, FNV-1a)</description>
+    <releaseNotes>## 3.2.0
+
+### New features
+- New function XXHash.Hash64Async() and XXHash.Hash32Async()
+- Now targets .NET 9 and .NET 10 along with .NET 8
+
+## Improvements
+- Removed dependencies to System.Memory and System.Runtime (thanks to @thompson-tomo)
+- SipHash24's state machine now correctly handles unexpected Update cases
+- Tests now have 100% code coverage</releaseNotes>
+    <tags>siphash murmurhash xxhash fnv fnv1a</tags>
+    <repository type="git" url="https://github.com/ssg/HashDepot" commit="369191fdcb7118b5e747ac76efd99363e7069930" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+      <group targetFramework="net9.0" />
+      <group targetFramework="net10.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>DynamicObj</id>
+    <version>7.1.0</version>
+    <authors>Timo Mühlhaus, Kevin Schneider, Heinrich Lukas Weil, F# open source contributors</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://csbiology.github.io/DynamicObj/</projectUrl>
+    <description>F# library supporting Dynamic Objects including inheritance in functional style. Compatible with Fable javascript and python transpilation.</description>
+    <releaseNotes>Extend and test deepHash through guard handling option values. FSharp did not correctly calculate hash codes for equal option values.</releaseNotes>
+    <tags>F# FSharp dotnet dynamic object</tags>
+    <repository type="git" url="https://github.com/CSBiology/DynamicObj" commit="96eef97cc20f269ac58cf02c62934e35fc586576" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="8.0.403" exclude="Build,Analyzers" />
+        <dependency id="Fable.Core" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

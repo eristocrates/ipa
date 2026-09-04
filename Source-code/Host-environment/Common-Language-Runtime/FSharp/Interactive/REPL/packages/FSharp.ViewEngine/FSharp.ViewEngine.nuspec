@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FSharp.ViewEngine</id>
+    <version>2026.8.2</version>
+    <authors>Andrew Meier</authors>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <readme>README.md</readme>
+    <description>Package Description</description>
+    <repository type="git" url="https://github.com/meiermade/FSharp.ViewEngine" branch="refs/heads/main" commit="0841935c6e6cc9fc0c9ec131e1fcbe7ea7ffbe47" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="FSharp.Core" version="10.0.102" exclude="Build,Analyzers" />
+        <dependency id="JetBrains.Annotations" version="2026.2.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

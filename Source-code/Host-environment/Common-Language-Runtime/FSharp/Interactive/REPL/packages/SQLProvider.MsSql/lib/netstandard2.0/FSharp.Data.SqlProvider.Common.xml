@@ -1,0 +1,2076 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharp.Data.SqlProvider.Common</name></assembly>
+<members>
+<member name="M:ExpressionOptimizer.tryVisitTyped``1(System.Linq.Expressions.Expression{``0})">
+<summary>
+ Expression tree visitor: go through the whole expression tree.
+ Catches the exceptions.
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.visitTyped``1(System.Linq.Expressions.Expression{``0})">
+<summary>
+ Expression tree visitor: go through the whole expression tree.
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.tryVisit(System.Linq.Expressions.Expression)">
+<summary>
+ Expression tree visitor: go through the whole expression tree.
+ Catches the exceptions.
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.visit(System.Linq.Expressions.Expression)">
+<summary>
+ Expression tree visitor: go through the whole expression tree.
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.doReduction(System.Linq.Expressions.Expression)">
+<summary>
+ Do reductions just for a current node?
+</summary>
+</member>
+<member name="P:ExpressionOptimizer.reductionMethods">
+<summary>
+ Used optimization methods
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.simplify arithmetic identities(System.Linq.Expressions.Expression)">
+<summary>
+ Additional arithmetic identity optimizations
+ x - 0 -&gt; x, x - x -&gt; 0, x % 1 -&gt; 0
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.simplify conditionals(System.Linq.Expressions.Expression)">
+<summary>
+ Simplify conditional expressions 
+ x ? true : false -&gt; x, x ? false : true -&gt; !x, x ? y : y -&gt; y
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.simplify string operations(System.Linq.Expressions.Expression)">
+<summary>
+ String concatenation with empty string optimization
+ &quot;&quot; + x -&gt; x, x + &quot;&quot; -&gt; x
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.evaluate basic constant math(System.Linq.Expressions.Expression)">
+<summary>
+ Evaluate simple math between two constants.
+  9  *  3     --&gt;    27
+ &quot;G&quot; + &quot;G&quot;    --&gt;   &quot;GG&quot;
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.evaluate constants(System.Linq.Expressions.Expression)">
+<summary>
+ Evaluating constants to not mess with our expressions:
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.balancetree(System.Linq.Expressions.Expression)">
+<summary>
+ Balance tree that is too much weighted to other side.
+ The real advantage is not-so-nested-stack
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.optimize string operations(System.Linq.Expressions.Expression)">
+<summary>
+ String comparisons to IsNullOrEmpty
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.optimize comparison ranges(System.Linq.Expressions.Expression)">
+<summary>
+ Optimize range/interval comparisons with proper max/min logic
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.compareConstants(System.Linq.Expressions.Expression,System.Linq.Expressions.Expression)">
+<summary>
+ Helper function to compare two constant expressions  
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.factorComplement(System.Linq.Expressions.Expression)">
+<summary>
+ Factorize complementary disjunctions: (X &amp;&amp; P) || (!X &amp;&amp; P) -&gt; P
+ This handles the pattern where all states of a variable are covered
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.distribute(System.Linq.Expressions.Expression)">
+<summary>
+ Not in use, would cause looping...
+ This is opposite of gather
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.commute2(System.Linq.Expressions.Expression)">
+<summary>
+ Not in use, would cause looping...
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.associate(System.Linq.Expressions.Expression)">
+<summary>
+ Not in use, would cause looping...
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.not false is true(System.Linq.Expressions.Expression)">
+<summary>
+ not(false) -&gt; true 
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.cut not used condition(System.Linq.Expressions.Expression)">
+<summary>
+ if false then x else y -&gt; y 
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.remove AnonymousType(System.Linq.Expressions.Expression)">
+<summary>
+ Purpose of this is to replace non-used anonymous types:
+ new AnonymousObject(Item1 = x, Item2 = &quot;&quot;).Item1    --&gt;   x
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.isAnonymousType(System.Type)">
+<summary>
+ Check if a type is an anonymous type without expensive operations
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.replace constant comparison(System.Linq.Expressions.Expression)">
+<summary>
+ The purpose of this is to optimize away already known constant=constant style expressions.
+   7 &gt; 8      --&gt;   False
+ &quot;G&quot; = &quot;G&quot;    --&gt;   True
+</summary>
+</member>
+<member name="M:ExpressionOptimizer.Methods.constant basic type(System.Linq.Expressions.Expression,System.Linq.Expressions.Expression)">
+<summary>
+ We want to eliminate enum-types and constants like 1 or &quot;a&quot;.
+ But the constant value can also be another complex object, such as IQueryable.
+ We don&apos;t want to evaluate those!
+</summary>
+</member>
+<member name="T:ExpressionOptimizer">
+<summary>
+ This is just a light-weight expression optimizer.
+ It won&apos;t do any heavy stuff...
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.SelectOperations.DatabaseSide">
+<summary>
+ Execute the operation on the database server side
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.SelectOperations.DotNetSide">
+<summary>
+ Execute the operation on the .NET client side
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.SelectOperations">
+ <summary>
+ Specifies where SELECT operations should be executed for query optimization.
+ </summary>
+</member>
+<member name="T:FSharp.Data.Sql.AggregateOperation.VarianceOp">
+<summary>
+ Calculates the variance of values in the specified column
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.AggregateOperation.StdDevOp">
+<summary>
+ Calculates the standard deviation of values in the specified column
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.AggregateOperation.CountDistOp">
+<summary>
+ Counts the number of distinct values in the specified column
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.AggregateOperation.CountOp">
+<summary>
+ Counts the number of rows in the specified column
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.AggregateOperation.AvgOp">
+<summary>
+ Calculates the average of values in the specified column
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.AggregateOperation.SumOp">
+<summary>
+ Calculates the sum of values in the specified column
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.AggregateOperation.MinOp">
+<summary>
+ Finds the minimum value in the specified column
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.AggregateOperation.MaxOp">
+<summary>
+ Finds the maximum value in the specified column
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.AggregateOperation.KeyOp">
+<summary>
+ Groups results by the specified key column
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.AggregateOperation">
+ <summary>
+ Represents SQL aggregate operations for GROUP BY clauses and data summarization.
+ Each operation includes the column name to aggregate.
+ </summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.NestedNotExists">
+<summary>
+ SQL NOT EXISTS operator for negated subquery existence testing
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.NestedExists">
+<summary>
+ SQL EXISTS operator for subquery existence testing
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.NestedNotIn">
+<summary>
+ SQL NOT IN operator for negated nested subqueries
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.NestedIn">
+<summary>
+ SQL IN operator for nested subqueries
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.NotIn">
+<summary>
+ SQL NOT IN operator for negated membership testing
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.In">
+<summary>
+ SQL IN operator for membership testing
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.NotNull">
+<summary>
+ SQL IS NOT NULL operator for checking non-null values
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.IsNull">
+<summary>
+ SQL IS NULL operator for checking null values
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.LessEqual">
+<summary>
+ SQL less than or equal operator (&lt;=)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.GreaterEqual">
+<summary>
+ SQL greater than or equal operator (&gt;=)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.LessThan">
+<summary>
+ SQL less than operator (&lt;)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.GreaterThan">
+<summary>
+ SQL greater than operator (&gt;)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.NotEqual">
+<summary>
+ SQL inequality operator (&lt;&gt;)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.Equal">
+<summary>
+ SQL equality operator (=)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.NotLike">
+<summary>
+ SQL NOT LIKE operator for negated pattern matching
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator.Like">
+<summary>
+ SQL LIKE operator for pattern matching with wildcards
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ConditionOperator">
+ <summary>
+ Represents SQL conditional operators used in WHERE clauses and query expressions.
+ These operators are translated to their SQL equivalents when building database queries.
+ </summary>
+</member>
+<member name="M:FSharp.Data.Sql.Operators.Variance``1(``0)">
+<summary>
+ Calculates the variance of numeric values in a column.
+ Used in aggregate queries with groupBy.
+ param a: The column value
+ returns: Always 1m at compile time - replaced with SQL VARIANCE during query execution
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Operators.StdDev``1(``0)">
+<summary>
+ Calculates the standard deviation of numeric values in a column.
+ Used in aggregate queries with groupBy.
+ param a: The column value
+ returns: Always 1m at compile time - replaced with SQL STDDEV during query execution
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Operators.op_BangBang``1(System.Linq.IQueryable{``0})">
+<summary>
+ Left outer join operator. Performs a left join on a related table.
+ Used after &quot;in&quot; and before the context.tablename
+ param a: The related table queryable
+ A queryable that performs a left outer join
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Operators.leftJoin``1(``0)">
+<summary>
+ Left join helper function for internal use
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Operators.op_LessGreaterPercent``1(``0,System.String)">
+<summary>
+ SQL NOT LIKE operator for negated pattern matching.
+ param a: The value to test
+ param b: The pattern to reject
+ returns&gt;Always false at compile time - replaced with SQL NOT LIKE during query execution
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Operators.op_EqualsPercent``1(``0,System.String)">
+<summary>
+ SQL LIKE operator for pattern matching with wildcards.
+ param a: The value to test
+ param b: The pattern to match
+ returns: Always false at compile time - replaced with SQL LIKE during query execution
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Operators.op_BarLessGreaterBar``1(``0,System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ SQL NOT IN operator. Tests if a value does not exist in a sequence.
+ param a: The value to test
+ param b: The sequence to search in
+ returns: Always false at compile time - replaced with SQL NOT IN during query execution
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Operators.op_BarEqualsBar``1(``0,System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ SQL IN operator. Tests if a value exists in a sequence.
+ param a: The value to test
+ param b: The sequence to search in
+ returns: Always false at compile time - replaced with SQL IN during query execution
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Operators">
+<summary>
+ Contains custom SQL operators for use in query expressions.
+ These operators are translated to their SQL equivalents during query compilation.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.ProjectionParameter.OperationColumn">
+<summary>
+ A column with operations applied for computed expressions
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.ProjectionParameter.EntityColumn">
+<summary>
+ A direct entity column reference
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.ProjectionParameter">
+<summary>
+ Represents parameters for SQL projections (SELECT clause elements).
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.SqlItemOrColumn.SqlConstant">
+<summary>
+ A constant value to be used in SQL expressions
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.SqlItemOrColumn.SqlCol">
+<summary>
+ A database column with table alias and column type
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.SqlItemOrColumn">
+<summary>
+ Represents either a database column or a constant value in SQL expressions.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.SqlColumnType.GroupColumn">
+<summary>
+ A column used in aggregate operations
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.SqlColumnType.CanonicalOperation">
+<summary>
+ A column with a canonical operation applied
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.SqlColumnType.KeyColumn">
+<summary>
+ A key column used for grouping or joining
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.SqlColumnType">
+<summary>
+ Represents a column with optional operations applied to it.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.CastInt">
+<summary>
+ Casts a value to INTEGER type
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.CastVarchar">
+<summary>
+ Casts a value to VARCHAR type
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.CaseSqlPlain">
+<summary>
+ SQL CASE expression with condition and two constant values
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.CaseNotSql">
+<summary>
+ SQL CASE expression with negated condition and true value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.CaseSql">
+<summary>
+ SQL CASE expression with condition and false value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.BasicMathOfColumns">
+<summary>
+ Basic mathematical operation between columns
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.BasicMathLeft">
+<summary>
+ Left-side basic mathematical operation with a constant value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.BasicMath">
+<summary>
+ Basic mathematical operation with a constant value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Least">
+<summary>
+ Returns the smallest value among the provided arguments
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Greatest">
+<summary>
+ Returns the greatest value among the provided arguments
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.PowConst">
+<summary>
+ Raises a number to a constant power
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Pow">
+<summary>
+ Raises a number to the power of another number
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.ATan">
+<summary>
+ Returns the arctangent of a number
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.ACos">
+<summary>
+ Returns the arccosine of a number
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.ASin">
+<summary>
+ Returns the arcsine of a number
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Tan">
+<summary>
+ Returns the tangent of an angle (in radians)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Cos">
+<summary>
+ Returns the cosine of an angle (in radians)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Sin">
+<summary>
+ Returns the sine of an angle (in radians)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Sqrt">
+<summary>
+ Returns the square root of a number
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Truncate">
+<summary>
+ Truncates a number to its integer part
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.RoundDecimals">
+<summary>
+ Rounds a number to the specified number of decimal places
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Round">
+<summary>
+ Rounds a number to the nearest integer
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Floor">
+<summary>
+ Returns the largest integer less than or equal to a number (floor)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Ceil">
+<summary>
+ Returns the smallest integer greater than or equal to a number (ceiling)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Abs">
+<summary>
+ Returns the absolute value of a number
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.DateDiffSecs">
+<summary>
+ Calculates the difference in seconds between two datetime values
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.DateDiffDays">
+<summary>
+ Calculates the difference in days between two datetime values
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.AddSeconds">
+<summary>
+ Adds the specified number of seconds to a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.AddMinutes">
+<summary>
+ Adds the specified number of minutes to a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.AddHours">
+<summary>
+ Adds the specified number of hours to a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.AddDays">
+<summary>
+ Adds the specified number of days to a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.AddMonths">
+<summary>
+ Adds the specified number of months to a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.AddYears">
+<summary>
+ Adds the specified number of years to a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Second">
+<summary>
+ Extracts the second from a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Minute">
+<summary>
+ Extracts the minute from a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Hour">
+<summary>
+ Extracts the hour from a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Day">
+<summary>
+ Extracts the day from a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Month">
+<summary>
+ Extracts the month from a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Year">
+<summary>
+ Extracts the year from a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Date">
+<summary>
+ Extracts the date part from a datetime value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.IndexOfStart">
+<summary>
+ Returns the index of a substring starting from a specified position
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.IndexOf">
+<summary>
+ Returns the index of the first occurrence of a substring
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Replace">
+<summary>
+ Replaces occurrences of a substring with another substring
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Length">
+<summary>
+ Returns the length of a string
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Trim">
+<summary>
+ Removes leading and trailing whitespace
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.ToLower">
+<summary>
+ Converts string to lowercase
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.ToUpper">
+<summary>
+ Converts string to uppercase
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.SubstringWithLength">
+<summary>
+ Extracts a substring with specified start position and length
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp.Substring">
+<summary>
+ Extracts a substring from the specified position to the end
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.CanonicalOp">
+<summary>
+ Represents SQL functions and operations that can be applied to columns.
+ These operations are translated to database-specific SQL functions.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.Condition.NotSupported">
+<summary>
+ Expression that cannot be translated to SQL
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.Condition.ConstantFalse">
+<summary>
+ Always evaluates to false
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.Condition.ConstantTrue">
+<summary>
+ Always evaluates to true
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.Condition.Or">
+<summary>
+ OR condition with a list of terms and optional nested conditions
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.Condition.And">
+<summary>
+ AND condition with a list of terms and optional nested conditions
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.ColumnSchema.Condition">
+<summary>
+ Represents WHERE clause conditions for SQL queries.
+ Supports complex boolean expressions with AND/OR operators and nested conditions.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Table.Type">
+<summary>
+ The table type (e.g., &quot;TABLE&quot;, &quot;VIEW&quot;, &quot;SYSTEM TABLE&quot;)
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Table.Name">
+<summary>
+ The table name
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Schema.Table">
+<summary>
+ Represents a database table with its schema information.
+ Provides methods for generating properly quoted table names for different database providers.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.SprocName.PackageName">
+<summary>
+ The package name (primarily for Oracle)
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.SprocName.Owner">
+<summary>
+ The schema or owner name
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Schema.SprocName">
+<summary>
+ Represents the name of a stored procedure, including schema and package information.
+ Handles different database naming conventions (e.g., Oracle packages, SQL Server schemas).
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Relationship.ForeignKey">
+<summary>
+ The column name of the foreign key
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Relationship.ForeignTable">
+<summary>
+ The name of the table containing the foreign key
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Relationship.PrimaryKey">
+<summary>
+ The column name of the primary key
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Relationship.PrimaryTable">
+<summary>
+ The name of the table containing the primary key
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Schema.Relationship">
+<summary>
+ Represents a foreign key relationship between two database tables.
+ Used for automatic navigation property generation and join optimization.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Schema.ColumnLookup">
+<summary>
+ Lookup table for quickly finding column information by name.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Column.TypeInfo">
+<summary>
+ Additional type information specific to the database provider
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Column.IsComputed">
+<summary>
+ True if this column is computed/calculated by the database
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Column.HasDefault">
+<summary>
+ True if this column has a default value defined
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Column.IsAutonumber">
+<summary>
+ True if this column has an auto-increment/identity specification
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Column.IsNullable">
+<summary>
+ True if this column can contain NULL values
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Column.IsPrimaryKey">
+<summary>
+ True if this column is part of the table&apos;s primary key
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.Column.TypeMapping">
+<summary>
+ Type mapping information for converting between .NET and database types
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Schema.Column">
+<summary>
+ Represents a database table column with its metadata and characteristics.
+ Contains all information needed to generate typed properties and handle data conversion.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.QueryParameter.Ordinal">
+<summary>
+ Position of the parameter in the parameter list (zero-based)
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.QueryParameter.Length">
+<summary>
+ Maximum length for string/binary parameters
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.QueryParameter.Direction">
+<summary>
+ Whether the parameter is input, output, or bidirectional
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.QueryParameter.TypeMapping">
+<summary>
+ Type mapping information for converting between .NET and database types
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Schema.QueryParameter">
+<summary>
+ Represents a parameter used in SQL queries, stored procedures, or functions.
+ Contains all metadata needed to properly bind .NET values to database parameters.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.TypeMapping.DbType">
+<summary>
+ The standard .NET DbType enumeration value
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.TypeMapping.ProviderType">
+<summary>
+ The database provider&apos;s numeric type identifier
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Schema.TypeMapping.ClrType">
+<summary>
+ The corresponding .NET CLR type name
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Schema.TypeMapping">
+<summary>
+ Represents the mapping between database types and .NET CLR types.
+ Used to translate between database-specific types and .NET types during query execution.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Patterns.ISqlQueryable">
+<summary>
+ Marker interface
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Patterns.evaluateMethodCall(System.Linq.Expressions.MethodCallExpression)">
+<summary>
+ Fast type-safe evaluation without boxing for common types
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Transactions.TransactionOptions.IsolationLevel">
+<summary>
+ The isolation level for the transaction
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Transactions.TransactionOptions.Timeout">
+<summary>
+ Maximum time the transaction can remain active before timing out
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Transactions.TransactionOptions">
+<summary>
+ Configuration options for database transactions.
+ Corresponds to the System.Transactions.TransactionOptions.
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Transactions.IsolationLevel.DontCreateTransaction">
+<summary>
+ Special value to indicate that no transaction should be created
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Transactions.IsolationLevel.Unspecified">
+<summary>
+ Use the default isolation level of the database
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Transactions.IsolationLevel.Chaos">
+<summary>
+ Allows any level of isolation, including overlapping changes (SQL Server specific)
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Transactions.IsolationLevel.Snapshot">
+<summary>
+ SQL Server specific - provides statement-level read consistency using versioning
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Transactions.IsolationLevel.ReadUncommitted">
+<summary>
+ Allows dirty reads, non-repeatable reads, and phantom reads (fastest but least safe)
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Transactions.IsolationLevel.ReadCommitted">
+<summary>
+ Prevents dirty reads but allows non-repeatable reads and phantom reads (default for most databases)
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Transactions.IsolationLevel.RepeatableRead">
+<summary>
+ Prevents dirty reads and non-repeatable reads, but phantom reads can occur
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Transactions.IsolationLevel.Serializable">
+<summary>
+ Highest isolation level - transactions are completely isolated from each other
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Transactions.IsolationLevel">
+<summary>
+ Transaction isolation level for database operations.
+ Corresponds to the System.Transactions.IsolationLevel but provides SQL provider specific functionality.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Transactions.TransactionUtils.toSystemDataIsolationLevel(FSharp.Data.Sql.Transactions.IsolationLevel)">
+<summary>
+ Converts SQL provider isolation level to System.Data.IsolationLevel.
+ Use this when you need to work directly with ADO.NET connection transactions.
+ param isolationLevel: The SQL provider isolation level
+ returns: The corresponding System.Data.IsolationLevel
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Transactions.TransactionUtils">
+<summary>
+ Utility functions for converting between different transaction isolation level representations.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.GroupResultItems`2">
+<summary>
+ GroupResultItems is an item to create key-igrouping-structure.
+ From the select group-by projection, aggregate operations like Enumerable.Count() 
+ is replaced to GroupResultItems.AggregateCount call and this is used to fetch the 
+ SQL result instead of actually counting anything
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.ISqlProvider.StoredProcedures">
+<summary>
+ SQLITE doesn&apos;t have command type of stored procedures
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.ISqlProvider.DesignConnection">
+<summary>
+ MSSDT doesn&apos;t do design-time connection
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.ISqlProvider.CloseConnectionAfterQuery">
+<summary>
+ MS Access needs to keep connection open
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.ProcessUpdatesAsync(System.Data.Common.DbConnection,System.Collections.Concurrent.ConcurrentDictionary{FSharp.Data.Sql.Common.SqlEntity,System.DateTime},FSharp.Data.Sql.Transactions.TransactionOptions,Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<summary>
+ Asynchronously writes all pending database changes to database
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.ProcessUpdates(System.Data.IDbConnection,System.Collections.Concurrent.ConcurrentDictionary{FSharp.Data.Sql.Common.SqlEntity,System.DateTime},FSharp.Data.Sql.Transactions.TransactionOptions,Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<summary>
+ Writes all pending database changes to database
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetTables(System.Data.IDbConnection,FSharp.Data.Sql.Common.CaseSensitivityChange)">
+<summary>
+ Queries the information schema and returns a list of table information
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetTableDescription(System.Data.IDbConnection,System.String)">
+<summary>
+ Queries table descriptions / comments for tooltip-info, table name to description
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetSprocs(System.Data.IDbConnection)">
+<summary>
+ Returns a list of stored procedure metadata
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetSchemaCache">
+<summary>
+ Returns cached schema information, depending on the provider the cached schema may contain the whole database schema or only the schema for entities referenced in the current context
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetRelationships(System.Data.IDbConnection,FSharp.Data.Sql.Schema.Table)">
+<summary>
+ Returns constraint information for a given table, returning two lists of relationships, where
+ the first are relationships where the table is the primary entity, and the second where
+ it is the foreign entity
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetPrimaryKey(FSharp.Data.Sql.Schema.Table)">
+<summary>
+ Returns the primary key column for a given table from the pre-populated cache
+ as generated by calls to GetColumns
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetLockObject">
+<summary>
+ Provider specific lock to do provider specific locking
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetIndividualsQueryText(FSharp.Data.Sql.Schema.Table,System.Int32)">
+<summary>
+ Returns the db vendor specific SQL  query to select the top x amount of rows from
+ the given table
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetIndividualQueryText(FSharp.Data.Sql.Schema.Table,System.String)">
+<summary>
+ Returns the db vendor specific SQL query to select a single row based on the table and column name specified
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetColumns(System.Data.IDbConnection,FSharp.Data.Sql.Schema.Table)">
+<summary>
+ Queries the given table and returns a list of its columns
+ this function should also populate a primary key cache for tables that
+ have a single non-composite primary key
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GetColumnDescription(System.Data.IDbConnection,System.String,System.String)">
+<summary>
+ Queries column descriptions / comments for tooltip-info, table name, column name to description
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.GenerateQueryText(FSharp.Data.Sql.Common.SqlQuery,System.String,FSharp.Data.Sql.Schema.Table,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{FSharp.Data.Sql.ColumnSchema.ProjectionParameter}},System.Boolean,System.Data.IDbConnection)">
+<summary>
+ Accepts a SqlQuery object and produces the SQL to execute on the server.
+ the other parameters are the base table alias, the base table, and a dictionary containing
+ the columns from the various table aliases that are in the SELECT projection
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.ExecuteSprocCommandAsync(System.Data.Common.DbCommand,FSharp.Data.Sql.Schema.QueryParameter[],FSharp.Data.Sql.Schema.QueryParameter[],System.Object[])">
+<summary>
+ Builds a command representing a call to a stored procedure, executing async
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.ExecuteSprocCommand(System.Data.IDbCommand,FSharp.Data.Sql.Schema.QueryParameter[],FSharp.Data.Sql.Schema.QueryParameter[],System.Object[])">
+<summary>
+ Builds a command representing a call to a stored procedure
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.CreateTypeMappings(System.Data.IDbConnection)">
+<summary>
+ This function will be called when the provider is first created and should be used
+ to generate a cache of type mappings, and to set the three mapping function properties
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.CreateConnection(System.String)">
+<summary>
+ return a new, unopened connection using the provided connection string
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.CreateCommandParameter(FSharp.Data.Sql.Schema.QueryParameter,System.Object)">
+<summary>
+ return a new command parameter with the provided name, value and optionally type, direction and length
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlProvider.CreateCommand(System.Data.IDbConnection,System.String)">
+<summary>
+ return a new command associated with the provided connection and command text
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.GroupData">
+<summary>
+ GroupData is for group-by projections
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.LinkData">
+<summary>
+ LinkData is for joins with SelectMany
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.IWithDataContext.DataContext">
+<summary>
+ Gets the underlying SQL data context
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.IWithDataContext">
+<summary>
+ Interface implemented by generated types that provide access to the underlying data context.
+ This allows access to the ISqlDataContext for advanced operations.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.ISqlDataContext.SqlOperationsInSelect">
+<summary>
+ Operations of select in SQL-side or in .NET side?
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.ISqlDataContext.IsReadOnly">
+<summary>
+ Context meant to be read operations only
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.ISqlDataContext.ConnectionString">
+<summary>
+ Connection string to database
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.ISqlDataContext.CommandTimeout">
+<summary>
+ Command timeout (in seconds)
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.SubmitPendingChangesAsync">
+<summary>
+ Save database-changes in a transaction to database.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.SubmitPendingChanges">
+<summary>
+ Save database-changes in a transaction to database.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.SubmitChangedEntity(FSharp.Data.Sql.Common.SqlEntity)">
+<summary>
+ Save entity to database.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.SaveContextSchema(System.String)">
+<summary>
+ Save schema offline as Json
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.ReadEntitiesAsync(System.String,Microsoft.FSharp.Collections.FSharpMap{System.String,FSharp.Data.Sql.Schema.Column},System.Data.Common.DbDataReader)">
+<summary>
+ Read entity. Table name, columns, data-reader. Returns entities task.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.ReadEntities(System.String,Microsoft.FSharp.Collections.FSharpMap{System.String,FSharp.Data.Sql.Schema.Column},System.Data.IDataReader)">
+<summary>
+ Read entity. Table name, columns, data-reader. Returns entities.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.GetPrimaryKeyDefinition(System.String)">
+<summary>
+ Give a tablename and this returns the key name
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.GetPendingEntities">
+<summary>
+ List changes that are in context.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.GetIndividual(System.String,System.Object)">
+<summary>
+ Get individual row. Takes tablename and id.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.CreateRelated(FSharp.Data.Sql.Common.SqlEntity,System.String,System.String,System.String,System.String,System.String,FSharp.Data.Sql.Common.RelationshipDirection)">
+<summary>
+ CreateRelated: instance, _, primary_table, primary_key, foreing_Table, foreign_key, direction. Returns entities
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.CreateEntity(System.String)">
+<summary>
+ Takes table-name. Returns new entity.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.CreateEntities(System.String)">
+<summary>
+ Create entities for a table.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.CreateConnection">
+<summary>
+ return a new, unopened connection using the provided connection string
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.ClearPendingChanges">
+<summary>
+ Remove changes that are in context.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.CallSprocAsync(FSharp.Data.Sql.Schema.RunTimeSprocDefinition,FSharp.Data.Sql.Schema.QueryParameter[],System.Object[])">
+<summary>
+ Call stored procedure: Definition, return columns, values. Returns result task.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.ISqlDataContext.CallSproc(FSharp.Data.Sql.Schema.RunTimeSprocDefinition,FSharp.Data.Sql.Schema.QueryParameter[],System.Object[])">
+<summary>
+ Call stored procedure: Definition, return columns, values. Returns result.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.ISqlDataContext">
+<summary>
+ The main interface for SQL data context operations. This interface provides all the core functionality
+ for querying, creating, updating, and deleting data through the SQL type provider.
+ Users typically access this through the generated GetDataContext() method.
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.SqlEntity.OnConflict@">
+<summary>
+ Determines what should happen when saving this entity if it is newly-created but another entity with the same primary key already exists
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.SqlEntity._State@">
+<summary>
+ Internal state. Modifying not recommended!
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.SqlEntity._State(FSharp.Data.Sql.Common.EntityState)">
+<summary>
+ Internal state. Modifying not recommended!
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.SqlEntity.OnConflict(FSharp.Data.Sql.Common.OnConflict)">
+<summary>
+ Determines what should happen when saving this entity if it is newly-created but another entity with the same primary key already exists
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.SqlEntity._State">
+<summary>
+ Internal state. Modifying not recommended!
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.SqlEntity.OnConflict">
+<summary>
+ Determines what should happen when saving this entity if it is newly-created but another entity with the same primary key already exists
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.SqlEntity.SetColumn``1(System.String,``0)">
+<summary>
+ Prefer e.Column &lt;- &quot;x&quot; over this method.
+ This method should be only used if you need a dynamic column name.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.SqlEntity.MapTo``1(Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Core.FSharpFunc{System.Tuple{System.String,System.Object},System.Object}})">
+<summary>
+ Maps database entity class to the type provided in generic attribute.
+ You can define more detailed mapping via MappedColumnAttribute or propertyTypeMapping 
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.SqlEntity.GetSubTable(System.String,System.String)">
+<summary>
+ creates a new SQL entity from alias data in this entity
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.SqlEntity.CloneTo(FSharp.Data.Sql.Common.ISqlDataContext,System.Boolean)">
+<summary>
+ Attach/copy entity to a different data-context.
+ Second parameter: SQL UPDATE or INSERT clause?  
+ UPDATE: Updates the exising database entity with the values that this entity contains.
+ INSERT: Makes a copy of entity (database row), which is a new row with the same columns and values (except Id)
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.SqlEntity.Clone">
+<summary>
+ Makes a copy of entity (database row), which is a new row with the same columns and values (except Id)
+ If column primaty key is something else and not-auto-generated, then, too bad...
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.IColumnHolder">
+<summary>
+ Interface to hide internal members that are typically not needed by the user
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.ReturnValueType.Set">
+<summary>
+ Multiple result sets
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.ReturnValueType.SingleResultSet">
+<summary>
+ A single result set
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.ReturnValueType.Scalar">
+<summary>
+ A single scalar value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.ReturnValueType.Unit">
+<summary>
+ No return value (void)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.ReturnValueType">
+ <summary>Represents different types of return values from stored procedures and functions.</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.ReturnSetType.ResultSet">
+<summary>
+ A result set with name and data rows
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.ReturnSetType.ScalarResultSet">
+<summary>
+ A single scalar value with name and value
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.ReturnSetType">
+ <summary>Represents different types of result sets that can be returned from stored procedures.</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.ResultSet">
+ <summary>Represents a result set as a sequence of rows, where each row is an array of column name-value pairs.</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.MappedColumnAttribute.Name">
+<summary>
+ Gets the database column name this property maps to
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.MappedColumnAttribute">
+<summary>
+ Attribute for mapping entity properties to database columns with different names.
+ Use this when your database column name differs from your preferred F# property name.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.OnConflict.DoNothing">
+<summary>
+ If the primary key already exists, leaves the existing row unchanged.
+ Currently supported only on PostgreSQL 9.5+
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.OnConflict.Update">
+<summary>
+ If the primary key already exists, updates the existing row&apos;s columns to match the new entity.
+ Currently supported only on PostgreSQL 9.5+
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.OnConflict.Throw">
+<summary>
+ Throws an exception if the primary key already exists (default behaviour).
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.OnConflict">
+<summary>
+ Specifies how to handle conflicts when inserting records with duplicate primary keys.
+ Currently supported only on databases that have UPSERT capabilities.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.EntityState.Deleted">
+<summary>
+ Entity has been deleted from the database
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.EntityState.Delete">
+<summary>
+ Entity is marked for deletion (soft delete)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.EntityState.Modified">
+<summary>
+ Entity has been modified; contains list of changed column names
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.EntityState.Created">
+<summary>
+ Entity is new and should be inserted into the database
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.EntityState.Unchanged">
+<summary>
+ Entity has not been modified since it was loaded
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.SQLiteLibrary.MicrosoftDataSqlite">
+<summary>
+ Microsoft.Data.Sqlite. May support .NET Standard 2.0 contract in the future.
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.SQLiteLibrary.AutoSelect">
+<summary>
+ Auto-select by environment
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.SQLiteLibrary.MonoDataSQLite">
+<summary>
+ Mono version
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.SQLiteLibrary.SystemDataSQLite">
+<summary>
+ .NET Framework default
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.SQLiteLibrary">
+<summary>
+ Specifies which SQLite library to use for connections.
+ Different libraries may have different capabilities and platform support.
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.OdbcQuoteCharacter.APHOSTROPHE">
+<summary>
+ Single quote: &apos;alias&apos;
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.OdbcQuoteCharacter.DOUBLE_QUOTES">
+<summary>
+ Amazon Redshift style: &quot;alias&quot; and Firebird style too
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.OdbcQuoteCharacter.NO_QUOTES">
+<summary>
+ Plain, no special names: alias
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.OdbcQuoteCharacter.SQUARE_BRACKETS">
+<summary>
+ Microsoft SQL style: [alias]
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.OdbcQuoteCharacter.GRAVE_ACCENT">
+<summary>
+ MySQL/Postgre style: `alias` 
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.OdbcQuoteCharacter.DEFAULT_QUOTE">
+<summary>
+ Use default quoting for the ODBC driver
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.OdbcQuoteCharacter">
+<summary>
+ Specifies the quote character style for ODBC connections when dealing with table and column names containing spaces or special characters.
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.NullableColumnType.VALUE_OPTION">
+<summary>
+ ValueOption is more performant.
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.NullableColumnType.OPTION">
+<summary>
+ Option types are Option&lt;_&gt;. (Old true.)
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.NullableColumnType.NO_OPTION">
+<summary>
+ Nullable types are just Unchecked default. (Old false.)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.NullableColumnType">
+<summary>
+ Specifies how to represent nullable database columns in the generated types.
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.CaseSensitivityChange.TOLOWER">
+<summary>
+ Convert all names to lowercase
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.CaseSensitivityChange.TOUPPER">
+<summary>
+ Convert all names to uppercase
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.CaseSensitivityChange.ORIGINAL">
+<summary>
+ Keep original casing from the database
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.CaseSensitivityChange">
+<summary>
+ Specifies how to handle case sensitivity when generating table and column names.
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.RelationshipDirection.Parents">
+<summary>
+ Navigate to parent records (primary key relationships)
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.RelationshipDirection.Children">
+<summary>
+ Navigate to child records (foreign key relationships)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.RelationshipDirection">
+<summary>
+ Specifies the direction for relationship navigation.
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.EXTERNAL">
+<summary>
+ External/custom database provider
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.DUCKDB">
+<summary>
+ DuckDB using DuckDB.NET provider
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.MSSQLSERVER_SSDT">
+<summary>
+ Microsoft SQL Server using SSDT/DacPac for schema
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.MSSQLSERVER_DYNAMIC">
+<summary>
+ Microsoft SQL Server with dynamic schema loading
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.FIREBIRD">
+<summary>
+ Firebird database using FirebirdSql.Data.FirebirdClient
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.ODBC">
+<summary>
+ Generic ODBC provider for various databases
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.MSACCESS">
+<summary>
+ Microsoft Access using OleDb provider
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.ORACLE">
+<summary>
+ Oracle Database using Oracle.ManagedDataAccess provider
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.MYSQL">
+<summary>
+ MySQL using MySql.Data or MySqlConnector provider
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.POSTGRESQL">
+<summary>
+ PostgreSQL using Npgsql provider
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.SQLITE">
+<summary>
+ SQLite database using System.Data.SQLite or Microsoft.Data.Sqlite
+</summary>
+</member>
+<member name="F:FSharp.Data.Sql.Common.DatabaseProviderTypes.MSSQLSERVER">
+<summary>
+ Microsoft SQL Server using SqlClient provider
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.DatabaseProviderTypes">
+<summary>
+ Specifies the database provider type for the SQL type provider.
+ Each provider has its own specific implementation for SQL generation and data type mapping.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.Sql.evaluateOneByOne``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Helper function to run async computation non-parallel style for list of objects.
+ This is needed if async database opreation is executed for a list of entities.
+ DB-connections are not usually supporting parallel SQL-query execution, so even when
+ async thread is available, it can&apos;t be used to execute another SQL at the same time.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.Sql.connectAsync``1(System.Data.Common.DbConnection,Microsoft.FSharp.Core.FSharpFunc{System.Data.Common.DbConnection,System.Threading.Tasks.Task{``0}})">
+<summary>
+ Note: SQLProvider reuses the connection through multiple instances, so you can&apos;t dispose it here.
+ Instead it&apos;s created with ISQLProvider&apos;s CreateConnection method, and that is having always &quot;use&quot; to ensure it is disposed properly on &quot;finally&quot;.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.Sql.connect``1(System.Data.IDbConnection,Microsoft.FSharp.Core.FSharpFunc{System.Data.IDbConnection,``0})">
+<summary>
+ Note: SQLProvider reuses the connection through multiple instances, so you can&apos;t dispose it here.
+ Instead it&apos;s created with ISQLProvider&apos;s CreateConnection method, and that is having always &quot;use&quot; to ensure it is disposed properly on &quot;finally&quot;.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.SchemaProjections.avoidNameClashBy(Microsoft.FSharp.Core.FSharpFunc{System.String,System.Boolean},System.String)">
+<summary>
+ Add &apos; until the name is unique
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.SchemaProjections.niceCamelName(System.String)">
+<summary>
+ Turns a given non-empty string into a nice &apos;camelCase&apos; identifier
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.SchemaProjections.nicePascalName(System.String)">
+<summary>
+ Turns a given non-empty string into a nice &apos;PascalCase&apos; identifier
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.Utilities.genericFieldNotation(Microsoft.FSharp.Core.FSharpFunc{FSharp.Data.Sql.ColumnSchema.SqlColumnType,System.String},Microsoft.FSharp.Core.FSharpFunc{System.String,System.String},FSharp.Data.Sql.ColumnSchema.SqlColumnType)">
+<summary>
+ Standard SQL. Provider spesific overloads can be done before this.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.OfflineTools.CreateMockSqlDataContext``1(Microsoft.FSharp.Collections.FSharpMap{System.String,System.Object})">
+<summary>
+ This can be used for testing. Creates fake DB-context entities..
+ Example: FSharp.Data.Sql.Common.OfflineTools.CreateMockSqlDataContext [&quot;schema.MyTable1&quot;; [| {| MyColumn1 = &quot;a&quot;; MyColumn2 = 0 |} |] :&gt; obj] |&gt; Map.ofList
+ See project unit-test for more examples.
+ NOTE: Case-sensitivity. Tables and columns are DB-names, not Linq-names.
+ Limitation of mockContext: You cannot Create new entities to the mock context.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.OfflineTools.CreateMockEntities``1(System.String,System.Object)">
+<summary>
+ This can be used for testing. Creates de-attached entities..
+ Example: FSharp.Data.Sql.Common.OfflineTools.CreateMockEntities &quot;MyTable1&quot; [| {| MyColumn1 = &quot;a&quot;; MyColumn2 = 0 |} |]
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.OfflineTools.mergeCacheFiles(System.String,System.String,System.String)">
+<summary>
+ Merges two ContexSchemaPath offline schema files into one target schema file.
+ This is a tool method that can be useful in multi-project solution using the same database with different tables.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.CommonTasks.searchDataTypeFromCache(FSharp.Data.Sql.Common.ISqlProvider,System.Data.IDbConnection,FSharp.Data.Sql.Common.SqlQuery,System.String,FSharp.Data.Sql.Schema.Table,System.String,FSharp.Data.Sql.ColumnSchema.SqlColumnType)">
+<summary>
+ Check if we know primary column data type from cache.
+ This helps matching parameter types if there are many different DBTypes mapped to same .NET type, like nvarchar and varchar to string.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.CommonTasks.sortEntities(System.Collections.Concurrent.ConcurrentDictionary{FSharp.Data.Sql.Common.SqlEntity,System.DateTime})">
+<summary>
+ deterministically sort entities before processing in a creation order, so that user can reliably save entities with foreign key relations
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.QueryEvents.SqlEventData.ConnectionStringHash">
+<summary>
+ The SHA256 hash of the UTF8-encoded connection string used to perform this command.
+ Use this to determine on which database connection the command is going to be executed.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.QueryEvents.SqlEventData.Parameters">
+<summary>
+ The parameters (if any) passed to the SQL command being executed.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.QueryEvents.SqlEventData.Command">
+<summary>
+ The text of the SQL command being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.QueryEvents.SqlEventData.ToRawSqlWithParamInfo">
+<summary>
+ SQLProvider does parametrized SQL. This method opens parameters for easier query debugging.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Common.QueryEvents.SqlEventData.ToRawSql">
+<summary>
+ Use this to execute similar queries to test the result of the executed query.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.QueryEvents.SqlEventData">
+<summary>
+ Contains information about a SQL command being executed, including the command text,
+ parameters, and connection information for debugging and monitoring purposes.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Common.QueryEvents.SqlQueryEvent">
+<summary>
+ Event that fires immediately before the execution of every generated query. 
+ Listen to this event to display or debug the content of your queries.
+ This is useful for logging, performance monitoring, and debugging SQL generation.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Common.QueryEvents">
+<summary>
+ Contains events for monitoring SQL query execution and debugging.
+ Use these events to log, debug, or analyze the SQL queries generated by the type provider.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtRelationship.ForeignTable">
+<summary>
+ The table that contains the foreign key
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtRelationship.DefiningTable">
+<summary>
+ The table that defines the primary key
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtRelationship.Name">
+<summary>
+ The name of the relationship/constraint
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtRelationship">
+<summary>
+ Represents a foreign key relationship between tables.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.RefTable.Columns">
+<summary>
+ Array of columns involved in the reference
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.RefTable.Name">
+<summary>
+ The table name without schema
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.RefTable.Schema">
+<summary>
+ The schema name
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.RefTable.FullName">
+<summary>
+ The fully qualified table name
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Ssdt.DacpacParser.RefTable">
+<summary>
+ Represents a table reference in relationship definitions.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.ConstraintColumn.Name">
+<summary>
+ The column name without qualification
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.ConstraintColumn.FullName">
+<summary>
+ The fully qualified column name
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Ssdt.DacpacParser.ConstraintColumn">
+<summary>
+ Represents a column in a constraint definition.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtView.Annotations">
+<summary>
+ Array of comment annotations for documentation
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtView.DynamicColumns">
+<summary>
+ Array of dynamically generated columns
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtView.Columns">
+<summary>
+ Array of regular columns in the view
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtView.Name">
+<summary>
+ The view name without schema
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtView.Schema">
+<summary>
+ The schema name
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtView.FullName">
+<summary>
+ The fully qualified view name (schema.view)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtView">
+<summary>
+ Represents a database view from SSDT schema.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.CommentAnnotation.Nullability">
+<summary>
+ Optional nullability information
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.CommentAnnotation.DataType">
+<summary>
+ The data type information
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.CommentAnnotation.Column">
+<summary>
+ The column name the annotation applies to
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Ssdt.DacpacParser.CommentAnnotation">
+<summary>
+ Represents a comment annotation for schema documentation.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtViewColumn.ColumnRefPath">
+<summary>
+ Optional reference path for complex column definitions
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtViewColumn.FullName">
+<summary>
+ The fully qualified column name
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtViewColumn">
+<summary>
+ Represents a view column from SSDT schema.
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtColumn.ComputedColumn">
+<summary>
+ True if the column is computed/calculated
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtColumn.HasDefault">
+<summary>
+ True if the column has a default value constraint
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtColumn.IsIdentity">
+<summary>
+ True if the column is an identity/auto-increment column
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtColumn.AllowNulls">
+<summary>
+ True if the column allows NULL values
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtColumn.DataType">
+<summary>
+ The SQL data type (e.g., varchar, int, datetime)
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtColumn.Description">
+<summary>
+ Extended description/comment for the column
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtColumn.Name">
+<summary>
+ The column name without qualification
+</summary>
+</member>
+<member name="P:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtColumn.FullName">
+<summary>
+ The fully qualified column name (schema.table.column)
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Ssdt.DacpacParser.SsdtColumn">
+<summary>
+ Represents a database table column from SSDT schema.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Ssdt.DacpacParser.parseXml(System.String)">
+<summary>
+ Parses the model.xml content extracted from a SQL Server Data Tools (SSDT) .dacpac file.
+ Extracts database schema information including tables, views, columns, relationships, and stored procedures.
+ param xml: The XML content from the model.xml file
+ returns: A parsed representation of the database schema
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Ssdt.DacpacParser.att(System.String,System.Xml.XmlNode)">
+<summary>
+ Extracts an XML attribute value from a node, returning an empty string if the attribute doesn&apos;t exist.
+ This is a convenience function for cases where a default empty value is acceptable.
+ param nm: The attribute name to extract
+ param node: The XML node to extract from
+ returns: The attribute value, or empty string if not found
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Ssdt.DacpacParser.attMaybe(System.String,System.Xml.XmlNode)">
+<summary>
+ Safely extracts an XML attribute value from a node, returning None if the attribute doesn&apos;t exist.
+ param nm: The attribute name to extract
+ param node: The XML node to extract from
+ returns: Some(attribute value) if found, None otherwise
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Ssdt.DacpacParser.toXmlNamespaceDoc``2(System.String,System.String)">
+<summary>
+ Creates an XML document with namespace support and returns helper functions for node selection.
+ This is specifically designed for parsing SSDT model.xml files with their Microsoft namespace.
+ param ns: The XML namespace URI
+ param xml: The XML content to parse
+ returns: A tuple containing (XmlDocument, single node selector function, multiple nodes selector function)
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Ssdt.DacpacParser.extractModelXml(System.String)">
+<summary>
+ Extracts the model.xml file from a SQL Server Data Tools (SSDT) .dacpac package.
+ The model.xml contains the complete database schema definition.
+ param dacPacPath: Path to the .dacpac file
+ returns: The XML content of the model.xml file as a string
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Ssdt.DacpacParser.RegexParsers.parseViewAnnotations(System.String)">
+<summary>
+ Tries to find in-line commented type annotations in a view declaration.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Ssdt.DacpacParser.RegexParsers.parseTableColumnAnnotation(System.String,System.String)">
+<summary>
+ Tries to find an in-line commented type annotation in a computed table column.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Ssdt.DacpacParser.RegexParsers.splitFullName(System.String)">
+<summary>
+ Splits a fully qualified name into parts. 
+ Name can start with a letter, _, @ or #. Names in square brackets can contain any char except for square brackets.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Ssdt.DacpacParser">
+<summary>
+ Module for parsing SQL Server Data Tools (SSDT) .dacpac files to extract database schema information.
+ Provides functionality to read and parse the model.xml file contained within .dacpac packages.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Runtime.QueryInspection.toQueryString``1(System.Linq.IQueryable{``0})">
+<summary>
+ Generates the SQL query string and parameters without executing the query.
+ Note: This function creates a database connection to access schema metadata for SQL generation,
+ but does not execute any queries against the database.
+ This is useful for debugging, logging, or when you need to execute the query through ADO.NET directly.
+ Returns a tuple of (SQL query string, array of parameter name-value pairs).
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Runtime.QueryInspection.IQueryableExtensions.IQueryable`1.ToQueryString``1(System.Linq.IQueryable{``0})">
+<summary>
+ Generates the SQL query string and parameters without executing the query.
+ Note: This method creates a database connection to access schema metadata for SQL generation,
+ but does not execute any queries against the database.
+ This is useful for debugging, logging, or when you need to execute the query through ADO.NET directly.
+ Returns a tuple of (SQL query string, array of parameter name-value pairs).
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Runtime.QueryInspection.IQueryableExtensions">
+<summary>
+ Extension methods for IQueryable to provide EF Core-like query inspection capabilities
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Runtime.QueryInspection">
+<summary>
+ Query debugging and inspection utilities
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Runtime.Seq.varianceQuery``1">
+<summary>
+ Execute SQLProvider query to get the variance of elements.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Runtime.Seq.stdDevQuery``1">
+<summary>
+ Execute SQLProvider query to get the standard deviation of elements.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Runtime.Seq.averageQuery``1">
+<summary>
+ Execute SQLProvider query to get the avg of elements.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Runtime.Seq.minQuery``1">
+<summary>
+ Execute SQLProvider query to get the min of elements.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Runtime.Seq.maxQuery``1">
+<summary>
+ Execute SQLProvider query to get the max of elements.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Runtime.Seq.sumQuery``1">
+<summary>
+ Execute SQLProvider query to get the sum of elements.
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Runtime.QueryImplementation.SqlGroupingQueryable`2">
+<summary>
+ Structure to make it easier to return IGrouping from GroupBy
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.Runtime.QueryImplementation.IAsyncEnumerable`1">
+<summary>
+ Interface for async enumerations as .NET doesn&apos;t have it out-of-the-box
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Runtime.QueryImplementation.findSqlService``1(System.Linq.IQueryable{``0})">
+<summary>
+ Try to detect if IQueryable is a database query.
+ It can be e.g. direct SQLProvider IWithSqlService (great)
+ or annoyingly a source inside a wrapper like WhereSelectEnumerableIterator, where it needs to be updated
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.List.executeQueryAsync``1(System.Linq.IQueryable{``0})">
+<summary>
+ Execute SQLProvider query and release the OS thread while query is being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.List.evaluateOneByOne``3">
+<summary>
+ Helper function to run async computation non-parallel style for list of objects.
+ This is needed if async database opreation is executed for a list of entities.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Array.executeQueryAsync``1(System.Linq.IQueryable{``0})">
+<summary>
+ Execute SQLProvider query and release the OS thread while query is being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.tryExactlyOneAsync``1">
+<summary>
+ Execute SQLProvider query to get the only element of the sequence.
+ Returns `None` if there are zero or more than one element in the seq.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.exactlyOneAsync``1">
+<summary>
+ Execute SQLProvider query to get the only element of the sequence.
+ Throws `ArgumentNullException` if the seq is empty.
+ Throws `ArgumentException` if the seq contains more than one element.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.delete all items from single table``1(System.Linq.IQueryable{``0})">
+<summary>
+ WARNING! Execute SQLProvider DELETE FROM query to remove elements from the database.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.varianceAsync``1">
+<summary>
+ Execute SQLProvider query to get the variance of elements, and release the OS thread while query is being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.stdDevAsync``1">
+<summary>
+ Execute SQLProvider query to get the standard deviation of elements, and release the OS thread while query is being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.averageAsync``1">
+<summary>
+ Execute SQLProvider query to get the avg of elements, and release the OS thread while query is being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.minAsync``1">
+<summary>
+ Execute SQLProvider query to get the min of elements, and release the OS thread while query is being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.maxAsync``1">
+<summary>
+ Execute SQLProvider query to get the max of elements, and release the OS thread while query is being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.sumAsync``1">
+<summary>
+ Execute SQLProvider query to get the sum of elements, and release the OS thread while query is being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.tryHeadAsync``1">
+<summary>
+ Execute SQLProvider query to take one result and release the OS thread while query is being executed.
+ Returns None if no elements exists.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.headAsync``1">
+<summary>
+ Execute SQLProvider query to take one result and release the OS thread while query is being executed.
+ Like normal head: Throws exception if no elements exists. See also tryHeadAsync.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.lengthAsync``1">
+<summary>
+ Execute SQLProvider query to count the elements, and release the OS thread while query is being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.Seq.executeQueryAsync``1">
+<summary>
+ Execute SQLProvider query and release the OS thread while query is being executed.
+</summary>
+</member>
+<member name="M:FSharp.Data.Sql.AsyncOperations.executeAsync``1(System.Linq.IQueryable{``0})">
+<summary>
+ Executes a queryable asynchronously and returns the results as a sequence.
+ This is useful for executing large queries without blocking the calling thread.
+ param s: The queryable to execute
+ returns: A task that yields a sequence of results
+</summary>
+</member>
+<member name="T:FSharp.Data.Sql.AsyncOperations">
+<summary>
+ Provides asynchronous operations for SQL queries.
+ Use these functions when you need to execute queries asynchronously to avoid blocking threads.
+</summary>
+</member>
+</members>
+</doc>

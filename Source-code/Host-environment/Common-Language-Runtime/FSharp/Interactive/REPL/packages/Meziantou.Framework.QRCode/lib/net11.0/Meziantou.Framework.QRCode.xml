@@ -1,0 +1,794 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.QRCode</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Barcode">
+            <summary>
+            Represents a generated barcode as a boolean matrix of modules.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Barcode.Type">
+            <summary>Gets the type of barcode.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Barcode.Width">
+            <summary>Gets the width (number of columns).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Barcode.Height">
+            <summary>Gets the height (number of rows).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Barcode.Item(System.Int32,System.Int32)">
+            <summary>
+            Gets whether the module at the specified position is dark.
+            </summary>
+            <param name="row">The row index (0-based).</param>
+            <param name="column">The column index (0-based).</param>
+            <returns><see langword="true"/> if the module is dark; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Barcode.CreateCode39(System.String,System.Boolean)">
+            <summary>
+            Creates a Code 39 barcode from the specified data.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <param name="includeChecksum"><see langword="true"/> to append the optional Mod 43 checksum character; otherwise, <see langword="false"/>.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.Barcode"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Barcode.CreateCode128(System.String)">
+            <summary>
+            Creates a Code 128 barcode from the specified data.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.Barcode"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Barcode.CreateCode93(System.String)">
+            <summary>
+            Creates a Code 93 barcode from the specified data.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.Barcode"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Barcode.CreateEan8(System.String,System.String)">
+            <summary>
+            Creates an EAN-8 barcode from the specified data.
+            </summary>
+            <param name="data">The data to encode (7 digits without checksum, or 8 digits with checksum).</param>
+            <param name="extension">Optional UPC/EAN 2-digit or 5-digit supplemental extension.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.Barcode"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Barcode.CreateEan13(System.String,System.String)">
+            <summary>
+            Creates an EAN-13 barcode from the specified data.
+            </summary>
+            <param name="data">The data to encode (12 digits without checksum, or 13 digits with checksum).</param>
+            <param name="extension">Optional UPC/EAN 2-digit or 5-digit supplemental extension.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.Barcode"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Barcode.CreateUpcA(System.String,System.String)">
+            <summary>
+            Creates a UPC-A barcode from the specified data.
+            </summary>
+            <param name="data">The data to encode (11 digits without checksum, or 12 digits with checksum).</param>
+            <param name="extension">Optional UPC/EAN 2-digit or 5-digit supplemental extension.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.Barcode"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Barcode.CreateCodabar(System.String,System.Char,System.Char)">
+            <summary>
+            Creates a Codabar barcode from the specified data.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <param name="startCharacter">The start character (<c>A</c>, <c>B</c>, <c>C</c>, or <c>D</c>).</param>
+            <param name="stopCharacter">The stop character (<c>A</c>, <c>B</c>, <c>C</c>, or <c>D</c>).</param>
+            <returns>A new <see cref="T:Meziantou.Framework.Barcode"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Barcode.CreateItf(System.String)">
+            <summary>
+            Creates an Interleaved 2 of 5 (ITF) barcode from the specified data.
+            </summary>
+            <param name="data">The data to encode (digits only, even number of digits).</param>
+            <returns>A new <see cref="T:Meziantou.Framework.Barcode"/> instance.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.BarcodePngOptions">
+            <summary>
+            Options for rendering a barcode as PNG.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.BarcodePngOptions.ModuleWidth">
+            <summary>Gets or sets the width of each module in pixels. Default is 2.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.BarcodePngOptions.ModuleHeight">
+            <summary>Gets or sets the height of each module in pixels. Default is 80.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.BarcodePngOptions.QuietZoneModules">
+            <summary>Gets or sets the number of quiet zone modules on the left and right sides of the barcode. Default is 10.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.BarcodePngOptions.DarkColor">
+            <summary>Gets or sets the color for dark modules. Default is <see cref="P:Meziantou.Framework.Color.Black"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.BarcodePngOptions.LightColor">
+            <summary>Gets or sets the color for light modules. Default is <see cref="P:Meziantou.Framework.Color.White"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.BarcodePngRenderer">
+            <summary>
+            Provides methods to render a barcode as a PNG image.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.BarcodePngRenderer.ToPng(Meziantou.Framework.Barcode)">
+            <summary>Renders the barcode as PNG bytes with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.BarcodePngRenderer.ToPng(Meziantou.Framework.Barcode,Meziantou.Framework.BarcodePngOptions)">
+            <summary>Renders the barcode as PNG bytes with the specified options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.BarcodePngRenderer.WriteToPng(Meziantou.Framework.Barcode,System.IO.Stream)">
+            <summary>Writes the barcode as PNG to the specified stream with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.BarcodePngRenderer.WriteToPng(Meziantou.Framework.Barcode,System.IO.Stream,Meziantou.Framework.BarcodePngOptions)">
+            <summary>Writes the barcode as PNG to the specified stream with the specified options.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.BarcodeSvgOptions">
+            <summary>
+            Options for rendering a barcode as SVG.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.BarcodeSvgOptions.ModuleWidth">
+            <summary>Gets or sets the width of each module in SVG units. Default is 2.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.BarcodeSvgOptions.ModuleHeight">
+            <summary>Gets or sets the height of each module in SVG units. Default is 80.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.BarcodeSvgOptions.QuietZoneModules">
+            <summary>Gets or sets the number of quiet zone modules on the left and right sides of the barcode. Default is 10.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.BarcodeSvgOptions.DarkColor">
+            <summary>Gets or sets the color for dark modules. Default is <see cref="P:Meziantou.Framework.Color.Black"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.BarcodeSvgOptions.LightColor">
+            <summary>Gets or sets the color for light modules. Default is <see cref="P:Meziantou.Framework.Color.White"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.BarcodeSvgRenderer">
+            <summary>
+            Provides methods to render a barcode as an SVG string.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.BarcodeSvgRenderer.ToSvg(Meziantou.Framework.Barcode)">
+            <summary>Renders the barcode as an SVG string with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.BarcodeSvgRenderer.ToSvg(Meziantou.Framework.Barcode,Meziantou.Framework.BarcodeSvgOptions)">
+            <summary>Renders the barcode as an SVG string with the specified options.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.BarcodeType">
+            <summary>
+            Specifies the type of barcode.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.BarcodeType.Code39">
+            <summary>Code 39 barcode.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.BarcodeType.Code93">
+            <summary>Code 93 barcode.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.BarcodeType.Code128">
+            <summary>Code 128 barcode.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.BarcodeType.Ean8">
+            <summary>EAN-8 barcode.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.BarcodeType.Ean13">
+            <summary>EAN-13 barcode.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.BarcodeType.UpcA">
+            <summary>UPC-A barcode.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.BarcodeType.Codabar">
+            <summary>Codabar barcode.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.BarcodeType.Itf">
+            <summary>Interleaved 2 of 5 (ITF) barcode.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Color.TryParseAlpha(System.String,System.Byte@)">
+            <summary>
+            Parses the alpha component of an <c>rgba()</c> function.
+            </summary>
+            <remarks>
+            CSS alpha is a fraction between 0 and 1, so it is never parsed as a 0-255 byte. Trying the
+            byte form first made <c>rgba(0,0,0,1)</c> - the most common way to write opaque - resolve to
+            an alpha of 1, a colour that is 99.6% transparent, with no error raised.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.ErrorCorrectionLevel">
+            <summary>
+            Specifies the error correction level for a QR code.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.ErrorCorrectionLevel.L">
+            <summary>Low error correction (~7% recovery).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ErrorCorrectionLevel.M">
+            <summary>Medium error correction (~15% recovery).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ErrorCorrectionLevel.Q">
+            <summary>Quartile error correction (~25% recovery).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ErrorCorrectionLevel.H">
+            <summary>High error correction (~30% recovery).</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.DataAnalyzer.IsKanji(System.String)">
+            <summary>
+            Checks if the entire string can be encoded in Kanji mode.
+            Each character must encode to exactly 2 bytes in Shift JIS,
+            and the resulting value must be in one of the valid QR Kanji ranges.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Internal.DataEncoderHelper">
+            <summary>
+            Shared data encoding methods used by all QR code types.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.ErrorCorrectionEncoder.AddErrorCorrection(System.Byte[],System.Int32,Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Splits data into blocks, computes EC codewords, and interleaves everything.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.FormatInfo.GetFormatInfo(Meziantou.Framework.ErrorCorrectionLevel,System.Int32)">
+            <summary>
+            Gets the 15-bit format information for the given EC level and mask pattern.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.FormatInfo.GetVersionInfo(System.Int32)">
+            <summary>
+            Gets the 18-bit version information for versions 7-40.
+            Returns 0 for versions 1-6 (no version info needed).
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Internal.GaloisField">
+            <summary>
+            GF(2^8) arithmetic for Reed-Solomon error correction.
+            Uses primitive polynomial x^8 + x^4 + x^3 + x^2 + 1 (0x11D).
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.MaskEvaluator.FindBestMask(System.Byte[],System.Int32,Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Evaluates all 8 mask patterns and returns the one with the lowest penalty score.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.MaskEvaluator.EvaluatePenalty(System.Boolean[0:,0:],System.Int32)">
+            <summary>
+            Evaluates the total penalty score for a QR code matrix.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.MaskEvaluator.EvaluateRule1(System.Boolean[0:,0:],System.Int32)">
+            <summary>
+            Rule 1: Penalize runs of 5+ same-color modules in a row or column.
+            Penalty = N1 + (runLength - 5) for each run, where N1 = 3.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.MaskEvaluator.EvaluateRule2(System.Boolean[0:,0:],System.Int32)">
+            <summary>
+            Rule 2: Penalize 2x2 blocks of same-color modules. Penalty = 3 per block.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.MaskEvaluator.EvaluateRule3(System.Boolean[0:,0:],System.Int32)">
+            <summary>
+            Rule 3: Penalize finder-like patterns (10111010000 or 00001011101). Penalty = 40 per occurrence.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.MaskEvaluator.EvaluateRule4(System.Boolean[0:,0:],System.Int32)">
+            <summary>
+            Rule 4: Penalize deviation from 50% dark/light ratio.
+            Penalty = 10 * floor(|(darkPercent - 50) / 5|).
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.MatrixBuilder.Build(System.Byte[],Meziantou.Framework.ErrorCorrectionLevel,System.Int32)">
+            <summary>
+            Builds the complete QR code matrix with all function patterns and data.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.MicroQR.MicroQREncoder.FindBestMask(System.Byte[],System.Int32,Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Picks the mask with the highest score, per ISO/IEC 18004 section 7.8.3.2.
+            </summary>
+            <remarks>
+            Micro QR maximises its mask score, unlike standard QR which minimises a penalty. Flipping
+            this comparison to match <see cref="M:Meziantou.Framework.Internal.MaskEvaluator.FindBestMask(System.Byte[],System.Int32,Meziantou.Framework.ErrorCorrectionLevel)"/> would silently degrade
+            every Micro QR symbol.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.MicroQR.MicroQRMatrixBuilder.EvaluateMaskScore(System.Boolean[0:,0:],System.Int32)">
+            <summary>
+            Scores a masked Micro QR symbol per ISO/IEC 18004 section 7.8.3.2.
+            </summary>
+            <remarks>
+            This is a score, not a penalty: Micro QR selects the mask with the <b>highest</b> value,
+            which is the opposite of the standard QR rule in <see cref="T:Meziantou.Framework.Internal.MaskEvaluator"/>. The score
+            favours dark modules along the right and lower edges.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Internal.PngRowRenderer">
+            <summary>
+            Fills one packed scanline of a two-colour indexed PNG.
+            </summary>
+            <param name="row">
+            The packed scanline. It is cleared before each call and holds one bit per pixel, most
+            significant bit leftmost; set a bit to make that pixel dark.
+            </param>
+            <param name="rowIndex">The zero-based row being rendered.</param>
+        </member>
+        <member name="T:Meziantou.Framework.Internal.PngWriter">
+            <summary>
+            Writes a PNG container: signature, IHDR, PLTE, IDAT and IEND, with the CRC32 each chunk needs.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.PngWriter.WritePalette(System.IO.Stream,System.Int32,System.Int32,Meziantou.Framework.Color,Meziantou.Framework.Color,Meziantou.Framework.Internal.PngRowRenderer)">
+            <summary>
+            Writes a two-colour indexed PNG at one bit per pixel.
+            </summary>
+            <param name="stream">The destination stream.</param>
+            <param name="width">The image width in pixels.</param>
+            <param name="height">The image height in pixels.</param>
+            <param name="lightColor">The colour for a clear bit.</param>
+            <param name="darkColor">The colour for a set bit.</param>
+            <param name="renderRow">
+            Fills one packed scanline. The span is cleared before each call and holds one bit per
+            pixel, most significant bit leftmost; set a bit to make that pixel dark.
+            </param>
+            <remarks>
+            QR codes and barcodes are two-colour images, so an indexed palette stores them at a
+            thirty-second of the bytes truecolour-with-alpha needs. Rows are streamed into the
+            compressor as they are produced rather than buffered, so peak memory does not scale with
+            the image size.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Internal.QRCodeVersion">
+            <summary>
+            QR code version information and capacity tables per ISO/IEC 18004.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.QRCodeVersion.GetDataCodewords(System.Int32,Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Gets the total number of data codewords for a given version and error correction level.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.QRCodeVersion.GetTotalCodewords(System.Int32)">
+            <summary>
+            Gets the total number of codewords (data + EC) for a given version.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.QRCodeVersion.GetECCodewordsPerBlock(System.Int32,Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Gets the number of error correction codewords per block for a given version and EC level.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.QRCodeVersion.GetBlockCount(System.Int32,Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Gets the number of Reed-Solomon blocks for a given version and EC level, per ISO/IEC 18004 Table 9.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.QRCodeVersion.GetBlockInfo(System.Int32,Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Gets the block structure for a given version and EC level.
+            Returns (group1Blocks, group1DataCodewords, group2Blocks, group2DataCodewords).
+            </summary>
+            <remarks>
+            ISO/IEC 18004 distributes the data codewords as evenly as possible across the blocks, so the
+            split is fully determined by the total codeword count, the EC codewords per block and the
+            block count. Deriving it here keeps <see cref="M:Meziantou.Framework.Internal.QRCodeVersion.GetDataCodewords(System.Int32,Meziantou.Framework.ErrorCorrectionLevel)"/> and this method from
+            disagreeing, which previously produced symbols the error correction encoder could not build.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.QRCodeVersion.GetCharacterCapacity(System.Int32,Meziantou.Framework.ErrorCorrectionLevel,Meziantou.Framework.Internal.EncodingMode)">
+            <summary>
+            Gets the character capacity for a given version, EC level, and encoding mode.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.QRCodeVersion.GetCharacterCountBits(System.Int32,Meziantou.Framework.Internal.EncodingMode)">
+            <summary>
+            Gets the number of bits in the character count indicator.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Internal.QRCodeVersion.GetAlignmentPatternPositions(System.Int32)">
+            <summary>
+            Gets the alignment pattern center positions for a given version.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.OneTimePasswordAlgorithm">
+            <summary>
+            Specifies the hash algorithm for OTP Auth QR codes.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.OneTimePasswordAlgorithm.SHA1">
+            <summary>SHA-1 (default).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.OneTimePasswordAlgorithm.SHA256">
+            <summary>SHA-256.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.OneTimePasswordAlgorithm.SHA512">
+            <summary>SHA-512.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.OneTimePasswordType">
+            <summary>
+            Specifies the type of one-time password for OTP Auth QR codes.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.OneTimePasswordType.Totp">
+            <summary>Time-based one-time password (RFC 6238).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.OneTimePasswordType.Hotp">
+            <summary>HMAC-based one-time password (RFC 4226).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.QRCode">
+            <summary>
+            Represents a generated QR code as a boolean matrix of modules.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCode.Type">
+            <summary>Gets the type of QR code.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCode.ErrorCorrectionLevel">
+            <summary>Gets the error correction level the symbol was built with.</summary>
+            <remarks>
+            This can differ from the requested level. Micro QR version M1 carries error detection only,
+            and is reported as <see cref="F:Meziantou.Framework.ErrorCorrectionLevel.L"/> because the enumeration has no
+            weaker member.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.QRCode.Version">
+            <summary>Gets the QR code version.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCode.Width">
+            <summary>Gets the width (number of columns).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCode.Height">
+            <summary>Gets the height (number of rows).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCode.Size">
+            <summary>Gets the side length for square QR codes (same as <see cref="P:Meziantou.Framework.QRCode.Width"/>).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCode.Item(System.Int32,System.Int32)">
+            <summary>
+            Gets whether the module at the specified position is dark.
+            </summary>
+            <param name="row">The row index (0-based).</param>
+            <param name="column">The column index (0-based).</param>
+            <returns><see langword="true"/> if the module is dark; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCode.Create(System.String,Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Creates a standard QR code from the specified text data.
+            </summary>
+            <param name="data">The text data to encode.</param>
+            <param name="errorCorrectionLevel">The error correction level.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.QRCode"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCode.Create(System.ReadOnlySpan{System.Byte},Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Creates a standard QR code from the specified binary data.
+            </summary>
+            <param name="data">The binary data to encode.</param>
+            <param name="errorCorrectionLevel">The error correction level.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.QRCode"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCode.CreateMicroQR(System.String,Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Creates a Micro QR code from the specified text data.
+            Micro QR codes are smaller (versions M1-M4, 11x11 to 17x17 modules) and have a single finder pattern.
+            </summary>
+            <param name="data">The text data to encode.</param>
+            <param name="errorCorrectionLevel">The error correction level. M1 only supports detection; M2/M3 support L/M; M4 supports L/M/Q.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.QRCode"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCode.CreateRMQR(System.String,Meziantou.Framework.ErrorCorrectionLevel)">
+            <summary>
+            Creates a Rectangular Micro QR code (rMQR) from the specified text data.
+            rMQR codes are rectangular and optimized for narrow spaces.
+            </summary>
+            <param name="data">The text data to encode.</param>
+            <param name="errorCorrectionLevel">The error correction level. Only M and H are supported.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.QRCode"/> instance.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.QRCodeConsoleOptions">
+            <summary>
+            Options for rendering a QR code to the console.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodeConsoleOptions.InvertColors">
+            <summary>Gets or sets whether to invert colors (light-on-dark). Default is false.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodeConsoleOptions.QuietZoneModules">
+            <summary>Gets or sets the number of quiet zone modules. Default is 2.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodeConsoleOptions.ModuleWidth">
+            <summary>Gets or sets the horizontal size of each rendered module in text cells. Default is 1.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodeConsoleOptions.ModuleHeight">
+            <summary>Gets or sets the vertical size of each rendered module in text cells. Default is 1.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.QRCodeConsoleRenderer">
+            <summary>
+            Provides methods to render a QR code using Unicode block characters.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodeConsoleRenderer.WriteToConsole(Meziantou.Framework.QRCode)">
+            <summary>Renders the QR code to <see cref="P:System.Console.Out"/> with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodeConsoleRenderer.WriteToConsole(Meziantou.Framework.QRCode,Meziantou.Framework.QRCodeConsoleOptions)">
+            <summary>Renders the QR code to <see cref="P:System.Console.Out"/> with the specified options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodeConsoleRenderer.WriteTo(Meziantou.Framework.QRCode,System.IO.TextWriter)">
+            <summary>Renders the QR code to a TextWriter using Unicode block characters with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodeConsoleRenderer.WriteTo(Meziantou.Framework.QRCode,System.IO.TextWriter,Meziantou.Framework.QRCodeConsoleOptions)">
+            <summary>Renders the QR code to a TextWriter using Unicode block characters.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodeConsoleRenderer.ToConsoleString(Meziantou.Framework.QRCode)">
+            <summary>Renders the QR code as a string using Unicode block characters with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodeConsoleRenderer.ToConsoleString(Meziantou.Framework.QRCode,Meziantou.Framework.QRCodeConsoleOptions)">
+            <summary>Renders the QR code as a string using Unicode block characters.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.QRCodePayload">
+            <summary>
+            Provides methods to create QR code payload strings for common content types.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.Wifi(System.String,System.String,Meziantou.Framework.WifiAuthentication,System.Boolean)">
+            <summary>
+            Creates a WiFi network configuration payload.
+            </summary>
+            <param name="ssid">The network SSID.</param>
+            <param name="password">The network password. Can be null for open networks.</param>
+            <param name="authentication">The authentication type.</param>
+            <param name="hidden">Whether the network is hidden.</param>
+            <returns>A string formatted as a WiFi QR code payload.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.VCard(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a vCard 3.0 contact payload.
+            </summary>
+            <param name="lastName">The contact's last name.</param>
+            <param name="firstName">The contact's first name.</param>
+            <param name="phone">The contact's phone number.</param>
+            <param name="email">The contact's email address.</param>
+            <param name="organization">The contact's organization.</param>
+            <param name="title">The contact's title.</param>
+            <param name="url">The contact's website URL.</param>
+            <param name="address">The contact's address.</param>
+            <returns>A string formatted as a vCard 3.0 payload.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.Email(System.String,System.String,System.String)">
+            <summary>
+            Creates an email (mailto:) payload.
+            </summary>
+            <param name="address">The email address.</param>
+            <param name="subject">The email subject.</param>
+            <param name="body">The email body.</param>
+            <returns>A string formatted as a mailto URI.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.Phone(System.String)">
+            <summary>
+            Creates a phone number (tel:) payload.
+            </summary>
+            <param name="number">The phone number.</param>
+            <returns>A string formatted as a tel URI.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.Sms(System.String,System.String)">
+            <summary>
+            Creates an SMS payload.
+            </summary>
+            <param name="number">The phone number.</param>
+            <param name="message">The message text.</param>
+            <returns>A string formatted as an SMS payload.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.EscapeMailAddress(System.String)">
+            <summary>
+            Percent-encodes a mail address, keeping the <c>@</c> readable.
+            </summary>
+            <remarks>
+            The optional parameters were already escaped, but the address was not, so a '?' in it
+            started the query string early and let the caller-supplied address inject its own
+            parameters - <c>Email("a@b.com?bcc=c@d.com", "Hi")</c> produced a mailto whose bcc won
+            and whose intended subject was swallowed into it.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.EscapePhoneNumber(System.String)">
+            <summary>
+            Percent-encodes a phone number, keeping the leading <c>+</c> that <c>tel:</c> needs.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.Geolocation(System.Double,System.Double)">
+            <summary>
+            Creates a geolocation payload.
+            </summary>
+            <param name="latitude">The latitude in decimal degrees.</param>
+            <param name="longitude">The longitude in decimal degrees.</param>
+            <returns>A string formatted as a geo URI.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.CalendarEvent(System.String,System.DateTime,System.DateTime,System.String,System.String)">
+            <summary>
+            Creates a calendar event (VEVENT) payload.
+            </summary>
+            <param name="summary">The event summary/title.</param>
+            <param name="start">The start date and time (UTC).</param>
+            <param name="end">The end date and time (UTC).</param>
+            <param name="location">The event location.</param>
+            <param name="description">The event description.</param>
+            <returns>A string formatted as an iCalendar VEVENT.</returns>
+        </member>
+        <member name="F:Meziantou.Framework.QRCodePayload.CrLf">
+            <summary>
+            vCard 3.0 and iCalendar both require CRLF between content lines (RFC 6350 and RFC 5545),
+            so the separator is written explicitly instead of through <see cref="M:System.Text.StringBuilder.AppendLine"/>,
+            whose separator depends on the platform.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.AppendVCardEscaped(System.Text.StringBuilder,System.String)">
+            <summary>
+            Escapes a vCard 3.0 / iCalendar text value per RFC 6350 section 3.4 and RFC 5545 section 3.3.11.
+            </summary>
+            <remarks>
+            Without this, a value containing a new line injects arbitrary properties into the card, and
+            the far more common case of a name or address containing <c>;</c> or <c>,</c> silently
+            changes which structured component the text lands in.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.MeCard(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a MeCard contact payload. MeCard is a compact contact format widely supported on Android.
+            </summary>
+            <param name="lastName">The contact's last name.</param>
+            <param name="firstName">The contact's first name.</param>
+            <param name="phone">The contact's phone number.</param>
+            <param name="email">The contact's email address.</param>
+            <param name="organization">The contact's organization.</param>
+            <param name="url">The contact's website URL.</param>
+            <param name="address">The contact's address.</param>
+            <param name="note">A note about the contact.</param>
+            <returns>A string formatted as a MeCard payload.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.OneTimePassword(Meziantou.Framework.OneTimePasswordType,System.String,System.String,System.String,Meziantou.Framework.OneTimePasswordAlgorithm,System.Int32,System.Int32,System.Nullable{System.Int64})">
+            <summary>
+            Creates an OTP Auth URI for two-factor authentication setup.
+            Supported by Google Authenticator, Authy, Microsoft Authenticator, and most TOTP/HOTP apps.
+            </summary>
+            <param name="type">The OTP type (TOTP or HOTP).</param>
+            <param name="secret">The base32-encoded shared secret.</param>
+            <param name="accountName">The account name (e.g., user email).</param>
+            <param name="issuer">The issuer name (e.g., service name).</param>
+            <param name="algorithm">The hash algorithm. Default is SHA1.</param>
+            <param name="digits">The number of digits in the OTP code. Default is 6.</param>
+            <param name="period">For TOTP: the time step in seconds. Default is 30.</param>
+            <param name="counter">For HOTP: the initial counter value.</param>
+            <returns>A string formatted as an otpauth URI.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.Bitcoin(System.String,System.Nullable{System.Decimal},System.String,System.String)">
+            <summary>
+            Creates a Bitcoin payment URI (BIP-0021 standard).
+            </summary>
+            <param name="address">The Bitcoin address.</param>
+            <param name="amount">The amount in BTC.</param>
+            <param name="label">A label for the address (e.g., recipient name).</param>
+            <param name="message">A message describing the transaction.</param>
+            <returns>A string formatted as a BIP-0021 Bitcoin URI.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.SepaPayment(System.String,System.String,System.Decimal,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates an EPC QR code payload for SEPA credit transfers (European Payments Council standard EPC069-12).
+            </summary>
+            <param name="beneficiaryName">The name of the beneficiary (max 70 characters).</param>
+            <param name="iban">The IBAN of the beneficiary.</param>
+            <param name="amount">The amount in EUR (0.01 to 999999999.99).</param>
+            <param name="bic">The BIC/SWIFT code of the beneficiary's bank.</param>
+            <param name="remittanceReference">A structured remittance reference (ISO 11649). Mutually exclusive with <paramref name="remittanceText"/>.</param>
+            <param name="remittanceText">An unstructured remittance text (max 140 characters). Mutually exclusive with <paramref name="remittanceReference"/>.</param>
+            <param name="information">Beneficiary to originator information (max 70 characters).</param>
+            <returns>A string formatted as an EPC QR code payload.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePayload.ValidateSepaField(System.String,System.Int32,System.String)">
+            <summary>
+            Validates a single EPC element.
+            </summary>
+            <remarks>
+            EPC069-12 is positional and has no escape mechanism, so a control character in a value
+            cannot be represented. A line feed would shift every following element down by one and
+            silently redirect the payment, so the value is rejected rather than mangled.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.QRCodePngOptions">
+            <summary>
+            Options for rendering a QR code as PNG.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodePngOptions.ModuleSize">
+            <summary>Gets or sets the size of each module in pixels. Default is 10.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodePngOptions.QuietZoneModules">
+            <summary>Gets or sets the number of quiet zone modules around the QR code. Default is 4.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodePngOptions.DarkColor">
+            <summary>Gets or sets the color for dark modules. Default is <see cref="P:Meziantou.Framework.Color.Black"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodePngOptions.LightColor">
+            <summary>Gets or sets the color for light modules. Default is <see cref="P:Meziantou.Framework.Color.White"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.QRCodePngRenderer">
+            <summary>
+            Provides methods to render a QR code as a PNG image.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePngRenderer.ToPng(Meziantou.Framework.QRCode)">
+            <summary>Renders the QR code as PNG bytes with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePngRenderer.ToPng(Meziantou.Framework.QRCode,Meziantou.Framework.QRCodePngOptions)">
+            <summary>Renders the QR code as PNG bytes with the specified options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePngRenderer.WriteToPng(Meziantou.Framework.QRCode,System.IO.Stream)">
+            <summary>Writes the QR code as PNG to the specified stream with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodePngRenderer.WriteToPng(Meziantou.Framework.QRCode,System.IO.Stream,Meziantou.Framework.QRCodePngOptions)">
+            <summary>Writes the QR code as PNG to the specified stream with the specified options.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.QRCodeSvgOptions">
+            <summary>
+            Options for rendering a QR code as SVG.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodeSvgOptions.ModuleSize">
+            <summary>Gets or sets the size of each module in SVG units. Default is 10.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodeSvgOptions.QuietZoneModules">
+            <summary>Gets or sets the number of quiet zone modules around the QR code. Default is 4.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodeSvgOptions.DarkColor">
+            <summary>Gets or sets the color for dark modules. Default is <see cref="P:Meziantou.Framework.Color.Black"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodeSvgOptions.LightColor">
+            <summary>Gets or sets the color for light modules. Default is <see cref="P:Meziantou.Framework.Color.White"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodeSvgOptions.LogoImageHref">
+            <summary>Gets or sets the image source for a centered logo in the SVG output (for example, a URL or a data URI).</summary>
+            <remarks>Logo rendering is only supported by the SVG renderer.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.QRCodeSvgOptions.LogoSizePercent">
+            <summary>Gets or sets the logo size as a percentage of the smallest SVG side. Default is 20.</summary>
+            <remarks>Used only when <see cref="P:Meziantou.Framework.QRCodeSvgOptions.LogoImageHref"/> is set. Valid values are between 1 and 100.</remarks>
+        </member>
+        <member name="T:Meziantou.Framework.QRCodeSvgRenderer">
+            <summary>
+            Provides methods to render a QR code as an SVG string.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodeSvgRenderer.ToSvg(Meziantou.Framework.QRCode)">
+            <summary>Renders the QR code as an SVG string with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QRCodeSvgRenderer.ToSvg(Meziantou.Framework.QRCode,Meziantou.Framework.QRCodeSvgOptions)">
+            <summary>Renders the QR code as an SVG string with the specified options.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.QRCodeType">
+            <summary>
+            Specifies the type of QR code.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.QRCodeType.Standard">
+            <summary>Standard QR code (versions 1-40).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.QRCodeType.MicroQR">
+            <summary>Micro QR code (versions M1-M4).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.QRCodeType.RMQR">
+            <summary>Rectangular Micro QR code (rMQR).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.WifiAuthentication">
+            <summary>
+            Specifies the authentication type for a WiFi network QR code.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.WifiAuthentication.None">
+            <summary>No authentication (open network).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.WifiAuthentication.WEP">
+            <summary>WEP authentication.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.WifiAuthentication.WPA">
+            <summary>WPA/WPA2 authentication.</summary>
+        </member>
+    </members>
+</doc>

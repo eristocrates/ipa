@@ -1,0 +1,40 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "JmePath.Net.Parser/1.1.0": {
+        "dependencies": {
+          "jmespath.net.interop": "1.0.0"
+        },
+        "runtime": {
+          "JmePath.Net.Parser.dll": {}
+        }
+      },
+      "jmespath.net.interop/1.0.0": {
+        "runtime": {
+          "jmespath.net.interop.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "JmePath.Net.Parser/1.1.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "jmespath.net.interop/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

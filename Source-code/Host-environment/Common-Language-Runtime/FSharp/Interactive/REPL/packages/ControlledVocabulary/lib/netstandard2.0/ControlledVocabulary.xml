@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>ControlledVocabulary</name></assembly>
+<members>
+<member name="T:ControlledVocabulary.CvUnit">
+<summary>
+ Represents a unit term from the unit ontology 
+ in the form of: id|accession * name * refUri
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvTerm.uriToTan(System.String)">
+ <summary>
+ Takes an URI and returns the respective TAN.
+ </summary>
+ <param name="uri">The input URI.</param>
+</member>
+<member name="M:ControlledVocabulary.CvTerm.refOfAccession(System.String)">
+ <summary>
+ Returns the corresponding Term Source Ref from the given Term Number Accession.
+ </summary>
+ <param name="accession">The input accession.</param>
+</member>
+<member name="M:ControlledVocabulary.CvTerm.create(System.String)">
+ <summary>
+ Creates a CvTerm from a given name. Accession and reference are empty.
+ </summary>
+ <param name="name">The name of the term.</param>
+</member>
+<member name="M:ControlledVocabulary.CvTerm.create(System.String,System.String,System.String)">
+ <summary>
+ Creates a CvTerm from a given accession, name and reference.
+ </summary>
+ <param name="accession">The accession of the term.</param>
+ <param name="name">The name of the term.</param>
+ <param name="ref">The term source reference of the term.</param>
+</member>
+<member name="M:ControlledVocabulary.CvTerm.checkForUri(System.String)">
+ <summary>
+ Checks if the given accession is an URI.
+ </summary>
+ <param name="accession">The input accession.</param>
+</member>
+<member name="T:ControlledVocabulary.CvTerm">
+<summary>
+ Represents a term from a controlled vocabulary (Cv)
+ in the form of: id|accession ; name|value ; refUri
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamValue.tryGetUnit(ControlledVocabulary.ParamValue)">
+<summary>
+ Returns the unit of the Param if it exists, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamValue.tryAddUnit(ControlledVocabulary.CvTerm,ControlledVocabulary.ParamValue)">
+<summary>
+ Returns a new paramValue with the given unit if possible, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamValue.tryAddReference(System.String,ControlledVocabulary.ParamValue)">
+<summary>
+ Returns a new paramValue with the given reference if possible, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamValue.tryAddName(System.String,ControlledVocabulary.ParamValue)">
+<summary>
+ Returns a new paramValue with the given name if possible, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamValue.tryAddAccession(System.String,ControlledVocabulary.ParamValue)">
+<summary>
+ Returns a new paramValue with the given annotationID if possible, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamValue.getValueAsTerm(ControlledVocabulary.ParamValue)">
+<summary>
+ Returns the value of the Param as a term
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamValue.getValueAsString(ControlledVocabulary.ParamValue)">
+<summary>
+ Returns the value of the Param as string
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamValue.getValueAsInt(ControlledVocabulary.ParamValue)">
+<summary>
+ Returns the value of the Param as int if possible, else fails
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamValue.getValue(ControlledVocabulary.ParamValue)">
+<summary>
+ Returns the value of the Param as IConvertible
+</summary>
+</member>
+<member name="T:ControlledVocabulary.ParamValue">
+<summary>
+ Represent the different cases of a parameter, which is either a simple value,
+ a CvTerm or a simple value with CvUnit 
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamBase.getValueAsTerm(ControlledVocabulary.IParamBase)">
+<summary>
+ Returns the value of the Param as a term
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamBase.getValueAsString(ControlledVocabulary.IParamBase)">
+<summary>
+ Returns the value of the Param as string
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamBase.getValueAsInt(ControlledVocabulary.IParamBase)">
+<summary>
+ Returns the value of the Param as int if possible, else fails
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamBase.getValue(ControlledVocabulary.IParamBase)">
+<summary>
+ Returns the value of the Param as IConvertible
+</summary>
+</member>
+<member name="M:ControlledVocabulary.ParamBase.getParamValue(ControlledVocabulary.IParamBase)">
+<summary>
+ Returns the value of the Param as a ParamValue
+</summary>
+</member>
+<member name="T:ControlledVocabulary.IParamBase">
+<summary>
+ Interface ensures the value as ParamValue&lt;&apos;T&gt;  
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvBase.tryAs``1(ControlledVocabulary.ICvBase)">
+<summary>
+ Returns Some Value of type &apos;T, if the given cv item can be downcast, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvBase.is``1(ControlledVocabulary.ICvBase)">
+<summary>
+ Returns true, if the given cv item can be downcast
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvBase.getTerm``1(``0)">
+<summary>
+ Returns the full term of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvBase.getCvRef``1(``0)">
+<summary>
+ Returns the reference of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvBase.getCvName``1(``0)">
+<summary>
+ Returns the name of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvBase.getCvAccession``1(``0)">
+<summary>
+ Returns the id of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvBase.equalsTerm``1(ControlledVocabulary.CvTerm,``0)">
+<summary>
+ Returns true, if the given term matches the term of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvBase.equalsName``2(``0,``1)">
+<summary>
+ Returns true, if the names of the given cv items match
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvBase.equals``2(``0,``1)">
+<summary>
+ Returns true, if the terms of the given cv items match
+</summary>
+</member>
+<member name="T:ControlledVocabulary.ICvBase">
+<summary>
+ Interface ensures the propterties necessary for CvTerm 
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.tryAs``1(ControlledVocabulary.IParam)">
+<summary>
+ Returns Some Value of type &apos;T, if the given param item can be downcast, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.is``1(ControlledVocabulary.IParam)">
+<summary>
+ Returns true, if the given param item can be downcast
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.getValueAsTerm(ControlledVocabulary.IParam)">
+<summary>
+ Returns the value of the Param as a term
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.getValueAsString(ControlledVocabulary.IParam)">
+<summary>
+ Returns the value of the Param as string
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.getValueAsInt(ControlledVocabulary.IParam)">
+<summary>
+ Returns the value of the Param as int if possible, else fails
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.getValue(ControlledVocabulary.IParam)">
+<summary>
+ Returns the value of the Param as IConvertible
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.getTerm(ControlledVocabulary.IParam)">
+<summary>
+ Returns the full term of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.getParamValue(ControlledVocabulary.IParam)">
+<summary>
+ Returns the value of the Param as a ParamValue
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.getCvRef(ControlledVocabulary.IParam)">
+<summary>
+ Returns the reference of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.getCvName(ControlledVocabulary.IParam)">
+<summary>
+ Returns the name of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.getCvAccession(ControlledVocabulary.IParam)">
+<summary>
+ Returns the id of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.equalsTerm(ControlledVocabulary.CvTerm,ControlledVocabulary.IParam)">
+<summary>
+ Returns true, if the given term matches the term of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.equalsName(ControlledVocabulary.IParam,ControlledVocabulary.IParam)">
+<summary>
+ Returns true, if the names of the given param items match
+</summary>
+</member>
+<member name="M:ControlledVocabulary.Param.equals(ControlledVocabulary.IParam,ControlledVocabulary.IParam)">
+<summary>
+ Returns true, if the terms of the given param items match
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.tryGetAttributeByTerm(System.String,ControlledVocabulary.IAttributeCollection)">
+<summary>
+ Returns the attribute of the value, if it implements CvAttributeCollection and the attribute exists, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.tryGetAttribute(System.String,ControlledVocabulary.IAttributeCollection)">
+<summary>
+ Returns the attribute of the value, if it implements CvAttributeCollection and the attribute exists, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.tryAddAttribute(ControlledVocabulary.IParam,ControlledVocabulary.IAttributeCollection)">
+<summary>
+ Returns the attribute of the value, if it implements CvAttributeCollection and the attribute exists, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.isStructuralChildOf(ControlledVocabulary.ICvBase,ControlledVocabulary.IAttributeCollection)">
+<summary>
+ Returns true, if an attribute with the same term as the given parent exists in the collection
+</summary>
+</member>
+<member name="P:ControlledVocabulary.CvAttributeCollection.Attributes">
+<summary>
+ Returns all attributes as a list
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.containsAttributeTerm(ControlledVocabulary.CvTerm,ControlledVocabulary.IAttributeCollection)">
+<summary>
+ Returns true, if it implements a CvAttributeCollection and the attribute exists
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.containsAttribute(System.String,ControlledVocabulary.IAttributeCollection)">
+<summary>
+ Returns true, if it implements a CvAttributeCollection and the attribute exists
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.TryGetAttribute(ControlledVocabulary.CvTerm)">
+<summary>
+ Retrieves an IParam attribute by its term, if it exists, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.TryGetAttribute(System.String)">
+<summary>
+ Retrieves an IParam attribute by its name, if it exists, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.TryAddAttribute(ControlledVocabulary.IParam)">
+<summary>
+ Add an IParam as an attribute. Does not fail, if an attribute with the same key already exists
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.IsStructuralChildOf(ControlledVocabulary.ICvBase)">
+<summary>
+ Returns true, if an attribute with the same term as the given parent exists in the collection
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.GetAttribute(ControlledVocabulary.CvTerm)">
+<summary>
+ Retrieves an IParam attribute by its term, if it exists, else fails
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.GetAttribute(System.String)">
+<summary>
+ Retrieves an IParam attribute by its name, if it exists, else fails
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.ContainsAttribute(ControlledVocabulary.CvTerm)">
+<summary>
+ Returns true, if an attribute with the given term exists in the collection
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.ContainsAttribute(System.String)">
+<summary>
+ Returns true, if an attribute with the given name exists in the collection
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvAttributeCollection.AddAttribute(ControlledVocabulary.IParam)">
+<summary>
+ Add an IParam as an attribute. Fails, if an attribute with the same key already exists
+</summary>
+</member>
+<member name="T:ControlledVocabulary.CvAttributeCollection">
+<summary>
+ Contains attributes by which to qualify a cv object
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.getValueAsTerm(ControlledVocabulary.CvParam)">
+<summary>
+ Returns the value of the Param as a term
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.getValueAsString(ControlledVocabulary.CvParam)">
+<summary>
+ Returns the value of the Param as string
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.getValueAsInt(ControlledVocabulary.CvParam)">
+<summary>
+ Returns the value of the Param as int if possible, else fails
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.getValue(ControlledVocabulary.CvParam)">
+<summary>
+ Returns the value of the Param as IConvertible
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.getTerm(ControlledVocabulary.CvParam)">
+<summary>
+ Returns the full term of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.getParamValue(ControlledVocabulary.CvParam)">
+<summary>
+ Returns the value of the Param as a ParamValue
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.getCvRef(ControlledVocabulary.CvParam)">
+<summary>
+ Returns the reference of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.getCvName(ControlledVocabulary.CvParam)">
+<summary>
+ Returns the name of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.getCvAccession(ControlledVocabulary.CvParam)">
+<summary>
+ Returns the id of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.fromValueWithUnit``1(ControlledVocabulary.CvTerm,``0,ControlledVocabulary.CvTerm)">
+<summary>
+ Creates a CvParam from a category, a simple value and a unit coming from a controlled vocabulary.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.fromValue``1(ControlledVocabulary.CvTerm,``0)">
+<summary>
+ Create a CvParam from a category and a simple value
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.fromCategory(ControlledVocabulary.CvTerm,ControlledVocabulary.CvTerm)">
+<summary>
+ Creates a CvParam from a category and a value coming from a controlled vocabulary.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.equalsTerm(ControlledVocabulary.CvTerm,ControlledVocabulary.CvParam)">
+<summary>
+ Returns true, if the given term matches the term of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.equalsName(ControlledVocabulary.CvParam,ControlledVocabulary.CvParam)">
+<summary>
+ Returns true, if the names of the given param items match
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.equals(ControlledVocabulary.CvParam,ControlledVocabulary.CvParam)">
+<summary>
+ Returns true, if the terms of the given param items match
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.GetHashCode">
+<summary>
+ Serves as the default hash function.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParam.Equals(System.Object)">
+<summary>
+ Determines whether the specified object is equals to the current object.
+</summary>
+</member>
+<member name="T:ControlledVocabulary.CvParam">
+<summary>
+ Represents a structured value, annotated with a controlled vocabulary term
+
+ Attributes can be used to further describe the CvParam
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.getValueAsTerm(ControlledVocabulary.UserParam)">
+<summary>
+ Returns the value of the Param as a term
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.getValueAsString(ControlledVocabulary.UserParam)">
+<summary>
+ Returns the value of the Param as string
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.getValueAsInt(ControlledVocabulary.UserParam)">
+<summary>
+ Returns the value of the Param as int if possible, else fails
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.getValue(ControlledVocabulary.UserParam)">
+<summary>
+ Returns the value of the Param as IConvertible
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.getTerm(ControlledVocabulary.UserParam)">
+<summary>
+ Returns the full term of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.getParamValue(ControlledVocabulary.UserParam)">
+<summary>
+ Returns the value of the Param as a ParamValue
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.getCvRef(ControlledVocabulary.UserParam)">
+<summary>
+ Returns the reference of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.getCvName(ControlledVocabulary.UserParam)">
+<summary>
+ Returns the name of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.getCvAccession(ControlledVocabulary.UserParam)">
+<summary>
+ Returns the id of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.equalsTerm(ControlledVocabulary.CvTerm,ControlledVocabulary.UserParam)">
+<summary>
+ Returns true, if the given term matches the term of the cv item
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.equalsName(ControlledVocabulary.UserParam,ControlledVocabulary.UserParam)">
+<summary>
+ Returns true, if the names of the given param items match
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.equals(ControlledVocabulary.UserParam,ControlledVocabulary.UserParam)">
+<summary>
+ Returns true, if the terms of the given param items match
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.GetHashCode">
+<summary>
+ Serves as the default hash function.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParam.Equals(System.Object)">
+<summary>
+ Determines whether the specified object is equals to the current object.
+</summary>
+</member>
+<member name="T:ControlledVocabulary.UserParam">
+<summary>
+ Represents a structured value, annotated by a user defined name
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvObject`1.GetHashCode">
+<summary>
+ Serves as the default hash function.
+</summary>
+</member>
+<member name="T:ControlledVocabulary.CvObject`1">
+<summary>
+ Represents a generic object, annotated with a controlled vocabulary term
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.tryGetSingleParam(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves Param child with the given name of the CvContainer.
+
+ Returns None if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.tryGetSingleContainer(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves CvContainer child with the given name of the CvContainer.
+
+ Returns None if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.tryGetSingleAs``1(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves child with the given name and which can be cast to the given type of the CvContainer.
+
+ Returns None if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.tryGetSingle(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves child with the given name of the CvContainer.
+
+ Returns None if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.tryGetManyParams(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves Param children with the given name of the CvContainer as sequence.
+
+ Returns None if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.tryGetManyContainers(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves CvContainer children with the given name of the CvContainer as sequence.
+
+ Returns None if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.tryGetManyAs``1(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves children with the given name and which can be cast to the given type of the CvContainer as sequence.
+
+ Returns None if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.tryGetMany(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves children with the given name of the CvContainer as sequence.
+
+ Returns None if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.tryCvContainer(ControlledVocabulary.ICvBase)">
+<summary>
+ Returns Some CvContainer, if the given cv item can be downcast, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.setSingle(ControlledVocabulary.ICvBase,ControlledVocabulary.CvContainer)">
+<summary>
+ Sets a single child as a property of the CvContainer, accessible by its name.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.setMany(System.Collections.Generic.IEnumerable{ControlledVocabulary.ICvBase},ControlledVocabulary.CvContainer)">
+<summary>
+ Sets children as a property of the CvContainer.
+
+ These children are supposed to all have the same name, as they will be grouped into one property of the container, accessible
+ by this shared name.
+ 
+ Fails if values has elements with different names.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.getSingleParam(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves Param child with the given name of the CvContainer.
+
+ Fails if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.getSingleContainer(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves CvContainer child with the given name of the CvContainer.
+
+ Fails if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.getSingleAs``1(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves child with the given name and which can be cast to the given type of the CvContainer.
+
+ Fails if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.getSingle(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves child with the given name of the CvContainer.
+
+ Fails if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.getManyParams(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves Param children with the given name of the CvContainer as sequence.
+
+ Fails if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.getManyContainers(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves CvContainer children with the given name of the CvContainer as sequence.
+
+ Fails if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.getManyAs``1(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves children with the given name and which can be cast to the given type of the CvContainer as sequence.
+
+ Fails if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.getMany(System.String,ControlledVocabulary.CvContainer)">
+<summary>
+ Retrieves children with the given name of the CvContainer as sequence.
+
+ Fails if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.addSingle(ControlledVocabulary.ICvBase,ControlledVocabulary.CvContainer)">
+<summary>
+ Adds a child as a property of the CvContainer.
+
+ If a value with the same key already exist in the container, appends the new child
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.addMany(System.Collections.Generic.IEnumerable{ControlledVocabulary.ICvBase},ControlledVocabulary.CvContainer)">
+<summary>
+ Adds children as a property of the CvContainer.
+
+ If values with the same key already exist in the container, appends the new child
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.TryGetSingleParam(System.String)">
+<summary>
+ Retrieves Param child with the given name of the CvContainer.
+
+ Returns None if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.TryGetSingleContainer(System.String)">
+<summary>
+ Retrieves CvContainer child with the given name of the CvContainer.
+
+ Returns None if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.TryGetSingleAs``1(System.String)">
+<summary>
+ Retrieves child with the given name and which can be cast to the given type of the CvContainer.
+
+ Returns None if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.TryGetSingle(System.String)">
+<summary>
+ Retrieves child with the given name of the CvContainer.
+
+ Returns None if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.TryGetManyParams(System.String)">
+<summary>
+ Retrieves Param children with the given name of the CvContainer as sequence.
+
+ Returns None if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.TryGetManyContainers(System.String)">
+<summary>
+ Retrieves CvContainer children with the given name of the CvContainer as sequence.
+
+ Returns None if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.TryGetManyAs``1(System.String)">
+<summary>
+ Retrieves children with the given name and which can be cast to the given type of the CvContainer as sequence.
+
+ Returns None if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.TryGetMany(System.String)">
+<summary>
+ Retrieves children with the given name of the CvContainer as sequence.
+
+ Returns None if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.GetSingleParam(System.String)">
+<summary>
+ Retrieves Param child with the given name of the CvContainer.
+
+ Fails if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.GetSingleContainer(System.String)">
+<summary>
+ Retrieves CvContainer child with the given name of the CvContainer.
+
+ Fails if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.GetSingleAs``1(System.String)">
+<summary>
+ Retrieves child with the given name and which can be cast to the given type of the CvContainer.
+
+ Fails if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.GetSingle(System.String)">
+<summary>
+ Retrieves child with the given name of the CvContainer.
+
+ Fails if there is not exactly one child with the given name or if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.GetManyParams(System.String)">
+<summary>
+ Retrieves Param children with the given name of the CvContainer as sequence.
+
+ Fails if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.GetManyContainers(System.String)">
+<summary>
+ Retrieves CvContainer children with the given name of the CvContainer as sequence.
+
+ Fails if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.GetManyAs``1(System.String)">
+<summary>
+ Retrieves children with the given name and which can be cast to the given type of the CvContainer as sequence.
+
+ Fails if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.GetMany(System.String)">
+<summary>
+ Retrieves children with the given name of the CvContainer as sequence.
+
+ Fails if the propertyName cannot be found.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.GetHashCode">
+<summary>
+ Serves as the default hash function.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvContainer.Equals(System.Object)">
+<summary>
+ Determines whether the specified object is equals to the current object.
+</summary>
+</member>
+<member name="T:ControlledVocabulary.CvContainer">
+<summary>
+ Represents a collection of structured properties, annotated with a controlled vocabulary term.
+</summary>
+</member>
+<member name="M:ControlledVocabulary.IParamExtensions.ParamBase.tryParam.Static(ControlledVocabulary.IParamBase)">
+<summary>
+ Returns Some Param, if the given value item can be downcast, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.IParamExtensions.CvBase.tryParam.Static(ControlledVocabulary.ICvBase)">
+<summary>
+ Returns Some Param, if the given param item can be downcast, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParamExtensions.CvBase.isCvParam.Static(ControlledVocabulary.ICvBase)">
+<summary>
+ Returns true, if the given value item can be downcast to CvParam
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParamExtensions.CvBase.tryCvParam.Static(ControlledVocabulary.ICvBase)">
+<summary>
+ Returns Some Param if the given cv item can be downcast, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParamExtensions.Param.tryCvParam.Static(ControlledVocabulary.IParam)">
+<summary>
+ Returns Some Param if the given param item can be downcast, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.CvParamExtensions.ParamBase.tryCvParam.Static(ControlledVocabulary.IParamBase)">
+<summary>
+ Returns Some Param if the given value item can be downcast, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParamExtensions.CvBase.tryUserParam.Static(ControlledVocabulary.ICvBase)">
+<summary>
+ Returns Some UserParam, if the given value item can be downcast, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParamExtensions.Param.tryUserParam.Static(ControlledVocabulary.IParam)">
+<summary>
+ Returns Some Param if the given param item can be downcast, else returns None
+</summary>
+</member>
+<member name="M:ControlledVocabulary.UserParamExtensions.ParamBase.tryUserParam.Static(ControlledVocabulary.IParamBase)">
+<summary>
+ Returns Some Param if the given value item can be downcast, else returns None
+</summary>
+</member>
+</members>
+</doc>

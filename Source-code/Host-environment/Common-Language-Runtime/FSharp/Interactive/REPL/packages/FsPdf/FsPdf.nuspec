@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FsPdf</id>
+    <version>0.0.3</version>
+    <authors>Dave Curylo</authors>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/ninjarobot/FsPdf</projectUrl>
+    <description>Builds PDF's from pure F#</description>
+    <copyright>Copyright 2019-2026 Dave Curylo</copyright>
+    <tags>pdf fsharp</tags>
+    <repository type="git" url="https://github.com/ninjarobot/FsPdf" commit="b9eac0d76945e77573d327732a6be36b46336f94" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

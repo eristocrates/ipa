@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>ARC helper functions for filesystem management.</Description>
+    <PackageProjectUrl>https://github.com/nfdi4plants/ARCtrl/tree/main/src/FileSystem</PackageProjectUrl>
+    <PackageTags>ARC;F#;FSharp;dotnet;.Net;bioinformatics;biology;fable-library;datascience;dataplant;nfdi;metadata;fable-javascript;fable-python;fable-dotnet</PackageTags>
+  </PropertyGroup>
+  <Import Project="../Package.Metadata.props" />
+  
+  <ItemGroup>
+    <Compile Include="Path.fs" />
+    <Compile Include="Commit.fs" />
+    <Compile Include="DefaultLicense.fs" />
+    <Compile Include="DefaultGitignore.fs" />
+    <Compile Include="DefaultGitattributes.fs" />
+    <Compile Include="FileSystemTree.fs" />
+    <Compile Include="FileSystem.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fable.Core" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.HtmlToMarkdown</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.CodeBlockStyle">
+            <summary>Specifies how code blocks are rendered in Markdown.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.CodeBlockStyle.Fenced">
+            <summary>Use fenced code blocks.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.CodeBlockStyle.Indented">
+            <summary>Use indented code blocks.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.EmojiShortcodeMode">
+            <summary>Specifies how emoji are converted to shortcodes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.EmojiShortcodeMode.None">
+            <summary>Do not replace emoji with shortcodes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.EmojiShortcodeMode.GitHub">
+            <summary>Use GitHub-style shortcodes (for example, <c>:heart:</c>).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.EmojiShortcodeMode.Unicode">
+            <summary>Use Unicode-style shortcodes derived from Unicode emoji names (for example, <c>:red_heart:</c>).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.EmphasisMarker">
+            <summary>Specifies the marker used for emphasis in Markdown.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.EmphasisMarker.Asterisk">
+            <summary>Use asterisk characters (<c>*</c>).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.EmphasisMarker.Underscore">
+            <summary>Use underscore characters (<c>_</c>).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HeadingStyle">
+            <summary>Specifies the style used for Markdown headings.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HeadingStyle.Atx">
+            <summary>Use ATX headings (for example, <c>## Heading</c>).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HeadingStyle.Setext">
+            <summary>Use Setext headings where possible.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HtmlToMarkdown">
+            <summary>Converts HTML fragments to Markdown text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.Convert(System.String)">
+            <summary>Converts an HTML fragment to Markdown using default options.</summary>
+            <param name="html">The HTML fragment to convert.</param>
+            <returns>The converted Markdown text.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.Convert(System.String,Meziantou.Framework.HtmlToMarkdownOptions)">
+            <summary>Converts an HTML fragment to Markdown using the specified options.</summary>
+            <param name="html">The HTML fragment to convert.</param>
+            <param name="options">The conversion options.</param>
+            <returns>The converted Markdown text.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.ConvertDescendants(AngleSharp.Dom.INode,Meziantou.Framework.HtmlToMarkdown.ConversionState)">
+            <summary>
+            Converts every descendant of <paramref name="root"/> bottom-up using an explicit
+            stack, so that deeply nested documents cannot overflow the call stack. Every node
+            is converted before any of its ancestors, and the result is recorded in
+            <paramref name="state"/> for the ancestor to read back.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.IsOpaqueElement(AngleSharp.Dom.INode)">
+            <summary>
+            Gets a value indicating whether an element is converted from its raw text or outer
+            HTML. The descendants of such an element are never read back, so the traversal does
+            not need to convert them.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.ConvertChildNodes(AngleSharp.Dom.INode,Meziantou.Framework.HtmlToMarkdown.ConversionState)">
+            <summary>
+            Processes children of a container node, grouping inline nodes and
+            separating block elements with blank lines.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.ConvertInlineContent(AngleSharp.Dom.INode,Meziantou.Framework.HtmlToMarkdown.ConversionState)">
+            <summary>
+            Concatenates all children as inline content (no block grouping).
+            Used inside inline elements like strong, em, a, etc.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.CollapseHardLineBreaks(System.String)">
+            <summary>
+            Replaces hard line breaks with a single space so inline content fits on one line.
+            A hard line break is a newline preceded either by trailing spaces or by a backslash,
+            depending on <see cref="T:Meziantou.Framework.LineBreakStyle"/>; the backslash has to go with it.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.ParseListStart(System.String)">
+            <summary>
+            Parses the start attribute of an ordered list. Values that cannot produce a valid
+            Markdown list marker fall back to 1, because emitting them would turn the list into
+            a plain paragraph.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.ConvertListItemContent(AngleSharp.Dom.IElement,Meziantou.Framework.HtmlToMarkdown.ConversionState)">
+            <summary>
+            Converts the content of a list item, using single newline before
+            sublists (tight) and double newline before other block elements.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.IsInTableCell(AngleSharp.Dom.IElement)">
+            <summary>
+            Determines whether an element is inside a table cell by walking its ancestors.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.GetOuterHtmlWithoutStrippedElements(AngleSharp.Dom.IElement)">
+            <summary>
+            Gets the outer HTML of an element with its script, style and noscript descendants
+            removed. Those elements are stripped everywhere else, so passing an unknown element
+            through verbatim must not reintroduce them.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.ConvertTableCellContent(AngleSharp.Dom.IElement,Meziantou.Framework.HtmlToMarkdown.ConversionState)">
+            <summary>
+            Converts the content of a table cell. Block children are converted as blocks rather
+            than concatenated, then the result is collapsed onto a single line: a row of a pipe
+            table cannot contain a line break.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.GetCellAlignment(AngleSharp.Dom.IElement)">
+            <summary>
+            Gets the alignment of a table cell by checking, in order:
+            1. The CSS text-align property from the style attribute
+            2. The HTML align attribute
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.ExtractCssTextAlign(System.String)">
+            <summary>
+            Extracts the text-align value from an inline CSS style string.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.SanitizeLanguage(System.String)">
+            <summary>
+            Validates the info string of a fenced code block. The value comes from the document
+            and is copied onto the opening fence, so one containing a line break or a fence
+            character would end the code block early and let the rest of the attribute be
+            interpreted as Markdown. Letters and digits are accepted, including non-ASCII ones,
+            and anything outside the accepted set drops the info string.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.AppendLinkTitle(System.Text.StringBuilder,System.String)">
+            <summary>
+            Escapes a link/image title for use inside double quotes in Markdown.
+            Characters that would break the title context are backslash-escaped.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.AppendLinkDestination(System.Text.StringBuilder,System.String)">
+            <summary>
+            Appends a link or image destination, escaping the characters that would otherwise
+            end it. A destination containing a space must use the angle bracket form, because
+            a space cannot be backslash-escaped there.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.HasBalancedParentheses(System.String)">
+            <summary>
+            Determines whether the parentheses in a link destination are balanced. A bare
+            destination may contain balanced parentheses, so only unbalanced ones need escaping.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.AppendUrlCharacter(System.Text.StringBuilder,System.Char)">
+            <summary>
+            Appends a character of a URL, percent-encoding the control characters that cannot
+            appear in a link destination in any form.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.AppendLinkText(System.Text.StringBuilder,System.String)">
+            <summary>
+            Appends literal text used as a link label or image description, escaping the
+            brackets that would otherwise end it.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.TryNormalizeVariationSelectors(System.String,System.String@)">
+            <summary>
+            Removes variation selectors (U+FE0E/U+FE0F) so emoji text elements can
+            match mappings that do not include those selectors.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.PostProcessLineStart(System.String)">
+            <summary>
+            Escapes constructs that would start a new block when they appear at the beginning of
+            a line: ordered list markers such as "1." and "4)", and setext heading underlines.
+            This runs per line because a line break inside a paragraph puts text at the start of
+            a line without it being the start of the block.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.WrapInlineMarker(System.String,System.String)">
+            <summary>
+            Wraps content with inline markers (e.g., ** for bold), moving
+            leading/trailing whitespace outside the markers.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.PrefixLines(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds prefixes to each line of content.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.IsLooseList(AngleSharp.Dom.IElement)">
+            <summary>
+            A list is "loose" if any list item contains block elements other than sublists.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.GetSingleSignificantChild(AngleSharp.Dom.IElement)">
+            <summary>
+            Returns the single non-whitespace child node, or null if there are
+            zero or multiple significant children.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HtmlToMarkdown.CollapseInlineSpaces(System.String)">
+            <summary>
+            Collapses runs of multiple spaces into a single space, except when
+            the spaces precede a newline (trailing spaces for line breaks).
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.HtmlToMarkdownOptions">
+            <summary>Options that control how HTML is converted to Markdown.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HtmlToMarkdownOptions.EmphasisMarker">
+            <summary>Gets or sets the marker used for emphasis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HtmlToMarkdownOptions.HeadingStyle">
+            <summary>Gets or sets the heading style to use in Markdown output.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HtmlToMarkdownOptions.CodeBlockStyle">
+            <summary>Gets or sets the style used for code blocks.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HtmlToMarkdownOptions.CodeBlockFenceCharacter">
+            <summary>Gets or sets the fence character used for fenced code blocks.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is neither a backtick nor a tilde.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.HtmlToMarkdownOptions.UnorderedListMarker">
+            <summary>Gets or sets the marker used for unordered lists.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is not '-', '*' or '+'.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.HtmlToMarkdownOptions.ThematicBreak">
+            <summary>Gets or sets the thematic break text to emit for horizontal rules.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HtmlToMarkdownOptions.LineBreakStyle">
+            <summary>Gets or sets the style used for line breaks.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HtmlToMarkdownOptions.UseSimplePunctuation">
+            <summary>
+            Gets or sets a value indicating whether smart punctuation characters
+            are converted to simple ASCII punctuation.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.HtmlToMarkdownOptions.EmojiShortcodeMode">
+            <summary>Gets or sets how emoji are converted to shortcodes.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HtmlToMarkdownOptions.UnknownElementHandling">
+            <summary>Gets or sets how unknown HTML elements are handled.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.LineBreakStyle">
+            <summary>Specifies how line breaks are rendered in Markdown.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.LineBreakStyle.TrailingSpaces">
+            <summary>Use two trailing spaces at the end of the line.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.LineBreakStyle.Backslash">
+            <summary>Use a trailing backslash at the end of the line.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UnknownElementHandling">
+            <summary>Specifies how unknown HTML elements are handled during conversion.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UnknownElementHandling.PassThrough">
+            <summary>Emit the unknown element as raw HTML.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UnknownElementHandling.Strip">
+            <summary>Remove the unknown element and its content.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UnknownElementHandling.StripKeepContent">
+            <summary>Remove the unknown element but keep its content.</summary>
+        </member>
+    </members>
+</doc>

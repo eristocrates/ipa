@@ -1,0 +1,2002 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Language.Regex</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.JavaScriptLiteral">
+            <summary>The three parts of a JavaScript regular-expression literal, <c>/pattern/flags</c>.</summary>
+            <remarks>
+            Splitting happens before parsing because the flags decide how the pattern is read: <c>u</c> and <c>v</c> change
+            what an escape and a character class mean, and there is nowhere else those can come from.
+            </remarks>
+            <param name="LineTerminatorPosition">
+            Where a line terminator was found inside the body, or -1. A literal may not contain one, escaped or not, so finding
+            one means the literal is not closed however much text follows it.
+            </param>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.JavaScriptLiteral.#ctor(System.Int32,System.Int32,System.Int32,Meziantou.Framework.Language.Regex.RegexPatternOptions,System.Boolean,System.Boolean,System.Int32)">
+            <summary>The three parts of a JavaScript regular-expression literal, <c>/pattern/flags</c>.</summary>
+            <remarks>
+            Splitting happens before parsing because the flags decide how the pattern is read: <c>u</c> and <c>v</c> change
+            what an escape and a character class mean, and there is nowhere else those can come from.
+            </remarks>
+            <param name="LineTerminatorPosition">
+            Where a line terminator was found inside the body, or -1. A literal may not contain one, escaped or not, so finding
+            one means the literal is not closed however much text follows it.
+            </param>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.JavaScriptLiteral.LineTerminatorPosition">
+            <summary>
+            Where a line terminator was found inside the body, or -1. A literal may not contain one, escaped or not, so finding
+            one means the literal is not closed however much text follows it.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.JavaScriptLiteral.Split(System.String)">
+            <summary>Finds the delimiters of a literal and reads its flags.</summary>
+            <remarks>
+            The closing delimiter is the first <c>/</c> that is neither escaped nor inside a character class, which is the
+            same rule a JavaScript tokenizer uses. Text that is not a literal at all is treated as a bare pattern, so
+            passing one to <c>ParseJavaScriptLiteral</c> still produces a usable tree.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.JavaScriptLiteral.IsLineTerminator(System.Char)">
+            <summary>The four characters ECMAScript counts as a line terminator.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.JavaScriptLiteral.ReadFlags(System.ReadOnlySpan{System.Char})">
+            <summary>Maps the flag letters onto options. An unknown letter is left to the parser to report.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.JavaScriptRegexParser">
+            <summary>Parses an ECMAScript pattern, and the delimiters and flags of a literal when there are any.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.JavaScriptRegexParser.UsesStrictGrammar">
+            <summary>
+            ECMAScript has two grammars, and which one applies is decided by the <c>u</c> and <c>v</c> flags rather than by
+            the flavor.
+            </summary>
+            <remarks>
+            Without them the web-compatibility grammar applies: an escape that is not well formed stands for its own
+            letter, so <c>\x4</c> matches <c>x4</c> and <c>\k</c> in a pattern with no named group matches <c>k</c>. With
+            them the grammar is strict, and only a syntax character or <c>/</c> may follow a backslash and mean itself.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.JavaScriptRegexParser.IsQuantifiable(Meziantou.Framework.Language.Regex.RegexTermSyntax)">
+            <summary>
+            An assertion matches nothing, so repeating it means nothing. Lookahead is the one exception, and only in the
+            web-compatibility grammar; lookbehind is never quantifiable.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.JavaScriptRegexParser.ReadTrailingContent">
+            <summary>Keeps whatever followed the flags, which a well-formed literal has none of.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.JavaScriptRegexParser.IsAtBodyEnd(System.Int32)">
+            <summary>Stops the body at the closing delimiter, so the flags are not read as part of the pattern.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.JavaScriptRegexParser.ReportFlagProblems(Meziantou.Framework.Language.Regex.RegexSyntaxToken)">
+            <summary>Reports the three ways a flag list can be wrong: unknown, repeated, or <c>u</c> together with <c>v</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.NetRegexParser">
+            <summary>Parses a pattern the way <c>System.Text.RegularExpressions</c> does.</summary>
+            <remarks>
+            Everything is in <see cref="T:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser"/>, which was ported from the .NET engine in the first place.
+            The .NET flavor is that grammar with nothing taken away.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.NetRegexParser.AllowsBareAngleBackreference">
+            <summary>The deprecated <c>\&lt;name&gt;</c> spelling of a named backreference is .NET's alone.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.NetUnicodeCategoryNames">
+            <summary>The category and block names the .NET engine accepts inside <c>\p{…}</c>.</summary>
+            <remarks>
+            A name the engine does not know is a parse error, so the set has to be known to report the same thing. Only the
+            names are needed: this library never computes the characters a category stands for.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.NetUnicodeCategoryNames.All">
+            <summary>Every accepted name, in ordinal order.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser">
+            <summary>Parses a pattern the way PCRE and Perl do.</summary>
+            <remarks>
+            Most of PCRE is the Perl grammar the shared parser already reads, narrowed or widened by flavor features. What is
+            here is what PCRE has and the others do not: the <c>\g</c> reference family, subroutine calls, callouts, the extra
+            shorthand classes, and the two numeric escapes with braces.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser.IsShorthandClassLetter(System.Char)">
+            <summary><c>\R</c> and <c>\X</c> stand for a set of characters but may not appear inside a class.</summary>
+            <remarks>
+            <c>\N</c> is "any character except a newline" on its own, but <c>\N{…}</c> names a code point. The brace is
+            what tells them apart, so the shorthand has to decline when one follows.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser.TryMapOptionLetter(System.Char,Meziantou.Framework.Language.Regex.RegexPatternOptions@)">
+            <summary><c>J</c> and <c>U</c> change matching rather than syntax, but they still have to be accepted.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser.ParseGReference(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>
+            Parses the <c>\g</c> family: <c>\g1</c>, <c>\g{1}</c>, <c>\g{-1}</c>, and <c>\g{name}</c> are backreferences,
+            while <c>\g&lt;name&gt;</c> and <c>\g'name'</c> are subroutine calls.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser.ParseNamedRecursion(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32)">
+            <summary>Parses <c>(?&amp;name)</c> and <c>(?P&gt;name)</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser.ParsePythonNamedBackreference(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32)">
+            <summary>Parses <c>(?P=name)</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser.ParseCallout(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32)">
+            <summary>Parses <c>(?C)</c>, <c>(?C1)</c>, and <c>(?C"text")</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser.ParseBracedNumericEscape(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia},System.Boolean,System.Boolean)">
+            <summary>Parses <c>\o{101}</c> and <c>\N{U+0041}</c>, both of which name a code point in braces.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser.ReadUntil(System.Char,Meziantou.Framework.Language.Regex.RegexSyntaxKind)">
+            <summary>Reads everything up to <paramref name="terminator"/>, without consuming it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser.ReportUnknownReference(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32)">
+            <summary>Reports a reference that names neither an existing group number nor an existing group name.</summary>
+            <remarks>A relative reference such as <c>\g{-1}</c> is always in range here, so only absolute ones are checked.</remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser">
+            <summary>The Perl-derived grammar, parameterized by what the flavor supports.</summary>
+            <remarks>
+            Ported from the .NET engine, which is the most complete of the Perl-derived grammars, and then narrowed by feature
+            flags for the flavors that have less. The alternative, a parser per flavor, would have four copies of the same
+            escape and character-class handling and four places for them to drift apart.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseCharacterClass(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Parses a character class, guarding against input that nests subtractions without end.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseCharacterClassBody(Meziantou.Framework.Language.Regex.RegexSyntaxToken)">
+            <summary>
+            Reads the members of a class, from just after the <c>[</c> through the matching <c>]</c>.
+            </summary>
+            <remarks>
+            Whitespace and <c>#</c> are ordinary characters in here even in extended mode, because the engine never scans
+            trivia from inside a class. Nothing below may call the trivia scanner.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ClassSetOperatorLength(System.Int32)">
+            <summary>The length of a class set operator at <paramref name="position"/>, or 0.</summary>
+            <remarks>
+            A single <c>-</c> is a range, so only the doubled form is an operator. The same is true of <c>&amp;</c>, which
+            on its own is an ordinary character.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseNestedSetClass">
+            <summary>Parses a class nested inside another, which only the class set grammar allows.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseClassStringLiteral">
+            <summary>Parses <c>\q{abc|def}</c>, which contributes whole strings rather than characters.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ClassSetSyntaxCharacters">
+            <summary>The characters a class set has to have escaped, because unescaped they mean something else.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReservedDoublePunctuators">
+            <summary>
+            The characters that may not appear doubled. The grammar reserves them so the syntax can grow later without
+            changing what an existing pattern means.
+            </summary>
+            <remarks><c>&amp;</c> and <c>-</c> are not here: doubled they are the operators, which are read before this.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ValidateClassStringContent(System.Int32,System.Int32)">
+            <summary>Checks the body of a <c>\q{…}</c> disjunction, which is not free text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.SkipReservedDoublePunctuator">
+            <summary>Reports a doubled punctuator the class set grammar reserves.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseClassSetOperation(Meziantou.Framework.Language.Regex.RegexSyntaxNode)">
+            <summary>
+            Parses the rest of an intersection or difference, given the operand already read.
+            </summary>
+            <remarks>
+            The grammar is n-ary but not mixed: <c>[a--b--c]</c> is one difference of three operands, while
+            <c>[a&amp;&amp;b--c]</c> is an error. An operand is a single thing, so <c>[abc--d]</c> is an error too, which is
+            why more than one member on the left is reported rather than quietly grouped.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.SkipClassSetOperator(System.Boolean)">
+            <summary>Keeps an operator that has no single operand before it, so the text is still accounted for.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReadClassSetOperand">
+            <summary>Reads one operand of a set operation: a nested class, a string disjunction, or a single member.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseSubtraction(Meziantou.Framework.Language.Regex.RegexSyntaxToken)">
+            <summary>Parses the <c>[…]</c> a subtraction removes, which must be the last thing in its class.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryParsePosixBracket(Meziantou.Framework.Language.Regex.RegexSyntaxNode@)">
+            <summary>Reads <c>[:alpha:]</c>, <c>[.ch.]</c>, or <c>[=a=]</c> for the flavors that have them.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReadClassElement">
+            <summary>Reads one member of a class: a shorthand, a category, an escape, or a single character.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ClassElement">
+            <summary>One member of a class, with what the parser needs to know about it to read the next one.</summary>
+            <param name="IsTranslated">
+            Whether the character came from an escape. A <c>\[</c> does not open a subtraction the way a bare <c>[</c> does.
+            </param>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ClassElement.#ctor(Meziantou.Framework.Language.Regex.RegexSyntaxNode,System.Char,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>One member of a class, with what the parser needs to know about it to read the next one.</summary>
+            <param name="IsTranslated">
+            Whether the character came from an escape. A <c>\[</c> does not open a subtraction the way a bare <c>[</c> does.
+            </param>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ClassElement.IsTranslated">
+            <summary>
+            Whether the character came from an escape. A <c>\[</c> does not open a subtraction the way a bare <c>[</c> does.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser._ignoreNextParen">
+            <summary>Set while reading the condition of a conditional, so its parentheses do not take a capture number.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser._inConditionalTest">
+            <summary>
+            Set while reading the group that is the test of an expression conditional, where inline options are not
+            recognized.
+            </summary>
+            <remarks>
+            The engine expresses this as "the group is an expression conditional that has no children yet", which is true
+            of exactly one construct: the parenthesis the conditional rewound to. So <c>(?(?n)a|b)</c> is an invalid
+            grouping construct rather than an option setter, while <c>(?(name)(?n))</c>, whose <c>(?n)</c> comes after the
+            test, is fine.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.NextAutoCapture">
+            <summary>Takes the next capture number without noting it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseGroup(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia},System.Int32)">
+            <summary>Parses a parenthesized construct, from <c>(</c> through the matching <c>)</c>.</summary>
+            <remarks>
+            Ported from <c>ScanGroupOpen</c>. Every path that construct reached by <c>goto BreakRecognize</c> becomes a
+            diagnostic plus a node that still covers the text, and every character it consumed in one step is kept as its
+            own token so the parts of a header are addressable.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryParseFlavorGroupHeader(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32)">
+            <summary>Parses a <c>(?…</c> header that only some flavors have, or returns null to fall through.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryParseFlavorEscape(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Parses a backslash escape that only some flavors have, or returns null to fall through.</summary>
+            <remarks>The reading position is on the backslash.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.IsInCharacterClass">
+            <summary>Whether the reading position is inside a character class, where a few escapes differ.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsIdentityEscape(System.Char)">
+            <summary>Whether <c>\</c> followed by <paramref name="ch"/> may simply stand for that character.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsMalformedNumericEscape">
+            <summary>
+            Whether a <c>\x</c>, <c>\u</c>, or <c>\c</c> escape without the digits it needs falls back to standing for
+            its own letter instead of being reported.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsShorthandClassInRange">
+            <summary>Whether a shorthand class may be an endpoint of a range, which makes the dash an ordinary character.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsLoneQuantifierBracket">
+            <summary>
+            Whether a bare <c>{</c>, <c>}</c>, or <c>]</c> is an ordinary character. The strict ECMAScript grammar calls it
+            a lone quantifier bracket and rejects it.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsNonLetterControlEscape">
+            <summary>
+            Whether <c>\c</c> may be followed by something other than an ASCII letter. The .NET engine subtracts <c>@</c>
+            from whatever is there and takes it if the result is a control character; the strict ECMAScript grammar wants
+            a letter.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.RecognizesPerlCharacterEscapes">
+            <summary>
+            Whether the Perl character escapes -- <c>\a</c>, <c>\e</c>, <c>\f</c>, <c>\n</c>, <c>\r</c>, <c>\t</c>,
+            <c>\v</c>, <c>\x</c>, <c>\u</c>, <c>\c</c>, and octal -- mean anything.
+            </summary>
+            <remarks>
+            POSIX has none of them. There a backslash before an ordinary character just means that character, so reading
+            <c>\x41</c> as an "A" would describe a pattern the engine does not see.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsEmptyOptionGroup">
+            <summary>Whether <c>(?)</c> is an option group that sets nothing rather than a malformed construct.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsAnyControlEscapeCharacter">
+            <summary>
+            Whether any character may follow <c>\c</c>. PCRE exclusive-ors whatever is there with <c>0x40</c> and accepts
+            the result; .NET only takes it when it lands on a control character.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsShortHexEscape">
+            <summary>Whether <c>\xh</c> with a single hexadecimal digit is well formed, as it is in PCRE.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsBracelessProperty">
+            <summary>Whether a property may be written without braces, as <c>\pL</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsBareAngleBackreference">
+            <summary>
+            Whether <c>\&lt;name&gt;</c> is a backreference. Only .NET spells one that way; in POSIX <c>\&lt;</c> asserts a
+            word boundary and in PCRE it is an ordinary escape.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsOctalEscape">
+            <summary>Whether a backslash followed by digits may fall back to an octal escape.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.AllowsUndefinedNamedBackreference">
+            <summary>Whether <c>\k</c> naming nothing falls back to standing for its own letter.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.HasAnyGroupName">
+            <summary>Whether the pattern declares any named group, which decides what a bare <c>\k</c> means.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.IsShorthandClassLetter(System.Char)">
+            <summary>Whether the letter after a backslash names a shorthand character class at the atom level.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.IsShorthandClassLetterInClass(System.Char)">
+            <summary>Whether the letter after a backslash names a shorthand character class inside a class.</summary>
+            <remarks>
+            Deliberately not delegating to <see cref="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.IsShorthandClassLetter(System.Char)"/>: an override that widens one by calling the
+            other would then call back into itself.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.IsCoreShorthandClassLetter(System.Char)">
+            <summary>The six shorthand classes every flavor has.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryMapOptionLetter(System.Char,Meziantou.Framework.Language.Regex.RegexPatternOptions@)">
+            <summary>Maps an inline option letter onto the options it sets, reporting whether the letter is one at all.</summary>
+            <remarks>
+            A letter can be recognized without changing anything: PCRE's <c>J</c> and <c>U</c> alter matching rather than
+            syntax, but they still have to be accepted or the construct around them looks malformed.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseSimpleHeaderGroup(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32,Meziantou.Framework.Language.Regex.RegexSyntaxKind,Meziantou.Framework.Language.Regex.RegexFlavorFeatures)">
+            <summary>Parses a group whose header is <c>(?</c> plus one character.</summary>
+            <remarks>
+            A header the flavor does not have is reported and then read as a non-capturing group, so the body is still
+            parsed and every character is still accounted for.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseRecursion(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32)">
+            <summary>Parses <c>(?R)</c> and <c>(?1)</c>, which restart the pattern or one of its groups.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReportUnknownRecursionTarget(Meziantou.Framework.Language.Regex.RegexSyntaxToken)">
+            <summary>Reports a recursion into a group that does not exist. <c>R</c> means the whole pattern, so it always does.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseBacktrackingVerb(Meziantou.Framework.Language.Regex.RegexSyntaxToken)">
+            <summary>Parses a backtracking control verb such as <c>(*SKIP)</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseAngledGroup(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32)">
+            <summary>Parses <c>(?&lt;…</c>, <c>(?'…</c>, and <c>(?P&lt;…</c>: lookbehind, a named group, or a balancing group.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReadGroupNameOrNumber(System.Char,System.Int32,System.Int32@,System.Boolean@)">
+            <summary>Reads the name or number a named group declares, reporting what the engine reports about it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReadBalancingTarget(System.Char)">
+            <summary>Reads the group a balancing group pops, which must already exist.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseConditional(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32)">
+            <summary>Parses <c>(?(…)yes|no)</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReadConditionalReference(System.Int32)">
+            <summary>Reads <c>(1)</c> or <c>(name)</c>, or reports that the condition is an expression by returning null.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReportIllegalConditionHeader(System.Int32)">
+            <summary>Reports the two headers a conditional's expression condition may not have.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseOptionsConstruct(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32,System.Boolean)">
+            <summary>Parses <c>(?i)</c> and <c>(?i:…)</c>.</summary>
+            <remarks>
+            An option setter with no body ends at its own <c>)</c>, and the options it set stay in effect until the
+            enclosing group closes, so the entry this construct pushed is discarded rather than restored.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ScanInlineOptions(System.Int32)">
+            <summary>Reads an <c>imnsx-imnsx</c> run and applies it, stopping at the first character it does not know.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReadDecimal(System.Boolean@)">
+            <summary>Reads a run of digits, clamping a value that does not fit rather than throwing.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReadCaptureName">
+            <summary>Reads a capture-group name and returns it.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.SupportsUnicodeCategories">
+            <summary>
+            Whether <c>\p{…}</c> is recognized. JavaScript reads it as an identity escape unless the pattern opted into
+            Unicode mode, so the answer depends on the options as well as the flavor.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseBackslashAtom(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Parses a backslash escape used as an atom of a sequence.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseQuotedLiteral(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Parses a <c>\Q…\E</c> run, in which every character stands for itself.</summary>
+            <remarks>An unterminated run reaches the end of the pattern, which is what the engines that have it do.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseUnicodeCategory(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Parses <c>\p{Name}</c> or <c>\P{Name}</c>.</summary>
+            <remarks>
+            Ported from <c>ParseProperty</c>. The engine's first guard is a length check that rejects <c>\p</c> near the end
+            of the pattern before it looks at anything, which is why an incomplete escape is reported as invalid rather than
+            malformed.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseBackreferenceOrEscape(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Parses a backreference, or falls back to a character escape.</summary>
+            <remarks>
+            Ported from <c>ScanBasicBackslash</c>, including the asymmetry that makes <c>\10</c> the octal escape for a
+            backspace when the pattern has fewer than ten groups while <c>\5</c> with two groups is an undefined reference.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryParseUnangledBackreference(System.Int32,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia},Meziantou.Framework.Language.Regex.RegexAtomSyntax@)">
+            <summary>Reads <c>\1</c>-style backreferences, which are octal escapes when no such group exists.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ScanCharEscape">
+            <summary>Reads the body of an escape that stands for a single character, and returns that character.</summary>
+            <remarks>The reading position is on the character after the backslash.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ScanOctal">
+            <summary>Reads up to three octal digits, stopping before the value exceeds 0377.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ScanBracedCodePoint(System.Int32)">
+            <summary>Reads <c>{HHHH}</c> after <c>\u</c> and returns the code point it names.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ScanHex(System.Int32,System.Int32)">
+            <summary>Reads exactly <paramref name="count"/> hexadecimal digits.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ScanControl(System.Int32)">
+            <summary>Reads the character of a <c>\c</c> control escape and converts it.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.PosixRegexParser">
+            <summary>Parses POSIX basic and extended regular expressions.</summary>
+            <remarks>
+            <para>
+            POSIX is the Perl grammar with almost everything taken away, which the flavor features already express: no inline
+            options, no lookaround, no named groups, and no Unicode categories.
+            </para>
+            <para>
+            What features cannot express is that a basic expression spells its delimiters with a backslash. <c>\(</c> opens a
+            group, <c>\{</c> opens a bound, <c>\|</c> separates branches, and the bare characters are ordinary text -- the
+            reverse of every other flavor. The grammar skeleton asks for each delimiter by length rather than matching a
+            character, so overriding those is all it takes.
+            </para>
+            <para>
+            The other basic-expression rule is positional: <c>^</c> is an anchor only where a branch starts, <c>$</c> only
+            where one ends, and a <c>*</c> with nothing before it is an ordinary character rather than a quantifier with
+            nothing to repeat.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.PosixRegexParser.RecognizesPerlCharacterEscapes">
+            <summary>
+            POSIX has no character escapes. The shorthand classes it does have -- <c>\w</c>, <c>\s</c>, <c>\b</c> and
+            their negations -- are GNU extensions handled before this, and everything else after a backslash is just the
+            character itself.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PosixRegexParser.EscapedLength(System.Int32,System.Char)">
+            <summary>Returns 2 when <paramref name="expected"/> appears escaped at <paramref name="position"/>, else 0.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PosixRegexParser.IsAtBranchEnd(System.Int32)">
+            <summary>Whether nothing but the end of a branch follows <paramref name="position"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable">
+            <summary>The capture groups a pattern declares, and the numbers the engine assigns them.</summary>
+            <remarks>
+            Built by a pass over the whole pattern before any of it is parsed, because whether <c>\1</c> is a backreference or
+            an octal escape, and whether <c>(?(1)…)</c> tests a group or matches an expression, depend on groups that may be
+            declared later.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable.Numbers">
+            <summary>Every capture number the pattern uses, in ascending order. Group 0 is not included.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable.GetName(System.Int32)">
+            <summary>The name of a group, which is the number written out when the group has none.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable.GetPosition(System.Int32)">
+            <summary>The position of the <c>(</c> that declares a group.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable.Builder">
+            <summary>Collects capture slots and names, then assigns numbers to the names.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable.Builder.NoteSlot(System.Int32,System.Int32)">
+            <summary>Notes a used capture slot.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable.Builder.NoteAutoSlot(System.Int32)">
+            <summary>Notes an unnamed group, taking the next free number.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable.Builder.NoteName(System.String,System.Int32)">
+            <summary>Notes a named group.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable.Builder.Build">
+            <summary>
+            Assigns the first free numbers to the names, then builds the table.
+            </summary>
+            <remarks>
+            Named groups are numbered after every explicitly numbered one, so <c>x</c> in <c>(a)(?&lt;x&gt;b)(c)</c> is
+            group 3, not group 2. Callers see the result through <see cref="M:Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable.TryGetNumber(System.String,System.Int32@)"/>, so nothing else has to know.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables">
+            <summary>Classifies ASCII characters the way the .NET engine does.</summary>
+            <remarks>
+            The table decides where a run of ordinary characters stops, which characters begin a quantifier, and which count as
+            whitespace in extended mode. It is copied from the engine rather than rewritten, because a single wrong entry is a
+            silent divergence that only the hardest inputs would expose.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables.Category">
+            <summary>For categorizing ASCII characters.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables.IsSpecial(System.Char)">
+            <summary>Returns true for those characters that terminate a string of ordinary chars.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables.IsSpecialOrSpace(System.Char)">
+            <summary>Returns true for those characters including whitespace that terminate a string of ordinary chars.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables.IsQuantifier(System.Char)">
+            <summary>Returns true for those characters that begin a quantifier.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables.IsSpace(System.Char)">
+            <summary>Returns true for whitespace.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables.IsCommentStart(System.Char)">
+            <summary>Returns whether the character is the <c>#</c> that starts an extended-mode comment.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables.IsTrueQuantifier(System.String,System.Int32)">
+            <summary>Returns whether the character at <paramref name="position"/> begins a quantifier.</summary>
+            <remarks>
+            A <c>{</c> only begins one when a well-formed bound follows it, so this looks ahead without consuming anything.
+            Deciding before any character is claimed is what lets the parser avoid the engine's rewind, which would move
+            the reading position backwards and break the spans of everything already built.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables.IsWordChar(System.Char)">
+            <summary>Returns whether the character is a word character, as the engine's character-class helper defines it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables.IsBoundaryWordChar(System.Char)">
+            <summary>Returns whether the character may appear in a capture-group name.</summary>
+            <remarks>
+            The zero-width joiner and non-joiner count for the purpose of a name even though <see cref="M:Meziantou.Framework.Language.Regex.Internals.RegexCharacterTables.IsWordChar(System.Char)"/> does
+            not accept them, which is what the engine's boundary-word test encodes.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.RegexDiagnosticIds">
+            <summary>The identifiers the parsers report diagnostics under.</summary>
+            <remarks>
+            <para>
+            The identifiers are banded: <c>REGEX0001</c>-<c>REGEX0019</c> are structural facts about brackets, parentheses, and
+            quantifiers that every flavor shares; <c>REGEX0030</c>-<c>REGEX0034</c> concern escapes, backreferences, and Unicode
+            properties, which POSIX has none of; <c>REGEX0050</c>-<c>REGEX0056</c> are constructs only .NET has;
+            <c>REGEX0070</c>, <c>REGEX0090</c>, and <c>REGEX0110</c> are reserved for JavaScript, PCRE, and POSIX; and
+            <c>REGEX0200</c> and up belong to the parser itself rather than to the grammar.
+            </para>
+            <para>
+            A construct the flavor does not have is not reported at all. It is simply not that construct: <c>\A</c> is the
+            letter <c>A</c> where there is no such anchor, which is what an engine without it does.
+            </para>
+            <para>
+            The identifiers in the first three bands correspond one to one with the members of the engine's
+            <c>RegexParseError</c>, which is what makes the differential test against the runtime meaningful.
+            </para>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.RegexParser">
+            <summary>The grammar every flavor shares: alternation, sequence, and quantifier.</summary>
+            <remarks>
+            <para>
+            The engine this is modelled on scans a run of ordinary characters and then splits the last one off if a quantifier
+            turns out to follow. That cannot produce exact spans: in extended mode the run is interrupted by trivia, so the
+            characters it covers are not contiguous in the source. Here every literal is one atom of one UTF-16 code unit, a
+            quantifier binds the atom node in front of it, and trivia is peeked before it is claimed. One code unit rather than
+            one rune is deliberate and matches the engine: in <c>"😀*"</c> the quantifier applies to the low surrogate.
+            </para>
+            <para>
+            A quantifier applied to a quantifier is recovery rather than a fatal error, which is also what lets the same code
+            read <c>a*+</c> as a possessive quantifier for the flavors that have them.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexParser.Options">
+            <summary>The options in effect at the reading position.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexParser.OptionsStack">
+            <summary>The options saved at each open parenthesis, restored at the matching close.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexParser.CaptureBuilder">
+            <summary>The builder that collects capture slots, non-null only during the numbering pass.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.CollectCaptureTable">
+            <summary>
+            Walks the pattern once and reports the capture groups it declares, discarding everything else.
+            </summary>
+            <remarks>
+            <para>
+            Whether <c>\1</c> is a backreference or an octal escape, whether <c>(?(1)…)</c> tests a group or matches an
+            expression, and what number a named group ends up with all depend on groups that may be declared later, so the
+            numbering has to be known before the first atom is classified.
+            </para>
+            <para>
+            The pass is the real parser rather than a cut-down skipper. A skipper would have to agree with the parser on
+            exactly how many characters every escape and every character class covers -- <c>[\x5D]</c> alone is enough to
+            break one that does not -- and any disagreement would show up as a miscounted group somewhere far away. Running
+            the same code twice cannot disagree with itself, and a pattern is short enough that the second walk costs
+            nothing worth saving.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ParsePattern(Meziantou.Framework.Language.Regex.Internals.RegexCaptureTable)">
+            <summary>Parses the whole pattern. Never throws; problems become diagnostics.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ReadLiteralPrefix">
+            <summary>Reads the opening delimiter of a JavaScript literal. Every other flavor has none.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ReadLiteralSuffix">
+            <summary>Reads the closing delimiter, flags, and any trailing content of a JavaScript literal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.IsAtBodyEnd(System.Int32)">
+            <summary>
+            Returns whether the pattern body ends at <paramref name="position"/>. A JavaScript literal ends at its closing
+            delimiter rather than at the end of the text.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ParseAtom(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Parses one atom. Must always consume at least one character, so the parser cannot loop forever.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.AlternationSeparatorLength(System.Int32)">
+            <summary>The length of the alternation separator at <paramref name="position"/>, or 0 when there is none.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.GroupOpenLength(System.Int32)">
+            <summary>The length of the token that opens a group at <paramref name="position"/>, or 0.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.GroupCloseLength(System.Int32)">
+            <summary>The length of the token that closes a group at <paramref name="position"/>, or 0.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.BoundOpenLength(System.Int32)">
+            <summary>The length of the token that opens a bound at <paramref name="position"/>, or 0.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.BoundCloseLength(System.Int32)">
+            <summary>The length of the token that closes a bound at <paramref name="position"/>, or 0.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.SimpleQuantifierLength(System.Int32,System.Char@)">
+            <summary>
+            The length of a <c>*</c>, <c>+</c>, or <c>?</c> quantifier at <paramref name="position"/>, or 0, reporting
+            which operator it is. GNU basic expressions spell two of the three escaped.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexParser.IsAtSequenceStart">
+            <summary>Whether the reading position is at the start of a branch, where POSIX changes what is special.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ParseAlternation(System.Boolean)">
+            <summary>Parses the branches of an alternation, in order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ParseSequence(System.Boolean)">
+            <summary>Parses one branch: the terms that must match one after another.</summary>
+            <remarks>
+            The trivia in front of whatever comes next is peeked rather than claimed, because it may belong to the caller's
+            <c>)</c> or <c>|</c> rather than to a term of this branch.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.IsQuantifiable(Meziantou.Framework.Language.Regex.RegexTermSyntax)">
+            <summary>
+            Whether <paramref name="term"/> is something a quantifier can repeat. An assertion matches no characters, so
+            repeating it is meaningless and most engines reject it.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ParseQuantifiers(Meziantou.Framework.Language.Regex.RegexAtomSyntax)">
+            <summary>Applies every quantifier that follows <paramref name="atom"/>, innermost first.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.IsQuantifierAt(System.Int32)">
+            <summary>Returns whether a quantifier starts at <paramref name="position"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.IsWellFormedBoundAt(System.Int32)">
+            <summary>
+            Whether a well-formed bound starts at <paramref name="position"/>, so that a brace that does not open one can
+            stay an ordinary character. Deciding before anything is claimed is what lets the parser avoid a rewind.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ParseRangeQuantifier(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Reads a <c>{n}</c>, <c>{n,}</c>, or <c>{n,m}</c> bound.</summary>
+            <remarks>
+            The caller only gets here once the look-ahead has confirmed the bound is well formed, so every token below is
+            present. A bound that does not fit in an <see cref="T:System.Int32"/> is still consumed in full, so the span stays exact,
+            and the clamped value is carried on the token so a consumer does not have to reparse the digits.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ReadQuantifierModifier">
+            <summary>Reads the <c>?</c> or <c>+</c> that makes a quantifier lazy or possessive.</summary>
+            <remarks>
+            The engine scans trivia between the operator and the <c>?</c>, so <c>a{2,3} ?</c> is lazy in extended mode. The
+            trivia becomes the modifier's leading trivia, which is where it round-trips from.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexParser.UsesEcmaScriptBehavior">
+            <summary>
+            Whether the pattern is read with ECMAScript behaviour: <c>[^]</c> is an empty negated class, octal escapes stop
+            early, and a numeric backreference takes the longest prefix that names an existing group.
+            </summary>
+            <remarks>
+            It is either asked for through .NET's own ECMAScript option or implied by the flavor, because for JavaScript
+            those are simply the rules rather than an option.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexParser.AllowsEmptyCharacterClass">
+            <summary>
+            Whether an empty character class is allowed. In ECMAScript <c>[]</c> matches nothing and <c>[^]</c> matches
+            anything; in .NET the same text is an unterminated class, so this follows the flavor rather than the options.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexParser.UsesUnicodeSetsMode">
+            <summary>
+            Whether the class set grammar is in effect: nested classes, <c>&amp;&amp;</c> and <c>--</c> operators, and
+            <c>\q{…}</c> string disjunctions. That is what the JavaScript <c>v</c> flag turns on.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexParser.UsesUnicodeMode">
+            <summary>Whether the pattern is read as a sequence of code points rather than of UTF-16 code units.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.WithOptions``1(``0)">
+            <summary>Stamps the options in effect onto a node as it is built.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.NoteAutoCapture(System.Int32)">
+            <summary>Takes the next capture number, noting the slot when this is the numbering pass.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.NextAutoCapture">
+            <summary>Takes the next capture number without noting it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.NoteCaptureNumber(System.Int32,System.Int32)">
+            <summary>Notes an explicitly numbered group, as <c>(?&lt;3&gt;x)</c> declares.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.NoteCaptureName(System.String,System.Int32)">
+            <summary>Notes a named group.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.NoteCaptureSpan(System.Int32,Meziantou.Framework.Language.Regex.TextSpan)">
+            <summary>Records where a capture group turned out to be, so the tree and the numbering agree.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.TryEnterRecursion(Meziantou.Framework.Language.Regex.TextSpan)">
+            <summary>Enters a nested construct, or reports that the pattern nests too deeply.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ConsumeRestAsText(System.Int32,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Folds everything that is left into one skipped-text atom so the pattern still round-trips.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.SkipOneCharacter(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia},System.String,System.String)">
+            <summary>Builds a one-character skipped-text atom for input the grammar has no place for.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.Internals.RegexScanner">
+            <summary>Reads a pattern one character at a time and turns spans of it into tokens and trivia.</summary>
+            <remarks>
+            <para>
+            The scanner holds the one invariant the whole library rests on: <see cref="P:Meziantou.Framework.Language.Regex.Internals.RegexScanner.Position"/> is the first character that
+            no token and no trivia has claimed yet, and a token is always built by slicing the text between a remembered start
+            and the current position. A span can therefore never disagree with the text it came from.
+            </para>
+            <para>
+            Trivia is peeked before it is claimed, because whitespace in front of a construct belongs to whatever comes next,
+            which may be the caller's <c>)</c> rather than an atom of the current sequence.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexScanner.Position">
+            <summary>The first character not yet claimed by a token or by trivia.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexScanner.Current">
+            <summary>The character at the reading position, or <c>'\0'</c> at the end of the pattern.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.Token(Meziantou.Framework.Language.Regex.RegexSyntaxKind,System.Int32,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia},System.String)">
+            <summary>Builds a token covering the text from <paramref name="start"/> to the reading position.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.MissingToken(Meziantou.Framework.Language.Regex.RegexSyntaxKind,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Builds a zero-width token standing in for one the source did not contain.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.PeekTriviaEnd(Meziantou.Framework.Language.Regex.RegexPatternOptions,Meziantou.Framework.Language.Regex.RegexFlavor)">
+            <summary>Reports where the trivia at the reading position ends, without claiming it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.TakeTrivia(Meziantou.Framework.Language.Regex.RegexPatternOptions,Meziantou.Framework.Language.Regex.RegexFlavor)">
+            <summary>Claims the trivia at the reading position and reports whatever went wrong inside it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.ScanTrivia(System.Int32,Meziantou.Framework.Language.Regex.RegexPatternOptions,Meziantou.Framework.Language.Regex.RegexFlavor)">
+            <summary>Scans the trivia starting at <paramref name="start"/> and returns where it ends.</summary>
+            <remarks>
+            Ported from the engine's <c>ScanBlank</c>, with its two conditions kept as they are. Whitespace and <c>#</c>
+            comments are trivia only in extended mode, but a <c>(?#…)</c> comment is trivia in every mode, which is why its
+            test is the <c>else</c> of the extended-mode one rather than nested inside it. A <c>#</c> comment ends at a line
+            feed and does not include it, so the line feed is picked up by the whitespace pass on the next turn.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexAlternationSyntax">
+            <summary>Represents a list of branches separated by <c>|</c>.</summary>
+            <remarks>
+            Every pattern body is an alternation, even one with a single branch and no <c>|</c> at all. Keeping the shape
+            uniform means a consumer never has to handle two spellings of the same thing, and it is what makes
+            <see cref="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.IsEquivalentTo(Meziantou.Framework.Language.Regex.RegexSyntaxNode)"/> well defined.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexAlternationSyntax.BarTokens">
+            <summary>The <c>|</c> that follows each branch. <c>BarTokens[i]</c> follows <c>Branches[i]</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexAlternationSyntax.HasAlternatives">
+            <summary>Returns <see langword="true"/> when the alternation has more than one branch.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexAnchorKind">
+            <summary>Identifies which zero-width assertion an anchor is.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexAnchorKind.Caret">
+            <summary><c>^</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexAnchorKind.Dollar">
+            <summary><c>$</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexAnchorKind.StartOfInput">
+            <summary><c>\A</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexAnchorKind.EndOfInputBeforeFinalLineBreak">
+            <summary><c>\Z</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexAnchorKind.EndOfInput">
+            <summary><c>\z</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexAnchorKind.ContiguousMatch">
+            <summary><c>\G</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexAnchorKind.WordBoundary">
+            <summary><c>\b</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexAnchorKind.NonWordBoundary">
+            <summary><c>\B</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexAnchorKind.KeepOut">
+            <summary><c>\K</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexAnchorSyntax">
+            <summary>Represents a zero-width assertion such as <c>^</c>, <c>$</c>, <c>\b</c>, or <c>\A</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexAnchorSyntax.AnchorKind">
+            <summary>Which assertion this is.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexAnyCharacterSyntax">
+            <summary>Represents the <c>.</c> metacharacter.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexAtomicGroupSyntax">
+            <summary>Represents an atomic group, <c>(?&gt;…)</c>, which never gives back what it matched.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexAtomSyntax">
+            <summary>Base type for a single unquantified unit of a pattern, such as a literal, a class, or a group.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexBackreferenceSyntax">
+            <summary>Represents a numbered backreference such as <c>\1</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexBackreferenceSyntax.Number">
+            <summary>The group number the reference names.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexBacktrackingVerbSyntax">
+            <summary>Represents a PCRE backtracking control verb such as <c>(*SKIP)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexBacktrackingVerbSyntax.Name">
+            <summary>The verb name, without the leading <c>*</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexBalancingGroupSyntax">
+            <summary>Represents a .NET balancing group, <c>(?&lt;current-previous&gt;…)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexBalancingGroupSyntax.Name">
+            <summary>The name of the group being pushed, or an empty string when the group only pops.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexBalancingGroupSyntax.PreviousName">
+            <summary>The name or number of the group being popped.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexBalancingGroupSyntax.Number">
+            <summary>The number assigned to <see cref="P:Meziantou.Framework.Language.Regex.RegexBalancingGroupSyntax.Name"/>, or 0 when the group only pops.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexBranchResetGroupSyntax">
+            <summary>Represents a PCRE branch reset group, <c>(?|…)</c>, in which every branch numbers its groups from the same base.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexCalloutSyntax">
+            <summary>Represents a PCRE callout, <c>(?C)</c>, <c>(?C1)</c>, or <c>(?C"text")</c>.</summary>
+            <remarks>A callout hands control to the host at that point in the match. It matches nothing itself.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCalloutSyntax.QuestionToken">
+            <summary>The <c>?C</c> that introduces the callout.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCalloutSyntax.BodyToken">
+            <summary>The number or quoted string that identifies the callout, absent for a bare <c>(?C)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCalloutSyntax.Value">
+            <summary>The callout's identifier, or an empty string when it has none.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexCaptureInfo">
+            <summary>Describes one capture group of a pattern.</summary>
+            <param name="Number">The group number the engine assigns.</param>
+            <param name="Name">The group name. For an unnamed group this is the number written out.</param>
+            <param name="Span">The span of the construct that declares the group.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexCaptureInfo.#ctor(System.Int32,System.String,Meziantou.Framework.Language.Regex.TextSpan)">
+            <summary>Describes one capture group of a pattern.</summary>
+            <param name="Number">The group number the engine assigns.</param>
+            <param name="Name">The group name. For an unnamed group this is the number written out.</param>
+            <param name="Span">The span of the construct that declares the group.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCaptureInfo.Number">
+            <summary>The group number the engine assigns.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCaptureInfo.Name">
+            <summary>The group name. For an unnamed group this is the number written out.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCaptureInfo.Span">
+            <summary>The span of the construct that declares the group.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexCapturingGroupSyntax">
+            <summary>Represents a plain capturing group, <c>(…)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCapturingGroupSyntax.Number">
+            <summary>The group number the engine assigns, or 0 when the group does not capture.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexCharacterClassEscapeSyntax">
+            <summary>Represents a shorthand class escape: <c>\d</c>, <c>\D</c>, <c>\w</c>, <c>\W</c>, <c>\s</c>, or <c>\S</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCharacterClassEscapeSyntax.IsNegated">
+            <summary>Returns <see langword="true"/> when the escape is the negated form, spelled with a capital letter.</summary>
+            <remarks>
+            Only the letters that come in pairs. <c>\R</c> and <c>\X</c> are capitals without a lower-case counterpart, so
+            they are not negations of anything.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexCharacterClassSyntax">
+            <summary>Represents a character class, <c>[abc]</c> or <c>[^a-z]</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCharacterClassSyntax.CaretToken">
+            <summary>The <c>^</c> that negates the class, or <see langword="null"/> when the class is not negated.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCharacterClassSyntax.Members">
+            <summary>The characters, ranges, escapes, and nested constructs the class contains.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCharacterClassSyntax.CloseBracketToken">
+            <summary>The <c>]</c> that closes the class. It is missing when the pattern ends first.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexCharacterEscapeSyntax">
+            <summary>Represents an escape that stands for one character, such as <c>\n</c>, <c>\x41</c>, <c>\cA</c>, or <c>\052</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCharacterEscapeSyntax.Value">
+            <summary>The character the escape stands for.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexCharacterRangeSyntax">
+            <summary>Represents a range inside a character class, such as <c>a-z</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCharacterRangeSyntax.End">
+            <summary>The upper endpoint, absent when the class ends before it, as in <c>[a-</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexClassSetOperationSyntax">
+            <summary>
+            Represents a JavaScript <c>v</c>-mode class set operation: an intersection such as <c>[\w&amp;&amp;\p{L}]</c> or a
+            difference such as <c>[[a-z]--[aeiou]]</c>.
+            </summary>
+            <remarks>
+            The operation is n-ary because the grammar is: <c>[a--b--c]</c> is one difference of three operands rather than
+            two nested ones. Mixing operators at the same level is not allowed, so every operator here is the same.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexClassSetOperationSyntax.Operands">
+            <summary>The sets being combined.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexClassSetOperationSyntax.OperatorTokens">
+            <summary>The operator between each pair of operands. <c>OperatorTokens[i]</c> follows <c>Operands[i]</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexClassSetOperationSyntax.OperatorText">
+            <summary>The operator text, <c>&amp;&amp;</c> or <c>--</c>, or an empty string when there is none.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexClassSetOperationSyntax.IsIntersection">
+            <summary>Returns <see langword="true"/> for <c>&amp;&amp;</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexClassStringLiteralSyntax">
+            <summary>Represents a JavaScript <c>v</c>-mode string disjunction inside a class, <c>\q{abc|def}</c>.</summary>
+            <remarks>
+            This is what lets a class match a sequence rather than a single character, which is why <c>v</c> mode calls its
+            members sets of strings rather than sets of characters.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexClassStringLiteralSyntax.StartToken">
+            <summary>The <c>\q{</c> that opens the disjunction.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexClassStringLiteralSyntax.Value">
+            <summary>The text between the braces, alternatives and all.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexClassStringLiteralSyntax.Alternatives">
+            <summary>The alternatives the disjunction lists.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexClassSubtractionSyntax">
+            <summary>Represents the <c>-[aeiou]</c> tail of a .NET character class subtraction, <c>[a-z-[aeiou]]</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexClassSubtractionSyntax.Subtracted">
+            <summary>The class whose characters are removed from the enclosing one.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexCollatingElementSyntax">
+            <summary>Represents a POSIX collating element, <c>[.ch.]</c>, or an equivalence class, <c>[=a=]</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexCollatingElementSyntax.Value">
+            <summary>The text between the delimiters.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexConditionalReferenceSyntax">
+            <summary>Represents the group reference that a conditional tests, the <c>(1)</c> or <c>(name)</c> of <c>(?(1)yes|no)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexConditionalReferenceSyntax.Name">
+            <summary>The group name or number being tested.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexConditionalSyntax">
+            <summary>Represents a conditional alternation, <c>(?(1)yes|no)</c> or <c>(?(?=a)yes|no)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexConditionalSyntax.Condition">
+            <summary>The group reference or the assertion the conditional tests.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexConditionalSyntax.Alternation">
+            <summary>The branches. The first is taken when the condition holds, the second when it does not.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexDiagnostic">
+            <summary>Represents a parser diagnostic produced while reading a regular-expression pattern.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexDiagnostic.#ctor(System.String,System.String,Meziantou.Framework.Language.Regex.RegexDiagnosticSeverity,Meziantou.Framework.Language.Regex.TextSpan)">
+            <summary>Represents a parser diagnostic produced while reading a regular-expression pattern.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexDiagnosticSeverity">
+            <summary>Represents the severity of a regular-expression parser diagnostic.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexFlavor">
+            <summary>Identifies a regular-expression flavor understood by <see cref="T:Meziantou.Framework.Language.Regex.RegexSyntaxTree"/>.</summary>
+            <remarks>The set of flavors is closed. Use the static properties to obtain an instance.</remarks>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavor.CommonFeatures">
+            <summary>What every flavor has, POSIX basic expressions included.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavor.ModernFeatures">
+            <summary>What every flavor except POSIX basic expressions has.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavor.PerlFeatures">
+            <summary>What the Perl-derived flavors share.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.Net">
+            <summary>The .NET flavor, as <c>System.Text.RegularExpressions</c> defines it.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.JavaScript">
+            <summary>The ECMAScript flavor.</summary>
+            <remarks>
+            Both Unicode flags are honoured. <c>u</c> makes a surrogate pair one atom; <c>v</c> additionally turns on the
+            class set grammar, so a class may nest, be intersected with <c>&amp;&amp;</c>, have another subtracted with
+            <c>--</c>, and contain a <c>\q{…}</c> string disjunction.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.PcrePerl">
+            <summary>The PCRE and Perl flavor.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.PosixExtended">
+            <summary>POSIX extended regular expressions (ERE).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.PosixBasic">
+            <summary>POSIX basic regular expressions (BRE), in which the delimiters are spelled with a backslash.</summary>
+            <remarks>
+            <c>\(…\)</c> groups, <c>\{n,m\}</c> bounds, and backreferences are all supported. Alternation with <c>\|</c>
+            and the <c>\+</c> and <c>\?</c> quantifiers are GNU extensions rather than POSIX proper, and are accepted.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.Name">
+            <summary>The canonical lowercase name of the flavor, such as <c>net</c> or <c>pcre</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.Family">
+            <summary>The grammar family the flavor belongs to.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.Features">
+            <summary>The optional constructs the flavor supports.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexFlavor.HasFeature(Meziantou.Framework.Language.Regex.RegexFlavorFeatures)">
+            <summary>Returns <see langword="true"/> when the flavor supports every feature in <paramref name="feature"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexFlavor.TryParse(System.String,Meziantou.Framework.Language.Regex.RegexFlavor@)">
+            <summary>Resolves a flavor from its name. Recognizes the canonical names and common aliases such as <c>dotnet</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexFlavorFamily">
+            <summary>Identifies the grammar family a <see cref="T:Meziantou.Framework.Language.Regex.RegexFlavor"/> belongs to, which selects the parser.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFamily.Net">
+            <summary>The .NET grammar, as implemented by <c>System.Text.RegularExpressions</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFamily.JavaScript">
+            <summary>The ECMAScript grammar.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFamily.Pcre">
+            <summary>The PCRE and Perl grammar.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFamily.Posix">
+            <summary>The POSIX grammar, both basic and extended.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexFlavorFeatures">
+            <summary>The optional constructs a <see cref="T:Meziantou.Framework.Language.Regex.RegexFlavor"/> supports.</summary>
+            <remarks>
+            <para>
+            A feature records a difference <em>within</em> a grammar family. Differences between families are handled by
+            <see cref="T:Meziantou.Framework.Language.Regex.RegexFlavorFamily"/>, which selects the parser.
+            </para>
+            <para>
+            A construct the flavor does not have is not parsed as that construct. Where there is an ordinary reading it is used
+            instead -- <c>\A</c> is the letter <c>A</c> where there is no such anchor -- and where there is not, the construct
+            is reported as invalid.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.ExtendedGroupSyntax">
+            <summary>
+            The <c>(?…)</c> family of headers exists at all. POSIX has none of them, so a <c>?</c> after <c>(</c> is an
+            ordinary quantifier with nothing to repeat rather than the start of a header.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.NonCapturingGroups">
+            <summary>Non-capturing groups, <c>(?:…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.NamedGroups">
+            <summary>Named groups in any spelling.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.AngleNamedGroups">
+            <summary>Angle-bracket named groups, <c>(?&lt;name&gt;…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.QuoteNamedGroups">
+            <summary>Single-quoted named groups, <c>(?'name'…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.PythonNamedGroups">
+            <summary>Python-style named groups, <c>(?P&lt;name&gt;…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.BalancingGroups">
+            <summary>Balancing groups, <c>(?&lt;current-previous&gt;…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.AtomicGroups">
+            <summary>Atomic groups, <c>(?&gt;…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.BranchReset">
+            <summary>Branch reset groups, <c>(?|…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Conditionals">
+            <summary>Conditional alternations, <c>(?(1)yes|no)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.CommentGroups">
+            <summary>Comment groups, <c>(?#…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.InlineOptions">
+            <summary>Inline options, <c>(?i)</c> and <c>(?i:…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Lookahead">
+            <summary>Lookahead, <c>(?=…)</c> and <c>(?!…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Lookbehind">
+            <summary>Lookbehind, <c>(?&lt;=…)</c> and <c>(?&lt;!…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.AnchorsAZ">
+            <summary>The <c>\A</c>, <c>\Z</c>, <c>\z</c>, and <c>\G</c> anchors.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.KeepOut">
+            <summary>The <c>\K</c> match reset.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Alternation">
+            <summary>Alternation with <c>|</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.PlusAndQuestionQuantifiers">
+            <summary>The <c>+</c> and <c>?</c> quantifiers.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.LazyQuantifiers">
+            <summary>Lazy quantifiers, <c>a*?</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.PossessiveQuantifiers">
+            <summary>Possessive quantifiers, <c>a*+</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.BareBraceIsLiteral">
+            <summary>A <c>{</c> that does not start a well-formed bound is an ordinary character rather than an error.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Backreferences">
+            <summary>Backreferences.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.StrictEscapes">
+            <summary>
+            An unrecognized alphabetic escape such as <c>\q</c> is an error. Where the flavor lacks this, the escape stands
+            for the character itself.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.QuotedLiterals">
+            <summary>Quoted literal runs, <c>\Q…\E</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.UnicodeCategories">
+            <summary>Unicode categories and blocks, <c>\p{L}</c> and <c>\P{L}</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.UnicodeCategoriesRequireUnicodeFlag">
+            <summary>Unicode categories are recognized only when the pattern opts into Unicode mode.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.UnicodePropertyNames">
+            <summary>
+            Unicode property names may name a property as well as a value, as <c>\p{Script=Greek}</c> does, and are not
+            checked against the .NET category and block names.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.CharacterClassSubtraction">
+            <summary>Character class subtraction, <c>[a-z-[aeiou]]</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.PosixBracketExpressions">
+            <summary>POSIX bracket expressions, <c>[[:alpha:]]</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.ClassSetOperations">
+            <summary>
+            The class set grammar: nested classes, <c>&amp;&amp;</c> and <c>--</c> operators, and <c>\q{…}</c> string
+            disjunctions. JavaScript turns it on with the <c>v</c> flag rather than having it always.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Recursion">
+            <summary>Recursion, <c>(?R)</c> and <c>(?1)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.BacktrackingVerbs">
+            <summary>Backtracking control verbs such as <c>(*SKIP)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.IgnorePatternWhitespace">
+            <summary>Extended mode, in which whitespace and <c>#</c> comments are insignificant.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.EscapedGroupDelimiters">
+            <summary>Groups and bounds are written escaped, as POSIX basic expressions write <c>\(</c> and <c>\{</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexGroupSyntax">
+            <summary>Base type for every parenthesized construct.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexGroupSyntax.OpenParenToken">
+            <summary>The <c>(</c> that opens the group.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexGroupSyntax.CloseParenToken">
+            <summary>
+            The <c>)</c> that closes the group. It is missing when the pattern ends before the group is closed.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexGroupSyntax.InnerOptions">
+            <summary>The options in effect inside the group, after any inline options in its header were applied.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexInlineOptionsSyntax">
+            <summary>Represents an inline option setter such as <c>(?i)</c> or <c>(?-x)</c>, which has no body.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexInlineOptionsSyntax.OptionsText">
+            <summary>The option letters, such as <c>imnsx-imnsx</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexInlineOptionsSyntax.AppliedOptions">
+            <summary>The options in effect after this setter.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexLiteralSyntax">
+            <summary>Represents a single ordinary character that matches itself.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexLiteralSyntax.Value">
+            <summary>The first code unit of the character this literal matches.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexLiteralSyntax.CodePoint">
+            <summary>
+            The code point this literal matches. In Unicode mode a surrogate pair is one atom, so this is the pair's code
+            point rather than the first half of it.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexLookaroundKind">
+            <summary>Identifies the direction and polarity of a lookaround.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexLookaroundKind.PositiveLookahead">
+            <summary><c>(?=…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexLookaroundKind.NegativeLookahead">
+            <summary><c>(?!…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexLookaroundKind.PositiveLookbehind">
+            <summary><c>(?&lt;=…)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexLookaroundKind.NegativeLookbehind">
+            <summary><c>(?&lt;!…)</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexLookaroundSyntax">
+            <summary>Represents a lookahead or lookbehind, <c>(?=…)</c>, <c>(?!…)</c>, <c>(?&lt;=…)</c>, or <c>(?&lt;!…)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexLookaroundSyntax.LookaroundKind">
+            <summary>The direction and polarity of the assertion.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexLookaroundSyntax.IsLookbehind">
+            <summary>Returns <see langword="true"/> when the assertion looks backwards.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexLookaroundSyntax.IsNegative">
+            <summary>Returns <see langword="true"/> when the assertion must fail for the pattern to match.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexNamedBackreferenceSyntax">
+            <summary>Represents a named backreference such as <c>\k&lt;name&gt;</c>, <c>\k'name'</c>, or <c>\&lt;name&gt;</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexNamedBackreferenceSyntax.StartToken">
+            <summary>The <c>\k</c> that introduces the reference, or the <c>\</c> of the <c>\&lt;name&gt;</c> spelling.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexNamedBackreferenceSyntax.Name">
+            <summary>The group name the reference names, or an empty string when the construct is incomplete.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexNamedGroupSyntax">
+            <summary>Represents a named capturing group, <c>(?&lt;name&gt;…)</c>, <c>(?'name'…)</c>, or <c>(?P&lt;name&gt;…)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexNamedGroupSyntax.GroupKindToken">
+            <summary>The <c>?&lt;</c>, <c>?'</c>, or <c>?P&lt;</c> that introduces the name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexNamedGroupSyntax.Name">
+            <summary>The group name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexNamedGroupSyntax.Number">
+            <summary>The group number the engine assigns.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexNonCapturingGroupSyntax">
+            <summary>Represents a non-capturing group, <c>(?:…)</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexOptionsGroupSyntax">
+            <summary>Represents a group that scopes inline options to its body, <c>(?i:…)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexOptionsGroupSyntax.ColonToken">
+            <summary>The <c>:</c> that separates the options from the body, absent when the header is malformed.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexOptionsGroupSyntax.OptionsText">
+            <summary>The option letters, such as <c>ix-ms</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexOptionsInterop">
+            <summary>Converts between <see cref="T:Meziantou.Framework.Language.Regex.RegexPatternOptions"/> and the .NET engine's own options.</summary>
+            <remarks>
+            Only the options that change how a pattern is <em>read</em> are represented. <c>Compiled</c>, <c>RightToLeft</c>,
+            <c>CultureInvariant</c>, and <c>NonBacktracking</c> affect matching, which this library does not do, so they are
+            dropped in both directions.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexOptionsInterop.ToPatternOptions(System.Text.RegularExpressions.RegexOptions)">
+            <summary>Maps the .NET options that affect parsing onto flavor-neutral options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexOptionsInterop.ToRegexOptions(Meziantou.Framework.Language.Regex.RegexPatternOptions)">
+            <summary>Maps flavor-neutral options back onto .NET options. Options with no .NET equivalent are dropped.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexParseOptions">
+            <summary>Configures how <see cref="T:Meziantou.Framework.Language.Regex.RegexSyntaxTree"/> parses a pattern.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexParseOptions.DefaultMaxRecursionDepth">
+            <summary>The default value of <see cref="P:Meziantou.Framework.Language.Regex.RegexParseOptions.MaxRecursionDepth"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexParseOptions.Flavor">
+            <summary>The flavor to parse the pattern as.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexParseOptions.MaxRecursionDepth">
+            <summary>
+            The maximum number of nested groups and character classes the parser descends into before reporting
+            <c>REGEX0200</c> and treating the remaining text as skipped text. Guards against stack overflow on deeply
+            nested input.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is less than one.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexParseOptions.PatternOptions">
+            <summary>
+            The options in effect at the start of the pattern, as if the caller had passed them to the engine. An inline
+            construct such as <c>(?x)</c> changes them from that point on.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexPatternOptions">
+            <summary>The options that change how a pattern is read.</summary>
+            <remarks>
+            These are the options an engine is given alongside the pattern, and the ones an inline construct such as
+            <c>(?i)</c> or a JavaScript flag letter can set. Options that only affect matching, such as
+            <c>RegexOptions.Compiled</c>, are not represented because they cannot change the syntax tree.
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.IgnoreCase">
+            <summary>Case-insensitive matching. Set by <c>(?i)</c> and by the JavaScript <c>i</c> flag.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.Multiline">
+            <summary><c>^</c> and <c>$</c> match at line boundaries. Set by <c>(?m)</c> and by the JavaScript <c>m</c> flag.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.Singleline">
+            <summary><c>.</c> matches a line feed. Set by <c>(?s)</c>; the JavaScript spelling is <see cref="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.DotAll"/>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.ExplicitCapture">
+            <summary>Only named groups capture. Set by <c>(?n)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.IgnorePatternWhitespace">
+            <summary>Whitespace and <c>#</c> comments are insignificant. Set by <c>(?x)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.EcmaScript">
+            <summary>ECMAScript-compatible behaviour, as <c>RegexOptions.ECMAScript</c> defines it.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.Unicode">
+            <summary>The JavaScript <c>u</c> flag: the pattern is read as a sequence of code points.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.UnicodeSets">
+            <summary>The JavaScript <c>v</c> flag: <see cref="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.Unicode"/> plus class set operations.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.DotAll">
+            <summary>The JavaScript <c>s</c> flag. The .NET spelling is <see cref="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.Singleline"/>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.Global">
+            <summary>The JavaScript <c>g</c> flag. It does not change the syntax tree; it is kept so a literal round-trips.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.Sticky">
+            <summary>The JavaScript <c>y</c> flag. It does not change the syntax tree; it is kept so a literal round-trips.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.HasIndices">
+            <summary>The JavaScript <c>d</c> flag. It does not change the syntax tree; it is kept so a literal round-trips.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexPatternSyntax">
+            <summary>Represents the root node of a pattern and provides replacement helpers.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexPatternSyntax.Alternation">
+            <summary>The body of the pattern.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexPatternSyntax.EndOfPatternToken">
+            <summary>The zero-width token that marks the end of the pattern.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexPatternSyntax.OpenSlashToken">
+            <summary>The opening <c>/</c> when the pattern came from a JavaScript literal.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexPatternSyntax.CloseSlashToken">
+            <summary>The closing <c>/</c> when the pattern came from a JavaScript literal.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexPatternSyntax.FlagsToken">
+            <summary>The flag letters that followed a JavaScript literal, such as <c>giu</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexPatternSyntax.TrailingToken">
+            <summary>Content that followed a JavaScript literal's flags, which a literal may not have.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexPatternSyntax.IsJavaScriptLiteral">
+            <summary>Returns <see langword="true"/> when the pattern was read from a JavaScript literal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexPatternSyntax.ReplaceNode(Meziantou.Framework.Language.Regex.RegexSyntaxNode,Meziantou.Framework.Language.Regex.RegexSyntaxNode)">
+            <summary>
+            Replaces <paramref name="oldNode"/> with <paramref name="newNode"/> and reparses.
+            </summary>
+            <remarks>
+            When <paramref name="newNode"/> carries no leading trivia of its own, the whitespace and comments in front of
+            <paramref name="oldNode"/> are kept, so replacing an argument does not glue it to the previous word. Supply
+            leading trivia on <paramref name="newNode"/> to control the surrounding formatting instead.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexPatternSyntax.ReplaceToken(Meziantou.Framework.Language.Regex.RegexSyntaxToken,Meziantou.Framework.Language.Regex.RegexSyntaxToken)">
+            <inheritdoc cref="M:Meziantou.Framework.Language.Regex.RegexPatternSyntax.ReplaceNode(Meziantou.Framework.Language.Regex.RegexSyntaxNode,Meziantou.Framework.Language.Regex.RegexSyntaxNode)"/>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexPatternSyntax.Reparse(System.String)">
+            <summary>Reparses the spliced text the way this pattern was parsed in the first place.</summary>
+            <remarks>
+            Going through the tree keeps a JavaScript literal a literal. Without that, replacing a node inside <c>/a/g</c>
+            would return a bare pattern whose delimiters had become literal slashes.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexPatternSyntax.TryGetNodeSpan(Meziantou.Framework.Language.Regex.RegexSyntaxNode,Meziantou.Framework.Language.Regex.RegexSyntaxNode,Meziantou.Framework.Language.Regex.TextSpan@)">
+            <summary>Finds <paramref name="targetNode"/> by identity and reports the span it occupies.</summary>
+            <remarks>
+            Walked with a stack rather than by recursion. The parser accepts operator and member chains of any length, so
+            the tree can be as deep as the pattern is long and recursing on that depth would run the stack out.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexPosixCharacterClassSyntax">
+            <summary>Represents a POSIX bracket expression such as <c>[:alpha:]</c>, which is only meaningful inside a character class.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexPosixCharacterClassSyntax.IsNegated">
+            <summary>Returns <see langword="true"/> for the negated form, <c>[:^alpha:]</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexPosixCharacterClassSyntax.Name">
+            <summary>The class name, without the negation marker.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexQuantifiedSyntax">
+            <summary>Represents a term followed by a quantifier, such as <c>a*</c> or <c>(ab){2,3}?</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexQuantifiedSyntax.Mode">
+            <summary>How the quantifier backtracks.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexQuantifierMode">
+            <summary>How a quantifier backtracks.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexQuantifierMode.Greedy">
+            <summary>Matches as much as possible, then gives characters back.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexQuantifierMode.Lazy">
+            <summary>Matches as little as possible, written with a trailing <c>?</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexQuantifierMode.Possessive">
+            <summary>Matches as much as possible and never gives characters back, written with a trailing <c>+</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexQuantifierSyntax">
+            <summary>Base type for the operator part of a quantified term.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexQuantifierSyntax.ModifierToken">
+            <summary>The <c>?</c> or <c>+</c> that follows the operator, or <see langword="null"/> when the quantifier is greedy.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexQuantifierSyntax.Mode">
+            <summary>How the quantifier backtracks.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexQuantifierSyntax.MinCount">
+            <summary>The smallest number of repetitions the quantifier accepts.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexQuantifierSyntax.MaxCount">
+            <summary>The largest number of repetitions the quantifier accepts, or <see langword="null"/> when it is unbounded.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexQuotedLiteralSyntax">
+            <summary>Represents a <c>\Q…\E</c> run, in which every character is literal.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexQuotedLiteralSyntax.StartToken">
+            <summary>The <c>\Q</c> that opens the run.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexQuotedLiteralSyntax.EndToken">
+            <summary>The <c>\E</c> that closes the run, absent when the run reaches the end of the pattern.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexQuotedLiteralSyntax.Value">
+            <summary>The literal text between the delimiters.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexRangeQuantifierSyntax">
+            <summary>Represents a <c>{n}</c>, <c>{n,}</c>, or <c>{n,m}</c> quantifier, with an optional lazy or possessive modifier.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexRangeQuantifierSyntax.MinToken">
+            <summary>The digits of the lower bound.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexRangeQuantifierSyntax.MaxToken">
+            <summary>The digits of the upper bound, absent for <c>{n}</c> and <c>{n,}</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexRangeQuantifierSyntax.MaxCount">
+            <summary>
+            The upper bound, or <see langword="null"/> when the quantifier is unbounded.
+            </summary>
+            <remarks>
+            <c>{2}</c> has no comma, so its upper bound is its lower bound; <c>{2,}</c> has a comma and no second number,
+            so it is unbounded.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexRecursionSyntax">
+            <summary>Represents a PCRE recursion or subroutine call.</summary>
+            <remarks>
+            Every spelling lands here: <c>(?R)</c> restarts the whole pattern, <c>(?1)</c> and <c>\g&lt;1&gt;</c> restart a
+            group by number, and <c>(?&amp;name)</c>, <c>(?P&gt;name)</c>, and <c>\g&lt;name&gt;</c> restart one by name. The
+            two delimiter tokens are whatever that spelling used.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexRecursionSyntax.TargetToken">
+            <summary>The <c>R</c> or the group number the construct recurses into.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSequenceSyntax">
+            <summary>Represents one branch of an alternation: the terms that must match one after another.</summary>
+            <remarks>A branch can be empty, as both branches of <c>(|)</c> are.</remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSimpleQuantifierSyntax">
+            <summary>Represents a <c>*</c>, <c>+</c>, or <c>?</c> quantifier, with an optional lazy or possessive modifier.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSimpleQuantifierSyntax.OperatorToken">
+            <summary>The <c>*</c>, <c>+</c>, or <c>?</c> itself.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSkippedTextSyntax">
+            <summary>Represents text the parser could not recognize, kept so the pattern still round-trips.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSyntaxKind">
+            <summary>Identifies the kind of regular-expression syntax node, token, or trivia.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.LiteralToken">
+            <summary>A single ordinary character that matches itself.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.EscapeToken">
+            <summary>A complete character escape such as <c>\n</c>, <c>\x41</c>, <c>A</c>, <c>\cA</c>, or <c>\052</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.ClassEscapeToken">
+            <summary>A shorthand class escape: <c>\d</c>, <c>\D</c>, <c>\w</c>, <c>\W</c>, <c>\s</c>, or <c>\S</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.AnchorToken">
+            <summary>An anchor: <c>^</c>, <c>$</c>, <c>\b</c>, <c>\B</c>, <c>\A</c>, <c>\Z</c>, <c>\z</c>, <c>\G</c>, or <c>\K</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.NumberToken">
+            <summary>The digits of a <c>{n,m}</c> bound.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.CaretToken">
+            <summary>The <c>^</c> that negates a character class.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.HyphenToken">
+            <summary>The <c>-</c> of a character range or of a .NET class subtraction.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.GroupKindToken">
+            <summary>The marker that follows <c>(</c> and selects the group kind, such as <c>?:</c>, <c>?&gt;</c>, or <c>?&lt;=</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.OptionsToken">
+            <summary>An inline option run such as <c>imnsx-imnsx</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.ColonToken">
+            <summary>The <c>:</c> that ends the header of an options group.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.NameToken">
+            <summary>A capture-group or backreference name.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.OpenNameToken">
+            <summary>The <c>&lt;</c> or <c>'</c> that introduces a name.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.CloseNameToken">
+            <summary>The <c>&gt;</c> or <c>'</c> that ends a name.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.BackreferenceToken">
+            <summary>A numbered backreference such as <c>\1</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.NamedBackreferenceStartToken">
+            <summary>The <c>\k</c> that introduces a named backreference.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.CategoryStartToken">
+            <summary>The <c>\p</c> or <c>\P</c> that introduces a Unicode category or block.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.QuoteStartToken">
+            <summary>The <c>\Q</c> that starts a quoted literal run.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.QuoteEndToken">
+            <summary>The <c>\E</c> that ends a quoted literal run.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.PosixClassStartToken">
+            <summary>The <c>[:</c>, <c>[.</c>, or <c>[=</c> that opens a POSIX bracket expression.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.PosixClassEndToken">
+            <summary>The <c>:]</c>, <c>.]</c>, or <c>=]</c> that closes a POSIX bracket expression.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.RecursionToken">
+            <summary>The body of a PCRE recursion construct such as <c>R</c> or <c>1</c> in <c>(?R)</c> and <c>(?1)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.VerbToken">
+            <summary>A PCRE backtracking verb such as <c>*SKIP</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.CalloutToken">
+            <summary>The body of a PCRE callout, such as the <c>1</c> of <c>(?C1)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.ClassSetOperatorToken">
+            <summary>A JavaScript <c>v</c>-mode class set operator: <c>&amp;&amp;</c> or <c>--</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.SlashToken">
+            <summary>The <c>/</c> delimiter of a JavaScript regular-expression literal.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.FlagsToken">
+            <summary>The flag letters that follow a JavaScript regular-expression literal.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.BadToken">
+            <summary>Text the parser could not recognize. Kept so the pattern still round-trips.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.WhitespaceTrivia">
+            <summary>Whitespace that is insignificant because extended mode is in effect.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.PatternCommentTrivia">
+            <summary>An extended-mode <c>#</c> comment, up to but not including the terminating line feed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexSyntaxKind.InlineCommentTrivia">
+            <summary>A <c>(?#…)</c> comment. Recognized in every mode, not only in extended mode.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSyntaxNode">
+            <summary>Base type for all regular-expression syntax nodes in the immutable syntax tree.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.#ctor(Meziantou.Framework.Language.Regex.RegexSyntaxKind,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxToken},System.ReadOnlySpan{Meziantou.Framework.Language.Regex.RegexSyntaxNodeOrToken})">
+            <summary>Builds a node from its parts, in source order.</summary>
+            <remarks>
+            <para>
+            A node does not claim its tokens here. A caller may pass one that already belongs to another tree, and taking
+            it would change what that tree reports without changing anything about its text. Ownership is recorded when the
+            node is attached to a tree, which is the point at which it is really true.
+            </para>
+            The node's text is the concatenation of its parts and its start is where the first one begins, so a node can
+            never disagree with the source it was built from. Absent optional parts contribute nothing, and a null entry
+            in <paramref name="tokens"/> is skipped, so a caller does not have to filter either list itself.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.GetFullStart(System.ReadOnlySpan{Meziantou.Framework.Language.Regex.RegexSyntaxNodeOrToken})">
+            <summary>Returns where the node starts: the first part that has text, or the first part at all when none does.</summary>
+            <remarks>
+            A zero-width part is skipped first, because a missing token synthesized at the start of an incomplete construct
+            sits at the position of whatever follows it, which is the same position anyway, while a zero-width part in the
+            middle of the list would otherwise be indistinguishable from a real one.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Snapshot``1(System.Collections.Generic.IReadOnlyList{``0})">
+            <summary>Copies a caller-supplied collection so later mutation of it cannot reach the tree.</summary>
+            <remarks>
+            A node computes its text and its span once, at construction. Holding on to the caller's list would let them
+            change what <see cref="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.ChildNodes"/> reports without changing the text those spans were measured against, and
+            every invariant the tree offers rests on those two agreeing.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Part(Meziantou.Framework.Language.Regex.RegexSyntaxNode)">
+            <summary>Wraps a part of a node, yielding the absent part when it is null.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Part(Meziantou.Framework.Language.Regex.RegexSyntaxToken)">
+            <inheritdoc cref="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Part(Meziantou.Framework.Language.Regex.RegexSyntaxNode)"/>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Children(System.ReadOnlySpan{Meziantou.Framework.Language.Regex.RegexSyntaxNode})">
+            <summary>Builds a node's child list, skipping the children the source did not contain.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.FullText">
+            <summary>The exact source text covered by this node, including the trivia of its tokens.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.ChildNodes">
+            <summary>The child nodes of this node, in source order.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Tokens">
+            <summary>The tokens owned directly by this node. Tokens of child nodes are not included.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Flavor">
+            <summary>The flavor the node was parsed as, or <see langword="null"/> when the node is not attached to a tree.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Options">
+            <summary>The options in effect at the first character of this node.</summary>
+            <remarks>
+            Inline constructs such as <c>(?i)</c> change the options part-way through a pattern, so this records what was
+            in effect where the node starts rather than what the whole tree was parsed with. A node built by
+            <see cref="T:Meziantou.Framework.Language.Regex.SyntaxFactory"/> rather than parsed reports <see cref="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.None"/>.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.StartsWithTrivia">
+            <summary>Returns whether the node's text begins with trivia.</summary>
+            <remarks>
+            Reading the leading trivia off the first token is not enough. An incomplete construct can begin with a missing
+            token of no width, as <c>(?&lt;&gt;a)</c> does with its absent group name, and that token carries no trivia even
+            though the node does: the trivia sits on the first token that has text.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.SpanWithoutLeadingTrivia">
+            <summary>
+            The span to overwrite when a replacement keeps the trivia in front of the node: everything the node owns except
+            that leading trivia.
+            </summary>
+            <remarks>
+            This is not <see cref="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Span"/>. That span stops at the last token with text, so trivia held by a missing token
+            at the end of an incomplete construct falls outside it while still being part of the node's text. Overwriting
+            only <see cref="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Span"/> would leave that trivia in place and duplicate it.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.FullSpan">
+            <summary>The span of this node including the trivia of its tokens.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.ToFullString">
+            <summary>Returns the exact source text of this node, including comments and all other trivia.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.ChildNodesAndTokens">
+            <summary>Returns the child nodes and the tokens owned by this node, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.DescendantNodes">
+            <summary>Returns every descendant node, in source order.</summary>
+            <remarks>
+            Walked with an explicit stack rather than by recursion: a long operator or member chain builds a deeply
+            left-nested tree, and recursing over one would run the stack out on input that parsed perfectly well.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.DescendantNodesAndTokens">
+            <summary>Returns every descendant node and token, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.DescendantTokens">
+            <summary>Returns every token in this subtree, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.DescendantComments">
+            <summary>Returns every comment in this node, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.IsEquivalentTo(Meziantou.Framework.Language.Regex.RegexSyntaxNode)">
+            <summary>
+            Compares this subtree with <paramref name="other"/> structurally, ignoring trivia. Node kinds, child order,
+            and token text must match; whitespace, line breaks, and comments are not considered.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSyntaxNodeOrToken">
+            <summary>Represents either a syntax node, a syntax token, or nothing at all.</summary>
+            <remarks>
+            The default value represents an absent part. A node builds its text from a list of parts, and an optional part
+            that the source did not contain contributes nothing rather than being filtered out by the caller.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNodeOrToken.IsNone">
+            <summary>Returns <see langword="true"/> when this is the absent part.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSyntaxRewriter">
+            <summary>Visitor that produces a rewritten regular-expression syntax tree.</summary>
+            <remarks>
+            <para>
+            Override any <c>Visit</c> method and return a different node to replace it. Returning the node unchanged, which is
+            what the base implementations do, means "leave this alone and keep looking inside it", so every node type is
+            descended into regardless of flavor.
+            </para>
+            <para>
+            A replaced node is spliced into the source text and the pattern is reparsed once, the same mechanism
+            <see cref="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.ReplaceNode(Meziantou.Framework.Language.Regex.RegexSyntaxNode,Meziantou.Framework.Language.Regex.RegexSyntaxNode)"/> uses. <c>Visit(tree.Root)</c> returns a rewritten
+            <see cref="T:Meziantou.Framework.Language.Regex.RegexPatternSyntax"/>; visiting a node further down rebuilds through its pattern and returns the node
+            that took its place, so a rewrite can be scoped to one subtree. A node with no pattern above it, one built by
+            <see cref="T:Meziantou.Framework.Language.Regex.SyntaxFactory"/> rather than parsed, is returned unchanged because there is no text to splice into.
+            </para>
+            <para>
+            As with <see cref="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.ReplaceNode(Meziantou.Framework.Language.Regex.RegexSyntaxNode,Meziantou.Framework.Language.Regex.RegexSyntaxNode)"/>, a replacement that carries no leading trivia of its own keeps
+            the whitespace and comments in front of the node it replaces.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxRewriter.DefaultVisit(Meziantou.Framework.Language.Regex.RegexSyntaxNode)">
+            <summary>Returns <paramref name="node"/> unchanged, so the walk keeps descending into it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxRewriter.CollectEdits(Meziantou.Framework.Language.Regex.RegexSyntaxNode,System.Collections.Generic.List{Meziantou.Framework.Language.Regex.RegexSyntaxRewriter.TextEdit})">
+            <summary>
+            Asks the overrides about <paramref name="node"/>. A node that was replaced is recorded and not descended into,
+            since its replacement stands for the whole subtree.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxRewriter.FindCounterpart(Meziantou.Framework.Language.Regex.RegexPatternSyntax,Meziantou.Framework.Language.Regex.RegexSyntaxNode)">
+            <summary>Finds the node that replaced <paramref name="original"/> in the reparsed pattern.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSyntaxToken">
+            <summary>Represents a lexical token that belongs to a regular-expression syntax node.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxToken.Text">
+            <summary>The exact source text of the token, excluding trivia.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxToken.ValueText">
+            <summary>The token text with escapes and quoting resolved. Equal to <see cref="P:Meziantou.Framework.Language.Regex.RegexSyntaxToken.Text"/> when there is nothing to resolve.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxToken.IsMissing">
+            <summary>Returns <see langword="true"/> when the parser synthesized this token because the source was missing it.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSyntaxTree">
+            <summary>Represents an immutable regular-expression syntax tree with source text and diagnostics.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxTree.Flavor">
+            <summary>The flavor the pattern was parsed as.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxTree.PatternOptions">
+            <summary>
+            The options in effect at the start of the pattern, including the ones read from a JavaScript literal's flags.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxTree.Captures">
+            <summary>The capture groups the pattern declares, in the order the engine numbers them.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Regex.RegexFlavor)">
+            <summary>Parses <paramref name="pattern"/> as a complete pattern. Never throws; problems are reported as diagnostics.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Regex.RegexParseOptions)">
+            <inheritdoc cref="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Regex.RegexFlavor)"/>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseJavaScriptLiteral(System.String)">
+            <summary>
+            Parses a JavaScript regular-expression literal such as <c>/a+/giu</c>, reading the flag letters into
+            <see cref="P:Meziantou.Framework.Language.Regex.RegexSyntaxTree.PatternOptions"/> and keeping the delimiters on the root so the literal round-trips.
+            </summary>
+            <remarks>
+            The flavor is always <see cref="P:Meziantou.Framework.Language.Regex.RegexFlavor.JavaScript"/>: only that flavor has literals. Text that follows the
+            flags is reported as <c>REGEX0204</c> and kept as skipped text.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.CreateParser(System.String,Meziantou.Framework.Language.Regex.RegexParseOptions,Meziantou.Framework.Language.Regex.Internals.JavaScriptLiteral)">
+            <summary>The flavor family selects the parser; flavor features handle the differences within a family.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.Reparse(System.String)">
+            <summary>
+            Reparses <paramref name="text"/> the way this tree was parsed, literal delimiters included.
+            </summary>
+            <remarks>
+            A tree built by <see cref="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseJavaScriptLiteral(System.String)"/> has to go back through it. Reparsing <c>/a/g</c> as a bare
+            pattern would read the delimiters as literal slashes and the flags as ordinary characters, so an edit anywhere
+            in the pattern would quietly destroy the structure around it.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.GetChanges(Meziantou.Framework.Language.Regex.RegexSyntaxTree)">
+            <summary>
+            Returns the edit that turns <paramref name="oldTree"/>'s text into this tree's text. The common prefix and
+            suffix are trimmed, so an edit in the middle of a pattern reports only the part that actually differs.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.IsEquivalentTo(Meziantou.Framework.Language.Regex.RegexSyntaxTree)">
+            <summary>
+            Compares this tree with <paramref name="other"/> structurally, ignoring extended-mode whitespace and comments.
+            Two patterns parsed as different flavors, or with different options, are never equivalent.
+            </summary>
+            <remarks>
+            Identical text is a shortcut only when the options match as well. The same characters read with and without
+            <see cref="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.IgnorePatternWhitespace"/> are different trees -- a space is a term in one and
+            trivia in the other -- so comparing the text alone would call them equivalent.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSyntaxTrivia">
+            <summary>Represents pattern trivia: whitespace, an extended-mode <c>#</c> comment, or a <c>(?#…)</c> comment.</summary>
+            <remarks>
+            A pattern has no trivia at all unless <see cref="F:Meziantou.Framework.Language.Regex.RegexPatternOptions.IgnorePatternWhitespace"/> is in effect, which
+            inline options can switch on and off part-way through. A <c>(?#…)</c> comment is the exception: it is trivia in
+            every mode.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxTrivia.IsComment">
+            <summary>Returns <see langword="true"/> when the trivia is a comment.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSyntaxVisitor">
+            <summary>Base visitor for walking regular-expression syntax trees without returning a value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexSyntaxVisitor`1">
+            <summary>Base visitor for walking regular-expression syntax trees and returning a value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexTermSyntax">
+            <summary>Base type for anything that can appear as one element of a <see cref="T:Meziantou.Framework.Language.Regex.RegexSequenceSyntax"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexTextChange">
+            <summary>Represents a text replacement operation applied to a <see cref="T:Meziantou.Framework.Language.Regex.SourceText"/> or <see cref="T:Meziantou.Framework.Language.Regex.RegexSyntaxTree"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexUnicodeCategorySyntax">
+            <summary>Represents a Unicode category or block escape, <c>\p{L}</c> or <c>\P{IsGreek}</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexUnicodeCategorySyntax.CategoryStartToken">
+            <summary>The <c>\p</c> or <c>\P</c> that introduces the escape.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexUnicodeCategorySyntax.IsNegated">
+            <summary>Returns <see langword="true"/> for the negated form, spelled <c>\P{…}</c> or <c>\p{^…}</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexUnicodeCategorySyntax.Name">
+            <summary>The category or block name, without the <c>^</c> that some flavors negate it with.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.SeparatedNodes">
+            <summary>
+            Builds the source text of a list of nodes interleaved with separator tokens, where <c>separators[i]</c> follows
+            <c>nodes[i]</c>. The separator list is either the same length as the node list, or one shorter when the last
+            node has no trailing separator.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.SourceText">
+            <summary>Represents immutable regular-expression pattern text with line information and text-change application helpers.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SourceText.GetLine(System.Int32)">
+            <summary>Gets the line containing the specified character position.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SourceText.ToString">
+            <summary>Returns the source text.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.SyntaxFactory">
+            <summary>Builds regular-expression syntax nodes programmatically.</summary>
+            <remarks>
+            A node built here carries no source position and no trivia, which is what makes it usable as a replacement:
+            <see cref="M:Meziantou.Framework.Language.Regex.RegexSyntaxNode.ReplaceNode(Meziantou.Framework.Language.Regex.RegexSyntaxNode,Meziantou.Framework.Language.Regex.RegexSyntaxNode)"/> keeps the whitespace in front of the node it replaces precisely because
+            the replacement brought none of its own.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.Literal(System.Char,Meziantou.Framework.Language.Regex.RegexFlavor)">
+            <summary>Creates a literal that matches <paramref name="value"/> exactly, escaping it where the flavor needs it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.LiteralText(System.String,Meziantou.Framework.Language.Regex.RegexFlavor)">
+            <summary>Creates a sequence that matches <paramref name="value"/> literally, escaping every character that needs it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.AnyCharacter">
+            <summary>Creates <c>.</c>, which matches any character.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.Anchor(Meziantou.Framework.Language.Regex.RegexAnchorKind)">
+            <summary>Creates an anchor such as <c>^</c> or <c>\b</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.ClassEscape(System.Char)">
+            <summary>Creates a shorthand class escape such as <c>\d</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.Alternation(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.Regex.RegexSequenceSyntax})">
+            <summary>Creates an alternation from its branches, inserting the <c>|</c> between them.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.Sequence(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.Regex.RegexTermSyntax})">
+            <summary>Creates a sequence from its terms.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.Group(Meziantou.Framework.Language.Regex.RegexAlternationSyntax,System.Int32)">
+            <summary>Wraps <paramref name="alternation"/> in a capturing group.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.NonCapturingGroup(Meziantou.Framework.Language.Regex.RegexAlternationSyntax)">
+            <summary>Wraps <paramref name="alternation"/> in a non-capturing group, <c>(?:…)</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.Quantified(Meziantou.Framework.Language.Regex.RegexAtomSyntax,System.Char,Meziantou.Framework.Language.Regex.RegexQuantifierMode)">
+            <summary>Applies <c>*</c>, <c>+</c>, or <c>?</c> to <paramref name="atom"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.Quantified(Meziantou.Framework.Language.Regex.RegexAtomSyntax,System.Int32,System.Nullable{System.Int32},Meziantou.Framework.Language.Regex.RegexQuantifierMode)">
+            <summary>Applies a <c>{n,m}</c> bound to <paramref name="atom"/>. Pass <see langword="null"/> for an unbounded maximum.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.CharacterClass(System.Boolean,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.Regex.RegexSyntaxNode})">
+            <summary>Creates a character class from its members.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.CharacterRange(System.Char,System.Char,Meziantou.Framework.Language.Regex.RegexFlavor)">
+            <summary>Creates a range such as <c>a-z</c>, for use inside a character class.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.NeedsEscape(System.Char,Meziantou.Framework.Language.Regex.RegexFlavor)">
+            <summary>Returns whether a character has to be escaped to match itself in this flavor.</summary>
+            <remarks>
+            <para>
+            Escaping is not a superset game: adding a backslash can <em>create</em> a construct. In POSIX basic expressions
+            a bare <c>(</c> is already the literal and <c>\(</c> is what opens a group, so escaping it there would produce
+            the opposite of what the caller asked for. The set therefore has to be chosen per flavor rather than by taking
+            the union.
+            </para>
+            <para>
+            The Perl-derived set is the engine's own table of characters that stop a run of ordinary text, plus <c>]</c>,
+            <c>}</c>, and <c>-</c>, which are harmless outside a class but not inside one, and whitespace and <c>#</c>,
+            which matter once extended mode is on.
+            </para>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.TextLine">
+            <summary>Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.Regex.SourceText"/> instance.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Regex.TextLine.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.Regex.SourceText"/> instance.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Regex.TextSpan">
+            <summary>Represents a contiguous character range in text.</summary>
+        </member>
+    </members>
+</doc>

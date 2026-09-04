@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Literals</id>
+    <version>2.2.15</version>
+    <authors>xp44m</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">LGPL-3.0-or-later</license>
+    <licenseUrl>https://licenses.nuget.org/LGPL-3.0-or-later</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/xp44mm/FSharp.Literals</projectUrl>
+    <description>This package is used to print values and types as their appears in F# style. it also provide a function to get default value from type info.</description>
+    <releaseNotes>update nuget</releaseNotes>
+    <copyright>xp44mm</copyright>
+    <repository url="https://github.com/xp44mm/FSharp.Literals" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="7.0.400" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Idioms" version="1.3.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

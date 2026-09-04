@@ -1,0 +1,13 @@
+
+#load "dotNetRdf.Client.csx" 
+#load "dotNetRdf.Core.csx" 
+#load "dotNetRdf.Data.DataTables.csx" 
+#load "dotNetRdf.Dynamic.csx" 
+#load "dotNetRdf.Inferencing.csx" 
+#load "dotNetRdf.Ldf.csx" 
+#load "dotNetRdf.Ontology.csx" 
+#load "dotNetRdf.Query.FullText.csx" 
+#load "dotNetRdf.Query.Spin.csx" 
+#load "dotNetRdf.Shacl.csx" 
+#load "dotNetRdf.Skos.csx" 
+#load "dotNetRdf.Writing.HtmlSchema.csx" 

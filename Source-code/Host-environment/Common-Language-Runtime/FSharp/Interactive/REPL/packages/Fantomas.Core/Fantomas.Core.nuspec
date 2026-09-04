@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Fantomas.Core</id>
+    <version>7.0.1</version>
+    <authors>Florian Verdonck, Jindřich Ivánek, David Schaefer</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>fantomas_logo.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://fsprojects.github.io/fantomas/</projectUrl>
+    <description>This library aims at formatting F# source files based on a given configuration.
+Fantomas will ensure correct indentation and consistent spacing between elements in the source files.
+Some common use cases include:
+(1) Reformatting a code base to conform a universal page width
+(2) Converting legacy code from verbose syntax to light syntax
+(3) Formatting auto-generated F# signatures.</description>
+    <releaseNotes>### Fixed
+
+* * Add missing 'MultilineBracketStyle' in the returned configuration JSON. [#3151](https://github.com/fsprojects/fantomas/issues/3151)</releaseNotes>
+    <copyright>Copyright © 2025</copyright>
+    <tags>F# fsharp formatting beautifier indentation indenter</tags>
+    <repository type="git" url="https://github.com/fsprojects/fantomas" commit="b3b3e62dcfdc2d786a2153a6b23bd500fea8bc3d" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Fantomas.FCS" version="7.0.1" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="8.0.100" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Immutable" version="8.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.DiagnosticSource" version="8.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Memory" version="4.6.0" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime" version="4.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

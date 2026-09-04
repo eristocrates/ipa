@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.RelativeDate</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.ILocalizationProvider">
+            <summary>Provides an interface for retrieving localized strings for relative date formatting.</summary>
+            <remarks>
+            Implement this interface to provide custom localization for <see cref="T:Meziantou.Framework.RelativeDate"/>.
+            The default implementation uses embedded resource files for Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Simplified Chinese, Spanish and Turkish translations.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.ILocalizationProvider.GetString(System.String,System.Globalization.CultureInfo)">
+            <summary>Gets a localized string for the specified resource name and culture.</summary>
+            <param name="name">The name of the resource string (e.g., "Now", "OneSecondAgo", "InManyDays").</param>
+            <param name="culture">The culture for which to retrieve the localized string. If <see langword="null"/>, the current culture is used.</param>
+            <returns>The localized string, or an empty string if the resource is not found.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.LocalizationProvider">
+            <summary>
+            Provides access to the current localization provider for <see cref="T:Meziantou.Framework.RelativeDate"/> formatting.
+            </summary>
+            <example>
+            <code>
+            // Use custom localization provider
+            LocalizationProvider.Current = new MyCustomLocalizationProvider();
+            
+            var date = RelativeDate.Get(DateTime.UtcNow.AddHours(-2));
+            Console.WriteLine(date); // Uses custom localization
+            
+            // Restore default
+            LocalizationProvider.Current = ResxLocalizationProvider.Instance;
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.LocalizationProvider.Current">
+            <summary>Gets or sets the current localization provider used by <see cref="T:Meziantou.Framework.RelativeDate"/>.</summary>
+            <value>The current <see cref="T:Meziantou.Framework.ILocalizationProvider"/>. The default is <see cref="T:Meziantou.Framework.ResxLocalizationProvider"/>.</value>
+            <exception cref="T:System.ArgumentNullException">Thrown when attempting to set the value to <see langword="null"/>.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.RelativeDate">
+             <summary>Represents a date and time that can be formatted as a human-readable relative time string (e.g., "2 hours ago", "in 3 days").</summary>
+             <example>
+             <code>
+             // Basic usage
+             var pastDate = RelativeDate.Get(DateTime.UtcNow.AddHours(-2));
+             Console.WriteLine(pastDate); // "2 hours ago"
+            
+             var futureDate = RelativeDate.Get(DateTime.UtcNow.AddDays(3));
+             Console.WriteLine(futureDate); // "in 3 days"
+            
+             // With localization
+             var date = RelativeDate.Get(DateTime.UtcNow.AddMinutes(-30));
+             Console.WriteLine(date.ToString(null, CultureInfo.GetCultureInfo("fr"))); // "il y a 30 minutes"
+             Console.WriteLine(date.ToString(null, CultureInfo.InvariantCulture)); // "30 minutes ago"
+            
+             // With custom TimeProvider for testing
+             var fakeTimeProvider = new FakeTimeProvider();
+             fakeTimeProvider.SetUtcNow(new DateTimeOffset(2024, 1, 1, 12, 0, 0, TimeSpan.Zero));
+             var testDate = RelativeDate.Get(new DateTime(2024, 1, 1, 10, 0, 0, DateTimeKind.Utc), fakeTimeProvider);
+             Console.WriteLine(testDate); // "2 hours ago"
+             </code>
+             </example>
+             <remarks>
+             This type provides localized relative date/time strings for multiple languages: Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Simplified Chinese, Spanish and Turkish.
+             The default localization can be customized by setting <see cref="P:Meziantou.Framework.LocalizationProvider.Current"/>.
+             <para>
+             Equality and ordering are defined over the instant alone. The time provider is display state: two instances that compare equal, and hash the same, can still render differently.
+             </para>
+             </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.RelativeDate.TimeProvider">
+            <remarks>
+            Null on a default instance. A struct cannot intercept its own zero-initialization, so every read must fall back to <see cref="P:System.TimeProvider.System"/>.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.#ctor(System.DateTime,System.TimeProvider)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.RelativeDate"/> struct with the specified date and time provider.</summary>
+            <param name="dateTime">The date and time. Must have <see cref="F:System.DateTimeKind.Local"/> or <see cref="F:System.DateTimeKind.Utc"/>.</param>
+            <param name="timeProvider">The time provider to use for calculating the relative time. If <see langword="null"/>, <see cref="P:System.TimeProvider.System"/> is used. A <see cref="F:System.DateTimeKind.Local"/> <paramref name="dateTime"/> is interpreted in this provider's <see cref="P:System.TimeProvider.LocalTimeZone"/>.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="dateTime"/> has <see cref="F:System.DateTimeKind.Unspecified"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.#ctor(System.DateTime)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.RelativeDate"/> struct with the specified date and system time provider.</summary>
+            <param name="dateTime">The date and time. Must have <see cref="F:System.DateTimeKind.Local"/> or <see cref="F:System.DateTimeKind.Utc"/>.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="dateTime"/> has <see cref="F:System.DateTimeKind.Unspecified"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.Get(System.DateTime)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.RelativeDate"/> from a <see cref="P:Meziantou.Framework.RelativeDate.DateTime"/> using the system time provider.</summary>
+            <param name="dateTime">The date and time. Must have <see cref="F:System.DateTimeKind.Local"/> or <see cref="F:System.DateTimeKind.Utc"/>.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.RelativeDate"/> instance.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="dateTime"/> has <see cref="F:System.DateTimeKind.Unspecified"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.Get(System.DateTimeOffset)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.RelativeDate"/> from a <see cref="T:System.DateTimeOffset"/> using the system time provider.</summary>
+            <param name="dateTime">The date and time offset.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.RelativeDate"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.Get(System.DateTime,System.TimeProvider)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.RelativeDate"/> from a <see cref="P:Meziantou.Framework.RelativeDate.DateTime"/> with a custom time provider.</summary>
+            <param name="dateTime">The date and time. Must have <see cref="F:System.DateTimeKind.Local"/> or <see cref="F:System.DateTimeKind.Utc"/>.</param>
+            <param name="timeProvider">The time provider to use for calculating the relative time. If <see langword="null"/>, <see cref="P:System.TimeProvider.System"/> is used.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.RelativeDate"/> instance.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="dateTime"/> has <see cref="F:System.DateTimeKind.Unspecified"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.Get(System.DateTimeOffset,System.TimeProvider)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.RelativeDate"/> from a <see cref="T:System.DateTimeOffset"/> with a custom time provider.</summary>
+            <param name="dateTime">The date and time offset.</param>
+            <param name="timeProvider">The time provider to use for calculating the relative time. If <see langword="null"/>, <see cref="P:System.TimeProvider.System"/> is used.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.RelativeDate"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.ToString">
+            <summary>Returns a localized string representation of the relative date (e.g., "2 hours ago", "in 3 days").</summary>
+            <returns>A localized relative date string.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.ToString(System.String,System.IFormatProvider)">
+            <summary>Formats the relative date using the specified format and culture.</summary>
+            <param name="format">The format string. Only <see langword="null"/>, an empty string and <c>"G"</c> are supported; the output does not vary between them.</param>
+            <param name="formatProvider">An <see cref="T:System.IFormatProvider"/> that supplies culture-specific formatting information, typically a <see cref="T:System.Globalization.CultureInfo"/>. A provider that returns a <see cref="T:System.Globalization.CultureInfo"/> from <see cref="M:System.IFormatProvider.GetFormat(System.Type)"/> is also honored. When <see langword="null"/>, <see cref="P:System.Globalization.CultureInfo.CurrentUICulture"/> is used.</param>
+            <returns>A localized relative date string.</returns>
+            <exception cref="T:System.FormatException"><paramref name="format"/> is not <see langword="null"/>, empty or <c>"G"</c>.</exception>
+            <remarks>
+            The method returns strings like:
+            <list type="bullet">
+            <item><description>"now" - for the current moment</description></item>
+            <item><description>"one second ago" / "in one second" - for ±1 second</description></item>
+            <item><description>"X seconds ago" / "in X seconds" - for &lt;1 minute</description></item>
+            <item><description>"a minute ago" / "in a minute" - for 1-2 minutes</description></item>
+            <item><description>"X minutes ago" / "in X minutes" - for &lt;45 minutes</description></item>
+            <item><description>"an hour ago" / "in an hour" - for 45-120 minutes</description></item>
+            <item><description>"X hours ago" / "in X hours" - for 2-24 hours</description></item>
+            <item><description>"yesterday" / "tomorrow" - for 24-48 hours</description></item>
+            <item><description>"X days ago" / "in X days" - for &lt;30 days</description></item>
+            <item><description>"one month ago" / "in one month" - for 30-60 days</description></item>
+            <item><description>"X months ago" / "in X months" - for &lt;365 days</description></item>
+            <item><description>"one year ago" / "in one year" - for 365-730 days</description></item>
+            <item><description>"X years ago" / "in X years" - for ≥730 days</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.CompareTo(Meziantou.Framework.RelativeDate)">
+            <summary>Compares this instance to another <see cref="T:Meziantou.Framework.RelativeDate"/> and returns an integer that indicates their relative order.</summary>
+            <param name="other">The <see cref="T:Meziantou.Framework.RelativeDate"/> to compare with this instance.</param>
+            <returns>
+            A value less than zero if this instance is earlier than <paramref name="other"/>;
+            zero if they represent the same date and time;
+            greater than zero if this instance is later than <paramref name="other"/>.
+            </returns>
+            <remarks>Only the instant is compared. The time provider is display state and takes no part in the ordering.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.Equals(System.Object)">
+            <summary>Determines whether the specified object is a <see cref="T:Meziantou.Framework.RelativeDate"/> equal to the current instance.</summary>
+            <remarks>Only the instant is compared, so two equal instances built with different time providers can still produce different strings from <see cref="M:Meziantou.Framework.RelativeDate.ToString"/>.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.Equals(Meziantou.Framework.RelativeDate)">
+            <summary>Determines whether the specified <see cref="T:Meziantou.Framework.RelativeDate"/> is equal to the current instance.</summary>
+            <remarks>Only the instant is compared, so two equal instances built with different time providers can still produce different strings from <see cref="M:Meziantou.Framework.RelativeDate.ToString"/>.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.GetHashCode">
+            <summary>Returns a hash code derived from the instant, consistent with <see cref="M:Meziantou.Framework.RelativeDate.Equals(Meziantou.Framework.RelativeDate)"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.op_Equality(Meziantou.Framework.RelativeDate,Meziantou.Framework.RelativeDate)">
+            <summary>Determines whether two <see cref="T:Meziantou.Framework.RelativeDate"/> instances are equal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.op_Inequality(Meziantou.Framework.RelativeDate,Meziantou.Framework.RelativeDate)">
+            <summary>Determines whether two <see cref="T:Meziantou.Framework.RelativeDate"/> instances are not equal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.op_LessThan(Meziantou.Framework.RelativeDate,Meziantou.Framework.RelativeDate)">
+            <summary>Determines whether one <see cref="T:Meziantou.Framework.RelativeDate"/> is less than another.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.op_LessThanOrEqual(Meziantou.Framework.RelativeDate,Meziantou.Framework.RelativeDate)">
+            <summary>Determines whether one <see cref="T:Meziantou.Framework.RelativeDate"/> is less than or equal to another.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.op_GreaterThan(Meziantou.Framework.RelativeDate,Meziantou.Framework.RelativeDate)">
+            <summary>Determines whether one <see cref="T:Meziantou.Framework.RelativeDate"/> is greater than another.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RelativeDate.op_GreaterThanOrEqual(Meziantou.Framework.RelativeDate,Meziantou.Framework.RelativeDate)">
+            <summary>Determines whether one <see cref="T:Meziantou.Framework.RelativeDate"/> is greater than or equal to another.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.ResxLocalizationProvider">
+            <summary>Provides localization using embedded resource files (.resx) for relative date formatting.</summary>
+            <remarks>
+            This is the default localization provider for <see cref="T:Meziantou.Framework.RelativeDate"/>.
+            It includes translations for Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Simplified Chinese, Spanish and Turkish.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.ResxLocalizationProvider.Instance">
+            <summary>Gets the singleton instance of the <see cref="T:Meziantou.Framework.ResxLocalizationProvider"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ResxLocalizationProvider.GetString(System.String,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

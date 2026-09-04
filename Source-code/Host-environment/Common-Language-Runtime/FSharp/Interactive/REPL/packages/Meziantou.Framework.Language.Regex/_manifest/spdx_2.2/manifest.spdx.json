@@ -1,0 +1,295 @@
+{
+  "files": [
+    {
+      "fileName": "./THIRD-PARTY-NOTICES.TXT",
+      "SPDXID": "SPDXRef-File--THIRD-PARTY-NOTICES.TXT-3A9DCC4BB9B0CB40F473215B2A7831C2089ABEBC",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "cf9678c02a96e41f81eaeb7b904497f58723d0e9da53986631498986849cabcf"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "3a9dcc4bb9b0cb40f473215b2a7831c2089abebc"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Meziantou.Framework.Language.Regex.nuspec",
+      "SPDXID": "SPDXRef-File--Meziantou.Framework.Language.Regex.nuspec-B7B567B8C41449C9C0AE99036F2B3BB6005C02B3",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "64695dda4bfa71fa64d4f4a54b8b17711d41fbd3babd68d7ec675ccb9bcc565e"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "b7b567b8c41449c9c0ae99036f2b3bb6005c02b3"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./_rels/.rels",
+      "SPDXID": "SPDXRef-File---rels-.rels-0E875817E8F4C7BCDF4E7B4133A4BC0E44D3A381",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9156b8d915467da4d756e7215b9cf9b704e9d53da489b31317ae0fd3b9a82f74"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0e875817e8f4c7bcdf4e7b4133a4bc0e44d3a381"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./lib/net11.0/Meziantou.Framework.Language.Regex.xml",
+      "SPDXID": "SPDXRef-File--lib-net11.0-Meziantou.Framework.Language.Regex.xml-82A513E2A8CB0804A18F228B79791D55FC2F38DE",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "439a799d7388f058941a14e35fb32f59c70442b46d86f9697cee3370dd31a75e"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "82a513e2a8cb0804a18f228b79791d55fc2f38de"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./README.md",
+      "SPDXID": "SPDXRef-File--README.md-D914B29BD36508D09208AD37DBE2D27DC698491C",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "2ddbebddfb86a1286823bbd6c859be3bdcd0941d4fe2e25f41ae9b703d154422"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "d914b29bd36508d09208ad37dbe2d27dc698491c"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./lib/net10.0/Meziantou.Framework.Language.Regex.xml",
+      "SPDXID": "SPDXRef-File--lib-net10.0-Meziantou.Framework.Language.Regex.xml-481621DD2786841575B773CC8D858B29F1A4FAC7",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "502c446cf16de2601f51e02decda0a1d23a579eb711852d5c9beecbc9d88d459"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "481621dd2786841575b773cc8d858b29f1a4fac7"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./icon.png",
+      "SPDXID": "SPDXRef-File--icon.png-D5DB0D32EF0BCEBDD923C5EC14B9B8B21D1334DB",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "13fb91a7398779171068907c0dccc1fa2c66cf8e501c7de0db74cb9c813ba0c1"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "d5db0d32ef0bcebdd923c5ec14b9b8b21d1334db"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./package/services/metadata/core-properties/nuget.psmdcp",
+      "SPDXID": "SPDXRef-File--package-services-metadata-core-properties-nuget.psmdcp-605C25908FC14EB8B869B5EF47B70EF65149CD4F",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0405db23c59dcf5c600b311206c3fd361282789fbebff9e36a737fa0c8e536a0"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "605c25908fc14eb8b869b5ef47b70ef65149cd4f"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./[Content_Types].xml",
+      "SPDXID": "SPDXRef-File---Content-Types-.xml-A211FD03F8FECF1B5BD3C7A5AFFB17B8F7A45478",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "41b2504c35f2786ca8ed03f27764ec98a4e4b9aa14de9c936eeb046dd93fbbc9"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "a211fd03f8fecf1b5bd3c7a5affb17b8f7a45478"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./lib/net10.0/Meziantou.Framework.Language.Regex.dll",
+      "SPDXID": "SPDXRef-File--lib-net10.0-Meziantou.Framework.Language.Regex.dll-DD4F878F9473F58249DE6F28AAC3DC5FBFBDA8AB",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c7dedcce242360d6d5e5f5049cba51b4d51eb60b97ddd87f9b6ee36939b63788"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "dd4f878f9473f58249de6f28aac3dc5fbfbda8ab"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./LICENSE.txt",
+      "SPDXID": "SPDXRef-File--LICENSE.txt-8B015B178FD20BAAF6AE4525B0067F97C9C3C037",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b11e9ba064b6f298cae7bdd34604f8f1b851428343a2b0f992e83998176a3395"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "8b015b178fd20baaf6ae4525b0067f97c9c3c037"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./lib/net11.0/Meziantou.Framework.Language.Regex.dll",
+      "SPDXID": "SPDXRef-File--lib-net11.0-Meziantou.Framework.Language.Regex.dll-731EEFB92F19AAF561D64CC12AA5EA20A1F65053",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5501cfeb919e6ad9e20640e926c9c3af3ed90a54e7ae75672d5019145726c780"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "731eefb92f19aaf561d64cc12aa5ea20a1f65053"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    }
+  ],
+  "packages": [
+    {
+      "name": "Meziantou.Framework.Language.Regex",
+      "SPDXID": "SPDXRef-RootPackage",
+      "downloadLocation": "NOASSERTION",
+      "packageVerificationCode": {
+        "packageVerificationCodeValue": "dfc55b6832f4de592ecc6ca941662b4f73b6bc9e"
+      },
+      "filesAnalyzed": true,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/meziantou/spdx.org/Meziantou.Framework.Language.Regex@1.0.0?tag_id=839e761c-00b0-4aef-9f38-5383663b165d"
+        }
+      ],
+      "supplier": "Organization: meziantou",
+      "hasFiles": [
+        "SPDXRef-File---rels-.rels-0E875817E8F4C7BCDF4E7B4133A4BC0E44D3A381",
+        "SPDXRef-File--lib-net10.0-Meziantou.Framework.Language.Regex.xml-481621DD2786841575B773CC8D858B29F1A4FAC7",
+        "SPDXRef-File--README.md-D914B29BD36508D09208AD37DBE2D27DC698491C",
+        "SPDXRef-File--package-services-metadata-core-properties-nuget.psmdcp-605C25908FC14EB8B869B5EF47B70EF65149CD4F",
+        "SPDXRef-File--icon.png-D5DB0D32EF0BCEBDD923C5EC14B9B8B21D1334DB",
+        "SPDXRef-File--lib-net11.0-Meziantou.Framework.Language.Regex.xml-82A513E2A8CB0804A18F228B79791D55FC2F38DE",
+        "SPDXRef-File--Meziantou.Framework.Language.Regex.nuspec-B7B567B8C41449C9C0AE99036F2B3BB6005C02B3",
+        "SPDXRef-File--THIRD-PARTY-NOTICES.TXT-3A9DCC4BB9B0CB40F473215B2A7831C2089ABEBC",
+        "SPDXRef-File--lib-net10.0-Meziantou.Framework.Language.Regex.dll-DD4F878F9473F58249DE6F28AAC3DC5FBFBDA8AB",
+        "SPDXRef-File---Content-Types-.xml-A211FD03F8FECF1B5BD3C7A5AFFB17B8F7A45478",
+        "SPDXRef-File--lib-net11.0-Meziantou.Framework.Language.Regex.dll-731EEFB92F19AAF561D64CC12AA5EA20A1F65053",
+        "SPDXRef-File--LICENSE.txt-8B015B178FD20BAAF6AE4525B0067F97C9C3C037"
+      ]
+    }
+  ],
+  "externalDocumentRefs": [],
+  "relationships": [
+    {
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "spdxElementId": "SPDXRef-DOCUMENT"
+    }
+  ],
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "Meziantou.Framework.Language.Regex 1.0.0",
+  "documentNamespace": "http://spdx.org/spdxdocs/Meziantou.Framework.Language.Regex/Meziantou.Framework.Language.Regex/1.0.0/yM0CeIGCJUCj3EInDV574g",
+  "creationInfo": {
+    "created": "2026-08-26T05:09:10Z",
+    "creators": [
+      "Organization: meziantou",
+      "Tool: Microsoft.SBOMTool-4.1.5"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-RootPackage"
+  ]
+}

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>QuikGraph.Data</id>
+    <version>2.5.0</version>
+    <title>QuikGraph.Data</title>
+    <authors>Alexandre Rabérin</authors>
+    <license type="expression">MS-PL</license>
+    <licenseUrl>https://licenses.nuget.org/MS-PL</licenseUrl>
+    <icon>quikgraph_logo.png</icon>
+    <projectUrl>https://github.com/KeRNeLith/QuikGraph</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/KeRNeLith/QuikGraph/master/docs/images/quikgraph_logo.png</iconUrl>
+    <description>.NET library that provides convenient graph helpers related to DataTable (and also serialization to Graphviz).
+
+This package is a subset related to DataTable of the original QuickGraph renamed QuikGraph and ported to .NET Core.
+
+Supported platforms:
+- .NET Standard 2.0+
+- .NET Core 2.0+
+- .NET Framework 3.5+
+
+Supports Source Link</description>
+    <releaseNotes>➟ Release 2.5.0
+Updates:
+- Update package dependencies.
+
+Misc:
+- Assembly is CLS compliant (Common Language Specification).</releaseNotes>
+    <copyright>Copyright © 2020</copyright>
+    <tags>QuickGraph QuikGraph Graph Structure Algorithm C# .NET Serialization Data</tags>
+    <repository type="GitHub" url="https://github.com/KeRNeLith/QuikGraph" commit="9cd6b49292e09041258708a37bed99c56177b0ef" />
+    <dependencies>
+      <group targetFramework=".NETFramework3.5">
+        <dependency id="QuikGraph.Graphviz" version="2.5.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="QuikGraph.Graphviz" version="2.5.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

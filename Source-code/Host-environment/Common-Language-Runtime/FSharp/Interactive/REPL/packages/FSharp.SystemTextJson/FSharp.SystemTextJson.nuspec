@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FSharp.SystemTextJson</id>
+    <version>1.4.36</version>
+    <authors>Loic Denuziere</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/tarmil/FSharp.SystemTextJson</projectUrl>
+    <description>Provides F# union and record support for System.Text.Json</description>
+    <repository type="git" url="https://github.com/tarmil/FSharp.SystemTextJson.git" commit="ac6fd9a3770590e3260bca94395a884c24cf2227" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="6.0.10" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

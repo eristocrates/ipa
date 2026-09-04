@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Data.JsonSchema.OpenApi</id>
+    <version>3.0.1</version>
+    <authors>Ryan Riley</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/fsprojects/FSharp.Data.JsonSchema</projectUrl>
+    <description>OpenAPI schema translator for F# types. Provides IOpenApiSchemaTransformer for ASP.NET Core OpenAPI integration using FSharp.Data.JsonSchema.Core.</description>
+    <releaseNotes>### FSharp.Data.JsonSchema.NJsonSchema 3.0.1
+* Fix recursive type serialization for self-referential types with nullable fields
+* Fix NJsonSchemaTranslator to properly handle Ref("#") in nullable contexts
+### FSharp.Data.JsonSchema.Core 3.0.1
+* No changes (version bump for consistency)
+### FSharp.Data.JsonSchema.OpenApi 3.0.1
+* No changes (version bump for consistency)
+### FSharp.Data.JsonSchema.NJsonSchema 3.0.0
+* **New Package**: Renamed from FSharp.Data.JsonSchema (this is now the go-forward package name)
+* Internal implementation now uses Core IR pipeline (`SchemaAnalyzer.analyze &gt;&gt; NJsonSchemaTranslator.translate`)
+* Add dependency on FSharp.Data.JsonSchema.Core
+* Add net9.0 and net10.0 target frameworks
+* Existing public API (`Generator.Create`, `Generator.CreateMemoized`, schema processors, `Validation` module) remains unchanged
+* All existing schema output remains byte-identical
+* Critical regression fixes for format-annotated types (DateTime, Guid, Uri, byte[], Map, Dictionary, Set, etc.)
+### FSharp.Data.JsonSchema 3.0.0 [DEPRECATED]
+* **This package is deprecated** - renamed to FSharp.Data.JsonSchema.NJsonSchema
+* This is a compatibility shim that references FSharp.Data.JsonSchema.NJsonSchema
+* Please update your package reference to FSharp.Data.JsonSchema.NJsonSchema
+* This package will not receive updates beyond 3.0.0
+* Marked with `[&lt;Obsolete&gt;]` attributes to provide compiler warnings
+### FSharp.Data.JsonSchema.Core 3.0.0
+* **Version aligned** with main package family (was 1.0.0)
+* Target-agnostic JSON Schema IR library
+* `SchemaNode` discriminated union with 11 variants for representing JSON Schema
+* `SchemaAnalyzer.analyze` for recursive F# type analysis
+* `SchemaGeneratorConfig` for configuring discriminator property name, naming policy, and additional properties
+* Supports: records, struct records, multi-case DUs, fieldless DUs, enums, option/voption, Nullable, lists, arrays, sequences, recursive types, generic types, .NET classes
+* Only depends on FSharp.Core and FSharp.SystemTextJson
+* Targets netstandard2.0 through net10.0
+### FSharp.Data.JsonSchema.OpenApi 3.0.0
+* **Version aligned** with main package family (was 1.0.0)
+* OpenAPI schema translator for F# types
+* `OpenApiSchemaTranslator.translate` converts Core IR to OpenApiSchema
+* `FSharpSchemaTransformer` implements `IOpenApiSchemaTransformer` for ASP.NET Core OpenAPI integration
+* Supports Microsoft.OpenApi 1.6.x (net9.0) and 2.0.x (net10.0) via conditional compilation
+* Targets net9.0 and net10.0
+### New in 2.0.2 - (Released 2023/04/16)
+* Fix Multi Case DUs should set 'additionalProperties' to false (#16)
+* Fix DUs with decimals cause the 'Decimal' type to get redefined (#18)
+* Thank you, @blakeSaucier, for the issues and fixes!
+### New in 2.0.1 - (Released 2022/11/10)
+* Fix generation of F# list type (#12)
+### New in 2.0.0 - (Released 2021/11/03)
+* Fix stack overflow when generating schema for `seq&lt;'a&gt;` with an open generic parameter (#7)
+* Fix nested type schema generation (#10)
+* Enforce required and optional fields, particularly strings (#11)
+### New in 1.0.0 - (Released 2020/11/18)
+* Explicit support for .NET 5.0
+### New in 0.1.0 - (Released 2020/06/05)
+* Use System.Text.Json rather than Newtonsoft.Json [#4](https://github.com/panesofglass/FSharp.Data.JsonSchema/pull/5)
+### New in 0.0.2 - (Released 2019/10/22)
+* Default null value handling set to ignore null values
+* Add support for netstandard2.1
+### New in 0.0.1 - (Released 2019/10/22)
+* Initial, non-alpha release
+### New in 0.0.1-alpha1 - (Released 2019/10/22)
+* Initial release</releaseNotes>
+    <copyright>Copyright © 2019-2025 Ryan Riley. All rights reserved.</copyright>
+    <tags>fsharp json schema jsonschema</tags>
+    <repository type="git" url="https://github.com/fsprojects/FSharp.Data.JsonSchema" commit="a2f45573c52998e6c596ebf068823d043da4e92b" />
+    <dependencies>
+      <group targetFramework="net9.0">
+        <dependency id="FSharp.Data.JsonSchema.Core" version="3.0.1" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="10.0.102" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.OpenApi" version="9.0.12" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net10.0">
+        <dependency id="FSharp.Data.JsonSchema.Core" version="3.0.1" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="10.0.102" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.OpenApi" version="10.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net9.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+      <group targetFramework="net10.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+</package>

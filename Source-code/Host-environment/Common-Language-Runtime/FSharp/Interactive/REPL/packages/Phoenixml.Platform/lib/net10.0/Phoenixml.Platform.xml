@@ -1,0 +1,1354 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Phoenixml.Platform</name>
+    </assembly>
+    <members>
+        <member name="T:Phoenixml.Platform.Abstractions.Account.IAccountStatus">
+            <summary>Surfaces account and license state to the rest of the application.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Account.IAccountStatus.CurrentLicense">
+            <summary>Currently-stored license, or null if the user has not registered.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Account.IAccountStatus.IsActive">
+            <summary>True iff <see cref="P:Phoenixml.Platform.Abstractions.Account.IAccountStatus.CurrentLicense"/> is non-null and within its grace window.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Abstractions.Account.IAccountStatus.Changed">
+            <summary>Raised when the license is issued, renewed, revoked, or cleared.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Account.ILicenseStore">
+            <summary>
+            Persists the license JWT. Implementations are platform-specific: DPAPI on Windows,
+            Keychain on macOS, libsecret on Linux. Fallback to an obfuscated file is permitted
+            but discouraged.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Account.ILicenseStore.LoadAsync(System.Threading.CancellationToken)">
+            <summary>Loads the stored JWT, or returns <see langword="null"/> if none is stored.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Account.ILicenseStore.SaveAsync(System.String,System.Threading.CancellationToken)">
+            <summary>Saves <paramref name="jwt"/> to the platform-specific secret store.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Account.ILicenseStore.ClearAsync(System.Threading.CancellationToken)">
+            <summary>Removes any stored JWT from the secret store.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Account.UpdateInfo">
+            <summary>Information about an available update.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Account.UpdateInfo.#ctor(System.String,System.Uri,System.Uri,System.DateTimeOffset,System.String)">
+            <summary>Information about an available update.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Account.IUpdateChannel">
+            <summary>Surfaces update-availability state to the rest of the application.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Account.IUpdateChannel.LatestKnown">
+            <summary>
+            Most recently observed update info, or null if no check has succeeded yet.
+            </summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Abstractions.Account.IUpdateChannel.Changed">
+            <summary>Raised when the latest-known update info changes.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Account.IUpdateChannel.CheckAsync(System.Threading.CancellationToken)">
+            <summary>Triggers a check (typically piggybacked on the license-check ping). Honors per-product rate limits.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Account.License">
+            <summary>Decoded license claims; mirrors the JWT body documented in the licensing API spec.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Account.License.#ctor(System.String,System.String,System.String,System.Boolean,System.String,System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>Decoded license claims; mirrors the JWT body documented in the licensing API spec.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Documents.DocumentChange">
+            <summary>Notification that a document was edited. Views subscribe via <see cref="E:Phoenixml.Platform.Abstractions.Documents.IDocument.Changed"/>.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.DocumentChange.#ctor(Phoenixml.Platform.Abstractions.Documents.DocumentId,System.String,Phoenixml.Platform.Abstractions.Documents.DocumentChangeKind,System.DateTimeOffset)">
+            <summary>Notification that a document was edited. Views subscribe via <see cref="E:Phoenixml.Platform.Abstractions.Documents.IDocument.Changed"/>.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Documents.DocumentChangeKind">
+            <summary>Classifies the nature of a <see cref="T:Phoenixml.Platform.Abstractions.Documents.DocumentChange"/>.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentChangeKind.Edit">
+            <summary>A content edit was applied.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentChangeKind.UndoApplied">
+            <summary>An undo operation was applied.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentChangeKind.RedoApplied">
+            <summary>A redo operation was applied.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentChangeKind.Loaded">
+            <summary>The document was loaded from its source.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentChangeKind.Saved">
+            <summary>The document was saved to its source.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentChangeKind.Reverted">
+            <summary>The document was reverted to its last saved state.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Documents.DocumentId">
+            <summary>Stable identifier for a document, preserved across save/reload cycles.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.DocumentId.#ctor(System.Guid)">
+            <summary>Stable identifier for a document, preserved across save/reload cycles.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.DocumentId.New">
+            <summary>Creates a new unique <see cref="T:Phoenixml.Platform.Abstractions.Documents.DocumentId"/>.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.DocumentId.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Documents.DocumentKind">
+            <summary>Identifies the vocabulary or file type of a document.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentKind.Unknown">
+            <summary>The kind is not known or not set.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentKind.Xml">
+            <summary>An XML document.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentKind.Xsd">
+            <summary>An XML Schema Definition document.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentKind.Xslt">
+            <summary>An XSLT stylesheet.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentKind.XQuery">
+            <summary>An XQuery module.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentKind.Json">
+            <summary>A JSON document.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Documents.DocumentKind.Pipeline">
+            <summary>An XProc pipeline document.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Documents.IDocument">
+            <summary>The central contract for a document in the Phoenixml document model.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IDocument.Id">
+            <summary>Gets the stable identifier for this document.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IDocument.Source">
+            <summary>Gets the URI of the document's source, or <see langword="null"/> for unsaved new documents.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IDocument.DisplayName">
+            <summary>Gets the display name shown in tabs and title bars.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IDocument.Kind">
+            <summary>Gets the vocabulary kind of this document.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IDocument.IsDirty">
+            <summary>Gets a value indicating whether the document has unsaved changes.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IDocument.Undo">
+            <summary>Gets the undo/redo stack for this document.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Abstractions.Documents.IDocument.Changed">
+            <summary>Raised after every applied edit. Plain Action&lt;T&gt; — zero System.Reactive dependency in Abstractions.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IDocument.SaveAsync(System.Threading.CancellationToken)">
+            <summary>Saves the document to its source.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IDocument.CanCloseAsync(System.Threading.CancellationToken)">
+            <summary>Asks whether it is safe to close the document (e.g. prompt save if dirty).</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Documents.IDocumentProvider">
+            <summary>Opens or creates documents of a specific <see cref="T:Phoenixml.Platform.Abstractions.Documents.DocumentKind"/>.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IDocumentProvider.Kind">
+            <summary>Gets the vocabulary kind this provider handles.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IDocumentProvider.CanOpen(System.Uri)">
+            <summary>Returns <see langword="true"/> if this provider can open the given <paramref name="source"/> URI.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IDocumentProvider.OpenAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>Opens the document at <paramref name="source"/>.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IDocumentProvider.NewAsync(System.Threading.CancellationToken)">
+            <summary>Creates a new, empty document.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Documents.IDocumentView">
+            <summary>
+            A view bound to a document. The same document may have zero or more views. Views
+            observe the document's <see cref="E:Phoenixml.Platform.Abstractions.Documents.IDocument.Changed"/> event and update themselves;
+            they never mutate the document directly — mutations flow through commands on the
+            undo stack.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IDocumentView.Document">
+            <summary>Gets the document this view is bound to.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IDocumentView.ViewKindId">
+            <summary>Gets the view kind identifier (e.g. "tree", "text", "preview").</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IDocumentView.Activate">
+            <summary>Activates this view, making it the focused view for the document.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IDocumentView.Deactivate">
+            <summary>Deactivates this view when focus moves elsewhere.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Documents.IEditorCommand">
+            <summary>
+            A single, reversible edit. Commands compose (typing five characters merges into one
+            undo step), serialize (for crash recovery), and describe themselves (so the Edit menu
+            shows "Undo Rename element").
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IEditorCommand.Description">
+            <summary>Human-readable description of the edit, shown in Undo/Redo menu items.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IEditorCommand.Apply(Phoenixml.Platform.Abstractions.Documents.IDocument)">
+            <summary>Applies the edit to <paramref name="document"/>.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IEditorCommand.Revert(Phoenixml.Platform.Abstractions.Documents.IDocument)">
+            <summary>Reverts the edit on <paramref name="document"/>.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IEditorCommand.TryMergeWith(Phoenixml.Platform.Abstractions.Documents.IEditorCommand,Phoenixml.Platform.Abstractions.Documents.IEditorCommand@)">
+            <summary>
+            Attempts to merge this command with <paramref name="previous"/> into a single undo step.
+            Returns <see langword="true"/> and sets <paramref name="merged"/> when the merge succeeds.
+            </summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Documents.IUndoStack">
+            <summary>Command-pattern undo/redo stack for a document.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IUndoStack.CanUndo">
+            <summary>Gets a value indicating whether there is a command available to undo.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IUndoStack.CanRedo">
+            <summary>Gets a value indicating whether there is a command available to redo.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IUndoStack.NextUndoDescription">
+            <summary>Gets the description of the next command to be undone, or <see langword="null"/> if the stack is empty.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Documents.IUndoStack.NextRedoDescription">
+            <summary>Gets the description of the next command to be redone, or <see langword="null"/> if the redo stack is empty.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IUndoStack.Execute(Phoenixml.Platform.Abstractions.Documents.IEditorCommand)">
+            <summary>Applies <paramref name="command"/> and pushes it onto the undo stack.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IUndoStack.Undo">
+            <summary>Reverts the most recent command and moves it to the redo stack.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IUndoStack.Redo">
+            <summary>Re-applies the most recently undone command and moves it back to the undo stack.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Documents.IUndoStack.Clear">
+            <summary>Empties both the undo and redo stacks.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Editing.DiagnosticSeverity">
+            <summary>Severity level for a diagnostic reported by a validator, linter, or parser.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Editing.DiagnosticSeverity.Info">
+            <summary>Informational message; no action required.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Editing.DiagnosticSeverity.Warning">
+            <summary>Warning; may indicate a problem but processing can continue.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Editing.DiagnosticSeverity.Error">
+            <summary>Error; processing cannot continue without resolution.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Editing.FindOptions">
+            <summary>Options for <c>FindReplaceView</c>'s find/replace operations.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.FindOptions.SearchText">
+            <summary>Text to search for.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.FindOptions.ReplaceText">
+            <summary>Replacement text. Used only by replace operations.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.FindOptions.MatchCase">
+            <summary>When true, the search is case-sensitive.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.FindOptions.MatchWholeWord">
+            <summary>When true, only whole-word matches are returned.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.FindOptions.UseRegex">
+            <summary>When true, <see cref="P:Phoenixml.Platform.Abstractions.Editing.FindOptions.SearchText"/> is interpreted as a regular expression.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.FindOptions.UseXPath">
+            <summary>When true, <see cref="P:Phoenixml.Platform.Abstractions.Editing.FindOptions.SearchText"/> is interpreted as an XPath expression.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.FindOptions.Scope">
+            <summary>Scope over which the search is performed.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Editing.FindScope">
+            <summary>Scope for a find/replace operation.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Editing.FindScope.CurrentDocument">
+            <summary>Search within the currently active document only.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Editing.FindScope.AllOpenDocuments">
+            <summary>Search across all open documents.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Abstractions.Editing.FindScope.ConnectedCollection">
+            <summary>Search across the connected collection (database/folder).</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Editing.IDiagnostic">
+            <summary>
+            A single problem reported by a validator, linter, or parser. Surfaces in
+            <c>ProblemsView</c>; click-to-navigate uses <see cref="P:Phoenixml.Platform.Abstractions.Editing.IDiagnostic.Location"/>.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.IDiagnostic.Severity">
+            <summary>Severity level of this diagnostic.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.IDiagnostic.Code">
+            <summary>Diagnostic code (e.g. "XSD0001"). Null = uncoded.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.IDiagnostic.Message">
+            <summary>Human-readable message.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.IDiagnostic.Location">
+            <summary>
+            Document location reference. Opaque to the view — the view passes it back to
+            the document on click. Document interprets it (line/col, XPath, XDM-id, etc.).
+            </summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Editing.ITreeNode">
+            <summary>
+            A single node in a tree shown by <see cref="T:Phoenixml.Platform.Abstractions.Editing.ITreeNodeProvider"/>. Vocabulary
+            providers (XML, XSLT, etc.) build their own concrete node types and surface
+            them through this contract so the generic tree control can render them.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.ITreeNode.Id">
+            <summary>Stable identifier used for selection persistence and equality.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.ITreeNode.Label">
+            <summary>Display label.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.ITreeNode.IconKey">
+            <summary>Optional icon key (theme-resolved); null = no icon.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.ITreeNode.HasChildren">
+            <summary>True if this node has children that haven't been enumerated yet.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Editing.ITreeNodeProvider">
+            <summary>
+            Provides nodes for <c>TreeEditorView</c> to render. Vocabulary packages
+            (e.g. Phoenixml.Platform.Editor.Xml) supply concrete implementations that adapt
+            their domain model (XDM trees, XSLT stylesheets, etc.) to a generic tree.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Editing.ITreeNodeProvider.Roots">
+            <summary>Root nodes of the tree.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Abstractions.Editing.ITreeNodeProvider.GetChildren(Phoenixml.Platform.Abstractions.Editing.ITreeNode)">
+            <summary>Enumerates the children of <paramref name="node"/>; called lazily by the tree.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Abstractions.Editing.ITreeNodeProvider.Changed">
+            <summary>Raised when the underlying tree changes structurally and the view should refresh.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Abstractions.Localization.IStringLocalizer">
+            <summary>
+            Looks up localized strings by key. The default implementation reads from .resx
+            resources; replace it via DI to plug a different localization backend.
+            </summary>
+            <remarks>
+            v1 ships English-only. The interface exists so adding locales post-v1 is a
+            translation job, not an engineering refactor.
+            </remarks>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Localization.IStringLocalizer.Item(System.String)">
+            <summary>Looks up the string for <paramref name="key"/>. Returns the key itself if not found.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Abstractions.Localization.IStringLocalizer.Item(System.String,System.Object[])">
+            <summary>Looks up and formats; equivalent to <c>string.Format(this[key], args)</c>.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Diagnostics.CrashCapture">
+            <summary>
+            Hooks <see cref="E:System.AppDomain.UnhandledException"/> and
+            <see cref="E:System.Threading.Tasks.TaskScheduler.UnobservedTaskException"/> to write a structured JSON
+            crash record to disk before the process terminates.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.CrashCapture.Install(System.String)">
+            <summary>
+            Installs the crash capture hooks for the given application.
+            Call once at startup, before <c>app.Run()</c>.
+            </summary>
+            <param name="appName">
+            Application name; crash records are written to
+            <c>&lt;settings-root&gt;/crashes/&lt;appName&gt;-&lt;timestamp&gt;.json</c>.
+            </param>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.CrashCapture.WriteCrashRecord(System.String,System.Exception,System.String)">
+            <summary>
+            Writes a crash record to disk for the given exception.
+            Exposed internally to allow unit tests to exercise the serialization path
+            without triggering a real unhandled exception.
+            </summary>
+            <param name="appName">Application name for the crash record.</param>
+            <param name="exception">The exception to record.</param>
+            <param name="appVersion">Optional application version string.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Diagnostics.CrashRecord">
+            <summary>A JSON-serializable crash record.</summary>
+            <param name="Timestamp">UTC timestamp when the crash was recorded.</param>
+            <param name="ExceptionType">The fully-qualified exception type name.</param>
+            <param name="Message">The exception message.</param>
+            <param name="StackTrace">The exception stack trace.</param>
+            <param name="AppVersion">The application version string.</param>
+            <param name="OsDescription">The operating system description.</param>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.CrashRecord.#ctor(System.DateTimeOffset,System.String,System.String,System.String,System.String,System.String)">
+            <summary>A JSON-serializable crash record.</summary>
+            <param name="Timestamp">UTC timestamp when the crash was recorded.</param>
+            <param name="ExceptionType">The fully-qualified exception type name.</param>
+            <param name="Message">The exception message.</param>
+            <param name="StackTrace">The exception stack trace.</param>
+            <param name="AppVersion">The application version string.</param>
+            <param name="OsDescription">The operating system description.</param>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecord.Timestamp">
+            <summary>UTC timestamp when the crash was recorded.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecord.ExceptionType">
+            <summary>The fully-qualified exception type name.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecord.Message">
+            <summary>The exception message.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecord.StackTrace">
+            <summary>The exception stack trace.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecord.AppVersion">
+            <summary>The application version string.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecord.OsDescription">
+            <summary>The operating system description.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Diagnostics.CrashRecordContext">
+            <summary>Source-generated JSON serializer context for <see cref="P:Phoenixml.Platform.Diagnostics.CrashRecordContext.CrashRecord"/>.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecordContext.CrashRecord">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecordContext.DateTimeOffset">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecordContext.String">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecordContext.Default">
+            <summary>
+            The default <see cref="T:System.Text.Json.Serialization.JsonSerializerContext"/> associated with a default <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Diagnostics.CrashRecordContext.GeneratedSerializerOptions">
+            <summary>
+            The source-generated options associated with this context.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.CrashRecordContext.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.CrashRecordContext.#ctor(System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.CrashRecordContext.GetTypeInfo(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Phoenixml.Platform.Diagnostics.DiagnosticsBuilder">
+            <summary>
+            Extension methods for wiring Phoenixml diagnostics into an <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.DiagnosticsBuilder.AddPhoenixmlDiagnostics(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            Adds Phoenixml diagnostics to the service collection:
+            <list type="bullet">
+              <item>A rolling log-file sink via <see cref="T:Phoenixml.Platform.Diagnostics.LogFileSinkProvider"/>.</item>
+              <item>Crash capture via <see cref="M:Phoenixml.Platform.Diagnostics.CrashCapture.Install(System.String)"/>.</item>
+            </list>
+            </summary>
+            <param name="services">The service collection to configure.</param>
+            <param name="appName">
+            The application name; used for log file and crash record paths.
+            </param>
+            <returns>The same <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> for chaining.</returns>
+        </member>
+        <member name="T:Phoenixml.Platform.Diagnostics.LogFileSink">
+            <summary>
+            A minimal rolling log file sink.  One file is created per calendar day at
+            <c>&lt;settings-root&gt;/logs/&lt;appName&gt;-yyyy-MM-dd.log</c>.
+            Each entry is a single line in the format:
+            <code>[yyyy-MM-dd HH:mm:ss.fff] [LEVEL] [category] message</code>
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.LogFileSink.#ctor(System.String,System.String)">
+            <summary>Initialises the sink for the given application and category.</summary>
+            <param name="appName">Application name, used to derive the log file path.</param>
+            <param name="category">Logger category name (typically the class full name).</param>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.LogFileSink.BeginScope``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.LogFileSink.IsEnabled(Microsoft.Extensions.Logging.LogLevel)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.LogFileSink.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.LogFileSink.GetLogFilePath(System.DateTime)">
+            <summary>Returns the log file path for the given timestamp (one file per day).</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Diagnostics.LogFileSinkProvider">
+            <summary>
+            Provider that creates <see cref="T:Phoenixml.Platform.Diagnostics.LogFileSink"/> instances.
+            Register via <see cref="M:Phoenixml.Platform.Diagnostics.DiagnosticsBuilder.AddPhoenixmlDiagnostics(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.LogFileSinkProvider.#ctor(System.String)">
+            <summary>Initialises the provider for the given application.</summary>
+            <param name="appName">Application name passed through to each sink instance.</param>
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.LogFileSinkProvider.CreateLogger(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Phoenixml.Platform.Diagnostics.LogFileSinkProvider.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:Phoenixml.Platform.Documents.Document">
+            <summary>
+            Abstract base class for all documents in the Phoenixml document model.
+            Concrete documents (e.g. <c>XmlDocument</c>) derive from this and implement
+            <see cref="M:Phoenixml.Platform.Documents.Document.SaveAsync(System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Documents.Document.#ctor(Phoenixml.Platform.Abstractions.Documents.DocumentId,System.Uri,System.String,Phoenixml.Platform.Abstractions.Documents.DocumentKind)">
+            <summary>
+            Initializes a new <see cref="T:Phoenixml.Platform.Documents.Document"/> instance.
+            </summary>
+            <param name="id">The stable document identifier.</param>
+            <param name="source">The URI of the document's source, or <see langword="null"/> for new unsaved documents.</param>
+            <param name="displayName">The display name shown in tabs and title bars.</param>
+            <param name="kind">The vocabulary kind of this document.</param>
+        </member>
+        <member name="P:Phoenixml.Platform.Documents.Document.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Documents.Document.Source">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Documents.Document.DisplayName">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Documents.Document.Kind">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Documents.Document.IsDirty">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Documents.Document.Undo">
+            <inheritdoc/>
+        </member>
+        <member name="E:Phoenixml.Platform.Documents.Document.Changed">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phoenixml.Platform.Documents.Document.SaveAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phoenixml.Platform.Documents.Document.CanCloseAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phoenixml.Platform.Documents.Document.RaiseChange(System.String,Phoenixml.Platform.Abstractions.Documents.DocumentChangeKind)">
+            <summary>Raises <see cref="E:Phoenixml.Platform.Documents.Document.Changed"/>. Called from the undo stack after Apply/Revert.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Documents.Document.MarkClean">
+            <summary>Resets dirty state after a successful save.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Documents.DocumentService">
+            <summary>
+            Tracks open documents, surfaces "active document" state, and dispatches
+            close-with-confirm. All mutation flows through the public methods; views
+            observe via the events.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Documents.DocumentService.OpenDocuments">
+            <summary>Gets the list of currently open documents.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Documents.DocumentService.ActiveDocument">
+            <summary>Gets the currently active document, or <see langword="null"/> if no document is open.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Documents.DocumentService.DocumentOpened">
+            <summary>Raised when a document is added to the open list.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Documents.DocumentService.DocumentClosed">
+            <summary>Raised when a document is removed from the open list.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Documents.DocumentService.ActiveDocumentChanged">
+            <summary>Raised when the active document changes.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Documents.DocumentService.Add(Phoenixml.Platform.Abstractions.Documents.IDocument)">
+            <summary>
+            Adds <paramref name="document"/> to the open list and makes it the active document.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Documents.DocumentService.CloseAsync(Phoenixml.Platform.Abstractions.Documents.IDocument,System.Threading.CancellationToken)">
+            <summary>
+            Closes <paramref name="document"/>, first asking <see cref="M:Phoenixml.Platform.Abstractions.Documents.IDocument.CanCloseAsync(System.Threading.CancellationToken)"/> whether
+            it is safe to do so. Returns <see langword="false"/> if the document declined to close.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Documents.DocumentService.SetActive(Phoenixml.Platform.Abstractions.Documents.IDocument)">
+            <summary>
+            Makes <paramref name="document"/> the active document.
+            Passing <see langword="null"/> clears the active document.
+            Throws <see cref="T:System.InvalidOperationException"/> if <paramref name="document"/> is not in the open list.
+            </summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Documents.Internal.EnglishOnlyStringLocalizer">
+            <summary>
+            Default <see cref="T:Phoenixml.Platform.Abstractions.Localization.IStringLocalizer"/> implementation. Returns the key itself,
+            formatted via <see cref="P:System.Globalization.CultureInfo.InvariantCulture"/> when args are supplied.
+            English-only by design for v1; replace via DI to plug a real localization backend.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Documents.Internal.EnglishOnlyStringLocalizer.Item(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Documents.Internal.EnglishOnlyStringLocalizer.Item(System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="T:Phoenixml.Platform.Editing.BreadcrumbView">
+            <summary>
+            Horizontal breadcrumb showing the ancestor path of the current selection.
+            Click any segment to navigate.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.BreadcrumbView.#ctor">
+            <summary>Initializes a new instance of <see cref="T:Phoenixml.Platform.Editing.BreadcrumbView"/>.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Editing.BreadcrumbView.SegmentClicked">
+            <summary>Raised when the user clicks a breadcrumb segment.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.BreadcrumbView.SetPath(System.Collections.Generic.IReadOnlyList{Phoenixml.Platform.Editing.BreadcrumbSegment})">
+            <summary>Replaces the segments. Last segment is rendered without a trailing chevron.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.BreadcrumbView.InitializeComponent(System.Boolean)">
+            <summary>
+            Wires up the controls and optionally loads XAML markup and attaches dev tools (if Avalonia.Diagnostics package is referenced).
+            </summary>
+            <param name="loadXaml">Should the XAML be loaded into the component.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Editing.BreadcrumbSegment">
+            <summary>One segment in a <see cref="T:Phoenixml.Platform.Editing.BreadcrumbView"/> path.</summary>
+            <param name="Id">Stable identifier for this segment.</param>
+            <param name="Label">Display label shown in the breadcrumb.</param>
+            <param name="Payload">Optional host-defined data passed back via <c>SegmentClicked</c>.</param>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.BreadcrumbSegment.#ctor(System.String,System.String,System.Object)">
+            <summary>One segment in a <see cref="T:Phoenixml.Platform.Editing.BreadcrumbView"/> path.</summary>
+            <param name="Id">Stable identifier for this segment.</param>
+            <param name="Label">Display label shown in the breadcrumb.</param>
+            <param name="Payload">Optional host-defined data passed back via <c>SegmentClicked</c>.</param>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.BreadcrumbSegment.Id">
+            <summary>Stable identifier for this segment.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.BreadcrumbSegment.Label">
+            <summary>Display label shown in the breadcrumb.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.BreadcrumbSegment.Payload">
+            <summary>Optional host-defined data passed back via <c>SegmentClicked</c>.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Editing.BreadcrumbSegmentRow">
+            <summary>Internal row view-model used by the breadcrumb DataTemplate.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.BreadcrumbSegmentRow.#ctor(Phoenixml.Platform.Editing.BreadcrumbSegment,System.Boolean)">
+            <summary>Internal row view-model used by the breadcrumb DataTemplate.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.BreadcrumbSegmentRow.Segment">
+            <summary>The underlying segment.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.BreadcrumbSegmentRow.Label">
+            <summary>Display label (forwarded from <see cref="P:Phoenixml.Platform.Editing.BreadcrumbSegmentRow.Segment"/>).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.BreadcrumbSegmentRow.HasNext">
+            <summary>True when a chevron separator should be rendered after this segment.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Editing.FindReplaceView">
+            <summary>
+            UI panel for find/replace. Exposes <see cref="P:Phoenixml.Platform.Editing.FindReplaceView.Options"/> as the current settings snapshot;
+            raises events when the user clicks action buttons. The host performs the actual search.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.FindReplaceView.#ctor">
+            <summary>Initializes a new instance of <see cref="T:Phoenixml.Platform.Editing.FindReplaceView"/>.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.FindReplaceView.Options">
+            <summary>Gets the current find/replace options, rebuilt on every UI change.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Editing.FindReplaceView.FindRequested">
+            <summary>Raised when the user clicks the Find button.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Editing.FindReplaceView.FindNextRequested">
+            <summary>Raised when the user clicks the Find Next button.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Editing.FindReplaceView.ReplaceRequested">
+            <summary>Raised when the user clicks the Replace button.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Editing.FindReplaceView.ReplaceAllRequested">
+            <summary>Raised when the user clicks the Replace All button.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.FindReplaceView.InitializeComponent(System.Boolean)">
+            <summary>
+            Wires up the controls and optionally loads XAML markup and attaches dev tools (if Avalonia.Diagnostics package is referenced).
+            </summary>
+            <param name="loadXaml">Should the XAML be loaded into the component.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Editing.FindReplaceViewModel">
+            <summary>
+            Mutable state backing for <see cref="T:Phoenixml.Platform.Editing.FindReplaceView"/>. Modelled as a record so that
+            each UI-driven change produces a fresh snapshot; <see cref="M:Phoenixml.Platform.Editing.FindReplaceViewModel.Build"/> creates a
+            <see cref="T:Phoenixml.Platform.Abstractions.Editing.FindOptions"/> record from the current state.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.FindReplaceViewModel.Build">
+            <summary>Builds a <see cref="T:Phoenixml.Platform.Abstractions.Editing.FindOptions"/> snapshot from the current state.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Editing.ProblemsView">
+            <summary>
+            Displays a list of <see cref="T:Phoenixml.Platform.Abstractions.Editing.IDiagnostic"/> entries with severity icons.
+            Double-click a row to raise <see cref="E:Phoenixml.Platform.Editing.ProblemsView.DiagnosticActivated"/>; the host navigates
+            to <c>diagnostic.Location</c>.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.ProblemsView.#ctor">
+            <summary>Initializes a new instance of <see cref="T:Phoenixml.Platform.Editing.ProblemsView"/>.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Editing.ProblemsView.DiagnosticActivated">
+            <summary>Raised when the user double-clicks a diagnostic row.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.ProblemsView.SetDiagnostics(System.Collections.Generic.IReadOnlyList{Phoenixml.Platform.Abstractions.Editing.IDiagnostic})">
+            <summary>Replaces the diagnostics displayed in the list.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.ProblemsView.InitializeComponent(System.Boolean)">
+            <summary>
+            Wires up the controls and optionally loads XAML markup and attaches dev tools (if Avalonia.Diagnostics package is referenced).
+            </summary>
+            <param name="loadXaml">Should the XAML be loaded into the component.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Editing.DiagnosticRow">
+            <summary>Row view-model wrapping an <see cref="T:Phoenixml.Platform.Abstractions.Editing.IDiagnostic"/> for the DataTemplate.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.DiagnosticRow.Source">
+            <summary>The underlying diagnostic.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.DiagnosticRow.SeverityGlyph">
+            <summary>Severity glyph character to display.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.DiagnosticRow.SeverityBrush">
+            <summary>Brush for the severity glyph, resolved from theme tokens.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.DiagnosticRow.Code">
+            <summary>Diagnostic code, or an empty string if uncoded.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.DiagnosticRow.HasCode">
+            <summary>True when a code string is available.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.DiagnosticRow.Message">
+            <summary>Human-readable message.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Editing.TextEditorView">
+            <summary>
+            A basic TextBox-backed text editor. Multiline, monospace font, no wrapping.
+            </summary>
+            <remarks>
+            AvaloniaEdit integration (line numbers, syntax coloring, intellisense popup) is deferred
+            to Plan 5 — XML syntax coloring requires an XML lexer that lives in
+            <c>Phoenixml.Platform.Editor.Xml</c>. v0.3 ships a usable plain-text editor.
+            </remarks>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.TextEditorView.#ctor">
+            <summary>Initializes a new instance of <see cref="T:Phoenixml.Platform.Editing.TextEditorView"/>.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Editing.TextEditorView.TextChanged">
+            <summary>Raised when the text content changes.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.TextEditorView.Text">
+            <summary>Gets or sets the full text content.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.TextEditorView.IsReadOnly">
+            <summary>Gets or sets a value indicating whether the editor is read-only.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.TextEditorView.InitializeComponent(System.Boolean)">
+            <summary>
+            Wires up the controls and optionally loads XAML markup and attaches dev tools (if Avalonia.Diagnostics package is referenced).
+            </summary>
+            <param name="loadXaml">Should the XAML be loaded into the component.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Editing.TreeEditorView">
+            <summary>
+            A vocabulary-agnostic tree editor. Accepts an <see cref="T:Phoenixml.Platform.Abstractions.Editing.ITreeNodeProvider"/> and renders
+            its node hierarchy using Avalonia's <c>TreeView</c> with a <c>HierarchicalDataTemplate</c>.
+            Vocabulary packages supply concrete providers; this control has no XML/XSLT knowledge.
+            </summary>
+            <remarks>
+            v0.3 ships a working tree. Virtualization, drag-and-drop, in-place rename, and accessibility
+            hints are deferred to a later iteration (Plan 6).
+            </remarks>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.TreeEditorView.#ctor">
+            <summary>Initializes a new instance of <see cref="T:Phoenixml.Platform.Editing.TreeEditorView"/>.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.TreeEditorView.Provider">
+            <summary>Gets the currently active node provider.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.TreeEditorView.SelectedNode">
+            <summary>Gets the currently selected node, or <see langword="null"/> when nothing is selected.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Editing.TreeEditorView.SelectionChanged">
+            <summary>Raised when the user changes the selection in the tree.</summary>
+        </member>
+        <member name="E:Phoenixml.Platform.Editing.TreeEditorView.NodeActivated">
+            <summary>Raised when the user double-clicks a node.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.TreeEditorView.SetProvider(Phoenixml.Platform.Abstractions.Editing.ITreeNodeProvider)">
+            <summary>
+            Replaces the active provider and rebuilds the tree. Pass <see langword="null"/> to clear.
+            Subscribes to <see cref="E:Phoenixml.Platform.Abstractions.Editing.ITreeNodeProvider.Changed"/> on the new provider.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.TreeEditorView.SelectById(System.String)">
+            <summary>
+            Selects the node with the given <paramref name="id"/>, if it is among the roots
+            (deep selection is deferred to a later iteration).
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editing.TreeEditorView.InitializeComponent(System.Boolean)">
+            <summary>
+            Wires up the controls and optionally loads XAML markup and attaches dev tools (if Avalonia.Diagnostics package is referenced).
+            </summary>
+            <param name="loadXaml">Should the XAML be loaded into the component.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Editing.TreeNodeViewModel">
+            <summary>
+            View-model wrapper for a single tree node. Children are fetched lazily via the provider
+            when Avalonia first requests the <see cref="P:Phoenixml.Platform.Editing.TreeNodeViewModel.Children"/> collection.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.TreeNodeViewModel.Node">
+            <summary>The underlying domain node.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.TreeNodeViewModel.Label">
+            <summary>Display label (forwarded from <see cref="P:Phoenixml.Platform.Editing.TreeNodeViewModel.Node"/>).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editing.TreeNodeViewModel.Children">
+            <summary>
+            Lazily-loaded children. On first access, calls <see cref="M:Phoenixml.Platform.Abstractions.Editing.ITreeNodeProvider.GetChildren(Phoenixml.Platform.Abstractions.Editing.ITreeNode)"/>
+            and wraps each child in a new <see cref="T:Phoenixml.Platform.Editing.TreeNodeViewModel"/>.
+            </summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Hosting.RegisteredCommand">
+            <summary>
+            A command that has been registered with a <see cref="T:Phoenixml.Platform.Hosting.CommandRegistry"/>.
+            </summary>
+            <param name="Id">Stable, unique identifier for the command (e.g. <c>"file.save"</c>).</param>
+            <param name="DisplayName">Human-readable name shown in menus, command palette, etc.</param>
+            <param name="DefaultKeybinding">Default key binding (e.g. <c>"Ctrl+S"</c>), or <see langword="null"/>.</param>
+            <param name="MenuPath">Slash-delimited menu path (e.g. <c>"File/Save"</c>), or <see langword="null"/>.</param>
+            <param name="ToolbarGroup">Toolbar group identifier, or <see langword="null"/>.</param>
+            <param name="Execute">Factory that receives the DI container and returns a <see cref="T:System.Threading.Tasks.ValueTask"/> to execute the command.</param>
+            <param name="CanExecute">Optional guard; if <see langword="null"/> the command is always enabled.</param>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.RegisteredCommand.#ctor(System.String,System.String,System.String,System.String,System.String,System.Func{System.IServiceProvider,System.Threading.Tasks.ValueTask},System.Func{System.IServiceProvider,System.Boolean})">
+            <summary>
+            A command that has been registered with a <see cref="T:Phoenixml.Platform.Hosting.CommandRegistry"/>.
+            </summary>
+            <param name="Id">Stable, unique identifier for the command (e.g. <c>"file.save"</c>).</param>
+            <param name="DisplayName">Human-readable name shown in menus, command palette, etc.</param>
+            <param name="DefaultKeybinding">Default key binding (e.g. <c>"Ctrl+S"</c>), or <see langword="null"/>.</param>
+            <param name="MenuPath">Slash-delimited menu path (e.g. <c>"File/Save"</c>), or <see langword="null"/>.</param>
+            <param name="ToolbarGroup">Toolbar group identifier, or <see langword="null"/>.</param>
+            <param name="Execute">Factory that receives the DI container and returns a <see cref="T:System.Threading.Tasks.ValueTask"/> to execute the command.</param>
+            <param name="CanExecute">Optional guard; if <see langword="null"/> the command is always enabled.</param>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.RegisteredCommand.Id">
+            <summary>Stable, unique identifier for the command (e.g. <c>"file.save"</c>).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.RegisteredCommand.DisplayName">
+            <summary>Human-readable name shown in menus, command palette, etc.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.RegisteredCommand.DefaultKeybinding">
+            <summary>Default key binding (e.g. <c>"Ctrl+S"</c>), or <see langword="null"/>.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.RegisteredCommand.MenuPath">
+            <summary>Slash-delimited menu path (e.g. <c>"File/Save"</c>), or <see langword="null"/>.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.RegisteredCommand.ToolbarGroup">
+            <summary>Toolbar group identifier, or <see langword="null"/>.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.RegisteredCommand.Execute">
+            <summary>Factory that receives the DI container and returns a <see cref="T:System.Threading.Tasks.ValueTask"/> to execute the command.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.RegisteredCommand.CanExecute">
+            <summary>Optional guard; if <see langword="null"/> the command is always enabled.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Hosting.CommandRegistry">
+            <summary>
+            Explicit-register command registry.  Commands are registered by calling
+            <see cref="M:Phoenixml.Platform.Hosting.CommandRegistry.Register(Phoenixml.Platform.Hosting.RegisteredCommand)"/> with a <see cref="T:Phoenixml.Platform.Hosting.RegisteredCommand"/> instance;
+            a source-generator upgrade is planned for v2 but is not required at v1.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.CommandRegistry.All">
+            <summary>Gets a read-only view of all registered commands keyed by id.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.CommandRegistry.Register(Phoenixml.Platform.Hosting.RegisteredCommand)">
+            <summary>
+            Registers a command.  If a command with the same <see cref="P:Phoenixml.Platform.Hosting.RegisteredCommand.Id"/>
+            already exists it is silently replaced.
+            </summary>
+            <param name="command">The command to register.</param>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.CommandRegistry.Find(System.String)">
+            <summary>
+            Returns the command registered under <paramref name="id"/>,
+            or <see langword="null"/> if no such command exists.
+            </summary>
+            <param name="id">The command identifier to look up.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Hosting.PhoenixmlAppBuilder">
+            <summary>
+            Bootstraps a Phoenixml application.  Every app's <c>Main</c> is roughly ten lines:
+            <code>
+            var builder = PhoenixmlAppBuilder.Create("MyApp", args);
+            builder.Services.AddSingleton&lt;IMyService, MyService&gt;();
+            builder.Commands.Register(new RegisteredCommand("file.open", …));
+            var host = builder.Build();
+            await host.RunAsync();
+            </code>
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.PhoenixmlAppBuilder.AppName">
+            <summary>Gets the name of the application being built.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.PhoenixmlAppBuilder.Commands">
+            <summary>Gets the command registry for this application.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.PhoenixmlAppBuilder.Create(System.String,System.String[])">
+            <summary>Creates a new builder for the application named <paramref name="appName"/>.</summary>
+            <param name="appName">The application name; used for settings paths and single-instance coordination.</param>
+            <param name="args">The command-line arguments passed to <c>Main</c>.</param>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.PhoenixmlAppBuilder.Services">
+            <summary>Gets the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> for registering application services.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.PhoenixmlAppBuilder.Build">
+            <summary>Builds and returns the configured <see cref="T:Microsoft.Extensions.Hosting.IHost"/>.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Hosting.SettingsService">
+            <summary>
+            Persists per-app and shared JSON settings files on disk.
+            Writes are atomic: the new content is written to a <c>.tmp</c> file then
+            renamed over the target so readers never observe a partial write.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.SettingsService.AppSettingsPath">
+            <summary>Gets the path to this application's settings file.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Hosting.SettingsService.SharedSettingsPath">
+            <summary>Gets the path to the shared (cross-app) settings file.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.SettingsService.#ctor(System.String)">
+            <summary>
+            Initialises the service and ensures the required directories exist.
+            </summary>
+            <param name="appName">
+            The application name used to derive the per-app settings directory.
+            Must not be <see langword="null"/> or empty.
+            </param>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.SettingsService.LoadAsync``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Loads and deserialises a settings object from <paramref name="path"/>.
+            Returns <see langword="null"/> if the file does not exist.
+            </summary>
+            <typeparam name="T">The settings type.</typeparam>
+            <param name="path">The file path to read.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.SettingsService.SaveAsync``1(System.String,``0,System.Threading.CancellationToken)">
+            <summary>
+            Serialises <paramref name="value"/> and saves it to <paramref name="path"/> atomically.
+            The method writes to a <c>.tmp</c> file then calls <see cref="M:System.IO.File.Move(System.String,System.String,System.Boolean)"/>
+            to perform an atomic rename.
+            </summary>
+            <typeparam name="T">The settings type.</typeparam>
+            <param name="path">The destination file path.</param>
+            <param name="value">The value to serialise.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.SettingsService.GetPlatformSettingsRoot">
+            <summary>Returns the platform-canonical root directory for Phoenixml settings.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Hosting.SingleInstanceCoordinator">
+            <summary>
+            Ensures only one instance of the application is running at a time.
+            On Windows a named pipe is used; on macOS and Linux a Unix domain socket is used.
+            If the socket or pipe infrastructure is unavailable (sandboxed environment, privilege
+            restriction), the coordinator logs the failure and returns <see langword="true"/> so the
+            application starts normally — a degraded-graceful fallback rather than a hard failure.
+            </summary>
+            <remarks>
+            Integration tests for this class are deferred; socket/pipe behaviour is
+            runtime-environment-dependent and not reliably testable in CI without
+            platform-specific setup.
+            </remarks>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.SingleInstanceCoordinator.#ctor(System.String)">
+            <summary>Initialises the coordinator for the given application.</summary>
+            <param name="appName">The application name; used to derive the pipe or socket name.</param>
+        </member>
+        <member name="E:Phoenixml.Platform.Hosting.SingleInstanceCoordinator.SecondInstanceLaunched">
+            <summary>
+            Raised on the first instance when a second instance connects and forwards its arguments.
+            Uses <c>Action&lt;string[]&gt;</c> for symmetry with the rest of the Abstractions event
+            pattern (see IDocument.Changed); wrapping in EventArgs adds no value here.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.SingleInstanceCoordinator.TryAcquireAsync(System.String[],System.Threading.CancellationToken)">
+            <summary>
+            Tries to acquire the single-instance lock.
+            </summary>
+            <param name="argv">The current process's command-line arguments.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>
+            <see langword="true"/> if this is the first instance (or if single-instance
+            detection could not be established — degrade gracefully);
+            <see langword="false"/> if a second instance forwarded its arguments to the first.
+            </returns>
+        </member>
+        <member name="M:Phoenixml.Platform.Hosting.SingleInstanceCoordinator.DisposeAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:Phoenixml.Platform.Shell.ChromePlatform">
+            <summary>
+            Platform-specific chrome configuration. Detected at runtime from the host OS
+            and applied to <see cref="T:Phoenixml.Platform.Shell.MainWindow"/>. The detection logic is informed by
+            the spike findings in <c>docs/chrome-constraints.md</c>; if a platform's
+            chrome turns out broken in the field, override via <see cref="M:Phoenixml.Platform.Shell.ChromePlatform.Custom(System.Boolean,System.Boolean,System.Boolean,System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Shell.ChromePlatform.ShowWindowsChromeButtons">
+            <summary>True when the explicit min/max/close buttons should be drawn (Win/Linux).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Shell.ChromePlatform.UseTrafficLightsNative">
+            <summary>True when the OS supplies native window decorations (macOS traffic lights).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Shell.ChromePlatform.ExtendsClientArea">
+            <summary>True when the window's client area extends into the chrome region (custom title bar).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Shell.ChromePlatform.FallbackReason">
+            <summary>If chrome falls back to OS decorations, the reason (logged at startup, surfaced in diagnostics).</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.ChromePlatform.Detect">
+            <summary>Detects the right chrome configuration for the current OS.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.ChromePlatform.Custom(System.Boolean,System.Boolean,System.Boolean,System.String)">
+            <summary>Builds a custom configuration. Useful for tests or platform-specific overrides.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Shell.MainWindow">
+            <summary>
+            Application shell window. Provides custom title-bar chrome (per
+            <see cref="T:Phoenixml.Platform.Shell.ChromePlatform"/>), a content slot apps inject their content into,
+            and a composable status bar.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.MainWindow.#ctor">
+            <summary>Initializes a new <see cref="T:Phoenixml.Platform.Shell.MainWindow"/> using the detected platform chrome.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.MainWindow.#ctor(Phoenixml.Platform.Shell.ChromePlatform)">
+            <summary>Initializes a new <see cref="T:Phoenixml.Platform.Shell.MainWindow"/> with the supplied <paramref name="chrome"/> configuration.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.MainWindow.SetContent(System.Object)">
+            <summary>Sets the window's content (the central area between chrome and status bar).</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.MainWindow.SetStatusSegments(System.Collections.Generic.IEnumerable{Phoenixml.Platform.Shell.StatusBarSegment},System.IServiceProvider)">
+            <summary>Replaces the status bar segments.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.MainWindow.SetTitle(System.String)">
+            <summary>Updates the title bar text and the OS-level Title.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.MainWindow.InitializeComponent(System.Boolean)">
+            <summary>
+            Wires up the controls and optionally loads XAML markup and attaches dev tools (if Avalonia.Diagnostics package is referenced).
+            </summary>
+            <param name="loadXaml">Should the XAML be loaded into the component.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Shell.SplitView">
+            <summary>
+            A two-pane split layout with a draggable <see cref="T:Avalonia.Controls.GridSplitter"/> between the panes.
+            Use <see cref="P:Phoenixml.Platform.Shell.SplitView.Orientation"/> to choose horizontal (side-by-side) or vertical (top/bottom).
+            </summary>
+            <remarks>
+            v0.3 ships a minimal working split. Real dockable panes (detach, regroup, save layout)
+            are Plan 6 — not yet earned by v0.3 consumers.
+            </remarks>
+        </member>
+        <member name="F:Phoenixml.Platform.Shell.SplitView.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:Phoenixml.Platform.Shell.SplitView.Orientation"/> Avalonia property.
+            </summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Shell.SplitView.Pane1SizeProperty">
+            <summary>
+            Identifies the <see cref="P:Phoenixml.Platform.Shell.SplitView.Pane1Size"/> Avalonia property.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.SplitView.#ctor">
+            <summary>Initializes a new instance of <see cref="T:Phoenixml.Platform.Shell.SplitView"/>.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Shell.SplitView.Orientation">
+            <summary>
+            Gets or sets the split orientation.
+            <see cref="F:Avalonia.Layout.Orientation.Horizontal"/> = panes side-by-side;
+            <see cref="F:Avalonia.Layout.Orientation.Vertical"/> = panes top/bottom.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Shell.SplitView.Pane1Size">
+            <summary>
+            Gets or sets the size (width when horizontal, height when vertical) of pane 1 in DIPs.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.SplitView.OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Shell.SplitView.Pane1Content">
+            <summary>Gets or sets the content of pane 1 (left/top).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Shell.SplitView.Pane2Content">
+            <summary>Gets or sets the content of pane 2 (right/bottom).</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.SplitView.InitializeComponent(System.Boolean)">
+            <summary>
+            Wires up the controls and optionally loads XAML markup and attaches dev tools (if Avalonia.Diagnostics package is referenced).
+            </summary>
+            <param name="loadXaml">Should the XAML be loaded into the component.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Shell.StatusBar">
+            <summary>
+            Composable status bar. Register segments via <see cref="M:Phoenixml.Platform.Shell.StatusBar.SetSegments(System.Collections.Generic.IEnumerable{Phoenixml.Platform.Shell.StatusBarSegment},System.IServiceProvider)"/> at startup.
+            Apps typically call this from <see cref="T:Phoenixml.Platform.Hosting.PhoenixmlAppBuilder"/> wiring.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.StatusBar.#ctor">
+            <summary>Initializes a new instance of <see cref="T:Phoenixml.Platform.Shell.StatusBar"/>.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.StatusBar.SetSegments(System.Collections.Generic.IEnumerable{Phoenixml.Platform.Shell.StatusBarSegment},System.IServiceProvider)">
+            <summary>
+            Replaces the displayed segments. Segments are sorted by <see cref="P:Phoenixml.Platform.Shell.StatusBarSegment.Order"/>
+            and rendered left-to-right with separators.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.StatusBar.InitializeComponent(System.Boolean)">
+            <summary>
+            Wires up the controls and optionally loads XAML markup and attaches dev tools (if Avalonia.Diagnostics package is referenced).
+            </summary>
+            <param name="loadXaml">Should the XAML be loaded into the component.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Shell.StatusBarSegment">
+            <summary>
+            A composable segment in <see cref="T:Phoenixml.Platform.Shell.StatusBar"/>. Apps register segments via
+            DI; the bar lays them out left-to-right by <see cref="P:Phoenixml.Platform.Shell.StatusBarSegment.Order"/> with separators.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Shell.StatusBarSegment.#ctor(System.String,System.String,System.Int32,System.Func{System.IServiceProvider,System.String})">
+            <summary>
+            A composable segment in <see cref="T:Phoenixml.Platform.Shell.StatusBar"/>. Apps register segments via
+            DI; the bar lays them out left-to-right by <see cref="P:Phoenixml.Platform.Shell.StatusBarSegment.Order"/> with separators.
+            </summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Theming.ColorTokens">
+            <summary>Semantic color tokens. Themes resolve these to concrete hex colors.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.SurfaceBase">
+            <summary>Gets the base surface color (background of windows, panels).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.SurfaceRaised">
+            <summary>Gets the raised surface color (cards, dropdowns).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.SurfaceSunken">
+            <summary>Gets the sunken surface color (input fields, wells).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.ContentPrimary">
+            <summary>Gets the primary content color (body text, icons).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.ContentSecondary">
+            <summary>Gets the secondary content color (captions, hints).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.ContentDisabled">
+            <summary>Gets the disabled content color.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.AccentBrand">
+            <summary>Gets the Phoenixml brand accent color (teal).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.AccentProduct">
+            <summary>Gets the per-product accent color (set by the host application).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.Border">
+            <summary>Gets the border color.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.FocusRing">
+            <summary>Gets the focus ring color.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.Success">
+            <summary>Gets the success state color.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.Warning">
+            <summary>Gets the warning state color.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ColorTokens.Error">
+            <summary>Gets the error state color.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Theming.FluentDarkTheme">
+            <summary>Fluent dark theme with VS Code-inspired stand-in palette (pending design contract per spec §4.4).</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Theming.FluentDarkTheme.Default">
+            <summary>Gets the singleton default instance of the dark theme.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.FluentDarkTheme.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.FluentDarkTheme.Colors">
+            <inheritdoc />
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.FluentDarkTheme.Spacing">
+            <inheritdoc />
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.FluentDarkTheme.Typography">
+            <inheritdoc />
+        </member>
+        <member name="M:Phoenixml.Platform.Theming.FluentDarkTheme.Apply(Avalonia.Controls.IResourceHost)">
+            <inheritdoc />
+        </member>
+        <member name="T:Phoenixml.Platform.Theming.FluentLightTheme">
+            <summary>Fluent light theme with stand-in palette (pending design contract per spec §4.4).</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Theming.FluentLightTheme.Default">
+            <summary>Gets the singleton default instance of the light theme.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.FluentLightTheme.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.FluentLightTheme.Colors">
+            <inheritdoc />
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.FluentLightTheme.Spacing">
+            <inheritdoc />
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.FluentLightTheme.Typography">
+            <inheritdoc />
+        </member>
+        <member name="M:Phoenixml.Platform.Theming.FluentLightTheme.Apply(Avalonia.Controls.IResourceHost)">
+            <inheritdoc />
+        </member>
+        <member name="T:Phoenixml.Platform.Theming.HighContrastTheme">
+            <summary>High-contrast accessibility theme with pure black/white extremes.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Theming.HighContrastTheme.Default">
+            <summary>Gets the singleton default instance of the high-contrast theme.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.HighContrastTheme.Kind">
+            <inheritdoc />
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.HighContrastTheme.Colors">
+            <inheritdoc />
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.HighContrastTheme.Spacing">
+            <inheritdoc />
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.HighContrastTheme.Typography">
+            <inheritdoc />
+        </member>
+        <member name="M:Phoenixml.Platform.Theming.HighContrastTheme.Apply(Avalonia.Controls.IResourceHost)">
+            <inheritdoc />
+        </member>
+        <member name="T:Phoenixml.Platform.Theming.ITheme">
+            <summary>A resolved theme that can apply itself to an Avalonia resource host.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ITheme.Kind">
+            <summary>Gets the theme variant.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ITheme.Colors">
+            <summary>Gets the color tokens for this theme.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ITheme.Spacing">
+            <summary>Gets the spacing tokens for this theme.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.ITheme.Typography">
+            <summary>Gets the typography tokens for this theme.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Theming.ITheme.Apply(Avalonia.Controls.IResourceHost)">
+            <summary>
+            Applies the theme to the given resource host so XAML can bind via
+            <c>{DynamicResource Phoenixml.Color.Surface.Base}</c> etc.
+            The <paramref name="host"/> must be a <see cref="T:Avalonia.StyledElement"/>
+            (e.g. <see cref="T:Avalonia.Application"/>, <c>Window</c>) to provide a writable resource dictionary.
+            </summary>
+            <param name="host">The Avalonia resource host to write tokens into.</param>
+        </member>
+        <member name="T:Phoenixml.Platform.Theming.SpacingTokens">
+            <summary>Spacing scale tokens (4 px base grid).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.SpacingTokens.Xs">
+            <summary>Gets the extra-small spacing value (2 px).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.SpacingTokens.Sm">
+            <summary>Gets the small spacing value (4 px).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.SpacingTokens.Md">
+            <summary>Gets the medium spacing value (8 px).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.SpacingTokens.Lg">
+            <summary>Gets the large spacing value (16 px).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.SpacingTokens.Xl">
+            <summary>Gets the extra-large spacing value (24 px).</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.SpacingTokens.Xxl">
+            <summary>Gets the double-extra-large spacing value (32 px).</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Theming.ThemeKind">
+            <summary>Identifies the theme variant.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Theming.ThemeKind.Light">
+            <summary>Light theme.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Theming.ThemeKind.Dark">
+            <summary>Dark theme.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Theming.ThemeKind.HighContrast">
+            <summary>High-contrast accessibility theme.</summary>
+        </member>
+        <member name="F:Phoenixml.Platform.Theming.ThemeKind.FollowSystem">
+            <summary>Follows the OS light/dark preference.</summary>
+        </member>
+        <member name="T:Phoenixml.Platform.Theming.TypographyTokens">
+            <summary>Typography tokens: font families and size scale.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.TypographyTokens.FontFamilyUi">
+            <summary>Gets the UI font family stack.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.TypographyTokens.FontFamilyMono">
+            <summary>Gets the monospace font family stack.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.TypographyTokens.FontSizeBody">
+            <summary>Gets the body text font size in device-independent pixels.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.TypographyTokens.FontSizeCaption">
+            <summary>Gets the caption font size in device-independent pixels.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Theming.TypographyTokens.FontSizeHeading">
+            <summary>Gets the heading font size in device-independent pixels.</summary>
+        </member>
+    </members>
+</doc>

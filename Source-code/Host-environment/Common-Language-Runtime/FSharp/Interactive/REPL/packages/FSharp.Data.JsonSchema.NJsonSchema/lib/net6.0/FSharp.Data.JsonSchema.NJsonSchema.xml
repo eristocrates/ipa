@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharp.Data.JsonSchema.NJsonSchema</name></assembly>
+<members>
+<member name="M:FSharp.Data.JsonSchema.Generator.CreateMemoized(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{FSharp.Data.JsonSchema.Core.UnionEncodingStyle})">
+<summary>
+ Creates a memoized generator that stores generated schemas in a global cache by Type and casePropertyName.
+</summary>
+</member>
+<member name="M:FSharp.Data.JsonSchema.Generator.Create(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{FSharp.Data.JsonSchema.Core.UnionEncodingStyle})">
+<summary>
+ Creates a generator using the specified casePropertyName and unionEncoding.
+</summary>
+</member>
+<member name="M:FSharp.Data.JsonSchema.NJsonSchemaTranslator.translate(FSharp.Data.JsonSchema.Core.SchemaDocument)">
+<summary>
+ Translate a SchemaDocument to an NJsonSchema.JsonSchema.
+</summary>
+</member>
+<member name="M:FSharp.Data.JsonSchema.NJsonSchemaTranslator.translateNode(NJsonSchema.JsonSchema,NJsonSchema.JsonSchema,System.Collections.Generic.Dictionary{System.String,NJsonSchema.JsonSchema},FSharp.Data.JsonSchema.Core.SchemaNode)">
+<summary>
+ Translate a SchemaNode to a JsonSchema.
+</summary>
+</member>
+<member name="M:FSharp.Data.JsonSchema.NJsonSchemaTranslator.translateProp(NJsonSchema.JsonSchema,NJsonSchema.JsonSchema,System.Collections.Generic.Dictionary{System.String,NJsonSchema.JsonSchema},FSharp.Data.JsonSchema.Core.SchemaNode)">
+<summary>
+ Translate a SchemaNode to a JsonSchemaProperty for use in object properties.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.NJsonSchemaTranslator">
+<summary>
+ Translates Core SchemaDocument to NJsonSchema.JsonSchema objects.
+</summary>
+</member>
+<member name="T:FSharp.Data.JsonSchema.Reflection">
+<summary>
+ Microsoft.FSharp.Reflection helpers
+ see https://github.com/baronfel/Newtonsoft.Json.FSharp.Idiomatic/blob/master/src/Newtonsoft.Json.FSharp.Idiomatic/Newtonsoft.Json.FSharp.Idiomatic.fs#L52-L54
+</summary>
+</member>
+</members>
+</doc>

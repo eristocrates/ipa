@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Fli</id>
+    <version>1.1001.0.0</version>
+    <authors>Constantin Tews</authors>
+    <owners>Constantin Tews</owners>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/CaptnCodr/Fli</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/CaptnCodr/Fli/main/logo.png</iconUrl>
+    <description>F# library to run CLI commands and processes in F# (CE) style.</description>
+    <summary>F# library to run CLI commands and processes in F# (CE) style.</summary>
+    <readme>README.md</readme>
+    <releaseNotes>- Remove encoding from output. (https://github.com/CaptnCodr/Fli/pull/86)
+- Add `cancellationToken` on `executeAsync`. (https://github.com/CaptnCodr/Fli/pull/87)
+(All release notes: https://github.com/CaptnCodr/Fli/blob/main/RELEASE_NOTES.md)</releaseNotes>
+    <copyright>Copyright 2022-2026</copyright>
+    <tags>fsharp cli shell process computation-expression</tags>
+    <dependencies>
+      <dependency id="FSharp.Core" version="8.0.403" />
+    </dependencies>
+  </metadata>
+</package>

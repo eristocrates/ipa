@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Endpoint Systems</dc:creator>
+  <dc:description>Open-source XSD inference and JSON/CSV/XML conversion for .NET. Observes documents to produce progressively-refined schemas; supports schema-aware XML↔JSON round-trip.</dc:description>
+  <dc:identifier>PhoenixmlDb.Schema.Inference</dc:identifier>
+  <version>0.1.0</version>
+  <keywords>xml xsd schema inference json csv phoenixml</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

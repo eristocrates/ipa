@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ChromeProtocol.Core</id>
+    <version>2.1.1</version>
+    <authors>seclerp</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <description>A core library with basic types and interfaces to represent protocol interaction.</description>
+    <copyright>(C) 2026 Andrii Rublov</copyright>
+    <repository type="git" url="https://github.com/seclerp/dotnet-chrome-protocol" commit="5e0e9c7434746c2acee31caf89e9b12671d7d438" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Text.Json" version="8.0.5" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

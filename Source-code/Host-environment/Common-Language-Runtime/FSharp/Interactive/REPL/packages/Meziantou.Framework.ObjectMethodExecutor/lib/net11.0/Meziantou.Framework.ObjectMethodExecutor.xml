@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.ObjectMethodExecutor</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.ObjectMethodExecutor">
+             <summary>Provides a unified way to invoke synchronous and asynchronous methods via reflection.</summary>
+             <remarks>
+             <para>
+             This class creates optimized delegates for method invocation, avoiding repeated reflection overhead.
+             It supports both synchronous and asynchronous methods, including those returning Task, ValueTask,
+             or any custom awaitable type that implements the awaitable pattern.
+             </para>
+             </remarks>
+             <example>
+             Basic usage with synchronous and asynchronous methods:
+             <code>
+             var methodInfo = typeof(MyClass).GetMethod("MyMethod");
+             var executor = ObjectMethodExecutor.Create(methodInfo);
+            
+             var instance = new MyClass();
+             var parameters = new object?[] { param1, param2 };
+             if (executor.IsMethodAsync)
+             {
+                 var result = await executor.ExecuteAsync(instance, parameters);
+             }
+             else
+             {
+                 var result = executor.Execute(instance, parameters);
+             }
+             </code>
+             </example>
+        </member>
+        <member name="P:Meziantou.Framework.ObjectMethodExecutor.IsMethodAsync">
+            <summary>Gets a value indicating whether the method returns an awaitable type.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ObjectMethodExecutor.Create(System.Reflection.MethodInfo)">
+            <summary>Creates an executor for the specified method.</summary>
+            <param name="methodInfo">The method to be invoked.</param>
+            <returns>An <see cref="T:Meziantou.Framework.ObjectMethodExecutor"/> that can invoke the specified method.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ObjectMethodExecutor.Create(System.Reflection.MethodInfo,System.Object[])">
+            <summary>Creates an executor for the specified method with parameter default values.</summary>
+            <param name="methodInfo">The method to be invoked.</param>
+            <param name="parameterDefaultValues">The default values for the method parameters, readable afterwards through <see cref="M:Meziantou.Framework.ObjectMethodExecutor.GetDefaultValueForParameter(System.Int32)"/>. Must contain exactly one entry per parameter.</param>
+            <returns>An <see cref="T:Meziantou.Framework.ObjectMethodExecutor"/> that can invoke the specified method.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ObjectMethodExecutor.Execute(System.Object,System.Object[])">
+            <summary>
+            Executes the configured method on <paramref name="target"/>. This can be used whether or not
+            the configured method is asynchronous.
+            </summary>
+            <remarks>
+            Even if the target method is asynchronous, it's desirable to invoke it using Execute rather than
+            ExecuteAsync if you know at compile time what the return type is, because then you can directly
+            "await" that value (via a cast), and then the generated code will be able to reference the
+            resulting awaitable as a value-typed variable. If you use ExecuteAsync instead, the generated
+            code will have to treat the resulting awaitable as a boxed object, because it doesn't know at
+            compile time what type it would be.
+            </remarks>
+            <param name="target">The object whose method is to be executed.</param>
+            <param name="parameters">Parameters to pass to the method.</param>
+            <returns>The method return value.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="parameters"/> does not contain one entry per method parameter.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ObjectMethodExecutor.ExecuteAsync(System.Object,System.Object[])">
+             <summary>
+             Executes the configured method on <paramref name="target"/>.
+             </summary>
+             <remarks>
+             If you don't know at compile time the type of the method's returned awaitable, you can use ExecuteAsync,
+             which supplies an awaitable-of-object. This always works, but can incur several extra heap allocations
+             as compared with using Execute and then using "await" on the result value typecasted to the known
+             awaitable type. The possible extra heap allocations are for:
+            
+             1. The custom awaitable (though usually there's a heap allocation for this anyway, since normally
+                it's a reference type, and you normally create a new instance per call).
+             2. The custom awaiter (whether or not it's a value type, since if it's not, you need a new instance
+                of it, and if it is, it will have to be boxed so the calling code can reference it as an object).
+             3. The async result value, if it's a value type (it has to be boxed as an object, since the calling
+                code doesn't know what type it's going to be).
+             </remarks>
+             <param name="target">The object whose method is to be executed.</param>
+             <param name="parameters">Parameters to pass to the method.</param>
+             <returns>An object that you can "await" to get the method return value.</returns>
+             <exception cref="T:System.ArgumentException"><paramref name="parameters"/> does not contain one entry per method parameter.</exception>
+             <exception cref="T:System.InvalidOperationException">The configured method is an <c>async void</c> method, which cannot be awaited. Use <see cref="M:Meziantou.Framework.ObjectMethodExecutor.Execute(System.Object,System.Object[])"/> instead.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ObjectMethodExecutor.GetDefaultValueForParameter(System.Int32)">
+            <summary>Gets the default value supplied for the parameter at <paramref name="index"/>.</summary>
+            <remarks>
+            Callers use this to build the <c>parameters</c> array passed to <see cref="M:Meziantou.Framework.ObjectMethodExecutor.Execute(System.Object,System.Object[])"/> or
+            <see cref="M:Meziantou.Framework.ObjectMethodExecutor.ExecuteAsync(System.Object,System.Object[])"/> when they have no value of their own for a parameter. The executor
+            itself never consults these values.
+            </remarks>
+            <param name="index">The zero-based index of the parameter.</param>
+            <returns>The default value supplied for that parameter when the executor was created.</returns>
+            <exception cref="T:System.InvalidOperationException">No parameter default values were supplied to <see cref="M:Meziantou.Framework.ObjectMethodExecutor.Create(System.Reflection.MethodInfo,System.Object[])"/>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="index"/> is negative or not less than the number of parameters.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.ObjectMethodExecutorAwaitable">
+            <summary>Represents an awaitable wrapper that can be used with the await pattern.</summary>
+            <remarks>
+            This type wraps an arbitrary awaitable object and provides a uniform way to await it.
+            It is designed to work with any type that implements the awaitable pattern, including
+            Task, ValueTask, and custom awaitable types.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.ObjectMethodExecutorAwaitable.GetAwaiter">
+            <summary>Returns the awaiter for this awaitable.</summary>
+            <returns>An awaiter that can be used to await this awaitable.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.ObjectMethodExecutorAwaitable.Awaiter">
+            <summary>Provides an awaiter that supports the await pattern.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ObjectMethodExecutorAwaitable.Awaiter.#ctor(System.Object,System.Func{System.Object,System.Boolean},System.Func{System.Object,System.Object},System.Action{System.Object,System.Action},System.Action{System.Object,System.Action})">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.ObjectMethodExecutorAwaitable.Awaiter"/> struct.</summary>
+            <param name="customAwaiter">The custom awaiter to wrap.</param>
+            <param name="isCompletedMethod">The method to check if the operation is completed.</param>
+            <param name="getResultMethod">The method to retrieve the result.</param>
+            <param name="onCompletedMethod">The method to schedule continuations.</param>
+            <param name="unsafeOnCompletedMethod">The method to schedule continuations without capturing context, or <see langword="null"/> if the underlying awaiter does not implement <see cref="T:System.Runtime.CompilerServices.ICriticalNotifyCompletion"/>.</param>
+        </member>
+        <member name="P:Meziantou.Framework.ObjectMethodExecutorAwaitable.Awaiter.IsCompleted">
+            <summary>Gets a value indicating whether the asynchronous operation has completed.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ObjectMethodExecutorAwaitable.Awaiter.GetResult">
+            <summary>Retrieves the result of the asynchronous operation.</summary>
+            <returns>The result of the asynchronous operation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ObjectMethodExecutorAwaitable.Awaiter.OnCompleted(System.Action)">
+            <summary>Schedules the continuation action to be invoked when the asynchronous operation completes.</summary>
+            <param name="continuation">The action to invoke when the operation completes.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ObjectMethodExecutorAwaitable.Awaiter.UnsafeOnCompleted(System.Action)">
+            <summary>Schedules the continuation action without capturing the execution context.</summary>
+            <param name="continuation">The action to invoke when the operation completes.</param>
+        </member>
+        <member name="T:Meziantou.Framework.ObjectMethodExecutorFSharpSupport">
+            <summary>
+            Helper for detecting whether a given type is FSharpAsync`1, and if so, supplying
+            an <see cref="T:System.Linq.Expressions.Expression"/> for mapping instances of that type to a C# awaitable.
+            </summary>
+            <remarks>
+            The main design goal here is to avoid taking a compile-time dependency on
+            FSharp.Core.dll, because non-F# applications wouldn't use it. So all the references
+            to FSharp types have to be constructed dynamically at runtime.
+            </remarks>
+        </member>
+    </members>
+</doc>

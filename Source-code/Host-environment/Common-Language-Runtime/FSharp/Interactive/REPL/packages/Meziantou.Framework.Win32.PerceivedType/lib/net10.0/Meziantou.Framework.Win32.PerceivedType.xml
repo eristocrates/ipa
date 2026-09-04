@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Win32.PerceivedType</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Win32.Perceived">
+             <summary>Defines a file's perceived type based on its extension.</summary>
+             <example>
+             <code>
+             // Get perceived type for a file
+             var perceived = Perceived.GetPerceivedType(".txt");
+             Console.WriteLine(perceived.PerceivedType); // Output: Text
+             Console.WriteLine(perceived.PerceivedTypeSource); // Output: SoftCoded, NativeSupport
+            
+             // Add custom perceived types
+             Perceived.AddPerceived(".myext", PerceivedType.Text);
+            
+             // Add default perceived types for common development file extensions
+             Perceived.AddDefaultPerceivedTypes();
+             </code>
+             </example>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.Perceived.AddDefaultPerceivedTypes">
+            <summary>Adds default perceived types for common development file extensions such as .cs, .html, .xaml, .sln, etc.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.Perceived.AddPerceived(System.String,Meziantou.Framework.Win32.PerceivedType)">
+            <summary>Adds a perceived instance to the list.</summary>
+            <param name="extension">The file extension. May not be null.</param>
+            <param name="type">The perceived type.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.Perceived.Extension">
+            <summary>Gets the file's extension.</summary>
+            <value>The file's extension.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.Perceived.PerceivedType">
+            <summary>Indicates the normalized perceived type.</summary>
+            <value>The normalized perceived type.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.Perceived.PerceivedTypeSource">
+            <summary>Indicates the source of the perceived type information.</summary>
+            <value>the source of the perceived type information.</value>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.Perceived.GetPerceivedType(System.String)">
+            <summary>Gets a file's perceived type based on its extension.</summary>
+            <param name="fileName">The file name. May not be null.</param>
+            <returns>An instance of the PerceivedType type.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.Perceived.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.Perceived.ShouldCache(System.String,System.Int32)">
+            <summary>Determines whether a type resolved through the operating system is worth remembering.</summary>
+            <remarks>
+            Extensions registered explicitly through <see cref="M:Meziantou.Framework.Win32.Perceived.AddPerceived(System.String,Meziantou.Framework.Win32.PerceivedType)"/> are never subject
+            to these limits. Refusing to cache only makes a later lookup slower; it never changes the result.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.PerceivedType">
+            <summary>Specifies a file's perceived type.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Custom">
+            <summary>The file's perceived type as defined in the registry is not a known type.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Unspecified">
+            <summary>The file does not have a perceived type.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Folder">
+            <summary>Not used.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Unknown">
+            <summary>Not intended to be used directly from your code.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Text">
+            <summary>The file's perceived type is "text".</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Image">
+            <summary>The file's perceived type is "image".</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Audio">
+            <summary>The file's perceived type is "audio".</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Video">
+            <summary>The file's perceived type is "video".</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Compressed">
+            <summary>The file's perceived type is "compressed".</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Document">
+            <summary>The file's perceived type is "document".</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.System">
+            <summary>The file's perceived type is "system".</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Application">
+            <summary>The file's perceived type is "application".</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.GameMedia">
+            <summary>The file's perceived type is "gamemedia".</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedType.Contacts">
+            <summary>The file's perceived type is "Contacts".</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.PerceivedTypeSource">
+            <summary>Indicates the source of the perceived type information.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedTypeSource.Undefined">
+            <summary>No perceived type was found.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedTypeSource.SoftCoded">
+            <summary>The perceived type was determined through an association in the registry.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedTypeSource.HardCoded">
+            <summary>The perceived type is inherently known to the operating system.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedTypeSource.NativeSupport">
+            <summary>The perceived type was determined through a codec provided with the operating system.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedTypeSource.GdiPlus">
+            <summary>The perceived type is supported by the Windows GDI+ library.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedTypeSource.WmSdk">
+            <summary>The perceived type is supported by the Microsoft Windows Media software development kit (SDK).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedTypeSource.ZipFolder">
+            <summary>The perceived type is supported by Windows compressed folders.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.PerceivedTypeSource.Mime">
+            <summary>The perceived type was determined through MIME content types in the registry.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+        <member name="T:Windows.Win32.Foundation.HRESULT">
+            <remarks>
+            <para>The **HRESULT** data type is the same as the [SCODE](scode.md) data type. An **HRESULT** value consists of the following fields: - A 1-bit code indicating severity, where zero represents success and 1 represents failure. - A 4-bit reserved value. - An 11-bit code indicating responsibility for the error or warning, also known as a facility code. - A 16-bit code describing the error or warning. Most MAPI interface methods and functions return **HRESULT** values to provide detailed cause formation. **HRESULT** values are also used widely in OLE interface methods. OLE provides several macros for converting between **HRESULT** values and **SCODE** values, another common data type for error handling. > [!NOTE] > In 64-bit MAPI, **HRESULT** is still a 32-bit value. For information about the OLE use of **HRESULT** values, see the  *OLE Programmer's Reference*. For more information about the use of these values in MAPI, see [Error Handling](error-handling-in-mapi.md) and any of the following interface methods: [IABLogon::GetLastError](iablogon-getlasterror.md) [IMAPISupport::GetLastError](imapisupport-getlasterror.md) [IMAPIControl::GetLastError](imapicontrol-getlasterror.md) [IMAPITable::GetLastError](imapitable-getlasterror.md) [IMAPIProp::GetLastError](imapiprop-getlasterror.md) [IMAPIViewAdviseSink::OnPrint](imapiviewadvisesink-onprint.md)</para>
+            <para><see href="https://learn.microsoft.com/office/client-developer/outlook/mapi/hresult#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.Foundation.HRESULT.ThrowOnFailure(System.IntPtr)">
+            <inheritdoc cref="M:System.Runtime.InteropServices.Marshal.ThrowExceptionForHR(System.Int32,System.IntPtr)" />
+            <param name="errorInfo">
+            A pointer to the IErrorInfo interface that provides more information about the
+            error. You can specify <see cref="F:System.IntPtr.Zero"/> to use the current IErrorInfo interface, or
+            <c>new IntPtr(-1)</c> to ignore the current IErrorInfo interface and construct the exception
+            just from the error code.
+            </param>
+            <returns><see langword="this"/> <see cref="T:Windows.Win32.Foundation.HRESULT"/>, if it does not reflect an error.</returns>
+            <seealso cref="M:System.Runtime.InteropServices.Marshal.ThrowExceptionForHR(System.Int32,System.IntPtr)"/>
+        </member>
+        <member name="T:Windows.Win32.Foundation.PCWSTR">
+            <summary>
+            A pointer to a null-terminated, constant character string.
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Foundation.PCWSTR.Value">
+            <summary>
+            A pointer to the first character in the string. The content should be considered readonly, as it was typed as constant in the SDK.
+            </summary>
+        </member>
+        <member name="P:Windows.Win32.Foundation.PCWSTR.Length">
+            <summary>
+            Gets the number of characters up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PCWSTR.ToString">
+            <summary>
+            Returns a <see langword="string"/> with a copy of this character array, up to the first null character (exclusive).
+            </summary>
+            <returns>A <see langword="string"/>, or <see langword="null"/> if <see cref="F:Windows.Win32.Foundation.PCWSTR.Value"/> is <see langword="null"/>.</returns>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PCWSTR.AsSpan">
+            <summary>
+            Returns a span of the characters in this string, up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PWSTR.ToString">
+            <inheritdoc cref="M:Windows.Win32.Foundation.PCWSTR.ToString"/>
+        </member>
+        <member name="P:Windows.Win32.Foundation.PWSTR.Length">
+            <inheritdoc cref="P:Windows.Win32.Foundation.PCWSTR.Length"/>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PWSTR.AsSpan">
+            <summary>
+            Returns a span of the characters in this string, up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.UI.Shell.Common.PERCEIVED">
+            <summary>Specifies a file's perceived type. This set of constants is used in the AssocGetPerceivedType function.</summary>
+            <remarks>Prior to Windows Vista, this enumeration was declared in Shlwapi.h.</remarks>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_FIRST">
+            <summary></summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_CUSTOM">
+            <summary>The file's perceived type as defined in the registry is not a known type.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_UNSPECIFIED">
+            <summary>The file does not have a perceived type.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_FOLDER">
+            <summary>Not used.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_UNKNOWN">
+            <summary>The file's perceived type hasn't yet been requested. This is the cached type of the object when it is created. This value is never returned by <a href="https://docs.microsoft.com/windows/desktop/api/shlwapi/nf-shlwapi-assocgetperceivedtype">AssocGetPerceivedType</a>.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_TEXT">
+            <summary>The file's perceived type is "text".</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_IMAGE">
+            <summary>The file's perceived type is "image".</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_AUDIO">
+            <summary>The file's perceived type is "audio".</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_VIDEO">
+            <summary>The file's perceived type is "video".</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_COMPRESSED">
+            <summary>The file's perceived type is "compressed".</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_DOCUMENT">
+            <summary>The file's perceived type is "document".</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_SYSTEM">
+            <summary>The file's perceived type is "system".</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_APPLICATION">
+            <summary>The file's perceived type is "application".</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_GAMEMEDIA">
+            <summary><b>Windows Vista and later</b>. The file's perceived type is "gamemedia".</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_CONTACTS">
+            <summary><b>Windows Vista and later</b>.The file's perceived type is "contacts"</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.PERCEIVED.PERCEIVED_TYPE_LAST">
+            <summary></summary>
+        </member>
+        <member name="T:Windows.Win32.PInvoke">
+            <content>
+            Contains extern methods from "SHLWAPI.dll".
+            </content>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.AssocGetPerceivedType(System.String,Windows.Win32.UI.Shell.Common.PERCEIVED@,System.UInt32@,Windows.Win32.Foundation.PWSTR@)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.AssocGetPerceivedType(Windows.Win32.Foundation.PCWSTR,Windows.Win32.UI.Shell.Common.PERCEIVED*,System.UInt32*,Windows.Win32.Foundation.PWSTR*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.AssocGetPerceivedType(System.String,Windows.Win32.UI.Shell.Common.PERCEIVED@,System.UInt32@)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.AssocGetPerceivedType(Windows.Win32.Foundation.PCWSTR,Windows.Win32.UI.Shell.Common.PERCEIVED*,System.UInt32*,Windows.Win32.Foundation.PWSTR*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.AssocGetPerceivedType(Windows.Win32.Foundation.PCWSTR,Windows.Win32.UI.Shell.Common.PERCEIVED*,System.UInt32*,Windows.Win32.Foundation.PWSTR*)">
+            <summary>Retrieves a file's perceived type based on its extension.</summary>
+            <param name="pszExt">
+            <para>Type: <b>PCWSTR</b> A pointer to a buffer that contains the file's extension. This should include the leading period, for example ".txt".</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlwapi/nf-shlwapi-assocgetperceivedtype#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="ptype">
+            <para>Type: <b><a href="https://docs.microsoft.com/windows/desktop/api/shtypes/ne-shtypes-perceived">PERCEIVED</a>*</b> A pointer to a <a href="https://docs.microsoft.com/windows/desktop/api/shtypes/ne-shtypes-perceived">PERCEIVED</a> value that indicates the perceived type.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlwapi/nf-shlwapi-assocgetperceivedtype#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="pflag">Type: <b>PERCEIVEDFLAG*</b></param>
+            <param name="ppszType">
+            <para>Type: <b>PWSTR*</b> If the function returns a success code, this contains the address of a pointer to a buffer that receives the perceived type string, for instance "text" or "video". This value can be <b>NULL</b>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlwapi/nf-shlwapi-assocgetperceivedtype#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>HRESULT</b> If this function succeeds, it returns <b>S_OK</b>. Otherwise, it returns an <b>HRESULT</b> error code.</para>
+            </returns>
+            <remarks>This function first compares the extension against a hard-coded set of extensions known to Windows. If that search fails to reveal a match, the registered associations under HKEY_CLASSES_ROOT are searched for a key that matches the extension and contains a PerceivedType value. If that value is found, the extension set is again searched for a match. If again no match is found, the perceived type is determined to be PERCEIVED_TYPE_CUSTOM. If either a key that matches the extension or a PerceivedType value is not found, the perceived type is reported as PERCEIVED_TYPE_UNSPECIFIED.</remarks>
+        </member>
+    </members>
+</doc>

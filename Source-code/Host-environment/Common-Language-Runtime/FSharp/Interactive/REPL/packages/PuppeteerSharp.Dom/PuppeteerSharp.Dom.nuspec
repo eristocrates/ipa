@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>PuppeteerSharp.Dom</id>
+    <version>5.0.43</version>
+    <title>PuppeteerSharp.Dom</title>
+    <authors>Alex Maitland</authors>
+    <owners>Alex Maitland</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/ChromiumDotNet/PuppeteerSharp.Dom</projectUrl>
+    <description>PuppeteerSharp.Dom - Extension to PuppeteerSharp providing strongly typed DOM access.
+
+        ✔️ PuppeteerSharp.Dom is a library with extension methods for strongly typed DOM access when using Puppeteer Sharp.
+        ✔️ It provides a convenient way to write readable/robust/refactorable DOM access code.
+
+        https://github.com/ChromiumDotNet/PuppeteerSharp.Dom</description>
+    <releaseNotes>Upgrade to PuppeteerSharp 19.0</releaseNotes>
+    <tags>puppeteer,chrome,chromium,dom,csharp</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="PuppeteerSharp" version="19.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <readme>README.md</readme>
+    <repository url="https://github.com/ChromiumDotNet/PuppeteerSharp.Dom.git" />
+  </metadata>
+</package>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>PhoenixmlDb.XQuery</id>
+    <version>1.6.12</version>
+    <authors>Endpoint Systems</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>PACKAGE.md</readme>
+    <projectUrl>https://phoenixml.dev/</projectUrl>
+    <description>XQuery 4.0 query engine for PhoenixmlDb</description>
+    <releaseNotes>Six fixes, four of them found by running XSpec's 284-suite corpus against the engine. Two are
+the reason this release exists: without them the XSLT engine cannot report XSpec results
+correctly.
+
+### `namespace-node()` matched every node kind
+
+`ItemType` had no `Namespace` member, so the parser mapped `namespace-node()` to `ItemType.Node`
+— the test that matches ANY node. `$x instance of namespace-node()` therefore answered true for
+elements, attributes, text, comments and documents alike.
+
+XSpec decides whether a result can be wrapped in a document node with:
+
+    $item instance of node()
+    and not($item instance of attribute() or $item instance of namespace-node())
+
+With the second test always true, that predicate was always false. No result was ever wrapped,
+so the context item for every `x:expect` predicate stayed a parentless element rather than a
+document node. An assertion written as `//foo`, the idiomatic XSpec style, could never match,
+and one written as `/foo` raised XPDY0050.
+
+Measured against the XSpec corpus: 4 more suites run to completion, 64 more assertions pass.
+
+### `xs:integer()` crashed on a value wider than `long`
+
+`BigInteger` does not implement `IConvertible`, and the constructor's fallback called
+`Convert.ToInt64`. The catch clauses covered `FormatException` and `OverflowException` but not
+`InvalidCastException`, so a CLR message reached the user:
+
+    Unable to cast object of type 'System.Numerics.BigInteger' to type 'System.IConvertible'
+
+The value came from `xs:unsignedLong`, which returns a `BigInteger` above `long.MaxValue` by
+design — a producer and a type matcher that already agreed, with the constructor between them
+disagreeing.
+
+### `xs:integer` is unbounded
+
+`xs:integer` has no upper bound in XSD, but the constructor capped it at `long` and reported
+`FORG0001 ... value out of range` for values the type permits. `MatchesItemType` already
+accepted a `BigInteger` for `ItemType.Integer`, so widening the constructor aligns it with the
+rest of the engine rather than adding a representation. Literals wider than `long` now parse.
+
+### `fn:trace` rendered the container, not the value
+
+`fn:trace` interpolated its argument, so `ToString()` on a container answered with the CLR type
+— `System.Object[]` rather than the sequence. A diagnostic that hides the value defeats its own
+purpose. Adds `XdmShape.Render`.
+
+### `except`, `union` and `intersect` did not say what the bad operand was
+
+    An operand of the except operator is not a node
+
+That message repeats the error code and omits both facts a user needs: WHICH of the two operands,
+and what it actually held. It is emitted from two separate throw sites, so it could not even
+distinguish left from right. It now reads:
+
+    The left operand of the except operator is not a node: the string ''
+
+Found while tracing an XSpec failure through four wrong hypotheses; the improved message
+identified the value on the first run afterwards.
+
+### The CLI aborted on a spec-defined error
+
+`XQueryException`, the family raised by built-in functions, had no catch arm and fell to a
+catch-all whose `throw` aborted the process. `xquery "xs:integer('nope')"` exited 134 with a
+stack dump. It now reports `Runtime error [FORG0001]` and exits 3.
+
+    XQuery.Tests 1524 passed, 0 failed
+    XQuery.Cli.Tests 8 passed, 0 failed</releaseNotes>
+    <copyright>Copyright © Endpoint Systems 2026. All rights reserved.</copyright>
+    <tags>xml xquery xpath query database</tags>
+    <repository type="git" url="https://github.com/phoenixmldb/phoenixmldb-xquery" commit="9568b9aaec7e94b9d569b77bc2478a1fa9c95115" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Antlr4.Runtime.Standard" version="4.13.1" exclude="Build,Analyzers" />
+        <dependency id="Lucene.Net" version="4.8.0-beta00016" exclude="Build,Analyzers" />
+        <dependency id="Lucene.Net.Analysis.Common" version="4.8.0-beta00016" exclude="Build,Analyzers" />
+        <dependency id="PhoenixmlDb.Core" version="1.6.7" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="Antlr4.Runtime.Standard" version="4.13.1" exclude="Build,Analyzers" />
+        <dependency id="Lucene.Net" version="4.8.0-beta00016" exclude="Build,Analyzers" />
+        <dependency id="Lucene.Net.Analysis.Common" version="4.8.0-beta00016" exclude="Build,Analyzers" />
+        <dependency id="PhoenixmlDb.Core" version="1.6.7" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

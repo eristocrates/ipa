@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PhoenixmlDb.Schema.Inference</name>
+    </assembly>
+    <members>
+        <member name="T:PhoenixmlDb.Schema.Inference.Conversion.CsvToXml">
+            <summary>
+            Converts delimited text (CSV/TSV) to XML. The first row is treated as the
+            header; each subsequent row produces one row-element with one child per
+            column. Quoted fields with embedded delimiters and escaped quotes are
+            supported.
+            </summary>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Conversion.CsvToXml.Convert(System.String,System.String,System.String,System.String)">
+            <summary>
+            Converts <paramref name="csv"/> to XML. The first non-empty line is
+            treated as the header; column headers are sanitized via
+            <see cref="T:PhoenixmlDb.Schema.Inference.Internal.XmlNameSanitizer"/>.
+            </summary>
+        </member>
+        <member name="T:PhoenixmlDb.Schema.Inference.Conversion.JsonToXml">
+            <summary>
+            Converts JSON to XML using a deterministic mapping: objects become elements,
+            arrays become repeated child elements, primitives become text content. Type
+            information is intentionally lost — recover it by running schema inference
+            on the output, then use <c>XmlToJson</c> with the inferred schema for the
+            reverse direction.
+            </summary>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Conversion.JsonToXml.Convert(System.String,System.String)">
+            <summary>
+            Converts <paramref name="json"/> to XML wrapped in a root element named
+            <paramref name="rootElement"/>.
+            </summary>
+        </member>
+        <member name="T:PhoenixmlDb.Schema.Inference.Conversion.XmlToJson">
+             <summary>
+             Converts XML to JSON with optional schema-aware type recovery.
+            
+             JSON is structurally weaker than XML: no attributes, no required cardinality,
+             no type declarations. This converter "assumes the worst" so the JSON output
+             is unambiguous to consumers:
+               * Elements declared with maxOccurs &gt; 1 in the XSD ALWAYS produce a JSON
+                 array, even when only one occurrence is present at runtime.
+               * XML attributes are preserved as JSON object keys prefixed with '@'.
+               * Without an XSD, every leaf is a JSON string. With an XSD, xs:integer,
+                 xs:decimal, xs:double, xs:float, and xs:boolean leaves become JSON
+                 numbers/booleans; other typed leaves (xs:date, xs:dateTime, xs:anyURI,
+                 etc.) remain ISO-encoded strings.
+               * If the runtime value can't be parsed as the declared XSD type, the leaf
+                 falls back to a JSON string instead of throwing — the XSD describes the
+                 contract, but JSON can't carry it, so failing loud here just punishes
+                 the JSON consumer.
+               * Empty leaf elements (no children, no text) become empty JSON strings.
+            
+             For lossless typed round-trip, prefer XML+XSD over JSON. This converter
+             exists for pipelines that require JSON output, not because JSON is the
+             better representation.
+            
+             Limitation: only inline complexType definitions are walked. Named
+             complexType references (xs:complexType name="..." outside an element) are
+             not yet resolved; those leaves fall back to string.
+             </summary>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Conversion.XmlToJson.Convert(System.String,System.String)">
+            <summary>
+            Converts <paramref name="xml"/> to JSON, optionally using <paramref name="xsd"/>
+            for schema-aware type recovery.
+            </summary>
+            <param name="xml">The XML document string to convert.</param>
+            <param name="xsd">
+            An XSD schema string. When provided, element types declared in the schema
+            are used to emit JSON numbers and booleans instead of strings. Pass
+            <see langword="null"/> for no schema (all leaves become strings).
+            </param>
+            <returns>Indented JSON (2-space) representing the XML document.</returns>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Conversion.XmlToJson.BuildTypeMap(System.String)">
+            <summary>
+            Builds a map from element path (e.g. "/order/total") to its leaf type info
+            by walking the XSD's inline xs:element declarations recursively.
+            Named complexType references outside an element are not resolved (limitation).
+            </summary>
+        </member>
+        <member name="T:PhoenixmlDb.Schema.Inference.Conversion.XsdLeafInfo">
+            <summary>
+            Carries the XSD-declared type information for a leaf (or complex) element,
+            used internally by <see cref="T:PhoenixmlDb.Schema.Inference.Conversion.XmlToJson"/> to drive schema-aware type recovery.
+            </summary>
+            <param name="TypeName">
+            The qualified type name from the XSD <c>type=</c> attribute, e.g.
+            <c>"xs:integer"</c>, <c>"xs:string"</c>. <see langword="null"/> when the
+            element has a complex type or no type declaration.
+            </param>
+            <param name="IsArray">
+            <see langword="true"/> when the XSD declared <c>maxOccurs &gt; 1</c> or
+            <c>maxOccurs="unbounded"</c>; JSON ALWAYS emits an array for such elements
+            regardless of runtime occurrence count.
+            </param>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Conversion.XsdLeafInfo.#ctor(System.String,System.Boolean)">
+            <summary>
+            Carries the XSD-declared type information for a leaf (or complex) element,
+            used internally by <see cref="T:PhoenixmlDb.Schema.Inference.Conversion.XmlToJson"/> to drive schema-aware type recovery.
+            </summary>
+            <param name="TypeName">
+            The qualified type name from the XSD <c>type=</c> attribute, e.g.
+            <c>"xs:integer"</c>, <c>"xs:string"</c>. <see langword="null"/> when the
+            element has a complex type or no type declaration.
+            </param>
+            <param name="IsArray">
+            <see langword="true"/> when the XSD declared <c>maxOccurs &gt; 1</c> or
+            <c>maxOccurs="unbounded"</c>; JSON ALWAYS emits an array for such elements
+            regardless of runtime occurrence count.
+            </param>
+        </member>
+        <member name="P:PhoenixmlDb.Schema.Inference.Conversion.XsdLeafInfo.TypeName">
+            <summary>
+            The qualified type name from the XSD <c>type=</c> attribute, e.g.
+            <c>"xs:integer"</c>, <c>"xs:string"</c>. <see langword="null"/> when the
+            element has a complex type or no type declaration.
+            </summary>
+        </member>
+        <member name="P:PhoenixmlDb.Schema.Inference.Conversion.XsdLeafInfo.IsArray">
+            <summary>
+            <see langword="true"/> when the XSD declared <c>maxOccurs &gt; 1</c> or
+            <c>maxOccurs="unbounded"</c>; JSON ALWAYS emits an array for such elements
+            regardless of runtime occurrence count.
+            </summary>
+        </member>
+        <member name="T:PhoenixmlDb.Schema.Inference.Generation.SchemaGenerationResult">
+            <summary>
+            Result of a schema generation: the inferred XSD, the (possibly converted)
+            XML used to infer it, an optional structural summary, and a source-format
+            description.
+            </summary>
+        </member>
+        <member name="P:PhoenixmlDb.Schema.Inference.Generation.SchemaGenerationResult.Xsd">
+            <summary>The generated XSD schema.</summary>
+        </member>
+        <member name="P:PhoenixmlDb.Schema.Inference.Generation.SchemaGenerationResult.Xml">
+            <summary>The XML representation of the input (useful for seeing how JSON/CSV mapped).</summary>
+        </member>
+        <member name="P:PhoenixmlDb.Schema.Inference.Generation.SchemaGenerationResult.Summary">
+            <summary>Inference summary with element details.</summary>
+        </member>
+        <member name="P:PhoenixmlDb.Schema.Inference.Generation.SchemaGenerationResult.Source">
+            <summary>Description of the source format.</summary>
+        </member>
+        <member name="T:PhoenixmlDb.Schema.Inference.Generation.SchemaGenerator">
+             <summary>
+             High-level schema generator. Accepts XML, JSON, CSV, or a file path
+             (auto-detected by extension), converts the input to XML when needed, and
+             runs <see cref="T:PhoenixmlDb.Schema.Inference.Inference.SchemaInferenceEngine"/> to produce an XSD.
+            
+             EDI input is intentionally NOT supported here. EDI disassembly is
+             domain-specific and depends on transport pipeline infrastructure; consume
+             this library from a host that brings its own EDI parser if needed.
+             </summary>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Generation.SchemaGenerator.FromFile(System.String,System.String)">
+            <summary>
+            Auto-detects format from file extension and generates a schema.
+            </summary>
+            <exception cref="T:System.NotSupportedException">Thrown when the file extension is .edi or .x12.</exception>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Generation.SchemaGenerator.FromJson(System.String,System.String)">
+            <summary>Generates a schema from JSON input.</summary>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Generation.SchemaGenerator.FromCsv(System.String,System.String,System.String,System.String)">
+            <summary>Generates a schema from CSV input.</summary>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Generation.SchemaGenerator.FromXml(System.String)">
+            <summary>Generates a schema from XML input.</summary>
+        </member>
+        <member name="T:PhoenixmlDb.Schema.Inference.Inference.SchemaInferenceEngine">
+             <summary>
+             Infers an XSD schema from one or more XML documents.
+            
+             The generated schema starts loose — all elements optional, types inferred
+             from observed values. As more documents are observed, the schema becomes
+             more accurate: elements seen in every document become required, numeric
+             values produce xs:decimal types, dates produce xs:date, etc.
+            
+             This is the "schema-on-read with progressive typing" pattern:
+               Day 1:  Drop a JSON file → XML + draft schema generated
+               Day 2:  Refine schema (make orderId required, total a decimal)
+               Day 7:  Add validation step → catches bad data early
+               Day 30: Schema is production-grade, shaped by real traffic
+             </summary>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Inference.SchemaInferenceEngine.Observe(System.String)">
+            <summary>
+            Observes an XML document and updates the inferred schema.
+            Call this multiple times with different documents to build a more
+            accurate schema from real traffic patterns.
+            </summary>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Inference.SchemaInferenceEngine.GenerateXsd(System.String)">
+            <summary>
+            Generates an XSD schema from all observed documents.
+            </summary>
+        </member>
+        <member name="M:PhoenixmlDb.Schema.Inference.Inference.SchemaInferenceEngine.GetSummary">
+            <summary>
+            Generates a summary of what was observed — useful for CLI output.
+            </summary>
+        </member>
+        <member name="T:PhoenixmlDb.Schema.Inference.Inference.SchemaInferenceSummary">
+            <summary>
+            Summary of what the schema inference engine observed across all documents.
+            </summary>
+        </member>
+        <member name="T:PhoenixmlDb.Schema.Inference.Inference.InferredElementSummary">
+            <summary>
+            Summary of a single observed element, including the inferred type, occurrence
+            statistics, and structural metadata used by the inference engine.
+            </summary>
+        </member>
+        <member name="T:PhoenixmlDb.Schema.Inference.Internal.XmlNameSanitizer">
+            <summary>
+            Sanitizes arbitrary strings (e.g., JSON property names) into valid XML element
+            names, and escapes XML text content.
+            </summary>
+        </member>
+    </members>
+</doc>

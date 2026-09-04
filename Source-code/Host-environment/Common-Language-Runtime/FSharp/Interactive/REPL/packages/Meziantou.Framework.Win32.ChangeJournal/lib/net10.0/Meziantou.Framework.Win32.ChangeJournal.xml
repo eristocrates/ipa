@@ -1,0 +1,1406 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Win32.ChangeJournal</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Win32.ChangeJournal">
+            <summary>
+            Provides access to the NTFS change journal (Update Sequence Number journal) for a volume.
+            The change journal records information about file and directory changes on an NTFS volume.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeJournal.MaximumFileNameLength">
+            <summary>
+                The number of UTF-16 code units to reserve for the file name of a single record, which is what
+                <see cref="M:Windows.Win32.System.Ioctl.USN_RECORD_V3.SizeOf(System.Int32)"/> counts. A USN record stores the name component only, not a path, so this is
+                the volume's maximum component length rather than a path limit: enabling long paths raises the total path length,
+                it does not change the component length. <c>GetVolumeInformation</c> reports the real value for a volume and it is
+                255 on both file systems that support a change journal, NTFS and ReFS. It is only a starting size, so a volume that
+                allows longer names just grows the buffer below.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeJournal.MaximumEntryBufferLength">
+            <summary>
+                Upper bound on the buffer used to read a single USN record, so a driver that keeps reporting ERROR_MORE_DATA cannot
+                grow it without limit. A record can never reach this size: <c>FileNameLength</c> is a <see cref="T:System.UInt16"/>, which caps
+                the name at 65535 bytes.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournal.Data">
+            <summary>Gets the current metadata about the change journal.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournal.Entries">
+            <summary>Gets a collection of all change journal entries.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.Open(System.IO.DriveInfo)">
+            <summary>Opens the change journal for the specified drive.</summary>
+            <param name="driveInfo">The drive to open the change journal for.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Win32.ChangeJournal"/> instance for accessing the change journal.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="driveInfo"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ComponentModel.Win32Exception">Thrown when the operation fails.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.Open(System.IO.DriveInfo,System.Boolean)">
+            <summary>Opens the change journal for the specified drive.</summary>
+            <param name="driveInfo">The drive to open the change journal for.</param>
+            <param name="unprivileged">If <see langword="true"/>, uses unprivileged access mode; otherwise, uses standard access mode.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Win32.ChangeJournal"/> instance for accessing the change journal.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="driveInfo"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ComponentModel.Win32Exception">Thrown when the operation fails.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.GetEntries(Meziantou.Framework.Win32.ChangeReason,System.Boolean,System.TimeSpan)">
+            <summary>Gets change journal entries with the specified filter criteria.</summary>
+            <param name="reasonFilter">A filter that specifies which types of changes to include.</param>
+            <param name="returnOnlyOnClose">If <see langword="true"/>, returns only entries with the Close reason flag set.</param>
+            <param name="timeout">The time to wait for new entries once the end of the journal is reached. Use <see cref="F:System.TimeSpan.Zero"/> to stop there instead of waiting.</param>
+            <returns>A collection of change journal entries matching the filter criteria.</returns>
+            <remarks>
+            A non-zero <paramref name="timeout"/> makes the enumeration wait for a matching entry rather than end, so it never completes on
+            its own. The wait happens inside a synchronous call to the driver and cannot be cancelled, which means a thread enumerating with
+            a non-zero timeout stays blocked until an entry matches the filter.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.GetEntries(Meziantou.Framework.Win32.Usn,Meziantou.Framework.Win32.ChangeReason,System.Boolean,System.TimeSpan)">
+            <summary>Gets change journal entries starting from a specific USN with the specified filter criteria.</summary>
+            <param name="currentUSN">The USN to start reading from.</param>
+            <param name="reasonFilter">A filter that specifies which types of changes to include.</param>
+            <param name="returnOnlyOnClose">If <see langword="true"/>, returns only entries with the Close reason flag set.</param>
+            <param name="timeout">The time to wait for new entries once the end of the journal is reached. Use <see cref="F:System.TimeSpan.Zero"/> to stop there instead of waiting.</param>
+            <returns>A collection of change journal entries matching the filter criteria.</returns>
+            <remarks>
+            A non-zero <paramref name="timeout"/> makes the enumeration wait for a matching entry rather than end, so it never completes on
+            its own. The wait happens inside a synchronous call to the driver and cannot be cancelled, which means a thread enumerating with
+            a non-zero timeout stays blocked until an entry matches the filter.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when <paramref name="currentUSN"/> is outside the valid range.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.GetEntry(System.String)">
+            <summary>Gets the change journal entry for a specific file or directory by path.</summary>
+            <param name="path">The path to the file or directory.</param>
+            <returns>The change journal entry for the specified file or directory.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ComponentModel.Win32Exception">Thrown when the operation fails.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.GetEntry(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+            <summary>Gets the change journal entry for a specific file or directory by handle.</summary>
+            <param name="handle">A handle to the file or directory.</param>
+            <returns>The change journal entry for the specified file or directory.</returns>
+            <exception cref="T:System.ComponentModel.Win32Exception">Thrown when the operation fails.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.RefreshJournalData">
+            <summary>Refreshes the journal metadata by reading the current state from the change journal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.Dispose">
+            <summary>
+            Releases all resources used by the current instance of the <see cref="T:Meziantou.Framework.Win32.ChangeJournal"/> class.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.Delete">
+            <summary>Deletes the change journal and waits for the deletion to complete.</summary>
+            <remarks>Deleting a change journal requires a scan of every file on the volume, so it can take a long time and continues across system restarts.</remarks>
+            <exception cref="T:System.ComponentModel.Win32Exception">Thrown when the operation fails.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.Delete(System.Boolean)">
+            <summary>Deletes the change journal.</summary>
+            <param name="waitForCompletion">If <see langword="true"/>, waits for the deletion to complete; otherwise, starts the deletion and returns immediately.</param>
+            <remarks>
+            Deleting a change journal requires a scan of every file on the volume, so it can take a long time and continues across system restarts.
+            While the deletion is in progress, any attempt to create, modify, delete, or query the change journal fails with <c>ERROR_JOURNAL_DELETE_IN_PROGRESS</c>.
+            </remarks>
+            <exception cref="T:System.ComponentModel.Win32Exception">Thrown when the operation fails.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.Create(System.UInt64,System.UInt64)">
+            <summary>Creates a new change journal or modifies an existing one.</summary>
+            <param name="maximumSize">The maximum size, in bytes, that the journal can use on the volume.</param>
+            <param name="allocationDelta">The size, in bytes, by which the journal grows when needed.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.Create(System.Int64,System.Int64)">
+            <summary>Creates a new change journal or modifies an existing one.</summary>
+            <param name="maximumSize">The maximum size, in bytes, that the journal can use on the volume.</param>
+            <param name="allocationDelta">The size, in bytes, by which the journal grows when needed.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when <paramref name="maximumSize"/> or <paramref name="allocationDelta"/> is negative.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.ChangeJournal.EnableTrackModifiedRanges(System.UInt64,System.Int64)">
+            <summary>Enables range tracking for the change journal.</summary>
+            <param name="chunkSize">The granularity of tracked ranges.</param>
+            <param name="fileSizeThreshold">The file size threshold to start tracking ranges for files with equal or larger size.</param>
+            <remarks>Range tracking is reflected by <see cref="P:Meziantou.Framework.Win32.JournalData.Flags"/>, <see cref="P:Meziantou.Framework.Win32.JournalData.RangeTrackChunkSize"/> and <see cref="P:Meziantou.Framework.Win32.JournalData.RangeTrackFileSizeThreshold"/> on <see cref="P:Meziantou.Framework.Win32.ChangeJournal.Data"/>.</remarks>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeJournalEntries.ExtentsOffset">
+            <summary>
+                Offset of the extents inside a <see cref="T:Windows.Win32.System.Ioctl.USN_RECORD_V4"/>. It is a property of the layout rather than of any record,
+                so it is computed once instead of once per record.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.ChangeJournalEntry">
+            <summary>Represents a base class for change journal entries.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntry.Version">
+            <summary>
+            <para>The major version number of the change journal software for this record. For example, if the change journal software is version 2.0, the major version number is 2. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.ChangeJournalEntryExtent">
+            <summary>Represents a modified extent (range) in a version 4 change journal entry.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryExtent.Offset">
+            <summary>The offset of the extent, in bytes.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryExtent.Length">
+            <summary>The length of the extent, in bytes.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.ChangeJournalEntryVersion2or3">
+            <summary>Represents a change journal entry in version 2 or version 3 format.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion2or3.ReferenceNumber">
+            <summary>
+            <para>The ordinal number of the file or directory for which this record notes changes. This is an arbitrarily assigned value that associates a journal record with a file.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion2or3.ParentReferenceNumber">
+            <summary>
+            <para>The ordinal number of the directory where the file or directory that is associated with this record is located. This is an arbitrarily assigned value that associates a journal record with a parent directory.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion2or3.UniqueSequenceNumber">
+            <summary>Gets the Unique Sequence Number of this entry.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion2or3.TimeStamp">
+            <summary>
+            <para>The standard UTC time stamp (<a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-filetime">FILETIME</a>) of this record, in 64-bit format.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion2or3.Reason">
+            <summary>
+            <para>The flags that identify reasons for changes that have accumulated in this file or directory journal record since the file or directory opened.
+            When a file or directory closes, then a final USN record is generated with the <c>USN_REASON_CLOSE</c> flag set. The next change (for example, after
+            the next open operation or deletion) starts a new record with a new set of reason flags. A rename or move operation generates two USN records, one that
+            records the old parent directory for the item, and one that records a new parent. The following  table identifies the possible flags.</para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion2or3.Source">
+            <summary>
+            <para>Additional information about the source of the change, set by the <see href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_mark_handle">FSCTL_MARK_HANDLE</see>
+             of the <see href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</see> operation. When a thread writes a new USN record, the source
+            information flags in the prior record continues to be present only if the thread also sets those flags.  Therefore, the source information structure allows applications to filter out USN
+            records that are set only by a known source, for example, an antivirus filter. One of the two following values can be set.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion2or3.SecurityId">
+            <summary>The unique security identifier assigned to the file or directory associated with this record.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion2or3.Attributes">
+            <summary>
+            <para>The attributes for the file or directory associated with this record, as returned by the <see href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-getfileattributesa">GetFileAttributes</see>
+            function. Attributes of streams associated with the file or directory are excluded.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion2or3.Name">
+            <summary>
+            <para>The name of the file or directory associated with this record in Unicode format. This file or directory name is of variable length. When working with <c>FileName</c>, do not count on the
+            file name that contains a trailing '\0' delimiter, but instead determine the length of the file name by using <c>FileNameLength</c>. Do not perform any compile-time pointer arithmetic using
+            <c>FileName</c>. Instead, make necessary calculations at run time by using the value of the <c>FileNameOffset</c> member. Doing so helps make your code compatible with any future versions of <c>USN_RECORD_V2</c>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.ChangeJournalEntryVersion4">
+            <summary>Represents a change journal entry in version 4 format, which includes extent information for modified ranges.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion4.ReferenceNumber">
+            <summary>
+            <para>The ordinal number of the file or directory for which this record notes changes. This is an arbitrarily assigned value that associates a journal record with a file.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion4.ParentReferenceNumber">
+            <summary>
+            <para>The ordinal number of the directory where the file or directory that is associated with this record is located. This is an arbitrarily assigned value that associates a journal record with a parent directory.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion4.UniqueSequenceNumber">
+            <summary>Gets the Unique Sequence Number of this entry.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion4.Reason">
+            <summary>
+            <para>The flags that identify reasons for changes that have accumulated in this file or directory journal record since the file or directory opened. When a file or directory closes,
+            then a final USN record is generated with the <c>USN_REASON_CLOSE</c> flag set. The next change (for example, after the next open operation or deletion) starts a new record with a new
+            set of reason flags. A rename or move operation generates two USN records, one that records the old parent directory for the item, and one that records a new parent. The following table
+            identifies the possible flags.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion4.Source">
+            <summary>
+            <para>Additional information about the source of the change, set by the <see href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_mark_handle">FSCTL_MARK_HANDLE</see> of
+            the <see href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</see> operation. When a thread writes a new USN record, the source information
+            flags in the prior record continues to be present only if the thread also sets those flags.  Therefore, the source information structure allows applications to filter out USN records that are set
+            only by a known source, for example, an antivirus filter. One of the two following values can be set.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion4.RemainingExtents">
+            <summary>The number of extents that remain after the current <c>USN_RECORD_V4</c> record. Multiple version 4.0 records may be required to describe all of the modified extents for a given file.
+            When the <c>RemainingExtents</c> member is 0, the current <c>USN_RECORD_V4</c> record is the last <c>USN_RECORD_V4</c> record for the file. The last <c>USN_RECORD_V4</c> entry for a given file is always
+            followed by a <see href="https://docs.microsoft.com/windows/desktop/api/winioctl/ns-winioctl-usn_record_v3">USN_RECORD_V3</see> record with at least the <c>USN_REASON_CLOSE</c> flag set.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ChangeJournalEntryVersion4.Extents">
+            <summary>An array of <see href="https://docs.microsoft.com/windows/desktop/api/winioctl/ns-winioctl-usn_record_extent">USN_RECORD_EXTENT</see> structures that represent the extents in the <c>USN_RECORD_V4</c> entry.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.ChangeJournalFlags">
+            <summary>Specifies flags for the change journal.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeJournalFlags.None">
+            <summary>Range tracking is not turned on for the volume.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeJournalFlags.TrackModifiedRangesEnable">
+            <summary>Range tracking is turned on for the volume.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.ChangeReason">
+            <summary>Specifies the reasons for changes in a change journal entry.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.BasicInfoChange">
+            <summary>A file or directory's basic information changed (e.g., timestamps or attributes).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.Close">
+            <summary>The file or directory was closed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.CompressionChange">
+            <summary>The file or directory's compression state changed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.DataExtend">
+            <summary>Data was added to the file.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.DataOverwrite">
+            <summary>Data in the file was overwritten.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.DataTruncation">
+            <summary>The file was truncated.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.ExtendedAttributesChange">
+            <summary>The file or directory's extended attributes changed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.EncryptionChange">
+            <summary>The file or directory's encryption state changed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.FileCreate">
+            <summary>The file or directory was created.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.FileDelete">
+            <summary>The file or directory was deleted.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.HardLinkChange">
+            <summary>A hard link was added or removed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.IndexableChange">
+            <summary>The file or directory's indexing state changed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.IntegrityChange">
+            <summary>The file or directory's integrity status changed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.NamedDataExtend">
+            <summary>A named data stream was extended.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.NamedDataOverwrite">
+            <summary>Data in a named data stream was overwritten.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.NamedDataTruncation">
+            <summary>A named data stream was truncated.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.ObjectIDChange">
+            <summary>The object identifier changed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.RenameNewName">
+            <summary>The file or directory was renamed, and this is the new name.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.RenameOldName">
+            <summary>The file or directory was renamed, and this is the old name.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.ReparsePointChange">
+            <summary>The reparse point contained in the file or directory changed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.SecurityChange">
+            <summary>The file or directory's security descriptor changed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.StreamChange">
+            <summary>A named stream was added to or removed from the file.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.TransactedChange">
+            <summary>The file or directory changed as a result of a transacted operation.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ChangeReason.All">
+            <summary>All change reasons combined.</summary>
+            <remarks>
+                This is passed to <c>FSCTL_READ_USN_JOURNAL</c> as its <c>ReasonMask</c>, and the change journal only returns a record
+                when at least one of the requested bits is set on it. A reason missing from this list is therefore filtered out by the
+                driver rather than merely losing its name, so every reason above has to be part of it.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.FileIdentifier">
+            <summary>Represents a unique file or directory identifier on an NTFS volume.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.FileIdentifier.FromFile(System.String)">
+            <summary>Gets the file identifier for the specified file or directory path.</summary>
+            <param name="path">The path to the file or directory.</param>
+            <returns>The file identifier for the specified file or directory.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ComponentModel.Win32Exception">Thrown when the operation fails.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.FileIdentifier.FromFile(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+            <summary>Gets the file identifier for the specified file or directory handle.</summary>
+            <param name="handle">A handle to the file or directory.</param>
+            <returns>The file identifier for the specified file or directory.</returns>
+            <exception cref="T:System.ComponentModel.Win32Exception">Thrown when the operation fails.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.JournalData">
+            <summary>Contains information about the change journal on a volume.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.JournalData.#ctor(Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2)">
+            <summary>
+                Copy constructor, creates an instance of this type,
+                populating elements from the corresponding structure.
+            </summary>
+            <param name="nativeData"></param>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.IsActive">
+            <summary>Gets a value indicating whether a change journal is active on the volume.</summary>
+            <remarks>
+                When this is <see langword="false"/>, the volume has no change journal and every other property is zero.
+                Reading entries in that state fails with a <see cref="T:System.ComponentModel.Win32Exception"/>, so check this
+                before enumerating. Use <see cref="M:Meziantou.Framework.Win32.ChangeJournal.Create(System.Int64,System.Int64)"/> to create the journal.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.ID">
+            <summary>64-bit unique journal identifier.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.FirstUSN">
+            <summary>
+                Identifies the first Usn in the journal.
+                All USN's below this value have been purged.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.NextUSN">
+            <summary>The Usn that will be assigned to the next record appended to the journal.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.LowestValidUSN">
+            <summary>
+                The lowest Usn that is valid for this journal and may be zero.
+                All changes with this Usn or higher have been recorded in the journal.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.MaximumUSN">
+            <summary>The largest Usn that will ever to assigned to a record in this journal.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.MaximumSize">
+            <summary>The maximum size, in bytes, the journal can use on the volume.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.AllocationDelta">
+            <summary>
+                The size, in bytes, the journal can grow when needed, and
+                purge from the start of the journal is it grows past MaximumSize.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.MinSupportedMajorVersion">
+            <summary>The minimum version of the USN change journal that the file system supports.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.MaxSupportedMajorVersion">
+            <summary>The maximum version of the USN change journal that the file system supports.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.Flags">
+            <summary>Whether or not range tracking is turned on. The following are the possible values for the Flags member.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.RangeTrackChunkSize">
+            <summary>
+            The granularity of tracked ranges.
+            Valid only when you also set the Flags member to <see cref="F:Meziantou.Framework.Win32.ChangeJournalFlags.TrackModifiedRangesEnable"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.JournalData.RangeTrackFileSizeThreshold">
+            <summary>
+            File size threshold to start tracking range for files with equal or larger size.
+            Valid only when you also set the Flags member to <see cref="F:Meziantou.Framework.Win32.ChangeJournalFlags.TrackModifiedRangesEnable"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.Natives.FileHandleHelper.OpenFileOrDirectory(System.String)">
+            <summary>
+                Opens a file or a directory so its metadata can be read. <c>FILE_FLAG_BACKUP_SEMANTICS</c> is what makes a directory
+                openable, which is why <see cref="M:System.IO.File.OpenHandle(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.IO.FileOptions,System.Int64)"/> cannot
+                be used here: it never sets that flag, so it fails on a directory with an access denied error.
+                <c>FILE_READ_ATTRIBUTES</c> is all the metadata operations need, and asking for no more than that keeps the call
+                working on files the caller is not allowed to read.
+            </summary>
+            <exception cref="T:System.ComponentModel.Win32Exception">Thrown when the file or directory cannot be opened.</exception>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.Natives.Win32DeviceControl.MinimumOutputBufferLength">
+            <summary>
+                Size to grow to when the caller asked for no output buffer at all but the control code turns out to want one, so that
+                doubling has something to work from.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.Natives.Win32DeviceControl.MaximumOutputBufferLength">
+            <summary>
+                Upper bound on the output buffer, so a driver that keeps reporting ERROR_MORE_DATA cannot grow it without limit.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.ReadChangeJournalOptions.InfiniteTimeoutInSeconds">
+            <summary>
+            The value passed to <c>FSCTL_READ_USN_JOURNAL</c> when the caller asks to wait indefinitely.
+            The control code has no dedicated "infinite" value, so the largest practical timeout is used instead.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ReadChangeJournalOptions.TimeoutInSeconds">
+            <summary>
+            Gets <see cref="P:Meziantou.Framework.Win32.ReadChangeJournalOptions.Timeout"/> in the form expected by <c>FSCTL_READ_USN_JOURNAL</c>, whose timeout is a whole number of seconds.
+            <see cref="F:System.TimeSpan.Zero"/> maps to <c>0</c>, meaning the read returns as soon as the journal is exhausted instead of waiting.
+            A negative value, such as <see cref="F:System.Threading.Timeout.InfiniteTimeSpan"/>, waits indefinitely.
+            Any other value is rounded up to a whole second, so a sub-second timeout waits for one second rather than not waiting at all.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.ReadChangeJournalOptions.BytesToWaitFor">
+            <summary>
+            Gets the value passed to <c>FSCTL_READ_USN_JOURNAL</c> as <c>BytesToWaitFor</c>, which is the amount of new data the
+            read waits for once it reaches the end of the journal. The control code ignores <see cref="P:Meziantou.Framework.Win32.ReadChangeJournalOptions.TimeoutInSeconds"/> entirely
+            while this is <c>0</c>, so a read that is meant to wait has to ask for at least one byte. Asking for a single byte
+            makes the read return as soon as anything is appended rather than after a fixed amount of new data.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.SourceInformation">
+            <summary>Specifies additional information about the source of a file or directory change.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.SourceInformation.SourceInfoNotSpecified">
+            <summary>No source information is specified.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.SourceInformation.DataManagement">
+            <summary>
+            The source (application) has not modified the external view of
+            the file or directory. For example, Windows 2000 provides a
+            service that transparently moves unused files to tape and restores
+            them if access is attempted. Records will be added when the file is
+            removed or restored, but they can be ignored since the change does
+            not affect what an application reads from the file.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.SourceInformation.AuxiliaryData">
+            <summary>
+            The source has not modified the external view of the file
+            with regard to the application that created this file. For
+            example, a virus program can specify this when cleaning a
+            document, or a thumbnail viewer might store preview data
+            in a private named stream.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.SourceInformation.ReplicationManagement">
+            <summary>
+            The source is modifying the file to match the contents of
+            the same file, which exists in another member of the replica set.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Win32.SourceInformation.ClientReplicationManagement">
+            <summary>The operation is modifying a file on client systems to match the contents of the same file that exists in the cloud.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Win32.Usn">
+            <summary>Represents a Update Sequence Number (USN), which is a 64-bit value that uniquely identifies a change journal record.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.Usn.Zero">
+            <summary>
+            Gets a <see cref="T:Meziantou.Framework.Win32.Usn"/> value representing zero.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Win32.Usn.Value">
+            <summary>Gets the USN value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.VolumeHelper.GetValidVolumePath(System.IO.DriveInfo)">
+            <summary>
+            Converts a drive into the device path that <c>CreateFile</c> expects for a volume, such as <c>\\.\C:</c>.
+            Only drive-letter volumes are supported, which is all a <see cref="T:System.IO.DriveInfo"/> can designate.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.SafeHandleValue">
+            <summary>
+            A disposable struct that safely holds a reference to a <see cref="T:System.Runtime.InteropServices.SafeHandle"/> and its underlying handle value.
+            Automatically increments the reference count on creation and decrements it on disposal.
+            </summary>
+            <example>
+            <code>
+            using var scope = safeHandle.CreateHandleScope();
+            nint handle = scope.Value;
+            // Use handle safely
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.SafeHandleValue.HasValue">
+            <summary>Gets a value indicating whether the handle has a valid value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.SafeHandleValue.Value">
+            <summary>Gets the underlying handle value.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+        <member name="T:Windows.Win32.Foundation.PCWSTR">
+            <summary>
+            A pointer to a null-terminated, constant character string.
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Foundation.PCWSTR.Value">
+            <summary>
+            A pointer to the first character in the string. The content should be considered readonly, as it was typed as constant in the SDK.
+            </summary>
+        </member>
+        <member name="P:Windows.Win32.Foundation.PCWSTR.Length">
+            <summary>
+            Gets the number of characters up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PCWSTR.ToString">
+            <summary>
+            Returns a <see langword="string"/> with a copy of this character array, up to the first null character (exclusive).
+            </summary>
+            <returns>A <see langword="string"/>, or <see langword="null"/> if <see cref="F:Windows.Win32.Foundation.PCWSTR.Value"/> is <see langword="null"/>.</returns>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PCWSTR.AsSpan">
+            <summary>
+            Returns a span of the characters in this string, up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="P:Windows.Win32.__byte_16.Length">
+            <summary>The length of the inline array.</summary>
+        </member>
+        <member name="P:Windows.Win32.__byte_16.Item(System.Int32)">
+            <summary>
+            Gets a ref to an individual element of the inline array.
+            ⚠ Important ⚠: When this struct is on the stack, do not let the returned reference outlive the stack frame that defines it.
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.__byte_16.AsSpan">
+            <summary>
+            Gets this inline array as a span.
+            </summary>
+            <remarks>
+            ⚠ Important ⚠: When this struct is on the stack, do not let the returned span outlive the stack frame that defines it.
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.__byte_16.AsReadOnlySpan">
+            <summary>
+            Gets this inline array as a span.
+            </summary>
+            <remarks>
+            ⚠ Important ⚠: When this struct is on the stack, do not let the returned span outlive the stack frame that defines it.
+            </remarks>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.CREATE_USN_JOURNAL_DATA">
+            <summary>Contains information that describes an update sequence number (USN) change journal.</summary>
+            <remarks>
+            <para>For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-modifying-and-deleting-a-change-journal">Creating, Modifying, and Deleting a Change Journal</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-create_usn_journal_data#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.CREATE_USN_JOURNAL_DATA.MaximumSize">
+            <summary>
+            <para>The target maximum size that the NTFS file system allocates for the change journal, in bytes. The change journal can grow larger than this value, but it is then truncated at the next NTFS file system checkpoint to less than this value.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-create_usn_journal_data#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.CREATE_USN_JOURNAL_DATA.AllocationDelta">
+            <summary>
+            <para>The size of memory allocation that is added to the end and removed from the beginning of the change journal, in bytes. The change journal can grow to more than the sum of the values of <b>MaximumSize</b> and <b>AllocationDelta</b> before being trimmed.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-create_usn_journal_data#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.DELETE_USN_JOURNAL_DATA">
+            <summary>Contains information on the deletion of an update sequence number (USN) change journal using the FSCTL_DELETE_USN_JOURNAL control code.</summary>
+            <remarks>
+            <para>For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-modifying-and-deleting-a-change-journal">Creating, Modifying, and Deleting a Change Journal</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-delete_usn_journal_data#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.DELETE_USN_JOURNAL_DATA.UsnJournalID">
+            <summary>
+            <para>The identifier of the change journal to be deleted.</para>
+            <para>If the journal is active and deletion is requested by setting the USN_DELETE_FLAG_DELETE flag in the <b>DeleteFlags</b> member, then this identifier must specify the change journal for the current volume. Use <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_query_usn_journal">FSCTL_QUERY_USN_JOURNAL</a> to retrieve the identifier of this change journal. If in this case the identifier is not for the current volume's change journal, <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_delete_usn_journal">FSCTL_DELETE_USN_JOURNAL</a> fails. If notification instead of deletion is requested by setting only the USN_DELETE_FLAG_NOTIFY flag in <b>DeleteFlags</b>, <b>UsnJournalID</b> is ignored.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-delete_usn_journal_data#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.DELETE_USN_JOURNAL_DATA.DeleteFlags">
+            <summary></summary>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V0">
+            <summary>Contains information defining a set of update sequence number (USN) change journal records to return to the calling process. (READ_USN_JOURNAL_DATA_V0)</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v0">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V0.StartUsn">
+            <summary>
+            <para>The USN at which to begin reading the change journal. To start the read operation at the first record in the journal, set the <b>StartUsn</b> member to zero. Because a USN is contained in every journal record, the output buffer tells at which record the read operation actually started. To start the read operation at a specific record, set <b>StartUsn</b> to that record USN. If a nonzero USN is specified that is less than the first USN in the change journal, then an error occurs and the <b>ERROR_JOURNAL_ENTRY_DELETED</b> error code is returned. This code may indicate a case in which the specified USN is valid at one time but has since been deleted. For more information on navigating the change journal buffer returned in <b>READ_USN_JOURNAL_DATA_V0</b>, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/walking-a-buffer-of-change-journal-records">Walking a Buffer of Change Journal Records</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v0#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V0.ReasonMask">
+            <summary>
+            <para>A mask of flags, each flag noting a change for which the file or directory has a record in the change journal. To be returned in a <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation, a change journal record must have at least one of these flags set. The list of valid flags is as follows. Unused bits are reserved. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v0#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V0.ReturnOnlyOnClose">
+            <summary>
+            <para>A value that specifies when to return change journal records. To receive notification when the final handle for the changed file or directory is closed, rather than at the time a change occurs, set <b>ReturnOnlyOnClose</b> to any nonzero value and specify the <b>USN_REASON_CLOSE</b> flag in the <b>ReasonMask</b> member. All changes indicated by <b>ReasonMask</b> flags eventually generate a call to the change journal software when the file is closed. If your <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> call is waiting for the file to be closed, that call in turn will allow your <b>DeviceIoControl</b> call to return. In the event that a file or directory is not closed prior to a volume failure, operating system failure, or shutdown, a cleanup call to the change journal software occurs the next time the volume is mounted. The call occurs even if there is an intervening system restart. To receive notification the first time each change is logged, as well as at cleanup, set <b>ReturnOnlyOnClose</b> to zero. Whether <b>ReturnOnlyOnClose</b> is zero or nonzero, the records generated at cleanup log within the change journal all reasons for USN changes that occurred to the file or directory. Each time a final close operation occurs for an item, a USN close record is written to the change journal, and the <b>ReasonMask</b> flags for the item are all reset. For a file or directory for which no user data exists (for example, a mounted folder), the final close operation occurs when the <a href="https://docs.microsoft.com/windows/desktop/api/handleapi/nf-handleapi-closehandle">CloseHandle</a> function is called on the last user handle to the item.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v0#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V0.Timeout">
+            <summary>
+            <para>The time-out value, in seconds, used with the <b>BytesToWaitFor</b> member to tell the operating system what to do if the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation requests more data than exists in the change journal. If <b>Timeout</b> is zero and <b>BytesToWaitFor</b> is nonzero, and the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation call reaches the end of the change journal without finding data to return, <b>FSCTL_READ_USN_JOURNAL</b> waits until <b>BytesToWaitFor</b> bytes of unfiltered data have been added to the change journal and then retrieves the specified records. If <b>Timeout</b> is nonzero and <b>BytesToWaitFor</b> is nonzero, and the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation call reaches the end of the change journal without finding data to return, <b>FSCTL_READ_USN_JOURNAL</b> waits <b>Timeout</b> seconds and then attempts to return the specified records. After <b>Timeout</b> seconds, <b>FSCTL_READ_USN_JOURNAL</b> retrieves any records available within the specified range. In either case, after the time-out period any new data appended to the change journal is processed. If there are still no records to return from the specified set, the time-out period is repeated. In this mode, <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> remains outstanding until at least one record is returned or I/O is canceled. If <b>BytesToWaitFor</b> is zero, then <b>Timeout</b> is ignored. <b>Timeout</b> is also ignored for asynchronously opened handles.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v0#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V0.BytesToWaitFor">
+            <summary>
+            <para>The number of bytes of unfiltered data added to the change journal. Use this value with <b>Timeout</b> to tell the operating system what to do if the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation requests more data than exists in the change journal. If <b>BytesToWaitFor</b> is zero, then <b>Timeout</b> is ignored. In this case, the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation always returns successfully when the end of the change journal file is encountered. It also retrieves the USN that should be used for the next <b>FSCTL_READ_USN_JOURNAL</b> operation. When the returned next USN is the same as the <b>StartUsn</b> supplied, there are no records available. The calling process should not use <b>FSCTL_READ_USN_JOURNAL</b> again immediately. Because the amount of data returned cannot be predicted when <b>BytesToWaitFor</b> is zero, you run a risk of overflowing the output buffer. To reduce this risk, specify a nonzero <b>BytesToWaitFor</b> value in repeated <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operations until all records in the change journal are exhausted. Then specify zero to await new records. Alternatively, use the <i>lpBytesReturned</i> parameter of <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> in the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation call to determine the amount of data available, reallocate the output buffer (with room to spare for new records), and call <b>DeviceIoControl</b> again.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v0#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V0.UsnJournalID">
+            <summary>
+            <para>The identifier for the instance of the journal that is current for the volume. The NTFS file system can miss putting events in the change journal if the change journal is stopped and restarted or deleted and re-created. If either of these events occurs, the NTFS file system gives the journal a new identifier. If the journal identifier does not agree with the current journal identifier, the call to <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> fails and returns an appropriate error code. To retrieve the new journal identifier, call <b>DeviceIoControl</b> with the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_query_usn_journal">FSCTL_QUERY_USN_JOURNAL</a> operation.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v0#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V1">
+            <summary>Contains information defining a set of update sequence number (USN) change journal records to return to the calling process.R</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v1">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V1.StartUsn">
+            <summary>
+            <para>The USN at which to begin reading the change journal. To start the read operation at the first record in the journal, set the <b>StartUsn</b> member to zero. Because a USN is contained in every journal record, the output buffer tells at which record the read operation actually started. To start the read operation at a specific record, set <b>StartUsn</b> to that record USN. If a nonzero USN is specified that is less than the first USN in the change journal, then an error occurs and the <b>ERROR_JOURNAL_ENTRY_DELETED</b> error code is returned. This code may indicate a case in which the specified USN is valid at one time but has since been deleted. For more information on navigating the change journal buffer returned in <b>READ_USN_JOURNAL_DATA_V0</b>, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/walking-a-buffer-of-change-journal-records">Walking a Buffer of Change Journal Records</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v1#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V1.ReasonMask">
+            <summary>
+            <para>A mask of flags, each flag noting a change for which the file or directory has a record in the change journal. To be returned in a <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation, a change journal record must have at least one of these flags set. The list of valid flags is as follows. Unused bits are reserved. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v1#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V1.ReturnOnlyOnClose">
+            <summary>
+            <para>A value that specifies when to return change journal records. To receive notification when the final handle for the changed file or directory is closed, rather than at the time a change occurs, set <b>ReturnOnlyOnClose</b> to any nonzero value and specify the <b>USN_REASON_CLOSE</b> flag in the <b>ReasonMask</b> member. All changes indicated by <b>ReasonMask</b> flags eventually generate a call to the change journal software when the file is closed. If your <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> call is waiting for the file to be closed, that call in turn will allow your <b>DeviceIoControl</b> call to return. In the event that a file or directory is not closed prior to a volume failure, operating system failure, or shutdown, a cleanup call to the change journal software occurs the next time the volume is mounted. The call occurs even if there is an intervening system restart. To receive notification the first time each change is logged, as well as at cleanup, set <b>ReturnOnlyOnClose</b> to zero. Whether <b>ReturnOnlyOnClose</b> is zero or nonzero, the records generated at cleanup log within the change journal all reasons for USN changes that occurred to the file or directory. Each time a final close operation occurs for an item, a USN close record is written to the change journal, and the <b>ReasonMask</b> flags for the item are all reset. For a file or directory for which no user data exists (for example, a mounted folder), the final close operation occurs when the <a href="https://docs.microsoft.com/windows/desktop/api/handleapi/nf-handleapi-closehandle">CloseHandle</a> function is called on the last user handle to the item.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v1#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V1.Timeout">
+            <summary>
+            <para>The time-out value, in seconds, used with the <b>BytesToWaitFor</b> member to tell the operating system what to do if the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation requests more data than exists in the change journal. If <b>Timeout</b> is zero and <b>BytesToWaitFor</b> is nonzero, and the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation call reaches the end of the change journal without finding data to return, <b>FSCTL_READ_USN_JOURNAL</b> waits until <b>BytesToWaitFor</b> bytes of unfiltered data have been added to the change journal and then retrieves the specified records. If <b>Timeout</b> is nonzero and <b>BytesToWaitFor</b> is nonzero, and the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation call reaches the end of the change journal without finding data to return, <b>FSCTL_READ_USN_JOURNAL</b> waits <b>Timeout</b> seconds and then attempts to return the specified records. After <b>Timeout</b> seconds, <b>FSCTL_READ_USN_JOURNAL</b> retrieves any records available within the specified range. In either case, after the time-out period any new data appended to the change journal is processed. If there are still no records to return from the specified set, the time-out period is repeated. In this mode, <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> remains outstanding until at least one record is returned or I/O is canceled. If <b>BytesToWaitFor</b> is zero, then <b>Timeout</b> is ignored. <b>Timeout</b> is also ignored for asynchronously opened handles.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v1#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V1.BytesToWaitFor">
+            <summary>
+            <para>The number of bytes of unfiltered data added to the change journal. Use this value with <b>Timeout</b> to tell the operating system what to do if the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation requests more data than exists in the change journal. If <b>BytesToWaitFor</b> is zero, then <b>Timeout</b> is ignored. In this case, the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation always returns successfully when the end of the change journal file is encountered. It also retrieves the USN that should be used for the next <b>FSCTL_READ_USN_JOURNAL</b> operation. When the returned next USN is the same as the <b>StartUsn</b> supplied, there are no records available. The calling process should not use <b>FSCTL_READ_USN_JOURNAL</b> again immediately. Because the amount of data returned cannot be predicted when <b>BytesToWaitFor</b> is zero, you run a risk of overflowing the output buffer. To reduce this risk, specify a nonzero <b>BytesToWaitFor</b> value in repeated <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operations until all records in the change journal are exhausted. Then specify zero to await new records. Alternatively, use the <i>lpBytesReturned</i> parameter of <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> in the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_read_usn_journal">FSCTL_READ_USN_JOURNAL</a> operation call to determine the amount of data available, reallocate the output buffer (with room to spare for new records), and call <b>DeviceIoControl</b> again.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v1#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V1.UsnJournalID">
+            <summary>
+            <para>The identifier for the instance of the journal that is current for the volume. The NTFS file system can miss putting events in the change journal if the change journal is stopped and restarted or deleted and re-created. If either of these events occurs, the NTFS file system gives the journal a new identifier. If the journal identifier does not agree with the current journal identifier, the call to <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> fails and returns an appropriate error code. To retrieve the new journal identifier, call <b>DeviceIoControl</b> with the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_query_usn_journal">FSCTL_QUERY_USN_JOURNAL</a> operation.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v1#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V1.MinMajorVersion">
+            <summary></summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.READ_USN_JOURNAL_DATA_V1.MaxMajorVersion">
+            <summary></summary>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2">
+            <summary>Represents an update sequence number (USN) change journal, its records, and its capacity. This structure is the output buffer for the FSCTL_QUERY_USN_JOURNAL control code.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_journal_data_v2">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.UsnJournalID">
+            <summary>
+            <para>The current journal identifier. A journal is assigned a new identifier on creation and can be stamped with a new identifier in the course of its existence. The NTFS file system uses this identifier for an integrity check.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_journal_data_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.FirstUsn">
+            <summary>The number of first record that can be read from the journal.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.NextUsn">
+            <summary>The number of next record to be written to the journal.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.LowestValidUsn">
+            <summary>
+            <para>The first record that was written into the journal for this journal instance. Enumerating the files or directories on a volume can return a USN lower than this value (in other words, a <b>FirstUsn</b> member value less than the <b>LowestValidUsn</b> member value). If it does, the journal has been stamped with a new identifier since the last USN was written. In this case, <b>LowestValidUsn</b> may indicate a discontinuity in the journal, in which changes to some or all files or directories on the volume may have occurred that are not recorded in the change journal.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_journal_data_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.MaxUsn">
+            <summary>
+            <para>The largest USN that the change journal supports. An administrator must delete the change journal as the value of <b>NextUsn</b> approaches this value.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_journal_data_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.MaximumSize">
+            <summary>
+            <para>The target maximum size for the change journal, in bytes. The change journal can grow larger than this value, but it is then truncated at the next NTFS file system checkpoint to less than this value.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_journal_data_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.AllocationDelta">
+            <summary>
+            <para>The number of bytes of disk memory added to the end and removed from the beginning of the change journal each time memory is allocated or deallocated. In other words, allocation and deallocation take place in units of this size. An integer multiple of a cluster size is a reasonable value for this member.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_journal_data_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.MinSupportedMajorVersion">
+            <summary>The minimum version of the USN change journal that the file system supports.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.MaxSupportedMajorVersion">
+            <summary>The maximum version of the USN change journal that the file system supports.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.Flags">
+            <summary>
+            <para>Whether or not range tracking is turned on. The following are the possible values for the <b>Flags</b> member. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_journal_data_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.RangeTrackChunkSize">
+            <summary>The granularity of tracked ranges. Valid only when you also set the <b>Flags</b> member to <b>FLAG_USN_TRACK_MODIFIED_RANGES_ENABLE</b>.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_JOURNAL_DATA_V2.RangeTrackFileSizeThreshold">
+            <summary>File size threshold to start tracking range for files with equal or larger size. Valid only when you also set the <b>Flags</b> member to <b>FLAG_USN_TRACK_MODIFIED_RANGES_ENABLE</b>.</summary>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.USN_RECORD_COMMON_HEADER">
+            <summary>Contains the information for an update sequence number (USN) common header which is common through USN_RECORD_V2, USN_RECORD_V3 and USN_RECORD_V4.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_common_header">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_COMMON_HEADER.RecordLength">
+            <summary>
+            <para>The total length of a record, in bytes. Because USN record is a variable size, the <b>RecordLength</b> member should be used when calculating the address of the next record in an output buffer, for example, a buffer that is returned from operations for the <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> function that work with different USN record types. For [USN_RECORD_V4 structure](ns-winioctl-usn_record_v4.md), the size in bytes of any change journal record is at most the size of the structure, plus (NumberOfExtents-1) times size of the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ns-winioctl-usn_record_extent">USN_RECORD_EXTENT</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_common_header#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_COMMON_HEADER.MajorVersion">
+            <summary>
+            <para>The major version number of the change journal software for this record. For example, if the change journal software is version 4.0, the major version number is 4. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_common_header#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_COMMON_HEADER.MinorVersion">
+            <summary>The minor version number of the change journal software for this record. For example, if the change journal software is version 4.0, the minor version number is zero.</summary>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.USN_RECORD_EXTENT">
+            <summary>Contains the offset and length for an update sequence number (USN) record extent.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_extent">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_EXTENT.Offset">
+            <summary>The offset of the extent, in bytes.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_EXTENT.Length">
+            <summary>The length of the extent, in bytes.</summary>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.USN_RECORD_V2">
+            <summary>Contains the information for an update sequence number (USN) change journal version 2.0 record.</summary>
+            <remarks>
+            <para>In output buffers returned from <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> operations that work with <b>USN_RECORD_V2</b>, all records are aligned on 64-bit boundaries from the start of the buffer. To provide a path for upward compatibility in change journal clients, Microsoft provides a major and minor version number of the change journal software in the <b>USN_RECORD_V2</b> structure. Your code should examine these values, detect its own compatibility with the change journal software, and if necessary gracefully handle any incompatibility. A change in the minor version number indicates that the existing <b>USN_RECORD_V2</b> structure members are still valid, but that new members may have been added between the penultimate member and the last, which is a variable-length string. To handle such a change gracefully, your code should not do any compile-time pointer arithmetic that relies on the location of the last member. For example, this makes the C code <c>sizeof(USN_RECORD)</c> unreliable. Instead, rely on run-time calculations by using the <b>RecordLength</b> member. An increase in the major version number of the change journal software indicates that the <b>USN_RECORD_V2</b> structure may have undergone major changes, and that the current definition may not be reliable. If your code detects a change in the major version number of the change journal software, it should not work with the change journal. For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-modifying-and-deleting-a-change-journal">Creating, Modifying, and Deleting a Change Journal</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.RecordLength">
+            <summary>
+            <para>The total length of a record, in bytes. Because <b>USN_RECORD_V2</b> is a variable size, the <b>RecordLength</b> member should be used when calculating the address of the next record in an output buffer, for example,  a buffer that is returned from operations for the <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> function that work with <b>USN_RECORD_V2</b>. The size in bytes of any change journal record is at most the size of the <b>USN_RECORD_V2</b> structure, plus <i>MaximumComponentLength</i> characters minus 1 (for the character declared in the structure) times the size of a wide character. The value of <i>MaximumComponentLength</i> may be determined by calling the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-getvolumeinformationa">GetVolumeInformation</a> function. In C, you can determine a record size by using the following code example. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.MajorVersion">
+            <summary>
+            <para>The major version number of the change journal software for this record. For example, if the change journal software is version 2.0, the major version number is 2. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.MinorVersion">
+            <summary>
+            <para>The minor version number of the change journal software for this record. For example, if the change journal software is version 2.0, the minor version number is zero.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.FileReferenceNumber">
+            <summary>
+            <para>The ordinal number of the file or directory for which this record notes changes. This is an arbitrarily assigned value that associates a journal record with a file.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.ParentFileReferenceNumber">
+            <summary>
+            <para>The ordinal number of the directory where the file or directory that is associated with this record is located. This is an arbitrarily assigned value that associates a journal record with a parent directory.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.Usn">
+            <summary>The USN of this record.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.TimeStamp">
+            <summary>
+            <para>The standard UTC time stamp (<a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-filetime">FILETIME</a>) of this record, in 64-bit format.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.Reason">
+            <summary>
+            <para>The flags that identify reasons for changes that have accumulated in this file or directory journal record since the file or directory opened. When a file or directory closes, then a final USN record is generated with the <b>USN_REASON_CLOSE</b> flag set. The next change (for example, after the next open operation or deletion) starts a new record with a new set of reason flags. A rename or move operation generates two USN records, one that records the old parent directory for the item, and one that records a new parent. The following  table identifies the possible flags. <div class="alert"><b>Note</b>  Unused bits are reserved.</div> <div> </div> </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.SourceInfo">
+            <summary>
+            <para>Additional information about the source of the change, set by the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_mark_handle">FSCTL_MARK_HANDLE</a> of the <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> operation. When a thread writes a new USN record, the source information flags in the prior record continues to be present only if the thread also sets those flags.  Therefore, the source information structure allows applications to filter out USN records that are set only by a known source, for example, an antivirus filter. One of the two following values can be set. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.SecurityId">
+            <summary>The unique security identifier assigned to the file or directory associated with this record.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.FileAttributes">
+            <summary>
+            <para>The attributes for the file or directory associated with this record, as returned by the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-getfileattributesa">GetFileAttributes</a> function. Attributes of streams associated with the file or directory are excluded.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.FileNameLength">
+            <summary>
+            <para>The length of the name of the file or directory associated with this record, in bytes. The <b>FileName</b> member contains this name. Use this member to determine file name length, rather than depending on a trailing '\0' to delimit the file name in <b>FileName</b>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.FileNameOffset">
+            <summary>The offset of the <b>FileName</b> member from the beginning of the structure.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V2.FileName">
+            <summary>
+            <para>The name of the file or directory associated with this record in Unicode format. This file or directory name is of variable length. When working with <b>FileName</b>, do not count on the file name that contains a trailing '\0' delimiter, but instead determine the length of the file name by using <b>FileNameLength</b>. Do not perform any compile-time pointer arithmetic using <b>FileName</b>. Instead, make necessary calculations at run time by using the value of the <b>FileNameOffset</b> member. Doing so helps make your code compatible with any future versions of <b>USN_RECORD_V2</b>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.System.Ioctl.USN_RECORD_V2.SizeOf(System.Int32)">
+            <summary>Computes the amount of memory that must be allocated to store this struct, including the specified number of elements in the variable length inline array at the end.</summary>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.USN_RECORD_V3">
+            <summary>Contains the information for an update sequence number (USN) change journal version 3.0 record.</summary>
+            <remarks>
+            <para>In output buffers returned from <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> operations that work with <b>USN_RECORD_V3</b>, all records are aligned on 64-bit boundaries from the start of the buffer. When range tracking is turned on, NTFS switches to producing only <b>USN_RECORD_V3</b> records as output. To provide a path for upward compatibility in change journal clients, Microsoft provides a major and minor version number of the change journal software in the <b>USN_RECORD_V3</b> structure. Your code should examine these values, detect its own compatibility with the change journal software, and if necessary gracefully handle any incompatibility. A change in the minor version number indicates that the existing <b>USN_RECORD_V3</b> structure members are still valid, but that new members may have been added between the penultimate member and the last, which is a variable-length string. To handle such a change gracefully, your code should not do any compile-time pointer arithmetic that relies on the location of the last member. For example, this makes the C code <c>sizeof(USN_RECORD)</c> unreliable. Instead, rely on run-time calculations by using the <b>RecordLength</b> member. An increase in the major version number of the change journal software indicates that the <b>USN_RECORD_V3</b> structure may have undergone major changes, and that the current definition may not be reliable. If your code detects a change in the major version number of the change journal software, it should not work with the change journal. For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-modifying-and-deleting-a-change-journal">Creating, Modifying, and Deleting a Change Journal</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.RecordLength">
+            <summary>
+            <para>The total length of a record, in bytes. Because <b>USN_RECORD_V3</b> is a variable size, the <b>RecordLength</b> member should be used when calculating the address of the next record in an output buffer, for example,  a buffer that is returned from operations for the <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> function that work with <b>USN_RECORD_V3</b>. The size in bytes of any change journal record is at most the size of the <b>USN_RECORD_V3</b> structure, plus <i>MaximumComponentLength</i> characters minus 1 (for the character declared in the structure) times the size of a wide character. The value of <i>MaximumComponentLength</i> may be determined by calling the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-getvolumeinformationa">GetVolumeInformation</a> function. In C, you can determine a record size by using the following code example. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.MajorVersion">
+            <summary>
+            <para>The major version number of the change journal software for this record. For example, if the change journal software is version 3.0, the major version number is 3. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.MinorVersion">
+            <summary>
+            <para>The minor version number of the change journal software for this record. For example, if the change journal software is version 3.0, the minor version number is zero.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.FileReferenceNumber">
+            <summary>
+            <para>The 128-bit ordinal number of the file or directory for which this record notes changes. This is an arbitrarily assigned value that associates a journal record with a file.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.ParentFileReferenceNumber">
+            <summary>
+            <para>The 128-bit ordinal number of the directory where the file or directory that is associated with this record is located. This is an arbitrarily assigned value that associates a journal record with a parent directory.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.Usn">
+            <summary>The USN of this record.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.TimeStamp">
+            <summary>
+            <para>The standard UTC time stamp (<a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-filetime">FILETIME</a>) of this record, in 64-bit format.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.Reason">
+            <summary>
+            <para>The flags that identify reasons for changes that have accumulated in this file or directory journal record since the file or directory opened. When a file or directory closes, then a final USN record is generated with the <b>USN_REASON_CLOSE</b> flag set. The next change (for example, after the next open operation or deletion) starts a new record with a new set of reason flags. A rename or move operation generates two USN records, one that records the old parent directory for the item, and one that records a new parent. The following  table identifies the possible flags. <div class="alert"><b>Note</b>  Unused bits are reserved.</div> <div> </div> </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.SourceInfo">
+            <summary>
+            <para>Additional information about the source of the change, set by the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_mark_handle">FSCTL_MARK_HANDLE</a> of the <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> operation. When a thread writes a new USN record, the source information flags in the prior record continues to be present only if the thread also sets those flags.  Therefore, the source information structure allows applications to filter out USN records that are set only by a known source, for example, an antivirus filter. One of the two following values can be set. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.SecurityId">
+            <summary>The unique security identifier assigned to the file or directory associated with this record.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.FileAttributes">
+            <summary>
+            <para>The attributes for the file or directory associated with this record, as returned by the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-getfileattributesa">GetFileAttributes</a> function. Attributes of streams associated with the file or directory are excluded.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.FileNameLength">
+            <summary>
+            <para>The length of the name of the file or directory associated with this record, in bytes. The <b>FileName</b> member contains this name. Use this member to determine file name length, rather than depending on a trailing '\0' to delimit the file name in <b>FileName</b>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.FileNameOffset">
+            <summary>The offset of the <b>FileName</b> member from the beginning of the structure.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V3.FileName">
+            <summary>
+            <para>The name of the file or directory associated with this record in Unicode format. This file or directory name is of variable length. When working with <b>FileName</b>, do not count on the file name that contains a trailing '\0' delimiter, but instead determine the length of the file name by using <b>FileNameLength</b>. Do not perform any compile-time pointer arithmetic using <b>FileName</b>. Instead, make necessary calculations at run time by using the value of the <b>FileNameOffset</b> member. Doing so helps make your code compatible with any future versions of <b>USN_RECORD_V3</b>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.System.Ioctl.USN_RECORD_V3.SizeOf(System.Int32)">
+            <summary>Computes the amount of memory that must be allocated to store this struct, including the specified number of elements in the variable length inline array at the end.</summary>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.USN_RECORD_V4">
+            <summary>Contains the information for an update sequence number (USN) change journal version 4.0 record. The version 2.0 and 3.0 records are defined by the USN_RECORD_V2 (also called USN_RECORD) and USN_RECORD_V3 structures respectively.</summary>
+            <remarks>
+            <para>A <b>USN_RECORD_V4</b> record is only output when range tracking is turned on and the file size is equal or larger than the value of the <b>RangeTrackFileSizeThreshold</b> member. The user always receives one or more <b>USN_RECORD_V4</b> records followed by one <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ns-winioctl-usn_record_v3">USN_RECORD_V3</a> record. To provide a path forward compatibility in change journal clients, Microsoft provides a major and minor version number of the change journal software in the <b>USN_RECORD_V4</b> structure. Your code should examine these values, examine its own compatibility with the change journal software, and gracefully handle any incompatibility if necessary. A change in the minor version number indicates that the existing <b>USN_RECORD_V4</b> structure members are still valid, but that new members may have been added between the penultimate member and the last, which is a variable-length string. To handle such a change gracefully, your code should not do any compile-time pointer arithmetic that relies on the location of the last member. For example, a change in the minor version number makes the <c>sizeof(USN_RECORD)</c> call unreliable. Instead, rely on run-time calculations that use the <b>RecordLength</b> member. An increase in the major version number of the change journal software indicates that the <b>USN_RECORD_V4</b> structure may have undergone major changes, and that the current definition may not be reliable. If your code detects a change in the major version number of the change journal software, the code should not work with the change journal.</para>
+            <para>For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-modifying-and-deleting-a-change-journal">Creating, Modifying, and Deleting a Change Journal</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v4#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V4.Header">
+            <summary>A <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ns-winioctl-usn_record_common_header">USN_RECORD_COMMON_HEADER</a> structure that describes the record length, major version, and minor  version for the record.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V4.FileReferenceNumber">
+            <summary>
+            <para>The 128-bit ordinal number of the file or directory for which this record notes changes. This value  is an arbitrarily assigned value that associates a journal record with a file.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v4#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V4.ParentFileReferenceNumber">
+            <summary>
+            <para>The 128-bit ordinal number of the directory where the file or directory that is associated with this record is located. This value  is an arbitrarily assigned value that associates a journal record with a parent directory.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v4#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V4.Usn">
+            <summary>The USN of this record.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V4.Reason">
+            <summary>
+            <para>The flags that identify reasons for changes that have accumulated in this file or directory journal record since the file or directory opened. When a file or directory closes, then a final USN record is generated with the <b>USN_REASON_CLOSE</b> flag set. The next change (for example, after the next open operation or deletion) starts a new record with a new set of reason flags. A rename or move operation generates two USN records, one that records the old parent directory for the item, and one that records a new parent. The following  table identifies the possible flags. <div class="alert"><b>Note</b>  Unused bits are reserved.</div> <div> </div> </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v4#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V4.SourceInfo">
+            <summary>
+            <para>Additional information about the source of the change, set by the <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ni-winioctl-fsctl_mark_handle">FSCTL_MARK_HANDLE</a> of the <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-deviceiocontrol">DeviceIoControl</a> operation. When a thread writes a new USN record, the source information flags in the prior record continue to be present only if the thread also sets those flags.  Therefore, the source information structure allows applications to filter out USN records that are set only by a known source, for example, an antivirus filter.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v4#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V4.RemainingExtents">
+            <summary>The number of extents that remain after the current <b>USN_RECORD_V4</b> record.  Multiple version 4.0  records may be required to describe all of the modified extents for a given file.  When the <b>RemainingExtents</b> member is  0,  the current <b>USN_RECORD_V4</b> record is the last <b>USN_RECORD_V4</b> record for the file.  The last <b>USN_RECORD_V4</b> entry for a given file is always  followed by a <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ns-winioctl-usn_record_v3">USN_RECORD_V3</a> record with at least the <b>USN_REASON_CLOSE</b> flag set.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V4.NumberOfExtents">
+            <summary>The number of extents in current <b>USN_RECORD_V4</b> entry.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V4.ExtentSize">
+            <summary>The size of each <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ns-winioctl-usn_record_extent">USN_RECORD_EXTENT</a> structure in the <b>Extents</b> member, in bytes.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_RECORD_V4.Extents">
+            <summary>An array of <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ns-winioctl-usn_record_extent">USN_RECORD_EXTENT</a> structures that represent the extents in the <b>USN_RECORD_V4</b> entry.</summary>
+        </member>
+        <member name="M:Windows.Win32.System.Ioctl.USN_RECORD_V4.SizeOf(System.Int32)">
+            <summary>Computes the amount of memory that must be allocated to store this struct, including the specified number of elements in the variable length inline array at the end.</summary>
+        </member>
+        <member name="T:Windows.Win32.System.Ioctl.USN_TRACK_MODIFIED_RANGES">
+            <summary>Contains information on range tracking parameters for an update sequence number (USN) change journal using the FSCTL_USN_TRACK_MODIFIED_RANGES control code.</summary>
+            <remarks>Once range tracking is enabled for a given volume it cannot be disabled except by deleting the USN Journal and recreating it.</remarks>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_TRACK_MODIFIED_RANGES.Flags">
+            <summary>
+            <para>Indicates enabling range tracking. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_track_modified_ranges#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_TRACK_MODIFIED_RANGES.Unused">
+            <summary>Reserved.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_TRACK_MODIFIED_RANGES.ChunkSize">
+            <summary>Chunk size for tracking ranges. A single byte modification will be reflected as the whole chunk being modified.</summary>
+        </member>
+        <member name="F:Windows.Win32.System.Ioctl.USN_TRACK_MODIFIED_RANGES.FileSizeThreshold">
+            <summary>File size threshold to start outputting [USN_RECORD_V4 structure](ns-winioctl-usn_record_v4.md) record(s) for modified file, i.e. if the modified file size is less than this threshold, then no <b>USN_RECORD_V4</b> record will be output.</summary>
+        </member>
+        <member name="T:Windows.Win32.Storage.FileSystem.FILE_ID_128">
+            <summary>Defines a 128-bit file identifier.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-file_id_128">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_ID_128.Identifier">
+            <summary>A byte array containing  the 128 bit identifier.</summary>
+        </member>
+        <member name="T:Windows.Win32.Storage.FileSystem.FILE_ID_INFO">
+            <summary>Contains identification information for a file. (FILE_ID_INFO)</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-file_id_info">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_ID_INFO.VolumeSerialNumber">
+            <summary>The serial number of the volume that contains a file.</summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_ID_INFO.FileId">
+            <summary>
+            <para>The 128-bit file identifier for the file. The file identifier and the volume serial number uniquely identify a file on a single computer. To determine whether two open handles represent the same file, combine the identifier and the volume serial number for each file and compare them.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-file_id_info#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS">
+            <summary>Identifies the type of file information that GetFileInformationByHandleEx should retrieve or SetFileInformationByHandle should set.</summary>
+            <remarks>
+            <para>As noted in the preceding section, some file information classes are valid only for use with <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. Others are valid only for use with <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-setfileinformationbyhandle">SetFileInformationByHandle</a>. Where neither function is mentioned, the information class is valid with both functions.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileBasicInfo">
+            <summary>
+            <para>Minimal information for the file should be retrieved or set. Used for file handles. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_basic_info">FILE_BASIC_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileStandardInfo">
+            <summary>
+            <para>Extended information for the file should be retrieved. Used for file handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_standard_info">FILE_STANDARD_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileNameInfo">
+            <summary>
+            <para>The file name should be retrieved. Used for any handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_name_info">FILE_NAME_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileRenameInfo">
+            <summary>
+            <para>The file name should be changed. Used for file handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-setfileinformationbyhandle">SetFileInformationByHandle</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_rename_info">FILE_RENAME_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileDispositionInfo">
+            <summary>
+            <para>The file should be deleted. Used for any handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-setfileinformationbyhandle">SetFileInformationByHandle</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_disposition_info">FILE_DISPOSITION_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileAllocationInfo">
+            <summary>
+            <para>The file allocation information should be changed. Used for file handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-setfileinformationbyhandle">SetFileInformationByHandle</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_allocation_info">FILE ALLOCATION INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileEndOfFileInfo">
+            <summary>
+            <para>The end of the file should be set. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-setfileinformationbyhandle">SetFileInformationByHandle</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_end_of_file_info">FILE_END_OF_FILE_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileStreamInfo">
+            <summary>
+            <para>File stream information for the specified file should be retrieved. Used for any handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_stream_info">FILE_STREAM_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileCompressionInfo">
+            <summary>
+            <para>File compression information should be retrieved. Used for any handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_compression_info">FILE_COMPRESSION_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileAttributeTagInfo">
+            <summary>
+            <para>File attribute information should be retrieved. Used for any handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_attribute_tag_info">FILE_ATTRIBUTE_TAG_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileIdBothDirectoryInfo">
+            <summary>
+            <para>Files in the specified directory should be retrieved. Used for directory handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. The number of files returned for each call to <b>GetFileInformationByHandleEx</b> depends on the size of the buffer that is passed to the function. Any subsequent calls to <b>GetFileInformationByHandleEx</b> on the same handle will resume the enumeration operation after the last file is returned. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_id_both_dir_info">FILE_ID_BOTH_DIR_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileIdBothDirectoryRestartInfo">
+            <summary>
+            <para>Identical to <b>FileIdBothDirectoryInfo</b>, but forces the enumeration operation to start again from the beginning. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_id_both_dir_info">FILE_ID_BOTH_DIR_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileIoPriorityHintInfo">
+            <summary>
+            <para>Priority hint information should be  set. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-setfileinformationbyhandle">SetFileInformationByHandle</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_io_priority_hint_info">FILE_IO_PRIORITY_HINT_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileRemoteProtocolInfo">
+            <summary>
+            <para>File remote protocol information should be retrieved. Use for any handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_remote_protocol_info">FILE_REMOTE_PROTOCOL_INFO</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileFullDirectoryInfo">
+            <summary>
+            <para>Files in the specified directory should be retrieved. Used for directory handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_full_dir_info">FILE_FULL_DIR_INFO</a>. <b>Windows Server 2008 R2, Windows 7, Windows Server 2008, Windows Vista, Windows Server 2003 and Windows XP:  </b>This value is not supported before Windows 8 and Windows Server 2012</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileFullDirectoryRestartInfo">
+            <summary>
+            <para>Identical to <b>FileFullDirectoryInfo</b>, but forces the enumeration operation to start again from the beginning. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_full_dir_info">FILE_FULL_DIR_INFO</a>. <b>Windows Server 2008 R2, Windows 7, Windows Server 2008, Windows Vista, Windows Server 2003 and Windows XP:  </b>This value is not supported before Windows 8 and Windows Server 2012</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileStorageInfo">
+            <summary>
+            <para>File storage information should be retrieved. Use for any handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_storage_info">FILE_STORAGE_INFO</a>. <b>Windows Server 2008 R2, Windows 7, Windows Server 2008, Windows Vista, Windows Server 2003 and Windows XP:  </b>This value is not supported before Windows 8 and Windows Server 2012</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileAlignmentInfo">
+            <summary>
+            <para>File alignment information should be retrieved. Use for any handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_alignment_info">FILE_ALIGNMENT_INFO</a>. <b>Windows Server 2008 R2, Windows 7, Windows Server 2008, Windows Vista, Windows Server 2003 and Windows XP:  </b>This value is not supported before Windows 8 and Windows Server 2012</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileIdInfo">
+            <summary>
+            <para>File information should be retrieved. Use for any handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_id_info">FILE_ID_INFO</a>. <b>Windows Server 2008 R2, Windows 7, Windows Server 2008, Windows Vista, Windows Server 2003 and Windows XP:  </b>This value is not supported before Windows 8 and Windows Server 2012</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileIdExtdDirectoryInfo">
+            <summary>
+            <para>Files in the specified directory should be retrieved. Used for directory handles. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_id_extd_dir_info">FILE_ID_EXTD_DIR_INFO</a>. <b>Windows Server 2008 R2, Windows 7, Windows Server 2008, Windows Vista, Windows Server 2003 and Windows XP:  </b>This value is not supported before Windows 8 and Windows Server 2012</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileIdExtdDirectoryRestartInfo">
+            <summary>
+            <para>Identical to <b>FileIdExtdDirectoryInfo</b>, but forces the enumeration operation to start again from the beginning. Use only when calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-getfileinformationbyhandleex">GetFileInformationByHandleEx</a>. See <a href="https://docs.microsoft.com/windows/desktop/api/winbase/ns-winbase-file_id_extd_dir_info">FILE_ID_EXTD_DIR_INFO</a>. <b>Windows Server 2008 R2, Windows 7, Windows Server 2008, Windows Vista, Windows Server 2003 and Windows XP:  </b>This value is not supported before Windows 8 and Windows Server 2012</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-file_info_by_handle_class#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileDispositionInfoEx">
+            <summary></summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.FileRenameInfoEx">
+            <summary></summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS.MaximumFileInfoByHandleClass">
+            <summary>This value is used for validation. Supported values are less than this value.</summary>
+        </member>
+        <member name="T:Windows.Win32.PInvoke">
+            <content>
+            Contains extern methods from "KERNEL32.dll".
+            </content>
+        </member>
+        <member name="F:Windows.Win32.PInvoke.FSCTL_READ_FILE_USN_DATA">
+            <summary>Retrieves the update sequence number (USN) change-journal information for the specified file or directory.</summary>
+            <remarks>
+            <para>If the call succeeds, the  members of the returned <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ns-winioctl-usn_record_v2">USN_RECORD_V2</a> or <a href="https://docs.microsoft.com/windows/desktop/api/winioctl/ns-winioctl-usn_record_v3">USN_RECORD_V3</a> structure are valid except for the following members: <b>TimeStamp</b>, <b>Reason</b>, and <b>SourceInfo</b>. The <b>Usn</b> member represents the last USN written to the journal for this file or directory. For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-modifying-and-deleting-a-change-journal">Creating, Modifying, and Deleting a Change Journal</a>. To retrieve a handle to a volume, call <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-createfilea">CreateFile</a> with the <i>lpFileName</i> parameter set to a string in the following form: \\.&#92;<i>X</i>: In the preceding string, <i>X</i> is the letter identifying the drive on which the volume appears. The volume must be ReFS or NTFS 3.0 or later. To obtain the NTFS version of a volume, open a command prompt with Administrator access rights and execute the following command: <b>FSUtil.exe FSInfo NTFSInfo </b><i>X</i><b>:</b> where <i>X</i> is the drive letter of the volume. In Windows 8 and Windows Server 2012, this code is supported by the following technologies. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winioctl/ni-winioctl-fsctl_read_file_usn_data#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.CloseHandle(Windows.Win32.Foundation.HANDLE)">
+            <summary>Closes an open object handle.</summary>
+            <param name="hObject">A valid handle to an open object.</param>
+            <returns>
+            <para>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>. If the application is running under a debugger,  the function will throw an exception if it receives either a  handle value that is not valid  or a pseudo-handle value. This can happen if you close a handle twice, or if you  call <b>CloseHandle</b> on a handle returned by the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findfirstfilea">FindFirstFile</a> function instead of calling the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findclose">FindClose</a> function.</para>
+            </returns>
+            <remarks>
+            <para>The <b>CloseHandle</b> function closes handles to the following objects: </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/handleapi/nf-handleapi-closehandle#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.CreateFile(System.String,System.UInt32,Windows.Win32.Storage.FileSystem.FILE_SHARE_MODE,System.Nullable{Windows.Win32.Security.SECURITY_ATTRIBUTES},Windows.Win32.Storage.FileSystem.FILE_CREATION_DISPOSITION,Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES,System.Runtime.InteropServices.SafeHandle)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.CreateFile(Windows.Win32.Foundation.PCWSTR,System.UInt32,Windows.Win32.Storage.FileSystem.FILE_SHARE_MODE,Windows.Win32.Security.SECURITY_ATTRIBUTES*,Windows.Win32.Storage.FileSystem.FILE_CREATION_DISPOSITION,Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES,Windows.Win32.Foundation.HANDLE)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.CreateFile(Windows.Win32.Foundation.PCWSTR,System.UInt32,Windows.Win32.Storage.FileSystem.FILE_SHARE_MODE,Windows.Win32.Security.SECURITY_ATTRIBUTES*,Windows.Win32.Storage.FileSystem.FILE_CREATION_DISPOSITION,Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES,Windows.Win32.Foundation.HANDLE)">
+            <summary>Creates or opens a file or I/O device. The most commonly used I/O devices are as follows:\_file, file stream, directory, physical disk, volume, console buffer, tape drive, communications resource, mailslot, and pipe. (Unicode)</summary>
+            <param name="lpFileName">
+            <para>The name of the file or device to be created or opened. You may use either forward slashes (/) or backslashes (\\) in this name. In the ANSI version of this function, the name is limited to <b>MAX_PATH</b> characters. To extend this limit to 32,767 wide characters, use this Unicode version of the function and prepend "\\\\?\\" to the path. For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/naming-a-file">Naming Files, Paths, and Namespaces</a>. For information on special device names, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/defining-an-ms-dos-device-name">Defining an MS-DOS Device Name</a>. To create a file stream, specify the name of the file, a colon, and then the name of the stream. For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-streams">File Streams</a>. <div class="alert"><b>Tip</b>  Starting with Windows 10, version 1607, for the unicode version of this function (<b>CreateFileW</b>), you can opt-in to remove the <b>MAX_PATH</b> limitation without prepending "\\?\". See the "Maximum Path Length Limitation" section of <a href="https://docs.microsoft.com/windows/desktop/FileIO/naming-a-file">Naming Files, Paths, and Namespaces</a> for details.</div> <div> </div></para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwDesiredAccess">
+            <para>The requested access to the file or device, which can be summarized as read, write, both or neither zero). The most commonly used values are <b>GENERIC_READ</b>, <b>GENERIC_WRITE</b>, or both (<c>GENERIC_READ | GENERIC_WRITE</c>). For more information, see <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/generic-access-rights">Generic Access Rights</a>, <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-security-and-access-rights">File Security and Access Rights</a>, <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-access-rights-constants">File Access Rights Constants</a>, and <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/access-mask">ACCESS_MASK</a>. If this parameter is zero, the application can query certain metadata such as file, directory, or device attributes without accessing that file or device, even if <b>GENERIC_READ</b> access would have been denied. You cannot request an access mode that conflicts with the sharing mode that is specified by the <i>dwShareMode</i> parameter in an open request that already has an open handle. For more information, see the Remarks section of this topic and <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-and-opening-files">Creating and Opening Files</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwShareMode">
+            <para>The requested sharing mode of the file or device, which can be read, write, both, delete, all of these, or none (refer to the following table). Access requests to attributes or extended attributes are not affected by this flag. If this parameter is zero and <b>CreateFile</b> succeeds, the file or device cannot be shared and cannot be opened again until the handle to the file or device is closed. For more information, see the Remarks section. You cannot request a sharing mode that conflicts with the access mode that is specified in an existing request that has an open handle. <b>CreateFile</b> would fail and the <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> function would return <b>ERROR_SHARING_VIOLATION</b>. To enable a process to share a file or device while another process has the file or device open, use a</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lpSecurityAttributes">
+            <para>A pointer to a <a href="https://docs.microsoft.com/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)">SECURITY_ATTRIBUTES</a> structure that contains two separate but related data members: an optional security descriptor, and a Boolean value that determines whether the returned handle can be inherited by child processes. This parameter can be <b>NULL</b>. If this parameter is <b>NULL</b>, the handle returned by <b>CreateFile</b> cannot be inherited by any child processes the application may create and the file or device associated with the returned handle gets a default security descriptor. The <b>lpSecurityDescriptor</b> member of the structure specifies a <a href="https://docs.microsoft.com/windows/desktop/api/winnt/ns-winnt-security_descriptor">SECURITY_DESCRIPTOR</a> for a file or device. If this member is <b>NULL</b>, the file or device associated with the returned handle is assigned a default security descriptor. <b>CreateFile</b> ignores the <b>lpSecurityDescriptor</b> member when opening an existing file or device, but continues to use the <b>bInheritHandle</b> member. The <b>bInheritHandle</b> member of the structure specifies whether the returned handle can be inherited. For more information, see the Remarks section.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwCreationDisposition">
+            <para>An action to take on a file or device that exists or does not exist. For devices other than files, this parameter is usually set to <b>OPEN_EXISTING</b>. For more information, see the Remarks section.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwFlagsAndAttributes">
+            <para>The file or device attributes and flags, <b>FILE_ATTRIBUTE_NORMAL</b> being the most common default value for files. This parameter can include any combination of the available file attributes (<b>FILE_ATTRIBUTE_*</b>). All other file attributes override <b>FILE_ATTRIBUTE_NORMAL</b>. This parameter can also contain combinations of flags (<b>FILE_FLAG_*</b>) for control of file or device caching behavior, access modes, and other special-purpose flags. These combine with any <b>FILE_ATTRIBUTE_*</b> values. This parameter can also contain Security Quality of Service (SQOS) information by specifying the <b>SECURITY_SQOS_PRESENT</b> flag. Additional SQOS-related flags information is presented in the table following the attributes and flags tables. <div class="alert"><b>Note</b>  When <b>CreateFile</b> opens an existing file, it generally combines the file flags with the file attributes of the existing file, and ignores any file attributes supplied as part of <i>dwFlagsAndAttributes</i>. Special cases are detailed in <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-and-opening-files">Creating and Opening Files</a>.</div> <div> </div> Some of the following file attributes and flags may only apply to files and not necessarily all other types of devices that <b>CreateFile</b> can open. For additional information, see the Remarks section of this topic and <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-and-opening-files">Creating and Opening Files</a>. For more advanced access to file attributes, see <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-setfileattributesa">SetFileAttributes</a>. For a complete list of all file attributes with their values and descriptions, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-attribute-constants">File Attribute Constants</a>. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="hTemplateFile">
+            <para>A valid handle to a template file with the <b>GENERIC_READ</b> access right. The template file supplies file attributes and extended attributes for the file that is being created. This parameter can be <b>NULL</b>. When opening an existing file, <b>CreateFile</b> ignores this parameter. When opening a new encrypted file, the file inherits the discretionary access control list from its parent directory. For additional information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-encryption">File Encryption</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>If the function succeeds, the return value is an open handle to the specified file, device, named pipe, or mail slot. If the function fails, the return value is <b>INVALID_HANDLE_VALUE</b>. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para><b>CreateFile</b> was originally developed specifically for file interaction but has since been expanded and enhanced to include most other types of I/O devices and mechanisms available to Windows developers. This section attempts to cover the varied issues developers may experience when using <b>CreateFile</b> in different contexts and with different I/O types. The text attempts to use the word <i>file</i> only when referring specifically to data stored in an actual file on a file system. However, some uses of <i>file</i> may be referring more generally to an I/O object that supports file-like mechanisms. This liberal use of the term <i>file</i> is particularly prevalent in constant names and parameter names because of the previously mentioned historical reasons. When an application is finished using the object handle returned by <b>CreateFile</b>, use the <a href="https://docs.microsoft.com/windows/desktop/api/handleapi/nf-handleapi-closehandle">CloseHandle</a> function to close the handle. This not only frees up system resources, but can have wider influence on things like sharing the file or device and committing data to disk. Specifics are noted within this topic as appropriate. <b>Windows Server 2003 and Windows XP:  </b>A sharing violation occurs if an attempt is made to open a file or directory for deletion on a remote computer when the value of the <i>dwDesiredAccess</i> parameter is the <b>DELETE</b> access flag (0x00010000) <b>OR</b>'ed with any other access flag, and the remote file or directory has not been opened with <b>FILE_SHARE_DELETE</b>. To avoid the sharing violation in this scenario, open the remote file or directory with the <b>DELETE</b> access right only, or call <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-deletefilea">DeleteFile</a> without first opening the file or directory for deletion. Some file systems, such as the NTFS file system, support compression or encryption for individual files and directories. On volumes that have a mounted file system with this support, a new file inherits the compression and encryption attributes of its directory. You cannot use <b>CreateFile</b> to control compression, decompression, or decryption on a file or directory. For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-and-opening-files">Creating and Opening Files</a>, <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-compression-and-decompression">File Compression and Decompression</a>, and <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-encryption">File Encryption</a>. <b>Windows Server 2003 and Windows XP:  </b>For backward compatibility purposes, <b>CreateFile</b> does not apply inheritance rules when you specify a security descriptor in <i>lpSecurityAttributes</i>. To support inheritance, functions that later query the security descriptor of this file may heuristically determine and report that inheritance is in effect. For more information, see <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/automatic-propagation-of-inheritable-aces">Automatic Propagation of Inheritable ACEs</a>. As stated previously, if the <i>lpSecurityAttributes</i> parameter is <b>NULL</b>, the handle returned by <b>CreateFile</b> cannot be inherited by any child processes your application may create. The following information regarding this parameter also applies: </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.DeviceIoControl(System.Runtime.InteropServices.SafeHandle,System.UInt32,System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.UInt32@,System.Threading.NativeOverlapped*)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.DeviceIoControl(Windows.Win32.Foundation.HANDLE,System.UInt32,System.Void*,System.UInt32,System.Void*,System.UInt32,System.UInt32*,System.Threading.NativeOverlapped*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.DeviceIoControl(System.Runtime.InteropServices.SafeHandle,System.UInt32,System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Threading.NativeOverlapped*)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.DeviceIoControl(Windows.Win32.Foundation.HANDLE,System.UInt32,System.Void*,System.UInt32,System.Void*,System.UInt32,System.UInt32*,System.Threading.NativeOverlapped*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.DeviceIoControl(Windows.Win32.Foundation.HANDLE,System.UInt32,System.Void*,System.UInt32,System.Void*,System.UInt32,System.UInt32*,System.Threading.NativeOverlapped*)">
+            <summary>Sends a control code directly to a specified device driver, causing the corresponding device to perform the corresponding operation.</summary>
+            <param name="hDevice">
+            <para>A handle to the device on which the operation is to be performed. The device is typically a volume, directory, file, or stream. To retrieve a device handle, use the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-createfilea">CreateFile</a> function. For more information, see Remarks.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwIoControlCode">
+            <para>The control code for the operation. This value identifies the specific operation to be performed and the type of device on which to perform it. For a list of the control codes, see Remarks. The documentation for each control code provides usage details for the <i>lpInBuffer</i>, <i>nInBufferSize</i>, <i>lpOutBuffer</i>, and <i>nOutBufferSize</i> parameters.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lpInBuffer">
+            <para>A pointer to the input buffer that contains the data required to perform the operation. The format of this data depends on the value of the <i>dwIoControlCode</i> parameter. This parameter can be <b>NULL</b> if <i>dwIoControlCode</i> specifies an operation that does not require input data.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="nInBufferSize">The size of the input buffer, in bytes.</param>
+            <param name="lpOutBuffer">
+            <para>A pointer to the output buffer that is to receive the data returned by the operation. The format of this data depends on the value of the <i>dwIoControlCode</i> parameter. This parameter can be <b>NULL</b> if <i>dwIoControlCode</i> specifies an operation that does not return data.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="nOutBufferSize">The size of the output buffer, in bytes.</param>
+            <param name="lpBytesReturned">
+            <para>A pointer to a variable that receives the size of the data stored in the output buffer, in bytes. If the output buffer is too small to receive any data,  the call fails, <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> returns <b>ERROR_INSUFFICIENT_BUFFER</b>, and <i>lpBytesReturned</i> is zero. If the output buffer is too small to hold all of the data but can hold some entries, some drivers will return as much data as fits. In this case, the call fails, <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> returns <b>ERROR_MORE_DATA</b>, and <i>lpBytesReturned</i> indicates the amount of data received. Your application should call <b>DeviceIoControl</b> again with the same operation, specifying a new starting point. If <i>lpOverlapped</i> is <b>NULL</b>, <i>lpBytesReturned</i> cannot be <b>NULL</b>. Even when an operation returns no output data and <i>lpOutBuffer</i> is <b>NULL</b>, <b>DeviceIoControl</b> makes use of <i>lpBytesReturned</i>. After such an operation, the value of <i>lpBytesReturned</i> is meaningless. If <i>lpOverlapped</i> is not <b>NULL</b>, <i>lpBytesReturned</i> can be <b>NULL</b>. If this parameter is not <b>NULL</b> and the operation returns data, <i>lpBytesReturned</i> is meaningless until the overlapped operation has completed. To retrieve the number of bytes returned, call <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-getoverlappedresult">GetOverlappedResult</a>. If <i>hDevice</i> is associated with an I/O completion port, you can retrieve the number of bytes returned by calling <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-getqueuedcompletionstatus">GetQueuedCompletionStatus</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lpOverlapped">
+            <para>A pointer to an <a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-overlapped">OVERLAPPED</a> structure. If <i>hDevice</i> was opened without specifying <b>FILE_FLAG_OVERLAPPED</b>, <i>lpOverlapped</i> is ignored. If <i>hDevice</i> was opened with the <b>FILE_FLAG_OVERLAPPED</b> flag, the operation is performed as an overlapped (asynchronous) operation. In this case, <i>lpOverlapped</i> must point to a valid <a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-overlapped">OVERLAPPED</a> structure that contains a handle to an event object. Otherwise, the function fails in unpredictable ways. For overlapped operations, <b>DeviceIoControl</b> returns immediately, and the event object is signaled when the operation has been completed. Otherwise, the function does not return until the operation has been completed or an error occurs.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>If the operation completes successfully, the return value is nonzero (TRUE). If the operation fails or is pending, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>To retrieve a handle to the device, you must call the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-createfilea">CreateFile</a> function with either the name of a device or the name of the driver associated with a device. To specify a device name, use the following format: \\\\.&#92;<i>DeviceName</i> <b>DeviceIoControl</b> can accept a handle to a specific device. For example, to open a handle to the logical drive A: with <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-createfilea">CreateFile</a>, specify \\\\.\a:. Alternatively, you can use the names \\\\.\PhysicalDrive0, \\\\.\PhysicalDrive1, and so on, to open handles to the physical drives on a system. You should specify the <b>FILE_SHARE_READ</b> and <b>FILE_SHARE_WRITE</b> access flags when calling <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-createfilea">CreateFile</a> to open a handle to a device driver. However, when you open a communications resource, such as a serial port, you must specify exclusive access. Use the other <b>CreateFile</b> parameters as follows when opening a device handle: </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetFileInformationByHandleEx(System.Runtime.InteropServices.SafeHandle,Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS,System.Span{System.Byte})">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.GetFileInformationByHandleEx(Windows.Win32.Foundation.HANDLE,Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS,System.Void*,System.UInt32)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetFileInformationByHandleEx(Windows.Win32.Foundation.HANDLE,Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS,System.Void*,System.UInt32)">
+            <summary>Retrieves file information for the specified file. (GetFileInformationByHandleEx)</summary>
+            <param name="hFile">
+            <para>A handle to the file that contains the information to be retrieved. This handle should not be a pipe handle.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfileinformationbyhandleex#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="FileInformationClass">
+            <para>A <a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ne-minwinbase-file_info_by_handle_class">FILE_INFO_BY_HANDLE_CLASS</a> enumeration value that specifies the type of information to be retrieved. For a table of valid values, see the Remarks section.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfileinformationbyhandleex#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lpFileInformation">
+            <para>A pointer to the buffer that receives the requested file information. The structure that is returned corresponds to the class that is specified by <i>FileInformationClass</i>. For a table of valid structure types, see the Remarks section.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfileinformationbyhandleex#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwBufferSize">The size of the <i>lpFileInformation</i> buffer, in bytes.</param>
+            <returns>
+            <para>If the function succeeds, the return value is nonzero and file information data is contained in the buffer pointed to by the <i>lpFileInformation</i> parameter. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>If <i>FileInformationClass</i> is <b>FileStreamInfo</b> and the calls succeed but no streams are returned, the error that is returned by <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> is <b>ERROR_HANDLE_EOF</b>. Certain file information classes behave slightly differently on different operating system releases. These classes are supported by the underlying drivers, and any information they return is subject to change between operating system releases. The following table shows the valid file information class types and their corresponding data structure types for use with this function. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfileinformationbyhandleex#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="T:Windows.Win32.Security.SECURITY_ATTRIBUTES">
+            <summary>The SECURITY_ATTRIBUTES structure contains the security descriptor for an object and specifies whether the handle retrieved by specifying this structure is inheritable.</summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Windows.Win32.Security.SECURITY_ATTRIBUTES.nLength">
+            <summary>The size, in bytes, of this structure. Set this value to the size of the **SECURITY\_ATTRIBUTES** structure.</summary>
+        </member>
+        <member name="F:Windows.Win32.Security.SECURITY_ATTRIBUTES.lpSecurityDescriptor">
+            <summary>
+            <para>A pointer to a [**SECURITY\_DESCRIPTOR**](../winnt/ns-winnt-security_descriptor.md) structure that controls access to the object. If the value of this member is **NULL**, the object is assigned the default security descriptor associated with the [*access token*](/windows/win32/secauthz/access-tokens) of the calling process. This is not the same as granting access to everyone by assigning a **NULL** [*discretionary access control list*](/windows/win32/secauthz/dacls-and-aces) (DACL). By default, the default DACL in the access token of a process allows access only to the user represented by the access token. For information about creating a security descriptor, see [Creating a Security Descriptor](/windows/win32/secauthz/creating-a-security-descriptor-for-a-new-object-in-c--).</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/wtypesbase/ns-wtypesbase-security_attributes#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Security.SECURITY_ATTRIBUTES.bInheritHandle">
+            <summary>A Boolean value that specifies whether the returned handle is inherited when a new process is created. If this member is **TRUE**, the new process inherits the handle.</summary>
+        </member>
+    </members>
+</doc>

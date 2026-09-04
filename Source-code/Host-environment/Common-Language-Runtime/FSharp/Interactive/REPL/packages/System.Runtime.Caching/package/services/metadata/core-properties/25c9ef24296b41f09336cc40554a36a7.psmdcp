@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Microsoft</dc:creator>
+  <dc:description>Provides classes to use caching facilities.
+
+Commonly Used Types:
+System.Runtime.Caching.CacheEntryChangeMonitor
+System.Runtime.Caching.CacheEntryRemovedArguments
+System.Runtime.Caching.CacheEntryUpdateArguments
+System.Runtime.Caching.CacheItem
+System.Runtime.Caching.CacheItemPolicy
+System.Runtime.Caching.ChangeMonitor
+System.Runtime.Caching.FileChangeMonitor
+System.Runtime.Caching.HostFileChangeMonitor
+System.Runtime.Caching.MemoryCache
+System.Runtime.Caching.ObjectCache</dc:description>
+  <dc:identifier>System.Runtime.Caching</dc:identifier>
+  <version>10.0.11</version>
+  <keywords></keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

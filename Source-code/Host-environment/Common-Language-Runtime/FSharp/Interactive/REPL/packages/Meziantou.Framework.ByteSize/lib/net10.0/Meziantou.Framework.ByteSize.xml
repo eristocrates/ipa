@@ -1,0 +1,671 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.ByteSize</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.ByteSize">
+             <summary>Represents a byte size value that can be formatted, parsed, and compared. Supports both decimal (kB, MB, GB) and binary (kiB, MiB, GiB) units.</summary>
+             <example>
+             <code>
+             // Create an instance
+             var size = new ByteSize(1024);
+             var size2 = ByteSize.FromKiloBytes(10);
+             var size3 = ByteSize.Parse("10MB", CultureInfo.InvariantCulture);
+            
+             // Format with automatic unit selection
+             Console.WriteLine(size.ToString()); // "1.024kB" - decimal units
+             Console.WriteLine(size.ToString("gi")); // "1kiB" - binary units
+            
+             // Format with specific unit
+             Console.WriteLine(size.ToString("MB")); // "0.001024MB"
+            
+             // Perform arithmetic operations
+             var total = ByteSize.FromKiloBytes(1) + ByteSize.FromKiloBytes(2);
+             Console.WriteLine(total.ToString()); // "3kB"
+             </code>
+             </example>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.#ctor(System.Int64)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.ByteSize"/> struct with the specified byte value.</summary>
+            <param name="length">The size in bytes.</param>
+        </member>
+        <member name="P:Meziantou.Framework.ByteSize.Value">
+            <summary>Gets the size in bytes.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.ByteSize.Zero">
+            <summary>Gets a <see cref="T:Meziantou.Framework.ByteSize"/> instance representing zero bytes.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.ByteSize.MaxValue">
+            <summary>Gets a <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the maximum possible byte value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.ByteSize.MinValue">
+            <summary>Gets a <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the minimum possible byte value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.ToString(System.String)">
+            <summary>Convert value to string</summary>
+            <param name="format">
+            Allowed formats:
+            <list type="bullet">
+                <item><c>G</c>: Find the best unit (B, kB, MB, GB, etc.), and use G format for the value</item>
+                <item><c>G2</c>: Find the best unit (B, kB, MB, GB, etc.), and use F2 format for the value</item>
+                <item><c>Gi</c>: Find the best unit (B, kiB, MiB, GiB, etc.), and use G format for the value</item>
+                <item><c>Gi2</c>: Find the best unit (B, kiB, MiB, GiB, etc.), and use F2 format for the value</item>
+                <item><c>F</c>, <c>F2</c>, <c>Fi</c>, <c>Fi2</c>: Synonyms of <c>G</c>, <c>G2</c>, <c>Gi</c>, <c>Gi2</c></item>
+                <item>
+                    <c>B</c>, <c>kB</c>, <c>kiB</c>, <c>MB</c>, <c>MiB</c>, <c>GB</c>, <c>GiB</c>, <c>TB</c>, <c>TiB</c>, <c>PB</c>, <c>PiB</c>, <c>EB</c>, <c>EiB</c>:
+                    Use the provided unit, and use G format for the value. If a number is provided (e.g. <c>kB3</c>), it use Fn (e.g. F3) format to convert the value to string.
+                </item>
+            </list>
+            </param>
+            <exception cref="T:System.FormatException">The provided format is not valid</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.ToString(System.String,System.IFormatProvider)">
+            <summary>Convert value to string</summary>
+            <param name="format">
+            Allowed formats:
+            <list type="bullet">
+                <item><c>G</c>: Find the best unit (B, kB, MB, GB, etc.), and use G format for the value</item>
+                <item><c>G2</c>: Find the best unit (B, kB, MB, GB, etc.), and use F2 format for the value</item>
+                <item><c>Gi</c>: Find the best unit (B, kiB, MiB, GiB, etc.), and use G format for the value</item>
+                <item><c>Gi2</c>: Find the best unit (B, kiB, MiB, GiB, etc.), and use F2 format for the value</item>
+                <item><c>F</c>, <c>F2</c>, <c>Fi</c>, <c>Fi2</c>: Synonyms of <c>G</c>, <c>G2</c>, <c>Gi</c>, <c>Gi2</c></item>
+                <item>
+                    <c>B</c>, <c>kB</c>, <c>kiB</c>, <c>MB</c>, <c>MiB</c>, <c>GB</c>, <c>GiB</c>, <c>TB</c>, <c>TiB</c>, <c>PB</c>, <c>PiB</c>, <c>EB</c>, <c>EiB</c>:
+                    Use the provided unit, and use G format for the value. If a number is provided (e.g. <c>kB3</c>), it use Fn (e.g. F3) format to convert the value to string.
+                </item>
+            </list>
+            </param>
+            <param name="formatProvider"></param>
+            <returns></returns>
+            <exception cref="T:System.FormatException">The provided format is not valid</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.TryFormat(System.Span{System.Char},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>Tries to format the value into the provided span of characters.</summary>
+            <param name="destination">The span in which to write this instance's value formatted as a span of characters.</param>
+            <param name="charsWritten">When this method returns, contains the number of characters that were written in destination.</param>
+            <param name="format">A span containing the characters that represent a standard or custom format string.</param>
+            <param name="provider">An optional object that supplies culture-specific formatting information for destination.</param>
+            <returns>true if the formatting was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.GetValue(Meziantou.Framework.ByteSizeUnit)">
+            <summary>Converts the byte size to the specified unit.</summary>
+            <param name="unit">The unit to convert to.</param>
+            <returns>The value in the specified unit.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.op_Multiply(Meziantou.Framework.ByteSize,System.Int64)">
+            <summary>Scales a byte size by a factor.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.op_Multiply(System.Int64,Meziantou.Framework.ByteSize)">
+            <summary>Scales a byte size by a factor.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.op_Division(Meziantou.Framework.ByteSize,System.Int64)">
+            <summary>Divides a byte size by a factor.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.Add(Meziantou.Framework.ByteSize)">
+            <summary>Adds two byte size values.</summary>
+            <param name="other">The value to add.</param>
+            <returns>The sum of the two byte sizes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.Subtract(Meziantou.Framework.ByteSize)">
+            <summary>Subtracts a byte size value from this instance.</summary>
+            <param name="other">The value to subtract.</param>
+            <returns>The result of the subtraction.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.Multiply(System.Int64)">
+            <summary>Scales this byte size by a factor.</summary>
+            <param name="multiplier">The factor to scale by.</param>
+            <returns>The scaled byte size.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.Divide(System.Int64)">
+            <summary>Divides this byte size by a factor.</summary>
+            <param name="divisor">The factor to divide by.</param>
+            <returns>The divided byte size.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.Parse(System.String,System.IFormatProvider)">
+            <summary>Converts the string representation of a byte size to its <see cref="T:Meziantou.Framework.ByteSize"/> equivalent.</summary>
+            <param name="text">A string containing a byte size to convert.</param>
+            <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> equivalent to the byte size specified in <paramref name="text"/>.</returns>
+            <exception cref="T:System.FormatException"><paramref name="text"/> is not in a valid format.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.TryParse(System.String,Meziantou.Framework.ByteSize@)">
+            <summary>Tries to convert the string representation of a byte size to its <see cref="T:Meziantou.Framework.ByteSize"/> equivalent.</summary>
+            <param name="text">A string containing a byte size to convert.</param>
+            <param name="result">When this method returns, contains the <see cref="T:Meziantou.Framework.ByteSize"/> equivalent to the byte size specified in <paramref name="text"/>, if the conversion succeeded, or zero if the conversion failed.</param>
+            <returns><see langword="true"/> if <paramref name="text"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.TryParse(System.String,System.IFormatProvider,Meziantou.Framework.ByteSize@)">
+            <summary>Tries to convert the string representation of a byte size to its <see cref="T:Meziantou.Framework.ByteSize"/> equivalent.</summary>
+            <param name="text">A string containing a byte size to convert.</param>
+            <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
+            <param name="result">When this method returns, contains the <see cref="T:Meziantou.Framework.ByteSize"/> equivalent to the byte size specified in <paramref name="text"/>, if the conversion succeeded, or zero if the conversion failed.</param>
+            <returns><see langword="true"/> if <paramref name="text"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>Parses a span of characters into a ByteSize value.</summary>
+            <param name="s">The span of characters to parse.</param>
+            <param name="provider">An object that provides culture-specific formatting information about s.</param>
+            <returns>The result of parsing s.</returns>
+            <exception cref="T:System.FormatException">s is not in the correct format.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,Meziantou.Framework.ByteSize@)">
+            <summary>Tries to parse a span of characters into a ByteSize value.</summary>
+            <param name="s">The span of characters to parse.</param>
+            <param name="provider">An object that provides culture-specific formatting information about s.</param>
+            <param name="result">When this method returns, contains the result of successfully parsing s, or an undefined value on failure.</param>
+            <returns>true if s was successfully parsed; otherwise, false.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.TryFormat(System.Span{System.Byte},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>Tries to format the value as UTF-8 into the provided span of bytes.</summary>
+            <param name="utf8Destination">The span in which to write this instance's value formatted as UTF-8.</param>
+            <param name="bytesWritten">When this method returns, contains the number of bytes that were written in utf8Destination.</param>
+            <param name="format">A span containing the characters that represent a standard or custom format string.</param>
+            <param name="provider">An optional object that supplies culture-specific formatting information.</param>
+            <returns>true if the formatting was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.Parse(System.ReadOnlySpan{System.Byte})">
+            <summary>Parses a span of UTF-8 characters into a ByteSize value.</summary>
+            <param name="utf8Text">The span of UTF-8 characters to parse.</param>
+            <returns>The result of parsing utf8Text.</returns>
+            <exception cref="T:System.FormatException">utf8Text is not in the correct format.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.TryParse(System.ReadOnlySpan{System.Byte},Meziantou.Framework.ByteSize@)">
+            <summary>Tries to parse a span of UTF-8 characters into a ByteSize value.</summary>
+            <param name="utf8Text">The span of UTF-8 characters to parse.</param>
+            <param name="result">When this method returns, contains the result of successfully parsing utf8Text, or an undefined value on failure.</param>
+            <returns>true if utf8Text was successfully parsed; otherwise, false.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.From(System.Byte,Meziantou.Framework.ByteSizeUnit)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a value and unit.</summary>
+            <param name="value">The numeric value.</param>
+            <param name="unit">The unit of the value.</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified value and unit.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.From(System.Int16,Meziantou.Framework.ByteSizeUnit)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a value and unit.</summary>
+            <param name="value">The numeric value.</param>
+            <param name="unit">The unit of the value.</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified value and unit.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.From(System.Int32,Meziantou.Framework.ByteSizeUnit)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a value and unit.</summary>
+            <param name="value">The numeric value.</param>
+            <param name="unit">The unit of the value.</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified value and unit.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.From(System.Int64,Meziantou.Framework.ByteSizeUnit)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a value and unit.</summary>
+            <param name="value">The numeric value.</param>
+            <param name="unit">The unit of the value.</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified value and unit.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.From(System.Single,Meziantou.Framework.ByteSizeUnit)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a value and unit.</summary>
+            <param name="value">The numeric value.</param>
+            <param name="unit">The unit of the value.</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified value and unit.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.From(System.Double,Meziantou.Framework.ByteSizeUnit)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a value and unit.</summary>
+            <param name="value">The numeric value.</param>
+            <param name="unit">The unit of the value.</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified value and unit.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromFileLength(System.IO.FileInfo)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a file's length.</summary>
+            <param name="fileInfo">The file information.</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the file's size.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromFileLength(System.String)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a file's length.</summary>
+            <param name="filePath">The path to the file.</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the file's size.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a byte value.</summary>
+            <param name="value">The number of bytes (1 byte).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of bytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a byte value.</summary>
+            <param name="value">The number of bytes (1 byte).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of bytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a byte value.</summary>
+            <param name="value">The number of bytes (1 byte).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of bytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a byte value.</summary>
+            <param name="value">The number of bytes (1 byte).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of bytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a byte value.</summary>
+            <param name="value">The number of bytes (1 byte).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of bytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a byte value.</summary>
+            <param name="value">The number of bytes (1 byte).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of bytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKiloBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kilobyte value.</summary>
+            <param name="value">The number of kilobytes (1,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kilobytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKiloBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kilobyte value.</summary>
+            <param name="value">The number of kilobytes (1,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kilobytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKiloBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kilobyte value.</summary>
+            <param name="value">The number of kilobytes (1,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kilobytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKiloBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kilobyte value.</summary>
+            <param name="value">The number of kilobytes (1,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kilobytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKiloBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kilobyte value.</summary>
+            <param name="value">The number of kilobytes (1,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kilobytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKiloBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kilobyte value.</summary>
+            <param name="value">The number of kilobytes (1,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kilobytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMegaBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a megabyte value.</summary>
+            <param name="value">The number of megabytes (1,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of megabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMegaBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a megabyte value.</summary>
+            <param name="value">The number of megabytes (1,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of megabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMegaBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a megabyte value.</summary>
+            <param name="value">The number of megabytes (1,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of megabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMegaBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a megabyte value.</summary>
+            <param name="value">The number of megabytes (1,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of megabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMegaBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a megabyte value.</summary>
+            <param name="value">The number of megabytes (1,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of megabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMegaBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a megabyte value.</summary>
+            <param name="value">The number of megabytes (1,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of megabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGigaBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gigabyte value.</summary>
+            <param name="value">The number of gigabytes (1,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gigabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGigaBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gigabyte value.</summary>
+            <param name="value">The number of gigabytes (1,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gigabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGigaBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gigabyte value.</summary>
+            <param name="value">The number of gigabytes (1,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gigabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGigaBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gigabyte value.</summary>
+            <param name="value">The number of gigabytes (1,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gigabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGigaBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gigabyte value.</summary>
+            <param name="value">The number of gigabytes (1,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gigabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGigaBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gigabyte value.</summary>
+            <param name="value">The number of gigabytes (1,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gigabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTeraBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a terabyte value.</summary>
+            <param name="value">The number of terabytes (1,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of terabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTeraBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a terabyte value.</summary>
+            <param name="value">The number of terabytes (1,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of terabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTeraBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a terabyte value.</summary>
+            <param name="value">The number of terabytes (1,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of terabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTeraBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a terabyte value.</summary>
+            <param name="value">The number of terabytes (1,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of terabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTeraBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a terabyte value.</summary>
+            <param name="value">The number of terabytes (1,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of terabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTeraBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a terabyte value.</summary>
+            <param name="value">The number of terabytes (1,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of terabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPetaBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a petabyte value.</summary>
+            <param name="value">The number of petabytes (1,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of petabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPetaBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a petabyte value.</summary>
+            <param name="value">The number of petabytes (1,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of petabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPetaBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a petabyte value.</summary>
+            <param name="value">The number of petabytes (1,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of petabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPetaBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a petabyte value.</summary>
+            <param name="value">The number of petabytes (1,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of petabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPetaBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a petabyte value.</summary>
+            <param name="value">The number of petabytes (1,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of petabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPetaBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a petabyte value.</summary>
+            <param name="value">The number of petabytes (1,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of petabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExaBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exabyte value.</summary>
+            <param name="value">The number of exabytes (1,000,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExaBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exabyte value.</summary>
+            <param name="value">The number of exabytes (1,000,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExaBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exabyte value.</summary>
+            <param name="value">The number of exabytes (1,000,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExaBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exabyte value.</summary>
+            <param name="value">The number of exabytes (1,000,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExaBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exabyte value.</summary>
+            <param name="value">The number of exabytes (1,000,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExaBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exabyte value.</summary>
+            <param name="value">The number of exabytes (1,000,000,000,000,000,000 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exabytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKibiBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kibibyte value.</summary>
+            <param name="value">The number of kibibytes (1,024 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKibiBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kibibyte value.</summary>
+            <param name="value">The number of kibibytes (1,024 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKibiBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kibibyte value.</summary>
+            <param name="value">The number of kibibytes (1,024 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKibiBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kibibyte value.</summary>
+            <param name="value">The number of kibibytes (1,024 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKibiBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kibibyte value.</summary>
+            <param name="value">The number of kibibytes (1,024 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromKibiBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a kibibyte value.</summary>
+            <param name="value">The number of kibibytes (1,024 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of kibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMebiBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a mebibyte value.</summary>
+            <param name="value">The number of mebibytes (1,048,576 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of mebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMebiBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a mebibyte value.</summary>
+            <param name="value">The number of mebibytes (1,048,576 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of mebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMebiBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a mebibyte value.</summary>
+            <param name="value">The number of mebibytes (1,048,576 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of mebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMebiBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a mebibyte value.</summary>
+            <param name="value">The number of mebibytes (1,048,576 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of mebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMebiBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a mebibyte value.</summary>
+            <param name="value">The number of mebibytes (1,048,576 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of mebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromMebiBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a mebibyte value.</summary>
+            <param name="value">The number of mebibytes (1,048,576 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of mebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGibiBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gibibyte value.</summary>
+            <param name="value">The number of gibibytes (1,073,741,824 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGibiBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gibibyte value.</summary>
+            <param name="value">The number of gibibytes (1,073,741,824 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGibiBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gibibyte value.</summary>
+            <param name="value">The number of gibibytes (1,073,741,824 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGibiBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gibibyte value.</summary>
+            <param name="value">The number of gibibytes (1,073,741,824 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGibiBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gibibyte value.</summary>
+            <param name="value">The number of gibibytes (1,073,741,824 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromGibiBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a gibibyte value.</summary>
+            <param name="value">The number of gibibytes (1,073,741,824 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of gibibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTebiBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a tebibyte value.</summary>
+            <param name="value">The number of tebibytes (1,099,511,627,776 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of tebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTebiBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a tebibyte value.</summary>
+            <param name="value">The number of tebibytes (1,099,511,627,776 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of tebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTebiBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a tebibyte value.</summary>
+            <param name="value">The number of tebibytes (1,099,511,627,776 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of tebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTebiBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a tebibyte value.</summary>
+            <param name="value">The number of tebibytes (1,099,511,627,776 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of tebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTebiBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a tebibyte value.</summary>
+            <param name="value">The number of tebibytes (1,099,511,627,776 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of tebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromTebiBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a tebibyte value.</summary>
+            <param name="value">The number of tebibytes (1,099,511,627,776 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of tebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPebiBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a pebibyte value.</summary>
+            <param name="value">The number of pebibytes (1,125,899,906,842,624 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of pebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPebiBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a pebibyte value.</summary>
+            <param name="value">The number of pebibytes (1,125,899,906,842,624 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of pebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPebiBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a pebibyte value.</summary>
+            <param name="value">The number of pebibytes (1,125,899,906,842,624 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of pebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPebiBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a pebibyte value.</summary>
+            <param name="value">The number of pebibytes (1,125,899,906,842,624 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of pebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPebiBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a pebibyte value.</summary>
+            <param name="value">The number of pebibytes (1,125,899,906,842,624 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of pebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromPebiBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a pebibyte value.</summary>
+            <param name="value">The number of pebibytes (1,125,899,906,842,624 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of pebibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExbiBytes(System.Byte)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exbibyte value.</summary>
+            <param name="value">The number of exbibytes (1,152,921,504,606,846,976 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exbibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExbiBytes(System.Int16)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exbibyte value.</summary>
+            <param name="value">The number of exbibytes (1,152,921,504,606,846,976 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exbibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExbiBytes(System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exbibyte value.</summary>
+            <param name="value">The number of exbibytes (1,152,921,504,606,846,976 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exbibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExbiBytes(System.Int64)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exbibyte value.</summary>
+            <param name="value">The number of exbibytes (1,152,921,504,606,846,976 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exbibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExbiBytes(System.Single)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exbibyte value.</summary>
+            <param name="value">The number of exbibytes (1,152,921,504,606,846,976 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exbibytes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.ByteSize.FromExbiBytes(System.Double)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.ByteSize"/> instance from a exbibyte value.</summary>
+            <param name="value">The number of exbibytes (1,152,921,504,606,846,976 bytes).</param>
+            <returns>A <see cref="T:Meziantou.Framework.ByteSize"/> instance representing the specified number of exbibytes.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.ByteSizeUnit">
+            <summary>Specifies the units for byte size values, including both decimal (1000-based) and binary (1024-based) units.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.Byte">
+            <summary>Byte (B) - 1 byte.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.KiloByte">
+            <summary>Kilobyte (kB) - 1,000 bytes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.MegaByte">
+            <summary>Megabyte (MB) - 1,000,000 bytes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.GigaByte">
+            <summary>Gigabyte (GB) - 1,000,000,000 bytes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.TeraByte">
+            <summary>Terabyte (TB) - 1,000,000,000,000 bytes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.PetaByte">
+            <summary>Petabyte (PB) - 1,000,000,000,000,000 bytes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.ExaByte">
+            <summary>Exabyte (EB) - 1,000,000,000,000,000,000 bytes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.KibiByte">
+            <summary>Kibibyte (kiB) - 1,024 bytes (2^10).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.MebiByte">
+            <summary>Mebibyte (MiB) - 1,048,576 bytes (2^20).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.GibiByte">
+            <summary>Gibibyte (GiB) - 1,073,741,824 bytes (2^30).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.TebiByte">
+            <summary>Tebibyte (TiB) - 1,099,511,627,776 bytes (2^40).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.PebiByte">
+            <summary>Pebibyte (PiB) - 1,125,899,906,842,624 bytes (2^50).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.ByteSizeUnit.ExbiByte">
+            <summary>Exbibyte (EiB) - 1,152,921,504,606,846,976 bytes (2^60).</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+    </members>
+</doc>

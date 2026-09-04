@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Fable.Core</id>
+    <version>5.2.0</version>
+    <authors>Alfonso García-Caro Núñez</authors>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>fable_logo.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>http://fable.io/</projectUrl>
+    <description>Fable Core Library</description>
+    <releaseNotes>### 🚀 Features
+
+* *(all)* Add `Compiler.is*` target detection flags for conditional branching (#4692) ([621dea31](https://github.com/fable-compiler/Fable/commit/621dea31daaef6a9dcf8a2ac5ceb144a063bb873))
+
+&lt;strong&gt;&lt;small&gt;[View changes on Github](https://github.com/fable-compiler/Fable/compare/477b8c693d948f74d8d2d5c38ac4d8e1f9287a51..c977d78b39225a51c7bd051a1fe363ed0ccbe201)&lt;/small&gt;&lt;/strong&gt;</releaseNotes>
+    <tags>fsharp fable javascript f# js</tags>
+    <repository type="git" url="https://github.com/fable-compiler/Fable.git" branch="refs/heads/main" commit="227907c08bc6a9b5bcd1f80cf5ff5e218a1f29fc" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="4.7.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/netstandard2.0/CHANGELOG.md" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+</package>

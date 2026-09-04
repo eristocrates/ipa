@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Data.JsonPath</id>
+    <version>1.1.3</version>
+    <title>JsonPath for F# Data</title>
+    <authors>Jonathan Leaver</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>FSharp.Data.JsonPath.Icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/j-alexander/FSharp.Data.JsonPath</projectUrl>
+    <description>Query JsonValue documents from F# using ad-hoc JsonPath queries.</description>
+    <copyright>© 2025 Jonathan Leaver</copyright>
+    <tags>jsonpath query json path fsharp data fsharpdata jsonvalue</tags>
+    <repository type="git" url="https://github.com/j-alexander/FSharp.Data.JsonPath.git" commit="a20365d0ae7aa3d6cef5e014f72f2ff92f0912e2" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.8.1">
+        <dependency id="FSharp.Core" version="9.0.303" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Data" version="6.6.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="FSharp.Core" version="9.0.303" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Data" version="6.6.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="FSharp.Core" version="9.0.303" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Data" version="6.6.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="FSharp.Core" version="9.0.303" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Data" version="6.6.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="9.0.303" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Data" version="6.6.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

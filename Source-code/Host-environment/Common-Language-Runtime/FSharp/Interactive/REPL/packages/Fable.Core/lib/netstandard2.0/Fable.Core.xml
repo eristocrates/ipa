@@ -1,0 +1,1581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Fable.Core</name></assembly>
+<members>
+<member name="T:Fable.Core.U9`9">
+<summary>
+ Erased union type to represent one of nine or more possible values.
+ More info: https://fable.io/docs/communicate/js-from-fable.html#erase-attribute
+</summary>
+</member>
+<member name="T:Fable.Core.U8`8">
+<summary>
+ Erased union type to represent one of eight possible values.
+ More info: https://fable.io/docs/communicate/js-from-fable.html#erase-attribute
+</summary>
+</member>
+<member name="T:Fable.Core.U7`7">
+<summary>
+ Erased union type to represent one of seven possible values.
+ More info: https://fable.io/docs/communicate/js-from-fable.html#erase-attribute
+</summary>
+</member>
+<member name="T:Fable.Core.U6`6">
+<summary>
+ Erased union type to represent one of six possible values.
+ More info: https://fable.io/docs/communicate/js-from-fable.html#erase-attribute
+</summary>
+</member>
+<member name="T:Fable.Core.U5`5">
+<summary>
+ Erased union type to represent one of five possible values.
+ More info: https://fable.io/docs/communicate/js-from-fable.html#erase-attribute
+</summary>
+</member>
+<member name="T:Fable.Core.U4`4">
+<summary>
+ Erased union type to represent one of four possible values.
+ More info: https://fable.io/docs/communicate/js-from-fable.html#erase-attribute
+</summary>
+</member>
+<member name="T:Fable.Core.U3`3">
+<summary>
+ Erased union type to represent one of three possible values.
+ More info: https://fable.io/docs/communicate/js-from-fable.html#erase-attribute
+</summary>
+</member>
+<member name="T:Fable.Core.U2`2">
+<summary>
+ Erased union type to represent one of two possible values.
+ More info: https://fable.io/docs/communicate/js-from-fable.html#erase-attribute
+</summary>
+</member>
+<member name="T:Fable.Core.InjectAttribute">
+<summary>
+ Experimental: Currently only intended for some specific libraries
+</summary>
+</member>
+<member name="T:Fable.Core.NamedParamsAttribute">
+<summary>
+ Alias for ParamObjectAttribute.
+</summary>
+</member>
+<member name="T:Fable.Core.ParamObjectAttribute">
+<summary>
+ Converts arguments from the specified index on (0 by default) into an object.
+ IMPORTANT: This should be used only with native bindings.
+</summary>
+</member>
+<member name="T:Fable.Core.ParamListAttribute">
+<summary>
+ Used to spread the last argument. Mainly intended for `React.createElement` binding, not for general use.
+</summary>
+</member>
+<member name="T:Fable.Core.StringEnumAttribute">
+ <summary>
+ Compile union types as string literals.
+ </summary>
+ <remarks>
+ You can also use <c>[&lt;CompiledName>]</c> and <c>[&lt;CompiledValue>]</c> to
+ specify the name or literal of the union case in the generated code:
+
+ <code lang="fsharp">
+ [&lt;StringEnum>]
+ type EventType =
+     | [&lt;CompiledName("Abracadabra")>] MouseOver
+     | [&lt;CompiledValue(false)>] RealMagic
+ let eventType = EventType.MouseOver // Compiles: "Abracadabra"
+ let magicPower = EventType.RealMagic // Compiles: false
+ </code>
+
+ Note: <c>[&lt;CompiledName>]</c> takes precedence over <c>[&lt;CompiledValue>]</c>,
+ which takes precedence over the default case name.
+
+ </remarks>
+ <seealso href="https://fable.io/docs/javascript/features.html#caserules">
+ Fable Documentation
+ </seealso>
+</member>
+<member name="T:Fable.Core.EmitPropertyAttribute">
+<summary>
+ Same as `Emit(&quot;$0.propertyName{{=$1}}&quot;)`
+</summary>
+</member>
+<member name="T:Fable.Core.EmitIndexerAttribute">
+<summary>
+ Same as `Emit(&quot;$0[$1]{{=$2}}&quot;)`
+</summary>
+</member>
+<member name="T:Fable.Core.EmitConstructorAttribute">
+<summary>
+ Same as `Emit(&quot;new $0($1...)&quot;)`
+</summary>
+</member>
+<member name="T:Fable.Core.EmitMethodAttribute">
+<summary>
+ Same as `Emit(&quot;$0.methodName($1...)&quot;)`
+</summary>
+</member>
+<member name="T:Fable.Core.EmitAttribute">
+<summary>
+ Function calls will be replaced by inlined JS code.
+ More info: https://fable.io/docs/communicate/js-from-fable.html#emit-when-f-is-not-enough
+</summary>
+</member>
+<member name="T:Fable.Core.ExportDefaultAttribute">
+ <summary>
+ In supporting target languages, explicitly declares the decorated member
+ as the default export for the file.
+ </summary>
+</member>
+<member name="T:Fable.Core.ImportAllAttribute">
+ <summary>
+ Same as <c>[&lt;Import("*", "my-package")>]</c>
+ </summary>
+</member>
+<member name="T:Fable.Core.ImportDefaultAttribute">
+ <summary>
+ Same as <c>[&lt;Import("default", "my-package")>]</c>.
+ </summary>
+</member>
+<member name="T:Fable.Core.ImportMemberAttribute">
+ <summary>
+ Imports the decorated value, by name, from the given source.
+ <example>
+ <code lang="fsharp">
+ [&lt;Import("Test","TestLibrary")>]
+ let test value = value
+ // SAME AS
+ [&lt;ImportMember("TestLibrary")>]
+ let Test value = value
+ </code>
+ </example>
+ </summary>
+</member>
+<member name="T:Fable.Core.ImportAttribute">
+ <summary>
+ References to the module, type, function... will be replaced by import statements.
+ </summary>
+ <remarks>
+ Example selectors:
+ <para><c>[&lt;Import("default", "my-package")>]</c></para>
+ <para><c>[&lt;Import("*", "my-package")>]</c></para>
+ <para><c>[&lt;Import("nested.import", "my-package")>]</c></para>
+ </remarks>
+</member>
+<member name="T:Fable.Core.GlobalAttribute">
+ <summary>
+ The value (module, type, function...) is globally accessible in the target runtime.
+ </summary>
+ <remarks>
+ Global accessibility means that no imports are required to use the decorated value
+ in the target runtime.
+ </remarks>
+</member>
+<member name="T:Fable.Core.CompiledValueAttribute">
+ <summary>
+ Used in place of <c>CompiledNameAttribute</c> if the target is not a string.
+ </summary>
+ <remarks>
+ Accepts <c>Enum</c>, <c>int</c>, <c>float</c> or <c>bool</c>.
+ </remarks>
+</member>
+<member name="T:Fable.Core.TypeScriptTaggedUnionAttribute">
+<summary>
+ Used for &quot;tagged&quot; union types, which is commonly used in TypeScript.
+</summary>
+</member>
+<member name="T:Fable.Core.EraseAttribute">
+ <summary>
+ Used for erased union types, erasing default constructors, and to ignore modules in Fable compilation.
+ </summary>
+ <remarks>
+ <para>When placed on unions, the union code is erased, leaving the underlying fields as raw values</para>
+ <para>When used on <c>class</c> type declarations, member bindings etc, it will erase any associated
+ target code relating to the construction, reflection, and the definition itself.</para>
+ </remarks>
+</member>
+<member name="T:Fable.Core.AttachMembersAttribute">
+ <summary>
+ Used on a class to attach all members without mangling.
+ </summary>
+ <remarks>
+ Be aware that overloads won't work.
+ </remarks>
+</member>
+<member name="T:Fable.Core.MangleAttribute">
+ <summary>
+ Used on interfaces to mangle member names. This allows overloading and prevents conflicts with
+ other interfaces, but will make interop with native code more difficult.
+ </summary>
+</member>
+<member name="F:Fable.Core.CaseRules.LowerAll">
+ <summary>
+ All characters are lowercased.
+ <example>
+ <c>FooBar</c> -> <c>foobar</c>
+ </example>
+ </summary>
+</member>
+<member name="F:Fable.Core.CaseRules.KebabCase">
+ <summary>
+ Hyphens are used as a separator. All characters are lowercased.
+ <example>
+ <c>FooBar</c> -> <c>foo-bar</c>
+ </example>
+ </summary>
+</member>
+<member name="F:Fable.Core.CaseRules.SnakeCaseAllCaps">
+ <summary>
+ Underscores are used as a separator. All characters are uppercased.
+ <example>
+ <c>FooBar</c> -> <c>FOO_BAR</c>
+ </example>
+ </summary>
+</member>
+<member name="F:Fable.Core.CaseRules.SnakeCase">
+ <summary>
+ Underscores are used as a separator. All characters are lowercased.
+ <example>
+ <c>FooBar</c> -> <c>foo_bar</c>
+ </example>
+ </summary>
+</member>
+<member name="F:Fable.Core.CaseRules.LowerFirst">
+ <summary>
+ First character is lowercased.
+ <example>
+ <c>FooBar</c> -> <c>fooBar</c>
+ </example>
+ </summary>
+</member>
+<member name="F:Fable.Core.CaseRules.None">
+ <summary>
+ No transformation is applied.
+ <example>
+ <c>FooBar</c> -> <c>FooBar</c>
+ </example>
+ </summary>
+</member>
+<member name="T:Fable.Core.CaseRules">
+ <summary>
+ Specifies case transformation rules.
+ </summary>
+</member>
+<member name="P:Fable.Core.Compiler.isBeam">
+<summary>
+ Indicates if Fable is compiling to Erlang/BEAM
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.isPhp">
+<summary>
+ Indicates if Fable is compiling to PHP
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.isRust">
+<summary>
+ Indicates if Fable is compiling to Rust
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.isDart">
+<summary>
+ Indicates if Fable is compiling to Dart
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.isPython">
+<summary>
+ Indicates if Fable is compiling to Python
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.isTypeScript">
+<summary>
+ Indicates if Fable is compiling to TypeScript
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.isJavaScript">
+<summary>
+ Indicates if Fable is compiling to JavaScript
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.isDotnet">
+<summary>
+ Indicates if code is running on .NET (not compiled by Fable)
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.triggeredByDependency">
+<summary>
+ In watch compilations, indicates if the file is being recompiled
+ not because of a direct change, but because a dependency has changed
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.extension">
+<summary>
+ Extension used for generated files
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.typedArrays">
+<summary>
+ Indicates if Fable will compile numeric arrays as JS typed arrays
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.debugMode">
+<summary>
+ Indicates if compiler is running in debug mode
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.majorMinorVersion">
+<summary>
+ Compiler major/minor version as number (e.g. 3.6)
+</summary>
+</member>
+<member name="P:Fable.Core.Compiler.version">
+<summary>
+ Compiler full version as string
+</summary>
+</member>
+<member name="M:Fable.Core.Experimental.casenameWithFieldIndex``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1})">
+<summary>
+ Reads the case name and field index of a simple match: `casenameWithFieldIndex(function Bar(_,i) -&gt; i | _ -&gt; failwith &quot;&quot;)`
+</summary>
+</member>
+<member name="M:Fable.Core.Experimental.casenameWithFieldCount``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean})">
+<summary>
+ Reads the case name and field count of a simple match: `casenameWithFieldCount(function Foo _ -&gt; true | _ -&gt; false)`
+</summary>
+</member>
+<member name="M:Fable.Core.Experimental.namesofLambda``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1})">
+<summary>
+ Reads the names of an access path from the lambda body. E.g (fun x -&gt; x.foo.bar) gives [|&quot;foo&quot;; &quot;bar&quot;|]
+</summary>
+</member>
+<member name="M:Fable.Core.Experimental.nameofLambda``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1})">
+<summary>
+ Reads the name of a property or a type from the lambda body
+</summary>
+</member>
+<member name="M:Fable.Core.Experimental.nameof2``1(``0)">
+<summary>
+ Like nameof but also returns the expression as second element of the tuple
+</summary>
+</member>
+<member name="M:Fable.Core.Experimental.nameof``1(``0)">
+<summary>
+ Reads the name of an identifier, a property or a type
+</summary>
+</member>
+<member name="M:Fable.Core.Util.jsNative``1">
+<summary>
+ Alias of nativeOnly
+</summary>
+</member>
+<member name="M:Fable.Core.Util.nativeOnly``1">
+<summary>
+ Used to indicate that a member is only implemented in the native target language
+</summary>
+</member>
+<member name="M:Fable.Core.JS.NumberConstructor.parseInt(System.String,Microsoft.FSharp.Core.FSharpOption{System.Double})">
+ <summary>Converts A string to an integer.</summary>
+ <param name="string">A string to convert into a number.</param>
+ <param name="radix">
+ A value between 2 and 36 that specifies the base of the number in <c>string</c>.
+ If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.
+ All other strings are considered decimal.
+ </param>
+</member>
+<member name="M:Fable.Core.JS.NumberConstructor.parseFloat(System.String)">
+ <summary>Converts a string to a floating-point number.</summary>
+ <param name="string">A string that contains a floating-point number.</param>
+</member>
+<member name="M:Fable.Core.JS.NumberConstructor.isSafeInteger(System.Object)">
+ <summary>Returns true if the value passed is a safe integer.</summary>
+ <param name="number">A numeric value.</param>
+</member>
+<member name="M:Fable.Core.JS.NumberConstructor.isNaN(System.Object)">
+<summary>
+ Returns a Boolean value that indicates whether a value is the reserved value NaN (not a
+ number). Unlike the global isNaN(), Number.isNaN() doesn&apos;t forcefully convert the parameter
+ to a number. Only values of the type number, that are also NaN, result in true.
+ &lt;/summary&gt;
+ &lt;param name=&quot;number&quot;&gt;A numeric value.&lt;/param&gt;
+</summary>
+</member>
+<member name="P:Fable.Core.JS.NumberConstructor.MIN_SAFE_INTEGER">
+<summary>
+ The value of the smallest integer n such that n and n − 1 are both exactly representable as
+ a Number value.
+ The value of Number.MIN_SAFE_INTEGER is −9007199254740991 (−(2^53 − 1)).
+</summary>
+</member>
+<member name="P:Fable.Core.JS.NumberConstructor.MAX_SAFE_INTEGER">
+<summary>
+ The value of the largest integer n such that n and n + 1 are both exactly representable as
+ a Number value.
+ The value of Number.MAX_SAFE_INTEGER is 9007199254740991 2^53 − 1.
+</summary>
+</member>
+<member name="P:Fable.Core.JS.NumberConstructor.EPSILON">
+<summary>
+ The value of Number.EPSILON is the difference between 1 and the smallest value greater than 1
+ that is representable as a Number value, which is approximately:
+ 2.2204460492503130808472633361816 x 10‍−‍16.
+</summary>
+</member>
+<member name="T:Fable.Core.JS.WrapSurroundingFunctionAttribute">
+<summary>
+ Used for move a surrounding function to the first argument of call to the function decorated with the attribute.
+ This is convenient to represent JS patterns for higher order components, like React.memo.
+</summary>
+</member>
+<member name="T:Fable.Core.JS.RemoveSurroundingArgsAttribute">
+<summary>
+ Used to remove the arguments of a surrounding function immediately calling a function decorated with this argument.
+ This is convenient to represent JS patterns when a function is actually loaded lazily with a dynamic import.
+</summary>
+</member>
+<member name="T:Fable.Core.JS.PojoAttribute">
+ <summary>
+ Constructor calls to class decorated with this attribute will be compiled as JS pojos defined by the constructor arguments.
+ The class declaration will be erased, but in Typescript an interface will be generated.
+ </summary>
+ <example>
+ <code>
+ [&lt;Pojo&gt;]
+ type Person(name: string, ?age: int) =
+     member val name = name
+     member val age = age
+
+ let p = Person("Alice")
+
+ // Typescript
+ export interface Person {
+     name: string,
+     age?: number
+ }
+
+ export const p: Person = { name: "Alice" }
+ </code>
+ </example>
+</member>
+<member name="M:Fable.Core.JS.expr_js``1(System.String)">
+<summary>
+ Embeds a literal JS expression into F#
+</summary>
+</member>
+<member name="M:Fable.Core.JS.js``1(System.String)">
+<summary>
+ Embeds literal JS code into F#. Code will be printed as statements,
+ if you want to return a value use JS `return` keyword within a function.
+</summary>
+</member>
+<member name="T:Fable.Core.JSX.Element">
+<summary>
+ The actual representation of JSX elements depend on the framework used.
+ E.g. if using React, JSX.Element will be the same as ReactElement
+</summary>
+</member>
+<member name="T:Fable.Core.JSX.ElementType">
+<summary>
+ Represents an entity that can be used as a JSX tag.
+ Usually strings (for standard HTML tags) or functions returning JSX.Element
+</summary>
+</member>
+<member name="T:Fable.Core.JSX.Style">
+<summary>
+ Represents a string key value pair used for styles in JSX.
+ Key must be a literal string that can be resolved at compile-time.
+</summary>
+</member>
+<member name="T:Fable.Core.JSX.Prop">
+<summary>
+ Represents a JSX prop, alias for a string * obj tuple.
+ Prop key must be a literal string that can be resolved at compile-time.
+</summary>
+</member>
+<member name="T:Fable.Core.JSX.ComponentAttribute">
+<summary>
+ Used to decorate a function to turn it into a JSX component.
+ Arguments will become the props except for `children` argument.
+</summary>
+</member>
+<member name="P:Fable.Core.JSX.nothing">
+<summary>
+ Null JSX Element
+</summary>
+</member>
+<member name="M:Fable.Core.JSX.text(System.String)">
+<summary>
+ Converts a string into a JSX Element
+</summary>
+</member>
+<member name="M:Fable.Core.JSX.jsx(System.String)">
+<summary>
+ Same as JSX.html. Use it with editor tools that can recognize JSX as an embedded language.
+</summary>
+</member>
+<member name="M:Fable.Core.JSX.html(System.String)">
+<summary>
+ Creates a JSX Element directly from a string template, which can be interpolated.
+ When using interpolation note the holes must follow JSX syntax rules.
+ E.g. holes in the middle of a string or in the position of a prop key are not valid.
+</summary>
+</member>
+<member name="M:Fable.Core.JSX.create(System.Object,Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.Object}})">
+<summary>
+ Instantiates a JSX Element with F# code. The `props` argument must be a list literal
+ that can be resolved at compile-time.
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableSet`1.remove(`0)">
+<summary>
+ Python remove(value) - removes value, raises KeyError if not present
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableSet`1.pop">
+<summary>
+ Python pop() - removes and returns an arbitrary element
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableSet`1.discard(`0)">
+<summary>
+ Python discard(value) - removes value if present
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableSet`1.clear">
+<summary>
+ Python clear() - removes all items
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableSet`1.add(`0)">
+<summary>
+ Python add(value) - adds value to set
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableSet`1.__len__">
+<summary>
+ Python __len__ - returns number of items
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableSet`1.__iter__">
+<summary>
+ Python __iter__ - returns iterator
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableSet`1.__contains__(`0)">
+<summary>
+ Python __contains__(value) - checks if value exists
+</summary>
+</member>
+<member name="T:Fable.Core.Py.MutableSet`1">
+ <summary>
+ Python MutableSet interface for F# types that need to behave like Python sets.
+ Follows Python's collections.abc.MutableSet protocol.
+ The compiler will transform method names to Python dunder methods.
+ </summary>
+</member>
+<member name="M:Fable.Core.Py.Set`1.__len__">
+<summary>
+ Python __len__ - returns number of items
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Set`1.__iter__">
+<summary>
+ Python __iter__ - returns iterator
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Set`1.__contains__(`0)">
+<summary>
+ Python __contains__(value) - checks if value exists
+</summary>
+</member>
+<member name="T:Fable.Core.Py.Set`1">
+ <summary>
+ Python Set interface for F# types that need to behave like Python read-only sets.
+ Follows Python's collections.abc.Set protocol (frozenset-like).
+ </summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.values">
+<summary>
+ Python values() - returns values view
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.popitem">
+<summary>
+ Python popitem() - removes and returns an arbitrary (key, value) pair
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.pop(`0,Microsoft.FSharp.Core.FSharpOption{`1})">
+<summary>
+ Python pop(key, default) - removes and returns value
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.keys">
+<summary>
+ Python keys() - returns keys view
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.items">
+<summary>
+ Python items() - returns items view
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.get(`0,Microsoft.FSharp.Core.FSharpOption{`1})">
+<summary>
+ Python get(key, default) - returns value or default
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.clear">
+<summary>
+ Python clear() - removes all items
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.__setitem__(`0,`1)">
+<summary>
+ Python __setitem__(key, value) - sets value for key
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.__len__">
+<summary>
+ Python __len__ - returns number of items
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.__iter__">
+<summary>
+ Python __iter__ - returns iterator over keys
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.__getitem__(`0)">
+<summary>
+ Python __getitem__(key) - returns value for key
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.__delitem__(`0)">
+<summary>
+ Python __delitem__(key) - deletes key
+</summary>
+</member>
+<member name="M:Fable.Core.Py.MutableMapping`2.__contains__(`0)">
+<summary>
+ Python __contains__(key) - checks if key exists
+</summary>
+</member>
+<member name="T:Fable.Core.Py.MutableMapping`2">
+ <summary>
+ Python MutableMapping interface for F# types that need to behave like Python dicts.
+ Follows Python's collections.abc.MutableMapping protocol.
+ The compiler will transform method names to Python dunder methods.
+ </summary>
+</member>
+<member name="M:Fable.Core.Py.Mapping`2.values">
+<summary>
+ Python values() - returns values view
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Mapping`2.keys">
+<summary>
+ Python keys() - returns keys view
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Mapping`2.items">
+<summary>
+ Python items() - returns items view
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Mapping`2.get(`0,Microsoft.FSharp.Core.FSharpOption{`1})">
+<summary>
+ Python get(key, default) - returns value or default
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Mapping`2.__len__">
+<summary>
+ Python __len__ - returns number of items
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Mapping`2.__iter__">
+<summary>
+ Python __iter__ - returns iterator over keys
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Mapping`2.__getitem__(`0)">
+<summary>
+ Python __getitem__(key) - returns value for key
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Mapping`2.__contains__(`0)">
+<summary>
+ Python __contains__(key) - checks if key exists
+</summary>
+</member>
+<member name="T:Fable.Core.Py.Mapping`2">
+ <summary>
+ Python Mapping interface for F# types that need to behave like Python read-only dicts.
+ Follows Python's collections.abc.Mapping protocol.
+ </summary>
+</member>
+<member name="M:Fable.Core.Py.Sequence`1.__len__">
+<summary>
+ Python __len__ - returns number of items
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Sequence`1.__iter__">
+<summary>
+ Python __iter__ - returns iterator
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Sequence`1.__getitem__(System.Int32)">
+<summary>
+ Python __getitem__(index) - returns item at index
+</summary>
+</member>
+<member name="M:Fable.Core.Py.Sequence`1.__contains__(`0)">
+<summary>
+ Python __contains__(value) - checks if value exists
+</summary>
+</member>
+<member name="T:Fable.Core.Py.Sequence`1">
+ <summary>
+ Python Sequence interface for F# types that need to behave like Python sequences.
+ Follows Python's collections.abc.Sequence protocol.
+ </summary>
+</member>
+<member name="M:Fable.Core.Py.Iterable`1.__iter__">
+<summary>
+ Python __iter__ - returns iterator
+</summary>
+</member>
+<member name="T:Fable.Core.Py.Iterable`1">
+ <summary>
+ Python Iterable interface for F# types that need to be iterable in Python.
+ Follows Python's collections.abc.Iterable protocol.
+ </summary>
+</member>
+<member name="M:Fable.Core.Py.Iterator`1.__next__">
+<summary>
+ Python __next__ - returns the next item
+</summary>
+</member>
+<member name="T:Fable.Core.Py.Iterator`1">
+ <summary>
+ Python Iterator interface following collections.abc.Iterator protocol.
+ Use as return type for `__iter__` methods to get correct Python type annotations.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.MutableSet">
+ <summary>
+ Generic marker for custom types implementing Python MutableSet protocol.
+ Extends Set with add, discard, remove, pop, clear
+ from Add(item), Remove(item), Clear().
+ For HashSet, use Py.Set.HashSet instead.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.Set">
+ <summary>
+ Generic marker for custom types implementing Python Set protocol.
+ Provides __contains__, __len__, __iter__
+ from Contains(item), Count, GetEnumerator().
+ For FSharpSet or HashSet, use Py.Set.FSharpSet or Py.Set.HashSet instead.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.MutableMapping">
+ <summary>
+ Generic marker for custom types implementing Python MutableMapping protocol.
+ Extends Mapping with __setitem__, __delitem__, clear, pop, popitem, setdefault
+ from set_Item(key, value), Remove(key), Clear().
+ For Dictionary, use Py.Mapping.Dictionary instead.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.Mapping">
+ <summary>
+ Generic marker for custom types implementing Python Mapping protocol.
+ Provides __getitem__, __contains__, __len__, __iter__, keys, values, items, get
+ from get_Item(key), ContainsKey(key), Count, GetEnumerator().
+ For FSharpMap or Dictionary, use Py.Mapping.Map or Py.Mapping.Dictionary instead.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.ContextManager">
+ <summary>
+ Provides __enter__ and __exit__ from Dispose().
+ Enables Python's 'with' statement for resource management.
+ Note: Not needed if your type implements IDisposable - the compiler
+ automatically adds context manager support for IDisposable types.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.Sized">
+ <summary>
+ Provides __len__ from Count property.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.Iterator">
+ <summary>
+ Provides __iter__ and __next__ from MoveNext()/Current.
+ Use for enumerator types that track iteration state.
+ Note: Not needed if your type implements IEnumerator - the compiler
+ automatically adds iterator support for IEnumerator types.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.Iterable">
+ <summary>
+ Provides __iter__ from GetEnumerator().
+ Use for enumerable containers that can be iterated multiple times.
+ Note: Not needed if your type implements IEnumerable - the compiler
+ automatically adds iteration support for IEnumerable types.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.Hashable">
+ <summary>
+ Provides __hash__ from GetHashCode().
+ Note: GetHashCode returns int32, HashableBase converts to Python int.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.Comparable">
+ <summary>
+ Provides __lt__, __le__, __gt__, __ge__ from CompareTo(other: obj).
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.Equatable">
+ <summary>
+ Provides __eq__ and __ne__ from Equals(other: obj).
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.Stringable">
+ <summary>
+ Provides __str__ and __repr__ from ToString().
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.DataClassAttribute">
+ <summary>
+ Shorthand for [&lt;Py.ClassAttributes(style = Attributes, init = false)&gt;].
+ Use this for Python dataclasses, Pydantic models, attrs classes, or any class
+ that needs class-level type annotations without a generated __init__.
+ </summary>
+ <remarks>
+ <para>Example:</para>
+ <code>
+ [&lt;Py.DataClass&gt;]
+ type User(name: string, age: int) = ...
+ // Generates:
+ // class User:
+ //     name: str
+ //     age: int
+ </code>
+ </remarks>
+</member>
+<member name="M:Fable.Core.Py.ClassAttributesTemplateAttribute.#ctor(Fable.Core.Py.ClassAttributeStyle)">
+<summary>
+ Template with Attributes style and init = false (common for Pydantic/dataclasses)
+</summary>
+</member>
+<member name="T:Fable.Core.Py.ClassAttributesTemplateAttribute">
+ <summary>
+ Marks a custom attribute class as a class attributes template, enabling library authors
+ to create ergonomic class attributes that users can apply without knowing the underlying parameters.
+ </summary>
+ <remarks>
+ <para>Place this attribute on a custom attribute class to define the class generation style.</para>
+ <para>Example - defining a custom class attribute:</para>
+ <code>
+ [&lt;Erase; Py.ClassAttributesTemplate(Py.ClassAttributeStyle.Attributes, init = false)&gt;]
+ type BaseModelAttribute() = inherit Attribute()
+ </code>
+ <para>Example - using the custom attribute:</para>
+ <code>
+ [&lt;BaseModel&gt;]
+ type User(name: string, age: int) = ...
+ // Generates class with class-level attributes, no __init__
+ </code>
+ <para>Use [&lt;Erase&gt;] to prevent the attribute type from being emitted to Python.</para>
+ </remarks>
+</member>
+<member name="T:Fable.Core.Py.ClassAttributesAttribute">
+ <summary>
+ Used on a class to provide Python-specific control over how F# types are transpiled to Python classes.
+ This attribute implies member attachment (similar to AttachMembers) while offering Python-specific parameters.
+ </summary>
+ <remarks>
+ <para>When placed on a class, all members are attached without mangling (like AttachMembers).</para>
+ <para>Additional Python-specific parameters control the generated Python class style and features.</para>
+ </remarks>
+</member>
+<member name="T:Fable.Core.Py.ClassMethodAttribute">
+ <summary>
+ Marks a static member to be emitted as a Python @classmethod instead of @staticmethod.
+ </summary>
+ <remarks>
+ <para>Use this attribute on static members when you need the first parameter to receive
+ the class (cls) instead of being a regular static method.</para>
+ <para>This is commonly needed for Pydantic validators and other Python frameworks that
+ require @classmethod decorators.</para>
+ <para>Example:</para>
+ <para>[&lt;Py.ClassMethod&gt;]</para>
+ <para>static member validate_name(cls, v: string) = ...</para>
+ </remarks>
+</member>
+<member name="M:Fable.Core.Py.DecorateTemplateAttribute.#ctor(System.String,System.String)">
+<summary>
+ Template with import specification
+</summary>
+</member>
+<member name="T:Fable.Core.Py.DecorateTemplateAttribute">
+ <summary>
+ Marks a custom attribute class as a decorator template, enabling library authors to create
+ ergonomic decorator attributes that users can apply without knowing the underlying Python syntax.
+ </summary>
+ <remarks>
+ <para>Place this attribute on a custom attribute class. The template string uses {0}, {1}, etc.
+ as placeholders for the custom attribute's constructor arguments.</para>
+ <para>Example - defining a custom decorator attribute:</para>
+ <code>
+ [&lt;Erase; Py.DecorateTemplate("app.get('{0}')")&gt;]
+ type GetAttribute(path: string) = inherit Attribute()
+ </code>
+ <para>Example - using the custom decorator:</para>
+ <code>
+ [&lt;Get("/users")&gt;]
+ static member get_users() = ...
+ // Generates: @app.get('/users')
+ </code>
+ <para>Use [&lt;Erase&gt;] to prevent the attribute type from being emitted to Python.</para>
+ </remarks>
+</member>
+<member name="M:Fable.Core.Py.DecorateAttribute.#ctor(System.String,System.String)">
+<summary>
+ Decorator with import but no parameters
+</summary>
+</member>
+<member name="M:Fable.Core.Py.DecorateAttribute.#ctor(System.String)">
+<summary>
+ Decorator without import or parameters
+</summary>
+</member>
+<member name="T:Fable.Core.Py.DecorateAttribute">
+ <summary>
+ Adds Python decorators to generated classes or methods, enabling integration with Python
+ frameworks like dataclasses, attrs, functools, Pydantic, and any other decorator-based
+ libraries.
+ </summary>
+ <remarks>
+ <para>The decorator is emitted verbatim. Use importFrom to specify the module to import from.</para>
+ <para>Multiple [&lt;Decorate&gt;] attributes are applied in reverse order
+ (bottom to top), following Python's standard decorator stacking behavior.</para>
+ <para>Examples:</para>
+ <para>[&lt;Decorate("dataclass", "dataclasses")&gt;] - imports dataclass from dataclasses</para>
+ <para>[&lt;Decorate("lru_cache", importFrom="functools", parameters="maxsize=128")&gt;] - with import and parameters</para>
+ <para>[&lt;Decorate("app.get(\"/\")")&gt;] - Local variable decorator with parameters (no import needed)</para>
+ </remarks>
+</member>
+<member name="T:Fable.Core.Py.ReflectedDecoratorAttribute">
+ <summary>
+ Base class for creating F#-side decorator attributes with access to reflection metadata.
+ Like DecoratorAttribute, but the Decorate method also receives MethodInfo for the decorated member.
+ </summary>
+ <remarks>
+ <para>Use this when your decorator needs information about the decorated method (name, parameters, etc.).</para>
+ <para>Example:</para>
+ <code>
+ type LogWithNameAttribute() =
+     inherit Py.ReflectedDecoratorAttribute()
+     override _.Decorate(fn, info) =
+         Py.argsFunc (fun args ->
+             printfn "Calling %s" info.Name
+             fn.Invoke(args))
+ </code>
+ <para>Note: This does NOT emit Python @decorator syntax. For emitting Python decorators,
+ use DecorateAttribute or DecorateTemplateAttribute instead.</para>
+ </remarks>
+</member>
+<member name="T:Fable.Core.Py.DecoratorAttribute">
+ <summary>
+ Base class for creating F#-side decorator attributes that transform functions at compile time.
+ This is similar to Python decorators but operates during Fable compilation, not at Python runtime.
+ </summary>
+ <remarks>
+ <para>Inherit from this class and implement the Decorate method to wrap or transform functions.</para>
+ <para>The decorated function is passed to Decorate, and the returned Callable replaces it.</para>
+ <para>Example:</para>
+ <code>
+ type LogAttribute() =
+     inherit Py.DecoratorAttribute()
+     override _.Decorate(fn) =
+         Py.argsFunc (fun args ->
+             printfn "Calling function"
+             fn.Invoke(args))
+ </code>
+ <para>Note: This does NOT emit Python @decorator syntax. For emitting Python decorators,
+ use DecorateAttribute or DecorateTemplateAttribute instead.</para>
+ </remarks>
+</member>
+<member name="M:Fable.Core.Py.python``1(System.String)">
+<summary>
+ Embeds literal Python code into F#. Code will be printed as statements,
+ if you want to return a value use Python `return` keyword within a function.
+</summary>
+</member>
+<member name="P:Fable.Core.Py.NEW_CELL">
+<summary>
+ Defines a Jupyter-like code cell. Translates to `# %%`
+ https://code.visualstudio.com/docs/python/jupyter-support-py
+</summary>
+</member>
+<member name="T:Fable.Core.Py.SetModule.IMutableSet`1">
+ <summary>
+ Python MutableSet protocol interface. Extends ISet with mutation.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.SetModule.ISet`1">
+ <summary>
+ Python Set protocol interface with .NET-style method names.
+ Implement via explicit interface implementation to get attached methods.
+ The compiler will generate dunders (__contains__, __len__, __iter__) that call these.
+ Note: GetEnumerator is not included - uses existing IEnumerable.GetEnumerator.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.SetModule.HashSet">
+ <summary>
+ Marker for HashSet/MutableSet implementing Python Set protocol.
+ Provides __contains__, __len__, __iter__, plus add, discard, remove, pop, clear.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.SetModule.FSharpSet">
+ <summary>
+ Marker for FSharpSet implementing Python Set protocol.
+ Provides __contains__, __len__, __iter__.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.SetModule">
+ <summary>
+ Marker interfaces for types implementing Python Set protocol.
+ Use Py.Set.FSharpSet for FSharpSet, Py.Set.HashSet for HashSet/MutableSet.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.MappingModule.IMutableMapping`2">
+ <summary>
+ Python MutableMapping protocol interface. Extends IMapping with mutation.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.MappingModule.IMapping`2">
+ <summary>
+ Python Mapping protocol interface with .NET-style method names.
+ Implement via explicit interface implementation to get attached methods.
+ The compiler will generate dunders (__getitem__, __len__, etc.) that call these.
+ Note: GetEnumerator is not included - uses existing IEnumerable.GetEnumerator.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.MappingModule.Dictionary">
+ <summary>
+ Marker for Dictionary implementing Python Mapping protocol.
+ Provides __getitem__, __contains__, __len__, __iter__, keys, values, items, get,
+ plus __setitem__, __delitem__, clear, pop, popitem, setdefault.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.MappingModule.Map">
+ <summary>
+ Marker for FSharpMap implementing Python Mapping protocol.
+ Provides __getitem__, __contains__, __len__, __iter__, keys, values, items, get.
+ </summary>
+</member>
+<member name="T:Fable.Core.Py.MappingModule">
+ <summary>
+ Marker interfaces for types implementing Python Mapping protocol.
+ Use Py.Mapping.Map for FSharpMap, Py.Mapping.Dictionary for Dictionary.
+ </summary>
+</member>
+<member name="M:Fable.Core.Dart.importAll``1(System.String)">
+<summary>
+ Imports a whole external module.
+</summary>
+</member>
+<member name="M:Fable.Core.Dart.importMember``1(System.String)">
+<summary>
+ Must be immediately assigned to a value in a let binding.
+ Imports a member from the external module with same name as value in binding.
+</summary>
+</member>
+<member name="M:Fable.Core.Dart.import``1(System.String,System.String)">
+<summary>
+ Works like `ImportAttribute` (same semantics as Dart imports).
+ You can use &quot;*&quot; selector.
+</summary>
+</member>
+<member name="M:Fable.Core.Dart.emitStatement``1(System.Object,System.String)">
+<summary>
+ Same as emitExpr but intended for code that must appear in statement position
+ (so it can contain `return`, `break`, loops, etc)
+ E.g. `emitStatement aValue &quot;while($0 &lt; 5) { doSomething() }&quot;`
+</summary>
+</member>
+<member name="M:Fable.Core.Dart.emitExpr``1(System.Object,System.String)">
+<summary>
+ Destructure a tuple of arguments and apply them to literal code as with EmitAttribute.
+ E.g. `emitExpr (arg1, arg2) &quot;$0 + $1&quot;` becomes `arg1 + arg2`
+</summary>
+</member>
+<member name="M:Fable.Core.Rust.importAll``1(System.String)">
+<summary>
+ Imports a whole external module.
+</summary>
+</member>
+<member name="M:Fable.Core.Rust.import``1(System.String,System.String)">
+<summary>
+ Works like `ImportAttribute` (same semantics as Dart imports).
+ You can use &quot;*&quot; selector.
+</summary>
+</member>
+<member name="T:Fable.Core.JsInterop.JsFunc">
+<summary>
+ Use it when importing dynamic functions from JS. If you need a constructor, use `JsConstructor`.
+
+ ## Sample
+     let f: JsFunc = import &quot;myFunction&quot; &quot;./myLib&quot;
+     f.Invoke(5, &quot;bar&quot;)
+</summary>
+</member>
+<member name="T:Fable.Core.JsInterop.JsConstructor">
+<summary>
+ Use it when importing a constructor from a JS library.
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.importValueDynamic``1(``0)">
+<summary>
+ Imports a reference from an external file dynamically at runtime
+ ATTENTION: Pass the reference directly in argument position (avoid pipes)
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.importDynamic``1(System.String)">
+<summary>
+ Imports a file dynamically at runtime
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.importSideEffects(System.String)">
+<summary>
+ Imports a file only for its side effects
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.importAll``1(System.String)">
+<summary>
+ F#: let myLib = importAll&lt;obj&gt; &quot;myLib&quot;
+ JS: import * as myLib from &quot;myLib&quot;
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.importDefault``1(System.String)">
+<summary>
+ F#: let defaultMember = importDefault&lt;unit-&gt;obj&gt; &quot;myModule&quot;
+ JS: import defaultMember from &quot;myModule&quot;
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.importMember``1(System.String)">
+<summary>
+ F#: let myMember = importMember&lt;string&gt; &quot;myModule&quot;
+ JS: import { myMember } from &quot;myModule&quot;
+ Note the import must be immediately assigned to a value in a let binding
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.import``1(System.String,System.String)">
+<summary>
+ Works like `ImportAttribute` (same semantics as ES6 imports).
+ You can use &quot;*&quot; or &quot;default&quot; selectors.
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.exportDefault(System.Object)">
+<summary>
+ Makes an expression the default export for the JS module.
+ Used to interact with JS tools that require a default export.
+ ATTENTION: This statement must appear on the root level of the file module.
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.isNullOrUndefined(System.Object)">
+<summary>
+ JS non-strict null checking
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.isIn(System.String,System.Object)">
+<summary>
+ Alias of `jsIn`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.jsConstructor``1">
+<summary>
+ Get the JS function constructor for class types
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.toPlainJsObj``1(``0)">
+<summary>
+ Used when you need to send an F# record to a JS library accepting only plain JS objects (POJOs)
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.createEmpty``1">
+<summary>
+ Create an empty JS object: {}
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.jsOptions``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Create a literal JS object from a mutator lambda. Normally used when
+ the options interface has too many fields to be represented with a Pojo record.
+ E.g. `jsOptions&lt;MyOpt&gt; (fun o -&gt; o.foo &lt;- 5)` in JS becomes `{ foo: 5 }`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.keyValueList``1(Fable.Core.CaseRules,System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Create a literal JS object from a collection of union constructors.
+ E.g. `keyValueList CaseRules.LowerFirst [ MyUnion 4 ]` in JS becomes `{ myUnion: 4 }`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.createObj``1(``0)">
+<summary>
+ Create a literal JS object from a collection of key-value tuples.
+ E.g. `createObj [ &quot;a&quot; ==&gt; 5 ]` in JS becomes `{ a: 5 }`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.emitJsDirectivePrologue(System.String)">
+ <summary>
+ Emit a directive prologue at the calling position.
+
+ This is useful when you need to emit a directive prologue for a specific part of the code,
+ such as "use client" or "use server".
+ </summary>
+ <param name="text">Directive text</param>
+</member>
+<member name="M:Fable.Core.JsInterop.emitJsTopDirectivePrologue(System.String)">
+ <summary>
+ Emit a directive prologue at the top of the file (before the imports)
+
+ This is useful when working with Next.js or other frameworks that require
+ a specific directive at the top of the file, such as "use client" or "use server".
+ </summary>
+ <param name="text">Directive text</param>
+</member>
+<member name="M:Fable.Core.JsInterop.emitJsStatement``1(System.Object,System.String)">
+<summary>
+ Same as emitJsExpr but intended for JS code that must appear in a statement position
+ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements
+ E.g. `emitJsStatement aValue &quot;while($0 &lt; 5) doSomething()&quot;`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.emitJsExpr``1(System.Object,System.String)">
+<summary>
+ Destructure a tuple of arguments and applies to literal JS code as with EmitAttribute.
+ E.g. `emitJsExpr (arg1, arg2) &quot;$0 + $1&quot;` in JS becomes `arg1 + arg2`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.createNew(System.Object,System.Object)">
+<summary>
+ Destructure and apply a tuple to an arbitrary value with `new` keyword.
+ E.g. `createNew myCons (arg1, arg2)` in JS becomes `new myCons(arg1, arg2)`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.op_EqualsEqualsGreater(System.String,System.Object)">
+<summary>
+ Upcast the right operand to obj (and uncurry it if it&apos;s a function) and create a key-value tuple.
+ Mostly convenient when used with `createObj`.
+ E.g. `createObj [ &quot;a&quot; ==&gt; 5 ]` in JS becomes `{ a: 5 }`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.op_Dollar``1(System.Object,System.Object)">
+<summary>
+ Destructure and apply a tuple to an arbitrary value.
+ E.g. `myFn $ (arg1, arg2)` in JS becomes `myFn(arg1, arg2)`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.op_DynamicAssignment(System.Object,System.Object,System.Object)">
+<summary>
+ Dynamically assign a value to a property of an arbitrary object.
+ `myObj?propA &lt;- 5` in JS becomes `myObj.propA = 5`
+ `myObj?(propA) &lt;- 5` in JS becomes `myObj[propA] = 5`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.op_Dynamic``1(System.Object,System.Object)">
+<summary>
+ Dynamically access a property of an arbitrary object.
+ `myObj?propA` in JS becomes `myObj.propA`
+ `myObj?(propA)` in JS becomes `myObj[propA]`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.op_BangHat``2(``0)">
+<summary>
+ Implicit cast for erased unions (U2, U3...)
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.op_BangBang``2(``0)">
+<summary>
+ Has same effect as `unbox` (dynamic casting erased in compiled JS code).
+ The casted type can be defined on the call site: `!!myObj?bar(5): float`
+</summary>
+</member>
+<member name="M:Fable.Core.JsInterop.op_QmarkQmarkEquals``1(``0,``0)">
+<summary>
+ Compiles to ?? operator in JavaScript
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.phpThis``1">
+<summary>
+ Compiles to JS `this` keyword.
+
+ ## Sample
+     jqueryMethod(fun x y -&gt; jsThis?add(x, y))
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.phpOptions``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Create a literal Py object from a mutator lambda. Normally used when
+ the options interface has too many fields to be represented with a Pojo record.
+ E.g. `jsOptions&lt;MyOpt&gt; (fun o -&gt; o.foo &lt;- 5)` in JS becomes `{ foo: 5 }`
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.keyValueList``1(Fable.Core.CaseRules,System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Create a literal Python object from a collection of union constructors.
+ E.g. `keyValueList CaseRules.LowerFirst [ MyUnion 4 ]` in Python becomes `{ myUnion: 4 }`
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.createObj``1(``0)">
+<summary>
+ Create a literal Python object from a collection of key-value tuples.
+ E.g. `createObj [ &quot;a&quot; ==&gt; 5 ]` in Python becomes `{ a: 5 }`
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.emitPhpStatement``1(System.Object,System.String)">
+<summary>
+ Same as emitJsExpr but intended for JS code that must appear in a statement position
+ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements
+ E.g. `emitJsExpr aValue &quot;while($0 &lt; 5) doSomething()&quot;`
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.emitPhpExpr``1(System.Object,System.String)">
+<summary>
+ Destructure and apply a tuple to an arbitrary value with `new` keyword.
+ E.g. `createNew myCons (arg1, arg2)` in JS becomes `new myCons(arg1, arg2)`
+ let createNew (o: obj) (args: obj): obj = nativeOnly
+ Destructure a tuple of arguments and applies to literal JS code as with EmitAttribute.
+ E.g. `emitJsExpr (arg1, arg2) &quot;$0 + $1&quot;` in Python becomes `arg1 + arg2`
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.op_EqualsEqualsGreater(System.String,System.Object)">
+<summary>
+ Upcast the right operand to obj (and uncurry it if it&apos;s a function) and create a key-value tuple.
+ Mostly convenient when used with `createObj`.
+ E.g. `createObj [ &quot;a&quot; ==&gt; 5 ]` in Python becomes `{ a: 5 }`
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.op_Dollar``1(System.Object,System.Object)">
+<summary>
+ Destructure and apply a tuple to an arbitrary value.
+ E.g. `myFn $ (arg1, arg2)` in JS becomes `myFn(arg1, arg2)`
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.op_DynamicAssignment(System.Object,System.Object,System.Object)">
+<summary>
+ Dynamically assign a value to a property of an arbitrary object.
+ `myObj?propA &lt;- 5` in JS becomes `myObj.propA = 5`
+ `myObj?(propA) &lt;- 5` in JS becomes `myObj[propA] = 5`
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.op_Dynamic``1(System.Object,System.Object)">
+<summary>
+ Dynamically access a property of an arbitrary object.
+ `myObj?propA` in JS becomes `myObj.propA`
+ `myObj?(propA)` in JS becomes `myObj[propA]`
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.op_BangHat``2(``0)">
+<summary>
+ Implicit cast for erased unions (U2, U3...)
+</summary>
+</member>
+<member name="M:Fable.Core.PhpInterop.op_BangBang``2(``0)">
+<summary>
+ Has same effect as `unbox` (dynamic casting erased in compiled JS code).
+ The casted type can be defined on the call site: `!!myObj?bar(5): float`
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.importSideEffects(System.String)">
+<summary>
+ Imports a file only for its side effects
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.importAll``1(System.String)">
+<summary>
+ F#: let myLib = importAll&lt;obj&gt; &quot;.my_lib&quot;
+ Py: import my_lib as myLib
+ Path can be:
+ - Relative (Pythonic): &quot;.my_module&quot;, &quot;..parent&quot;, &quot;...grandparent&quot; (resolved relative to current file)
+ - Absolute/Package: &quot;pydantic&quot; or &quot;collections.abc&quot; (used as-is)
+ - File path (legacy): &quot;./my_module.py&quot; (still supported for backwards compatibility)
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.importMember``1(System.String)">
+<summary>
+ F#: let myMember = importMember&lt;string&gt; &quot;.my_module&quot;
+ Py: from my_module import my_member
+ Path can be:
+ - Relative (Pythonic): &quot;.my_module&quot;, &quot;..parent&quot;, &quot;...grandparent&quot; (resolved relative to current file)
+ - Absolute/Package: &quot;pydantic&quot; or &quot;collections.abc&quot; (used as-is)
+ - File path (legacy): &quot;./my_module.py&quot; (still supported for backwards compatibility)
+ Note the import must be immediately assigned to a value in a let binding
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.import``1(System.String,System.String)">
+<summary>
+ Works like `ImportAttribute` (same semantics as ES6 imports).
+ You can use &quot;*&quot; or &quot;default&quot; selectors.
+ Path can be:
+ - Relative (Pythonic): &quot;.my_module&quot;, &quot;..parent&quot;, &quot;...grandparent&quot; (resolved relative to current file)
+ - Absolute/Package: &quot;pydantic&quot; or &quot;collections.abc&quot; (used as-is)
+ - File path (legacy): &quot;./my_module.py&quot; (still supported for backwards compatibility)
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.createEmpty``1">
+<summary>
+ Create an empty Python object: {}
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.keyValueList``1(Fable.Core.CaseRules,System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Create a literal Python object from a collection of union constructors.
+ E.g. `keyValueList CaseRules.LowerFirst [ MyUnion 4 ]` in Python becomes `{ myUnion: 4 }`
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.createObj``1(``0)">
+<summary>
+ Create a literal Python object from a collection of key-value tuples.
+ E.g. `createObj [ &quot;a&quot; ==&gt; 5 ]` in Python becomes `{ a: 5 }`
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.emitPyStatement``1(System.Object,System.String)">
+<summary>
+ Same as emitPyExpr but intended for Python code that must appear in a statement position
+ E.g. `emitPyStatement aValue &quot;while($0 &lt; 5) doSomething()&quot;`
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.emitPyExpr``1(System.Object,System.String)">
+<summary>
+ Destructure a tuple of arguments and applies to literal Python code as with EmitAttribute.
+ E.g. `emitPyExpr (arg1, arg2) &quot;$0 + $1&quot;` in Python becomes `arg1 + arg2`
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.op_EqualsEqualsGreater(System.String,System.Object)">
+<summary>
+ Upcast the right operand to obj (and uncurry it if it&apos;s a function) and create a key-value tuple.
+ Mostly convenient when used with `createObj`.
+ E.g. `createObj [ &quot;a&quot; ==&gt; 5 ]` in Python becomes `{ a: 5 }`
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.op_Dollar``1(System.Object,System.Object)">
+<summary>
+ Destructure and apply a tuple to an arbitrary value.
+ E.g. `myFn $ (arg1, arg2)` in Python becomes `myFn(arg1, arg2)`
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.op_DynamicAssignment(System.Object,System.Object,System.Object)">
+<summary>
+ Dynamically assign a value to a property of an arbitrary object.
+ `myObj?propA &lt;- 5` in Python becomes `myObj.propA = 5`
+ `myObj?(propA) &lt;- 5` in Python becomes `myObj[propA] = 5`
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.op_Dynamic``1(System.Object,System.Object)">
+<summary>
+ Dynamically access a property of an arbitrary object.
+ `myObj?propA` in Python becomes `myObj.propA`
+ `myObj?(propA)` in Python becomes `myObj[propA]`
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.op_BangHat``2(``0)">
+<summary>
+ Implicit cast for erased unions (U2, U3...)
+</summary>
+</member>
+<member name="M:Fable.Core.PyInterop.op_BangBang``2(``0)">
+<summary>
+ Has same effect as `unbox` (dynamic casting erased in compiled Python code).
+ The casted type can be defined on the call site: `!!myObj?bar(5): float`
+</summary>
+</member>
+<member name="M:Fable.Core.RustInterop.emitRustExpr``1(System.Object,System.String)">
+<summary>
+ Destructure a tuple of arguments and apply them to literal code as with EmitAttribute.
+ E.g. `emitRustExpr (arg1, arg2) &quot;$0 + $1&quot;` becomes `arg1 + arg2`
+</summary>
+</member>
+<member name="M:Fable.Core.RustInterop.op_BangHat``2(``0)">
+<summary>
+ Implicit cast for erased unions (U2, U3...)
+</summary>
+</member>
+<member name="M:Fable.Core.BeamInterop.Erlang.receive``1">
+<summary>
+ Blocking selective receive (no timeout). Blocks until a matching message arrives.
+</summary>
+</member>
+<member name="M:Fable.Core.BeamInterop.Erlang.receive``1(System.Int32)">
+<summary>
+ Selective receive with timeout. Returns Some(msg) on match, None on timeout.
+ Each DU case maps to a receive clause with the case&apos;s CompiledName (or snake_case name)
+ as the Erlang atom tag.
+</summary>
+</member>
+<member name="M:Fable.Core.BeamInterop.importAll``1(System.String)">
+<summary>
+ F#: let myLib = importAll&lt;obj&gt; &quot;my_module&quot;
+ Imports all exports from an Erlang module
+</summary>
+</member>
+<member name="M:Fable.Core.BeamInterop.importMember``1(System.String)">
+<summary>
+ F#: let myMember = importMember&lt;string&gt; &quot;my_module&quot;
+ Erl: my_module:my_member()
+ Note the import must be immediately assigned to a value in a let binding
+</summary>
+</member>
+<member name="M:Fable.Core.BeamInterop.import``1(System.String,System.String)">
+<summary>
+ Works like `ImportAttribute` (same semantics as ES6 imports).
+ You can use &quot;*&quot; or &quot;default&quot; selectors.
+</summary>
+</member>
+<member name="M:Fable.Core.BeamInterop.emitErlStatement``1(System.Object,System.String)">
+<summary>
+ Same as emitErlExpr but intended for Erlang code that must appear in a statement position.
+</summary>
+</member>
+<member name="M:Fable.Core.BeamInterop.emitErlExpr``1(System.Object,System.String)">
+<summary>
+ Destructure a tuple of arguments and apply to literal Erlang code as with EmitAttribute.
+ E.g. `emitErlExpr (arg1, arg2) &quot;$0 + $1&quot;` in Erlang becomes `arg1 + arg2`
+</summary>
+</member>
+<member name="M:Fable.Core.BeamInterop.op_BangHat``2(``0)">
+<summary>
+ Implicit cast for erased unions (U2, U3...)
+</summary>
+</member>
+<member name="M:Fable.Core.Extensions.[]`1.get_byteLength``1(``0[])">
+<summary>
+ Only valid on numeric arrays compiled as JS TypedArrays
+</summary>
+</member>
+<member name="M:Fable.Core.Extensions.[]`1.get_byteOffset``1(``0[])">
+<summary>
+ Only valid on numeric arrays compiled as JS TypedArrays
+</summary>
+</member>
+<member name="M:Fable.Core.Extensions.[]`1.get_buffer``1(``0[])">
+<summary>
+ Only valid on numeric arrays compiled as JS TypedArrays
+</summary>
+</member>
+<member name="T:Fable.Core.Quotations.QuotExpr">
+<summary>
+ Serializable quotation expression tree.
+ Designed for cross-platform JSON deserialization (e.g. via Thoth.Json)
+ of quotations constructed on Fable JS/TS clients.
+
+ JSON format: [&quot;Tag&quot;, ...fields] arrays, e.g. [&quot;Value&quot;, 42, &quot;int32&quot;]
+</summary>
+</member>
+<member name="T:Fable.Core.Quotations.QuotVar">
+<summary>
+ Serializable variable in a quotation expression.
+ Matches the JSON shape produced by Fable&apos;s quotation runtime.
+</summary>
+</member>
+</members>
+</doc>

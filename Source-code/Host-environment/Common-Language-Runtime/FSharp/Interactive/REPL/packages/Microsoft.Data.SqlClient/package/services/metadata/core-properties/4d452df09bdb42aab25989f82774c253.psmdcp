@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Microsoft</dc:creator>
+  <dc:description>The current data provider for SQL Server and Azure SQL databases. This has replaced System.Data.SqlClient. These classes provide access to SQL and encapsulate database-specific protocols, including tabular data stream (TDS).
+
+      Commonly Used Types:
+      Microsoft.Data.SqlClient.SqlConnection
+      Microsoft.Data.SqlClient.SqlException
+      Microsoft.Data.SqlClient.SqlParameter
+      Microsoft.Data.SqlClient.SqlDataReader
+      Microsoft.Data.SqlClient.SqlCommand
+      Microsoft.Data.SqlClient.SqlTransaction
+      Microsoft.Data.SqlClient.SqlParameterCollection
+      Microsoft.Data.SqlClient.SqlClientFactory
+
+      When using NuGet 3.x this package requires at least version 3.4.</dc:description>
+  <dc:identifier>Microsoft.Data.SqlClient</dc:identifier>
+  <version>7.0.2</version>
+  <keywords>sqlclient microsoft.data.sqlclient</keywords>
+  <lastModifiedBy>NuGet, Version=7.6.0.59, Culture=neutral, PublicKeyToken=31bf3856ad364e35;Microsoft Windows NT 10.0.20348.0;.NET Framework 4.7.2</lastModifiedBy>
+</coreProperties>

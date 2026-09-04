@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/net5.0
+F: /lib/net5.0/FSharp.XExtensions.dll
+D: /lib/netstandard2.1
+F: /lib/netstandard2.1/FSharp.XExtensions.dll
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/da58882dae734484ab1ef79d73a9ab12.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /fsharp.xextensions.1.3.0.nupkg
+F: /FSharp.XExtensions.nuspec
+F: /LICENSE
+F: /[Content_Types].xml

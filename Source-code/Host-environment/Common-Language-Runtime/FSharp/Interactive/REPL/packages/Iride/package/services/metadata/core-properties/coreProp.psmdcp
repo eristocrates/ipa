@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coreProperties xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:creator>Giacomo Citi</dc:creator>
+  <dc:description>F# type providers for RDF and SPARQL.
+GraphProvider generates types from a schema or sample RDF graph.
+UriProvider generates Uri properties for IRIs in RDF vocabularies.
+SparqlCommandProvider and SparqlQueryProvider provide some type safety for SPARQL.</dc:description>
+  <dc:identifier>Iride</dc:identifier>
+  <version>0.6.1</version>
+  <keywords />
+  <dc:title>Iride</dc:title>
+  <lastModifiedBy>paket</lastModifiedBy>
+</coreProperties>

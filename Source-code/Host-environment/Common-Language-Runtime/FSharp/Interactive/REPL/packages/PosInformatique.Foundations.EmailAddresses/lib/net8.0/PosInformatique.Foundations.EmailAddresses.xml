@@ -1,0 +1,963 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PosInformatique.Foundations.EmailAddresses</name>
+    </assembly>
+    <members>
+        <member name="T:PosInformatique.Foundations.EmailAddresses.EmailAddress">
+            <summary>
+            Represents a valid e-mail address. Any attempt to create an invalid e-mail is rejected.
+            </summary>
+            <remarks>
+            This class provides several features:
+            <list type="bullet">
+            <item><description>
+            Implements <see cref="T:System.IEquatable`1"/> and <see cref="T:System.IComparable`1"/> so that instances
+            can be compared and used seamlessly in generic scenarios such as collections, sorting,
+            or equality checks.
+            </description></item>
+            <item><description>
+            Implements <see cref="T:System.IFormattable"/> and <see cref="T:System.IParsable`1"/> to enable generic
+            conversion to and from string representations, making it easy to integrate with a wide
+            range of components that rely on string formatting and parsing.
+            </description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:PosInformatique.Foundations.EmailAddresses.EmailAddress.UserName">
+            <summary>
+            Gets the user name part of the email address (The part before the <c>@</c> separator).
+            </summary>
+        </member>
+        <member name="P:PosInformatique.Foundations.EmailAddresses.EmailAddress.Domain">
+            <summary>
+            Gets the domain part of the email address (The part after the <c>@</c> separator).
+            </summary>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.op_Implicit(PosInformatique.Foundations.EmailAddresses.EmailAddress)~System.String">
+            <summary>
+            Implicitly converts an <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> to a <see cref="T:System.String"/>.
+            </summary>
+            <param name="emailAddress">The email address to convert.</param>
+            <returns>The string representation of the email address.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the <paramref name="emailAddress"/> argument is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.op_Implicit(System.String)~PosInformatique.Foundations.EmailAddresses.EmailAddress">
+            <summary>
+            Implicitly converts a <see cref="T:System.String"/> to an <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/>.
+            </summary>
+            <param name="emailAddress">The string to convert to an email address.</param>
+            <returns>An <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the <paramref name="emailAddress"/> argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.FormatException">Thrown when the string is not a valid email address.</exception>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.op_Equality(PosInformatique.Foundations.EmailAddresses.EmailAddress,PosInformatique.Foundations.EmailAddresses.EmailAddress)">
+            <summary>
+            Determines whether two <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> instances are equal.
+            </summary>
+            <param name="left">The first email address to compare.</param>
+            <param name="right">The second email address to compare.</param>
+            <returns><see langword="true"/> if the email addresses are equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.op_Inequality(PosInformatique.Foundations.EmailAddresses.EmailAddress,PosInformatique.Foundations.EmailAddresses.EmailAddress)">
+            <summary>
+            Determines whether two <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> instances are not equal.
+            </summary>
+            <param name="left">The first email address to compare.</param>
+            <param name="right">The second email address to compare.</param>
+            <returns><see langword="true"/> if the email addresses are not equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.op_LessThan(PosInformatique.Foundations.EmailAddresses.EmailAddress,PosInformatique.Foundations.EmailAddresses.EmailAddress)">
+            <summary>
+            Determines whether one <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> is less than another.
+            </summary>
+            <param name="left">The first email address to compare.</param>
+            <param name="right">The second email address to compare.</param>
+            <returns><see langword="true"/> if <paramref name="left"/> is less than <paramref name="right"/>; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.op_LessThanOrEqual(PosInformatique.Foundations.EmailAddresses.EmailAddress,PosInformatique.Foundations.EmailAddresses.EmailAddress)">
+            <summary>
+            Determines whether one <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> is less than or equal to another.
+            </summary>
+            <param name="left">The first email address to compare.</param>
+            <param name="right">The second email address to compare.</param>
+            <returns><see langword="true"/> if <paramref name="left"/> is less than or equal to <paramref name="right"/>; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.op_GreaterThan(PosInformatique.Foundations.EmailAddresses.EmailAddress,PosInformatique.Foundations.EmailAddresses.EmailAddress)">
+            <summary>
+            Determines whether one <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> is greater than another.
+            </summary>
+            <param name="left">The first email address to compare.</param>
+            <param name="right">The second email address to compare.</param>
+            <returns><see langword="true"/> if <paramref name="left"/> is greater than <paramref name="right"/>; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.op_GreaterThanOrEqual(PosInformatique.Foundations.EmailAddresses.EmailAddress,PosInformatique.Foundations.EmailAddresses.EmailAddress)">
+            <summary>
+            Determines whether one <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> is greater than or equal to another.
+            </summary>
+            <param name="left">The first email address to compare.</param>
+            <param name="right">The second email address to compare.</param>
+            <returns><see langword="true"/> if <paramref name="left"/> is greater than or equal to <paramref name="right"/>; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.Parse(System.String)">
+            <summary>
+            Parses a string representation of an email address.
+            </summary>
+            <param name="s">The string to parse.</param>
+            <returns>An <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the <paramref name="s"/> argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.FormatException">Thrown when the string is not a valid email address.</exception>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.System#IParsable{PosInformatique#Foundations#EmailAddresses#EmailAddress}#Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Parses a string representation of an email address using the specified format provider.
+            </summary>
+            <param name="s">The string to parse.</param>
+            <param name="provider">The format provider (not used in this implementation).</param>
+            <returns>An <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the <paramref name="s"/> argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.FormatException">Thrown when the string is not a valid email address.</exception>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.TryParse(System.String,PosInformatique.Foundations.EmailAddresses.EmailAddress@)">
+            <summary>
+            Tries to parse a string representation of an email address.
+            </summary>
+            <param name="s">The string to parse.</param>
+            <param name="result">When this method returns, contains the parsed <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> if the parsing succeeded, or <see langword="null"/> if it failed.</param>
+            <returns><see langword="true"/> if the parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.System#IParsable{PosInformatique#Foundations#EmailAddresses#EmailAddress}#TryParse(System.String,System.IFormatProvider,PosInformatique.Foundations.EmailAddresses.EmailAddress@)">
+            <summary>
+            Tries to parse a string representation of an email address using the specified format provider.
+            </summary>
+            <param name="s">The string to parse.</param>
+            <param name="provider">The format provider (not used in this implementation).</param>
+            <param name="result">When this method returns, contains the parsed <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> if the parsing succeeded, or <see langword="null"/> if it failed.</param>
+            <returns><see langword="true"/> if the parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.IsValid(System.String)">
+            <summary>
+            Determines if the specified <paramref name="value"/> is a valid e-mail address.
+            </summary>
+            <param name="value">E-mail address value to test.</param>
+            <returns><see langword="true"/> if the <paramref name="value"/> is valid e-mail address, <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.Equals(PosInformatique.Foundations.EmailAddresses.EmailAddress)">
+            <summary>
+            Determines whether the current <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> is equal to another <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/>.
+            </summary>
+            <param name="other">The other email address to compare with.</param>
+            <returns><see langword="true"/> if the email addresses are equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.ToString">
+            <summary>
+            Returns the string representation of the <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/>.
+            </summary>
+            <returns>The string representation of the <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/>.</returns>
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.System#IFormattable#ToString(System.String,System.IFormatProvider)">
+            <inheritdoc />
+        </member>
+        <member name="M:PosInformatique.Foundations.EmailAddresses.EmailAddress.CompareTo(PosInformatique.Foundations.EmailAddresses.EmailAddress)">
+            <summary>
+            Compare the current <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> instance with the <paramref name="other"/> one.
+            </summary>
+            <param name="other">Other e-mail address to compare.</param>
+            <returns>
+            A value that indicates the relative order of the objects being compared:
+            <list type="bullet">
+            <item><description>0 if the current <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> is equal to the <paramref name="other"/>.</description></item>
+            <item><description>A value less than 0 if the current <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> is before the <paramref name="other"/> in alphabetic order.</description></item>
+            <item><description>A value greater than 0 if the current <see cref="T:PosInformatique.Foundations.EmailAddresses.EmailAddress"/> is after the <paramref name="other"/> in alphabetic order.</description></item>
+            </list>
+            </returns>
+        </member>
+        <member name="T:MimeKit.DomainList">
+            <summary>
+            A domain list.
+            </summary>
+            <remarks>
+            Represents a list of domains, such as those that an email was routed through.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.DomainList.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.DomainList"/> class.
+            </summary>
+            <remarks>
+            Creates a new <see cref="T:MimeKit.DomainList"/> based on the domains provided.
+            </remarks>
+            <param name="domains">A domain list.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="domains"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:MimeKit.DomainList.#ctor">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.DomainList"/> class.
+            </summary>
+            <remarks>
+            Creates a new <see cref="T:MimeKit.DomainList"/>.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.DomainList.GetEnumerator">
+            <summary>
+            Get an enumerator for the list of domains.
+            </summary>
+            <remarks>
+            Gets an enumerator for the list of domains.
+            </remarks>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="M:MimeKit.DomainList.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Get an enumerator for the list of domains.
+            </summary>
+            <remarks>
+            Gets an enumerator for the list of domains.
+            </remarks>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="M:MimeKit.DomainList.TryParse(System.Byte[],System.Int32@,System.Int32,System.Boolean,MimeKit.DomainList@)">
+            <summary>
+            Try to parse a list of domains.
+            </summary>
+            <remarks>
+            Attempts to parse a <see cref="T:MimeKit.DomainList"/> from the text buffer starting at the
+            specified index. The index will only be updated if a <see cref="T:MimeKit.DomainList"/> was
+            successfully parsed.
+            </remarks>
+            <returns><see langword="true" /> if a <see cref="T:MimeKit.DomainList"/> was successfully parsed;
+            otherwise, <see langword="false" />.</returns>
+            <param name="buffer">The buffer to parse.</param>
+            <param name="index">The index to start parsing.</param>
+            <param name="endIndex">An index of the end of the input.</param>
+            <param name="throwOnError">A flag indicating whether an
+            exception should be thrown on error.</param>
+            <param name="route">The parsed DomainList.</param>
+        </member>
+        <member name="T:MimeKit.Encodings.Base64Decoder">
+            <summary>
+            Incrementally decodes content encoded with the base64 encoding.
+            </summary>
+            <remarks>
+            Base64 is an encoding often used in MIME to encode binary content such
+            as images and other types of multimedia to ensure that the data remains
+            intact when sent via 7bit transports such as SMTP.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.Encodings.Base64Decoder.#ctor">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.Encodings.Base64Decoder"/> class.
+            </summary>
+            <remarks>
+            Creates a new base64 decoder.
+            </remarks>
+        </member>
+        <member name="P:MimeKit.Encodings.Base64Decoder.EnableHardwareAcceleration">
+            <summary>
+            Get or set whether the <see cref="T:MimeKit.Encodings.Base64Decoder"/> should use hardware acceleration when available.
+            </summary>
+            <remarks>
+            Gets or sets whether the <see cref="T:MimeKit.Encodings.Base64Decoder"/> should use hardware acceleration when available.
+            </remarks>
+            <value><see langword="true"/> if hardware acceleration should be enabled; otherwise, <see langword="false"/>.</value>
+        </member>
+        <member name="M:MimeKit.Encodings.Base64Decoder.EstimateOutputLength(System.Int32)">
+            <summary>
+            Estimate the length of the output.
+            </summary>
+            <remarks>
+            Estimates the number of bytes needed to decode the specified number of input bytes.
+            </remarks>
+            <returns>The estimated output length.</returns>
+            <param name="inputLength">The input length.</param>
+        </member>
+        <member name="M:MimeKit.Encodings.Base64Decoder.Decode(System.Byte*,System.Int32,System.Byte*)">
+            <summary>
+            Decode the specified input into the output buffer.
+            </summary>
+            <remarks>
+            <para>Decodes the specified input into the output buffer.</para>
+            <para>The output buffer should be large enough to hold all the
+            decoded input. For estimating the size needed for the output buffer,
+            see <see cref="M:MimeKit.Encodings.Base64Decoder.EstimateOutputLength(System.Int32)"/>.</para>
+            </remarks>
+            <returns>The number of bytes written to the output buffer.</returns>
+            <param name="input">A pointer to the beginning of the input buffer.</param>
+            <param name="length">The length of the input buffer.</param>
+            <param name="output">A pointer to the beginning of the output buffer.</param>
+        </member>
+        <member name="M:MimeKit.Encodings.Base64Decoder.Reset">
+            <summary>
+            Reset the decoder.
+            </summary>
+            <remarks>
+            Resets the state of the decoder.
+            </remarks>
+        </member>
+        <member name="T:MimeKit.Encodings.IMimeDecoder">
+            <summary>
+            An interface for incrementally decoding content.
+            </summary>
+            <remarks>
+            An interface for incrementally decoding content.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.Encodings.IMimeDecoder.EstimateOutputLength(System.Int32)">
+            <summary>
+            Estimate the length of the output.
+            </summary>
+            <remarks>
+            Estimates the number of bytes needed to decode the specified number of input bytes.
+            </remarks>
+            <returns>The estimated output length.</returns>
+            <param name="inputLength">The input length.</param>
+        </member>
+        <member name="M:MimeKit.Encodings.IMimeDecoder.Decode(System.Byte*,System.Int32,System.Byte*)">
+            <summary>
+            Decode the specified input into the output buffer.
+            </summary>
+            <remarks>
+            <para>Decodes the specified input into the output buffer.</para>
+            <para>The output buffer should be large enough to hold all the
+            decoded input. For estimating the size needed for the output buffer,
+            see <see cref="M:MimeKit.Encodings.IMimeDecoder.EstimateOutputLength(System.Int32)"/>.</para>
+            </remarks>
+            <returns>The number of bytes written to the output buffer.</returns>
+            <param name="input">A pointer to the beginning of the input buffer.</param>
+            <param name="length">The length of the input buffer.</param>
+            <param name="output">A pointer to the beginning of the output buffer.</param>
+        </member>
+        <member name="M:MimeKit.Encodings.IMimeDecoder.Reset">
+            <summary>
+            Reset the decoder.
+            </summary>
+            <remarks>
+            Resets the state of the decoder.
+            </remarks>
+        </member>
+        <member name="T:MimeKit.Encodings.IPunycode">
+            <summary>
+            An interface for encoding and decoding international domain names.
+            </summary>
+            <remarks>
+            An interface for encoding and decoding international domain names.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.Encodings.IPunycode.Decode(System.String)">
+            <summary>
+            Decode a domain name, converting it to a string of Unicode characters.
+            </summary>
+            <remarks>
+            Decodes a domain name, converting it to Unicode, according to the rules defined by the IDNA standard.
+            </remarks>
+            <param name="domain">The ASCII-encoded domain name.</param>
+            <returns>The Unicode domain name.</returns>
+        </member>
+        <member name="T:MimeKit.Encodings.Punycode">
+            <summary>
+            A class for encoding and decoding international domain names.
+            </summary>
+            <remarks>
+            A class for encoding and decoding international domain names.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.Encodings.Punycode.#ctor">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.Encodings.Punycode"/> class.
+            </summary>
+            <remarks>
+            Creates a new instance of <see cref="T:MimeKit.Encodings.Punycode"/>.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.Encodings.Punycode.Decode(System.String)">
+            <summary>
+            Decode a domain name, converting it to a string of Unicode characters.
+            </summary>
+            <remarks>
+            Decodes a domain name, converting it to Unicode, according to the rules defined by the IDNA standard.
+            </remarks>
+            <param name="ascii">The ASCII-encoded domain name.</param>
+            <returns>The Unicode domain name.</returns>
+        </member>
+        <member name="T:MimeKit.Encodings.QuotedPrintableDecoder">
+            <summary>
+            Incrementally decodes content encoded with the quoted-printable encoding.
+            </summary>
+            <remarks>
+            Quoted-Printable is an encoding often used in MIME to textual content outside
+            the ASCII range in order to ensure that the text remains intact when sent
+            via 7bit transports such as SMTP.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.Encodings.QuotedPrintableDecoder.#ctor(System.Boolean)">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.Encodings.QuotedPrintableDecoder"/> class.
+            </summary>
+            <remarks>
+            Creates a new quoted-printable decoder.
+            </remarks>
+            <param name="rfc2047"><see langword="true" /> if this decoder will be used to decode rfc2047 encoded-word tokens; otherwise, <see langword="false" />.</param>
+        </member>
+        <member name="M:MimeKit.Encodings.QuotedPrintableDecoder.EstimateOutputLength(System.Int32)">
+            <summary>
+            Estimate the length of the output.
+            </summary>
+            <remarks>
+            Estimates the number of bytes needed to decode the specified number of input bytes.
+            </remarks>
+            <returns>The estimated output length.</returns>
+            <param name="inputLength">The input length.</param>
+        </member>
+        <member name="M:MimeKit.Encodings.QuotedPrintableDecoder.Decode(System.Byte*,System.Int32,System.Byte*)">
+            <summary>
+            Decode the specified input into the output buffer.
+            </summary>
+            <remarks>
+            <para>Decodes the specified input into the output buffer.</para>
+            <para>The output buffer should be large enough to hold all the
+            decoded input. For estimating the size needed for the output buffer,
+            see <see cref="M:MimeKit.Encodings.QuotedPrintableDecoder.EstimateOutputLength(System.Int32)"/>.</para>
+            </remarks>
+            <returns>The number of bytes written to the output buffer.</returns>
+            <param name="input">A pointer to the beginning of the input buffer.</param>
+            <param name="length">The length of the input buffer.</param>
+            <param name="output">A pointer to the beginning of the output buffer.</param>
+        </member>
+        <member name="M:MimeKit.Encodings.QuotedPrintableDecoder.Reset">
+            <summary>
+            Reset the decoder.
+            </summary>
+            <remarks>
+            Resets the state of the decoder.
+            </remarks>
+        </member>
+        <member name="T:MimeKit.GroupAddress">
+            <summary>
+            An address group, as specified by rfc0822.
+            </summary>
+            <remarks>
+            Group addresses are rarely used anymore. Typically, if you see a group address,
+            it will be of the form: <c>"undisclosed-recipients: ;"</c>.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.GroupAddress.#ctor(System.Text.Encoding,System.String,System.Collections.Generic.IEnumerable{MimeKit.InternetAddress})">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.GroupAddress"/> class.
+            </summary>
+            <remarks>
+            Creates a new <see cref="T:MimeKit.GroupAddress"/> with the specified name and list of addresses. The
+            specified text encoding is used when encoding the name according to the rules of rfc2047.
+            </remarks>
+            <param name="encoding">The character encoding to be used for encoding the name.</param>
+            <param name="name">The name of the group.</param>
+            <param name="addresses">A list of addresses.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="encoding"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:MimeKit.GroupAddress.#ctor(System.Text.Encoding,System.String)">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.GroupAddress"/> class.
+            </summary>
+            <remarks>
+            Creates a new <see cref="T:MimeKit.GroupAddress"/> with the specified name. The specified
+            text encoding is used when encoding the name according to the rules of rfc2047.
+            </remarks>
+            <param name="encoding">The character encoding to be used for encoding the name.</param>
+            <param name="name">The name of the group.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="encoding"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="P:MimeKit.GroupAddress.Members">
+            <summary>
+            Get the members of the group.
+            </summary>
+            <remarks>
+            <para>Represents the member addresses of the group. If the group address properly conforms
+            to the internet standards, every group member should be of the <see cref="T:MimeKit.MailboxAddress"/>
+            variety. When handling group addresses constructed by third-party software, it is possible
+            for groups to contain members of the <see cref="T:MimeKit.GroupAddress"/> variety.</para>
+            <para>When constructing new messages, it is recommended that address groups not contain
+            anything other than <see cref="T:MimeKit.MailboxAddress"/> members in order to comply with internet
+            standards.</para>
+            </remarks>
+            <value>The list of members.</value>
+        </member>
+        <member name="T:MimeKit.InternetAddress">
+            <summary>
+            An abstract internet address, as specified by rfc0822.
+            </summary>
+            <remarks>
+            <para>An <see cref="T:MimeKit.InternetAddress"/> can be any type of address defined by the
+            original Internet Message specification.</para>
+            <para>There are effectively two (2) types of addresses: mailboxes and groups.</para>
+            <para>Mailbox addresses are what are most commonly known as email addresses and are
+            represented by the <see cref="T:MimeKit.MailboxAddress"/> class.</para>
+            <para>Group addresses are themselves lists of addresses and are represented by the
+            <see cref="T:MimeKit.GroupAddress"/> class. While rare, it is still important to handle these
+            types of addresses. They typically only contain mailbox addresses, but may also
+            contain other group addresses.</para>
+            </remarks>
+        </member>
+        <member name="M:MimeKit.InternetAddress.#ctor(System.Text.Encoding,System.String)">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.InternetAddress"/> class.
+            </summary>
+            <remarks>
+            Initializes the <see cref="P:MimeKit.InternetAddress.Encoding"/> and <see cref="P:MimeKit.InternetAddress.Name"/> properties of the internet address.
+            </remarks>
+            <param name="encoding">The character encoding to be used for encoding the name.</param>
+            <param name="name">The name of the mailbox or group.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="encoding"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="P:MimeKit.InternetAddress.Encoding">
+            <summary>
+            Get or set the character encoding to use when encoding the name of the address.
+            </summary>
+            <remarks>
+            The character encoding is used to convert the <see cref="P:MimeKit.InternetAddress.Name"/> property, if it is set,
+            to a stream of bytes when encoding the internet address for transport.
+            </remarks>
+            <value>The character encoding.</value>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="value"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="P:MimeKit.InternetAddress.Name">
+            <summary>
+            Get or set the display name of the address.
+            </summary>
+            <remarks>
+            <para>A name is optional and is typically set to the name of the person
+            or group that own the internet address.</para>
+            <para>For example, the <see cref="P:MimeKit.InternetAddress.Name"/> property of the following <see cref="T:MimeKit.MailboxAddress"/> would be <c>"John Smith"</c>.</para>
+            <para><c>John Smith &lt;j.smith@example.com&gt;</c></para>
+            <para>Likewise, the <see cref="P:MimeKit.InternetAddress.Name"/> property of the following <see cref="T:MimeKit.GroupAddress"/> would be <c>"undisclosed-recipients"</c>.</para>
+            <para><c>undisclosed-recipients: Alice &lt;alice@wonderland.com&gt;, Bob &lt;bob@the-builder.com&gt;;</c></para>
+            </remarks>
+            <value>The name of the address.</value>
+        </member>
+        <member name="T:MimeKit.InternetAddressList">
+            <summary>
+            A list of email addresses. 
+            </summary>
+            <remarks>
+            <para>An <see cref="T:MimeKit.InternetAddressList"/> may contain any number of addresses of any type
+            defined by the original Internet Message specification.</para>
+            <para>There are effectively two (2) types of addresses: mailboxes and groups.</para>
+            <para>Mailbox addresses are what are most commonly known as email addresses and are
+            represented by the <see cref="T:MimeKit.MailboxAddress"/> class.</para>
+            <para>Group addresses are themselves lists of addresses and are represented by the
+            <see cref="T:MimeKit.GroupAddress"/> class. While rare, it is still important to handle these
+            types of addresses. They typically only contain mailbox addresses, but may also
+            contain other group addresses.</para>
+            </remarks>
+        </member>
+        <member name="M:MimeKit.InternetAddressList.#ctor(System.Collections.Generic.IEnumerable{MimeKit.InternetAddress})">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.InternetAddressList"/> class.
+            </summary>
+            <remarks>
+            Creates a new <see cref="T:MimeKit.InternetAddressList"/> containing the supplied addresses.
+            </remarks>
+            <param name="addresses">An initial list of addresses.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="addresses"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:MimeKit.InternetAddressList.#ctor">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.InternetAddressList"/> class.
+            </summary>
+            <remarks>
+            Creates a new, empty, <see cref="T:MimeKit.InternetAddressList"/>.
+            </remarks>
+        </member>
+        <member name="T:MimeKit.MailboxAddress">
+            <summary>
+            A mailbox address, as specified by rfc822.
+            </summary>
+            <remarks>
+            Represents a mailbox address (commonly referred to as an email address)
+            for a single recipient.
+            </remarks>
+        </member>
+        <member name="P:MimeKit.MailboxAddress.IdnMapping">
+            <summary>
+            Get or set the punycode implementation that should be used for encoding and decoding mailbox addresses.
+            </summary>
+            <remarks>
+            Gets or sets the punycode implementation that should be used for encoding and decoding mailbox addresses.
+            </remarks>
+            <value>The punycode implementation.</value>
+        </member>
+        <member name="P:MimeKit.MailboxAddress.Route">
+            <summary>
+            Get the mailbox route.
+            </summary>
+            <remarks>
+            A route is convention that is rarely seen in modern email systems, but is supported
+            for compatibility with email archives.
+            </remarks>
+            <value>The mailbox route.</value>
+        </member>
+        <member name="P:MimeKit.MailboxAddress.Address">
+            <summary>
+            Get or set the mailbox address.
+            </summary>
+            <remarks>
+            Represents the actual email address and is in the form of <c>user@domain.com</c>.
+            </remarks>
+            <value>The mailbox address.</value>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="value"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:MimeKit.ParseException">
+            <paramref name="value"/> is malformed.
+            </exception>
+        </member>
+        <member name="P:MimeKit.MailboxAddress.LocalPart">
+            <summary>
+            Get the local-part of the email address.
+            </summary>
+            <remarks>
+            Gets the local-part of the email address, sometimes referred to as the "user" portion of an email address.
+            </remarks>
+            <value>The local-part portion of the mailbox address.</value>
+        </member>
+        <member name="P:MimeKit.MailboxAddress.Domain">
+            <summary>
+            Get the domain of the email address.
+            </summary>
+            <remarks>
+            Gets the domain of the email address.
+            </remarks>
+            <value>The domain portion of the mailbox address.</value>
+        </member>
+        <member name="P:MimeKit.MailboxAddress.IsInternational">
+            <summary>
+            Get whether the address is an international address.
+            </summary>
+            <remarks>
+            <para>International addresses are addresses that contain international
+            characters in either their local-parts or their domains.</para>
+            <para>For more information, see section 3.2 of
+            <a href="https://tools.ietf.org/html/rfc6532#section-3.2">rfc6532</a>.</para>
+            </remarks>
+            <value><see langword="true" /> if the address is an international address; otherwise, <see langword="false" />.</value>
+        </member>
+        <member name="M:MimeKit.MailboxAddress.TryParse(MimeKit.ParserOptions,System.String,MimeKit.MailboxAddress@)">
+            <summary>
+            Try to parse the given text into a new <see cref="T:MimeKit.MailboxAddress"/> instance.
+            </summary>
+            <remarks>
+            Parses a single <see cref="T:MimeKit.MailboxAddress"/>. If the address is not a mailbox address or
+            there is more than a single mailbox address, then parsing will fail.
+            </remarks>
+            <returns><see langword="true" /> if the address was successfully parsed; otherwise, <see langword="false" />.</returns>
+            <param name="options">The parser options to use.</param>
+            <param name="text">The text.</param>
+            <param name="mailbox">The parsed mailbox address.</param>
+        </member>
+        <member name="T:MimeKit.ParseException">
+            <summary>
+            A Parse exception as thrown by the various Parse methods in MimeKit.
+            </summary>
+            <remarks>
+            A <see cref="T:MimeKit.ParseException"/> can be thrown by any of the Parse() methods
+            in MimeKit. Each exception instance will have a <see cref="P:MimeKit.ParseException.TokenIndex"/>
+            which marks the byte offset of the token that failed to parse as well
+            as a <see cref="P:MimeKit.ParseException.ErrorIndex"/> which marks the byte offset where the error
+            occurred.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.ParseException.#ctor(System.String,System.Int32,System.Int32,System.Exception)">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.ParseException"/> class.
+            </summary>
+            <remarks>
+            Creates a new <see cref="T:MimeKit.ParseException"/>.
+            </remarks>
+            <param name="message">The error message.</param>
+            <param name="tokenIndex">The byte offset of the token.</param>
+            <param name="errorIndex">The byte offset of the error.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:MimeKit.ParseException.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.ParseException"/> class.
+            </summary>
+            <remarks>
+            Creates a new <see cref="T:MimeKit.ParseException"/>.
+            </remarks>
+            <param name="message">The error message.</param>
+            <param name="tokenIndex">The byte offset of the token.</param>
+            <param name="errorIndex">The byte offset of the error.</param>
+        </member>
+        <member name="P:MimeKit.ParseException.TokenIndex">
+            <summary>
+            Get the byte index of the token that was malformed.
+            </summary>
+            <remarks>
+            The token index is the byte offset at which the token started.
+            </remarks>
+            <value>The byte index of the token.</value>
+        </member>
+        <member name="P:MimeKit.ParseException.ErrorIndex">
+            <summary>
+            Get the index of the byte that caused the error.
+            </summary>
+            <remarks>
+            The error index is the byte offset at which the parser encountered an error.
+            </remarks>
+            <value>The index of the byte that caused error.</value>
+        </member>
+        <member name="T:MimeKit.ParserOptions">
+            <summary>
+            Parser options as used by <see cref="!:MimeParser"/> as well as various Parse and TryParse methods in MimeKit.
+            </summary>
+            <remarks>
+            <see cref="T:MimeKit.ParserOptions"/> allows you to change and/or override default parsing options used by methods such
+            as <see cref="!:MimeMessage.Load(ParserOptions,System.IO.Stream,System.Threading.CancellationToken)"/> and others.
+            </remarks>
+        </member>
+        <member name="F:MimeKit.ParserOptions.Default">
+            <summary>
+            The default parser options.
+            </summary>
+            <remarks>
+            If a <see cref="T:MimeKit.ParserOptions"/> is not supplied to <see cref="!:MimeParser"/> or other Parse and TryParse
+            methods throughout MimeKit, <see cref="F:MimeKit.ParserOptions.Default"/> will be used.
+            </remarks>
+        </member>
+        <member name="P:MimeKit.ParserOptions.AddressParserComplianceMode">
+            <summary>
+            Get or set the compliance mode that should be used when parsing rfc822 addresses.
+            </summary>
+            <remarks>
+            <para>In general, you'll probably want this value to be <see cref="F:MimeKit.RfcComplianceMode.Loose"/>
+            (the default) as it allows maximum interoperability with existing (broken) mail clients
+            and other mail software such as sloppily written perl scripts (aka spambots).</para>
+            <note type="tip">Even in <see cref="F:MimeKit.RfcComplianceMode.Strict"/> mode, the address parser
+            is fairly liberal in what it accepts. Setting it to <see cref="F:MimeKit.RfcComplianceMode.Loose"/>
+            just makes it try harder to deal with garbage input.</note>
+            </remarks>
+            <value>The RFC compliance mode.</value>
+        </member>
+        <member name="P:MimeKit.ParserOptions.AllowUnquotedCommasInAddresses">
+            <summary>
+            Get or set whether the rfc822 address parser should ignore unquoted commas in address names.
+            </summary>
+            <remarks>
+            <para>In general, you'll probably want this value to be <see langword="true" /> (the default) as it allows
+            maximum interoperability with existing (broken) mail clients and other mail software such as
+            sloppily written perl scripts (aka spambots) that do not properly quote the name when it
+            contains a comma.</para>
+            </remarks>
+            <value><see langword="true" /> if the address parser should ignore unquoted commas in address names; otherwise, <see langword="false" />.</value>
+        </member>
+        <member name="P:MimeKit.ParserOptions.AllowAddressesWithoutDomain">
+            <summary>
+            Get or set whether the rfc822 address parser should allow addresses without a domain.
+            </summary>
+            <remarks>
+            <para>In general, you'll probably want this value to be <see langword="true" /> (the default) as it allows
+            maximum interoperability with older email messages that may contain local UNIX addresses.</para>
+            <para>This option exists in order to allow parsing of mailbox addresses that do not have an
+            @domain component. These types of addresses are rare and were typically only used when sending
+            mail to other users on the same UNIX system.</para>
+            </remarks>
+            <value><see langword="true" /> if the address parser should allow mailbox addresses without a domain; otherwise, <see langword="false" />.</value>
+        </member>
+        <member name="P:MimeKit.ParserOptions.MaxAddressGroupDepth">
+            <summary>
+            Get or set the maximum address group depth the parser should accept.
+            </summary>
+            <remarks>
+            <para>This option exists in order to define the maximum recursive depth of an rfc822 group address
+            that the parser should accept before bailing out with the assumption that the address is maliciously
+            formed. If the value is set too large, then it is possible that a maliciously formed set of
+            recursive group addresses could cause a stack overflow.</para>
+            </remarks>
+            <value>The maximum address group depth.</value>
+        </member>
+        <member name="P:MimeKit.ParserOptions.MaxMimeDepth">
+            <summary>
+            Get or set the maximum MIME nesting depth the parser should accept.
+            </summary>
+            <remarks>
+            <para>This option exists in order to define the maximum recursive depth of MIME parts that the parser
+            should accept before treating further nesting as a leaf-node MIME part and not recursing any further.
+            If the value is set too large, then it is possible that a maliciously formed set of deeply nested
+            multipart MIME parts could cause a stack overflow.</para>
+            </remarks>
+            <value>The maximum MIME nesting depth.</value>
+        </member>
+        <member name="P:MimeKit.ParserOptions.ParameterComplianceMode">
+            <summary>
+            Get or set the compliance mode that should be used when parsing Content-Type and Content-Disposition parameters.
+            </summary>
+            <remarks>
+            <para>In general, you'll probably want this value to be <see cref="F:MimeKit.RfcComplianceMode.Loose"/>
+            (the default) as it allows maximum interoperability with existing (broken) mail clients
+            and other mail software such as sloppily written perl scripts (aka spambots).</para>
+            <note type="tip">Even in <see cref="F:MimeKit.RfcComplianceMode.Strict"/> mode, the parameter parser
+            is fairly liberal in what it accepts. Setting it to <see cref="F:MimeKit.RfcComplianceMode.Loose"/>
+            just makes it try harder to deal with garbage input.</note>
+            </remarks>
+            <value>The RFC compliance mode.</value>
+        </member>
+        <member name="P:MimeKit.ParserOptions.Rfc2047ComplianceMode">
+            <summary>
+            Get or set the compliance mode that should be used when decoding rfc2047 encoded words.
+            </summary>
+            <remarks>
+            In general, you'll probably want this value to be <see cref="F:MimeKit.RfcComplianceMode.Loose"/>
+            (the default) as it allows maximum interoperability with existing (broken) mail clients
+            and other mail software such as sloppily written perl scripts (aka spambots).
+            </remarks>
+            <value>The RFC compliance mode.</value>
+        </member>
+        <member name="P:MimeKit.ParserOptions.RespectContentLength">
+            <summary>
+            Get or set a value indicating whether the Content-Length value should be
+            respected when parsing mbox streams.
+            </summary>
+            <remarks>
+            For more details about why this may be useful, you can find more information
+            at <a href="http://www.jwz.org/doc/content-length.html">
+            http://www.jwz.org/doc/content-length.html</a>.
+            </remarks>
+            <value><see langword="true" /> if the Content-Length value should be respected;
+            otherwise, <see langword="false" />.</value>
+        </member>
+        <member name="P:MimeKit.ParserOptions.CharsetEncoding">
+            <summary>
+            Get or set the charset encoding to use as a fallback for 8bit headers.
+            </summary>
+            <remarks>
+            <see cref="!:Rfc2047.DecodeText(ParserOptions, byte[])"/> and
+            <see cref="!:Rfc2047.DecodePhrase(ParserOptions, byte[])"/>
+            use this charset encoding as a fallback when decoding 8bit text into unicode. The first
+            charset encoding attempted is UTF-8, followed by this charset encoding, before finally
+            falling back to iso-8859-1.
+            </remarks>
+            <value>The charset encoding.</value>
+        </member>
+        <member name="M:MimeKit.ParserOptions.#ctor">
+            <summary>
+            Initialize a new instance of the <see cref="T:MimeKit.ParserOptions"/> class.
+            </summary>
+            <remarks>
+            By default, new instances of <see cref="T:MimeKit.ParserOptions"/> enable rfc2047 work-arounds
+            (which are needed for maximum interoperability with mail software used in the wild)
+            and do not respect the Content-Length header value.
+            </remarks>
+        </member>
+        <member name="T:MimeKit.RfcComplianceMode">
+            <summary>
+            An RFC compliance mode.
+            </summary>
+            <remarks>
+            An RFC compliance mode.
+            </remarks>
+        </member>
+        <member name="F:MimeKit.RfcComplianceMode.Looser">
+            <summary>
+            Attempt to be even more liberal in accepting broken and/or invalid formatting.
+            </summary>
+        </member>
+        <member name="F:MimeKit.RfcComplianceMode.Loose">
+            <summary>
+            Attempt to be more liberal accepting broken and/or invalid formatting.
+            </summary>
+        </member>
+        <member name="F:MimeKit.RfcComplianceMode.Strict">
+            <summary>
+            Do not attempt to be overly liberal in accepting broken and/or invalid formatting.
+            </summary>
+        </member>
+        <member name="T:MimeKit.Utils.MimeUtils">
+            <summary>
+            MIME utility methods.
+            </summary>
+            <remarks>
+            Various utility methods that don't belong anywhere else.
+            </remarks>
+        </member>
+        <member name="F:MimeKit.Utils.MimeUtils.OrdinalIgnoreCase">
+            <summary>
+            A string comparer that performs a case-insensitive ordinal string comparison.
+            </summary>
+            <remarks>
+            A string comparer that performs a case-insensitive ordinal string comparison.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.Utils.MimeUtils.Unquote(System.String,System.Boolean)">
+            <summary>
+            Unquote the specified text.
+            </summary>
+            <remarks>
+            Unquotes the specified text, removing any escaped backslashes within.
+            </remarks>
+            <returns>The unquoted text.</returns>
+            <param name="text">The text to unquote.</param>
+            <param name="convertTabsToSpaces"><see langword="true" /> if tab characters should be converted to a space; otherwise, <see langword="false" />.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="text"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="T:MimeKit.Utils.Rfc2047">
+            <summary>
+            Utility methods for encoding and decoding rfc2047 encoded-word tokens.
+            </summary>
+            <remarks>
+            Utility methods for encoding and decoding rfc2047 encoded-word tokens.
+            </remarks>
+        </member>
+        <member name="M:MimeKit.Utils.Rfc2047.DecodePhrase(MimeKit.ParserOptions,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Decode a phrase.
+            </summary>
+            <remarks>
+            Decodes the phrase(s) starting at the given index and spanning across
+            the specified number of bytes using the supplied parser options.
+            </remarks>
+            <returns>The decoded phrase.</returns>
+            <param name="options">The parser options to use.</param>
+            <param name="phrase">The phrase to decode.</param>
+            <param name="startIndex">The starting index.</param>
+            <param name="count">The number of bytes to decode.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <see langword="null"/>.</para>
+            <para>-or-</para>
+            <para><paramref name="phrase"/> is <see langword="null"/>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="startIndex"/> and <paramref name="count"/> do not specify
+            a valid range in the byte array.
+            </exception>
+        </member>
+        <member name="M:MimeKit.Utils.ValueStringBuilder.Grow(System.Int32)">
+            <summary>
+            Resize the internal buffer either by doubling current buffer size or
+            by adding <paramref name="additionalCapacityBeyondPos"/> to
+            <see cref="F:MimeKit.Utils.ValueStringBuilder._pos"/> whichever is greater.
+            </summary>
+            <param name="additionalCapacityBeyondPos">
+            Number of chars requested beyond current position.
+            </param>
+        </member>
+    </members>
+</doc>

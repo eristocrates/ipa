@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Win32.RecentDocuments</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Win32.RecentDocuments">
+            <summary>Provides methods to manage Windows Recent Documents.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.RecentDocuments.AddToRecentDocuments(System.String)">
+            <summary>Notifies the system that an item has been accessed, for the purposes of tracking those items used most recently and most frequently.</summary>
+            <param name="path">The path to the document that has been accessed.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="path"/> is empty.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Win32.RecentDocuments.ClearRecentDocuments">
+            <summary>Clears all usage data.</summary>
+        </member>
+        <member name="T:Windows.Win32.PInvoke">
+            <content>
+            Contains extern methods from "SHELL32.dll".
+            </content>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.SHAddToRecentDocs(System.UInt32,System.Void*)">
+            <summary>Notifies the system that an item has been accessed, for the purposes of tracking those items used most recently and most frequently. This function can also be used to clear all usage data.</summary>
+            <param name="uFlags">
+            <para>Type: <b>UINT</b> A value from the <a href="https://docs.microsoft.com/windows/desktop/api/shlobj_core/ne-shlobj_core-shard">SHARD</a> enumeration that indicates the form of the information pointed to by the <i>pv</i> parameter.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shaddtorecentdocs#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="pv">
+            <para>Type: <b>LPCVOID</b> A pointer to data that identifies the item that has been accessed. The item can be specified in this parameter in one of the following forms:</para>
+            <para></para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shaddtorecentdocs#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <remarks>
+            <para>The usage statistics gathered through calls to this method are used to determine lists of items accessed most recently and most frequently. These lists are seen in the <b>Start</b> menu and, in Windows 7 and later, in an application's Jump List. When this method is called, it affects the following areas:</para>
+            <para></para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shaddtorecentdocs#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="T:Windows.Win32.UI.Shell.SHARD">
+            <summary>Indicates the interpretation of the data passed by SHAddToRecentDocs in its pv parameter to identify the item whose usage statistics are being tracked.</summary>
+            <remarks>
+            <para>Before Windows 7, SHARD_PIDL, SHARD_PATHA, and SHARD_PATHW were defined as individual constants, not as enumeration members. When providing an <a href="https://docs.microsoft.com/windows/desktop/api/shobjidl_core/nn-shobjidl_core-ishelllinka">IShellLink</a> through either <b><b>SHARD_LINK</b></b> or <b><b>SHARD_APPIDINFOLINK</b></b>, the <b>IShellLink</b> instance must provide the following:</para>
+            <para></para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/ne-shlobj_core-shard#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.SHARD.SHARD_PIDL">
+            <summary>The <i>pv</i> parameter points to a PIDL that identifies the document's file object. PIDLs that identify non-file objects are not accepted.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.SHARD.SHARD_PATHA">
+            <summary>The <i>pv</i> parameter points to a null-terminated ANSI string with the path and file name of the object.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.SHARD.SHARD_PATHW">
+            <summary>The <i>pv</i> parameter points to a null-terminated Unicode string with the path and file name of the object.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.SHARD.SHARD_APPIDINFO">
+            <summary><b>Windows 7 and later</b>. The <i>pv</i> parameter points to a <a href="https://docs.microsoft.com/windows/desktop/api/shlobj_core/ns-shlobj_core-shardappidinfo">SHARDAPPIDINFO</a> structure that pairs an <a href="https://docs.microsoft.com/windows/desktop/api/shobjidl_core/nn-shobjidl_core-ishellitem">IShellItem</a> that identifies the item with an AppUserModelID that associates it with a particular process or application.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.SHARD.SHARD_APPIDINFOIDLIST">
+            <summary><b>Windows 7 and later</b>. The <i>pv</i> parameter points to a <a href="https://docs.microsoft.com/windows/desktop/api/shlobj_core/ns-shlobj_core-shardappidinfoidlist">SHARDAPPIDINFOIDLIST</a> structure that pairs an absolute PIDL that identifies the item with an AppUserModelID that associates it with a particular process or application.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.SHARD.SHARD_LINK">
+            <summary><b>Windows 7 and later</b>. The <i>pv</i> parameter is an interface pointer to an <a href="https://docs.microsoft.com/windows/desktop/api/shobjidl_core/nn-shobjidl_core-ishelllinka">IShellLink</a> object.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.SHARD.SHARD_APPIDINFOLINK">
+            <summary><b>Windows 7 and later</b>. The <i>pv</i> parameter points to a <a href="https://docs.microsoft.com/windows/desktop/api/shlobj_core/ns-shlobj_core-shardappidinfolink">SHARDAPPIDINFOLINK</a> structure that pairs an <a href="https://docs.microsoft.com/windows/desktop/api/shobjidl_core/nn-shobjidl_core-ishelllinka">IShellLink</a> that identifies the item with an AppUserModelID that associates it with a particular process or application.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.SHARD.SHARD_SHELLITEM">
+            <summary><b>Windows 7 and later</b>. The <i>pv</i> parameter is an interface pointer to an <a href="https://docs.microsoft.com/windows/desktop/api/shobjidl_core/nn-shobjidl_core-ishellitem">IShellItem</a> object.</summary>
+        </member>
+    </members>
+</doc>

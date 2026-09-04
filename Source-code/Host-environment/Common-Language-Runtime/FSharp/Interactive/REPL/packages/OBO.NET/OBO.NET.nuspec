@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>OBO.NET</id>
+    <version>0.6.0</version>
+    <authors>Heinrich Lukas Weil, Oliver Maus, F# open source contributors</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/CSBiology/FsOboParser</projectUrl>
+    <description>An OBO file format parser, written in F#.</description>
+    <releaseNotes>Add obo type provider as part of an ARC hackathon</releaseNotes>
+    <tags>ontology parser obo</tags>
+    <repository type="git" url="https://github.com/CSBiology/FsOboParser" commit="24e0b171097a5ea9d57a1fe16c2bfd8db7fefd5c" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="ARCtrl.Core" version="2.0.1" exclude="Build,Analyzers" />
+        <dependency id="ControlledVocabulary" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="8.0.403" exclude="Build,Analyzers" />
+        <dependency id="FSharpAux" version="[2.0.0]" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

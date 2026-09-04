@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.RobotsTxt</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.RobotsTxt.RobotsFile">
+             <summary>
+             Represents a parsed <c>robots.txt</c> file.
+             </summary>
+             <remarks>
+             <para>
+             The parser is lenient: unknown directives and malformed lines are skipped rather than throwing,
+             matching the behaviour of most web crawlers. Each skipped line is recorded in
+             <see cref="P:Meziantou.Framework.RobotsTxt.RobotsFile.ParseErrors"/> so callers can audit file quality.
+             </para>
+             <para>
+             Supported directives: <c>User-agent</c>, <c>Allow</c>, <c>Disallow</c>,
+             <c>Crawl-delay</c>, and <c>Sitemap</c>.
+             </para>
+             <para>
+             Path patterns in <c>Allow</c> and <c>Disallow</c> directives support Google's wildcard
+             extensions: <c>*</c> matches any sequence of characters, and a trailing <c>$</c>
+             anchors the pattern to the end of the path.
+             </para>
+             </remarks>
+             <example>
+             <code>
+             var robots = RobotsFile.Parse("""
+                 User-agent: *
+                 Disallow: /private/
+                 Allow: /public/
+            
+                 Sitemap: https://example.com/sitemap.xml
+                 """);
+            
+             bool allowed = robots.IsAllowed("Googlebot", "/public/page");
+            
+             foreach (var error in robots.ParseErrors)
+                 Console.WriteLine(error);
+             </code>
+             </example>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsFile.Groups">
+            <summary>Gets the groups of directives defined in the file, in the order they appear.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsFile.Sitemaps">
+            <summary>
+            Gets the sitemap URLs declared by <c>Sitemap:</c> directives, in the order they appear.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsFile.ParseErrors">
+            <summary>
+            Gets the non-fatal parse errors encountered while reading the file.
+            </summary>
+            <remarks>
+            The list is empty when the file is fully valid. Each entry records the 1-based
+            <see cref="P:Meziantou.Framework.RobotsTxt.RobotsParseError.LineNumber"/>, the raw <see cref="P:Meziantou.Framework.RobotsTxt.RobotsParseError.Line"/> text,
+            and the <see cref="P:Meziantou.Framework.RobotsTxt.RobotsParseError.Kind"/> of problem.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsFile.Parse(System.String)">
+            <summary>Parses a <c>robots.txt</c> file from a string.</summary>
+            <param name="content">The full text content of the <c>robots.txt</c> file.</param>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsFile.Parse(System.ReadOnlySpan{System.Char})">
+            <summary>Parses a <c>robots.txt</c> file from a <see cref="T:System.ReadOnlySpan`1"/> of characters.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsFile.ParseAsync(System.IO.Stream,System.Text.Encoding,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously parses a <c>robots.txt</c> file from a <see cref="T:System.IO.Stream"/>.
+            </summary>
+            <param name="stream">The stream to read from.</param>
+            <param name="encoding">
+            The text encoding to use. Defaults to <see cref="P:System.Text.Encoding.UTF8"/> when <see langword="null"/>.
+            </param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsFile.ParseAsync(System.IO.TextReader,System.Threading.CancellationToken)">
+            <summary>Asynchronously parses a <c>robots.txt</c> file from a <see cref="T:System.IO.TextReader"/>.</summary>
+            <param name="reader">The text reader to read from.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsFile.GetGroup(System.String)">
+            <summary>
+            Returns the <see cref="T:Meziantou.Framework.RobotsTxt.RobotsGroup"/> that best matches the given <paramref name="userAgent"/>.
+            </summary>
+            <remarks>
+            <para>
+            An exact (case-insensitive) match takes precedence over a catch-all (<c>*</c>) group.
+            Returns <see langword="null"/> when no group matches.
+            </para>
+            <para>
+            When several groups declare the selected user-agent token, their rules are merged into a
+            single group, as required by RFC 9309 section 2.2.1. The merged group is not one of the
+            instances in <see cref="P:Meziantou.Framework.RobotsTxt.RobotsFile.Groups"/>: it lists the union of the declared tokens, the rules of
+            every contributing group in file order, and the first <c>Crawl-delay</c> that was specified.
+            When exactly one group matches, that instance is returned as-is.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsFile.IsAllowed(System.String,System.String)">
+            <summary>
+            Determines whether the given <paramref name="userAgent"/> is allowed to access <paramref name="path"/>.
+            </summary>
+            <remarks>
+            When no group matches the user-agent, access is allowed by default.
+            </remarks>
+            <param name="userAgent">The name of the crawling agent (e.g. <c>"Googlebot"</c>).</param>
+            <param name="path">The URL path (and optional query string) to check.</param>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsFile.IsAllowed(System.String,System.Uri)">
+            <summary>
+            Determines whether the given <paramref name="userAgent"/> is allowed to access the URL represented by <paramref name="uri"/>.
+            </summary>
+            <remarks>
+            Only the path and query components of <paramref name="uri"/> are evaluated against the rules.
+            When no group matches the user-agent, access is allowed by default.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsFile.GetCrawlDelay(System.String)">
+            <summary>
+            Returns the crawl delay for the given <paramref name="userAgent"/>,
+            or <see langword="null"/> when none is specified.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.RobotsTxt.RobotsGroup">
+            <summary>
+            Represents a group of directives in a <c>robots.txt</c> file that applies to one or more user-agents.
+            </summary>
+            <remarks>
+            A group consists of one or more <c>User-agent</c> lines followed by <c>Allow</c>, <c>Disallow</c>,
+            and optional <c>Crawl-delay</c> directives.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsGroup.UserAgents">
+            <summary>Gets the user-agent tokens this group applies to (e.g. <c>"Googlebot"</c>, <c>"*"</c>).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsGroup.Rules">
+            <summary>Gets the ordered list of <c>Allow</c> and <c>Disallow</c> rules in this group.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsGroup.CrawlDelay">
+            <summary>
+            Gets the crawl delay specified by a <c>Crawl-delay</c> directive in this group,
+            or <see langword="null"/> if none was specified.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsGroup.Matches(System.String)">
+            <summary>
+            Determines whether this group applies to the given <paramref name="userAgent"/>.
+            </summary>
+            <remarks>
+            The comparison is case-insensitive. A group with user-agent <c>*</c> matches any agent.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsGroup.IsAllowed(System.String)">
+            <summary>
+            Determines whether the given <paramref name="path"/> is allowed by the rules in this group.
+            </summary>
+            <remarks>
+            <para>
+            The most specific (longest <see cref="P:Meziantou.Framework.RobotsTxt.RobotsRule.Value"/>) matching rule wins.
+            When two matching rules have equal specificity, <see cref="F:Meziantou.Framework.RobotsTxt.RobotsRuleKind.Allow"/> takes precedence.
+            </para>
+            <para>
+            An empty <c>Disallow</c> path is treated as "allow all" and only matches when no other rule matches.
+            If no rule matches the path, access is allowed.
+            </para>
+            </remarks>
+            <param name="path">The URL path (and optional query string) to check.</param>
+            <returns><see langword="true"/> if access is allowed; <see langword="false"/> if it is disallowed.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsGroup.IsAllowed(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Determines whether the given <paramref name="path"/> is allowed by the rules in this group.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsGroup.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Meziantou.Framework.RobotsTxt.RobotsParseError">
+            <summary>
+            Describes a single non-fatal parse error encountered while reading a <c>robots.txt</c> file.
+            </summary>
+            <remarks>
+            The parser is lenient and always skips lines it cannot interpret, but each skipped or
+            unrecognised line is recorded as a <see cref="T:Meziantou.Framework.RobotsTxt.RobotsParseError"/> in
+            <see cref="P:Meziantou.Framework.RobotsTxt.RobotsFile.ParseErrors"/> so callers can audit file quality.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsParseError.LineNumber">
+            <summary>Gets the 1-based line number where the error occurred.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsParseError.Line">
+            <summary>Gets the raw text of the offending line (before comment stripping and whitespace trimming).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsParseError.Kind">
+            <summary>Gets the kind of error that was detected.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsParseError.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Meziantou.Framework.RobotsTxt.RobotsParseErrorKind">
+            <summary>Identifies the kind of parse error encountered while reading a <c>robots.txt</c> file.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.RobotsTxt.RobotsParseErrorKind.MalformedLine">
+            <summary>A line did not contain the expected <c>directive: value</c> format (missing colon separator).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.RobotsTxt.RobotsParseErrorKind.UnknownDirective">
+            <summary>A directive name was not recognised by the parser.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.RobotsTxt.RobotsParseErrorKind.InvalidCrawlDelay">
+            <summary>The value of a <c>Crawl-delay</c> directive could not be parsed as a non-negative number.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.RobotsTxt.RobotsRule">
+            <summary>
+            Represents a single <c>Allow</c> or <c>Disallow</c> directive in a <c>robots.txt</c> file.
+            </summary>
+            <remarks>
+            Path patterns support Google's wildcard extensions:
+            <list type="bullet">
+              <item><description><c>*</c> matches any sequence of characters (zero or more).</description></item>
+              <item><description><c>$</c> at the end of the pattern anchors the match to the end of the path.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsRule.Kind">
+            <summary>Gets whether this rule allows or disallows access.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.RobotsTxt.RobotsRule.Value">
+            <summary>Gets the raw path pattern as it appears in the <c>robots.txt</c> file.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsRule.Matches(System.String)">
+            <summary>
+            Determines whether the given <paramref name="path"/> matches this rule's pattern,
+            using Google's wildcard semantics (<c>*</c> and <c>$</c>).
+            </summary>
+            <param name="path">The URL path (and optional query string) to test.</param>
+            <returns><see langword="true"/> if <paramref name="path"/> matches; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsRule.Matches(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Determines whether the given <paramref name="path"/> matches this rule's pattern,
+            using Google's wildcard semantics (<c>*</c> and <c>$</c>).
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.RobotsTxt.RobotsRule.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Meziantou.Framework.RobotsTxt.RobotsRuleKind">
+            <summary>Specifies whether a <see cref="T:Meziantou.Framework.RobotsTxt.RobotsRule"/> allows or disallows access to a path.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.RobotsTxt.RobotsRuleKind.Allow">
+            <summary>The rule allows access to the matching path.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.RobotsTxt.RobotsRuleKind.Disallow">
+            <summary>The rule disallows access to the matching path.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+    </members>
+</doc>

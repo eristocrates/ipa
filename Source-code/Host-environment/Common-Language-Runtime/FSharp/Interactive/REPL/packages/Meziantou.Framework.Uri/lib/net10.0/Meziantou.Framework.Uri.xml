@@ -1,0 +1,1194 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Uri</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.DomainInfo">
+            <summary>
+            The decomposition of a domain name according to the <see href="https://publicsuffix.org/list/">Public Suffix List</see>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DomainInfo.Domain">
+            <summary>The normalized domain name: lower-cased and stripped of its trailing dot. The IDN form of the input is preserved.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DomainInfo.PublicSuffix">
+            <summary>The public suffix, also known as the effective top-level domain (eTLD). For instance <c>co.uk</c> for <c>www.example.co.uk</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DomainInfo.RegistrableDomain">
+            <summary>The public suffix plus one label (eTLD+1), or <see langword="null"/> when the domain is itself a public suffix. For instance <c>example.co.uk</c> for <c>www.example.co.uk</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DomainInfo.Subdomain">
+            <summary>The labels before the registrable domain, or <see langword="null"/> when there is none. For instance <c>www</c> for <c>www.example.co.uk</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DomainInfo.Source">
+            <summary>The section of the list the matching rule belongs to, or <see cref="F:Meziantou.Framework.PublicSuffixRuleSources.None"/> when no rule matched.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DomainInfo.IsKnownPublicSuffix">
+            <summary><see langword="true"/> when a rule of the list matched; <see langword="false"/> when the implicit <c>*</c> rule was used.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.PublicSuffixList">
+            <summary>
+            Provides access to an embedded snapshot of the <see href="https://publicsuffix.org/list/">Public Suffix List</see>,
+            which describes the part of a domain name that is not under the control of an individual registrant.
+            </summary>
+            <remarks>
+            The list is compiled into the assembly, so no network access is performed. It is refreshed when a new version of the package is released.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.PublicSuffixList.RuleCount">
+            <summary>The number of rules of the embedded list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.PublicSuffixList.LastUpdated">
+            <summary>The date of the commit the embedded list was generated from.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.IsPublicSuffix(System.String,Meziantou.Framework.PublicSuffixRuleSources)">
+            <summary>
+            Determines whether the domain is a public suffix, that is whether it matches a rule of the list.
+            </summary>
+            <remarks>Returns <see langword="false"/> for an unlisted top-level domain, even though the implicit <c>*</c> rule makes it a public suffix.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.IsPublicSuffix(System.ReadOnlySpan{System.Char},Meziantou.Framework.PublicSuffixRuleSources)">
+            <inheritdoc cref="M:Meziantou.Framework.PublicSuffixList.IsPublicSuffix(System.String,Meziantou.Framework.PublicSuffixRuleSources)"/>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.GetPublicSuffix(System.String,Meziantou.Framework.PublicSuffixRuleSources)">
+            <summary>
+            Gets the public suffix (eTLD) of the domain, or <see langword="null"/> when the domain is not a valid domain name.
+            </summary>
+            <remarks>When the domain matches no rule, the implicit <c>*</c> rule applies and the top-level domain is returned.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.GetPublicSuffix(System.ReadOnlySpan{System.Char},Meziantou.Framework.PublicSuffixRuleSources)">
+            <inheritdoc cref="M:Meziantou.Framework.PublicSuffixList.GetPublicSuffix(System.String,Meziantou.Framework.PublicSuffixRuleSources)"/>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.GetRegistrableDomain(System.String,Meziantou.Framework.PublicSuffixRuleSources)">
+            <summary>
+            Gets the registrable domain (eTLD+1) of the domain, or <see langword="null"/> when the domain is not a valid domain name or is itself a public suffix.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.GetRegistrableDomain(System.ReadOnlySpan{System.Char},Meziantou.Framework.PublicSuffixRuleSources)">
+            <inheritdoc cref="M:Meziantou.Framework.PublicSuffixList.GetRegistrableDomain(System.String,Meziantou.Framework.PublicSuffixRuleSources)"/>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.TryGetDomainInfo(System.String,Meziantou.Framework.DomainInfo@,Meziantou.Framework.PublicSuffixRuleSources)">
+            <summary>
+            Decomposes the domain into its public suffix, registrable domain, and subdomain.
+            </summary>
+            <returns><see langword="false"/> when the domain is not a valid domain name.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.TryGetDomainInfo(System.Uri,Meziantou.Framework.DomainInfo@,Meziantou.Framework.PublicSuffixRuleSources)">
+            <summary>
+            Decomposes the host of the URI into its public suffix, registrable domain, and subdomain.
+            </summary>
+            <returns><see langword="false"/> when the host is not a domain name, such as an IP address.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.TryGetDomainInfo(System.ReadOnlySpan{System.Char},Meziantou.Framework.DomainInfo@,Meziantou.Framework.PublicSuffixRuleSources)">
+            <inheritdoc cref="M:Meziantou.Framework.PublicSuffixList.TryGetDomainInfo(System.String,Meziantou.Framework.DomainInfo@,Meziantou.Framework.PublicSuffixRuleSources)"/>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.FindPublicSuffixIndex(System.String,System.ReadOnlySpan{System.Int32},Meziantou.Framework.PublicSuffixRuleSources,Meziantou.Framework.PublicSuffixRuleSources@)">
+            <summary>Returns the index of the first label of the public suffix, or -1 when no rule matches.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.PublicSuffixList.GetLabelStarts(System.ReadOnlySpan{System.Char},System.Span{System.Int32})">
+            <summary>Returns the number of labels and their start index, or -1 when the value is not a valid domain name.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.PublicSuffixRuleFlags.IcannRule">
+            <summary>An ICANN rule matching the suffix exactly.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.PublicSuffixRuleFlags.PrivateRule">
+            <summary>A private rule matching the suffix exactly.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.PublicSuffixRuleFlags.IcannWildcard">
+            <summary>An ICANN wildcard rule (<c>*.suffix</c>).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.PublicSuffixRuleFlags.PrivateWildcard">
+            <summary>A private wildcard rule (<c>*.suffix</c>).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.PublicSuffixRuleFlags.IcannException">
+            <summary>An ICANN exception rule (<c>!suffix</c>).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.PublicSuffixRuleFlags.PrivateException">
+            <summary>A private exception rule (<c>!suffix</c>).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.PublicSuffixRuleSources">
+            <summary>
+            Identifies the section of the <see href="https://publicsuffix.org/list/">Public Suffix List</see> a rule comes from.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.PublicSuffixRuleSources.None">
+            <summary>No section. Reported when the implicit <c>*</c> rule was used, meaning the domain matched no rule of the list.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.PublicSuffixRuleSources.Icann">
+            <summary>Suffixes delegated by ICANN or present in the IANA root zone.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.PublicSuffixRuleSources.Private">
+            <summary>Suffixes submitted by domain holders, such as <c>blogspot.com</c> or <c>github.io</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.PublicSuffixRuleSources.All">
+            <summary>Both the ICANN and the private sections.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.QueryStringParameterCollection">
+            <summary>Represents a collection of query string parameters that preserves insertion order and allows duplicate keys with multiple values.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringParameterCollection.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.QueryStringParameterCollection"/> class.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QueryStringParameterCollection.Item(System.String)">
+            <summary>Gets or sets the parameter value with the specified name.</summary>
+            <param name="name">The name of the parameter.</param>
+            <returns>The value associated with the specified name.</returns>
+        </member>
+        <member name="P:Meziantou.Framework.QueryStringParameterCollection.Count">
+            <summary>Gets the number of parameters in the collection.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.QueryStringParameterCollection.IsEmpty">
+            <summary>Gets a value indicating whether the collection is empty.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringParameterCollection.Get(System.String)">
+            <summary>Gets the value associated with the specified parameter name.</summary>
+            <param name="name">The name of the parameter to get.</param>
+            <returns>The value associated with the specified name, or <see cref="F:Microsoft.Extensions.Primitives.StringValues.Empty"/> if not found.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringParameterCollection.Append(System.String,Microsoft.Extensions.Primitives.StringValues)">
+            <summary>Appends the specified values to an existing parameter or adds a new parameter if it doesn't exist.</summary>
+            <param name="name">The name of the parameter.</param>
+            <param name="values">The values to append.</param>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringParameterCollection.Append(System.String,System.String)">
+            <summary>Appends the specified value to an existing parameter or adds a new parameter if it doesn't exist.</summary>
+            <param name="name">The name of the parameter.</param>
+            <param name="value">The value to append.</param>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringParameterCollection.Remove(System.String)">
+            <summary>Removes the parameter with the specified name from the collection.</summary>
+            <param name="name">The name of the parameter to remove.</param>
+            <returns><see langword="true"/> if the parameter was found and removed; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringParameterCollection.Set(System.String,Microsoft.Extensions.Primitives.StringValues)">
+            <summary>Sets the value of a parameter, replacing any existing values, or adds the parameter if it doesn't exist.</summary>
+            <param name="name">The name of the parameter.</param>
+            <param name="values">The values to set.</param>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringParameterCollection.Clear">
+            <summary>Removes all parameters from the collection.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringParameterCollection.GetEnumerator">
+            <summary>Returns an enumerator that iterates through the collection.</summary>
+            <returns>An enumerator for the collection.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.QueryStringParameterCollection.Parameter">
+            <summary>
+            Holds the values of a single parameter. Appended values are buffered in a growable list and merged
+            into <see cref="T:Microsoft.Extensions.Primitives.StringValues"/> only when they are read, so appending n values to one name costs
+            O(n) instead of the O(n²) of copying the whole array on every append.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.QueryStringUtilities">
+            <summary>Provides methods for parsing and manipulating query strings.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddQueryString(System.String,System.String,System.String)">
+            <summary>Append the given query key and value to the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="name">The name of the query key.</param>
+            <param name="value">The query value.</param>
+            <returns>The combined result.</returns>
+            <remarks>A <see langword="null"/> <paramref name="value"/> appends nothing, which is how <see cref="M:Meziantou.Framework.QueryStringUtilities.RemoveQueryString(System.String,System.String)"/> drops a parameter.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddQueryString(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>Append the given query keys and values to the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A dictionary of query keys and values to append.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="queryString"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddQueryString(System.String,System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}})">
+            <summary>Append the given query keys and values to the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A collection of query names and values to append, or <see langword="null"/>.</param>
+            <returns>The combined result.</returns>
+            <remarks>Unlike the other overloads, a <see langword="null"/> <paramref name="queryString"/> returns <paramref name="uri"/> unchanged.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddQueryString(System.String,System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,Microsoft.Extensions.Primitives.StringValues}})">
+            <summary>Append the given query keys and values to the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A collection of query names and values to append.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="queryString"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddQueryString(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Microsoft.Extensions.Primitives.StringValues}})">
+            <summary>Append the given query keys and values to the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A collection of query names and values to append.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="queryString"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddQueryString(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>Append the given query keys and values to the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A collection of name value query pairs to append.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="queryString"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.SetQueryString(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Microsoft.Extensions.Primitives.StringValues}})">
+            <summary>Replace the query string with the given query key and value.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A collection of name value query pairs to set.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="queryString"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.SetQueryString(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>Replace the query string with the given query key and value.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A collection of name value query pairs to set.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="queryString"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddOrReplaceQueryString(System.String,System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}})">
+            <summary>Adds or replaces the given query keys and values in the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A collection of name value query pairs to set.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="queryString"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddOrReplaceQueryString(System.String,System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,Microsoft.Extensions.Primitives.StringValues}})">
+            <summary>Adds or replaces the given query keys and values in the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A collection of name value query pairs to set.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="queryString"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddOrReplaceQueryString(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Microsoft.Extensions.Primitives.StringValues}})">
+            <summary>Adds or replaces the given query keys and values in the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A collection of name value query pairs to set.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="queryString"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddOrReplaceQueryString(System.String,System.String,System.String)">
+            <summary>Adds or replaces the given query key and value in the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="name">The name of the query key.</param>
+            <param name="value">The query value.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.AddOrReplaceQueryString(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>Adds or replaces the given query keys and values in the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="queryString">A collection of name value query pairs to set.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="queryString"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.RemoveQueryString(System.String,System.String)">
+            <summary>Removes the specified query parameter from the URI.</summary>
+            <param name="uri">The base URI.</param>
+            <param name="name">The name of the query key.</param>
+            <returns>The combined result.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="uri"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.ParseQuery(System.String)">
+            <summary>Parse a query string into its component key and value parts.</summary>
+            <param name="queryString">The raw query string value, with or without the leading '?'.</param>
+            <returns>A collection of parsed keys and values.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.ParseNullableQuery(System.String)">
+            <summary>Parse a query string into its component key and value parts.</summary>
+            <param name="queryString">The raw query string value, with or without the leading '?'.</param>
+            <returns>A collection of parsed keys and values, null if there are no entries.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.QueryStringUtilities.SplitUri(System.String)">
+            <summary>Splits the URI around its query string.</summary>
+            <param name="uri">The URI to split.</param>
+            <returns>
+            The part before the query, the query without its leading '?' (<see langword="null"/> when the URI has no query),
+            and the fragment including its leading '#' (empty when the URI has no fragment).
+            </returns>
+            <remarks>
+            The fragment starts at the first '#', so a '?' after that point is fragment content rather than
+            the query delimiter. "http://example.com/#a?b" has a fragment of "#a?b" and no query.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.ConstructorStringParser">
+            <summary>Parses a constructor string into a URLPatternInit.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#constructor-string-parsing">WHATWG URL Pattern Spec - Constructor string parsing</see>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.ConstructorStringParser.ConstructorStringState">
+            <summary>The constructor string parser states.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.ConstructorStringParser.Parse">
+            <summary>Parses the constructor string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#parse-a-constructor-string">WHATWG URL Pattern Spec - Parse a constructor string</see>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.Part">
+            <summary>Represents one piece of a parsed pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#parts">WHATWG URL Pattern Spec - Parts</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.Part.Type">
+            <summary>Gets the type of the part.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.Part.Value">
+            <summary>Gets the value of the part (the regexp pattern for Regexp parts, empty for others).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.Part.Modifier">
+            <summary>Gets the modifier for the part.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.Part.Name">
+            <summary>Gets the name of the part (for named groups).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.Part.Prefix">
+            <summary>Gets the prefix for the part.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.Part.Suffix">
+            <summary>Gets the suffix for the part.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.PartModifier">
+            <summary>Represents the modifier type for a part.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#parts">WHATWG URL Pattern Spec - Parts</see>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PartModifier.None">
+            <summary>No modifier.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PartModifier.Optional">
+            <summary>The part is optional (? modifier).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PartModifier.ZeroOrMore">
+            <summary>The part can repeat zero or more times (* modifier).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PartModifier.OneOrMore">
+            <summary>The part can repeat one or more times (+ modifier).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.PartType">
+            <summary>Represents the type of a part in a pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#parts">WHATWG URL Pattern Spec - Parts</see>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PartType.FixedText">
+            <summary>The part represents a simple fixed text string.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PartType.Regexp">
+            <summary>The part represents a matching group with a custom regular expression.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PartType.SegmentWildcard">
+            <summary>The part represents a matching group that matches code points up to the next separator code point.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PartType.FullWildcard">
+            <summary>The part represents a matching group that greedily matches all code points.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.PatternOptions">
+            <summary>Options struct contains different settings that control how pattern strings behave.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#options-header">WHATWG URL Pattern Spec - Options</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.PatternOptions.DelimiterCodePoint">
+            <summary>Gets or sets the delimiter code point. This code point is treated as a segment separator.</summary>
+            <remarks>For example, if the delimiter code point is "/" then "/:foo" will match "/bar", but not "/bar/baz".</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.PatternOptions.PrefixCodePoint">
+            <summary>Gets or sets the prefix code point. The code point is treated as an automatic prefix if found immediately preceding a match group.</summary>
+            <remarks>For example, if prefix code point is "/" then "/foo/:bar?/baz" will treat the "/" before ":bar" as a prefix that becomes optional along with the named group.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.PatternOptions.IgnoreCase">
+            <summary>Gets or sets whether to ignore case when matching.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.PatternOptions.Default">
+            <summary>Default options with empty delimiter and prefix.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#default-options">WHATWG URL Pattern Spec - Default options</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.PatternOptions.Hostname">
+            <summary>Hostname options with "." as delimiter.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#hostname-options">WHATWG URL Pattern Spec - Hostname options</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.PatternOptions.Pathname">
+            <summary>Pathname options with "/" as delimiter and prefix.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#pathname-options">WHATWG URL Pattern Spec - Pathname options</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternOptions.WithIgnoreCase(System.Boolean)">
+            <summary>Creates a copy of this options with the specified ignore case setting.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.PatternParser">
+            <summary>Parses a pattern string into a list of parts.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#parsing">WHATWG URL Pattern Spec - Parsing</see>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PatternParser.FullWildcardRegexpValue">
+            <summary>
+            The full wildcard regexp value is the string ".*".
+            </summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#full-wildcard-regexp-value">WHATWG URL Pattern Spec - Full wildcard regexp value</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.Encode(System.String)">
+            <summary>Runs the encoding callback, or returns the value unchanged when the component needs no encoding.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.Parse">
+            <summary>Parses the token list into a part list.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#parse-a-pattern-string">WHATWG URL Pattern Spec - Parse a pattern string</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.GenerateSegmentWildcardRegexp(Meziantou.Framework.UrlPatternInternal.PatternOptions)">
+            <summary>Generates the segment wildcard regexp for the given options.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#generate-a-segment-wildcard-regexp">WHATWG URL Pattern Spec - Generate a segment wildcard regexp</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.TryConsumeToken(Meziantou.Framework.UrlPatternInternal.TokenType)">
+            <summary>Tries to consume a token of the specified type.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#try-to-consume-a-token">WHATWG URL Pattern Spec - Try to consume a token</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.TryConsumeModifierToken">
+            <summary>Tries to consume a modifier token.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#try-to-consume-a-modifier-token">WHATWG URL Pattern Spec - Try to consume a modifier token</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.TryConsumeRegexpOrWildcardToken(System.Nullable{Meziantou.Framework.UrlPatternInternal.Token})">
+            <summary>Tries to consume a regexp or wildcard token.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#try-to-consume-a-regexp-or-wildcard-token">WHATWG URL Pattern Spec - Try to consume a regexp or wildcard token</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.ConsumeRequiredToken(Meziantou.Framework.UrlPatternInternal.TokenType)">
+            <summary>Consumes a required token.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#consume-a-required-token">WHATWG URL Pattern Spec - Consume a required token</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.ConsumeText">
+            <summary>Consumes text.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#consume-text">WHATWG URL Pattern Spec - Consume text</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.MaybeAddPartFromPendingFixedValue">
+            <summary>Maybe adds a part from the pending fixed value.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#maybe-add-a-part-from-the-pending-fixed-value">WHATWG URL Pattern Spec - Maybe add a part from the pending fixed value</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.AddPart(System.String,System.Nullable{Meziantou.Framework.UrlPatternInternal.Token},System.Nullable{Meziantou.Framework.UrlPatternInternal.Token},System.String,System.Nullable{Meziantou.Framework.UrlPatternInternal.Token})">
+            <summary>Adds a part.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#add-a-part">WHATWG URL Pattern Spec - Add a part</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.IsDuplicateName(System.String)">
+            <summary>Determines if a name is a duplicate.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#is-a-duplicate-name">WHATWG URL Pattern Spec - Is a duplicate name</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.GetModifier(System.Nullable{Meziantou.Framework.UrlPatternInternal.Token})">
+            <summary>Gets the modifier from a modifier token.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.EscapeRegexpString(System.String)">
+            <summary>Escapes a string for use in a regular expression.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#escape-a-regexp-string">WHATWG URL Pattern Spec - Escape a regexp string</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PatternParser.EscapePatternString(System.String)">
+            <summary>Escapes a string for use in a pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#escape-a-pattern-string">WHATWG URL Pattern Spec - Escape a pattern string</see>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.SpecialSchemes">
+            <summary>The special schemes of the URL Standard, and the default port of each.</summary>
+            <remarks>
+            <see href="https://url.spec.whatwg.org/#special-scheme">URL Standard - Special scheme</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.SpecialSchemes.All">
+            <summary>Gets every special scheme.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.SpecialSchemes.Contains(System.String)">
+            <summary>Determines whether the scheme is a special scheme.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.SpecialSchemes.TryGetDefaultPort(System.String,System.String@)">
+            <summary>Gets the default port of the scheme, when it has one.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.Token">
+            <summary>Represents a single lexical token within a pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#tokens">WHATWG URL Pattern Spec - Tokens</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.Token.Type">
+            <summary>Gets the type of the token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.Token.Index">
+            <summary>Gets the position of the first code point in the pattern string represented by the token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.Token.Value">
+            <summary>Gets the code points from the pattern string represented by the token.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.TokenizePolicy">
+            <summary>A tokenize policy is a string that must be either "strict" or "lenient".</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#tokenizing">WHATWG URL Pattern Spec - Tokenizing</see>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenizePolicy.Strict">
+            <summary>Invalid characters cause an error.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenizePolicy.Lenient">
+            <summary>Invalid characters are treated as literal characters.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.Tokenizer">
+            <summary>Tokenizes a pattern string into a list of tokens.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#tokenizing">WHATWG URL Pattern Spec - Tokenizing</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.Tokenize">
+            <summary>Tokenizes the input pattern string.</summary>
+            <returns>A list of tokens.</returns>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#tokenize">WHATWG URL Pattern Spec - Tokenize</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.GetNextCodePoint">
+            <summary>Gets the next code point.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#get-the-next-code-point">WHATWG URL Pattern Spec - Get the next code point</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.SeekAndGetNextCodePoint(System.Int32)">
+            <summary>Seeks to a specific position and gets the next code point.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#seek-and-get-the-next-code-point">WHATWG URL Pattern Spec - Seek and get the next code point</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.AddToken(Meziantou.Framework.UrlPatternInternal.TokenType,System.Int32,System.Int32,System.Int32)">
+            <summary>Adds a token to the token list.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#add-a-token">WHATWG URL Pattern Spec - Add a token</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.AddTokenWithDefaultLength(Meziantou.Framework.UrlPatternInternal.TokenType,System.Int32,System.Int32)">
+            <summary>Adds a token with default length.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#add-a-token-with-default-length">WHATWG URL Pattern Spec - Add a token with default length</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.AddTokenWithDefaultPositionAndLength(Meziantou.Framework.UrlPatternInternal.TokenType)">
+            <summary>Adds a token with default position and length.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#add-a-token-with-default-position-and-length">WHATWG URL Pattern Spec - Add a token with default position and length</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.ProcessTokenizingError(System.Int32,System.Int32)">
+            <summary>Processes a tokenizing error.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#process-a-tokenizing-error">WHATWG URL Pattern Spec - Process a tokenizing error</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.IsValidNameCodePoint(System.Char,System.Boolean)">
+            <summary>Determines if a code point is valid for a name.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#is-a-valid-name-code-point">WHATWG URL Pattern Spec - Is a valid name code point</see>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.TokenType">
+            <summary>Represents the type of a token in a pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#tokens">WHATWG URL Pattern Spec - Tokens</see>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.InvalidChar">
+            <summary>The token represents a code point that is invalid in the pattern.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.Open">
+            <summary>The token represents a U+007B ({) code point.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.Close">
+            <summary>The token represents a U+007D (}) code point.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.Regexp">
+            <summary>
+            The token represents a string of the form "(&lt;regular expression&gt;)".
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.Name">
+            <summary>
+            The token represents a string of the form ":&lt;name&gt;".
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.Char">
+            <summary>The token represents a valid pattern code point without any special syntactical meaning.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.EscapedChar">
+            <summary>
+            The token represents a code point escaped using a backslash like "\&lt;char&gt;".
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.OtherModifier">
+            <summary>The token represents a matching group modifier that is either the U+003F (?) or U+002B (+) code points.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.Asterisk">
+            <summary>The token represents a U+002A (*) code point that can be either a wildcard matching group or a matching group modifier.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.End">
+            <summary>The token represents the end of the pattern string.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent">
+            <summary>A component represents one part of a URL pattern (protocol, hostname, etc.).</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#component">WHATWG URL Pattern Spec - Component</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent.PatternString">
+            <summary>Gets the pattern string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent.RegularExpression">
+            <summary>Gets the regular expression for matching.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent.GroupNameList">
+            <summary>Gets the list of group names.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent.HasRegexpGroups">
+            <summary>Gets whether this component has regexp groups.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent.Compile(System.String,System.Func{System.String,System.String},Meziantou.Framework.UrlPatternInternal.PatternOptions)">
+            <summary>Compiles a component from an input pattern string.</summary>
+            <param name="input">The pattern string of the component.</param>
+            <param name="encodingCallback">Canonicalizes each fixed-text part of the pattern, or <see langword="null"/> when the component needs no canonicalization.</param>
+            <param name="options">The options controlling the delimiter, the prefix and the case sensitivity.</param>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#compile-a-component">WHATWG URL Pattern Spec - Compile a component</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent.GenerateRegularExpressionAndNameList(System.Collections.Generic.List{Meziantou.Framework.UrlPatternInternal.Part},Meziantou.Framework.UrlPatternInternal.PatternOptions)">
+            <summary>Generates a regular expression and name list from a part list.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#generate-a-regular-expression-and-name-list">WHATWG URL Pattern Spec - Generate a regular expression and name list</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent.GeneratePatternString(System.Collections.Generic.List{Meziantou.Framework.UrlPatternInternal.Part},Meziantou.Framework.UrlPatternInternal.PatternOptions)">
+            <summary>Generates a pattern string from a part list.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#generate-a-pattern-string">WHATWG URL Pattern Spec - Generate a pattern string</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent.GenerateSegmentWildcardRegexp(Meziantou.Framework.UrlPatternInternal.PatternOptions)">
+            <summary>Generates the segment wildcard regexp.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent.ConvertModifierToString(Meziantou.Framework.UrlPatternInternal.PartModifier)">
+            <summary>Converts a modifier to its string representation.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#convert-a-modifier-to-a-string">WHATWG URL Pattern Spec - Convert a modifier to a string</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent.IsValidNameCodePoint(System.Char,System.Boolean)">
+            <summary>Determines if a code point is valid for a name.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPattern">
+             <summary>Represents a URL pattern that can match URLs based on a convenient pattern syntax.</summary>
+             <remarks>
+             <para>The URL Pattern API provides a web platform primitive for matching URLs based on a convenient pattern syntax.</para>
+             <para>A URL pattern consists of several components (protocol, hostname, pathname, etc.), each of which represents a pattern that can be matched against the corresponding component of a URL.</para>
+             <see href="https://urlpattern.spec.whatwg.org/">WHATWG URL Pattern Spec</see>
+             <see href="https://developer.mozilla.org/en-US/docs/Web/API/URL_Pattern_API">MDN - URL Pattern API</see>
+             </remarks>
+             <example>
+             <code language="csharp">
+             // Create a pattern and test if a URL matches
+             var pattern = UrlPattern.Create("https://example.com/users/:id");
+             bool isMatch = pattern.IsMatch("https://example.com/users/123"); // true
+            
+             // Extract captured groups from a URL
+             var result = pattern.Match("https://example.com/users/456");
+             string userId = result?.Pathname.Groups["id"]; // "456"
+            
+             // Use wildcards to match any value
+             var wildcardPattern = UrlPattern.Create("https://*.example.com/*");
+             wildcardPattern.IsMatch("https://api.example.com/data"); // true
+             </code>
+             </example>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPattern.Protocol">
+            <summary>Gets the normalized protocol pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-protocol">WHATWG URL Pattern Spec - protocol getter</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPattern.Username">
+            <summary>Gets the normalized username pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-username">WHATWG URL Pattern Spec - username getter</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPattern.Password">
+            <summary>Gets the normalized password pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-password">WHATWG URL Pattern Spec - password getter</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPattern.Hostname">
+            <summary>Gets the normalized hostname pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-hostname">WHATWG URL Pattern Spec - hostname getter</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPattern.Port">
+            <summary>Gets the normalized port pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-port">WHATWG URL Pattern Spec - port getter</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPattern.Pathname">
+            <summary>Gets the normalized pathname pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-pathname">WHATWG URL Pattern Spec - pathname getter</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPattern.Search">
+            <summary>Gets the normalized search pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-search">WHATWG URL Pattern Spec - search getter</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPattern.Hash">
+            <summary>Gets the normalized hash pattern string.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-hash">WHATWG URL Pattern Spec - hash getter</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPattern.HasRegExpGroups">
+            <summary>Gets whether this pattern contains one or more groups which use regular expression matching.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-hasregexpgroups">WHATWG URL Pattern Spec - hasRegExpGroups getter</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.Create(System.String)">
+            <summary>Creates a new URLPattern from a pattern string.</summary>
+            <param name="pattern">A pattern string using the URL pattern syntax.</param>
+            <returns>A new URLPattern.</returns>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-urlpattern">WHATWG URL Pattern Spec - URLPattern constructor</see>
+            <see href="https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/URLPattern">MDN - URLPattern constructor</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.Create(System.String,Meziantou.Framework.UrlPatternOptions)">
+            <summary>Creates a new URLPattern from a pattern string with options.</summary>
+            <param name="pattern">A pattern string using the URL pattern syntax.</param>
+            <param name="options">Options for pattern matching.</param>
+            <returns>A new URLPattern.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.Create(System.String,System.String)">
+            <summary>Creates a new URLPattern from a pattern string and base URL.</summary>
+            <param name="pattern">A pattern string using the URL pattern syntax.</param>
+            <param name="baseUrl">The base URL to use for relative patterns.</param>
+            <returns>A new URLPattern.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.Create(System.String,System.String,Meziantou.Framework.UrlPatternOptions)">
+            <summary>Creates a new URLPattern from a pattern string, base URL, and options.</summary>
+            <param name="pattern">A pattern string using the URL pattern syntax.</param>
+            <param name="baseUrl">The base URL to use for relative patterns.</param>
+            <param name="options">Options for pattern matching.</param>
+            <returns>A new URLPattern.</returns>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-urlpattern">WHATWG URL Pattern Spec - URLPattern constructor</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.Create(Meziantou.Framework.UrlPatternInit)">
+            <summary>Creates a new URLPattern from a URLPatternInit dictionary.</summary>
+            <param name="init">A dictionary containing patterns for each URL component.</param>
+            <returns>A new URLPattern.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.Create(Meziantou.Framework.UrlPatternInit,Meziantou.Framework.UrlPatternOptions)">
+            <summary>Creates a new URLPattern from a URLPatternInit dictionary and options.</summary>
+            <param name="init">A dictionary containing patterns for each URL component.</param>
+            <param name="options">Options for pattern matching.</param>
+            <returns>A new URLPattern.</returns>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#create">WHATWG URL Pattern Spec - Create</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.IsMatch(System.String)">
+            <summary>Indicates whether the pattern finds a match in the specified URL.</summary>
+            <param name="url">The URL string to test.</param>
+            <returns><see langword="true"/> if the pattern matches the URL; otherwise, <see langword="false"/>.</returns>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-test">WHATWG URL Pattern Spec - test method</see>
+            <see href="https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test">MDN - URLPattern.test()</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.IsMatch(System.String,System.String)">
+            <summary>Indicates whether the pattern finds a match in the specified URL with a base URL.</summary>
+            <param name="url">The URL string to test.</param>
+            <param name="baseUrl">The base URL to use for resolving relative URLs.</param>
+            <returns><see langword="true"/> if the pattern matches the URL; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.IsMatch(System.Uri)">
+            <summary>Indicates whether the pattern finds a match in the specified URL.</summary>
+            <param name="url">The URL to test.</param>
+            <returns><see langword="true"/> if the pattern matches the URL; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.IsMatch(Meziantou.Framework.UrlPatternInit)">
+            <summary>Indicates whether the pattern finds a match in the specified URL input.</summary>
+            <param name="input">The URL input dictionary to test.</param>
+            <returns><see langword="true"/> if the pattern matches the input; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.Match(System.String)">
+            <summary>Searches the specified URL for the first occurrence of the pattern and returns the match result with captured groups.</summary>
+            <param name="url">The URL string to match.</param>
+            <returns>A <see cref="T:Meziantou.Framework.UrlPatternResult"/> containing the match result, or <see langword="null"/> if no match.</returns>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-exec">WHATWG URL Pattern Spec - exec method</see>
+            <see href="https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec">MDN - URLPattern.exec()</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.Match(System.String,System.String)">
+            <summary>Searches the specified URL with a base URL for the first occurrence of the pattern and returns the match result with captured groups.</summary>
+            <param name="url">The URL string to match.</param>
+            <param name="baseUrl">The base URL to use for resolving relative URLs.</param>
+            <returns>A <see cref="T:Meziantou.Framework.UrlPatternResult"/> containing the match result, or <see langword="null"/> if no match.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.Match(System.Uri)">
+            <summary>Searches the specified URL for the first occurrence of the pattern and returns the match result with captured groups.</summary>
+            <param name="url">The URL to match.</param>
+            <returns>A <see cref="T:Meziantou.Framework.UrlPatternResult"/> containing the match result, or <see langword="null"/> if no match.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.Match(Meziantou.Framework.UrlPatternInit)">
+            <summary>Searches the specified URL input for the first occurrence of the pattern and returns the match result with captured groups.</summary>
+            <param name="input">The URL input dictionary to match.</param>
+            <returns>A <see cref="T:Meziantou.Framework.UrlPatternResult"/> containing the match result, or <see langword="null"/> if no match.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.GetUrlComponents(System.Uri)">
+            <summary>Splits the URL into the eight component values that are matched against the pattern.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.CanonicalizeInitComponents(Meziantou.Framework.UrlPatternInit)">
+            <summary>Canonicalizes the components of an init used as a match input.</summary>
+            <remarks>
+            The pattern is canonicalized when it is compiled, so an init used as an input has to be
+            canonicalized the same way for the two to be comparable. A <see cref="T:System.Uri"/> input already
+            arrives canonical, which is why <see cref="M:Meziantou.Framework.UrlPattern.MatchUrl(System.Uri,System.String)"/> does not go through this.
+            <see href="https://urlpattern.spec.whatwg.org/#canon-processing-for-init">WHATWG URL Pattern Spec - URLPatternInit processing</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.ProcessUrlPatternInit(Meziantou.Framework.UrlPatternInit,System.Boolean)">
+            <summary>Processes a URLPatternInit to resolve base URL and fill in defaults.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#canon-processing-for-init">WHATWG URL Pattern Spec - URLPatternInit processing</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.ProcessBaseUrlString(System.String,System.Boolean)">
+            <summary>Prepares a value taken from the base URL for use as a component value.</summary>
+            <remarks>
+            A base URL supplies literal text, so when it feeds a pattern it must be escaped: without this,
+            a ':', '*', '{' or '(' in the base URL would be read as pattern syntax.
+            <see href="https://urlpattern.spec.whatwg.org/#process-a-base-url-string">WHATWG URL Pattern Spec - Process a base URL string</see>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternCollection">
+             <summary>Represents a collection of URL patterns that can be matched against URLs.</summary>
+             <remarks>
+             <para>This is the .NET equivalent of the URLPatternList concept from the spec.</para>
+             <para>Use this class when you need to match a URL against multiple patterns.</para>
+             <see href="https://urlpattern.spec.whatwg.org/">WHATWG URL Pattern Spec</see>
+             </remarks>
+             <example>
+             <code language="csharp">
+             // Create a collection of patterns for routing
+             var patterns = new UrlPatternCollection();
+             patterns.Add("https://example.com/api/users/:id");
+             patterns.Add("https://example.com/api/products/:id");
+             patterns.Add("https://example.com/static/*");
+            
+             // Check if any pattern matches
+             bool isMatch = patterns.IsMatch("https://example.com/api/users/123"); // true
+            
+             // Find the first matching pattern
+             var matchingPattern = patterns.FindPattern("https://example.com/api/products/456");
+            
+             // Get match result with captured groups
+             var result = patterns.Match("https://example.com/api/users/789");
+             </code>
+             </example>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.#ctor">
+            <summary>
+            Initializes a new empty <see cref="T:Meziantou.Framework.UrlPatternCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.#ctor(System.Collections.Generic.IEnumerable{Meziantou.Framework.UrlPattern})">
+            <summary>
+            Initializes a new <see cref="T:Meziantou.Framework.UrlPatternCollection"/> with the specified patterns.
+            </summary>
+            <param name="patterns">The patterns to add to the collection.</param>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternCollection.Count">
+            <summary>Gets the number of patterns in the collection.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternCollection.Item(System.Int32)">
+            <summary>Gets the pattern at the specified index.</summary>
+            <param name="index">The index of the pattern to get.</param>
+            <returns>The pattern at the specified index.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Add(Meziantou.Framework.UrlPattern)">
+            <summary>Adds a pattern to the collection.</summary>
+            <param name="pattern">The pattern to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Add(System.String)">
+            <summary>Adds a pattern created from a pattern string.</summary>
+            <param name="pattern">The pattern string.</param>
+            <returns>The created and added pattern.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Add(System.String,System.String)">
+            <summary>Adds a pattern created from a pattern string and base URL.</summary>
+            <param name="pattern">The pattern string.</param>
+            <param name="baseUrl">The base URL.</param>
+            <returns>The created and added pattern.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Add(Meziantou.Framework.UrlPatternInit)">
+            <summary>Adds a pattern created from a URL pattern init.</summary>
+            <param name="init">The pattern init.</param>
+            <returns>The created and added pattern.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Remove(Meziantou.Framework.UrlPattern)">
+            <summary>Removes a pattern from the collection.</summary>
+            <param name="pattern">The pattern to remove.</param>
+            <returns><see langword="true"/> if the pattern was removed; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Clear">
+            <summary>Removes all patterns from the collection.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Contains(Meziantou.Framework.UrlPattern)">
+            <summary>Determines whether the collection contains the specified pattern.</summary>
+            <param name="pattern">The pattern to locate.</param>
+            <returns><see langword="true"/> if the pattern is found; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.IsMatch(System.String)">
+            <summary>Indicates whether any pattern in the collection finds a match in the specified URL.</summary>
+            <param name="url">The URL to test.</param>
+            <returns><see langword="true"/> if any pattern matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.IsMatch(System.String,System.String)">
+            <summary>Indicates whether any pattern in the collection finds a match in the specified URL with a base URL.</summary>
+            <param name="url">The URL to test.</param>
+            <param name="baseUrl">The base URL.</param>
+            <returns><see langword="true"/> if any pattern matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.IsMatch(System.Uri)">
+            <summary>Indicates whether any pattern in the collection finds a match in the specified URL.</summary>
+            <param name="url">The URL to test.</param>
+            <returns><see langword="true"/> if any pattern matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.IsMatch(Meziantou.Framework.UrlPatternInit)">
+            <summary>Indicates whether any pattern in the collection finds a match in the specified URL input.</summary>
+            <param name="input">The URL input to test.</param>
+            <returns><see langword="true"/> if any pattern matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.FindPattern(System.String)">
+            <summary>Returns the first pattern in the collection that matches the given URL.</summary>
+            <param name="url">The URL to match against.</param>
+            <returns>The first matching pattern, or <see langword="null"/> if no pattern matches.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.FindPattern(System.String,System.String)">
+            <summary>Returns the first pattern in the collection that matches the given URL with a base URL.</summary>
+            <param name="url">The URL to match against.</param>
+            <param name="baseUrl">The base URL.</param>
+            <returns>The first matching pattern, or <see langword="null"/> if no pattern matches.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.FindPattern(System.Uri)">
+            <summary>Returns the first pattern in the collection that matches the given URL.</summary>
+            <param name="url">The URL to match against.</param>
+            <returns>The first matching pattern, or <see langword="null"/> if no pattern matches.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Match(System.String)">
+            <summary>Searches the specified URL using all patterns in the collection and returns the first match result with captured groups.</summary>
+            <param name="url">The URL to match.</param>
+            <returns>A <see cref="T:Meziantou.Framework.UrlPatternResult"/> containing the match result, or <see langword="null"/> if no pattern matches.</returns>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dom-urlpattern-exec">WHATWG URL Pattern Spec - exec method</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Match(System.String,System.String)">
+            <summary>Searches the specified URL with a base URL using all patterns in the collection and returns the first match result with captured groups.</summary>
+            <param name="url">The URL to match.</param>
+            <param name="baseUrl">The base URL.</param>
+            <returns>A <see cref="T:Meziantou.Framework.UrlPatternResult"/> containing the match result, or <see langword="null"/> if no pattern matches.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Match(System.Uri)">
+            <summary>Searches the specified URL using all patterns in the collection and returns the first match result with captured groups.</summary>
+            <param name="url">The URL to match.</param>
+            <returns>A <see cref="T:Meziantou.Framework.UrlPatternResult"/> containing the match result, or <see langword="null"/> if no pattern matches.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.Match(Meziantou.Framework.UrlPatternInit)">
+            <summary>Searches the specified URL input using all patterns in the collection and returns the first match result with captured groups.</summary>
+            <param name="input">The URL input to match.</param>
+            <returns>A <see cref="T:Meziantou.Framework.UrlPatternResult"/> containing the match result, or <see langword="null"/> if no pattern matches.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternCollection.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternComponentResult">
+            <summary>Represents the match result for a single URL component.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#urlpatterncomponentresult">WHATWG URL Pattern Spec - URLPatternComponentResult</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternComponentResult.Input">
+            <summary>Gets the matched input value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternComponentResult.Groups">
+            <summary>Gets a dictionary of named groups and their matched values.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternException">
+            <summary>Exception thrown when a URL pattern is invalid or cannot be parsed.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInit">
+            <summary>Initialization dictionary for creating a URLPattern.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dictdef-urlpatterninit">WHATWG URL Pattern Spec - URLPatternInit</see>
+            <see href="https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/URLPattern">MDN - URLPattern constructor</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInit.Protocol">
+            <summary>Gets or sets the protocol pattern string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInit.Username">
+            <summary>Gets or sets the username pattern string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInit.Password">
+            <summary>Gets or sets the password pattern string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInit.Hostname">
+            <summary>Gets or sets the hostname pattern string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInit.Port">
+            <summary>Gets or sets the port pattern string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInit.Pathname">
+            <summary>Gets or sets the pathname pattern string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInit.Search">
+            <summary>Gets or sets the search (query) pattern string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInit.Hash">
+            <summary>Gets or sets the hash (fragment) pattern string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInit.BaseUrl">
+            <summary>Gets or sets the base URL to use for resolving relative patterns.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInput">
+            <summary>Represents input provided to pattern matching.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dictdef-urlpatterninput">WHATWG URL Pattern Spec - URLPatternInput</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInput.Url">
+            <summary>Gets the URL string input, if provided.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternInput.Init">
+            <summary>Gets the URL pattern init input, if provided.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternOptions">
+            <summary>Options for creating a URLPattern.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#dictdef-urlpatternoptions">WHATWG URL Pattern Spec - URLPatternOptions</see>
+            <see href="https://developer.mozilla.org/en-US/docs/Web/API/URL_Pattern_API#case_sensitivity">MDN - Case sensitivity</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternOptions.IgnoreCase">
+            <summary>Gets or sets whether the pathname, search and hash should be matched case-insensitively.</summary>
+            <remarks>
+            <para>
+            If <see langword="true"/>, the pathname, search and hash are matched case-insensitively.
+            If <see langword="false"/> (default), they are matched case-sensitively.
+            </para>
+            <para>
+            The option does not reach the protocol, username, password, hostname and port components, which the
+            spec always compiles with the default options. In practice the protocol and hostname are still matched
+            case-insensitively, because both the pattern and the URL are lower-cased before they are compared; the
+            username, password and port are always case-sensitive.
+            </para>
+            <see href="https://urlpattern.spec.whatwg.org/#create">WHATWG URL Pattern Spec - Create</see>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternResult">
+            <summary>Represents the result of executing a URL pattern against a URL.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#urlpatternresult">WHATWG URL Pattern Spec - URLPatternResult</see>
+            <see href="https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec#return_value">MDN - URLPattern.exec() return value</see>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternResult.Inputs">
+            <summary>Gets the input URL or URL components that were matched.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternResult.Protocol">
+            <summary>Gets the protocol component result.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternResult.Username">
+            <summary>Gets the username component result.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternResult.Password">
+            <summary>Gets the password component result.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternResult.Hostname">
+            <summary>Gets the hostname component result.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternResult.Port">
+            <summary>Gets the port component result.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternResult.Pathname">
+            <summary>Gets the pathname component result.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternResult.Search">
+            <summary>Gets the search component result.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.UrlPatternResult.Hash">
+            <summary>Gets the hash component result.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+    </members>
+</doc>

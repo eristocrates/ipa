@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.NtpClient</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Ntp.NtpClient">
+            <summary>
+            An NTP client for querying NTP servers to retrieve accurate network time.
+            Supports NTPv3 and NTPv4.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Ntp.NtpClient.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.Ntp.NtpClient"/> class using default options (NTPv4, port 123).
+            </summary>
+            <param name="server">The NTP server hostname or IP address.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Ntp.NtpClient.#ctor(System.String,Meziantou.Framework.Ntp.NtpClientOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.Ntp.NtpClient"/> class.
+            </summary>
+            <param name="server">The NTP server hostname or IP address.</param>
+            <param name="options">Optional configuration options.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Ntp.NtpClient.QueryAsync(System.Threading.CancellationToken)">
+            <summary>Queries the NTP server and returns the time response.</summary>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The NTP response containing timestamps and computed offset/delay.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Ntp.NtpClient.Dispose">
+            <summary>Releases the resources used by this instance.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Ntp.NtpClientOptions">
+            <summary>
+            Configuration options for <see cref="T:Meziantou.Framework.Ntp.NtpClient"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpClientOptions.Port">
+            <summary>Gets or sets the server port. Default is 123.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpClientOptions.Version">
+            <summary>Gets or sets the NTP protocol version to use. Default is <see cref="F:Meziantou.Framework.Ntp.NtpVersion.V4"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpClientOptions.Timeout">
+            <summary>Gets or sets the timeout for a single NTP query. Default is 5 seconds. Use <see cref="F:System.Threading.Timeout.InfiniteTimeSpan"/> for no timeout.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Ntp.NtpLeapIndicator">
+            <summary>
+            Indicates the leap second warning from the NTP server.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Ntp.NtpLeapIndicator.NoWarning">
+            <summary>No warning.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Ntp.NtpLeapIndicator.LastMinuteHas61Seconds">
+            <summary>Last minute of the day has 61 seconds.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Ntp.NtpLeapIndicator.LastMinuteHas59Seconds">
+            <summary>Last minute of the day has 59 seconds.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Ntp.NtpLeapIndicator.AlarmCondition">
+            <summary>Clock is not synchronized (alarm condition).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Ntp.NtpMode">
+            <summary>
+            Specifies the NTP association mode.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Ntp.NtpPacket">
+            <summary>
+            Represents a 48-byte NTP packet as defined in RFC 5905.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Ntp.NtpResponse">
+            <summary>
+            Represents the response from an NTP server query.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.LeapIndicator">
+            <summary>Gets the leap indicator from the server.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.Version">
+            <summary>Gets the NTP version used by the server.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.Stratum">
+            <summary>Gets the stratum level of the server (1 = primary reference, 2-15 = secondary).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.PollInterval">
+            <summary>Gets the maximum interval between successive messages, in log2 seconds.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.Precision">
+            <summary>Gets the precision of the server clock, in log2 seconds.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.ReferenceTimestamp">
+            <summary>Gets the time when the server clock was last set or corrected.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.OriginateTimestamp">
+            <summary>Gets the time at which the request was sent by the client (copied from the client's transmit timestamp).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.ReceiveTimestamp">
+            <summary>Gets the time at which the request arrived at the server.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.TransmitTimestamp">
+            <summary>Gets the time at which the reply was sent from the server.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.DestinationTimestamp">
+            <summary>Gets the local time at which the reply was received by the client.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.ClockOffset">
+            <summary>Gets the estimated clock offset between the client and the server.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Ntp.NtpResponse.RoundTripDelay">
+            <summary>Gets the estimated round-trip delay between the client and the server.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Ntp.NtpTimestamp">
+            <summary>
+            Provides conversion between NTP 64-bit timestamps and <see cref="T:System.DateTimeOffset"/>.
+            NTP timestamps consist of 32 bits for seconds since 1900-01-01 and 32 bits for fractional seconds.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Ntp.NtpVersion">
+            <summary>
+            Specifies the NTP protocol version to use.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Ntp.NtpVersion.V3">
+            <summary>NTP version 3 (RFC 1305).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Ntp.NtpVersion.V4">
+            <summary>NTP version 4 (RFC 5905).</summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SafeName</id>
+    <version>0.1.1</version>
+    <title>SafeName</title>
+    <authors>Israel Iyonsi</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/IsraelIyonsi/SafeName.NET</projectUrl>
+    <description>Cross-platform filename and path validation and sanitization for .NET: the pathvalidate for .NET. Turn any user-supplied name into a safe filename that will not break, overwrite, or open a path-traversal hole. Handles the traps hand-rolled Path.GetInvalidFileNameChars() loops miss: Windows reserved device names (CON, PRN, AUX, NUL, COM1-9, LPT1-9, including with any extension and case-insensitively), trailing dots and spaces (which Windows silently strips), UTF-8 byte length limits (not just character counts), control characters, DEL, path separators, and the reserved characters that differ per platform. Per-platform profiles (Windows, POSIX, Universal, Auto), extension-preserving length truncation, configurable replacement, reserved-name policy, and a detailed Validate API with per-error reasons and positions. Sanitize never throws on the input name and its output is guaranteed to pass Validate for the same profile. Includes a full-path sanitizer that neutralizes traversal and rejoins with the platform separator. Zero external dependencies.</description>
+    <releaseNotes>See https://github.com/IsraelIyonsi/SafeName.NET/blob/main/CHANGELOG.md</releaseNotes>
+    <copyright>Copyright (c) 2026 Israel Iyonsi</copyright>
+    <tags>filename path sanitize validation filesystem upload security cross-platform pathvalidate slug</tags>
+    <repository type="git" url="https://github.com/IsraelIyonsi/SafeName.NET" commit="ce027120e2fc9e449eb7025007b6e33cecab8ed4" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+</package>

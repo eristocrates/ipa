@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>ARCtrl.FileSystem</name></assembly>
+<members>
+<member name="M:ARCtrl.ArcPathHelper.isFile(System.String,System.String)">
+ <summary>
+ Checks if `path` points to a file with the name `fileName`
+ </summary>
+ <param name="fileName">The name of the file the path should point to.</param>
+ <param name="path">The path to a file.</param>
+</member>
+<member name="M:ARCtrl.ArcPathHelper.resolvePathFromFile(System.String,System.String)">
+<summary>
+ Resolve a path (possibly relative) against the directory of a file path.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcPathHelper.normalize(System.String)">
+<summary>
+ Normalize a path by resolving &quot;.&quot; and &quot;..&quot; segments.
+ Note: If normalization yields no segments, the trimmed original path is returned
+ to preserve relative markers used by existing callers (e.g. &quot;.&quot; or &quot;./&quot;).
+</summary>
+</member>
+<member name="M:ARCtrl.ArcPathHelper.normalizeSegments(System.String[])">
+<summary>
+ Normalize path segments by removing &quot;.&quot; and resolving &quot;..&quot; where possible.
+</summary>
+</member>
+<member name="P:ARCtrl.FileSystem.FileSystemTree.ROOT_NAME">
+ <summary>
+ Defines the name of the root folder of the FileSystemTree when created by `fromFilePaths`.
+ </summary>
+</member>
+<member name="M:ARCtrl.FileSystem.FileSystemTree.fromFilePaths(System.String[])">
+ <summary>
+ Split `paths` by `\\` or `/` and sort them into FileSystemTree. All given paths must be relative to ARC root and are sorted into a folder called `root`.
+ </summary>
+ <param name="paths">A array of file paths relative to ARC root.</param>
+</member>
+<member name="M:ARCtrl.FileSystem.FileSystemTree.containsChildWithName(System.String)">
+<summary>
+ Non-recursive lookup of child with the given name
+</summary>
+</member>
+<member name="M:ARCtrl.FileSystem.FileSystemTree.TryGetChildByName(System.String)">
+<summary>
+ Non-recursive lookup of child with the given name
+</summary>
+</member>
+<member name="M:ARCtrl.FileSystem.FileSystemTree.ToFilePaths(Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Reverts FileSystemTree back to an array of filepaths relative to ARC root.
+ </summary>
+ <param name="removeRoot">Will remove root `Folder` if set true. *Default*: `true`.</param>
+</member>
+<member name="M:ARCtrl.FileSystem.FileSystemTree.ContainsChildWithName(System.String)">
+<summary>
+ Non-recursive lookup of child with the given name
+</summary>
+</member>
+<member name="P:ARCtrl.FileSystem.DefaultGitignore.dgi">
+ <summary>
+ A string containing the default .gitignore file content.
+ </summary>
+</member>
+</members>
+</doc>

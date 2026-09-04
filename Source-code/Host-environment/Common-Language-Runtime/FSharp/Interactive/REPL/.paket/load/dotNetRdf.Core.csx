@@ -1,0 +1,12 @@
+
+#load "AngleSharp.csx" 
+#load "HtmlAgilityPack.csx" 
+#load "Microsoft.Extensions.Configuration.csx" 
+#load "Newtonsoft.Json.csx" 
+#load "System.Collections.Specialized.csx" 
+#load "System.ComponentModel.TypeConverter.csx" 
+#load "System.Configuration.ConfigurationManager.csx" 
+#load "System.Net.Http.csx" 
+#load "System.Threading.Thread.csx" 
+#load "VDS.Common.csx" 
+#r "../../packages/dotNetRdf.Core/lib/netstandard2.0/dotNetRdf.dll" 

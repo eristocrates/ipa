@@ -1,0 +1,391 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Versioning</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Versioning.SemanticVersion">
+             <summary>Implements Semantic Version 2.0.0.</summary>
+             <example>
+             <code>
+             // Parse a semantic version string
+             var version = SemanticVersion.Parse("1.2.3-alpha.1+build");
+             Console.WriteLine(version.Major); // 1
+             Console.WriteLine(version.Minor); // 2
+             Console.WriteLine(version.Patch); // 3
+             Console.WriteLine(version.IsPrerelease); // true
+             Console.WriteLine(version.PrereleaseLabels); // ["alpha", "1"]
+             Console.WriteLine(version.HasMetadata); // true
+             Console.WriteLine(version.Metadata); // ["build"]
+            
+             // Create and compare versions
+             var v1 = new SemanticVersion(1, 0, 0, "alpha");
+             var v2 = new SemanticVersion(1, 0, 0);
+             Console.WriteLine(v1 &lt; v2); // true (prerelease versions have lower precedence)
+            
+             // Get next version
+             Console.WriteLine(v2.NextPatchVersion()); // 1.0.1
+             Console.WriteLine(v2.NextMinorVersion()); // 1.1.0
+             Console.WriteLine(v2.NextMajorVersion()); // 2.0.0
+             </code>
+             </example>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>Creates a new semantic version with the specified major, minor, and patch numbers.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="major"/>, <paramref name="minor"/> or <paramref name="patch"/> is negative.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>Creates a new semantic version with the specified major, minor, patch numbers and prerelease label.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+            <summary>Creates a new semantic version with the specified major, minor, patch numbers, prerelease label, and metadata.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.#ctor(System.Int32,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>Creates a new semantic version with the specified major, minor, patch numbers, prerelease labels, and metadata.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersion.Major">
+            <summary>Gets the major version number.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersion.Minor">
+            <summary>Gets the minor version number.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersion.Patch">
+            <summary>Gets the patch version number.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersion.PrereleaseLabels">
+            <summary>Gets the prerelease labels (e.g., alpha, beta, rc.1).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersion.IsPrerelease">
+            <summary>Gets a value indicating whether this version is a prerelease version.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersion.Metadata">
+            <summary>Gets the build metadata labels.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersion.HasMetadata">
+            <summary>Gets a value indicating whether this version has build metadata.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.ToString(System.String,System.IFormatProvider)">
+            <summary>Formats the semantic version as a string.</summary>
+            <param name="format">The format to use. Only the general format (<see langword="null"/>, an empty string, or <c>"G"</c>) is supported.</param>
+            <param name="formatProvider">Ignored. A semantic version has no culture-sensitive representation.</param>
+            <exception cref="T:System.FormatException"><paramref name="format"/> is not a supported format.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.Equals(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Determines whether the specified semantic version is equal to the current version.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.CompareTo(System.Object)">
+            <summary>Compares the current version to a specified object and returns an integer that indicates their relative position in the sort order.</summary>
+            <returns>A positive value if <paramref name="obj"/> is <see langword="null"/>, as every instance is greater than <see langword="null"/>; otherwise the result of comparing the two versions.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="obj"/> is neither <see langword="null"/> nor a <see cref="T:Meziantou.Framework.Versioning.SemanticVersion"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.CompareTo(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Compares the current version to a specified semantic version and returns an integer that indicates their relative position in the sort order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.Parse(System.String)">
+            <summary>Converts the string representation of a semantic version to its <see cref="T:Meziantou.Framework.Versioning.SemanticVersion"/> equivalent.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="versionString"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="versionString"/> is not a valid semantic version.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.Parse(System.ReadOnlySpan{System.Char})">
+            <summary>Converts the span representation of a semantic version to its <see cref="T:Meziantou.Framework.Versioning.SemanticVersion"/> equivalent.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="versionString"/> is not a valid semantic version.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.TryParse(System.ReadOnlySpan{System.Char},Meziantou.Framework.Versioning.SemanticVersion@)">
+            <summary>Tries to convert the span representation of a semantic version to its <see cref="T:Meziantou.Framework.Versioning.SemanticVersion"/> equivalent. A return value indicates whether the conversion succeeded.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.TryParse(System.String,Meziantou.Framework.Versioning.SemanticVersion@)">
+            <summary>Tries to convert the string representation of a semantic version to its <see cref="T:Meziantou.Framework.Versioning.SemanticVersion"/> equivalent. A return value indicates whether the conversion succeeded.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.op_Equality(Meziantou.Framework.Versioning.SemanticVersion,Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Determines whether two semantic versions are equal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.op_Inequality(Meziantou.Framework.Versioning.SemanticVersion,Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Determines whether two semantic versions are not equal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.op_LessThan(Meziantou.Framework.Versioning.SemanticVersion,Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Determines whether one semantic version is less than another.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.op_LessThanOrEqual(Meziantou.Framework.Versioning.SemanticVersion,Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Determines whether one semantic version is less than or equal to another.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.op_GreaterThan(Meziantou.Framework.Versioning.SemanticVersion,Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Determines whether one semantic version is greater than another.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersion.op_GreaterThanOrEqual(Meziantou.Framework.Versioning.SemanticVersion,Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Determines whether one semantic version is greater than or equal to another.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Versioning.SemanticVersionExtensions">
+            <summary>Provides extension methods for <see cref="T:Meziantou.Framework.Versioning.SemanticVersion"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionExtensions.NextPatchVersion(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Gets the next patch version. For prerelease versions, returns the version without the prerelease tag. For stable versions, increments the patch number.</summary>
+            <exception cref="T:System.OverflowException">The patch number is <see cref="F:System.Int32.MaxValue"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionExtensions.NextMinorVersion(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Gets the next minor version. For prerelease versions, returns the version without the prerelease tag. For stable versions, increments the minor number and resets the patch number to zero.</summary>
+            <exception cref="T:System.OverflowException">The minor number is <see cref="F:System.Int32.MaxValue"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionExtensions.NextMajorVersion(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Gets the next major version. For prerelease versions, returns the version without the prerelease tag. For stable versions, increments the major number and resets the minor and patch numbers to zero.</summary>
+            <exception cref="T:System.OverflowException">The major number is <see cref="F:System.Int32.MaxValue"/>.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Versioning.SemanticVersionRange">
+             <summary>
+             Represents a range of semantic versions with optional lower and upper bounds.
+             Each bound can be inclusive or exclusive.
+             </summary>
+             <example>
+             <code>
+             // NuGet format examples
+             var range1 = SemanticVersionRange.ParseNuGet("[1.0.0, 2.0.0)"); // >=1.0.0 and &lt;2.0.0
+             var range2 = SemanticVersionRange.ParseNuGet("1.0.0");          // >=1.0.0
+             var range3 = SemanticVersionRange.ParseNuGet("[1.0.0]");        // ==1.0.0
+            
+             // npm format examples
+             var range4 = SemanticVersionRange.ParseNpm("&gt;=1.0.0 &lt;2.0.0");  // >=1.0.0 and &lt;2.0.0
+             var range5 = SemanticVersionRange.ParseNpm("&lt;=2.0.0");           // &lt;=2.0.0
+            
+             // Check if a version satisfies the range
+             var version = SemanticVersion.Parse("1.5.0");
+             Console.WriteLine(range1.Satisfies(version)); // true
+             </code>
+             </example>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersionRange.All">
+            <summary>Gets a range that matches all versions.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.#ctor(Meziantou.Framework.Versioning.SemanticVersion,Meziantou.Framework.Versioning.SemanticVersion,System.Boolean,System.Boolean)">
+            <summary>Creates a new semantic version range with the specified bounds.</summary>
+            <param name="minVersion">The minimum version bound, or null for no lower bound.</param>
+            <param name="maxVersion">The maximum version bound, or null for no upper bound.</param>
+            <param name="isMinInclusive">Whether the minimum bound is inclusive.</param>
+            <param name="isMaxInclusive">Whether the maximum bound is inclusive.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersionRange.MinVersion">
+            <summary>Gets the minimum version bound, or null if there is no lower bound.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersionRange.MaxVersion">
+            <summary>Gets the maximum version bound, or null if there is no upper bound.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersionRange.IsMinInclusive">
+            <summary>Gets a value indicating whether the minimum bound is inclusive.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersionRange.IsMaxInclusive">
+            <summary>Gets a value indicating whether the maximum bound is inclusive.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.Satisfies(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Determines whether the specified version satisfies this range.</summary>
+            <param name="version">The version to check.</param>
+            <returns>true if the version satisfies the range; otherwise, false.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.Exact(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Creates a range that matches only the exact specified version.</summary>
+            <param name="version">The exact version to match.</param>
+            <returns>A range that matches only the specified version.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.GreaterThanOrEqual(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Creates a range that matches versions greater than or equal to the specified version.</summary>
+            <param name="version">The minimum version (inclusive).</param>
+            <returns>A range that matches versions >= the specified version.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.GreaterThan(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Creates a range that matches versions greater than the specified version.</summary>
+            <param name="version">The minimum version (exclusive).</param>
+            <returns>A range that matches versions > the specified version.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.LessThanOrEqual(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Creates a range that matches versions less than or equal to the specified version.</summary>
+            <param name="version">The maximum version (inclusive).</param>
+            <returns>A range that matches versions &lt;= the specified version.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.LessThan(Meziantou.Framework.Versioning.SemanticVersion)">
+            <summary>Creates a range that matches versions less than the specified version.</summary>
+            <param name="version">The maximum version (exclusive).</param>
+            <returns>A range that matches versions &lt; the specified version.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.ParseNuGet(System.String)">
+            <summary>Parses a version range in NuGet format.</summary>
+            <remarks>
+            Supported formats:
+            <list type="bullet">
+            <item><description><c>1.0.0</c> - Minimum version inclusive (>=1.0.0)</description></item>
+            <item><description><c>[1.0.0]</c> - Exact version (==1.0.0)</description></item>
+            <item><description><c>(1.0.0,)</c> - Greater than (>1.0.0)</description></item>
+            <item><description><c>[1.0.0,)</c> - Greater than or equal (>=1.0.0)</description></item>
+            <item><description><c>(,1.0.0]</c> - Less than or equal (&lt;=1.0.0)</description></item>
+            <item><description><c>(,1.0.0)</c> - Less than (&lt;1.0.0)</description></item>
+            <item><description><c>[1.0.0,2.0.0]</c> - Range inclusive on both ends</description></item>
+            <item><description><c>[1.0.0,2.0.0)</c> - Range inclusive on min, exclusive on max</description></item>
+            <item><description><c>(1.0.0,2.0.0)</c> - Range exclusive on both ends</description></item>
+            </list>
+            </remarks>
+            <param name="value">The string to parse.</param>
+            <returns>The parsed version range.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is null.</exception>
+            <exception cref="T:System.FormatException">The value is not a valid NuGet version range.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.ParseNuGet(System.ReadOnlySpan{System.Char})">
+            <summary>Parses a version range in NuGet format.</summary>
+            <param name="value">The span to parse.</param>
+            <returns>The parsed version range.</returns>
+            <exception cref="T:System.FormatException">The value is not a valid NuGet version range.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.TryParseNuGet(System.String,Meziantou.Framework.Versioning.SemanticVersionRange@)">
+            <summary>Attempts to parse a version range in NuGet format.</summary>
+            <param name="value">The string to parse.</param>
+            <param name="result">When this method returns, contains the parsed version range if the parse succeeded.</param>
+            <returns>true if the parse succeeded; otherwise, false.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.TryParseNuGet(System.ReadOnlySpan{System.Char},Meziantou.Framework.Versioning.SemanticVersionRange@)">
+            <summary>Attempts to parse a version range in NuGet format.</summary>
+            <param name="value">The span to parse.</param>
+            <param name="result">When this method returns, contains the parsed version range if the parse succeeded.</param>
+            <returns>true if the parse succeeded; otherwise, false.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.ParseNpm(System.String)">
+            <summary>Parses a version range in npm format.</summary>
+            <remarks>
+            Supported formats:
+            <list type="bullet">
+            <item><description><c>1.0.0</c> - Exact version</description></item>
+            <item><description><c>=1.0.0</c> - Exact version</description></item>
+            <item><description><c>&gt;1.0.0</c> - Greater than</description></item>
+            <item><description><c>&gt;=1.0.0</c> - Greater than or equal</description></item>
+            <item><description><c>&lt;1.0.0</c> - Less than</description></item>
+            <item><description><c>&lt;=1.0.0</c> - Less than or equal</description></item>
+            <item><description><c>&gt;=1.0.0 &lt;2.0.0</c> - Range with multiple constraints (space-separated)</description></item>
+            <item><description><c>~1.2.3</c> - Tilde range: allows patch-level changes (&gt;=1.2.3 &lt;1.3.0)</description></item>
+            <item><description><c>~1.2</c> - Tilde range (&gt;=1.2.0 &lt;1.3.0)</description></item>
+            <item><description><c>~1</c> - Tilde range (&gt;=1.0.0 &lt;2.0.0)</description></item>
+            <item><description><c>^1.2.3</c> - Caret range: allows changes that don't modify left-most non-zero (&gt;=1.2.3 &lt;2.0.0)</description></item>
+            <item><description><c>^0.2.3</c> - Caret range (&gt;=0.2.3 &lt;0.3.0)</description></item>
+            <item><description><c>^0.0.3</c> - Caret range (&gt;=0.0.3 &lt;0.0.4)</description></item>
+            <item><description><c>1.0.0 - 2.0.0</c> - Hyphen range (&gt;=1.0.0 &lt;=2.0.0)</description></item>
+            <item><description><c>*</c> - Any version</description></item>
+            <item><description><c>1.x</c> - X-range: any minor/patch (&gt;=1.0.0 &lt;2.0.0)</description></item>
+            <item><description><c>1.2.x</c> - X-range: any patch (&gt;=1.2.0 &lt;1.3.0)</description></item>
+            </list>
+            </remarks>
+            <param name="value">The string to parse.</param>
+            <returns>The parsed version range.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is null.</exception>
+            <exception cref="T:System.FormatException">The value is not a valid npm version range.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.ParseNpm(System.ReadOnlySpan{System.Char})">
+            <summary>Parses a version range in npm format.</summary>
+            <param name="value">The span to parse.</param>
+            <returns>The parsed version range.</returns>
+            <exception cref="T:System.FormatException">The value is not a valid npm version range.</exception>
+            <seealso cref="M:Meziantou.Framework.Versioning.SemanticVersionRange.ParseNpm(System.String)"/>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.TryParseNpm(System.String,Meziantou.Framework.Versioning.SemanticVersionRange@)">
+            <summary>Attempts to parse a version range in npm format.</summary>
+            <param name="value">The string to parse.</param>
+            <param name="result">When this method returns, contains the parsed version range if the parse succeeded.</param>
+            <returns>true if the parse succeeded; otherwise, false.</returns>
+            <seealso cref="M:Meziantou.Framework.Versioning.SemanticVersionRange.ParseNpm(System.String)"/>
+        </member>
+        <member name="M:Meziantou.Framework.Versioning.SemanticVersionRange.TryParseNpm(System.ReadOnlySpan{System.Char},Meziantou.Framework.Versioning.SemanticVersionRange@)">
+            <summary>Attempts to parse a version range in npm format.</summary>
+            <param name="value">The span to parse.</param>
+            <param name="result">When this method returns, contains the parsed version range if the parse succeeded.</param>
+            <returns>true if the parse succeeded; otherwise, false.</returns>
+            <seealso cref="M:Meziantou.Framework.Versioning.SemanticVersionRange.ParseNpm(System.String)"/>
+        </member>
+        <member name="P:Meziantou.Framework.Versioning.SemanticVersionRange.NpmPartialVersion.LowerBound">
+            <summary>The lowest version the partial version denotes, keeping any prerelease and metadata labels.</summary>
+        </member>
+        <member name="T:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute">
+            <summary>
+            Indicates that the type is culture insensitive. This can be used to suppress rules such as <c>MA0075</c>, <c>MA0076</c>.
+            <para><code>[CultureInsensitiveType]class Foo { }</code></para>
+            <para><code>[assembly: CultureInsensitiveType(typeof(Foo))]</code></para>
+            </summary>
+        </member>
+        <member name="M:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute"/> class.
+            </summary>
+            <remarks>This can be applied on a given type to mark all its formats as culture insensitive.</remarks>
+        </member>
+        <member name="M:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute"/> class with the specified format.
+            </summary>
+            <remarks>This can be applied on a given type to mark the specified format as culture insensitive for that type.</remarks>
+        </member>
+        <member name="M:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute"/> class.
+            </summary>
+            <param name="isDefaultFormatCultureInsensitive">When <see langword="true"/>, marks the default format (i.e., the <c>ToString()</c> method) of the type on which it is applied as culture insensitive.</param>
+            <remarks>
+            This can be applied on a given type to mark the default format (i.e., the <c>ToString()</c> method) as culture insensitive.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute"/> class with the specified <see cref="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Type"/>.
+            </summary>
+            <param name="type">The <see cref="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Type"/> for which to mark all formats as culture insensitive </param>
+            <remarks>
+            This can be applied on an <see cref="T:System.Reflection.Assembly"/> to mark all formats of the specified <see cref="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Type"/> as culture insensitive.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute"/> class with the specified <see cref="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Type"/> and format.
+            </summary>
+            <param name="type">The <see cref="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Type"/> for which to mark the specified format as culture insensitive </param>
+            <param name="format">The format to mark as culture insensitive </param>
+            <remarks>
+            This can be applied on an <see cref="T:System.Reflection.Assembly"/> to mark the format of the specified <see cref="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Type"/> as culture insensitive.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.#ctor(System.Type,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute"/> class.
+            </summary>
+            <param name="type">The <see cref="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Type"/> for which to mark the <c>ToString()</c> method as culture insensitive </param>
+            <param name="isDefaultFormatCultureInsensitive">When <see langword="true"/>, marks the default format (i.e., the <c>ToString()</c> method) of <paramref name="type"/> as culture insensitive.</param>
+            <remarks>
+            This can be applied on an <see cref="T:System.Reflection.Assembly"/> to mark the default format (i.e., the <c>ToString()</c> method) of <paramref name="type"/> as culture insensitive.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Type">
+            <summary>
+            Gets the <see cref="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Type"/> for which to change the culture insensitivity.
+            </summary>
+            <value>
+            The <see cref="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Type"/> for which to change the culture insensitivity, or <see langword="null"/> to change the culture insensitivity of
+            the type on which the attribute is applied.
+            </value>
+        </member>
+        <member name="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.Format">
+            <summary>Gets the format for which to change the culture insensitivity.</summary>
+            <value>The format for which to change the culture insensitivity.</value>
+        </member>
+        <member name="P:Meziantou.Analyzer.Annotations.CultureInsensitiveTypeAttribute.IsDefaultFormatCultureInsensitive">
+            <summary>
+            Gets a value indicating whether the default format (i.e., the <c>ToString()</c> method) is culture insensitive.
+            </summary>
+            <value>
+            <see langword="true"/> to mark the default format (i.e., the <c>ToString()</c> method) as culture insensitive;
+            otherwise, <see langword="false"/>.
+            </value>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+    </members>
+</doc>

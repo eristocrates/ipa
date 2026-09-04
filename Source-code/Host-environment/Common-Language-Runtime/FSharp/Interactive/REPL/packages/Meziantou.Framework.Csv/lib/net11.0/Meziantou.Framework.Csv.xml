@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Csv</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Csv.CsvColumn">
+            <summary>Represents a column in a CSV file with its name and index position.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvColumn.#ctor(System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Csv.CsvColumn"/> class with the specified index.</summary>
+            <param name="index">The zero-based index of the column.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvColumn.#ctor(System.String,System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Csv.CsvColumn"/> class with the specified name and index.</summary>
+            <param name="name">The name of the column.</param>
+            <param name="index">The zero-based index of the column.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvColumn.Name">
+            <summary>Gets the name of the column, or <see langword="null"/> if the CSV file has no header row.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvColumn.Index">
+            <summary>Gets the zero-based index of the column.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Csv.CsvReader">
+            <summary>Reads CSV data from a text reader and parses it into rows.</summary>
+            <example>
+            <code>
+            using var reader = new StringReader("Name,Age\nJohn,30\nJane,25");
+            var csvReader = new CsvReader(reader) { HasHeaderRow = true };
+            
+            while (await csvReader.ReadRowAsync() is { } row)
+            {
+                Console.WriteLine($"{row["Name"]} is {row["Age"]} years old");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="F:Meziantou.Framework.Csv.CsvReader.DefaultSeparatorCharacter">
+            <summary>The default separator character used in CSV files (comma).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Csv.CsvReader.DefaultQuoteCharacter">
+            <summary>The default quote character used in CSV files (double quote).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvReader.Separator">
+            <summary>Gets or sets the character used to separate values in a row. Default is a comma (,).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvReader.Quote">
+            <summary>Gets or sets the character used to quote values that contain special characters. Default is a double quote (").</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvReader.HasHeaderRow">
+            <summary>Gets or sets a value indicating whether the first row contains column headers.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvReader.ColumnNumber">
+            <summary>Gets the number of characters read since the beginning of the current row.</summary>
+            <remarks>This is a character position, not the index of the field being read. It counts every character consumed by the current row, including the characters of a multi-line quoted value, and it is reset to 0 at the start of each row.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvReader.LineNumber">
+            <summary>Gets the number of line terminators consumed so far.</summary>
+            <remarks>This is 0 while the first line is being read, and is incremented as each line ends. Line terminators inside a quoted value are counted, so this tracks the physical line in the input rather than the number of rows returned. See <see cref="P:Meziantou.Framework.Csv.CsvReader.RowNumber"/> for the row.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvReader.RowNumber">
+            <summary>Gets or sets the current row number (0-based).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvReader.BaseReader">
+            <summary>Gets the underlying <see cref="T:System.IO.TextReader"/> used to read the CSV data.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvReader.EndOfStream">
+            <summary>Gets a value indicating whether the end of the stream has been reached.</summary>
+            <remarks>Reading this property can block: when the internal buffer is empty it queries the underlying <see cref="T:System.IO.TextReader"/> synchronously, even though the rest of this type is asynchronous. Prefer testing whether <see cref="M:Meziantou.Framework.Csv.CsvReader.ReadRowAsync"/> returned <see langword="null"/>.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvReader.#ctor(System.IO.TextReader)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Csv.CsvReader"/> class with the specified <see cref="T:System.IO.TextReader"/>.</summary>
+            <param name="textReader">The <see cref="T:System.IO.TextReader"/> to read CSV data from.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="textReader"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvReader.ReadRowAsync">
+            <summary>Reads the next row from the CSV data.</summary>
+            <returns>A <see cref="T:Meziantou.Framework.Csv.CsvRow"/> representing the next row, or <see langword="null"/> if the end of the stream has been reached.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvReader.CreateColumn(System.String,System.Int32)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.Csv.CsvColumn"/> instance. This method can be overridden to create custom column types.</summary>
+            <param name="name">The name of the column.</param>
+            <param name="index">The zero-based index of the column.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.Csv.CsvColumn"/> instance.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvReader.CreateRow(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Csv.CsvColumn},System.Collections.Generic.IReadOnlyList{System.String})">
+            <summary>Creates a <see cref="T:Meziantou.Framework.Csv.CsvRow"/> instance. This method can be overridden to create custom row types.</summary>
+            <param name="columns">The columns of the row, or <see langword="null"/> if the CSV file has no header row.</param>
+            <param name="values">The values of the row.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.Csv.CsvRow"/> instance.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Csv.CsvRow">
+            <summary>Represents a row in a CSV file with access to values by column index or name.</summary>
+            <example>
+            <code>
+            using var reader = new StringReader("Name,Age\nJohn,30");
+            var csvReader = new CsvReader(reader) { HasHeaderRow = true };
+            var row = await csvReader.ReadRowAsync();
+            
+            // Access by column name
+            Console.WriteLine(row["Name"]); // John
+            
+            // Access by column index
+            Console.WriteLine(row[1]); // 30
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvRow.Columns">
+            <summary>Gets the columns of the row, or <see langword="null"/> if the CSV file has no header row.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvRow.Values">
+            <summary>Gets the values of the row.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvRow.#ctor(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Csv.CsvColumn},System.Collections.Generic.IReadOnlyList{System.String})">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Csv.CsvRow"/> class.</summary>
+            <param name="columns">The columns of the row, or <see langword="null"/> if the CSV file has no header row.</param>
+            <param name="values">The values of the row.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvRow.Item(System.Int32)">
+            <summary>Gets the value at the specified column index.</summary>
+            <param name="index">The zero-based index of the column.</param>
+            <returns>The value at the specified index.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="index"/> is less than 0 or greater than or equal to the number of values.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvRow.Item(System.String)">
+            <summary>Gets the value of the column with the specified name.</summary>
+            <param name="columnName">The name of the column.</param>
+            <returns>The value of the column, or <see langword="null"/> if the column is not found or the row has no value at the column's index.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="columnName"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The CSV file has no header row.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvRow.Item(Meziantou.Framework.Csv.CsvColumn)">
+            <summary>Gets the value of the specified column, or <see langword="null"/> if the row has no value at the column's index.</summary>
+            <param name="column">The column.</param>
+            <returns>The value of the column, or <see langword="null"/> if the row has fewer values than the column's index.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="column"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Csv.CsvWriter">
+            <summary>Writes CSV data to a text writer.</summary>
+            <example>
+            <code>
+            using var writer = new StringWriter();
+            var csvWriter = new CsvWriter(writer);
+            
+            await csvWriter.WriteRowAsync("Name", "Age");
+            await csvWriter.WriteRowAsync("John", "30");
+            await csvWriter.WriteRowAsync("Jane", "25");
+            
+            Console.WriteLine(writer.ToString());
+            // Output:
+            // Name,Age
+            // John,30
+            // Jane,25
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvWriter.BaseWriter">
+            <summary>Gets the underlying <see cref="T:System.IO.TextWriter"/> used to write the CSV data.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvWriter.EndOfLine">
+            <summary>Gets or sets the end-of-line string. Default is <see cref="P:System.Environment.NewLine"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvWriter.Separator">
+            <summary>Gets or sets the character used to separate values in a row. Default is a comma (,).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Csv.CsvWriter.Quote">
+            <summary>Gets or sets the character used to quote values that contain special characters. Default is a double quote (").</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvWriter.#ctor(System.IO.TextWriter)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Csv.CsvWriter"/> class with the specified <see cref="T:System.IO.TextWriter"/>.</summary>
+            <param name="textReader">The <see cref="T:System.IO.TextWriter"/> to write CSV data to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="textReader"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvWriter.BeginRowAsync">
+            <summary>Begins a new row. This method must be called before writing values using <see cref="M:Meziantou.Framework.Csv.CsvWriter.WriteValueAsync(System.String)"/> or <see cref="M:Meziantou.Framework.Csv.CsvWriter.WriteValuesAsync(System.Collections.Generic.IEnumerable{System.String})"/>.</summary>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvWriter.WriteValueAsync(System.String)">
+            <summary>Writes a single value to the current row. Call <see cref="M:Meziantou.Framework.Csv.CsvWriter.BeginRowAsync"/> before calling this method.</summary>
+            <param name="value">The value to write.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvWriter.WriteValuesAsync(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>Writes multiple values to the current row. Call <see cref="M:Meziantou.Framework.Csv.CsvWriter.BeginRowAsync"/> before calling this method.</summary>
+            <param name="values">The values to write.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvWriter.WriteValuesAsync(System.String[])">
+            <summary>Writes multiple values to the current row. Call <see cref="M:Meziantou.Framework.Csv.CsvWriter.BeginRowAsync"/> before calling this method.</summary>
+            <param name="values">The values to write.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvWriter.WriteRowAsync(System.String[])">
+            <summary>Writes a complete row with the specified values.</summary>
+            <param name="values">The values to write.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Csv.CsvWriter.WriteRowAsync(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>Writes a complete row with the specified values.</summary>
+            <param name="values">The values to write.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+    </members>
+</doc>

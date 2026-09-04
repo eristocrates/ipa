@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Phoenixml.Platform.Editor.Xml</id>
+    <version>0.1.0</version>
+    <authors>Endpoint Systems</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <readme>PACKAGE.md</readme>
+    <projectUrl>https://phoenixml.dev/</projectUrl>
+    <description>XML/XSD vocabulary binding for Phoenixml.Platform — concrete IDocument and ITreeNodeProvider implementations against PhoenixmlDb.Core's XDM, XSD schema validation pipeline.</description>
+    <copyright>Copyright © Endpoint Systems 2026. All rights reserved.</copyright>
+    <tags>xml xsd phoenixml editor xdm schema-validation</tags>
+    <repository type="git" url="https://github.com/phoenixmldb/phoenixml-platform" commit="f8a2328ec3de5cca1c96454b43492123260a7fa3" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Phoenixml.Platform" version="0.3.0" exclude="Build,Analyzers" />
+        <dependency id="PhoenixmlDb.Core" version="1.0.24" exclude="Build,Analyzers" />
+        <dependency id="PhoenixmlDb.XQuery" version="1.1.0.10" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

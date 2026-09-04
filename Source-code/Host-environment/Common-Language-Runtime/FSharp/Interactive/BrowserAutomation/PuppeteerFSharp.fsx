@@ -630,6 +630,7 @@ type FileInfo with
 
 type DomUrl with 
 
+
     member this.metadata = this.Origin + this.Pathname + "/metadata" + this.Search |> DomUrl
     member this.json = this.Origin + this.Pathname + ".json" + this.Search |> DomUrl
     member this.xml = this.Origin + this.Pathname + ".xml" + this.Search |> DomUrl
@@ -831,19 +832,48 @@ type Fss.Types.Attribute.Attribute with
 
 
 
+let (=>)
+    (parameterName: string)
+    (body: JavaScript.Syntax.Expression -> JavaScript.Syntax.Expression)
+    =
+    let parameter =
+        JavaScript.Syntax.Id.New parameterName
 
+    let parameterExpression =
+        JavaScript.Syntax.Var parameter
 
-
-
-
-
+    JavaScript.Syntax.Lambda(
+        None,
+        [ parameter ],
+        [
+            JavaScript.Syntax.Return(
+                Some (body parameterExpression)
+            )
+        ],
+        true
+    )
+let javascript expression =
+    JavaScript.Writer.ExpressionToString
+        JavaScript.Preferences.Readable
+        expression
 
 
 
 
 
 type IElementHandle with 
-    member this.outerHTML = task { return! this.EvaluateFunctionAsync<string>( "element => element.outerHTML" ) } |> force  |> HtmlNode.Parse
+    member this.outerHTML =
+        task {
+            return!
+                this.EvaluateFunctionAsync<string>(
+                        javascript(
+                                "element" => fun element -> element?outerHTML
+                                )
+                        )
+          }
+          |> force
+          |> HtmlNode.Parse
+        
     member this.Click() = task { do! this.ClickAsync() } |> force
     member this.ScrollIntoView() = task { do! this.ScrollIntoViewAsync() } |> force
 
@@ -2333,6 +2363,7 @@ let locationEntities =
 
 
 
+
 type LocationRow = 
     {
         ``Address City``:string
@@ -2357,6 +2388,9 @@ type LocationRow =
         ``Provider Type``:string
         ``Telehealth Participant`` : string
     }
+
+
+
 
 
 let locationRows = 

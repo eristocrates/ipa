@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Dubzer.WhatwgUrl</id>
+    <version>1.1.0</version>
+    <title>Dubzer.WhatwgUrl</title>
+    <authors>Dubzer.WhatwgUrl</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <description>Implements the WhatWG URL Standard in .NET</description>
+    <releaseNotes>https://github.com/Dubzer/Dubzer.WhatwgUrl/releases/tag/1.1.0</releaseNotes>
+    <tags>url uri whatwg web internet browser parser html</tags>
+    <repository type="git" url="https://github.com/Dubzer/Dubzer.WhatwgUrl" commit="d8483ab0a64085b5642402e27e2671fddbc412da" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+</package>

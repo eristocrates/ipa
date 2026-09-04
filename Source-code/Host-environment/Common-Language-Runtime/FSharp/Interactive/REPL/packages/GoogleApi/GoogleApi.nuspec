@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>GoogleApi</id>
+    <version>5.8.15</version>
+    <authors>Michael Vivet</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.jpg</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/vivet/GoogleApi</projectUrl>
+    <description>Google Places, Maps, Roads, Search and Translate. Requests and Responses are complete with Google api documentation and references.</description>
+    <releaseNotes>- Improved service registration, allowing custom HttpClient.
+			- Updated Nugets</releaseNotes>
+    <tags>google api map maps place places elevation snaptoroad snaptoroads snap road roads speed speedlimit coordinate geo geocode geocoder geocoding geolocation search text nearby radar translate translation detect detection language languages nearest geography point geocoordinate address location latitude longitude distance duration matrix distancematrix direction directions travel path journey trip photo photos timezone time zone autocomplete auto-complete traffic spatial</tags>
+    <repository type="GitHub" url="https://github.com/vivet/GoogleApi.git" branch="refs/heads/master" commit="ffc1dc6b75008cdbaef0b1308b680fb4497f7e25" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Http" version="10.0.10" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.6.2">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Http" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.10" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Http" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.10" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.8.1">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Http" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.10" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="8.0.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Http" version="8.0.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Http" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.10" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Http" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.10" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Http" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.10" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

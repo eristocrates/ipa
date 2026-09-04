@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata minClientVersion="2.12">
+    <id>Refit</id>
+    <version>15.2.0</version>
+    <authors>ReactiveUI and Contributors</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>logo.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/reactiveui/refit</projectUrl>
+    <description>Type-safe REST API clients for .NET, generated from annotated interfaces with build-time source generation, direct request construction, System.Text.Json defaults, and support for trimming and AOT.</description>
+    <releaseNotes>https://github.com/reactiveui/refit/releases</releaseNotes>
+    <copyright>Copyright (c) ReactiveUI and Contributors</copyright>
+    <tags>refit rest http httpclient api-client typed-client source-generator roslyn system-text-json json aot trimming</tags>
+    <repository type="git" url="https://github.com/reactiveui/refit" branch="refs/heads/main" commit="96316a6b121c72e8a77abb0cb1f38c2a0839cd86" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="ReactiveUI.Primitives" version="7.1.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net11.0">
+        <dependency id="ReactiveUI.Primitives" version="7.1.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.6.2">
+        <dependency id="ReactiveUI.Primitives" version="7.1.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http.Json" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Net.ServerSentEvents" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.11" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.7">
+        <dependency id="ReactiveUI.Primitives" version="7.1.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http.Json" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Net.ServerSentEvents" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.11" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.7.1">
+        <dependency id="ReactiveUI.Primitives" version="7.1.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http.Json" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Net.ServerSentEvents" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.11" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="ReactiveUI.Primitives" version="7.1.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http.Json" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Net.ServerSentEvents" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.11" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="ReactiveUI.Primitives" version="7.1.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http.Json" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Net.ServerSentEvents" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.11" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.8.1">
+        <dependency id="ReactiveUI.Primitives" version="7.1.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http.Json" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Net.ServerSentEvents" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.11" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="ReactiveUI.Primitives" version="7.1.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.ServerSentEvents" version="10.0.11" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="ReactiveUI.Primitives" version="7.1.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.ServerSentEvents" version="10.0.11" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.IO.Compression" targetFramework=".NETFramework4.6.2, .NETFramework4.7, .NETFramework4.7.1, .NETFramework4.7.2, .NETFramework4.8, .NETFramework4.8.1" />
+      <frameworkAssembly assemblyName="System.Web" targetFramework=".NETFramework4.6.2, .NETFramework4.7, .NETFramework4.7.1, .NETFramework4.7.2, .NETFramework4.8, .NETFramework4.8.1" />
+      <frameworkAssembly assemblyName="System.IO" targetFramework=".NETFramework4.7.1, .NETFramework4.7.2, .NETFramework4.8, .NETFramework4.8.1" />
+      <frameworkAssembly assemblyName="System.Runtime" targetFramework=".NETFramework4.7.1, .NETFramework4.7.2, .NETFramework4.8, .NETFramework4.8.1" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Algorithms" targetFramework=".NETFramework4.7.1, .NETFramework4.7.2, .NETFramework4.8, .NETFramework4.8.1" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Encoding" targetFramework=".NETFramework4.7.1, .NETFramework4.7.2, .NETFramework4.8, .NETFramework4.8.1" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Primitives" targetFramework=".NETFramework4.7.1, .NETFramework4.7.2, .NETFramework4.8, .NETFramework4.8.1" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.X509Certificates" targetFramework=".NETFramework4.7.1, .NETFramework4.7.2, .NETFramework4.8, .NETFramework4.8.1" />
+      <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.7.2, .NETFramework4.8, .NETFramework4.8.1" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

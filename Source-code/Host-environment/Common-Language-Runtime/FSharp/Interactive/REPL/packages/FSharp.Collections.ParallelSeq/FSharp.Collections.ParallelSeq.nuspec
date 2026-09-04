@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Collections.ParallelSeq</id>
+    <version>1.2.0</version>
+    <title>FSharp.Collections.ParallelSeq</title>
+    <authors>F# Community Contributors</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>logo.png</icon>
+    <projectUrl>http://fsprojects.github.io/FSharp.Collections.ParallelSeq/</projectUrl>
+    <description>Provides an F#-style API for parallel operations on sequences that are part in .NET 4.0 as System.Linq.ParallelEnumerable class. The API is akin to F# operations on sequences.</description>
+    <releaseNotes>Changes target frameworks to .NET Standard 2.0 and .NET Framework 4.5</releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>F# fsharp programming parallel multi-core collections sequence</tags>
+    <repository type="git" url="https://fsprojects.github.com/FSharp.Collections.ParallelSeq" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,1593 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.FullPath</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.FullPath">
+             <summary>Represents an absolute file or directory path with convenient path manipulation methods.</summary>
+             <example>
+             <code>
+             // Create FullPath
+             FullPath rootPath = FullPath.FromPath("demo");
+             FullPath filePath = rootPath / "temp" / "file.txt";
+            
+             // Compare paths (case-insensitive on Windows, macOS, iOS and tvOS, case-sensitive elsewhere)
+             bool areEqual = filePath == rootPath;
+            
+             // Get relative path
+             string relativePath = filePath.MakePathRelativeTo(rootPath); // temp\file.txt
+             </code>
+             </example>
+        </member>
+        <member name="P:Meziantou.Framework.FullPath.Empty">
+            <summary>Gets an empty FullPath.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.FullPath.IsEmpty">
+            <summary>Gets a value indicating whether this path is empty.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.FullPath.Value">
+            <summary>Gets the string representation of the path, or an empty string if the path is empty.</summary>
+            <remarks>
+            <para>If the path contains a reserved device name (CON, PRN, AUX, NUL, COM0-COM9, COM¹-COM³, LPT0-LPT9, LPT¹-LPT³),
+            the extended path format (<c>\\?\</c>) is returned to bypass Win32 namespace restrictions.</para>
+            <para>Use <see cref="P:Meziantou.Framework.FullPath.RawValue"/> if you need the unmodified path without device name protection.</para>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.FullPath.RawValue">
+            <summary>Gets the string representation of the path without any conversion, or an empty string if the path is empty.</summary>
+            <remarks>
+            <para>Unlike <see cref="P:Meziantou.Framework.FullPath.Value"/>, this property returns the path exactly as stored internally, without applying
+            any protection for Windows reserved device names.</para>
+            <para>Use this property when you need the raw path for operations that handle reserved device names themselves,
+            or when you're certain the path doesn't contain reserved device names.</para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.op_Implicit(Meziantou.Framework.FullPath)~System.String">
+            <summary>Implicitly converts a <see cref="T:Meziantou.Framework.FullPath"/> to a <see cref="T:System.String"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.op_Division(Meziantou.Framework.FullPath,System.String)">
+            <summary>Combines a root path with a relative path using the / operator.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.op_Addition(Meziantou.Framework.FullPath,System.String)">
+            <summary>Combines a root path with a path using the + operator, ensuring that string concatenation occurs before FullPath concatenation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.FullPath.Parent">
+            <summary>Gets the parent directory of this path, or <see cref="P:Meziantou.Framework.FullPath.Empty"/> if there is no parent.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.FullPath.Name">
+            <summary>Gets the file or directory name and extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.FullPath.NameWithoutExtension">
+            <summary>Gets the file or directory name without the extension.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.FullPath.Extension">
+            <summary>Gets the file extension including the leading dot.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.CompareTo(Meziantou.Framework.FullPath)">
+            <summary>Compares this path to another using the default comparer for the current operating system.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.CompareTo(Meziantou.Framework.FullPath,System.Boolean)">
+            <summary>Compares this path to another with optional case-insensitive comparison.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Equals(Meziantou.Framework.FullPath,System.Boolean)">
+            <summary>Determines whether this path equals another path with optional case-insensitive comparison.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.GetHashCode(System.Boolean)">
+            <summary>Returns a hash code for this path with optional case-insensitive comparison.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.MakePathRelativeTo(Meziantou.Framework.FullPath)">
+            <summary>Creates a relative path from this path to the specified root path.</summary>
+            <param name="rootPath">The root path to make this path relative to.</param>
+            <returns>A relative path string, or <c>"."</c> when both paths are equal.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.IsChildOf(Meziantou.Framework.FullPath)">
+            <summary>Determines whether this path is a child of the specified root path.</summary>
+            <param name="rootPath">The root path to check against.</param>
+            <returns><see langword="true"/> if this path is a child of the root path; otherwise, <see langword="false"/>.</returns>
+            <remarks>The comparison uses the same case sensitivity as <see cref="P:Meziantou.Framework.FullPathComparer.Default"/>.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.CreateParentDirectory">
+            <summary>Creates the parent directory of this path if it doesn't exist.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.WithExtension(System.String)">
+            <summary>Returns a new path with the specified file extension.</summary>
+            <param name="extension">The new extension (with or without the leading dot), or <see langword="null"/> to remove the extension.</param>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.WithExtension(System.String,System.Boolean)">
+            <summary>Returns a new path with the specified file extension, optionally replacing all trailing extensions.</summary>
+            <param name="extension">The new extension (with or without the leading dot), or <see langword="null"/> to remove the extension.</param>
+            <param name="replaceAllTrailingExtensions"><see langword="true"/> to replace all trailing extensions; <see langword="false"/> to replace only the last extension.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.FullPath"/> instance with the specified extension changes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.WithExtension(System.String,System.Int32)">
+            <summary>Returns a new path with the specified file extension, replacing a specific number of trailing extensions.</summary>
+            <param name="extension">The new extension (with or without the leading dot), or <see langword="null"/> to remove the extension.</param>
+            <param name="extensionCount">The number of trailing extensions to replace. Must be greater than 0.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.FullPath"/> instance with the specified extension changes.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.WithName(System.String)">
+            <summary>Returns a new path with the specified name, keeping the same parent directory.</summary>
+            <param name="name">The new name for the path.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.FullPath"/> instance with the specified name.</returns>
+            <remarks>If the current path is empty, the returned path will also be empty.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.WithNameWithoutExtension(System.String)">
+            <summary>Returns a new path with the specified name, keeping the same parent directory but without changing the extension.</summary>
+            <param name="nameWithoutExtension">The new name for the path, without the extension.</param>
+            <returns>A new <see cref="T:Meziantou.Framework.FullPath"/> instance with the specified name.</returns>
+            <remarks>If the current path is empty, the returned path will also be empty.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.GetTempPath">
+            <summary>Gets the path of the system's temporary folder.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.CreateTempFile">
+            <summary>Creates a uniquely named, zero-byte temporary file and returns its full path.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.CreateTempFile(System.String,System.String)">
+            <summary>Creates a uniquely named, zero-byte temporary file and returns its full path.</summary>
+            <param name="prefix">A prefix to prepend to the generated file name.</param>
+            <param name="suffix">A suffix to append to the generated file name. Defaults to <c>.tmp</c>.</param>
+            <exception cref="T:System.IO.IOException">Thrown when a unique file could not be created after 10 attempts.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.CreateTempFile(System.Nullable{Meziantou.Framework.FullPath},System.String,System.String)">
+            <summary>Creates a uniquely named, zero-byte temporary file and returns its full path.</summary>
+            <param name="folder">The destination folder. If <see langword="null"/> or empty, the system temporary folder is used.</param>
+            <param name="prefix">A prefix to prepend to the generated file name.</param>
+            <param name="suffix">A suffix to append to the generated file name. Defaults to <c>.tmp</c>.</param>
+            <exception cref="T:System.IO.IOException">Thrown when a unique file could not be created after 10 attempts.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.GetFolderPath(System.Environment.SpecialFolder)">
+            <summary>Gets the path to the system special folder identified by the specified enumeration.</summary>
+            <param name="folder">The special folder to retrieve the path for.</param>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.GetFolderPath(System.Environment.SpecialFolder,System.Environment.SpecialFolderOption)">
+            <summary>Gets the path to the system special folder identified by the specified enumeration.</summary>
+            <param name="folder">The special folder to retrieve the path for.</param>
+            <param name="option">Specifies whether the folder must be verified or created.</param>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.GetKnownFolderPath(Meziantou.Framework.KnownFolder)">
+            <summary>Gets the path to a Windows known folder.</summary>
+            <param name="knownFolder">The known folder to retrieve the path for.</param>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.CurrentDirectory">
+            <summary>Gets the current working directory.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.FromPath(System.String)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.FullPath"/> from a string path by converting it to an absolute path.</summary>
+            <param name="path">The path to convert. Can be relative or absolute. An empty string returns <see cref="P:Meziantou.Framework.FullPath.Empty"/>.</param>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Combine(System.String,System.String)">
+            <summary>Combines two path strings into a full path.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Combine(System.String,System.String,System.String)">
+            <summary>Combines three path strings into a full path.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Combine(System.String,System.String,System.String,System.String)">
+            <summary>Combines four path strings into a full path.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Combine(System.String[])">
+            <summary>Combines an array of path strings into a full path.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Combine(System.ReadOnlySpan{System.String})">
+            <summary>Combines a span of path strings into a full path.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Combine(Meziantou.Framework.FullPath,System.String)">
+            <summary>Combines a <see cref="T:Meziantou.Framework.FullPath"/> with a relative path.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Combine(Meziantou.Framework.FullPath,System.String,System.String)">
+            <summary>Combines a <see cref="T:Meziantou.Framework.FullPath"/> with two relative paths.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Combine(Meziantou.Framework.FullPath,System.String[])">
+            <summary>Combines a <see cref="T:Meziantou.Framework.FullPath"/> with multiple relative paths.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Combine(Meziantou.Framework.FullPath,System.ReadOnlySpan{System.String})">
+            <summary>Combines a <see cref="T:Meziantou.Framework.FullPath"/> with a span of relative paths.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.Combine(Meziantou.Framework.FullPath,System.String,System.String,System.String)">
+            <summary>Combines a <see cref="T:Meziantou.Framework.FullPath"/> with three relative paths.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.FromFileSystemInfo(System.IO.FileSystemInfo)">
+            <summary>Creates a <see cref="T:Meziantou.Framework.FullPath"/> from a <see cref="T:System.IO.FileSystemInfo"/> object.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.IsSymbolicLink">
+            <summary>Determines whether this path represents a symbolic link.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.TryGetCanonicalPath(System.Nullable{Meziantou.Framework.FullPath}@)">
+            <summary>Attempts to resolve this path to its canonical final existing path.</summary>
+            <param name="result">The canonical final path if successful; otherwise, <see langword="null"/>.</param>
+            <returns><see langword="true"/> if canonical resolution succeeds; otherwise, <see langword="false"/>.</returns>
+            <remarks>
+            <para>The canonical path resolves symbolic links and reparse points to the final target.</para>
+            <para>This method returns <see langword="false"/> when the path does not exist or cannot be resolved.</para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.TryFindFirstAncestorOrSelf(System.Func{Meziantou.Framework.FullPath,System.Boolean},Meziantou.Framework.FullPath@)">
+            <summary>Finds the first ancestor path or self that matches the specified predicate.</summary>
+            <param name="predicate">A function to test each path.</param>
+            <param name="result">The first matching path, or default if not found.</param>
+            <returns><see langword="true"/> if a matching path is found; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.TryFindGitRepositoryRoot(Meziantou.Framework.FullPath@)">
+            <summary>Finds the first ancestor path or self that contains a Git repository.</summary>
+            <param name="result">The first matching path, or default if not found.</param>
+            <returns><see langword="true"/> if a Git repository is found; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.FindRequiredGitRepositoryRoot">
+            <summary>Finds the first ancestor path or self that contains a Git repository.</summary>
+            <returns>The first matching path.</returns>
+            <exception cref="T:System.InvalidOperationException">The Git repository cannot be found.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.TryFindFirstAncestor(System.Func{Meziantou.Framework.FullPath,System.Boolean},Meziantou.Framework.FullPath@)">
+            <summary>Finds the first ancestor path (excluding self) that matches the specified predicate.</summary>
+            <param name="predicate">A function to test each ancestor path.</param>
+            <param name="result">The first matching ancestor path, or default if not found.</param>
+            <returns><see langword="true"/> if a matching ancestor is found; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.TryGetSymbolicLinkTarget(System.Nullable{Meziantou.Framework.FullPath}@)">
+            <summary>Attempts to get the immediate target of a symbolic link.</summary>
+            <param name="result">The target path if this is a symbolic link; otherwise, <see langword="null"/>.</param>
+            <returns><see langword="true"/> if this is a symbolic link; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.TryGetSymbolicLinkTarget(Meziantou.Framework.SymbolicLinkResolutionMode,System.Nullable{Meziantou.Framework.FullPath}@)">
+            <summary>Attempts to get the target of a symbolic link using the specified resolution mode.</summary>
+            <param name="resolutionMode">The mode to use when resolving symbolic links.</param>
+            <param name="result">The target path if this is a symbolic link; otherwise, <see langword="null"/>.</param>
+            <returns><see langword="true"/> if this is a symbolic link; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.IO.IOException">A symbolic link chain is too deep to resolve, which usually means the links form a cycle.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.OpenInExplorer">
+            <summary>Opens the system file manager and selects this file or directory.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.FullPath.ToWindowsExtendedPath">
+            <summary>Converts this path to Windows extended-length path format (<c>\\?\</c>).</summary>
+            <returns>The path in extended-length format, or an empty string if the path is empty.</returns>
+            <remarks>
+            <para>The extended-length path format bypasses most path parsing and validation, allowing paths longer than 260 characters.</para>
+            <para>UNC paths are converted to <c>\\?\UNC\server\share</c> format.</para>
+            <para>If the path already uses a device path syntax (<c>\\?\</c>, <c>\\.\</c>, or <c>\??\</c>), it is returned as-is.</para>
+            </remarks>
+            <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.FullPathComparer">
+            <summary>Provides comparison and equality operations for <see cref="T:Meziantou.Framework.FullPath"/> values.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.FullPathComparer.Default">
+            <summary>Gets the default comparer for the current operating system (case-insensitive on Windows, macOS, iOS and tvOS, case-sensitive elsewhere).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.FullPathComparer.CaseSensitive">
+            <summary>Gets a case-sensitive comparer.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.FullPathComparer.CaseInsensitive">
+            <summary>Gets a case-insensitive comparer.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.FullPathComparer.IsCaseSensitive">
+            <summary>Gets a value indicating whether this comparer performs case-sensitive comparisons.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.FullPathJsonConverter">
+            <summary>Converts a <see cref="T:Meziantou.Framework.FullPath"/> to and from JSON.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.KnownFolder">
+             <summary>Represents a Windows known folder with its unique identifier and default path.</summary>
+             <example>
+             <code>
+             // Get path to Downloads folder
+             FullPath downloadsPath = FullPath.GetKnownFolderPath(KnownFolder.Downloads);
+            
+             // Get path to Documents folder
+             FullPath documentsPath = FullPath.GetKnownFolderPath(KnownFolder.Documents);
+             </code>
+             </example>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Name">
+            <summary>Gets the display name of the known folder.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.FolderType">
+            <summary>Gets the type of the folder (e.g., PERUSER, COMMON, FIXED, VIRTUAL).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.FolderId">
+            <summary>Gets the unique GUID identifier for this known folder.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.DefaultPath">
+            <summary>Gets the default path for this known folder, possibly containing environment variables.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.AccountPictures">
+            <summary>
+            Represents the Account Pictures folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\AccountPictures</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.AddNewPrograms">
+            <summary>
+            Represents the Get Programs folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.AdminTools">
+            <summary>
+            Represents the Administrative Tools folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Start Menu\Programs\Administrative Tools</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.AppDataDesktop">
+            <summary>
+            Represents the AppDataDesktop folder.
+            Default path: <c>%LOCALAPPDATA%\Desktop</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.AppDataDocuments">
+            <summary>
+            Represents the AppDataDocuments folder.
+            Default path: <c>%LOCALAPPDATA%\Documents</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.AppDataFavorites">
+            <summary>
+            Represents the AppDataFavorites folder.
+            Default path: <c>%LOCALAPPDATA%\Favorites</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.AppDataProgramData">
+            <summary>
+            Represents the AppDataProgramData folder.
+            Default path: <c>%LOCALAPPDATA%\ProgramData</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ApplicationShortcuts">
+            <summary>
+            Represents the Application Shortcuts folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows\Application Shortcuts</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.AppsFolder">
+            <summary>
+            Represents the Applications folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.AppUpdates">
+            <summary>
+            Represents the Installed Updates folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.CameraRoll">
+            <summary>
+            Represents the Camera Roll folder.
+            Default path: <c>%USERPROFILE%\Pictures\Camera Roll</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.CDBurning">
+            <summary>
+            Represents the Temporary Burn Folder folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows\Burn\Burn</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ChangeRemovePrograms">
+            <summary>
+            Represents the Programs and Features folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.CommonAdminTools">
+            <summary>
+            Represents the Administrative Tools folder.
+            Default path: <c>%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\Administrative Tools</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.CommonOEMLinks">
+            <summary>
+            Represents the OEM Links folder.
+            Default path: <c>%ALLUSERSPROFILE%\OEM Links</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.CommonPrograms">
+            <summary>
+            Represents the Programs folder.
+            Default path: <c>%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.CommonStartMenu">
+            <summary>
+            Represents the Start Menu folder.
+            Default path: <c>%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.CommonStartup">
+            <summary>
+            Represents the Startup folder.
+            Default path: <c>%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\StartUp</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.CommonTemplates">
+            <summary>
+            Represents the Templates folder.
+            Default path: <c>%ALLUSERSPROFILE%\Microsoft\Windows\Templates</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ComputerFolder">
+            <summary>
+            Represents the Computer folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ConflictFolder">
+            <summary>
+            Represents the Conflicts folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ConnectionsFolder">
+            <summary>
+            Represents the Network Connections folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Contacts">
+            <summary>
+            Represents the Contacts folder.
+            Default path: <c>%USERPROFILE%\Contacts</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ControlPanelFolder">
+            <summary>
+            Represents the Control Panel folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Cookies">
+            <summary>
+            Represents the Cookies folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Cookies</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Desktop">
+            <summary>
+            Represents the Desktop folder.
+            Default path: <c>%USERPROFILE%\Desktop</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.DeviceMetadataStore">
+            <summary>
+            Represents the DeviceMetadataStore folder.
+            Default path: <c>%ALLUSERSPROFILE%\Microsoft\Windows\DeviceMetadataStore</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Documents">
+            <summary>
+            Represents the Documents folder.
+            Default path: <c>%USERPROFILE%\Documents</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.DocumentsLibrary">
+            <summary>
+            Represents the Documents folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Libraries\Documents.library-ms</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Downloads">
+            <summary>
+            Represents the Downloads folder.
+            Default path: <c>%USERPROFILE%\Downloads</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Favorites">
+            <summary>
+            Represents the Favorites folder.
+            Default path: <c>%USERPROFILE%\Favorites</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Fonts">
+            <summary>
+            Represents the Fonts folder.
+            Default path: <c>%windir%\Fonts</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Games">
+            <summary>
+            Represents the Games folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.GameTasks">
+            <summary>
+            Represents the GameExplorer folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows\GameExplorer</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.History">
+            <summary>
+            Represents the History folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows\History</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.HomeGroup">
+            <summary>
+            Represents the Homegroup folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.HomeGroupCurrentUser">
+            <summary>
+            Represents the The user's username (%USERNAME%) folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ImplicitAppShortcuts">
+            <summary>
+            Represents the ImplicitAppShortcuts folder.
+            Default path: <c>%APPDATA%\Microsoft\Internet Explorer\Quick Launch\User Pinned\ImplicitAppShortcuts</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.InternetCache">
+            <summary>
+            Represents the Temporary Internet Files folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows\Temporary Internet Files</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.InternetFolder">
+            <summary>
+            Represents the The Internet folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Libraries">
+            <summary>
+            Represents the Libraries folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Libraries</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Links">
+            <summary>
+            Represents the Links folder.
+            Default path: <c>%USERPROFILE%\Links</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.LocalAppData">
+            <summary>
+            Represents the Local folder.
+            Default path: <c>%LOCALAPPDATA% (%USERPROFILE%\AppData\Local)</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.LocalAppDataLow">
+            <summary>
+            Represents the LocalLow folder.
+            Default path: <c>%USERPROFILE%\AppData\LocalLow</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.LocalizedResourcesDir">
+            <summary>
+            Represents the None folder.
+            Default path: <c>%windir%\resources\0409 (code page)</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Music">
+            <summary>
+            Represents the Music folder.
+            Default path: <c>%USERPROFILE%\Music</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.MusicLibrary">
+            <summary>
+            Represents the Music folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Libraries\Music.library-ms</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.NetHood">
+            <summary>
+            Represents the Network Shortcuts folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Network Shortcuts</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.NetworkFolder">
+            <summary>
+            Represents the Network folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Objects3D">
+            <summary>
+            Represents the 3D Objects folder.
+            Default path: <c>%USERPROFILE%\3D Objects</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.OriginalImages">
+            <summary>
+            Represents the Original Images folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows Photo Gallery\Original Images</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PhotoAlbums">
+            <summary>
+            Represents the Slide Shows folder.
+            Default path: <c>%USERPROFILE%\Pictures\Slide Shows</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PicturesLibrary">
+            <summary>
+            Represents the Pictures folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Libraries\Pictures.library-ms</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Pictures">
+            <summary>
+            Represents the Pictures folder.
+            Default path: <c>%USERPROFILE%\Pictures</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Playlists">
+            <summary>
+            Represents the Playlists folder.
+            Default path: <c>%USERPROFILE%\Music\Playlists</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PrintersFolder">
+            <summary>
+            Represents the Printers folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PrintHood">
+            <summary>
+            Represents the Printer Shortcuts folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Printer Shortcuts</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Profile">
+            <summary>
+            Represents the The user's username (%USERNAME%) folder.
+            Default path: <c>%USERPROFILE% (%SystemDrive%\Users\%USERNAME%)</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ProgramData">
+            <summary>
+            Represents the ProgramData folder.
+            Default path: <c>%ALLUSERSPROFILE% (%ProgramData%, %SystemDrive%\ProgramData)</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ProgramFiles">
+            <summary>
+            Represents the Program Files folder.
+            Default path: <c>%ProgramFiles% (%SystemDrive%\Program Files)</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ProgramFilesX64">
+            <summary>
+            Represents the Program Files folder.
+            Default path: <c>%ProgramFiles% (%SystemDrive%\Program Files)</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ProgramFilesX86">
+            <summary>
+            Represents the Program Files folder.
+            Default path: <c>%ProgramFiles% (%SystemDrive%\Program Files)</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ProgramFilesCommon">
+            <summary>
+            Represents the Common Files folder.
+            Default path: <c>%ProgramFiles%\Common Files</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ProgramFilesCommonX64">
+            <summary>
+            Represents the Common Files folder.
+            Default path: <c>%ProgramFiles%\Common Files</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ProgramFilesCommonX86">
+            <summary>
+            Represents the Common Files folder.
+            Default path: <c>%ProgramFiles%\Common Files</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Programs">
+            <summary>
+            Represents the Programs folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Start Menu\Programs</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Public">
+            <summary>
+            Represents the Public folder.
+            Default path: <c>%PUBLIC% (%SystemDrive%\Users\Public)</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PublicDesktop">
+            <summary>
+            Represents the Public Desktop folder.
+            Default path: <c>%PUBLIC%\Desktop</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PublicDocuments">
+            <summary>
+            Represents the Public Documents folder.
+            Default path: <c>%PUBLIC%\Documents</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PublicDownloads">
+            <summary>
+            Represents the Public Downloads folder.
+            Default path: <c>%PUBLIC%\Downloads</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PublicGameTasks">
+            <summary>
+            Represents the GameExplorer folder.
+            Default path: <c>%ALLUSERSPROFILE%\Microsoft\Windows\GameExplorer</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PublicLibraries">
+            <summary>
+            Represents the Libraries folder.
+            Default path: <c>%ALLUSERSPROFILE%\Microsoft\Windows\Libraries</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PublicMusic">
+            <summary>
+            Represents the Public Music folder.
+            Default path: <c>%PUBLIC%\Music</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PublicPictures">
+            <summary>
+            Represents the Public Pictures folder.
+            Default path: <c>%PUBLIC%\Pictures</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PublicRingtones">
+            <summary>
+            Represents the Ringtones folder.
+            Default path: <c>%ALLUSERSPROFILE%\Microsoft\Windows\Ringtones</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PublicUserTiles">
+            <summary>
+            Represents the Public Account Pictures folder.
+            Default path: <c>%PUBLIC%\AccountPictures</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.PublicVideos">
+            <summary>
+            Represents the Public Videos folder.
+            Default path: <c>%PUBLIC%\Videos</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.QuickLaunch">
+            <summary>
+            Represents the Quick Launch folder.
+            Default path: <c>%APPDATA%\Microsoft\Internet Explorer\Quick Launch</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Recent">
+            <summary>
+            Represents the Recent Items folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Recent</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.RecordedTVLibrary">
+            <summary>
+            Represents the Recorded TV folder.
+            Default path: <c>%PUBLIC%\RecordedTV.library-ms</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.RecycleBinFolder">
+            <summary>
+            Represents the Recycle Bin folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.ResourceDir">
+            <summary>
+            Represents the Resources folder.
+            Default path: <c>%windir%\Resources</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Ringtones">
+            <summary>
+            Represents the Ringtones folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows\Ringtones</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.RoamingAppData">
+            <summary>
+            Represents the Roaming folder.
+            Default path: <c>%APPDATA% (%USERPROFILE%\AppData\Roaming)</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.RoamedTileImages">
+            <summary>
+            Represents the RoamedTileImages folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows\RoamedTileImages</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.RoamingTiles">
+            <summary>
+            Represents the RoamingTiles folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows\RoamingTiles</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SampleMusic">
+            <summary>
+            Represents the Sample Music folder.
+            Default path: <c>%PUBLIC%\Music\Sample Music</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SamplePictures">
+            <summary>
+            Represents the Sample Pictures folder.
+            Default path: <c>%PUBLIC%\Pictures\Sample Pictures</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SamplePlaylists">
+            <summary>
+            Represents the Sample Playlists folder.
+            Default path: <c>%PUBLIC%\Music\Sample Playlists</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SampleVideos">
+            <summary>
+            Represents the Sample Videos folder.
+            Default path: <c>%PUBLIC%\Videos\Sample Videos</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SavedGames">
+            <summary>
+            Represents the Saved Games folder.
+            Default path: <c>%USERPROFILE%\Saved Games</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SavedPictures">
+            <summary>
+            Represents the Saved Pictures folder.
+            Default path: <c>%USERPROFILE%\Pictures\Saved Pictures</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SavedPicturesLibrary">
+            <summary>
+            Represents the Saved Pictures Library folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Libraries\SavedPictures.library-ms</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SavedSearches">
+            <summary>
+            Represents the Searches folder.
+            Default path: <c>%USERPROFILE%\Searches</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Screenshots">
+            <summary>
+            Represents the Screenshots folder.
+            Default path: <c>%USERPROFILE%\Pictures\Screenshots</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SEARCH_CSC">
+            <summary>
+            Represents the Offline Files folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SearchHistory">
+            <summary>
+            Represents the History folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows\ConnectedSearch\History</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SearchHome">
+            <summary>
+            Represents the Search Results folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SEARCH_MAPI">
+            <summary>
+            Represents the Microsoft Office Outlook folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SearchTemplates">
+            <summary>
+            Represents the Templates folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows\ConnectedSearch\Templates</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SendTo">
+            <summary>
+            Represents the SendTo folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\SendTo</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SidebarDefaultParts">
+            <summary>
+            Represents the Gadgets folder.
+            Default path: <c>%ProgramFiles%\Windows Sidebar\Gadgets</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SidebarParts">
+            <summary>
+            Represents the Gadgets folder.
+            Default path: <c>%LOCALAPPDATA%\Microsoft\Windows Sidebar\Gadgets</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SkyDrive">
+            <summary>
+            Represents the OneDrive folder.
+            Default path: <c>%USERPROFILE%\OneDrive</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SkyDriveCameraRoll">
+            <summary>
+            Represents the Camera Roll folder.
+            Default path: <c>%USERPROFILE%\OneDrive\Pictures\Camera Roll</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SkyDriveDocuments">
+            <summary>
+            Represents the Documents folder.
+            Default path: <c>%USERPROFILE%\OneDrive\Documents</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SkyDrivePictures">
+            <summary>
+            Represents the Pictures folder.
+            Default path: <c>%USERPROFILE%\OneDrive\Pictures</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.StartMenu">
+            <summary>
+            Represents the Start Menu folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Start Menu</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Startup">
+            <summary>
+            Represents the Startup folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Start Menu\Programs\StartUp</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SyncManagerFolder">
+            <summary>
+            Represents the Sync Center folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SyncResultsFolder">
+            <summary>
+            Represents the Sync Results folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SyncSetupFolder">
+            <summary>
+            Represents the Sync Setup folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.System">
+            <summary>
+            Represents the System32 folder.
+            Default path: <c>%windir%\system32</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.SystemX86">
+            <summary>
+            Represents the System32 folder.
+            Default path: <c>%windir%\system32</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Templates">
+            <summary>
+            Represents the Templates folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Templates</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.UserPinned">
+            <summary>
+            Represents the User Pinned folder.
+            Default path: <c>%APPDATA%\Microsoft\Internet Explorer\Quick Launch\User Pinned</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.UserProfiles">
+            <summary>
+            Represents the Users folder.
+            Default path: <c>%SystemDrive%\Users</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.UserProgramFiles">
+            <summary>
+            Represents the Programs folder.
+            Default path: <c>%LOCALAPPDATA%\Programs</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.UserProgramFilesCommon">
+            <summary>
+            Represents the Programs folder.
+            Default path: <c>%LOCALAPPDATA%\Programs\Common</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.UsersFiles">
+            <summary>
+            Represents the The user's full name (for instance, Jean Philippe Bagel) entered when the user account was created. folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.UsersLibraries">
+            <summary>
+            Represents the Libraries folder.
+            Default path: <c>Not applicable—virtual folder</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Videos">
+            <summary>
+            Represents the Videos folder.
+            Default path: <c>%USERPROFILE%\Videos</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.VideosLibrary">
+            <summary>
+            Represents the Videos folder.
+            Default path: <c>%APPDATA%\Microsoft\Windows\Libraries\Videos.library-ms</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.KnownFolder.Windows">
+            <summary>
+            Represents the Windows folder.
+            Default path: <c>%windir%</c>.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.SymbolicLinkResolutionMode.Immediate">
+            <summary>Return the immediate next link</summary>
+        </member>
+        <member name="F:Meziantou.Framework.SymbolicLinkResolutionMode.FinalTarget">
+            <summary>Follow links to the final target</summary>
+        </member>
+        <member name="F:Meziantou.Framework.SymbolicLinkResolutionMode.AllSymbolicLinks">
+            <summary>Follow all symbolic links in the path. The result does not not contain any symbolic link.</summary>
+        </member>
+        <member name="M:System.IO.PathInternal.IsValidDriveChar(System.Char)">
+            <summary>Returns true if the given character is a valid drive letter</summary>
+        </member>
+        <member name="M:System.IO.PathInternal.EnsureExtendedPrefixIfNeeded(System.String)">
+            <summary>
+            Adds the extended path prefix (\\?\) if not already a device path, IF the path is not relative,
+            AND the path is more than 259 characters. (> MAX_PATH + null). This will also insert the extended
+            prefix if the path ends with a period or a space. Trailing periods and spaces are normally eaten
+            away from paths during normalization, but if we see such a path at this point it should be
+            normalized and has retained the final characters. (Typically from one of the *Info classes)
+            </summary>
+        </member>
+        <member name="M:System.IO.PathInternal.EnsureExtendedPrefix(System.String)">
+            <summary>Adds the extended path prefix (\\?\) if not relative or already a device path.</summary>
+        </member>
+        <member name="M:System.IO.PathInternal.IsDevice(System.String)">
+            <summary>Returns true if the path uses any of the DOS device path syntaxes. ("\\.\", "\\?\", or "\??\")</summary>
+        </member>
+        <member name="M:System.IO.PathInternal.IsExtended(System.String)">
+            <summary>
+            Returns true if the path uses the canonical form of extended syntax ("\\?\" or "\??\"). If the
+            path matches exactly (cannot use alternate directory separators) Windows will skip normalization
+            and path length checks.
+            </summary>
+        </member>
+        <member name="M:System.IO.PathInternal.IsPartiallyQualified(System.String)">
+            <summary>
+            Returns true if the path specified is relative to the current drive or working directory.
+            Returns false if the path is fixed to a specific drive or UNC path.  This method does no
+            validation of the path (URIs will be returned as relative as a result).
+            </summary>
+            <remarks>
+            Handles paths that use the alternate directory separator.  It is a frequent mistake to
+            assume that rooted paths (Path.IsPathRooted) are not relative.  This isn't the case.
+            "C:a" is drive relative- meaning that it will be resolved against the current directory
+            for C: (rooted, but relative). "C:\a" is rooted and not relative (the current directory
+            will not be used to modify the path).
+            </remarks>
+        </member>
+        <member name="M:System.IO.PathInternal.IsDirectorySeparator(System.Char)">
+            <summary>True if the given character is a directory separator.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+        <member name="T:Windows.Win32.Foundation.HRESULT">
+            <remarks>
+            <para>The **HRESULT** data type is the same as the [SCODE](scode.md) data type. An **HRESULT** value consists of the following fields: - A 1-bit code indicating severity, where zero represents success and 1 represents failure. - A 4-bit reserved value. - An 11-bit code indicating responsibility for the error or warning, also known as a facility code. - A 16-bit code describing the error or warning. Most MAPI interface methods and functions return **HRESULT** values to provide detailed cause formation. **HRESULT** values are also used widely in OLE interface methods. OLE provides several macros for converting between **HRESULT** values and **SCODE** values, another common data type for error handling. > [!NOTE] > In 64-bit MAPI, **HRESULT** is still a 32-bit value. For information about the OLE use of **HRESULT** values, see the  *OLE Programmer's Reference*. For more information about the use of these values in MAPI, see [Error Handling](error-handling-in-mapi.md) and any of the following interface methods: [IABLogon::GetLastError](iablogon-getlasterror.md) [IMAPISupport::GetLastError](imapisupport-getlasterror.md) [IMAPIControl::GetLastError](imapicontrol-getlasterror.md) [IMAPITable::GetLastError](imapitable-getlasterror.md) [IMAPIProp::GetLastError](imapiprop-getlasterror.md) [IMAPIViewAdviseSink::OnPrint](imapiviewadvisesink-onprint.md)</para>
+            <para><see href="https://learn.microsoft.com/office/client-developer/outlook/mapi/hresult#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.Foundation.HRESULT.ThrowOnFailure(System.IntPtr)">
+            <inheritdoc cref="M:System.Runtime.InteropServices.Marshal.ThrowExceptionForHR(System.Int32,System.IntPtr)" />
+            <param name="errorInfo">
+            A pointer to the IErrorInfo interface that provides more information about the
+            error. You can specify <see cref="F:System.IntPtr.Zero"/> to use the current IErrorInfo interface, or
+            <c>new IntPtr(-1)</c> to ignore the current IErrorInfo interface and construct the exception
+            just from the error code.
+            </param>
+            <returns><see langword="this"/> <see cref="T:Windows.Win32.Foundation.HRESULT"/>, if it does not reflect an error.</returns>
+            <seealso cref="M:System.Runtime.InteropServices.Marshal.ThrowExceptionForHR(System.Int32,System.IntPtr)"/>
+        </member>
+        <member name="T:Windows.Win32.Foundation.PCWSTR">
+            <summary>
+            A pointer to a null-terminated, constant character string.
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Foundation.PCWSTR.Value">
+            <summary>
+            A pointer to the first character in the string. The content should be considered readonly, as it was typed as constant in the SDK.
+            </summary>
+        </member>
+        <member name="P:Windows.Win32.Foundation.PCWSTR.Length">
+            <summary>
+            Gets the number of characters up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PCWSTR.ToString">
+            <summary>
+            Returns a <see langword="string"/> with a copy of this character array, up to the first null character (exclusive).
+            </summary>
+            <returns>A <see langword="string"/>, or <see langword="null"/> if <see cref="F:Windows.Win32.Foundation.PCWSTR.Value"/> is <see langword="null"/>.</returns>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PCWSTR.AsSpan">
+            <summary>
+            Returns a span of the characters in this string, up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PWSTR.ToString">
+            <inheritdoc cref="M:Windows.Win32.Foundation.PCWSTR.ToString"/>
+        </member>
+        <member name="P:Windows.Win32.Foundation.PWSTR.Length">
+            <inheritdoc cref="P:Windows.Win32.Foundation.PCWSTR.Length"/>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PWSTR.AsSpan">
+            <summary>
+            Returns a span of the characters in this string, up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.Storage.FileSystem.FINDEX_INFO_LEVELS">
+            <summary>Defines values that are used with the FindFirstFileEx function to specify the information level of the returned data.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-findex_info_levels">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FINDEX_INFO_LEVELS.FindExInfoStandard">
+            <summary>
+            <para>The <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findfirstfileexa">FindFirstFileEx</a> function retrieves a standard set of attribute information. The data is returned in a <a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-win32_find_dataa">WIN32_FIND_DATA</a> structure.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-findex_info_levels#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FINDEX_INFO_LEVELS.FindExInfoBasic">
+            <summary>
+            <para>The <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findfirstfileexa">FindFirstFileEx</a> function does not query the short file name, improving overall enumeration speed. The data is returned in a <a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-win32_find_dataa">WIN32_FIND_DATA</a> structure, and the <b>cAlternateFileName</b> member is always a <b>NULL</b> string. <b>Windows Server 2008, Windows Vista, Windows Server 2003 and Windows XP:  </b>This value is not supported until Windows Server 2008 R2 and Windows 7.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-findex_info_levels#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FINDEX_INFO_LEVELS.FindExInfoMaxInfoLevel">
+            <summary>This value is used for validation. Supported values are less than this value.</summary>
+        </member>
+        <member name="T:Windows.Win32.Storage.FileSystem.FINDEX_SEARCH_OPS">
+            <summary>Defines values that are used with the FindFirstFileEx function to specify the type of filtering to perform.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-findex_search_ops">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FINDEX_SEARCH_OPS.FindExSearchNameMatch">
+            <summary>
+            <para>The search for a file that matches a specified file name.</para>
+            <para>The <i>lpSearchFilter</i> parameter of <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findfirstfileexa">FindFirstFileEx</a> must be <b>NULL</b> when this search operation is used.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-findex_search_ops#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FINDEX_SEARCH_OPS.FindExSearchLimitToDirectories">
+            <summary>
+            <para>This is an advisory flag. If the file system supports directory filtering, the function searches for a file that matches the specified  name and is also a directory. If the file system does not support directory filtering, this flag is silently ignored.</para>
+            <para>The <i>lpSearchFilter</i> parameter of the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findfirstfileexa">FindFirstFileEx</a> function must be <b>NULL</b> when this search value is used. If directory filtering is desired, this flag can be used on all file systems, but because it is  an advisory flag and  only affects file systems that support it, the application must examine the file attribute data stored in the <i>lpFindFileData</i> parameter of the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findfirstfileexa">FindFirstFileEx</a> function to determine whether the function has  returned a handle to a directory.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-findex_search_ops#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FINDEX_SEARCH_OPS.FindExSearchLimitToDevices">
+            <summary>
+            <para>This filtering type is not available.</para>
+            <para>For more information, see <a href="https://docs.microsoft.com/windows-hardware/drivers/install/overview-of-device-interface-classes">Device Interface Classes</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/minwinbase/ne-minwinbase-findex_search_ops#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Storage.FileSystem.FINDEX_SEARCH_OPS.FindExSearchMaxSearchOp">
+            <summary></summary>
+        </member>
+        <member name="T:Windows.Win32.FindCloseSafeHandle">
+            <summary>
+            Represents a Win32 handle that can be closed with <see cref="M:Windows.Win32.PInvoke.FindClose(Windows.Win32.Foundation.HANDLE)"/>.
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.UI.Shell.Common.ITEMIDLIST">
+            <summary>Contains a list of item identifiers.</summary>
+            <remarks>
+            <para>A pointer to this structure, called a <i>PIDL</i>, is used to identify objects in the Shell namespace.  For more information about pointers to item identifier lists (PIDLs) and item identifiers, see <a href="https://docs.microsoft.com/windows/desktop/shell/namespace-intro">Introduction to the Shell Namespace</a>. <h3><a id="ITEMIDLIST_Strict_Types"></a><a id="itemidlist_strict_types"></a><a id="ITEMIDLIST_STRICT_TYPES"></a>ITEMIDLIST Strict Types</h3> As of Windows Vista, several forms of <b>ITEMIDLIST</b> are available as data types. The three main types are:</para>
+            <para></para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shtypes/ns-shtypes-itemidlist#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.ITEMIDLIST.mkid">
+            <summary>
+            <para>Type: <b><a href="https://docs.microsoft.com/windows/desktop/api/shtypes/ns-shtypes-shitemid">SHITEMID</a></b> A list of item identifiers.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shtypes/ns-shtypes-itemidlist#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.UI.Shell.Common.SHITEMID">
+            <summary>Defines an item identifier.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shtypes/ns-shtypes-shitemid">Learn more about this API from learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.SHITEMID.cb">
+            <summary>
+            <para>Type: <b>USHORT</b> The size of identifier, in bytes, including <b>cb</b> itself.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shtypes/ns-shtypes-shitemid#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.Common.SHITEMID.abID">
+            <summary>
+            <para>Type: <b>BYTE[1]</b> A variable-length item identifier.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shtypes/ns-shtypes-shitemid#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.UI.Shell.Common.SHITEMID.SizeOf(System.Int32)">
+            <summary>Computes the amount of memory that must be allocated to store this struct, including the specified number of elements in the variable length inline array at the end.</summary>
+        </member>
+        <member name="T:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG">
+            <summary>Defines constants that specify special retrieval options for known folders. These values supersede CSIDL values, which have parallel meanings.</summary>
+            <remarks>These values, with the exception of **KF_FLAG_ALIAS_ONLY**, were defined in Windows Vista as individual constants. They're defined as an enumeration only in Windows 7 and later. However, all underlying numerical values are the same in either form.</remarks>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_DEFAULT">
+            <summary>Specifies no special retrieval options.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_FORCE_APP_DATA_REDIRECTION">
+            <summary>
+            <para>**Introduced in Windows 10, version 1709**. When called from a packaged app, specifies that **LocalAppData**/**RoamingAppData** folders are redirected to private app locations that match the paths returned from [Windows.Storage.ApplicationData.Current](/uwp/api/windows.storage.applicationdata.current) in the **LocalFolder** and **RoamingFolder** properties. Other folders are redirected to subdirectories of **LocalAppData**. This flag is used with **FOLDERID_AppDataDesktop**, **FOLDERID_AppDataDocuments**, **FOLDERID_AppDataFavorites**, and **FOLDERID_AppDataProgramData**. It's also intended for compatibility with .NET applications, and not meant to be used directly from an application.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/ne-shlobj_core-known_folder_flag#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_RETURN_FILTER_REDIRECTION_TARGET">
+            <summary>**Introduced in Windows 10, version 1703**. When running in a packaged process, specifies that some file system locations are redirected to package-specific locations by the file system. This flag causes the target of the direction to be returned for those locations. This is useful in cases where the real location within the file system needs to be known.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_FORCE_PACKAGE_REDIRECTION">
+            <summary>**Introduced in Windows 10, version 1703**. When running inside an AppContainer process, or when providing an AppContainer token, specifies that some folders are redirected to AppContainer-specific locations within the package. This flag forces redirection (for folders that aren't normally redirected) for the purposes of packaged processes, and can be used for sharing files between UWP and packaged apps within the same package. This flag supersedes the deprecated **KF_FLAG_FORCE_APPCONTAINER_REDIRECTION**.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_NO_PACKAGE_REDIRECTION">
+            <summary>**Introduced in Windows 10, version 1703**. When running inside a packaged process, or when providing a packaged process token, specifies that some folders are redirected to package-specific locations. This flag disables redirection on locations where it's applied, and instead returns the path that would be returned were it not running inside a packaged process. This flag supersedes the deprecated **KF_FLAG_NO_APPCONTAINER_REDIRECTION**.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_FORCE_APPCONTAINER_REDIRECTION">
+            <summary>**Introduced in Windows 8**. This flag was deprecated in Windows 10, version 1703. Use **KF_FLAG_FORCE_PACKAGE_REDIRECTION** instead.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_NO_APPCONTAINER_REDIRECTION">
+            <summary>**Introduced in Windows 8**. This flag was deprecated in Windows 10, version 1703. Use **KF_FLAG_NO_PACKAGE_REDIRECTION** instead.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_CREATE">
+            <summary>
+            <para>Specifies to force the creation of the specified folder if that folder doesn't already exist. The security provisions predefined for that folder are applied. If the folder doesn't exist and can't be created, then the function returns a failure code, and no path is returned. This value can be used only with the following functions and methods: * [SHGetKnownFolderPath](/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderpath) * [SHGetKnownFolderIDList](/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderidlist) * [IKnownFolder::GetIDList](/windows/win32/api/shobjidl_core/nf-shobjidl_core-iknownfolder-getidlist) * [IKnownFolder::GetPath](/windows/win32/api/shobjidl_core/nf-shobjidl_core-iknownfolder-getpath) * [IKnownFolder::GetShellItem](/windows/win32/api/shobjidl_core/nf-shobjidl_core-iknownfolder-getshellitem)</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/ne-shlobj_core-known_folder_flag#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_DONT_VERIFY">
+            <summary>
+            <para>Specifies not to verify the folder's existence before attempting to retrieve the path or IDList. If this flag isn't set, then an attempt is made to verify that the folder is truly present at the path. If that verification fails due to the folder being absent or inaccessible, then the function returns a failure code, and no path is returned. If the folder is located on a network, then the function might take longer to execute. So setting this flag can reduce that latency.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/ne-shlobj_core-known_folder_flag#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_DONT_UNEXPAND">
+            <summary>Specfies to store the full path in the registry without using environment strings. If this flag isn't set, then portions of the path might be represented by environment strings such as `%USERPROFILE%`. This flag can be used only with [SHSetKnownFolderPath](/windows/win32/api/shlobj_core/nf-shlobj_core-shsetknownfolderpath) and [IKnownFolder::SetPath](/windows/win32/api/shobjidl_core/nf-shobjidl_core-iknownfolder-setpath).</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_NO_ALIAS">
+            <summary>Specifies to retrieve the true system path for the folder, free of any aliased placeholders such as `%USERPROFILE%`, returned by [SHGetKnownFolderIDList](/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderidlist) and [IKnownFolder::GetIDList](/windows/win32/api/shobjidl_core/nf-shobjidl_core-iknownfolder-getidlist). This flag has no effect on paths returned by [SHGetKnownFolderPath](/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderpath) and [IKnownFolder::GetPath](/windows/win32/api/shobjidl_core/nf-shobjidl_core-iknownfolder-getpath). By default, known folder retrieval functions and methods return the aliased path if an alias exists.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_INIT">
+            <summary>
+            <para>Specifies to initialize the folder using its `Desktop.ini` settings. If the folder can't be initialized, then the function returns a failure code, and no path is returned. This flag should always be combined with **KF_FLAG_CREATE**. If the folder is located on a network, then the function might take longer to execute.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/ne-shlobj_core-known_folder_flag#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_DEFAULT_PATH" -->
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_NOT_PARENT_RELATIVE">
+            <summary>Specifies to retrieve the folder's default path independent of the current location of its parent. **KF_FLAG_DEFAULT_PATH** must also be set.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_SIMPLE_IDLIST">
+            <summary>Specifies to build a simple IDList (PIDL). This value can be used when you want to retrieve the file system path. But don't specify this value if you're retrieving the localized display name of the folder, because it might not resolve correctly.</summary>
+        </member>
+        <member name="F:Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG.KF_FLAG_ALIAS_ONLY">
+            <summary>**Introduced in Windows 7**. Specifies to retrieve only aliased PIDLs. Don't use the file system path.</summary>
+        </member>
+        <member name="T:Windows.Win32.PInvoke">
+            <content>
+            Contains extern methods from "KERNEL32.dll".
+            </content>
+            <content>
+            Contains extern methods from "SHELL32.dll".
+            </content>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.CloseHandle(Windows.Win32.Foundation.HANDLE)">
+            <summary>Closes an open object handle.</summary>
+            <param name="hObject">A valid handle to an open object.</param>
+            <returns>
+            <para>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>. If the application is running under a debugger,  the function will throw an exception if it receives either a  handle value that is not valid  or a pseudo-handle value. This can happen if you close a handle twice, or if you  call <b>CloseHandle</b> on a handle returned by the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findfirstfilea">FindFirstFile</a> function instead of calling the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findclose">FindClose</a> function.</para>
+            </returns>
+            <remarks>
+            <para>The <b>CloseHandle</b> function closes handles to the following objects: </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/handleapi/nf-handleapi-closehandle#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.CreateFile(System.String,System.UInt32,Windows.Win32.Storage.FileSystem.FILE_SHARE_MODE,System.Nullable{Windows.Win32.Security.SECURITY_ATTRIBUTES},Windows.Win32.Storage.FileSystem.FILE_CREATION_DISPOSITION,Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES,System.Runtime.InteropServices.SafeHandle)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.CreateFile(Windows.Win32.Foundation.PCWSTR,System.UInt32,Windows.Win32.Storage.FileSystem.FILE_SHARE_MODE,Windows.Win32.Security.SECURITY_ATTRIBUTES*,Windows.Win32.Storage.FileSystem.FILE_CREATION_DISPOSITION,Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES,Windows.Win32.Foundation.HANDLE)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.CreateFile(Windows.Win32.Foundation.PCWSTR,System.UInt32,Windows.Win32.Storage.FileSystem.FILE_SHARE_MODE,Windows.Win32.Security.SECURITY_ATTRIBUTES*,Windows.Win32.Storage.FileSystem.FILE_CREATION_DISPOSITION,Windows.Win32.Storage.FileSystem.FILE_FLAGS_AND_ATTRIBUTES,Windows.Win32.Foundation.HANDLE)">
+            <summary>Creates or opens a file or I/O device. The most commonly used I/O devices are as follows:\_file, file stream, directory, physical disk, volume, console buffer, tape drive, communications resource, mailslot, and pipe. (Unicode)</summary>
+            <param name="lpFileName">
+            <para>The name of the file or device to be created or opened. You may use either forward slashes (/) or backslashes (\\) in this name. In the ANSI version of this function, the name is limited to <b>MAX_PATH</b> characters. To extend this limit to 32,767 wide characters, use this Unicode version of the function and prepend "\\\\?\\" to the path. For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/naming-a-file">Naming Files, Paths, and Namespaces</a>. For information on special device names, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/defining-an-ms-dos-device-name">Defining an MS-DOS Device Name</a>. To create a file stream, specify the name of the file, a colon, and then the name of the stream. For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-streams">File Streams</a>. <div class="alert"><b>Tip</b>  Starting with Windows 10, version 1607, for the unicode version of this function (<b>CreateFileW</b>), you can opt-in to remove the <b>MAX_PATH</b> limitation without prepending "\\?\". See the "Maximum Path Length Limitation" section of <a href="https://docs.microsoft.com/windows/desktop/FileIO/naming-a-file">Naming Files, Paths, and Namespaces</a> for details.</div> <div> </div></para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwDesiredAccess">
+            <para>The requested access to the file or device, which can be summarized as read, write, both or neither zero). The most commonly used values are <b>GENERIC_READ</b>, <b>GENERIC_WRITE</b>, or both (<c>GENERIC_READ | GENERIC_WRITE</c>). For more information, see <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/generic-access-rights">Generic Access Rights</a>, <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-security-and-access-rights">File Security and Access Rights</a>, <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-access-rights-constants">File Access Rights Constants</a>, and <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/access-mask">ACCESS_MASK</a>. If this parameter is zero, the application can query certain metadata such as file, directory, or device attributes without accessing that file or device, even if <b>GENERIC_READ</b> access would have been denied. You cannot request an access mode that conflicts with the sharing mode that is specified by the <i>dwShareMode</i> parameter in an open request that already has an open handle. For more information, see the Remarks section of this topic and <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-and-opening-files">Creating and Opening Files</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwShareMode">
+            <para>The requested sharing mode of the file or device, which can be read, write, both, delete, all of these, or none (refer to the following table). Access requests to attributes or extended attributes are not affected by this flag. If this parameter is zero and <b>CreateFile</b> succeeds, the file or device cannot be shared and cannot be opened again until the handle to the file or device is closed. For more information, see the Remarks section. You cannot request a sharing mode that conflicts with the access mode that is specified in an existing request that has an open handle. <b>CreateFile</b> would fail and the <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> function would return <b>ERROR_SHARING_VIOLATION</b>. To enable a process to share a file or device while another process has the file or device open, use a</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lpSecurityAttributes">
+            <para>A pointer to a <a href="https://docs.microsoft.com/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)">SECURITY_ATTRIBUTES</a> structure that contains two separate but related data members: an optional security descriptor, and a Boolean value that determines whether the returned handle can be inherited by child processes. This parameter can be <b>NULL</b>. If this parameter is <b>NULL</b>, the handle returned by <b>CreateFile</b> cannot be inherited by any child processes the application may create and the file or device associated with the returned handle gets a default security descriptor. The <b>lpSecurityDescriptor</b> member of the structure specifies a <a href="https://docs.microsoft.com/windows/desktop/api/winnt/ns-winnt-security_descriptor">SECURITY_DESCRIPTOR</a> for a file or device. If this member is <b>NULL</b>, the file or device associated with the returned handle is assigned a default security descriptor. <b>CreateFile</b> ignores the <b>lpSecurityDescriptor</b> member when opening an existing file or device, but continues to use the <b>bInheritHandle</b> member. The <b>bInheritHandle</b> member of the structure specifies whether the returned handle can be inherited. For more information, see the Remarks section.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwCreationDisposition">
+            <para>An action to take on a file or device that exists or does not exist. For devices other than files, this parameter is usually set to <b>OPEN_EXISTING</b>. For more information, see the Remarks section.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwFlagsAndAttributes">
+            <para>The file or device attributes and flags, <b>FILE_ATTRIBUTE_NORMAL</b> being the most common default value for files. This parameter can include any combination of the available file attributes (<b>FILE_ATTRIBUTE_*</b>). All other file attributes override <b>FILE_ATTRIBUTE_NORMAL</b>. This parameter can also contain combinations of flags (<b>FILE_FLAG_*</b>) for control of file or device caching behavior, access modes, and other special-purpose flags. These combine with any <b>FILE_ATTRIBUTE_*</b> values. This parameter can also contain Security Quality of Service (SQOS) information by specifying the <b>SECURITY_SQOS_PRESENT</b> flag. Additional SQOS-related flags information is presented in the table following the attributes and flags tables. <div class="alert"><b>Note</b>  When <b>CreateFile</b> opens an existing file, it generally combines the file flags with the file attributes of the existing file, and ignores any file attributes supplied as part of <i>dwFlagsAndAttributes</i>. Special cases are detailed in <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-and-opening-files">Creating and Opening Files</a>.</div> <div> </div> Some of the following file attributes and flags may only apply to files and not necessarily all other types of devices that <b>CreateFile</b> can open. For additional information, see the Remarks section of this topic and <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-and-opening-files">Creating and Opening Files</a>. For more advanced access to file attributes, see <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-setfileattributesa">SetFileAttributes</a>. For a complete list of all file attributes with their values and descriptions, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-attribute-constants">File Attribute Constants</a>. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="hTemplateFile">
+            <para>A valid handle to a template file with the <b>GENERIC_READ</b> access right. The template file supplies file attributes and extended attributes for the file that is being created. This parameter can be <b>NULL</b>. When opening an existing file, <b>CreateFile</b> ignores this parameter. When opening a new encrypted file, the file inherits the discretionary access control list from its parent directory. For additional information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-encryption">File Encryption</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>If the function succeeds, the return value is an open handle to the specified file, device, named pipe, or mail slot. If the function fails, the return value is <b>INVALID_HANDLE_VALUE</b>. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para><b>CreateFile</b> was originally developed specifically for file interaction but has since been expanded and enhanced to include most other types of I/O devices and mechanisms available to Windows developers. This section attempts to cover the varied issues developers may experience when using <b>CreateFile</b> in different contexts and with different I/O types. The text attempts to use the word <i>file</i> only when referring specifically to data stored in an actual file on a file system. However, some uses of <i>file</i> may be referring more generally to an I/O object that supports file-like mechanisms. This liberal use of the term <i>file</i> is particularly prevalent in constant names and parameter names because of the previously mentioned historical reasons. When an application is finished using the object handle returned by <b>CreateFile</b>, use the <a href="https://docs.microsoft.com/windows/desktop/api/handleapi/nf-handleapi-closehandle">CloseHandle</a> function to close the handle. This not only frees up system resources, but can have wider influence on things like sharing the file or device and committing data to disk. Specifics are noted within this topic as appropriate. <b>Windows Server 2003 and Windows XP:  </b>A sharing violation occurs if an attempt is made to open a file or directory for deletion on a remote computer when the value of the <i>dwDesiredAccess</i> parameter is the <b>DELETE</b> access flag (0x00010000) <b>OR</b>'ed with any other access flag, and the remote file or directory has not been opened with <b>FILE_SHARE_DELETE</b>. To avoid the sharing violation in this scenario, open the remote file or directory with the <b>DELETE</b> access right only, or call <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-deletefilea">DeleteFile</a> without first opening the file or directory for deletion. Some file systems, such as the NTFS file system, support compression or encryption for individual files and directories. On volumes that have a mounted file system with this support, a new file inherits the compression and encryption attributes of its directory. You cannot use <b>CreateFile</b> to control compression, decompression, or decryption on a file or directory. For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/creating-and-opening-files">Creating and Opening Files</a>, <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-compression-and-decompression">File Compression and Decompression</a>, and <a href="https://docs.microsoft.com/windows/desktop/FileIO/file-encryption">File Encryption</a>. <b>Windows Server 2003 and Windows XP:  </b>For backward compatibility purposes, <b>CreateFile</b> does not apply inheritance rules when you specify a security descriptor in <i>lpSecurityAttributes</i>. To support inheritance, functions that later query the security descriptor of this file may heuristically determine and report that inheritance is in effect. For more information, see <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/automatic-propagation-of-inheritable-aces">Automatic Propagation of Inheritable ACEs</a>. As stated previously, if the <i>lpSecurityAttributes</i> parameter is <b>NULL</b>, the handle returned by <b>CreateFile</b> cannot be inherited by any child processes your application may create. The following information regarding this parameter also applies: </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.DeviceIoControl(System.Runtime.InteropServices.SafeHandle,System.UInt32,System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.UInt32@,System.Threading.NativeOverlapped*)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.DeviceIoControl(Windows.Win32.Foundation.HANDLE,System.UInt32,System.Void*,System.UInt32,System.Void*,System.UInt32,System.UInt32*,System.Threading.NativeOverlapped*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.DeviceIoControl(System.Runtime.InteropServices.SafeHandle,System.UInt32,System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Threading.NativeOverlapped*)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.DeviceIoControl(Windows.Win32.Foundation.HANDLE,System.UInt32,System.Void*,System.UInt32,System.Void*,System.UInt32,System.UInt32*,System.Threading.NativeOverlapped*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.DeviceIoControl(Windows.Win32.Foundation.HANDLE,System.UInt32,System.Void*,System.UInt32,System.Void*,System.UInt32,System.UInt32*,System.Threading.NativeOverlapped*)">
+            <summary>Sends a control code directly to a specified device driver, causing the corresponding device to perform the corresponding operation.</summary>
+            <param name="hDevice">
+            <para>A handle to the device on which the operation is to be performed. The device is typically a volume, directory, file, or stream. To retrieve a device handle, use the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-createfilea">CreateFile</a> function. For more information, see Remarks.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwIoControlCode">
+            <para>The control code for the operation. This value identifies the specific operation to be performed and the type of device on which to perform it. For a list of the control codes, see Remarks. The documentation for each control code provides usage details for the <i>lpInBuffer</i>, <i>nInBufferSize</i>, <i>lpOutBuffer</i>, and <i>nOutBufferSize</i> parameters.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lpInBuffer">
+            <para>A pointer to the input buffer that contains the data required to perform the operation. The format of this data depends on the value of the <i>dwIoControlCode</i> parameter. This parameter can be <b>NULL</b> if <i>dwIoControlCode</i> specifies an operation that does not require input data.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="nInBufferSize">The size of the input buffer, in bytes.</param>
+            <param name="lpOutBuffer">
+            <para>A pointer to the output buffer that is to receive the data returned by the operation. The format of this data depends on the value of the <i>dwIoControlCode</i> parameter. This parameter can be <b>NULL</b> if <i>dwIoControlCode</i> specifies an operation that does not return data.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="nOutBufferSize">The size of the output buffer, in bytes.</param>
+            <param name="lpBytesReturned">
+            <para>A pointer to a variable that receives the size of the data stored in the output buffer, in bytes. If the output buffer is too small to receive any data,  the call fails, <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> returns <b>ERROR_INSUFFICIENT_BUFFER</b>, and <i>lpBytesReturned</i> is zero. If the output buffer is too small to hold all of the data but can hold some entries, some drivers will return as much data as fits. In this case, the call fails, <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> returns <b>ERROR_MORE_DATA</b>, and <i>lpBytesReturned</i> indicates the amount of data received. Your application should call <b>DeviceIoControl</b> again with the same operation, specifying a new starting point. If <i>lpOverlapped</i> is <b>NULL</b>, <i>lpBytesReturned</i> cannot be <b>NULL</b>. Even when an operation returns no output data and <i>lpOutBuffer</i> is <b>NULL</b>, <b>DeviceIoControl</b> makes use of <i>lpBytesReturned</i>. After such an operation, the value of <i>lpBytesReturned</i> is meaningless. If <i>lpOverlapped</i> is not <b>NULL</b>, <i>lpBytesReturned</i> can be <b>NULL</b>. If this parameter is not <b>NULL</b> and the operation returns data, <i>lpBytesReturned</i> is meaningless until the overlapped operation has completed. To retrieve the number of bytes returned, call <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-getoverlappedresult">GetOverlappedResult</a>. If <i>hDevice</i> is associated with an I/O completion port, you can retrieve the number of bytes returned by calling <a href="https://docs.microsoft.com/windows/desktop/api/ioapiset/nf-ioapiset-getqueuedcompletionstatus">GetQueuedCompletionStatus</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lpOverlapped">
+            <para>A pointer to an <a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-overlapped">OVERLAPPED</a> structure. If <i>hDevice</i> was opened without specifying <b>FILE_FLAG_OVERLAPPED</b>, <i>lpOverlapped</i> is ignored. If <i>hDevice</i> was opened with the <b>FILE_FLAG_OVERLAPPED</b> flag, the operation is performed as an overlapped (asynchronous) operation. In this case, <i>lpOverlapped</i> must point to a valid <a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ns-minwinbase-overlapped">OVERLAPPED</a> structure that contains a handle to an event object. Otherwise, the function fails in unpredictable ways. For overlapped operations, <b>DeviceIoControl</b> returns immediately, and the event object is signaled when the operation has been completed. Otherwise, the function does not return until the operation has been completed or an error occurs.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>If the operation completes successfully, the return value is nonzero (TRUE). If the operation fails or is pending, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>To retrieve a handle to the device, you must call the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-createfilea">CreateFile</a> function with either the name of a device or the name of the driver associated with a device. To specify a device name, use the following format: \\\\.&#92;<i>DeviceName</i> <b>DeviceIoControl</b> can accept a handle to a specific device. For example, to open a handle to the logical drive A: with <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-createfilea">CreateFile</a>, specify \\\\.\a:. Alternatively, you can use the names \\\\.\PhysicalDrive0, \\\\.\PhysicalDrive1, and so on, to open handles to the physical drives on a system. You should specify the <b>FILE_SHARE_READ</b> and <b>FILE_SHARE_WRITE</b> access flags when calling <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-createfilea">CreateFile</a> to open a handle to a device driver. However, when you open a communications resource, such as a serial port, you must specify exclusive access. Use the other <b>CreateFile</b> parameters as follows when opening a device handle: </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.FindClose(Windows.Win32.Foundation.HANDLE)">
+            <summary>Closes a file search handle opened by the FindFirstFile, FindFirstFileEx, FindFirstFileNameW, FindFirstFileNameTransactedW, FindFirstFileTransacted, FindFirstStreamTransactedW, or FindFirstStreamW functions.</summary>
+            <param name="hFindFile">The file search handle.</param>
+            <returns>
+            <para>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>After the <b>FindClose</b> function is called, the handle specified by the <i>hFindFile</i> parameter cannot be used in subsequent calls to the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findnextfilea">FindNextFile</a>, <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findnextfilenamew">FindNextFileNameW</a>, <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findnextstreamw">FindNextStreamW</a>, or <b>FindClose</b> functions. In Windows 8 and Windows Server 2012, this function is supported by the following technologies. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findclose#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.FindFirstFileEx(System.String,Windows.Win32.Storage.FileSystem.FINDEX_INFO_LEVELS,System.Void*,Windows.Win32.Storage.FileSystem.FINDEX_SEARCH_OPS,Windows.Win32.Storage.FileSystem.FIND_FIRST_EX_FLAGS)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.FindFirstFileEx(Windows.Win32.Foundation.PCWSTR,Windows.Win32.Storage.FileSystem.FINDEX_INFO_LEVELS,System.Void*,Windows.Win32.Storage.FileSystem.FINDEX_SEARCH_OPS,System.Void*,Windows.Win32.Storage.FileSystem.FIND_FIRST_EX_FLAGS)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.FindFirstFileEx(Windows.Win32.Foundation.PCWSTR,Windows.Win32.Storage.FileSystem.FINDEX_INFO_LEVELS,System.Void*,Windows.Win32.Storage.FileSystem.FINDEX_SEARCH_OPS,System.Void*,Windows.Win32.Storage.FileSystem.FIND_FIRST_EX_FLAGS)">
+            <summary>Searches a directory for a file or subdirectory with a name and attributes that match those specified. (FindFirstFileExW)</summary>
+            <param name="lpFileName">
+            <para>The directory or path, and the file name. The file name can include wildcard characters,  for example, an asterisk (*) or a question mark (?). This parameter should not be <b>NULL</b>, an invalid string (for example, an empty string or a string that is missing the terminating null character), or end in a trailing backslash (\\). If the string ends with a wildcard, period, or  directory name, the user must have access to the root and all subdirectories on the path. In the ANSI version of this function, the name is limited to <b>MAX_PATH</b> characters. To extend this limit to approximately 32,000 wide characters, call the Unicode version of the function (<b>FindFirstFileExW</b>), and prepend "\\\\?\\" to the path. For more information, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/naming-a-file">Naming a File</a>. <div class="alert"><b>Tip</b>  Starting in Windows 10, version 1607, for the unicode version of this function (<b>FindFirstFileExW</b>), you can opt-in to remove the <b>MAX_PATH</b> character limitation without prepending "\\?\". See the "Maximum Path Limitation" section of  <a href="https://docs.microsoft.com/windows/desktop/FileIO/naming-a-file">Naming Files, Paths, and Namespaces</a> for details. </div> <div> </div></para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfileexw#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="fInfoLevelId">
+            <para>The information level of the returned data.</para>
+            <para>This parameter is one of the <a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ne-minwinbase-findex_info_levels">FINDEX_INFO_LEVELS</a> enumeration values.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfileexw#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lpFindFileData">
+            <para>A pointer to the buffer that receives the file data.</para>
+            <para>The pointer type is determined by the level of information that is specified in the <i>fInfoLevelId</i> parameter.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfileexw#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="fSearchOp">
+            <para>The type of filtering to perform that is different from wildcard matching.</para>
+            <para>This parameter is one of the <a href="https://docs.microsoft.com/windows/desktop/api/minwinbase/ne-minwinbase-findex_search_ops">FINDEX_SEARCH_OPS</a> enumeration values.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfileexw#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="lpSearchFilter">
+            <para>A pointer to the search criteria if the specified <i>fSearchOp</i> needs structured search information.</para>
+            <para>At this time, none of the supported <i>fSearchOp</i> values require extended search information. Therefore, this pointer must be <b>NULL</b>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfileexw#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwAdditionalFlags">
+            <para>Specifies additional flags that control the search. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfileexw#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>If the function succeeds, the return value is a search handle used in a subsequent call to <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findnextfilea">FindNextFile</a> or <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findclose">FindClose</a>, and  the <i>lpFindFileData</i> parameter contains information about the first file or directory found. If the function fails or fails to locate files from the search string in the <i>lpFileName</i> parameter, the return value is <b>INVALID_HANDLE_VALUE</b> and the contents of <i>lpFindFileData</i> are indeterminate. To get extended error information, call the <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> function.</para>
+            </returns>
+            <remarks>
+            <para>The <b>FindFirstFileEx</b> function opens a search handle and returns information about the first file that the file system finds with a name that matches the specified pattern. This may or may not be the first file or directory that appears in a directory-listing application (such as the dir command) when given the same file name string pattern. This is because <b>FindFirstFileEx</b> does no sorting of the search results. For additional information, see <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findnextfilea">FindNextFile</a>. The following list identifies some other search characteristics: </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfileexw#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetFinalPathNameByHandle(System.Runtime.InteropServices.SafeHandle,System.Span{System.Char},Windows.Win32.Storage.FileSystem.GETFINALPATHNAMEBYHANDLE_FLAGS)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.GetFinalPathNameByHandle(Windows.Win32.Foundation.HANDLE,Windows.Win32.Foundation.PWSTR,System.UInt32,Windows.Win32.Storage.FileSystem.GETFINALPATHNAMEBYHANDLE_FLAGS)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetFinalPathNameByHandle(Windows.Win32.Foundation.HANDLE,Windows.Win32.Foundation.PWSTR,System.UInt32,Windows.Win32.Storage.FileSystem.GETFINALPATHNAMEBYHANDLE_FLAGS)">
+            <summary>Retrieves the final path for the specified file. (Unicode)</summary>
+            <param name="hFile">A handle to a file or directory.</param>
+            <param name="lpszFilePath">A pointer to a buffer that receives the path of <i>hFile</i>.</param>
+            <param name="cchFilePath">The size of <i>lpszFilePath</i>, in <b>TCHAR</b>s. This value must include a <b>NULL</b> termination character.</param>
+            <param name="dwFlags"></param>
+            <returns>
+            <para>If the function succeeds, the return value is the length of the string received by <i>lpszFilePath</i>, in <b>TCHAR</b>s. This value does not include the size of the terminating null character. <b>Windows Server 2008 and Windows Vista:  </b>For the ANSI version of this function, <b>GetFinalPathNameByHandleA</b>, the return value includes the size of the terminating null character. If the function fails because <i>lpszFilePath</i> is too small to hold the string plus the terminating null character, the return value is the required buffer size, in <b>TCHAR</b>s. This value includes the size of the terminating null character. If the function fails for any other reason, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>. </para>
+            <para>This doc was truncated.</para>
+            </returns>
+            <remarks>
+            <para>The Server Message Block (SMB) Protocol does not support queries for normalized paths. Consequently, when you call this function passing the handle of a file opened using SMB, and with the FILE_NAME_NORMALIZED flag, the function splits the path into its components and tries to query for the normalized name of each of those components in turn. If the user lacks access permission to any one of those components, then the function call fails with ERROR_ACCESS_DENIED. A final path is the path that is returned when a path is fully resolved. For example, for a symbolic link named "C:\tmp\mydir" that points to "D:\yourdir", the final path would be "D:\yourdir". When using <b>VOLUME_NAME_DOS</b>, the string that is returned by this function uses the "\\\\?\\" syntax. For more information, see <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-createfilea">CreateFile</a>. When using <b>VOLUME_NAME_GUID</b>, the returned path will begin with a volume GUID path formatted like "\\\\?\\Volume{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}\\". When using <b>VOLUME_NAME_NT</b>, the returned path is for an NT device object, and will begin with a device name such as "\\Device\\HarddiskVolume1\\".  This type of path can not be used directly by Windows programs, as it resembles a relative path. Some third-party drivers can create a drive letter or mount point without using the Mount Manager.  If the Mount Manager was not used to create the drive, then <b>VOLUME_NAME_DOS</b> or <b>VOLUME_NAME_GUID</b> will not succeed; only <b>VOLUME_NAME_NT</b> will be available.  To determine the drive letter for the volume device path, use the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-querydosdevicew">QueryDosDevice</a> function on every drive letter until a matching device name is found. In Windows 8 and Windows Server 2012, this function is supported by the following technologies. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfinalpathnamebyhandlew#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.SHGetKnownFolderPath(System.Guid@,Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG,System.Runtime.InteropServices.SafeHandle,Windows.Win32.Foundation.PWSTR@)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.SHGetKnownFolderPath(System.Guid*,Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG,Windows.Win32.Foundation.HANDLE,Windows.Win32.Foundation.PWSTR*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.SHGetKnownFolderPath(System.Guid*,Windows.Win32.UI.Shell.KNOWN_FOLDER_FLAG,Windows.Win32.Foundation.HANDLE,Windows.Win32.Foundation.PWSTR*)">
+            <summary>Retrieves the full path of a known folder identified by the folder's KNOWNFOLDERID.</summary>
+            <param name="rfid">
+            <para>Type: <b>REFKNOWNFOLDERID</b> A reference to the <a href="https://docs.microsoft.com/windows/desktop/shell/knownfolderid">KNOWNFOLDERID</a> that identifies the folder.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderpath#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwFlags">
+            <para>Type: <b>DWORD</b> Flags that specify special retrieval options. This value can be 0; otherwise, one or more of the <a href="https://docs.microsoft.com/windows/desktop/api/shlobj_core/ne-shlobj_core-known_folder_flag">KNOWN_FOLDER_FLAG</a> values.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderpath#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="hToken">
+            <para>Type: <b>HANDLE</b> An <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/access-tokens">access token</a> that represents a particular user. If this parameter is <b>NULL</b>, which is the most common usage, the function requests the known folder for the current user.</para>
+            <para>Request a specific user's folder by passing the <i>hToken</i> of that user. This is typically done in the context of a service that has sufficient privileges to retrieve the token of a given user. That token must be opened with <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/access-rights-for-access-token-objects">TOKEN_QUERY</a> and <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/access-rights-for-access-token-objects">TOKEN_IMPERSONATE</a> rights. In some cases, you also need to include <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/access-rights-for-access-token-objects">TOKEN_DUPLICATE</a>. In addition to passing the user's <i>hToken</i>, the registry hive of that specific user must be mounted. See <a href="https://docs.microsoft.com/windows/desktop/SecAuthZ/access-control">Access Control</a> for further discussion of access control issues. Assigning the <i>hToken</i> parameter a value of -1 indicates the Default User. This allows clients of <b>SHGetKnownFolderPath</b> to find folder locations (such as the <b>Desktop</b> folder) for the Default User. The Default User user profile is duplicated when any new user account is created, and includes special folders such as <b>Documents</b> and <b>Desktop</b>. Any items added to the Default User folder also appear in any new user account. Note that access to the Default User folders requires administrator privileges.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderpath#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="ppszPath">
+            <para>Type: <b>PWSTR*</b> When this method returns, contains the address of a pointer to a null-terminated Unicode string that specifies the path of the known folder. The calling process is responsible for freeing this resource once it is no longer needed by calling <a href="https://docs.microsoft.com/windows/desktop/api/combaseapi/nf-combaseapi-cotaskmemfree">CoTaskMemFree</a>, whether <b>SHGetKnownFolderPath</b> succeeds or not. The returned path does not include a trailing backslash. For example, "C:\Users" is returned rather than "C:\Users\\".</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderpath#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>HRESULT</b> Returns S_OK if successful, or an error value otherwise, including the following: </para>
+            <para>This doc was truncated.</para>
+            </returns>
+            <remarks>This function replaces <a href="https://docs.microsoft.com/windows/desktop/api/shlobj_core/nf-shlobj_core-shgetfolderpatha">SHGetFolderPath</a>. That older function is now simply a wrapper for <b>SHGetKnownFolderPath</b>.</remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.ILFree(System.Nullable{Windows.Win32.UI.Shell.Common.ITEMIDLIST})">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.ILFree(Windows.Win32.UI.Shell.Common.ITEMIDLIST*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.ILFree(Windows.Win32.UI.Shell.Common.ITEMIDLIST*)">
+            <summary>Frees an ITEMIDLIST structure allocated by the Shell.</summary>
+            <param name="pidl">
+            <para>Type: <b>PIDLIST_RELATIVE</b> A pointer to the <a href="https://docs.microsoft.com/windows/desktop/api/shtypes/ns-shtypes-itemidlist">ITEMIDLIST</a> structure to be freed. This parameter can be <b>NULL</b>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilfree#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <remarks>
+            <para><b>ILFree</b> is often used with <a href="https://docs.microsoft.com/windows/desktop/api/shtypes/ns-shtypes-itemidlist">ITEMIDLIST</a> structures allocated by one of the other IL functions, but it can be used to free any such structure returned by the Shell—for example, the <b>ITEMIDLIST</b> structure returned by <a href="https://docs.microsoft.com/windows/desktop/api/shlobj_core/nf-shlobj_core-shbrowseforfoldera">SHBrowseForFolder</a> or used in a call to <a href="https://docs.microsoft.com/windows/desktop/api/shlobj_core/nf-shlobj_core-shgetfolderlocation">SHGetFolderLocation</a>. <div class="alert"><b>Note</b>  When using Windows 2000 or later, use <a href="https://docs.microsoft.com/windows/desktop/api/combaseapi/nf-combaseapi-cotaskmemfree">CoTaskMemFree</a> rather than <b>ILFree</b>. <a href="https://docs.microsoft.com/windows/desktop/api/shtypes/ns-shtypes-itemidlist">ITEMIDLIST</a> structures are always allocated with the Component Object Model (COM) task allocator on those platforms.</div> <div> </div></para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilfree#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.ILCreateFromPath(System.String)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.ILCreateFromPath(Windows.Win32.Foundation.PCWSTR)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.ILCreateFromPath(Windows.Win32.Foundation.PCWSTR)">
+            <summary>The ILCreateFromPathW (Unicode) function returns the ITEMIDLIST structure associated with a specified file path.</summary>
+            <param name="pszPath">
+            <para>Type: <b>PCTSTR</b> A pointer to a null-terminated Unicode string that contains the path. This string should be no more than MAX_PATH characters in length, including the terminating null character.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilcreatefrompathw#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>PIDLIST_ABSOLUTE</b> Returns a pointer to an <a href="https://docs.microsoft.com/windows/desktop/api/shtypes/ns-shtypes-itemidlist">ITEMIDLIST</a> structure that corresponds to the path.</para>
+            </returns>
+            <remarks>
+            <para>Call <a href="https://docs.microsoft.com/windows/desktop/api/shlobj_core/nf-shlobj_core-ilfree">ILFree</a> to release the <a href="https://docs.microsoft.com/windows/desktop/api/shtypes/ns-shtypes-itemidlist">ITEMIDLIST</a> when you are finished with it.</para>
+            <para>> [!NOTE] > The shlobj_core.h header defines ILCreateFromPath as an alias which automatically selects the ANSI or Unicode version of this function based on the definition of the UNICODE preprocessor constant. Mixing usage of the encoding-neutral alias with code that not encoding-neutral can lead to mismatches that result in compilation or runtime errors. For more information, see [Conventions for Function Prototypes](/windows/win32/intl/conventions-for-function-prototypes).</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilcreatefrompathw#">Read more on learn.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.SHOpenFolderAndSelectItems(Windows.Win32.UI.Shell.Common.ITEMIDLIST@,System.UInt32,Windows.Win32.UI.Shell.Common.ITEMIDLIST**,System.UInt32)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.SHOpenFolderAndSelectItems(Windows.Win32.UI.Shell.Common.ITEMIDLIST*,System.UInt32,Windows.Win32.UI.Shell.Common.ITEMIDLIST**,System.UInt32)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.SHOpenFolderAndSelectItems(Windows.Win32.UI.Shell.Common.ITEMIDLIST*,System.UInt32,Windows.Win32.UI.Shell.Common.ITEMIDLIST**,System.UInt32)">
+            <summary>Opens a Windows Explorer window with specified items in a particular folder selected.</summary>
+            <param name="pidlFolder">
+            <para>Type: <b>PCIDLIST_ABSOLUTE</b> A pointer to a fully qualified item ID list that specifies the folder.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shopenfolderandselectitems#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="cidl">
+            <para>Type: <b>UINT</b> A count of items in the selection array, <i>apidl</i>. If <i>cidl</i> is zero, then <i>pidlFolder</i> must point to a fully specified <a href="https://docs.microsoft.com/windows/desktop/api/shtypes/ns-shtypes-itemidlist">ITEMIDLIST</a> describing a single item to select. This function opens the parent folder and selects that item.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shopenfolderandselectitems#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="apidl">
+            <para>Type: <b>PCUITEMID_CHILD_ARRAY</b> A pointer to an array of PIDL structures, each of which is an item to select in the target folder referenced by <i>pidlFolder</i>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shopenfolderandselectitems#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <param name="dwFlags">
+            <para>Type: <b>DWORD</b> The optional flags. Under Windows XP this parameter is ignored. In Windows Vista, the following flags are defined.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shopenfolderandselectitems#parameters">Read more on learn.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>HRESULT</b> If this function succeeds, it returns <b>S_OK</b>. Otherwise, it returns an <b>HRESULT</b> error code.</para>
+            </returns>
+            <remarks><a href="https://docs.microsoft.com/windows/desktop/api/objbase/nf-objbase-coinitialize">CoInitialize</a> or <a href="https://docs.microsoft.com/windows/desktop/api/combaseapi/nf-combaseapi-coinitializeex">CoInitializeEx</a> must be called before using <b>SHOpenFolderAndSelectItems</b>. Not doing so causes <b>SHOpenFolderAndSelectItems</b> to fail.</remarks>
+        </member>
+        <member name="T:Windows.Win32.Security.SECURITY_ATTRIBUTES">
+            <summary>The SECURITY_ATTRIBUTES structure contains the security descriptor for an object and specifies whether the handle retrieved by specifying this structure is inheritable.</summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Windows.Win32.Security.SECURITY_ATTRIBUTES.nLength">
+            <summary>The size, in bytes, of this structure. Set this value to the size of the **SECURITY\_ATTRIBUTES** structure.</summary>
+        </member>
+        <member name="F:Windows.Win32.Security.SECURITY_ATTRIBUTES.lpSecurityDescriptor">
+            <summary>
+            <para>A pointer to a [**SECURITY\_DESCRIPTOR**](../winnt/ns-winnt-security_descriptor.md) structure that controls access to the object. If the value of this member is **NULL**, the object is assigned the default security descriptor associated with the [*access token*](/windows/win32/secauthz/access-tokens) of the calling process. This is not the same as granting access to everyone by assigning a **NULL** [*discretionary access control list*](/windows/win32/secauthz/dacls-and-aces) (DACL). By default, the default DACL in the access token of a process allows access only to the user represented by the access token. For information about creating a security descriptor, see [Creating a Security Descriptor](/windows/win32/secauthz/creating-a-security-descriptor-for-a-new-object-in-c--).</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/wtypesbase/ns-wtypesbase-security_attributes#members">Read more on learn.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Security.SECURITY_ATTRIBUTES.bInheritHandle">
+            <summary>A Boolean value that specifies whether the returned handle is inherited when a new process is created. If this member is **TRUE**, the new process inherits the handle.</summary>
+        </member>
+    </members>
+</doc>

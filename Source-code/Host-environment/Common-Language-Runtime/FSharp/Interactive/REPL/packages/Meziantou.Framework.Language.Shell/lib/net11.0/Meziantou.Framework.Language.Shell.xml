@@ -1,0 +1,2082 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Language.Shell</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Language.Shell.CmdCallStatementSyntax">
+            <summary>Represents a <c>call</c> statement, invoking a label or another script.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdCallStatementSyntax.CallKeyword">
+            <summary>The <c>call</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdCallStatementSyntax.Target">
+            <summary>The invoked command.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.CmdElseClauseSyntax">
+            <summary>Represents the <c>else</c> clause of a <see cref="T:Meziantou.Framework.Language.Shell.CmdIfStatementSyntax"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdElseClauseSyntax.ElseKeyword">
+            <summary>The <c>else</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdElseClauseSyntax.Body">
+            <summary>The statement run when the condition fails.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.CmdForStatementSyntax">
+            <summary>Represents a <c>for</c> loop, including the <c>/d</c>, <c>/r</c>, <c>/l</c>, and <c>/f</c> forms.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.ForKeyword">
+            <summary>The <c>for</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.SwitchToken">
+            <summary>The <c>/d</c>, <c>/r</c>, <c>/l</c>, or <c>/f</c> switch, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.SwitchArguments">
+            <summary>Words between the switch and the loop variable, such as an <c>/f</c> option string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.VariableToken">
+            <summary>The loop variable, written <c>%%i</c> in a script and <c>%i</c> at the prompt.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.InKeyword">
+            <summary>The <c>in</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.OpenParenToken">
+            <summary>The opening parenthesis of the item set.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.Items">
+            <summary>The words of the item set.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.CloseParenToken">
+            <summary>The closing parenthesis of the item set.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.DoKeyword">
+            <summary>The <c>do</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.Body">
+            <summary>The loop body.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdForStatementSyntax.VariableName">
+            <summary>The loop variable name without its leading percent signs.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.CmdGotoStatementSyntax">
+            <summary>Represents a <c>goto</c> statement.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdGotoStatementSyntax.GotoKeyword">
+            <summary>The <c>goto</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdGotoStatementSyntax.LabelToken">
+            <summary>The target label, which may be <c>:eof</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdGotoStatementSyntax.Label">
+            <summary>The target label without any leading colon.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.CmdIfStatementSyntax">
+            <summary>Represents an <c>if</c> statement in its <c>errorlevel</c>, <c>defined</c>, <c>exist</c>, or comparison form.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdIfStatementSyntax.IfKeyword">
+            <summary>The <c>if</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdIfStatementSyntax.CaseInsensitiveToken">
+            <summary>The <c>/i</c> switch, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdIfStatementSyntax.NotKeyword">
+            <summary>The <c>not</c> keyword, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdIfStatementSyntax.Condition">
+            <summary>
+            The condition. A <see cref="T:Meziantou.Framework.Language.Shell.ShellUnaryExpressionSyntax"/> for the <c>errorlevel</c>, <c>defined</c>,
+            <c>exist</c>, and <c>cmdextversion</c> forms, a <see cref="T:Meziantou.Framework.Language.Shell.ShellBinaryExpressionSyntax"/> for the <c>==</c> and
+            <c>EQU</c> comparisons, and a lone <see cref="T:Meziantou.Framework.Language.Shell.ShellOperandExpressionSyntax"/> for text matching none of them.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdIfStatementSyntax.Body">
+            <summary>The statement run when the condition holds.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdIfStatementSyntax.ElseClause">
+            <summary>The <c>else</c> clause, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdIfStatementSyntax.IsCaseInsensitive">
+            <summary>Returns <see langword="true"/> when the comparison ignores case.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdIfStatementSyntax.IsNegated">
+            <summary>Returns <see langword="true"/> when the condition is negated.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.CmdLabelStatementSyntax">
+            <summary>Represents a label, <c>:name</c>, which is a jump target for <c>goto</c> and <c>call</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdLabelStatementSyntax.ColonToken">
+            <summary>The leading colon.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdLabelStatementSyntax.NameToken">
+            <summary>The label name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdLabelStatementSyntax.Name">
+            <summary>The label name without its leading colon.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.CmdParenthesizedBlockSyntax">
+            <summary>Represents a parenthesized block of statements, <c>( ... )</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdParenthesizedBlockSyntax.OpenParenToken">
+            <summary>The opening parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdParenthesizedBlockSyntax.Statements">
+            <summary>The statements in the block.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdParenthesizedBlockSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.CmdSetStatementSyntax">
+            <summary>Represents a <c>set</c> statement, including its <c>/a</c> and <c>/p</c> forms.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdSetStatementSyntax.SetKeyword">
+            <summary>The <c>set</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdSetStatementSyntax.SwitchToken">
+            <summary>The <c>/a</c> or <c>/p</c> switch, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdSetStatementSyntax.NameToken">
+            <summary>The variable name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdSetStatementSyntax.EqualsToken">
+            <summary>The <c>=</c> token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdSetStatementSyntax.Value">
+            <summary>The assigned value, absent when the statement clears the variable.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdSetStatementSyntax.Name">
+            <summary>The variable name, or an empty string when the statement has no name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdSetStatementSyntax.IsArithmetic">
+            <summary>Returns <see langword="true"/> for <c>set /a</c>, which evaluates its value arithmetically.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdSetStatementSyntax.IsPrompt">
+            <summary>Returns <see langword="true"/> for <c>set /p</c>, which prompts the user.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.CmdVariableReferenceSyntax">
+            <summary>Represents <c>%VAR%</c>, delayed expansion <c>!VAR!</c>, an argument such as <c>%1</c> or <c>%~dp0</c>, or a loop variable <c>%%i</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdVariableReferenceSyntax.OpenToken">
+            <summary>The introducing <c>%</c>, <c>%%</c>, or <c>!</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdVariableReferenceSyntax.NameToken">
+            <summary>The variable name or argument selector.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdVariableReferenceSyntax.CloseToken">
+            <summary>The closing <c>%</c> or <c>!</c>, absent for argument and loop-variable references.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdVariableReferenceSyntax.Name">
+            <summary>The referenced name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdVariableReferenceSyntax.IsDelayed">
+            <summary>Returns <see langword="true"/> for <c>!VAR!</c>, which is resolved at execution time.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.CmdVariableReferenceSyntax.IsLoopVariable">
+            <summary>Returns <see langword="true"/> for a <c>for</c> loop variable, <c>%%i</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.Internals.CmdParser">
+            <summary>Parser for the Windows command interpreter. Never throws; unrecognized text is kept as skipped text.</summary>
+            <summary>Cmd words, variable references, trivia, and the shared token helpers.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.Internals.CmdParser._stopAtCloseParen">
+            <summary>
+            Whether a <c>)</c> ends the text being read. Outside a block cmd treats parentheses as ordinary characters, so
+            <c>echo a)b</c> prints <c>a)b</c>, while inside one the same <c>)</c> closes the block.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.CmdParser.ParseIfCondition">
+            <summary>
+            Reads the condition of an <c>if</c>. The <c>errorlevel</c>, <c>defined</c>, <c>exist</c>, and
+            <c>cmdextversion</c> forms become a unary expression and the <c>==</c> and <c>EQU</c> forms a binary one, so
+            each operand is an ordinary word with its quoting and variable references exposed. Text matching none of the
+            forms is left as a lone operand rather than reported as an error, as cmd only diagnoses it when the line runs.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.CmdParser.ParseSetValue">
+            <summary>
+            Reads the value of a <c>set</c> statement. Unlike an ordinary argument it runs to the end of the line, so
+            parentheses and other metacharacters inside <c>set /a "x=(1+2)*3"</c> stay part of the value.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.CmdParser.ParsePercentReference(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Shell.ShellSyntaxTrivia},System.Int32)">
+            <summary>
+            Reads <c>%VAR%</c>, a positional argument such as <c>%1</c> or <c>%~dp0</c>, or a loop variable <c>%%i</c>.
+            A lone <c>%</c> that closes nothing stays literal text.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.CmdParser.IsRemComment">
+            <summary>
+            A <c>REM</c> comment runs to the end of the line and must be followed by a separator. A leading <c>@</c> only
+            suppresses echoing, so <c>@rem</c> is a comment too.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.Internals.CmdParser.PendingFullStart">
+            <summary>
+            Where the next token's text starts once its leading trivia is counted. It has to be read before the scan that
+            measures the token, because <see cref="M:Meziantou.Framework.Language.Shell.Internals.CmdParser.TakeTrivia"/> falls back to the current position when no trivia is
+            pending, which by then would be the end of the token rather than its start.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.CmdParser.IsAtEqualityOperator">
+            <summary>
+            Characters that end a word. <c>(</c> is not among them: it only opens a block at the start of a command, so
+            <c>echo a(b</c> is a single word. <c>)</c> ends a word only inside a block or a <c>for</c> item list.
+            </summary>
+            <summary>
+            Returns <see langword="true"/> when a <c>==</c> starts here and the caller asked to stop at one. Only the left
+            operand of a cmd comparison does: <c>=</c> is an ordinary word character everywhere else, so <c>if a==b</c>
+            would otherwise read as the single word <c>a==b</c>.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.Internals.ParseContext">
+            <summary>Describes where a statement list ends.</summary>
+            <param name="StopCharacter">A closing character such as <c>)</c>, or <c>\0</c> when there is none.</param>
+            <param name="StopWords">Reserved words that terminate the list, such as <c>then</c> or <c>done</c>.</param>
+            <param name="StopAtCaseTerminator">Whether <c>;;</c> ends the list, which is true only inside a case clause.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.ParseContext.#ctor(System.Char,System.String[],System.Boolean)">
+            <summary>Describes where a statement list ends.</summary>
+            <param name="StopCharacter">A closing character such as <c>)</c>, or <c>\0</c> when there is none.</param>
+            <param name="StopWords">Reserved words that terminate the list, such as <c>then</c> or <c>done</c>.</param>
+            <param name="StopAtCaseTerminator">Whether <c>;;</c> ends the list, which is true only inside a case clause.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.Internals.ParseContext.StopCharacter">
+            <summary>A closing character such as <c>)</c>, or <c>\0</c> when there is none.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.Internals.ParseContext.StopWords">
+            <summary>Reserved words that terminate the list, such as <c>then</c> or <c>done</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.Internals.ParseContext.StopAtCaseTerminator">
+            <summary>Whether <c>;;</c> ends the list, which is true only inside a case clause.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.Internals.PendingHereDocument">
+            <summary>A here-document whose body has been announced by a redirection but not yet read.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PendingHereDocument.#ctor(Meziantou.Framework.Language.Shell.ShellRedirectionSyntax,System.String)">
+            <summary>A here-document whose body has been announced by a redirection but not yet read.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.Internals.PosixLexer">
+            <summary>
+            Character-level scanner for the POSIX shell family. The parser drives it and chooses the lexical mode, because
+            the same characters mean different things in command position, in argument position, and inside quotes.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixLexer.ReadInlineTrivia">
+            <summary>Reads blanks, line continuations, and a trailing comment. Stops at a line break.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixLexer.ReadStatementTrivia">
+            <summary>Reads blanks, line continuations, comments, and line breaks.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixLexer.IsCommentStart(System.Int32)">
+            <summary>A <c>#</c> only starts a comment at the beginning of a word, not in the middle of one.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixLexer.IsWordBoundary(System.Char)">
+            <summary>Returns <see langword="true"/> for characters that cannot appear unquoted inside a word.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixLexer.IsSpecialParameter(System.Char)">
+            <summary>The single-character special parameters: <c>$?</c>, <c>$@</c>, <c>$1</c>, and friends.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.Internals.PosixParser">
+            <summary>Compound statements: control flow, function definitions, groups, and here-documents.</summary>
+            <summary>Parser for the POSIX shell family (<c>sh</c>, <c>bash</c>, and <c>zsh</c>).</summary>
+            <remarks>
+            The parser never throws. Anything it cannot recognize is kept as <see cref="T:Meziantou.Framework.Language.Shell.ShellSkippedTextSyntax"/> alongside a
+            diagnostic, so <c>ToFullString()</c> always reproduces the input exactly.
+            </remarks>
+            <summary>
+            The two expression grammars the POSIX family has: arithmetic, used by <c>$(( ))</c> and <c>(( ))</c>, and the
+            conditional used by <c>[[ ]]</c>.
+            </summary>
+            <remarks>
+            Both entry points parse the text between the delimiters and check that the whole of it was consumed. Anything
+            left over means the grammar did not fit, and the caller falls back to keeping the text verbatim, so a construct
+            this file does not understand still round-trips.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.IsDelimiterAfter(System.Int32)">
+            <summary>Returns whether the character <paramref name="offset"/> ahead is a word boundary or the end of input.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.IsParenthesizedWordList">
+            <summary>Returns whether a <c>name (</c> word list follows the loop keyword, which is the zsh short form.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.IsAtAnonymousFunction">
+            <summary>Returns whether the text at the current position is an anonymous function header, <c>()</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.ParseZshForeachStatement(Meziantou.Framework.Language.Shell.ShellSyntaxToken)">
+            <summary>Reads <c>foreach x (a b) ... end</c> and the short <c>for x (a b) command</c> form.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.ParseZshRepeatStatement">
+            <summary>Reads <c>repeat N</c> followed by a <c>do ... done</c> block, a brace group, or a single command.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.ParseFunctionBody">
+            <summary>Reads the body of a function definition, which is normally a brace group or a subshell.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.LooksLikeCoprocName(System.String)">
+            <summary>A coprocess name is followed by a compound command; otherwise the word is the command itself.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.SkipQuotedSectionOrCharacter">
+            <summary>Advances one character, or past a whole quoted section so a <c>]]</c> inside quotes does not end the expression.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.DrainHereDocuments(System.Collections.Generic.List{Meziantou.Framework.Language.Shell.ShellStatementSyntax})">
+            <summary>
+            Reads the bodies announced by any <c>&lt;&lt;</c> redirections on the line just parsed. The bodies start after
+            the next line break, so they are appended to the command rather than nested inside the redirection.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.PeekBareWord">
+            <summary>
+            Returns the unquoted word starting at the current position without consuming it, or <see langword="null"/>
+            when the word continues into quoting or an expansion. A reserved word is only reserved when it forms a whole
+            word, so <c>for$(cmd)</c> is a command name rather than the <c>for</c> keyword.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.Internals.PosixParser._regexParenDepth">
+            <summary>Open-parenthesis count inside the pattern of a <c>=~</c>, or -1 when no pattern is being read.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.TryAttachZshAlways(Meziantou.Framework.Language.Shell.ShellStatementSyntax)">
+            <summary>
+            Wraps a brace group that a zsh <c>always</c> block follows. The construct only exists in zsh, and only after a
+            group, so anywhere else the word <c>always</c> stays an ordinary command name.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.FindGlobQualifierEnd">
+            <summary>Returns the position just past a balanced glob qualifier group, or -1 when it is not one.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.FindBracketExpressionEnd">
+            <summary>
+            Returns the position just past a bracket expression such as <c>[abc]</c>, or -1 when the <c>[</c> is not one.
+            A lone <c>[</c> is the name of the <c>test</c> command, so a closing bracket has to appear in the same word.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.ParseEscapeSequence(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Shell.ShellSyntaxTrivia},System.Int32,System.Boolean)">
+            <summary>
+            Reads a backslash escape. Unquoted, a backslash escapes any character. Inside double quotes it is only
+            special before <c>$</c>, <c>`</c>, <c>"</c>, <c>\</c>, and a line break; anywhere else it stays literal,
+            so <c>"a\qb"</c> really is <c>a\qb</c>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.ParseAnsiCQuotedString(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Shell.ShellSyntaxTrivia},System.Int32)">
+            <summary>
+            Reads the bash <c>$'...'</c> form. Unlike a plain single-quoted string it resolves ANSI-C escapes, so
+            <c>$'a\tb'</c> holds a real tab.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.AppendAnsiCEscape(System.Text.StringBuilder)">
+            <summary>Appends the character named by the ANSI-C escape at the current position, then consumes it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.ReadRawExpressionToken(System.Int32,System.Int32)">
+            <summary>Consumes the text between two offsets as one token, for expression text no grammar here fits.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.IsWordTerminator(System.Char)">
+            <summary>
+            Returns whether <paramref name="value"/> ends a word here. Inside a backquoted substitution the closing
+            backtick terminates the word rather than opening a nested substitution.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.IsAtCaseTerminator">
+            <summary>Returns <see langword="true"/> at <c>;;</c>, <c>;&amp;</c>, or <c>;;&amp;</c>, which only end a case clause.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.ConsumeRestAsText(Meziantou.Framework.Language.Shell.ShellSyntaxToken)">
+            <summary>Folds the remaining text into a single token so a too-deeply-nested script still round-trips.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.Internals.PosixParser.ArithmeticOperators">
+            <summary>Binary arithmetic operators, longest first so that <c>&lt;&lt;=</c> wins over <c>&lt;&lt;</c> and <c>&lt;</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.Internals.PosixParser._expressionFailed">
+            <summary>
+            Set when the grammar does not fit, for instance an operator with nothing to operate on. The partial tree is
+            then thrown away and the caller keeps the text verbatim, so a half-built node never reaches the tree.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.Internals.PosixParser.ConditionalUnaryOperators">
+            <summary>Unary tests in a conditional expression, such as <c>-f</c> in <c>[[ -f path ]]</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.Internals.PosixParser.ConditionalBinaryOperators">
+            <summary>Comparisons in a conditional expression. Longest first so <c>==</c> wins over <c>=</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.TryParseArithmeticExpression(System.Int32)">
+            <summary>Parses the text up to <paramref name="end"/> as an arithmetic expression, or returns null.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.TryParseConditionalExpression(System.Int32)">
+            <summary>Parses the text up to <paramref name="end"/> as a conditional expression, or returns null.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.TryParseDelimited(System.Int32,System.Func{Meziantou.Framework.Language.Shell.ShellExpressionSyntax})">
+            <summary>
+            Runs <paramref name="parse"/> and keeps the result only if it consumed everything up to <paramref name="end"/>.
+            On anything else the lexer, the pending trivia, and the diagnostics are rolled back to where they were.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.TryEnterExpressionRecursion">
+            <summary>
+            Bounds the recursive descent of both expression grammars. Nesting past the limit marks the parse as failed,
+            so the caller keeps the text verbatim instead of the stack running out.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.AbandonedExpression">
+            <summary>A zero-width placeholder for an abandoned subtree; the whole parse is discarded anyway.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.ParseArithmeticOperand">
+            <summary>
+            Reads one arithmetic operand. A bare name is a variable in arithmetic, so the run stops at any operator
+            character rather than at the usual word boundaries.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PosixParser.ParseConditionalRegexOperand">
+            <summary>
+            Reads the pattern on the right of <c>=~</c>. It is an extended regular expression, so <c>(</c>, <c>|</c>, and
+            the <c>)</c> that closes an open group are part of it rather than word boundaries. A <c>)</c> that closes
+            nothing ends it, and a group left open means the text is not a conditional expression after all.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.Internals.PowerShellLexer">
+            <summary>
+            Character-level scanner for the PowerShell family. As with the POSIX lexer, the parser chooses the mode: the same
+            characters lex differently in expression position and in command-argument position.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellLexer.IsArgumentBoundary(System.Char)">
+            <summary>
+            Characters that end a bare command argument. Note that <c>&gt;</c> and <c>&lt;</c> are not among them: they
+            only start a redirection when whitespace precedes them, so <c>in&gt;</c> is a single word.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellLexer.IsVariableNameCharacter(System.Char)">
+            <summary>Variable names may carry a scope or provider prefix, as in <c>$env:PATH</c> or <c>$script:x</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.Internals.PowerShellParser">
+            <summary>Parser for the PowerShell family. Never throws; unrecognized text is kept as skipped text plus a diagnostic.</summary>
+            <summary>PowerShell expressions, in precedence order from assignment down to primary expressions.</summary>
+            <summary>PowerShell control flow, declarations, and blocks.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.PeekAfterKeyword(System.String)">
+            <summary>Returns the first character after <paramref name="keyword"/> that is not whitespace or a line break.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ContinuePipeline(Meziantou.Framework.Language.Shell.ShellStatementSyntax)">
+            <summary>Continues a pipeline whose first element has already been read.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.IsExpressionStart">
+            <summary>Decides between expression mode and command mode, which is the central ambiguity of PowerShell syntax.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.IsLabelOnALoop">
+            <summary>Returns whether the label at the current position is followed by a loop keyword.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ReadRestOfLineVerbatim">
+            <summary>Reads whatever remains on the line as a single literal word, for the <c>--%</c> stop-parsing token.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ParseCommandWord">
+            <summary>Reads one command word: literal text mixed with quoting, variables, and embedded expressions.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.IsVariableNameStart(System.Char)">
+            <summary>Returns whether <paramref name="value"/> can follow a <c>$</c> and still name a variable.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.IsAtHereStringStart">
+            <summary>
+            Returns <see langword="true"/> at the start of a here-string. The opening <c>@"</c> has to be the last thing
+            on its line; otherwise the <c>@</c> introduces a splatted variable.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.TryReadUnicodeEscape(System.String@)">
+            <summary>
+            Reads a <c>`u{HHHH}</c> escape, which names a code point by hexadecimal value. Returns <see langword="false"/>
+            without consuming anything when the sequence is malformed, so the text still round-trips.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.PushTrivia(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Shell.ShellSyntaxTrivia},System.Int32)">
+            <summary>Puts already-read trivia back so the next token created picks it up as its leading trivia.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ParseSingleExpression(System.Boolean@)">
+            <summary>
+            Reads a single expression from the start of the text, for <c>ShellSyntaxTree.ParseExpression</c>.
+            </summary>
+            <param name="hasTrailingContent">Set when something other than trivia follows the expression.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ParseWordOperatorExpression(System.String[],System.Func{Meziantou.Framework.Language.Shell.ShellExpressionSyntax})">
+            <summary>Handles the <c>-name</c> style operators, which all share the same shape.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.PeekWordOperator">
+            <summary>Returns the lowercase name of a <c>-eq</c> style operator at the current position, without consuming it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.IsAtPostfixIncrement">
+            <summary>Returns whether a <c>++</c> or <c>--</c> follows, possibly after inline whitespace.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ParseExpandableString">
+            <summary>Reads a double-quoted string, keeping embedded variables and subexpressions as child nodes.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ParseHereString">
+            <summary>Reads a here-string, <c>@" ... "@</c> or <c>@' ... '@</c>, whose body is kept verbatim.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.StripHereStringDelimiterLineBreaks(System.String)">
+            <summary>
+            Removes the line break that follows the opening delimiter and the one that precedes the closing delimiter.
+            Both belong to the delimiters rather than the content, so they are dropped from the value but kept in the text.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.FindHereStringTerminator(System.Int32,System.Char,System.Int32)">
+            <summary>
+            Returns the index of the <c>"@</c> that ends a here-string body, or <c>-1</c> when there is none. An expandable
+            here-string may embed a <c>$( … )</c> that itself contains a here-string, and the inner terminator must not be
+            mistaken for the outer one.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.SkipSubexpression(System.Int32,System.Int32)">
+            <summary>Returns the index just past the <c>( … )</c> that starts at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.SkipQuotedString(System.Int32)">
+            <summary>Returns the index just past the single-line quoted string that starts at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.IsHereStringOpenAt(System.Int32)">
+            <summary>Returns whether the <c>@"</c> at <paramref name="index"/> opens a here-string rather than a splat.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ParseOptionalClauseExpression">
+            <summary>Reads one clause of a <c>for</c> header, which may be empty.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ParseClause">
+            <summary>
+            Reads one loop clause. A clause is usually an expression, but PowerShell also accepts a pipeline there, as in
+            <c>for ($i = 0; Test-Path $p; $i++)</c> or <c>foreach ($x in Get-ChildItem -Directory)</c>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ParseSwitchPattern">
+            <summary>Reads a switch clause pattern, which is a value, the <c>default</c> keyword, or a condition block.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ParseAttributeArgument">
+            <summary>
+            Reads one attribute argument. Attributes take either positional values or named ones written
+            <c>Name = value</c>, which assignment-level parsing would confuse with the surrounding comma list.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ParseBaseTypeReference">
+            <summary>A base type in a class declaration is written without brackets, unlike a type literal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.PeekKeyword">
+            <summary>Returns the lowercase identifier at the current position without consuming it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.PeekKeywordAfterAttributes">
+            <summary>Looks past a run of <c>[...]</c> attributes and returns the keyword that follows, without consuming anything.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ReadBareToken">
+            <summary>Reads a bare identifier such as a function or class name.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.ReadTypeNameToken(System.Boolean,System.Boolean)">
+            <summary>Reads a type name, which may contain dots, generics, and array suffixes.</summary>
+            <param name="includeArgumentList">
+            When set, an attribute argument list is read as part of the name, so that <c>[ValidateRange(1, 5)]$x</c> is one
+            type literal instead of an unterminated one. Attribute positions parse the argument list separately instead.
+            </param>
+            <param name="insideBrackets">
+            When set, the name runs to the closing bracket, so an assembly-qualified name such as
+            <c>[Some.Type, Some.Assembly]</c> is not cut short at the comma. A line break still ends it, so an unterminated
+            bracket cannot swallow the rest of the file.
+            </param>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.Internals.PowerShellParser.SkipBalancedParentheses(System.String,System.Int32)">
+            <summary>Returns the index just past the parenthesized group that starts at <paramref name="index"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixArithmeticExpansionSyntax">
+            <summary>Represents an arithmetic expansion, <c>$(( ... ))</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixArithmeticExpansionSyntax.OpenToken">
+            <summary>The <c>$((</c> token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixArithmeticExpansionSyntax.Expression">
+            <summary>
+            The arithmetic expression between the delimiters. Text the arithmetic grammar does not fit comes back as a
+            <see cref="T:Meziantou.Framework.Language.Shell.ShellRawExpressionSyntax"/> rather than being rejected.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixArithmeticExpansionSyntax.CloseToken">
+            <summary>The <c>))</c> token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixArithmeticExpansionSyntax.ExpressionText">
+            <summary>The expression text as written.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixArrayAssignmentSyntax">
+            <summary>Represents an array assignment such as <c>files=(a b c)</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixCaseClauseSyntax">
+            <summary>Represents one pattern clause of a <see cref="T:Meziantou.Framework.Language.Shell.PosixCaseStatementSyntax"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixCaseClauseSyntax.OpenParenToken">
+            <summary>The optional <c>(</c> that may precede the first pattern.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixCaseClauseSyntax.PatternSeparatorTokens">
+            <summary>The <c>|</c> tokens separating alternative patterns.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixCaseClauseSyntax.TerminatorToken">
+            <summary>The <c>;;</c>, <c>;&amp;</c>, or <c>;;&amp;</c> token, absent on the last clause when the source omits it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.PosixCaseClauseSyntax.GetFullStart(Meziantou.Framework.Language.Shell.ShellSyntaxToken,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Shell.ShellWordSyntax},System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Shell.ShellSyntaxToken},Meziantou.Framework.Language.Shell.ShellSyntaxToken,Meziantou.Framework.Language.Shell.ShellStatementListSyntax,Meziantou.Framework.Language.Shell.ShellSyntaxToken)">
+            <summary>
+            The clause starts at whichever part comes first. A clause with neither an opening parenthesis nor a pattern,
+            which only malformed input produces, still has to report the position of the text it does cover.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixCaseStatementSyntax">
+            <summary>Represents a <c>case ... in ... esac</c> statement.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixCaseStatementSyntax.Subject">
+            <summary>The word the clauses are matched against.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixCompoundStatementSyntax">
+            <summary>Represents a subshell, <c>( ... )</c>, or a brace group, <c>{ ...; }</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixCompoundStatementSyntax.IsSubshell">
+            <summary>Returns <see langword="true"/> for <c>( ... )</c>, which runs in a child shell.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixDelimitedExpressionStatementSyntax">
+            <summary>Represents a <c>[[ ... ]]</c> conditional or a <c>(( ... ))</c> arithmetic command.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixDelimitedExpressionStatementSyntax.Expression">
+            <summary>
+            The expression between the delimiters. Text that does not fit the grammar comes back as a
+            <see cref="T:Meziantou.Framework.Language.Shell.ShellRawExpressionSyntax"/> rather than being rejected.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixDelimitedExpressionStatementSyntax.IsArithmetic">
+            <summary>Returns <see langword="true"/> for <c>(( ... ))</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixElifClauseSyntax">
+            <summary>Represents an <c>elif ... then ...</c> clause of an <see cref="T:Meziantou.Framework.Language.Shell.PosixIfStatementSyntax"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixElseClauseSyntax">
+            <summary>Represents the <c>else</c> clause of an <see cref="T:Meziantou.Framework.Language.Shell.PosixIfStatementSyntax"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixForStatementSyntax">
+            <summary>Represents a <c>for</c> or <c>select</c> loop over a word list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixForStatementSyntax.Keyword">
+            <summary>The <c>for</c> or <c>select</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixForStatementSyntax.InKeyword">
+            <summary>The <c>in</c> keyword, absent when the loop iterates the positional parameters.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixForStatementSyntax.ListTerminatorToken">
+            <summary>The <c>;</c> or newline-equivalent token that closes the item list, when present.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixFunctionDefinitionSyntax">
+            <summary>Represents a function definition, in either the <c>name() { }</c> or <c>function name { }</c> form.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixFunctionDefinitionSyntax.FunctionKeyword">
+            <summary>The <c>function</c> keyword, present only in the bash and zsh form.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixFunctionDefinitionSyntax.IsAnonymous">
+            <summary>Returns <see langword="true"/> for a zsh anonymous function, which has no name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixFunctionDefinitionSyntax.Body">
+            <summary>The function body, normally a <see cref="T:Meziantou.Framework.Language.Shell.PosixCompoundStatementSyntax"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixHereDocumentSyntax">
+            <summary>Represents the body of a here-document, including its closing delimiter line.</summary>
+            <remarks>
+            The body starts on the line after the whole command line, not right after the <c>&lt;&lt;</c> operator, so it
+            follows the statement it belongs to rather than nesting inside it. <see cref="P:Meziantou.Framework.Language.Shell.PosixHereDocumentSyntax.Redirection"/> links back to the
+            redirection that introduced it, and <see cref="P:Meziantou.Framework.Language.Shell.ShellRedirectionSyntax.HereDocument"/> is the reverse link.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixHereDocumentSyntax.BodyToken">
+            <summary>The raw body text, starting with the line break that follows the redirection operator.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixHereDocumentSyntax.DelimiterToken">
+            <summary>The closing delimiter line. Missing when the source ends before the delimiter appears.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixHereDocumentSyntax.Redirection">
+            <summary>The redirection that introduced this here-document.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixHereDocumentSyntax.StripsLeadingTabs">
+            <summary>Returns <see langword="true"/> when the operator was <c>&lt;&lt;-</c>, which strips leading tabs at runtime.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixHereDocumentSyntax.IsQuotedDelimiter">
+            <summary>
+            Returns <see langword="true"/> when the delimiter was quoted, which disables expansion inside the body.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixIfStatementSyntax">
+            <summary>Represents an <c>if ... then ... fi</c> statement.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixPrefixedStatementSyntax">
+            <summary>Represents a statement prefixed by the <c>time</c> or <c>coproc</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixPrefixedStatementSyntax.Keyword">
+            <summary>The <c>time</c> or <c>coproc</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixPrefixedStatementSyntax.NameToken">
+            <summary>The optional coprocess name, as in <c>coproc NAME { ... }</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixProcessSubstitutionSyntax">
+            <summary>Represents process substitution, <c>&lt;(...)</c> or <c>&gt;(...)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixProcessSubstitutionSyntax.OpenToken">
+            <summary>The <c>&lt;(</c> or <c>&gt;(</c> token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixProcessSubstitutionSyntax.IsInput">
+            <summary>Returns <see langword="true"/> for <c>&lt;(...)</c>, which the command reads from.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixProcessSubstitutionSyntax.IsFileSubstitution">
+            <summary>
+            Returns <see langword="true"/> for the zsh <c>=(...)</c> form, which writes the output to a temporary file and
+            passes its name rather than using a pipe.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PosixWhileStatementSyntax">
+            <summary>Represents a <c>while</c> or <c>until</c> loop.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixWhileStatementSyntax.Keyword">
+            <summary>The <c>while</c> or <c>until</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PosixWhileStatementSyntax.IsUntil">
+            <summary>Returns <see langword="true"/> for an <c>until</c> loop, which repeats while the condition fails.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellArrayLiteralSyntax">
+            <summary>Represents a comma-separated list of values, <c>1, 2, 3</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellArrayLiteralSyntax.Elements">
+            <summary>The array elements.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellArrayLiteralSyntax.SeparatorTokens">
+            <summary>The separator that follows each entry of <see cref="P:Meziantou.Framework.Language.Shell.PowerShellArrayLiteralSyntax.Elements"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellAssignmentExpressionSyntax">
+            <summary>Represents an assignment such as <c>$x = 1</c> or <c>$x += 1</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAssignmentExpressionSyntax.Target">
+            <summary>The assignment target.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAssignmentExpressionSyntax.OperatorToken">
+            <summary>The assignment operator.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAssignmentExpressionSyntax.Value">
+            <summary>The assigned value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax">
+            <summary>Represents an attribute or type constraint, <c>[Parameter(Mandatory)]</c> or <c>[string]</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax.OpenBracketToken">
+            <summary>The opening bracket.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax.NameToken">
+            <summary>The attribute or type name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax.OpenParenToken">
+            <summary>The opening parenthesis of the argument list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax.Arguments">
+            <summary>The attribute arguments.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax.SeparatorTokens">
+            <summary>The separator that follows each entry of <see cref="P:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax.Arguments"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax.CloseParenToken">
+            <summary>The closing parenthesis of the argument list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax.CloseBracketToken">
+            <summary>The closing bracket.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax.Name">
+            <summary>The attribute or type name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellAttributeSyntax.IsTypeConstraint">
+            <summary>Returns <see langword="true"/> when the attribute has no argument list, making it a type constraint.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellBinaryExpressionSyntax">
+            <summary>Represents a binary expression such as <c>$a -eq $b</c>, <c>1..10</c>, or <c>$a + $b</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellBinaryExpressionSyntax.Left">
+            <summary>The left operand.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellBinaryExpressionSyntax.OperatorToken">
+            <summary>The operator.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellBinaryExpressionSyntax.Right">
+            <summary>The right operand.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellCastExpressionSyntax">
+            <summary>Represents a cast expression, <c>[int]$value</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellCastExpressionSyntax.Type">
+            <summary>The target type.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellCastExpressionSyntax.Operand">
+            <summary>The value being cast.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellCatchClauseSyntax">
+            <summary>Represents a <c>catch</c> clause, optionally filtered by exception type.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellCatchClauseSyntax.CatchKeyword">
+            <summary>The <c>catch</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellCatchClauseSyntax.TypeFilters">
+            <summary>The exception types this clause handles.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellCatchClauseSyntax.SeparatorTokens">
+            <summary>The separator that follows each entry of <see cref="P:Meziantou.Framework.Language.Shell.PowerShellCatchClauseSyntax.TypeFilters"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellCatchClauseSyntax.Body">
+            <summary>The clause body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellDataStatementSyntax">
+            <summary>Represents a <c>data</c> statement.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDataStatementSyntax.DataKeyword">
+            <summary>The <c>data</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDataStatementSyntax.NameToken">
+            <summary>The variable the data is stored in, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDataStatementSyntax.ParameterTokens">
+            <summary>Parameters such as <c>-SupportedCommand</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDataStatementSyntax.Body">
+            <summary>The data body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellDoStatementSyntax">
+            <summary>Represents a <c>do ... while</c> or <c>do ... until</c> loop.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDoStatementSyntax.DoKeyword">
+            <summary>The <c lang="powershell">do</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDoStatementSyntax.Body">
+            <summary>The loop body.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDoStatementSyntax.ConditionKeyword">
+            <summary>The trailing <c lang="powershell">while</c> or <c lang="powershell">until</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDoStatementSyntax.OpenParenToken">
+            <summary>The opening parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDoStatementSyntax.Condition">
+            <summary>The loop condition.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDoStatementSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellDoStatementSyntax.IsUntil">
+            <summary>Returns <see langword="true"/> when the loop repeats until the condition becomes true.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellElseClauseSyntax">
+            <summary>Represents an <c>else</c> clause.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellElseClauseSyntax.ElseKeyword">
+            <summary>The <c>else</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellElseClauseSyntax.Body">
+            <summary>The body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellElseIfClauseSyntax">
+            <summary>Represents an <c>elseif</c> clause.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellElseIfClauseSyntax.ElseIfKeyword">
+            <summary>The <c>elseif</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellElseIfClauseSyntax.OpenParenToken">
+            <summary>The opening parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellElseIfClauseSyntax.Condition">
+            <summary>The condition.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellElseIfClauseSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellElseIfClauseSyntax.Body">
+            <summary>The body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellExpandableStringSyntax">
+            <summary>Represents a double-quoted or here-string literal, whose embedded expansions are kept as child nodes.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellExpandableStringSyntax.OpenToken">
+            <summary>The opening quote or here-string marker.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellExpandableStringSyntax.Parts">
+            <summary>The literal runs and embedded expansions.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellExpandableStringSyntax.CloseToken">
+            <summary>The closing quote or here-string marker.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellExpressionStatementSyntax">
+            <summary>Wraps an expression used where a statement is expected.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellExpressionStatementSyntax.Expression">
+            <summary>The expression.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellExpressionStatementSyntax.Redirections">
+            <summary>Redirections applied to the expression.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellFinallyClauseSyntax">
+            <summary>Represents a <c>finally</c> clause.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFinallyClauseSyntax.FinallyKeyword">
+            <summary>The <c>finally</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFinallyClauseSyntax.Body">
+            <summary>The clause body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellFlowStatementSyntax">
+            <summary>Represents <c>break</c>, <c>continue</c>, <c>return</c>, <c>exit</c>, or <c>throw</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFlowStatementSyntax.Keyword">
+            <summary>The flow keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFlowStatementSyntax.Value">
+            <summary>The returned, thrown, or label value, when present.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellForEachStatementSyntax">
+            <summary>Represents a <c>foreach ($x in $y) { }</c> loop.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForEachStatementSyntax.ForEachKeyword">
+            <summary>The <c>foreach</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForEachStatementSyntax.OpenParenToken">
+            <summary>The opening parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForEachStatementSyntax.Variable">
+            <summary>The loop variable.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForEachStatementSyntax.InKeyword">
+            <summary>The <c>in</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForEachStatementSyntax.Collection">
+            <summary>The collection being enumerated.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForEachStatementSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForEachStatementSyntax.Body">
+            <summary>The loop body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellForStatementSyntax">
+            <summary>Represents a <c>for</c> loop.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForStatementSyntax.ForKeyword">
+            <summary>The <c>for</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForStatementSyntax.OpenParenToken">
+            <summary>The opening parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForStatementSyntax.Initializer">
+            <summary>The initializer, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForStatementSyntax.FirstSemicolonToken">
+            <summary>The first <c>;</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForStatementSyntax.Condition">
+            <summary>The condition, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForStatementSyntax.SecondSemicolonToken">
+            <summary>The second <c>;</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForStatementSyntax.Iterator">
+            <summary>The iterator, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForStatementSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellForStatementSyntax.Body">
+            <summary>The loop body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax">
+            <summary>Represents a <c>function</c>, <c>filter</c>, or <c>workflow</c> definition.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax.Keyword">
+            <summary>The <c>function</c>, <c>filter</c>, or <c>workflow</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax.NameToken">
+            <summary>The definition name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax.OpenParenToken">
+            <summary>The opening parenthesis of an inline parameter list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax.Parameters">
+            <summary>The inline parameters.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax.ParameterSeparatorTokens">
+            <summary>The separator that follows each entry of <see cref="P:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax.Parameters"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax.CloseParenToken">
+            <summary>The closing parenthesis of an inline parameter list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax.Body">
+            <summary>The body.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax.Name">
+            <summary>The definition name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellFunctionDefinitionSyntax.IsFilter">
+            <summary>Returns <see langword="true"/> for a <c>filter</c>, which runs its body once per pipeline item.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellHashEntrySyntax">
+            <summary>Represents one <c>key = value</c> entry of a hashtable literal.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellHashEntrySyntax.Key">
+            <summary>The entry key.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellHashEntrySyntax.EqualsToken">
+            <summary>The <c>=</c> token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellHashEntrySyntax.Value">
+            <summary>The entry value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellHashEntrySyntax.SeparatorToken">
+            <summary>The <c>;</c> that follows the entry, when present.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellHashLiteralSyntax">
+            <summary>Represents a hashtable literal, <c>@{ key = value }</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellHashLiteralSyntax.OpenToken">
+            <summary>The <c>@{</c> token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellHashLiteralSyntax.Entries">
+            <summary>The entries.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellHashLiteralSyntax.CloseBraceToken">
+            <summary>The closing brace.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellIfStatementSyntax">
+            <summary>Represents an <c>if</c> statement with its <c>elseif</c> and <c>else</c> clauses.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIfStatementSyntax.IfKeyword">
+            <summary>The <c>if</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIfStatementSyntax.OpenParenToken">
+            <summary>The opening parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIfStatementSyntax.Condition">
+            <summary>The condition.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIfStatementSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIfStatementSyntax.Body">
+            <summary>The body.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIfStatementSyntax.ElseIfClauses">
+            <summary>The <c>elseif</c> clauses.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIfStatementSyntax.ElseClause">
+            <summary>The <c>else</c> clause, when present.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellIndexExpressionSyntax">
+            <summary>Represents an index access, <c>$x[0]</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIndexExpressionSyntax.Target">
+            <summary>The indexed expression.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIndexExpressionSyntax.OpenBracketToken">
+            <summary>The opening bracket.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIndexExpressionSyntax.Index">
+            <summary>The index expression.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellIndexExpressionSyntax.CloseBracketToken">
+            <summary>The closing bracket.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellInvocationExpressionSyntax">
+            <summary>Represents a method call, <c>$x.Method(1, 2)</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellInvocationExpressionSyntax.Target">
+            <summary>The member being invoked.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellInvocationExpressionSyntax.OpenParenToken">
+            <summary>The opening parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellInvocationExpressionSyntax.Arguments">
+            <summary>The call arguments.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellInvocationExpressionSyntax.SeparatorTokens">
+            <summary>The separator that follows each entry of <see cref="P:Meziantou.Framework.Language.Shell.PowerShellInvocationExpressionSyntax.Arguments"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellInvocationExpressionSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellLabeledStatementSyntax">
+            <summary>Represents a loop preceded by a label, <c>:outer while (...) { }</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellLabeledStatementSyntax.LabelToken">
+            <summary>The label, including its leading colon.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellLabeledStatementSyntax.Statement">
+            <summary>The labeled statement.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellLabeledStatementSyntax.Label">
+            <summary>The label without its leading colon.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellLiteralExpressionSyntax">
+            <summary>Represents a number, a verbatim string, or a bare word used as a value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellLiteralExpressionSyntax.Token">
+            <summary>The literal token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellLiteralExpressionSyntax.Value">
+            <summary>The literal value with quoting resolved.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellMemberAccessExpressionSyntax">
+            <summary>Represents member access, <c>$x.Name</c> or <c>[Type]::Member</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellMemberAccessExpressionSyntax.Target">
+            <summary>The expression the member is read from.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellMemberAccessExpressionSyntax.OperatorToken">
+            <summary>The <c>.</c> or <c>::</c> token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellMemberAccessExpressionSyntax.MemberNameToken">
+            <summary>The member name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellMemberAccessExpressionSyntax.IsStatic">
+            <summary>Returns <see langword="true"/> for the static member operator, <c>::</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellNamedBlockSyntax">
+            <summary>Represents a <c>begin</c>, <c>process</c>, <c>end</c>, <c>clean</c>, or <c>dynamicparam</c> block.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellNamedBlockSyntax.Keyword">
+            <summary>The block keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellNamedBlockSyntax.Body">
+            <summary>The block body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellParamBlockSyntax">
+            <summary>Represents a <c>param( ... )</c> block.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParamBlockSyntax.Attributes">
+            <summary>Attributes applied to the block.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParamBlockSyntax.ParamKeyword">
+            <summary>The <c>param</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParamBlockSyntax.OpenParenToken">
+            <summary>The opening parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParamBlockSyntax.Parameters">
+            <summary>The declared parameters.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParamBlockSyntax.SeparatorTokens">
+            <summary>The separator that follows each entry of <see cref="P:Meziantou.Framework.Language.Shell.PowerShellParamBlockSyntax.Parameters"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParamBlockSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellParameterSyntax">
+            <summary>Represents one declared parameter, with its attributes, type, and default value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParameterSyntax.Attributes">
+            <summary>The attributes and type constraints applied to the parameter.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParameterSyntax.Variable">
+            <summary>The parameter variable.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParameterSyntax.EqualsToken">
+            <summary>The <c>=</c> before a default value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParameterSyntax.DefaultValue">
+            <summary>The default value, when present.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellParenthesizedExpressionSyntax">
+            <summary>Represents a parenthesized expression or a pipeline used as a value, <c>( ... )</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParenthesizedExpressionSyntax.OpenParenToken">
+            <summary>The opening parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParenthesizedExpressionSyntax.Statements">
+            <summary>The statements inside the parentheses.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellParenthesizedExpressionSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellScriptBlockSyntax">
+            <summary>Represents a script block, <c>{ ... }</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellScriptBlockSyntax.OpenBraceToken">
+            <summary>The opening brace.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellScriptBlockSyntax.Statements">
+            <summary>The statements in the block.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellScriptBlockSyntax.CloseBraceToken">
+            <summary>The closing brace.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellSubExpressionSyntax">
+            <summary>Represents a subexpression, <c>$( ... )</c>, or an array subexpression, <c>@( ... )</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSubExpressionSyntax.OpenToken">
+            <summary>The <c>$(</c> or <c>@(</c> token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSubExpressionSyntax.Statements">
+            <summary>The statements inside.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSubExpressionSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSubExpressionSyntax.IsArray">
+            <summary>Returns <see langword="true"/> for <c>@( ... )</c>, which always produces an array.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellSwitchClauseSyntax">
+            <summary>Represents one clause of a <c>switch</c> statement.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSwitchClauseSyntax.Pattern">
+            <summary>The pattern, or the <c>default</c> keyword expression.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSwitchClauseSyntax.Body">
+            <summary>The clause body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellSwitchStatementSyntax">
+            <summary>Represents a <c>switch</c> statement.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSwitchStatementSyntax.SwitchKeyword">
+            <summary>The <c>switch</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSwitchStatementSyntax.ParameterTokens">
+            <summary>Switch parameters such as <c>-Regex</c> or <c>-File</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSwitchStatementSyntax.OpenParenToken">
+            <summary>The opening parenthesis around the condition.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSwitchStatementSyntax.Condition">
+            <summary>The value being matched.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSwitchStatementSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSwitchStatementSyntax.OpenBraceToken">
+            <summary>The opening brace of the clause list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSwitchStatementSyntax.Clauses">
+            <summary>The clauses.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellSwitchStatementSyntax.CloseBraceToken">
+            <summary>The closing brace.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellTernaryExpressionSyntax">
+            <summary>Represents the PowerShell 7 ternary expression, <c>$c ? $a : $b</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTernaryExpressionSyntax.Condition">
+            <summary>The condition.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTernaryExpressionSyntax.QuestionToken">
+            <summary>The <c>?</c> token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTernaryExpressionSyntax.WhenTrue">
+            <summary>The value used when the condition is true.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTernaryExpressionSyntax.ColonToken">
+            <summary>The <c>:</c> token.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTernaryExpressionSyntax.WhenFalse">
+            <summary>The value used when the condition is false.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellTrapStatementSyntax">
+            <summary>Represents a <c>trap</c> statement.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTrapStatementSyntax.TrapKeyword">
+            <summary>The <c>trap</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTrapStatementSyntax.TypeFilter">
+            <summary>The exception type this trap handles, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTrapStatementSyntax.Body">
+            <summary>The trap body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellTryStatementSyntax">
+            <summary>Represents a <c>try</c> statement with its <c>catch</c> and <c>finally</c> clauses.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTryStatementSyntax.TryKeyword">
+            <summary>The <c>try</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTryStatementSyntax.Body">
+            <summary>The protected body.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTryStatementSyntax.CatchClauses">
+            <summary>The catch clauses.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTryStatementSyntax.FinallyClause">
+            <summary>The finally clause, when present.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax">
+            <summary>Represents a <c>class</c> or <c>enum</c> definition.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.Attributes">
+            <summary>Attributes applied to the definition.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.Keyword">
+            <summary>The <c>class</c> or <c>enum</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.NameToken">
+            <summary>The type name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.ColonToken">
+            <summary>The <c>:</c> that introduces a base type list.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.BaseTypes">
+            <summary>The base types and implemented interfaces.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.BaseTypeSeparatorTokens">
+            <summary>The separator that follows each entry of <see cref="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.BaseTypes"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.OpenBraceToken">
+            <summary>The opening brace.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.Members">
+            <summary>The member declarations, kept as statements.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.CloseBraceToken">
+            <summary>The closing brace.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeDefinitionSyntax.Name">
+            <summary>The type name.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellTypeLiteralSyntax">
+            <summary>Represents a type literal, <c>[System.String]</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeLiteralSyntax.OpenBracketToken">
+            <summary>The opening bracket.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeLiteralSyntax.NameToken">
+            <summary>The type name, kept verbatim.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeLiteralSyntax.CloseBracketToken">
+            <summary>The closing bracket.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellTypeLiteralSyntax.Name">
+            <summary>The type name between the brackets.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellUnaryExpressionSyntax">
+            <summary>Represents a prefix or postfix unary expression such as <c>-not $x</c> or <c>$i++</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellUnaryExpressionSyntax.PrefixOperatorToken">
+            <summary>The operator when it precedes the operand.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellUnaryExpressionSyntax.Operand">
+            <summary>The operand.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellUnaryExpressionSyntax.PostfixOperatorToken">
+            <summary>The operator when it follows the operand.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellUsingStatementSyntax">
+            <summary>Represents a <c>using</c> statement, such as <c>using namespace System.IO</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellUsingStatementSyntax.UsingKeyword">
+            <summary>The <c>using</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellUsingStatementSyntax.KindToken">
+            <summary>The <c>namespace</c>, <c>module</c>, or <c>assembly</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellUsingStatementSyntax.Target">
+            <summary>The namespace, module, or assembly being referenced.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellVariableExpressionSyntax">
+            <summary>Represents a variable reference such as <c>$name</c>, <c>${name}</c>, <c>$env:PATH</c>, or a splat <c>@name</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellVariableExpressionSyntax.SigilToken">
+            <summary>The <c>$</c> or <c>@</c> that introduces the variable.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellVariableExpressionSyntax.NameToken">
+            <summary>The variable name, including any scope or drive prefix.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellVariableExpressionSyntax.Name">
+            <summary>The variable name without the sigil or braces.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellVariableExpressionSyntax.IsSplatted">
+            <summary>Returns <see langword="true"/> for a splatted variable, <c>@name</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.PowerShellWhileStatementSyntax">
+            <summary>Represents a <c>while</c> loop.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellWhileStatementSyntax.WhileKeyword">
+            <summary>The <c>while</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellWhileStatementSyntax.OpenParenToken">
+            <summary>The opening parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellWhileStatementSyntax.Condition">
+            <summary>The loop condition.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellWhileStatementSyntax.CloseParenToken">
+            <summary>The closing parenthesis.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.PowerShellWhileStatementSyntax.Body">
+            <summary>The loop body.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.SeparatedNodes">
+            <summary>
+            Builds the source text of a list of nodes interleaved with separator tokens, where <c>separators[i]</c> follows
+            <c>nodes[i]</c>. The separator list is either the same length as the node list, or one shorter when the last
+            node has no trailing separator.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellAssignmentSyntax">
+            <summary>Represents a variable assignment such as <c>NAME=value</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellAssignmentSyntax.IsAppend">
+            <summary>Returns <see langword="true"/> for the bash and zsh append form, <c>name+=value</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellAssignmentSyntax.Value">
+            <summary>The assigned word, or <see langword="null"/> for an empty assignment such as <c>NAME=</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellBinaryExpressionSyntax">
+            <summary>
+            Represents an infix expression such as <c>a + b</c> in arithmetic or <c>$x == y</c> in a conditional. The operator
+            is kept as a token rather than an enum, because the operator sets differ between the two grammars.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellBinaryExpressionSyntax.OperatorText">
+            <summary>The operator text, such as <c>+</c>, <c>-eq</c>, or <c>=~</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellCommandListSyntax">
+            <summary>Represents two or more pipelines joined by the <c>&amp;&amp;</c> and <c>||</c> operators.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellCommandListSyntax.OperatorTokens">
+            <summary>The operator that follows each pipeline. <c>OperatorTokens[i]</c> follows <c>Pipelines[i]</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellCommandSubstitutionSyntax">
+            <summary>Represents a command substitution such as <c>$(...)</c> or a backquoted command.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellCommandSubstitutionSyntax.IsBackquoted">
+            <summary>Returns <see langword="true"/> for the legacy backquoted form.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellCommandSyntax">
+            <summary>Represents a simple command: optional assignments, a command name, arguments, and redirections.</summary>
+            <remarks>
+            <see cref="P:Meziantou.Framework.Language.Shell.ShellCommandSyntax.ChildNodes"/> keeps the parts in source order, so a command such as <c>echo &gt;out hi</c> round-trips
+            exactly. Use <see cref="P:Meziantou.Framework.Language.Shell.ShellCommandSyntax.Name"/>, <see cref="P:Meziantou.Framework.Language.Shell.ShellCommandSyntax.Arguments"/>, <see cref="P:Meziantou.Framework.Language.Shell.ShellCommandSyntax.Assignments"/>, and <see cref="P:Meziantou.Framework.Language.Shell.ShellCommandSyntax.Redirections"/>
+            to read the parts by role.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellCommandSyntax.Name">
+            <summary>The command name, or <see langword="null"/> for an assignment-only or redirection-only command.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellCommandSyntax.Assignments">
+            <summary>The assignments that prefix the command, as in <c>FOO=bar cmd</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellCommandSyntax.ChildNodes">
+            <summary>The assignments, words, and redirections of this command, in source order.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellCommandSyntax.NameValue">
+            <summary>The command name with quotes and escapes resolved, or <see langword="null"/> when it needs runtime expansion.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellCommandSyntax.WithArguments(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.Shell.ShellWordSyntax})">
+            <summary>Replaces the arguments while keeping the command name, assignments, and redirections in place.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellConditionalExpressionSyntax">
+            <summary>Represents the arithmetic ternary, <c>a ? b : c</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellDiagnostic">
+            <summary>Represents a parser diagnostic produced while reading shell syntax.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellDiagnostic.#ctor(System.String,System.String,Meziantou.Framework.Language.Shell.ShellDiagnosticSeverity,Meziantou.Framework.Language.Shell.TextSpan)">
+            <summary>Represents a parser diagnostic produced while reading shell syntax.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellDiagnosticSeverity">
+            <summary>Represents the severity of a shell parser diagnostic.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellDialect">
+            <summary>Identifies a shell dialect understood by <see cref="T:Meziantou.Framework.Language.Shell.ShellSyntaxTree"/>.</summary>
+            <remarks>The set of dialects is closed. Use the static properties to obtain an instance.</remarks>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialect.PosixFeatures">
+            <summary>What POSIX itself defines, so every dialect in the family has it.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellDialect.Sh">
+            <summary>The POSIX shell (<c>sh</c>). The strict baseline of the POSIX family.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellDialect.Bash">
+            <summary>The GNU Bourne-Again shell (<c>bash</c>).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellDialect.Zsh">
+            <summary>The Z shell (<c>zsh</c>).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellDialect.PowerShell">
+            <summary>Windows PowerShell 5.1.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellDialect.PowerShellCore">
+            <summary>PowerShell Core 7 and later (<c>pwsh</c>).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellDialect.Cmd">
+            <summary>The Windows command interpreter (<c>cmd.exe</c>).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellDialect.Name">
+            <summary>The canonical lowercase name of the dialect, such as <c>bash</c> or <c>pwsh</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellDialect.Family">
+            <summary>The grammar family the dialect belongs to.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellDialect.Features">
+            <summary>The optional syntax constructs the dialect supports.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellDialect.HasFeature(Meziantou.Framework.Language.Shell.ShellDialectFeatures)">
+            <summary>Returns <see langword="true"/> when the dialect supports every feature in <paramref name="feature"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellDialect.TryParse(System.String,Meziantou.Framework.Language.Shell.ShellDialect@)">
+            <summary>Resolves a dialect from its name. Recognizes the canonical names and common aliases such as <c>powershell-core</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellDialectFamily">
+            <summary>Identifies the grammar family a <see cref="T:Meziantou.Framework.Language.Shell.ShellDialect"/> belongs to. The family determines which parser runs.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFamily.Posix">
+            <summary>POSIX-style shells: <c>sh</c>, <c>bash</c>, and <c>zsh</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFamily.PowerShell">
+            <summary>Windows PowerShell and PowerShell Core.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFamily.Cmd">
+            <summary>The Windows command interpreter (<c>cmd.exe</c>).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellDialectFeatures">
+            <summary>Describes the optional syntax constructs a <see cref="T:Meziantou.Framework.Language.Shell.ShellDialect"/> supports.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.ExtendedTest">
+            <summary>The <c>[[ ... ]]</c> extended test construct.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.ArithmeticCommand">
+            <summary>The <c>(( ... ))</c> arithmetic command. POSIX defines no such command, so <c>sh</c> lacks it.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.HereString">
+            <summary>The <c>&lt;&lt;&lt;</c> here-string redirection operator.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.DollarQuoting">
+            <summary>ANSI-C quoting (<c>$'...'</c>) and locale-translated strings (<c>$"..."</c>).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.Arrays">
+            <summary>Indexed and associative array assignments such as <c>a=(1 2 3)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.FunctionKeyword">
+            <summary>The <c>function</c> keyword form of a function definition.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.ProcessSubstitution">
+            <summary>Process substitution: <c>&lt;(...)</c> and <c>&gt;(...)</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.Coproc">
+            <summary>The <c>coproc</c> keyword.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.SelectLoop">
+            <summary>The <c>select</c> loop.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.ZshExtensions">
+            <summary>The zsh <c>foreach ... end</c> loop and anonymous functions.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.PipelineChainOperators">
+            <summary>The <c>&amp;&amp;</c> and <c>||</c> pipeline chain operators (PowerShell 7 and later).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.TernaryOperator">
+            <summary>The ternary <c>? :</c> operator (PowerShell 7 and later).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.NullCoalescing">
+            <summary>The <c>??</c> and <c>??=</c> null-coalescing operators (PowerShell 7 and later).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.CleanBlock">
+            <summary>The <c>clean</c> block in an advanced function (PowerShell 7.3 and later).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.DelayedExpansion">
+            <summary>Delayed variable expansion using <c>!VAR!</c>.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.ArithmeticExpansion">
+            <summary>The <c>$(( ... ))</c> arithmetic expansion. POSIX defines it, so every dialect in the family has it.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellDialectFeatures.ArithmeticExponentiation">
+            <summary>The <c>**</c> exponentiation operator in arithmetic. POSIX defines no such operator, so <c>sh</c> lacks it.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellEmbeddedExpressionSyntax">
+            <summary>
+            Wraps an expression used as part of a command word, such as <c>(Get-Date)</c> or <c>@{ a = 1 }</c> passed as an
+            argument. It lets a word hold structured expressions alongside plain literal text.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellEmptyStatementSyntax">
+            <summary>
+            Represents a statement with no content, produced by a separator that follows nothing. PowerShell allows this, as
+            in <c>;; Get-Date</c>. The node has no text of its own; only the separator that follows it does.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellEscapeSequenceSyntax">
+            <summary>Represents an escape sequence inside a word, such as <c>\$</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellEscapeSequenceSyntax.Value">
+            <summary>The character the escape sequence produces.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellExpressionSyntax">
+            <summary>Base type for shell constructs that produce a value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellGlobSyntax">
+            <summary>Represents a pathname-expansion metacharacter inside a word, such as <c>*</c> or <c>?</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellGlobSyntax.IsRecursive">
+            <summary>Returns <see langword="true"/> for <c>**</c>, which matches across directory separators.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellGlobSyntax.IsBracketExpression">
+            <summary>Returns <see langword="true"/> for a bracket expression such as <c>[abc]</c> or <c>[!a-z]</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellGlobSyntax.HasQualifier">
+            <summary>Returns <see langword="true"/> when a zsh glob qualifier follows the pattern, as in <c>*(.)</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellGroupedExpressionSyntax">
+            <summary>Represents a parenthesized expression, <c>( ... )</c>, inside arithmetic or a conditional.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellLiteralWordPartSyntax">
+            <summary>Represents unquoted literal text inside a word.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellLiteralWordPartSyntax.Value">
+            <summary>The literal text with escape sequences resolved.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellOperandExpressionSyntax">
+            <summary>
+            Represents a leaf of an expression: a number, a variable, or a word. The value is held as a
+            <see cref="T:Meziantou.Framework.Language.Shell.ShellWordSyntax"/> so quoting, expansions, and globs keep the structure they have everywhere else.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellOperandExpressionSyntax.Value">
+            <summary>The operand text with quoting resolved, or <see langword="null"/> when it needs runtime expansion.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellParseOptions">
+            <summary>Configures how <see cref="T:Meziantou.Framework.Language.Shell.ShellSyntaxTree"/> parses text.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellParseOptions.DefaultMaxRecursionDepth">
+            <summary>The default value of <see cref="P:Meziantou.Framework.Language.Shell.ShellParseOptions.MaxRecursionDepth"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellParseOptions.Dialect">
+            <summary>The dialect to parse the text as.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellParseOptions.MaxRecursionDepth">
+            <summary>
+            The maximum number of nested constructs the parser descends into before reporting <c>SHELL0100</c> and
+            treating the remaining text as skipped text. Guards against stack overflow on deeply nested input.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellPipelineSyntax">
+            <summary>Represents two or more commands joined by <c>|</c> or <c>|&amp;</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellPipelineSyntax.BangToken">
+            <summary>The leading <c>!</c> that negates the pipeline exit status, when present.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellPipelineSyntax.OperatorTokens">
+            <summary>The pipe operator that follows each command. <c>OperatorTokens[i]</c> follows <c>Commands[i]</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellQuotedStringSyntax">
+            <summary>Represents a quoted section of a word.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellQuotedStringSyntax.IsVerbatim">
+            <summary>Returns <see langword="true"/> for single-quoted text, where neither expansion nor escaping happens.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellQuotedStringSyntax.IsAnsiC">
+            <summary>Returns <see langword="true"/> for the bash <c>$'...'</c> form, which resolves ANSI-C escapes.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellRawExpressionSyntax">
+            <summary>
+            Represents expression text kept verbatim, without further structure. Used for constructs whose inner grammar the
+            tree does not model, and as the never-throw fallback when text cannot be parsed as an expression.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellRawExpressionSyntax.Text">
+            <summary>The raw expression text.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellRedirectionSyntax">
+            <summary>Represents an input or output redirection attached to a command.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellRedirectionSyntax.IoNumberToken">
+            <summary>The optional file descriptor number that precedes the operator, as in <c>2&gt;</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellRedirectionSyntax.Target">
+            <summary>The redirection target, or <see langword="null"/> when the source omitted it.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellRedirectionSyntax.HereDocument">
+            <summary>
+            The here-document body this redirection introduced, for <c>&lt;&lt;</c> and <c>&lt;&lt;-</c>. The body text
+            lives after the command line, so it is not part of this node's own text.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellScriptSyntax">
+            <summary>Represents the root node of a shell script and provides replacement helpers.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellScriptSyntax.ReplaceNode(Meziantou.Framework.Language.Shell.ShellSyntaxNode,Meziantou.Framework.Language.Shell.ShellSyntaxNode)">
+            <summary>
+            Replaces <paramref name="oldNode"/> with <paramref name="newNode"/> and reparses.
+            </summary>
+            <remarks>
+            When <paramref name="newNode"/> carries no leading trivia of its own, the whitespace and comments in front of
+            <paramref name="oldNode"/> are kept, so replacing an argument does not glue it to the previous word. Supply
+            leading trivia on <paramref name="newNode"/> to control the surrounding formatting instead.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellScriptSyntax.ReplaceToken(Meziantou.Framework.Language.Shell.ShellSyntaxToken,Meziantou.Framework.Language.Shell.ShellSyntaxToken)">
+            <inheritdoc cref="M:Meziantou.Framework.Language.Shell.ShellScriptSyntax.ReplaceNode(Meziantou.Framework.Language.Shell.ShellSyntaxNode,Meziantou.Framework.Language.Shell.ShellSyntaxNode)"/>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellScriptSyntax.TryGetNodeSpan(Meziantou.Framework.Language.Shell.ShellSyntaxNode,Meziantou.Framework.Language.Shell.ShellSyntaxNode,Meziantou.Framework.Language.Shell.TextSpan@)">
+            <summary>Finds <paramref name="targetNode"/> by identity and reports the span it occupies.</summary>
+            <remarks>
+            Walked with a stack rather than by recursion. The parser accepts operator and member chains of any length, so
+            the tree can be as deep as the script is long and recursing on that depth would run the stack out.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellSkippedTextSyntax">
+            <summary>Represents invalid or unrecognized shell text retained in the concrete syntax tree.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellStatementListSyntax">
+            <summary>Represents a sequence of statements separated by <c>;</c>, <c>&amp;</c>, or line breaks.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellStatementListSyntax.SeparatorTokens">
+            <summary>The separator that follows each statement. <c>SeparatorTokens[i]</c> follows <c>Statements[i]</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellStatementSyntax">
+            <summary>Base type for shell constructs that can appear in a statement list.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellSyntaxKind">
+            <summary>Identifies the kind of shell syntax node, token, or trivia.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellSyntaxKind.BareTextToken">
+            <summary>Unquoted literal text inside a word.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Shell.ShellSyntaxKind.LineContinuationTrivia">
+            <summary>A backslash immediately followed by a line break, which joins two physical lines.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellSyntaxNode">
+            <summary>Base type for all shell syntax nodes in the immutable syntax tree.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxNode.FullText">
+            <summary>The exact source text covered by this node, including the trivia of its tokens.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxNode.ChildNodes">
+            <summary>The child nodes of this node, in source order.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxNode.Tokens">
+            <summary>The tokens owned directly by this node. Tokens of child nodes are not included.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxNode.Dialect">
+            <summary>The dialect the node was parsed as, or <see langword="null"/> when the node is not attached to a tree.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxNode.StartsWithTrivia">
+            <summary>The span of this node excluding leading and trailing trivia.</summary>
+            <summary>Returns whether the node's text begins with trivia.</summary>
+            <remarks>
+            Reading the leading trivia off the first token is not enough. An incomplete construct can begin with a missing
+            token of no width, as <c>l l ()</c> does with its absent function name, and that token carries no trivia even
+            though the node does: the trivia sits on the first token that has text.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxNode.SpanWithoutLeadingTrivia">
+            <summary>
+            The span to overwrite when a replacement keeps the trivia in front of the node: everything the node owns except
+            that leading trivia.
+            </summary>
+            <remarks>
+            This is not <see cref="P:Meziantou.Framework.Language.Shell.ShellSyntaxNode.Span"/>. That span stops at the last token with text, so trivia held by a missing token
+            at the end of an incomplete construct falls outside it while still being part of the node's text. Overwriting
+            only <see cref="P:Meziantou.Framework.Language.Shell.ShellSyntaxNode.Span"/> would leave that trivia in place and duplicate it.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxNode.FullSpan">
+            <summary>The span of this node including the trivia of its tokens.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.ToFullString">
+            <summary>Returns the exact source text of this node, including comments and all other trivia.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.ChildNodesAndTokens">
+            <summary>Returns the child nodes and the tokens owned by this node, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.DescendantNodes">
+            <summary>Returns every descendant node, in source order.</summary>
+            <remarks>
+            Walked with an explicit stack rather than by recursion: a long operator or member chain builds a deeply
+            left-nested tree, and recursing over one would run the stack out on input that parsed perfectly well.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.DescendantNodesAndTokens">
+            <summary>Returns every descendant node and token, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.DescendantTokens">
+            <summary>Returns every token in this subtree, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.DescendantComments">
+            <summary>Returns every comment in this node, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.IsEquivalentTo(Meziantou.Framework.Language.Shell.ShellSyntaxNode)">
+            <summary>
+            Compares this subtree with <paramref name="other"/> structurally, ignoring trivia. Node kinds, child order,
+            and token text must match; whitespace, line breaks, and comments are not considered.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.SingleNode(Meziantou.Framework.Language.Shell.ShellSyntaxNode)">
+            <summary>Wraps a required child so a node can build its child list with a collection expression.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.OptionalNode(Meziantou.Framework.Language.Shell.ShellSyntaxNode)">
+            <summary>Wraps an optional child, yielding nothing when it is absent.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.GetFullStart(System.ReadOnlySpan{System.Nullable{Meziantou.Framework.Language.Shell.ShellSyntaxNodeOrToken}})">
+            <summary>Returns the start of the first non-empty token or node in <paramref name="parts"/>, or 0 when there is none.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellSyntaxNodeOrToken">
+            <summary>Represents either a syntax node or a syntax token in traversal APIs.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellSyntaxRewriter">
+            <summary>Visitor that produces a rewritten shell syntax tree.</summary>
+            <remarks>
+            <para>
+            Override any <c>Visit</c> method and return a different node to replace it. Returning the node unchanged, which is
+            what the base implementations do, means "leave this alone and keep looking inside it", so every node type is
+            descended into regardless of dialect.
+            </para>
+            <para>
+            A replaced node is spliced into the source text and the script is reparsed once, the same mechanism
+            <see cref="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.ReplaceNode(Meziantou.Framework.Language.Shell.ShellSyntaxNode,Meziantou.Framework.Language.Shell.ShellSyntaxNode)"/> uses. <c>Visit(tree.Root)</c> returns a rewritten
+            <see cref="T:Meziantou.Framework.Language.Shell.ShellScriptSyntax"/>; visiting a node further down rebuilds through its script and returns the node
+            that took its place, so a rewrite can be scoped to one subtree. A node with no script above it, one built by
+            <see cref="T:Meziantou.Framework.Language.Shell.SyntaxFactory"/> rather than parsed, is returned unchanged because there is no text to splice into.
+            </para>
+            <para>
+            As with <see cref="M:Meziantou.Framework.Language.Shell.ShellSyntaxNode.ReplaceNode(Meziantou.Framework.Language.Shell.ShellSyntaxNode,Meziantou.Framework.Language.Shell.ShellSyntaxNode)"/>, a replacement that carries no leading trivia of its own keeps
+            the whitespace and comments in front of the node it replaces.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxRewriter.DefaultVisit(Meziantou.Framework.Language.Shell.ShellSyntaxNode)">
+            <summary>Returns <paramref name="node"/> unchanged, so the walk keeps descending into it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxRewriter.CollectEdits(Meziantou.Framework.Language.Shell.ShellSyntaxNode,System.Collections.Generic.List{Meziantou.Framework.Language.Shell.ShellSyntaxRewriter.TextEdit})">
+            <summary>
+            Asks the overrides about <paramref name="node"/>. A node that was replaced is recorded and not descended into,
+            since its replacement stands for the whole subtree.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxRewriter.FindCounterpart(Meziantou.Framework.Language.Shell.ShellScriptSyntax,Meziantou.Framework.Language.Shell.ShellSyntaxNode)">
+            <summary>Finds the node that replaced <paramref name="original"/> in the reparsed script.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellSyntaxToken">
+            <summary>Represents a lexical token that belongs to a shell syntax node.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxToken.Text">
+            <summary>The exact source text of the token, excluding trivia.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxToken.ValueText">
+            <summary>The token text with escapes and quoting resolved. Equal to <see cref="P:Meziantou.Framework.Language.Shell.ShellSyntaxToken.Text"/> when there is nothing to resolve.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxToken.IsMissing">
+            <summary>Returns <see langword="true"/> when the parser synthesized this token because the source was missing it.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellSyntaxTree">
+            <summary>Represents an immutable shell syntax tree with source text and diagnostics.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxTree.Dialect">
+            <summary>The dialect the text was parsed as.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Shell.ShellDialect)">
+            <summary>Parses <paramref name="text"/> as a complete script. Never throws; problems are reported as diagnostics.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Shell.ShellParseOptions)">
+            <inheritdoc cref="M:Meziantou.Framework.Language.Shell.ShellSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Shell.ShellDialect)"/>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxTree.ParseCommand(System.String,Meziantou.Framework.Language.Shell.ShellDialect)">
+            <summary>
+            Parses <paramref name="text"/> as a single command, pipeline, or command list. Content after the first
+            statement is reported as <c>SHELL0101</c> and kept as skipped text so the backing tree still round-trips.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxTree.ParseCommand(System.String,Meziantou.Framework.Language.Shell.ShellParseOptions)">
+            <inheritdoc cref="M:Meziantou.Framework.Language.Shell.ShellSyntaxTree.ParseCommand(System.String,Meziantou.Framework.Language.Shell.ShellDialect)"/>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxTree.BelongsTo(Meziantou.Framework.Language.Shell.ShellStatementSyntax,Meziantou.Framework.Language.Shell.ShellStatementSyntax)">
+            <summary>
+            Returns whether <paramref name="statement"/> is part of <paramref name="command"/> despite following it in the
+            statement list.
+            </summary>
+            <remarks>
+            A here-document body starts on the line after the operator that introduces it, so it is a statement of its own
+            sitting after the command it belongs to. Reading it as content following the command would report every
+            here-document as trailing content.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxTree.GetChanges(Meziantou.Framework.Language.Shell.ShellSyntaxTree)">
+            <summary>
+            Returns the edit that turns <paramref name="oldTree"/>'s text into this tree's text. The common prefix and
+            suffix are trimmed, so an edit in the middle of a script reports only the part that actually differs.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellSyntaxTree.IsEquivalentTo(Meziantou.Framework.Language.Shell.ShellSyntaxTree)">
+            <summary>
+            Compares this tree with <paramref name="other"/> structurally, ignoring whitespace and comments. Two scripts
+            that differ only in formatting are equivalent; two scripts parsed as different dialects never are.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellSyntaxTrivia">
+            <summary>Represents shell trivia such as whitespace, line breaks, comments, or line continuations.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellSyntaxTrivia.IsComment">
+            <summary>Returns <see langword="true"/> when the trivia is a comment.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellSyntaxVisitor">
+            <summary>Base visitor for walking shell syntax trees without returning a value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellSyntaxVisitor`1">
+            <summary>Base visitor for walking shell syntax trees and returning a value.</summary>
+            <typeparam name="TResult">Type returned by visit methods.</typeparam>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellTextChange">
+            <summary>Represents a text replacement operation applied to a <see cref="T:Meziantou.Framework.Language.Shell.SourceText"/> or <see cref="T:Meziantou.Framework.Language.Shell.ShellSyntaxTree"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellUnaryExpressionSyntax">
+            <summary>
+            Represents a prefix expression such as <c>-x</c>, <c>!$a</c>, or the conditional test <c>-f file</c>, and the
+            postfix increment forms <c>i++</c> and <c>i--</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellUnaryExpressionSyntax.OperatorText">
+            <summary>The operator text, whichever side it is on.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellUnaryExpressionSyntax.IsPostfix">
+            <summary>Returns <see langword="true"/> when the operator follows the operand, as in <c>i++</c>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellVariableReferenceSyntax">
+            <summary>Represents a parameter expansion such as <c>$name</c>, <c>${name}</c>, or <c>%NAME%</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellVariableReferenceSyntax.IntroducerToken">
+            <summary>The token that introduces the expansion, such as <c>$</c>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellVariableReferenceSyntax.Name">
+            <summary>The name of the referenced variable, without the introducer or braces.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellVariableReferenceSyntax.IsBraced">
+            <summary>Returns <see langword="true"/> when the reference uses the braced form.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellWordPartSyntax">
+            <summary>Base type for the pieces a <see cref="T:Meziantou.Framework.Language.Shell.ShellWordSyntax"/> is built from.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ShellWordSyntax">
+            <summary>Represents a single shell word: a command name, an argument, or a redirection target.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ShellWordSyntax.Value">
+            <summary>
+            Returns the word text with quotes and escapes resolved, or <see langword="null"/> when the value depends on
+            runtime expansion (a variable reference or command substitution).
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellWordSyntax.WithText(System.String)">
+            <summary>
+            Replaces the whole word with a single literal <paramref name="text"/>, keeping the leading trivia of the
+            original word so surrounding whitespace and comments survive the edit.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.ShellWordSyntax.GetExpandableStringValue(Meziantou.Framework.Language.Shell.PowerShellExpandableStringSyntax)">
+            <summary>
+            Returns the text of an expandable string when every part is literal, or <see langword="null"/> when it
+            embeds a variable or subexpression whose value is only known at runtime.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.SourceText">
+            <summary>Represents immutable shell script text with line information and text-change application helpers.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SourceText.GetLine(System.Int32)">
+            <summary>Gets the line containing the specified character position.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SourceText.ToString">
+            <summary>Returns the source text.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.SyntaxFactory">
+            <summary>Creates shell syntax nodes, tokens, and trivia programmatically.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.Comment(System.String,Meziantou.Framework.Language.Shell.ShellDialect)">
+            <summary>Creates comment trivia, adding the dialect's comment marker when <paramref name="text"/> omits it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.Literal(System.String,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Shell.ShellSyntaxTrivia})">
+            <summary>Creates an unquoted literal word part. The text is used verbatim.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.Word(Meziantou.Framework.Language.Shell.ShellWordPartSyntax[])">
+            <summary>Creates a word from parts.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.Word(System.String,Meziantou.Framework.Language.Shell.ShellDialect)">
+            <summary>
+            Creates a word holding <paramref name="text"/>, quoting it for <paramref name="dialect"/> only when the text
+            would otherwise be split, expanded, or globbed.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.QuotedString(System.String,Meziantou.Framework.Language.Shell.ShellDialect)">
+            <summary>Creates a quoted string that reproduces <paramref name="value"/> literally in <paramref name="dialect"/>.</summary>
+            <remarks>
+            The returned node's <c>Value</c> is always <paramref name="value"/>. For the POSIX and PowerShell families the
+            text also reads back as <paramref name="value"/> when parsed again. Cmd has no escape for a quote inside a
+            quoted string and no way to carry a line break in a word, so a value holding either cannot be written as cmd
+            text that parses back to it.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.SyntaxFactory.PosixDoubleQuoteSpecials">
+            <summary>The characters a POSIX shell still acts on inside a double-quoted string.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.EscapeParts(System.String,System.ReadOnlySpan{System.Char})">
+            <summary>
+            Splits <paramref name="value"/> into literal runs and backslash escapes, the way the parser reads a
+            double-quoted string back, so the parts resolve to the original value.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.DoubledParts(System.String,System.Char)">
+            <summary>
+            Writes <paramref name="value"/> with every <paramref name="quote"/> doubled, keeping the original text as the
+            token's value so the part resolves to what was asked for.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.VariableReference(System.String,Meziantou.Framework.Language.Shell.ShellDialect,System.Boolean)">
+            <summary>Creates a reference to <paramref name="name"/> using the syntax of <paramref name="dialect"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.Command(Meziantou.Framework.Language.Shell.ShellDialect,System.String,System.String[])">
+            <summary>Creates a command whose name and arguments are quoted for <paramref name="dialect"/> as needed.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.Command(Meziantou.Framework.Language.Shell.ShellWordSyntax,Meziantou.Framework.Language.Shell.ShellWordSyntax[])">
+            <summary>Creates a command from existing words, separated by single spaces.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.Pipeline(Meziantou.Framework.Language.Shell.ShellStatementSyntax[])">
+            <summary>Creates a pipeline joining <paramref name="commands"/> with <c>|</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.RequiresQuoting(System.String,Meziantou.Framework.Language.Shell.ShellDialect)">
+            <summary>Returns whether <paramref name="text"/> would change meaning if written unquoted.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.WithLeadingSpace(Meziantou.Framework.Language.Shell.ShellWordSyntax)">
+            <summary>
+            Puts a space in front of <paramref name="word"/> so it stays a word of its own instead of being glued to what
+            precedes it. A word that already starts with trivia is returned unchanged.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.SyntaxFactory.WithLeadingSpace(Meziantou.Framework.Language.Shell.ShellWordPartSyntax)">
+            <summary>
+            Rebuilds <paramref name="part"/> with a space on its first token, the way the parser holds the whitespace in
+            front of a word. Returns <see langword="null"/> for a part whose first token this cannot reach.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.TextLine">
+            <summary>Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.Shell.SourceText"/> instance.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Shell.TextLine.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.Shell.SourceText"/> instance.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.TextSpan">
+            <summary>Represents a contiguous character range in text.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ZshAlwaysStatementSyntax">
+            <summary>
+            Represents the zsh <c>always</c> construct, <c>{ body } always { cleanup }</c>, whose second block runs whether or
+            not the first one failed.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ZshAlwaysStatementSyntax.Body">
+            <summary>The protected block.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ZshAlwaysStatementSyntax.AlwaysBody">
+            <summary>The block that always runs afterwards.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ZshForeachStatementSyntax">
+            <summary>
+            Represents the zsh loop forms that take their word list in parentheses: <c>foreach x (a b) ... end</c> and the
+            short <c>for x (a b) command</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ZshForeachStatementSyntax.Keyword">
+            <summary>The <c>foreach</c> or <c>for</c> keyword.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ZshForeachStatementSyntax.EndKeyword">
+            <summary>The closing <c>end</c> keyword, absent in the short <c>for x (a b) command</c> form.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Shell.ZshRepeatStatementSyntax">
+            <summary>Represents the zsh <c>repeat</c> loop, which runs its body a fixed number of times.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ZshRepeatStatementSyntax.Count">
+            <summary>The iteration count.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ZshRepeatStatementSyntax.ListTerminatorToken">
+            <summary>The <c>;</c> that may follow the count.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ZshRepeatStatementSyntax.DoKeyword">
+            <summary>The <c>do</c> keyword, absent when the body is a single command or a brace group.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Shell.ZshRepeatStatementSyntax.DoneKeyword">
+            <summary>The <c>done</c> keyword, present only with the <c>do ... done</c> form.</summary>
+        </member>
+    </members>
+</doc>

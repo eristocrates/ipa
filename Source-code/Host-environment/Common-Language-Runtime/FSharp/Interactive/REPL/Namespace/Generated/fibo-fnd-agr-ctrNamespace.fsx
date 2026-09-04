@@ -1,0 +1,491 @@
+#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL"
+#load @".paket/load/main.group.fsx"
+#r @"RdfAsm.dll"
+open RdfAsm
+#r @"RdfIO.dll"
+open RdfIO
+
+module ``fibo-fnd-agr-ctr`` =
+    let _prefixId =
+        PrefixId.fromNamespaceLabel "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/" "fibo-fnd-agr-ctr"
+
+    let _namespaceIri = _prefixId.prefix ""
+    /// <summary>
+    ///   <para>rdfs:label : assignable contract^^xsd:string</para>
+    ///   <para>skos:definition : contract in which contract holder (assignor) may transfer some or all of their rights and obligations to another party (assignee)^^xsd:string</para>
+    ///   <para>skos:example : Many, though not all, futures contracts are assignable. This means that the original contract holder can sell the contract to another party in return for cash, and that party then assumes the rights, responsibilities, and benefits of that contract from that point onwards.^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : Note that while the assignor may divest themselves of some rights, that assignment does not necessarily eliminate performance obligations of the assignor to the third party. Characteristics that are important to understand with respect to an assignment include the circumstances in which the assignor remains obligated and any remedies available if the assignor does not perform.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/AssignableContract">fibo-fnd-agr-ctr:AssignableContract</a>
+    /// </summary>
+    let AssignableContract = _prefixId.prefix "AssignableContract"
+    /// <summary>
+    ///   <para>rdfs:label : bilateral contract^^xsd:string</para>
+    ///   <para>skos:definition : contract where two parties commit to perform specific actions or obligations towards each other^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/BilateralContract">fibo-fnd-agr-ctr:BilateralContract</a>
+    /// </summary>
+    let BilateralContract = _prefixId.prefix "BilateralContract"
+    /// <summary>
+    ///   <para>rdfs:label : bilateral netting provision</para>
+    ///   <para>skos:definition : netting provision that occurs between two parties, in which mutual obligations are offset to determine a single net payment</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/BilateralNettingProvision">fibo-fnd-agr-ctr:BilateralNettingProvision</a>
+    /// </summary>
+    let BilateralNettingProvision = _prefixId.prefix "BilateralNettingProvision"
+    /// <summary>
+    ///   <para>rdfs:label : breach of contract</para>
+    ///   <para>skos:definition : classifier of events representing a violation of an express, or implied, condition of a contract to do or not to do something, without a legitimate excuse</para>
+    ///   <para>cmns-av:explanatoryNote : Examples of events that are considered a breach of contract include discovery of misrepresentation, not completing a job, not paying in full or on time, failing to deliver all the goods, substituting inferior or significantly different goods, not providing a bond when required, being late without excuse, or any act that demonstrates that a party will not complete required work ('anticipatory breach.') Breach of contract is one of the most common causes of law suits for damages and/or court-ordered 'specific performance' of the contract. A breach of contract frequently invalidates the contract.</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/BreachOfContract">fibo-fnd-agr-ctr:BreachOfContract</a>
+    /// </summary>
+    let BreachOfContract = _prefixId.prefix "BreachOfContract"
+    /// <summary>
+    ///   <para>rdfs:label : breach of covenant</para>
+    ///   <para>skos:definition : classifier of events representing breaking a promise specified in a contract to do or not to do something, without a legitimate excuse</para>
+    ///   <para>cmns-av:explanatoryNote : In the case of a breach of a covenant or warranty, the contract remains binding and damages only are recoverable for the breach, whereas a breach of contract typically invalidates the entire contract.</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/BreachOfCovenant">fibo-fnd-agr-ctr:BreachOfCovenant</a>
+    /// </summary>
+    let BreachOfCovenant = _prefixId.prefix "BreachOfCovenant"
+    /// <summary>
+    ///   <para>rdfs:label : close-out netting provision</para>
+    ///   <para>skos:definition : netting provision that may be triggered when a counterparty defaults, leading to the termination of all outstanding transactions between the parties</para>
+    ///   <para>cmns-av:explanatoryNote : In the case of close-out netting, the financial positions of the defaulting party are assessed to determine their worth, and total amounts owed are offset, resulting in a single net payment obligation.^^xsd:string</para>
+    ///   <para>cmns-av:synonym : close out netting provision^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/CloseOutNettingProvision">fibo-fnd-agr-ctr:CloseOutNettingProvision</a>
+    /// </summary>
+    let CloseOutNettingProvision = _prefixId.prefix "CloseOutNettingProvision"
+    /// <summary>
+    ///   <para>rdfs:label : collateral agreement^^xsd:string</para>
+    ///   <para>skos:definition : written contract related to another contract designed to provide clarity and additional protection for all parties involved, that is separate from the primary contract and that can be independently enforced^^xsd:string</para>
+    ///   <para>skos:example : Examples may be related to leases, to clarify responsibilities with respect to maintance and repair, to partnerships, clarifying how disputes should be resolved, loan agreements such as deeds of trust, covering the conditions under which the collateral would be forfeited, and uniform commercial code (UCC) agreements.^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : In cases where there are discrepancies between the collateral agreement and primary contract, the primary contract, which may be a master agreement, for example, takes precedence.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/CollateralAgreement">fibo-fnd-agr-ctr:CollateralAgreement</a>
+    /// </summary>
+    let CollateralAgreement = _prefixId.prefix "CollateralAgreement"
+    /// <summary>
+    ///   <para>rdfs:label : condition precedent^^xsd:string</para>
+    ///   <para>skos:definition : stipulation that specifies conditions that must be met before some aspect of a contract takes effect^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : Condition precedents are common in wills and trusts. They include events or states of affairs that act as triggers for the contract to come into effect, such as a beneficiary reaching the age of maturity, or death of a trustor, as well as define obligations on a party to the contract, such as those required of a trustee on the death of a trustor.^^xsd:stringcmns-av:explanatoryNote : There may also be condition precedents in the ongoing life of a contract, which state that if condition X occurs, event Y will then occur. Condition X is the condition precedent.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ConditionPrecedent">fibo-fnd-agr-ctr:ConditionPrecedent</a>
+    /// </summary>
+    let ConditionPrecedent = _prefixId.prefix "ConditionPrecedent"
+    /// <summary>
+    ///   <para>rdfs:label : contract^^xsd:string</para>
+    ///   <para>skos:definition : voluntary, deliberate agreement between competent parties to which the parties agree to be legally bound, and for which the parties provide valuable consideration^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : A contractual relationship is evidenced by (1) an offer, (2) acceptance of the offer, and a (3) valid (legal and valuable) consideration. A contract is a kind of agreement, and as such it embodies the assertion that it has been negotiated, such negotiation having included the presence of some offer and the acceptance of that offer on the part of either or both of the parties.^^xsd:stringcmns-av:explanatoryNote : Contracts are usually written but may be spoken or implied, and generally have to do with employment, sale or lease, or tenancy.^^xsd:stringcmns-av:explanatoryNote : Note that the data of issuance may be, but is not always, the same as the effective date.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract">fibo-fnd-agr-ctr:Contract</a>
+    /// </summary>
+    let Contract = _prefixId.prefix "Contract"
+    /// <summary>
+    ///   <para>rdfs:label : contract document^^xsd:string</para>
+    ///   <para>skos:definition : legal document that records the formal terms and conditions of some contract^^xsd:string</para>
+    ///   <para>skos:scopeNote : Written here does not necessarily mean a paper document but includes situations in which the contract is expressed electronically, whether as an electronic representation of a formal document such as in PDF form or as an electronic message, provided in the latter case that the message is expressly given formal contractual standing, for example as indicated in a separate covering agreement between the parties.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractDocument">fibo-fnd-agr-ctr:ContractDocument</a>
+    /// </summary>
+    let ContractDocument = _prefixId.prefix "ContractDocument"
+    /// <summary>
+    ///   <para>rdfs:label : contract milestone</para>
+    ///   <para>skos:definition : classifier for an event (milestone), or set of events related to the status or level of completion of a designated activity, task, or segment of work required for contract fulfillment</para>
+    ///   <para>cmns-av:explanatoryNote : Milestones are checkpoints that are predefined in the contract, used to measure progress. They specify tasks, deliverables, or objectives that must be achieved to meet each milestone and may trigger partial payment.</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractMilestone">fibo-fnd-agr-ctr:ContractMilestone</a>
+    /// </summary>
+    let ContractMilestone = _prefixId.prefix "ContractMilestone"
+    /// <summary>
+    ///   <para>rdfs:label : contract party^^xsd:string</para>
+    ///   <para>skos:definition : legally competent party that has entered into a binding agreement, accepting and conceding obligations, responsibilities, and benefits as specified^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractParty">fibo-fnd-agr-ctr:ContractParty</a>
+    /// </summary>
+    let ContractParty = _prefixId.prefix "ContractParty"
+    /// <summary>
+    ///   <para>rdfs:label : contract principal^^xsd:string</para>
+    ///   <para>skos:definition : party that originates a contract and is identified as the first party to that contract, in the event that the contract distinguishes any party as such^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : The principal to a contract is typically the originator and, in the case of a security, the issuer. In law, the principal is the party that has the primary responsibility in a liability or obligation, as opposed to an endorser, guarantor, or surety.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractPrincipal">fibo-fnd-agr-ctr:ContractPrincipal</a>
+    /// </summary>
+    let ContractPrincipal = _prefixId.prefix "ContractPrincipal"
+    /// <summary>
+    ///   <para>rdfs:label : contract third party^^xsd:string</para>
+    ///   <para>skos:definition : party that is indirectly involved in, but not a counterparty to, an agreement^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractThirdParty">fibo-fnd-agr-ctr:ContractThirdParty</a>
+    /// </summary>
+    let ContractThirdParty = _prefixId.prefix "ContractThirdParty"
+    /// <summary>
+    ///   <para>rdfs:label : contractual commitment^^xsd:string</para>
+    ///   <para>skos:definition : provision specifying something that the contracting parties agree to, i.e., a promise or pledge made by one of the parties to perform some action or fulfill some duty^^xsd:string</para>
+    ///   <para>skos:scopeNote : Contractual commitments include general conditions which are common to all types of contracts, such as general and special arrangements, provisions, requirements, rules, rights and obligations, specifications, and standards that form an integral part of an agreement or contract, as well as special conditions which are peculiar to a specific contract (such as, contract change conditions, payment conditions, price variation clauses, penalties). Such a commitment indicates an intention or willingness to do something, which may not be legally binding, for example, to negotiate in good faith.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractualCommitment">fibo-fnd-agr-ctr:ContractualCommitment</a>
+    /// </summary>
+    let ContractualCommitment = _prefixId.prefix "ContractualCommitment"
+    /// <summary>
+    ///   <para>rdfs:label : contractual definition^^xsd:string</para>
+    ///   <para>skos:definition : contractual element that specifies the meaning of a term in a legal document, whose definition is substitutable for the term whenever it occurs in the body of that document^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractualDefinition">fibo-fnd-agr-ctr:ContractualDefinition</a>
+    /// </summary>
+    let ContractualDefinition = _prefixId.prefix "ContractualDefinition"
+    /// <summary>
+    ///   <para>rdfs:label : contractual element^^xsd:string</para>
+    ///   <para>skos:definition : element, such as an arrangement, provision, requirement, rule, specification, and standard that forms an integral part of an agreement^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractualElement">fibo-fnd-agr-ctr:ContractualElement</a>
+    /// </summary>
+    let ContractualElement = _prefixId.prefix "ContractualElement"
+    /// <summary>
+    ///   <para>rdfs:label : counterparty^^xsd:string</para>
+    ///   <para>skos:definition : party to a contract with whom one negotiates on a given agreement^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : The counterparty is usually the party 'on the other side' of a contract from the perspective of the issuer or holder. The term 'counterparty' can refer to any party to an agreement, depending on context.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Counterparty">fibo-fnd-agr-ctr:Counterparty</a>
+    /// </summary>
+    let Counterparty = _prefixId.prefix "Counterparty"
+    /// <summary>
+    ///   <para>rdfs:label : disclosure provision</para>
+    ///   <para>skos:definition : contractual provision that outlines the requirements and responsibilities of one or both parties to reveal certain information to each other^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : Disclosure provisions are crucial in ensuring transparency, mitigating risks, and maintaining trust between the parties. Typical elements of a disclosure provision include (1) scope - defining the kind of information that must be disclosed, (2) materiality - which usually states that only information material to the agreement must be disclosed, (3) timing - specifying when such disclosures must be made, (4) ongoing requirements - outlining whether or not disclosures any time significant changes or new information must be made available over some period of time, (5) method - specifying how such disclosures must be made, for example, in writing, (6) exclusions - information that is explicitly out of scope with respect to disclosure requirements, (7) confidentiality - restrictions related to whether or not the information is confidential and on how it may be used, and (8) penalities - specifying consequences for failing to disclose relevant information.^^xsd:stringcmns-av:explanatoryNote : With respect to contracts, failure to disclose key details can lead to breaches of contract or claims of misrepresentation. Disclosure requirements are typically specific to the nature of the contract and jurisdiction.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/DisclosureProvision">fibo-fnd-agr-ctr:DisclosureProvision</a>
+    /// </summary>
+    let DisclosureProvision = _prefixId.prefix "DisclosureProvision"
+    /// <summary>
+    ///   <para>rdfs:label : early termination provision^^xsd:string</para>
+    ///   <para>skos:definition : termination of an agreement for any reason prior to its expiration date^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : Early termination date refers to the date set within an agreement for the parties to exercise the option to terminate the contract prior to its original expiration, typically subject to predefined terms such as notice periods or specific conditions. Early termination may be automatically triggered by an event of default with respect to any contract obligation, due to corporate action, or for other reasons. An early termination date may be calculated per the terms of the agreement or specified explicitly at the time the termination event occurs.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/EarlyTerminationProvision">fibo-fnd-agr-ctr:EarlyTerminationProvision</a>
+    /// </summary>
+    let EarlyTerminationProvision = _prefixId.prefix "EarlyTerminationProvision"
+    /// <summary>
+    ///   <para>rdfs:label : extension provision^^xsd:string</para>
+    ///   <para>skos:definition : contract terms that specify the conditions under which a contract can be extended^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : In the case of a debt instrument, an extension may include extending the time allowed for repayment of the principal, the maturity date, and so forth.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ExtensionProvision">fibo-fnd-agr-ctr:ExtensionProvision</a>
+    /// </summary>
+    let ExtensionProvision = _prefixId.prefix "ExtensionProvision"
+    /// <summary>
+    ///   <para>rdfs:label : master agreement^^xsd:string</para>
+    ///   <para>skos:definition : contract between named parties that outlines the terms and conditions designed to apply to a number of accounts, transactions, or other activities between the parties, and that consolidates and provides overarching terms for separate but related agreements^^xsd:string</para>
+    ///   <para>skos:example : A master services agreement governs the terms between a service provider and client. Typically, clients will use Statements of Work that point back to the master agreement so they don't have to recreate a new contract with new terms each time there is a new project, or to cover common terms across services, warranties, and deliveries.^^xsd:stringskos:example : Some credit facilities and many brokerage arrangements are master agreements.^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : A master agreement can be used to set out standard terms and conditions so that any new agreements don't need to cover the same information again.^^xsd:string</para>
+    ///   <para>cmns-av:synonym : master contract^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MasterAgreement">fibo-fnd-agr-ctr:MasterAgreement</a>
+    /// </summary>
+    let MasterAgreement = _prefixId.prefix "MasterAgreement"
+    /// <summary>
+    ///   <para>rdfs:label : milestone event^^xsd:string</para>
+    ///   <para>skos:definition : event related to the status or level of completion of a designated activity, task, or segment of work required for contract fulfillment^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MilestoneEvent">fibo-fnd-agr-ctr:MilestoneEvent</a>
+    /// </summary>
+    let MilestoneEvent = _prefixId.prefix "MilestoneEvent"
+    /// <summary>
+    ///   <para>rdfs:label : milestone schedule^^xsd:string</para>
+    ///   <para>skos:definition : schedule of milestone events, observations, or other occurrences and the associated dates and/or times when they will be done^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MilestoneSchedule">fibo-fnd-agr-ctr:MilestoneSchedule</a>
+    /// </summary>
+    let MilestoneSchedule = _prefixId.prefix "MilestoneSchedule"
+    /// <summary>
+    ///   <para>rdfs:label : multilateral contract^^xsd:string</para>
+    ///   <para>skos:definition : contract where multiple parties (i.e., more than two) commit to perform specific actions or obligations towards each other^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MultilateralContract">fibo-fnd-agr-ctr:MultilateralContract</a>
+    /// </summary>
+    let MultilateralContract = _prefixId.prefix "MultilateralContract"
+    /// <summary>
+    ///   <para>rdfs:label : multilateral netting provision</para>
+    ///   <para>skos:definition : netting provision that, when triggered, is facilitated by a central clearinghouse or financial institution</para>
+    ///   <para>cmns-av:explanatoryNote : Rather than settling individual obligations between each party, as in bilateral netting, all transactions are aggregated, and a single net amount is determined for each participant.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MultilateralNettingProvision">fibo-fnd-agr-ctr:MultilateralNettingProvision</a>
+    /// </summary>
+    let MultilateralNettingProvision = _prefixId.prefix "MultilateralNettingProvision"
+    /// <summary>
+    ///   <para>rdfs:label : netting provision</para>
+    ///   <para>skos:definition : contractual element that specifies the method of reducing credit, settlement and other risks by aggregating (combining) two or more obligations to achieve a reduced net obligation</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NettingProvision">fibo-fnd-agr-ctr:NettingProvision</a>
+    /// </summary>
+    let NettingProvision = _prefixId.prefix "NettingProvision"
+    /// <summary>
+    ///   <para>rdfs:label : non-binding term^^xsd:string</para>
+    ///   <para>skos:definition : contractual element that is not legally binding on any party to the agreement^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NonBindingTerm">fibo-fnd-agr-ctr:NonBindingTerm</a>
+    /// </summary>
+    let NonBindingTerm = _prefixId.prefix "NonBindingTerm"
+    /// <summary>
+    ///   <para>rdfs:label : non-transferable contract^^xsd:string</para>
+    ///   <para>skos:definition : contract between whose individual rights and obligations are not transferable to another party without prior written permission^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NonTransferableContract">fibo-fnd-agr-ctr:NonTransferableContract</a>
+    /// </summary>
+    let NonTransferableContract = _prefixId.prefix "NonTransferableContract"
+    /// <summary>
+    ///   <para>rdfs:label : notification provision^^xsd:string</para>
+    ///   <para>skos:definition : provision indicating that notification is required prior to the occurrence of a relevant event^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NotificationProvision">fibo-fnd-agr-ctr:NotificationProvision</a>
+    /// </summary>
+    let NotificationProvision = _prefixId.prefix "NotificationProvision"
+    /// <summary>
+    ///   <para>rdfs:label : novateable contract^^xsd:string</para>
+    ///   <para>skos:definition : contract that may be replaced by another contract, and in that event, extinguishes the rights and obligations in effect under the original contract with those in the new agreement^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : In general, novation means consensual substitution of a party or obligation in the original contract with a new party or obligation in the successor contract. The new party takes on the rights and obligations of the original party. The corresponding novation agreement must be signed by the transferor, the transferee, and the counterparty (the other contracting party). Novation is frequently used in mergers and acquisitions to replace any outstanding relationships or rights and obligations of the organization being subsumed with relationships or obligations of the acquiring entity. It is also commonly used with respect to loan rescheduling.^^xsd:stringcmns-av:explanatoryNote : Novation is different from assignment in the following ways: (1) novation is a consensual transfer of contractual rights and obligations, while an assignment can transfer only obligations and does not require the consent of the benefiting party, and (2) novation terminates the original contract, but assignment does not.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NovateableContract">fibo-fnd-agr-ctr:NovateableContract</a>
+    /// </summary>
+    let NovateableContract = _prefixId.prefix "NovateableContract"
+    /// <summary>
+    ///   <para>rdfs:label : novation netting provision</para>
+    ///   <para>skos:definition : contractual element that specifies what should be done with respect to netting when a given contract is replaced with another</para>
+    ///   <para>cmns-av:explanatoryNote : Novation netting contemplates that for each value date and for each currency, the parties agree that all existing contracts will be canceled (discharged and extinguished) and simultaneously replaced by a new contract that aggregates and nets all of the payment obligations of the original contracts. Novation netting occurs immediately when a nettable transaction is entered into.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NovationNettingProvision">fibo-fnd-agr-ctr:NovationNettingProvision</a>
+    /// </summary>
+    let NovationNettingProvision = _prefixId.prefix "NovationNettingProvision"
+    /// <summary>
+    ///   <para>rdfs:label : payment netting provision</para>
+    ///   <para>skos:definition : netting provision that specifies the way in which all payments in a single currency owed between parties will be aggregated for each traded currency per value date and within the larger aggregate obligation</para>
+    ///   <para>cmns-av:explanatoryNote : For each value date and for each traded currency, the parties will aggregate and net all payments owed between them to arrive at a single currency obligation for each currency payable between the parties. The parties calculate net payments at some pre-agreed time, typically the day before value date (although it is possible to agree net payments on the value date, depending on the currency and time zone).^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/PaymentNettingProvision">fibo-fnd-agr-ctr:PaymentNettingProvision</a>
+    /// </summary>
+    let PaymentNettingProvision = _prefixId.prefix "PaymentNettingProvision"
+    /// <summary>
+    ///   <para>rdfs:label : representation</para>
+    ///   <para>skos:definition : contractual element that is a statement made by a party to the contract, before or at the time of making the contract, in regard to some fact, circumstance, or state of affairs pertinent to the contract, which the counterparty(ies) rely on, or is influential in bringing about the contract</para>
+    ///   <para>cmns-av:explanatoryNote : A party may later claim misrepresentation if a false representation has been made. They may be entitled to rescind the contract, which means that the contract would be set aside and the receiving party may also be entitled to damages to put them back into the position they would have been had the contract never been entered into.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Representation">fibo-fnd-agr-ctr:Representation</a>
+    /// </summary>
+    let Representation = _prefixId.prefix "Representation"
+    /// <summary>
+    ///   <para>rdfs:label : settlement netting provision</para>
+    ///   <para>skos:definition : netting provision that specifies the way in which on a given payment date, each party will aggregate the amounts of a currency to be delivered by it, and only the difference in the aggregate amounts will be delivered by the party with the larger aggregate obligation</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/SettlementNettingProvision">fibo-fnd-agr-ctr:SettlementNettingProvision</a>
+    /// </summary>
+    let SettlementNettingProvision = _prefixId.prefix "SettlementNettingProvision"
+    /// <summary>
+    ///   <para>rdfs:label : term sheet^^xsd:string</para>
+    ///   <para>skos:definition : nonbinding agreement setting forth the basic terms and conditions under which a proposed business deal may be made^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : Term sheets state the intentions of the parties and are used to guide legal counsel in the preparation of proposed agreements or contracts.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/TermSheet">fibo-fnd-agr-ctr:TermSheet</a>
+    /// </summary>
+    let TermSheet = _prefixId.prefix "TermSheet"
+    /// <summary>
+    ///   <para>rdfs:label : termination provision</para>
+    ///   <para>skos:definition : contractual element that specifies the circumstances under which the parties can dissolve their legal relationship and discontinue the fulfillment of their obligations under the contract</para>
+    ///   <para>cmns-av:explanatoryNote : Common reasons for termination include mutual consent, certain notices, breach or failure of a precedent or condition, insolvency, change in control, the occurrence of certain events, and court orders that prohibit continuation of the contract. Termination provisions may include whether they are mutual or unilateral, and may include rights with respect to any cure.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/TerminationProvision">fibo-fnd-agr-ctr:TerminationProvision</a>
+    /// </summary>
+    let TerminationProvision = _prefixId.prefix "TerminationProvision"
+    /// <summary>
+    ///   <para>rdfs:label : transferable contract^^xsd:string</para>
+    ///   <para>skos:definition : contract in which the rights and obligations of one party may be transferred to another party^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/TransferableContract">fibo-fnd-agr-ctr:TransferableContract</a>
+    /// </summary>
+    let TransferableContract = _prefixId.prefix "TransferableContract"
+    /// <summary>
+    ///   <para>rdfs:label : unilateral contract^^xsd:string</para>
+    ///   <para>skos:definition : contract in which one party makes an offer that can only be accepted through performance rather than a return promise^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : In a unilateral, or one-sided, contract, one party, known as the offeror, makes a promise in exchange for an act (or abstention from acting) by another party, known as the offeree. If the offeree acts on the offeror's promise, the offeror is legally obligated to fulfill the contract, but an offeree cannot be forced to act (or not act), because no return promise has been made to the offeror. After an offeree has performed, only one enforceable promise exists, that of the offeror.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/UnilateralContract">fibo-fnd-agr-ctr:UnilateralContract</a>
+    /// </summary>
+    let UnilateralContract = _prefixId.prefix "UnilateralContract"
+    /// <summary>
+    ///   <para>rdfs:label : use of proceeds provision^^xsd:string</para>
+    ///   <para>skos:definition : contract provision specifying how funds obtained through financing, such as through a credit agreement, offering, warrant, or other instrument are intended to be used^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : Examples include for working capital and corporate expenses, for the purchase or upgrades to facilities and/or equipment, and so forth.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/UseOfProceedsProvision">fibo-fnd-agr-ctr:UseOfProceedsProvision</a>
+    /// </summary>
+    let UseOfProceedsProvision = _prefixId.prefix "UseOfProceedsProvision"
+    /// <summary>
+    ///   <para>rdfs:label : verbal contract^^xsd:string</para>
+    ///   <para>skos:definition : contract that exists as a result of some verbal exchange^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/VerbalContract">fibo-fnd-agr-ctr:VerbalContract</a>
+    /// </summary>
+    let VerbalContract = _prefixId.prefix "VerbalContract"
+    /// <summary>
+    ///   <para>rdfs:label : warranty</para>
+    ///   <para>skos:definition : contractual element that is a statement of fact</para>
+    ///   <para>cmns-av:explanatoryNote : If a warranty is determined to be false, the receiving party has a claim for breach of contract. If it is a fundamental breach the receiving party may have the right to terminate the contact in addition to a claim for damages. However, unlike a claim for misrepresentation, the contract may not necessarily be voided in its entirety as a consequence.</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Warranty">fibo-fnd-agr-ctr:Warranty</a>
+    /// </summary>
+    let Warranty = _prefixId.prefix "Warranty"
+    /// <summary>
+    ///   <para>rdfs:label : written contract^^xsd:string</para>
+    ///   <para>skos:definition : formal contract that is written and signed by the parties thereto^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/WrittenContract">fibo-fnd-agr-ctr:WrittenContract</a>
+    /// </summary>
+    let WrittenContract = _prefixId.prefix "WrittenContract"
+    /// <summary>
+    ///   <para>rdfs:label : defines terms for^^xsd:string</para>
+    ///   <para>skos:definition : relates a contract to something for which the contract defines legally binding terms and conditions^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/definesTermsFor">fibo-fnd-agr-ctr:definesTermsFor</a>
+    /// </summary>
+    let definesTermsFor = _prefixId.prefix "definesTermsFor"
+    /// <summary>
+    ///   <para>rdfs:label : has beneficiary</para>
+    ///   <para>skos:definition : party that receives some benefit or advantage or profits from something as specified in the agreement^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasBeneficiary">fibo-fnd-agr-ctr:hasBeneficiary</a>
+    /// </summary>
+    let hasBeneficiary = _prefixId.prefix "hasBeneficiary"
+    /// <summary>
+    ///   <para>rdfs:label : has contract duration</para>
+    ///   <para>skos:definition : indicates the period of time during which a contract is intended to be in force once it has been executed^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : Note that the duration may be relative or explicit, depending on the nature of the contract, and may be extended if the provisions of the contract permit extension.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasContractDuration">fibo-fnd-agr-ctr:hasContractDuration</a>
+    /// </summary>
+    let hasContractDuration = _prefixId.prefix "hasContractDuration"
+    /// <summary>
+    ///   <para>rdfs:label : has contract party^^xsd:string</para>
+    ///   <para>skos:definition : indicates a party that has entered into a binding agreement, accepting and conceding obligations, responsibilities, and benefits as specified^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasContractParty">fibo-fnd-agr-ctr:hasContractParty</a>
+    /// </summary>
+    let hasContractParty = _prefixId.prefix "hasContractParty"
+    /// <summary>
+    ///   <para>rdfs:label : has contractual element^^xsd:string</para>
+    ///   <para>skos:definition : indicates something that is a component of an agreement^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasContractualElement">fibo-fnd-agr-ctr:hasContractualElement</a>
+    /// </summary>
+    let hasContractualElement = _prefixId.prefix "hasContractualElement"
+    /// <summary>
+    ///   <para>rdfs:label : has counterparty^^xsd:string</para>
+    ///   <para>skos:definition : identifies a party to a contract, typically not the contract principal^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasCounterparty">fibo-fnd-agr-ctr:hasCounterparty</a>
+    /// </summary>
+    let hasCounterparty = _prefixId.prefix "hasCounterparty"
+    /// <summary>
+    ///   <para>rdfs:label : has early termination date</para>
+    ///   <para>skos:definition : indicates a termination date that occurs prior to an explicit expiration date</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasEarlyTerminationDate">fibo-fnd-agr-ctr:hasEarlyTerminationDate</a>
+    /// </summary>
+    let hasEarlyTerminationDate = _prefixId.prefix "hasEarlyTerminationDate"
+    /// <summary>
+    ///   <para>rdfs:label : has effective date^^xsd:string</para>
+    ///   <para>skos:definition : indicates the date a contract, relationship, or policy comes into force^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasEffectiveDate">fibo-fnd-agr-ctr:hasEffectiveDate</a>
+    /// </summary>
+    let hasEffectiveDate = _prefixId.prefix "hasEffectiveDate"
+    /// <summary>
+    ///   <para>rdfs:label : has effective date time stamp^^xsd:string</para>
+    ///   <para>skos:definition : indicates the date and time, including time zone, something comes into force^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasEffectiveDateTimeStamp">fibo-fnd-agr-ctr:hasEffectiveDateTimeStamp</a>
+    /// </summary>
+    let hasEffectiveDateTimeStamp = _prefixId.prefix "hasEffectiveDateTimeStamp"
+    /// <summary>
+    ///   <para>rdfs:label : has execution date^^xsd:string</para>
+    ///   <para>skos:definition : indicates the date a contract has been signed by all the necessary parties^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : This may or may not be the 'effective date' of the contract, which may be specified in the body of the document.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasExecutionDate">fibo-fnd-agr-ctr:hasExecutionDate</a>
+    /// </summary>
+    let hasExecutionDate = _prefixId.prefix "hasExecutionDate"
+    /// <summary>
+    ///   <para>rdfs:label : has execution date time stamp^^xsd:string</para>
+    ///   <para>skos:definition : indicates the date and time, including time zone, a contract has been signed by all the necessary parties^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasExecutionDateTimeStamp">fibo-fnd-agr-ctr:hasExecutionDateTimeStamp</a>
+    /// </summary>
+    let hasExecutionDateTimeStamp = _prefixId.prefix "hasExecutionDateTimeStamp"
+    /// <summary>
+    ///   <para>rdfs:label : has extendable period^^xsd:string</para>
+    ///   <para>skos:definition : indicates the window of time during which an extension is allowed under the terms of the contract^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasExtendablePeriod">fibo-fnd-agr-ctr:hasExtendablePeriod</a>
+    /// </summary>
+    let hasExtendablePeriod = _prefixId.prefix "hasExtendablePeriod"
+    /// <summary>
+    ///   <para>rdfs:label : has extension provision^^xsd:string</para>
+    ///   <para>skos:definition : specifies the details of a contract provision allowing extension of some aspect of the contract^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : Typically a contract extension refers to the termination date, coverage period, or, in the case of a security, may refer to extension of repayment or maturity dates.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasExtensionProvision">fibo-fnd-agr-ctr:hasExtensionProvision</a>
+    /// </summary>
+    let hasExtensionProvision = _prefixId.prefix "hasExtensionProvision"
+    /// <summary>
+    ///   <para>rdfs:label : has governing jurisdiction^^xsd:string</para>
+    ///   <para>skos:definition : indicates the jurisdiction governing the contract, as agreed by all parties^^xsd:string</para>
+    ///   <para>skos:editorialNote : As modeled, this relationship combines two slightly different senses in which a Jurisdiction may be named in some Contract: the jurisdiction under whose laws the contract is deemed to be in force, and the jurisdiction under which the parties agree to submit in the event of any dispute resolution. ScopeNote: One thing to tease out is whether 'Dispute Resolution' and other forms of 'Governing Law' are one and the same thing or not. Dispute Resolution is uncontroversial, the question is whether there are other implications to Governing Law or if it's the same thing. For instance I may undertake to behave as though I were responsible to a particular authority i.e., a particular set of statutes.^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : In a written contract this is generally identified, for example, as Governing Law, namely the jurisdiction in which any disputes arising from the contract are to be resolved.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasGoverningJurisdiction">fibo-fnd-agr-ctr:hasGoverningJurisdiction</a>
+    /// </summary>
+    let hasGoverningJurisdiction = _prefixId.prefix "hasGoverningJurisdiction"
+    /// <summary>
+    ///   <para>rdfs:label : has legal description^^xsd:string</para>
+    ///   <para>skos:definition : provides the text, or a summary thereof, expressed in legal terms, of the contract provision, clause, or other element^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasLegalDescription">fibo-fnd-agr-ctr:hasLegalDescription</a>
+    /// </summary>
+    let hasLegalDescription = _prefixId.prefix "hasLegalDescription"
+    /// <summary>
+    ///   <para>rdfs:label : has milestone provision^^xsd:string</para>
+    ///   <para>skos:definition : refers to a requirement included in an agreement related to fulfillment as of some point in time in the lifetime of the contract^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasMilestoneProvision">fibo-fnd-agr-ctr:hasMilestoneProvision</a>
+    /// </summary>
+    let hasMilestoneProvision = _prefixId.prefix "hasMilestoneProvision"
+    /// <summary>
+    ///   <para>rdfs:label : has non-binding term^^xsd:string</para>
+    ///   <para>skos:definition : refers to a term that is included in an agreement that is not considered legally binding^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : In other words, a breach of such terms in the future would not be considered to be a breach of the contract.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasNonBindingTerm">fibo-fnd-agr-ctr:hasNonBindingTerm</a>
+    /// </summary>
+    let hasNonBindingTerm = _prefixId.prefix "hasNonBindingTerm"
+    /// <summary>
+    ///   <para>rdfs:label : has principal party^^xsd:string</para>
+    ///   <para>skos:definition : identifies the main or principal party to a contract^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasPrincipalParty">fibo-fnd-agr-ctr:hasPrincipalParty</a>
+    /// </summary>
+    let hasPrincipalParty = _prefixId.prefix "hasPrincipalParty"
+    /// <summary>
+    ///   <para>rdfs:label : has term</para>
+    ///   <para>skos:definition : indicates a fixed or limited period for which something, e.g., a contract, an investment, or an offer, lasts or is intended to last</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasTerm">fibo-fnd-agr-ctr:hasTerm</a>
+    /// </summary>
+    let hasTerm = _prefixId.prefix "hasTerm"
+    /// <summary>
+    ///   <para>rdfs:label : has third party^^xsd:string</para>
+    ///   <para>skos:definition : identifies a party which is not signatory to the party but has some role in the overall context defined by the contract.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasThirdParty">fibo-fnd-agr-ctr:hasThirdParty</a>
+    /// </summary>
+    let hasThirdParty = _prefixId.prefix "hasThirdParty"
+    /// <summary>
+    ///   <para>rdfs:label : is assignable^^xsd:string</para>
+    ///   <para>skos:definition : indicates whether the contract and the rights thereunder may be assigned by one of the signatories to some other party^^xsd:string</para>
+    ///   <para>skos:editorialNote : This is believed to be the basis on which transferable contracts such as financial securities and software licences may be bought and sold on some market, and also the basis on which a bilateral contract such as an over the counter derivative may be novated so that a new party becomes one of the parties. There are subtle distinctions between these three concepts which are not yet represented here.^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : An assignment (Latin cessio) is a term used with similar meanings in the law of contracts and in the law of real estate. In both instances, it encompasses the transfer of rights held by one party, the assignor, to another party, the assignee. The details of the assignment determines some additional rights and liabilities (or duties). Typically a third-party is involved in a contract with the assignor, and the contract is in effect transferred to the assignee.^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isAssignable">fibo-fnd-agr-ctr:isAssignable</a>
+    /// </summary>
+    let isAssignable = _prefixId.prefix "isAssignable"
+    /// <summary>
+    ///   <para>rdfs:label : is beneficiary of^^xsd:string</para>
+    ///   <para>skos:definition : specifies the agreement that a beneficiary is named in^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isBeneficiaryOf">fibo-fnd-agr-ctr:isBeneficiaryOf</a>
+    /// </summary>
+    let isBeneficiaryOf = _prefixId.prefix "isBeneficiaryOf"
+    /// <summary>
+    ///   <para>rdfs:label : is evidence for^^xsd:string</para>
+    ///   <para>skos:definition : corroborates^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isEvidenceFor">fibo-fnd-agr-ctr:isEvidenceFor</a>
+    /// </summary>
+    let isEvidenceFor = _prefixId.prefix "isEvidenceFor"
+    /// <summary>
+    ///   <para>rdfs:label : is evidenced by^^xsd:string</para>
+    ///   <para>skos:definition : is attested by^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isEvidencedBy">fibo-fnd-agr-ctr:isEvidencedBy</a>
+    /// </summary>
+    let isEvidencedBy = _prefixId.prefix "isEvidencedBy"
+    /// <summary>
+    ///   <para>rdfs:label : is netting automatic</para>
+    ///   <para>skos:definition : indicates whether netting takes place automatically under the scope of the agreement</para>
+    ///   <para>skos:example : Example text: "If on any date amounts would otherwise be payable:- (i) in the same currency; and (ii) in respect of the same Transaction, by each party to the other, then, on such date, each party's obligation to make payment of any such amount will be automatically satisfied and discharged and, if the aggregate amount that would otherwise have been payable by one party exceeds the aggregate amount that would otherwise have been payable by the other party, replaced by an obligation upon the party by whom the larger aggregate amount would have been payable to pay to the other party the excess of the larger aggregate amount over the smaller aggregate amount."</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isNettingAutomatic">fibo-fnd-agr-ctr:isNettingAutomatic</a>
+    /// </summary>
+    let isNettingAutomatic = _prefixId.prefix "isNettingAutomatic"
+    /// <summary>
+    ///   <para>rdfs:label : is primary contract for^^xsd:string</para>
+    ///   <para>skos:definition : indicates any subordinate agreement, such as a collateral agreement^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isPrimaryContractFor">fibo-fnd-agr-ctr:isPrimaryContractFor</a>
+    /// </summary>
+    let isPrimaryContractFor = _prefixId.prefix "isPrimaryContractFor"
+    /// <summary>
+    ///   <para>rdfs:label : is qualified by^^xsd:string</para>
+    ///   <para>skos:definition : indicates a constraint, limitation or refinement on something^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isQualifiedBy">fibo-fnd-agr-ctr:isQualifiedBy</a>
+    /// </summary>
+    let isQualifiedBy = _prefixId.prefix "isQualifiedBy"
+    /// <summary>
+    ///   <para>rdfs:label : is subordinate to^^xsd:string</para>
+    ///   <para>skos:definition : indicates the primary contract referenced by a subordinate agreement, such as a collateral agreement^^xsd:string</para>
+    ///   <para>cmns-av:explanatoryNote : This property may also be used as the basis for linking agreements based on priority, such as linking a second or junior lien to the primary lien on some collateral^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isSubordinateTo">fibo-fnd-agr-ctr:isSubordinateTo</a>
+    /// </summary>
+    let isSubordinateTo = _prefixId.prefix "isSubordinateTo"
+    /// <summary>
+    ///   <para>rdfs:label : qualifies^^xsd:string</para>
+    ///   <para>skos:definition : limits, constrains or refines^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/qualifies">fibo-fnd-agr-ctr:qualifies</a>
+    /// </summary>
+    let qualifies = _prefixId.prefix "qualifies"
+    /// <summary>
+    ///   <para>rdfs:label : supersedes^^xsd:string</para>
+    ///   <para>skos:definition : indicates a contract that was executed prior to and is replaced by this contract^^xsd:string</para>
+    ///   <a href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/supersedes">fibo-fnd-agr-ctr:supersedes</a>
+    /// </summary>
+    let supersedes = _prefixId.prefix "supersedes"

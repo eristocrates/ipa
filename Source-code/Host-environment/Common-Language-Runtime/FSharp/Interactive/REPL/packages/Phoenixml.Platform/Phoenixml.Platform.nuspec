@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Phoenixml.Platform</id>
+    <version>0.3.0</version>
+    <authors>Endpoint Systems</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <readme>PACKAGE.md</readme>
+    <projectUrl>https://phoenixml.dev/</projectUrl>
+    <description>Foundation library for the Phoenixml family of XML-aware tools — document model, undo/redo, editor primitives, account/license/update plumbing, theming, shell, hosting.</description>
+    <copyright>Copyright © Endpoint Systems 2026. All rights reserved.</copyright>
+    <tags>xml phoenixml editor document-model undo avalonia</tags>
+    <repository type="git" url="https://github.com/phoenixmldb/phoenixml-platform" commit="1bb61e1e7f7bf4f77231c931ad93c5bcb5bc36e0" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Avalonia" version="11.2.4" exclude="Build,Analyzers" />
+        <dependency id="Avalonia.Themes.Fluent" version="11.2.4" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration" version="10.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Json" version="10.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.DependencyInjection" version="10.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Hosting" version="10.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging" version="10.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

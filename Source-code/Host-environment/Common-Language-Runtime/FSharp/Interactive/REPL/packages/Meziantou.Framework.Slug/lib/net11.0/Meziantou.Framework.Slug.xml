@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Slug</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.CasingTransformation">
+            <summary>Specifies the case transformation to apply when generating a slug.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.CasingTransformation.PreserveCase">
+            <summary>Preserves the original case of the input text.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.CasingTransformation.ToLowerCase">
+            <summary>Converts all characters to lowercase.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.CasingTransformation.ToUpperCase">
+            <summary>Converts all characters to uppercase.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Slug">
+            <summary>
+            Provides methods for generating URL-friendly slugs from text.
+            <example>
+            <code>
+            var slug = Slug.Create("This is a test!"); // "This-is-a-test"
+            var lowerSlug = Slug.Create("Hello World", new SlugOptions { CasingTransformation = CasingTransformation.ToLowerCase }); // "hello-world"
+            </code>
+            </example>
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Slug.MaxUtf16CharsPerRune">
+            <summary>The number of UTF-16 characters needed to encode any single rune.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Slug.TruncationHeadroom">
+            <summary>Extra buffer room for the character that turns out not to fit and is removed again.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.Create(System.String)">
+            <summary>Creates a slug from the specified text using default options.</summary>
+            <param name="text">The text to convert to a slug.</param>
+            <returns>A slug generated from the input text, or <see langword="null"/> if <paramref name="text"/> is <see langword="null"/>.</returns>
+            <remarks>Text that is not well-formed Unicode is accepted: each ill-formed character is treated as <see cref="P:System.Text.Rune.ReplacementChar"/>. In invariant globalization mode, where the normalizer accepts ill-formed text, such characters are left as they are.
+            <para>The result is an empty string when no character of <paramref name="text"/> is allowed, which is the case for any text
+            written outside the default <see cref="P:Meziantou.Framework.SlugOptions.AllowedRanges"/> - every Cyrillic, Greek, Arabic or CJK title, for
+            instance. Callers that put the slug in a URL segment or a file path should handle that before using it.</para></remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.Create(System.String,Meziantou.Framework.SlugOptions)">
+            <summary>Creates a slug from the specified text using the specified options.</summary>
+            <param name="text">The text to convert to a slug.</param>
+            <param name="options">The options to use for slug generation, or <see langword="null"/> to use default options.</param>
+            <returns>A slug generated from the input text, or <see langword="null"/> if <paramref name="text"/> is <see langword="null"/>.</returns>
+            <remarks>Text that is not well-formed Unicode is accepted: each ill-formed character is treated as <see cref="P:System.Text.Rune.ReplacementChar"/>. In invariant globalization mode, where the normalizer accepts ill-formed text, such characters are left as they are.
+            <para>The result is an empty string when no character of <paramref name="text"/> is allowed, which is the case for any text
+            written outside the default <see cref="P:Meziantou.Framework.SlugOptions.AllowedRanges"/> - every Cyrillic, Greek, Arabic or CJK title, for
+            instance. Callers that put the slug in a URL segment or a file path should handle that before using it.</para></remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.AppendSlug(System.Text.StringBuilder,System.String,Meziantou.Framework.SlugOptions,System.String,System.Int32,System.Int32@)">
+            <summary>Builds the slug into <paramref name="sb"/>, keeping the composed result within <paramref name="maximumLength"/>.</summary>
+            <param name="trailingSeparatorStart">
+            The offset of the separator this method emitted at the end of <paramref name="sb"/>, or -1 when the buffer does
+            not end with one. A separator character that came from the input is content and never reported here.
+            </param>
+            <remarks>
+            The buffer is decomposed while the returned slug is composed, and composing merges each combining mark back into
+            the character it follows, so the two have different lengths. The limit applies to the composed slug, so the budget
+            is spent in composed characters: each character is measured once it is complete, and dropped whole when it does
+            not fit. That keeps the limit an upper bound on the result while still filling it, in a single pass over the text.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.Normalize(System.String,System.Text.NormalizationForm)">
+            <summary>Normalizes <paramref name="text"/>, substituting anything the normalizer rejects.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.ReplaceIllFormedCharacters(System.String)">
+            <summary>Replaces every character the normalizer rejects with <see cref="P:System.Text.Rune.ReplacementChar"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.IsNoncharacter(System.Text.Rune)">
+            <summary>Determines whether the rune is one of the Unicode noncharacters, which never appear in well-formed text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.TryEndCharacter(System.Text.StringBuilder,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Charges the character accumulated since <paramref name="characterStart"/> to <paramref name="composedLength"/>,
+            or removes it from <paramref name="sb"/> when it no longer fits.
+            </summary>
+            <returns><see langword="true"/> if the character fit; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.IsHangulJamo(System.Text.Rune)">
+            <summary>Determines whether the rune is one of the Hangul jamo a syllable decomposes into.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.IsHangulSyllableContinuation(System.Text.Rune)">
+            <summary>Determines whether the rune continues the Hangul syllable started by the jamo before it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.EndsWithEmittedSeparator(System.Text.StringBuilder,System.Int32,System.String)">
+            <summary>Determines whether <paramref name="sb"/> ends with the separator emitted at <paramref name="lastSeparatorStart"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Slug.TrailingSeparatorStart(System.Text.StringBuilder,System.Int32,System.String)">
+            <summary>Returns the offset of the emitted separator at the end of <paramref name="sb"/>, or -1 when there is none.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.SlugOptions">
+            <summary>
+            Provides options for customizing slug generation.
+            <example>
+            <code>
+            var options = new SlugOptions
+            {
+                MaximumLength = 20,
+                CasingTransformation = CasingTransformation.ToLowerCase,
+            };
+            var slug = Slug.Create("This is a text", options); // this-is-a-text
+            </code>
+            </example>
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.SlugOptions.UsesDefaultReplaceByType">
+            <summary>Caches, per derived type, whether <see cref="M:Meziantou.Framework.SlugOptions.Replace(System.Text.Rune)"/> is still the one declared here.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.SlugOptions.DefaultMaximumLength">
+            <summary>The default maximum length for generated slugs (80 characters).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.SlugOptions.DefaultSeparator">
+            <summary>The default separator used between words ("-").</summary>
+        </member>
+        <member name="P:Meziantou.Framework.SlugOptions.AllowedRanges">
+            <summary>Gets the list of allowed Unicode character ranges in the generated slug.</summary>
+            <remarks>
+            An <b>empty</b> list allows every character instead of none, so the slug is returned unfiltered. The list has no
+            setter: add to it, or call <see cref="M:System.Collections.Generic.ICollection`1.Clear"/> and then add, to change which characters are kept.
+            Clearing it and adding nothing is what makes the generation permissive.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.SlugOptions.MaximumLength">
+            <summary>
+            Gets or sets the maximum length of the generated slug. Default is 80. A value less than or equal to zero means the slug is not truncated.
+            </summary>
+            <remarks>
+            The limit applies to the returned slug and is never exceeded. A slug is only cut between characters, so it never
+            ends with an incomplete surrogate pair, a partial <see cref="P:Meziantou.Framework.SlugOptions.Separator"/>, or a character stripped of the combining
+            marks that follow it. Because those units are kept whole, a slug can end up slightly shorter than the limit.
+            <para>
+            Truncation makes slugs lossy: two different inputs that agree up to the limit produce the same slug, as do inputs
+            that differ only by characters this class removes. A slug is therefore never unique. Callers that key on one must
+            enforce uniqueness themselves, and must not use it as a security boundary.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.SlugOptions.Separator">
+            <summary>Gets or sets the separator string used between words. Default is "-".</summary>
+            <remarks>The separator should be made of characters that <see cref="M:Meziantou.Framework.SlugOptions.IsAllowed(System.Text.Rune)"/> rejects. When a separator character
+            can also come from the input, a trailing occurrence of it is indistinguishable from a separator this class emitted.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.SlugOptions.Culture">
+            <summary>Gets or sets the culture to use for case transformations. When null, uses invariant culture.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.SlugOptions.CanEndWithSeparator">
+            <summary>Gets or sets a value indicating whether the generated slug can end with a separator.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.SlugOptions.CasingTransformation">
+            <summary>Gets or sets the case transformation to apply to the slug.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.SlugOptions.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.SlugOptions"/> class with default settings.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.SlugOptions.IsAllowed(System.Text.Rune)">
+            <summary>Determines whether the specified character is allowed in the slug.</summary>
+            <param name="character">The character to check.</param>
+            <returns><see langword="true"/> if the character is allowed; otherwise, <see langword="false"/>.</returns>
+            <remarks>Every character is allowed when <see cref="P:Meziantou.Framework.SlugOptions.AllowedRanges"/> is empty. The check runs on the character read from
+            the input, before <see cref="M:Meziantou.Framework.SlugOptions.Replace(System.Text.Rune)"/> and <see cref="P:Meziantou.Framework.SlugOptions.CasingTransformation"/> are applied to it.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.SlugOptions.Replace(System.Text.Rune)">
+            <summary>Replaces a rune with its transformed version based on the configured casing transformation.</summary>
+            <param name="rune">The rune to replace.</param>
+            <returns>The transformed string representation of the rune.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.SlugOptions.Transform(System.Text.Rune)">
+            <summary>
+            Applies <see cref="P:Meziantou.Framework.SlugOptions.CasingTransformation"/> to a rune without allocating the string <see cref="M:Meziantou.Framework.SlugOptions.Replace(System.Text.Rune)"/> returns.
+            Only used when <see cref="M:Meziantou.Framework.SlugOptions.Replace(System.Text.Rune)"/> is known not to be overridden.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.SlugOptions.UsesDefaultReplace">
+            <summary>
+            Gets a value indicating whether <see cref="M:Meziantou.Framework.SlugOptions.Replace(System.Text.Rune)"/> still has its default implementation, in which case
+            <see cref="M:Meziantou.Framework.SlugOptions.Transform(System.Text.Rune)"/> produces the same result without allocating a string for every rune.
+            </summary>
+        </member>
+    </members>
+</doc>
