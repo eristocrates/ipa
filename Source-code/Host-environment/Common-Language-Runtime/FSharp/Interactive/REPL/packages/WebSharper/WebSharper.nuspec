@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>WebSharper</id>
+    <version>10.1.6.676</version>
+    <authors>IntelliFactory</authors>
+    <licenseUrl>https://github.com/dotnet-websharper/core/blob/master/LICENSE.md</licenseUrl>
+    <repository type="git" url="https://github.com/dotnet-websharper/core/" />
+    <projectUrl>https://websharper.com/</projectUrl>
+    <iconUrl>https://github.com/dotnet-websharper/core/raw/websharper50/tools/WebSharper.png</iconUrl>
+    <description>.NET-to-JavaScript compiler and web application framework</description>
+    <tags>WebSharper Web JavaScript FSharp CSharp</tags>
+    <dependencies>
+      <group targetFramework="netstandard2.0">
+        <dependency id="FSharp.Core" version="6.0.0" />
+        <dependency id="System.Reflection.Emit.Lightweight" version="4.7.0" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,257 @@
+{
+  "nodes": [
+    {
+      "id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+    },
+    {
+      "id": "eristocrates"
+    },
+    {
+      "id": "https://connect.secure.wellsfargo.com/accounts/start#everydayChecking"
+    },
+    {
+      "id": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount"
+    },
+    {
+      "id": "https://mobile.usaa.com/my/logon?acf=1#usaaSavings"
+    },
+    {
+      "id": "https://eristocrates.dev/ontology/commonplace/syrislove"
+    },
+    {
+      "id": "https://mobile.usaa.com/my/logon?acf=1#platinumVisa"
+    },
+    {
+      "id": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount"
+    },
+    {
+      "id": "https://www.governmentjobs.com/careers/leoncountyfl/classspecs/1183950"
+    },
+    {
+      "id": "35"
+    },
+    {
+      "id": "Fisher"
+    },
+    {
+      "id": "Tierra"
+    },
+    {
+      "id": "https://connect.secure.wellsfargo.com/accounts/start#wellsFargoRewards"
+    },
+    {
+      "id": "https://myfuelmaster.com/job/desktop-support-technician-8"
+    },
+    {
+      "id": "https://connect.secure.wellsfargo.com/accounts/start#platinumCard"
+    },
+    {
+      "id": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account"
+    },
+    {
+      "id": "Collier"
+    },
+    {
+      "id": "33"
+    },
+    {
+      "id": "https://mobile.usaa.com/my/logon?acf=1#checking"
+    },
+    {
+      "id": "Brandon"
+    },
+    {
+      "id": "http://xmlns.com/foaf/0.1/Person"
+    },
+    {
+      "id": "https://myfuelmaster.com/"
+    },
+    {
+      "id": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DepositAccount"
+    },
+    {
+      "id": "https://connect.secure.wellsfargo.com/accounts/start#installmentLoans"
+    },
+    {
+      "id": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanSpecificCustomerAccount"
+    },
+    {
+      "id": "https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology"
+    },
+    {
+      "id": "syrislove"
+    }
+  ],
+  "links": [
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "target": "eristocrates",
+      "predicate": "http://xmlns.com/foaf/0.1/nick"
+    },
+    {
+      "source": "https://connect.secure.wellsfargo.com/accounts/start#everydayChecking",
+      "target": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    },
+    {
+      "source": "https://mobile.usaa.com/my/logon?acf=1#usaaSavings",
+      "target": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "predicate": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+    },
+    {
+      "source": "https://mobile.usaa.com/my/logon?acf=1#platinumVisa",
+      "target": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "target": "https://www.governmentjobs.com/careers/leoncountyfl/classspecs/1183950",
+      "predicate": "http://xmlns.com/foaf/0.1/workInfoHomepage"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "target": "35",
+      "predicate": "http://xmlns.com/foaf/0.1/age"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "target": "Fisher",
+      "predicate": "http://xmlns.com/foaf/0.1/familyName"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "target": "Tierra",
+      "predicate": "http://xmlns.com/foaf/0.1/firstName"
+    },
+    {
+      "source": "https://connect.secure.wellsfargo.com/accounts/start#wellsFargoRewards",
+      "target": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "predicate": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "target": "https://myfuelmaster.com/job/desktop-support-technician-8",
+      "predicate": "http://xmlns.com/foaf/0.1/workInfoHomepage"
+    },
+    {
+      "source": "https://connect.secure.wellsfargo.com/accounts/start#platinumCard",
+      "target": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    },
+    {
+      "source": "https://connect.secure.wellsfargo.com/accounts/start#everydayChecking",
+      "target": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "predicate": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+    },
+    {
+      "source": "https://connect.secure.wellsfargo.com/accounts/start#wellsFargoRewards",
+      "target": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "target": "Collier",
+      "predicate": "http://xmlns.com/foaf/0.1/familyName"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "target": "33",
+      "predicate": "http://xmlns.com/foaf/0.1/age"
+    },
+    {
+      "source": "https://mobile.usaa.com/my/logon?acf=1#checking",
+      "target": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    },
+    {
+      "source": "https://connect.secure.wellsfargo.com/accounts/start#platinumCard",
+      "target": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "predicate": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "target": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "predicate": "http://xmlns.com/foaf/0.1/knows"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "target": "Collier",
+      "predicate": "http://xmlns.com/foaf/0.1/surname"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "target": "Brandon",
+      "predicate": "http://xmlns.com/foaf/0.1/firstName"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "target": "http://xmlns.com/foaf/0.1/Person",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "target": "https://myfuelmaster.com/",
+      "predicate": "http://xmlns.com/foaf/0.1/workplaceHomepage"
+    },
+    {
+      "source": "https://mobile.usaa.com/my/logon?acf=1#usaaSavings",
+      "target": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DepositAccount",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "target": "Fisher",
+      "predicate": "http://xmlns.com/foaf/0.1/surname"
+    },
+    {
+      "source": "https://mobile.usaa.com/my/logon?acf=1#checking",
+      "target": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "predicate": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "target": "Collier",
+      "predicate": "http://xmlns.com/foaf/0.1/lastName"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "target": "http://xmlns.com/foaf/0.1/Person",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    },
+    {
+      "source": "https://mobile.usaa.com/my/logon?acf=1#platinumVisa",
+      "target": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "predicate": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+    },
+    {
+      "source": "https://connect.secure.wellsfargo.com/accounts/start#installmentLoans",
+      "target": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "predicate": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "target": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "predicate": "http://xmlns.com/foaf/0.1/knows"
+    },
+    {
+      "source": "https://connect.secure.wellsfargo.com/accounts/start#installmentLoans",
+      "target": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanSpecificCustomerAccount",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "target": "https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology",
+      "predicate": "http://xmlns.com/foaf/0.1/workplaceHomepage"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "target": "Fisher",
+      "predicate": "http://xmlns.com/foaf/0.1/lastName"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "target": "syrislove",
+      "predicate": "http://xmlns.com/foaf/0.1/nick"
+    }
+  ]
+}

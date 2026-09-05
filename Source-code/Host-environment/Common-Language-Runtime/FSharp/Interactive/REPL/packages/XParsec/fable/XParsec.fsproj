@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
+    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IsPackable>true</IsPackable>
+    <IsTestProject>false</IsTestProject>
+    <!-- Sourcelink -->
+    <PublishRepositoryUrl>https://github.com/roboz0r/XParsec</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Fable.Package.SDK required properties -->
+    <PackageTags>$(PackageTags);f#;fable;fable-library;fable-javascript;fable-dotnet</PackageTags>
+    <FablePackageType>library</FablePackageType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="FableTypes.fs" />
+    <Compile Include="ImmutableArray.fs" />
+    <Compile Include="Types.fs" />
+    <Compile Include="Parsers.fs" />
+    <Compile Include="Combinators.fs" />
+    <Compile Include="OperatorParsing.fs" />
+    <Compile Include="CharParsers.fs" />
+    <Compile Include="ByteParsers.fs" />
+    <Compile Include="Readables.fs" />
+    <Compile Include="ErrorFormatting.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Pending https://github.com/fable-compiler/Fable.Package.SDK/issues/11 -->
+    <!-- <PackageReference Include="Fable.Package.SDK"> -->
+    <!-- <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets> -->
+    <!-- <PrivateAssets>all</PrivateAssets> -->
+    <!-- </PackageReference> -->
+    <PackageReference Include="FSharp.Core" />
+    <!-- net8+ ships System.Collections.Immutable in-box; only needed for netstandard2.0 -->
+    <PackageReference Include="System.Collections.Immutable" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+  </ItemGroup>
+  <Import Project="../Fable.Package.SDK/Fable.Package.SDK.props" />
+  <Import Project="../Fable.Package.SDK/Fable.Package.SDK.targets" />
+</Project>

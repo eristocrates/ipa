@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>ktsu.dev contributors</dc:creator>
+  <dc:description>A comprehensive .NET library for managing keyboard shortcuts and keybindings with multi-profile support, command registry, and persistent storage.</dc:description>
+  <dc:identifier>ktsu.Keybinding.Core</dc:identifier>
+  <version>1.0.40</version>
+  <keywords>keyboard shortcuts;keybindings;key combinations;command registry;profiles;hotkeys;input handling;shortcuts management;chord parsing;musical keybindings;multi profile;dotnet library;csharp;configuration;persistence;json storage;thread safe;SOLID architecture</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

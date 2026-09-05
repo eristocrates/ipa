@@ -1,0 +1,1 @@
+A lightweight .NET library providing a non-generic interface and type-safe base class for implementing deep cloning functionality in your classes. Supports inheritance hierarchies, circular references, and various collection types including immutable collections. Thread-safe and designed for performance with minimal dependencies.

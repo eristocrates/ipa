@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Universal.Common.Css.Selectors.dll
+F: /lib/netstandard2.0/Universal.Common.Css.Selectors.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/f4f701eff5414ae88b12a83d1e22651d.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /Package.md
+F: /universal.common.css.selectors.1.0.1.nupkg
+F: /Universal.Common.Css.Selectors.nuspec
+F: /[Content_Types].xml

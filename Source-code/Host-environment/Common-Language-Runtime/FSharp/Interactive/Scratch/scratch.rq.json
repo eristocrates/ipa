@@ -1,0 +1,503 @@
+{
+  "head": {
+    "vars": [
+      "source",
+      "predicate",
+      "target"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/nick"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "eristocrates",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://connect.secure.wellsfargo.com/accounts/start#everydayChecking"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://mobile.usaa.com/my/logon?acf=1#usaaSavings"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://mobile.usaa.com/my/logon?acf=1#platinumVisa"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/workInfoHomepage"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://www.governmentjobs.com/careers/leoncountyfl/classspecs/1183950"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/age"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "35",
+          "datatype": "http://www.w3.org/2001/XMLSchema#int"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/familyName"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Fisher",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/firstName"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Tierra",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://connect.secure.wellsfargo.com/accounts/start#wellsFargoRewards"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/workInfoHomepage"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://myfuelmaster.com/job/desktop-support-technician-8"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://connect.secure.wellsfargo.com/accounts/start#platinumCard"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://connect.secure.wellsfargo.com/accounts/start#everydayChecking"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://connect.secure.wellsfargo.com/accounts/start#wellsFargoRewards"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/familyName"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Collier",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/age"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "33",
+          "datatype": "http://www.w3.org/2001/XMLSchema#int"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://mobile.usaa.com/my/logon?acf=1#checking"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://connect.secure.wellsfargo.com/accounts/start#platinumCard"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/knows"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/surname"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Collier",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/firstName"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Brandon",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/Person"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/workplaceHomepage"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "https://myfuelmaster.com/",
+          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://mobile.usaa.com/my/logon?acf=1#usaaSavings"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DepositAccount"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/surname"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Fisher",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://mobile.usaa.com/my/logon?acf=1#checking"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/lastName"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Collier",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/Person"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://mobile.usaa.com/my/logon?acf=1#platinumVisa"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://connect.secure.wellsfargo.com/accounts/start#installmentLoans"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/knows"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://connect.secure.wellsfargo.com/accounts/start#installmentLoans"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanSpecificCustomerAccount"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/workplaceHomepage"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology",
+          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/lastName"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Fisher",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/nick"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "syrislove",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      }
+    ]
+  }
+}

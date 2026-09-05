@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ktsu.Frontmatter</id>
+    <version>1.2.23</version>
+    <title>ktsu.Frontmatter</title>
+    <authors>ktsu.dev contributors</authors>
+    <license type="file">LICENSE.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/ktsu-dev/Frontmatter</projectUrl>
+    <description>A .NET library for processing and manipulating YAML frontmatter in markdown files.</description>
+    <releaseNotes>## v1.2.23 (patch)
+
+Changes since v1.2.22:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))</releaseNotes>
+    <copyright>Copyright (c) 2023-2026 ktsu-dev contributors</copyright>
+    <tags>frontmatter;yaml frontmatter;markdown;markdown processing;metadata;yaml;document processing;property naming;dotnet;csharp</tags>
+    <repository type="git" commit="fe88521b39938939952a3cf5d95c4ec2f7407766" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="HashDepot" version="2.0.3" exclude="Build,Analyzers" />
+        <dependency id="YamlDotNet" version="18.1.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Extensions" version="1.6.8" exclude="Build,Analyzers" />
+        <dependency id="ktsu.FuzzySearch" version="1.2.38" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="HashDepot" version="2.0.3" exclude="Build,Analyzers" />
+        <dependency id="YamlDotNet" version="18.1.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Extensions" version="1.6.8" exclude="Build,Analyzers" />
+        <dependency id="ktsu.FuzzySearch" version="1.2.38" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="HashDepot" version="2.0.3" exclude="Build,Analyzers" />
+        <dependency id="YamlDotNet" version="18.1.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Extensions" version="1.6.8" exclude="Build,Analyzers" />
+        <dependency id="ktsu.FuzzySearch" version="1.2.38" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="HashDepot" version="2.0.3" exclude="Build,Analyzers" />
+        <dependency id="System.Memory" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="YamlDotNet" version="18.1.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Extensions" version="1.6.8" exclude="Build,Analyzers" />
+        <dependency id="ktsu.FuzzySearch" version="1.2.38" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="HashDepot" version="2.0.3" exclude="Build,Analyzers" />
+        <dependency id="YamlDotNet" version="18.1.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Extensions" version="1.6.8" exclude="Build,Analyzers" />
+        <dependency id="ktsu.FuzzySearch" version="1.2.38" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

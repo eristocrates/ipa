@@ -74,13 +74,29 @@ let compileScriptToDll (sourceFilePath: string) =
                 return Ok outputFilePath
     }
 
+let targetFileNames =
+    [| "rdf"
+       "voaf"
+       "vann"
+       "foaf"
+       "vs"
+       "hydra"
+       "void"
+       "vaem"
+       "dcterms"
+       "dcat" |]
+    |> Array.map (fun prefix -> $"{prefix}Namespace.fsx")
+    |> Set.ofArray
+
 let compilationTargets =
     Folder.Generated.GetFiles("*.fsx")
-    |> Array.filter (fun fsxFile ->
+    |> Array.filter (fun fsxFile -> targetFileNames.Contains(fsxFile.Name)
+    (*
         let dllFile =
             Path.ChangeExtension(fsxFile.FullName, ".dll")
             |> FileInfo
         not dllFile.Exists
+    *)
 
     )
     |> Array.sortBy (fun fsxFile -> fsxFile.Length)
@@ -96,5 +112,5 @@ compilationTargets
 
 *)
 
-compileScriptToDll @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\Namespace\Generated\dcatNamespace.fsx"
+compileScriptToDll @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\Namespace\Generated\fibo-loan-ln-lnNamespace.fsx"
 |> Async.RunSynchronously

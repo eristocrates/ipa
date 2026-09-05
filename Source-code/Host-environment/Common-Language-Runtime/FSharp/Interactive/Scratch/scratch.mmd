@@ -1,4 +1,60 @@
 graph LR
-  0["vann:"]
-  1["voaf:Vocabulary"]
-  0 -->|"rdf:type"| 1
+  0["commonplace:eristocrates"]
+  1["eristocrates^^xsd:string"]
+  2["wellsFargoAccount:everydayChecking"]
+  3["fibo-loan-spc-crd:DebitCardAccount"]
+  4["usaaAccount:usaaSavings"]
+  5["commonplace:syrislove"]
+  6["usaaAccount:platinumVisa"]
+  7["fibo-loan-spc-crd:CreditCardAccount"]
+  8["governmentjobs:1183950"]
+  9["35^^xsd:int"]
+  10["commonplace:syrislove"]
+  11["Fisher^^xsd:string"]
+  12["Tierra^^xsd:string"]
+  13["wellsFargoAccount:wellsFargoRewards"]
+  14["commonplace:eristocrates"]
+  15["fuelmasterjob:desktop-support-technician-8"]
+  16["wellsFargoAccount:platinumCard"]
+  17["fibo-fbc-pas-caa:Account"]
+  18["Collier^^xsd:string"]
+  19["33^^xsd:int"]
+  20["usaaAccount:checking"]
+  21["Brandon^^xsd:string"]
+  22["foaf:Person"]
+  23["https://myfuelmaster.com/^^xsd:anyURI"]
+  24["fibo-fbc-pas-caa:DepositAccount"]
+  25["wellsFargoAccount:installmentLoans"]
+  26["fibo-loan-ln-ln:LoanSpecificCustomerAccount"]
+  27["https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology^^xsd:anyURI"]
+  28["syrislove^^xsd:string"]
+  0 -->|"foaf:nick"| 1
+  0 -->|"foaf:knows"| 5
+  0 -->|"foaf:workInfoHomepage"| 8
+  0 -->|"foaf:age"| 9
+  0 -->|"foaf:lastName"| 18
+  0 -->|"foaf:firstName"| 21
+  0 -->|"rdf:type"| 22
+  0 -->|"foaf:workplaceHomepage"| 27
+  2 -->|"rdf:type"| 3
+  2 -->|"fibo-fbc-pas-caa:AccountHolder"| 14
+  4 -->|"fibo-fbc-pas-caa:AccountHolder"| 5
+  4 -->|"rdf:type"| 24
+  6 -->|"fibo-fbc-pas-caa:AccountHolder"| 5
+  6 -->|"rdf:type"| 7
+  10 -->|"foaf:lastName"| 11
+  10 -->|"foaf:firstName"| 12
+  10 -->|"foaf:knows"| 14
+  10 -->|"foaf:workInfoHomepage"| 15
+  10 -->|"foaf:age"| 19
+  10 -->|"rdf:type"| 22
+  10 -->|"foaf:workplaceHomepage"| 23
+  10 -->|"foaf:nick"| 28
+  13 -->|"fibo-fbc-pas-caa:AccountHolder"| 14
+  13 -->|"rdf:type"| 17
+  16 -->|"rdf:type"| 7
+  16 -->|"fibo-fbc-pas-caa:AccountHolder"| 14
+  20 -->|"rdf:type"| 3
+  20 -->|"fibo-fbc-pas-caa:AccountHolder"| 5
+  25 -->|"fibo-fbc-pas-caa:AccountHolder"| 14
+  25 -->|"rdf:type"| 26

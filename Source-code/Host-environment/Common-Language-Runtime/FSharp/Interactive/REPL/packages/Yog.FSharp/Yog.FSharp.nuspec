@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Yog.FSharp</id>
+    <version>0.6.0</version>
+    <authors>Mafinar K</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <description>Functional graph library for F#</description>
+    <tags>fsharp graph graph-theory algorithms</tags>
+    <repository type="git" url="https://github.com/code-shoily/yog-fsharp" commit="44ffdc12509b1f2a7d8579bf55e99444268dbcec" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="FSharp.Core" version="10.0.103" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ktsu.Extensions</id>
+    <version>1.6.9</version>
+    <title>ktsu.Extensions</title>
+    <authors>ktsu.dev contributors</authors>
+    <license type="file">LICENSE.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/ktsu-dev/Extensions</projectUrl>
+    <description>A collection of useful extension methods for .NET types including strings, collections, dictionaries, enumerables, and reflection.</description>
+    <releaseNotes>## v1.6.9 (patch)
+
+Changes since v1.6.8:
+
+- Bump MSTest.Sdk from 4.3.3 to 4.4.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))</releaseNotes>
+    <copyright>Copyright (c) 2023-2026 ktsu-dev contributors</copyright>
+    <tags>extensions;collection;dictionary;enumerable;string;reflection;utility;helper;dotnet;csharp;linq;null safety;deep clone;shallow clone;batch;strong strings;word wrap;text wrapping;hyphenation</tags>
+    <repository type="git" commit="b3a904f77b51fa00efe14c221e77f9211d7f8499" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+      <group targetFramework="net5.0" />
+      <group targetFramework="net6.0" />
+      <group targetFramework="net7.0" />
+      <group targetFramework="net8.0" />
+      <group targetFramework="net9.0" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Memory" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.6.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1" />
+    </dependencies>
+  </metadata>
+</package>

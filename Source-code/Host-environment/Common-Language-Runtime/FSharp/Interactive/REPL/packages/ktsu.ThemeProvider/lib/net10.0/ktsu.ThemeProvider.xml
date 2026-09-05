@@ -1,0 +1,1960 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ktsu.ThemeProvider</name>
+    </assembly>
+    <members>
+        <member name="M:Polyfills.Polyfill.GetEncodedLength(System.Int32)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetEncodedLength(System.Int32)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.GetMaxDecodedLength(System.Int32)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetMaxDecodedLength(System.Int32)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToString(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToString(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToChars(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@,System.Int32@,System.Boolean)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@,System.Int32@,System.Boolean)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryEncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryEncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToUtf8(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToUtf8(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromChars(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@,System.Int32@,System.Boolean)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@,System.Int32@,System.Boolean)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryDecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryDecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromUtf8(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromUtf8(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenStandardInputHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardInputHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenStandardOutputHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardOutputHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenStandardErrorHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardErrorHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.Byte)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.Byte)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.Byte[],System.Byte[])">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.Byte[],System.Byte[])"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[])">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[])"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.IO.Stream,System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.IO.Stream,System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[],System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[],System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Create``2(System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$824B137C9700787F7FAADF3CDD49751C`1.Create``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateAsHardLink(System.IO.FileInfo,System.String)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$9FC757ADB0730D641B7538973D9DCBAA.CreateAsHardLink(System.String)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateHardLink(System.String,System.String)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.CreateHardLink(System.String,System.String)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenNullHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.OpenNullHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.And``1(``0@,``0)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.And``1(``0@,``0)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Or``1(``0@,``0)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.Or``1(``0@,``0)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Equals(System.Char,System.Char,System.StringComparison)">
+            <summary>
+            Determines whether the specified character is equal to the current character, using the specified comparison type.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Open(System.IO.Compression.ZipArchiveEntry,System.IO.FileAccess)">
+            <summary>
+            Opens the entry from the zip archive with the specified access mode.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenAsync(System.IO.Compression.ZipArchiveEntry,System.IO.FileAccess,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously opens the entry from the zip archive with the specified access mode.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Produces a set items excluding <paramref name="item"/> by using the default equality comparer to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Produces a set items excluding <paramref name="item"/> by using <paramref name="comparer"/> to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0},``0[])">
+            <summary>
+            Produces the set difference of two sequences by <paramref name="comparer"/> to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.FullJoin``4(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of each sequence that have no matching element in the other.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.FullJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of each sequence that have no matching element in the other.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.GroupJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on key equality and groups the results.
+            Each result is an <see cref="T:System.Linq.IGrouping`2" /> keyed by the outer element.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Join``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LeftJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of the outer sequence that have no matching inner element.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.RightJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of the inner sequence that have no matching outer element.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Min``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Returns the minimum value in the span.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Min``1(System.ReadOnlySpan{``0},System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Returns the minimum value in the span.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Max``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Returns the maximum value in the span.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Max``1(System.ReadOnlySpan{``0},System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Returns the maximum value in the span.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllText(System.Diagnostics.Process,System.Nullable{System.TimeSpan})">
+            <summary>
+            Reads the standard output and standard error of the process as text, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllTextAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously reads the standard output and standard error of the process as text, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllBytes(System.Diagnostics.Process,System.Nullable{System.TimeSpan})">
+            <summary>
+            Reads the standard output and standard error of the process as bytes, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllBytesAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously reads the standard output and standard error of the process as bytes, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllLinesAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously reads the standard output and standard error of the process line-by-line, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.StartsWith(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Determines whether this string instance starts with the specified character when compared using the specified comparison option.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.EndsWith(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Determines whether the end of this string instance matches the specified character when compared using the specified comparison option.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOf(System.String,System.Char,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the first occurrence of the specified character in this string.
+            The search starts at a specified character position.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOf(System.String,System.Char,System.Int32,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the first occurrence of the specified character in this string.
+            The search starts at a specified character position and examines a specified number of character positions.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LastIndexOf(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the last occurrence of a specified character within the current string.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LastIndexOf(System.String,System.Char,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the last occurrence of a specified character within the current string.
+            The search starts at a specified character position and proceeds backward toward the beginning of the string.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LastIndexOf(System.String,System.Char,System.Int32,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the last occurrence of a specified character within the current string.
+            The search starts at a specified character position and proceeds backward toward the beginning of the string for a specified number of character positions.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.WriteAsync(System.IO.TextWriter,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes a string to the stream, with a cancellation token.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.WriteLineAsync(System.IO.TextWriter,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes a line terminator to the stream, with a cancellation token.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.WriteLineAsync(System.IO.TextWriter,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes a string followed by a line terminator to the stream, with a cancellation token.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsAssignableTo``1(System.Type)">
+            <summary>
+            Generic version of Type.IsAssignableTo https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignableto.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsAssignableFrom``1(System.Type)">
+            <summary>
+            Generic version of Type.IsAssignableFrom https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignablefrom.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Run(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Run(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAsync(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureText(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureText(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureTextAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureTextAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.StartAndForget(System.Diagnostics.ProcessStartInfo)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.Diagnostics.ProcessStartInfo)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.StartAndForget(System.String,System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.String,System.Collections.Generic.IList{System.String})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryGetProcessById(System.Int32,System.Diagnostics.Process@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.TryGetProcessById(System.Int32,System.Diagnostics.Process@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.get_IsMultithreadingSupported">
+            <inheritdoc cref="P:Polyfills.Polyfill.&lt;G&gt;$E652E81B895AED455F922BE6184F6C85.IsMultithreadingSupported"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.MoveChunks(System.Text.StringBuilder)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.MoveChunks(System.Text.StringBuilder)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Append(System.Text.StringBuilder,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string to this instance.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Append(System.Text.StringBuilder,System.IFormatProvider,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string to this instance.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AppendLine(System.Text.StringBuilder,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string followed by the default line terminator to the end of the current StringBuilder object.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AppendLine(System.Text.StringBuilder,System.IFormatProvider,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string followed by the default line terminator to the end of the current StringBuilder object.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.GetNullableUnderlyingType(System.Type)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.GetNullableUnderlyingType"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.get_UriSchemeData">
+            <inheritdoc cref="P:Polyfills.Polyfill.&lt;G&gt;$A2D159684F90C84BD35ED118E17F9ADC.UriSchemeData"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$6DC2D49024D88513ACB2F40A260511E2.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetEncodedLength(System.Int32)">
+            <summary>
+            Returns the length (in chars) of the result if you were to encode binary data within a byte span of size <paramref name="bytesLength"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetMaxDecodedLength(System.Int32)">
+            <summary>
+            Returns the maximum length (in bytes) of the result if you were to decode base-64 encoded text of size <paramref name="base64Length"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToString(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encodes the span of binary data into a string that is represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})">
+            <summary>
+            Encodes the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encodes the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@,System.Int32@,System.Boolean)">
+            <summary>
+            Encodes the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryEncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@)">
+            <summary>
+            Tries to encode the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToUtf8(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encodes the span of binary data into a byte array of UTF-8 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Decodes the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte})">
+            <summary>
+            Decodes the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@,System.Int32@,System.Boolean)">
+            <summary>
+            Decodes the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryDecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to decode the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromUtf8(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Decodes the span of UTF-8 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardInputHandle">
+            <summary>
+            Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> that wraps the operating system handle for standard input.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardOutputHandle">
+            <summary>
+            Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> that wraps the operating system handle for standard output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardErrorHandle">
+            <summary>
+            Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> that wraps the operating system handle for standard error.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.Byte)">
+            <summary>
+            Determines whether every byte in <paramref name="source"/> is equal to <paramref name="value"/>, in an amount of time that depends on the length of <paramref name="source"/>, but not its values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.Byte[],System.Byte[])">
+            <summary>
+            Determines whether the HMAC of <paramref name="source"/> matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[])">
+            <summary>
+            Determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Determines whether the HMAC of <paramref name="source"/> matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.IO.Stream,System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$824B137C9700787F7FAADF3CDD49751C`1.Create``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.EqualityComparer`1"/> that determines equality by projecting each value through <paramref name="keySelector"/> and comparing the resulting keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$9FC757ADB0730D641B7538973D9DCBAA.CreateAsHardLink(System.String)">
+            <summary>
+            Creates a hard link located in <see cref="P:System.IO.FileSystemInfo.Name"/> that refers to the same file content as <paramref name="pathToTarget"/>.
+            </summary>
+            <param name="pathToTarget">The path of the hard link target.</param>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.CreateHardLink(System.String,System.String)">
+            <summary>
+            Creates a hard link located in <paramref name="path"/> that refers to the same file content as <paramref name="pathToTarget"/>.
+            </summary>
+            <param name="path">The path where the hard link should be created.</param>
+            <param name="pathToTarget">The path of the hard link target.</param>
+            <returns>A <see cref="T:System.IO.FileInfo"/> instance that wraps the newly created file.</returns>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.OpenNullHandle">
+            <summary>
+            Opens a handle to the operating system's null device.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.And``1(``0@,``0)">
+            <summary>
+            Bitwise "ands" two values and replaces the first value with the result, as an atomic operation.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.Or``1(``0@,``0)">
+            <summary>
+            Bitwise "ors" two values and replaces the first value with the result, as an atomic operation.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="startInfo"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="startInfo"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="startInfo"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="startInfo"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.Diagnostics.ProcessStartInfo)">
+            <summary>
+            Starts the process described by <paramref name="startInfo"/> in detached fashion and returns its process identifier.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/> in detached fashion and returns its process identifier.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.TryGetProcessById(System.Int32,System.Diagnostics.Process@)">
+            <summary>
+            Gets the <see cref="T:System.Diagnostics.Process"/> associated with the specified process identifier, and returns a value that indicates whether the operation succeeded.
+            </summary>
+        </member>
+        <member name="P:Polyfills.Polyfill.&lt;G&gt;$E652E81B895AED455F922BE6184F6C85.IsMultithreadingSupported">
+            <summary>
+            Gets a value that indicates whether the runtime supports multithreading.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.MoveChunks(System.Text.StringBuilder)">
+            <summary>
+            Creates a new <see cref="T:System.Text.StringBuilder"/> instance initialized to the same state as
+            <paramref name="source"/>, and resets <paramref name="source"/> to an empty, usable state
+            with no allocated buffers. Ownership of the chunks is transferred in O(1); the underlying
+            character data is not copied. <paramref name="source"/>'s <see cref="P:System.Text.StringBuilder.MaxCapacity"/>
+            is preserved.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.GetNullableUnderlyingType">
+            <summary>
+            Returns the underlying type argument of the current nullable value type, or <c>null</c> if the current type is not a nullable value type.
+            </summary>
+        </member>
+        <member name="P:Polyfills.Polyfill.&lt;G&gt;$A2D159684F90C84BD35ED118E17F9ADC.UriSchemeData">
+            <summary>
+            Provides the scheme name for the <c>data</c> URI scheme (RFC 2397). This field is read-only.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$6DC2D49024D88513ACB2F40A260511E2.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Returns the index in <paramref name="value"/> where the first ill-formed UTF-8 subsequence begins, or -1 if <paramref name="value"/> is well-formed.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Ensure.Equal``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotGreaterThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotGreaterThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotLessThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greater than or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotLessThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotNegative``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.</summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotNegativeOrZero``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.</summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotZero``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.</summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="T:System.Diagnostics.ProcessExitStatus">
+            <summary>
+            Represents the exit status of a process.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.ProcessExitStatus.#ctor(System.Int32,System.Boolean,System.Nullable{System.Runtime.InteropServices.PosixSignal})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.ProcessExitStatus"/> class.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessExitStatus.Canceled">
+            <summary>
+            Gets a value indicating whether the process was canceled.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessExitStatus.ExitCode">
+            <summary>
+            Gets the exit code of the process.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessExitStatus.Signal">
+            <summary>
+            Gets the POSIX signal that terminated the process, if any.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.ProcessOutputLine">
+            <summary>
+            Represents a line of output from a process, including whether it came from standard error.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.ProcessOutputLine.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.ProcessOutputLine"/> struct.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessOutputLine.Content">
+            <summary>
+            Gets the content of the output line.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessOutputLine.StandardError">
+            <summary>
+            Gets a value indicating whether the line came from the standard error stream.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.ProcessTextOutput">
+            <summary>
+            Represents the captured text output from a process, including standard output, standard error, and exit status.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.ProcessTextOutput.#ctor(System.Diagnostics.ProcessExitStatus,System.String,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.ProcessTextOutput"/> class.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.ExitStatus">
+            <summary>
+            Gets the exit status of the process.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.ProcessId">
+            <summary>
+            Gets the process identifier.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.StandardError">
+            <summary>
+            Gets the captured standard error text.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.StandardOutput">
+            <summary>
+            Gets the captured standard output text.
+            </summary>
+        </member>
+        <member name="T:System.IO.ReadOnlyMemoryStream">
+            <summary>
+            Provides a seekable, read-only <see cref="T:System.IO.Stream"/> over a <see cref="T:System.ReadOnlyMemory`1"/>.
+            </summary>
+            <remarks>
+            The underlying memory is not copied; reads are served directly from it.
+            The stream cannot be written to. <see cref="P:System.IO.ReadOnlyMemoryStream.CanWrite"/> always returns <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.#ctor(System.ReadOnlyMemory{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.ReadOnlyMemoryStream"/> class over the specified <see cref="T:System.ReadOnlyMemory`1"/>.
+            </summary>
+        </member>
+        <member name="P:System.IO.ReadOnlyMemoryStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.ReadOnlyMemoryStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.ReadOnlyMemoryStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.ReadOnlyMemoryStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.ReadOnlyMemoryStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Read(System.Span{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.IO.StringStream">
+            <summary>
+            Provides a read-only, non-seekable <see cref="T:System.IO.Stream"/> that encodes a <see cref="T:System.String"/> or
+            <see cref="T:System.ReadOnlyMemory`1"/> into bytes using a specified <see cref="T:System.Text.Encoding"/>.
+            </summary>
+            <remarks>
+            This stream never emits a byte order mark (BOM). Callers who need a BOM can prepend it themselves.
+            The text is encoded incrementally as the stream is read rather than being buffered up front, so the
+            peak memory cost is bounded by the caller's read buffer rather than the full encoded length. A
+            stateful <see cref="T:System.Text.Encoder"/> preserves conversion state across reads, so multi-byte characters
+            (including surrogate pairs) that straddle a buffer boundary are encoded correctly.
+            </remarks>
+        </member>
+        <member name="M:System.IO.StringStream.#ctor(System.String,System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.StringStream"/> class with the specified string and encoding.
+            </summary>
+        </member>
+        <member name="M:System.IO.StringStream.#ctor(System.ReadOnlyMemory{System.Char},System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.StringStream"/> class with the specified character memory and encoding.
+            </summary>
+        </member>
+        <member name="P:System.IO.StringStream.Encoding">
+            <summary>
+            Gets the encoding used by this stream.
+            </summary>
+        </member>
+        <member name="P:System.IO.StringStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.IO.WritableMemoryStream">
+            <summary>
+            Provides a seekable, read-write <see cref="T:System.IO.Stream"/> over a <see cref="T:System.Memory`1"/> with fixed capacity.
+            </summary>
+            <remarks>
+            The underlying memory is not copied; reads and writes are served directly from it.
+            The stream cannot expand beyond the capacity of the memory it was created over.
+            </remarks>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.#ctor(System.Memory{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.WritableMemoryStream"/> class over the specified <see cref="T:System.Memory`1"/>.
+            </summary>
+        </member>
+        <member name="P:System.IO.WritableMemoryStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.WritableMemoryStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.WritableMemoryStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.WritableMemoryStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.WritableMemoryStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Read(System.Span{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Write(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Buffers.ReadOnlySequenceStream">
+            <summary>
+            Provides a seekable, read-only <see cref="T:System.IO.Stream"/> over a <see cref="T:System.Buffers.ReadOnlySequence`1"/>.
+            </summary>
+            <remarks>
+            The underlying sequence is not copied; reads are served directly from its segments.
+            The stream cannot be written to. <see cref="P:System.Buffers.ReadOnlySequenceStream.CanWrite"/> always returns <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.#ctor(System.Buffers.ReadOnlySequence{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Buffers.ReadOnlySequenceStream"/> class over the specified <see cref="T:System.Buffers.ReadOnlySequence`1"/>.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.CopyTo(System.IO.Stream,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.CopyToAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Text.Unicode.Utf16">
+            <summary>Provides static methods for validating UTF-16 text.</summary>
+        </member>
+        <member name="M:System.Text.Unicode.Utf16.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Returns the index in <paramref name="value"/> where the first ill-formed UTF-16 subsequence begins, or -1 if <paramref name="value"/> is well-formed.
+            </summary>
+        </member>
+        <member name="M:System.Text.Unicode.Utf16.IsValid(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Returns a value indicating whether <paramref name="value"/> is well-formed UTF-16.
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.ColorRange">
+            <summary>
+            Represents a range of colors defined by start and end points in perceptual color space.
+            Used for interpolating colors between two extremes.
+            </summary>
+            <param name="Start">The starting color of the range</param>
+            <param name="End">The ending color of the range</param>
+        </member>
+        <member name="M:ktsu.ThemeProvider.ColorRange.#ctor(ktsu.Semantics.Color.Color,ktsu.Semantics.Color.Color)">
+            <summary>
+            Represents a range of colors defined by start and end points in perceptual color space.
+            Used for interpolating colors between two extremes.
+            </summary>
+            <param name="Start">The starting color of the range</param>
+            <param name="End">The ending color of the range</param>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ColorRange.Start">
+            <summary>The starting color of the range</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ColorRange.End">
+            <summary>The ending color of the range</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ColorRange.Distance">
+            <summary>
+            Gets the perceptual distance between the start and end colors.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.ColorRange.SingleColorDistanceThreshold">
+            <summary>
+            The perceptual (Oklab) distance below which the start and end colors are treated as a single color.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ColorRange.IsSingleColor">
+            <summary>
+            Indicates whether this range represents a single color (start equals end).
+            </summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.ColorRange.FromColors(ktsu.Semantics.Color.Color,ktsu.Semantics.Color.Color,System.Boolean)">
+            <summary>
+            Creates a color range from two colors, automatically ordering them
+            based on the theme type for appropriate interpolation.
+            </summary>
+            <param name="color1">First color</param>
+            <param name="color2">Second color</param>
+            <param name="isDarkTheme">Whether this is for a dark theme</param>
+            <returns>A color range with appropriate start and end points</returns>
+        </member>
+        <member name="M:ktsu.ThemeProvider.ColorRange.FromColors(ktsu.Semantics.Color.Color,ktsu.Semantics.Color.Color)">
+            <summary>
+            Creates a color range from two colors, automatically ordering them
+            to create a meaningful interpolation range (default: dark theme behavior).
+            </summary>
+            <param name="color1">First color</param>
+            <param name="color2">Second color</param>
+            <returns>A color range with appropriate start and end points</returns>
+        </member>
+        <member name="T:ktsu.ThemeProvider.HexColor">
+            <summary>
+            A color written the way theme authors publish it: as a hex string such as <c>#1e1e2e</c>.
+            </summary>
+            <remarks>
+            Themes declare their palettes in the notation used by the upstream project they mirror, so the
+            checked-in values can be diffed directly against that project's published specification. The
+            implicit conversion from <see cref="T:System.String"/> keeps <see cref="T:ktsu.ThemeProvider.SemanticPalette"/> initializers
+            terse; conversion to a <see cref="T:ktsu.Semantics.Color.Color"/> happens once, when the palette is first resolved.
+            </remarks>
+            <param name="Value">The hex notation of the color, for example <c>#1e1e2e</c>.</param>
+        </member>
+        <member name="M:ktsu.ThemeProvider.HexColor.#ctor(System.String)">
+            <summary>
+            A color written the way theme authors publish it: as a hex string such as <c>#1e1e2e</c>.
+            </summary>
+            <remarks>
+            Themes declare their palettes in the notation used by the upstream project they mirror, so the
+            checked-in values can be diffed directly against that project's published specification. The
+            implicit conversion from <see cref="T:System.String"/> keeps <see cref="T:ktsu.ThemeProvider.SemanticPalette"/> initializers
+            terse; conversion to a <see cref="T:ktsu.Semantics.Color.Color"/> happens once, when the palette is first resolved.
+            </remarks>
+            <param name="Value">The hex notation of the color, for example <c>#1e1e2e</c>.</param>
+        </member>
+        <member name="P:ktsu.ThemeProvider.HexColor.Value">
+            <summary>The hex notation of the color, for example <c>#1e1e2e</c>.</summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.HexColor.op_Implicit(System.String)~ktsu.ThemeProvider.HexColor">
+            <summary>
+            Converts a hex string such as <c>#1e1e2e</c> into a <see cref="T:ktsu.ThemeProvider.HexColor"/>.
+            </summary>
+            <param name="value">The hex notation of the color.</param>
+        </member>
+        <member name="M:ktsu.ThemeProvider.HexColor.FromString(System.String)">
+            <summary>
+            Converts a hex string such as <c>#1e1e2e</c> into a <see cref="T:ktsu.ThemeProvider.HexColor"/>.
+            </summary>
+            <param name="value">The hex notation of the color.</param>
+            <returns>The equivalent <see cref="T:ktsu.ThemeProvider.HexColor"/>.</returns>
+        </member>
+        <member name="M:ktsu.ThemeProvider.HexColor.ToColor">
+            <summary>
+            Parses this value into a <see cref="T:ktsu.Semantics.Color.Color"/>.
+            </summary>
+            <returns>The parsed color.</returns>
+            <exception cref="T:System.InvalidOperationException">The value was never assigned.</exception>
+        </member>
+        <member name="M:ktsu.ThemeProvider.HexColor.ToString">
+            <summary>
+            Returns the hex notation of this color.
+            </summary>
+            <returns>The hex notation, or an empty string if the value was never assigned.</returns>
+        </member>
+        <member name="T:ktsu.ThemeProvider.IPaletteMapper`2">
+            <summary>
+            Interface for mapping semantic themes to UI framework-specific color palettes.
+            Implementations can convert semantic color specifications to concrete framework colors.
+            </summary>
+            <typeparam name="TColorKey">The type used to identify colors in the target framework (e.g., enum, string)</typeparam>
+            <typeparam name="TColorValue">The type used to represent color values in the target framework</typeparam>
+        </member>
+        <member name="P:ktsu.ThemeProvider.IPaletteMapper`2.FrameworkName">
+            <summary>
+            Gets the name of the target framework this mapper supports.
+            </summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.IPaletteMapper`2.MapTheme(ktsu.ThemeProvider.ISemanticTheme)">
+            <summary>
+            Maps a semantic theme to a complete color palette for the target framework.
+            </summary>
+            <param name="theme">The semantic theme to map from</param>
+            <returns>A dictionary mapping framework color keys to color values</returns>
+        </member>
+        <member name="T:ktsu.ThemeProvider.ISemanticTheme">
+            <summary>
+            Defines the contract for a semantic theme, which maps semantic meanings to perceptual color collections.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ISemanticTheme.SemanticMapping">
+            <summary>
+            Gets the mapping of <see cref="T:ktsu.ThemeProvider.SemanticMeaning"/> to collections of <see cref="T:ktsu.Semantics.Color.Color"/>.
+            This enables semantic color assignment for UI elements based on their intended meaning.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ISemanticTheme.IsDarkTheme">
+            <summary>
+            Gets a value indicating whether this is a dark theme.
+            Used to determine color range sorting and interpolation direction.
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Priority">
+            <summary>
+            Defines the priority level for color assignment requests.
+            Higher priority requests are processed first when assigning colors to semantic meanings.
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.SemanticColorMapper">
+            <summary>
+            Maps semantic color requests to actual colors using a global lightness-based priority system.
+            All colors with the same priority across different semantic meanings will have similar lightness levels.
+            </summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.SemanticColorMapper.MapColors(System.Collections.Generic.IEnumerable{ktsu.ThemeProvider.SemanticColorRequest},ktsu.ThemeProvider.ISemanticTheme)">
+            <summary>
+            Maps a collection of semantic color requests to actual colors using the provided theme.
+            Returns a complete mapping for all priority levels of the semantic meanings that were requested.
+            Uses a global lightness range divided by priority levels to ensure consistent visual hierarchy.
+            </summary>
+            <param name="requests">The collection of semantic color requests to map</param>
+            <param name="theme">The semantic theme providing available colors for each meaning</param>
+            <returns>A dictionary mapping each request to its assigned color, including all priority levels for the requested semantic meanings</returns>
+        </member>
+        <member name="M:ktsu.ThemeProvider.SemanticColorMapper.MakeCompletePalette(ktsu.ThemeProvider.ISemanticTheme)">
+            <summary>
+            Generates a complete palette containing all possible combinations of semantic meanings and priorities from the theme.
+            This provides every color that can be requested from the theme, useful for theme exploration, previews, and pre-generation.
+            </summary>
+            <param name="theme">The semantic theme to generate the complete palette from</param>
+            <returns>A dictionary mapping every possible semantic color request to its assigned color</returns>
+        </member>
+        <member name="M:ktsu.ThemeProvider.SemanticColorMapper.CalculateGlobalLightnessRange(ktsu.ThemeProvider.ISemanticTheme)">
+            <summary>
+            Calculates the lightness range across all available semantics in the theme.
+            This range will be used as the basis for all semantic color mappings.
+            </summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.SemanticColorMapper.CalculateTargetLightnessForSemantic(ktsu.ThemeProvider.Priority,ktsu.ThemeProvider.SemanticMeaning,System.Double,System.Double,System.Boolean)">
+            <summary>
+            Calculates the target lightness for a specific semantic meaning and priority.
+            Neutral semantics use the full global range, while non-neutral semantics use 50-90% of it.
+            </summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.SemanticColorMapper.InterpolateToTargetLightness(System.Collections.ObjectModel.Collection{ktsu.Semantics.Color.Color},System.Double)">
+            <summary>
+            Creates a color with the target lightness by interpolating or extrapolating from available colors.
+            Preserves hue and chroma characteristics while achieving the exact lightness needed for priority hierarchy.
+            </summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.SemanticColorMapper.ExtrapolateColorToLightness(ktsu.Semantics.Color.Color,System.Double)">
+            <summary>
+            Extrapolates a single color to a target lightness while preserving its hue and chroma.
+            </summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.SemanticColorMapper.InterpolateBetweenColors(System.Collections.Generic.List{System.ValueTuple{ktsu.Semantics.Color.Color,System.Double}},System.Double)">
+            <summary>
+            Interpolates between colors in a sorted list to achieve a target lightness.
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.SemanticColorRequest">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticColorRequest.Meaning">
+            <summary>The semantic meaning determining both hue and role</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticColorRequest.Priority">
+            <summary>The priority level for color assignment ordering</summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.SemanticColorRequest.#ctor(ktsu.ThemeProvider.SemanticMeaning,ktsu.ThemeProvider.Priority)">
+            <summary>
+            Creates a new semantic color specification.
+            </summary>
+            <param name="meaning">The semantic meaning determining both hue and role</param>
+            <param name="priority">The priority level for color assignment ordering</param>
+        </member>
+        <member name="M:ktsu.ThemeProvider.SemanticColorRequest.ToString">
+            <summary>
+            Converts to a readable string representation.
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.SemanticMeaning">
+            <summary>
+            Defines semantic color meanings based on purpose rather than specific hue.
+            This determines hue assignment in the semantic color system.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.Neutral">
+            <summary>
+            Nominal state, neutral interactions that do not require special attention.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.Primary">
+            <summary>
+            Primary interactions that the user can choose to interact with.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.Alternate">
+            <summary>
+            Alternate interactions, alternate option when given a binary choice, or to emphasize a context not covered by other semantics.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.Success">
+            <summary>
+            Successful operations, confirmations.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.CallToAction">
+            <summary>
+            Context sensitive interactions that demand immediate user attention or interaction.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.Information">
+            <summary>
+            Informational content, help text.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.Caution">
+            <summary>
+            Cautionary content, warnings that need attention.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.Warning">
+            <summary>
+            Warning states, potentially problematic.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.Error">
+            <summary>
+            Error states, something has been detected as incorrect.
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.Failure">
+            <summary>
+            Failed operations, an action failed to complete successfully (distinct from error).
+            </summary>
+        </member>
+        <member name="F:ktsu.ThemeProvider.SemanticMeaning.Debug">
+            <summary>
+            Debug/development information.
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.SemanticPalette">
+            <summary>
+            The colors a theme assigns to each <see cref="T:ktsu.ThemeProvider.SemanticMeaning"/>, declared as hex values.
+            </summary>
+            <remarks>
+            Every theme is the same shape: one neutral ramp plus one accent per non-neutral meaning. Themes
+            declare that shape once here rather than each hand-building the
+            <see cref="P:ktsu.ThemeProvider.ISemanticTheme.SemanticMapping"/> dictionary, which keeps a theme definition to the
+            part that is actually specific to it — its colors.
+            </remarks>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.Neutrals">
+            <summary>
+            Gets the neutral ramp, ordered as the theme publishes it. Conventionally the lightest and
+            darkest surface colors; <see cref="T:ktsu.ThemeProvider.SemanticColorMapper"/> interpolates between them.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.Primary">
+            <summary>Gets the theme's principal accent color.</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.Alternate">
+            <summary>Gets the secondary accent used to contrast with <see cref="P:ktsu.ThemeProvider.SemanticPalette.Primary"/>.</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.Success">
+            <summary>Gets the color denoting a successful outcome.</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.CallToAction">
+            <summary>Gets the color denoting the action the user is being steered toward.</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.Information">
+            <summary>Gets the color denoting neutral informational content.</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.Caution">
+            <summary>Gets the color denoting something that warrants care but is not yet a problem.</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.Warning">
+            <summary>Gets the color denoting a warning.</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.Error">
+            <summary>Gets the color denoting an error.</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.Failure">
+            <summary>Gets the color denoting an unrecoverable failure.</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.SemanticPalette.Debug">
+            <summary>Gets the color denoting diagnostic or debug output.</summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.SemanticPalette.ToSemanticMapping">
+            <summary>
+            Builds the semantic mapping this palette describes.
+            </summary>
+            <returns>
+            A fresh, caller-owned dictionary. Each call returns new collections so that a caller mutating
+            the result cannot corrupt the theme.
+            </returns>
+        </member>
+        <member name="T:ktsu.ThemeProvider.ThemeRegistry">
+            <summary>
+            Provides centralized access to all available themes with metadata.
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.ThemeRegistry.ThemeInfo">
+            <summary>
+            Represents metadata information about a theme.
+            </summary>
+            <param name="Name">The display name of the theme</param>
+            <param name="Family">The theme family (e.g., "Catppuccin", "Tokyo Night")</param>
+            <param name="Variant">The variant within the family (e.g., "Mocha", "Storm", "Day")</param>
+            <param name="IsDark">Whether this is a dark theme</param>
+            <param name="Description">A brief description of the theme</param>
+            <param name="CreateInstance">Factory function to create an instance of the theme</param>
+        </member>
+        <member name="M:ktsu.ThemeProvider.ThemeRegistry.ThemeInfo.#ctor(System.String,System.String,System.String,System.Boolean,System.String,System.Func{ktsu.ThemeProvider.ISemanticTheme})">
+            <summary>
+            Represents metadata information about a theme.
+            </summary>
+            <param name="Name">The display name of the theme</param>
+            <param name="Family">The theme family (e.g., "Catppuccin", "Tokyo Night")</param>
+            <param name="Variant">The variant within the family (e.g., "Mocha", "Storm", "Day")</param>
+            <param name="IsDark">Whether this is a dark theme</param>
+            <param name="Description">A brief description of the theme</param>
+            <param name="CreateInstance">Factory function to create an instance of the theme</param>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.ThemeInfo.Name">
+            <summary>The display name of the theme</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.ThemeInfo.Family">
+            <summary>The theme family (e.g., "Catppuccin", "Tokyo Night")</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.ThemeInfo.Variant">
+            <summary>The variant within the family (e.g., "Mocha", "Storm", "Day")</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.ThemeInfo.IsDark">
+            <summary>Whether this is a dark theme</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.ThemeInfo.Description">
+            <summary>A brief description of the theme</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.ThemeInfo.CreateInstance">
+            <summary>Factory function to create an instance of the theme</summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.AllThemes">
+            <summary>
+            Gets all registered themes with their metadata.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.ThemesByFamily">
+            <summary>
+            Gets themes grouped by family.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.DarkThemes">
+            <summary>
+            Gets all dark themes.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.LightThemes">
+            <summary>
+            Gets all light themes.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.ThemeRegistry.Families">
+            <summary>
+            Gets all theme families.
+            </summary>
+        </member>
+        <member name="M:ktsu.ThemeProvider.ThemeRegistry.FindTheme(System.String)">
+            <summary>
+            Finds a theme by name (case-insensitive).
+            </summary>
+            <param name="name">The theme name to search for</param>
+            <returns>The theme info if found, null otherwise</returns>
+        </member>
+        <member name="M:ktsu.ThemeProvider.ThemeRegistry.GetThemesInFamily(System.String)">
+            <summary>
+            Gets all themes in a specific family.
+            </summary>
+            <param name="family">The family name</param>
+            <returns>Array of themes in the family</returns>
+        </member>
+        <member name="M:ktsu.ThemeProvider.ThemeRegistry.CreateAllThemeInstances">
+            <summary>
+            Creates instances of all themes.
+            </summary>
+            <returns>Array of all theme instances</returns>
+        </member>
+        <member name="M:ktsu.ThemeProvider.ThemeRegistry.CreateThemeInstancesInFamily(System.String)">
+            <summary>
+            Creates theme instances for a specific family.
+            </summary>
+            <param name="family">The family name</param>
+            <returns>Array of theme instances in the family</returns>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Catppuccin.Frappe">
+            <summary>
+            Provides the official Catppuccin Frappe color palette with exact hex values and properties.
+            Based on the official specification: https://catppuccin.com/palette
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Catppuccin.Frappe.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Catppuccin.Frappe.IsDarkTheme">
+            <summary>
+            Catppuccin Frappe is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Catppuccin.Latte">
+            <summary>
+            Provides the official Catppuccin Latte color palette with exact hex values and properties.
+            Based on the official specification: https://catppuccin.com/palette
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Catppuccin.Latte.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Catppuccin.Latte.IsDarkTheme">
+            <summary>
+            Catppuccin Latte is a light theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Catppuccin.Macchiato">
+            <summary>
+            Provides the official Catppuccin Macchiato color palette with exact hex values and properties.
+            Based on the official specification: https://catppuccin.com/palette
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Catppuccin.Macchiato.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Catppuccin.Macchiato.IsDarkTheme">
+            <summary>
+            Catppuccin Macchiato is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Catppuccin.Mocha">
+            <summary>
+            Provides the official Catppuccin Mocha color palette with exact hex values and properties.
+            Based on the official specification: https://catppuccin.com/palette
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Catppuccin.Mocha.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Catppuccin.Mocha.IsDarkTheme">
+            <summary>
+            Catppuccin Mocha is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Dracula.Dracula">
+            <summary>
+            Provides the official Dracula color palette with exact hex values.
+            Based on the official Dracula theme specification.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Dracula.Dracula.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Dracula.Dracula.IsDarkTheme">
+            <summary>
+            Dracula is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Everforest.EverforestDark">
+            <summary>
+            Provides the Everforest Dark color palette with official hex values.
+            Based on the Everforest theme by sainnhe.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestDark.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestDark.IsDarkTheme">
+            <summary>
+            Everforest Dark is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Everforest.EverforestDarkHard">
+            <summary>
+            Provides the Everforest Dark Hard color palette with official hex values.
+            Hard variant uses higher contrast backgrounds (#272e33).
+            Based on the Everforest theme by sainnhe.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestDarkHard.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestDarkHard.IsDarkTheme">
+            <summary>
+            Everforest Dark Hard is a dark theme with high contrast
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Everforest.EverforestDarkSoft">
+            <summary>
+            Provides the Everforest Dark Soft color palette with official hex values.
+            Soft variant uses lower contrast backgrounds (#333c43) for reduced eye strain.
+            Based on the Everforest theme by sainnhe.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestDarkSoft.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestDarkSoft.IsDarkTheme">
+            <summary>
+            Everforest Dark Soft is a dark theme with reduced contrast for eye comfort
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Everforest.EverforestLight">
+            <summary>
+            Provides the Everforest Light color palette with official hex values.
+            Based on the Everforest theme by sainnhe.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestLight.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestLight.IsDarkTheme">
+            <summary>
+            Everforest Light is a light theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Everforest.EverforestLightHard">
+            <summary>
+            Provides the Everforest Light Hard color palette with official hex values.
+            Hard variant uses higher contrast backgrounds (#fffbef) for better readability.
+            Based on the Everforest theme by sainnhe.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestLightHard.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestLightHard.IsDarkTheme">
+            <summary>
+            Everforest Light Hard is a light theme with high contrast
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Everforest.EverforestLightSoft">
+            <summary>
+            Provides the Everforest Light Soft color palette with official hex values.
+            Soft variant uses lower contrast backgrounds (#fffae8) for reduced eye strain.
+            Based on the Everforest theme by sainnhe.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestLightSoft.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Everforest.EverforestLightSoft.IsDarkTheme">
+            <summary>
+            Everforest Light Soft is a light theme with reduced contrast for eye comfort
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxDark">
+            <summary>
+            Provides the Gruvbox Dark color palette with official hex values.
+            Based on the Gruvbox theme by morhetz.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxDark.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxDark.IsDarkTheme">
+            <summary>
+            Gruvbox Dark is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxDarkHard">
+            <summary>
+            Provides the Gruvbox Dark Hard color palette with official hex values.
+            Hard variant uses higher contrast backgrounds.
+            Based on the Gruvbox theme by morhetz.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxDarkHard.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxDarkHard.IsDarkTheme">
+            <summary>
+            Gruvbox Dark Hard is a dark theme with high contrast
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxDarkSoft">
+            <summary>
+            Provides the Gruvbox Dark Soft color palette with official hex values.
+            Soft variant uses lower contrast backgrounds for easier on the eyes.
+            Based on the Gruvbox theme by morhetz.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxDarkSoft.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxDarkSoft.IsDarkTheme">
+            <summary>
+            Gruvbox Dark Soft is a dark theme with reduced contrast
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxLight">
+            <summary>
+            Provides the Gruvbox Light color palette with official hex values.
+            Based on the Gruvbox theme by morhetz.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxLight.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxLight.IsDarkTheme">
+            <summary>
+            Gruvbox Light is a light theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxLightHard">
+            <summary>
+            Provides the Gruvbox Light Hard color palette with official hex values.
+            Hard variant uses higher contrast backgrounds for better readability.
+            Based on the Gruvbox theme by morhetz.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxLightHard.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxLightHard.IsDarkTheme">
+            <summary>
+            Gruvbox Light Hard is a light theme with high contrast
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxLightSoft">
+            <summary>
+            Provides the Gruvbox Light Soft color palette with official hex values.
+            Soft variant uses lower contrast backgrounds for reduced eye strain.
+            Based on the Gruvbox theme by morhetz.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxLightSoft.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Gruvbox.GruvboxLightSoft.IsDarkTheme">
+            <summary>
+            Gruvbox Light Soft is a light theme with reduced contrast
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Kanagawa.KanagawaDragon">
+            <summary>
+            Provides the Kanagawa Dragon color palette with official hex values.
+            A darker, more intense variant inspired by Japanese dragons and ink paintings.
+            Based on the Kanagawa theme by rebelot.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Kanagawa.KanagawaDragon.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Kanagawa.KanagawaDragon.IsDarkTheme">
+            <summary>
+            Kanagawa Dragon is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Kanagawa.KanagawaLotus">
+            <summary>
+            Provides the Kanagawa Lotus color palette with official hex values.
+            A light variant inspired by lotus flowers and zen gardens.
+            Based on the Kanagawa theme by rebelot.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Kanagawa.KanagawaLotus.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Kanagawa.KanagawaLotus.IsDarkTheme">
+            <summary>
+            Kanagawa Lotus is a light theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Kanagawa.KanagawaWave">
+            <summary>
+            Provides the Kanagawa Wave color palette with official hex values.
+            A dark theme inspired by Japanese paintings with warm, muted tones.
+            Based on the Kanagawa theme by rebelot.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Kanagawa.KanagawaWave.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Kanagawa.KanagawaWave.IsDarkTheme">
+            <summary>
+            Kanagawa Wave is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Monokai.Monokai">
+            <summary>
+            Provides the classic Monokai color palette with exact hex values.
+            Based on the original Monokai theme by Wimer Hazenberg.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Monokai.Monokai.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Monokai.Monokai.IsDarkTheme">
+            <summary>
+            Monokai is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Nightfly.Nightfly">
+            <summary>
+            Provides the Nightfly color palette with official hex values.
+            Based on the Nightfly theme by bluz71.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfly.Nightfly.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfly.Nightfly.IsDarkTheme">
+            <summary>
+            Nightfly is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Nightfox.Carbonfox">
+            <summary>
+            Provides the Carbonfox color palette with official hex values.
+            A minimalist dark variant inspired by carbon fiber and industrial design.
+            Based on the Nightfox theme family by EdenEast.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Carbonfox.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Carbonfox.IsDarkTheme">
+            <summary>
+            Carbonfox is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Nightfox.Dawnfox">
+            <summary>
+            Provides the Dawnfox color palette with official hex values.
+            A dawn-inspired light variant with soft, warm morning tones.
+            Based on the Nightfox theme family by EdenEast.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Dawnfox.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Dawnfox.IsDarkTheme">
+            <summary>
+            Dawnfox is a light theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Nightfox.Dayfox">
+            <summary>
+            Provides the Dayfox color palette with official hex values.
+            A soft light theme with warm accents.
+            Based on the Nightfox theme family by EdenEast.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Dayfox.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Dayfox.IsDarkTheme">
+            <summary>
+            Dayfox is a light theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Nightfox.Duskfox">
+            <summary>
+            Provides the Duskfox color palette with official hex values.
+            A muted dark theme with desaturated warm tones.
+            Based on the Nightfox theme family by EdenEast.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Duskfox.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Duskfox.IsDarkTheme">
+            <summary>
+            Duskfox is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Nightfox.Nightfox">
+            <summary>
+            Provides the Nightfox color palette with official hex values.
+            A soft dark theme with blue and orange accents.
+            Based on the Nightfox theme by EdenEast.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Nightfox.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Nightfox.IsDarkTheme">
+            <summary>
+            Nightfox is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Nightfox.Nordfox">
+            <summary>
+            Provides the Nordfox color palette with official hex values.
+            A Nord-inspired variant with cool blue tones and arctic aesthetics.
+            Based on the Nightfox theme family by EdenEast.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Nordfox.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Nordfox.IsDarkTheme">
+            <summary>
+            Nordfox is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Nightfox.Terafox">
+            <summary>
+            Provides the Terafox color palette with official hex values.
+            An earthy, terra-inspired variant with warm brown and green tones.
+            Based on the Nightfox theme family by EdenEast.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Terafox.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nightfox.Terafox.IsDarkTheme">
+            <summary>
+            Terafox is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.Nord.Nord">
+            <summary>
+            Provides the official Nord color palette with exact hex values and properties.
+            Based on the official specification: https://www.nordtheme.com/
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nord.Nord.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.Nord.Nord.IsDarkTheme">
+            <summary>
+            Nord is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.OneDark.OneDark">
+            <summary>
+            Provides the One Dark color palette with official hex values.
+            Based on the Atom One Dark theme.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.OneDark.OneDark.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.OneDark.OneDark.IsDarkTheme">
+            <summary>
+            One Dark is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.PaperColor.PaperColorDark">
+            <summary>
+            Provides the PaperColor Dark color palette with official hex values.
+            A clean, minimal dark theme inspired by Google's Material Design.
+            Based on the PaperColor theme by NLKNguyen.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.PaperColor.PaperColorDark.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.PaperColor.PaperColorDark.IsDarkTheme">
+            <summary>
+            PaperColor Dark is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.PaperColor.PaperColorLight">
+            <summary>
+            Provides the PaperColor Light color palette with official hex values.
+            A clean, minimal light theme inspired by Google's Material Design.
+            Based on the PaperColor theme by NLKNguyen.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.PaperColor.PaperColorLight.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.PaperColor.PaperColorLight.IsDarkTheme">
+            <summary>
+            PaperColor Light is a light theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.TokyoNight.TokyoNight">
+            <summary>
+            Provides the Tokyo Night color palette with official hex values.
+            Based on the popular Tokyo Night theme by Enkia.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.TokyoNight.TokyoNight.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.TokyoNight.TokyoNight.IsDarkTheme">
+            <summary>
+            Tokyo Night is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.TokyoNight.TokyoNightDay">
+            <summary>
+            Provides the Tokyo Night Day color palette with official hex values.
+            The light variant of Tokyo Night with bright backgrounds and dark text.
+            Based on the Tokyo Night theme by enkia.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.TokyoNight.TokyoNightDay.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.TokyoNight.TokyoNightDay.IsDarkTheme">
+            <summary>
+            Tokyo Night Day is a light theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.TokyoNight.TokyoNightStorm">
+            <summary>
+            Provides the Tokyo Night Storm color palette with official hex values.
+            Storm variant uses slightly lighter backgrounds for reduced contrast.
+            Based on the Tokyo Night theme by enkia.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.TokyoNight.TokyoNightStorm.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.TokyoNight.TokyoNightStorm.IsDarkTheme">
+            <summary>
+            Tokyo Night Storm is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.VSCode.VSCodeDark">
+            <summary>
+            Provides the VSCode Dark+ color palette with official hex values.
+            Based on the default VSCode Dark+ theme.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.VSCode.VSCodeDark.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.VSCode.VSCodeDark.IsDarkTheme">
+            <summary>
+            VSCode Dark+ is a dark theme
+            </summary>
+        </member>
+        <member name="T:ktsu.ThemeProvider.Themes.VSCode.VSCodeLight">
+            <summary>
+            Provides the VSCode Light+ color palette with official hex values.
+            Based on the default VSCode Light+ theme.
+            </summary>
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.VSCode.VSCodeLight.SemanticMapping">
+            <inheritdoc />
+        </member>
+        <member name="P:ktsu.ThemeProvider.Themes.VSCode.VSCodeLight.IsDarkTheme">
+            <summary>
+            VSCode Light+ is a light theme
+            </summary>
+        </member>
+    </members>
+</doc>

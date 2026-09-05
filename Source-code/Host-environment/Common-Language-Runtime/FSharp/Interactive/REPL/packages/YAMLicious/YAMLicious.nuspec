@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>YAMLicious</id>
+    <version>1.0.2</version>
+    <authors>Caroline Ott, Kevin Frey</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/CSBiology/YAMLicious</projectUrl>
+    <description>A encoder/decoder based YAML parser in Thoth.Json style!</description>
+    <tags>f# fsharp fable fable-library fable-javascript fable-python yaml parser</tags>
+    <repository type="git" url="https://github.com/CSBiology/YAMLicious" commit="beb9432968a719bc367306f0f843f3b652c4e7b2" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="10.0.101" exclude="Build,Analyzers" />
+        <dependency id="Fable.Core" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

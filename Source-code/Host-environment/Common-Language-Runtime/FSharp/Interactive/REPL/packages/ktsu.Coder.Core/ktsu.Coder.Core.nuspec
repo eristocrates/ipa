@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ktsu.Coder.Core</id>
+    <version>1.0.10</version>
+    <title>ktsu.Coder.Core</title>
+    <authors>ktsu.dev contributors</authors>
+    <license type="file">LICENSE.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <description>A flexible and extensible .NET library for representing code as language-agnostic Abstract Syntax Trees, serializing them to human-readable YAML for round-trip storage and version control, and generating source code in multiple target languages. Provides strongly-typed AST nodes for function declarations, parameters, return statements, and generic literals, with a plugin-based architecture for adding new target languages, full deep-cloning support, and custom metadata on any node. Python generation with type hints and correct indentation is supported out of the box.</description>
+    <releaseNotes>## v1.0.10 (patch)
+
+Changes since v1.0.9:
+
+- ci: make the SonarQube quality gate opt in [patch] ([@matt-edmondson](https://github.com/matt-edmondson))
+- ci: adopt the unified dotnet workflow [patch] ([@matt-edmondson](https://github.com/matt-edmondson))</releaseNotes>
+    <copyright>Copyright (c) 2023-2026 ktsu-dev contributors</copyright>
+    <tags>code generation;abstract syntax tree;ast;yaml serialization;language agnostic;python code generation;transpiler;round trip serialization;deep cloning;source generators;dotnet;csharp</tags>
+    <repository type="git" commit="d890d21b2c4de8563e48b23ad9ff66ed59d1a993" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="9.0.7" exclude="Build,Analyzers" />
+        <dependency id="YamlDotNet" version="16.3.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.DeepClone" version="2.0.2" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="9.0.7" exclude="Build,Analyzers" />
+        <dependency id="YamlDotNet" version="16.3.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.DeepClone" version="2.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

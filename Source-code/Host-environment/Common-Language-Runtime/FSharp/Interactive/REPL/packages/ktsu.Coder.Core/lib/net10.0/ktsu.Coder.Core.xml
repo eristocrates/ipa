@@ -1,0 +1,1854 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ktsu.Coder.Core</name>
+    </assembly>
+    <members>
+        <member name="M:Polyfills.Polyfill.GetEncodedLength(System.Int32)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetEncodedLength(System.Int32)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.GetMaxDecodedLength(System.Int32)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetMaxDecodedLength(System.Int32)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToString(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToString(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToChars(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@,System.Int32@,System.Boolean)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@,System.Int32@,System.Boolean)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryEncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryEncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToUtf8(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToUtf8(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromChars(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@,System.Int32@,System.Boolean)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@,System.Int32@,System.Boolean)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryDecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryDecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromUtf8(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromUtf8(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenStandardInputHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardInputHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenStandardOutputHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardOutputHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenStandardErrorHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardErrorHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.Byte)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.Byte)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.Byte[],System.Byte[])">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.Byte[],System.Byte[])"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[])">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[])"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.IO.Stream,System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.IO.Stream,System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[],System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[],System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Create``2(System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$824B137C9700787F7FAADF3CDD49751C`1.Create``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateAsHardLink(System.IO.FileInfo,System.String)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$9FC757ADB0730D641B7538973D9DCBAA.CreateAsHardLink(System.String)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateHardLink(System.String,System.String)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.CreateHardLink(System.String,System.String)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenNullHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.OpenNullHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.And``1(``0@,``0)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.And``1(``0@,``0)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Or``1(``0@,``0)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.Or``1(``0@,``0)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Equals(System.Char,System.Char,System.StringComparison)">
+            <summary>
+            Determines whether the specified character is equal to the current character, using the specified comparison type.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Open(System.IO.Compression.ZipArchiveEntry,System.IO.FileAccess)">
+            <summary>
+            Opens the entry from the zip archive with the specified access mode.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenAsync(System.IO.Compression.ZipArchiveEntry,System.IO.FileAccess,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously opens the entry from the zip archive with the specified access mode.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Produces a set items excluding <paramref name="item"/> by using the default equality comparer to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Produces a set items excluding <paramref name="item"/> by using <paramref name="comparer"/> to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0},``0[])">
+            <summary>
+            Produces the set difference of two sequences by <paramref name="comparer"/> to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.FullJoin``4(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of each sequence that have no matching element in the other.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.FullJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of each sequence that have no matching element in the other.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.GroupJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on key equality and groups the results.
+            Each result is an <see cref="T:System.Linq.IGrouping`2" /> keyed by the outer element.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Join``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LeftJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of the outer sequence that have no matching inner element.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.RightJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of the inner sequence that have no matching outer element.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllText(System.Diagnostics.Process,System.Nullable{System.TimeSpan})">
+            <summary>
+            Reads the standard output and standard error of the process as text, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllTextAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously reads the standard output and standard error of the process as text, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllBytes(System.Diagnostics.Process,System.Nullable{System.TimeSpan})">
+            <summary>
+            Reads the standard output and standard error of the process as bytes, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllBytesAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously reads the standard output and standard error of the process as bytes, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllLinesAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously reads the standard output and standard error of the process line-by-line, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.StartsWith(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Determines whether this string instance starts with the specified character when compared using the specified comparison option.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.EndsWith(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Determines whether the end of this string instance matches the specified character when compared using the specified comparison option.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOf(System.String,System.Char,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the first occurrence of the specified character in this string.
+            The search starts at a specified character position.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOf(System.String,System.Char,System.Int32,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the first occurrence of the specified character in this string.
+            The search starts at a specified character position and examines a specified number of character positions.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LastIndexOf(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the last occurrence of a specified character within the current string.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LastIndexOf(System.String,System.Char,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the last occurrence of a specified character within the current string.
+            The search starts at a specified character position and proceeds backward toward the beginning of the string.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LastIndexOf(System.String,System.Char,System.Int32,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the last occurrence of a specified character within the current string.
+            The search starts at a specified character position and proceeds backward toward the beginning of the string for a specified number of character positions.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.WriteAsync(System.IO.TextWriter,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes a string to the stream, with a cancellation token.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.WriteLineAsync(System.IO.TextWriter,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes a line terminator to the stream, with a cancellation token.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.WriteLineAsync(System.IO.TextWriter,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes a string followed by a line terminator to the stream, with a cancellation token.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsAssignableTo``1(System.Type)">
+            <summary>
+            Generic version of Type.IsAssignableTo https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignableto.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsAssignableFrom``1(System.Type)">
+            <summary>
+            Generic version of Type.IsAssignableFrom https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignablefrom.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Run(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Run(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureText(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureText(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureTextAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureTextAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.StartAndForget(System.Diagnostics.ProcessStartInfo)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.Diagnostics.ProcessStartInfo)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.StartAndForget(System.String,System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.String,System.Collections.Generic.IList{System.String})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.get_IsMultithreadingSupported">
+            <inheritdoc cref="P:Polyfills.Polyfill.&lt;G&gt;$E652E81B895AED455F922BE6184F6C85.IsMultithreadingSupported"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.MoveChunks(System.Text.StringBuilder)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.MoveChunks(System.Text.StringBuilder)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Append(System.Text.StringBuilder,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string to this instance.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Append(System.Text.StringBuilder,System.IFormatProvider,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string to this instance.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AppendLine(System.Text.StringBuilder,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string followed by the default line terminator to the end of the current StringBuilder object.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AppendLine(System.Text.StringBuilder,System.IFormatProvider,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string followed by the default line terminator to the end of the current StringBuilder object.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.GetNullableUnderlyingType(System.Type)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.GetNullableUnderlyingType"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.get_UriSchemeData">
+            <inheritdoc cref="P:Polyfills.Polyfill.&lt;G&gt;$A2D159684F90C84BD35ED118E17F9ADC.UriSchemeData"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$6DC2D49024D88513ACB2F40A260511E2.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetEncodedLength(System.Int32)">
+            <summary>
+            Returns the length (in chars) of the result if you were to encode binary data within a byte span of size <paramref name="bytesLength"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetMaxDecodedLength(System.Int32)">
+            <summary>
+            Returns the maximum length (in bytes) of the result if you were to decode base-64 encoded text of size <paramref name="base64Length"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToString(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encodes the span of binary data into a string that is represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})">
+            <summary>
+            Encodes the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encodes the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@,System.Int32@,System.Boolean)">
+            <summary>
+            Encodes the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryEncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@)">
+            <summary>
+            Tries to encode the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToUtf8(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encodes the span of binary data into a byte array of UTF-8 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Decodes the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte})">
+            <summary>
+            Decodes the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@,System.Int32@,System.Boolean)">
+            <summary>
+            Decodes the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryDecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to decode the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromUtf8(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Decodes the span of UTF-8 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardInputHandle">
+            <summary>
+            Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> that wraps the operating system handle for standard input.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardOutputHandle">
+            <summary>
+            Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> that wraps the operating system handle for standard output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardErrorHandle">
+            <summary>
+            Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> that wraps the operating system handle for standard error.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.Byte)">
+            <summary>
+            Determines whether every byte in <paramref name="source"/> is equal to <paramref name="value"/>, in an amount of time that depends on the length of <paramref name="source"/>, but not its values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.Byte[],System.Byte[])">
+            <summary>
+            Determines whether the HMAC of <paramref name="source"/> matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[])">
+            <summary>
+            Determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Determines whether the HMAC of <paramref name="source"/> matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.IO.Stream,System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$824B137C9700787F7FAADF3CDD49751C`1.Create``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.EqualityComparer`1"/> that determines equality by projecting each value through <paramref name="keySelector"/> and comparing the resulting keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$9FC757ADB0730D641B7538973D9DCBAA.CreateAsHardLink(System.String)">
+            <summary>
+            Creates a hard link located in <see cref="P:System.IO.FileSystemInfo.Name"/> that refers to the same file content as <paramref name="pathToTarget"/>.
+            </summary>
+            <param name="pathToTarget">The path of the hard link target.</param>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.CreateHardLink(System.String,System.String)">
+            <summary>
+            Creates a hard link located in <paramref name="path"/> that refers to the same file content as <paramref name="pathToTarget"/>.
+            </summary>
+            <param name="path">The path where the hard link should be created.</param>
+            <param name="pathToTarget">The path of the hard link target.</param>
+            <returns>A <see cref="T:System.IO.FileInfo"/> instance that wraps the newly created file.</returns>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.OpenNullHandle">
+            <summary>
+            Opens a handle to the operating system's null device.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.And``1(``0@,``0)">
+            <summary>
+            Bitwise "ands" two values and replaces the first value with the result, as an atomic operation.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.Or``1(``0@,``0)">
+            <summary>
+            Bitwise "ors" two values and replaces the first value with the result, as an atomic operation.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="startInfo"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="startInfo"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="startInfo"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="startInfo"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.Diagnostics.ProcessStartInfo)">
+            <summary>
+            Starts the process described by <paramref name="startInfo"/> in detached fashion and returns its process identifier.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/> in detached fashion and returns its process identifier.
+            </summary>
+        </member>
+        <member name="P:Polyfills.Polyfill.&lt;G&gt;$E652E81B895AED455F922BE6184F6C85.IsMultithreadingSupported">
+            <summary>
+            Gets a value that indicates whether the runtime supports multithreading.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.MoveChunks(System.Text.StringBuilder)">
+            <summary>
+            Creates a new <see cref="T:System.Text.StringBuilder"/> instance initialized to the same state as
+            <paramref name="source"/>, and resets <paramref name="source"/> to an empty, usable state
+            with no allocated buffers. Ownership of the chunks is transferred in O(1); the underlying
+            character data is not copied. <paramref name="source"/>'s <see cref="P:System.Text.StringBuilder.MaxCapacity"/>
+            is preserved.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.GetNullableUnderlyingType">
+            <summary>
+            Returns the underlying type argument of the current nullable value type, or <c>null</c> if the current type is not a nullable value type.
+            </summary>
+        </member>
+        <member name="P:Polyfills.Polyfill.&lt;G&gt;$A2D159684F90C84BD35ED118E17F9ADC.UriSchemeData">
+            <summary>
+            Provides the scheme name for the <c>data</c> URI scheme (RFC 2397). This field is read-only.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$6DC2D49024D88513ACB2F40A260511E2.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Returns the index in <paramref name="value"/> where the first ill-formed UTF-8 subsequence begins, or -1 if <paramref name="value"/> is well-formed.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Ensure.Equal``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotGreaterThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotGreaterThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotLessThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greater than or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotLessThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotNegative``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.</summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotNegativeOrZero``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.</summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotZero``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.</summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="T:System.Diagnostics.ProcessExitStatus">
+            <summary>
+            Represents the exit status of a process.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.ProcessExitStatus.#ctor(System.Int32,System.Boolean,System.Nullable{System.Runtime.InteropServices.PosixSignal})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.ProcessExitStatus"/> class.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessExitStatus.Canceled">
+            <summary>
+            Gets a value indicating whether the process was canceled.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessExitStatus.ExitCode">
+            <summary>
+            Gets the exit code of the process.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessExitStatus.Signal">
+            <summary>
+            Gets the POSIX signal that terminated the process, if any.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.ProcessOutputLine">
+            <summary>
+            Represents a line of output from a process, including whether it came from standard error.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.ProcessOutputLine.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.ProcessOutputLine"/> struct.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessOutputLine.Content">
+            <summary>
+            Gets the content of the output line.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessOutputLine.StandardError">
+            <summary>
+            Gets a value indicating whether the line came from the standard error stream.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.ProcessTextOutput">
+            <summary>
+            Represents the captured text output from a process, including standard output, standard error, and exit status.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.ProcessTextOutput.#ctor(System.Diagnostics.ProcessExitStatus,System.String,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.ProcessTextOutput"/> class.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.ExitStatus">
+            <summary>
+            Gets the exit status of the process.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.ProcessId">
+            <summary>
+            Gets the process identifier.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.StandardError">
+            <summary>
+            Gets the captured standard error text.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.StandardOutput">
+            <summary>
+            Gets the captured standard output text.
+            </summary>
+        </member>
+        <member name="T:System.IO.ReadOnlyMemoryStream">
+            <summary>
+            Provides a seekable, read-only <see cref="T:System.IO.MemoryStream"/> over a <see cref="T:System.ReadOnlyMemory`1"/>.
+            </summary>
+            <remarks>
+            The stream cannot be written to. <see cref="P:System.IO.MemoryStream.CanWrite"/> always returns <see langword="false"/>.
+            <see cref="M:System.IO.MemoryStream.GetBuffer"/> throws and <see cref="M:System.IO.MemoryStream.TryGetBuffer(System.ArraySegment{System.Byte}@)"/> returns <see langword="false"/>.
+            When the supplied memory is not backed by an array (for example native memory) the polyfill copies it;
+            the BCL always wraps the memory without copying.
+            </remarks>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.#ctor(System.ReadOnlyMemory{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.ReadOnlyMemoryStream"/> class over the specified <see cref="T:System.ReadOnlyMemory`1"/>.
+            </summary>
+        </member>
+        <member name="T:System.IO.StringStream">
+            <summary>
+            Provides a read-only, non-seekable <see cref="T:System.IO.Stream"/> that encodes a <see cref="T:System.String"/> or
+            <see cref="T:System.ReadOnlyMemory`1"/> into bytes using a specified <see cref="T:System.Text.Encoding"/>.
+            </summary>
+            <remarks>
+            This stream never emits a byte order mark (BOM). Callers who need a BOM can prepend it themselves.
+            The polyfill encodes the whole text into a single buffer on first read rather than encoding
+            on-the-fly; this is a non-observable performance difference from the BCL implementation.
+            </remarks>
+        </member>
+        <member name="M:System.IO.StringStream.#ctor(System.String,System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.StringStream"/> class with the specified string and encoding.
+            </summary>
+        </member>
+        <member name="M:System.IO.StringStream.#ctor(System.ReadOnlyMemory{System.Char},System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.StringStream"/> class with the specified character memory and encoding.
+            </summary>
+        </member>
+        <member name="P:System.IO.StringStream.Encoding">
+            <summary>
+            Gets the encoding used by this stream.
+            </summary>
+        </member>
+        <member name="P:System.IO.StringStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.IO.WritableMemoryStream">
+            <summary>
+            Provides a seekable, read-write <see cref="T:System.IO.MemoryStream"/> over a <see cref="T:System.Memory`1"/> with fixed capacity.
+            </summary>
+            <remarks>
+            The stream cannot expand beyond the initial memory capacity.
+            <see cref="M:System.IO.MemoryStream.GetBuffer"/> throws and <see cref="M:System.IO.MemoryStream.TryGetBuffer(System.ArraySegment{System.Byte}@)"/> returns <see langword="false"/>.
+            The polyfill requires an array-backed <see cref="T:System.Memory`1"/>; memory backed by native (or other non-array)
+            buffers is not supported and the constructor throws <see cref="T:System.NotSupportedException"/>.
+            </remarks>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.#ctor(System.Memory{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.WritableMemoryStream"/> class over the specified <see cref="T:System.Memory`1"/>.
+            </summary>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Buffers.ReadOnlySequenceStream">
+            <summary>
+            Provides a seekable, read-only <see cref="T:System.IO.Stream"/> over a <see cref="T:System.Buffers.ReadOnlySequence`1"/>.
+            </summary>
+            <remarks>
+            The underlying sequence is not copied; reads are served directly from its segments.
+            The stream cannot be written to. <see cref="P:System.Buffers.ReadOnlySequenceStream.CanWrite"/> always returns <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.#ctor(System.Buffers.ReadOnlySequence{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Buffers.ReadOnlySequenceStream"/> class over the specified <see cref="T:System.Buffers.ReadOnlySequence`1"/>.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Text.Unicode.Utf16">
+            <summary>Provides static methods for validating UTF-16 text.</summary>
+        </member>
+        <member name="M:System.Text.Unicode.Utf16.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Returns the index in <paramref name="value"/> where the first ill-formed UTF-16 subsequence begins, or -1 if <paramref name="value"/> is well-formed.
+            </summary>
+        </member>
+        <member name="M:System.Text.Unicode.Utf16.IsValid(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Returns a value indicating whether <paramref name="value"/> is well-formed UTF-16.
+            </summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.MyRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the MyRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.MyRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.MyRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.MyRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.MyRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.MyRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.MyRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.MyRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.MyRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.LiteralRegex_1">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the LiteralRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.LiteralRegex_1.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.LiteralRegex_1.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.LiteralRegex_1.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.LiteralRegex_1.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.LiteralRegex_1.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.LiteralRegex_1.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.LiteralRegex_1.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.LiteralRegex_1.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
+            <summary>Default timeout value set in <see cref="T:System.AppContext"/>, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout"/> if none was set.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
+            <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout"/> is non-infinite.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.IsWordChar(System.Char)">
+            <summary>Determines whether the character is part of the [\w] set.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.WordCategoriesMask">
+            <summary>Provides a mask of Unicode categories that combine to form [\w].</summary>
+        </member>
+        <member name="P:System.Text.RegularExpressions.Generated.Utilities.WordCharBitmap">
+            <summary>Gets a bitmap for whether each character 0 through 127 is in [\w]</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_indexOfString_2AB87DBBBB8DDDCC1FCD3AD92B86DA8368F575E3AF0C5968783FA22CF25D3ACD">
+            <summary>Supports searching for the string "iteral&lt;".</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_indexOfString_6F4C5160441B791583D6759AD34C15810685A6597502A257522D952076628D7C">
+            <summary>Supports searching for the string "eaf&lt;".</summary>
+        </member>
+        <member name="T:ktsu.Coder.Ast.AssignmentStatement">
+            <summary>
+            Represents an assignment statement.
+            Examples: x = 5; result = a + b; items[0] = "hello";
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.AssignmentStatement.Target">
+            <summary>
+            Gets or sets the target of the assignment (variable name, property access, etc.).
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.AssignmentStatement.Value">
+            <summary>
+            Gets or sets the value to assign.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.AssignmentStatement.Operator">
+            <summary>
+            Gets or sets the assignment operator type.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AssignmentStatement.#ctor(ktsu.Coder.Ast.Expression,ktsu.Coder.Ast.Expression,ktsu.Coder.Ast.AssignmentOperator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.AssignmentStatement"/> class.
+            </summary>
+            <param name="target">The assignment target.</param>
+            <param name="value">The value to assign.</param>
+            <param name="operator">The assignment operator (defaults to simple assignment).</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AssignmentStatement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.AssignmentStatement"/> class.
+            Used for deserialization.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AssignmentStatement.GetNodeTypeName">
+            <summary>
+            Gets the node type name for this assignment statement.
+            </summary>
+            <returns>The node type name.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AssignmentStatement.Clone">
+            <summary>
+            Creates a deep clone of this assignment statement.
+            </summary>
+            <returns>A new instance with the same property values.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AssignmentStatement.ToString">
+            <summary>
+            Returns a string representation of the assignment statement.
+            </summary>
+            <returns>String representation.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.AssignmentOperator">
+            <summary>
+            Defines the types of assignment operators supported.
+            </summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.Assign">
+            <summary>Simple assignment (=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.AddAssign">
+            <summary>Addition assignment (+=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.SubtractAssign">
+            <summary>Subtraction assignment (-=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.MultiplyAssign">
+            <summary>Multiplication assignment (*=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.DivideAssign">
+            <summary>Division assignment (/=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.ModuloAssign">
+            <summary>Modulo assignment (%=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.BitwiseAndAssign">
+            <summary>Bitwise AND assignment (&amp;=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.BitwiseOrAssign">
+            <summary>Bitwise OR assignment (|=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.BitwiseXorAssign">
+            <summary>Bitwise XOR assignment (^=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.LeftShiftAssign">
+            <summary>Left shift assignment (&lt;&lt;=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.AssignmentOperator.RightShiftAssign">
+            <summary>Right shift assignment (&gt;&gt;=)</summary>
+        </member>
+        <member name="T:ktsu.Coder.Ast.AstCompositeNode">
+            <summary>
+            Represents a composite node in the AST structure - a node that can contain other nodes.
+            Examples include function declarations, code blocks, and other hierarchical elements.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.AstCompositeNode.Children">
+            <summary>
+            Gets or sets the collection of child nodes within this composite node.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstCompositeNode.GetChild(System.String)">
+            <summary>
+            Gets the child node with the specified key.
+            </summary>
+            <param name="key">The key of the child node to retrieve.</param>
+            <returns>The child node if found; otherwise, null.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstCompositeNode.SetChild(System.String,ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Adds or updates a child node with the specified key.
+            </summary>
+            <param name="key">The key to associate with the child node.</param>
+            <param name="node">The child node to add or update.</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstCompositeNode.RemoveChild(System.String)">
+            <summary>
+            Removes the child node with the specified key.
+            </summary>
+            <param name="key">The key of the child node to remove.</param>
+            <returns>True if the child node was found and removed; otherwise, false.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstCompositeNode.Clone">
+            <summary>
+            Creates a deep clone of this composite node.
+            </summary>
+            <returns>A new instance of the composite node with the same properties and cloned children.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.AstLeafNode`1">
+            <summary>
+            Represents a leaf node in the AST structure - a node that contains a value but no child nodes.
+            Examples include literals (strings, numbers), identifiers, etc.
+            </summary>
+            <typeparam name="T">The type of value contained in this leaf node.</typeparam>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstLeafNode`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.AstLeafNode`1"/> class.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstLeafNode`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.AstLeafNode`1"/> class with the specified value.
+            </summary>
+            <param name="value">The value of this leaf node.</param>
+        </member>
+        <member name="P:ktsu.Coder.Ast.AstLeafNode`1.Value">
+            <summary>
+            Gets or sets the value contained in this leaf node.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstLeafNode`1.GetNodeTypeName">
+            <summary>
+            Gets the type name of this node for serialization purposes.
+            </summary>
+            <returns>The name of the node type including the generic type parameter.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstLeafNode`1.Clone">
+            <summary>
+            Creates a deep clone of this leaf node.
+            </summary>
+            <returns>A new instance of the leaf node with the same value.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.AstNode">
+            <summary>
+            Represents an abstract base class for all AST (Abstract Syntax Tree) nodes.
+            AST nodes are used to represent code structures in a language-agnostic way.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.AstNode.Metadata">
+            <summary>
+            Gets additional metadata about this node.
+            This can be used to store language-specific information that doesn't fit
+            into the standard node structure.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstNode.GetNodeTypeName">
+            <summary>
+            Gets the type name of this AST node, which is used during serialization.
+            </summary>
+            <returns>The name of the node type.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstNode.Clone">
+            <summary>
+            Creates a deep clone of this AST node.
+            </summary>
+            <returns>A new instance of the AST node with the same property values.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.AstNode.DeepClone">
+            <summary>
+            Creates a deep clone of this AST node.
+            </summary>
+            <returns>A new instance of the AST node with the same property values.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.BinaryExpression">
+            <summary>
+            Represents a binary expression with a left operand, operator, and right operand.
+            Examples: a + b, x * y, result == expected
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.BinaryExpression.Left">
+            <summary>
+            Gets or sets the left operand of the binary expression.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.BinaryExpression.Operator">
+            <summary>
+            Gets or sets the binary operator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.BinaryExpression.Right">
+            <summary>
+            Gets or sets the right operand of the binary expression.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.BinaryExpression.#ctor(ktsu.Coder.Ast.Expression,ktsu.Coder.Ast.BinaryOperator,ktsu.Coder.Ast.Expression)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.BinaryExpression"/> class.
+            </summary>
+            <param name="left">The left operand.</param>
+            <param name="operator">The binary operator.</param>
+            <param name="right">The right operand.</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.BinaryExpression.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.BinaryExpression"/> class.
+            Used for deserialization.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.BinaryExpression.Clone">
+            <summary>
+            Creates a deep clone of this binary expression.
+            </summary>
+            <returns>A new instance with the same property values.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.BinaryOperator">
+            <summary>
+            Defines the types of binary operators supported.
+            </summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.Add">
+            <summary>Addition operator (+)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.Subtract">
+            <summary>Subtraction operator (-)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.Multiply">
+            <summary>Multiplication operator (*)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.Divide">
+            <summary>Division operator (/)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.Modulo">
+            <summary>Modulo operator (%)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.Equal">
+            <summary>Equality operator (==)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.NotEqual">
+            <summary>Inequality operator (!=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.LessThan">
+            <summary>Less than operator (&lt;)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.LessThanOrEqual">
+            <summary>Less than or equal operator (&lt;=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.GreaterThan">
+            <summary>Greater than operator (&gt;)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.GreaterThanOrEqual">
+            <summary>Greater than or equal operator (&gt;=)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.LogicalAnd">
+            <summary>Logical AND operator (&amp;&amp;)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.LogicalOr">
+            <summary>Logical OR operator (||)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.BitwiseAnd">
+            <summary>Bitwise AND operator (&amp;)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.BitwiseOr">
+            <summary>Bitwise OR operator (|)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.BitwiseXor">
+            <summary>Bitwise XOR operator (^)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.LeftShift">
+            <summary>Left shift operator (&lt;&lt;)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.BinaryOperator.RightShift">
+            <summary>Right shift operator (&gt;&gt;)</summary>
+        </member>
+        <member name="T:ktsu.Coder.Ast.Expression">
+            <summary>
+            Represents an abstract base class for all expressions in the AST.
+            Expressions are constructs that can be evaluated to produce a value.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.Expression.ExpectedType">
+            <summary>
+            Gets the expected type of the expression result.
+            This can be used for type checking and code generation.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Expression.GetNodeTypeName">
+            <summary>
+            Gets the node type name for this expression.
+            </summary>
+            <returns>The expression type name.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.FunctionDeclaration">
+            <summary>
+            Represents a function declaration in the abstract syntax tree.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.FunctionDeclaration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.FunctionDeclaration"/> class.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.FunctionDeclaration.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.FunctionDeclaration"/> class with a name.
+            </summary>
+            <param name="name">The name of the function.</param>
+        </member>
+        <member name="P:ktsu.Coder.Ast.FunctionDeclaration.Name">
+            <summary>
+            Gets or sets the name of the function.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.FunctionDeclaration.ReturnType">
+            <summary>
+            Gets or sets the return type of the function.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.FunctionDeclaration.Parameters">
+            <summary>
+            Gets or sets a list of parameters for the function.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.FunctionDeclaration.Body">
+            <summary>
+            Gets or sets a list of statements that make up the function body.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.FunctionDeclaration.GetNodeTypeName">
+            <summary>
+            Gets the type name of this node for serialization purposes.
+            </summary>
+            <returns>The name of the node type.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.FunctionDeclaration.Clone">
+            <summary>
+            Creates a deep clone of this function declaration.
+            </summary>
+            <returns>A new instance of the function declaration with the same properties and cloned children.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.LiteralExpression`1">
+            <summary>
+            Represents a literal value in an expression.
+            Examples: 42, "hello", true, 3.14
+            </summary>
+            <typeparam name="T">The type of the literal value.</typeparam>
+        </member>
+        <member name="P:ktsu.Coder.Ast.LiteralExpression`1.Value">
+            <summary>
+            Gets or sets the literal value.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.LiteralExpression`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.LiteralExpression`1"/> class.
+            </summary>
+            <param name="value">The literal value.</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.LiteralExpression`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.LiteralExpression`1"/> class.
+            Used for deserialization.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.LiteralExpression`1.GetNodeTypeName">
+            <summary>
+            Gets the node type name for this literal expression.
+            </summary>
+            <returns>The literal expression type name.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.LiteralExpression`1.Clone">
+            <summary>
+            Creates a deep clone of this literal expression.
+            </summary>
+            <returns>A new instance with the same property values.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.LiteralExpression`1.ToString">
+            <summary>
+            Returns a string representation of the literal value.
+            </summary>
+            <returns>The string representation of the value.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.Literal">
+            <summary>
+            Helper class for creating literal expressions with common types.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Literal.Text(System.String)">
+            <summary>
+            Creates a string literal expression.
+            </summary>
+            <param name="value">The string value.</param>
+            <returns>A new string literal expression.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Literal.Number(System.Int32)">
+            <summary>
+            Creates an integer literal expression.
+            </summary>
+            <param name="value">The integer value.</param>
+            <returns>A new integer literal expression.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Literal.DecimalValue(System.Double)">
+            <summary>
+            Creates a double-precision floating-point literal expression.
+            </summary>
+            <param name="value">The double value.</param>
+            <returns>A new double literal expression.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Literal.Bool(System.Boolean)">
+            <summary>
+            Creates a boolean literal expression.
+            </summary>
+            <param name="value">The boolean value.</param>
+            <returns>A new boolean literal expression.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Literal.SingleValue(System.Single)">
+            <summary>
+            Creates a single-precision floating-point literal expression.
+            </summary>
+            <param name="value">The float value.</param>
+            <returns>A new float literal expression.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Literal.BigNumberValue(System.Int64)">
+            <summary>
+            Creates a long integer literal expression.
+            </summary>
+            <param name="value">The long value.</param>
+            <returns>A new long literal expression.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.Parameter">
+            <summary>
+            Represents a parameter in a function declaration.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Parameter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.Parameter"/> class.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Parameter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.Parameter"/> class with a name.
+            </summary>
+            <param name="name">The name of the parameter.</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Parameter.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.Parameter"/> class with a name and type.
+            </summary>
+            <param name="name">The name of the parameter.</param>
+            <param name="type">The type of the parameter.</param>
+        </member>
+        <member name="P:ktsu.Coder.Ast.Parameter.Name">
+            <summary>
+            Gets or sets the name of the parameter.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.Parameter.Type">
+            <summary>
+            Gets or sets the type of the parameter.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.Parameter.IsOptional">
+            <summary>
+            Gets or sets a value indicating whether the parameter is optional.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.Parameter.DefaultValue">
+            <summary>
+            Gets or sets the default value of the parameter if it is optional.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Parameter.GetNodeTypeName">
+            <summary>
+            Gets the type name of this node for serialization purposes.
+            </summary>
+            <returns>The name of the node type.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.Parameter.Clone">
+            <summary>
+            Creates a deep clone of this parameter.
+            </summary>
+            <returns>A new instance of the parameter with the same properties.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.ReturnStatement">
+            <summary>
+            Represents a return statement in the abstract syntax tree.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ReturnStatement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.ReturnStatement"/> class.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ReturnStatement.#ctor(ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.ReturnStatement"/> class with an expression.
+            </summary>
+            <param name="expression">The expression to return.</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ReturnStatement.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.ReturnStatement"/> class with an integer literal.
+            </summary>
+            <param name="value">The integer value to return.</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ReturnStatement.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.ReturnStatement"/> class with a string literal.
+            </summary>
+            <param name="value">The string value to return.</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ReturnStatement.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.ReturnStatement"/> class with a boolean literal.
+            </summary>
+            <param name="value">The boolean value to return.</param>
+        </member>
+        <member name="P:ktsu.Coder.Ast.ReturnStatement.Expression">
+            <summary>
+            Gets the expression being returned, if any.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ReturnStatement.SetExpression(ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Sets the expression being returned.
+            </summary>
+            <param name="expression">The expression to return.</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ReturnStatement.GetNodeTypeName">
+            <summary>
+            Gets the type name of this node for serialization.
+            </summary>
+            <returns>The name of the node type.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ReturnStatement.Clone">
+            <summary>
+            Creates a deep clone of this return statement.
+            </summary>
+            <returns>A new instance of the return statement with the same properties and cloned children.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.VariableDeclaration">
+            <summary>
+            Represents a variable declaration statement.
+            Examples: int x; string name = "hello"; var result = 42;
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.VariableDeclaration.Name">
+            <summary>
+            Gets or sets the name of the variable.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.VariableDeclaration.Type">
+            <summary>
+            Gets or sets the declared type of the variable.
+            Can be null for type-inferred declarations.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.VariableDeclaration.InitialValue">
+            <summary>
+            Gets or sets the initial value expression.
+            Can be null if no initial value is provided.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.VariableDeclaration.IsConstant">
+            <summary>
+            Gets or sets a value indicating whether this is a constant declaration.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.VariableDeclaration.IsTypeInferred">
+            <summary>
+            Gets or sets a value indicating whether the type should be inferred.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.VariableDeclaration.AccessModifier">
+            <summary>
+            Gets or sets the visibility/access modifier (public, private, etc.).
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.VariableDeclaration.#ctor(System.String,System.String,ktsu.Coder.Ast.Expression)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.VariableDeclaration"/> class.
+            </summary>
+            <param name="name">The variable name.</param>
+            <param name="type">The variable type (optional for inferred types).</param>
+            <param name="initialValue">The initial value (optional).</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.VariableDeclaration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.VariableDeclaration"/> class.
+            Used for deserialization.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.VariableDeclaration.GetNodeTypeName">
+            <summary>
+            Gets the node type name for this variable declaration.
+            </summary>
+            <returns>The node type name.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.VariableDeclaration.Clone">
+            <summary>
+            Creates a deep clone of this variable declaration.
+            </summary>
+            <returns>A new instance with the same property values.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.VariableDeclaration.ToString">
+            <summary>
+            Returns a string representation of the variable declaration.
+            </summary>
+            <returns>String representation.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.VariableReference">
+            <summary>
+            Represents a reference to a variable in an expression.
+            Examples: "x", "result", "myVariable"
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.VariableReference.Name">
+            <summary>
+            Gets or sets the name of the variable being referenced.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.VariableReference.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.VariableReference"/> class.
+            </summary>
+            <param name="name">The name of the variable.</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.VariableReference.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.VariableReference"/> class.
+            Used for deserialization.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.VariableReference.GetNodeTypeName">
+            <summary>
+            Gets the node type name for this variable reference.
+            </summary>
+            <returns>The variable reference type name.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.VariableReference.Clone">
+            <summary>
+            Creates a deep clone of this variable reference.
+            </summary>
+            <returns>A new instance with the same property values.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.VariableReference.ToString">
+            <summary>
+            Returns a string representation of the variable reference.
+            </summary>
+            <returns>The variable name.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Languages.CSharpGenerator">
+            <summary>
+            Generates C# code from AST nodes.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.CSharpGenerator.LanguageId">
+            <summary>
+            Gets the unique identifier for the C# language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.CSharpGenerator.DisplayName">
+            <summary>
+            Gets the display name for the C# language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.CSharpGenerator.FileExtension">
+            <summary>
+            Gets the file extension for C# files.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Languages.CSharpGenerator.GenerateInternal(ktsu.Coder.Ast.AstNode,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Generates code for the specified AST node.
+            </summary>
+            <param name="node">The AST node to generate code for.</param>
+            <param name="builder">The string builder to append code to.</param>
+            <param name="indentLevel">The current indentation level.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.CSharpGenerator.CanGenerate(ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Determines whether this generator can generate code for the specified AST node.
+            </summary>
+            <param name="astNode">The AST node to check.</param>
+            <returns>True if this generator can generate code for the node; otherwise, false.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Languages.ILanguageGenerator">
+            <summary>
+            Defines the interface for language-specific code generators.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.ILanguageGenerator.LanguageId">
+            <summary>
+            Gets the unique identifier for this language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.ILanguageGenerator.DisplayName">
+            <summary>
+            Gets the display name for this language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.ILanguageGenerator.FileExtension">
+            <summary>
+            Gets the file extension (without the dot) used for this language.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Languages.ILanguageGenerator.Generate(ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Generates code in the target language from an AST node.
+            </summary>
+            <param name="astNode">The AST node to generate code from.</param>
+            <returns>A string containing the generated code in the target language.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Languages.ILanguageGenerator.CanGenerate(ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Determines whether this generator can generate code for the specified AST node.
+            </summary>
+            <param name="astNode">The AST node to check.</param>
+            <returns>True if this generator can generate code for the node; otherwise, false.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Languages.LanguageGeneratorBase">
+            <summary>
+            Provides a base implementation for language generators with common functionality.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.LanguageGeneratorBase.LanguageId">
+            <summary>
+            Gets the unique identifier for this language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.LanguageGeneratorBase.DisplayName">
+            <summary>
+            Gets the display name for this language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.LanguageGeneratorBase.FileExtension">
+            <summary>
+            Gets the file extension (without the dot) used for this language.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.Generate(ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Generates code in the target language from an AST node.
+            </summary>
+            <param name="astNode">The AST node to generate code from.</param>
+            <returns>A string containing the generated code in the target language.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.CanGenerate(ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Determines whether this generator can generate code for the specified AST node.
+            </summary>
+            <param name="astNode">The AST node to check.</param>
+            <returns>True if this generator can generate code for the node; otherwise, false.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.GenerateInternal(ktsu.Coder.Ast.AstNode,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Internal method to generate code with proper indentation.
+            </summary>
+            <param name="node">The AST node to generate code from.</param>
+            <param name="builder">The string builder to append code to.</param>
+            <param name="indentLevel">The current indentation level.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.Indent(System.Text.StringBuilder,System.Int32,System.Int32)">
+            <summary>
+            Adds indentation to the code based on the current indentation level.
+            </summary>
+            <param name="builder">The string builder to append indentation to.</param>
+            <param name="indentLevel">The indentation level.</param>
+            <param name="indentSize">The number of spaces per indent level. Default is 4.</param>
+        </member>
+        <member name="T:ktsu.Coder.Languages.PythonGenerator">
+            <summary>
+            Generates Python code from AST nodes.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.PythonGenerator.LanguageId">
+            <summary>
+            Gets the unique identifier for this language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.PythonGenerator.DisplayName">
+            <summary>
+            Gets the display name for this language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.PythonGenerator.FileExtension">
+            <summary>
+            Gets the file extension (without the dot) used for this language.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.GenerateInternal(ktsu.Coder.Ast.AstNode,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Generates Python code with proper indentation.
+            </summary>
+            <param name="node">The AST node to generate code from.</param>
+            <param name="builder">The string builder to append code to.</param>
+            <param name="indentLevel">The current indentation level.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.CanGenerate(ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Determines whether this generator can generate code for the specified AST node.
+            </summary>
+            <param name="astNode">The AST node to check.</param>
+            <returns>True if this generator can generate code for the node; otherwise, false.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Serialization.YamlDeserializer">
+            <summary>
+            Handles deserialization of YAML strings back into AST nodes.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Serialization.YamlDeserializer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Serialization.YamlDeserializer"/> class.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Serialization.YamlDeserializer.Deserialize(System.String)">
+            <summary>
+            Deserializes a YAML string into an AST node.
+            </summary>
+            <param name="yaml">The YAML string to deserialize.</param>
+            <returns>The deserialized AST node.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Serialization.YamlDeserializer.MyRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>[Ll]eaf&lt;(\\w+)&gt;</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match a character in the set [Ll].<br/>
+            ○ Match the string "eaf&lt;".<br/>
+            ○ 1st capture group.<br/>
+                ○ Match a word character atomically at least once.<br/>
+            ○ Match '&gt;'.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Serialization.YamlDeserializer.LiteralRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>[Ll]iteral&lt;(\\w+)&gt;</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match a character in the set [Ll].<br/>
+            ○ Match the string "iteral&lt;".<br/>
+            ○ 1st capture group.<br/>
+                ○ Match a word character atomically at least once.<br/>
+            ○ Match '&gt;'.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:ktsu.Coder.Serialization.YamlSerializer">
+            <summary>
+            Handles serialization of AST nodes to YAML format.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Serialization.YamlSerializer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Serialization.YamlSerializer"/> class.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Serialization.YamlSerializer.Serialize(ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Serializes an AST node into a YAML string.
+            </summary>
+            <param name="node">The AST node to serialize.</param>
+            <returns>A YAML string representation of the AST node.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Serialization.YamlSerializer.ToCamelCase(System.String)">
+            <summary>
+            Converts a PascalCase string to camelCase.
+            </summary>
+            <param name="pascalCase">The PascalCase string to convert.</param>
+            <returns>The camelCase equivalent string.</returns>
+        </member>
+        <member name="T:ktsu.Coder.ServiceCollectionExtensions">
+            <summary>
+            Extension methods for configuring Coder services in dependency injection containers.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.ServiceCollectionExtensions.AddLanguageGenerators(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds all available language generators to the service collection.
+            </summary>
+            <param name="services">The service collection to add services to.</param>
+            <returns>The service collection for method chaining.</returns>
+        </member>
+        <member name="M:ktsu.Coder.ServiceCollectionExtensions.AddCoderSerialization(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds serialization services to the service collection.
+            </summary>
+            <param name="services">The service collection to add services to.</param>
+            <returns>The service collection for method chaining.</returns>
+        </member>
+        <member name="M:ktsu.Coder.ServiceCollectionExtensions.AddCoder(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds all Coder services to the service collection.
+            </summary>
+            <param name="services">The service collection to add services to.</param>
+            <returns>The service collection for method chaining.</returns>
+        </member>
+    </members>
+</doc>

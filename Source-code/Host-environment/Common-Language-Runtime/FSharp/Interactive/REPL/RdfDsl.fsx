@@ -57,16 +57,10 @@ let inline (-!|) (draft: Formula) (subjectTerms: ^SubjectType list when ^Subject
 
 
 // predicate adders
-let inline (---)
-    (draft: Formula)
-    (predicateTerm: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate))
-    =
+let inline (---) (draft: Formula) (predicateTerm: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate)) =
     draft.addRdfPredicate predicateTerm.asPredicate
 
-let inline (--|)
-    (draft: Formula)
-    (predicateTerms: ^PredicateType list when ^PredicateType: (member asPredicate: RdfPredicate))
-    =
+let inline (--|) (draft: Formula) (predicateTerms: ^PredicateType list when ^PredicateType: (member asPredicate: RdfPredicate)) =
     predicateTerms
     |> List.toArray
     |> Array.Parallel.map (fun predicateTerm -> predicateTerm.asPredicate)
@@ -85,16 +79,10 @@ let inline (-~|>) (draft: Formula) (predicateObjectLists: PredicateObjectList li
     |> Formula.materializeFormula
 
 
-let inline (->-)
-    (predicate: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate))
-    (object: ^ObjectType when ^ObjectType: (member asObject: RdfObject))
-    =
+let inline (->-) (predicate: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate)) (object: ^ObjectType when ^ObjectType: (member asObject: RdfObject)) =
     PredicateObjectList.fromTerms predicate.asPredicate [| object.asObject |]
 
-let inline (->|)
-    (predicate: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate))
-    (objectTerms: ^ObjectType list when ^ObjectType: (member asObject: RdfObject))
-    =
+let inline (->|) (predicate: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate)) (objectTerms: ^ObjectType list when ^ObjectType: (member asObject: RdfObject)) =
     let objects =
         objectTerms
         |> List.toArray

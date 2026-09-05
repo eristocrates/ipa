@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>ktsu.dev contributors</dc:creator>
+  <dc:description>A library providing methods for matching and filtering text. It supports glob patterns, regular expressions, and fuzzy matching.</dc:description>
+  <dc:identifier>ktsu.TextFilter</dc:identifier>
+  <version>1.5.42</version>
+  <keywords>text filter;glob patterns;regex;regular expressions;fuzzy matching;text matching;filter;ranking;dotnet;csharp</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>WebDriverBiDi</id>
+    <version>0.0.56</version>
+    <title>WebDriver BiDirectional Client Library</title>
+    <authors>WebDriverBiDi.NET Committers</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/webdriverbidi-net/webdriverbidi-net</projectUrl>
+    <description>A .NET client library for the WebDriver BiDi protocol.</description>
+    <tags>webdriver bidi browser-automation webdriver-bidi automation</tags>
+    <repository type="git" url="https://github.com/webdriverbidi-net/webdriverbidi-net" commit="a6e343f52c2fce1203265518808c39f4d865e384" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+      <group targetFramework="net8.0">
+        <dependency id="System.Text.Json" version="10.0.11" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Bcl.AsyncInterfaces" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Bcl.Memory" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Bcl.TimeProvider" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Channels" version="10.0.11" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

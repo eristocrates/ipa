@@ -305,7 +305,8 @@ and PrefixId =
     }
   member this.asIri = PrefixedIri this.asPrefixedName
 
-  member this.prefix (localName:string) = { prefixId = this ; localName = localName} |> PrefixedIri
+  member this.prefix (localName:string) = { prefixId = this ; localName = localName}
+  // member this.prefix (localName:string) = { prefixId = this ; localName = localName} |> PrefixedIri
   member this.asSubject = PrefixedIri this.asPrefixedName |> IriSubject
   member this.asPredicate = PrefixedIri this.asPrefixedName |> IriPredicate
   member this.asObject = PrefixedIri this.asPrefixedName |> IriObject
@@ -439,32 +440,32 @@ and [<CustomEquality ; CustomComparison>] RdfLiteral =
                     Convert.ToString(value, CultureInfo.InvariantCulture)
 
             match box value with
-            | :? Boolean as value -> { lexicalForm = (if value then "true" else "false") ; datatypeIri = PrefixId.xsd.prefix "boolean" }
-            | :? (Byte array) as value -> { lexicalForm = Convert.ToBase64String(value) ; datatypeIri = PrefixId.xsd.prefix "base64Binary" }
-            | :? Byte as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedByte" }
-            | :? DateOnly as value -> { lexicalForm = value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "date" }
-            | :? DateTime as value -> { lexicalForm = value.ToString("o", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "dateTime" }
-            | :? DateTimeOffset as value -> { lexicalForm = value.ToString("o", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "dateTimeStamp" }
-            | :? Decimal as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "decimal" }
-            | :? Double as value -> { lexicalForm = value.ToString("R", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "double" }
-            | :? Int16 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "short" }
-            | :? Int32 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "int" }
-            | :? Int64 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "long" }
-            | :? SByte as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "byte" }
-            | :? Single as value -> { lexicalForm = value.ToString("R", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "float" }
-            | :? TimeOnly as value -> { lexicalForm = value.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "time" }
-            | :? TimeSpan as value -> { lexicalForm = Xml.XmlConvert.ToString(value) ; datatypeIri = PrefixId.xsd.prefix "duration" }
-            | :? UInt16 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedShort" }
-            | :? UInt32 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedInt" }
-            | :? UInt64 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedLong" }
-            | :? Uri as value -> { lexicalForm = value.OriginalString ; datatypeIri = PrefixId.xsd.prefix "anyURI" }
-            | :? DomUrl as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "anyURI" }
-            | :? IriReference as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "anyURI" }
-            | :? XmlQualifiedName as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "QName" }
-            | :? Guid as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "ID" }
-            | :? String as value -> { lexicalForm = value ; datatypeIri = PrefixId.xsd.prefix "string" }
-            | null  -> { lexicalForm = "true" ; datatypeIri = PrefixId.xsi.prefix "nil" }
-            | value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xdt.prefix "anyAtomicType" }
+            | :? Boolean as value -> { lexicalForm = (if value then "true" else "false") ; datatypeIri = PrefixId.xsd.prefix "boolean" |> PrefixedIri }
+            | :? (Byte array) as value -> { lexicalForm = Convert.ToBase64String(value) ; datatypeIri = PrefixId.xsd.prefix "base64Binary" |> PrefixedIri }
+            | :? Byte as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedByte" |> PrefixedIri}
+            | :? DateOnly as value -> { lexicalForm = value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "date" |> PrefixedIri}
+            | :? DateTime as value -> { lexicalForm = value.ToString("o", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "dateTime" |> PrefixedIri}
+            | :? DateTimeOffset as value -> { lexicalForm = value.ToString("o", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "dateTimeStamp" |> PrefixedIri}
+            | :? Decimal as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "decimal" |> PrefixedIri}
+            | :? Double as value -> { lexicalForm = value.ToString("R", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "double" |> PrefixedIri}
+            | :? Int16 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "short" |> PrefixedIri}
+            | :? Int32 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "int" |> PrefixedIri}
+            | :? Int64 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "long" |> PrefixedIri}
+            | :? SByte as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "byte" |> PrefixedIri}
+            | :? Single as value -> { lexicalForm = value.ToString("R", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "float" |> PrefixedIri}
+            | :? TimeOnly as value -> { lexicalForm = value.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "time" |> PrefixedIri}
+            | :? TimeSpan as value -> { lexicalForm = Xml.XmlConvert.ToString(value) ; datatypeIri = PrefixId.xsd.prefix "duration" |> PrefixedIri}
+            | :? UInt16 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedShort" |> PrefixedIri}
+            | :? UInt32 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedInt" |> PrefixedIri}
+            | :? UInt64 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedLong" |> PrefixedIri}
+            | :? Uri as value -> { lexicalForm = value.OriginalString ; datatypeIri = PrefixId.xsd.prefix "anyURI" |> PrefixedIri}
+            | :? DomUrl as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "anyURI" |> PrefixedIri}
+            | :? IriReference as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "anyURI" |> PrefixedIri}
+            | :? XmlQualifiedName as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "QName" |> PrefixedIri}
+            | :? Guid as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "ID" |> PrefixedIri}
+            | :? String as value -> { lexicalForm = value ; datatypeIri = PrefixId.xsd.prefix "string" |> PrefixedIri}
+            | null  -> { lexicalForm = "true" ; datatypeIri = PrefixId.xsi.prefix "nil" |> PrefixedIri}
+            | value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xdt.prefix "anyAtomicType" |> PrefixedIri}
 
         datatypedLiteral |> DatatypedLiteral
 
@@ -488,7 +489,7 @@ and [<CustomEquality ; CustomComparison>] RdfLiteral =
     member this.asINode :INode = this.asLiteralNode
     member this.datatypeIri = 
       match this with 
-      | PlainLiteral plainLiteral -> PrefixId.xsd.prefix "string"
+      | PlainLiteral plainLiteral -> PrefixId.xsd.prefix "string" |> PrefixedIri
       | DatatypedLiteral datatypedLiteral -> datatypedLiteral.datatypeIri
       
     member this.maybeLanguageTag = 
@@ -1506,12 +1507,14 @@ module RdfLiteral =
             let valueString = Convert.ToBase64String(bytes)
 
             PrefixId.xsd.prefix "base64Binary"
+            |> PrefixedIri
             |> RdfLiteral.datatyped valueString
 
         let hex (bytes: Byte array) =
             let valueString = Convert.ToHexString(bytes)
 
             PrefixId.xsd.prefix "hexBinary"
+            |> PrefixedIri
             |> RdfLiteral.datatyped valueString
 
 
@@ -1521,12 +1524,14 @@ module RdfLiteral =
                 let valueString = Xml.XmlConvert.ToString(timespan)
 
                 PrefixId.xsd.prefix "duration"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
             let dayTimeDuration (timespan: TimeSpan) =
                 let valueString = Xml.XmlConvert.ToString(timespan)
 
                 PrefixId.xdt.prefix "dayTimeDuration"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
 
@@ -1557,6 +1562,7 @@ module RdfLiteral =
                         $"{sign}P{yearText}{monthText}"
 
                 PrefixId.xdt.prefix "yearMonthDuration"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
 
@@ -1566,24 +1572,28 @@ module RdfLiteral =
                 let valueString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
 
                 PrefixId.xsd.prefix "date"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
             let fromDatetime (datetime: DateTime) =
                 let valueString = datetime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
 
                 PrefixId.xsd.prefix "date"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
             let time (datetime: DateTime) =
                 let valueString = datetime.ToString("o", CultureInfo.InvariantCulture)
 
                 PrefixId.xsd.prefix "dateTime"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
             let timeStamp (datetimeOffset: DateTimeOffset) =
                 let valueString = datetimeOffset.ToString("o", CultureInfo.InvariantCulture)
 
                 PrefixId.xsd.prefix "dateTimeStamp"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
 
@@ -1594,6 +1604,7 @@ module RdfLiteral =
                 let valueString = time.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture)
 
                 PrefixId.xsd.prefix "time"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
             let fromDatetime (datetime: DateTime) =
@@ -1601,6 +1612,7 @@ module RdfLiteral =
                     datetime.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture)
 
                 PrefixId.xsd.prefix "time"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
         module period =
@@ -1610,6 +1622,7 @@ module RdfLiteral =
                     $"""---{datetime.Day.ToString("00", CultureInfo.InvariantCulture)}"""
 
                 PrefixId.xsd.prefix "gDay"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
 
@@ -1618,6 +1631,7 @@ module RdfLiteral =
                     $"""--{datetime.Month.ToString("00", CultureInfo.InvariantCulture)}"""
 
                 PrefixId.xsd.prefix "gMonth"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
 
@@ -1626,6 +1640,7 @@ module RdfLiteral =
                     $"""--{datetime.Month.ToString("00", CultureInfo.InvariantCulture)}-{datetime.Day.ToString("00", CultureInfo.InvariantCulture)}"""
 
                 PrefixId.xsd.prefix "gMonthDay"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
 
@@ -1633,6 +1648,7 @@ module RdfLiteral =
                 let valueString = datetime.Year.ToString("0000", CultureInfo.InvariantCulture)
 
                 PrefixId.xsd.prefix "gYear"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
 
@@ -1641,6 +1657,7 @@ module RdfLiteral =
                     $"""{datetime.Year.ToString("0000", CultureInfo.InvariantCulture)}-{datetime.Month.ToString("00", CultureInfo.InvariantCulture)}"""
 
                 PrefixId.xsd.prefix "gYearMonth"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
             let generalDay (day: int) =
                 // TODO find a strongly typed parse instead of validation
@@ -1648,6 +1665,7 @@ module RdfLiteral =
                 let valueString = $"""---{day.ToString("00", CultureInfo.InvariantCulture)}"""
 
                 PrefixId.owlTime.prefix "generalDay"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
 
@@ -1657,6 +1675,7 @@ module RdfLiteral =
                 let valueString = $"""--{month.ToString("00", CultureInfo.InvariantCulture)}"""
 
                 PrefixId.owlTime.prefix "generalMonth"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
 
@@ -1664,6 +1683,7 @@ module RdfLiteral =
                 let valueString = year.ToString("0000", CultureInfo.InvariantCulture)
 
                 PrefixId.owlTime.prefix "generalYear"
+                |> PrefixedIri
                 |> RdfLiteral.datatyped valueString
 
 
@@ -1674,6 +1694,7 @@ module RdfLiteral =
 
         let integer (value: bigint) =
             PrefixId.xsd.prefix "integer"
+            |> PrefixedIri
             |> RdfLiteral.datatyped (bigintValueString value)
 
         let negativeInteger (value: bigint) =
@@ -1681,6 +1702,7 @@ module RdfLiteral =
             // test <@ value < 0I @>
 
             PrefixId.xsd.prefix "negativeInteger"
+            |> PrefixedIri
             |> RdfLiteral.datatyped (bigintValueString value)
 
         let nonNegativeInteger (value: bigint) =
@@ -1688,6 +1710,7 @@ module RdfLiteral =
             // test <@ value >= 0I @>
 
             PrefixId.xsd.prefix "nonNegativeInteger"
+            |> PrefixedIri
             |> RdfLiteral.datatyped (bigintValueString value)
 
         let nonPositiveInteger (value: bigint) =
@@ -1695,6 +1718,7 @@ module RdfLiteral =
             // test <@ value <= 0I @>
 
             PrefixId.xsd.prefix "nonPositiveInteger"
+            |> PrefixedIri
             |> RdfLiteral.datatyped (bigintValueString value)
 
         let positiveInteger (value: bigint) =
@@ -1702,6 +1726,7 @@ module RdfLiteral =
             // test <@ value > 0I @>
 
             PrefixId.xsd.prefix "positiveInteger"
+            |> PrefixedIri
             |> RdfLiteral.datatyped (bigintValueString value)
 
 

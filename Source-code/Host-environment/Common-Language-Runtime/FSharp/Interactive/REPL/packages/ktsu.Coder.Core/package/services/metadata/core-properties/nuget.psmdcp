@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>ktsu.dev contributors</dc:creator>
+  <dc:description>A flexible and extensible .NET library for representing code as language-agnostic Abstract Syntax Trees, serializing them to human-readable YAML for round-trip storage and version control, and generating source code in multiple target languages. Provides strongly-typed AST nodes for function declarations, parameters, return statements, and generic literals, with a plugin-based architecture for adding new target languages, full deep-cloning support, and custom metadata on any node. Python generation with type hints and correct indentation is supported out of the box.</dc:description>
+  <dc:identifier>ktsu.Coder.Core</dc:identifier>
+  <version>1.0.10</version>
+  <keywords>code generation;abstract syntax tree;ast;yaml serialization;language agnostic;python code generation;transpiler;round trip serialization;deep cloning;source generators;dotnet;csharp</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ktsu.Semantics.Paths</id>
+    <version>3.2.4</version>
+    <title>ktsu.Semantics.Paths</title>
+    <authors>ktsu.dev contributors</authors>
+    <license type="file">LICENSE.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/ktsu-dev/Semantics</projectUrl>
+    <description>A comprehensive .NET library for replacing primitive obsession with strongly-typed, self-validating domain models across four pillars: semantic strings with 50+ validation attributes, polymorphic path handling, metadata-generated semantic quantities, and musical value types. The quantity system covers 60+ physical dimensions and 200+ generated types under a unified vector model, with compile-time dimensional safety, generated unit conversions and physics relationships, centralized physical constants, and optional per-storage-type alias packages. The music types provide type-safe pitches, intervals, scales and modes, chords with symbol parsing and voicing, keys with roman-numeral analysis, and rational durations and time signatures. Features factory-pattern and dependency-injection support for building robust, maintainable scientific and domain-specific applications.</description>
+    <releaseNotes>## v3.2.4 (patch)
+
+Changes since v3.2.3:
+
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))</releaseNotes>
+    <copyright>Copyright (c) 2023-2026 ktsu-dev contributors</copyright>
+    <tags>semantic strings;semantic quantities;type safety;validation;string wrapper;domain modeling;semantic types;path handling;strongly typed;primitive obsession;value objects;csharp;dotnet;validation attributes;filesystem;type system;physical constants;dimensional analysis;unit conversions;vector quantities;source generator;code generation;scientific computing;mechanical physics;thermal physics;optical physics;acoustic physics;chemical physics;nuclear physics;fluid dynamics;si units;imperial units;music theory;music;pitch;chord;scale;midi;roman numerals;performance optimized;factory pattern;dependency injection</tags>
+    <repository type="git" commit="fa157893779fcf0723eb729c89d18165dc0eac23" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="ktsu.Semantics.Strings" version="3.2.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="ktsu.Semantics.Strings" version="3.2.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="ktsu.Semantics.Strings" version="3.2.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="ktsu.Semantics.Strings" version="3.2.4" exclude="Build,Analyzers" />
+        <dependency id="System.Memory" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.6.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="ktsu.Semantics.Strings" version="3.2.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

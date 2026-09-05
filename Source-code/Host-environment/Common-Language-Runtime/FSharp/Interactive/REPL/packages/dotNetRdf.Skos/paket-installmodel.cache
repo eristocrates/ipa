@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/dotNetRdf.Skos.dll
+F: /lib/netstandard2.0/dotNetRdf.Skos.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/b4c6039a6bf24a6caef131d6df9de63e.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /dotnetrdf.skos.3.5.2.nupkg
+F: /dotNetRdf.Skos.nuspec
+F: /icon.png
+F: /README.md
+F: /[Content_Types].xml

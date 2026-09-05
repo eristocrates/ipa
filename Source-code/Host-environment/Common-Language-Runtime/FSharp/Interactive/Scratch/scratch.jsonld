@@ -1,0 +1,113 @@
+{
+  "@graph": [
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates",
+      "@type": "http://xmlns.com/foaf/0.1/Person",
+      "http://xmlns.com/foaf/0.1/age": {
+        "@type": "xsd:int",
+        "@value": "35"
+      },
+      "http://xmlns.com/foaf/0.1/familyName": "Collier",
+      "http://xmlns.com/foaf/0.1/firstName": "Brandon",
+      "http://xmlns.com/foaf/0.1/knows": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/syrislove"
+      },
+      "http://xmlns.com/foaf/0.1/lastName": "Collier",
+      "http://xmlns.com/foaf/0.1/nick": "eristocrates",
+      "http://xmlns.com/foaf/0.1/surname": "Collier",
+      "http://xmlns.com/foaf/0.1/workInfoHomepage": {
+        "@id": "https://www.governmentjobs.com/careers/leoncountyfl/classspecs/1183950"
+      },
+      "http://xmlns.com/foaf/0.1/workplaceHomepage": {
+        "@type": "xsd:anyURI",
+        "@value": "https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology"
+      }
+    },
+    {
+      "@id": "https://connect.secure.wellsfargo.com/accounts/start#everydayChecking",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount",
+      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+      }
+    },
+    {
+      "@id": "https://mobile.usaa.com/my/logon?acf=1#usaaSavings",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DepositAccount",
+      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/syrislove"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/syrislove",
+      "@type": "http://xmlns.com/foaf/0.1/Person",
+      "http://xmlns.com/foaf/0.1/age": {
+        "@type": "xsd:int",
+        "@value": "33"
+      },
+      "http://xmlns.com/foaf/0.1/familyName": "Fisher",
+      "http://xmlns.com/foaf/0.1/firstName": "Tierra",
+      "http://xmlns.com/foaf/0.1/knows": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+      },
+      "http://xmlns.com/foaf/0.1/lastName": "Fisher",
+      "http://xmlns.com/foaf/0.1/nick": "syrislove",
+      "http://xmlns.com/foaf/0.1/surname": "Fisher",
+      "http://xmlns.com/foaf/0.1/workInfoHomepage": {
+        "@id": "https://myfuelmaster.com/job/desktop-support-technician-8"
+      },
+      "http://xmlns.com/foaf/0.1/workplaceHomepage": {
+        "@type": "xsd:anyURI",
+        "@value": "https://myfuelmaster.com/"
+      }
+    },
+    {
+      "@id": "https://mobile.usaa.com/my/logon?acf=1#platinumVisa",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount",
+      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/syrislove"
+      }
+    },
+    {
+      "@id": "https://connect.secure.wellsfargo.com/accounts/start#wellsFargoRewards",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account",
+      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+      }
+    },
+    {
+      "@id": "https://connect.secure.wellsfargo.com/accounts/start#platinumCard",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount",
+      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+      }
+    },
+    {
+      "@id": "https://mobile.usaa.com/my/logon?acf=1#checking",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount",
+      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/syrislove"
+      }
+    },
+    {
+      "@id": "https://connect.secure.wellsfargo.com/accounts/start#installmentLoans",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanSpecificCustomerAccount",
+      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+      }
+    }
+  ],
+  "@context": {
+    "rdf": {
+      "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "@prefix": true
+    },
+    "rdfs": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#",
+      "@prefix": true
+    },
+    "xsd": {
+      "@id": "http://www.w3.org/2001/XMLSchema#",
+      "@prefix": true
+    }
+  }
+}

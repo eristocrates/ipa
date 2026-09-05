@@ -1,0 +1,796 @@
+## v2.0.29 (patch)
+
+Changes since v2.0.28:
+
+- ci: make the SonarQube quality gate opt in [patch] ([@matt-edmondson](https://github.com/matt-edmondson))
+- ci: adopt the unified dotnet workflow [patch] ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.28 (patch)
+
+Changes since v2.0.27:
+
+- Bump the ktsu group with 9 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.27 (patch)
+
+Changes since v2.0.26:
+
+- Bump the ktsu group with 9 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.26 (patch)
+
+Changes since v2.0.25:
+
+- chore: store icon.png in LFS as .gitattributes declares ([@matt-edmondson](https://github.com/matt-edmondson))
+- docs: scope build badge to the default branch ([@matt-edmondson](https://github.com/matt-edmondson))
+- docs: correct README, DESCRIPTION and TAGS metadata ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.25 (patch)
+
+Changes since v2.0.24:
+
+- Stop Update SDKs failing when there is nothing to update ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.24 (patch)
+
+Changes since v2.0.23:
+
+- Fix ktsu.Sdk 2.27 analyzer errors: LF line endings and new file header [patch] ([@matt-edmondson](https://github.com/matt-edmondson))
+- Sync .runsettings ([@KtsuTools](https://github.com/KtsuTools))
+- Sync .editorconfig ([@KtsuTools](https://github.com/KtsuTools))
+- Sync .gitattributes ([@KtsuTools](https://github.com/KtsuTools))
+
+## v2.0.23 (patch)
+
+Changes since v2.0.22:
+
+- Bump Polyfill from 11.0.1 to 11.0.2 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.22 (patch)
+
+Changes since v2.0.21:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.21 (patch)
+
+Changes since v2.0.20:
+
+- Sync .github\workflows\update-sdks.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dependabot-merge.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .gitattributes ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.20 (patch)
+
+Changes since v2.0.19:
+
+- Bump MSTest.Sdk from 4.3.2 to 4.3.3 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.19 (patch)
+
+Changes since v2.0.18:
+
+- Bump the ktsu group with 8 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 8 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.18 (patch)
+
+Changes since v2.0.17:
+
+- Bump Polyfill from 10.11.2 to 11.0.1 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.17 (patch)
+
+Changes since v2.0.16:
+
+- Bump MSTest.Sdk from 4.3.0 to 4.3.2 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.16 (patch)
+
+Changes since v2.0.15:
+
+- Bump MSTest.Sdk from 4.2.3 to 4.3.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.15 (patch)
+
+Changes since v2.0.14:
+
+- Bump the ktsu group with 8 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.14 (patch)
+
+Changes since v2.0.13:
+
+- Bump Polyfill from 10.11.0 to 10.11.2 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 8 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.13 (patch)
+
+Changes since v2.0.12:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.12 (patch)
+
+Changes since v2.0.11:
+
+- chore: remove unused SourceLink package versions ([@matt-edmondson](https://github.com/matt-edmondson))
+- chore: remove unused SourceLink package references ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.12-pre.1 (prerelease)
+
+No significant changes detected since v2.0.12.
+
+## v2.0.11 (patch)
+
+Changes since v2.0.10:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.11-pre.1 (prerelease)
+
+No significant changes detected since v2.0.11.
+
+## v2.0.10 (patch)
+
+Changes since v2.0.9:
+
+- Remove legacy build scripts ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.9 (patch)
+
+Changes since v2.0.8:
+
+- Refactor null checks in DeepCloneContainerExtensions and update Polyfill package version to 9.7.7 ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.9-pre.5 (prerelease)
+
+Changes since v2.0.9-pre.4:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\update-winget-manifests.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.9-pre.4 (prerelease)
+
+Changes since v2.0.9-pre.3:
+
+- Sync scripts\update-winget-manifests.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.9-pre.3 (prerelease)
+
+Changes since v2.0.9-pre.2:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.9-pre.2 (prerelease)
+
+Changes since v2.0.9-pre.1:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.9-pre.1 (prerelease)
+
+No significant changes detected since v2.0.9.
+
+## v2.0.8 (patch)
+
+Changes since v2.0.7:
+
+- Enhance assertions in tests with descriptive messages for clarity ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.7 (patch)
+
+Changes since v2.0.6:
+
+- Remove .github\workflows\project.yml ([@matt-edmondson](https://github.com/matt-edmondson))
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .gitignore ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\update-winget-manifests.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.7-pre.2 (prerelease)
+
+Changes since v2.0.7-pre.1:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .gitignore ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.7-pre.1 (prerelease)
+
+No significant changes detected since v2.0.7.
+
+## v2.0.6 (patch)
+
+Changes since v2.0.5:
+
+- Update project files and tests for improved functionality and dependencies ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add CLAUDE.md for project guidance and documentation ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.6-pre.3 (prerelease)
+
+Changes since v2.0.6-pre.2:
+
+- Sync scripts\update-winget-manifests.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.6-pre.2 (prerelease)
+
+Changes since v2.0.6-pre.1:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.6-pre.1 (prerelease)
+
+No significant changes detected since v2.0.6.
+
+## v2.0.5 (patch)
+
+Changes since v2.0.4:
+
+- Update project configuration and CI/CD settings ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.4 (patch)
+
+Changes since v2.0.3:
+
+- Migrate to PolySharp polyfills ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.3 (patch)
+
+Changes since v2.0.2:
+
+- Enhance CI/CD workflows and update SDK management ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor DeepClone project and update dependencies ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add project configuration files and refactor DeepClone project structure ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update configuration files and improve build scripts ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.2 (patch)
+
+Changes since v2.0.1:
+
+- Update SDK version and improve code readability ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.1 (patch)
+
+Changes since v2.0.0:
+
+- [patch] Fix version ([@matt-edmondson](https://github.com/matt-edmondson))
+- [patch] Fix version ([@matt-edmondson](https://github.com/matt-edmondson))
+- [patch] Fix version ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.1-pre.1 (prerelease)
+
+No significant changes detected since v2.0.1.
+
+## v2.0.0 (major)
+
+Changes since 1.0.0:
+
+- [major] Complete rewrite ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor Get-VersionNotes function to improve commit message filtering by replacing pipeline usage with a foreach loop. This change enhances clarity and performance in handling version updates and skip conditions. ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refine Get-BuildConfiguration function to ensure commit messages are processed as an array, improving the filtering of non-skip commits. This update enhances the accuracy of release eligibility checks by handling string outputs more effectively. ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor Get-BuildConfiguration function to ensure proper array handling of commit messages. This change guarantees accurate filtering of non-skip commits by enforcing array treatment, enhancing the reliability of release eligibility checks. ([@matt-edmondson](https://github.com/matt-edmondson))
+- Enhance PSBuild module documentation and functions. Updated function descriptions for clarity, added examples, and improved parameter details across various functions. ([@matt-edmondson](https://github.com/matt-edmondson))
+- Remove Directory.Build.props and Directory.Build.targets files, delete unused scripts for managing metadata, changelog, license, and versioning. Add copyright headers to IDeepClonable.cs and TestCloneable.cs. ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update project metadata and enhance documentation with detailed usage examples and API reference ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add LICENSE template ([@matt-edmondson](https://github.com/matt-edmondson))
+- Apply new editorconfig ([@matt-edmondson](https://github.com/matt-edmondson))
+- Fix changelog script to handle prerelease version drops correctly ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add mailmap ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add scripts for automated metadata generation and versioning ([@matt-edmondson](https://github.com/matt-edmondson))
+- Renamed metadata files ([@matt-edmondson](https://github.com/matt-edmondson))
+- Replace LICENSE file with LICENSE.md and update copyright information ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update test method names and replace LICENSE file ([@matt-edmondson](https://github.com/matt-edmondson))
+- Remove unnecessary PackageReference from DeepClone.Test project ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update repository URL in README.md ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add test project, update README, and remove .gitattributes ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update VERSION ([@matt-edmondson](https://github.com/matt-edmondson))
+- Migrate ktsu.io to ktsu namespace ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update VERSION ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.3.2-pre.7 (prerelease)
+
+No significant changes detected since v1.3.2-pre.6.
+
+## v1.3.2-pre.6 (prerelease)
+
+No significant changes detected since v1.3.2-pre.5.
+
+## v1.3.2-pre.5 (prerelease)
+
+No significant changes detected since v1.3.2-pre.4.
+
+## v1.3.2-pre.4 (prerelease)
+
+No significant changes detected since v1.3.2-pre.3.
+
+## v1.3.2-pre.3 (prerelease)
+
+No significant changes detected since v1.3.2-pre.2.
+
+## v1.3.2-pre.2 (prerelease)
+
+No significant changes detected since v1.3.2-pre.1.
+
+## v1.3.2-pre.1 (prerelease)
+
+Changes since v1.3.1:
+
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.3.1 (patch)
+
+Changes since v1.3.0:
+
+- Remove Directory.Build.props and Directory.Build.targets files, delete unused scripts for managing metadata, changelog, license, and versioning. Add copyright headers to IDeepClonable.cs and TestCloneable.cs. ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update project metadata and enhance documentation with detailed usage examples and API reference ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.3.1-pre.2 (prerelease)
+
+Changes since v1.3.1-pre.1:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .editorconfig ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .runsettings ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.3.1-pre.1 (prerelease)
+
+No significant changes detected since v1.3.1.
+
+## v1.3.0 (minor)
+
+Changes since v1.2.0:
+
+- Add LICENSE template ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.2.1-pre.2 (prerelease)
+
+Changes since v1.2.1-pre.1:
+
+- Sync scripts\make-version.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\make-changelog.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.2.1-pre.1 (prerelease)
+
+Changes since v1.2.0:
+
+- Sync scripts\make-version.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\make-changelog.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .editorconfig ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .gitignore ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync Directory.Build.targets ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.2.0 (minor)
+
+Changes since v1.1.0:
+
+- Apply new editorconfig ([@matt-edmondson](https://github.com/matt-edmondson))
+- Fix changelog script to handle prerelease version drops correctly ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add mailmap ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add scripts for automated metadata generation and versioning ([@matt-edmondson](https://github.com/matt-edmondson))
+- Renamed metadata files ([@matt-edmondson](https://github.com/matt-edmondson))
+- Replace LICENSE file with LICENSE.md and update copyright information ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update test method names and replace LICENSE file ([@matt-edmondson](https://github.com/matt-edmondson))
+- Remove unnecessary PackageReference from DeepClone.Test project ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.1.17-pre.3 (prerelease)
+
+Changes since v1.1.17-pre.2:
+
+- Sync scripts\make-version.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\make-changelog.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.17-pre.2 (prerelease)
+
+Changes since v1.1.17-pre.1:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.17-pre.1 (prerelease)
+
+Changes since v1.1.16:
+
+- Fix changelog script to handle prerelease version drops correctly ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add mailmap ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.1.16
+
+No significant changes detected since v1.1.16-pre.29.
+
+## v1.1.16-pre.29 (prerelease)
+
+Changes since v1.1.16-pre.28:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.16-pre.28 (prerelease)
+
+Changes since v1.1.16-pre.27:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.16-pre.27 (prerelease)
+
+No significant changes detected since v1.1.16-pre.26.
+
+## v1.1.16-pre.26 (prerelease)
+
+No significant changes detected since v1.1.16-pre.25.
+
+## v1.1.16-pre.25 (prerelease)
+
+Changes since v1.1.16-pre.24:
+
+- Bump MSTest from 3.7.2 to 3.7.3 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.1.16-pre.24 (prerelease)
+
+No significant changes detected since v1.1.16-pre.23.
+
+## v1.1.16-pre.23 (prerelease)
+
+No significant changes detected since v1.1.16-pre.22.
+
+## v1.1.16-pre.22 (prerelease)
+
+Changes since v1.1.16-pre.21:
+
+- Bump MSTest from 3.7.1 to 3.7.2 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.1.16-pre.21 (prerelease)
+
+Changes since v1.1.16-pre.20:
+
+- Bump coverlet.collector from 6.0.3 to 6.0.4 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.1.16-pre.20 (prerelease)
+
+No significant changes detected since v1.1.16-pre.19.
+
+## v1.1.16-pre.19 (prerelease)
+
+No significant changes detected since v1.1.16-pre.18.
+
+## v1.1.16-pre.18 (prerelease)
+
+Changes since v1.1.16-pre.17:
+
+- Bump MSTest from 3.7.0 to 3.7.1 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.1.16-pre.17 (prerelease)
+
+No significant changes detected since v1.1.16-pre.16.
+
+## v1.1.16-pre.16 (prerelease)
+
+No significant changes detected since v1.1.16-pre.15.
+
+## v1.1.16-pre.15 (prerelease)
+
+Changes since v1.1.16-pre.14:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.16-pre.14 (prerelease)
+
+Changes since v1.1.16-pre.13:
+
+- Sync scripts\make-version.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\make-changelog.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.16-pre.13 (prerelease)
+
+No significant changes detected since v1.1.16-pre.12.
+
+## v1.1.16-pre.12 (prerelease)
+
+Changes since v1.1.16-pre.11:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.16-pre.11 (prerelease)
+
+No significant changes detected since v1.1.16-pre.10.
+
+## v1.1.16-pre.10 (prerelease)
+
+No significant changes detected since v1.1.16-pre.9.
+
+## v1.1.16-pre.9 (prerelease)
+
+Changes since v1.1.16-pre.8:
+
+- Sync scripts\make-version.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.16-pre.8 (prerelease)
+
+Changes since v1.1.16-pre.7:
+
+- Fix changelog script to handle prerelease version drops correctly ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add mailmap ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.1.16-pre.7 (prerelease)
+
+Changes since v1.1.16-pre.6:
+
+- Add scripts for automated metadata generation and versioning ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.1.16-pre.6 (prerelease)
+
+No significant changes detected since v1.1.16-pre.5.
+
+## v1.1.16-pre.5 (prerelease)
+
+Changes since v1.1.16-pre.4:
+
+- Bump coverlet.collector from 6.0.2 to 6.0.3 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.1.16-pre.4 (prerelease)
+
+No significant changes detected since v1.1.16-pre.3.
+
+## v1.1.16-pre.3 (prerelease)
+
+Changes since v1.1.16-pre.2:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.16-pre.2 (prerelease)
+
+Changes since v1.1.16-pre.1:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.16-pre.1 (prerelease)
+
+No significant changes detected since v1.1.16.
+
+## v1.1.15-pre.1 (prerelease)
+
+Changes since v1.1.14:
+
+- Renamed metadata files ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.1.14 (patch)
+
+Changes since v1.1.13:
+
+- Sync icon.png ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.13 (patch)
+
+Changes since v1.1.12:
+
+- Sync Directory.Build.props ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.12 (patch)
+
+Changes since v1.1.11:
+
+- Sync Directory.Build.props ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.11 (patch)
+
+Changes since v1.1.10:
+
+- Sync Directory.Build.props ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.10 (patch)
+
+Changes since v1.1.9:
+
+- Replace LICENSE file with LICENSE.md and update copyright information ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.1.10-pre.1 (prerelease)
+
+Changes since v1.1.10:
+
+- Renamed metadata files ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.1.9 (patch)
+
+Changes since v1.1.8:
+
+- Sync Directory.Build.targets ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.8 (patch)
+
+Changes since v1.1.7:
+
+- Update test method names and replace LICENSE file ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.1.7 (patch)
+
+Changes since v1.1.6:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.6 (patch)
+
+Changes since v1.1.5:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.5 (patch)
+
+Changes since v1.1.4:
+
+- Sync Directory.Build.targets ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync Directory.Build.props ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.4 (patch)
+
+Changes since v1.1.3:
+
+- Sync Directory.Build.targets ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync Directory.Build.targets ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync Directory.Build.props ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync Directory.Build.props ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync Directory.Build.targets ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.1.3 (patch)
+
+Changes since v1.1.2:
+
+- Bump MSTest.TestFramework from 3.6.3 to 3.6.4 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.1.2 (patch)
+
+Changes since v1.1.1:
+
+- Bump MSTest.TestAdapter from 3.6.3 to 3.6.4 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.1.1 (patch)
+
+Changes since v1.1.0:
+
+- Remove unnecessary PackageReference from DeepClone.Test project ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.1.0 (minor)
+
+Changes since 1.0.0:
+
+- Update repository URL in README.md ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add test project, update README, and remove .gitattributes ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update VERSION ([@matt-edmondson](https://github.com/matt-edmondson))
+- Migrate ktsu.io to ktsu namespace ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update VERSION ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.18 (patch)
+
+Changes since v1.0.17:
+
+- Sync Directory.Build.targets ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.17 (patch)
+
+Changes since v1.0.16:
+
+- Sync Directory.Build.props ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.16 (patch)
+
+Changes since v1.0.15:
+
+- Sync Directory.Build.targets ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync Directory.Build.props ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.15 (patch)
+
+Changes since v1.0.14:
+
+- Bump MSTest.TestFramework from 3.6.2 to 3.6.3 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump Microsoft.NET.Test.Sdk in the microsoft group ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.14 (patch)
+
+Changes since v1.0.13:
+
+- Bump MSTest.TestAdapter from 3.6.2 to 3.6.3 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.13 (patch)
+
+Changes since v1.0.12:
+
+- Bump MSTest.TestAdapter from 3.6.1 to 3.6.2 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump MSTest.TestFramework from 3.6.1 to 3.6.2 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.12 (patch)
+
+Changes since v1.0.11:
+
+- Bump MSTest.TestFramework from 3.6.0 to 3.6.1 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.11 (patch)
+
+Changes since v1.0.10:
+
+- Bump MSTest.TestAdapter from 3.6.0 to 3.6.1 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.10 (patch)
+
+Changes since v1.0.9:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.9 (patch)
+
+Changes since v1.0.8:
+
+- Update VERSION to 1.0.9 ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.8 (patch)
+
+Changes since v1.0.7:
+
+- Sync .github\dependabot.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\dependabot.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.7 (patch)
+
+Changes since v1.0.6:
+
+- Sync .github\workflows\dependabot-merge.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.6 (patch)
+
+Changes since v1.0.5:
+
+- Sync .github\workflows\dependabot-merge.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.5 (patch)
+
+Changes since v1.0.4:
+
+- Sync .github\workflows\dependabot-merge.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.4 (patch)
+
+Changes since v1.0.3:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dependabot-merge.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dependabot-merge.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Bump MSTest.TestAdapter from 3.5.2 to 3.6.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump MSTest.TestFramework from 3.5.2 to 3.6.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.3 (patch)
+
+Changes since v1.0.2:
+
+- Sync .github\dependabot.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.2 (major)
+
+- Update VERSION ([@matt-edmondson](https://github.com/matt-edmondson))
+- Migrate ktsu.io to ktsu namespace ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update VERSION ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update DeepClone.csproj ([@matt-edmondson](https://github.com/matt-edmondson))
+- Initial commit ([@matt-edmondson](https://github.com/matt-edmondson))
+

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>TruePath.SystemIo</id>
+    <version>1.12.0</version>
+    <authors>TruePath.SystemIo</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <description>Adapters to use System.IO.File and System.IO.Directory APIs together with TruePath.</description>
+    <releaseNotes>[Changed]
+
+- Update the dependencies.
+- Drop the dependency on Microsoft.Bcl.Memory from a non-.NET-Standard package version.
+
+[Added]
+
+- #203 (https://github.com/ForNeVeR/TruePath/issues/203): Add PathIo.EnumerateFiles extension methods. Thanks to @pkazakov-dev!</releaseNotes>
+    <copyright>2024-2026 TruePath contributors &lt;https://github.com/ForNeVeR/TruePath&gt;</copyright>
+    <repository type="git" url="https://github.com/ForNeVeR/TruePath" commit="6848d17679b669bccba314ecf877d930b88a2cd8" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="TruePath" version="1.12.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="TruePath" version="1.12.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

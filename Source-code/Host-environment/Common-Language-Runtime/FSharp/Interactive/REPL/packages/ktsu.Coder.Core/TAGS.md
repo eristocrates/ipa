@@ -1,0 +1,1 @@
+code generation;abstract syntax tree;ast;yaml serialization;language agnostic;python code generation;transpiler;round trip serialization;deep cloning;source generators;dotnet;csharp

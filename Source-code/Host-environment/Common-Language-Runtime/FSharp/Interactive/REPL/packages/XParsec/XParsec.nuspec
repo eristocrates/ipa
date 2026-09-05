@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>XParsec</id>
+    <version>1.0.0</version>
+    <authors>Robert Lenders</authors>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://roboz0r.github.io/XParsec/</projectUrl>
+    <description>Package Description</description>
+    <copyright>Copyright (c) Robert Lenders 2025</copyright>
+    <tags>f# fable fable-library fable-javascript fable-dotnet</tags>
+    <repository type="git" url="https://github.com/roboz0r/XParsec" commit="6f2786d1168d05288acbd2e356584f608de74b8b" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="FSharp.Core" version="8.0.300" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="8.0.300" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Immutable" version="8.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

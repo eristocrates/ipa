@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Caroline Ott, Kevin Frey</dc:creator>
+  <dc:description>A encoder/decoder based YAML parser in Thoth.Json style!</dc:description>
+  <dc:identifier>YAMLicious</dc:identifier>
+  <version>1.0.2</version>
+  <keywords>f# fsharp fable fable-library fable-javascript fable-python yaml parser</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

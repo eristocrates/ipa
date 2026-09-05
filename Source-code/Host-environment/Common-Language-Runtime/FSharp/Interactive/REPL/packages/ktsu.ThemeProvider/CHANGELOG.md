@@ -1,0 +1,650 @@
+## v3.0.14 (patch)
+
+Changes since v3.0.13:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v3.0.13 (patch)
+
+Changes since v3.0.12:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v3.0.12 (patch)
+
+No significant changes detected since v3.0.11.
+
+## v3.0.11 (patch)
+
+Changes since v3.0.10:
+
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v3.0.10 (patch)
+
+Changes since v3.0.9:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v3.0.9 (patch)
+
+Changes since v3.0.8:
+
+- ci: make the SonarQube quality gate opt in [patch] ([@matt-edmondson](https://github.com/matt-edmondson))
+- ci: adopt the unified dotnet workflow [patch] ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v3.0.8 (patch)
+
+No significant changes detected since v3.0.7.
+
+## v3.0.7 (patch)
+
+Changes since v3.0.6:
+
+- Bump the ktsu group with 10 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v3.0.6 (patch)
+
+Changes since v3.0.5:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v3.0.5 (patch)
+
+Changes since v3.0.4:
+
+- Bump the ktsu group with 11 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v3.0.4 (patch)
+
+Changes since v3.0.3:
+
+- chore: store icon.png in LFS as .gitattributes declares ([@matt-edmondson](https://github.com/matt-edmondson))
+- docs: scope build badge to the default branch ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v3.0.3 (patch)
+
+Changes since v3.0.2:
+
+- Stop Update SDKs failing when there is nothing to update ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v3.0.2 (patch)
+
+Changes since v3.0.1:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v3.0.1 (patch)
+
+Changes since v3.0.0:
+
+- [patch] Clean up remaining Sonar code smells ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v3.0.0 (major)
+
+Changes since v2.0.0:
+
+- [major] Fix Sonar issues, eliminate theme duplication, raise coverage to 99.8% ([@matt-edmondson](https://github.com/matt-edmondson))
+- Sync .editorconfig ([@KtsuTools](https://github.com/KtsuTools))
+- Sync global.json ([@KtsuTools](https://github.com/KtsuTools))
+- chore: update ktsu.Sdk to 2.21.1 [patch] ([@matt-edmondson](https://github.com/matt-edmondson))
+- [minor] Rebalance semantic palette for text/glyph contrast ([@matt-edmondson](https://github.com/matt-edmondson))
+- [minor] Add ThemeProvider.Analysis palette audit tool ([@matt-edmondson](https://github.com/matt-edmondson))
+- [patch] Fix sRGB/linear color-space slips in ThemeProvider ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.30 (patch)
+
+Changes since v2.0.29:
+
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.29 (patch)
+
+Changes since v2.0.28:
+
+- chore: update ktsu.Sdk to 2.21.1 [patch] ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.28 (patch)
+
+Changes since v2.0.27:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.27 (patch)
+
+Changes since v2.0.26:
+
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.26 (patch)
+
+Changes since v2.0.25:
+
+- Sync .github\workflows\update-sdks.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dependabot-merge.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .gitattributes ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v2.0.25 (patch)
+
+Changes since v2.0.24:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.24 (patch)
+
+Changes since v2.0.23:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.23 (patch)
+
+Changes since v2.0.22:
+
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.22 (patch)
+
+Changes since v2.0.21:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.21 (patch)
+
+Changes since v2.0.20:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.20 (patch)
+
+Changes since v2.0.19:
+
+- Bump MSTest.Sdk from 4.3.2 to 4.3.3 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.19 (patch)
+
+Changes since v2.0.18:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.18 (patch)
+
+Changes since v2.0.17:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.17 (patch)
+
+Changes since v2.0.16:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.16 (patch)
+
+Changes since v2.0.15:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.15 (patch)
+
+Changes since v2.0.14:
+
+- Bump the ktsu group with 10 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.14 (patch)
+
+Changes since v2.0.13:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.13 (patch)
+
+Changes since v2.0.12:
+
+- Bump the ktsu group with 3 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.12 (patch)
+
+Changes since v2.0.11:
+
+- Bump the ktsu group with 3 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.11 (patch)
+
+Changes since v2.0.10:
+
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.10 (patch)
+
+Changes since v2.0.9:
+
+- [patch] Fix sRGB/linear color-space slips in ThemeProvider ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v2.0.9 (patch)
+
+Changes since v2.0.8:
+
+- Bump MSTest.Sdk from 4.3.0 to 4.3.2 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.8 (patch)
+
+Changes since v2.0.7:
+
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.7 (patch)
+
+Changes since v2.0.6:
+
+- Bump MSTest.Sdk from 4.2.3 to 4.3.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.6 (patch)
+
+Changes since v2.0.5:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.5 (patch)
+
+Changes since v2.0.4:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.4 (patch)
+
+Changes since v2.0.3:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.3 (patch)
+
+Changes since v2.0.2:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.2 (patch)
+
+Changes since v2.0.1:
+
+- Bump the ktsu group with 11 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.1 (patch)
+
+Changes since v2.0.0:
+
+- Bump the ktsu group with 10 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v2.0.0 (major)
+
+Changes since v1.0.0:
+
+- [major] feat(color)!: complete ThemeProvider migration to ktsu.Semantics.Color ([@matt-edmondson](https://github.com/matt-edmondson))
+- test(color): add ThemeProvider characterization/invariant tests ([@matt-edmondson](https://github.com/matt-edmondson))
+- feat(color)!: migrate ThemeProviderDemo to Color ([@matt-edmondson](https://github.com/matt-edmondson))
+- feat(color)!: migrate ThemeProvider.ImGui palette mapper to Color ([@matt-edmondson](https://github.com/matt-edmondson))
+- feat(color)!: migrate ThemeProvider core to ktsu.Semantics.Color ([@matt-edmondson](https://github.com/matt-edmondson))
+- chore: remove unused SourceLink package versions ([@matt-edmondson](https://github.com/matt-edmondson))
+- chore: remove SourceLink package references from csproj files ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update documentation in CLAUDE.md and README.md; add TAGS.md for semantic keywords ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add SonarLint configuration for connected mode ([@matt-edmondson](https://github.com/matt-edmondson))
+- Remove legacy build scripts ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor null check in MapTheme method to use Ensure.NotNull ([@matt-edmondson](https://github.com/matt-edmondson))
+- Migrate to dotnet 10 ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor SonarQube scanner steps and update coverage report paths in CI workflow ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update sdk ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update package versions and refactor theme provider interfaces ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update ktsu.ImGuiApp package version to 2.1.0 ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor method name for palette generation in SemanticColorMapper ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add complete palette generation and improve ImGui color mapping ([@matt-edmondson](https://github.com/matt-edmondson))
+- [patch] Force patch ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update package versions and UI color mappings ([@matt-edmondson](https://github.com/matt-edmondson))
+- Upgrade ktsu.Sdk to version 1.49.0 ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add ThemeRegistry and update documentation for ThemeProvider ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add new themes: Everforest Dark Hard, Everforest Dark Soft, Everforest Light Hard, and Everforest Light Soft ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor Catppuccin, Dracula, and other themes to streamline Neutrals collection ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add new themes: Dracula, Everforest, Gruvbox, Monokai, Nightfly, One Dark, Tokyo Night, and VSCode ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.25 (patch)
+
+Changes since v1.0.24:
+
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.24 (patch)
+
+Changes since v1.0.23:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.23 (patch)
+
+Changes since v1.0.22:
+
+- chore: remove unused SourceLink package versions ([@matt-edmondson](https://github.com/matt-edmondson))
+- chore: remove SourceLink package references from csproj files ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.22 (patch)
+
+Changes since v1.0.21:
+
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\dependabot.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync icon.png ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .gitignore ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .gitattributes ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Bump Polyfill from 10.10.0 to 10.11.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.21 (patch)
+
+Changes since v1.0.20:
+
+- Bump the ktsu group with 8 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.20 (patch)
+
+Changes since v1.0.19:
+
+- Bump Polyfill from 10.8.1 to 10.10.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 9 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.19 (patch)
+
+Changes since v1.0.18:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.18 (patch)
+
+Changes since v1.0.17:
+
+- Sync .github\workflows\update-sdks.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\dependabot.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .gitignore ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .gitattributes ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump Polyfill from 10.8.0 to 10.8.1 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 4 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump Polyfill from 10.7.2 to 10.8.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump Polyfill from 10.7.0 to 10.7.2 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump Polyfill from 10.6.0 to 10.7.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump Polyfill from 10.5.1 to 10.6.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump MSTest.Sdk from 4.2.2 to 4.2.3 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the microsoft group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump Polyfill from 10.5.0 to 10.5.1 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump Polyfill from 10.4.0 to 10.5.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump Polyfill from 9.7.7 to 10.4.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump Microsoft.SourceLink.AzureRepos.Git and Microsoft.SourceLink.GitHub ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump System.Numerics.Vectors from 4.6.0 to 4.6.1 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump MSTest.Sdk from 4.1.0 to 4.2.2 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 5 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.17 (patch)
+
+Changes since v1.0.16:
+
+- Update documentation in CLAUDE.md and README.md; add TAGS.md for semantic keywords ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add SonarLint configuration for connected mode ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.17-pre.1 (prerelease)
+
+No significant changes detected since v1.0.17.
+
+## v1.0.16 (patch)
+
+Changes since v1.0.15:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.16-pre.1 (prerelease)
+
+No significant changes detected since v1.0.16.
+
+## v1.0.15 (patch)
+
+Changes since v1.0.14:
+
+- Remove legacy build scripts ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.14 (patch)
+
+Changes since v1.0.13:
+
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\update-winget-manifests.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\update-winget-manifests.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync COPYRIGHT.md ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\update-winget-manifests.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync COPYRIGHT.md ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.14-pre.7 (prerelease)
+
+Changes since v1.0.14-pre.6:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\update-winget-manifests.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.14-pre.6 (prerelease)
+
+Changes since v1.0.14-pre.5:
+
+- Sync scripts\update-winget-manifests.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.14-pre.5 (prerelease)
+
+Changes since v1.0.14-pre.4:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.14-pre.4 (prerelease)
+
+Changes since v1.0.14-pre.3:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.14-pre.3 (prerelease)
+
+Changes since v1.0.14-pre.2:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync global.json ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync COPYRIGHT.md ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.14-pre.2 (prerelease)
+
+Changes since v1.0.14-pre.1:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.14-pre.1 (prerelease)
+
+No significant changes detected since v1.0.14.
+
+## v1.0.13 (patch)
+
+Changes since v1.0.12:
+
+- Remove .github\workflows\project.yml ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.12 (patch)
+
+Changes since v1.0.11:
+
+- Refactor null check in MapTheme method to use Ensure.NotNull ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.11 (patch)
+
+Changes since v1.0.10:
+
+- Migrate to dotnet 10 ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.11-pre.4 (prerelease)
+
+Changes since v1.0.11-pre.3:
+
+- Sync scripts\PSBuild.psm1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\update-sdks.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .gitignore ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.11-pre.3 (prerelease)
+
+Changes since v1.0.11-pre.2:
+
+- Sync scripts\update-winget-manifests.ps1 ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.11-pre.2 (prerelease)
+
+Changes since v1.0.11-pre.1:
+
+- Merge remote-tracking branch 'refs/remotes/origin/main' ([@ktsu[bot]](https://github.com/ktsu[bot]))
+- Sync .github\workflows\dotnet.yml ([@ktsu[bot]](https://github.com/ktsu[bot]))
+
+## v1.0.11-pre.1 (prerelease)
+
+No significant changes detected since v1.0.11.
+
+## v1.0.10 (patch)
+
+Changes since v1.0.9:
+
+- Refactor SonarQube scanner steps and update coverage report paths in CI workflow ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.9 (patch)
+
+Changes since v1.0.8:
+
+- Update sdk ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update package versions and refactor theme provider interfaces ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update ktsu.ImGuiApp package version to 2.1.0 ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.9-pre.3 (prerelease)
+
+Changes since v1.0.9-pre.2:
+
+- Update package versions and refactor theme provider interfaces ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.9-pre.2 (prerelease)
+
+Changes since v1.0.9-pre.1:
+
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v1.0.9-pre.1 (prerelease)
+
+No significant changes detected since v1.0.9.
+
+## v1.0.8 (patch)
+
+Changes since v1.0.7:
+
+- Refactor method name for palette generation in SemanticColorMapper ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.7 (patch)
+
+Changes since v1.0.6:
+
+- Add complete palette generation and improve ImGui color mapping ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.6 (patch)
+
+Changes since v1.0.5:
+
+- [patch] Force patch ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update package versions and UI color mappings ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.6-pre.1 (prerelease)
+
+No significant changes detected since v1.0.6.
+
+## v1.0.5 (patch)
+
+Changes since v1.0.4:
+
+- Upgrade ktsu.Sdk to version 1.49.0 ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.4 (patch)
+
+Changes since v1.0.3:
+
+- Add ThemeRegistry and update documentation for ThemeProvider ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.3 (patch)
+
+Changes since v1.0.2:
+
+- Add new themes: Everforest Dark Hard, Everforest Dark Soft, Everforest Light Hard, and Everforest Light Soft ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.2 (patch)
+
+Changes since v1.0.1:
+
+- Refactor Catppuccin, Dracula, and other themes to streamline Neutrals collection ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.1 (patch)
+
+Changes since v1.0.0:
+
+- Add new themes: Dracula, Everforest, Gruvbox, Monokai, Nightfly, One Dark, Tokyo Night, and VSCode ([@matt-edmondson](https://github.com/matt-edmondson))
+
+## v1.0.0 (major)
+
+- Add Catppuccin themes: Frappe, Latte, and Macchiato implementations ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor ThemeProviderDemo to enhance semantic color grid rendering ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor ImGuiPaletteMapper for improved priority distribution and contrast ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor SemanticColorMapper and ThemeProviderDemo for improved lightness calculations and semantic color handling ([@matt-edmondson](https://github.com/matt-edmondson))
+- Enhance SemanticColorMapper and ImGuiPaletteMapper for improved color contrast and priority handling ([@matt-edmondson](https://github.com/matt-edmondson))
+- Enhance SemanticColorMapper and ThemeProviderDemo for complete semantic color mapping ([@matt-edmondson](https://github.com/matt-edmondson))
+- Enhance color extrapolation logic in SemanticColorMapper ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor SemanticColorMapper for improved lightness-based color mapping ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add ColorRange and SemanticColorMapper classes for enhanced color interpolation and mapping ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add new semantic color system and Catppuccin Mocha theme implementation ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor semantic color specifications to remove 'IsPrimary' property ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor ImGuiPaletteMapper to enhance semantic color usage ([@matt-edmondson](https://github.com/matt-edmondson))
+- Implement ImGui palette mapping and enhance semantic color integration ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor ThemeProviderDemo to fully integrate semantic color system ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor ThemeProvider to implement semantic color system and Catppuccin Mocha theme ([@matt-edmondson](https://github.com/matt-edmondson))
+- Enhance ThemeProviderDemo with UI improvements and semantic palette features ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add Catppuccin Mocha theme implementation and color management utilities ([@matt-edmondson](https://github.com/matt-edmondson))
+

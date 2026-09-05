@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Tavis.UriTemplates</id>
+    <version>2.0.0</version>
+    <authors>Darrel Miller</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <projectUrl>https://github.com/tavis-software/Tavis.UriTemplates</projectUrl>
+    <description>URI Template resolution library - Implementation of RFC 6570</description>
+    <releaseNotes>For full release notes see https://github.com/tavis-software/Tavis.UriTemplates/blob/master/ReleaseNotes.md</releaseNotes>
+    <repository type="git" url="https://github.com/tavis-software/Tavis.UriTemplates" commit="7c87e6385b73adb09a13df988359cb75944861ec" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

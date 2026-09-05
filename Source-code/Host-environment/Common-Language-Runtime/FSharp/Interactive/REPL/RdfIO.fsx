@@ -759,6 +759,257 @@ module RdfVocabulary =
 
 
 
+type PrefixedName with 
+    member this._vocabulary = RdfVocabulary.fromPrefixId this.prefixId
+    member this._maybeOntologyClass = this._vocabulary.maybeOntologyClass this
+    member this._maybeOntologyProperty = this._vocabulary.maybeOntologyProperty this
+    member  this._asOntologyResource = this._vocabulary.OntologyResourceByTerm this
+    member  this._metaClass  = this._vocabulary.ontologyClassesByMetaClass this
+    member this._Comment = this._vocabulary.termComment this
+    member this._DifferentFrom = this._vocabulary.termDifferentFrom this
+    member this._DirectSubClasses = this._vocabulary.termDirectSubClasses this
+    member this._DirectSubProperties = this._vocabulary.termDirectSubProperties this
+    member this._DirectSuperClasses = this._vocabulary.termDirectSuperClasses this
+    member this._DirectSuperProperties = this._vocabulary.termDirectSuperProperties this
+    member this._DisjointClasses = this._vocabulary.termDisjointClasses this
+    member this._Domains = this._vocabulary.termDomains this
+    member this._Ranges = this._vocabulary.termRanges this
+    member this._EquivalentClasses = this._vocabulary.termEquivalentClasses this
+    member this._EquivalentProperties = this._vocabulary.termEquivalentProperties this
+    member this._IndirectSubClasses = this._vocabulary.termIndirectSubClasses this
+    member this._IndirectSuperClasses = this._vocabulary.termIndirectSuperClasses this
+    member this._IndirectSubProperties = this._vocabulary.termIndirectSubProperties this
+    member this._IndirectSuperProperties = this._vocabulary.termIndirectSuperProperties this
+    member this._InverseProperties = this._vocabulary.termInverseProperties this
+    member this._Instances = this._vocabulary.termInstances this
+    member this._IsBottomClass = this._vocabulary.termIsBottomClass this
+    member this._IsBottomProperty = this._vocabulary.termIsBottomProperty this
+    member this._IsDefinedBy = this._vocabulary.termIsDefinedBy this
+    member this._IsDomainOf = this._vocabulary.termIsDomainOf this
+    member this._IsRangeOf = this._vocabulary.termIsRangeOf this
+    member this._IsTopClass = this._vocabulary.termIsTopClass this
+    member this._IsTopProperty = this._vocabulary.termIsTopProperty this
+    member this._Label = this._vocabulary.termLabel this
+    member this._SameAs = this._vocabulary.termSameAs this
+    member this._SeeAlso = this._vocabulary.termSeeAlso this
+    member this._SiblingClasses = this._vocabulary.termSiblingClasses this
+    member this._SiblingProperties = this._vocabulary.termSiblingProperties this
+    member this._UsedBy = this._vocabulary.termUsedBy this
+    member this._SubClasses = this._vocabulary.termSubClasses this
+    member this._SuperClasses = this._vocabulary.termSuperClasses this
+    member this._SubProperties = this._vocabulary.termSubProperties this
+    member this._SuperProperties = this._vocabulary.termSuperProperties this
+    member this._Triples = this._vocabulary.termTriples this
+    member this._TriplesWithObject = this._vocabulary.termTriplesWithObject this
+    member this._TriplesWithPredicate = this._vocabulary.termTriplesWithPredicate this
+    member this._TriplesWithSubject = this._vocabulary.termTriplesWithSubject this
+    member this._TriplesWithLiteralObject = this._vocabulary.termTriplesWithLiteralObject this
+    member this._TriplesWithIriObject = this._vocabulary.termTriplesWithIriObject this
+    member this._TriplesWithBlankObject = this._vocabulary.termTriplesWithBlankObject this
+    member this._TriplesWithReferenceObject = this._vocabulary.termTriplesWithReferenceObject this
+    member this._Types = this._vocabulary.termTypes this
+    member this._VersionInfo = this._vocabulary.termVersionInfo this
+
+
+type Iri with 
+    member this._maybeVocabulary =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._vocabulary
+        | _ -> None
+    member this._maybeOntologyClass =
+        match this with 
+        | PrefixedIri prefixedName -> prefixedName._maybeOntologyClass
+        | _ -> None
+    member this._maybemaybeOntologyProperty =
+        match this with 
+        | PrefixedIri prefixedName ->  prefixedName._maybeOntologyProperty
+        | _ -> None
+    member  this._asOntologyResource = 
+        match this with 
+        | PrefixedIri prefixedName ->  prefixedName._asOntologyResource
+        | _ -> None
+    member  this._metaClass  = 
+            match this with 
+            | PrefixedIri prefixedName ->  Some prefixedName._metaClass
+            | _ -> None
+    member this._maybeComment =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._Comment
+        | _ -> None
+    member this._maybeDifferentFrom =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._DifferentFrom
+        | _ -> None
+    member this._maybeDirectSubClasses =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._DirectSubClasses
+        | _ -> None
+    member this._maybeDirectSubProperties =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._DirectSubProperties
+        | _ -> None
+    member this._maybeDirectSuperClasses =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._DirectSuperClasses
+        | _ -> None
+    member this._maybeDirectSuperProperties =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._DirectSuperProperties
+        | _ -> None
+    member this._maybeDisjointClasses =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._DisjointClasses
+        | _ -> None
+    member this._maybeDomains =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._Domains
+        | _ -> None
+    member this._maybeRanges =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._Ranges
+        | _ -> None
+    member this._maybeEquivalentClasses =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._EquivalentClasses
+        | _ -> None
+    member this._maybeEquivalentProperties =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._EquivalentProperties
+        | _ -> None
+    member this._maybeIndirectSubClasses =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IndirectSubClasses
+        | _ -> None
+    member this._maybeIndirectSuperClasses =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IndirectSuperClasses
+        | _ -> None
+    member this._maybeIndirectSubProperties =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IndirectSubProperties
+        | _ -> None
+    member this._maybeIndirectSuperProperties =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IndirectSuperProperties
+        | _ -> None
+    member this._maybeInverseProperties =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._InverseProperties
+        | _ -> None
+    member this._maybeInstances =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._Instances
+        | _ -> None
+    member this._maybeIsBottomClass =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IsBottomClass
+        | _ -> None
+    member this._maybeIsBottomProperty =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IsBottomProperty
+        | _ -> None
+    member this._maybeIsDefinedBy =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IsDefinedBy
+        | _ -> None
+    member this._maybeIsDomainOf =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IsDomainOf
+        | _ -> None
+    member this._maybeIsRangeOf =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IsRangeOf
+        | _ -> None
+    member this._maybeIsTopClass =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IsTopClass
+        | _ -> None
+    member this._maybeIsTopProperty =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._IsTopProperty
+        | _ -> None
+    member this._maybeLabel =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._Label
+        | _ -> None
+    member this._maybeSameAs =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._SameAs
+        | _ -> None
+    member this._maybeSeeAlso =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._SeeAlso
+        | _ -> None
+    member this._maybeSiblingClasses =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._SiblingClasses
+        | _ -> None
+    member this._maybeSiblingProperties =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._SiblingProperties
+        | _ -> None
+    member this._maybeUsedBy =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._UsedBy
+        | _ -> None
+    member this._maybeSubClasses =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._SubClasses
+        | _ -> None
+    member this._maybeSuperClasses =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._SuperClasses
+        | _ -> None
+    member this._maybeSubProperties =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._SubProperties
+        | _ -> None
+    member this._maybeSuperProperties =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._SuperProperties
+        | _ -> None
+    member this._maybeTriples =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._Triples
+        | _ -> None
+    member this._maybeTriplesWithObject =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._TriplesWithObject
+        | _ -> None
+    member this._maybeTriplesWithPredicate =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._TriplesWithPredicate
+        | _ -> None
+    member this._maybeTriplesWithSubject =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._TriplesWithSubject
+        | _ -> None
+    member this._maybeTriplesWithLiteralObject =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._TriplesWithLiteralObject
+        | _ -> None
+    member this._maybeTriplesWithIriObject =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._TriplesWithIriObject
+        | _ -> None
+    member this._maybeTriplesWithBlankObject =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._TriplesWithBlankObject
+        | _ -> None
+    member this._maybeTriplesWithReferenceObject =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._TriplesWithReferenceObject
+        | _ -> None
+    member this._maybeTypes =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._Types
+        | _ -> None
+    member this._maybeVersionInfo =
+        match this with 
+        | PrefixedIri prefixedName -> Some prefixedName._VersionInfo
+        | _ -> None
+    
+
 
 (*
 let ttlDocuments = Folder.Iri.GetFiles("*.ttl", SearchOption.AllDirectories) |> Array.Parallel.map (fun rdfFile -> { rdfFile = rdfFile } )
