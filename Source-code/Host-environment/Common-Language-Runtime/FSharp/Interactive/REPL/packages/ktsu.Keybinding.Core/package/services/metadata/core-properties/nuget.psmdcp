@@ -3,7 +3,7 @@
   <dc:creator>ktsu.dev contributors</dc:creator>
   <dc:description>A comprehensive .NET library for managing keyboard shortcuts and keybindings with multi-profile support, command registry, and persistent storage.</dc:description>
   <dc:identifier>ktsu.Keybinding.Core</dc:identifier>
-  <version>1.0.40</version>
+  <version>1.0.44</version>
   <keywords>keyboard shortcuts;keybindings;key combinations;command registry;profiles;hotkeys;input handling;shortcuts management;chord parsing;musical keybindings;multi profile;dotnet library;csharp;configuration;persistence;json storage;thread safe;SOLID architecture</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

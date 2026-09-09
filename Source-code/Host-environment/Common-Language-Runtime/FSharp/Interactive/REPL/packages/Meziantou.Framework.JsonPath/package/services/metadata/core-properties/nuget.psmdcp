@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>An implementation of JSONPath (RFC 9535) for System.Text.Json and custom object models.</dc:description>
   <dc:identifier>Meziantou.Framework.JsonPath</dc:identifier>
-  <version>3.0.2</version>
-  <keywords></keywords>
+  <version>3.0.3</version>
+  <keywords>jsonpath, rfc9535, json, system-text-json, query</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

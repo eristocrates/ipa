@@ -27,12 +27,12 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/09e1b80518a1466d904644fdfa98efdb.psmdcp
+F: /package/services/metadata/core-properties/51b632760b1e42c6bd309895c13d8ad9.psmdcp
 D: /_rels
 F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
-F: /microsoft.extensions.fileproviders.physical.10.0.11.nupkg
+F: /microsoft.extensions.fileproviders.physical.10.0.12.nupkg
 F: /Microsoft.Extensions.FileProviders.Physical.nuspec
 F: /PACKAGE.md
 F: /THIRD-PARTY-NOTICES.TXT

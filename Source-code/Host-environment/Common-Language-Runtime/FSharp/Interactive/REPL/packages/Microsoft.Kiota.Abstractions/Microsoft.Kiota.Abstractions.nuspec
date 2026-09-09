@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Microsoft.Kiota.Abstractions</id>
-    <version>2.1.0</version>
+    <version>2.1.2</version>
     <authors>Microsoft</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <license type="expression">MIT</license>
@@ -13,7 +13,7 @@
     <description>Abstractions library for the Kiota generated SDKs in dotnet.</description>
     <releaseNotes>https://github.com/microsoft/kiota-dotnet/releases</releaseNotes>
     <copyright>© Microsoft Corporation. All rights reserved.</copyright>
-    <repository type="git" url="https://github.com/microsoft/kiota-dotnet" commit="90ddc9ddcdb092dafbadd198895159fef98f40a7" />
+    <repository type="git" url="https://github.com/microsoft/kiota-dotnet" commit="4bba97ace0926246ad0c05497c71dbd07854a034" />
     <dependencies>
       <group targetFramework="net10.0">
         <dependency id="Std.UriTemplate" version="2.0.12" exclude="Build,Analyzers" />

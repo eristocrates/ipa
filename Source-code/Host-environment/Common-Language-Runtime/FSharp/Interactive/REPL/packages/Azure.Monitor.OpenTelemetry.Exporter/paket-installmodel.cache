@@ -12,11 +12,11 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/0e99e5133aa3430f8f5afa08a4fb5702.psmdcp
+F: /package/services/metadata/core-properties/nuget.psmdcp
 D: /_rels
 F: /_rels/.rels
 F: /.signature.p7s
-F: /azure.monitor.opentelemetry.exporter.1.8.3.nupkg
+F: /azure.monitor.opentelemetry.exporter.1.9.0.nupkg
 F: /Azure.Monitor.OpenTelemetry.Exporter.nuspec
 F: /azureicon.png
 F: /CHANGELOG.md

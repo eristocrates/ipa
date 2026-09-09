@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>robots.txt parser following RFC 9309 with Google path-wildcard extensions</dc:description>
   <dc:identifier>Meziantou.Framework.RobotsTxt</dc:identifier>
-  <version>2.0.3</version>
-  <keywords></keywords>
+  <version>2.0.5</version>
+  <keywords>robots-txt, rfc9309, crawler, parser, seo</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

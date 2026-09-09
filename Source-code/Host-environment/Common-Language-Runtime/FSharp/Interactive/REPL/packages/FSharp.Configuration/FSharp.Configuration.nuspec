@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Configuration</id>
+    <version>3.0.0</version>
+    <title>FSharp.Configuration</title>
+    <authors>Steffen Forkmann; Sergey Tihon; Daniel Mohl; Tomas Petricek; Ryan Riley; Mauricio Scheffer; Phil Trelford; Vasily Kirichenko; Reed Copsey, Jr.</authors>
+    <owners>Steffen Forkmann; Sergey Tihon; Daniel Mohl; Tomas Petricek; Ryan Riley; Mauricio Scheffer; Phil Trelford; Vasily Kirichenko; Reed Copsey, Jr.</owners>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <projectUrl>https://fsprojects.github.io/FSharp.Configuration/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/fsprojects/FSharp.Configuration/master/docs/img/logo.png</iconUrl>
+    <description>The FSharp.Configuration project contains type providers for the configuration of .NET projects.</description>
+    <summary>The FSharp.Configuration project contains type providers for the configuration of .NET projects.</summary>
+    <releaseNotes>- Removed `net461` target from TPDTC
+- Added `net8.0` target from TPDTC
+- Build with .NET 8.0
+- Migration to latest TPSDK
+- Dependencies updated
+- Docs migrated to fsdocs</releaseNotes>
+    <copyright>Copyright 2014-2025</copyright>
+    <tags>F# fsharp typeproviders FSharp.Configuration</tags>
+    <references>
+      <reference file="FSharp.Configuration.Runtime.dll" />
+      <reference file="System.Configuration.ConfigurationManager.dll" />
+      <reference file="YamlDotNet.dll" />
+    </references>
+    <dependencies>
+      <group targetFramework="netstandard2.0">
+        <dependency id="FSharp.Core" version="8.0.301" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="FSharp.Core" version="8.0.301" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

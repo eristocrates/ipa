@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>ktsu.DeepClone</id>
-    <version>2.0.29</version>
+    <version>2.0.30</version>
     <title>ktsu.DeepClone</title>
     <authors>ktsu.dev contributors</authors>
     <license type="file">LICENSE.md</license>
@@ -11,15 +11,12 @@
     <readme>README.md</readme>
     <projectUrl>https://github.com/ktsu-dev/DeepClone</projectUrl>
     <description>A lightweight .NET library providing a non-generic interface and type-safe base class for implementing deep cloning functionality in your classes. Supports inheritance hierarchies, circular references, and various collection types including immutable collections. Thread-safe and designed for performance with minimal dependencies.</description>
-    <releaseNotes>## v2.0.29 (patch)
+    <releaseNotes>## v2.0.30 (patch)
 
-Changes since v2.0.28:
-
-- ci: make the SonarQube quality gate opt in [patch] ([@matt-edmondson](https://github.com/matt-edmondson))
-- ci: adopt the unified dotnet workflow [patch] ([@matt-edmondson](https://github.com/matt-edmondson))</releaseNotes>
+No significant changes detected since v2.0.29.</releaseNotes>
     <copyright>Copyright (c) 2023-2026 ktsu-dev contributors</copyright>
     <tags>.NET;C#;deep clone;cloning;object copying;object cloning;interface;library;MIT License;lightweight;generic;reference types;immutable;collections;thread safety;performance;circular references;inheritance;polymorphism;immutable collections</tags>
-    <repository type="git" commit="5a491a1a7f4d9dce9daa9144c8aa6c3878084938" />
+    <repository type="git" commit="d91739b34e30f8c15008e9054ea8eac884556f2b" />
     <dependencies>
       <group targetFramework="net10.0" />
       <group targetFramework="net8.0" />

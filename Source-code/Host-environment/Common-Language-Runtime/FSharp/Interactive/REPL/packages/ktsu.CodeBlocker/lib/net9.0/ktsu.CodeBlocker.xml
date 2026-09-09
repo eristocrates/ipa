@@ -1,0 +1,2650 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ktsu.CodeBlocker</name>
+    </assembly>
+    <members>
+        <member name="M:Polyfills.Polyfill.GetEncodedLength(System.Int32)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetEncodedLength(System.Int32)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.GetMaxDecodedLength(System.Int32)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetMaxDecodedLength(System.Int32)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToString(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToString(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToChars(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@,System.Int32@,System.Boolean)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@,System.Int32@,System.Boolean)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryEncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryEncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.EncodeToUtf8(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToUtf8(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromChars(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@,System.Int32@,System.Boolean)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@,System.Int32@,System.Boolean)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryDecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryDecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.DecodeFromUtf8(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromUtf8(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenStandardInputHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardInputHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenStandardOutputHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardOutputHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenStandardErrorHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardErrorHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.FromHexString(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$8E8D5B6126DFD7E817B5797C1A237D3F.FromHexString(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.FromHexString(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@,System.Int32@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$8E8D5B6126DFD7E817B5797C1A237D3F.FromHexString(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@,System.Int32@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryToHexString(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$8E8D5B6126DFD7E817B5797C1A237D3F.TryToHexString(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryToHexStringLower(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$8E8D5B6126DFD7E817B5797C1A237D3F.TryToHexStringLower(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.Byte)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.Byte)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.Byte[],System.Byte[])">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.Byte[],System.Byte[])"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[])">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[])"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.IO.Stream,System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.IO.Stream,System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[],System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[],System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.InfiniteSequence``1(``0,``0)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$00EF3C2134D2076141FEFBF32646106D.InfiniteSequence``1(``0,``0)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Sequence``1(``0,``0,``0)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$00EF3C2134D2076141FEFBF32646106D.Sequence``1(``0,``0,``0)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Create``2(System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$824B137C9700787F7FAADF3CDD49751C`1.Create``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateAsHardLink(System.IO.FileInfo,System.String)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$9FC757ADB0730D641B7538973D9DCBAA.CreateAsHardLink(System.String)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateHardLink(System.String,System.String)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.CreateHardLink(System.String,System.String)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenNullHandle">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.OpenNullHandle"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.get_AllBitsSet">
+            <inheritdoc cref="P:Polyfills.Polyfill.&lt;G&gt;$68F3962AE5697E254AA596E55C7A8792.AllBitsSet"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryParse(System.ReadOnlySpan{System.Byte},System.Guid@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$68F3962AE5697E254AA596E55C7A8792.TryParse(System.ReadOnlySpan{System.Byte},System.Guid@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Parse(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$68F3962AE5697E254AA596E55C7A8792.Parse(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryParse(System.ReadOnlySpan{System.Byte},System.Net.IPAddress@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$20CAA03A28929135E1EDF2FD1EB22894.TryParse(System.ReadOnlySpan{System.Byte},System.Net.IPAddress@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.And``1(``0@,``0)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.And``1(``0@,``0)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Or``1(``0@,``0)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.Or``1(``0@,``0)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Equals(System.Char,System.Char,System.StringComparison)">
+            <summary>
+            Determines whether the specified character is equal to the current character, using the specified comparison type.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenAsync(System.IO.Compression.ZipArchiveEntry,System.Threading.CancellationToken)">
+            <summary>
+            Opens the entry from the zip archive.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateEntryFromFileAsync(System.IO.Compression.ZipArchive,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Archives a file by compressing it and adding it to the zip archive.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateEntryFromFileAsync(System.IO.Compression.ZipArchive,System.String,System.String,System.IO.Compression.CompressionLevel,System.Threading.CancellationToken)">
+            <summary>
+            Archives a file by compressing it and adding it to the zip archive.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ExtractToDirectoryAsync(System.IO.Compression.ZipArchive,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Extracts all the files in the zip archive to a directory on the file system.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ExtractToDirectoryAsync(System.IO.Compression.ZipArchive,System.String,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Extracts all the files in the zip archive to a directory on the file system.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ExtractToFileAsync(System.IO.Compression.ZipArchiveEntry,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Extracts an entry in the zip archive to a file.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ExtractToFileAsync(System.IO.Compression.ZipArchiveEntry,System.String,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Extracts an entry in the zip archive to a file.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Open(System.IO.Compression.ZipArchiveEntry,System.IO.FileAccess)">
+            <summary>
+            Opens the entry from the zip archive with the specified access mode.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenAsync(System.IO.Compression.ZipArchiveEntry,System.IO.FileAccess,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously opens the entry from the zip archive with the specified access mode.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Remove``2(System.Runtime.CompilerServices.ConditionalWeakTable{``0,``1},``0,``1@)">
+            <summary>
+            Removes a key and its value from the table, and returns the removed value.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Produces a set items excluding <paramref name="item"/> by using the default equality comparer to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Produces a set items excluding <paramref name="item"/> by using <paramref name="comparer"/> to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0},``0[])">
+            <summary>
+            Produces the set difference of two sequences by <paramref name="comparer"/> to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.FullJoin``4(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of each sequence that have no matching element in the other.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.FullJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of each sequence that have no matching element in the other.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.GroupJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on key equality and groups the results.
+            Each result is an <see cref="T:System.Linq.IGrouping`2" /> keyed by the outer element.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Join``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LeftJoin``4(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys.
+            The default equality comparer is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LeftJoin``4(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LeftJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of the outer sequence that have no matching inner element.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.RightJoin``4(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys.
+            The default equality comparer is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.RightJoin``4(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys.
+            A specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> is used to compare keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.RightJoin``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys,
+            including elements of the inner sequence that have no matching outer element.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Contains``1(System.ReadOnlySpan{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Indicates whether a specified value occurs within a read-only span.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.CountAny``1(System.ReadOnlySpan{``0},System.Buffers.SearchValues{``0})">
+            <summary>Counts the number of times any of the specified <paramref name="values"/> occurs in the <paramref name="span"/>.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.CountAny``1(System.ReadOnlySpan{``0},System.ReadOnlySpan{``0})">
+            <summary>Counts the number of times any of the specified <paramref name="values"/> occurs in the <paramref name="span"/>.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.CountAny``1(System.ReadOnlySpan{``0},System.ReadOnlySpan{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>Counts the number of times any of the specified <paramref name="values"/> occurs in the <paramref name="span"/>.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOf``1(System.ReadOnlySpan{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Searches for the specified value and returns the index of its first occurrence. If not found, returns -1. Values are compared using IEquatable{T}.Equals(T).
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOfAny``1(System.ReadOnlySpan{``0},System.ReadOnlySpan{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Searches for the first index of any of the specified values similar to calling IndexOf several times with the logical OR operator. If not found, returns -1.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Min``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Returns the minimum value in the span.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Min``1(System.ReadOnlySpan{``0},System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Returns the minimum value in the span.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Max``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Returns the maximum value in the span.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Max``1(System.ReadOnlySpan{``0},System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Returns the maximum value in the span.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllText(System.Diagnostics.Process,System.Nullable{System.TimeSpan})">
+            <summary>
+            Reads the standard output and standard error of the process as text, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllTextAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously reads the standard output and standard error of the process as text, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllBytes(System.Diagnostics.Process,System.Nullable{System.TimeSpan})">
+            <summary>
+            Reads the standard output and standard error of the process as bytes, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllBytesAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously reads the standard output and standard error of the process as bytes, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.ReadAllLinesAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously reads the standard output and standard error of the process line-by-line, waiting for the process to exit.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.GetHexString(System.Random,System.Int32,System.Boolean)">
+            <summary>
+            Creates a string filled with random hexadecimal characters.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.GetHexString(System.Random,System.Span{System.Char},System.Boolean)">
+            <summary>
+            Fills a buffer with random hexadecimal characters.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.GetString(System.Random,System.ReadOnlySpan{System.Char},System.Int32)">
+            <summary>
+            Creates a string populated with characters chosen at random from the provided set of choices.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AsReadOnly``1(System.Collections.Generic.ISet{``0})">
+            <summary>
+            Returns a read-only <see cref="!:ReadOnlySet"/> wrapper for the specified set.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.StartsWith(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Determines whether this string instance starts with the specified character when compared using the specified comparison option.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.EndsWith(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Determines whether the end of this string instance matches the specified character when compared using the specified comparison option.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOf(System.String,System.Char,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the first occurrence of the specified character in this string.
+            The search starts at a specified character position.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOf(System.String,System.Char,System.Int32,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the first occurrence of the specified character in this string.
+            The search starts at a specified character position and examines a specified number of character positions.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LastIndexOf(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the last occurrence of a specified character within the current string.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LastIndexOf(System.String,System.Char,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the last occurrence of a specified character within the current string.
+            The search starts at a specified character position and proceeds backward toward the beginning of the string.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.LastIndexOf(System.String,System.Char,System.Int32,System.Int32,System.StringComparison)">
+            <summary>
+            Reports the zero-based index of the last occurrence of a specified character within the current string.
+            The search starts at a specified character position and proceeds backward toward the beginning of the string for a specified number of character positions.
+            A parameter specifies the type of search to use.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsNormalized(System.ReadOnlySpan{System.Char},System.Text.NormalizationForm)">
+            <summary>
+            Indicates whether the specified string is in Unicode normalization form C.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.WriteAsync(System.IO.TextWriter,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes a string to the stream, with a cancellation token.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.WriteLineAsync(System.IO.TextWriter,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes a line terminator to the stream, with a cancellation token.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.WriteLineAsync(System.IO.TextWriter,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes a string followed by a line terminator to the stream, with a cancellation token.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsAssignableTo``1(System.Type)">
+            <summary>
+            Generic version of Type.IsAssignableTo https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignableto.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsAssignableFrom``1(System.Type)">
+            <summary>
+            Generic version of Type.IsAssignableFrom https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignablefrom.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Run(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Run(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAsync(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureText(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureText(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureTextAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.RunAndCaptureTextAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.StartAndForget(System.Diagnostics.ProcessStartInfo)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.Diagnostics.ProcessStartInfo)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.StartAndForget(System.String,System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.String,System.Collections.Generic.IList{System.String})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.TryGetProcessById(System.Int32,System.Diagnostics.Process@)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.TryGetProcessById(System.Int32,System.Diagnostics.Process@)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.get_IsMultithreadingSupported">
+            <inheritdoc cref="P:Polyfills.Polyfill.&lt;G&gt;$E652E81B895AED455F922BE6184F6C85.IsMultithreadingSupported"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.MoveChunks(System.Text.StringBuilder)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.MoveChunks(System.Text.StringBuilder)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.Append(System.Text.StringBuilder,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string to this instance.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Append(System.Text.StringBuilder,System.IFormatProvider,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string to this instance.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AppendLine(System.Text.StringBuilder,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string followed by the default line terminator to the end of the current StringBuilder object.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AppendLine(System.Text.StringBuilder,System.IFormatProvider,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string followed by the default line terminator to the end of the current StringBuilder object.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.WhenAll(System.ReadOnlySpan{System.Threading.Tasks.Task})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$96CB7C060F6C3BA9D49BEC9D5AB7FADB.WhenAll(System.ReadOnlySpan{System.Threading.Tasks.Task})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.WhenAll``1(System.ReadOnlySpan{System.Threading.Tasks.Task{``0}})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$96CB7C060F6C3BA9D49BEC9D5AB7FADB.WhenAll``1(System.ReadOnlySpan{System.Threading.Tasks.Task{``0}})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.WhenAny(System.ReadOnlySpan{System.Threading.Tasks.Task})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$96CB7C060F6C3BA9D49BEC9D5AB7FADB.WhenAny(System.ReadOnlySpan{System.Threading.Tasks.Task})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.WhenAny``1(System.ReadOnlySpan{System.Threading.Tasks.Task{``0}})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$96CB7C060F6C3BA9D49BEC9D5AB7FADB.WhenAny``1(System.ReadOnlySpan{System.Threading.Tasks.Task{``0}})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.GetNullableUnderlyingType(System.Type)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.GetNullableUnderlyingType"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.get_UriSchemeData">
+            <inheritdoc cref="P:Polyfills.Polyfill.&lt;G&gt;$A2D159684F90C84BD35ED118E17F9ADC.UriSchemeData"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$6DC2D49024D88513ACB2F40A260511E2.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Byte})"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.ExtractToDirectoryAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.ExtractToDirectoryAsync(System.String,System.String,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.ExtractToDirectoryAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.ExtractToDirectoryAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.ExtractToDirectoryAsync(System.String,System.String,System.Text.Encoding,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.ExtractToDirectoryAsync(System.String,System.String,System.Text.Encoding,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.ExtractToDirectoryAsync(System.String,System.String,System.Text.Encoding,System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.ExtractToDirectoryAsync(System.String,System.String,System.Text.Encoding,System.Boolean,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenAsync(System.String,System.IO.Compression.ZipArchiveMode,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.OpenAsync(System.String,System.IO.Compression.ZipArchiveMode,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenAsync(System.String,System.IO.Compression.ZipArchiveMode,System.Text.Encoding,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.OpenAsync(System.String,System.IO.Compression.ZipArchiveMode,System.Text.Encoding,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.OpenReadAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.OpenReadAsync(System.String,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateFromDirectoryAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.CreateFromDirectoryAsync(System.String,System.String,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateFromDirectoryAsync(System.String,System.String,System.IO.Compression.CompressionLevel,System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.CreateFromDirectoryAsync(System.String,System.String,System.IO.Compression.CompressionLevel,System.Boolean,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.CreateFromDirectoryAsync(System.String,System.String,System.IO.Compression.CompressionLevel,System.Boolean,System.Text.Encoding,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.CreateFromDirectoryAsync(System.String,System.String,System.IO.Compression.CompressionLevel,System.Boolean,System.Text.Encoding,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetEncodedLength(System.Int32)">
+            <summary>
+            Returns the length (in chars) of the result if you were to encode binary data within a byte span of size <paramref name="bytesLength"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.GetMaxDecodedLength(System.Int32)">
+            <summary>
+            Returns the maximum length (in bytes) of the result if you were to decode base-64 encoded text of size <paramref name="base64Length"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToString(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encodes the span of binary data into a string that is represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})">
+            <summary>
+            Encodes the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encodes the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@,System.Int32@,System.Boolean)">
+            <summary>
+            Encodes the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryEncodeToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char},System.Int32@)">
+            <summary>
+            Tries to encode the span of binary data into UTF-16 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.EncodeToUtf8(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encodes the span of binary data into a byte array of UTF-8 encoded text represented as base-64.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Decodes the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte})">
+            <summary>
+            Decodes the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@,System.Int32@,System.Boolean)">
+            <summary>
+            Decodes the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.TryDecodeFromChars(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to decode the span of UTF-16 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$1CFAA23BCB3A19300AB12E0996E9B26F.DecodeFromUtf8(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Decodes the span of UTF-8 encoded text represented as base-64 into binary data.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardInputHandle">
+            <summary>
+            Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> that wraps the operating system handle for standard input.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardOutputHandle">
+            <summary>
+            Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> that wraps the operating system handle for standard output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$BAD8AF7B4AB3B102ABB1C587EA783F40.OpenStandardErrorHandle">
+            <summary>
+            Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> that wraps the operating system handle for standard error.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$8E8D5B6126DFD7E817B5797C1A237D3F.FromHexString(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Converts the span, which encodes binary data as UTF-8 hex characters, to an equivalent 8-bit unsigned integer array.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$8E8D5B6126DFD7E817B5797C1A237D3F.FromHexString(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@,System.Int32@)">
+            <summary>
+            Converts the span of UTF-8 chars, which encodes binary data as hex characters, to an equivalent 8-bit unsigned integer span.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$8E8D5B6126DFD7E817B5797C1A237D3F.TryToHexString(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Converts a span of 8-bit unsigned integers to its equivalent UTF-8 span representation that is encoded with uppercase hex characters.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$8E8D5B6126DFD7E817B5797C1A237D3F.TryToHexStringLower(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Converts a span of 8-bit unsigned integers to its equivalent UTF-8 span representation that is encoded with lowercase hex characters.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.Byte)">
+            <summary>
+            Determines whether every byte in <paramref name="source"/> is equal to <paramref name="value"/>, in an amount of time that depends on the length of <paramref name="source"/>, but not its values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.Byte[],System.Byte[])">
+            <summary>
+            Determines whether the HMAC of <paramref name="source"/> matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[])">
+            <summary>
+            Determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Determines whether the HMAC of <paramref name="source"/> matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmac(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlySpan{System.Byte},System.IO.Stream,System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>, using a comparison whose time does not depend on the contents.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.Byte[],System.IO.Stream,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B90F6B56EFBC6EC796EA46137D81F4BA.VerifyHmacAsync(System.Security.Cryptography.HashAlgorithmName,System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously determines whether the HMAC of the <paramref name="source"/> stream matches <paramref name="hash"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$00EF3C2134D2076141FEFBF32646106D.InfiniteSequence``1(``0,``0)">
+            <summary>
+            Generates an infinite sequence that begins with <paramref name="start"/> and yields additional values each incremented by <paramref name="step"/>.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$00EF3C2134D2076141FEFBF32646106D.Sequence``1(``0,``0,``0)">
+            <summary>
+            Generates a sequence that begins with <paramref name="start"/> and yields additional values each incremented by <paramref name="step"/> until <paramref name="endInclusive"/> is reached.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$824B137C9700787F7FAADF3CDD49751C`1.Create``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.EqualityComparer`1"/> that determines equality by projecting each value through <paramref name="keySelector"/> and comparing the resulting keys.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$9FC757ADB0730D641B7538973D9DCBAA.CreateAsHardLink(System.String)">
+            <summary>
+            Creates a hard link located in <see cref="P:System.IO.FileSystemInfo.Name"/> that refers to the same file content as <paramref name="pathToTarget"/>.
+            </summary>
+            <param name="pathToTarget">The path of the hard link target.</param>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.CreateHardLink(System.String,System.String)">
+            <summary>
+            Creates a hard link located in <paramref name="path"/> that refers to the same file content as <paramref name="pathToTarget"/>.
+            </summary>
+            <param name="path">The path where the hard link should be created.</param>
+            <param name="pathToTarget">The path of the hard link target.</param>
+            <returns>A <see cref="T:System.IO.FileInfo"/> instance that wraps the newly created file.</returns>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$F8AA2908BAC5E2DCE9609C46C9D7AE18.OpenNullHandle">
+            <summary>
+            Opens a handle to the operating system's null device.
+            </summary>
+        </member>
+        <member name="P:Polyfills.Polyfill.&lt;G&gt;$68F3962AE5697E254AA596E55C7A8792.AllBitsSet">
+            <summary>A read-only instance of the <see cref="T:System.Guid" /> structure whose value is all ones.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$68F3962AE5697E254AA596E55C7A8792.TryParse(System.ReadOnlySpan{System.Byte},System.Guid@)">
+            <summary>
+            Tries to parse a span of UTF-8 bytes into a value.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$68F3962AE5697E254AA596E55C7A8792.Parse(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Parse a span of UTF-8 bytes into a value.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$20CAA03A28929135E1EDF2FD1EB22894.TryParse(System.ReadOnlySpan{System.Byte},System.Net.IPAddress@)">
+            <summary>
+            Tries to parse a span of UTF-8 characters into a value.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.And``1(``0@,``0)">
+            <summary>
+            Bitwise "ands" two values and replaces the first value with the result, as an atomic operation.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$B91E0F15010A015E387A3F65BEED1370.Or``1(``0@,``0)">
+            <summary>
+            Bitwise "ors" two values and replaces the first value with the result, as an atomic operation.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="startInfo"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.Run(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="startInfo"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAsync(System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, waits for it to exit, and returns the exit status.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.Diagnostics.ProcessStartInfo,System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="startInfo"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureText(System.String,System.Collections.Generic.IList{System.String},System.Nullable{System.TimeSpan})">
+            <summary>
+            Starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.Diagnostics.ProcessStartInfo,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="startInfo"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.RunAndCaptureTextAsync(System.String,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/>, captures its standard output and standard error as text, waits for it to exit, and returns the captured output.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.Diagnostics.ProcessStartInfo)">
+            <summary>
+            Starts the process described by <paramref name="startInfo"/> in detached fashion and returns its process identifier.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.StartAndForget(System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Starts the process described by <paramref name="fileName"/> and <paramref name="arguments"/> in detached fashion and returns its process identifier.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CF0CE17D7A3EA2BB5895271206595CBD.TryGetProcessById(System.Int32,System.Diagnostics.Process@)">
+            <summary>
+            Gets the <see cref="T:System.Diagnostics.Process"/> associated with the specified process identifier, and returns a value that indicates whether the operation succeeded.
+            </summary>
+        </member>
+        <member name="P:Polyfills.Polyfill.&lt;G&gt;$E652E81B895AED455F922BE6184F6C85.IsMultithreadingSupported">
+            <summary>
+            Gets a value that indicates whether the runtime supports multithreading.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.MoveChunks(System.Text.StringBuilder)">
+            <summary>
+            Creates a new <see cref="T:System.Text.StringBuilder"/> instance initialized to the same state as
+            <paramref name="source"/>, and resets <paramref name="source"/> to an empty, usable state
+            with no allocated buffers. Ownership of the chunks is transferred in O(1); the underlying
+            character data is not copied. <paramref name="source"/>'s <see cref="P:System.Text.StringBuilder.MaxCapacity"/>
+            is preserved.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$96CB7C060F6C3BA9D49BEC9D5AB7FADB.WhenAll(System.ReadOnlySpan{System.Threading.Tasks.Task})">
+            <summary>
+            Creates a task that will complete when all of the supplied tasks have completed.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$96CB7C060F6C3BA9D49BEC9D5AB7FADB.WhenAll``1(System.ReadOnlySpan{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Creates a task that will complete when all of the supplied tasks have completed.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$96CB7C060F6C3BA9D49BEC9D5AB7FADB.WhenAny(System.ReadOnlySpan{System.Threading.Tasks.Task})">
+            <summary>
+            Creates a task that will complete when any of the supplied tasks have completed.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$96CB7C060F6C3BA9D49BEC9D5AB7FADB.WhenAny``1(System.ReadOnlySpan{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Creates a task that will complete when any of the supplied tasks have completed.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.GetNullableUnderlyingType">
+            <summary>
+            Returns the underlying type argument of the current nullable value type, or <c>null</c> if the current type is not a nullable value type.
+            </summary>
+        </member>
+        <member name="P:Polyfills.Polyfill.&lt;G&gt;$A2D159684F90C84BD35ED118E17F9ADC.UriSchemeData">
+            <summary>
+            Provides the scheme name for the <c>data</c> URI scheme (RFC 2397). This field is read-only.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$6DC2D49024D88513ACB2F40A260511E2.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Returns the index in <paramref name="value"/> where the first ill-formed UTF-8 subsequence begins, or -1 if <paramref name="value"/> is well-formed.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.ExtractToDirectoryAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously extracts all the files in the specified archive to a directory on the file system.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.ExtractToDirectoryAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously extracts all the files in the specified archive to a directory on the file system.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.ExtractToDirectoryAsync(System.String,System.String,System.Text.Encoding,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously extracts all the files in the specified archive to a directory on the file system and uses the specified character encoding for entry names.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.ExtractToDirectoryAsync(System.String,System.String,System.Text.Encoding,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously extracts all the files in the specified archive to a directory on the file system and uses the specified character encoding for entry names.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.OpenAsync(System.String,System.IO.Compression.ZipArchiveMode,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously opens a ZipArchive on the specified archiveFileName in the specified ZipArchiveMode mode.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.OpenAsync(System.String,System.IO.Compression.ZipArchiveMode,System.Text.Encoding,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously opens a ZipArchive on the specified archiveFileName in the specified ZipArchiveMode mode.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.OpenReadAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously opens a ZipArchive on the specified path for reading.
+            The specified file is opened with FileMode.Open.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.CreateFromDirectoryAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously creates a zip archive that contains the files and directories from the specified directory.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.CreateFromDirectoryAsync(System.String,System.String,System.IO.Compression.CompressionLevel,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously creates a zip archive that contains the files and directories from the specified directory and uses the specified compression level.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.&lt;G&gt;$4E14A39FD01773A148FA55FFD9F99471.CreateFromDirectoryAsync(System.String,System.String,System.IO.Compression.CompressionLevel,System.Boolean,System.Text.Encoding,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously creates a zip archive that contains the files and directories from the specified directory, uses the specified compression level and character encoding for entry names.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Ensure.Equal``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotGreaterThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotGreaterThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotLessThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greater than or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotLessThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotNegative``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.</summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotNegativeOrZero``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.</summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotZero``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.</summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CompilerLoweringPreserveAttribute">
+            <summary>
+            Indicates to the compiler that applications of an attribute should be preserved
+            through compiler lowering, flowing down to any compiler-generated symbols.
+            </summary>
+        </member>
+        <member name="M:System.Linq.PolyfillEnumerableReverseExtension.Reverse``1(``0[])">
+            <summary>Inverts the order of the elements in an array.</summary>
+        </member>
+        <member name="T:System.Diagnostics.ProcessExitStatus">
+            <summary>
+            Represents the exit status of a process.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.ProcessExitStatus.#ctor(System.Int32,System.Boolean,System.Nullable{System.Runtime.InteropServices.PosixSignal})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.ProcessExitStatus"/> class.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessExitStatus.Canceled">
+            <summary>
+            Gets a value indicating whether the process was canceled.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessExitStatus.ExitCode">
+            <summary>
+            Gets the exit code of the process.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessExitStatus.Signal">
+            <summary>
+            Gets the POSIX signal that terminated the process, if any.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.ProcessOutputLine">
+            <summary>
+            Represents a line of output from a process, including whether it came from standard error.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.ProcessOutputLine.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.ProcessOutputLine"/> struct.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessOutputLine.Content">
+            <summary>
+            Gets the content of the output line.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessOutputLine.StandardError">
+            <summary>
+            Gets a value indicating whether the line came from the standard error stream.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.ProcessTextOutput">
+            <summary>
+            Represents the captured text output from a process, including standard output, standard error, and exit status.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.ProcessTextOutput.#ctor(System.Diagnostics.ProcessExitStatus,System.String,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.ProcessTextOutput"/> class.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.ExitStatus">
+            <summary>
+            Gets the exit status of the process.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.ProcessId">
+            <summary>
+            Gets the process identifier.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.StandardError">
+            <summary>
+            Gets the captured standard error text.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.ProcessTextOutput.StandardOutput">
+            <summary>
+            Gets the captured standard output text.
+            </summary>
+        </member>
+        <member name="T:System.IO.ReadOnlyMemoryStream">
+            <summary>
+            Provides a seekable, read-only <see cref="T:System.IO.Stream"/> over a <see cref="T:System.ReadOnlyMemory`1"/>.
+            </summary>
+            <remarks>
+            The underlying memory is not copied; reads are served directly from it.
+            The stream cannot be written to. <see cref="P:System.IO.ReadOnlyMemoryStream.CanWrite"/> always returns <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.#ctor(System.ReadOnlyMemory{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.ReadOnlyMemoryStream"/> class over the specified <see cref="T:System.ReadOnlyMemory`1"/>.
+            </summary>
+        </member>
+        <member name="P:System.IO.ReadOnlyMemoryStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.ReadOnlyMemoryStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.ReadOnlyMemoryStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.ReadOnlyMemoryStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.ReadOnlyMemoryStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Read(System.Span{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.ReadOnlyMemoryStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.IO.StringStream">
+            <summary>
+            Provides a read-only, non-seekable <see cref="T:System.IO.Stream"/> that encodes a <see cref="T:System.String"/> or
+            <see cref="T:System.ReadOnlyMemory`1"/> into bytes using a specified <see cref="T:System.Text.Encoding"/>.
+            </summary>
+            <remarks>
+            This stream never emits a byte order mark (BOM). Callers who need a BOM can prepend it themselves.
+            The text is encoded incrementally as the stream is read rather than being buffered up front, so the
+            peak memory cost is bounded by the caller's read buffer rather than the full encoded length. A
+            stateful <see cref="T:System.Text.Encoder"/> preserves conversion state across reads, so multi-byte characters
+            (including surrogate pairs) that straddle a buffer boundary are encoded correctly.
+            </remarks>
+        </member>
+        <member name="M:System.IO.StringStream.#ctor(System.String,System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.StringStream"/> class with the specified string and encoding.
+            </summary>
+        </member>
+        <member name="M:System.IO.StringStream.#ctor(System.ReadOnlyMemory{System.Char},System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.StringStream"/> class with the specified character memory and encoding.
+            </summary>
+        </member>
+        <member name="P:System.IO.StringStream.Encoding">
+            <summary>
+            Gets the encoding used by this stream.
+            </summary>
+        </member>
+        <member name="P:System.IO.StringStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.StringStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.StringStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.IO.WritableMemoryStream">
+            <summary>
+            Provides a seekable, read-write <see cref="T:System.IO.Stream"/> over a <see cref="T:System.Memory`1"/> with fixed capacity.
+            </summary>
+            <remarks>
+            The underlying memory is not copied; reads and writes are served directly from it.
+            The stream cannot expand beyond the capacity of the memory it was created over.
+            </remarks>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.#ctor(System.Memory{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.IO.WritableMemoryStream"/> class over the specified <see cref="T:System.Memory`1"/>.
+            </summary>
+        </member>
+        <member name="P:System.IO.WritableMemoryStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.WritableMemoryStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.WritableMemoryStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.WritableMemoryStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.IO.WritableMemoryStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Read(System.Span{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Write(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.IO.WritableMemoryStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Buffers.ReadOnlySequenceStream">
+            <summary>
+            Provides a seekable, read-only <see cref="T:System.IO.Stream"/> over a <see cref="T:System.Buffers.ReadOnlySequence`1"/>.
+            </summary>
+            <remarks>
+            The underlying sequence is not copied; reads are served directly from its segments.
+            The stream cannot be written to. <see cref="P:System.Buffers.ReadOnlySequenceStream.CanWrite"/> always returns <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.#ctor(System.Buffers.ReadOnlySequence{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Buffers.ReadOnlySequenceStream"/> class over the specified <see cref="T:System.Buffers.ReadOnlySequence`1"/>.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Buffers.ReadOnlySequenceStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.CopyTo(System.IO.Stream,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.CopyToAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Buffers.ReadOnlySequenceStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Text.Unicode.Utf16">
+            <summary>Provides static methods for validating UTF-16 text.</summary>
+        </member>
+        <member name="M:System.Text.Unicode.Utf16.IndexOfInvalidSubsequence(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Returns the index in <paramref name="value"/> where the first ill-formed UTF-16 subsequence begins, or -1 if <paramref name="value"/> is well-formed.
+            </summary>
+        </member>
+        <member name="M:System.Text.Unicode.Utf16.IsValid(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Returns a value indicating whether <paramref name="value"/> is well-formed UTF-16.
+            </summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.CodeBlocker">
+            <summary>
+            Class to create indented code blocks wrapped in braces.
+            </summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.CodeBlocker.DefaultIndentString">
+            <summary>The indent string used when none is specified: a single tab.</summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.CodeBlocker.DefaultNewLineString">
+            <summary>
+            The line terminator used when none is specified: a line feed.
+            </summary>
+            <remarks>
+            LF rather than the host's terminator, so the same calls produce the same bytes wherever they
+            run. That is what generated code almost always needs: it gets written to a file, committed,
+            diffed, or compared against a golden file, and every one of those wants reproducibility more
+            than it wants the local convention. Pass <see cref="P:ktsu.CodeBlocker.NewLines.Host"/> explicitly for the old
+            behaviour.
+            </remarks>
+        </member>
+        <member name="P:ktsu.CodeBlocker.CodeBlocker.IndentString">
+            <summary>
+            Get the current indent string being used.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.CodeBlocker.NewLineString">
+            <summary>
+            Get the line terminator written at the end of every line.
+            </summary>
+            <remarks>
+            Defaults to <see cref="F:ktsu.CodeBlocker.CodeBlocker.DefaultNewLineString"/>. Pass <see cref="P:ktsu.CodeBlocker.NewLines.Host"/> to follow the
+            operating system's convention instead, at the cost of output that differs by platform.
+            </remarks>
+        </member>
+        <member name="P:ktsu.CodeBlocker.CodeBlocker.IsBuffered">
+            <summary>
+            Gets a value indicating whether <see cref="M:ktsu.CodeBlocker.CodeBlocker.ToString"/> can return the generated code.
+            </summary>
+            <remarks>
+            True when this instance writes to a <see cref="T:System.IO.StringWriter"/> — which is always the case for
+            instances from <see cref="M:ktsu.CodeBlocker.CodeBlocker.Create"/>. A <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> built over some other
+            <see cref="T:System.IO.TextWriter"/> streams straight through to it and keeps no copy, so the generated
+            code has to be read from that writer instead.
+            </remarks>
+        </member>
+        <member name="P:ktsu.CodeBlocker.CodeBlocker.BufferedWriter">
+            <summary>
+            The writer as a <see cref="T:System.IO.StringWriter"/> when it is one, otherwise <see langword="null"/>.
+            Only a <see cref="T:System.IO.StringWriter"/> buffers what was written, so this is what lets
+            <see cref="M:ktsu.CodeBlocker.CodeBlocker.ToString"/> hand the generated code back. Kept as a property rather than a field
+            so there is exactly one writer reference to own and dispose.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.#ctor(System.IO.StringWriter)">
+            <summary>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.
+            </summary>
+            <param name="stringWriter">The <see cref="T:System.IO.StringWriter"/> to write to.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.#ctor(System.IO.StringWriter,System.String)">
+            <summary>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> with a custom indent string.
+            </summary>
+            <param name="stringWriter">The <see cref="T:System.IO.StringWriter"/> to write to.</param>
+            <param name="indentString">The string to use for indentation.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.#ctor(System.IO.StringWriter,System.String,System.String)">
+            <summary>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> with a custom indent string and line terminator.
+            </summary>
+            <param name="stringWriter">The <see cref="T:System.IO.StringWriter"/> to write to.</param>
+            <param name="indentString">The string to use for indentation.</param>
+            <param name="newLineString">
+            The line terminator to write at the end of every line. <see langword="null"/> selects
+            <see cref="F:ktsu.CodeBlocker.CodeBlocker.DefaultNewLineString"/>.
+            </param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.#ctor(System.IO.TextWriter)">
+            <summary>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> over any <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="writer">The <see cref="T:System.IO.TextWriter"/> to write to.</param>
+            <remarks>
+            The writer is not disposed by <see cref="M:ktsu.CodeBlocker.CodeBlocker.Dispose"/> — whoever created it owns it. Only the
+            <see cref="T:System.IO.StringWriter"/> that <see cref="M:ktsu.CodeBlocker.CodeBlocker.Create"/> makes for itself is disposed here.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.#ctor(System.IO.TextWriter,System.String)">
+            <summary>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> over any <see cref="T:System.IO.TextWriter"/> with a
+            custom indent string.
+            </summary>
+            <param name="writer">The <see cref="T:System.IO.TextWriter"/> to write to.</param>
+            <param name="indentString">The string to use for indentation.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.#ctor(System.IO.TextWriter,System.String,System.String)">
+            <summary>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> over any <see cref="T:System.IO.TextWriter"/> with a
+            custom indent string and line terminator.
+            </summary>
+            <param name="writer">The <see cref="T:System.IO.TextWriter"/> to write to.</param>
+            <param name="indentString">The string to use for indentation.</param>
+            <param name="newLineString">
+            The line terminator to write at the end of every line. <see langword="null"/> selects
+            <see cref="F:ktsu.CodeBlocker.CodeBlocker.DefaultNewLineString"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.Create">
+            <summary>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.
+            </summary>
+            <returns>A new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</returns>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.Create(System.String)">
+            <summary>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> with a custom indent string.
+            </summary>
+            <param name="indentString">The string to use for indentation.</param>
+            <returns>A new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</returns>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.Create(System.String,System.String)">
+            <summary>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> with a custom indent string and line terminator.
+            </summary>
+            <param name="indentString">The string to use for indentation.</param>
+            <param name="newLineString">The line terminator to write at the end of every line.</param>
+            <returns>A new instance of <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</returns>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.ToString">
+            <summary>
+            Get the string representation of the code.
+            </summary>
+            <returns>
+            The code written so far when this instance is buffered — see <see cref="P:ktsu.CodeBlocker.CodeBlocker.IsBuffered"/> — and
+            otherwise the type name, as <see cref="M:System.Object.ToString"/> would give.
+            </returns>
+            <remarks>
+            A <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> over a non-buffering <see cref="T:System.IO.TextWriter"/> (a file, a network
+            stream) keeps no copy of what it wrote, so there is nothing to hand back; read the generated
+            code from that writer instead. This returns the type name rather than throwing so that
+            diagnostics and debuggers, which call <see cref="M:ktsu.CodeBlocker.CodeBlocker.ToString"/> freely, stay safe.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.NewLine">
+            <summary>
+            Write a line of code without indentation.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.WriteLine(System.String)">
+            <summary>
+            Write a line of code with indentation.
+            </summary>
+            <param name="line">The line of code to write.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.WriteLine">
+            <summary>
+            Write a line of code with indentation.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.Write(System.String)">
+            <summary>
+            Write a line of code with indentation.
+            </summary>
+            <param name="text">The text to write.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.Indent">
+            <summary>
+            Increase the indentation level.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.Outdent">
+            <summary>
+            Decrease the indentation level.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.CodeBlocker.CurrentIndent">
+            <summary>
+            Get/set the current indentation level.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.Dispose(System.Boolean)">
+            <summary>
+            Dispose of the <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.
+            </summary>
+            <param name="disposing">True if disposing from Dispose() method, false if from finalizer.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlocker.Dispose">
+            <summary>
+            Dispose of the <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.
+            </summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.CodeBlockerExtensions">
+            <summary>
+            Helpers for the file-level shapes that recur in generated C#: the auto-generated preamble, the
+            nullable context, the namespace declaration, and the using directives.
+            </summary>
+            <remarks>
+            Each helper owns the blank line that conventionally follows it, so a preamble assembled from
+            them is spaced consistently no matter which parts a given generator emits.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlockerExtensions.WriteAutoGeneratedHeader(ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Writes the preamble that marks a file as generated, followed by a blank line.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="copyright">
+            An optional copyright line written above the marker, without its <c>//</c> prefix. Pass the
+            same text the consuming repository's file header template uses.
+            </param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlockerExtensions.WriteNullableEnable(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes <c>#nullable enable</c>.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlockerExtensions.WriteNullableDisable(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes <c>#nullable disable</c>.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlockerExtensions.WriteFileScopedNamespace(ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Writes a file-scoped namespace declaration followed by a blank line, or nothing at all when
+            no namespace is given.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="namespaceName">The namespace, for example <c>Contoso.Widgets</c>.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlockerExtensions.WriteUsings(ktsu.CodeBlocker.CodeBlocker,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Writes one <c>using</c> directive per entry followed by a blank line, or nothing at all when
+            the sequence is empty.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="usings">
+            The namespaces to import, without the <c>using</c> keyword or the trailing semicolon. An
+            entry may carry a modifier or alias — <c>static System.Math</c>, <c>Alias = System.Text</c> —
+            because it is written verbatim after the keyword.
+            </param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="codeBlocker"/> or <paramref name="usings"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.CodeBlockerExtensions.WriteUsings(ktsu.CodeBlocker.CodeBlocker,System.String[])">
+            <summary>
+            Writes one <c>using</c> directive per entry followed by a blank line, or nothing at all when
+            no namespaces are given.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="usings">The namespaces to import.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="codeBlocker"/> or <paramref name="usings"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.NewLines">
+            <summary>
+            The line terminators <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> understands, named so that call sites read as
+            intent rather than as escape sequences.
+            </summary>
+            <remarks>
+            Generated code that is committed to a repository has to be byte-identical no matter which
+            operating system produced it, so a generator should pick one of these explicitly rather than
+            inheriting the host's <see cref="P:System.Environment.NewLine"/>.
+            </remarks>
+        </member>
+        <member name="F:ktsu.CodeBlocker.NewLines.Lf">
+            <summary>A single line feed, <c>"\n"</c>. The conventional choice for reproducible output.</summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.NewLines.CrLf">
+            <summary>A carriage return followed by a line feed, <c>"\r\n"</c>.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.NewLines.Host">
+            <summary>
+            The host operating system's line terminator. This is what a <see cref="T:System.IO.TextWriter"/>
+            uses by default; <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> deliberately does not, because it makes output
+            depend on where it was produced. Pass it explicitly when that is what you want.
+            </summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Scope">
+            <summary>
+            Class to create a scope in a code block.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.Scope"/>.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Scope.#ctor(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Class to create a scope in a code block.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.Scope"/>.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+        </member>
+        <member name="T:ktsu.CodeBlocker.ScopeWithTrailingSemicolon">
+            <summary>
+            Class to create a scope with a trailing semicolon in a code block.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.ScopeWithTrailingSemicolon"/>.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.ScopeWithTrailingSemicolon.#ctor(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Class to create a scope with a trailing semicolon in a code block.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.ScopeWithTrailingSemicolon"/>.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+        </member>
+        <member name="T:ktsu.CodeBlocker.DelimiterScope">
+            <summary>
+            Base class for a scope that writes an opening delimiter, indents the body, and writes a closing
+            delimiter when disposed.
+            </summary>
+            <remarks>
+            Both delimiters are written on their own line, so a scope always reads as a block:
+            <code>
+            (
+                arg
+            )
+            </code>
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="open">The delimiter written before the body.</param>
+            <param name="close">The delimiter written after the body.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.DelimiterScope.#ctor(ktsu.CodeBlocker.CodeBlocker,System.String,System.String)">
+            <summary>
+            Base class for a scope that writes an opening delimiter, indents the body, and writes a closing
+            delimiter when disposed.
+            </summary>
+            <remarks>
+            Both delimiters are written on their own line, so a scope always reads as a block:
+            <code>
+            (
+                arg
+            )
+            </code>
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="open">The delimiter written before the body.</param>
+            <param name="close">The delimiter written after the body.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.DelimiterScope.Begin(ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Writes the opening delimiter and increases the indent level.
+            </summary>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="open">The delimiter to write.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.DelimiterScope.End(ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Decreases the indent level and writes the closing delimiter.
+            </summary>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="close">The delimiter to write.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.ParenScope">
+            <summary>
+            Class to create a parenthesised scope in a code block, for argument lists long enough to break
+            across lines.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.ParenScope"/>.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.ParenScope.#ctor(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Class to create a parenthesised scope in a code block, for argument lists long enough to break
+            across lines.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.ParenScope"/>.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+        </member>
+        <member name="T:ktsu.CodeBlocker.BracketScope">
+            <summary>
+            Class to create a bracketed scope in a code block, for collection expressions and array
+            initialisers long enough to break across lines.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.BracketScope"/>.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.BracketScope.#ctor(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Class to create a bracketed scope in a code block, for collection expressions and array
+            initialisers long enough to break across lines.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.BracketScope"/>.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+        </member>
+        <member name="T:ktsu.CodeBlocker.IndentScope">
+            <summary>
+            Class to indent a run of lines without writing any delimiters, for continuation lines such as
+            generic constraints or a chained call.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.IndentScope"/>.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.IndentScope.#ctor(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Class to indent a run of lines without writing any delimiters, for continuation lines such as
+            generic constraints or a chained call.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.IndentScope"/>.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+        </member>
+        <member name="T:ktsu.CodeBlocker.RegionScope">
+            <summary>
+            Class to wrap a run of lines in <c>#region</c> and <c>#endregion</c>.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.RegionScope"/>. The directives are written at the current
+            indent level, and the body is not indented further — a region does not nest code.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="name">The region name.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.RegionScope.#ctor(ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Class to wrap a run of lines in <c>#region</c> and <c>#endregion</c>.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.RegionScope"/>. The directives are written at the current
+            indent level, and the body is not indented further — a region does not nest code.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="name">The region name.</param>
+        </member>
+        <member name="T:ktsu.CodeBlocker.DirectiveScope">
+            <summary>
+            Class to wrap a run of lines in <c>#if</c> and <c>#endif</c>.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.DirectiveScope"/>. The directives are written at the current
+            indent level, and the body is not indented further — a conditional compilation directive does not
+            nest code.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="condition">The condition expression, for example <c>NET8_0_OR_GREATER</c>.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.DirectiveScope.#ctor(ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Class to wrap a run of lines in <c>#if</c> and <c>#endif</c>.
+            </summary>
+            <remarks>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.DirectiveScope"/>. The directives are written at the current
+            indent level, and the body is not indented further — a conditional compilation directive does not
+            nest code.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="condition">The condition expression, for example <c>NET8_0_OR_GREATER</c>.</param>
+        </member>
+        <member name="T:ktsu.CodeBlocker.PragmaScope">
+            <summary>
+            Class to wrap a run of lines in <c>#pragma warning disable</c> and
+            <c>#pragma warning restore</c> for the same warnings.
+            </summary>
+            <remarks>
+            An unbalanced suppression leaks into the rest of the file and is tedious to trace back, so
+            pairing the two directives in a scope is worth more here than the line saving. The directives are
+            written at the current indent level, and the body is not indented further.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="warnings">
+            The warning identifiers to suppress, written verbatim after the directive — either a single
+            identifier such as <c>CS1591</c> or a comma-separated list.
+            </param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.PragmaScope.#ctor(ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Class to wrap a run of lines in <c>#pragma warning disable</c> and
+            <c>#pragma warning restore</c> for the same warnings.
+            </summary>
+            <remarks>
+            An unbalanced suppression leaks into the rest of the file and is tedious to trace back, so
+            pairing the two directives in a scope is worth more here than the line saving. The directives are
+            written at the current indent level, and the body is not indented further.
+            </remarks>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="warnings">
+            The warning identifiers to suppress, written verbatim after the directive — either a single
+            identifier such as <c>CS1591</c> or a comma-separated list.
+            </param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.PragmaScope.#ctor(ktsu.CodeBlocker.CodeBlocker,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Create a new instance of <see cref="T:ktsu.CodeBlocker.PragmaScope"/> suppressing several warnings.
+            </summary>
+            <param name="codeBlocker">The parent <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>.</param>
+            <param name="warnings">The warning identifiers to suppress.</param>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.AccessorKind">
+            <summary>
+            How a property accessor is written.
+            </summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.AccessorKind.Auto">
+            <summary>An automatic accessor: <c>get;</c>.</summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.AccessorKind.Expression">
+            <summary>An expression-bodied accessor: <c>get =&gt; expression;</c>.</summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.AccessorKind.Block">
+            <summary>A block-bodied accessor: <c>get</c> followed by a braced body.</summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.AccessorTemplate">
+            <summary>
+            Describes one accessor of a property.
+            </summary>
+            <remarks>
+            The accessor's shape is data — <see cref="P:ktsu.CodeBlocker.Templates.AccessorTemplate.Kind"/> — rather than something the model infers by
+            comparing callback instances, so a caller-supplied body is never mistaken for an automatic
+            accessor and an accessor can carry its own accessibility modifier.
+            </remarks>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.AccessorTemplate.Kind">
+            <summary>Gets or sets how the accessor is written. Defaults to <see cref="F:ktsu.CodeBlocker.Templates.AccessorKind.Auto"/>.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.AccessorTemplate.Modifier">
+            <summary>
+            Gets or sets the accessor's own accessibility modifier, for example <c>private</c>. Empty
+            writes none, which is the usual case.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.AccessorTemplate.BodyFactory">
+            <summary>
+            Gets or sets the callback that writes the accessor body.
+            </summary>
+            <remarks>
+            For <see cref="F:ktsu.CodeBlocker.Templates.AccessorKind.Expression"/> the callback writes only the expression: the model
+            supplies the <c>=&gt;</c> and the terminating semicolon. For
+            <see cref="F:ktsu.CodeBlocker.Templates.AccessorKind.Block"/> it writes the statements only: the model supplies the
+            braces. It is ignored for <see cref="F:ktsu.CodeBlocker.Templates.AccessorKind.Auto"/>.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.AccessorTemplate.Auto">
+            <summary>
+            Creates an automatic accessor.
+            </summary>
+            <returns>A new <see cref="T:ktsu.CodeBlocker.Templates.AccessorTemplate"/>.</returns>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.AccessorTemplate.Expression(System.Action{ktsu.CodeBlocker.CodeBlocker})">
+            <summary>
+            Creates an expression-bodied accessor.
+            </summary>
+            <param name="expression">Writes the expression, without <c>=&gt;</c> or a semicolon.</param>
+            <returns>A new <see cref="T:ktsu.CodeBlocker.Templates.AccessorTemplate"/>.</returns>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.AccessorTemplate.Block(System.Action{ktsu.CodeBlocker.CodeBlocker})">
+            <summary>
+            Creates a block-bodied accessor.
+            </summary>
+            <param name="body">Writes the statements, without the enclosing braces.</param>
+            <returns>A new <see cref="T:ktsu.CodeBlocker.Templates.AccessorTemplate"/>.</returns>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.AccessorTemplate.WriteTo(ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Writes the accessor.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="keyword">The accessor keyword: <c>get</c>, <c>set</c> or <c>init</c>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.AccessorTemplate.IsShorthandEligible">
+            <summary>
+            Gets a value indicating whether this accessor can appear in the one-line
+            <c>{ get; set; }</c> shorthand.
+            </summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.ClassTemplate">
+            <summary>
+            Describes a type declaration and everything inside it.
+            </summary>
+            <remarks>
+            <see cref="P:ktsu.CodeBlocker.Templates.ClassTemplate.Kind"/> supplies the declaration keyword, so
+            <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Keywords"/> carries only the modifiers, and
+            <see cref="P:ktsu.CodeBlocker.Templates.ClassTemplate.TypeParameters"/> carries the generic parameters, so
+            <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Name"/> is the bare name.
+            </remarks>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ClassTemplate.Kind">
+            <summary>Gets or sets the kind of type declared. Defaults to <see cref="F:ktsu.CodeBlocker.Templates.TypeKind.Class"/>.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ClassTemplate.TypeParameters">
+            <summary>Gets the type's generic parameters, written as <c>&lt;T, TResult&gt;</c>.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ClassTemplate.PositionalParameters">
+            <summary>
+            Gets the positional parameters of a record declaration, written as a parameter list
+            immediately after the name. Empty declares no positional parameters.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ClassTemplate.BaseClass">
+            <summary>
+            Gets or sets the base type, or for an enum its underlying type. Empty declares none.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ClassTemplate.Interfaces">
+            <summary>Gets the interfaces the type implements.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ClassTemplate.Constraints">
+            <summary>
+            Gets the generic constraint clauses, each written verbatim on its own indented line — for
+            example <c>where T : struct</c>.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ClassTemplate.Members">
+            <summary>Gets the members declared in the type.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ClassTemplate.NestedClasses">
+            <summary>Gets the types nested inside this one.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ClassTemplate.SortMembers">
+            <summary>
+            Gets or sets a value indicating whether members are grouped by kind — see
+            <see cref="M:ktsu.CodeBlocker.Templates.MemberTemplate.MemberSortOrder(ktsu.CodeBlocker.Templates.MemberTemplate)"/> — before being written. Defaults to
+            <see langword="true"/>; clear it to write them in the order they were added.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.ClassTemplate.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the declaration, its base type and interfaces, its constraints, and its body.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ClassTemplate.IsBodylessPositionalRecord">
+            <summary>
+            Gets a value indicating whether this is a record whose positional parameters are its whole
+            definition, which is declared with a semicolon instead of an empty body.
+            </summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.ClassTemplateExtensions">
+            <summary>
+            Extension methods for writing type declarations.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.ClassTemplateExtensions.AddClass(ktsu.CodeBlocker.CodeBlocker,ktsu.CodeBlocker.Templates.ClassTemplate)">
+            <summary>
+            Writes a type declaration.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="classTemplate">The type to write.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="codeBlocker"/> or <paramref name="classTemplate"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.ConstructorTemplate">
+            <summary>
+            Describes a constructor declaration.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ConstructorTemplate.Parameters">
+            <summary>Gets the constructor's parameters, in declaration order.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ConstructorTemplate.BaseParameters">
+            <summary>
+            Gets the arguments passed to the base constructor, written verbatim. Empty omits the
+            <c>: base(...)</c> clause entirely.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ConstructorTemplate.ChainsToThis">
+            <summary>
+            Gets or sets a value indicating whether the initialiser chains to <c>this</c> rather than
+            <c>base</c>.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.ConstructorTemplate.BodyFactory">
+            <summary>
+            Gets or sets the callback that writes the constructor body. Defaults to a callback that
+            writes nothing, which renders as <c>{ }</c>; <see langword="null"/> terminates the
+            declaration with a semicolon instead.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.ConstructorTemplate.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the declaration, its parameter list, its constructor initialiser, and its body.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.DocTag">
+            <summary>
+            One named XML documentation tag: a <c>&lt;param&gt;</c>, <c>&lt;typeparam&gt;</c> or
+            <c>&lt;exception&gt;</c> entry.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocTag.Name">
+            <summary>
+            Gets or sets the tag's identifying attribute: the parameter or type parameter name, or for an
+            exception the <c>cref</c>.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocTag.Text">
+            <summary>Gets or sets the tag's description.</summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.DocComment">
+            <summary>
+            Describes a member's XML documentation as data rather than as pre-formatted comment lines.
+            </summary>
+            <remarks>
+            Assembling doc comments by hand means every generator re-derives which tags go in which order,
+            how a long description wraps, and how a multi-line <c>&lt;remarks&gt;</c> is prefixed — and
+            nothing escapes the content, so a description that happens to contain <c>&lt;</c> or <c>&amp;</c>
+            produces malformed XML and trips the compiler's doc-comment warnings. This owns all of that.
+            </remarks>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.EscapeText">
+            <summary>
+            Gets or sets a value indicating whether text content is XML-escaped when written. Defaults to
+            <see langword="true"/>; clear it when the text deliberately embeds markup such as
+            <c>&lt;c&gt;</c> or <c>&lt;see cref="…"/&gt;</c>, in which case escaping is the caller's job.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.InheritDoc">
+            <summary>
+            Gets or sets a value indicating whether the documentation is inherited, written as
+            <c>&lt;inheritdoc/&gt;</c> ahead of anything else.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.InheritDocCref">
+            <summary>
+            Gets or sets the <c>cref</c> of the member to inherit documentation from. Ignored unless
+            <see cref="P:ktsu.CodeBlocker.Templates.DocComment.InheritDoc"/> is set; empty writes a bare <c>&lt;inheritdoc/&gt;</c>.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.Summary">
+            <summary>Gets or sets the <c>&lt;summary&gt;</c> text.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.Remarks">
+            <summary>Gets or sets the <c>&lt;remarks&gt;</c> text.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.Returns">
+            <summary>Gets or sets the <c>&lt;returns&gt;</c> text.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.Value">
+            <summary>Gets or sets the <c>&lt;value&gt;</c> text, describing what a property holds.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.TypeParams">
+            <summary>Gets the <c>&lt;typeparam&gt;</c> entries, keyed by type parameter name.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.Params">
+            <summary>Gets the <c>&lt;param&gt;</c> entries, keyed by parameter name.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.Exceptions">
+            <summary>Gets the <c>&lt;exception&gt;</c> entries, keyed by exception type <c>cref</c>.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.SeeAlso">
+            <summary>Gets the <c>&lt;seealso&gt;</c> <c>cref</c> values.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.DocComment.IsEmpty">
+            <summary>
+            Gets a value indicating whether this comment would write anything at all.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.DocComment.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the documentation in the canonical tag order: <c>inheritdoc</c>, <c>summary</c>,
+            <c>typeparam</c>, <c>param</c>, <c>returns</c>, <c>value</c>, <c>exception</c>,
+            <c>remarks</c>, <c>seealso</c>.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.DocComment.Validate(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Checks that every <c>&lt;param&gt;</c> and <c>&lt;typeparam&gt;</c> entry names something the
+            documented member actually declares, and that nothing is documented twice.
+            </summary>
+            <param name="parameterNames">The member's parameter names.</param>
+            <param name="typeParameterNames">The member's type parameter names.</param>
+            <returns>
+            One message per problem found, empty when there are none. Nothing is thrown: a generator can
+            report these as build diagnostics, which is far easier to act on than the CS1572 and CS1573
+            warnings the mismatch would otherwise raise inside generated source.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">Either argument is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.DocComment.SplitLines(System.String)">
+            <summary>
+            Splits text into lines, accepting either line terminator so that a caller's verbatim or raw
+            string literal lays out the same way whichever platform the source file was written on.
+            </summary>
+            <param name="text">The text to split.</param>
+            <returns>The text's lines.</returns>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.DocComment.EscapeContent(System.String)">
+            <summary>
+            Escapes the characters that would otherwise be read as markup in element content.
+            </summary>
+            <param name="text">The text to escape.</param>
+            <returns>The escaped text.</returns>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.DocComment.EscapeAttribute(System.String)">
+            <summary>
+            Escapes an attribute value. Always escaped, regardless of <see cref="P:ktsu.CodeBlocker.Templates.DocComment.EscapeText"/>: an
+            attribute value is never a place to embed markup, so there is nothing to opt out of.
+            </summary>
+            <param name="value">The value to escape.</param>
+            <returns>The escaped value.</returns>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.EnumMemberTemplate">
+            <summary>
+            Describes one member of an enum.
+            </summary>
+            <remarks>
+            Only <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Name"/> and, optionally,
+            <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.DefaultValue"/> apply: an enum member has no type of its own.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.EnumMemberTemplate.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the member as <c>Name</c> or <c>Name = value</c>, followed by a comma.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <remarks>
+            Every member gets a trailing comma, the last one included: it is legal C#, and it keeps the
+            diff to one line when a member is appended.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.FieldTemplate">
+            <summary>
+            Describes a field declaration.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.FieldTemplate.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the field, its initialiser when <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.DefaultValue"/> is set, and
+            the terminating semicolon.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.MemberTemplate">
+            <summary>
+            Base class for anything declared inside a type.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.MemberTemplate.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the shared parts, then the member's type and name.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.MemberTemplate.MemberSortOrder(ktsu.CodeBlocker.Templates.MemberTemplate)">
+            <summary>
+            The order members are emitted in within a type: enum members and fields first, then
+            constructors, properties, methods and operators.
+            </summary>
+            <param name="memberTemplate">The member to rank.</param>
+            <returns>The member's sort key.</returns>
+            <remarks>
+            The sort is stable, so members of the same kind keep the order they were added in. Set
+            <see cref="P:ktsu.CodeBlocker.Templates.ClassTemplate.SortMembers"/> to <see langword="false"/> to keep declaration order
+            across kinds too.
+            </remarks>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.MethodTemplate">
+            <summary>
+            Describes a method declaration.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.MethodTemplate.TypeParameters">
+            <summary>Gets the method's type parameters, written as <c>&lt;T, TResult&gt;</c>.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.MethodTemplate.Parameters">
+            <summary>Gets the method's parameters, in declaration order.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.MethodTemplate.Constraints">
+            <summary>
+            Gets the generic constraint clauses, each written verbatim on its own indented line — for
+            example <c>where T : struct</c>.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.MethodTemplate.BodyFactory">
+            <summary>
+            Gets or sets the callback that writes the method body. <see langword="null"/> declares the
+            method without a body — an abstract, partial or interface declaration — and terminates it
+            with a semicolon.
+            </summary>
+            <remarks>
+            The callback supplies its own braces, or writes an expression body such as
+            <c>=&gt; value;</c>. It renders into a nested <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> configured like this
+            one, and every line of the result is re-indented to the position it is spliced into.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.MethodTemplate.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the declaration, its type parameters, its parameter list, its constraints, and its body.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.OperatorKind">
+            <summary>
+            How an operator is declared.
+            </summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.OperatorKind.Normal">
+            <summary>
+            An ordinary operator: <c>public static Result operator *(Left left, Right right)</c>.
+            </summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.OperatorKind.Implicit">
+            <summary>
+            An implicit conversion: <c>public static implicit operator Result(Source value)</c>.
+            </summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.OperatorKind.Explicit">
+            <summary>
+            An explicit conversion: <c>public static explicit operator Result(Source value)</c>.
+            </summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.OperatorTemplate">
+            <summary>
+            Describes an operator or conversion declaration.
+            </summary>
+            <remarks>
+            <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Type"/> is the result type, and <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Name"/> is
+            unused — an operator is named by its symbol. Remember that operators are always
+            <c>public static</c>, so both belong in <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Keywords"/>.
+            </remarks>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.OperatorTemplate.Kind">
+            <summary>Gets or sets how the operator is declared.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.OperatorTemplate.Symbol">
+            <summary>
+            Gets or sets the operator symbol, for example <c>*</c>, <c>==</c> or <c>true</c>. Ignored for
+            a conversion, which is named by its result type instead.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.OperatorTemplate.Parameters">
+            <summary>Gets the operator's parameters, in declaration order.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.OperatorTemplate.BodyFactory">
+            <summary>
+            Gets or sets the callback that writes the operator body. <see langword="null"/> declares it
+            without one, which is only valid in a partial declaration.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.OperatorTemplate.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the declaration, its parameter list, and its body.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.ParameterTemplate">
+            <summary>
+            Describes one parameter of a method, constructor, operator, or positional record.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.ParameterTemplate.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the parameter as <c>Type name</c>, followed by <c> = default</c> when
+            <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.DefaultValue"/> is set.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <remarks>
+            A parameter's attributes and modifiers stay on the declaration line — <c>[In] ref int x</c> —
+            so this does not go through the base implementation, which puts attributes on their own line.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.PropertyTemplate">
+            <summary>
+            Describes a property declaration.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.PropertyTemplate.Getter">
+            <summary>Gets or sets the getter. <see langword="null"/> declares no getter.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.PropertyTemplate.Setter">
+            <summary>Gets or sets the setter. <see langword="null"/> declares no setter.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.PropertyTemplate.SetterIsInitOnly">
+            <summary>
+            Gets or sets a value indicating whether the setter is written as <c>init</c> rather than
+            <c>set</c>.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.PropertyTemplate.ExpressionBodyFactory">
+            <summary>
+            Gets or sets the callback that writes an expression body, producing
+            <c>Type Name =&gt; expression;</c>. It writes only the expression: the model supplies the
+            <c>=&gt;</c> and the semicolon.
+            </summary>
+            <remarks>
+            An expression body replaces the accessor list, so <see cref="P:ktsu.CodeBlocker.Templates.PropertyTemplate.Getter"/> and
+            <see cref="P:ktsu.CodeBlocker.Templates.PropertyTemplate.Setter"/> are ignored when this is set.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.PropertyTemplate.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the property.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <remarks>
+            An expression body is written on the declaration line. Otherwise, accessors that are all
+            automatic and unqualified collapse to <c>{ get; set; }</c> on one line, with any
+            <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.DefaultValue"/> as its initialiser; anything else gets a braced
+            accessor list. A property with no accessors at all is declared and terminated with a
+            semicolon, which is what an abstract or interface property looks like.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.PropertyTemplate.SetterKeyword">
+            <summary>The keyword the setter is written with.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.PropertyTemplate.CanUseShorthand">
+            <summary>
+            Gets a value indicating whether every declared accessor is automatic and unqualified, in
+            which case the whole property fits on one line.
+            </summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.SourceFileTemplate">
+            <summary>
+            Describes a whole source file: its namespace, its using directives, and the types it declares.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.SourceFileTemplate.FileName">
+            <summary>
+            Gets or sets the file name. The model does not write this anywhere; it is carried so a
+            generator can hand it to whatever writes the file out.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.SourceFileTemplate.Namespace">
+            <summary>Gets or sets the namespace. Empty writes no namespace declaration.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.SourceFileTemplate.Usings">
+            <summary>
+            Gets the namespaces to import, without the <c>using</c> keyword or trailing semicolon.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.SourceFileTemplate.Classes">
+            <summary>Gets the types declared in the file.</summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.SourceFileTemplateExtensions">
+            <summary>
+            Extension methods for writing whole source files.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.SourceFileTemplateExtensions.AddSourceFile(ktsu.CodeBlocker.CodeBlocker,ktsu.CodeBlocker.Templates.SourceFileTemplate)">
+            <summary>
+            Writes a source file: its shared parts, its namespace, its using directives, and its types.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="template">The file to write.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="codeBlocker"/> or <paramref name="template"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.SourceFileTemplateExtensions.AddClasses(ktsu.CodeBlocker.CodeBlocker,System.Collections.Generic.IEnumerable{ktsu.CodeBlocker.Templates.ClassTemplate})">
+            <summary>
+            Writes each type followed by a blank line.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="classes">The types to write.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="codeBlocker"/> or <paramref name="classes"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.TemplateBase">
+            <summary>
+            Base class for every template: the parts that a declaration of any kind can carry.
+            </summary>
+            <remarks>
+            A template describes <em>what</em> to emit and leaves the punctuation, spacing and ordering to
+            the model. Build a tree of templates, then render it with
+            <see cref="M:ktsu.CodeBlocker.Templates.SourceFileTemplateExtensions.AddSourceFile(ktsu.CodeBlocker.CodeBlocker,ktsu.CodeBlocker.Templates.SourceFileTemplate)"/> or by calling <see cref="M:ktsu.CodeBlocker.Templates.TemplateBase.WriteTo(ktsu.CodeBlocker.CodeBlocker)"/>.
+            </remarks>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.TemplateBase.Name">
+            <summary>Gets or sets the declared name.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.TemplateBase.Type">
+            <summary>Gets or sets the declared type, written before <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Name"/>.</summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.TemplateBase.DefaultValue">
+            <summary>
+            Gets or sets the initialiser or default value. Empty means no initialiser is written.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.TemplateBase.DefaultValueIsQuoted">
+            <summary>
+            Gets or sets a value indicating whether <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.DefaultValue"/> is written inside double
+            quotes. Set this for string literals; leave it clear for anything already written as an
+            expression.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.TemplateBase.Attributes">
+            <summary>
+            Gets the attributes to write before the declaration, each without its square brackets.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.TemplateBase.Keywords">
+            <summary>
+            Gets the modifiers to write before the declaration, in the order they should appear —
+            for example <c>public</c>, <c>static</c>, <c>partial</c>. The declaration keyword is not a
+            modifier: <see cref="P:ktsu.CodeBlocker.Templates.ClassTemplate.Kind"/> supplies it.
+            </summary>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.TemplateBase.Comments">
+            <summary>
+            Gets the comment lines to write above the declaration, each written verbatim and so
+            including its own <c>//</c> or <c>///</c> prefix.
+            </summary>
+            <remarks>
+            This is the escape hatch, for a plain comment or for anything
+            <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Documentation"/> does not model. Prefer <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Documentation"/> for XML
+            documentation: it escapes the content and orders the tags.
+            </remarks>
+        </member>
+        <member name="P:ktsu.CodeBlocker.Templates.TemplateBase.Documentation">
+            <summary>
+            Gets or sets the XML documentation, written above <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Comments"/>.
+            <see langword="null"/> writes none.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateBase.WriteTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes the comments, attributes and modifiers this template carries, leaving the declaration
+            line open for the derived template to continue.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateBase.WriteDefaultValueTo(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Writes <c> = value</c> when <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.DefaultValue"/> is set, quoting it when
+            <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.DefaultValueIsQuoted"/> is set.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.TemplateBaseExtensions">
+            <summary>
+            Extension methods for writing the parts shared by every template.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateBaseExtensions.AddTemplate(ktsu.CodeBlocker.CodeBlocker,ktsu.CodeBlocker.Templates.TemplateBase)">
+            <summary>
+            Writes the comments, attributes and modifiers a template carries.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="template">The template whose shared parts to write.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="codeBlocker"/> or <paramref name="template"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateBaseExtensions.AddDocumentation(ktsu.CodeBlocker.CodeBlocker,ktsu.CodeBlocker.Templates.DocComment)">
+            <summary>
+            Writes XML documentation, or nothing when there is none to write.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="documentation">The documentation, or <see langword="null"/>.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="codeBlocker"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateBaseExtensions.AddComments(ktsu.CodeBlocker.CodeBlocker,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Writes each comment on its own line, verbatim.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="comments">The comment lines, each including its own prefix.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="codeBlocker"/> or <paramref name="comments"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateBaseExtensions.AddAttributes(ktsu.CodeBlocker.CodeBlocker,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Writes each attribute on its own line, bracketed.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="attributes">The attributes, each without its square brackets.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <remarks>
+            One per line rather than inline: a member carrying several attributes — and generated members
+            often carry a suppression apiece — otherwise produces a line long enough to hide the
+            declaration at the end of it.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="codeBlocker"/> or <paramref name="attributes"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateBaseExtensions.AddInlineAttributes(ktsu.CodeBlocker.CodeBlocker,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Writes each attribute bracketed and inline, followed by a space.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="attributes">The attributes, each without its square brackets.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <remarks>
+            Used for parameters, where an attribute has to stay on the declaration line.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="codeBlocker"/> or <paramref name="attributes"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateBaseExtensions.AddKeywords(ktsu.CodeBlocker.CodeBlocker,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Writes the modifiers space-separated, followed by a trailing space when there is at least one.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="keywords">The modifiers, in the order they should appear.</param>
+            <returns>The same <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="codeBlocker"/> or <paramref name="keywords"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.TemplateRendering">
+            <summary>
+            The rendering steps shared by more than one template.
+            </summary>
+            <remarks>
+            Methods, constructors and operators differ only in their signature, so their parameter list and
+            body are written from here rather than implemented once per member kind.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateRendering.RenderFragment(ktsu.CodeBlocker.CodeBlocker,System.Action{ktsu.CodeBlocker.CodeBlocker})">
+            <summary>
+            Renders a fragment — a body, an expression, a parameter — into its own buffer.
+            </summary>
+            <param name="parent">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> the fragment will be spliced into.</param>
+            <param name="factory">The callback that writes the fragment, or <see langword="null"/>.</param>
+            <returns>The rendered fragment, empty when <paramref name="factory"/> is <see langword="null"/>.</returns>
+            <remarks>
+            The buffer is configured exactly like <paramref name="parent"/>, so the fragment's own
+            indentation and line terminators match the document it is going into. In particular the
+            terminator is the configured one and never the host's, which is what lets a body assembled on
+            one platform lay out identically on another.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateRendering.SplitLines(ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Splits a rendered fragment into its lines, discarding the empty tail a trailing terminator
+            leaves behind.
+            </summary>
+            <param name="parent">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> the fragment was rendered for.</param>
+            <param name="fragment">The rendered fragment.</param>
+            <returns>The fragment's lines.</returns>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateRendering.SpliceFragment(ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Writes a rendered fragment through <paramref name="parent"/> one line at a time, so every
+            line picks up the indentation of the position it is being spliced into.
+            </summary>
+            <param name="parent">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="fragment">The rendered fragment.</param>
+            <remarks>
+            Writing the fragment as one string instead would splice it verbatim: only its first line
+            would land at the current indent and every following line would keep the indentation it had
+            in its own buffer, which is why a nested body used to come out flush against the left margin.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateRendering.WriteParameterList(ktsu.CodeBlocker.CodeBlocker,System.Collections.Generic.IEnumerable{ktsu.CodeBlocker.Templates.ParameterTemplate})">
+            <summary>
+            Writes a parenthesised, comma-separated parameter list.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="parameters">The parameters, in declaration order.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateRendering.WriteTypeParameterList(ktsu.CodeBlocker.CodeBlocker,System.Collections.Generic.IReadOnlyCollection{System.String})">
+            <summary>
+            Writes the angle-bracketed type parameter list, or nothing when there are none.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="typeParameters">The type parameter names.</param>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateRendering.WriteConstraints(ktsu.CodeBlocker.CodeBlocker,System.Collections.Generic.IReadOnlyCollection{System.String})">
+            <summary>
+            Writes each generic constraint clause on its own line, indented one level below the
+            declaration it constrains.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="constraints">The constraint clauses, each written verbatim.</param>
+            <remarks>
+            The last clause is left unterminated so that whatever follows still sees an open declaration
+            line: a member with no body attaches its semicolon to the clause
+            (<c>where T : struct;</c>), and an expression body attaches its arrow.
+            </remarks>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TemplateRendering.WriteBody(ktsu.CodeBlocker.CodeBlocker,System.Action{ktsu.CodeBlocker.CodeBlocker})">
+            <summary>
+            Writes a member body, terminating the declaration line.
+            </summary>
+            <param name="codeBlocker">The <see cref="T:ktsu.CodeBlocker.CodeBlocker"/> to write to.</param>
+            <param name="bodyFactory">
+            The callback that writes the body, supplying its own braces or expression-body arrow.
+            <see langword="null"/> writes a terminating semicolon instead, for a declaration with no body
+            — an abstract, partial or interface member.
+            </param>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.TypeKind">
+            <summary>
+            The kind of type a <see cref="T:ktsu.CodeBlocker.Templates.ClassTemplate"/> declares.
+            </summary>
+            <remarks>
+            The kind supplies the declaration keyword, so it does not also belong in
+            <see cref="P:ktsu.CodeBlocker.Templates.TemplateBase.Keywords"/> — those carry only the modifiers.
+            </remarks>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.TypeKind.Class">
+            <summary>A <c>class</c> declaration.</summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.TypeKind.Struct">
+            <summary>A <c>struct</c> declaration.</summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.TypeKind.Interface">
+            <summary>An <c>interface</c> declaration.</summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.TypeKind.Record">
+            <summary>A <c>record</c> declaration.</summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.TypeKind.RecordStruct">
+            <summary>A <c>record struct</c> declaration.</summary>
+        </member>
+        <member name="F:ktsu.CodeBlocker.Templates.TypeKind.Enum">
+            <summary>An <c>enum</c> declaration.</summary>
+        </member>
+        <member name="T:ktsu.CodeBlocker.Templates.TypeKindKeywords">
+            <summary>
+            The declaration keywords for each <see cref="T:ktsu.CodeBlocker.Templates.TypeKind"/>.
+            </summary>
+        </member>
+        <member name="M:ktsu.CodeBlocker.Templates.TypeKindKeywords.For(ktsu.CodeBlocker.Templates.TypeKind)">
+            <summary>
+            Gets the declaration keyword for a type kind.
+            </summary>
+            <param name="kind">The kind to translate.</param>
+            <returns>The C# keyword or keyword pair that declares that kind.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="kind"/> is not a known kind.</exception>
+        </member>
+    </members>
+</doc>

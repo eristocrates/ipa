@@ -13,12 +13,18 @@ open Dubzer.WhatwgUrl
 type IPage with
     member this.asCdp = this :?> CdpPage
 
+type IFrame with
+    member this.asCdp = this :?> CdpFrame
+
 
 type CdpPageTarget with
     member this.DomUrl = DomUrl this.Url
 
 type CdpPage with
     member this.DomUrl = DomUrl this.Url
+    member this.frames =
+        this.Frames
+        |> Array.map (fun frame -> frame.asCdp)
 
     member this.ScrollToBottom() =
         task { return! this.EvaluateFunctionAsync("() => window.scrollTo(0, document.documentElement.scrollHeight)") }

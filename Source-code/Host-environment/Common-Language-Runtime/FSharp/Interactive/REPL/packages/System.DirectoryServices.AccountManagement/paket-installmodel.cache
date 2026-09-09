@@ -22,7 +22,7 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/c44cc6cbcad147159885a5334e274824.psmdcp
+F: /package/services/metadata/core-properties/581fd358aadc49168562a53223f9a344.psmdcp
 D: /runtimes
 D: /runtimes/win
 D: /runtimes/win/lib
@@ -40,7 +40,7 @@ F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
 F: /PACKAGE.md
-F: /system.directoryservices.accountmanagement.10.0.11.nupkg
+F: /system.directoryservices.accountmanagement.10.0.12.nupkg
 F: /System.DirectoryServices.AccountManagement.nuspec
 F: /THIRD-PARTY-NOTICES.TXT
 F: /useSharedDesignerContext.txt

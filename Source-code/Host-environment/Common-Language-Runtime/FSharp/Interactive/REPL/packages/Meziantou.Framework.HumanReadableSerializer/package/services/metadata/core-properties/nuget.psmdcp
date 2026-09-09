@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>One-way serializer to a human readable format</dc:description>
   <dc:identifier>Meziantou.Framework.HumanReadableSerializer</dc:identifier>
-  <version>4.0.3</version>
-  <keywords></keywords>
+  <version>4.0.4</version>
+  <keywords>serializer, human-readable, snapshot-testing, diagnostics</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>RecurrenceRule (RFC 5545) and Cron expression parser and evaluator</dc:description>
   <dc:identifier>Meziantou.Framework.Scheduling</dc:identifier>
-  <version>4.0.3</version>
-  <keywords></keywords>
+  <version>4.1.1</version>
+  <keywords>cron, rrule, recurrence, rfc5545, icalendar, scheduling</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Microsoft.Extensions.Logging.EventLog.nuspec" Id="RFFFB36033481BD8E" />
-  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/27ef1c24d9f549a7ad9d207749317cc9.psmdcp" Id="R525536916EA62A03" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/72368d90ee13492c91f0c3cd758847f7.psmdcp" Id="R7937FF1B11CA10A4" />
 </Relationships>

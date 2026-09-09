@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>FullPath makes it easier to deal with paths</dc:description>
   <dc:identifier>Meziantou.Framework.FullPath</dc:identifier>
-  <version>3.0.4</version>
-  <keywords></keywords>
+  <version>3.0.5</version>
+  <keywords>path, file-system, io, full-path, normalization</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

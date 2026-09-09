@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>PhoenixmlDb.XQuery</id>
-    <version>1.6.12</version>
+    <version>1.6.14</version>
     <authors>Endpoint Systems</authors>
     <license type="expression">Apache-2.0</license>
     <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
@@ -10,77 +10,76 @@
     <readme>PACKAGE.md</readme>
     <projectUrl>https://phoenixml.dev/</projectUrl>
     <description>XQuery 4.0 query engine for PhoenixmlDb</description>
-    <releaseNotes>Six fixes, four of them found by running XSpec's 284-suite corpus against the engine. Two are
-the reason this release exists: without them the XSLT engine cannot report XSpec results
-correctly.
+    <releaseNotes>Error codes. Four sites where the engine knew exactly what had gone wrong and reported something
+a caller could not act on — three of them by letting a raw .NET exception escape.
 
-### `namespace-node()` matched every node kind
+### Casting and constructor functions leaked CLR exceptions
 
-`ItemType` had no `Namespace` member, so the parser mapped `namespace-node()` to `ItemType.Node`
-— the test that matches ANY node. `$x instance of namespace-node()` therefore answered true for
-elements, attributes, text, comments and documents alike.
+`xs:int('abc')` reported *"The input string 'abc' was not in a correct format."* That is a
+`FormatException`, not an XQuery error, and it matches no error code any caller could catch on.
+The conversion primitives underneath — `Convert.To*`, `*.Parse` — throw `FormatException`,
+`OverflowException` and `InvalidCastException`, and those travelled all the way out.
 
-XSpec decides whether a result can be wrapped in a document node with:
+The spec defines a constructor function as equivalent to a cast, so `xs:int('abc')` and
+`'abc' cast as xs:int` must report the same code. Only the cast half had been wrapped; the 49
+constructor functions called `long.Parse` and `Convert.ToInt32` directly. Both halves now
+translate consistently: an invalid lexical form is FORG0001, a value out of range is FOCA0002, an
+operand whose type has no conversion at all is XPTY0004.
 
-    $item instance of node()
-    and not($item instance of attribute() or $item instance of namespace-node())
+The mapping was measured against the W3C corpus rather than assumed. In cast and constructor
+context `FormatException` corresponds to FORG0001 in 57 of 57 cases; `OverflowException` splits
+78 to 29 in favour of FOCA0002, so that is a majority answer rather than a certainty, and the
+minority remain wrong — with a proper code — until the split is understood.
 
-With the second test always true, that predicate was always false. No result was ever wrapped,
-so the context item for every `x:expect` predicate stayed a parentless element rather than a
-document node. An assertion written as `//foo`, the idiomatic XSpec style, could never match,
-and one written as `/foo` raised XPDY0050.
+Both wrappers sit in the shared helper rather than at the call sites, because every call site is
+an `async IAsyncEnumerable` iterator and C# forbids `yield return` inside a `try` with a `catch`.
+That constraint is the likeliest reason this was never wrapped.
 
-Measured against the XSpec corpus: 4 more suites run to completion, 64 more assertions pass.
+### Casting to a gregorian type accepted operands the spec forbids
 
-### `xs:integer()` crashed on a value wider than `long`
+XQuery §19.1 permits casting to `xs:gYear` and its relatives only from `xs:string`,
+`xs:untypedAtomic`, `xs:date`, `xs:dateTime` or the same gregorian type. The default arm of each
+dispatch instead stringified whatever it received and handed the text to the lexical parser, so
+`xs:time("13:20:00-05:00") cast as xs:gYear` reported `Invalid xs:gYear: '13:20:00-05:00'` —
+diagnosing a malformed lexical form for a cast that was never legal. Now XPTY0004.
 
-`BigInteger` does not implement `IConvertible`, and the constructor's fallback called
-`Convert.ToInt64`. The catch clauses covered `FormatException` and `OverflowException` but not
-`InvalidCastException`, so a CLR message reached the user:
+### fn:avg disagreed with fn:sum about its own operand types
 
-    Unable to cast object of type 'System.Numerics.BigInteger' to type 'System.IConvertible'
+`fn:sum` raises FORG0006 for boolean, string, anyURI and duration operands. `fn:avg` agreed only
+on string and used XPTY0004 for boolean and anyURI — inconsistent with its twin three lines away
+in the same file. `fn:avg` also crashed outright on an `xs:integer` outside `long` range:
+`BigInteger` does not implement `IConvertible`, and the accumulation ended in an unconditional
+`Convert.ToDouble` outside its `else if` chain. `fn:sum` was unaffected; its chain is closed.
 
-The value came from `xs:unsignedLong`, which returns a `BigInteger` above `long.MaxValue` by
-design — a producer and a type matcher that already agreed, with the constructor between them
-disagreeing.
+### fn:load-xquery-module reported FOQM0002 for every failure
 
-### `xs:integer` is unbounded
+The implementation compiles a synthetic `import module`, so the analyzer has already classified
+the failure precisely — an unresolvable module namespace is XQST0059. The wrapper discarded that
+and reported FOQM0002 for everything, making "no such module", "the module has a syntax error" and
+"the module imports something missing" indistinguishable.
 
-`xs:integer` has no upper bound in XSD, but the constructor capped it at `long` and reported
-`FORG0001 ... value out of range` for values the type permits. `MatchesItemType` already
-accepted a `BigInteger` for `ItemType.Integer`, so widening the constructor aligns it with the
-rest of the engine rather than adding a representation. Literals wider than `long` now parse.
+Static errors surfaced through `XQueryFacade` and the `xquery` CLI had the same shape, reporting a
+blanket XPST0003 — a syntax error — for any compilation failure, while `QueryEngine.Compile` had
+always propagated the analyzer's own code.
 
-### `fn:trace` rendered the container, not the value
+### Measured
 
-`fn:trace` interpolated its argument, so `ToString()` on a container answered with the CLR type
-— `System.Object[]` rather than the sequence. A diagnostic that hides the value defeats its own
-purpose. Adds `XdmShape.Render`.
+W3C XQTS 28,887 → **29,205 of 31,414 (92.97%)**. Unit suite 1532, unchanged.
 
-### `except`, `union` and `intersect` did not say what the bad operand was
+The denominator moved too, and not because tests were dropped for convenience: the runner accepted
+any `&lt;dependency type="spec"&gt;` containing "XQ", so tests pinned to **XQuery 1.0** ran against a 4.0
+engine. `Axes127` states in its own description that "the namespace-node() kind test is new in
+XQuery 3.0" and asserts an error — it requires the engine NOT to support something this engine
+does support. 56 such tests are now correctly skipped.
 
-    An operand of the except operator is not a node
+### Source layout
 
-That message repeats the error code and omits both facts a user needs: WHICH of the two operands,
-and what it actually held. It is emitted from two separate throw sites, so it could not even
-distinguish left from right. It now reads:
-
-    The left operand of the except operator is not a node: the string ''
-
-Found while tracing an XSpec failure through four wrong hypotheses; the improved message
-identified the value on the first run afterwards.
-
-### The CLI aborted on a spec-defined error
-
-`XQueryException`, the family raised by built-in functions, had no catch arm and fell to a
-catch-all whose `throw` aborted the process. `xquery "xs:integer('nope')"` exited 134 with a
-stack dump. It now reports `Runtime error [FORG0001]` and exits 3.
-
-    XQuery.Tests 1524 passed, 0 failed
-    XQuery.Cli.Tests 8 passed, 0 failed</releaseNotes>
+No behaviour change: 31 files carrying five or more top-level types are now one type per file,
+including `PhysicalOperators.cs` (89 types, 12,879 lines). Verified by diffing the full type
+inventory before and after — 890 types, none lost, none added.</releaseNotes>
     <copyright>Copyright © Endpoint Systems 2026. All rights reserved.</copyright>
     <tags>xml xquery xpath query database</tags>
-    <repository type="git" url="https://github.com/phoenixmldb/phoenixmldb-xquery" commit="9568b9aaec7e94b9d569b77bc2478a1fa9c95115" />
+    <repository type="git" url="https://github.com/phoenixmldb/phoenixmldb-xquery" commit="9cfb6fc33b00ee0d5a37e33b41516ef100108169" />
     <dependencies>
       <group targetFramework="net10.0">
         <dependency id="Antlr4.Runtime.Standard" version="4.13.1" exclude="Build,Analyzers" />

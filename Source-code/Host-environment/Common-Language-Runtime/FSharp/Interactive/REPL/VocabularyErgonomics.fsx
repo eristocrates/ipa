@@ -45,6 +45,8 @@ open VDS.RDF.Parsing
 open System
 open FolkerKinzel.MimeTypes
 open System.Threading
+open RDFSharp.Model
+open System.Threading.Tasks
 
 
 
@@ -54,7 +56,7 @@ let singletonDistributions =
     [|
 
 
-
+       "https://w3id.org/valueflows/ont/vf#", "https://codeberg.org/valueflows/pages/raw/branch/main/assets/all_vf.TTL"
        "https://www.omg.org/spec/Commons/AnnotationVocabulary/", "https://www.omg.org/spec/Commons/AnnotationVocabulary.ttl"
        "https://www.omg.org/spec/Commons/BusinessAuthorizations/", "https://www.omg.org/spec/Commons/BusinessAuthorizations.ttl"
        "https://www.omg.org/spec/Commons/Classifiers/", "https://www.omg.org/spec/Commons/Classifiers.ttl"
@@ -81,7 +83,6 @@ let singletonDistributions =
        "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB/", "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB.ttl"
        "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-MX/", "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-MX.ttl"
        "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/", "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US.ttl"
-       "https://www.gleif.org/ontology/L1/", "https://www.gleif.org/ontology/pylodev2/data_file.ttl"
        "http://purl.org/HDT/hdt#", "https://www.w3.org/submissions/2011/SUBM-HDT-RDFS-20110330/HDT.rdf"
        "http://kaiko.getalp.org/dbnary#", "https://kaiko.getalp.org/static/datamodel/2.1.2/ontology.ttl"
        "http://www.w3.org/2011/http-headers#", "https://www.w3.org/2011/http-headers.rdf"
@@ -234,17 +235,25 @@ let singletonDistributions =
        "https://www.commoncoreontologies.org/FamilialRelationsOntology", "https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-extensions/FamilialRelationsOntology.ttl"
        // "https://www.commoncoreontologies.org/mro/", "https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-extensions/ModalRelationOntology.ttl" // "cco.mro"
        "https://open-metadata.org/ontology/", "https://github.com/open-metadata/OpenMetadataStandards/raw/refs/heads/main/rdf/ontology/openmetadata.ttl"
-
+       "https://www.gleif.org/ontology/Base/", "https://www.gleif.org/ontology/v1.0/Base/ontology.ttl"
+       "https://www.gleif.org/ontology/L1/", "https://www.gleif.org/ontology/v1.0/L1/ontology.ttl"
+       "https://www.gleif.org/ontology/L2/", "https://www.gleif.org/ontology/v1.0/L2/ontology.ttl"
+       "https://www.gleif.org/ontology/L2Parent/", "https://www.gleif.org/ontology/v1.0/L2Parent/ontology.ttl"
+       "https://www.gleif.org/ontology/EntityLegalForm/", "https://www.gleif.org/ontology/v1.0/EntityLegalForm/ontology.ttl"
+       "https://www.gleif.org/ontology/RegistrationAuthority/", "https://www.gleif.org/ontology/v1.0/RegistrationAuthority/ontology.ttl"
+       "https://www.gleif.org/ontology/ReportingException/", "https://www.gleif.org/ontology/v1.0/ReportingException/ontology.ttl"
 
 
        |]
     |> Array.map (fun (namespaceName, namespaceDistribution) -> DomUrl namespaceName, DomUrl namespaceDistribution)
 
-let chrome = CdpBrowser.Connect()
+// TODO move somewhere else
+type RDFNamespace with
+    member this.asPrefixId =
+        { prefixLabel = this.NamespacePrefix
+          namespaceName = this.NamespaceUri.OriginalString }
 
-let testTab =
-    chrome.tabs
-    |> Array.find (fun tab -> tab.Url = "https://www.gleif.org/ontology/pylodev2/data_file.ttl")
+let chrome = CdpBrowser.Connect()
 
 let missingNamespaceDistributions =
     singletonDistributions
@@ -255,67 +264,111 @@ let missingNamespaceDistributions =
         not namespaceFile.Exists)
 
 
-(*
 
-missingNamespaceDistributions
-singletonDistributions
-|> Array.Parallel.iter (fun (namespaceName, namespaceDistribution) ->
+// missingNamespaceDistributions
+let downloadDistributions (distributionFilter: DomUrl * DomUrl -> bool) (distributions: array<DomUrl * DomUrl>) =
 
-    let options = new CreatePageOptions()
-    options.Background <- true
-    let distributionTab = chrome.NewPageAsync(options).await.asCdp
-    let distributionMimeType = MimeType.FromFileName namespaceDistribution.extension
-    let distributionFile =
-        Path.Combine(namespaceName.asFolder.FullName, distributionMimeType.MediaType, $"{distributionMimeType.SubType}{namespaceDistribution.extension}")
-        |> FileInfo
+    distributions
+    |> Array.filter distributionFilter
+    |> Array.Parallel.iter (fun (namespaceName, namespaceDistribution) ->
+        printfn "%s %s" namespaceName.Href namespaceDistribution.Href
 
-    let downloadedFile = Path.Combine(Folder.Downloads.FullName, namespaceDistribution.fileName) |> FileInfo
+        let options = new CreatePageOptions()
+        options.Background <- true
+        let distributionTab = chrome.NewPageAsync(options).await.asCdp
+        let distributionMimeType = MimeType.FromFileName namespaceDistribution.extension
+        let distributionFile =
+            Path.Combine(namespaceName.asFolder.FullName, distributionMimeType.MediaType, $"{distributionMimeType.SubType}{namespaceDistribution.extension}")
+            |> FileInfo
 
-    let maybeDistributionText =
+        let downloadedFile =
+            Path.Combine(Folder.Downloads.FullName, namespaceDistribution.fileName)
+            |> FileInfo
 
-        if not downloadedFile.Exists then
+        let maybeDistributionText =
 
-            try
+            if not downloadedFile.Exists then
+                try
 
-                distributionTab
-                    .GoToAsync(
-                        namespaceDistribution.Href
-                    )
-                    .await
-                    .asCdp
-                    .TextAsync().await
+                    printfn "%s %s trying to get text from tab" namespaceName.Href namespaceDistribution.Href
+                    distributionTab
+                        .GoToAsync(
+                            namespaceDistribution.Href
+                        )
+                        .await
+                        .asCdp
+                        .TextAsync()
+                        .await
                     |> Some
-            with
-            | _ ->
+                with
+                | _ ->
 
-                if downloadedFile.Exists then
-                    File.ReadAllText(downloadedFile.FullName) |> Some
-                else
-                    None
-        else
-            None
-    match maybeDistributionText with
-    | Some distributionText ->
-        Directory.CreateDirectory distributionFile.DirectoryName |> ignore
-        File.WriteAllText(distributionFile.FullName, distributionText)
-        match namespaceDistribution.extension with
-        | ".ttl" ->
-            try
-                let distributionGraph = new ThreadSafeGraph()
-                FileLoader.Load(distributionGraph, distributionFile.FullName)
-                let parentDirectory = Path.Combine(namespaceName.asFolder.FullName, "text")
-                distributionGraph
-                |> Turtle.writeIgraph parentDirectory "turtle"
-            with
+                    printfn "%s %s tab response text failed" namespaceName.Href namespaceDistribution.Href
+                    if downloadedFile.Exists then
+                        printfn "%s %s text found in download folder" namespaceName.Href namespaceDistribution.Href
+                        File.ReadAllText(downloadedFile.FullName) |> Some
+                    else
+                        printfn "%s %s no text found in downloded folder" namespaceName.Href namespaceDistribution.Href
+                        None
+            else
+                None
+        match maybeDistributionText with
+        | Some distributionText ->
+            printfn "%s %s distribution text found" namespaceName.Href namespaceDistribution.Href
+
+            Directory.CreateDirectory distributionFile.DirectoryName
+            |> ignore
+            File.WriteAllText(distributionFile.FullName, distributionText)
+            printfn "%s %s saved text at %s" namespaceName.Href namespaceDistribution.Href distributionFile.FullName
+
+            match namespaceDistribution.extension with
+            | ".ttl" ->
+                try
+                    let distributionGraph = new ThreadSafeGraph()
+                    FileLoader.Load(distributionGraph, distributionFile.FullName)
+                    let parentDirectory = Path.Combine(namespaceName.asFolder.FullName, "text")
+                    distributionGraph
+                    |> Turtle.writeIgraph parentDirectory "turtle"
+                with
+                | _ -> ()
+
             | _ -> ()
 
-        | _ -> ()
+        | None -> printfn "%s %s no distribution text found" namespaceName.Href namespaceDistribution.Href
 
-    | None -> ()
-    Thread.Sleep(1000)
-    distributionTab.CloseAsync() |> ignore
+        Thread.Sleep(1000)
+        distributionTab.CloseAsync() |> ignore
 
 
-)
+    )
 
-*)
+
+
+
+let distributionFilter (namespaceName: DomUrl, namespaceDistribution: DomUrl) = namespaceName.Host = "www.gleif.org"
+
+singletonDistributions
+|> downloadDistributions distributionFilter
+
+let maybePrefixIdFromUrl (namespaceName: DomUrl) =
+    match namespaceName.Href, RDFNamespaceRegister.GetByUri(namespaceName.Href, true) with
+    | _, null -> None
+    | _, rdfNamespace -> Some rdfNamespace.asPrefixId
+
+Task.Run (fun () ->
+    singletonDistributions
+    |> Array.filter distributionFilter
+    |> Array.iter (fun (namespaceName, namespaceDistribution) ->
+
+        match maybePrefixIdFromUrl namespaceName with
+        | None -> printfn "No prefix found for %s" namespaceName.Href
+        | Some prefixId ->
+            printfn "prefix %s found for %s" prefixId.prefixLabel prefixId.namespaceName
+            let namespaceVocabulary = RdfVocabulary.fromPrefixId prefixId
+
+            printfn "trying to write module %s for %s" namespaceVocabulary.fsxFile.FullName namespaceName.Href
+            RdfVocabulary.asModule namespaceVocabulary
+            |> fun fsxText -> File.WriteAllText(namespaceVocabulary.fsxFile.FullName, fsxText)
+
+
+    ))

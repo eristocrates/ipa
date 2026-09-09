@@ -52,7 +52,7 @@
         <member name="P:Meziantou.Framework.Language.Regex.Internals.JavaScriptRegexParser.UsesStrictGrammar">
             <summary>
             ECMAScript has two grammars, and which one applies is decided by the <c>u</c> and <c>v</c> flags rather than by
-            the flavor.
+            the dialect.
             </summary>
             <remarks>
             Without them the web-compatibility grammar applies: an escape that is not well formed stands for its own
@@ -79,7 +79,7 @@
             <summary>Parses a pattern the way <c>System.Text.RegularExpressions</c> does.</summary>
             <remarks>
             Everything is in <see cref="T:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser"/>, which was ported from the .NET engine in the first place.
-            The .NET flavor is that grammar with nothing taken away.
+            The .NET dialect is that grammar with nothing taken away.
             </remarks>
         </member>
         <member name="P:Meziantou.Framework.Language.Regex.Internals.NetRegexParser.AllowsBareAngleBackreference">
@@ -98,7 +98,7 @@
         <member name="T:Meziantou.Framework.Language.Regex.Internals.PcreRegexParser">
             <summary>Parses a pattern the way PCRE and Perl do.</summary>
             <remarks>
-            Most of PCRE is the Perl grammar the shared parser already reads, narrowed or widened by flavor features. What is
+            Most of PCRE is the Perl grammar the shared parser already reads, narrowed or widened by dialect features. What is
             here is what PCRE has and the others do not: the <c>\g</c> reference family, subroutine calls, callouts, the extra
             shorthand classes, and the two numeric escapes with braces.
             </remarks>
@@ -139,10 +139,10 @@
             <remarks>A relative reference such as <c>\g{-1}</c> is always in range here, so only absolute ones are checked.</remarks>
         </member>
         <member name="T:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser">
-            <summary>The Perl-derived grammar, parameterized by what the flavor supports.</summary>
+            <summary>The Perl-derived grammar, parameterized by what the dialect supports.</summary>
             <remarks>
             Ported from the .NET engine, which is the most complete of the Perl-derived grammars, and then narrowed by feature
-            flags for the flavors that have less. The alternative, a parser per flavor, would have four copies of the same
+            flags for the dialects that have less. The alternative, a parser per dialect, would have four copies of the same
             escape and character-class handling and four places for them to drift apart.
             </remarks>
         </member>
@@ -207,7 +207,7 @@
             <summary>Parses the <c>[…]</c> a subtraction removes, which must be the last thing in its class.</summary>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryParsePosixBracket(Meziantou.Framework.Language.Regex.RegexSyntaxNode@)">
-            <summary>Reads <c>[:alpha:]</c>, <c>[.ch.]</c>, or <c>[=a=]</c> for the flavors that have them.</summary>
+            <summary>Reads <c>[:alpha:]</c>, <c>[.ch.]</c>, or <c>[=a=]</c> for the dialects that have them.</summary>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ReadClassElement">
             <summary>Reads one member of a class: a shorthand, a category, an escape, or a single character.</summary>
@@ -255,11 +255,11 @@
             own token so the parts of a header are addressable.
             </remarks>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryParseFlavorGroupHeader(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32)">
-            <summary>Parses a <c>(?…</c> header that only some flavors have, or returns null to fall through.</summary>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryParseDialectGroupHeader(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32)">
+            <summary>Parses a <c>(?…</c> header that only some dialects have, or returns null to fall through.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryParseFlavorEscape(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
-            <summary>Parses a backslash escape that only some flavors have, or returns null to fall through.</summary>
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryParseDialectEscape(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
+            <summary>Parses a backslash escape that only some dialects have, or returns null to fall through.</summary>
             <remarks>The reading position is on the backslash.</remarks>
         </member>
         <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.IsInCharacterClass">
@@ -341,7 +341,7 @@
             </remarks>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.IsCoreShorthandClassLetter(System.Char)">
-            <summary>The six shorthand classes every flavor has.</summary>
+            <summary>The six shorthand classes every dialect has.</summary>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.TryMapOptionLetter(System.Char,Meziantou.Framework.Language.Regex.RegexPatternOptions@)">
             <summary>Maps an inline option letter onto the options it sets, reporting whether the letter is one at all.</summary>
@@ -350,10 +350,10 @@
             syntax, but they still have to be accepted or the construct around them looks malformed.
             </remarks>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseSimpleHeaderGroup(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32,Meziantou.Framework.Language.Regex.RegexSyntaxKind,Meziantou.Framework.Language.Regex.RegexFlavorFeatures)">
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseSimpleHeaderGroup(Meziantou.Framework.Language.Regex.RegexSyntaxToken,System.Int32,Meziantou.Framework.Language.Regex.RegexSyntaxKind,Meziantou.Framework.Language.Regex.RegexDialectFeatures)">
             <summary>Parses a group whose header is <c>(?</c> plus one character.</summary>
             <remarks>
-            A header the flavor does not have is reported and then read as a non-capturing group, so the body is still
+            A header the dialect does not have is reported and then read as a non-capturing group, so the body is still
             parsed and every character is still accounted for.
             </remarks>
         </member>
@@ -403,7 +403,7 @@
         <member name="P:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.SupportsUnicodeCategories">
             <summary>
             Whether <c>\p{…}</c> is recognized. JavaScript reads it as an identity escape unless the pattern opted into
-            Unicode mode, so the answer depends on the options as well as the flavor.
+            Unicode mode, so the answer depends on the options as well as the dialect.
             </summary>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.Internals.PerlStyleRegexParser.ParseBackslashAtom(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
@@ -451,13 +451,13 @@
             <summary>Parses POSIX basic and extended regular expressions.</summary>
             <remarks>
             <para>
-            POSIX is the Perl grammar with almost everything taken away, which the flavor features already express: no inline
+            POSIX is the Perl grammar with almost everything taken away, which the dialect features already express: no inline
             options, no lookaround, no named groups, and no Unicode categories.
             </para>
             <para>
             What features cannot express is that a basic expression spells its delimiters with a backslash. <c>\(</c> opens a
             group, <c>\{</c> opens a bound, <c>\|</c> separates branches, and the bare characters are ordinary text -- the
-            reverse of every other flavor. The grammar skeleton asks for each delimiter by length rather than matching a
+            reverse of every other dialect. The grammar skeleton asks for each delimiter by length rather than matching a
             character, so overriding those is all it takes.
             </para>
             <para>
@@ -567,13 +567,13 @@
             <remarks>
             <para>
             The identifiers are banded: <c>REGEX0001</c>-<c>REGEX0019</c> are structural facts about brackets, parentheses, and
-            quantifiers that every flavor shares; <c>REGEX0030</c>-<c>REGEX0034</c> concern escapes, backreferences, and Unicode
+            quantifiers that every dialect shares; <c>REGEX0030</c>-<c>REGEX0034</c> concern escapes, backreferences, and Unicode
             properties, which POSIX has none of; <c>REGEX0050</c>-<c>REGEX0056</c> are constructs only .NET has;
             <c>REGEX0070</c>, <c>REGEX0090</c>, and <c>REGEX0110</c> are reserved for JavaScript, PCRE, and POSIX; and
             <c>REGEX0200</c> and up belong to the parser itself rather than to the grammar.
             </para>
             <para>
-            A construct the flavor does not have is not reported at all. It is simply not that construct: <c>\A</c> is the
+            A construct the dialect does not have is not reported at all. It is simply not that construct: <c>\A</c> is the
             letter <c>A</c> where there is no such anchor, which is what an engine without it does.
             </para>
             <para>
@@ -583,7 +583,7 @@
             </remarks>
         </member>
         <member name="T:Meziantou.Framework.Language.Regex.Internals.RegexParser">
-            <summary>The grammar every flavor shares: alternation, sequence, and quantifier.</summary>
+            <summary>The grammar every dialect shares: alternation, sequence, and quantifier.</summary>
             <remarks>
             <para>
             The engine this is modelled on scans a run of ordinary characters and then splits the last one off if a quantifier
@@ -594,7 +594,7 @@
             </para>
             <para>
             A quantifier applied to a quantifier is recovery rather than a fatal error, which is also what lets the same code
-            read <c>a*+</c> as a possessive quantifier for the flavors that have them.
+            read <c>a*+</c> as a possessive quantifier for the dialects that have them.
             </para>
             </remarks>
         </member>
@@ -630,7 +630,7 @@
             <summary>Parses the whole pattern. Never throws; problems become diagnostics.</summary>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ReadLiteralPrefix">
-            <summary>Reads the opening delimiter of a JavaScript literal. Every other flavor has none.</summary>
+            <summary>Reads the opening delimiter of a JavaScript literal. Every other dialect has none.</summary>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexParser.ReadLiteralSuffix">
             <summary>Reads the closing delimiter, flags, and any trailing content of a JavaScript literal.</summary>
@@ -717,14 +717,14 @@
             early, and a numeric backreference takes the longest prefix that names an existing group.
             </summary>
             <remarks>
-            It is either asked for through .NET's own ECMAScript option or implied by the flavor, because for JavaScript
+            It is either asked for through .NET's own ECMAScript option or implied by the dialect, because for JavaScript
             those are simply the rules rather than an option.
             </remarks>
         </member>
         <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexParser.AllowsEmptyCharacterClass">
             <summary>
             Whether an empty character class is allowed. In ECMAScript <c>[]</c> matches nothing and <c>[^]</c> matches
-            anything; in .NET the same text is an unterminated class, so this follows the flavor rather than the options.
+            anything; in .NET the same text is an unterminated class, so this follows the dialect rather than the options.
             </summary>
         </member>
         <member name="P:Meziantou.Framework.Language.Regex.Internals.RegexParser.UsesUnicodeSetsMode">
@@ -789,13 +789,13 @@
         <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.MissingToken(Meziantou.Framework.Language.Regex.RegexSyntaxKind,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.Regex.RegexSyntaxTrivia})">
             <summary>Builds a zero-width token standing in for one the source did not contain.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.PeekTriviaEnd(Meziantou.Framework.Language.Regex.RegexPatternOptions,Meziantou.Framework.Language.Regex.RegexFlavor)">
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.PeekTriviaEnd(Meziantou.Framework.Language.Regex.RegexPatternOptions,Meziantou.Framework.Language.Regex.RegexDialect)">
             <summary>Reports where the trivia at the reading position ends, without claiming it.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.TakeTrivia(Meziantou.Framework.Language.Regex.RegexPatternOptions,Meziantou.Framework.Language.Regex.RegexFlavor)">
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.TakeTrivia(Meziantou.Framework.Language.Regex.RegexPatternOptions,Meziantou.Framework.Language.Regex.RegexDialect)">
             <summary>Claims the trivia at the reading position and reports whatever went wrong inside it.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.ScanTrivia(System.Int32,Meziantou.Framework.Language.Regex.RegexPatternOptions,Meziantou.Framework.Language.Regex.RegexFlavor)">
+        <member name="M:Meziantou.Framework.Language.Regex.Internals.RegexScanner.ScanTrivia(System.Int32,Meziantou.Framework.Language.Regex.RegexPatternOptions,Meziantou.Framework.Language.Regex.RegexDialect)">
             <summary>Scans the trivia starting at <paramref name="start"/> and returns where it ends.</summary>
             <remarks>
             Ported from the engine's <c>ScanBlank</c>, with its two conditions kept as they are. Whitespace and <c>#</c>
@@ -1038,199 +1038,199 @@
         <member name="T:Meziantou.Framework.Language.Regex.RegexDiagnosticSeverity">
             <summary>Represents the severity of a regular-expression parser diagnostic.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Regex.RegexFlavor">
-            <summary>Identifies a regular-expression flavor understood by <see cref="T:Meziantou.Framework.Language.Regex.RegexSyntaxTree"/>.</summary>
-            <remarks>The set of flavors is closed. Use the static properties to obtain an instance.</remarks>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexDialect">
+            <summary>Identifies a regular-expression dialect understood by <see cref="T:Meziantou.Framework.Language.Regex.RegexSyntaxTree"/>.</summary>
+            <remarks>The set of dialects is closed. Use the static properties to obtain an instance.</remarks>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavor.CommonFeatures">
-            <summary>What every flavor has, POSIX basic expressions included.</summary>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialect.CommonFeatures">
+            <summary>What every dialect has, POSIX basic expressions included.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavor.ModernFeatures">
-            <summary>What every flavor except POSIX basic expressions has.</summary>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialect.ModernFeatures">
+            <summary>What every dialect except POSIX basic expressions has.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavor.PerlFeatures">
-            <summary>What the Perl-derived flavors share.</summary>
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialect.PerlFeatures">
+            <summary>What the Perl-derived dialects share.</summary>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.Net">
-            <summary>The .NET flavor, as <c>System.Text.RegularExpressions</c> defines it.</summary>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexDialect.Net">
+            <summary>The .NET dialect, as <c>System.Text.RegularExpressions</c> defines it.</summary>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.JavaScript">
-            <summary>The ECMAScript flavor.</summary>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexDialect.JavaScript">
+            <summary>The ECMAScript dialect.</summary>
             <remarks>
             Both Unicode flags are honoured. <c>u</c> makes a surrogate pair one atom; <c>v</c> additionally turns on the
             class set grammar, so a class may nest, be intersected with <c>&amp;&amp;</c>, have another subtracted with
             <c>--</c>, and contain a <c>\q{…}</c> string disjunction.
             </remarks>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.PcrePerl">
-            <summary>The PCRE and Perl flavor.</summary>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexDialect.PcrePerl">
+            <summary>The PCRE and Perl dialect.</summary>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.PosixExtended">
+        <member name="P:Meziantou.Framework.Language.Regex.RegexDialect.PosixExtended">
             <summary>POSIX extended regular expressions (ERE).</summary>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.PosixBasic">
+        <member name="P:Meziantou.Framework.Language.Regex.RegexDialect.PosixBasic">
             <summary>POSIX basic regular expressions (BRE), in which the delimiters are spelled with a backslash.</summary>
             <remarks>
             <c>\(…\)</c> groups, <c>\{n,m\}</c> bounds, and backreferences are all supported. Alternation with <c>\|</c>
             and the <c>\+</c> and <c>\?</c> quantifiers are GNU extensions rather than POSIX proper, and are accepted.
             </remarks>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.Name">
-            <summary>The canonical lowercase name of the flavor, such as <c>net</c> or <c>pcre</c>.</summary>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexDialect.Name">
+            <summary>The canonical lowercase name of the dialect, such as <c>net</c> or <c>pcre</c>.</summary>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.Family">
-            <summary>The grammar family the flavor belongs to.</summary>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexDialect.Family">
+            <summary>The grammar family the dialect belongs to.</summary>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexFlavor.Features">
-            <summary>The optional constructs the flavor supports.</summary>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexDialect.Features">
+            <summary>The optional constructs the dialect supports.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.RegexFlavor.HasFeature(Meziantou.Framework.Language.Regex.RegexFlavorFeatures)">
-            <summary>Returns <see langword="true"/> when the flavor supports every feature in <paramref name="feature"/>.</summary>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexDialect.HasFeature(Meziantou.Framework.Language.Regex.RegexDialectFeatures)">
+            <summary>Returns <see langword="true"/> when the dialect supports every feature in <paramref name="feature"/>.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.RegexFlavor.TryParse(System.String,Meziantou.Framework.Language.Regex.RegexFlavor@)">
-            <summary>Resolves a flavor from its name. Recognizes the canonical names and common aliases such as <c>dotnet</c>.</summary>
+        <member name="M:Meziantou.Framework.Language.Regex.RegexDialect.TryParse(System.String,Meziantou.Framework.Language.Regex.RegexDialect@)">
+            <summary>Resolves a dialect from its name. Recognizes the canonical names and common aliases such as <c>dotnet</c>.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Regex.RegexFlavorFamily">
-            <summary>Identifies the grammar family a <see cref="T:Meziantou.Framework.Language.Regex.RegexFlavor"/> belongs to, which selects the parser.</summary>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexDialectFamily">
+            <summary>Identifies the grammar family a <see cref="T:Meziantou.Framework.Language.Regex.RegexDialect"/> belongs to, which selects the parser.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFamily.Net">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFamily.Dotnet">
             <summary>The .NET grammar, as implemented by <c>System.Text.RegularExpressions</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFamily.JavaScript">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFamily.JavaScript">
             <summary>The ECMAScript grammar.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFamily.Pcre">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFamily.Pcre">
             <summary>The PCRE and Perl grammar.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFamily.Posix">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFamily.Posix">
             <summary>The POSIX grammar, both basic and extended.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Regex.RegexFlavorFeatures">
-            <summary>The optional constructs a <see cref="T:Meziantou.Framework.Language.Regex.RegexFlavor"/> supports.</summary>
+        <member name="T:Meziantou.Framework.Language.Regex.RegexDialectFeatures">
+            <summary>The optional constructs a <see cref="T:Meziantou.Framework.Language.Regex.RegexDialect"/> supports.</summary>
             <remarks>
             <para>
             A feature records a difference <em>within</em> a grammar family. Differences between families are handled by
-            <see cref="T:Meziantou.Framework.Language.Regex.RegexFlavorFamily"/>, which selects the parser.
+            <see cref="T:Meziantou.Framework.Language.Regex.RegexDialectFamily"/>, which selects the parser.
             </para>
             <para>
-            A construct the flavor does not have is not parsed as that construct. Where there is an ordinary reading it is used
+            A construct the dialect does not have is not parsed as that construct. Where there is an ordinary reading it is used
             instead -- <c>\A</c> is the letter <c>A</c> where there is no such anchor -- and where there is not, the construct
             is reported as invalid.
             </para>
             </remarks>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.ExtendedGroupSyntax">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.ExtendedGroupSyntax">
             <summary>
             The <c>(?…)</c> family of headers exists at all. POSIX has none of them, so a <c>?</c> after <c>(</c> is an
             ordinary quantifier with nothing to repeat rather than the start of a header.
             </summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.NonCapturingGroups">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.NonCapturingGroups">
             <summary>Non-capturing groups, <c>(?:…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.NamedGroups">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.NamedGroups">
             <summary>Named groups in any spelling.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.AngleNamedGroups">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.AngleNamedGroups">
             <summary>Angle-bracket named groups, <c>(?&lt;name&gt;…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.QuoteNamedGroups">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.QuoteNamedGroups">
             <summary>Single-quoted named groups, <c>(?'name'…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.PythonNamedGroups">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.PythonNamedGroups">
             <summary>Python-style named groups, <c>(?P&lt;name&gt;…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.BalancingGroups">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.BalancingGroups">
             <summary>Balancing groups, <c>(?&lt;current-previous&gt;…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.AtomicGroups">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.AtomicGroups">
             <summary>Atomic groups, <c>(?&gt;…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.BranchReset">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.BranchReset">
             <summary>Branch reset groups, <c>(?|…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Conditionals">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.Conditionals">
             <summary>Conditional alternations, <c>(?(1)yes|no)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.CommentGroups">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.CommentGroups">
             <summary>Comment groups, <c>(?#…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.InlineOptions">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.InlineOptions">
             <summary>Inline options, <c>(?i)</c> and <c>(?i:…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Lookahead">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.Lookahead">
             <summary>Lookahead, <c>(?=…)</c> and <c>(?!…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Lookbehind">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.Lookbehind">
             <summary>Lookbehind, <c>(?&lt;=…)</c> and <c>(?&lt;!…)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.AnchorsAZ">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.AnchorsAZ">
             <summary>The <c>\A</c>, <c>\Z</c>, <c>\z</c>, and <c>\G</c> anchors.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.KeepOut">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.KeepOut">
             <summary>The <c>\K</c> match reset.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Alternation">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.Alternation">
             <summary>Alternation with <c>|</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.PlusAndQuestionQuantifiers">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.PlusAndQuestionQuantifiers">
             <summary>The <c>+</c> and <c>?</c> quantifiers.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.LazyQuantifiers">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.LazyQuantifiers">
             <summary>Lazy quantifiers, <c>a*?</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.PossessiveQuantifiers">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.PossessiveQuantifiers">
             <summary>Possessive quantifiers, <c>a*+</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.BareBraceIsLiteral">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.BareBraceIsLiteral">
             <summary>A <c>{</c> that does not start a well-formed bound is an ordinary character rather than an error.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Backreferences">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.Backreferences">
             <summary>Backreferences.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.StrictEscapes">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.StrictEscapes">
             <summary>
-            An unrecognized alphabetic escape such as <c>\q</c> is an error. Where the flavor lacks this, the escape stands
+            An unrecognized alphabetic escape such as <c>\q</c> is an error. Where the dialect lacks this, the escape stands
             for the character itself.
             </summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.QuotedLiterals">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.QuotedLiterals">
             <summary>Quoted literal runs, <c>\Q…\E</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.UnicodeCategories">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.UnicodeCategories">
             <summary>Unicode categories and blocks, <c>\p{L}</c> and <c>\P{L}</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.UnicodeCategoriesRequireUnicodeFlag">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.UnicodeCategoriesRequireUnicodeFlag">
             <summary>Unicode categories are recognized only when the pattern opts into Unicode mode.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.UnicodePropertyNames">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.UnicodePropertyNames">
             <summary>
             Unicode property names may name a property as well as a value, as <c>\p{Script=Greek}</c> does, and are not
             checked against the .NET category and block names.
             </summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.CharacterClassSubtraction">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.CharacterClassSubtraction">
             <summary>Character class subtraction, <c>[a-z-[aeiou]]</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.PosixBracketExpressions">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.PosixBracketExpressions">
             <summary>POSIX bracket expressions, <c>[[:alpha:]]</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.ClassSetOperations">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.ClassSetOperations">
             <summary>
             The class set grammar: nested classes, <c>&amp;&amp;</c> and <c>--</c> operators, and <c>\q{…}</c> string
             disjunctions. JavaScript turns it on with the <c>v</c> flag rather than having it always.
             </summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.Recursion">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.Recursion">
             <summary>Recursion, <c>(?R)</c> and <c>(?1)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.BacktrackingVerbs">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.BacktrackingVerbs">
             <summary>Backtracking control verbs such as <c>(*SKIP)</c>.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.IgnorePatternWhitespace">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.IgnorePatternWhitespace">
             <summary>Extended mode, in which whitespace and <c>#</c> comments are insignificant.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Language.Regex.RegexFlavorFeatures.EscapedGroupDelimiters">
+        <member name="F:Meziantou.Framework.Language.Regex.RegexDialectFeatures.EscapedGroupDelimiters">
             <summary>Groups and bounds are written escaped, as POSIX basic expressions write <c>\(</c> and <c>\{</c>.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Regex.RegexGroupSyntax">
@@ -1337,10 +1337,10 @@
             </remarks>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.RegexOptionsInterop.ToPatternOptions(System.Text.RegularExpressions.RegexOptions)">
-            <summary>Maps the .NET options that affect parsing onto flavor-neutral options.</summary>
+            <summary>Maps the .NET options that affect parsing onto dialect-neutral options.</summary>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.RegexOptionsInterop.ToRegexOptions(Meziantou.Framework.Language.Regex.RegexPatternOptions)">
-            <summary>Maps flavor-neutral options back onto .NET options. Options with no .NET equivalent are dropped.</summary>
+            <summary>Maps dialect-neutral options back onto .NET options. Options with no .NET equivalent are dropped.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Regex.RegexParseOptions">
             <summary>Configures how <see cref="T:Meziantou.Framework.Language.Regex.RegexSyntaxTree"/> parses a pattern.</summary>
@@ -1348,8 +1348,8 @@
         <member name="F:Meziantou.Framework.Language.Regex.RegexParseOptions.DefaultMaxRecursionDepth">
             <summary>The default value of <see cref="P:Meziantou.Framework.Language.Regex.RegexParseOptions.MaxRecursionDepth"/>.</summary>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexParseOptions.Flavor">
-            <summary>The flavor to parse the pattern as.</summary>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexParseOptions.Dialect">
+            <summary>The dialect to parse the pattern as.</summary>
         </member>
         <member name="P:Meziantou.Framework.Language.Regex.RegexParseOptions.MaxRecursionDepth">
             <summary>
@@ -1699,8 +1699,8 @@
         <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Tokens">
             <summary>The tokens owned directly by this node. Tokens of child nodes are not included.</summary>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Flavor">
-            <summary>The flavor the node was parsed as, or <see langword="null"/> when the node is not attached to a tree.</summary>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Dialect">
+            <summary>The dialect the node was parsed as, or <see langword="null"/> when the node is not attached to a tree.</summary>
         </member>
         <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxNode.Options">
             <summary>The options in effect at the first character of this node.</summary>
@@ -1776,7 +1776,7 @@
             <para>
             Override any <c>Visit</c> method and return a different node to replace it. Returning the node unchanged, which is
             what the base implementations do, means "leave this alone and keep looking inside it", so every node type is
-            descended into regardless of flavor.
+            descended into regardless of dialect.
             </para>
             <para>
             A replaced node is spliced into the source text and the pattern is reparsed once, the same mechanism
@@ -1818,8 +1818,8 @@
         <member name="T:Meziantou.Framework.Language.Regex.RegexSyntaxTree">
             <summary>Represents an immutable regular-expression syntax tree with source text and diagnostics.</summary>
         </member>
-        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxTree.Flavor">
-            <summary>The flavor the pattern was parsed as.</summary>
+        <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxTree.Dialect">
+            <summary>The dialect the pattern was parsed as.</summary>
         </member>
         <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxTree.PatternOptions">
             <summary>
@@ -1829,11 +1829,11 @@
         <member name="P:Meziantou.Framework.Language.Regex.RegexSyntaxTree.Captures">
             <summary>The capture groups the pattern declares, in the order the engine numbers them.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Regex.RegexFlavor)">
+        <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Regex.RegexDialect)">
             <summary>Parses <paramref name="pattern"/> as a complete pattern. Never throws; problems are reported as diagnostics.</summary>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Regex.RegexParseOptions)">
-            <inheritdoc cref="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Regex.RegexFlavor)"/>
+            <inheritdoc cref="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseText(System.String,Meziantou.Framework.Language.Regex.RegexDialect)"/>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.ParseJavaScriptLiteral(System.String)">
             <summary>
@@ -1841,12 +1841,12 @@
             <see cref="P:Meziantou.Framework.Language.Regex.RegexSyntaxTree.PatternOptions"/> and keeping the delimiters on the root so the literal round-trips.
             </summary>
             <remarks>
-            The flavor is always <see cref="P:Meziantou.Framework.Language.Regex.RegexFlavor.JavaScript"/>: only that flavor has literals. Text that follows the
+            The dialect is always <see cref="P:Meziantou.Framework.Language.Regex.RegexDialect.JavaScript"/>: only that dialect has literals. Text that follows the
             flags is reported as <c>REGEX0204</c> and kept as skipped text.
             </remarks>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.CreateParser(System.String,Meziantou.Framework.Language.Regex.RegexParseOptions,Meziantou.Framework.Language.Regex.Internals.JavaScriptLiteral)">
-            <summary>The flavor family selects the parser; flavor features handle the differences within a family.</summary>
+            <summary>The dialect family selects the parser; dialect features handle the differences within a family.</summary>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.Reparse(System.String)">
             <summary>
@@ -1867,7 +1867,7 @@
         <member name="M:Meziantou.Framework.Language.Regex.RegexSyntaxTree.IsEquivalentTo(Meziantou.Framework.Language.Regex.RegexSyntaxTree)">
             <summary>
             Compares this tree with <paramref name="other"/> structurally, ignoring extended-mode whitespace and comments.
-            Two patterns parsed as different flavors, or with different options, are never equivalent.
+            Two patterns parsed as different dialects, or with different options, are never equivalent.
             </summary>
             <remarks>
             Identical text is a shortcut only when the options match as well. The same characters read with and without
@@ -1908,7 +1908,7 @@
             <summary>Returns <see langword="true"/> for the negated form, spelled <c>\P{…}</c> or <c>\p{^…}</c>.</summary>
         </member>
         <member name="P:Meziantou.Framework.Language.Regex.RegexUnicodeCategorySyntax.Name">
-            <summary>The category or block name, without the <c>^</c> that some flavors negate it with.</summary>
+            <summary>The category or block name, without the <c>^</c> that some dialects negate it with.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Regex.SeparatedNodes">
             <summary>
@@ -1934,10 +1934,10 @@
             the replacement brought none of its own.
             </remarks>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.Literal(System.Char,Meziantou.Framework.Language.Regex.RegexFlavor)">
-            <summary>Creates a literal that matches <paramref name="value"/> exactly, escaping it where the flavor needs it.</summary>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.Literal(System.Char,Meziantou.Framework.Language.Regex.RegexDialect)">
+            <summary>Creates a literal that matches <paramref name="value"/> exactly, escaping it where the dialect needs it.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.LiteralText(System.String,Meziantou.Framework.Language.Regex.RegexFlavor)">
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.LiteralText(System.String,Meziantou.Framework.Language.Regex.RegexDialect)">
             <summary>Creates a sequence that matches <paramref name="value"/> literally, escaping every character that needs it.</summary>
         </member>
         <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.AnyCharacter">
@@ -1970,16 +1970,16 @@
         <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.CharacterClass(System.Boolean,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.Regex.RegexSyntaxNode})">
             <summary>Creates a character class from its members.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.CharacterRange(System.Char,System.Char,Meziantou.Framework.Language.Regex.RegexFlavor)">
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.CharacterRange(System.Char,System.Char,Meziantou.Framework.Language.Regex.RegexDialect)">
             <summary>Creates a range such as <c>a-z</c>, for use inside a character class.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.NeedsEscape(System.Char,Meziantou.Framework.Language.Regex.RegexFlavor)">
-            <summary>Returns whether a character has to be escaped to match itself in this flavor.</summary>
+        <member name="M:Meziantou.Framework.Language.Regex.SyntaxFactory.NeedsEscape(System.Char,Meziantou.Framework.Language.Regex.RegexDialect)">
+            <summary>Returns whether a character has to be escaped to match itself in this dialect.</summary>
             <remarks>
             <para>
             Escaping is not a superset game: adding a backslash can <em>create</em> a construct. In POSIX basic expressions
             a bare <c>(</c> is already the literal and <c>\(</c> is what opens a group, so escaping it there would produce
-            the opposite of what the caller asked for. The set therefore has to be chosen per flavor rather than by taking
+            the opposite of what the caller asked for. The set therefore has to be chosen per dialect rather than by taking
             the union.
             </para>
             <para>

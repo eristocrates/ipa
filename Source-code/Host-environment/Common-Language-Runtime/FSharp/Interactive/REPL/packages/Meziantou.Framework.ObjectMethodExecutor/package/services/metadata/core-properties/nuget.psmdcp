@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>Provide helpers to execute a synchronous or asynchronous method using reflection</dc:description>
   <dc:identifier>Meziantou.Framework.ObjectMethodExecutor</dc:identifier>
-  <version>2.0.1</version>
-  <keywords></keywords>
+  <version>2.0.2</version>
+  <keywords>reflection, method-invocation, async, performance</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

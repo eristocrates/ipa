@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>C# wrapper around CredWrite/CredRead/CredDelete/CredUIPromptForWindowsCredentials/CredUICmdLinePromptForCredentials functions to store and retrieve from Windows Credential Store</dc:description>
   <dc:identifier>Meziantou.Framework.Win32.CredentialManager</dc:identifier>
-  <version>3.0.2</version>
-  <keywords></keywords>
+  <version>3.0.3</version>
+  <keywords>windows, win32, credentials, credential-manager, security</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

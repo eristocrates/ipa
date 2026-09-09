@@ -5413,39 +5413,6 @@
             <returns><see langword="true"/> when deserialization succeeded; otherwise <see langword="false"/>.</returns>
             <exception cref="T:System.ArgumentNullException"><paramref name="utf8Stream"/>, <paramref name="returnType"/>, or <paramref name="context"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:Meziantou.Framework.Yaml.YamlSerializer.Deserialize``1(System.ReadOnlySpan{System.Char},Meziantou.Framework.Yaml.YamlSerializerOptions)">
-            <summary>Deserializes YAML from a span of characters.</summary>
-            <typeparam name="T">The destination CLR type.</typeparam>
-            <param name="yaml">The YAML payload as a span.</param>
-            <param name="options">The serializer options. If <see langword="null"/>, <see cref="P:Meziantou.Framework.Yaml.YamlSerializerOptions.Default"/> is used.</param>
-            <returns>The deserialized value.</returns>
-        </member>
-        <member name="M:Meziantou.Framework.Yaml.YamlSerializer.Deserialize``1(System.ReadOnlySpan{System.Char},Meziantou.Framework.Yaml.Serialization.YamlSerializerContext)">
-            <summary>Deserializes YAML from a span of characters using generated metadata from a serializer context.</summary>
-            <typeparam name="T">The destination CLR type.</typeparam>
-            <param name="yaml">The YAML payload as a span.</param>
-            <param name="context">The source-generated serializer context.</param>
-            <returns>The deserialized value.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="context"/> is <see langword="null"/>.</exception>
-            <exception cref="T:System.InvalidOperationException">No generated metadata is available for <typeparamref name="T"/> in <paramref name="context"/>.</exception>
-        </member>
-        <member name="M:Meziantou.Framework.Yaml.YamlSerializer.Deserialize(System.ReadOnlySpan{System.Char},System.Type,Meziantou.Framework.Yaml.YamlSerializerOptions)">
-            <summary>Deserializes YAML from a span of characters using an explicit destination type.</summary>
-            <param name="yaml">The YAML payload as a span.</param>
-            <param name="returnType">The destination CLR type.</param>
-            <param name="options">The serializer options. If <see langword="null"/>, <see cref="P:Meziantou.Framework.Yaml.YamlSerializerOptions.Default"/> is used.</param>
-            <returns>The deserialized value.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="returnType"/> is <see langword="null"/>.</exception>
-        </member>
-        <member name="M:Meziantou.Framework.Yaml.YamlSerializer.Deserialize(System.ReadOnlySpan{System.Char},System.Type,Meziantou.Framework.Yaml.Serialization.YamlSerializerContext)">
-            <summary>Deserializes YAML from a span of characters using an explicit destination type and generated metadata from a serializer context.</summary>
-            <param name="yaml">The YAML payload as a span.</param>
-            <param name="returnType">The destination CLR type.</param>
-            <param name="context">The source-generated serializer context.</param>
-            <returns>The deserialized value.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="returnType"/> or <paramref name="context"/> is <see langword="null"/>.</exception>
-            <exception cref="T:System.InvalidOperationException">No generated metadata is available for <paramref name="returnType"/> in <paramref name="context"/>.</exception>
-        </member>
         <member name="M:Meziantou.Framework.Yaml.YamlSerializer.Serialize``1(``0,Meziantou.Framework.Yaml.YamlTypeInfo{``0})">
             <summary>Serializes a value using explicit type metadata.</summary>
             <typeparam name="T">The represented CLR type.</typeparam>
@@ -5553,14 +5520,6 @@
             <param name="typeInfo">The metadata used for deserialization.</param>
             <returns>The deserialized value.</returns>
             <exception cref="T:System.ArgumentNullException"><paramref name="yaml"/> or <paramref name="typeInfo"/> is <see langword="null"/>.</exception>
-        </member>
-        <member name="M:Meziantou.Framework.Yaml.YamlSerializer.Deserialize``1(System.ReadOnlySpan{System.Char},Meziantou.Framework.Yaml.YamlTypeInfo{``0})">
-            <summary>Deserializes a payload using explicit type metadata from a character span.</summary>
-            <typeparam name="T">The represented CLR type.</typeparam>
-            <param name="yaml">The YAML payload as a span.</param>
-            <param name="typeInfo">The metadata used for deserialization.</param>
-            <returns>The deserialized value.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="typeInfo"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:Meziantou.Framework.Yaml.YamlSerializer.Serialize``1(System.Buffers.IBufferWriter{System.Char},``0,Meziantou.Framework.Yaml.YamlSerializerOptions)">
             <summary>

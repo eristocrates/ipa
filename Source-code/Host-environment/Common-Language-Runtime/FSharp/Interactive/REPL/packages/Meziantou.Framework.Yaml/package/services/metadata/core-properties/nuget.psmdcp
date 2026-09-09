@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>A high-performance .NET YAML library providing parsing and serialization of object graphs, NativeAOT ready.</dc:description>
   <dc:identifier>Meziantou.Framework.Yaml</dc:identifier>
-  <version>1.0.8</version>
-  <keywords></keywords>
+  <version>2.0.0</version>
+  <keywords>yaml, parser, serialization, nativeaot, performance</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

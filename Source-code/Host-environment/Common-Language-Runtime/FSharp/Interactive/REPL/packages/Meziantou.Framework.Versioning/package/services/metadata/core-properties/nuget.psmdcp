@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>Provide a SemanticVersion class to parse, compare, format semantic versions</dc:description>
   <dc:identifier>Meziantou.Framework.Versioning</dc:identifier>
-  <version>3.0.3</version>
-  <keywords></keywords>
+  <version>3.0.4</version>
+  <keywords>semver, semantic-versioning, version, parsing, comparison</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

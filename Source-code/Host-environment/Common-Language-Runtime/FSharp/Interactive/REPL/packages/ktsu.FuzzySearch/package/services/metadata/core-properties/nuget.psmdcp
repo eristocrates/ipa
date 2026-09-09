@@ -3,7 +3,7 @@
   <dc:creator>ktsu.dev contributors</dc:creator>
   <dc:description>Lightweight .NET fuzzy string matching library with intelligent scoring for search-as-you-type, command palettes, and flexible string matching applications.</dc:description>
   <dc:identifier>ktsu.FuzzySearch</dc:identifier>
-  <version>1.2.38</version>
+  <version>1.2.39</version>
   <keywords>fuzzy search;fuzzy matching;string matching;approximate matching;search ranking;scoring;command palette;search as you type;text search;dotnet;csharp</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

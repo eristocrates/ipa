@@ -2474,6 +2474,22 @@
             Tries to gets a <see cref="T:System.ClientModel.Primitives.ModelReaderWriterTypeBuilder" /> for the given <see cref="T:System.Type" /> to allow <see cref="T:System.ClientModel.Primitives.ModelReaderWriter" /> to work with AOT.
             </summary><param name="type">The type to get info for.</param><param name="builder">The <see cref="T:System.ClientModel.Primitives.ModelReaderWriterTypeBuilder" /> if found.</param><returns>True if the corresponding <see cref="T:System.ClientModel.Primitives.ModelReaderWriterTypeBuilder" /> if defined in the context otherwise false.</returns>
         </member>
+        <member name="P:Azure.Monitor.OpenTelemetry.Exporter.Internals.ActivityTagsProcessor.IsV2">
+            <summary>
+            Whether the activity carried the newer semantic conventions.
+            </summary>
+        </member>
+        <member name="P:Azure.Monitor.OpenTelemetry.Exporter.Internals.ActivityTagsProcessor.BaseActivityType">
+            <summary>
+            The operation type without the schema-version flag, for dispatching on the operation alone.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.ActivityTagsProcessor.#ctor(System.Boolean)">
+            <summary>
+            Callers that only read <see cref="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.ActivityTagsProcessor.MappedTags" /> can skip collecting the unmapped
+            tags, which avoids a pooled buffer and the string conversion of array-valued tags.
+            </summary>
+        </member>
         <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.ApplicationInsightsSampler">
             <summary>
             Sample configurable for OpenTelemetry exporters for compatibility
@@ -2506,6 +2522,49 @@
             </remarks>
             <param name="input">An array to be evaluated.</param>
             <returns>A comma delimited string of the components of the input array.</returns>
+        </member>
+        <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList">
+            <remarks>
+            An instance holds either recognized attributes (in the slot array) or unrecognized tags
+            (in the list buffer), not both. Each buffer is rented only if that kind is stored.
+            </remarks>
+        </member>
+        <member name="P:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList.Length">
+            <summary>
+            Total tags held, across both the slot array and the list buffer.
+            </summary>
+        </member>
+        <member name="P:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList.ListCount">
+            <summary>
+            Tags held in the list buffer. A recognized attribute occupies a slot rather than a
+            list entry, so this trails <see cref="P:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList.Length" /> for an instance holding both kinds.
+            </summary>
+        </member>
+        <member name="P:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList.Item(Azure.Monitor.OpenTelemetry.Exporter.Internals.SemanticSlot)">
+            <summary>
+            Reads a recognized attribute in constant time. Returns <see langword="null" /> when the
+            attribute is absent.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList.InitializeForMappedTags">
+            <summary>
+            Initializes a list that will only hold recognized attributes, so no list buffer is rented.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList.Add(Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList@,System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Adds a tag, resolving its slot so it can later be read by <see cref="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.SemanticSlot" />.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList.AddMapped(Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList@,Azure.Monitor.OpenTelemetry.Exporter.Internals.SemanticSlot,System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Adds a tag whose slot the caller has already resolved.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList.AddUnmapped(Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList@,System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Adds a tag that is not a recognized attribute.
+            </summary>
         </member>
         <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonListExtensions.s_dbSystems">
             <summary>
@@ -2558,9 +2617,40 @@
              Gets dependency target from activity tag objects.
             </summary>
         </member>
+        <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzureMonitorBatchActivityExportProcessor">
+            <summary>
+            A batch processor that persists pending telemetry instead of transmitting it when the
+            provider shuts down, so that process exit costs a file write rather than an ingestion round
+            trip.
+            </summary>
+        </member>
+        <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzureMonitorBatchLogRecordExportProcessor">
+            <summary>
+            A batch processor that persists pending telemetry instead of transmitting it when the
+            provider shuts down, so that process exit costs a file write rather than an ingestion round
+            trip.
+            </summary>
+        </member>
+        <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzureMonitorPeriodicExportingMetricReader">
+            <summary>
+            A metric reader that persists the final collection instead of transmitting it when the
+            provider shuts down, so that process exit costs a file write rather than an ingestion round
+            trip.
+            </summary>
+            <remarks>
+            ForceFlush is deliberately not hooked: <c>MetricReader.OnCollect</c> cannot distinguish a
+            caller-initiated flush from the periodic collection, so covering it would change every
+            export.
+            </remarks>
+        </member>
         <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzureMonitorTransmitter">
             <summary>
             This class encapsulates transmitting a collection of <see cref="T:Azure.Monitor.OpenTelemetry.Exporter.Models.TelemetryItem" /> to the configured Ingestion Endpoint.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzureMonitorTransmitter.AddReference">
+            <summary>
+            Records that another exporter shares this instance. Balanced by <see cref="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzureMonitorTransmitter.Dispose" />.
             </summary>
         </member>
         <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.ConnectionString.AadHelper.DefaultAadScope">
@@ -2696,13 +2786,14 @@
             <param name="telemetryType">The type of telemetry.</param>
             <returns>TagList with common dimensions</returns>
         </member>
-        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.CustomerSdkStatsDimensions.GetDroppedTags(Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.TelemetryType,System.String,System.String)">
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.CustomerSdkStatsDimensions.GetDroppedTags(Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.TelemetryType,System.String,System.String,System.Nullable{System.Boolean})">
             <summary>
             Gets tags for dropped telemetry items.
             </summary>
             <param name="telemetryType">The type of telemetry.</param>
             <param name="dropCode">The drop code (status code or error category)</param>
             <param name="dropReason">Optional drop reason description</param>
+            <param name="telemetrySuccess">Whether request or dependency telemetry succeeded</param>
             <returns>TagList with dropped item dimensions</returns>
         </member>
         <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.CustomerSdkStatsDimensions.GetRetryTags(Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.TelemetryType,System.String,System.String)">
@@ -2806,12 +2897,19 @@
             Provides registration methods for customer SDK statistics.
             </summary>
         </member>
-        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.CustomerSdkStatsRegistration.RegisterCustomerSdkStats(Microsoft.Extensions.DependencyInjection.IServiceCollection,Azure.Monitor.OpenTelemetry.Exporter.AzureMonitorExporterOptions)">
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.CustomerSdkStatsRegistration.RegisterCustomerSdkStats(Azure.Monitor.OpenTelemetry.Exporter.AzureMonitorExporterOptions)">
             <summary>
-            Registers customer SDK stats services if enabled via environment variables.
+            Starts customer SDK stats collection if enabled via environment variables.
             </summary>
-            <param name="services">Service collection</param>
             <param name="options">Azure Monitor exporter options</param>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.CustomerSdkStatsRegistration.CreateCustomerSdkStatsOptions(Azure.Monitor.OpenTelemetry.Exporter.AzureMonitorExporterOptions)">
+            <summary>
+            Creates Azure Monitor exporter options for customer SDK stats.
+            Ensures customer SDK stats are disabled to prevent recursion.
+            </summary>
+            <param name="originalOptions">Original exporter options</param>
+            <returns>Options configured for customer SDK stats</returns>
         </member>
         <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.DropCode">
             <summary>
@@ -2843,6 +2941,12 @@
         <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.DropCode.BackOffEnabled">
             <summary>
             Items that are stored for retry due to a backoff period.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.DropCode.ShutdownPersisted">
+            <summary>
+            Items that are stored for retry because the provider was shutting down and transmitting
+            would have blocked process exit on the network.
             </summary>
         </member>
         <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.DropCodeExtensions.ToDimensionString(Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.DropCode)">
@@ -2939,6 +3043,20 @@
         <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.ITransmitter.TrackAsync(System.Collections.Generic.IEnumerable{Azure.Monitor.OpenTelemetry.Exporter.Models.TelemetryItem},Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats.TelemetrySchemaTypeCounter,Azure.Monitor.OpenTelemetry.Exporter.Internals.Diagnostics.TelemetryItemOrigin,System.Boolean,System.Threading.CancellationToken)">
             <summary>
             Sent telemetry and return the number of items Accepted.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.ITransmitter.BeginPersistOnlyScope">
+            <summary>
+            While the returned scope is held, telemetry is written to persistent storage instead of
+            being transmitted. Held across the shutdown drain so process exit costs a file write
+            rather than an ingestion round trip.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.ITransmitter.DrainStorage(System.Int32)">
+            <summary>
+            Starts a background drain of persisted telemetry and waits at most
+            <paramref name="waitMilliseconds" /> for it. Anything left behind stays on disk and is
+            picked up by a later drain, in this process or the next one.
             </summary>
         </member>
         <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.LogContextInfo">
@@ -3089,6 +3207,16 @@
             <see href="https://learn.microsoft.com/azure/azure-monitor/app/statsbeat" />.
             </remarks>
         </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.Platform.EnvironmentVariableConstants.APPLICATIONINSIGHTS_SDKSTATS_DISABLED_ALL">
+            <summary>
+            INTERNAL ONLY. Kill-switch to turn off internal SDKStats (Attach / Feature / Network Statsbeat)
+            completely. Set to "true" to fully disable emission of these signals.
+            </summary>
+            <remarks>
+            Maps to the <c>disabledAll</c> configuration in the SDKStats spec. Distinct from the
+            customer-facing <see cref="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.Platform.EnvironmentVariableConstants.APPLICATIONINSIGHTS_SDKSTATS_DISABLED" /> which governs CustomerSdkStats.
+            </remarks>
+        </member>
         <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.Platform.EnvironmentVariableConstants.APPLICATIONINSIGHTS_SDKSTATS_DISABLED">
             <summary>
             Available for users to opt out of customer SDK stats.
@@ -3104,6 +3232,34 @@
             </summary>
             <remarks>
             Default is 900 seconds (15 minutes). Minimum recommended is 60 seconds.
+            </remarks>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.Platform.EnvironmentVariableConstants.APPLICATIONINSIGHTS_STATS_LONG_EXPORT_INTERVAL">
+            <summary>
+            INTERNAL ONLY. Overrides the export interval (in seconds) for long-interval internal SDKStats
+            (the Attach / Feature signals, default 24 hours).
+            </summary>
+            <remarks>
+            Maps to the <c>longInterval</c> configuration in the SDKStats spec. Primarily intended for testing.
+            </remarks>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.Platform.EnvironmentVariableConstants.APPLICATIONINSIGHTS_STATS_SHORT_EXPORT_INTERVAL">
+            <summary>
+            INTERNAL ONLY. Overrides the export interval (in seconds) for short-interval internal SDKStats
+            (the Network signal, default 15 minutes).
+            </summary>
+            <remarks>
+            Maps to the <c>shortInterval</c> configuration in the SDKStats spec. Primarily intended for testing.
+            </remarks>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.Platform.EnvironmentVariableConstants.APPLICATIONINSIGHTS_STATS_CONNECTION_STRING">
+            <summary>
+            INTERNAL ONLY. Overrides the destination connection string that internal SDKStats envelopes are
+            sent to. When unset (the default), SDKStats flow to the Microsoft-owned SDKStats resources.
+            </summary>
+            <remarks>
+            Maps to the <c>connectionString</c> configuration in the SDKStats spec. Primarily intended for testing
+            (e.g. routing SDKStats to a test ingestion endpoint); production deployments should leave this unset.
             </remarks>
         </member>
         <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.Platform.EnvironmentVariableConstants.FUNCTIONS_WORKER_RUNTIME">
@@ -3363,6 +3519,114 @@
             When present, takes precedence over computed result code from semantic conventions.
             </summary>
         </member>
+        <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.SemanticSlot">
+            <summary>
+            Dense index assigned to each attribute recognized by <see cref="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.ActivityTagsProcessor" />.
+            Lets callers read a mapped tag by array index instead of scanning for a string key.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.SemanticSlot.Count">
+            <summary>Not a slot. Sizes the backing index.</summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.SemanticSlotMap.TryGetSlot(System.String,Azure.Monitor.OpenTelemetry.Exporter.Internals.SemanticSlot@)">
+            <remarks>
+            <see cref="T:System.Diagnostics.Activity" /> does not reject a null tag key, and
+            <see cref="M:System.Collections.Generic.Dictionary`2.TryGetValue(`0,`1@)" /> throws on one, so null is treated
+            as unrecognized.
+            </remarks>
+        </member>
+        <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig">
+            <summary>
+            Controls the "write to persistent storage, then upload out-of-band" behavior used when a
+            provider shuts down. Short-lived processes exit before an ingestion round trip can complete,
+            so the exit path persists telemetry and leaves delivery to a background drain in this or a
+            subsequent process.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig.PersistOnForceFlushSwitchName">
+            <summary>
+            Opts in to applying persist-only behavior to ForceFlush in addition to shutdown. Off by
+            default because callers that flush per-invocation generally expect delivery, not durability.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig.DisablePersistOnShutdownSwitchName">
+            <summary>
+            Reverts shutdown to the legacy blocking transmission.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig.DrainBudgetOverrideName">
+            <summary>
+            Overrides <see cref="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig.DrainBudgetMilliseconds" />. Settable through <c>AppContext.SetData</c>
+            or a runtimeconfig.json configProperty.
+            </summary>
+            <remarks>
+            Zero suits a short-lived application: the telemetry is already durable on disk, so exit
+            costs only the file write and delivery falls to a later run. Raising it cannot guarantee
+            delivery, because <c>Shutdown()</c> does not wait on the drain at all and <c>Dispose()</c>
+            is capped by the five second grace period OpenTelemetry gives it. A caller that must not
+            exit before ingestion answers wants <see cref="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig.DisablePersistOnShutdownSwitchName" /> with
+            a bounded network timeout instead.
+            </remarks>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig.DrainBudgetMilliseconds">
+            <summary>
+            Upper bound on how long shutdown waits for the background drain. The telemetry is already
+            durable on disk at this point, so this may resolve to zero without data loss.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig.FallbackPostBudgetMilliseconds">
+            <summary>
+            Upper bound for the transmission attempted when persistent storage is unavailable. This is
+            the one path where the request itself is the durability, so it must never resolve to zero.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig.InternalTelemetryNetworkTimeout">
+            <summary>
+            Network timeout for the Statsbeat exporter. Its meter provider exports once more as it is
+            disposed, which is on the process exit path, and the pipeline default of 100 seconds would
+            make an unreachable endpoint stall it. Losing internal telemetry is acceptable; stalling
+            exit is not. This applies only to Statsbeat, which transmits to its own endpoint and so
+            gets a transmitter of its own rather than sharing the customer's.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig.ResolveDrainWait(System.Int32)">
+            <summary>
+            Resolves how long to wait on the background drain. <see cref="F:System.Threading.Timeout.Infinite" /> is what
+            <c>Shutdown()</c> passes, and blocking process exit on the network is the problem this
+            design exists to avoid, so it maps to "do not wait".
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownConfig.GetDrainBudgetMilliseconds">
+            <summary>
+            The default is retained so that long-running services keep delivering their final batch
+            within a graceful shutdown window. <c>Dispose()</c> passes a finite timeout, so without
+            an override that window is used.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.PersistOnShutdownHelper.PersistThenDrain(Azure.Monitor.OpenTelemetry.Exporter.Internals.ITransmitter,System.Func{System.Boolean},System.Int32)">
+            <summary>
+            Runs the pipeline's own drain with the transmitter in persist-only mode, so that the
+            exports triggered by that drain are written to storage rather than transmitted, then
+            starts a bounded upload of everything now stored.
+            </summary>
+            <remarks>
+            The scope has to be opened here rather than in the exporter because
+            <c>BaseExportProcessor</c> exports the remaining batch before it shuts the exporter down.
+            </remarks>
+        </member>
+        <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.TelemetryStorageExtensions">
+            <summary>
+            Storage write policy owned by the exporter, kept separate from the vendored
+            PersistentStorage helpers.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.ShutdownPersistence.TelemetryStorageExtensions.SaveTelemetryWithEviction(OpenTelemetry.PersistentStorage.Abstractions.PersistentBlobProvider,System.Byte[],System.String,System.Int64)">
+            <summary>
+            Saves telemetry, making room oldest-first when the storage directory has reached its size
+            cap. The storage provider drops new telemetry when full and never evicts, which would
+            otherwise let a stale backlog permanently starve current telemetry.
+            </summary>
+        </member>
         <member name="P:Azure.Monitor.OpenTelemetry.Exporter.Internals.SourceGenerationContext.Boolean">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
@@ -3452,6 +3716,14 @@
             region. Unknown regions default to non-EU. Used by the distro path when the
             remote configuration cannot be obtained, so SDK statistics keep flowing on the
             same endpoint that non-distro callers have always used.
+            </summary>
+        </member>
+        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.Statsbeat.AzureMonitorStatsbeat.ResolveOperatingSystem(System.String,System.String)">
+            <summary>
+            Determines the effective "os" dimension. Per the SDKStats spec, the IMDS
+            <c>azInst_osType</c> takes precedence over the running process OS, except when it
+            is null/empty or the literal "Unknown" (case-insensitive), in which case the
+            running process OS (<paramref name="processOperatingSystem" />) is used.
             </summary>
         </member>
         <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.Statsbeat.SdkStatsConfigFetcher">
@@ -3659,6 +3931,12 @@
             Represents the unified result of attempting to transmit telemetry (exporter or from storage).
             </summary>
         </member>
+        <member name="P:Azure.Monitor.OpenTelemetry.Exporter.Internals.TransmissionResult.PartialSuccessHandled">
+            <summary>
+            Set when a partial success response was understood and its retryable items were either
+            re-persisted or confirmed absent. When false the caller must keep the original telemetry.
+            </summary>
+        </member>
         <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.TransmissionState.Open">
             <summary>
             Represents disabled transmission.
@@ -3703,6 +3981,36 @@
             Random variation is introduced in order to avoid collision.
             </summary>
             <returns>BackOff time interval.</returns>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.TransmitFromStorageHandler.LeasePeriodMilliseconds">
+            <summary>
+            Must exceed the time a single transmission can take, otherwise another process reclaims
+            the lease mid-upload and duplicate telemetry becomes routine rather than rare.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.TransmitFromStorageHandler.DrainPostBudgetMilliseconds">
+            <summary>
+            Caps a single drain request. Without it a hung endpoint holds the drain for the pipeline's
+            network timeout, blocking later passes, and would erode the margin over the lease period.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.TransmitFromStorageHandler.EagerDrainDelayMilliseconds">
+            <summary>
+            Only yields to application startup. Kept small so a process that exits in a few hundred
+            milliseconds still gets the drain underway.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.TransmitFromStorageHandler.DisableEagerDrainForTesting">
+            <summary>
+            Set by tests that assert on storage contents and cannot tolerate a background drain.
+            </summary>
+        </member>
+        <member name="F:Azure.Monitor.OpenTelemetry.Exporter.Internals.TransmitFromStorageHandler.DisableShutdownDrainForTesting">
+            <summary>
+            Set by tests that assert on what shutdown persisted. Shutdown starts the drain without
+            waiting for it, so it would otherwise be free to lease and delete those blobs while the
+            assertions run.
+            </summary>
         </member>
         <member name="T:Azure.Monitor.OpenTelemetry.Exporter.Internals.TransmitterFactory">
             <summary>
@@ -5773,9 +6081,6 @@
         <member name="M:Azure.Monitor.OpenTelemetry.Exporter.ChangeTrackingList`1.System#Collections#IEnumerable#GetEnumerator">
             <summary>Returns an enumerator that iterates through a collection.</summary><returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
         </member>
-        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList.System#Collections#IEnumerable#GetEnumerator">
-            <summary>Returns an enumerator that iterates through a collection.</summary><returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
-        </member>
         <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.SourceGenerationContext.global::System#Text#Json#Serialization#Metadata#IJsonTypeInfoResolver#GetTypeInfo(System.Type,System.Text.Json.JsonSerializerOptions)">
             <summary>Resolves a <see cref="T:System.Text.Json.Serialization.Metadata.JsonTypeInfo" /> contract for the requested type and options.</summary><param name="type">Type to be resolved.</param><param name="options">Configuration used when resolving the metadata.</param><returns>A <see cref="T:System.Text.Json.Serialization.Metadata.JsonTypeInfo" /> instance matching the requested type, or <see langword="null" /> if no contract could be resolved.</returns>
         </member>
@@ -5787,9 +6092,6 @@
         </member>
         <member name="P:Azure.Core.Pipeline.TaskExtensions.Enumerator`1.System#Collections#IEnumerator#Current">
             <summary>Gets the element in the collection at the current position of the enumerator.</summary><returns>The element in the collection at the current position of the enumerator.</returns>
-        </member>
-        <member name="M:Azure.Monitor.OpenTelemetry.Exporter.Internals.AzMonList.Enumerator.System#Collections#IEnumerator#Reset">
-            <summary>Sets the enumerator to its initial position, which is before the first element in the collection.</summary><exception cref="T:System.InvalidOperationException">The collection was modified after the enumerator was created.</exception><exception cref="T:System.NotSupportedException">The enumerator does not support being reset.</exception>
         </member>
     </members>
 </doc>

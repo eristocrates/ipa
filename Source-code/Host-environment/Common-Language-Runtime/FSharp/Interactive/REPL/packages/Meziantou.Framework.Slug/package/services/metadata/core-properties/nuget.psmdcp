@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>Compute a slug from any string value</dc:description>
   <dc:identifier>Meziantou.Framework.Slug</dc:identifier>
-  <version>2.0.2</version>
-  <keywords></keywords>
+  <version>2.0.3</version>
+  <keywords>slug, slugify, url, text, normalization</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

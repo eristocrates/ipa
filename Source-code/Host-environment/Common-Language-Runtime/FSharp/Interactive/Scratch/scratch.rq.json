@@ -11,6 +11,176 @@
       {
         "source": {
           "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "6961.93",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DemandDepositAccount"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/hasCurrentBalance"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountCurrentBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/Person"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/hasCurrentBalance"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountCurrentBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/nick"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "syrislove",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavings"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://www.usaa.com/banking/savings"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/Organizations/isProvidedBy"
+        },
+        "target": {
+          "type": "uri",
+          "value": "http://lei.info/C5654JQHZUHN0772B561"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/AvailableBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
           "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
         },
         "predicate": {
@@ -26,7 +196,21 @@
       {
         "source": {
           "type": "uri",
-          "value": "https://connect.secure.wellsfargo.com/accounts/start#everydayChecking"
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/Organizations/isProvidedBy"
+        },
+        "target": {
+          "type": "uri",
+          "value": "http://lei.info/549300JEBULFT3BSU682"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceChecking"
         },
         "predicate": {
           "type": "uri",
@@ -34,27 +218,13 @@
         },
         "target": {
           "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount"
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankingProduct"
         }
       },
       {
         "source": {
           "type": "uri",
-          "value": "https://mobile.usaa.com/my/logon?acf=1#usaaSavings"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://mobile.usaa.com/my/logon?acf=1#platinumVisa"
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavings"
         },
         "predicate": {
           "type": "uri",
@@ -62,36 +232,7 @@
         },
         "target": {
           "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/workInfoHomepage"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://www.governmentjobs.com/careers/leoncountyfl/classspecs/1183950"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/age"
-        },
-        "target": {
-          "type": "typed-literal",
-          "value": "35",
-          "datatype": "http://www.w3.org/2001/XMLSchema#int"
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankingProduct"
         }
       },
       {
@@ -101,12 +242,113 @@
         },
         "predicate": {
           "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/familyName"
+          "value": "http://xmlns.com/foaf/0.1/lastName"
         },
         "target": {
           "type": "typed-literal",
           "value": "Fisher",
           "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "2026-09-06T23:30:16.5815921-04:00",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/lastName"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Collier",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/workplaceHomepage"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://myfuelmaster.com/"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/hasAvailableBalance"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountAvailableBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isHeldBy"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "1149.39",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
         }
       },
       {
@@ -127,149 +369,79 @@
       {
         "source": {
           "type": "uri",
-          "value": "https://connect.secure.wellsfargo.com/accounts/start#wellsFargoRewards"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/workInfoHomepage"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://myfuelmaster.com/job/desktop-support-technician-8"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://connect.secure.wellsfargo.com/accounts/start#platinumCard"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://connect.secure.wellsfargo.com/accounts/start#everydayChecking"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://connect.secure.wellsfargo.com/accounts/start#wellsFargoRewards"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
           "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
         },
         "predicate": {
           "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/familyName"
+          "value": "http://xmlns.com/foaf/0.1/workplaceHomepage"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/hasCurrentBalance"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountCurrentBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount"
         },
         "target": {
           "type": "typed-literal",
-          "value": "Collier",
-          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+          "value": "1040.67",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
         }
       },
       {
         "source": {
           "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccount"
         },
         "predicate": {
           "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/age"
+          "value": "https://www.omg.org/spec/Commons/Organizations/isProvidedBy"
+        },
+        "target": {
+          "type": "uri",
+          "value": "http://lei.info/KB1H1DSPRFMYMCUFXT09"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime"
         },
         "target": {
           "type": "typed-literal",
-          "value": "33",
-          "datatype": "http://www.w3.org/2001/XMLSchema#int"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://mobile.usaa.com/my/logon?acf=1#checking"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://connect.secure.wellsfargo.com/accounts/start#platinumCard"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+          "value": "2026-09-06T23:30:16.5815921-04:00",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
         }
       },
       {
         "source": {
           "type": "uri",
           "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/knows"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
         },
         "predicate": {
           "type": "uri",
@@ -277,8 +449,93 @@
         },
         "target": {
           "type": "typed-literal",
-          "value": "Collier",
+          "value": "Fisher",
           "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DepositAccount"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicChecking"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankingProduct"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/familyName"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Fisher",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/AvailableBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DemandDepositAccount"
         }
       },
       {
@@ -299,83 +556,11 @@
       {
         "source": {
           "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "target": {
-          "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/Person"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/workplaceHomepage"
-        },
-        "target": {
-          "type": "typed-literal",
-          "value": "https://myfuelmaster.com/",
-          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://mobile.usaa.com/my/logon?acf=1#usaaSavings"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DepositAccount"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/surname"
-        },
-        "target": {
-          "type": "typed-literal",
-          "value": "Fisher",
-          "datatype": "http://www.w3.org/2001/XMLSchema#string"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
-          "value": "https://mobile.usaa.com/my/logon?acf=1#checking"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
-        },
-        "target": {
-          "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
-        }
-      },
-      {
-        "source": {
-          "type": "uri",
           "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
         },
         "predicate": {
           "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/lastName"
+          "value": "http://xmlns.com/foaf/0.1/surname"
         },
         "target": {
           "type": "typed-literal",
@@ -386,7 +571,452 @@
       {
         "source": {
           "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/hasCurrentBalance"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountCurrentBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isHeldBy"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "2026-09-06T23:30:16.5815921-04:00",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
           "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/familyName"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "Collier",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "1040.67",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayChecking"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://www.wellsfargo.com/checking/everyday"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/AvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Balance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/exemplifies"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayChecking"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/workInfoHomepage"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://myfuelmaster.com/job/desktop-support-technician-8"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/hasAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/hasBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/exemplifies"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicChecking"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "1965.38",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/AvailableBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/age"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "35",
+          "datatype": "http://www.w3.org/2001/XMLSchema#int"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/hasCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/hasBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/hasAvailableBalance"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountAvailableBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "6961.93",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "2026-09-06T23:30:16.5815921-04:00",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/hasAvailableBalance"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountAvailableBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CurrentBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "1965.38",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/Organizations/isProvidedBy"
+        },
+        "target": {
+          "type": "uri",
+          "value": "http://lei.info/C5654JQHZUHN0772B561"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "1149.39",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/workInfoHomepage"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://www.governmentjobs.com/careers/leoncountyfl/classspecs/1183950"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Balance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "2026-09-06T23:30:16.5815921-04:00",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicChecking"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://www.usaa.com/banking/checking"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountAvailableBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CurrentBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "2026-09-06T23:30:16.5815921-04:00",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
         },
         "predicate": {
           "type": "uri",
@@ -400,29 +1030,185 @@
       {
         "source": {
           "type": "uri",
-          "value": "https://mobile.usaa.com/my/logon?acf=1#platinumVisa"
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccount"
         },
         "predicate": {
           "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+          "value": "https://eristocrates.dev/ontology/commonplace/hasAvailableBalance"
         },
         "target": {
           "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountAvailableBalance"
         }
       },
       {
         "source": {
           "type": "uri",
-          "value": "https://connect.secure.wellsfargo.com/accounts/start#installmentLoans"
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountAvailableBalance"
         },
         "predicate": {
           "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder"
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/AvailableBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceChecking"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://www.trycrew.com/pdfjs/web/viewer?file=%2Fdocs%2Fdeposit-agreement.pdf#h.g82ej3s9bgif"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/knows"
         },
         "target": {
           "type": "uri",
           "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayChecking"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankingProduct"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CurrentBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "2026-09-06T23:30:16.5815921-04:00",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DemandDepositAccount"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isHeldBy"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/exemplifies"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavings"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CurrentBalance"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountCurrentBalance"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime"
+        },
+        "target": {
+          "type": "typed-literal",
+          "value": "2026-09-06T23:30:16.5815921-04:00",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccount"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/exemplifies"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceChecking"
         }
       },
       {
@@ -442,30 +1228,15 @@
       {
         "source": {
           "type": "uri",
-          "value": "https://connect.secure.wellsfargo.com/accounts/start#installmentLoans"
+          "value": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccount"
         },
         "predicate": {
           "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isHeldBy"
         },
         "target": {
-          "type": "uri",
-          "value": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanSpecificCustomerAccount"
-        }
-      },
-      {
-        "source": {
           "type": "uri",
           "value": "https://eristocrates.dev/ontology/commonplace/eristocrates"
-        },
-        "predicate": {
-          "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/workplaceHomepage"
-        },
-        "target": {
-          "type": "typed-literal",
-          "value": "https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology",
-          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI"
         }
       },
       {
@@ -475,27 +1246,26 @@
         },
         "predicate": {
           "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/lastName"
+          "value": "http://xmlns.com/foaf/0.1/age"
         },
         "target": {
           "type": "typed-literal",
-          "value": "Fisher",
-          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+          "value": "33",
+          "datatype": "http://www.w3.org/2001/XMLSchema#int"
         }
       },
       {
         "source": {
           "type": "uri",
-          "value": "https://eristocrates.dev/ontology/commonplace/syrislove"
+          "value": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountCurrentBalance"
         },
         "predicate": {
           "type": "uri",
-          "value": "http://xmlns.com/foaf/0.1/nick"
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency"
         },
         "target": {
-          "type": "typed-literal",
-          "value": "syrislove",
-          "datatype": "http://www.w3.org/2001/XMLSchema#string"
+          "type": "uri",
+          "value": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
         }
       }
     ]

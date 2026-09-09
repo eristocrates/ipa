@@ -5173,6 +5173,17 @@
         <member name="M:ReactiveUI.Primitives.Concurrency.Sequencer.DelegateWorkItem`1.Execute">
             <inheritdoc/>
         </member>
+        <member name="M:ReactiveUI.Primitives.Concurrency.Sequencer.DelegateWorkItem`1.DisposeIfRaced(System.IDisposable)">
+            <summary>
+            Race-only cleanup: releases what the action returned when <see cref="M:ReactiveUI.Primitives.Concurrency.Sequencer.DelegateWorkItem`1.Dispose"/> latched the
+            flag after the store above claimed the slot. Single-threaded this can never fire - a completed
+            <see cref="M:ReactiveUI.Primitives.Concurrency.Sequencer.DelegateWorkItem`1.Dispose"/> leaves the slot holding <see cref="P:ReactiveUI.Primitives.Disposables.EmptyDisposable.Instance"/>, so the
+            compare-exchange takes the already-claimed branch instead and never reaches here. Only a real
+            concurrent disposal lands in this window, so it is excluded rather than chased with a
+            timing-dependent test.
+            </summary>
+            <param name="disposable">The disposable the scheduled action returned.</param>
+        </member>
         <member name="T:ReactiveUI.Primitives.Concurrency.Sequencer.RecursiveScheduleState">
             <summary>Holds state for recursive action scheduling.</summary>
         </member>

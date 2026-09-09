@@ -27,12 +27,12 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/5e260fb1950d4bb084c52bb9c1e85aa6.psmdcp
+F: /package/services/metadata/core-properties/9fcef524eaa44683a6b1bd892b6cbaef.psmdcp
 D: /_rels
 F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
-F: /system.diagnostics.diagnosticsource.10.0.11.nupkg
+F: /system.diagnostics.diagnosticsource.10.0.12.nupkg
 F: /System.Diagnostics.DiagnosticSource.nuspec
 F: /THIRD-PARTY-NOTICES.TXT
 F: /useSharedDesignerContext.txt

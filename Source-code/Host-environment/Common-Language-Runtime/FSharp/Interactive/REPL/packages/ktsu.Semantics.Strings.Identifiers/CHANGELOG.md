@@ -1,3 +1,28 @@
+## v3.3.0 (minor)
+
+Changes since v3.2.0:
+
+- refactor: consume the extracted source-generator toolkit from its package [minor] ([@Claude](https://github.com/Claude))
+
+## v3.2.7 (patch)
+
+Changes since v3.2.6:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v3.2.6 (patch)
+
+Changes since v3.2.5:
+
+- Bump the ktsu group with 2 updates ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+## v3.2.5 (patch)
+
+Changes since v3.2.4:
+
+- Bump MSTest.Sdk from 4.3.3 to 4.4.0 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
 ## v3.2.4 (patch)
 
 Changes since v3.2.3:

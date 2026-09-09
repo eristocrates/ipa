@@ -3,6 +3,6 @@
        force a binding redirect ourselves so that we'll always unify to the System.Resources.Extensions
        version provided by this package -->
   <ItemGroup>
-    <SuggestedBindingRedirects Include="System.Resources.Extensions, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" MaxVersion="10.0.0.11" />
+    <SuggestedBindingRedirects Include="System.Resources.Extensions, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" MaxVersion="10.0.0.12" />
   </ItemGroup>
 </Project>

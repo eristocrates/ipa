@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Meziantou.Framework.Scheduling</id>
-    <version>4.0.3</version>
+    <version>4.1.1</version>
     <authors>meziantou</authors>
     <license type="expression">MIT</license>
     <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
@@ -10,10 +10,14 @@
     <readme>README.md</readme>
     <projectUrl>https://github.com/meziantou/Meziantou.Framework</projectUrl>
     <description>RecurrenceRule (RFC 5545) and Cron expression parser and evaluator</description>
-    <repository type="git" url="https://github.com/meziantou/Meziantou.Framework" branch="refs/heads/main" commit="04fd303a9a0ab4d3c77a6099c7e70737cf0c3882" />
+    <tags>cron, rrule, recurrence, rfc5545, icalendar, scheduling</tags>
+    <repository type="git" url="https://github.com/meziantou/Meziantou.Framework" branch="refs/heads/main" commit="f00db4f5232bf030e558353ee44ffa6e350d3a57" />
     <dependencies>
       <group targetFramework="net10.0" />
       <group targetFramework="net11.0" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Memory" version="4.6.3" exclude="Build,Native,Analyzers,BuildTransitive" />
+      </group>
     </dependencies>
   </metadata>
 </package>

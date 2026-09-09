@@ -1,47 +1,123 @@
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
 @prefix commonplace: <https://eristocrates.dev/ontology/commonplace/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
 @prefix fibo-fbc-pas-caa: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> .
-@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
-@prefix fibo-loan-spc-crd: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/> .
+@prefix fibo-fnd-acc-4217: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix fuelmasterjob: <https://myfuelmaster.com/job/> .
-@prefix governmentjobs: <https://www.governmentjobs.com/careers/leoncountyfl/classspecs/> .
+@prefix lei: <http://lei.info/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix usaaAccount: <https://mobile.usaa.com/my/logon?acf=1#> .
-@prefix wellsFargoAccount: <https://connect.secure.wellsfargo.com/accounts/start#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-commonplace:eristocrates foaf:nick "eristocrates" .
-wellsFargoAccount:everydayChecking a fibo-loan-spc-crd:DebitCardAccount .
-usaaAccount:usaaSavings fibo-fbc-pas-caa:AccountHolder commonplace:syrislove .
-usaaAccount:platinumVisa a fibo-loan-spc-crd:CreditCardAccount .
-commonplace:eristocrates foaf:workInfoHomepage governmentjobs:1183950 .
-commonplace:eristocrates foaf:age "35"^^xsd:int .
-commonplace:syrislove foaf:familyName "Fisher" .
-commonplace:syrislove foaf:firstName "Tierra" .
-wellsFargoAccount:wellsFargoRewards fibo-fbc-pas-caa:AccountHolder commonplace:eristocrates .
-commonplace:syrislove foaf:workInfoHomepage fuelmasterjob:desktop-support-technician-8 .
-wellsFargoAccount:platinumCard a fibo-loan-spc-crd:CreditCardAccount .
-wellsFargoAccount:everydayChecking fibo-fbc-pas-caa:AccountHolder commonplace:eristocrates .
-wellsFargoAccount:wellsFargoRewards a fibo-fbc-pas-caa:Account .
-commonplace:eristocrates foaf:familyName "Collier" .
-commonplace:syrislove foaf:age "33"^^xsd:int .
-usaaAccount:checking a fibo-loan-spc-crd:DebitCardAccount .
-wellsFargoAccount:platinumCard fibo-fbc-pas-caa:AccountHolder commonplace:eristocrates .
-commonplace:syrislove foaf:knows commonplace:eristocrates .
-commonplace:eristocrates foaf:surname "Collier" .
-commonplace:eristocrates foaf:firstName "Brandon" .
-commonplace:syrislove a foaf:Person .
-commonplace:syrislove foaf:workplaceHomepage "https://myfuelmaster.com/"^^xsd:anyURI .
-usaaAccount:usaaSavings a fibo-fbc-pas-caa:DepositAccount .
-commonplace:syrislove foaf:surname "Fisher" .
-usaaAccount:checking fibo-fbc-pas-caa:AccountHolder commonplace:syrislove .
-commonplace:eristocrates foaf:lastName "Collier" .
-commonplace:eristocrates a foaf:Person .
-usaaAccount:platinumVisa fibo-fbc-pas-caa:AccountHolder commonplace:syrislove .
-wellsFargoAccount:installmentLoans fibo-fbc-pas-caa:AccountHolder commonplace:eristocrates .
-commonplace:eristocrates foaf:knows commonplace:syrislove .
-wellsFargoAccount:installmentLoans a fibo-loan-ln-ln:LoanSpecificCustomerAccount .
-commonplace:eristocrates foaf:workplaceHomepage "https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology"^^xsd:anyURI .
-commonplace:syrislove foaf:lastName "Fisher" .
-commonplace:syrislove foaf:nick "syrislove" .
+commonplace:USAAClassicCheckingAccountCurrentBalance fibo-fnd-acc-cur:hasAmount "6961.93"^^xsd:decimal ;
+  cmns-dt:hasObservedDateTime "2026-09-06T23:30:16.5815921-04:00"^^xsd:dateTimeStamp ;
+  a commonplace:CurrentBalance ;
+  fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar .
+
+commonplace:WellsFargoEverydayCheckingAccount a fibo-fbc-pas-caa:DemandDepositAccount ;
+  cmns-org:isProvidedBy lei:KB1H1DSPRFMYMCUFXT09 ;
+  commonplace:hasCurrentBalance commonplace:WellsFargoEverydayCheckingAccountCurrentBalance ;
+  fibo-fnd-rel-rel:exemplifies commonplace:WellsFargoEverydayChecking ;
+  commonplace:hasAvailableBalance commonplace:WellsFargoEverydayCheckingAccountAvailableBalance ;
+  fibo-fnd-rel-rel:isHeldBy commonplace:eristocrates .
+
+commonplace:USAAClassicCheckingAccount commonplace:hasCurrentBalance commonplace:USAAClassicCheckingAccountCurrentBalance ;
+  fibo-fnd-rel-rel:isHeldBy commonplace:syrislove ;
+  fibo-fnd-rel-rel:exemplifies commonplace:USAAClassicChecking ;
+  cmns-org:isProvidedBy lei:C5654JQHZUHN0772B561 ;
+  commonplace:hasAvailableBalance commonplace:USAAClassicCheckingAccountAvailableBalance ;
+  a fibo-fbc-pas-caa:DemandDepositAccount .
+
+commonplace:eristocrates a foaf:Person ;
+  foaf:nick "eristocrates" ;
+  foaf:lastName "Collier" ;
+  foaf:workplaceHomepage <https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology> ;
+  foaf:firstName "Brandon" ;
+  foaf:surname "Collier" ;
+  foaf:familyName "Collier" ;
+  foaf:age "35"^^xsd:int ;
+  foaf:workInfoHomepage <https://www.governmentjobs.com/careers/leoncountyfl/classspecs/1183950> ;
+  foaf:knows commonplace:syrislove .
+
+commonplace:USAAClassicSavingsAccount commonplace:hasCurrentBalance commonplace:USAAClassicSavingsAccountCurrentBalance ;
+  cmns-org:isProvidedBy lei:C5654JQHZUHN0772B561 ;
+  commonplace:hasAvailableBalance commonplace:USAAClassicSavingsAccountAvailableBalance ;
+  a fibo-fbc-pas-caa:DepositAccount ;
+  fibo-fnd-rel-rel:isHeldBy commonplace:syrislove ;
+  fibo-fnd-rel-rel:exemplifies commonplace:USAAClassicSavings .
+
+commonplace:USAAClassicSavingsAccountAvailableBalance fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+  a commonplace:AvailableBalance ;
+  fibo-fnd-acc-cur:hasAmount "1965.38"^^xsd:decimal ;
+  cmns-dt:hasObservedDateTime "2026-09-06T23:30:16.5815921-04:00"^^xsd:dateTimeStamp .
+
+commonplace:syrislove foaf:nick "syrislove" ;
+  foaf:lastName "Fisher" ;
+  foaf:workplaceHomepage <https://myfuelmaster.com/> ;
+  foaf:firstName "Tierra" ;
+  foaf:surname "Fisher" ;
+  foaf:familyName "Fisher" ;
+  foaf:workInfoHomepage <https://myfuelmaster.com/job/desktop-support-technician-8> ;
+  a foaf:Person ;
+  foaf:knows commonplace:eristocrates ;
+  foaf:age "33"^^xsd:int .
+
+commonplace:USAAClassicSavings rdfs:seeAlso <https://www.usaa.com/banking/savings> ;
+  a fibo-fbc-fct-fse:BankingProduct .
+
+commonplace:CrewFinanceCheckingAccountCurrentBalance fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+  fibo-fnd-acc-cur:hasAmount "1040.67"^^xsd:decimal ;
+  a commonplace:CurrentBalance ;
+  cmns-dt:hasObservedDateTime "2026-09-06T23:30:16.5815921-04:00"^^xsd:dateTimeStamp .
+
+commonplace:USAAClassicSavingsAccountCurrentBalance fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+  fibo-fnd-acc-cur:hasAmount "1965.38"^^xsd:decimal ;
+  a commonplace:CurrentBalance ;
+  cmns-dt:hasObservedDateTime "2026-09-06T23:30:16.5815921-04:00"^^xsd:dateTimeStamp .
+
+commonplace:CrewFinanceCheckingAccount cmns-org:isProvidedBy <http://lei.info/549300JEBULFT3BSU682> ;
+  commonplace:hasCurrentBalance commonplace:CrewFinanceCheckingAccountCurrentBalance ;
+  a fibo-fbc-pas-caa:DemandDepositAccount ;
+  commonplace:hasAvailableBalance commonplace:CrewFinanceCheckingAccountAvailableBalance ;
+  fibo-fnd-rel-rel:exemplifies commonplace:CrewFinanceChecking ;
+  fibo-fnd-rel-rel:isHeldBy commonplace:eristocrates .
+
+commonplace:CrewFinanceChecking a fibo-fbc-fct-fse:BankingProduct ;
+  rdfs:seeAlso <https://www.trycrew.com/pdfjs/web/viewer?file=%2Fdocs%2Fdeposit-agreement.pdf#h.g82ej3s9bgif> .
+
+commonplace:WellsFargoEverydayCheckingAccountCurrentBalance fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+  fibo-fnd-acc-cur:hasAmount "1149.39"^^xsd:decimal ;
+  a commonplace:CurrentBalance ;
+  cmns-dt:hasObservedDateTime "2026-09-06T23:30:16.5815921-04:00"^^xsd:dateTimeStamp .
+
+commonplace:USAAClassicCheckingAccountAvailableBalance cmns-dt:hasObservedDateTime "2026-09-06T23:30:16.5815921-04:00"^^xsd:dateTimeStamp ;
+  fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+  a commonplace:AvailableBalance ;
+  fibo-fnd-acc-cur:hasAmount "6961.93"^^xsd:decimal .
+
+commonplace:WellsFargoEverydayCheckingAccountAvailableBalance fibo-fnd-acc-cur:hasAmount "1149.39"^^xsd:decimal ;
+  cmns-dt:hasObservedDateTime "2026-09-06T23:30:16.5815921-04:00"^^xsd:dateTimeStamp ;
+  fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+  a commonplace:AvailableBalance .
+
+commonplace:CrewFinanceCheckingAccountAvailableBalance fibo-fnd-acc-cur:hasAmount "1040.67"^^xsd:decimal ;
+  cmns-dt:hasObservedDateTime "2026-09-06T23:30:16.5815921-04:00"^^xsd:dateTimeStamp ;
+  fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+  a commonplace:AvailableBalance .
+
+commonplace:USAAClassicChecking a fibo-fbc-fct-fse:BankingProduct ;
+  rdfs:seeAlso <https://www.usaa.com/banking/checking> .
+
+commonplace:WellsFargoEverydayChecking rdfs:seeAlso <https://www.wellsfargo.com/checking/everyday> ;
+  a fibo-fbc-fct-fse:BankingProduct .
+
+commonplace:AvailableBalance rdfs:subClassOf fibo-fbc-pas-caa:Balance .
+
+commonplace:hasAvailableBalance rdfs:subPropertyOf fibo-fbc-pas-caa:hasBalance .
+
+commonplace:hasCurrentBalance rdfs:subPropertyOf fibo-fbc-pas-caa:hasBalance .
+
+commonplace:CurrentBalance rdfs:subClassOf fibo-fbc-pas-caa:Balance .

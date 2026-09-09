@@ -1219,6 +1219,63 @@
         <member name="F:ktsu.Coder.Ast.BinaryOperator.RightShift">
             <summary>Right shift operator (&gt;&gt;)</summary>
         </member>
+        <member name="T:ktsu.Coder.Ast.ClassDeclaration">
+            <summary>
+            Represents a class declaration in the abstract syntax tree.
+            </summary>
+            <remarks>
+            A class is a named group of members — functions, variables, and nested classes — so
+            <see cref="P:ktsu.Coder.Ast.ClassDeclaration.Members"/> holds <see cref="T:ktsu.Coder.Ast.AstNode"/> rather than a narrower type. Which members a
+            target language will actually accept is the generator's business, not the AST's.
+            <para>
+            Only one base type is carried. Every language the generators target names a single base class in
+            its declaration syntax, and interfaces are a language feature the AST does not model yet.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ClassDeclaration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.ClassDeclaration"/> class.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ClassDeclaration.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.ClassDeclaration"/> class with a name.
+            </summary>
+            <param name="name">The name of the class.</param>
+        </member>
+        <member name="P:ktsu.Coder.Ast.ClassDeclaration.Name">
+            <summary>
+            Gets or sets the name of the class.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.ClassDeclaration.BaseType">
+            <summary>
+            Gets or sets the type this class derives from, or null when it derives from nothing.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.ClassDeclaration.AccessModifier">
+            <summary>
+            Gets or sets the visibility/access modifier (public, internal, …), or null for the language's default.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.ClassDeclaration.Members">
+            <summary>
+            Gets the members the class declares, in the order they should be emitted.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ClassDeclaration.GetNodeTypeName">
+            <summary>
+            Gets the type name of this node for serialization purposes.
+            </summary>
+            <returns>The name of the node type.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Ast.ClassDeclaration.Clone">
+            <summary>
+            Creates a deep clone of this class declaration.
+            </summary>
+            <returns>A new instance of the class declaration with the same properties and cloned members.</returns>
+        </member>
         <member name="T:ktsu.Coder.Ast.Expression">
             <summary>
             Represents an abstract base class for all expressions in the AST.
@@ -1374,6 +1431,69 @@
             <param name="value">The long value.</param>
             <returns>A new long literal expression.</returns>
         </member>
+        <member name="T:ktsu.Coder.Ast.OperatorSymbols">
+            <summary>
+            The source spellings of the AST's operators.
+            </summary>
+            <remarks>
+            The spellings live with the operators rather than with any one consumer, because both the AST's
+            own <c>ToString</c> and every language generator need them. Every language the generators target
+            spells the assignment operators identically, and C# and C++ spell the binary operators the
+            C-family way; a language that differs on one operator handles that operator and defers the rest
+            here.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Ast.OperatorSymbols.GetSymbol(ktsu.Coder.Ast.AssignmentOperator)">
+            <summary>
+            Gets the source spelling of an assignment operator.
+            </summary>
+            <param name="op">The operator to spell.</param>
+            <returns>The operator's source spelling.</returns>
+            <exception cref="T:System.NotSupportedException"><paramref name="op"/> has no spelling.</exception>
+        </member>
+        <member name="M:ktsu.Coder.Ast.OperatorSymbols.GetSymbol(ktsu.Coder.Ast.BinaryOperator)">
+            <summary>
+            Gets the C-family source spelling of a binary operator.
+            </summary>
+            <param name="op">The operator to spell.</param>
+            <returns>The operator's source spelling.</returns>
+            <exception cref="T:System.NotSupportedException"><paramref name="op"/> has no spelling.</exception>
+        </member>
+        <member name="M:ktsu.Coder.Ast.OperatorSymbols.GetSymbol(ktsu.Coder.Ast.UnaryOperator)">
+            <summary>
+            Gets the C-family source spelling of a unary operator.
+            </summary>
+            <param name="op">The operator to spell.</param>
+            <returns>The operator's source spelling.</returns>
+            <exception cref="T:System.NotSupportedException"><paramref name="op"/> has no spelling.</exception>
+        </member>
+        <member name="M:ktsu.Coder.Ast.OperatorSymbols.TryGetSymbol(ktsu.Coder.Ast.AssignmentOperator,System.String@)">
+            <summary>
+            Tries to get the source spelling of an assignment operator.
+            </summary>
+            <param name="op">The operator to spell.</param>
+            <param name="symbol">The operator's source spelling, or null.</param>
+            <returns>True if the operator has a spelling; otherwise, false.</returns>
+            <remarks>For callers that must not throw on an out-of-range value, such as <c>ToString</c>.</remarks>
+        </member>
+        <member name="M:ktsu.Coder.Ast.OperatorSymbols.TryGetSymbol(ktsu.Coder.Ast.BinaryOperator,System.String@)">
+            <summary>
+            Tries to get the C-family source spelling of a binary operator.
+            </summary>
+            <param name="op">The operator to spell.</param>
+            <param name="symbol">The operator's source spelling, or null.</param>
+            <returns>True if the operator has a spelling; otherwise, false.</returns>
+            <remarks>For callers that must not throw on an out-of-range value, such as <c>ToString</c>.</remarks>
+        </member>
+        <member name="M:ktsu.Coder.Ast.OperatorSymbols.TryGetSymbol(ktsu.Coder.Ast.UnaryOperator,System.String@)">
+            <summary>
+            Tries to get the C-family source spelling of a unary operator.
+            </summary>
+            <param name="op">The operator to spell.</param>
+            <param name="symbol">The operator's source spelling, or null.</param>
+            <returns>True if the operator has a spelling; otherwise, false.</returns>
+            <remarks>For callers that must not throw on an out-of-range value, such as <c>ToString</c>.</remarks>
+        </member>
         <member name="T:ktsu.Coder.Ast.Parameter">
             <summary>
             Represents a parameter in a function declaration.
@@ -1486,6 +1606,68 @@
             </summary>
             <returns>A new instance of the return statement with the same properties and cloned children.</returns>
         </member>
+        <member name="T:ktsu.Coder.Ast.UnaryExpression">
+            <summary>
+            Represents a unary expression: one operator applied to one operand.
+            Examples: -x, !ready, ~mask
+            </summary>
+            <remarks>
+            Only prefix operators are modelled. Increment and decrement are deliberately absent: Python has
+            no spelling for them, and <see cref="T:ktsu.Coder.Ast.AssignmentStatement"/> with
+            <see cref="F:ktsu.Coder.Ast.AssignmentOperator.AddAssign"/> already expresses the same effect in every target
+            language.
+            </remarks>
+        </member>
+        <member name="P:ktsu.Coder.Ast.UnaryExpression.Operator">
+            <summary>
+            Gets or sets the unary operator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Ast.UnaryExpression.Operand">
+            <summary>
+            Gets or sets the operand the operator is applied to.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.UnaryExpression.#ctor(ktsu.Coder.Ast.UnaryOperator,ktsu.Coder.Ast.Expression)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.UnaryExpression"/> class.
+            </summary>
+            <param name="operator">The unary operator.</param>
+            <param name="operand">The operand.</param>
+        </member>
+        <member name="M:ktsu.Coder.Ast.UnaryExpression.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Coder.Ast.UnaryExpression"/> class.
+            Used for deserialization.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Ast.UnaryExpression.Clone">
+            <summary>
+            Creates a deep clone of this unary expression.
+            </summary>
+            <returns>A new instance with the same property values.</returns>
+        </member>
+        <member name="T:ktsu.Coder.Ast.UnaryOperator">
+            <summary>
+            Defines the types of unary operators supported.
+            </summary>
+            <remarks>
+            Every operator here exists in all four target languages, so no AST using them is untranslatable.
+            Only the spelling of <see cref="F:ktsu.Coder.Ast.UnaryOperator.LogicalNot"/> differs, in Python.
+            </remarks>
+        </member>
+        <member name="F:ktsu.Coder.Ast.UnaryOperator.Negate">
+            <summary>Arithmetic negation (-)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.UnaryOperator.Plus">
+            <summary>Unary plus (+)</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.UnaryOperator.LogicalNot">
+            <summary>Logical negation (!), spelled <c>not</c> in Python</summary>
+        </member>
+        <member name="F:ktsu.Coder.Ast.UnaryOperator.BitwiseNot">
+            <summary>Bitwise complement (~)</summary>
+        </member>
         <member name="T:ktsu.Coder.Ast.VariableDeclaration">
             <summary>
             Represents a variable declaration statement.
@@ -1597,6 +1779,65 @@
             </summary>
             <returns>The variable name.</returns>
         </member>
+        <member name="T:ktsu.Coder.Languages.CppGenerator">
+            <summary>
+            Generates C++ code from AST nodes.
+            </summary>
+            <remarks>
+            The AST's type names are the same language-neutral set the other generators consume (<c>str</c>,
+            <c>int</c>, <c>bool</c>, …), so they are mapped to C++ spellings; anything unrecognised is emitted
+            verbatim on the assumption the caller meant a C++ type. A declaration with no type, or one marked
+            type-inferred, becomes <c>auto</c>.
+            </remarks>
+        </member>
+        <member name="F:ktsu.Coder.Languages.CppGenerator.TypeMappings">
+            <summary>
+            Maps the AST's language-neutral type names onto C++ spellings.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.CppGenerator.LanguageId">
+            <summary>
+            Gets the unique identifier for this language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.CppGenerator.DisplayName">
+            <summary>
+            Gets the display name for this language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.CppGenerator.FileExtension">
+            <summary>
+            Gets the file extension (without the dot) used for this language.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Languages.CppGenerator.GenerateFunctionDeclaration(ktsu.Coder.Ast.FunctionDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Coder.Languages.CppGenerator.GenerateClassDeclaration(ktsu.Coder.Ast.ClassDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <inheritdoc/>
+            <remarks>
+            Every member is public. The AST carries no per-member visibility, and a C++ class defaults to
+            private, so a generated class with no access specifier would compile to something nothing
+            outside it could use.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.CppGenerator.GenerateParameter(ktsu.Coder.Ast.Parameter,ktsu.CodeBlocker.CodeBlocker,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Coder.Languages.CppGenerator.GenerateVariableDeclaration(ktsu.Coder.Ast.VariableDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Coder.Languages.CppGenerator.GetDeclaredType(ktsu.Coder.Ast.VariableDeclaration)">
+            <summary>
+            Spells the type a declaration is introduced with.
+            </summary>
+            <param name="varDecl">The declaration being emitted.</param>
+            <returns>The C++ type name, or a deduced placeholder.</returns>
+            <remarks>
+            <c>auto</c> needs an initializer to deduce from, so an inferred declaration without one falls
+            back to <c>std::any</c>.
+            </remarks>
+        </member>
         <member name="T:ktsu.Coder.Languages.CSharpGenerator">
             <summary>
             Generates C# code from AST nodes.
@@ -1617,13 +1858,12 @@
             Gets the file extension for C# files.
             </summary>
         </member>
-        <member name="M:ktsu.Coder.Languages.CSharpGenerator.GenerateInternal(ktsu.Coder.Ast.AstNode,System.Text.StringBuilder,System.Int32)">
+        <member name="M:ktsu.Coder.Languages.CSharpGenerator.GenerateInternal(ktsu.Coder.Ast.AstNode,ktsu.CodeBlocker.CodeBlocker)">
             <summary>
             Generates code for the specified AST node.
             </summary>
             <param name="node">The AST node to generate code for.</param>
-            <param name="builder">The string builder to append code to.</param>
-            <param name="indentLevel">The current indentation level.</param>
+            <param name="code">The writer to emit into.</param>
         </member>
         <member name="M:ktsu.Coder.Languages.CSharpGenerator.CanGenerate(ktsu.Coder.Ast.AstNode)">
             <summary>
@@ -1631,6 +1871,17 @@
             </summary>
             <param name="astNode">The AST node to check.</param>
             <returns>True if this generator can generate code for the node; otherwise, false.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Languages.CSharpGenerator.GenerateClass(ktsu.Coder.Ast.ClassDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits a class declaration and its members.
+            </summary>
+            <param name="classDecl">The declaration to emit.</param>
+            <param name="code">The writer to emit into.</param>
+            <remarks>
+            A member is emitted through the same dispatch as any other node, so a nested class, a method
+            and a field each come out through the emitter for their own shape.
+            </remarks>
         </member>
         <member name="T:ktsu.Coder.Languages.ILanguageGenerator">
             <summary>
@@ -1666,10 +1917,95 @@
             <param name="astNode">The AST node to check.</param>
             <returns>True if this generator can generate code for the node; otherwise, false.</returns>
         </member>
+        <member name="T:ktsu.Coder.Languages.JavaScriptGenerator">
+            <summary>
+            Generates JavaScript code from AST nodes.
+            </summary>
+            <remarks>
+            JavaScript is dynamically typed, so the <see cref="P:ktsu.Coder.Ast.Parameter.Type"/> and
+            <see cref="P:ktsu.Coder.Ast.FunctionDeclaration.ReturnType"/> carried by the AST have no place in the output and
+            are deliberately dropped. Equality maps to the strict operators (<c>===</c>, <c>!==</c>) rather
+            than the coercing ones, because the AST's <see cref="F:ktsu.Coder.Ast.BinaryOperator.Equal"/> means value equality
+            in every other generator and <c>==</c> would not.
+            </remarks>
+        </member>
+        <member name="P:ktsu.Coder.Languages.JavaScriptGenerator.LanguageId">
+            <summary>
+            Gets the unique identifier for this language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.JavaScriptGenerator.DisplayName">
+            <summary>
+            Gets the display name for this language generator.
+            </summary>
+        </member>
+        <member name="P:ktsu.Coder.Languages.JavaScriptGenerator.FileExtension">
+            <summary>
+            Gets the file extension (without the dot) used for this language.
+            </summary>
+        </member>
+        <member name="M:ktsu.Coder.Languages.JavaScriptGenerator.GenerateFunctionDeclaration(ktsu.Coder.Ast.FunctionDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Coder.Languages.JavaScriptGenerator.GenerateClassDeclaration(ktsu.Coder.Ast.ClassDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <inheritdoc/>
+            <remarks>
+            A function inside a class body is written as a method — <c>name(args) { }</c> — because
+            JavaScript's <c>function</c> keyword is a syntax error there. That is why the members are
+            emitted here rather than through <see cref="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateClassMembers(ktsu.Coder.Ast.ClassDeclaration,ktsu.CodeBlocker.CodeBlocker)"/>.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.JavaScriptGenerator.GenerateField(ktsu.Coder.Ast.VariableDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits a variable declaration as a class field.
+            </summary>
+            <param name="field">The declaration to emit as a field.</param>
+            <param name="code">The writer to emit into.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.JavaScriptGenerator.GenerateMethod(ktsu.Coder.Ast.FunctionDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits a function as a class method, which drops the <c>function</c> keyword.
+            </summary>
+            <param name="method">The function to emit as a method.</param>
+            <param name="code">The writer to emit into.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.JavaScriptGenerator.GenerateParameter(ktsu.Coder.Ast.Parameter,ktsu.CodeBlocker.CodeBlocker,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Coder.Languages.JavaScriptGenerator.GenerateVariableDeclaration(ktsu.Coder.Ast.VariableDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Coder.Languages.JavaScriptGenerator.GetOperatorSpelling(ktsu.Coder.Ast.BinaryOperator)">
+            <summary>
+            Maps a binary operator to its JavaScript spelling.
+            </summary>
+            <param name="op">The operator to map.</param>
+            <returns>The operator's source spelling.</returns>
+            <remarks>
+            Only equality differs from the C-family set: the AST's <see cref="F:ktsu.Coder.Ast.BinaryOperator.Equal"/>
+            means value equality, which is <c>===</c> in JavaScript. <c>==</c> coerces and would not.
+            </remarks>
+        </member>
         <member name="T:ktsu.Coder.Languages.LanguageGeneratorBase">
             <summary>
             Provides a base implementation for language generators with common functionality.
             </summary>
+            <remarks>
+            Output is written through <see cref="T:ktsu.CodeBlocker.CodeBlocker"/>, which owns indentation: a generator writes
+            the text of a line and never the whitespace in front of it, and opens a <see cref="T:ktsu.CodeBlocker.Scope"/> or an
+            <see cref="T:ktsu.CodeBlocker.IndentScope"/> to indent a body. That also fixes the line terminator to
+            <see cref="F:ktsu.CodeBlocker.CodeBlocker.DefaultNewLineString"/> rather than <see cref="P:System.Environment.NewLine"/>, so
+            generated source is byte-identical whichever platform produced it.
+            </remarks>
+        </member>
+        <member name="F:ktsu.Coder.Languages.LanguageGeneratorBase.IndentString">
+            <summary>
+            The indentation one level of nesting adds.
+            </summary>
+            <remarks>
+            Four spaces rather than <see cref="F:ktsu.CodeBlocker.CodeBlocker.DefaultIndentString"/>'s tab: Python's
+            indentation is syntax, and four spaces is what PEP 8 asks for.
+            </remarks>
         </member>
         <member name="P:ktsu.Coder.Languages.LanguageGeneratorBase.LanguageId">
             <summary>
@@ -1700,21 +2036,136 @@
             <param name="astNode">The AST node to check.</param>
             <returns>True if this generator can generate code for the node; otherwise, false.</returns>
         </member>
-        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.GenerateInternal(ktsu.Coder.Ast.AstNode,System.Text.StringBuilder,System.Int32)">
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.GenerateInternal(ktsu.Coder.Ast.AstNode,ktsu.CodeBlocker.CodeBlocker)">
             <summary>
-            Internal method to generate code with proper indentation.
+            Emits one node.
             </summary>
             <param name="node">The AST node to generate code from.</param>
-            <param name="builder">The string builder to append code to.</param>
-            <param name="indentLevel">The current indentation level.</param>
+            <param name="code">The writer to emit into.</param>
+            <remarks>
+            There is no indentation level to pass down: <paramref name="code"/> carries the current depth,
+            and only the scope that opens a body changes it.
+            </remarks>
         </member>
-        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.Indent(System.Text.StringBuilder,System.Int32,System.Int32)">
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.TryGenerateCommonNode(ktsu.Coder.Ast.AstNode,ktsu.CodeBlocker.CodeBlocker)">
             <summary>
-            Adds indentation to the code based on the current indentation level.
+            Emits the nodes whose spelling is the same in every target language: variable references,
+            literals, and the legacy <see cref="T:ktsu.Coder.Ast.AstLeafNode`1"/> shapes.
             </summary>
-            <param name="builder">The string builder to append indentation to.</param>
-            <param name="indentLevel">The indentation level.</param>
-            <param name="indentSize">The number of spaces per indent level. Default is 4.</param>
+            <param name="node">The node to emit.</param>
+            <param name="code">The writer to emit into.</param>
+            <returns>True if the node was handled; false if it is the caller's to emit.</returns>
+            <remarks>
+            A generator's dispatch handles its structural nodes and defers the rest here, so the literal
+            cases exist once. Where a language does differ — Python's capitalized booleans — it overrides
+            <see cref="M:ktsu.Coder.Languages.LanguageGeneratorBase.FormatBoolean(System.Boolean)"/> rather than repeating the whole set.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.FormatBoolean(System.Boolean)">
+            <summary>
+            Spells a boolean literal.
+            </summary>
+            <param name="value">The literal's value.</param>
+            <returns>The keyword the language uses.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.EndStatement(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Ends a statement with the terminator and line break the language uses.
+            </summary>
+            <param name="code">The writer to emit into.</param>
+            <remarks>
+            Python has neither, and its function body writes its own line breaks, so it overrides this
+            with an empty body rather than each statement emitter growing a special case.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.GenerateReturnStatement(ktsu.Coder.Ast.ReturnStatement,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits a return statement, recursing into its expression.
+            </summary>
+            <param name="returnStmt">The statement to emit.</param>
+            <param name="code">The writer to emit into.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.GenerateAssignmentStatement(ktsu.Coder.Ast.AssignmentStatement,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits an assignment statement, recursing into both sides.
+            </summary>
+            <param name="assignment">The statement to emit.</param>
+            <param name="code">The writer to emit into.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.GenerateBinaryExpression(ktsu.Coder.Ast.BinaryExpression,ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Emits a parenthesised binary expression, recursing into both operands.
+            </summary>
+            <param name="binaryExpr">The expression to emit.</param>
+            <param name="code">The writer to emit into.</param>
+            <param name="operatorSpelling">The operator's spelling in the target language.</param>
+            <remarks>Always parenthesised: the AST carries no precedence, so nesting would be ambiguous otherwise.</remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.GenerateUnaryExpression(ktsu.Coder.Ast.UnaryExpression,ktsu.CodeBlocker.CodeBlocker,System.String)">
+            <summary>
+            Emits a parenthesised unary expression, recursing into its operand.
+            </summary>
+            <param name="unaryExpr">The expression to emit.</param>
+            <param name="code">The writer to emit into.</param>
+            <param name="operatorSpelling">The operator's spelling in the target language.</param>
+            <remarks>
+            Parenthesised for the same reason as a binary expression: the AST carries no precedence, so
+            <c>-(a + b)</c> and <c>(-a) + b</c> would be indistinguishable otherwise.
+            <para>
+            A word operator is separated from its operand and a symbolic one is not, so Python's
+            <c>not ready</c> and C#'s <c>!ready</c> both come out right without either language special-casing
+            the emitter.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.CanGenerateStandardNodes(ktsu.Coder.Ast.AstNode)">
+            <summary>
+            Reports whether a node is one of the standard shapes a generator built on these helpers accepts.
+            </summary>
+            <param name="astNode">The node to check.</param>
+            <returns>True if the node is generatable.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.EscapeString(System.String)">
+            <summary>
+            Escapes a string literal's contents for a target language using C-style backslash escapes.
+            </summary>
+            <param name="value">The raw string value.</param>
+            <returns>The escaped value, without surrounding quotes.</returns>
+            <remarks>Every language the generators target uses these escapes, Python included.</remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.GetBinaryOperator(ktsu.Coder.Ast.BinaryOperator)">
+            <summary>
+            Maps a binary operator to its C-family spelling.
+            </summary>
+            <param name="op">The operator to map.</param>
+            <returns>The operator's source spelling.</returns>
+            <exception cref="T:System.NotSupportedException">The operator has no mapping.</exception>
+            <remarks>
+            C# and C++ use this set unchanged. A generator whose language spells one operator
+            differently — Python's <c>and</c>/<c>or</c>, JavaScript's strict <c>===</c>/<c>!==</c> —
+            handles just that operator and defers the rest here.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.GetUnaryOperator(ktsu.Coder.Ast.UnaryOperator)">
+            <summary>
+            Maps a unary operator to its C-family spelling.
+            </summary>
+            <param name="op">The operator to map.</param>
+            <returns>The operator's source spelling.</returns>
+            <exception cref="T:System.NotSupportedException">The operator has no mapping.</exception>
+            <remarks>
+            C#, C++ and JavaScript use this set unchanged. Only Python differs, spelling
+            <see cref="F:ktsu.Coder.Ast.UnaryOperator.LogicalNot"/> as a word.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.LanguageGeneratorBase.GetAssignmentOperator(ktsu.Coder.Ast.AssignmentOperator)">
+            <summary>
+            Maps an assignment operator to its source spelling.
+            </summary>
+            <param name="op">The operator to map.</param>
+            <returns>The operator's source spelling.</returns>
+            <exception cref="T:System.NotSupportedException">The operator has no mapping.</exception>
+            <remarks>Every language the generators target spells these identically.</remarks>
         </member>
         <member name="T:ktsu.Coder.Languages.PythonGenerator">
             <summary>
@@ -1736,20 +2187,183 @@
             Gets the file extension (without the dot) used for this language.
             </summary>
         </member>
-        <member name="M:ktsu.Coder.Languages.PythonGenerator.GenerateInternal(ktsu.Coder.Ast.AstNode,System.Text.StringBuilder,System.Int32)">
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.FormatBoolean(System.Boolean)">
             <summary>
-            Generates Python code with proper indentation.
+            Spells a boolean literal. Python capitalizes them.
             </summary>
-            <param name="node">The AST node to generate code from.</param>
-            <param name="builder">The string builder to append code to.</param>
-            <param name="indentLevel">The current indentation level.</param>
+            <param name="value">The literal's value.</param>
+            <returns>The keyword Python uses.</returns>
         </member>
-        <member name="M:ktsu.Coder.Languages.PythonGenerator.CanGenerate(ktsu.Coder.Ast.AstNode)">
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.EndStatement(ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Ends a statement. Python has no terminator, and the function body emits the line breaks, so
+            this deliberately writes nothing.
+            </summary>
+            <param name="code">The writer, left untouched.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.GenerateFunctionDeclaration(ktsu.Coder.Ast.FunctionDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.GenerateClassDeclaration(ktsu.Coder.Ast.ClassDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <inheritdoc/>
+            <remarks>
+            Python's suite may not be empty, so a class with no members gets a <c>pass</c>, the same way an
+            empty function body does.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.GenerateMethod(ktsu.Coder.Ast.FunctionDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits a function as a method, which in Python means giving it the receiver as its first
+            parameter.
+            </summary>
+            <param name="method">The function to emit as a method.</param>
+            <param name="code">The writer to emit into.</param>
+            <remarks>
+            <c>self</c> is Python's spelling of the receiver a method is called on. It is not carried in
+            the AST — no other target language has it — so it is supplied here rather than being something
+            the user has to remember to add as a parameter and then remove for every other language.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.GenerateParameter(ktsu.Coder.Ast.Parameter,ktsu.CodeBlocker.CodeBlocker,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.GenerateVariableDeclaration(ktsu.Coder.Ast.VariableDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.GetOperatorSpelling(ktsu.Coder.Ast.BinaryOperator)">
+            <summary>
+            Maps a binary operator to its Python spelling.
+            </summary>
+            <param name="op">The operator to map.</param>
+            <returns>The operator's source spelling.</returns>
+            <remarks>Only the logical operators differ from the C-family set: Python spells them as words.</remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.PythonGenerator.GetUnaryOperatorSpelling(ktsu.Coder.Ast.UnaryOperator)">
+            <summary>
+            Maps a unary operator to its Python spelling.
+            </summary>
+            <param name="op">The operator to map.</param>
+            <returns>The operator's source spelling.</returns>
+            <remarks>
+            Only logical negation differs from the C-family set: Python spells it as a word. The emitter
+            supplies the separating space, so this returns the bare keyword.
+            </remarks>
+        </member>
+        <member name="T:ktsu.Coder.Languages.StandardLanguageGenerator">
+            <summary>
+            A <see cref="T:ktsu.Coder.Languages.LanguageGeneratorBase"/> that owns the node dispatch, so a generator supplies only
+            the syntax its language does not share with the others.
+            </summary>
+            <remarks>
+            Every generator's dispatch was the same switch: structural nodes to their emitters, everything
+            else to <see cref="M:ktsu.Coder.Languages.LanguageGeneratorBase.TryGenerateCommonNode(ktsu.Coder.Ast.AstNode,ktsu.CodeBlocker.CodeBlocker)"/>, an unrecognised node to a
+            <see cref="T:System.NotSupportedException"/>. Only the operator spelling and the language's name in that
+            message differed. It lives here once, and a derived generator writes three methods —
+            <see cref="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateFunctionDeclaration(ktsu.Coder.Ast.FunctionDeclaration,ktsu.CodeBlocker.CodeBlocker)"/>, <see cref="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateVariableDeclaration(ktsu.Coder.Ast.VariableDeclaration,ktsu.CodeBlocker.CodeBlocker)"/> and
+            <see cref="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateParameter(ktsu.Coder.Ast.Parameter,ktsu.CodeBlocker.CodeBlocker,System.Int32)"/> — plus an operator override when its language needs one.
+            <para>
+            <c>CSharpGenerator</c> deliberately does not derive from this. It indents with a precomputed
+            string rather than a level, emits a comment instead of throwing for an unrecognised node, and
+            stringifies a return expression rather than recursing into it. Those are differences to settle on
+            their own terms, not to smuggle in here.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.CanGenerate(ktsu.Coder.Ast.AstNode)">
             <summary>
             Determines whether this generator can generate code for the specified AST node.
             </summary>
             <param name="astNode">The AST node to check.</param>
             <returns>True if this generator can generate code for the node; otherwise, false.</returns>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateInternal(ktsu.Coder.Ast.AstNode,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Dispatches a node to the emitter for its shape.
+            </summary>
+            <param name="node">The AST node to generate code from.</param>
+            <param name="code">The writer to emit into.</param>
+            <exception cref="T:System.NotSupportedException">The node is not one this generator emits.</exception>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateFunctionDeclaration(ktsu.Coder.Ast.FunctionDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits a function declaration, including its body.
+            </summary>
+            <param name="funcDecl">The declaration to emit.</param>
+            <param name="code">The writer to emit into.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateClassDeclaration(ktsu.Coder.Ast.ClassDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits a class declaration, including its members.
+            </summary>
+            <param name="classDecl">The declaration to emit.</param>
+            <param name="code">The writer to emit into.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateClassMembers(ktsu.Coder.Ast.ClassDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits the members of a class, one after another.
+            </summary>
+            <param name="classDecl">The class whose members to emit.</param>
+            <param name="code">The writer to emit into.</param>
+            <remarks>
+            A member is dispatched like any other node, so a nested class, a method and a field each come
+            out through the emitter for its own shape and nesting needs no separate code path.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateVariableDeclaration(ktsu.Coder.Ast.VariableDeclaration,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits a variable declaration as a complete statement.
+            </summary>
+            <param name="varDecl">The declaration to emit.</param>
+            <param name="code">The writer to emit into.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateParameter(ktsu.Coder.Ast.Parameter,ktsu.CodeBlocker.CodeBlocker,System.Int32)">
+            <summary>
+            Emits one parameter, without any separator.
+            </summary>
+            <param name="parameter">The parameter to emit.</param>
+            <param name="code">The writer to emit into.</param>
+            <param name="position">The parameter's position, used to name an unnamed parameter.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.AppendDefaultValue(ktsu.Coder.Ast.Parameter,ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Appends a parameter's default value, when it has one.
+            </summary>
+            <param name="parameter">The parameter whose default to append.</param>
+            <param name="code">The writer to emit into.</param>
+            <remarks>
+            A default value is how every target language expresses <see cref="P:ktsu.Coder.Ast.Parameter.IsOptional"/>;
+            none of them has separate syntax for it.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.GenerateParameterList(System.Collections.Generic.IReadOnlyList{ktsu.Coder.Ast.Parameter},ktsu.CodeBlocker.CodeBlocker)">
+            <summary>
+            Emits a comma-separated parameter list, without the surrounding parentheses.
+            </summary>
+            <param name="parameters">The parameters to emit.</param>
+            <param name="code">The writer to emit into.</param>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.GetOperatorSpelling(ktsu.Coder.Ast.BinaryOperator)">
+            <summary>
+            Spells a binary operator in the target language.
+            </summary>
+            <param name="op">The operator to spell.</param>
+            <returns>The operator's source spelling.</returns>
+            <remarks>
+            Defaults to the C-family set. A language that spells one operator differently overrides this
+            and defers the rest to <see cref="M:ktsu.Coder.Languages.LanguageGeneratorBase.GetBinaryOperator(ktsu.Coder.Ast.BinaryOperator)"/>.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Coder.Languages.StandardLanguageGenerator.GetUnaryOperatorSpelling(ktsu.Coder.Ast.UnaryOperator)">
+            <summary>
+            Spells a unary operator in the target language.
+            </summary>
+            <param name="op">The operator to spell.</param>
+            <returns>The operator's source spelling.</returns>
+            <remarks>
+            Defaults to the C-family set. A language that spells one operator differently overrides this
+            and defers the rest to <see cref="M:ktsu.Coder.Languages.LanguageGeneratorBase.GetUnaryOperator(ktsu.Coder.Ast.UnaryOperator)"/>. A word operator is
+            separated from its operand by the emitter, so an override returns the bare word.
+            </remarks>
         </member>
         <member name="T:ktsu.Coder.Serialization.YamlDeserializer">
             <summary>

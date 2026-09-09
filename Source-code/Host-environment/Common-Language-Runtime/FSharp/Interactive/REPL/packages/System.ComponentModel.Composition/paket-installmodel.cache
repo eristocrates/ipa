@@ -22,12 +22,12 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/7f3d8ed39d9243a486572b6194d297ad.psmdcp
+F: /package/services/metadata/core-properties/3b86fc0de9be41d6886850e6b95aac68.psmdcp
 D: /_rels
 F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
-F: /system.componentmodel.composition.10.0.11.nupkg
+F: /system.componentmodel.composition.10.0.12.nupkg
 F: /System.ComponentModel.Composition.nuspec
 F: /THIRD-PARTY-NOTICES.TXT
 F: /useSharedDesignerContext.txt

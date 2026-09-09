@@ -3,7 +3,7 @@
   <dc:creator>ktsu.dev contributors</dc:creator>
   <dc:description>A library providing methods for matching and filtering text. It supports glob patterns, regular expressions, and fuzzy matching.</dc:description>
   <dc:identifier>ktsu.TextFilter</dc:identifier>
-  <version>1.5.42</version>
+  <version>1.5.44</version>
   <keywords>text filter;glob patterns;regex;regular expressions;fuzzy matching;text matching;filter;ranking;dotnet;csharp</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

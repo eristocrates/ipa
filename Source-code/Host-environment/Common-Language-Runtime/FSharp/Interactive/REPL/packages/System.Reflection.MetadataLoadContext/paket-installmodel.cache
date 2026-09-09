@@ -27,13 +27,13 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/bf9ffbf50aa2473e979210aac96b001e.psmdcp
+F: /package/services/metadata/core-properties/94bcc1ddc0af4e31a84a47950acf17fa.psmdcp
 D: /_rels
 F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
 F: /PACKAGE.md
-F: /system.reflection.metadataloadcontext.10.0.11.nupkg
+F: /system.reflection.metadataloadcontext.10.0.12.nupkg
 F: /System.Reflection.MetadataLoadContext.nuspec
 F: /THIRD-PARTY-NOTICES.TXT
 F: /useSharedDesignerContext.txt

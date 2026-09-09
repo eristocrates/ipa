@@ -525,6 +525,59 @@
             <see href="https://urlpattern.spec.whatwg.org/#escape-a-pattern-string">WHATWG URL Pattern Spec - Escape a pattern string</see>
             </remarks>
         </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.PercentEncodeSet">
+            <summary>The percent-encode sets of the URL Standard.</summary>
+            <remarks>
+            Each set is a superset of the one before it, except that <see cref="F:Meziantou.Framework.UrlPatternInternal.PercentEncodeSet.Fragment"/> and
+            <see cref="F:Meziantou.Framework.UrlPatternInternal.PercentEncodeSet.Query"/> both extend the C0 control set in different directions.
+            <see href="https://url.spec.whatwg.org/#percent-encoded-bytes">URL Standard - Percent-encoded bytes</see>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PercentEncodeSet.C0Control">
+            <summary>C0 controls and every code point greater than U+007E (~).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PercentEncodeSet.Fragment">
+            <summary>The C0 control set, plus U+0020 SPACE, '"', '&lt;', '&gt;' and '`'.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PercentEncodeSet.Query">
+            <summary>The C0 control set, plus U+0020 SPACE, '"', '#', '&lt;' and '&gt;'.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PercentEncodeSet.SpecialQuery">
+            <summary>The query set, plus '\''. Used for the query of a URL with a special scheme.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PercentEncodeSet.Path">
+            <summary>The query set, plus '?', '`', '{' and '}'.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.UrlPatternInternal.PercentEncodeSet.UserInfo">
+            <summary>The path set, plus '/', ':', ';', '=', '@', '[', '\\', ']', '^' and '|'.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.PercentEncoding">
+            <summary>UTF-8 percent-encoding and percent-decoding, as defined by the URL Standard.</summary>
+            <remarks>
+            <see href="https://url.spec.whatwg.org/#percent-encoded-bytes">URL Standard - Percent-encoded bytes</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PercentEncoding.Encode(System.String,Meziantou.Framework.UrlPatternInternal.PercentEncodeSet)">
+            <summary>Percent-encodes the code points of <paramref name="value"/> that belong to <paramref name="set"/>.</summary>
+            <remarks>
+            U+0025 (%) belongs to none of the sets, so an escape sequence that is already present is left alone
+            instead of being doubly encoded.
+            <see href="https://url.spec.whatwg.org/#string-utf-8-percent-encode">URL Standard - UTF-8 percent-encode</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PercentEncoding.EncodeCodePoint(System.Text.StringBuilder,System.Text.Rune,Meziantou.Framework.UrlPatternInternal.PercentEncodeSet)">
+            <summary>Percent-encodes a single code point, appending the result to <paramref name="builder"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PercentEncoding.Decode(System.String)">
+            <summary>Percent-decodes every valid escape sequence in <paramref name="value"/>, interpreting the bytes as UTF-8.</summary>
+            <remarks>
+            A '%' that is not followed by two hexadecimal digits is kept as-is, as the URL Standard requires.
+            <see href="https://url.spec.whatwg.org/#percent-decode">URL Standard - Percent-decode</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.PercentEncoding.ShouldEncode(System.Char,Meziantou.Framework.UrlPatternInternal.PercentEncodeSet)">
+            <summary>Determines whether an ASCII code point belongs to the specified percent-encode set.</summary>
+        </member>
         <member name="T:Meziantou.Framework.UrlPatternInternal.SpecialSchemes">
             <summary>The special schemes of the URL Standard, and the default port of each.</summary>
             <remarks>
@@ -616,11 +669,19 @@
             <see href="https://urlpattern.spec.whatwg.org/#process-a-tokenizing-error">WHATWG URL Pattern Spec - Process a tokenizing error</see>
             </remarks>
         </member>
-        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.IsValidNameCodePoint(System.Char,System.Boolean)">
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.IsValidNameCodePoint(System.Int32,System.Boolean)">
             <summary>Determines if a code point is valid for a name.</summary>
             <remarks>
+            A name is an ECMAScript identifier, so it is the IdentifierStart set that opens it and the wider
+            IdentifierPart set that continues it.
             <see href="https://urlpattern.spec.whatwg.org/#is-a-valid-name-code-point">WHATWG URL Pattern Spec - Is a valid name code point</see>
             </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.IsOtherIdStart(System.Int32)">
+            <summary>The code points the Other_ID_Start property adds to the letter categories.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.Tokenizer.IsOtherIdContinue(System.Int32)">
+            <summary>The code points the Other_ID_Continue property adds to the mark and digit categories.</summary>
         </member>
         <member name="T:Meziantou.Framework.UrlPatternInternal.TokenType">
             <summary>Represents the type of a token in a pattern string.</summary>
@@ -663,6 +724,134 @@
         </member>
         <member name="F:Meziantou.Framework.UrlPatternInternal.TokenType.End">
             <summary>The token represents the end of the pattern string.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer">
+            <summary>Rewrites a component value into the form a parsed URL would have.</summary>
+            <remarks>
+            <para>
+            Every component of a pattern is canonicalized when the pattern is compiled, one fixed-text part at a
+            time, and the values matched against it are canonicalized the same way. The two are only comparable
+            because both sides go through these methods.
+            </para>
+            <para>
+            The spec defines each of these in terms of the URL Standard's basic URL parser applied to a dummy
+            "https://dummy.invalid/" record with a state override. Only the states that a component can reach are
+            implemented here, which is why the dummy record does not appear.
+            </para>
+            <see href="https://urlpattern.spec.whatwg.org/#canon-encoding-callbacks">WHATWG URL Pattern Spec - Encoding callbacks</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.CanonicalizeProtocol(System.String)">
+            <summary>Canonicalizes a protocol.</summary>
+            <remarks>
+            The spec parses "&lt;value&gt;://dummy.invalid/" and returns the scheme of the result, which accepts
+            exactly the scheme grammar and lowercases it.
+            <see href="https://urlpattern.spec.whatwg.org/#canon-a-protocol">WHATWG URL Pattern Spec - Canonicalize a protocol</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.CanonicalizeUsername(System.String)">
+            <summary>Canonicalizes a username.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#canon-a-username">WHATWG URL Pattern Spec - Canonicalize a username</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.CanonicalizePassword(System.String)">
+            <summary>Canonicalizes a password.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#canon-a-password">WHATWG URL Pattern Spec - Canonicalize a password</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.CanonicalizeHostname(System.String)">
+            <summary>Canonicalizes a hostname.</summary>
+            <remarks>
+            <para>
+            The IPv4 normalization of the URL Standard (which rewrites "0x7f.1" as "127.0.0.1") is deliberately
+            not applied: the values a pattern is matched against come from a <see cref="T:System.Uri"/>, which does not
+            apply it either, so normalizing only the pattern would stop the two from lining up.
+            </para>
+            <see href="https://urlpattern.spec.whatwg.org/#canon-a-hostname">WHATWG URL Pattern Spec - Canonicalize a hostname</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.CanonicalizeIPv6Hostname(System.String)">
+            <summary>Canonicalizes an IPv6 hostname.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#canon-an-ipv6-hostname">WHATWG URL Pattern Spec - Canonicalize an IPv6 hostname</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.CanonicalizePort(System.String,System.String)">
+            <summary>Canonicalizes a port, dropping it when it is the default port of <paramref name="protocolValue"/>.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#canon-a-port">WHATWG URL Pattern Spec - Canonicalize a port</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.CanonicalizePathname(System.String)">
+            <summary>Canonicalizes the pathname of a URL with a special scheme.</summary>
+            <remarks>
+            <para>
+            The URL parser prepends a leading "/" to a path, which must not happen here because this runs on
+            each fixed-text part of a pattern rather than on the whole pathname: it would turn "/books/:id.json"
+            into "/books/:id/.json". The spec sidesteps it by prefixing "/-" and removing it from the result;
+            the "-" is there so that a value starting with "." is not read as a "/." segment and collapsed.
+            </para>
+            <see href="https://urlpattern.spec.whatwg.org/#canon-a-pathname">WHATWG URL Pattern Spec - Canonicalize a pathname</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.CanonicalizeOpaquePathname(System.String)">
+            <summary>Canonicalizes the pathname of a URL whose scheme is not a special scheme.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#canon-an-opaque-pathname">WHATWG URL Pattern Spec - Canonicalize an opaque pathname</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.CanonicalizeSearch(System.String)">
+            <summary>Canonicalizes a search.</summary>
+            <remarks>
+            The dummy URL record has a special scheme, so the special-query percent-encode set applies and a
+            "'" is encoded as well.
+            <see href="https://urlpattern.spec.whatwg.org/#canon-a-search">WHATWG URL Pattern Spec - Canonicalize a search</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.CanonicalizeHash(System.String)">
+            <summary>Canonicalizes a hash.</summary>
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#canon-a-hash">WHATWG URL Pattern Spec - Canonicalize a hash</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.RemoveTabsAndNewlines(System.String)">
+            <summary>The code points the basic URL parser removes from its input before doing anything else.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.SerializeIPv6Hostname(System.String)">
+            <summary>Serializes an IPv6 address the way the URL Standard does.</summary>
+            <remarks>
+            <see cref="T:System.Uri"/> writes the last two pieces of an address such as "::ab:1" in the dotted-decimal
+            form ("::0.171.0.1"), which the URL Standard never does, so a host read from a <see cref="T:System.Uri"/>
+            has to be written out again to be comparable with a pattern.
+            <see href="https://url.spec.whatwg.org/#concept-ipv6-serializer">URL Standard - IPv6 serializer</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.TrimLeadingC0ControlsAndSpaces(System.String)">
+            <summary>Removes the leading C0 controls and spaces, as the basic URL parser does when no URL record is given.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.ParsePath(System.String)">
+            <summary>Runs the path start state followed by the path state, for a URL with a special scheme.</summary>
+            <remarks>
+            <see href="https://url.spec.whatwg.org/#path-state">URL Standard - Path state</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.AppendEncodedCodePoint(System.Text.StringBuilder,System.ReadOnlySpan{System.Char},Meziantou.Framework.UrlPatternInternal.PercentEncodeSet)">
+            <summary>Percent-encodes the code point at the start of <paramref name="value"/> and returns how many chars it spanned.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.DomainToAscii(System.String)">
+            <summary>Runs the "domain to ASCII" operation of the URL Standard.</summary>
+            <remarks>
+            Unicode ToASCII is defined label by label, so an empty label (which a fixed-text part such as "."
+            consists of) has to stay empty instead of failing.
+            <see href="https://url.spec.whatwg.org/#concept-domain-to-ascii">URL Standard - Domain to ASCII</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer.IsForbiddenDomainCodePoint(System.Char)">
+            <remarks>
+            <see href="https://url.spec.whatwg.org/#forbidden-domain-code-point">URL Standard - Forbidden domain code point</see>
+            </remarks>
         </member>
         <member name="T:Meziantou.Framework.UrlPatternInternal.UrlPatternComponent">
             <summary>A component represents one part of a URL pattern (protocol, hostname, etc.).</summary>
@@ -890,20 +1079,33 @@
         </member>
         <member name="M:Meziantou.Framework.UrlPattern.GetUrlComponents(System.Uri)">
             <summary>Splits the URL into the eight component values that are matched against the pattern.</summary>
-        </member>
-        <member name="M:Meziantou.Framework.UrlPattern.CanonicalizeInitComponents(Meziantou.Framework.UrlPatternInit)">
-            <summary>Canonicalizes the components of an init used as a match input.</summary>
             <remarks>
-            The pattern is canonicalized when it is compiled, so an init used as an input has to be
-            canonicalized the same way for the two to be comparable. A <see cref="T:System.Uri"/> input already
-            arrives canonical, which is why <see cref="M:Meziantou.Framework.UrlPattern.MatchUrl(System.Uri,System.String)"/> does not go through this.
-            <see href="https://urlpattern.spec.whatwg.org/#canon-processing-for-init">WHATWG URL Pattern Spec - URLPatternInit processing</see>
+            <para>
+            The components are taken in their least-escaped form and canonicalized again, because
+            <see cref="T:System.Uri"/> escapes a few code points that the URL Standard leaves alone ("^" and "|") and
+            leaves alone one that it escapes ("'" in a query). Running both sides of a match through
+            <see cref="T:Meziantou.Framework.UrlPatternInternal.UrlCanonicalizer"/> is what makes them comparable.
+            </para>
+            <para>
+            What remains of <see cref="T:System.Uri"/>'s own normalization is that it decodes the escape of an unreserved
+            code point, so "/%41" arrives as "/A" where the URL Standard would have kept "/%41".
+            </para>
             </remarks>
         </member>
         <member name="M:Meziantou.Framework.UrlPattern.ProcessUrlPatternInit(Meziantou.Framework.UrlPatternInit,System.Boolean)">
             <summary>Processes a URLPatternInit to resolve base URL and fill in defaults.</summary>
             <remarks>
             <see href="https://urlpattern.spec.whatwg.org/#canon-processing-for-init">WHATWG URL Pattern Spec - URLPatternInit processing</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.ProcessProtocolForInit(System.String,System.Boolean)">
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#process-protocol-for-init">WHATWG URL Pattern Spec - Process protocol for init</see>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.UrlPattern.ProcessPathnameForInit(System.String,System.String,System.Boolean)">
+            <remarks>
+            <see href="https://urlpattern.spec.whatwg.org/#process-pathname-for-init">WHATWG URL Pattern Spec - Process pathname for init</see>
             </remarks>
         </member>
         <member name="M:Meziantou.Framework.UrlPattern.ProcessBaseUrlString(System.String,System.Boolean)">

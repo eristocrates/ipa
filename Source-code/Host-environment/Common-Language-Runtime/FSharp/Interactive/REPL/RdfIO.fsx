@@ -7,6 +7,8 @@ open PathErgonomics
 open RdfAsm
 #r "SparqlErgonomics.dll"
 open SparqlErgonomics
+#r "UrlErgonomics.dll"
+open UrlErgonomics
 #r "XmlErgonomics.dll"
 open XmlErgonomics
 #r "Metaprogramming.dll"
@@ -46,6 +48,30 @@ open FSharp.Json
 
 
 
+
+type InMemoryDataset with
+    member this.namespaceMap =
+        let namespaceMapper = new NamespaceMapper()
+
+        this.graphNames
+        |> Array.iter (fun (graphName: IRefNode) -> namespaceMapper.Import this[graphName].NamespaceMap)
+
+        namespaceMapper
+
+    member this.graphNames =
+        this.GraphNames
+        |> Seq.filter (fun graphName -> not (isNull graphName))
+        |> Seq.toArray
+
+module InMemoryDataset =
+    let fromTurtleDirectory   (turtleDirectory: DirectoryInfo)  =
+        let dataset = new InMemoryDataset()
+        turtleDirectory.GetFiles("*.ttl", SearchOption.AllDirectories)
+        |> Array.iter (fun file ->
+            let fileGraph = new ThreadSafeGraph()
+            FileLoader.Load(fileGraph, file.FullName)
+            dataset.AddGraph(fileGraph) |> ignore)
+        dataset
 
 
 
@@ -661,7 +687,11 @@ module RdfVocabulary =
     let fromPrefixId (prefixId :PrefixId) = 
         namespaceMapper.AddNamespace(prefixId.asNamespaceMap)
 
-        let ttlFile = prefixId.asFileExtension ".ttl"
+        let ttlFile = 
+            match prefixId.namespaceUrl.Host with 
+            | "spec.edmcouncil.org" -> prefixId.namespaceUrl.asFileExtension ".ttl"
+            | _ -> prefixId.asFileExtension ".ttl"
+        let namespaceDocument = { graphFile = ttlFile }
 
         let loader = new Loader()
         let graph = new ThreadSafeGraph()
@@ -693,7 +723,7 @@ module RdfVocabulary =
         | _ -> ()
         {
             prefixId =  prefixId
-            namespaceDocument = { graphFile = prefixId.asFileExtension ".ttl" }
+            namespaceDocument = namespaceDocument
         }
     let asModule(vocabulary:RdfVocabulary) = 
 

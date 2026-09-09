@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>.NET wrapper for Windows Recent Documents</dc:description>
   <dc:identifier>Meziantou.Framework.Win32.RecentDocuments</dc:identifier>
-  <version>2.0.1</version>
-  <keywords></keywords>
+  <version>2.0.2</version>
+  <keywords>windows, win32, recent-documents, shell, jumplist</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

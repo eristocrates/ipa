@@ -27,13 +27,13 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/29b26d6cf3734dceb948e7486d7d539f.psmdcp
+F: /package/services/metadata/core-properties/25a4c473fa30478ba8f7fa5d2817ed32.psmdcp
 D: /_rels
 F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
 F: /PACKAGE.md
-F: /system.collections.immutable.10.0.11.nupkg
+F: /system.collections.immutable.10.0.12.nupkg
 F: /System.Collections.Immutable.nuspec
 F: /THIRD-PARTY-NOTICES.TXT
 F: /useSharedDesignerContext.txt

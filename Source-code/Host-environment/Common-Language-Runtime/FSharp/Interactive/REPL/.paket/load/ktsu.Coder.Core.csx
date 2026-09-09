@@ -1,4 +1,5 @@
 
+#load "ktsu.CodeBlocker.csx" 
 #load "ktsu.DeepClone.csx" 
 #load "Microsoft.Extensions.DependencyInjection.Abstractions.csx" 
 #load "YamlDotNet.csx" 

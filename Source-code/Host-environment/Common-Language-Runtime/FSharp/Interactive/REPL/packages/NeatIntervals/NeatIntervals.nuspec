@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NeatIntervals</id>
+    <version>1.0.0</version>
+    <authors>Stoyan Hadzhiyski</authors>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>logo176x150.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/shadzhiyski/NeatIntervals</projectUrl>
+    <description>A .NET package intended to simplify the work with sets of generic intervals, especially suitable for use cases requiring often mutation (add, remove). This is done with IntervalSet collection. It provides main operations like Add, Remove, Union, Intersect, Except, Merge.</description>
+    <copyright>Copyright (c) Stoyan Hadzhiyski 2024</copyright>
+    <tags>interval set collection</tags>
+    <repository type="git" url="https://github.com/shadzhiyski/NeatIntervals" />
+    <dependencies>
+      <group targetFramework="net6.0" />
+    </dependencies>
+  </metadata>
+</package>

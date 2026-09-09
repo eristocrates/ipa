@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>Class to parse and displaying values, such as file size, in Bytes</dc:description>
   <dc:identifier>Meziantou.Framework.ByteSize</dc:identifier>
-  <version>4.0.2</version>
-  <keywords></keywords>
+  <version>5.0.0</version>
+  <keywords>byte-size, file-size, units, formatting, parsing</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

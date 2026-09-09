@@ -3,7 +3,7 @@
   <dc:creator>ktsu.dev contributors</dc:creator>
   <dc:description>A .NET library for processing and manipulating YAML frontmatter in markdown files.</dc:description>
   <dc:identifier>ktsu.Frontmatter</dc:identifier>
-  <version>1.2.23</version>
+  <version>1.2.25</version>
   <keywords>frontmatter;yaml frontmatter;markdown;markdown processing;metadata;yaml;document processing;property naming;dotnet;csharp</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

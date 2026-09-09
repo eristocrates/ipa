@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>A library for reading and writing metadata tags in media files (MP3, OGG, FLAC, MP4/M4A, WAV, AIFF)</dc:description>
   <dc:identifier>Meziantou.Framework.MediaTags</dc:identifier>
-  <version>2.1.0</version>
-  <keywords></keywords>
+  <version>2.1.1</version>
+  <keywords>metadata, tags, id3, mp3, flac, ogg, mp4</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

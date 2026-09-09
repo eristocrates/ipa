@@ -30,7 +30,7 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/abe4563b1ec44f3796e45b52300c8364.psmdcp
+F: /package/services/metadata/core-properties/af77c2a1ee204d96853c1c6976d7fa5c.psmdcp
 D: /runtimes
 D: /runtimes/win
 D: /runtimes/win/lib
@@ -47,7 +47,7 @@ D: /_rels
 F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
-F: /system.security.cryptography.pkcs.10.0.11.nupkg
+F: /system.security.cryptography.pkcs.10.0.12.nupkg
 F: /System.Security.Cryptography.Pkcs.nuspec
 F: /THIRD-PARTY-NOTICES.TXT
 F: /useSharedDesignerContext.txt

@@ -784,6 +784,9 @@
         <member name="M:PuppeteerSharp.Bidi.BidiPage.ExposeFunctionAsync(System.String,System.Delegate)">
             <inheritdoc />
         </member>
+        <member name="M:PuppeteerSharp.Bidi.BidiPage.CreateScreenRecording(PuppeteerSharp.RecordOptions)">
+            <inheritdoc/>
+        </member>
         <member name="M:PuppeteerSharp.Bidi.BidiPage.Dispose(System.Boolean)">
             <inheritdoc/>
         </member>
@@ -827,6 +830,9 @@
             Circular references within the object are set to null for the specific property,
             matching upstream BiDi behavior where the rest of the object is still accessible.
             </summary>
+        </member>
+        <member name="M:PuppeteerSharp.Bidi.BidiScreenRecording.StopAsync">
+            <inheritdoc/>
         </member>
         <member name="M:PuppeteerSharp.Bidi.BidiTouchHandle.MoveAsync(System.Decimal,System.Decimal)">
             <inheritdoc />
@@ -2213,6 +2219,9 @@
         <member name="M:PuppeteerSharp.Cdp.CdpPage.PerformScreenshotAsync(PuppeteerSharp.ScreenshotType,PuppeteerSharp.ScreenshotOptions)">
             <inheritdoc/>
         </member>
+        <member name="M:PuppeteerSharp.Cdp.CdpPage.CreateScreenRecording(PuppeteerSharp.RecordOptions)">
+            <inheritdoc/>
+        </member>
         <member name="M:PuppeteerSharp.Cdp.CdpPage.ConvertSameSiteForCdp(System.Nullable{PuppeteerSharp.SameSite})">
             <summary>
             Converts a PuppeteerSharp SameSite value to a CDP-compatible value.
@@ -2275,6 +2284,9 @@
             <param name="frame">The frame to register.</param>
             <param name="identifier">The CDP identifier for this frame.</param>
         </member>
+        <member name="M:PuppeteerSharp.Cdp.CdpScreenRecording.StopAsync">
+            <inheritdoc/>
+        </member>
         <member name="T:PuppeteerSharp.Cdp.CdpTarget">
             <inheritdoc />
         </member>
@@ -2327,7 +2339,7 @@
         <member name="T:PuppeteerSharp.Cdp.CdpWebMcp">
             <summary>
             Experimental WebMCP API. Requires Chrome 149+ with
-            --enable-features=WebMCPTesting,DevToolsWebMCPSupport flags.
+            --enable-features=WebMCP flag.
             </summary>
             <seealso href="https://github.com/webmachinelearning/webmcp"/>
         </member>
@@ -2842,11 +2854,12 @@
         <member name="P:PuppeteerSharp.Cdp.WebMcpTool.Location">
             <summary>Source location that defined the tool (if available).</summary>
         </member>
-        <member name="M:PuppeteerSharp.Cdp.WebMcpTool.ExecuteAsync(System.Object)">
+        <member name="M:PuppeteerSharp.Cdp.WebMcpTool.ExecuteAsync(System.Object,PuppeteerSharp.Cdp.WebMcpToolExecuteOptions)">
             <summary>
             Executes the tool with the given input parameters.
             </summary>
             <param name="input">Input object matching the tool's <c>inputSchema</c>. Defaults to empty object.</param>
+            <param name="options">Optional execution options, including a cancellation token.</param>
             <returns>A task resolving to the tool call result.</returns>
         </member>
         <member name="T:PuppeteerSharp.Cdp.WebMcpToolCall">
@@ -2885,6 +2898,22 @@
         </member>
         <member name="P:PuppeteerSharp.Cdp.WebMcpToolCallResult.Status">
             <summary>Status of the invocation.</summary>
+        </member>
+        <member name="T:PuppeteerSharp.Cdp.WebMcpToolExecuteOptions">
+            <summary>
+            Options for <see cref="M:PuppeteerSharp.Cdp.WebMcpTool.ExecuteAsync(System.Object,PuppeteerSharp.Cdp.WebMcpToolExecuteOptions)"/>.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.Cdp.WebMcpToolExecuteOptions.CancellationToken">
+            <summary>
+            A <see cref="P:PuppeteerSharp.Cdp.WebMcpToolExecuteOptions.CancellationToken"/> that allows you to cancel the tool execution.
+            </summary>
+            <remarks>
+            This is the .NET equivalent of the upstream AbortController/AbortSignal pattern.
+            When the token is cancelled, PuppeteerSharp requests cancellation via CDP and the
+            execution resolves with <see cref="F:PuppeteerSharp.Cdp.WebMcpInvocationStatus.Canceled"/> rather than
+            throwing <see cref="T:System.OperationCanceledException"/>.
+            </remarks>
         </member>
         <member name="T:PuppeteerSharp.Cdp.WebMcpToolsAddedEventArgs">
             <summary>
@@ -3100,6 +3129,11 @@
             <summary>
             Optional factory for <see cref="T:System.Net.WebSockets.WebSocket"/> implementations.
             If <see cref="N:PuppeteerSharp.Transport"/> is set this property will be ignored.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.ConnectOptions.WsOptions">
+            <summary>
+            Options for the WebSocket connection to the browser.
             </summary>
         </member>
         <member name="P:PuppeteerSharp.ConnectOptions.Headers">
@@ -6090,12 +6124,27 @@
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
         </member>
+        <member name="P:PuppeteerSharp.Helpers.Json.SystemTextJsonSerializationContext.PageSetDocumentContentRequest">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
         <member name="P:PuppeteerSharp.Helpers.Json.SystemTextJsonSerializationContext.PageSetInterceptFileChooserDialog">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
         </member>
         <member name="P:PuppeteerSharp.Helpers.Json.SystemTextJsonSerializationContext.PageSetLifecycleEventsEnabledRequest">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.Helpers.Json.SystemTextJsonSerializationContext.PageStartScreenRecordingRequest">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.Helpers.Json.SystemTextJsonSerializationContext.PageStartScreenRecordingResponse">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
@@ -8112,6 +8161,11 @@
             <summary>
             Timeout setting for individual protocol (CDP) calls.
             Defaults to 180_000.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.IConnectionOptions.WsOptions">
+            <summary>
+            Options for the WebSocket connection to the browser.
             </summary>
         </member>
         <member name="P:PuppeteerSharp.IConnectionOptions.Headers">
@@ -11299,6 +11353,17 @@
             You must have ffmpeg installed on your system.
             </remarks>
         </member>
+        <member name="M:PuppeteerSharp.IPage.RecordAsync(PuppeteerSharp.RecordOptions)">
+            <summary>
+            Records this <see cref="T:PuppeteerSharp.IPage"/> using the Chrome DevTools Protocol
+            <see href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-startScreenRecording">Page.startScreenRecording</see> API.
+            </summary>
+            <remarks>
+            Outputs mp4 video stream.
+            </remarks>
+            <param name="options">Recording options.</param>
+            <returns>A task which resolves to a <see cref="T:PuppeteerSharp.ScreenRecording"/> that can be used to stop the recording.</returns>
+        </member>
         <member name="M:PuppeteerSharp.IPage.ScreenshotAsync(System.String)">
             <summary>
             Captures a screenshot of this <see cref="T:PuppeteerSharp.IPage"/>.
@@ -12305,6 +12370,23 @@
             </summary>
             <returns>Stop task.</returns>
         </member>
+        <member name="T:PuppeteerSharp.IWritableDestination">
+            <summary>
+            Represents a writable destination for a <see cref="T:PuppeteerSharp.ScreenRecording"/>.
+            </summary>
+        </member>
+        <member name="M:PuppeteerSharp.IWritableDestination.Write(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Writes a chunk of data to the destination.
+            </summary>
+            <param name="chunk">The chunk to write.</param>
+            <returns><c>true</c> if the chunk was written.</returns>
+        </member>
+        <member name="M:PuppeteerSharp.IWritableDestination.End">
+            <summary>
+            Ends the destination stream.
+            </summary>
+        </member>
         <member name="T:PuppeteerSharp.JSHandle">
             <inheritdoc/>
         </member>
@@ -12487,6 +12569,12 @@
             </summary>
             <returns>A task that completes when cleanup finishes.</returns>
         </member>
+        <member name="M:PuppeteerSharp.LauncherBase.GetRecentLogs">
+            <summary>
+            Recent stderr lines from the browser process, used for launch diagnostics.
+            </summary>
+            <returns>A snapshot of the most recent stderr lines.</returns>
+        </member>
         <member name="M:PuppeteerSharp.LauncherBase.OnExit">
             <summary>
             Cleans up temporary user data directory.
@@ -12620,6 +12708,11 @@
              ]]>
              </example>
              </remarks>
+        </member>
+        <member name="P:PuppeteerSharp.LaunchOptions.WsOptions">
+            <summary>
+            Options for the WebSocket connection to the browser.
+            </summary>
         </member>
         <member name="P:PuppeteerSharp.LaunchOptions.Headers">
             <summary>
@@ -13585,6 +13678,16 @@
             iPhone SE landscape.
             </summary>
         </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhoneSE3rdGen">
+            <summary>
+            iPhone SE (3rd gen).
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhoneSE3rdGenLandscape">
+            <summary>
+            iPhone SE (3rd gen) landscape.
+            </summary>
+        </member>
         <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhoneX">
             <summary>
             iPhone X.
@@ -13633,6 +13736,106 @@
         <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone11ProMaxLandscape">
             <summary>
             iPhone 11 Pro Max landscape.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone16">
+            <summary>
+            iPhone 16.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone16Landscape">
+            <summary>
+            iPhone 16 landscape.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone16Plus">
+            <summary>
+            iPhone 16 Plus.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone16PlusLandscape">
+            <summary>
+            iPhone 16 Plus landscape.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone16Pro">
+            <summary>
+            iPhone 16 Pro.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone16ProLandscape">
+            <summary>
+            iPhone 16 Pro landscape.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone16ProMax">
+            <summary>
+            iPhone 16 Pro Max.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone16ProMaxLandscape">
+            <summary>
+            iPhone 16 Pro Max landscape.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone16e">
+            <summary>
+            iPhone 16e.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone16eLandscape">
+            <summary>
+            iPhone 16e landscape.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone17">
+            <summary>
+            iPhone 17.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone17Landscape">
+            <summary>
+            iPhone 17 landscape.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhoneAir">
+            <summary>
+            iPhone Air.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhoneAirLandscape">
+            <summary>
+            iPhone Air landscape.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone17Pro">
+            <summary>
+            iPhone 17 Pro.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone17ProLandscape">
+            <summary>
+            iPhone 17 Pro landscape.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone17ProMax">
+            <summary>
+            iPhone 17 Pro Max.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone17ProMaxLandscape">
+            <summary>
+            iPhone 17 Pro Max landscape.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone17e">
+            <summary>
+            iPhone 17e.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.IPhone17eLandscape">
+            <summary>
+            iPhone 17e landscape.
             </summary>
         </member>
         <member name="F:PuppeteerSharp.Mobile.DeviceDescriptorName.JioPhone2">
@@ -14401,6 +14604,17 @@
         <member name="M:PuppeteerSharp.Page.EmulateAsync(PuppeteerSharp.Mobile.DeviceDescriptor)">
             <inheritdoc/>
         </member>
+        <member name="M:PuppeteerSharp.Page.RecordAsync(PuppeteerSharp.RecordOptions)">
+            <summary>
+            Records this <see cref="T:PuppeteerSharp.IPage"/> using the Chrome DevTools Protocol
+            <see href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-startScreenRecording">Page.startScreenRecording</see> API.
+            </summary>
+            <remarks>
+            Outputs mp4 video stream.
+            </remarks>
+            <param name="options">Recording options.</param>
+            <returns>A task which resolves to a <see cref="T:PuppeteerSharp.ScreenRecording"/> that can be used to stop the recording.</returns>
+        </member>
         <member name="M:PuppeteerSharp.Page.ScreencastAsync(PuppeteerSharp.ScreencastOptions)">
             <inheritdoc/>
         </member>
@@ -14663,6 +14877,10 @@
             <summary>
             Starts a CDP screencast session.
             </summary>
+            <remarks>
+            Registers the screencast frame listener before starting screencast so the first frame is not missed
+            while <c>Page.startScreencast</c> is in flight (upstream puppeteer/puppeteer#15389).
+            </remarks>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> that completes when the screencast has started.</returns>
         </member>
         <member name="M:PuppeteerSharp.Page.StopScreencastAsync">
@@ -14764,6 +14982,13 @@
             <param name="name">Function name.</param>
             <param name="puppeteerFunction">Puppeteer function.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> that completes when the function has been added.</returns>
+        </member>
+        <member name="M:PuppeteerSharp.Page.CreateScreenRecording(PuppeteerSharp.RecordOptions)">
+            <summary>
+            Creates a protocol-specific screen recording instance.
+            </summary>
+            <param name="options">Recording options.</param>
+            <returns>A screen recording instance.</returns>
         </member>
         <member name="T:PuppeteerSharp.PageAccessibility.Accessibility">
             <inheritdoc/>
@@ -15963,6 +16188,48 @@
             <returns>A task that resolves to the <see cref="T:PuppeteerSharp.Extension"/> that created this realm, or <c>null</c>.</returns>
             <remarks>This API is experimental.</remarks>
         </member>
+        <member name="T:PuppeteerSharp.RecordOptions">
+            <summary>
+            Options for <see cref="M:PuppeteerSharp.IPage.RecordAsync(PuppeteerSharp.RecordOptions)"/>.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.RecordOptions.Path">
+            <summary>
+            File path to save the recording to.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.RecordOptions.Overwrite">
+            <summary>
+            Specifies whether to overwrite the output file if it already exists.
+            Defaults to <c>true</c>. When <c>false</c>, an existing file causes an <see cref="T:System.IO.IOException"/>.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.RecordOptions.Audio">
+            <summary>
+            Whether to record audio.
+            Defaults to <c>false</c>.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.RecordOptions.MaxWidth">
+            <summary>
+            Maximum frame width in pixels.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.RecordOptions.MaxHeight">
+            <summary>
+            Maximum frame height in pixels.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.RecordOptions.FrameRate">
+            <summary>
+            Maximum frame rate in frames per second.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.RecordOptions.Fps">
+            <summary>
+            Frame rate in frames per second (alias for <see cref="P:PuppeteerSharp.RecordOptions.FrameRate"/>).
+            </summary>
+        </member>
         <member name="T:PuppeteerSharp.ReloadOptions">
             <summary>
             Options for <see cref="M:PuppeteerSharp.IPage.ReloadAsync(PuppeteerSharp.ReloadOptions)"/>.
@@ -16716,6 +16983,95 @@
              <param name="timestamp">Timestamp of the current captured frame (seconds).</param>
              <param name="fps">Target output frames per second.</param>
              <returns>Number of encoder frames to emit for this interval.</returns>
+        </member>
+        <member name="T:PuppeteerSharp.ScreenRecording">
+            <summary>
+            Represents a video stream-based screen recording session.
+            </summary>
+        </member>
+        <member name="M:PuppeteerSharp.ScreenRecording.#ctor(PuppeteerSharp.Page,PuppeteerSharp.RecordOptions,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PuppeteerSharp.ScreenRecording"/> class.
+            </summary>
+            <param name="page">The page being recorded.</param>
+            <param name="options">Recording options.</param>
+            <param name="logger">Logger instance.</param>
+        </member>
+        <member name="P:PuppeteerSharp.ScreenRecording.Page">
+            <summary>
+            Gets the page being recorded.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.ScreenRecording.Options">
+            <summary>
+            Gets the recording options.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.ScreenRecording.Logger">
+            <summary>
+            Gets the logger instance.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.ScreenRecording.Destinations">
+            <summary>
+            Gets the destinations the recording is piped to.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.ScreenRecording.Stopped">
+            <summary>
+            Gets a value indicating whether the recording has been stopped.
+            </summary>
+        </member>
+        <member name="M:PuppeteerSharp.ScreenRecording.StopAsync">
+            <summary>
+            Stops the screen recording.
+            </summary>
+            <returns>A task that completes when recording has stopped.</returns>
+        </member>
+        <member name="M:PuppeteerSharp.ScreenRecording.PipeAsync(System.IO.Stream)">
+            <summary>
+            Pipes the recorded stream to a destination stream.
+            </summary>
+            <param name="destination">The destination stream.</param>
+            <returns>A task that completes when piping finishes.</returns>
+        </member>
+        <member name="M:PuppeteerSharp.ScreenRecording.Pipe(PuppeteerSharp.IWritableDestination)">
+            <summary>
+            Pipes the recorded stream to a writable destination and returns it for chaining.
+            </summary>
+            <param name="destination">Writable target for MP4 chunks.</param>
+            <returns>The same destination instance.</returns>
+        </member>
+        <member name="M:PuppeteerSharp.ScreenRecording.PipeAsync(PuppeteerSharp.IWritableDestination)">
+            <summary>
+            Registers a writable destination to receive recording chunks asynchronously.
+            </summary>
+            <param name="destination">The destination that will receive chunks.</param>
+            <returns>A task that completes when the destination has been registered.</returns>
+        </member>
+        <member name="M:PuppeteerSharp.ScreenRecording.GetAsyncEnumerator(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PuppeteerSharp.ScreenRecording.DisposeAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:PuppeteerSharp.ScreenRecording.StartAsync">
+            <summary>
+            Starts the screen recording.
+            </summary>
+            <returns>A task that completes when recording has started.</returns>
+        </member>
+        <member name="M:PuppeteerSharp.ScreenRecording.EnqueueChunk(System.Byte[])">
+            <summary>
+            Enqueues a chunk to stream consumers and destinations.
+            </summary>
+            <param name="buffer">The chunk to enqueue.</param>
+        </member>
+        <member name="M:PuppeteerSharp.ScreenRecording.CloseDestinationsAsync">
+            <summary>
+            Closes all destinations and completes the readable stream.
+            </summary>
+            <returns>A task that completes when destinations are closed.</returns>
         </member>
         <member name="T:PuppeteerSharp.ScreenshotOptions">
             <summary>
@@ -18101,6 +18457,39 @@
             Worker.
             </summary>
             <value>The worker.</value>
+        </member>
+        <member name="T:PuppeteerSharp.WsOptions">
+            <summary>
+            Options for the WebSocket connection to the browser.
+            </summary>
+        </member>
+        <member name="F:PuppeteerSharp.WsOptions.DefaultKeepAliveIntervalMs">
+            <summary>
+            Default ping period in milliseconds when <see cref="P:PuppeteerSharp.WsOptions.KeepAlive"/> is enabled.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.WsOptions.Headers">
+            <summary>
+            Headers to use for the web socket connection.
+            </summary>
+        </member>
+        <member name="P:PuppeteerSharp.WsOptions.KeepAlive">
+            <summary>
+            Whether to send WebSocket pings and drop the connection when a pong does
+            not come back within the same interval. Detects a connection that died
+            without a close frame, which otherwise leaves calls hanging until
+            <see cref="P:PuppeteerSharp.IConnectionOptions.ProtocolTimeout"/>.
+            </summary>
+            <remarks>
+            Dead-connection detection requires .NET 9 or later. On earlier runtimes,
+            enabling keep-alive only configures the WebSocket keep-alive interval.
+            </remarks>
+        </member>
+        <member name="P:PuppeteerSharp.WsOptions.KeepAliveIntervalMs">
+            <summary>
+            Ping period in milliseconds. Only used when <see cref="P:PuppeteerSharp.WsOptions.KeepAlive"/> is set.
+            Defaults to <see cref="F:PuppeteerSharp.WsOptions.DefaultKeepAliveIntervalMs"/>.
+            </summary>
         </member>
         <member name="T:System.Text.RegularExpressions.Generated.GetExtraInfoLines_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the GetExtraInfoLines method.</summary>

@@ -330,7 +330,6 @@ let manual_distributions =
        "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB/", "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB.ttl"
        "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-MX/", "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-MX.ttl"
        "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/", "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US.ttl"
-       "https://www.gleif.org/ontology/L1/", "https://www.gleif.org/ontology/pylodev2/data_file.ttl"
        "http://purl.org/HDT/hdt#", "https://www.w3.org/submissions/2011/SUBM-HDT-RDFS-20110330/HDT.rdf"
        "http://kaiko.getalp.org/dbnary#", "https://kaiko.getalp.org/static/datamodel/2.1.2/ontology.ttl"
        "http://www.w3.org/2011/http-headers#", "https://www.w3.org/2011/http-headers.rdf"
@@ -483,6 +482,8 @@ let manual_distributions =
        "https://www.commoncoreontologies.org/FamilialRelationsOntology", "https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-extensions/FamilialRelationsOntology.ttl"
        // "https://www.commoncoreontologies.org/mro/", "https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-extensions/ModalRelationOntology.ttl" // "cco.mro"
        "https://open-metadata.org/ontology/", "https://github.com/open-metadata/OpenMetadataStandards/raw/refs/heads/main/rdf/ontology/openmetadata.ttl"
+       
+       
 
 
 

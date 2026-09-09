@@ -3,7 +3,7 @@
   <dc:creator>WebDriverBiDi.NET Committers</dc:creator>
   <dc:description>A .NET client library for the WebDriver BiDi protocol.</dc:description>
   <dc:identifier>WebDriverBiDi</dc:identifier>
-  <version>0.0.56</version>
+  <version>0.0.57</version>
   <keywords>webdriver bidi browser-automation webdriver-bidi automation</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

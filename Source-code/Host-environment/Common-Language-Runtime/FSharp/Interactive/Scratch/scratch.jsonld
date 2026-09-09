@@ -1,6 +1,59 @@
 {
   "@graph": [
     {
+      "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountCurrentBalance",
+      "@type": "https://eristocrates.dev/ontology/commonplace/CurrentBalance",
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount": {
+        "@type": "xsd:decimal",
+        "@value": "6961.93"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+      },
+      "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime": {
+        "@type": "xsd:dateTimeStamp",
+        "@value": "2026-09-06T23:30:16.5815921-04:00"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccount",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DemandDepositAccount",
+      "https://eristocrates.dev/ontology/commonplace/hasAvailableBalance": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountAvailableBalance"
+      },
+      "https://eristocrates.dev/ontology/commonplace/hasCurrentBalance": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountCurrentBalance"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/exemplifies": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayChecking"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isHeldBy": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+      },
+      "https://www.omg.org/spec/Commons/Organizations/isProvidedBy": {
+        "@id": "http://lei.info/KB1H1DSPRFMYMCUFXT09"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccount",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DemandDepositAccount",
+      "https://eristocrates.dev/ontology/commonplace/hasAvailableBalance": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountAvailableBalance"
+      },
+      "https://eristocrates.dev/ontology/commonplace/hasCurrentBalance": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountCurrentBalance"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/exemplifies": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicChecking"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isHeldBy": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/syrislove"
+      },
+      "https://www.omg.org/spec/Commons/Organizations/isProvidedBy": {
+        "@id": "http://lei.info/C5654JQHZUHN0772B561"
+      }
+    },
+    {
       "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates",
       "@type": "http://xmlns.com/foaf/0.1/Person",
       "http://xmlns.com/foaf/0.1/age": {
@@ -19,22 +72,56 @@
         "@id": "https://www.governmentjobs.com/careers/leoncountyfl/classspecs/1183950"
       },
       "http://xmlns.com/foaf/0.1/workplaceHomepage": {
-        "@type": "xsd:anyURI",
-        "@value": "https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology"
+        "@id": "https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology"
       }
     },
     {
-      "@id": "https://connect.secure.wellsfargo.com/accounts/start#everydayChecking",
-      "@type": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount",
-      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
-        "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
-      }
-    },
-    {
-      "@id": "https://mobile.usaa.com/my/logon?acf=1#usaaSavings",
+      "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccount",
       "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DepositAccount",
-      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
+      "https://eristocrates.dev/ontology/commonplace/hasAvailableBalance": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountAvailableBalance"
+      },
+      "https://eristocrates.dev/ontology/commonplace/hasCurrentBalance": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountCurrentBalance"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/exemplifies": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavings"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isHeldBy": {
         "@id": "https://eristocrates.dev/ontology/commonplace/syrislove"
+      },
+      "https://www.omg.org/spec/Commons/Organizations/isProvidedBy": {
+        "@id": "http://lei.info/C5654JQHZUHN0772B561"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountCurrentBalance",
+      "@type": "https://eristocrates.dev/ontology/commonplace/CurrentBalance",
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount": {
+        "@type": "xsd:decimal",
+        "@value": "1965.38"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+      },
+      "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime": {
+        "@type": "xsd:dateTimeStamp",
+        "@value": "2026-09-06T23:30:16.5815921-04:00"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavingsAccountAvailableBalance",
+      "@type": "https://eristocrates.dev/ontology/commonplace/AvailableBalance",
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount": {
+        "@type": "xsd:decimal",
+        "@value": "1965.38"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+      },
+      "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime": {
+        "@type": "xsd:dateTimeStamp",
+        "@value": "2026-09-06T23:30:16.5815921-04:00"
       }
     },
     {
@@ -56,43 +143,153 @@
         "@id": "https://myfuelmaster.com/job/desktop-support-technician-8"
       },
       "http://xmlns.com/foaf/0.1/workplaceHomepage": {
-        "@type": "xsd:anyURI",
-        "@value": "https://myfuelmaster.com/"
+        "@id": "https://myfuelmaster.com/"
       }
     },
     {
-      "@id": "https://mobile.usaa.com/my/logon?acf=1#platinumVisa",
-      "@type": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount",
-      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
-        "@id": "https://eristocrates.dev/ontology/commonplace/syrislove"
+      "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicSavings",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankingProduct",
+      "rdfs:seeAlso": {
+        "@id": "https://www.usaa.com/banking/savings"
       }
     },
     {
-      "@id": "https://connect.secure.wellsfargo.com/accounts/start#wellsFargoRewards",
-      "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account",
-      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
+      "@id": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountCurrentBalance",
+      "@type": "https://eristocrates.dev/ontology/commonplace/CurrentBalance",
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount": {
+        "@type": "xsd:decimal",
+        "@value": "1040.67"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+      },
+      "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime": {
+        "@type": "xsd:dateTimeStamp",
+        "@value": "2026-09-06T23:30:16.5815921-04:00"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/AvailableBalance",
+      "rdfs:subClassOf": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Balance"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccount",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/DemandDepositAccount",
+      "https://eristocrates.dev/ontology/commonplace/hasAvailableBalance": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountAvailableBalance"
+      },
+      "https://eristocrates.dev/ontology/commonplace/hasCurrentBalance": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountCurrentBalance"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/exemplifies": {
+        "@id": "https://eristocrates.dev/ontology/commonplace/CrewFinanceChecking"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isHeldBy": {
         "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+      },
+      "https://www.omg.org/spec/Commons/Organizations/isProvidedBy": {
+        "@id": "http://lei.info/549300JEBULFT3BSU682"
       }
     },
     {
-      "@id": "https://connect.secure.wellsfargo.com/accounts/start#platinumCard",
-      "@type": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount",
-      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
-        "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+      "@id": "https://eristocrates.dev/ontology/commonplace/CrewFinanceChecking",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankingProduct",
+      "rdfs:seeAlso": {
+        "@id": "https://www.trycrew.com/pdfjs/web/viewer?file=%2Fdocs%2Fdeposit-agreement.pdf#h.g82ej3s9bgif"
       }
     },
     {
-      "@id": "https://mobile.usaa.com/my/logon?acf=1#checking",
-      "@type": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount",
-      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
-        "@id": "https://eristocrates.dev/ontology/commonplace/syrislove"
+      "@id": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountCurrentBalance",
+      "@type": "https://eristocrates.dev/ontology/commonplace/CurrentBalance",
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount": {
+        "@type": "xsd:decimal",
+        "@value": "1149.39"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+      },
+      "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime": {
+        "@type": "xsd:dateTimeStamp",
+        "@value": "2026-09-06T23:30:16.5815921-04:00"
       }
     },
     {
-      "@id": "https://connect.secure.wellsfargo.com/accounts/start#installmentLoans",
-      "@type": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanSpecificCustomerAccount",
-      "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/AccountHolder": {
-        "@id": "https://eristocrates.dev/ontology/commonplace/eristocrates"
+      "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicCheckingAccountAvailableBalance",
+      "@type": "https://eristocrates.dev/ontology/commonplace/AvailableBalance",
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount": {
+        "@type": "xsd:decimal",
+        "@value": "6961.93"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+      },
+      "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime": {
+        "@type": "xsd:dateTimeStamp",
+        "@value": "2026-09-06T23:30:16.5815921-04:00"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayCheckingAccountAvailableBalance",
+      "@type": "https://eristocrates.dev/ontology/commonplace/AvailableBalance",
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount": {
+        "@type": "xsd:decimal",
+        "@value": "1149.39"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+      },
+      "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime": {
+        "@type": "xsd:dateTimeStamp",
+        "@value": "2026-09-06T23:30:16.5815921-04:00"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/CrewFinanceCheckingAccountAvailableBalance",
+      "@type": "https://eristocrates.dev/ontology/commonplace/AvailableBalance",
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount": {
+        "@type": "xsd:decimal",
+        "@value": "1040.67"
+      },
+      "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/USDollar"
+      },
+      "https://www.omg.org/spec/Commons/DatesAndTimes/hasObservedDateTime": {
+        "@type": "xsd:dateTimeStamp",
+        "@value": "2026-09-06T23:30:16.5815921-04:00"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/USAAClassicChecking",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankingProduct",
+      "rdfs:seeAlso": {
+        "@id": "https://www.usaa.com/banking/checking"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/WellsFargoEverydayChecking",
+      "@type": "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankingProduct",
+      "rdfs:seeAlso": {
+        "@id": "https://www.wellsfargo.com/checking/everyday"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/hasAvailableBalance",
+      "rdfs:subPropertyOf": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/hasBalance"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/hasCurrentBalance",
+      "rdfs:subPropertyOf": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/hasBalance"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/commonplace/CurrentBalance",
+      "rdfs:subClassOf": {
+        "@id": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Balance"
       }
     }
   ],

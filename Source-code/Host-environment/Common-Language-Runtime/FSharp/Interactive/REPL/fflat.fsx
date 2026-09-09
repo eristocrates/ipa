@@ -1,8 +1,5 @@
 #load @".paket/load/main.group.fsx"
 #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL"
-#r "PathErgonomics.dll"
-
-open PathErgonomics
 
 open System
 open System.IO
@@ -88,9 +85,13 @@ let targetFileNames =
     |> Array.map (fun prefix -> $"{prefix}Namespace.fsx")
     |> Set.ofArray
 
+module Folder =
+    let Generated =
+        Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\Namespace\Generated"
+
 let compilationTargets =
     Folder.Generated.GetFiles("*.fsx")
-    |> Array.filter (fun fsxFile -> targetFileNames.Contains(fsxFile.Name)
+    |> Array.filter (fun fsxFile -> fsxFile.Name = "fibo-fnd-rel-relNamespace.fsx"
     (*
         let dllFile =
             Path.ChangeExtension(fsxFile.FullName, ".dll")
@@ -101,16 +102,16 @@ let compilationTargets =
     )
     |> Array.sortBy (fun fsxFile -> fsxFile.Length)
 
-let totalTargets = compilationTargets.Length
+
 (*
 
 compilationTargets
 |> Array.mapi (fun index fsxFile ->
-    printfn "%d of %d %s" index totalTargets fsxFile.Name
+    printfn "%d of %d %s" index compilationTargets.Length fsxFile.Name
     compileScriptToDll fsxFile.FullName
     |> Async.RunSynchronously)
 
 *)
 
-compileScriptToDll @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\Namespace\Generated\fibo-loan-ln-lnNamespace.fsx"
+compileScriptToDll @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\CalendarErgonomics.fsx"
 |> Async.RunSynchronously

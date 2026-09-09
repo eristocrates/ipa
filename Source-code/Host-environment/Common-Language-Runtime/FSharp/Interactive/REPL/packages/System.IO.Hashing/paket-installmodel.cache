@@ -27,13 +27,13 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/ec67cc909e214f19ad174283fb5ec024.psmdcp
+F: /package/services/metadata/core-properties/fe6f9c1724c04dee971db1512e78ce33.psmdcp
 D: /_rels
 F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
 F: /PACKAGE.md
-F: /system.io.hashing.10.0.11.nupkg
+F: /system.io.hashing.10.0.12.nupkg
 F: /System.IO.Hashing.nuspec
 F: /THIRD-PARTY-NOTICES.TXT
 F: /useSharedDesignerContext.txt

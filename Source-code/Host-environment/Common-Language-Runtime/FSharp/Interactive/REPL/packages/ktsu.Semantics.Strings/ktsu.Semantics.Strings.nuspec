@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>ktsu.Semantics.Strings</id>
-    <version>3.2.4</version>
+    <version>3.3.0</version>
     <title>ktsu.Semantics.Strings</title>
     <authors>ktsu.dev contributors</authors>
     <license type="file">LICENSE.md</license>
@@ -11,14 +11,14 @@
     <readme>README.md</readme>
     <projectUrl>https://github.com/ktsu-dev/Semantics</projectUrl>
     <description>A comprehensive .NET library for replacing primitive obsession with strongly-typed, self-validating domain models across four pillars: semantic strings with 50+ validation attributes, polymorphic path handling, metadata-generated semantic quantities, and musical value types. The quantity system covers 60+ physical dimensions and 200+ generated types under a unified vector model, with compile-time dimensional safety, generated unit conversions and physics relationships, centralized physical constants, and optional per-storage-type alias packages. The music types provide type-safe pitches, intervals, scales and modes, chords with symbol parsing and voicing, keys with roman-numeral analysis, and rational durations and time signatures. Features factory-pattern and dependency-injection support for building robust, maintainable scientific and domain-specific applications.</description>
-    <releaseNotes>## v3.2.4 (patch)
+    <releaseNotes>## v3.3.0 (minor)
 
-Changes since v3.2.3:
+Changes since v3.2.0:
 
-- Bump the ktsu group with 1 update ([@dependabot[bot]](https://github.com/dependabot[bot]))</releaseNotes>
+- refactor: consume the extracted source-generator toolkit from its package [minor] ([@Claude](https://github.com/Claude))</releaseNotes>
     <copyright>Copyright (c) 2023-2026 ktsu-dev contributors</copyright>
     <tags>semantic strings;semantic quantities;type safety;validation;string wrapper;domain modeling;semantic types;path handling;strongly typed;primitive obsession;value objects;csharp;dotnet;validation attributes;filesystem;type system;physical constants;dimensional analysis;unit conversions;vector quantities;source generator;code generation;scientific computing;mechanical physics;thermal physics;optical physics;acoustic physics;chemical physics;nuclear physics;fluid dynamics;si units;imperial units;music theory;music;pitch;chord;scale;midi;roman numerals;performance optimized;factory pattern;dependency injection</tags>
-    <repository type="git" commit="fa157893779fcf0723eb729c89d18165dc0eac23" />
+    <repository type="git" commit="0a31b198a9a8b05211a7e0131b118af0cf72c17b" />
     <dependencies>
       <group targetFramework="net10.0" />
       <group targetFramework="net8.0" />

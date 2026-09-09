@@ -92,11 +92,25 @@ match localVersionSet.Contains(latestRemoteVersion) with
     if fiboZip.asFile.Exists then
         ZipFile.ExtractToDirectory(fiboZip.asFile.FullName, Folder.``spec.edmcouncil.org``.FullName)
 
-Folder.``spec.edmcouncil.org``.FullName |> clip
+// Folder.``spec.edmcouncil.org``.FullName |> clip
+let ontologyDirectory =
+    Path.Combine(Folder.``spec.edmcouncil.org``.FullName, "fibo", "ontology")
+    |> DirectoryInfo
+
 
 let latestDirectory =
-    Path.Combine(Folder.``spec.edmcouncil.org``.FullName, "fibo", "ontology", "master", latestRemoteVersion)
+    Path.Combine(ontologyDirectory.FullName, "master", latestRemoteVersion)
     |> DirectoryInfo
+
+latestDirectory.CopyTo ontologyDirectory
+
+ontologyDirectory.GetFiles("*.zip")
+|> Array.iter (fun file -> File.Delete file.FullName)
+
+latestDirectory.GetDirectories()
+|> Array.iter (fun latestModuleDirectory -> Directory.Delete(latestModuleDirectory.FullName, true))
+
+
 
 let fiboDataset = new InMemoryDataset()
 
@@ -114,39 +128,21 @@ let fiboNamespaceNames =
     |> Set.ofArray
 
 catalog.uris
-|> Array.map (fun ontology ->
+|> Array.choose (fun ontology ->
 
     let ttlFile =
-        latestDirectory.FullName
+        ontologyDirectory.FullName
         + ontology.uri.TrimStart('.').Replace("/", "\\")
         |> FileInfo
 
     let ttlGraph = new ThreadSafeGraph(Uri ontology.name |> UriNode)
     FileLoader.Load(ttlGraph, ttlFile.FullName)
-    fiboDataset.AddGraph(ttlGraph)
+    match fiboDataset.AddGraph(ttlGraph) with
+    | true -> None
+    | false -> Some ontology
 
 )
 
-type InMemoryDataset with
-    member this.namespaceMap =
-        let namespaceMapper = new NamespaceMapper()
-
-        this.graphNames
-        |> Array.iter (fun (graphName: IRefNode) -> namespaceMapper.Import this[graphName].NamespaceMap)
-
-        namespaceMapper
-
-    member this.graphNames =
-        this.GraphNames
-        |> Seq.filter (fun graphName -> not (isNull graphName))
-        |> Seq.toArray
-
-    member this.LoadDirectoryFiles (extensionPattern: string) (turtleDirectory: DirectoryInfo) =
-        turtleDirectory.GetFiles(extensionPattern, SearchOption.AllDirectories)
-        |> Array.map (fun file ->
-            let fileGraph = new ThreadSafeGraph()
-            FileLoader.Load(fileGraph, file.FullName)
-            fiboDataset.AddGraph(fileGraph))
 
 let fiboNamespaces =
     fiboDataset.namespaceMap.prefixIds
@@ -162,7 +158,7 @@ let fiboNamespaces =
             |> Array.find (fun fiboNamespace -> fiboNamespace.name = prefixId.namespaceName)
 
         let ttlFile =
-            latestDirectory.FullName
+            ontologyDirectory.FullName
             + fiboNamespace
                 .uri
                 .TrimStart('.')
@@ -181,17 +177,36 @@ let fiboNamespaces =
     )
     |> Array.sortBy (fun fiboNamespace -> fiboNamespace.namespaceDocument.graphFile.Length)
 
+(*
 
-let job =
-    let start = 0
-    let stop = fiboNamespaces.Length
+let start = 0
+let stop = fiboNamespaces.Length
 
-    System.Threading.Tasks.Task.Run (fun () ->
-        fiboNamespaces
-        |> Array.sortBy (fun fiboNamespace -> fiboNamespace.namespaceDocument.graphFile.Length)
-        |> Array.iteri (fun index fiboNamespace ->
-            if not fiboNamespace.fsxFile.Exists then
-                printfn "%d of %d %s" (start + index) stop fiboNamespace.prefixId.namespaceName
+System.Threading.Tasks.Task.Run (fun () ->
+    fiboNamespaces
+    |> Array.sortBy (fun fiboNamespace -> fiboNamespace.namespaceDocument.graphFile.Length)
+    |> Array.iteri (fun index fiboNamespace ->
+        if not fiboNamespace.fsxFile.Exists then
+            printfn "%d of %d %s" (start + index) stop fiboNamespace.prefixId.namespaceName
 
-                RdfVocabulary.asModule fiboNamespace
-                |> fun fsxText -> File.WriteAllText(fiboNamespace.fsxFile.FullName, fsxText)))
+            RdfVocabulary.asModule fiboNamespace
+            |> fun fsxText -> File.WriteAllText(fiboNamespace.fsxFile.FullName, fsxText)))
+
+
+
+
+let omgCommonsNamespaces =
+    fiboDataset.namespaceMap.prefixIds
+    |> Set.toArray
+    |> Array.filter (fun prefixId -> prefixId.namespaceUrl.Host = "www.omg.org")
+    |> Array.map RdfVocabulary.fromPrefixId
+
+omgCommonsNamespaces
+|> Array.sortBy (fun omgCommonsNamespace -> omgCommonsNamespace.namespaceDocument.graphFile.Length)
+|> Array.iteri (fun index omgCommonsNamespace ->
+    if not omgCommonsNamespace.fsxFile.Exists then
+        printfn "%d of %d %s" index omgCommonsNamespaces.Length omgCommonsNamespace.prefixId.namespaceName
+
+        RdfVocabulary.asModule omgCommonsNamespace
+        |> fun fsxText -> File.WriteAllText(omgCommonsNamespace.fsxFile.FullName, fsxText))
+*)

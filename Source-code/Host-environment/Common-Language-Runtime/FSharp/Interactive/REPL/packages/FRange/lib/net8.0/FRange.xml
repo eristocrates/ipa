@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FRange</name></assembly>
+<members>
+<member name="P:FRange.BoundDir`1.Direction">
+<summary>
+ Lower vs. upper bound.
+</summary>
+</member>
+<member name="P:FRange.BoundDir`1.Bound">
+<summary>
+ Bound in this direction.
+</summary>
+</member>
+<member name="T:FRange.BoundDir`1">
+<summary>
+ Internal representation of a directed bound within a range.
+ this is used to sort bounds.
+</summary>
+</member>
+<member name="T:FRange.BoundType">
+<summary>
+ Lower vs. upper bound.
+</summary>
+</member>
+<member name="T:FRange.Bound`1.Unbounded">
+<summary>
+ Unbounded.
+</summary>
+</member>
+<member name="T:FRange.Bound`1.Exclusive">
+<summary>
+ Exclusive bound.
+</summary>
+</member>
+<member name="T:FRange.Bound`1.Inclusive">
+<summary>
+ Inclusive bound.
+</summary>
+</member>
+<member name="T:FRange.Bound`1">
+<summary>
+ An inclusive or exclusive bound at a specific value, or the lack
+ of a bound.
+</summary>
+</member>
+<member name="P:FRange.Range`1._Upper">
+<summary>
+ Upper bound.
+</summary>
+</member>
+<member name="P:FRange.Range`1._Lower">
+<summary>
+ Lower bound.
+</summary>
+</member>
+<member name="P:FRange.Range`1.Upper">
+<summary>
+ Upper bound.
+</summary>
+</member>
+<member name="P:FRange.Range`1.Lower">
+<summary>
+ Lower bound.
+</summary>
+</member>
+<member name="M:FRange.Range`1.ToString">
+<summary>
+ Display string.
+</summary>
+</member>
+<member name="T:FRange.Range`1">
+<summary>
+ A range of values, optionally bounded in one or both directions.
+ Examples:
+ * x &lt; 3
+ * 2 &lt; x &lt;= 4
+ * 5 &lt; x
+</summary>
+</member>
+<member name="M:FRange.BoundDir.sortProjection``2(``0,FRange.BoundDir{``1})">
+<summary>
+ Sorts directed bounds in the following order:
+ * An infinite lower bound is less than any other bound.
+ * An infinite upper bound is more than any other bound.
+ * Finite bonds are sorted by value.
+ * An inclusive bound extends farther in its direction than
+   an exclusive bound of the same value.
+ * The given tie-breaker value.
+</summary>
+</member>
+<member name="M:FRange.BoundDir.create``1(FRange.Bound{``0},FRange.BoundType)">
+<summary>
+ Creates a directed bound.
+</summary>
+</member>
+<member name="M:FRange.Bound.inverse``1(FRange.Bound{``0})">
+<summary>
+ Inverts the given bound.
+</summary>
+</member>
+<member name="M:FRange.RangeOperators.op_BangMinusMultiply``1(``0)">
+<summary>
+ Creates an unbounded-exclusive range.
+</summary>
+</member>
+<member name="M:FRange.RangeOperators.op_BangMinusPlus``1(``0)">
+<summary>
+ Creates an unbounded-inclusive range.
+</summary>
+</member>
+<member name="M:FRange.RangeOperators.op_BangMultiplyMinus``1(``0)">
+<summary>
+ Creates an exclusive-unbounded range.
+</summary>
+</member>
+<member name="M:FRange.RangeOperators.op_BangPlusMinus``1(``0)">
+<summary>
+ Creates an inclusive-unbounded range.
+</summary>
+</member>
+<member name="M:FRange.RangeOperators.op_MultiplyMinusMultiply``1(``0,``0)">
+<summary>
+ Creates an exclusive-exclusive range.
+</summary>
+</member>
+<member name="M:FRange.RangeOperators.op_PlusMinusMultiply``1(``0,``0)">
+<summary>
+ Creates an inclusive-inclusive range.
+</summary>
+</member>
+<member name="M:FRange.RangeOperators.op_MultiplyMinusPlus``1(``0,``0)">
+<summary>
+ Creates an exclusive-inclusive range.
+</summary>
+</member>
+<member name="M:FRange.RangeOperators.op_PlusMinusPlus``1(``0,``0)">
+<summary>
+ Creates an inclusive-inclusive range.
+</summary>
+</member>
+<member name="M:FRange.Range.inverse``1(System.Collections.Generic.IEnumerable{FRange.Range{``0}})">
+<summary>
+ Inverts the given ranges.
+</summary>
+</member>
+<member name="M:FRange.Range.difference``1(System.Collections.Generic.IEnumerable{FRange.Range{``0}},System.Collections.Generic.IEnumerable{FRange.Range{``0}})">
+<summary>
+ Determines the difference of the given ranges by removing
+ everything in the second sequence from the first sequence.
+</summary>
+</member>
+<member name="M:FRange.Range.intersection``1(System.Collections.Generic.IEnumerable{FRange.Range{``0}},System.Collections.Generic.IEnumerable{FRange.Range{``0}})">
+<summary>
+ Determines the intersection of the given ranges.
+</summary>
+</member>
+<member name="M:FRange.Range.toIndexedBoundDirs``1(System.Collections.Generic.IEnumerable{FRange.Range{``0}},System.Collections.Generic.IEnumerable{FRange.Range{``0}})">
+<summary>
+ Indexes directed bounds from the given ranges.
+</summary>
+</member>
+<member name="M:FRange.Range.union``1(System.Collections.Generic.IEnumerable{FRange.Range{``0}},System.Collections.Generic.IEnumerable{FRange.Range{``0}})">
+<summary>
+ Determines the union of the given ranges.
+</summary>
+</member>
+<member name="M:FRange.Range.merge``1(System.Collections.Generic.IEnumerable{FRange.Range{``0}})">
+<summary>
+ Merges the given ranges where possible. The result is a normalized
+ list of ranges, even if no merges occurred.
+</summary>
+</member>
+<member name="M:FRange.Range.toBoundDirs``1(System.Collections.Generic.IEnumerable{FRange.Range{``0}})">
+<summary>
+ Extracts directed bounds from the given ranges.
+</summary>
+</member>
+<member name="M:FRange.Range.contains``1(``0,FRange.Range{``0})">
+<summary>
+ Indicates whether the given range contains the given value.
+</summary>
+</member>
+<member name="M:FRange.Range.infinite``1">
+<summary>
+ A range that&apos;s infinite (i.e. unbounded) in both directions.
+</summary>
+</member>
+<member name="M:FRange.Range.singleton``1(``0)">
+<summary>
+ Creates a range that contains a single value.
+</summary>
+</member>
+<member name="M:FRange.Range.create``1(FRange.Bound{``0},FRange.Bound{``0})">
+<summary>
+ Creates a range with the given bounds. An exception is thrown
+ if the range is invalid.
+</summary>
+</member>
+<member name="M:FRange.Range.tryCreate``1(FRange.Bound{``0},FRange.Bound{``0})">
+<summary>
+ Tries to create a range with the given bounds.
+</summary>
+</member>
+<member name="M:FRange.CSharp.RangeExt.UpperBoundValue``1(FRange.Range{``0})">
+<summary>
+ Value of this range&apos;s upper bound, if any.
+</summary>
+</member>
+<member name="M:FRange.CSharp.RangeExt.UpperBoundType``1(FRange.Range{``0})">
+<summary>
+ Type of this range&apos;s lower bound, if any.
+</summary>
+</member>
+<member name="M:FRange.CSharp.RangeExt.ToMultiRange``1(FRange.Range{``0})">
+<summary>
+ Creates a multi-range containing the given range.
+</summary>
+</member>
+<member name="M:FRange.CSharp.RangeExt.LowerBoundValue``1(FRange.Range{``0})">
+<summary>
+ Value of this range&apos;s lower bound, if any.
+</summary>
+</member>
+<member name="M:FRange.CSharp.RangeExt.LowerBoundType``1(FRange.Range{``0})">
+<summary>
+ Type of this range&apos;s lower bound, if any.
+</summary>
+</member>
+<member name="M:FRange.CSharp.RangeExt.HasUpperBound``1(FRange.Range{``0})">
+<summary>
+ Indicates whether this range has a lower bound.
+</summary>
+</member>
+<member name="M:FRange.CSharp.RangeExt.HasLowerBound``1(FRange.Range{``0})">
+<summary>
+ Indicates whether this range has a lower bound.
+</summary>
+</member>
+<member name="M:FRange.CSharp.RangeExt.Contains``1(FRange.Range{``0},``0)">
+<summary>
+ Indicates whether this range contains the given value.
+</summary>
+</member>
+<member name="M:FRange.CSharp.MultiRange.Create``1(System.Collections.Generic.IEnumerable{FRange.Range{``0}})">
+<summary>
+ Creates a multi-range containing the given ranges.
+</summary>
+</member>
+<member name="T:FRange.CSharp.MultiRange">
+<summary>
+ C# support for creating multi-ranges.
+</summary>
+</member>
+<member name="P:FRange.CSharp.MultiRange`1.Ranges">
+<summary>
+ Ranges in this collection.
+</summary>
+</member>
+<member name="M:FRange.CSharp.MultiRange`1.Union(FRange.CSharp.MultiRange{`0})">
+<summary>
+ Union of receiver&apos;s ranges with given ranges.
+</summary>
+</member>
+<member name="M:FRange.CSharp.MultiRange`1.ToString">
+<summary>
+ Display string.
+</summary>
+</member>
+<member name="M:FRange.CSharp.MultiRange`1.Merge">
+<summary>
+ Merges the receiver&apos;s ranges (where possible).
+</summary>
+</member>
+<member name="M:FRange.CSharp.MultiRange`1.IsEquivalent(FRange.CSharp.MultiRange{`0})">
+<summary>
+ Indicates whether the receiver&apos;s ranges are equivalent to the
+ given ranges.
+</summary>
+</member>
+<member name="M:FRange.CSharp.MultiRange`1.Inverse">
+<summary>
+ Inverts the receiver&apos;s ranges.
+</summary>
+</member>
+<member name="M:FRange.CSharp.MultiRange`1.Intersection(FRange.CSharp.MultiRange{`0})">
+<summary>
+ Intersection of receiver&apos;s ranges with given ranges.
+</summary>
+</member>
+<member name="M:FRange.CSharp.MultiRange`1.Difference(FRange.CSharp.MultiRange{`0})">
+<summary>
+ Removes everything in the given ranges from the receiver.
+</summary>
+</member>
+<member name="M:FRange.CSharp.MultiRange`1.Contains(`0)">
+<summary>
+ Indicates whether one of the reciever&apos;s ranges contains the
+ given value.
+</summary>
+</member>
+<member name="T:FRange.CSharp.MultiRange`1">
+<summary>
+ A collection of ranges.
+</summary>
+</member>
+<member name="M:FRange.CSharp.Range.Singleton``1(``0)">
+<summary>
+ Creates a range that contains a single value.
+</summary>
+</member>
+<member name="M:FRange.CSharp.Range.Infinite``1">
+<summary>
+ A range that&apos;s infinite (i.e. unbounded) in both directions.
+</summary>
+</member>
+<member name="M:FRange.CSharp.Range.CreateUpper``1(``0,FRange.CSharp.BoundType)">
+<summary>
+ Creates a range with an upper bound, but no lower bound.
+</summary>
+</member>
+<member name="M:FRange.CSharp.Range.CreateLower``1(``0,FRange.CSharp.BoundType)">
+<summary>
+ Creates a range with a lower bound, but no upper bound.
+</summary>
+</member>
+<member name="M:FRange.CSharp.Range.Create``1(``0,FRange.CSharp.BoundType,``0,FRange.CSharp.BoundType)">
+<summary>
+ Creates a range with the given bounds.
+</summary>
+</member>
+<member name="T:FRange.CSharp.Range">
+<summary>
+ C# support for creating ranges.
+</summary>
+</member>
+<member name="F:FRange.CSharp.BoundType.Exclusive">
+<summary>
+ Bound is exclusive. E.g. x &lt; 3.
+</summary>
+</member>
+<member name="F:FRange.CSharp.BoundType.Inclusive">
+<summary>
+ Bound is inclusive. E.g. x &lt;= 3.
+</summary>
+</member>
+<member name="T:FRange.CSharp.BoundType">
+<summary>
+ Inclusive/exclusive bound type.
+</summary>
+</member>
+<member name="M:FRange.CSharp.Bound.boundType``1(FRange.Bound{``0})">
+<summary>
+ Type of a bound, if any.
+</summary>
+</member>
+<member name="M:FRange.CSharp.Bound.value``1(FRange.Bound{``0})">
+<summary>
+ Value of a bound, if any.
+</summary>
+</member>
+</members>
+</doc>

@@ -130,9 +130,6 @@
         <member name="F:Meziantou.Framework.Win32.PerceivedTypeSource.ZipFolder">
             <summary>The perceived type is supported by Windows compressed folders.</summary>
         </member>
-        <member name="F:Meziantou.Framework.Win32.PerceivedTypeSource.Mime">
-            <summary>The perceived type was determined through MIME content types in the registry.</summary>
-        </member>
         <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
             <summary>
             Reserved for use by a compiler for tracking metadata.

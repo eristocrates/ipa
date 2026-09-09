@@ -30,12 +30,12 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/f62a3d6a9d3f44d6bb7b0e32dbe9f12a.psmdcp
+F: /package/services/metadata/core-properties/5769edfec9214ff29ca87bf42705efad.psmdcp
 D: /_rels
 F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
-F: /microsoft.extensions.logging.10.0.11.nupkg
+F: /microsoft.extensions.logging.10.0.12.nupkg
 F: /Microsoft.Extensions.Logging.nuspec
 F: /PACKAGE.md
 F: /THIRD-PARTY-NOTICES.TXT

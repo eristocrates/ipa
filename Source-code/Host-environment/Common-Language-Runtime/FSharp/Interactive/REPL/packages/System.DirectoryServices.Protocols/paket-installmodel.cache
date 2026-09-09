@@ -22,7 +22,7 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/f366fc9fcf1941c485913189ddfbef89.psmdcp
+F: /package/services/metadata/core-properties/d9298d03a00c45ebafa20928d91dd490.psmdcp
 D: /runtimes
 D: /runtimes/linux
 D: /runtimes/linux/lib
@@ -62,7 +62,7 @@ F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
 F: /PACKAGE.md
-F: /system.directoryservices.protocols.10.0.11.nupkg
+F: /system.directoryservices.protocols.10.0.12.nupkg
 F: /System.DirectoryServices.Protocols.nuspec
 F: /THIRD-PARTY-NOTICES.TXT
 F: /useSharedDesignerContext.txt

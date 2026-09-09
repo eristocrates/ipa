@@ -27,12 +27,12 @@ D: /package
 D: /package/services
 D: /package/services/metadata
 D: /package/services/metadata/core-properties
-F: /package/services/metadata/core-properties/3c9f67102a9f40b8b6d2403ffa73c26f.psmdcp
+F: /package/services/metadata/core-properties/23193c1e2be54413874e1b218cb8702e.psmdcp
 D: /_rels
 F: /_rels/.rels
 F: /.signature.p7s
 F: /Icon.png
-F: /system.security.permissions.10.0.11.nupkg
+F: /system.security.permissions.10.0.12.nupkg
 F: /System.Security.Permissions.nuspec
 F: /THIRD-PARTY-NOTICES.TXT
 F: /useSharedDesignerContext.txt

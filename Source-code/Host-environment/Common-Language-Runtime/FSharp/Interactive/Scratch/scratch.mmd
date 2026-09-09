@@ -1,60 +1,154 @@
 graph LR
-  0["commonplace:eristocrates"]
-  1["eristocrates^^xsd:string"]
-  2["wellsFargoAccount:everydayChecking"]
-  3["fibo-loan-spc-crd:DebitCardAccount"]
-  4["usaaAccount:usaaSavings"]
-  5["commonplace:syrislove"]
-  6["usaaAccount:platinumVisa"]
-  7["fibo-loan-spc-crd:CreditCardAccount"]
-  8["governmentjobs:1183950"]
-  9["35^^xsd:int"]
-  10["commonplace:syrislove"]
-  11["Fisher^^xsd:string"]
-  12["Tierra^^xsd:string"]
-  13["wellsFargoAccount:wellsFargoRewards"]
-  14["commonplace:eristocrates"]
-  15["fuelmasterjob:desktop-support-technician-8"]
-  16["wellsFargoAccount:platinumCard"]
-  17["fibo-fbc-pas-caa:Account"]
-  18["Collier^^xsd:string"]
-  19["33^^xsd:int"]
-  20["usaaAccount:checking"]
-  21["Brandon^^xsd:string"]
-  22["foaf:Person"]
-  23["https://myfuelmaster.com/^^xsd:anyURI"]
-  24["fibo-fbc-pas-caa:DepositAccount"]
-  25["wellsFargoAccount:installmentLoans"]
-  26["fibo-loan-ln-ln:LoanSpecificCustomerAccount"]
-  27["https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology^^xsd:anyURI"]
-  28["syrislove^^xsd:string"]
-  0 -->|"foaf:nick"| 1
-  0 -->|"foaf:knows"| 5
-  0 -->|"foaf:workInfoHomepage"| 8
-  0 -->|"foaf:age"| 9
-  0 -->|"foaf:lastName"| 18
-  0 -->|"foaf:firstName"| 21
-  0 -->|"rdf:type"| 22
-  0 -->|"foaf:workplaceHomepage"| 27
+  0["commonplace:USAAClassicCheckingAccountCurrentBalance"]
+  1["6961.93^^xsd:decimal"]
+  2["commonplace:WellsFargoEverydayCheckingAccount"]
+  3["fibo-fbc-pas-caa:DemandDepositAccount"]
+  4["commonplace:USAAClassicCheckingAccount"]
+  5["commonplace:USAAClassicCheckingAccountCurrentBalance"]
+  6["commonplace:eristocrates"]
+  7["foaf:Person"]
+  8["commonplace:USAAClassicSavingsAccount"]
+  9["commonplace:USAAClassicSavingsAccountCurrentBalance"]
+  10["commonplace:USAAClassicSavingsAccountAvailableBalance"]
+  11["fibo-fnd-acc-4217:USDollar"]
+  12["commonplace:syrislove"]
+  13["syrislove^^xsd:string"]
+  14["commonplace:USAAClassicSavings"]
+  15["https://www.usaa.com/banking/savings"]
+  16["lei:C5654JQHZUHN0772B561"]
+  17["commonplace:CrewFinanceCheckingAccountCurrentBalance"]
+  18["commonplace:AvailableBalance"]
+  19["commonplace:USAAClassicSavingsAccountCurrentBalance"]
+  20["eristocrates^^xsd:string"]
+  21["commonplace:CrewFinanceCheckingAccount"]
+  22["lei:549300JEBULFT3BSU682"]
+  23["commonplace:CrewFinanceChecking"]
+  24["fibo-fbc-fct-fse:BankingProduct"]
+  25["Fisher^^xsd:string"]
+  26["commonplace:WellsFargoEverydayCheckingAccountCurrentBalance"]
+  27["commonplace:USAAClassicCheckingAccountAvailableBalance"]
+  28["2026-09-06T23:30:16.5815921-04:00^^xsd:dateTimeStamp"]
+  29["Collier^^xsd:string"]
+  30["https://myfuelmaster.com/"]
+  31["commonplace:USAAClassicSavingsAccountAvailableBalance"]
+  32["commonplace:syrislove"]
+  33["commonplace:WellsFargoEverydayCheckingAccountAvailableBalance"]
+  34["1149.39^^xsd:decimal"]
+  35["Tierra^^xsd:string"]
+  36["https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology"]
+  37["commonplace:CrewFinanceCheckingAccountCurrentBalance"]
+  38["commonplace:CrewFinanceCheckingAccountAvailableBalance"]
+  39["1040.67^^xsd:decimal"]
+  40["lei:KB1H1DSPRFMYMCUFXT09"]
+  41["fibo-fbc-pas-caa:DepositAccount"]
+  42["commonplace:USAAClassicChecking"]
+  43["Brandon^^xsd:string"]
+  44["commonplace:WellsFargoEverydayCheckingAccountCurrentBalance"]
+  45["commonplace:WellsFargoEverydayChecking"]
+  46["https://www.wellsfargo.com/checking/everyday"]
+  47["commonplace:AvailableBalance"]
+  48["fibo-fbc-pas-caa:Balance"]
+  49["commonplace:WellsFargoEverydayChecking"]
+  50["https://myfuelmaster.com/job/desktop-support-technician-8"]
+  51["commonplace:hasAvailableBalance"]
+  52["fibo-fbc-pas-caa:hasBalance"]
+  53["commonplace:USAAClassicChecking"]
+  54["1965.38^^xsd:decimal"]
+  55["35^^xsd:int"]
+  56["commonplace:hasCurrentBalance"]
+  57["commonplace:WellsFargoEverydayCheckingAccountAvailableBalance"]
+  58["commonplace:CrewFinanceCheckingAccountAvailableBalance"]
+  59["commonplace:CurrentBalance"]
+  60["https://www.governmentjobs.com/careers/leoncountyfl/classspecs/1183950"]
+  61["commonplace:CurrentBalance"]
+  62["https://www.usaa.com/banking/checking"]
+  63["commonplace:USAAClassicCheckingAccountAvailableBalance"]
+  64["https://www.trycrew.com/pdfjs/web/viewer?file=%2Fdocs%2Fdeposit-agreement.pdf#h.g82ej3s9bgif"]
+  65["commonplace:eristocrates"]
+  66["commonplace:USAAClassicSavings"]
+  67["commonplace:CrewFinanceChecking"]
+  68["33^^xsd:int"]
+  0 -->|"fibo-fnd-acc-cur:hasAmount"| 1
+  0 -->|"fibo-fnd-acc-cur:hasCurrency"| 11
+  0 -->|"cmns-dt:hasObservedDateTime"| 28
+  0 -->|"rdf:type"| 59
   2 -->|"rdf:type"| 3
-  2 -->|"fibo-fbc-pas-caa:AccountHolder"| 14
-  4 -->|"fibo-fbc-pas-caa:AccountHolder"| 5
-  4 -->|"rdf:type"| 24
-  6 -->|"fibo-fbc-pas-caa:AccountHolder"| 5
+  2 -->|"cmns-org:isProvidedBy"| 40
+  2 -->|"commonplace:hasCurrentBalance"| 44
+  2 -->|"fibo-fnd-rel-rel:exemplifies"| 49
+  2 -->|"commonplace:hasAvailableBalance"| 57
+  2 -->|"fibo-fnd-rel-rel:isHeldBy"| 65
+  4 -->|"rdf:type"| 3
+  4 -->|"commonplace:hasCurrentBalance"| 5
+  4 -->|"cmns-org:isProvidedBy"| 16
+  4 -->|"fibo-fnd-rel-rel:isHeldBy"| 32
+  4 -->|"fibo-fnd-rel-rel:exemplifies"| 53
+  4 -->|"commonplace:hasAvailableBalance"| 63
   6 -->|"rdf:type"| 7
-  10 -->|"foaf:lastName"| 11
-  10 -->|"foaf:firstName"| 12
-  10 -->|"foaf:knows"| 14
-  10 -->|"foaf:workInfoHomepage"| 15
-  10 -->|"foaf:age"| 19
-  10 -->|"rdf:type"| 22
-  10 -->|"foaf:workplaceHomepage"| 23
-  10 -->|"foaf:nick"| 28
-  13 -->|"fibo-fbc-pas-caa:AccountHolder"| 14
-  13 -->|"rdf:type"| 17
-  16 -->|"rdf:type"| 7
-  16 -->|"fibo-fbc-pas-caa:AccountHolder"| 14
-  20 -->|"rdf:type"| 3
-  20 -->|"fibo-fbc-pas-caa:AccountHolder"| 5
-  25 -->|"fibo-fbc-pas-caa:AccountHolder"| 14
-  25 -->|"rdf:type"| 26
+  6 -->|"foaf:nick"| 20
+  6 -->|"foaf:familyName"| 29
+  6 -->|"foaf:knows"| 32
+  6 -->|"foaf:workplaceHomepage"| 36
+  6 -->|"foaf:firstName"| 43
+  6 -->|"foaf:age"| 55
+  6 -->|"foaf:workInfoHomepage"| 60
+  8 -->|"commonplace:hasCurrentBalance"| 9
+  8 -->|"cmns-org:isProvidedBy"| 16
+  8 -->|"commonplace:hasAvailableBalance"| 31
+  8 -->|"fibo-fnd-rel-rel:isHeldBy"| 32
+  8 -->|"rdf:type"| 41
+  8 -->|"fibo-fnd-rel-rel:exemplifies"| 66
+  10 -->|"fibo-fnd-acc-cur:hasCurrency"| 11
+  10 -->|"rdf:type"| 18
+  10 -->|"cmns-dt:hasObservedDateTime"| 28
+  10 -->|"fibo-fnd-acc-cur:hasAmount"| 54
+  12 -->|"rdf:type"| 7
+  12 -->|"foaf:nick"| 13
+  12 -->|"foaf:familyName"| 25
+  12 -->|"foaf:workplaceHomepage"| 30
+  12 -->|"foaf:firstName"| 35
+  12 -->|"foaf:workInfoHomepage"| 50
+  12 -->|"foaf:knows"| 65
+  12 -->|"foaf:age"| 68
+  14 -->|"rdfs:seeAlso"| 15
+  14 -->|"rdf:type"| 24
+  17 -->|"fibo-fnd-acc-cur:hasCurrency"| 11
+  17 -->|"cmns-dt:hasObservedDateTime"| 28
+  17 -->|"fibo-fnd-acc-cur:hasAmount"| 39
+  17 -->|"rdf:type"| 59
+  19 -->|"fibo-fnd-acc-cur:hasCurrency"| 11
+  19 -->|"cmns-dt:hasObservedDateTime"| 28
+  19 -->|"fibo-fnd-acc-cur:hasAmount"| 54
+  19 -->|"rdf:type"| 59
+  21 -->|"rdf:type"| 3
+  21 -->|"cmns-org:isProvidedBy"| 22
+  21 -->|"commonplace:hasCurrentBalance"| 37
+  21 -->|"commonplace:hasAvailableBalance"| 58
+  21 -->|"fibo-fnd-rel-rel:isHeldBy"| 65
+  21 -->|"fibo-fnd-rel-rel:exemplifies"| 67
+  23 -->|"rdf:type"| 24
+  23 -->|"rdfs:seeAlso"| 64
+  26 -->|"fibo-fnd-acc-cur:hasCurrency"| 11
+  26 -->|"cmns-dt:hasObservedDateTime"| 28
+  26 -->|"fibo-fnd-acc-cur:hasAmount"| 34
+  26 -->|"rdf:type"| 59
+  27 -->|"fibo-fnd-acc-cur:hasAmount"| 1
+  27 -->|"fibo-fnd-acc-cur:hasCurrency"| 11
+  27 -->|"rdf:type"| 18
+  27 -->|"cmns-dt:hasObservedDateTime"| 28
+  33 -->|"fibo-fnd-acc-cur:hasCurrency"| 11
+  33 -->|"rdf:type"| 18
+  33 -->|"cmns-dt:hasObservedDateTime"| 28
+  33 -->|"fibo-fnd-acc-cur:hasAmount"| 34
+  38 -->|"fibo-fnd-acc-cur:hasCurrency"| 11
+  38 -->|"rdf:type"| 18
+  38 -->|"cmns-dt:hasObservedDateTime"| 28
+  38 -->|"fibo-fnd-acc-cur:hasAmount"| 39
+  42 -->|"rdf:type"| 24
+  42 -->|"rdfs:seeAlso"| 62
+  45 -->|"rdf:type"| 24
+  45 -->|"rdfs:seeAlso"| 46
+  47 -->|"rdfs:subClassOf"| 48
+  51 -->|"rdfs:subPropertyOf"| 52
+  56 -->|"rdfs:subPropertyOf"| 52
+  61 -->|"rdfs:subClassOf"| 48

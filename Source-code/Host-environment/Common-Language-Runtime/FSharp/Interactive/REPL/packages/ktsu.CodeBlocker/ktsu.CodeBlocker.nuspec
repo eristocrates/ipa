@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ktsu.CodeBlocker</id>
+    <version>2.0.4</version>
+    <title>ktsu.CodeBlocker</title>
+    <authors>ktsu.dev contributors</authors>
+    <license type="file">LICENSE.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/ktsu-dev/CodeBlocker</projectUrl>
+    <description>A specialized utility built on top of IndentedTextWriter that simplifies the process of programmatically generating structured code.</description>
+    <releaseNotes>## v2.0.4 (patch)
+
+Changes since v2.0.3:
+
+- test: make ScopeAfterManualDispose actually dispose while a scope is active [patch] ([@Claude](https://github.com/Claude))</releaseNotes>
+    <copyright>Copyright (c) 2023-2026 ktsu-dev contributors</copyright>
+    <tags>code generation;indentation;indented text writer;code blocks;source code generation;scope management;raii;text writer;template engines;fluent api;dotnet;csharp;netstandard</tags>
+    <repository type="git" commit="9b7b211c5bd109dd1da574286fec940a126d032c" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="ktsu.ScopedAction" version="1.1.36" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="ktsu.ScopedAction" version="1.1.36" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="ktsu.ScopedAction" version="1.1.36" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Memory" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="ktsu.ScopedAction" version="1.1.36" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="ktsu.ScopedAction" version="1.1.36" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

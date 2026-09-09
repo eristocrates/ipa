@@ -3,7 +3,7 @@
   <dc:creator>Darío Kondratiuk</dc:creator>
   <dc:description>Headless Browser .NET API</dc:description>
   <dc:identifier>PuppeteerSharp</dc:identifier>
-  <version>25.8.0</version>
+  <version>25.10.0</version>
   <keywords>headless,chrome,puppeteer</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

@@ -6,8 +6,12 @@
     <members>
         <member name="T:Meziantou.Framework.AvatarColorPair">
             <summary>
-            Represents a foreground/background color pair used to render an avatar.
+            Represents a background/foreground color pair used to render an avatar.
             </summary>
+            <remarks>
+            This is a struct, so <see langword="default"/> bypasses the constructor and leaves both colors null.
+            <see cref="M:Meziantou.Framework.AvatarGenerator.CreateSvg(System.String,Meziantou.Framework.AvatarOptions)"/> rejects such an entry in the palette.
+            </remarks>
         </member>
         <member name="M:Meziantou.Framework.AvatarColorPair.#ctor(System.String,System.String)">
             <summary>
@@ -31,6 +35,31 @@
             Generates SVG avatars from names and options.
             </summary>
         </member>
+        <member name="F:Meziantou.Framework.AvatarGenerator.BaselineOffset">
+            <summary>Optical nudge that centers the glyph on the baseline.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AvatarGenerator.NumberFormat">
+            <summary>Every generated coordinate is a multiple of 0.25, so two decimals are always exact.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AvatarGenerator.SvgCapacity">
+            <summary>The observed length of a default-options document is 353 characters.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AvatarGenerator.PlaceholderBigram">
+            <summary>Rendered when a name contains nothing that can be displayed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.AvatarGenerator.MaxBigramElementLength">
+            <summary>
+            A grapheme cluster has no length limit, so a name made of combining marks would otherwise
+            flow into the output unbounded. The longest legitimate cluster (a family emoji) is 11 UTF-16 units.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AvatarGenerator.CreateSvg(System.String)">
+            <summary>
+            Creates an avatar SVG string for the specified name, using the default options.
+            </summary>
+            <param name="name">The full name used to compute the color and the bigram.</param>
+            <returns>The generated SVG string.</returns>
+        </member>
         <member name="M:Meziantou.Framework.AvatarGenerator.CreateSvg(System.String,Meziantou.Framework.AvatarOptions)">
             <summary>
             Creates an avatar SVG string for the specified name and options.
@@ -38,6 +67,35 @@
             <param name="name">The full name used to compute the color and default bigram.</param>
             <param name="options">The generation options.</param>
             <returns>The generated SVG string.</returns>
+            <remarks>
+            Characters that are not valid in an XML document are removed from <paramref name="name"/>.
+            An explicit <see cref="P:Meziantou.Framework.AvatarOptions.Bigram"/> containing such characters is rejected instead.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.AvatarGenerator.EnumerateWords(System.String)">
+            <summary>
+            Splits a name on whitespace and on the connectors used inside compound names, so that
+            "Jean-Pierre" and "O'Brien" yield two words rather than one.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AvatarGenerator.LimitLength(System.String)">
+            <summary>
+            Keeps a pathological grapheme cluster (a base character followed by thousands of combining
+            marks) from flowing into the output by reducing it to its base character.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AvatarGenerator.IsVisibleTextElement(System.String)">
+            <summary>
+            Determines whether a grapheme cluster renders anything. Zero-width and bidi control characters
+            are not whitespace, so without this check they can become the whole bigram.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.AvatarGenerator.RemoveInvalidXmlCharacters(System.String)">
+            <summary>
+            Removes the code points that the XML 1.0 Char production forbids, including unpaired surrogates.
+            <see cref="M:System.Security.SecurityElement.Escape(System.String)"/> passes them through, and <see cref="M:System.String.Normalize(System.Text.NormalizationForm)"/>
+            throws on some of them.
+            </summary>
         </member>
         <member name="T:Meziantou.Framework.AvatarOptions">
             <summary>
@@ -51,13 +109,42 @@
         </member>
         <member name="P:Meziantou.Framework.AvatarOptions.Palette">
             <summary>
-            Gets the list of colors used for rendering.
+            Gets the mutable list of colors used for rendering.
             </summary>
+            <remarks>
+            The color is selected with <c>hash(name) % Palette.Count</c>, so the number of entries and their
+            order are part of the name-to-color mapping: adding or removing one entry re-colors nearly every name.
+            This instance is not thread-safe; do not mutate it while <see cref="M:Meziantou.Framework.AvatarGenerator.CreateSvg(System.String,Meziantou.Framework.AvatarOptions)"/> is running.
+            </remarks>
         </member>
         <member name="P:Meziantou.Framework.AvatarOptions.Bigram">
             <summary>
             Gets or sets the explicit bigram to render. If null, the bigram is extracted from the name.
             </summary>
+            <remarks>
+            The value must contain 1 or 2 grapheme clusters, no whitespace, and no character that is invalid
+            in an XML document. It does not affect the selected color, which always derives from the name.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.AvatarOptions.AccessibleLabel">
+            <summary>
+            Gets or sets the text announced by assistive technologies. If null, the bigram is used.
+            </summary>
+            <remarks>
+            Set this to the full name so the avatar announces as "John Doe" rather than "JD". Characters that
+            are invalid in an XML document are removed, so an untrusted display name can be passed directly.
+            Ignored when <see cref="P:Meziantou.Framework.AvatarOptions.IsDecorative"/> is <see langword="true"/>.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.AvatarOptions.IsDecorative">
+            <summary>
+            Gets or sets a value indicating whether the avatar is purely decorative and should be hidden
+            from assistive technologies. The default is <see langword="false"/>.
+            </summary>
+            <remarks>
+            Set this when the avatar sits next to the name it represents, so the name is not announced twice.
+            The generated element uses <c>aria-hidden</c> instead of <c>role</c> and <c>aria-label</c>.
+            </remarks>
         </member>
         <member name="P:Meziantou.Framework.AvatarOptions.Shape">
             <summary>

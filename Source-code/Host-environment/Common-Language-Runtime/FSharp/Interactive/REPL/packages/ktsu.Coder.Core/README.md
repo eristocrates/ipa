@@ -1,4 +1,4 @@
-# ktsu.Coder
+﻿# ktsu.Coder
 
 A flexible and extensible .NET library for representing code as Abstract Syntax Trees (AST), serializing to YAML, and generating code in multiple programming languages.
 
@@ -32,14 +32,117 @@ This makes it ideal for code generation tools, transpilers, and any application 
 
 ### Supported AST Node Types
 
+-   **ClassDeclaration**: A named class with an optional base type, holding methods, fields and nested classes
 -   **FunctionDeclaration**: Represents function/method declarations with parameters and body
 -   **Parameter**: Function parameters with optional default values
 -   **ReturnStatement**: Return statements with optional expressions
+-   **VariableDeclaration**: Variable declarations, optionally constant or type-inferred
+-   **AssignmentStatement**: Assignments, including the compound operators (`+=`, `<<=`, …)
+-   **BinaryExpression**: Two operands and an operator (`a + b`, `x == y`, `p && q`)
+-   **UnaryExpression**: One operator applied to one operand (`-x`, `!ready`, `~mask`)
+-   **VariableReference**: A reference to a variable by name
+-   **LiteralExpression<T>**: Typed literals (string, int, bool, double)
 -   **AstLeafNode<T>**: Generic leaf nodes for literals (strings, numbers, booleans)
+
+Every operator in `UnaryOperator` and `BinaryOperator` exists in all four target languages, so no
+AST built from them is untranslatable. Only the spelling varies — Python's `not`/`and`/`or`,
+JavaScript's strict `===`/`!==` — and each generator overrides just the operators it spells
+differently.
+
+Increment and decrement are deliberately absent from `UnaryOperator`: Python has no spelling for
+them, and an `AssignmentStatement` with `AssignmentOperator.AddAssign` expresses the same effect in
+every target language.
+
+### Visual graph editor
+
+`ktsu.Coder.Graph` renders an AST as an editable node graph, built on
+[`ktsu.ImGui.NodeEditor`](https://github.com/ktsu-dev/ImGuiApp) with its force-directed layout.
+
+```csharp
+AstGraphEditor editor = new(functionDeclaration);
+
+// once per frame, inside your ImGui render loop
+editor.Draw(new Vector2(1200, 800), deltaTime);
+
+foreach (AstGraphProblem problem in editor.Problems)
+{
+    Console.WriteLine(problem.Message);
+}
+```
+
+Each AST node becomes one editor node with a single output pin — itself — and one input pin per slot
+it can hold a child in, so a link reads "this node fills that slot of that parent". Right-click for
+the palette, drag between pins to connect, Delete to remove, and Undo/Redo on the toolbar. The
+palette lists every binary, unary and assignment operator, so which expression to create is a choice
+made when creating it.
+
+Selecting a node opens it in the inspector — the panel under the canvas — which edits everything
+about it that a link cannot express — a literal's value, a declaration's name and type, an expression's operator — and each edit
+is one step on the undo stack. `AstFields` is the model behind it: a node's editable properties as
+named fields of a kind, so a caller building its own UI does not need a panel per node type.
+
+```csharp
+foreach (AstField field in AstFields.Of(node))
+{
+    Console.WriteLine($"{field.Name} = {field.Value} ({field.Kind})");
+}
+
+AstFields.TryWrite(node, "Operator", nameof(BinaryOperator.Multiply));
+```
+
+A slot that holds a sequence — a function's parameters, its body, a class's members — has `+` and
+`-` buttons in the inspector, so the number of them is changed without dragging nodes in from the
+palette. "Convert to" replaces a node with a different kind in place, moving the operands the new
+one can take across and keeping the rest rather than discarding them.
+
+The origin of the graph's space is the middle of the canvas, and it follows the window as that is
+resized. Everything measured against it agrees as a result: gravity holds an untouched arrangement
+in the middle of the view, a document arrives centred on the frame it first appears, a node with no
+position of its own is seeded near the middle rather than in a corner, and "Fit" re-centres an
+arrangement that has been dragged away without disturbing its shape.
+
+The AST is the document and the graph is a view of it: every edit is applied to the AST and the
+graph rebuilt from it, preserving on-screen positions by node identity. A graph is allowed to be
+incomplete while you work — `AstGraphEditor.Problems` (or `AstGraph.Validate()`) lists outstanding
+operands and disconnected nodes rather than throwing, so consult it before handing the AST to a
+generator.
+
+The package targets `net10.0` only, since the node editor does. `ktsu.Coder` itself has no UI
+dependency and continues to cross-target.
+
+### Editor application
+
+`Coder.Editor` is a desktop application built on `ktsu.ImGui.App`: the document as a node graph on
+the left, the code it generates on the right, and a File menu for New function / New class / Open /
+Save / Export with a recent files list. Ctrl+Z, Ctrl+Shift+Z, Ctrl+Y and Ctrl+S work wherever the
+keyboard focus is.
+
+```bash
+dotnet run --project Coder.Editor
+```
+
+Documents are `.coder.yaml` files — the same YAML the serializer already round-trips, so anything the
+library can write, the editor can open. The code pane follows the document live and lists what is
+outstanding instead of generating while an operand is unfilled; clicking one of those selects the
+node it is about. Generated source can be copied to the clipboard or exported beside the document in
+the extension of whichever language is being previewed.
+
+It uses the ktsu.Essentials providers where they fit rather than reaching for `System.IO` directly:
+`IFileSystemProvider` for reading and writing documents, and an `IPersistenceProvider` over the XDG
+config directory for the recent-files list and the preview language. Neither location is a decision
+the editor makes for itself.
 
 ### Supported Target Languages
 
--   **Python**: Full support for function generation with type hints and proper indentation
+Resolve `IEnumerable<ILanguageGenerator>` and select on `LanguageId`, or construct a generator
+directly.
+
+| `LanguageId` | Generator | Extension | Notes |
+|---|---|---|---|
+| `python` | `PythonGenerator` | `py` | Type hints, `None` for void, `pass` for an empty body or class; `self` on methods |
+| `csharp` | `CSharpGenerator` | `cs` | Mapped type names, `var` for inferred declarations, declared access modifiers |
+| `javascript` | `JavaScriptGenerator` | `js` | Untyped; `const`/`let`; strict `===` and `!==`; method and field syntax inside a class |
+| `cpp` | `CppGenerator` | `cpp` | Mapped type spellings (`str` → `std::string`); `auto` for inferred declarations; `public:` and a terminating `;` on a class |
 
 ## Installation
 

@@ -1,5 +1,6 @@
 namespace PaketLoadScripts
 
+#load "ktsu.CodeBlocker.fsx" 
 #load "ktsu.DeepClone.fsx" 
 #load "Microsoft.Extensions.DependencyInjection.Abstractions.fsx" 
 #load "YamlDotNet.fsx" 
