@@ -86,24 +86,33 @@ let targetFileNames =
     |> Set.ofArray
 
 module Folder =
+    let REPL =
+        Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL"
+
     let Generated =
         Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\Namespace\Generated"
 
+(*
+
 let compilationTargets =
+    Array.concat [|
+
+    Folder.REPL.GetFiles("*.fsx")
     Folder.Generated.GetFiles("*.fsx")
-    |> Array.filter (fun fsxFile -> fsxFile.Name = "fibo-fnd-rel-relNamespace.fsx"
+     |]
     (*
+    |> Array.filter (fun fsxFile -> fsxFile.Name = "fibo-fnd-rel-relNamespace.fsx"
         let dllFile =
             Path.ChangeExtension(fsxFile.FullName, ".dll")
             |> FileInfo
         not dllFile.Exists
-    *)
 
     )
+    *)
+
     |> Array.sortBy (fun fsxFile -> fsxFile.Length)
 
 
-(*
 
 compilationTargets
 |> Array.mapi (fun index fsxFile ->
