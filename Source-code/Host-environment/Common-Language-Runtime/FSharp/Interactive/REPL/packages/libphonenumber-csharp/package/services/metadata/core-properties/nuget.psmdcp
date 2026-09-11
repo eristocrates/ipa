@@ -3,7 +3,7 @@
   <dc:creator>Patrick Mézard, Thomas Clegg, Jarrod Alexander, Google, libphonenumber contributors</dc:creator>
   <dc:description>C# port of Google's common Java, C++ and Javascript library for parsing, formatting, storing and validating international phone numbers. https://github.com/google/libphonenumber</dc:description>
   <dc:identifier>libphonenumber-csharp</dc:identifier>
-  <version>9.0.38</version>
+  <version>9.0.39</version>
   <keywords>phonenumber phone libphonenumber e164 e.164 international</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

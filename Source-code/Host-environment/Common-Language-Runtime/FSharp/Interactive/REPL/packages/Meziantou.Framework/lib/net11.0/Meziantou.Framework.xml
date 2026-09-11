@@ -936,6 +936,121 @@
         <member name="F:Meziantou.Framework.DeterministicGuidVersion.Version5">
             <summary>UUID version 5 using SHA-1 hashing.</summary>
         </member>
+        <member name="T:Meziantou.Framework.Diagnostics.ActivityEventArgs">
+            <summary>Provides data for the <see cref="E:Meziantou.Framework.Diagnostics.ScopedActivityListener.ActivityStarted"/> and <see cref="E:Meziantou.Framework.Diagnostics.ScopedActivityListener.ActivityStopped"/> events.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Diagnostics.ActivityEventArgs.Activity">
+            <summary>Gets the activity that started or stopped.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Diagnostics.ScopedActivityListener">
+            <summary>
+            Captures the <see cref="T:System.Diagnostics.Activity"/> instances started within the current asynchronous scope.
+            </summary>
+            <remarks>
+            <para>
+            An <see cref="T:System.Diagnostics.ActivityListener"/> is global: it observes every activity created in the process. This type registers such a listener but
+            only reports the activities started by the asynchronous flow that created it, using an <see cref="T:System.Threading.AsyncLocal`1"/>. Disposing the
+            instance unregisters the listener.
+            </para>
+            <para>
+            The membership of an activity is decided when it starts, because an activity is frequently stopped on another thread, where the
+            asynchronous scope is no longer available. As a consequence, the activities that are still running when the listener is disposed are
+            never reported.
+            </para>
+            <para>
+            The captured activities are live references, not snapshots: their tags, status and duration are only final once they are stopped.
+            </para>
+            <para>
+            While the listener is registered, <see cref="M:System.Diagnostics.ActivitySource.HasListeners"/> returns <see langword="true"/> for every matching source in
+            the whole process. The libraries that check it, such as <c>HttpClient</c> or ASP.NET Core, switch to their instrumented code path, so
+            <c>HttpClient</c> starts sending the <c>traceparent</c> header for the requests made inside the scope. Use
+            <see cref="P:Meziantou.Framework.Diagnostics.ScopedActivityListenerOptions.SourceNames"/> to reduce the number of matching sources.
+            </para>
+            </remarks>
+            <example>
+            <code><![CDATA[
+            using var listener = new ScopedActivityListener(new() { SourceNames = ["Meziantou.Framework.DnsClient"] });
+            await DoWorkAsync();
+            foreach (var activity in listener.Activities)
+            {
+                Console.WriteLine($"{activity.OperationName}: {activity.Duration}");
+            }
+            ]]></code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.Diagnostics.ScopedActivityListener.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Diagnostics.ScopedActivityListener"/> class listening to every <see cref="T:System.Diagnostics.ActivitySource"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Diagnostics.ScopedActivityListener.#ctor(Meziantou.Framework.Diagnostics.ScopedActivityListenerOptions)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Diagnostics.ScopedActivityListener"/> class.</summary>
+            <param name="options">The options of the listener, or <see langword="null"/> to use the default options.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Diagnostics.ScopedActivityListener.Activities">
+            <summary>Gets the activities captured so far, in completion order. The collection is safe to enumerate while new activities are captured.</summary>
+        </member>
+        <member name="E:Meziantou.Framework.Diagnostics.ScopedActivityListener.ActivityStarted">
+            <summary>
+            Occurs when an activity of the scope starts. The event is raised synchronously on the thread starting the activity, so its tags,
+            status and duration are not set yet. The exceptions thrown by the handlers are ignored to avoid breaking the observed code.
+            </summary>
+        </member>
+        <member name="E:Meziantou.Framework.Diagnostics.ScopedActivityListener.ActivityStopped">
+            <summary>
+            Occurs when an activity of the scope stops. The event is raised synchronously on the thread stopping the activity. The exceptions
+            thrown by the handlers are ignored to avoid breaking the observed code.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Diagnostics.ScopedActivityListener.GetActivitiesAsync(System.Threading.CancellationToken)">
+            <summary>Streams the activities of the scope as they complete.</summary>
+            <param name="cancellationToken">A token to stop the enumeration.</param>
+            <returns>
+            The activities already captured, followed by the activities completing afterwards. The enumeration ends when the listener is
+            disposed. Multiple enumerations can run concurrently, and each of them reports every activity.
+            </returns>
+        </member>
+        <member name="M:Meziantou.Framework.Diagnostics.ScopedActivityListener.Dispose">
+            <summary>Unregisters the listener and completes the enumerations started by <see cref="M:Meziantou.Framework.Diagnostics.ScopedActivityListener.GetActivitiesAsync(System.Threading.CancellationToken)"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Diagnostics.ScopedActivityListenerOptions">
+            <summary>Options for <see cref="T:Meziantou.Framework.Diagnostics.ScopedActivityListener"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Diagnostics.ScopedActivityListenerOptions.ShouldListenTo">
+            <summary>
+            Gets or sets the predicate used for <see cref="P:System.Diagnostics.ActivityListener.ShouldListenTo"/>. The default value listens to every source.
+            </summary>
+            <remarks>
+            The predicate is evaluated once per <see cref="T:System.Diagnostics.ActivitySource"/> and its result is cached by the runtime, so it must be a pure
+            function of the source. In particular it cannot depend on the current asynchronous flow.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Diagnostics.ScopedActivityListenerOptions.SourceNames">
+            <summary>
+            Gets or sets the names of the <see cref="T:System.Diagnostics.ActivitySource"/> to listen to, compared with <see cref="F:System.StringComparison.Ordinal"/>.
+            This value is ignored when <see cref="P:Meziantou.Framework.Diagnostics.ScopedActivityListenerOptions.ShouldListenTo"/> is set. Use <see cref="F:System.String.Empty"/> to listen to the activities created
+            with <c>new Activity(name)</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Diagnostics.ScopedActivityListenerOptions.SamplingResult">
+            <summary>
+            Gets or sets the sampling result returned for the activities created in the scope. The default value is <see cref="F:System.Diagnostics.ActivitySamplingResult.AllData"/>.
+            </summary>
+            <remarks>
+            <see cref="F:System.Diagnostics.ActivitySamplingResult.AllDataAndRecorded"/> sets <see cref="F:System.Diagnostics.ActivityTraceFlags.Recorded"/>, which is propagated to the
+            downstream services through the <c>traceparent</c> header and changes their own sampling decisions.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Diagnostics.ScopedActivityListenerOptions.CaptureChildActivities">
+            <summary>
+            Gets or sets a value indicating whether the activities whose parent is captured are also captured, even when the asynchronous scope
+            was lost. The default value is <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Diagnostics.ScopedActivityListenerOptions.MaxActivityCount">
+            <summary>
+            Gets or sets the maximum number of completed activities kept in <see cref="P:Meziantou.Framework.Diagnostics.ScopedActivityListener.Activities"/>. When the limit is
+            reached, the oldest activities are dropped. The default value is <see cref="F:System.Int32.MaxValue"/>.
+            </summary>
+        </member>
         <member name="T:Meziantou.Framework.DictionaryExtensions">
             <summary>
             Provides extension methods for <see cref="T:System.Collections.Generic.Dictionary`2"/>.

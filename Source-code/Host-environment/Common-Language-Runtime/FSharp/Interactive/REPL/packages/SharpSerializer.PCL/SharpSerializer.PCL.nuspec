@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>SharpSerializer.PCL</id>
+        <version>2.18.7</version>
+        <authors>mulltonne</authors>
+        <projectUrl>https://sharpserializer.codeplex.com/</projectUrl>
+        <iconUrl>http://www.sharpserializer.com/SharpSerializer032.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>SharpSerializer as Portable Class Library 
+Targeting: 
+- .Net 4.5 or higher 
+- Silverlight 5 or higher 
+- WP 8 or higher 
+- .Net for Windows Store (WinRT)
+- Windows Phone 8.1</description>
+        <summary>Portable Class Library of SharpSerializer</summary>
+        <tags>silverlight serializer wp7 binary xml serialize serialization serializing</tags>
+    </metadata>
+</package>

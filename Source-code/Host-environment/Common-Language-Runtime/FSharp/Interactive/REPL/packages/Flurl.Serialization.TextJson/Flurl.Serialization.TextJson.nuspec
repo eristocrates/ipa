@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Flurl.Serialization.TextJson</id>
+    <version>3.1.0</version>
+    <authors>Jorge Rodríguez Galán</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>small-logo.png</icon>
+    <projectUrl>https://github.com/YellowLineParking/Appy.Flurl</projectUrl>
+    <description>AppyWay Flurl Extensions</description>
+    <releaseNotes>https://github.com/YellowLineParking/Appy.Flurl/releases</releaseNotes>
+    <copyright>AppyWay</copyright>
+    <tags>NET6 NET5 NETCore http json serializer</tags>
+    <repository type="git" url="https://github.com/YellowLineParking/Appy.Flurl" commit="d631df059043cc3e434147a5dd51c0ef9466a295" />
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="System.Text.Json" version="5.0.2" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="System.Text.Json" version="6.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Text.Json" version="4.7.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

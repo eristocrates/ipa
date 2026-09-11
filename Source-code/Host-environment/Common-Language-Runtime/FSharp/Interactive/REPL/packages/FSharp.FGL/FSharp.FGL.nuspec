@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FSharp.FGL</id>
+    <version>0.0.4</version>
+    <authors>HLWeil,LibraChris,WalternativE,CSBiology</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://csbiology.github.io/FSharp.FGL/</projectUrl>
+    <iconUrl>https://fslab.org/docs-template/img/logo.png</iconUrl>
+    <description>Functional graph-library written in F#</description>
+    <releaseNotes>Bugfixes in FGL</releaseNotes>
+    <tags>F# FSharp bioinformatics datascience biology graph FGL network</tags>
+    <repository type="git" url="https://github.com/CSBiology/FSharp.FGL" commit="145b5738370d85d62347c5c66efc8431afbde1c6" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Aether" version="8.3.1" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

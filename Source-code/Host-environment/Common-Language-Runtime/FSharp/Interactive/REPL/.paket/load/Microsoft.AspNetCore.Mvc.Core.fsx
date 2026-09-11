@@ -1,0 +1,16 @@
+namespace PaketLoadScripts
+
+#load "Microsoft.AspNetCore.Authentication.Core.fsx" 
+#load "Microsoft.AspNetCore.Authorization.Policy.fsx" 
+#load "Microsoft.AspNetCore.Hosting.Abstractions.fsx" 
+#load "Microsoft.AspNetCore.Http.fsx" 
+#load "Microsoft.AspNetCore.Http.Extensions.fsx" 
+#load "Microsoft.AspNetCore.Mvc.Abstractions.fsx" 
+#load "Microsoft.AspNetCore.ResponseCaching.Abstractions.fsx" 
+#load "Microsoft.AspNetCore.Routing.fsx" 
+#load "Microsoft.Extensions.DependencyInjection.fsx" 
+#load "Microsoft.Extensions.DependencyModel.fsx" 
+#load "Microsoft.Extensions.FileProviders.Abstractions.fsx" 
+#load "Microsoft.Extensions.Logging.Abstractions.fsx" 
+#load "System.Diagnostics.DiagnosticSource.fsx" 
+#r "../../packages/Microsoft.AspNetCore.Mvc.Core/lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Core.dll" 

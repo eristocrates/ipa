@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>MathNet.Symbolics</id>
+    <version>0.25.0</version>
+    <title>Math.NET Symbolics</title>
+    <authors>Christoph Ruegg</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://symbolics.mathdotnet.com/</projectUrl>
+    <description>Math.NET Symbolics is a basic open source computer algebra library for .Net and Mono. Written in F# but works well in C# as well. Supports .Net Framework 4.5 or higher and .Net Standard 2.0 or higher, on Windows, Linux and Mac.</description>
+    <releaseNotes>attempt to revive this project with upgraded tooling, for net8.0, net6.0, net48 and netstandard2.0</releaseNotes>
+    <copyright>Copyright Math.NET Project</copyright>
+    <tags>fsharp F# math symbolics algebra simplify solve cas parse</tags>
+    <repository type="git" url="https://github.com/mathnet/mathnet-symbolics" commit="895787993f107be007dd18fa705f77df9aeb563e" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="FParsec" version="2.0.0-beta2" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="8.0.100" exclude="Build,Analyzers" />
+        <dependency id="MathNet.Numerics" version="6.0.0-beta1" exclude="Build,Analyzers" />
+        <dependency id="MathNet.Numerics.FSharp" version="6.0.0-beta1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="FParsec" version="2.0.0-beta2" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="8.0.100" exclude="Build,Analyzers" />
+        <dependency id="MathNet.Numerics" version="6.0.0-beta1" exclude="Build,Analyzers" />
+        <dependency id="MathNet.Numerics.FSharp" version="6.0.0-beta1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="FParsec" version="2.0.0-beta2" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="8.0.100" exclude="Build,Analyzers" />
+        <dependency id="MathNet.Numerics" version="6.0.0-beta1" exclude="Build,Analyzers" />
+        <dependency id="MathNet.Numerics.FSharp" version="6.0.0-beta1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FParsec" version="2.0.0-beta2" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="8.0.100" exclude="Build,Analyzers" />
+        <dependency id="MathNet.Numerics" version="6.0.0-beta1" exclude="Build,Analyzers" />
+        <dependency id="MathNet.Numerics.FSharp" version="6.0.0-beta1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

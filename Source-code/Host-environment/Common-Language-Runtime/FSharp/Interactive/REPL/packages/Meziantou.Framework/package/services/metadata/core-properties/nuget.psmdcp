@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>A collection of utility types and extension methods for .NET: collections, strings, dates, reflection, IO, and more</dc:description>
   <dc:identifier>Meziantou.Framework</dc:identifier>
-  <version>6.0.5</version>
+  <version>6.0.6</version>
   <keywords>utilities, extensions, helpers, collections, dotnet</keywords>
-  <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+  <lastModifiedBy>NuGet.Packaging, Version=7.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

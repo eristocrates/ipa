@@ -9722,6 +9722,17 @@
             the visitor's NewLine helper before each newline, and at end-of-script.
             </summary>
         </member>
+        <member name="P:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.HasDeferredTrailingSingleLineComments">
+            <summary>
+            Indicates that a trailing <c>--</c> comment is waiting for the next newline. This allows
+            callers that are about to emit closing punctuation, such as a function's right
+            parenthesis, to start a new line first so the punctuation is not consumed by the comment.
+            </summary>
+            <example>
+            For <c>TRANSLATE(city, 'a', 'b' -- replacement characters</c>, the closing parenthesis
+            must be emitted on the following line; otherwise it becomes part of the comment.
+            </example>
+        </member>
         <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.UpdateLastProcessedIndex(Microsoft.SqlServer.TransactSql.ScriptDom.TSqlFragment)">
             <summary>
             Updates tracking after generating a fragment.
@@ -9797,6 +9808,64 @@
             EXEC sp_drop_streaming_job statement
             </summary>
             <param name="node"></param>
+        </member>
+        <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.GenerateMultilineFunctionCall(Microsoft.SqlServer.TransactSql.ScriptDom.FunctionCall)">
+            <summary>
+            Generates an ordinary function call using multiline parameter formatting while preserving
+            its optional null-handling, grouping, windowing, and collation clauses.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.ShouldFormatFunctionCall(Microsoft.SqlServer.TransactSql.ScriptDom.FunctionCall)">
+            <summary>
+            Determines whether to render a function's parameters with the generic multiline layout.
+            The option must be enabled, the function must use an ordinary comma-separated parameter
+            list without a DISTINCT or ALL qualifier, and the function must either be inside an
+            already-formatted nested call tree or contain another function in its parameter subtree.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.UsesSpecialFunctionCallSyntax(Microsoft.SqlServer.TransactSql.ScriptDom.FunctionCall)">
+            <summary>
+            Determines whether a function contains nonstandard argument grammar, such as TRIM's FROM
+            syntax or JSON-specific key/value, null-handling, ordering, wrapper, and RETURNING clauses.
+            Such functions must bypass generic comma-separated multiline parameter rendering to
+            preserve valid SQL.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.ShouldFormatFunctionCallParameterList``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Determines whether a parameter list belongs to the nested function tree that should use
+            multiline formatting. The option must be enabled, and the list must either be inside an
+            already-formatted function call or contain another function in its parameter subtree.
+            This overload is also used by LEFT and RIGHT, which have dedicated AST node types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.PushFunctionCallAlignmentPoint">
+            <summary>
+            Anchors the outermost multiline function call so new lines return to its starting column.
+            Nested calls reuse that alignment scope.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.PopFunctionCallAlignmentPoint(Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.AlignmentPoint)">
+            <summary>
+            Removes the alignment scope created for an outermost multiline function call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.GenerateMultilineFunctionCallParameterList``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Generates a multiline parameter list and tracks nested calls. A sole non-function
+            parameter remains beside the opening parenthesis.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.ContainsFunctionCall``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Determines whether any parameter subtree contains a supported function-call node.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.GenerateFunctionCallRightParenthesis">
+            <summary>
+            Generates a closing parenthesis on a new line when required to terminate a deferred
+            trailing single-line comment first.
+            </summary>
         </member>
         <member name="M:Microsoft.SqlServer.TransactSql.ScriptDom.ScriptGenerator.SqlScriptGeneratorVisitor.ExplicitVisit(Microsoft.SqlServer.TransactSql.ScriptDom.GraphConnectionConstraintDefinition)">
             <summary>
@@ -9981,19 +10050,6 @@
             and <see cref="P:Microsoft.SqlServer.TransactSql.ScriptDom.SqlScriptGeneratorOptions.CommaPlacement"/> is not <see cref="F:Microsoft.SqlServer.TransactSql.ScriptDom.CommaPlacement.Leading"/>.
             </summary>
         </member>
-        <member name="P:Microsoft.SqlServer.TransactSql.ScriptDom.SqlScriptGeneratorOptions.LeadingCommaSpaceCount">
-            <summary>
-            The number of whitespace characters written after a leading comma when
-            <see cref="P:Microsoft.SqlServer.TransactSql.ScriptDom.SqlScriptGeneratorOptions.CommaPlacement"/> is <see cref="F:Microsoft.SqlServer.TransactSql.ScriptDom.CommaPlacement.Leading"/>.
-            The total width reserved for a leading comma is one column for the comma itself
-            plus this many columns of trailing whitespace (so the default of 1 reserves 2 columns).
-            </summary>
-            <remarks>
-            This is currently an internal knob so the leading-comma spacing is defined in a single
-            place rather than hard-coded at every call site. It can later be promoted to a public
-            script generation option.
-            </remarks>
-        </member>
         <member name="P:Microsoft.SqlServer.TransactSql.ScriptDom.SqlScriptGeneratorOptions.KeywordCasing">
             <summary>Gets or sets the keyword casing option to use during script generation</summary>
         </member>
@@ -10053,6 +10109,9 @@
         </member>
         <member name="P:Microsoft.SqlServer.TransactSql.ScriptDom.SqlScriptGeneratorOptions.CommaPlacement">
             <summary>Gets or sets a value indicating whether commas in a multi-line comma-separated list are placed at the end of the line (trailing) or at the start of the next line (leading). When set to Leading, the IndentationMode setting is ignored and indentation always uses spaces.</summary>
+        </member>
+        <member name="P:Microsoft.SqlServer.TransactSql.ScriptDom.SqlScriptGeneratorOptions.LeadingCommaSpaceCount">
+            <summary>Gets or sets the number of spaces written after a leading comma when CommaPlacement is Leading. Valid values are 0 and 1. The default is 1.</summary>
         </member>
         <member name="P:Microsoft.SqlServer.TransactSql.ScriptDom.SqlScriptGeneratorOptions.AlignColumnDefinitionFields">
             <summary>Gets or sets a boolean indicating if column definition fields (column name, data type, constraints) should be aligned into alignment columns.</summary>
@@ -10152,6 +10211,9 @@
         </member>
         <member name="P:Microsoft.SqlServer.TransactSql.ScriptDom.SqlScriptGeneratorOptions.NewLineBeforeCloseParenthesisInMultilineList">
             <summary>Gets or sets a boolean indicating if a newline should be placed before an close parenthesis when writing a multi-line list in parenthesis</summary>
+        </member>
+        <member name="P:Microsoft.SqlServer.TransactSql.ScriptDom.SqlScriptGeneratorOptions.MultilineNestedFunctionCalls">
+            <summary>Gets or sets a boolean indicating if parameters in a nested function call tree should be written on separate lines and indented one level per call. Isolated function calls remain on one line. When false (the default), all function calls retain the existing compact layout.</summary>
         </member>
         <member name="P:Microsoft.SqlServer.TransactSql.ScriptDom.SqlScriptGeneratorOptions.AllowExternalLibraryPaths">
             <summary>Gets or sets a boolean indicating if file paths can be used for external library content</summary>

@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Blake3</name>
+    </assembly>
+    <members>
+        <member name="T:Blake3.Blake3HashAlgorithm">
+            <summary>
+            Implementation of <see cref="T:System.Security.Cryptography.HashAlgorithm"/> for BLAKE3.
+            </summary>
+        </member>
+        <member name="T:Blake3.Blake3ManagedCore">
+            <summary>
+            Portable implementation of the BLAKE3 compression function.
+            </summary>
+        </member>
+        <member name="M:Blake3.Blake3ManagedCore.HashAllAtOnce(System.ReadOnlySpan{System.Byte},System.Span{System.Byte})">
+            <summary>
+            Hashes a multi-chunk input while preserving a SIMD-width frontier of chaining values.
+            </summary>
+        </member>
+        <member name="M:Blake3.Blake3ManagedCore.TryHash16Chunks(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.UInt32},System.UInt64,System.UInt32,System.Span{System.UInt32})">
+            <summary>
+            Hashes sixteen complete, contiguous chunks in parallel when 512-bit vectors are available.
+            The output is lane-major: eight chaining-value words for each input chunk.
+            </summary>
+        </member>
+        <member name="M:Blake3.Blake3ManagedCore.TryHashVectorChunks(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.UInt32},System.UInt64,System.UInt32,System.Span{System.UInt32})">
+            <summary>
+            Hashes a platform-sized group of complete chunks in parallel. This is eight chunks on
+            current 256-bit runtimes and four chunks on 128-bit runtimes.
+            </summary>
+        </member>
+        <member name="M:Blake3.Blake3ManagedCore.ReduceChunkChainingValues(System.Span{System.UInt32},System.Int32,System.ReadOnlySpan{System.UInt32},System.UInt32)">
+            <summary>Reduces a power-of-two group of chunk CVs to one subtree CV.</summary>
+        </member>
+        <member name="T:Blake3.Blake3Stream">
+             <summary>
+             A stream that allows to calculate a hash while reading/writing from a backend stream.
+            
+             Use the <see cref="M:Blake3.Blake3Stream.ComputeHash"/> or <see cref="M:Blake3.Blake3Stream.ComputeHash(System.Span{System.Byte})"/> methods to calculate the hash before disposing the stream
+             </summary>
+        </member>
+        <member name="M:Blake3.Blake3Stream.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>
+            Creates an instance of <see cref="T:Blake3.Blake3Stream"/> using the specified backend stream.
+            </summary>
+            <param name="backendStream"></param>
+            <param name="dispose">A boolean that indicates if this stream will dispose the backend stream. Default is true.</param>
+        </member>
+        <member name="T:Blake3.Hash">
+            <summary>
+            An output of the default size, 32 bytes, which provides constant-time equality checking.
+            </summary>
+            <remarks>
+            This hash is returned by <see cref="M:Blake3.Hasher.Hash(System.ReadOnlySpan{System.Byte})"/>.
+            This hash struct provides structural equality.
+            </remarks>
+        </member>
+        <member name="F:Blake3.Hash.Size">
+            <summary>
+            The size of this hash is 32 bytes.
+            </summary>
+        </member>
+        <member name="M:Blake3.Hash.CopyFromBytes(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Copies bytes to this hash. The input data must be 32 bytes.
+            </summary>
+            <param name="data">A 32-byte buffer.</param>
+        </member>
+        <member name="M:Blake3.Hash.FromBytes(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Creates a hash from an input data that must be 32 bytes.
+            </summary>
+            <param name="data">A 32-byte buffer.</param>
+            <returns>The 32-byte hash.</returns>
+        </member>
+        <member name="M:Blake3.Hash.AsSpan">
+            <summary>
+            Creates a span from a hash. The span returned has to follow the same lifetime than the hash referenced.
+            </summary>
+            <returns>The hash of the span</returns>
+        </member>
+        <member name="T:Blake3.Hasher">
+            <summary>
+            A fully managed incremental BLAKE3 hash state that can accept any number of writes.
+            </summary>
+            <remarks>
+            Instances are not thread-safe. Use <see cref="M:Blake3.Hasher.New"/>, <see cref="M:Blake3.Hasher.NewKeyed(System.ReadOnlySpan{System.Byte})"/>, or
+            <see cref="M:Blake3.Hasher.NewDeriveKey(System.String)"/> to construct an instance.
+            Dispose instances promptly to clear their state and return internal buffers to the shared pool.
+            </remarks>
+        </member>
+        <member name="M:Blake3.Hasher.#ctor">
+            <summary>
+            Invalid constructor.
+            </summary>
+        </member>
+        <member name="M:Blake3.Hasher.Hash(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Calculates the default 256-bit BLAKE3 hash.
+            </summary>
+            <param name="input">The bytes to hash.</param>
+            <returns>The calculated 32-byte hash.</returns>
+        </member>
+        <member name="M:Blake3.Hasher.Hash(System.ReadOnlySpan{System.Byte},System.Span{System.Byte})">
+            <summary>
+            Calculates a BLAKE3 extendable output of any length.
+            </summary>
+            <param name="input">The bytes to hash.</param>
+            <param name="output">The destination for the hash output.</param>
+        </member>
+        <member name="M:Blake3.Hasher.New">
+            <summary>
+            Constructs a managed hasher for the regular hash function.
+            </summary>
+            <returns>A new managed hasher.</returns>
+        </member>
+        <member name="M:Blake3.Hasher.NewKeyed(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Constructs a managed hasher for the keyed hash function.
+            </summary>
+            <param name="key">The 32-byte secret key.</param>
+            <returns>A new managed keyed hasher.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="key"/> is not exactly 32 bytes.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.NewDeriveKey(System.String)">
+            <summary>
+            Constructs a managed hasher for the key derivation function.
+            </summary>
+            <param name="text">A globally unique, application-specific context string.</param>
+            <returns>A new managed key derivation hasher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.NewDeriveKey(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Constructs a managed hasher for the key derivation function from a UTF-8 context.
+            </summary>
+            <param name="str">A UTF-8 encoded, globally unique, application-specific context string.</param>
+            <returns>A new managed key derivation hasher.</returns>
+            <remarks>Invalid UTF-8 is replaced to match the native wrapper's lossy UTF-8 conversion.</remarks>
+        </member>
+        <member name="M:Blake3.Hasher.Reset">
+            <summary>
+            Resets this instance to its initial state while preserving its mode and key.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">This instance has been disposed.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.Update(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Adds bytes to the hash state.
+            </summary>
+            <param name="data">The bytes to hash.</param>
+            <exception cref="T:System.ObjectDisposedException">This instance has been disposed.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.Update``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Adds the in-memory bytes of unmanaged values to the hash state.
+            </summary>
+            <typeparam name="T">The unmanaged element type.</typeparam>
+            <param name="data">The values whose in-memory representation is hashed.</param>
+            <exception cref="T:System.ObjectDisposedException">This instance has been disposed.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.UpdateWithJoin(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Adds bytes to the hash state, with the same result as <see cref="M:Blake3.Hasher.Update(System.ReadOnlySpan{System.Byte})"/>.
+            </summary>
+            <param name="data">The bytes to hash.</param>
+            <remarks>Large aligned subtrees are hashed in parallel; smaller inputs use the serial update path.</remarks>
+            <exception cref="T:System.ObjectDisposedException">This instance has been disposed.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.UpdateWithJoin``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Adds the in-memory bytes of unmanaged values to the hash state, with the same result as <see cref="M:Blake3.Hasher.Update``1(System.ReadOnlySpan{``0})"/>.
+            </summary>
+            <typeparam name="T">The unmanaged element type.</typeparam>
+            <param name="data">The values whose in-memory representation is hashed.</param>
+            <remarks>Large aligned subtrees are hashed in parallel; smaller inputs use the serial update path.</remarks>
+            <exception cref="T:System.ObjectDisposedException">This instance has been disposed.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.Finalize">
+            <summary>
+            Finalizes the state and returns the default 256-bit output.
+            </summary>
+            <returns>The calculated 32-byte hash.</returns>
+            <remarks>This operation is idempotent and does not prevent subsequent updates.</remarks>
+            <exception cref="T:System.ObjectDisposedException">This instance has been disposed.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.Finalize(System.Span{System.Byte})">
+            <summary>
+            Finalizes the state into an extendable output of any length.
+            </summary>
+            <param name="hash">The output destination.</param>
+            <remarks>This operation is idempotent and does not prevent subsequent updates.</remarks>
+            <exception cref="T:System.ObjectDisposedException">This instance has been disposed.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.Finalize(System.UInt64,System.Span{System.Byte})">
+            <summary>
+            Finalizes the state into an extendable output starting at an arbitrary byte offset.
+            </summary>
+            <param name="offset">The byte offset in the BLAKE3 output stream.</param>
+            <param name="hash">The output destination.</param>
+            <remarks>This operation is idempotent and does not prevent subsequent updates.</remarks>
+            <exception cref="T:System.ObjectDisposedException">This instance has been disposed.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.Finalize(System.Int64,System.Span{System.Byte})">
+            <summary>
+            Finalizes the state into an extendable output starting at an arbitrary byte offset.
+            </summary>
+            <param name="offset">The non-negative byte offset in the BLAKE3 output stream.</param>
+            <param name="hash">The output destination.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="offset"/> is negative.</exception>
+            <exception cref="T:System.ObjectDisposedException">This instance has been disposed.</exception>
+        </member>
+        <member name="M:Blake3.Hasher.Dispose">
+            <summary>
+            Clears this instance, including key material. A disposed instance cannot be reused.
+            </summary>
+        </member>
+    </members>
+</doc>

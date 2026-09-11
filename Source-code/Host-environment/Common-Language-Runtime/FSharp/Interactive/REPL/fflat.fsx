@@ -19,16 +19,14 @@ let compileScriptToDll (sourceFilePath: string) =
 
         let outputDirectory = Path.GetDirectoryName outputFilePath
 
-        Directory.CreateDirectory outputDirectory
-        |> ignore
+        Directory.CreateDirectory outputDirectory |> ignore
 
         let checker = FSharpChecker.Create()
 
-        let sourceText =
-            File.ReadAllText sourceFilePath
-            |> SourceText.ofString
+        let sourceText = File.ReadAllText sourceFilePath |> SourceText.ofString
 
-        let! projectOptions, optionDiagnostics = checker.GetProjectOptionsFromScript(sourceFilePath, sourceText, assumeDotNetFramework = false, useFsiAuxLib = true, useSdkRefs = true, previewEnabled = true)
+        let! projectOptions, optionDiagnostics =
+            checker.GetProjectOptionsFromScript(sourceFilePath, sourceText, assumeDotNetFramework = false, useFsiAuxLib = true, useSdkRefs = true, previewEnabled = true)
 
         for diagnostic in optionDiagnostics do
             printfn "%O" diagnostic
@@ -37,18 +35,18 @@ let compileScriptToDll (sourceFilePath: string) =
             projectOptions.SourceFiles
             |> Array.filter (fun filePath -> not (filePath.EndsWith(".fsproj.fsx")))
 
-        let compilerArguments =
-            [|
-               // FSharpChecker.Compile explicitly ignores its first
-               // argument, but expects one.
-               "fsc.exe"
+        let compilerArguments = [|
+            // FSharpChecker.Compile explicitly ignores its first
+            // argument, but expects one.
+            "fsc.exe"
 
-               yield! projectOptions.OtherOptions
+            yield! projectOptions.OtherOptions
 
-               "--target:library"
-               $"--out:{outputFilePath}"
+            "--target:library"
+            $"--out:{outputFilePath}"
 
-               yield! sourceFiles |]
+            yield! sourceFiles
+        |]
 
         let! diagnostics, terminatingException = checker.Compile compilerArguments
 
@@ -72,22 +70,23 @@ let compileScriptToDll (sourceFilePath: string) =
     }
 
 let targetFileNames =
-    [| "rdf"
-       "voaf"
-       "vann"
-       "foaf"
-       "vs"
-       "hydra"
-       "void"
-       "vaem"
-       "dcterms"
-       "dcat" |]
+    [|
+        "rdf"
+        "voaf"
+        "vann"
+        "foaf"
+        "vs"
+        "hydra"
+        "void"
+        "vaem"
+        "dcterms"
+        "dcat"
+    |]
     |> Array.map (fun prefix -> $"{prefix}Namespace.fsx")
     |> Set.ofArray
 
 module Folder =
-    let REPL =
-        Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL"
+    let REPL = Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL"
 
     let Generated =
         Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\Namespace\Generated"
@@ -122,5 +121,5 @@ compilationTargets
 
 *)
 
-compileScriptToDll @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\CalendarErgonomics.fsx"
+compileScriptToDll @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\IanaSchemes.fsx"
 |> Async.RunSynchronously

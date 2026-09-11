@@ -16,6 +16,8 @@ See [this](csharp/README.md) for details about the port.
 
 Phone number metadata is updated in the Google repo approximately every two weeks. This library is automatically updated by a [scheduled github action](https://github.com/twcclegg/libphonenumber-csharp/actions/workflows/create_new_release_on_new_metadata_update.yml) to include the latest metadata, usually within a day. See [Metadata updates](#metadata-updates) for how that works and how to run it manually.
 
+See [CHANGELOG.md](CHANGELOG.md) for release history.
+
 ## Installation
 
 Run the following command to add this library to your project
@@ -33,6 +35,16 @@ Targets `netstandard2.0`, `net8.0` and `net10.0`.
 ### Trimming and Native AOT
 
 The library is annotated as trim- and AOT-compatible, and the trim/AOT analyzers run as part of its own build. All metadata — including the geocoding, carrier and time zone prefix maps — is compiled to a binary form at build time and embedded in the assembly as compressed resources, so no XML is parsed and no file is read from disk at run time. The [interactive demo](https://twcclegg.github.io/libphonenumber-csharp/) is a Blazor WebAssembly app that runs this library trimmed, in the browser.
+
+### Regex compilation and startup cost
+
+Validation and formatting are driven by regexes built from the bundled metadata. There are thousands of them, and each is built the first time some caller touches that region.
+
+Those metadata regexes are deliberately **not** built with `RegexOptions.Compiled`. Compiling one costs around 1.5 ms of IL-emit and saves roughly 0.044 µs per match, so a pattern has to be matched on the order of 30,000 times before compiling it breaks even — which metadata patterns rarely are, because a workload spread across regions matches each one comparatively few times. Measured end-to-end on net8.0 (total wall time including startup, parse + validate + format), compiling them is 34x slower for 1,000 operations across 245 regions, 3.7x slower for 100,000, and still 1.7x slower at 1,000,000. It wins only for a process concentrating very high volume on one or two regions, and then by 6–20%.
+
+The library's own fixed regexes are a different case and are still compiled: there is a small, fixed number of them, each built once per process and hot for its whole life.
+
+There is no per-call knob for this. If you have measured a workload where compiling the metadata patterns wins — a long-running process concentrating very high volume on one or two regions is the shape where it can — please open an issue with the numbers rather than reaching for internal types.
 
 ### Debugging and symbols
 
@@ -185,7 +197,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the build settings that will fail CI 
 
 ## Metadata updates
 
-The [`create_new_release_on_new_metadata_update`](https://github.com/twcclegg/libphonenumber-csharp/actions/workflows/create_new_release_on_new_metadata_update.yml) workflow runs daily and drives [`lib/github-actions-metadata-update.sh`](lib/github-actions-metadata-update.sh). When the latest `google/libphonenumber` release is newer than the published NuGet package, it copies the upstream `resources/`, regenerates `resources/locale/country_names.txt`, then commits, pushes to a `metadata-update/*` branch and opens a PR against `main` with auto-merge enabled. The push and PR authenticate as the dedicated `libphonenumber-csharp-bot` account (via the `BOT_ACCESS_TOKEN` secret) rather than the default `GITHUB_TOKEN`, since GitHub requires a maintainer to manually approve workflow runs on PRs opened with `GITHUB_TOKEN`. Once that PR's required checks pass and it merges, [`finalize_metadata_release`](https://github.com/twcclegg/libphonenumber-csharp/actions/workflows/finalize_metadata_release.yml) tags the merge commit, creates a matching GitHub release, and dispatches the NuGet publish.
+The [`create_new_release_on_new_metadata_update`](https://github.com/twcclegg/libphonenumber-csharp/actions/workflows/create_new_release_on_new_metadata_update.yml) workflow runs daily and drives [`lib/github-actions-metadata-update.sh`](lib/github-actions-metadata-update.sh). When the latest `google/libphonenumber` release is newer than the published NuGet package, it copies the upstream `resources/` (less upstream's `metadata/` csv tables, which nothing here reads), regenerates `resources/locale/country_names.txt`, adds a [CHANGELOG.md](CHANGELOG.md) entry for the release, then commits, pushes to a `metadata-update/*` branch and opens a PR against `main` with auto-merge enabled. The push and PR authenticate as the dedicated `libphonenumber-csharp-bot` account (via the `BOT_ACCESS_TOKEN` secret) rather than the default `GITHUB_TOKEN`, since GitHub requires a maintainer to manually approve workflow runs on PRs opened with `GITHUB_TOKEN`. Once that PR's required checks pass and it merges, [`finalize_metadata_release`](https://github.com/twcclegg/libphonenumber-csharp/actions/workflows/finalize_metadata_release.yml) tags the merge commit, creates a matching GitHub release, and dispatches the NuGet publish. The changelog entry is written in the same PR rather than afterwards: `main`'s branch-protection ruleset requires every push to go through a PR with no bypass for any actor (including this automation's own bot account), so `finalize_metadata_release` — which only tags an existing commit and calls the Releases API — has no way to push a follow-up commit of its own. The version number is already known at PR-open time (it's copied straight from the upstream tag), so there's nothing to guess.
 
 Before doing any of that it inspects the upstream diff and stops if it contains `.java` or `.proto` files, because changes to the Java sources may need porting by hand and an unattended metadata bump would silently skip them.
 

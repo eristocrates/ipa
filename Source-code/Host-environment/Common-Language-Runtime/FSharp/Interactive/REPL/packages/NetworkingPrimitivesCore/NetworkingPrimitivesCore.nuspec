@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NetworkingPrimitivesCore</id>
+    <version>0.1.23</version>
+    <authors>Vasyl Novikov</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/VasiliyNovikov/NetworkingPrimitivesCore</projectUrl>
+    <description>Networking primitives like NetInt, IPv4/IPv6 address/network, MAC address</description>
+    <copyright>Vasyl Novikov</copyright>
+    <tags>net networking primitives</tags>
+    <repository type="Git" url="https://github.com/VasiliyNovikov/NetworkingPrimitivesCore" commit="57f8c1598745d4aab7b03c8528e3142df2997cd9" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+      <group targetFramework="net8.0" />
+      <group targetFramework="net9.0" />
+    </dependencies>
+  </metadata>
+</package>

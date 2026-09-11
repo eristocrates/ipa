@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rsft.Net.DomainParser.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Rsft.Net.DomainParser.Core.Entities.Logic.Configuration.DomainParserConfiguration">
+            <summary>
+            The domain parser configuration.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Logic.Configuration.DomainParserConfiguration.TldPublicRulesUrl">
+            <summary>
+                Gets or sets the TLD public rules URL.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Logic.Configuration.DomainParserConfiguration.TldPublicFetchTimeout">
+            <summary>
+                Gets or sets the TLD public fetch timeout (in milliseconds).
+            </summary>
+            <value>
+                The TLD public fetch timeout (in milliseconds).
+            </value>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Core.Entities.Logic.DomainInfo">
+            <summary>
+            The domain info.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Logic.DomainInfo.Tld">
+            <summary>
+                Gets or sets the TLD.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Logic.DomainInfo.Sld">
+            <summary>
+                Gets or sets the Second Level Domain (SLD).
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Logic.DomainInfo.Subdomain">
+            <summary>
+                Gets or sets the subdomain.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Logic.DomainInfo.MatchingRule">
+            <summary>
+                Gets or sets the matching rule.
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Core.Entities.Logic.RuleType">
+            <summary>
+            The rule type.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Core.Entities.Logic.RuleType.Normal">
+            <summary>
+                A normal rule
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Core.Entities.Logic.RuleType.Wildcard">
+            <summary>
+                A wildcard rule, as defined by www.publicsuffix.org
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Core.Entities.Logic.RuleType.Exception">
+            <summary>
+                An exception rule, as defined by www.publicsuffix.org
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Core.Entities.Logic.TldRule">
+            <summary>
+            The TLD rule.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Logic.TldRule.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Logic.TldRule.RuleType">
+            <summary>
+            Gets or sets the rule type.
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Core.Entities.Service.Configuration">
+            <summary>
+            The configuration.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Service.Configuration.TldPublicRulesUrl">
+            <summary>
+                Gets or sets the TLD public rules URL. Default is https://publicsuffix.org/list/effective_tld_names.dat.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Service.Configuration.TldPublicFetchTimeout">
+            <summary>
+                Gets or sets the TLD public fetch timeout (in milliseconds).
+            </summary>
+            <value>
+                The TLD public fetch timeout (in milliseconds). Default is 8000.
+            </value>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Core.Entities.Service.DomainInfo">
+            <summary>
+            The domain info.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Service.DomainInfo.Tld">
+            <summary>
+                Gets or sets the Top Level Domain (TLD).
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Service.DomainInfo.Sld">
+            <summary>
+                Gets or sets the Second Level Domain (SLD).
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Entities.Service.DomainInfo.Subdomain">
+            <summary>
+                Gets or sets the subdomain.
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Core.Interfaces.IConfiguration`1">
+            <summary>
+            The Configuration interface.
+            </summary>
+            <typeparam name="T">The type of configuration.</typeparam>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Interfaces.IConfiguration`1.Configuration">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Core.Interfaces.IDomainParser`1">
+            <summary>
+            The DomainParser interface.
+            </summary>
+            <typeparam name="TResponse">
+            The type of the response.
+            </typeparam>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Core.Interfaces.IDomainParser`1.Parse(System.String)">
+            <summary>
+            The parse.
+            </summary>
+            <param name="domainString">
+            The domain string.
+            </param>
+            <returns>
+            The TResponse.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Core.Interfaces.IDomainParser`1.TryParse(System.String,`0@)">
+            <summary>
+            The try parse.
+            </summary>
+            <param name="domainString">
+            The domain string.
+            </param>
+            <param name="response">
+            The response.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Core.Interfaces.IReadOnlyRepository`2">
+            <summary>
+            The ReadOnlyRepository interface.
+            </summary>
+            <typeparam name="TEntity">
+            The type of the entity.
+            </typeparam>
+            <typeparam name="TKey">
+            The type of the key.
+            </typeparam>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Core.Interfaces.IReadOnlyRepository`2.GetAll">
+            <summary>
+            Gets all entities.
+            </summary>
+            <returns>
+            The Enumerable of entity.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Core.Interfaces.IReadOnlyRepository`2.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets all entities asynchronous.
+            </summary>
+            <param name="cancellationToken">
+            The cancellation token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Core.Interfaces.IReadOnlyRepository`2.Get(`1)">
+            <summary>
+            The get.
+            </summary>
+            <param name="key">
+            The key.
+            </param>
+            <returns>
+            The TEntity.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Core.Interfaces.IReadOnlyRepository`2.GetAsync(`1,System.Threading.CancellationToken)">
+            <summary>
+            The get async.
+            </summary>
+            <param name="key">
+            The key.
+            </param>
+            <param name="cancellationToken">
+            The cancellation token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Core.Interfaces.ITldRuleResolver`1">
+            <summary>
+            The TLD Rule Resolver interface.
+            </summary>
+            <typeparam name="TResponse">The type of the response.</typeparam>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Core.Interfaces.ITldRuleResolver`1.Resolve(System.String)">
+            <summary>
+            The resolve.
+            </summary>
+            <param name="ruleInfo">
+            The rule info.
+            </param>
+            <returns>
+            The TResponse.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Core.Interfaces.ITldRulesCache">
+            <summary>
+            The TLD Rules Cache interface.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Core.Interfaces.ITldRulesCache.TldRuleLists">
+            <summary>
+            Gets the tld rule lists.
+            </summary>
+        </member>
+    </members>
+</doc>

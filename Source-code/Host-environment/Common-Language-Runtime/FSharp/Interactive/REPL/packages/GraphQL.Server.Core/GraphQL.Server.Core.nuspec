@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>GraphQL.Server.Core</id>
+    <version>5.2.0</version>
+    <authors>Pekka Heikura</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>logo.64x64.png</icon>
+    <description>GraphQL Server Core</description>
+    <copyright>Pekka Heikura</copyright>
+    <tags>GraphQL transport server</tags>
+    <repository type="git" url="https://github.com/graphql-dotnet/server" commit="d6b58a4827da1b113b5e374eb2a8698fdb6ce712" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="GraphQL.DataLoader" version="4.6.1" exclude="Build,Analyzers" />
+        <dependency id="GraphQL.SystemReactive" version="4.6.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Options" version="3.1.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

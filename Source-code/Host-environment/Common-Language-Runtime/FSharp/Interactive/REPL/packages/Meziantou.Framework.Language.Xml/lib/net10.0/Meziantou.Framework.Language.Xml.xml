@@ -15,174 +15,462 @@
             </code>
             </example>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.SourceText">
-            <summary>Represents immutable XML text with line information and text-change application helpers.</summary>
-            <example>
-            <code>
-            var source = SourceText.From("&lt;root/&gt;");
-            var updated = source.WithChanges([new XmlTextChange(new TextSpan(1, 4), "item")]);
-            </code>
-            </example>
+        <member name="P:Meziantou.Framework.Language.Xml.Formatter.Annotation">
+            <summary>Marks the nodes this formatter produced, so a later pass can find them again.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Xml.SourceText.ToString">
-            <summary>Returns the source text.</summary>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.LanguageParser">
+            <summary>Reads a document into green nodes, reporting what is wrong with it rather than throwing.</summary>
+            <remarks>
+            Whitespace is trivia only inside a tag. Between tags it is character data, which XML says is significant, so it
+            becomes an <see cref="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlTextSyntax"/> of its own.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.LanguageParser.ParseDelimited``1(Meziantou.Framework.Language.Xml.SyntaxKind,Meziantou.Framework.Language.Xml.SyntaxKind,Meziantou.Framework.Language.Xml.SyntaxKind,System.String,System.String,System.Func{Meziantou.Framework.Language.InternalSyntax.GreenNode,Meziantou.Framework.Language.InternalSyntax.GreenNode,Meziantou.Framework.Language.InternalSyntax.GreenNode,``0})">
+            <summary>Reads a construct written as an opening delimiter, free text, and a closing delimiter.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.LanguageParser.IsAtNameStart">
+            <summary>Determines whether an XML name begins at the reading position.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.LanguageParser.SkipNameCharacters(System.Int32)">
+            <summary>Advances past the name characters at the reading position.</summary>
+            <remarks>
+            A name character may sit outside the basic plane, so the scan moves in scalar values rather than in UTF-16
+            units. It does not require the first one to be a name <em>start</em> character: a tag whose name begins with a
+            digit is malformed, and reading it anyway is what keeps the document round-tripping.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.LanguageParser.TryReadScalar(System.Int32,System.Text.Rune@,System.Int32@)">
+            <summary>Reads the scalar value at <paramref name="position"/>, and how many UTF-16 units it took.</summary>
+            <remarks>A lone surrogate is not a scalar value at all, so it can be no part of a name.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.LanguageParser.LexTagTrivia(System.Int32)">
+            <summary>Claims the whitespace at the reading position, which inside a tag is trivia.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.LanguageParser.WithLeading(Meziantou.Framework.Language.InternalSyntax.SyntaxToken,Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Puts trivia in front of a token that was built without any, such as a missing one.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.SyntaxFactory">
+            <summary>Builds the immutable XML tokens and trivia, reusing the ones whose text never varies.</summary>
+            <remarks>
+            A green node is position-independent, so a token like <c>&gt;</c> with no trivia is the same node wherever it
+            appears and can be shared by every tree in the process. Punctuation is most of what a document is made of, so
+            interning it is what keeps parsing from allocating a node per angle bracket.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.SyntaxFactory.Token(Meziantou.Framework.Language.Xml.SyntaxKind)">
+            <summary>Returns the shared token for a kind whose text never varies.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.SyntaxFactory.Token(Meziantou.Framework.Language.InternalSyntax.GreenNode,Meziantou.Framework.Language.Xml.SyntaxKind,System.String)">
+            <summary>Creates a token whose text is not fixed by its kind, such as a name or a run of content.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.SyntaxFactory.TokenWithValue(Meziantou.Framework.Language.InternalSyntax.GreenNode,Meziantou.Framework.Language.Xml.SyntaxKind,System.String,System.String)">
+            <summary>Creates a token whose text and meaning differ, such as an attribute value that escapes a character.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.SyntaxFactory.MissingToken(Meziantou.Framework.Language.Xml.SyntaxKind)">
+            <summary>Creates a zero-width token standing in for one the text does not have.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.SyntaxFactory.ListNode(System.ReadOnlySpan{Meziantou.Framework.Language.InternalSyntax.GreenNode})">
+            <summary>Builds a list that can be projected into a red node even when it holds a single token.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlAttributeSyntax">
+            <summary>An attribute of a tag: a name, an equals sign, and a quoted value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlCDataSectionSyntax">
+            <summary>A CDATA section, whose text is taken literally.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlCommentSyntax">
+            <summary>A comment.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlDeclarationSyntax">
+            <summary>The XML declaration, whose version, encoding and standalone are written as attributes.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlDocumentSyntax">
+            <summary>Everything a document is made of, in the order it was written.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlDocumentTypeSyntax">
+            <summary>A document type declaration.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlElementEndTagSyntax">
+            <summary>The closing tag of an element.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlElementStartTagSyntax">
+            <summary>The opening tag of an element, with the attributes it declares.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlElementSyntax">
+            <summary>An element written with a start tag and an end tag, and whatever stands between them.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlEmptyElementSyntax">
+            <summary>An element written as one self-closing tag.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlNodeSyntax">
+            <summary>A node that can stand in a document or in an element's content.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlProcessingInstructionSyntax">
+            <summary>A processing instruction: a target and the data it carries.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlSkippedTextSyntax">
+            <summary>Text the parser could make nothing of, kept so the document still reproduces its source.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlSyntaxNode">
+            <summary>The base of every immutable XML node.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.Syntax.InternalSyntax.XmlTextSyntax">
+            <summary>A run of character data, which in XML includes the whitespace between tags.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Xml.SyntaxFactory">
-            <summary>Creates syntax nodes, tokens, and trivia programmatically.</summary>
+            <summary>Builds XML nodes, tokens, and trivia.</summary>
+            <remarks>
+            A node built here is not part of any document, so its span starts at zero. Putting it into a tree with
+            <see cref="M:Meziantou.Framework.Language.SyntaxNodeExtensions.ReplaceNode``1(``0,Meziantou.Framework.Language.SyntaxNode,Meziantou.Framework.Language.SyntaxNode)"/> gives it a real position,
+            without re-reading any text.
+            </remarks>
             <example>
             <code>
-            var node = SyntaxFactory.Element("package", [SyntaxFactory.Attribute("version", "1.0.0")], [], isSelfClosing: true);
-            var document = SyntaxFactory.Document(node);
+            var node = SyntaxFactory.XmlEmptyElement("package", [SyntaxFactory.XmlAttribute("version", "1.0.0")]);
+            var document = SyntaxFactory.XmlDocument(node);
             </code>
             </example>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.TextLine">
-            <summary>
-            Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.Xml.SourceText"/> instance.
-            </summary>
-            <example>
-            <code>
-            var line = SourceText.From("&lt;root/&gt;").Lines[0];
-            var text = line.Text;
-            </code>
-            </example>
+        <member name="P:Meziantou.Framework.Language.Xml.SyntaxFactory.Space">
+            <summary>A single space.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Xml.TextLine.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
-            <summary>
-            Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.Xml.SourceText"/> instance.
-            </summary>
-            <example>
-            <code>
-            var line = SourceText.From("&lt;root/&gt;").Lines[0];
-            var text = line.Text;
-            </code>
-            </example>
+        <member name="P:Meziantou.Framework.Language.Xml.SyntaxFactory.Tab">
+            <summary>A single tab.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.TextSpan">
-            <summary>Represents a contiguous character range in text.</summary>
-            <example>
-            <code>
-            var span = new TextSpan(start: 5, length: 3);
-            var sameSpan = TextSpan.FromBounds(5, 8);
-            </code>
-            </example>
+        <member name="P:Meziantou.Framework.Language.Xml.SyntaxFactory.LineFeed">
+            <summary>A Unix line break.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlAttributeSyntax">
-            <summary>Represents an XML attribute in a start tag.</summary>
-            <example>
-            <code>
-            var attribute = SyntaxFactory.Attribute("version", "1.0.0");
-            var updated = attribute.WithValue("2.0.0");
-            </code>
-            </example>
+        <member name="P:Meziantou.Framework.Language.Xml.SyntaxFactory.CarriageReturnLineFeed">
+            <summary>A Windows line break.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlCDataSectionSyntax">
-            <summary>Represents an XML CDATA section node.</summary>
-            <example>
-            <code>
-            var cdata = SyntaxFactory.CDataSection("raw &lt;content&gt;");
-            var updated = cdata.WithText("other");
-            </code>
-            </example>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.Whitespace(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlCommentSyntax">
-            <summary>Represents an XML comment node.</summary>
-            <example>
-            <code>
-            var comment = SyntaxFactory.Comment("generated");
-            var updated = comment.WithText("updated");
-            </code>
-            </example>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.EndOfLine(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlDeclarationSyntax">
-            <summary>
-            Represents an XML declaration (for example <c>&lt;?xml version="1.0"?&gt;</c>).
-            </summary>
-            <example>
-            <code>
-            var declaration = SyntaxFactory.Declaration("1.0", "utf-8", "yes");
-            var updated = declaration.WithEncoding("utf-16");
-            </code>
-            </example>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.Trivia(Meziantou.Framework.Language.Xml.SyntaxKind,System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlDiagnostic">
-            <summary>Represents a parser or analyzer diagnostic produced while reading XML syntax.</summary>
-            <example>
-            <code>
-            var tree = XmlSyntaxTree.ParseText("&lt;root&gt;&lt;item&gt;&lt;/root&gt;");
-            var diagnostic = tree.Diagnostics.First();
-            </code>
-            </example>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.Token(Meziantou.Framework.Language.Xml.SyntaxKind,System.String)">
+            <summary>Creates a token of <paramref name="kind"/> spelled <paramref name="text"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:Meziantou.Framework.Language.Xml.XmlDiagnostic.#ctor(System.String,System.String,Meziantou.Framework.Language.Xml.XmlDiagnosticSeverity,Meziantou.Framework.Language.Xml.TextSpan)">
-            <summary>Represents a parser or analyzer diagnostic produced while reading XML syntax.</summary>
-            <example>
-            <code>
-            var tree = XmlSyntaxTree.ParseText("&lt;root&gt;&lt;item&gt;&lt;/root&gt;");
-            var diagnostic = tree.Diagnostics.First();
-            </code>
-            </example>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.Token(Meziantou.Framework.Language.Xml.SyntaxKind)">
+            <summary>Creates a token of <paramref name="kind"/>, spelled the only way that kind can be.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlDiagnosticDescriptor">
-            <summary>Describes a diagnostic definition (id, title, message template, and default severity).</summary>
-            <example>
-            <code>
-            var descriptor = new XmlDiagnosticDescriptor("XML0001", "Missing end tag", "Missing end tag for '{0}'", XmlDiagnosticSeverity.Error);
-            </code>
-            </example>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.MissingToken(Meziantou.Framework.Language.Xml.SyntaxKind)">
+            <summary>Creates a zero-width token standing in for one a document does not have.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlDiagnosticSeverity">
-            <summary>
-            Indicates the severity level of an <see cref="T:Meziantou.Framework.Language.Xml.XmlDiagnostic"/>.
-            </summary>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.Identifier(System.String)">
+            <summary>Creates a name token.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.AttributeValue(System.String,System.Char)">
+            <summary>Creates an attribute value token, escaping what has to be escaped inside <paramref name="quote"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlDocument(Meziantou.Framework.Language.Xml.XmlNodeSyntax[])">
+            <exception cref="T:System.ArgumentNullException"><paramref name="nodes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlElement(System.String,Meziantou.Framework.Language.Xml.XmlNodeSyntax[])">
+            <summary>Creates an element with a start tag, content, and a matching end tag.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="content"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlElement(System.String,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.Xml.XmlAttributeSyntax},System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.Xml.XmlNodeSyntax})">
+            <summary>Creates an element with a start tag, content, and a matching end tag.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/>, <paramref name="attributes"/>, or <paramref name="content"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlElementStartTag(System.String,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.Xml.XmlAttributeSyntax})">
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="attributes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlElementEndTag(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlEmptyElement(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlEmptyElement(System.String,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.Xml.XmlAttributeSyntax})">
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="attributes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlAttribute(System.String,System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlText(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlComment(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlCDataSection(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlDeclaration(System.String,System.String,System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="version"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlProcessingInstruction(System.String,System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="target"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlDocumentType(System.String,System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.XmlSkippedText(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.StartsWithName(System.String,System.String)">
+            <summary>Determines whether <paramref name="value"/> begins with <paramref name="name"/> as a whole word.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFactory.Required(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Unwraps a token that a node requires, rejecting the default one no factory should produce.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.SyntaxFacts">
+            <summary>Answers questions about a <see cref="T:Meziantou.Framework.Language.Xml.SyntaxKind"/> that do not need a node to ask them of.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFacts.GetText(Meziantou.Framework.Language.Xml.SyntaxKind)">
+            <summary>Returns the text a kind is always spelled with, or an empty string when its text varies.</summary>
+            <remarks>
+            This is the canonical spelling. A document may write <c>&lt;?xml</c> and <c>&lt;!DOCTYPE</c> in any case, and
+            the token then carries what the document said; a token built from a kind alone gets the spelling here.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFacts.IsTrivia(Meziantou.Framework.Language.Xml.SyntaxKind)">
+            <summary>Determines whether <paramref name="kind"/> is whitespace or a line break.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFacts.IsNameStartCharacter(System.Text.Rune)">
+            <summary>Determines whether <paramref name="value"/> may begin an XML name.</summary>
+            <remarks>
+            This is the <c>NameStartChar</c> production of XML 1.0 verbatim. It is not the same set as "a Unicode letter":
+            it excludes some letters, such as <c>ª</c> and <c>µ</c>, and includes characters that are not letters at all.
+            It takes a scalar value rather than a <see cref="T:System.Char"/> because a name character may sit outside the basic
+            plane, where it is written as a surrogate pair that means nothing one half at a time.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.SyntaxFacts.IsNameCharacter(System.Text.Rune)">
+            <summary>Determines whether <paramref name="value"/> may appear inside an XML name.</summary>
+            <remarks>
+            This is the <c>NameChar</c> production of XML 1.0: everything a name may begin with, plus the characters that
+            may only follow -- a digit, a hyphen, a full stop, the middle dot, and the combining marks.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.SyntaxKind">
+            <summary>Identifies what a node, token, or trivium in an XML tree is.</summary>
             <example>
             <code>
-            if (diagnostic.Severity == XmlDiagnosticSeverity.Error)
+            if (node.Kind() == SyntaxKind.XmlElement)
             {
-                // stop processing
+                // handle element
             }
             </code>
             </example>
         </member>
+        <member name="F:Meziantou.Framework.Language.Xml.SyntaxKind.List">
+            <summary>A list of nodes or tokens. Reserved for the list node the shared layer builds.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlAttributeSyntax">
+            <summary>An attribute of a tag: a name, an equals sign, and a quoted value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlAttributeSyntax.Name">
+            <summary>Gets the name of the attribute.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlAttributeSyntax.Value">
+            <summary>Gets the value of the attribute, with any escape the source used resolved.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlAttributeSyntax.WithName(System.String)">
+            <summary>Returns this attribute renamed.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlAttributeSyntax.WithValue(System.String)">
+            <summary>Returns this attribute carrying a different value, escaped for the quote character it is written with.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlAttributeSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlCDataSectionSyntax">
+            <summary>A CDATA section, whose text is taken literally.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlCDataSectionSyntax.Text">
+            <summary>Gets the text between the section delimiters.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlCDataSectionSyntax.WithText(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlCDataSectionSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlCommentSyntax">
+            <summary>A comment.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlCommentSyntax.Text">
+            <summary>Gets the text between the comment delimiters.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlCommentSyntax.WithText(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlCommentSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlDeclarationSyntax">
+            <summary>The XML declaration, whose version, encoding and standalone are written as attributes.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlDeclarationSyntax.Version">
+            <summary>Gets the version the declaration states, or <c>1.0</c> when it states none.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlDeclarationSyntax.Encoding">
+            <summary>Gets the encoding the declaration states, or <see langword="null"/> when it states none.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlDeclarationSyntax.Standalone">
+            <summary>Gets what the declaration states for standalone, or <see langword="null"/> when it states nothing.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDeclarationSyntax.GetAttribute(System.String)">
+            <summary>Gets the first attribute called <paramref name="name"/>, or <see langword="null"/> when there is none.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDeclarationSyntax.WithVersion(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="version"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDeclarationSyntax.SetAttribute(System.String,System.String)">
+            <summary>
+            Sets, adds, or removes one pseudo-attribute, leaving the rest of the declaration exactly as it was written.
+            </summary>
+            <remarks>
+            An attribute that is already there keeps its position and its spacing; a new one is added at the end, in front
+            of whatever whitespace stands before the <c>?&gt;</c>.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDeclarationSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxList{Meziantou.Framework.Language.Xml.XmlAttributeSyntax},Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
+        </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlDocumentSyntax">
-            <summary>Represents the root XML document node and provides XPath-based selection/editing helpers.</summary>
-            <example>
-            <code>
-            var document = XmlSyntaxTree.ParseText("&lt;root&gt;&lt;item/&gt;&lt;/root&gt;").Root;
-            var node = document.SelectSingleSyntaxNode("/root/item");
-            </code>
-            </example>
+            <summary>Everything a document is made of, in the order it was written.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDocumentSyntax.CreateNavigator">
+            <summary>Returns an XPath view of this document, backed by its own nodes.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDocumentSyntax.SelectNodes(System.String,System.Xml.IXmlNamespaceResolver)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDocumentSyntax.ReplaceNode(System.String,System.Func{Meziantou.Framework.Language.Xml.XmlSyntaxNode,Meziantou.Framework.Language.Xml.XmlSyntaxNode})">
+            <summary>Returns this document with the node <paramref name="xpath"/> selects put through <paramref name="updateNode"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> or <paramref name="updateNode"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">Nothing matches <paramref name="xpath"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDocumentSyntax.ReplaceNode(System.String,System.Xml.IXmlNamespaceResolver,System.Func{Meziantou.Framework.Language.Xml.XmlSyntaxNode,Meziantou.Framework.Language.Xml.XmlSyntaxNode})">
+            <summary>Returns this document with the node <paramref name="xpath"/> selects put through <paramref name="updateNode"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> or <paramref name="updateNode"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">Nothing matches <paramref name="xpath"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDocumentSyntax.NormalizeWhitespace">
+            <summary>Returns this document laid out again by <see cref="T:Meziantou.Framework.Language.Xml.Formatter"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDocumentSyntax.Update(Meziantou.Framework.Language.SyntaxList{Meziantou.Framework.Language.Xml.XmlNodeSyntax},Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlDocumentTypeSyntax">
+            <summary>A document type declaration.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlDocumentTypeSyntax.Name">
+            <summary>Gets the name the declaration gives the root element.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlDocumentTypeSyntax.Value">
+            <summary>Gets everything the declaration holds, which begins with the name.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDocumentTypeSyntax.WithName(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDocumentTypeSyntax.WithValue(System.String)">
+            <summary>Returns this declaration with different content. The name is taken from the front of the value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlDocumentTypeSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlElementEndTagSyntax">
+            <summary>The closing tag of an element.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlElementEndTagSyntax.SkippedTokens">
             <summary>
-            Represents a document type declaration (<c>&lt;!DOCTYPE ...&gt;</c>).
+            Gets the text a malformed document put between the name and the <c>&gt;</c>. Empty for every valid end tag.
             </summary>
-            <example>
-            <code>
-            var doctype = SyntaxFactory.DocumentType("html", null);
-            var updated = doctype.WithName("root");
-            </code>
-            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlElementEndTagSyntax.Name">
+            <summary>Gets the name of the element the tag closes.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlElementEndTagSyntax.WithName(System.String)">
+            <summary>Returns this tag closing a different name.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlElementEndTagSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxTokenList,Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlElementStartTagSyntax">
+            <summary>The opening tag of an element, with the attributes it declares.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlElementStartTagSyntax.Name">
+            <summary>Gets the name of the element the tag opens.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlElementStartTagSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxList{Meziantou.Framework.Language.Xml.XmlAttributeSyntax},Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlElementSyntax">
-            <summary>Represents an XML element, including its attributes and child content.</summary>
-            <example>
-            <code>
-            var element = SyntaxFactory.Element("package", [], [new XmlTextSyntax("value")]);
-            var updated = element.WithName("dependency");
-            </code>
-            </example>
+            <summary>An element written with a start tag and an end tag, and whatever stands between them.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlEndTagSyntax">
-            <summary>
-            Represents an XML end tag (for example <c>&lt;/item&gt;</c>).
-            </summary>
-            <example>
-            <code>
-            var endTag = new XmlEndTagSyntax("item", "&lt;/item&gt;");
-            var updated = endTag.WithName("other");
-            </code>
-            </example>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlElementSyntax.Name">
+            <summary>Gets the name the start tag declares.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlElementSyntax.Attributes">
+            <summary>Gets the attributes the start tag declares.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlElementSyntax.GetAttribute(System.String)">
+            <summary>Gets the first attribute called <paramref name="name"/>, or <see langword="null"/> when there is none.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlElementSyntax.GetInnerText">
+            <summary>Gets the text between the two tags, exactly as it was written.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlElementSyntax.WithInnerText(System.String)">
+            <summary>Returns this element with <paramref name="text"/> as its only content.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlElementSyntax.WithName(System.String)">
+            <summary>Returns this element renamed, in both of its tags.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlElementSyntax.Update(Meziantou.Framework.Language.Xml.XmlElementStartTagSyntax,Meziantou.Framework.Language.SyntaxList{Meziantou.Framework.Language.Xml.XmlNodeSyntax},Meziantou.Framework.Language.Xml.XmlElementEndTagSyntax)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlEmptyElementSyntax">
+            <summary>An element written as one self-closing tag.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlEmptyElementSyntax.Name">
+            <summary>Gets the name of the element.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlEmptyElementSyntax.GetAttribute(System.String)">
+            <summary>Gets the first attribute called <paramref name="name"/>, or <see langword="null"/> when there is none.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlEmptyElementSyntax.WithName(System.String)">
+            <summary>Returns this element renamed.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlEmptyElementSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxList{Meziantou.Framework.Language.Xml.XmlAttributeSyntax},Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlExtensions">
+            <summary>Reads the XML kind of the tokens, trivia, and nodes the shared syntax types hand back.</summary>
+            <remarks>
+            The shared types carry a kind as a plain number because they are used by every language. These turn that number
+            back into the XML kind it stands for.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlExtensions.Kind(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Gets the XML kind of a node reached through the shared type rather than the XML one.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlExtensions.WithAnnotationsFrom``1(``0,Meziantou.Framework.Language.Xml.XmlSyntaxNode)">
+            <summary>Carries the annotations of <paramref name="original"/> onto a node built to replace it.</summary>
+            <remarks>
+            This is what makes an annotation survive an edit: every <c>Update</c> builds a fresh node and then copies the
+            marks the old one carried.
+            </remarks>
         </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlFormattingOptions">
             <summary>
@@ -195,42 +483,32 @@
             </code>
             </example>
         </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlNodeSyntax">
+            <summary>A node that can stand in a document or in an element's content.</summary>
+        </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlProcessingInstructionSyntax">
-            <summary>Represents an XML processing instruction node.</summary>
-            <example>
-            <code>
-            var instruction = SyntaxFactory.ProcessingInstruction("xml-stylesheet", "type=\"text/xsl\" href=\"a.xsl\"");
-            var updated = instruction.WithData("type=\"text/xsl\" href=\"b.xsl\"");
-            </code>
-            </example>
+            <summary>A processing instruction: a target and the data it carries.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlProcessingInstructionSyntax.Target">
+            <summary>Gets the target the instruction names.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlProcessingInstructionSyntax.Data">
+            <summary>Gets what follows the target, or <see langword="null"/> when the instruction carries nothing.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlProcessingInstructionSyntax.WithTarget(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="target"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlProcessingInstructionSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlSkippedTextSyntax">
-            <summary>Represents source text that could not be parsed into a valid XML construct.</summary>
-            <example>
-            <code>
-            var node = new XmlSkippedTextSyntax("&lt;invalid");
-            var updated = node.WithText("&lt;still-invalid");
-            </code>
-            </example>
+            <summary>Text the parser could make nothing of, kept so the document still reproduces its source.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxAnnotation">
-            <summary>Represents user-defined metadata attached to syntax.</summary>
-            <example>
-            <code>
-            var annotation = new XmlSyntaxAnnotation("source", "generated");
-            </code>
-            </example>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlSkippedTextSyntax.Text">
+            <summary>Gets the text the parser could make nothing of.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxKind">
-            <summary>Identifies the kind of XML syntax node, token, or trivia.</summary>
-            <example>
-            <code>
-            if (node.Kind == XmlSyntaxKind.XmlElement)
-            {
-                // handle element
-            }
-            </code>
-            </example>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSkippedTextSyntax.Update(Meziantou.Framework.Language.SyntaxTokenList)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxNavigator">
             <summary>
@@ -243,104 +521,200 @@
             </code>
             </example>
         </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNavigator.CreateElementNode(Meziantou.Framework.Language.Xml.XmlSyntaxNode,System.String,Meziantou.Framework.Language.SyntaxList{Meziantou.Framework.Language.Xml.XmlAttributeSyntax},Meziantou.Framework.Language.SyntaxList{Meziantou.Framework.Language.Xml.XmlNodeSyntax},System.Xml.XmlNameTable,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <remarks>
+            An element written with two tags and one written as a self-closing tag are different node types but the same
+            thing to XPath, so both arrive here.
+            </remarks>
+        </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxNode">
-            <summary>Base type for all XML syntax nodes in the immutable syntax tree.</summary>
+            <summary>The base of every node in an XML tree.</summary>
             <example>
             <code>
-            foreach (var node in tree.Root.DescendantNodes())
+            foreach (var node in tree.GetRoot().DescendantNodes())
             {
-                _ = node.Kind;
+                _ = node.Kind();
             }
             </code>
             </example>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxNodeOrToken">
-            <summary>Represents either a syntax node or a syntax token in traversal APIs.</summary>
-            <example>
-            <code>
-            foreach (var item in tree.Root.DescendantNodesAndTokens())
-            {
-                var kind = item.Kind;
-            }
-            </code>
-            </example>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.Kind">
+            <summary>Gets what kind of node this is.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlSyntaxNode.Parent">
+            <summary>Gets the node this one is a child of, or <see langword="null"/> when it is the root of its tree.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.CreateNavigator">
+            <summary>Returns an XPath view of the document this node belongs to, or of this node when it is detached.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.SelectNodes(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.SelectNodes(System.String,System.Xml.IXmlNamespaceResolver)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.SelectSingleNode(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.SelectSingleNode(System.String,System.Xml.IXmlNamespaceResolver)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.SelectSyntaxNodes(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.SelectSyntaxNodes(System.String,System.Xml.IXmlNamespaceResolver)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.SelectSingleSyntaxNode(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.SelectSingleSyntaxNode(System.String,System.Xml.IXmlNamespaceResolver)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="xpath"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.Accept(Meziantou.Framework.Language.Xml.XmlSyntaxVisitor)">
+            <summary>Calls the method of <paramref name="visitor"/> that matches this node.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="visitor"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.Accept``1(Meziantou.Framework.Language.Xml.XmlSyntaxVisitor{``0})">
+            <summary>Calls the method of <paramref name="visitor"/> that matches this node.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="visitor"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxNode.GetDocument">
+            <summary>
+            Returns the document this node belongs to, re-reading its text as a document of its own when it belongs to
+            none. XPath is a view of a whole document, so a detached node has to become one to be queried.
+            </summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxRewriter">
-            <summary>Visitor that can produce a rewritten XML syntax tree.</summary>
+            <summary>Builds a new tree by visiting an old one and returning replacements.</summary>
+            <remarks>
+            A node whose parts all come back unchanged is returned as it was, so rewriting a tree and changing nothing in it
+            costs nothing and keeps every node.
+            </remarks>
             <example>
             <code>
             sealed class RenameRoot : XmlSyntaxRewriter
             {
-                public override XmlSyntaxNode? VisitElement(XmlElementSyntax node)
+                public override SyntaxNode? VisitElement(XmlElementSyntax node)
                     => node.Name == "root" ? node.WithName("renamed") : base.VisitElement(node);
             }
             </code>
             </example>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxToken">
-            <summary>Represents a lexical token that belongs to a syntax node.</summary>
-            <example>
-            <code>
-            var token = element.Tokens.First();
-            var text = token.ToFullString();
-            </code>
-            </example>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxRewriter.VisitToken(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Rewrites a token, putting the trivia around it through <see cref="M:Meziantou.Framework.Language.Xml.XmlSyntaxRewriter.VisitTrivia(Meziantou.Framework.Language.SyntaxTrivia)"/>.</summary>
+            <remarks>
+            Nothing else reaches a token's trivia, so an override of <see cref="M:Meziantou.Framework.Language.Xml.XmlSyntaxRewriter.VisitTrivia(Meziantou.Framework.Language.SyntaxTrivia)"/> would never be called if
+            this returned the token untouched. A rewrite that returns the default trivium removes it.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxRewriter.VisitList(Meziantou.Framework.Language.SyntaxTriviaList)">
+            <summary>Rewrites each trivium of a list, dropping the ones a rewrite turned into the default trivium.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxTree">
-            <summary>Represents an immutable XML syntax tree with source text and diagnostics.</summary>
+            <summary>An XML document read from source text, together with what is wrong with it.</summary>
             <example>
             <code>
             var tree = XmlSyntaxTree.ParseText(xml);
-            var updated = tree.WithChanges(new XmlTextChange(new TextSpan(0, 0), "&lt;!--generated--&gt;"));
+            var updated = tree.WithChanges(new TextChange(new TextSpan(0, 0), "&lt;!--generated--&gt;"));
             </code>
             </example>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxTrivia">
-            <summary>Represents trivia (for example whitespace or line breaks) attached to a token.</summary>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxTree.GetRoot">
+            <summary>Gets the document this tree holds.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxTree.GetDiagnostics">
+            <summary>Gets everything wrong with the document, in the order the parser found it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxTree.ParseText(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxTree.ParseText(Meziantou.Framework.Language.SourceText)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxTree.WithChanges(Meziantou.Framework.Language.TextChange[])">
+            <exception cref="T:System.ArgumentNullException"><paramref name="changes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxTree.WithChanges(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.TextChange})">
+            <exception cref="T:System.ArgumentNullException"><paramref name="changes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxTree.IsEquivalentTo(Meziantou.Framework.Language.Xml.XmlSyntaxTree)">
+            <summary>
+            Determines whether the two trees say the same thing, ignoring how they are laid out.
+            </summary>
+            <remarks>
+            This compares the documents rather than their trees, because two documents that differ only in whitespace
+            between tags have genuinely different trees: that whitespace is character data, not trivia.
+            </remarks>
         </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxVisitor">
-            <summary>Base visitor for walking XML syntax trees without returning a value.</summary>
+            <summary>Dispatches on the kind of an XML node.</summary>
+            <remarks>
+            Visiting a node does not visit its children. Derive from <see cref="T:Meziantou.Framework.Language.Xml.XmlSyntaxWalker"/> to walk a whole tree.
+            </remarks>
             <example>
             <code>
-            sealed class Counter : XmlSyntaxVisitor
+            sealed class Counter : XmlSyntaxWalker
             {
                 public int Count { get; private set; }
-                public override void VisitElement(XmlElementSyntax node) => Count++;
+                public override void VisitElement(XmlElementSyntax node) { Count++; base.VisitElement(node); }
             }
             </code>
             </example>
         </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxVisitor.Visit(Meziantou.Framework.Language.Xml.XmlSyntaxNode)">
+            <summary>Visits <paramref name="node"/>, doing nothing when it is <see langword="null"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxVisitor.DefaultVisit(Meziantou.Framework.Language.Xml.XmlSyntaxNode)">
+            <summary>Called for any node whose own method is not overridden.</summary>
+        </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxVisitor`1">
-            <summary>Base visitor for walking XML syntax trees and returning a value.</summary>
-            <typeparam name="TResult">Type returned by visit methods.</typeparam>
+            <summary>Dispatches on the kind of an XML node and returns a result.</summary>
+            <typeparam name="TResult">What visiting a node produces.</typeparam>
             <example>
             <code>
-            sealed class ElementNameVisitor : XmlSyntaxVisitor&lt;string?&gt;
+            sealed class ElementName : XmlSyntaxVisitor&lt;string?&gt;
             {
                 public override string? VisitElement(XmlElementSyntax node) => node.Name;
             }
             </code>
             </example>
         </member>
-        <member name="T:Meziantou.Framework.Language.Xml.XmlTextChange">
-            <summary>
-            Represents a text replacement operation applied to a <see cref="T:Meziantou.Framework.Language.Xml.SourceText"/> or <see cref="T:Meziantou.Framework.Language.Xml.XmlSyntaxTree"/>.
-            </summary>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxVisitor`1.Visit(Meziantou.Framework.Language.Xml.XmlSyntaxNode)">
+            <summary>Visits <paramref name="node"/>, returning the default result when it is <see langword="null"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxVisitor`1.DefaultVisit(Meziantou.Framework.Language.Xml.XmlSyntaxNode)">
+            <summary>Called for any node whose own method is not overridden.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Xml.XmlSyntaxWalker">
+            <summary>Visits an XML node and everything below it.</summary>
             <example>
             <code>
-            var change = new XmlTextChange(new TextSpan(10, 5), "2.0.0");
-            var updated = tree.WithChanges(change);
+            private sealed class AttributeCounter : XmlSyntaxWalker
+            {
+                public int Count { get; private set; }
+                public override void VisitAttribute(XmlAttributeSyntax node) { Count++; base.VisitAttribute(node); }
+            }
             </code>
             </example>
         </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlSyntaxWalker.Depth">
+            <summary>Gets how far down this walker goes.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlSyntaxWalker.DefaultVisit(Meziantou.Framework.Language.Xml.XmlSyntaxNode)">
+            <exception cref="T:System.InsufficientExecutionStackException">The document is nested too deeply to walk.</exception>
+        </member>
         <member name="T:Meziantou.Framework.Language.Xml.XmlTextSyntax">
-            <summary>Represents plain text content inside an XML element.</summary>
-            <example>
-            <code>
-            var text = new XmlTextSyntax("hello");
-            var updated = text.WithText("world");
-            </code>
-            </example>
+            <summary>A run of character data, which in XML includes the whitespace between tags.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Xml.XmlTextSyntax.Text">
+            <summary>Gets the character data, exactly as it was written.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlTextSyntax.WithText(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Xml.XmlTextSyntax.Update(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this node with the given parts, or itself when nothing changed.</summary>
         </member>
         <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
             <summary>

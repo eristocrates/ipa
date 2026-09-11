@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Abstractions.dll
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Abstractions.pdb
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Abstractions.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/ae772804724846f290a614e07b63612b.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /microsoft.aspnetcore.mvc.abstractions.2.3.13.nupkg
+F: /Microsoft.AspNetCore.Mvc.Abstractions.nuspec
+F: /[Content_Types].xml

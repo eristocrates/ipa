@@ -3,7 +3,7 @@
   <dc:creator>ktsu.dev contributors</dc:creator>
   <dc:description>A semantic color theming library for .NET applications that provides 44+ beautiful themes with intelligent color mapping, framework integration, and accessibility-first design. Features include theme discovery through a centralized registry, semantic color specifications (meaning + priority instead of hardcoded colors), built-in Dear ImGui support, and advanced color science with perceptually uniform color spaces.</dc:description>
   <dc:identifier>ktsu.ThemeProvider</dc:identifier>
-  <version>3.0.18</version>
+  <version>3.0.19</version>
   <keywords>.NET;C#;theme;theming;color;colors;semantic colors;color palette;dark theme;light theme;Oklab;perceptual color;accessibility;WCAG;contrast ratio;ImGui;Dear ImGui;UI framework;color science;color space;Catppuccin;Gruvbox;Nord;Dracula;Tokyo Night;color mapping;dotnet;csharp</keywords>
   <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

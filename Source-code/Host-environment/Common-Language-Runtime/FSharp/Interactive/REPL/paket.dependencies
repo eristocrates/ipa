@@ -2,11 +2,17 @@ source https://api.nuget.org/v3/index.json
 
 generate_load_scripts: true
 framework: net10.0
+
+
+nuget  Gremlin.Net
 nuget AngleSharp = 1.7.2
+nuget Blake3 
+nuget BrightstarDB
 nuget BrowserApi = 0.1.0-preview.9
 nuget CaseConverter
 nuget ChromeProtocol.Domains 2.1.1.1367902
 nuget CsvHelper
+nuget Cytoscape.NET
 nuget dotNetRdf
 nuget Dubzer.WhatwgUrl
 nuget Fabulous.AST
@@ -14,6 +20,7 @@ nuget Fantomas.FCS
 nuget Fli
 nuget FolkerKinzel.MimeTypes
 nuget FPrimitive
+nuget FRange
 nuget FsExcel
 nuget FSharp.Collections.ParallelSeq
 nuget FSharp.Compiler.Service = 43.10.103
@@ -25,6 +32,9 @@ nuget FSharp.Data.JsonSchema.Core
 nuget FSharp.Data.JsonSchema.NJsonSchema
 nuget FSharp.Data.JsonSchema.OpenApi
 nuget FSharp.Data.Mutator
+nuget FSharp.FGL
+nuget FSharp.FGL.ArrayAdjacencyGraph
+nuget FSharp.FGL.IO
 nuget FSharp.HashCollections
 nuget FSharp.Json
 nuget FSharp.Literals
@@ -32,29 +42,58 @@ nuget FSharp.ViewEngine
 nuget FSharp.XExtensions
 nuget FsHttp
 nuget FsPdf
+nuget Going.Plaid >= 6.66.0
+nuget GoogleApi >= 5.8.15
+nuget Grafeo 
+nuget GraphQL
+nuget GraphQL-Parser
+nuget GraphQL.Analyzers
+nuget GraphQL.Client
+nuget GraphQL.Client.Abstractions
+nuget GraphQL.Client.Abstractions.Websocket
+nuget GraphQL.Client.Serializer.Newtonsoft
+nuget GraphQL.Client.Serializer.SystemTextJson
+nuget GraphQL.DataLoader
+nuget GraphQL.MemoryCache
+nuget GraphQL.MicrosoftDI
+nuget GraphQL.NewtonsoftJson
+nuget GraphQL.Primitives
+nuget GraphQL.Server.Core
+nuget GraphQL.Server.Transports.AspNetCore
+nuget GraphQL.Server.Ui.Playground
+nuget GraphQL.SystemTextJson
+nuget GraphVG
 nuget Humanizer.Core
 nuget Iride
 nuget IriTools
+nuget JmesPath.Net >= 1.1.0
 nuget Json.More.Net
 nuget JsonPath.Net
 nuget JsonPointer.Net
 nuget JsonStructure
+nuget ktsu.Coder.Core
+nuget ktsu.Frontmatter
+nuget ktsu.FuzzySearch
+nuget ktsu.IntervalAction
+nuget ktsu.Keybinding.Core
+nuget ktsu.Semantics.Color
+nuget ktsu.Semantics.Paths
+nuget ktsu.Semantics.Strings
+nuget ktsu.Semantics.Strings.Identifiers
+nuget ktsu.TextFilter
+nuget ktsu.ThemeProvider
 nuget Lambda2Js = 3.1.4
 nuget libphonenumber-csharp
+nuget LightningDB 
 nuget LitXml
-nuget JmesPath.Net >= 1.1.0
 nuget Meziantou.Framework
-nuget Phoenixml.Platform.Editor.Xml 0.1.0
-nuget PhoenixmlDb.Core 1.6.7
-nuget PhoenixmlDb.Schema.Inference 0.1.0
-nuget PhoenixmlDb.Xslt 1.6.13
-nuget TruePath >= 1.12.0
-nuget TruePath.SystemIo >= 1.12.0
 nuget Meziantou.Framework.AtlassianDataFormat
-nuget GoogleApi >= 5.8.15
 nuget Meziantou.Framework.Avatar
 nuget Meziantou.Framework.ByteSize
 nuget Meziantou.Framework.Csv
+nuget Meziantou.Framework.DependencyScanning
+nuget Meziantou.Framework.DnsClient
+nuget Meziantou.Framework.DnsFilter
 nuget Meziantou.Framework.FullPath
 nuget Meziantou.Framework.Html
 nuget Meziantou.Framework.HtmlSanitizer
@@ -85,6 +124,12 @@ nuget Meziantou.Framework.Yaml
 nuget Microsoft.Extensions.Logging.Abstractions
 nuget Microsoft.Graph
 nuget Microsoft.SqlServer.DacFx = 162.5.57
+nuget Microsoft.SqlServer.TransactSql.ScriptDom >= 180.102.0
+nuget Mime-Detective
+nuget Mime-Detective >= 25.8.1
+nuget NeatIntervals
+nuget Neo4j.Driver
+nuget Neo4j.Driver.Reactive
 nuget Newtonsoft.Json
 nuget NLanguageTag
 nuget OBO.NET
@@ -92,6 +137,10 @@ nuget OBO.NET.CodeGeneration
 nuget OWLSharp
 nuget OWLSharp.Extensions
 nuget PdfPig
+nuget Phoenixml.Platform.Editor.Xml 0.1.0
+nuget PhoenixmlDb.Core 1.6.7
+nuget PhoenixmlDb.Schema.Inference 0.1.0
+nuget PhoenixmlDb.Xslt 1.6.13
 nuget PosInformatique.Foundations.EmailAddresses
 nuget PuppeteerSharp
 nuget PuppeteerSharp.Contrib.Extensions
@@ -105,30 +154,59 @@ nuget QuikGraph.Serialization
 nuget RDFSharp
 nuget SafeName
 nuget Selenium.WebDriver = 4.47.0
+nuget SigmaGraph.NET
 nuget SolarWinds.Api
 nuget SQLProvider.MsSql = 1.5.18
+nuget System.DirectoryServices.AccountManagement >= 10.0.11
+nuget System.DirectoryServices.Protocols >= 10.0.11
 nuget Tavis.UriTemplates
+nuget Taynftmf.FglExtnsn
 nuget TextCopy
+nuget TruePath >= 1.12.0
+nuget TruePath.SystemIo >= 1.12.0
 nuget Universal.Common.Css.Selectors
+nuget UUIDNext
 nuget WebSharper
 nuget XParsec
 nuget Yog.FSharp
-nuget Mime-Detective >= 25.8.1
-nuget ktsu.IntervalAction
-nuget ktsu.Semantics.Strings
-nuget ktsu.Semantics.Strings.Identifiers
-nuget ktsu.Semantics.Paths
-nuget ktsu.Semantics.Color
-nuget ktsu.FuzzySearch
-nuget ktsu.TextFilter
-nuget ktsu.Keybinding.Core
-nuget ktsu.Frontmatter
-nuget ktsu.Coder.Core
-nuget ktsu.ThemeProvider
-nuget Mime-Detective
-nuget Microsoft.SqlServer.TransactSql.ScriptDom >= 180.102.0
-nuget System.DirectoryServices.AccountManagement >= 10.0.11
-nuget System.DirectoryServices.Protocols >= 10.0.11
-nuget Going.Plaid >= 6.66.0
-nuget NeatIntervals
-nuget FRange
+nuget Rsft.Net.DomainParser
+nuget Microsoft.AspNetCore
+
+nuget Microsoft.AspNetCore.Http
+nuget Microsoft.AspNetCore.Http.Features
+nuget Microsoft.AspNetCore.Http.Abstractions
+nuget Microsoft.AspNetCore.Http.Extensions
+nuget Microsoft.AspNetCore.Http.Connections.Common
+nuget Microsoft.AspNetCore.HttpOverrides
+nuget Microsoft.AspNetCore.WebUtilities
+nuget Microsoft.AspNetCore.Authorization
+nuget Microsoft.AspNetCore.Http.Connections.Client
+nuget Microsoft.AspNetCore.Http.Connections
+nuget Microsoft.AspNetCore.JsonPatch
+nuget Microsoft.AspNetCore.Mvc.Core
+nuget Microsoft.AspNetCore.Cryptography.Internal
+nuget Microsoft.AspNetCore.Authentication.JwtBearer
+nuget Microsoft.AspNetCore.DataProtection.Abstractions
+nuget Microsoft.AspNetCore.DataProtection
+nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson
+nuget Microsoft.AspNetCore.Metadata
+nuget Microsoft.AspNetCore.Connections.Abstractions
+nuget Microsoft.AspNetCore.HttpsPolicy
+
+
+
+nuget Flurl
+nuget Flurl.Http
+nuget Flurl.Http.Net40
+nuget Flurl.Http.Newtonsoft
+nuget Flurl.Http.Soap
+nuget Flurl.Http.Xml
+nuget Flurl.Serialization.TextJson
+
+nuget FSharp.Data.WsdlProvider
+nuget FSharp.Data.LiteralProviders
+nuget NetworkInspector.Values
+nuget NetworkingPrimitivesCore
+nuget ModelingEvolution.Ipv4
+nuget ModelingEvolution.Bytes
+nuget Nager.PublicSuffix

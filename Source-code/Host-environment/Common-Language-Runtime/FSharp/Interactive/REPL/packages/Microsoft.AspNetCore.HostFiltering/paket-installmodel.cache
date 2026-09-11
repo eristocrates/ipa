@@ -1,0 +1,15 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Microsoft.AspNetCore.HostFiltering.dll
+F: /lib/netstandard2.0/Microsoft.AspNetCore.HostFiltering.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/855d5d8f5a384f08a1dfcc95c881983f.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /microsoft.aspnetcore.hostfiltering.2.3.13.nupkg
+F: /Microsoft.AspNetCore.HostFiltering.nuspec
+F: /[Content_Types].xml

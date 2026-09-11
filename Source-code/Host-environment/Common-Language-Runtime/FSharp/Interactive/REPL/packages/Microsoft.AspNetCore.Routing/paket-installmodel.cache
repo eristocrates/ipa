@@ -1,0 +1,15 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Routing.dll
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Routing.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/29bf51c3a42448bb9c521b5cd138dc66.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /microsoft.aspnetcore.routing.2.3.13.nupkg
+F: /Microsoft.AspNetCore.Routing.nuspec
+F: /[Content_Types].xml

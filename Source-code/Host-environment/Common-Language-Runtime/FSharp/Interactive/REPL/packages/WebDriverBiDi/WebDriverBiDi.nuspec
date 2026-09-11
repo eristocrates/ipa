@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>WebDriverBiDi</id>
-    <version>0.0.57</version>
+    <version>0.0.59</version>
     <title>WebDriver BiDirectional Client Library</title>
     <authors>WebDriverBiDi.NET Committers</authors>
     <license type="expression">MIT</license>
@@ -11,7 +11,7 @@
     <projectUrl>https://github.com/webdriverbidi-net/webdriverbidi-net</projectUrl>
     <description>A .NET client library for the WebDriver BiDi protocol.</description>
     <tags>webdriver bidi browser-automation webdriver-bidi automation</tags>
-    <repository type="git" url="https://github.com/webdriverbidi-net/webdriverbidi-net" commit="0e98aa2c5ada555d0e201a8a7e6d0aca932d6cda" />
+    <repository type="git" url="https://github.com/webdriverbidi-net/webdriverbidi-net" commit="fad48951c5f5071d00839fdc04629c660ca48dd4" />
     <dependencies>
       <group targetFramework="net10.0" />
       <group targetFramework="net8.0">

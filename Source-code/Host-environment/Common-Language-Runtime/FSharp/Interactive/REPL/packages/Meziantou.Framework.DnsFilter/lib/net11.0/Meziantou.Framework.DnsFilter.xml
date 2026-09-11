@@ -1,0 +1,619 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.DnsFilter</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsClientInfo">
+            <summary>
+            Provides information about the DNS client making the query.
+            Used for evaluating <c>$client</c> and <c>$ctag</c> modifiers.
+            All properties are optional; when not set, rules with corresponding modifiers will not match.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsClientInfo.Address">
+            <summary>
+            Gets the IP address of the client. Used for <c>$client</c> modifier matching by IP or CIDR.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsClientInfo.Name">
+            <summary>
+            Gets the client name. Used for <c>$client</c> modifier matching by name.
+            The caller is responsible for resolving client IP to name before calling the filter engine.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsClientInfo.Tags">
+            <summary>
+            Gets the client tags. Used for <c>$ctag</c> modifier matching.
+            Tags are arbitrary strings (e.g., <c>device_phone</c>, <c>os_windows</c>, <c>user_child</c>).
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsDomainName">
+            <summary>
+            The single definition of how a domain name is normalized, used for both rule patterns and
+            queried names so the two can never drift apart.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsDomainName.TryNormalize(System.String,System.String@)">
+            <summary>
+            Trims, strips the root label, lowercases, and converts internationalized names to their
+            A-label (punycode) form, which is what DNS actually carries on the wire.
+            </summary>
+            <returns><see langword="false"/> when the value is not usable as a domain name.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsDomainName.IsValid(System.String)">
+            <summary>
+            Checks that a normalized value is shaped like a domain name. This is deliberately permissive
+            about characters real blocklists use (underscores, digits) and strict about the ones that
+            indicate the value is not a domain at all — most importantly whitespace, which is what a
+            mis-detected hosts line (<c>0.0.0.0 ads.example.com</c>) would carry.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterAction">
+            <summary>
+            Specifies the action determined by DNS filter evaluation.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterAction.None">
+            <summary>
+            No rule matched the query. This is the default value, so an unmatched
+            result never appears to request blocking.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterAction.Block">
+            <summary>
+            The rule blocks the matching DNS query.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterAction.Allow">
+            <summary>
+            The rule explicitly allows the matching DNS query (exception/allowlist rule).
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterAction.Rewrite">
+            <summary>
+            The matching rule replaces the DNS response instead of simply refusing it.
+            The directive is available on <see cref="P:Meziantou.Framework.DnsFilter.DnsFilterResult.Rewrite"/>.
+            </summary>
+            <remarks>
+            This value is only ever produced on a <see cref="T:Meziantou.Framework.DnsFilter.DnsFilterResult"/>.
+            <see cref="P:Meziantou.Framework.DnsFilter.DnsFilterRule.Action"/> is always <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterAction.Block"/> or <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterAction.Allow"/>.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterEngine">
+            <summary>
+            A DNS filter matching engine that evaluates DNS queries against a set of filter rules.
+            Supports efficient exact domain matching, subdomain matching, wildcard, and regex patterns.
+            </summary>
+            <remarks>
+            <see cref="M:Meziantou.Framework.DnsFilter.DnsFilterEngine.Evaluate(System.String,Meziantou.Framework.DnsFilter.DnsFilterQueryType,Meziantou.Framework.DnsFilter.DnsClientInfo)"/> is safe to call concurrently, and <see cref="M:Meziantou.Framework.DnsFilter.DnsFilterEngine.Reload(Meziantou.Framework.DnsFilter.DnsFilterRuleSet)"/> swaps the rule set
+            atomically. <see cref="T:Meziantou.Framework.DnsFilter.DnsFilterRuleSet"/> itself is not thread-safe for concurrent mutation;
+            the engine takes a snapshot when it builds, so mutating a rule set afterwards never affects an
+            engine already built from it.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterEngine.#ctor(Meziantou.Framework.DnsFilter.DnsFilterRuleSet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.DnsFilter.DnsFilterEngine"/> class with the specified rule set.
+            </summary>
+            <param name="ruleSet">The rule set to use for matching.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterEngine.Reload(Meziantou.Framework.DnsFilter.DnsFilterRuleSet)">
+            <summary>
+            Atomically replaces the current rule set with a new one. Thread-safe with respect to
+            concurrent <see cref="M:Meziantou.Framework.DnsFilter.DnsFilterEngine.Evaluate(System.String,Meziantou.Framework.DnsFilter.DnsFilterQueryType,Meziantou.Framework.DnsFilter.DnsClientInfo)"/> calls.
+            </summary>
+            <param name="ruleSet">The new rule set.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterEngine.Evaluate(System.String,Meziantou.Framework.DnsFilter.DnsFilterQueryType,Meziantou.Framework.DnsFilter.DnsClientInfo)">
+            <summary>
+            Evaluates a DNS query against the filter rules.
+            </summary>
+            <param name="domain">The queried domain name. Internationalized names are converted to their
+            punycode form before matching.</param>
+            <param name="queryType">The DNS query type. Pass the raw QTYPE cast to
+            <see cref="T:Meziantou.Framework.DnsFilter.DnsFilterQueryType"/> even when it is not a named member.</param>
+            <param name="client">Optional client information for <c>$client</c> and <c>$ctag</c> matching.
+            When a dimension is not supplied, rules scoped on it do not match.</param>
+            <returns>A <see cref="T:Meziantou.Framework.DnsFilter.DnsFilterResult"/> indicating whether the query is blocked, allowed,
+            rewritten, or unmatched. This method does not throw for malformed or hostile input.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterEngine.GetRank(Meziantou.Framework.DnsFilter.DnsFilterRule)">
+            <summary>
+            Priority of a rule, highest wins. An <c>$important</c> exception outranks an
+            <c>$important</c> block, which is what makes <c>@@…$important</c> usable as an override
+            against a blocklist the operator does not control.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterEngine.GetSpecificity(Meziantou.Framework.DnsFilter.DnsFilterRule)">
+            <summary>
+            Tie-break within a priority level: a rewrite beats a plain block, then the more specific
+            rule wins. Without this the winner would be whichever rule the index happened to yield first.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterEngine.AddToIndex(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,Meziantou.Framework.DnsFilter.DnsFilterRule)">
+            <summary>
+            Stores the rule directly for the ~76% of keys that hold exactly one, promoting to a list
+            only on the second insert.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterListFormat">
+            <summary>
+            Specifies the format of a DNS filter list.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterListFormat.AutoDetect">
+            <summary>
+            Automatically detect the format based on list content.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterListFormat.Hosts">
+            <summary>
+            Hosts file format (e.g., <c>0.0.0.0 ads.example.com</c>).
+            Used by Pi-hole, StevenBlack/hosts, and similar lists.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterListFormat.DomainsOnly">
+            <summary>
+            Domains-only format with one domain per line.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterListFormat.AdBlock">
+            <summary>
+            AdGuard/Adblock DNS filtering syntax (e.g., <c>||example.org^</c>).
+            Supports modifiers like <c>$important</c>, <c>$dnstype</c>, <c>$denyallow</c>, <c>$dnsrewrite</c>, <c>$client</c>, and <c>$ctag</c>.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterListReader">
+            <summary>
+            Reads DNS filter lists in various formats and produces <see cref="T:Meziantou.Framework.DnsFilter.DnsFilterRule"/> instances.
+            Supports hosts files, domains-only lists, and AdGuard/Adblock DNS filtering syntax.
+            </summary>
+            <remarks>
+            Parsing is strict: a rule carrying a modifier this library does not implement, or a modifier
+            whose value cannot be parsed, is discarded rather than applied without it. Ignoring an
+            unrecognized modifier would silently widen the rule — turning <c>@@||x^$script</c> into a
+            blanket allow, or <c>||x^$dnstype=SVCB</c> into a block of every record type. Use
+            <see cref="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.ParseWithDiagnostics(System.String,Meziantou.Framework.DnsFilter.DnsFilterListFormat)"/> to see what was discarded.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.Parse(System.IO.TextReader,Meziantou.Framework.DnsFilter.DnsFilterListFormat)">
+            <summary>
+            Parses all rules from the specified <see cref="T:System.IO.TextReader"/>.
+            </summary>
+            <param name="reader">The text reader containing the filter list.</param>
+            <param name="format">The format of the filter list. Defaults to <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterListFormat.AutoDetect"/>.</param>
+            <returns>A list of parsed filter rules. Lines that could not be parsed are skipped silently;
+            use <see cref="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.ParseWithDiagnostics(System.IO.TextReader,Meziantou.Framework.DnsFilter.DnsFilterListFormat)"/> to observe them.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.Parse(System.String,Meziantou.Framework.DnsFilter.DnsFilterListFormat)">
+            <summary>
+            Parses all rules from the specified string.
+            </summary>
+            <param name="text">The filter list text.</param>
+            <param name="format">The format of the filter list. Defaults to <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterListFormat.AutoDetect"/>.</param>
+            <returns>A list of parsed filter rules. Lines that could not be parsed are skipped silently;
+            use <see cref="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.ParseWithDiagnostics(System.String,Meziantou.Framework.DnsFilter.DnsFilterListFormat)"/> to observe them.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.ParseWithDiagnostics(System.IO.TextReader,Meziantou.Framework.DnsFilter.DnsFilterListFormat)">
+            <summary>
+            Parses a filter list, reporting every line that did not produce a rule.
+            </summary>
+            <param name="reader">The text reader containing the filter list.</param>
+            <param name="format">The format of the filter list.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.ParseWithDiagnostics(System.String,Meziantou.Framework.DnsFilter.DnsFilterListFormat)">
+            <summary>
+            Parses a filter list, reporting every line that did not produce a rule.
+            </summary>
+            <param name="text">The filter list text.</param>
+            <param name="format">The format of the filter list.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.Classify(System.String,System.String@)">
+            <summary>
+            Classifies a line for format detection and for the per-format parsers, so that "what is a
+            comment" is defined exactly once.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.FindRegexEnd(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Finds the index of the closing '/' of a regex rule, honouring backslash escapes.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.BuildWildcardRegex(System.String,System.Boolean)">
+            <summary>
+            Turns an Adblock wildcard pattern into a regex that encodes its anchors, instead of escaping
+            them as literal characters.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.GetWildcardLiterals(System.String)">
+            <summary>
+            Returns every literal run of a wildcard pattern that is long enough to be selective. All of
+            them must appear in a name for the pattern to have any chance of matching, so checking them
+            up front skips the regex for almost every query.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.GetRegexLiteralPrefix(System.String)">
+            <summary>
+            Extracts the literal prefix a regex requires, so a name that cannot possibly match is
+            rejected by a substring check instead of by running the expression.
+            </summary>
+            <remarks>
+            Returns <see langword="null"/> unless the prefix is genuinely mandatory: a top-level
+            alternation means an input could match a different branch, and a quantifier means the last
+            character is optional, so both end the prefix (or discard it entirely).
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.GetPatternSuffix(System.String)">
+            <summary>
+            Returns the concrete domain suffix a wildcard pattern ends with, when the text after the
+            last <c>*</c> begins at a label boundary and covers at least two labels. That suffix is
+            specific enough to index on; a single label such as <c>com</c> is not.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterListReader.SplitRespectingQuotes(System.String,System.Char)">
+            <summary>
+            Splits on <paramref name="separator"/> while honouring quoted sections and backslash escapes.
+            An unterminated quote is treated as a literal character rather than swallowing the rest of
+            the value.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterParseDiagnostic">
+            <summary>
+            Describes a filter list line that did not produce a rule.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterParseDiagnostic.LineNumber">
+            <summary>
+            Gets the 1-based line number within the parsed list.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterParseDiagnostic.Line">
+            <summary>
+            Gets the text of the offending line.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterParseDiagnostic.Error">
+            <summary>
+            Gets the reason the line was skipped.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterParseDiagnostic.Detail">
+            <summary>
+            Gets additional context, such as the offending modifier name. May be <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterParseDiagnostic.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterParseError">
+            <summary>
+            Identifies why a filter list line was not turned into a rule.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterParseError.UnsupportedModifier">
+            <summary>
+            The line carries a modifier this library does not implement. The rule is discarded rather
+            than applied without that modifier, because ignoring it would widen the rule beyond
+            what its author wrote.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterParseError.InvalidModifierValue">
+            <summary>
+            The line carries a supported modifier whose value could not be parsed
+            (for example an unknown <c>$dnstype</c> record type or a malformed CIDR in <c>$client</c>).
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterParseError.InvalidRegex">
+            <summary>
+            The regular expression of a <c>/pattern/</c> rule is not valid, or its closing delimiter is missing.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterParseError.InvalidPattern">
+            <summary>
+            The line has no usable match pattern, or the pattern is not a valid domain name.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterParseResult">
+            <summary>
+            The outcome of parsing a filter list: the rules that were understood, and a diagnostic for
+            every line that was not.
+            </summary>
+            <remarks>
+            Filter lists are third-party input. A list that silently produces far fewer rules than it has
+            lines — because it was served as an HTML error page, or uses modifiers this library does not
+            implement — is indistinguishable from a healthy one if only the rule count is inspected.
+            Callers that load lists unattended should log or alarm on <see cref="P:Meziantou.Framework.DnsFilter.DnsFilterParseResult.Diagnostics"/>.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterParseResult.Rules">
+            <summary>
+            Gets the rules parsed from the list.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterParseResult.Diagnostics">
+            <summary>
+            Gets a diagnostic for each line that did not produce a rule. Empty when the whole list was understood.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterParseResult.Format">
+            <summary>
+            Gets the format the list was parsed as. Useful when <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterListFormat.AutoDetect"/> was requested.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterQueryType">
+            <summary>
+            Specifies the type of DNS query for use with the <c>$dnstype</c> modifier.
+            Values correspond to IANA DNS Parameters registry types commonly used in filter rules.
+            </summary>
+            <remarks>
+            This enum is an <b>open</b> set of <see cref="T:System.UInt16"/> record-type codes, not a closed list.
+            Callers should cast the raw QTYPE from the wire straight through
+            (<c>(DnsFilterQueryType)qtype</c>) even when it is not a named member; matching compares
+            numeric values, so unnamed types behave correctly. Never substitute
+            <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterQueryType.ANY"/> for a type you do not recognize — that would make <c>$dnstype=ANY</c>
+            rules fire on it and <c>$dnstype=~ANY</c> rules spare it.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterResult">
+            <summary>
+            Represents the outcome of evaluating a DNS query against the filter engine.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterResult.NotMatched">
+            <summary>
+            Gets a result indicating the query did not match any filter rule.
+            Its <see cref="P:Meziantou.Framework.DnsFilter.DnsFilterResult.Action"/> is <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterAction.None"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterResult.IsMatched">
+            <summary>
+            Gets a value indicating whether the query matched a filter rule.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterResult.Action">
+            <summary>
+            Gets the action determined by the matching rule, or <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterAction.None"/>
+            when no rule matched.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterResult.MatchingRule">
+            <summary>
+            Gets the matching rule, if any.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterResult.Rewrite">
+            <summary>
+            Gets the rewrite directive from the matching rule. Non-<see langword="null"/> if and only if
+            <see cref="P:Meziantou.Framework.DnsFilter.DnsFilterResult.Action"/> is <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterAction.Rewrite"/>.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterRewriteResponseCode">
+            <summary>
+            Specifies the response code for a <c>$dnsrewrite</c> rule.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterRewriteResponseCode.NoError">
+            <summary>
+            No error (NOERROR). The query succeeded and may contain answer records.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterRewriteResponseCode.NameError">
+            <summary>
+            The domain name does not exist (NXDOMAIN).
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterRewriteResponseCode.Refused">
+            <summary>
+            The server refuses to answer (REFUSED).
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsFilter.DnsFilterRewriteResponseCode.ServerFailure">
+            <summary>
+            The server failed to process the query (SERVFAIL).
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterRewriteRule">
+            <summary>
+            Represents a <c>$dnsrewrite</c> directive that replaces the DNS response for a matched query.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRewriteRule.ResponseCode">
+            <summary>
+            Gets the response code to use. Defaults to <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterRewriteResponseCode.NoError"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRewriteRule.RecordType">
+            <summary>
+            Gets the DNS record type for the rewritten response (e.g., <c>A</c>, <c>AAAA</c>, <c>CNAME</c>).
+            May be <see langword="null"/> when only the response code is set.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRewriteRule.Value">
+            <summary>
+            Gets the value for the rewritten response (e.g., an IP address or domain name).
+            May be <see langword="null"/> when only the response code is set.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterRule">
+            <summary>
+            Represents a single parsed DNS filter rule.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.OriginalText">
+            <summary>
+            Gets the original text of the rule as it appeared in the filter list.
+            </summary>
+            <remarks>
+            This is provided for diagnostics only. It is not the rule's identity: use
+            <see cref="P:Meziantou.Framework.DnsFilter.DnsFilterRule.ExactDomain"/>, <see cref="P:Meziantou.Framework.DnsFilter.DnsFilterRule.DomainSuffix"/> or <see cref="P:Meziantou.Framework.DnsFilter.DnsFilterRule.PatternText"/> to
+            report what the rule actually matches.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.Action">
+            <summary>
+            Gets the action to perform when this rule matches. Always
+            <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterAction.Block"/> or <see cref="F:Meziantou.Framework.DnsFilter.DnsFilterAction.Allow"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.IsImportant">
+            <summary>
+            Gets a value indicating whether this rule has the <c>$important</c> modifier,
+            which elevates its priority above normal rules and exceptions.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.IsBadFilter">
+            <summary>
+            Gets a value indicating whether this is a <c>$badfilter</c> rule that
+            disables another rule matching its pattern and modifiers.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.ExactDomain">
+            <summary>
+            Gets the exact domain this rule matches, or <see langword="null"/> if it does not match by exact domain.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.DomainSuffix">
+            <summary>
+            Gets the domain suffix this rule matches (for <c>||domain^</c> style rules that match the
+            domain and all its subdomains), or <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.PatternText">
+            <summary>
+            Gets the regular expression source this rule matches with, or <see langword="null"/>.
+            Set for <c>/regex/</c> rules and for patterns containing <c>*</c>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.Pattern">
+            <summary>
+            Gets the compiled regular expression for pattern-based rules.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.RequiredLiterals">
+            <summary>
+            Gets literal substrings that a matching domain must all contain, used to skip the regex
+            entirely for the overwhelming majority of queries. A substring check costs a few nanoseconds
+            against roughly 150ns for a non-backtracking regex, so testing several is still far cheaper
+            than running one. <see langword="null"/> when no useful literal could be extracted.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.PatternSuffix">
+            <summary>
+            Gets the concrete multi-label domain suffix a wildcard pattern is anchored on
+            (<c>aliyuncs.com</c> for <c>||ad-host-backup-*.aliyuncs.com^</c>), which lets the engine
+            reach the rule through the parent-domain walk instead of testing it against every query.
+            <see langword="null"/> when no such suffix exists.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.BadFilterKey">
+            <summary>
+            Gets the identity of this rule for <c>$badfilter</c> purposes: its pattern and its modifier
+            set, normalized and order-independent. Two rules that differ only in casing, whitespace or
+            modifier order share a key.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.AllowedDnsTypes">
+            <summary>
+            Gets the set of DNS query types this rule applies to (from <c>$dnstype</c> modifier).
+            <see langword="null"/> means the rule applies to all query types.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.ExcludedDnsTypes">
+            <summary>
+            Gets the set of DNS query types this rule does not apply to (from <c>$dnstype=~</c> modifier).
+            <see langword="null"/> means no types are excluded.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.DenyAllowDomains">
+            <summary>
+            Gets the set of domains excluded from this rule (from <c>$denyallow</c> modifier).
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.Rewrite">
+            <summary>
+            Gets the rewrite directive for this rule (from <c>$dnsrewrite</c> modifier).
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.ClientSpecs">
+            <summary>
+            Gets the client specifications this rule applies to (from <c>$client</c> modifier).
+            Entries can be IP addresses, CIDR ranges, or client names. Prefixed with <c>~</c> for exclusion.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRule.TagSpec">
+            <summary>
+            Gets the client tags this rule applies to (from <c>$ctag</c> modifier).
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterRule.CreateBlock(System.String,System.Boolean)">
+            <summary>
+            Creates a rule blocking a single domain, and optionally all of its subdomains.
+            </summary>
+            <param name="domain">The domain to block.</param>
+            <param name="includeSubdomains">When <see langword="true"/>, subdomains are blocked too.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="domain"/> is not a valid domain name.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterRule.CreateAllow(System.String,System.Boolean)">
+            <summary>
+            Creates an exception rule allowing a single domain, and optionally all of its subdomains.
+            </summary>
+            <param name="domain">The domain to allow.</param>
+            <param name="includeSubdomains">When <see langword="true"/>, subdomains are allowed too.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="domain"/> is not a valid domain name.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.DnsFilter.DnsFilterRuleSet">
+            <summary>
+            An aggregated collection of DNS filter rules from one or more parsed sources.
+            </summary>
+            <remarks>
+            This type is not thread-safe for concurrent mutation. It is safe to hand a rule set to
+            <see cref="T:Meziantou.Framework.DnsFilter.DnsFilterEngine"/> and keep mutating it afterwards: the engine snapshots the rules
+            when it builds.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRuleSet.Rules">
+            <summary>
+            Gets a snapshot of the rules in this rule set.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterRuleSet.Add(Meziantou.Framework.DnsFilter.DnsFilterRule)">
+            <summary>
+            Adds a single rule to this rule set.
+            </summary>
+            <param name="rule">The rule to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterRuleSet.AddRange(System.Collections.Generic.IEnumerable{Meziantou.Framework.DnsFilter.DnsFilterRule})">
+            <summary>
+            Adds multiple rules to this rule set.
+            </summary>
+            <param name="rules">The rules to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterRuleSet.AddFromList(System.IO.TextReader,Meziantou.Framework.DnsFilter.DnsFilterListFormat)">
+            <summary>
+            Adds rules parsed from a filter list.
+            </summary>
+            <param name="reader">The text reader containing the filter list.</param>
+            <param name="format">The format of the filter list.</param>
+            <returns>A diagnostic for each line that did not produce a rule.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterRuleSet.AddFromList(System.String,Meziantou.Framework.DnsFilter.DnsFilterListFormat)">
+            <summary>
+            Adds rules parsed from a filter list string.
+            </summary>
+            <param name="text">The filter list text.</param>
+            <param name="format">The format of the filter list.</param>
+            <returns>A diagnostic for each line that did not produce a rule.</returns>
+        </member>
+        <member name="P:Meziantou.Framework.DnsFilter.DnsFilterRuleSet.Count">
+            <summary>
+            Gets the number of rules in this rule set.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsFilter.DnsFilterRuleSet.Clear">
+            <summary>
+            Removes all rules from this rule set.
+            </summary>
+        </member>
+    </members>
+</doc>

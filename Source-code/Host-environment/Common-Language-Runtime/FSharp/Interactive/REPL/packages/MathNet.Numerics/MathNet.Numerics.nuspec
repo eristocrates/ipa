@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MathNet.Numerics</id>
+    <version>6.0.0-beta2</version>
+    <title>Math.NET Numerics</title>
+    <authors>Christoph Ruegg, Marcus Cuda, Jurgen Van Gael</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://numerics.mathdotnet.com/</projectUrl>
+    <description>Math.NET Numerics is the numerical foundation of the Math.NET project, aiming to provide methods and algorithms for numerical computations in science, engineering and every day use. Supports .NET 5.0 or higher, .NET Standard 2.0 and .NET Framework 4.6.1 or higher, on Windows, Linux and Mac.</description>
+    <releaseNotes>intermediate beta, mainly to verify we can still do releases
+many contributions, proper release notes with attributions will follow. thank you all!</releaseNotes>
+    <copyright>Copyright Math.NET Project</copyright>
+    <tags>math numeric statistics probability integration interpolation regression solve fit linear algebra matrix fft</tags>
+    <repository type="git" url="https://github.com/mathnet/mathnet-numerics" commit="54d1ac1cd11333e20bb4070b0c42832ff8ef2f4a" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.8" />
+      <group targetFramework="net6.0" />
+      <group targetFramework="net8.0" />
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

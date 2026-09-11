@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Grafeo</id>
+    <version>0.5.42</version>
+    <authors>GrafeoDB</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://grafeo.dev/</projectUrl>
+    <description>C# bindings for the Grafeo graph database. Supports GQL queries, ACID transactions, and vector search.</description>
+    <tags>database graph gql ffi native</tags>
+    <repository type="git" url="https://github.com/GrafeoDB/grafeo" commit="3bc891129ddec91b97a0613c9032b06d489695c4" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>GraphVG</name></assembly>
+<members>
+<member name="T:GraphVG.PlotExpr">
+<summary>
+ Opaque parsed expression. Obtain values only via Plot.parse.
+</summary>
+</member>
+<member name="M:GraphVG.CommonMath.hexbinBins(System.Double,Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.Double,System.Double}})">
+<summary>
+ Bin a list of (x, y) points into flat-top hexagonal bins.
+ Returns (q, r, count) triples for occupied bins only.
+</summary>
+</member>
+<member name="M:GraphVG.CommonMath.hexFlatTopVertices(System.Double,System.Double,System.Double)">
+<summary>
+ Flat-top hexagon vertices for a given center and canvas-space radius.
+</summary>
+</member>
+<member name="M:GraphVG.CommonMath.hexFlatTopCenter(System.Double,System.Int32,System.Int32)">
+<summary>
+ Data-space center of a flat-top axial hex coordinate (q, r).
+</summary>
+</member>
+<member name="M:GraphVG.CommonMath.flatTopAxial(System.Double,System.Double,System.Double)">
+<summary>
+ Convert a data-space point to flat-top axial hex coordinates (q, r).
+</summary>
+</member>
+<member name="M:GraphVG.CommonMath.gaussianKde(System.Double,Microsoft.FSharp.Collections.FSharpList{System.Double},System.Double)">
+<summary>
+ Evaluate a Gaussian KDE at point x given pre-computed bandwidth and data values.
+</summary>
+</member>
+<member name="M:GraphVG.CommonMath.silvermanBandwidth(Microsoft.FSharp.Collections.FSharpList{System.Double})">
+<summary>
+ Silverman&apos;s rule-of-thumb bandwidth for a Gaussian KDE.
+</summary>
+</member>
+<member name="M:GraphVG.CommonMath.adaptiveCanvasSize(System.Double,System.Double)">
+<summary>
+ Computes an adaptive internal canvas resolution for a given data span.
+ The canvas stays at 1000 for spans up to 10× canvasSize; above that it scales
+ up by one decade per decade of span, ensuring SVG coordinate differences remain
+ distinguishable at standard floating-point formatting precision.
+</summary>
+</member>
+<member name="M:GraphVG.SeriesModule.bounds(GraphVG.Series)">
+<summary>
+ Data-aware bounds for auto-scaling. Histogram extends x domain to cover
+ the right edge of the last bin; Box gives a unit x span around the position.
+</summary>
+</member>
+<member name="M:GraphVG.Plot.roots(System.Double,System.Double,GraphVG.PlotExpr)">
+<summary>
+ Return real roots of the expression in the domain found by bisection
+ on sign-change intervals in a dense sample.
+ Roots are accurate to within 1e-6 of the domain span.
+</summary>
+</member>
+<member name="M:GraphVG.Plot.autoRange(System.Double,System.Double,GraphVG.PlotExpr)">
+<summary>
+ Compute a finite (yMin, yMax) range for the expression over the domain,
+ including critical points, with 10% padding. Safe for expressions with asymptotes.
+</summary>
+</member>
+<member name="M:GraphVG.Plot.toSeries(System.Double,System.Double,System.Int32,GraphVG.PlotExpr)">
+<summary>
+ Sample the expression across the domain and return a SegmentedLine Series.
+ Consecutive samples where |Δy| exceeds 1000 × (yMax − yMin) are separated
+ by a (nan, nan) break so the SVG path lifts the pen at discontinuities.
+</summary>
+</member>
+<member name="M:GraphVG.Plot.derivative(GraphVG.PlotExpr)">
+<summary>
+ Compute the symbolic derivative d/dx.
+</summary>
+</member>
+<member name="M:GraphVG.Plot.parse(System.String)">
+<summary>
+ Parse an infix expression string into a PlotExpr.
+ The only variable is &quot;x&quot;. Returns Error with a message for invalid input.
+</summary>
+</member>
+<member name="M:GraphVG.ThemeModule.defaultHeatmapColorScale(System.Double,System.Double,System.Double)">
+<summary>
+ Default sequential color scale: white (low) → steelblue (high).
+ Takes the series min and max values and returns a function mapping a raw data value to a Color.
+</summary>
+</member>
+<member name="P:GraphVG.AxisModule.none">
+<summary>
+ Shorthand for suppressing both axes: pass to Graph.withAxes.
+</summary>
+</member>
+<member name="M:GraphVG.GraphModule.canvasSizeOf(GraphVG.Graph)">
+<summary>
+ Returns the internal canvas size for the graph, derived from its X scale pixel range.
+</summary>
+</member>
+<member name="T:GraphVG.Layout">
+<summary>
+ Padding computation and SVG element primitives that directly derive from padding geometry.
+</summary>
+</member>
+<member name="M:GraphVG.GraphVG.writeHtml(System.String,GraphVG.Graph)">
+<summary>
+ Writes the HTML output to a file, overwriting if it exists.
+</summary>
+</member>
+<member name="M:GraphVG.GraphVG.writeSvg(System.String,GraphVG.Graph)">
+<summary>
+ Writes the SVG output to a file, overwriting if it exists.
+</summary>
+</member>
+<member name="M:GraphVG.GraphVG.toHtml(GraphVG.Graph)">
+<summary>
+ Returns a full HTML page with the graph centered and fit to the viewport.
+</summary>
+</member>
+<member name="M:GraphVG.GraphVG.toSvg(GraphVG.Graph)">
+<summary>
+ Returns a raw SVG string.
+</summary>
+</member>
+</members>
+</doc>

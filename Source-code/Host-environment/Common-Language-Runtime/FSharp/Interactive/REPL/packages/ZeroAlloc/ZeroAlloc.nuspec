@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ZeroAlloc</id>
+    <version>0.6.0</version>
+    <authors>DevAM</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/DevAM-Tools/ZeroAlloc</projectUrl>
+    <description>Zero-allocation string formatting and binary serialization library with Roslyn source generators. Features: compile-time optimized ZA.String() and ZA.Bytes() APIs, endian-aware wrappers (U16BE, I32LE, etc.), VarInt encoding, length-prefixed string encodings, and generated binary parsers. Perfect for network protocols, CAN/FlexRay, embedded systems, and high-performance logging. Requires .NET 10+.</description>
+    <copyright>Copyright © 2026 DevAM. All rights reserved.</copyright>
+    <tags>serialization binary zero-allocation source-generator performance span byte-array bit-level can flexray</tags>
+    <repository type="git" url="https://github.com/DevAM-Tools/ZeroAlloc" branch="refs/heads/main" commit="4d2f7b1a2dcfaf2dbcb4a7a569c52c72d160d741" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="CSharpStyleChecker" version="1.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

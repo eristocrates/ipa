@@ -1,0 +1,1660 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Language</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Language.ChildSyntaxList">
+            <summary>The children of a node, with the lists among them flattened away.</summary>
+            <remarks>
+            <para>
+            A node holds its children in numbered slots, and a slot may hold a whole list. This type presents both cases the
+            same way, so a caller sees a flat sequence of nodes and tokens and never a list of its own.
+            </para>
+            <para>
+            Reading a child walks the slots to find it, so it costs more than an array lookup, and enumerating pays that
+            walk once per step rather than carrying a running position from one to the next. The walk is short -- it is over
+            the slots of the node, not over the children of a list -- and the position of a child already created is read
+            straight off it.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.ChildSyntaxList.Reverse">
+            <summary>Enumerates the children from last to first.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.ChildSyntaxList.CountChildren(Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Counts the children of <paramref name="green"/>, counting a list slot as its own children.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.ChildSyntaxList.ItemInternal(Meziantou.Framework.Language.SyntaxNode,System.Int32)">
+            <summary>Returns the child at <paramref name="index"/> in the flattened sequence.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.ChildSyntaxList.ChildThatContainsPosition(Meziantou.Framework.Language.SyntaxNode,System.Int32,System.Int32@)">
+            <summary>Returns the child whose full span contains <paramref name="position"/>.</summary>
+            <remarks>
+            The slots of the node are walked, but a slot holding a list is searched rather than walked, so a list of many
+            thousands of elements costs a binary search instead of a scan. That matters because finding a token descends
+            one level per step and pays this at every one of them.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.ChildSyntaxList.Enumerator">
+            <summary>Walks a <see cref="T:Meziantou.Framework.Language.ChildSyntaxList"/> without allocating.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.ChildSyntaxList.Reversed">
+            <summary>The children of a node, from last to first.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.ChildSyntaxList.Reversed.Enumerator">
+            <summary>Walks a <see cref="T:Meziantou.Framework.Language.ChildSyntaxList.Reversed"/> without allocating.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Diagnostic">
+            <summary>Represents a diagnostic produced while reading source text.</summary>
+            <example>
+            <code>
+            foreach (var diagnostic in tree.GetDiagnostics())
+            {
+                Console.WriteLine($"{diagnostic.Id} at {diagnostic.Location}: {diagnostic.Message}");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Diagnostic.#ctor(System.String,System.String,Meziantou.Framework.Language.DiagnosticSeverity,Meziantou.Framework.Language.Location)">
+            <summary>Represents a diagnostic produced while reading source text.</summary>
+            <example>
+            <code>
+            foreach (var diagnostic in tree.GetDiagnostics())
+            {
+                Console.WriteLine($"{diagnostic.Id} at {diagnostic.Location}: {diagnostic.Message}");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Diagnostic.Create(Meziantou.Framework.Language.DiagnosticDescriptor,Meziantou.Framework.Language.Location,System.Object[])">
+            <summary>Creates a diagnostic from a descriptor, formatting <see cref="P:Meziantou.Framework.Language.DiagnosticDescriptor.MessageFormat"/> with <paramref name="arguments"/>.</summary>
+            <param name="descriptor">The descriptor supplying the id, message template, and severity.</param>
+            <param name="location">Where the diagnostic applies.</param>
+            <param name="arguments">The values to substitute into the message template. The template is used verbatim when there is none.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="descriptor"/> or <paramref name="location"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Language.DiagnosticDescriptor">
+            <summary>Describes a diagnostic definition: its id, title, message template, and default severity.</summary>
+            <example>
+            <code>
+            var descriptor = new DiagnosticDescriptor("XML0001", "Missing end tag", "Missing end tag for '{0}'.", DiagnosticSeverity.Error);
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.DiagnosticSeverity">
+            <summary>Indicates the severity level of a <see cref="T:Meziantou.Framework.Language.Diagnostic"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.InternalSyntax.GreenNode">
+            <summary>
+            The immutable, position-independent half of a syntax tree.
+            </summary>
+            <remarks>
+            <para>
+            A green node stores its <em>width</em>, never its position, so the same instance can appear at any offset in any
+            number of trees. That is what makes structural sharing possible: an edit rebuilds only the spine from the changed
+            node up to the root, and every untouched subtree is carried over by reference.
+            </para>
+            <para>
+            Each concrete node exposes its children as numbered <em>slots</em>. A slot may be empty, and a slot may hold a
+            list, which the red layer flattens when it presents children. Constructors must call
+            <see cref="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.AdjustFlagsAndWidth(Meziantou.Framework.Language.InternalSyntax.GreenNode)"/> for every slot, in slot order: that is what accumulates
+            <see cref="P:Meziantou.Framework.Language.InternalSyntax.GreenNode.FullWidth"/> and propagates the flags upward.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.Language.InternalSyntax.GreenNode.ListKind">
+            <summary>The kind every language shares for a list of children.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.InternalSyntax.GreenNode.NodeFlags">
+            <summary>Properties a node inherits from its children.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.InternalSyntax.GreenNode.NodeFlags.IsNotMissing">
+            <summary>
+            Set on any terminal that came from real source text. It is positive rather than negative so that
+            <see cref="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.AdjustFlagsAndWidth(Meziantou.Framework.Language.InternalSyntax.GreenNode)"/> can OR it upward: a node is missing only when everything below it is.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.InternalSyntax.GreenNode.KindText">
+            <summary>Gets the name of <see cref="P:Meziantou.Framework.Language.InternalSyntax.GreenNode.RawKind"/>, for diagnostics and the debugger.</summary>
+            <remarks>
+            Each language overrides this once, on the base class of its own nodes, to return the name of its kind enum
+            member. The shared token, trivia, and list types are not tied to a language and keep the numeric default.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.InternalSyntax.GreenNode.FullWidth">
+            <summary>Gets the number of characters this node covers, including the trivia at both of its ends.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.InternalSyntax.GreenNode.Width">
+            <summary>Gets the number of characters this node covers, excluding the trivia at both of its ends.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.GetSlot(System.Int32)">
+            <summary>Gets the child in <paramref name="index"/>, which may be empty.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.GetSlotOffset(System.Int32)">
+            <summary>Gets the offset of slot <paramref name="index"/>, relative to the full start of this node.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.WithSlots(System.ReadOnlySpan{Meziantou.Framework.Language.InternalSyntax.GreenNode})">
+            <summary>Returns a copy of this node whose slots are <paramref name="slots"/>.</summary>
+            <remarks>
+            This is what lets the shared replace machinery rebuild any language's tree without knowing its node types.
+            An implementation must consume the slots in the same order <see cref="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.GetSlot(System.Int32)"/> produces them. A list whose
+            last child was removed returns <see langword="null"/>, which the caller reads as an empty slot.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.RequiredSlot(Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Returns <paramref name="slot"/>, refusing the empty slot a required child cannot become.</summary>
+            <remarks>
+            A <see cref="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.WithSlots(System.ReadOnlySpan{Meziantou.Framework.Language.InternalSyntax.GreenNode})"/> override passes every required slot through here, so an edit that would leave a
+            node without a child its type says it always has is reported rather than producing a tree whose non-nullable
+            properties return <see langword="null"/>.
+            </remarks>
+            <exception cref="T:System.InvalidOperationException"><paramref name="slot"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.IsSeparatedListSlot(System.Int32)">
+            <summary>
+            Determines whether slot <paramref name="index"/> holds a list whose elements are separated by tokens.
+            </summary>
+            <remarks>
+            A list of one element holds no separator yet, so its contents cannot say what kind of list it is. Each node
+            type that has such a slot overrides this, which is what lets an insertion put the separator in.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.IsListSlot(System.Int32)">
+            <summary>Determines whether slot <paramref name="index"/> holds a list of children rather than a single one.</summary>
+            <remarks>
+            A list of one element collapses to that element, so a slot holding one child looks exactly like a slot that
+            only ever holds one. Editing needs to tell them apart, because several nodes can go where a list is and
+            nowhere else. A separated list is a list, so a node whose only lists are separated need not answer twice.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.CreateSeparator(System.Int32)">
+            <summary>The separator the separated list in <paramref name="index"/> holds between its elements.</summary>
+            <remarks>
+            A language may use a different separator in different places -- a shell joins the commands of a pipeline with
+            <c>|</c> and the statements of a list with <c>;</c> -- so the node that owns the slot answers, falling back to
+            the one separator the language uses everywhere else.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.InternalSyntax.GreenNode.IsCacheable">
+            <summary>Gets a value indicating whether the node is anonymous enough to be shared between trees and positions.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.AdjustFlagsAndWidth(Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Accumulates a slot's width and inheritable flags into this node. Must be called for every slot, in slot order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.SetDiagnostics(Meziantou.Framework.Language.InternalSyntax.SyntaxDiagnosticInfo[])">
+            <summary>Returns a copy of this node carrying <paramref name="diagnostics"/> instead of its own.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.SetAnnotations(Meziantou.Framework.Language.SyntaxAnnotation[])">
+            <summary>Returns a copy of this node carrying <paramref name="annotations"/> instead of its own.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.GetFirstTerminal">
+            <summary>Returns the leftmost node with no children, which is this node when it is itself a terminal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.GetLastTerminal">
+            <summary>Returns the rightmost node with no children, which is this node when it is itself a terminal.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.InternalSyntax.GreenNode.TerminalText">
+            <summary>Gets the source text of a terminal, or <see langword="null"/> when this node has children.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.GetValue">
+            <summary>Gets the value a token carries, which is its text unless the language decoded something else.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.IsEndOfLineTrivia(Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>
+            Determines whether <paramref name="trivia"/> ends a line in this language.
+            </summary>
+            <remarks>
+            Asked of a node, about one of the trivia below it, because a trivium is shared across languages and so does
+            not know which kind number its own language uses for a line break. Each language overrides this once, on the
+            base class of its own nodes.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.CreateSeparator">
+            <summary>
+            Creates the token a language puts between the elements of a separated list, or <see langword="null"/> when it
+            has none.
+            </summary>
+            <remarks>
+            Adding an element to a separated list needs a separator to go with it, and only the language knows what that
+            looks like. Each language overrides this once, on the base class of its own nodes.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.WriteTo(System.IO.TextWriter,System.Boolean,System.Boolean)">
+            <summary>Writes this node, optionally including the trivia at its outer edges.</summary>
+            <remarks>The walk is iterative so a deeply nested document cannot overflow the stack.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.ToString">
+            <summary>Returns the text of this node without the trivia at its outer edges.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.ToFullString">
+            <summary>Returns the text of this node including the trivia at its outer edges.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.CreateRed(Meziantou.Framework.Language.SyntaxNode,System.Int32)">
+            <summary>Creates the red node that presents this node at <paramref name="position"/> under <paramref name="parent"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.GreenNode.IsEquivalentTo(Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>
+            Determines whether the two nodes have the same structure and text, ignoring trivia, diagnostics and annotations.
+            </summary>
+            <remarks>
+            Trivia takes no part, so two nodes written with different whitespace or comments around the same tokens are
+            equivalent. Use <see cref="M:Meziantou.Framework.Language.SyntaxNode.IsIncrementallyIdenticalTo(Meziantou.Framework.Language.SyntaxNode)"/> to ask whether they are the very same node.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.InternalSyntax.GreenNodeList">
+            <summary>Reads and edits the sequence of children held in one slot.</summary>
+            <remarks>
+            A slot holds nothing for an empty sequence, the child itself for a sequence of one, and a
+            <see cref="T:Meziantou.Framework.Language.InternalSyntax.SyntaxList"/> otherwise. Every list type in the public surface goes through here so that collapsing
+            is decided in exactly one place.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.InternalSyntax.SyntaxDiagnosticInfo">
+            <summary>A diagnostic attached to a green node, positioned relative to that node.</summary>
+            <remarks>
+            The offset is relative so the green node stays position-independent: the same node can be reused at a different
+            place in a later tree, and its diagnostics move with it. Absolute positions are computed only when the diagnostic
+            is materialized against a tree.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.InternalSyntax.SyntaxDiagnosticInfo.Offset">
+            <summary>Gets the start of the diagnostic, relative to the full start of the node that owns it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.SyntaxDiagnosticInfo.WithOffset(System.Int32)">
+            <summary>Returns the same diagnostic positioned at a different offset within its owner.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.SyntaxDiagnosticInfo.ToDiagnostic(System.Int32,Meziantou.Framework.Language.SourceText)">
+            <summary>Materializes the diagnostic against the absolute position its owning node sits at.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.InternalSyntax.SyntaxList">
+            <summary>A sequence of children held in a single slot of its parent.</summary>
+            <remarks>
+            A list of one is represented by the element itself rather than by a list node, and an empty list by nothing at
+            all, so the common shapes cost no allocation. The red layer flattens lists when it presents children, which is
+            why a list is never visible as a node of its own.
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.Language.InternalSyntax.SyntaxList.PrecomputeOffsetsThreshold">
+            <summary>
+            Past this many children, the offset of each child is precomputed. Without it, walking a list would ask for
+            offsets one at a time and re-sum the widths before each, which is quadratic in the length of the list.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.SyntaxList.List(System.ReadOnlySpan{Meziantou.Framework.Language.InternalSyntax.GreenNode})">
+            <summary>Builds the node that holds <paramref name="children"/>, collapsing the empty and single-child cases.</summary>
+            <returns><see langword="null"/> for no children, the child itself for one, otherwise a list.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.SyntaxList.ListNode(System.ReadOnlySpan{Meziantou.Framework.Language.InternalSyntax.GreenNode})">
+            <summary>Builds a list node even for a single child, for callers that must project the result into a red node.</summary>
+            <remarks>
+            <see cref="M:Meziantou.Framework.Language.InternalSyntax.SyntaxList.List(System.ReadOnlySpan{Meziantou.Framework.Language.InternalSyntax.GreenNode})"/> collapses a single child to the child itself, which is right for trivia and tokens because
+            those are read straight off the green node. A sequence that has to become a red list cannot collapse to a bare
+            token, because a token has no red node of its own.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.SyntaxList.Concat(Meziantou.Framework.Language.InternalSyntax.GreenNode,Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Appends one sequence of children to another, treating a non-list as a sequence of one.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.SyntaxList.FindSlotIndexContainingOffset(System.Int32)">
+            <summary>Returns the index of the child that covers <paramref name="offset"/>, which is relative to this list.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.InternalSyntax.SyntaxListBuilder">
+            <summary>Turns sequences of red nodes back into the green node that holds them.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.InternalSyntax.SyntaxToken">
+            <summary>A terminal of the grammar, together with the trivia that surrounds it.</summary>
+            <remarks>
+            Trivia is held as a single child: nothing, one trivium, or a list. That keeps
+            <see cref="M:Meziantou.Framework.Language.InternalSyntax.SyntaxToken.GetLeadingTriviaWidth"/> an O(1) read, which is what makes a node's span O(1) as well.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.InternalSyntax.SyntaxToken.Text">
+            <summary>Gets the token exactly as it was spelled in the source.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.InternalSyntax.SyntaxToken.ValueText">
+            <summary>Gets the value the text denotes, which is the text itself unless the language decoded something else.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.SyntaxToken.AsSkippedText">
+            <summary>Marks this token as covering text the parser could not otherwise use.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.InternalSyntax.SyntaxTokenWithValue`1">
+            <summary>A token whose text and meaning differ, such as a quoted string or a number.</summary>
+            <typeparam name="TValue">The type the text decodes to.</typeparam>
+        </member>
+        <member name="T:Meziantou.Framework.Language.InternalSyntax.SyntaxTrivia">
+            <summary>A run of text a parser keeps but does not give meaning to: whitespace, line breaks, comments.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.InternalSyntax.SyntaxTrivia.AsSkippedText">
+            <summary>Marks this trivia as covering text the parser could not otherwise use.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.LinePosition">
+            <summary>Represents a zero-based line number and the zero-based character offset within that line.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.LinePosition.#ctor(System.Int32,System.Int32)">
+            <summary>Represents a zero-based line number and the zero-based character offset within that line.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.LinePositionSpan">
+            <summary>Represents a range of text between two <see cref="T:Meziantou.Framework.Language.LinePosition"/> values.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.LinePositionSpan.#ctor(Meziantou.Framework.Language.LinePosition,Meziantou.Framework.Language.LinePosition)">
+            <summary>Represents a range of text between two <see cref="T:Meziantou.Framework.Language.LinePosition"/> values.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Location">
+            <summary>
+            Represents where something was found in source: a character range and, when it is known, the text that range
+            indexes into.
+            </summary>
+            <example>
+            <code>
+            var location = new Location(new TextSpan(15, 7), SourceText.From(text));
+            Console.WriteLine(location);                          // (2,7)-(2,14)
+            Console.WriteLine(location.GetLineSpan().Start.Line); // 2
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Location.None">
+            <summary>A location that points at no text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Location.SourceSpan">
+            <summary>The character range this location covers.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Location.SourceText">
+            <summary>
+            The text <see cref="P:Meziantou.Framework.Language.Location.SourceSpan"/> indexes into, or <see langword="null"/> when the location is not bound to
+            any text.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Location.GetLineSpan">
+            <summary>
+            Maps <see cref="P:Meziantou.Framework.Language.Location.SourceSpan"/> onto line and character positions. Returns <see langword="default"/> when
+            <see cref="P:Meziantou.Framework.Language.Location.SourceText"/> is <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Location.Equals(Meziantou.Framework.Language.Location)">
+            <summary>
+            Compares the span by value and the source text by reference, so two locations are equal only when they point
+            at the same range of the same text.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Location.ToString">
+            <summary>Returns the line span, or the character range when the location is not bound to any text.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SeparatedSyntaxList`1">
+            <summary>A sequence of nodes with a separator token between each pair, and optionally one after the last.</summary>
+            <typeparam name="TNode">The type of the nodes in the list.</typeparam>
+            <remarks>
+            <para>
+            Elements and separators share one underlying sequence, alternating: even positions hold nodes, odd positions hold
+            separators. A list that ends on a separator therefore has as many separators as elements, which is how a trailing
+            comma is represented without any extra machinery.
+            </para>
+            <para>
+            The alternation is the parser's responsibility. A parser that has nothing to put between two separators must
+            insert a missing node, or reading the list will fail on a separator where an element was expected.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.#ctor(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxNodeOrToken})">
+            <summary>Creates a detached list from <paramref name="nodesAndSeparators"/>, which must alternate.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nodesAndSeparators"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SeparatedSyntaxList`1.Count">
+            <summary>Gets the number of nodes, not counting separators.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SeparatedSyntaxList`1.SeparatorCount">
+            <summary>Gets the number of separators, which equals <see cref="P:Meziantou.Framework.Language.SeparatedSyntaxList`1.Count"/> when the list ends on one.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SeparatedSyntaxList`1.HasTrailingSeparator">
+            <summary>Gets a value indicating whether a separator follows the last node, as in <c>[1, 2, ]</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.GetSeparator(System.Int32)">
+            <summary>Gets the separator that follows the node at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.GetSeparators">
+            <summary>Gets the separators of this list.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.GetWithSeparators">
+            <summary>Gets the nodes and the separators together, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.IndexOf(System.Func{`0,System.Boolean})">
+            <summary>Finds the first node matching <paramref name="predicate"/>, or -1.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="predicate"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.Add(`0)">
+            <summary>Returns a detached list with <paramref name="node"/> appended, adding a separator when one is needed.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Returns a detached list with <paramref name="nodes"/> appended.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nodes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.Insert(System.Int32,`0)">
+            <summary>
+            Returns a detached list with <paramref name="node"/> at <paramref name="index"/>, adding the separator the
+            alternation needs.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The language does not define a separator for its lists.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.CreateSeparator(`0)">
+            <summary>The separator to put between the elements when one is added.</summary>
+            <remarks>
+            A list that already holds one says what it looks like, spacing and all. One that does not -- a list of a
+            single element, which is where this matters -- asks the node that owns the slot, because the same language
+            separates different lists differently: a shell joins the commands of a pipeline with <c>|</c> and the
+            statements of a list with <c>;</c>, and taking the element's language-wide default would quietly turn one
+            into the other.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.RemoveAt(System.Int32)">
+            <summary>Returns a detached list without the node at <paramref name="index"/> and its separator.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.Remove(`0)">
+            <summary>Returns a detached list without <paramref name="node"/>, or this list when it does not contain it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.Replace(`0,`0)">
+            <summary>Returns a detached list with <paramref name="newNode"/> in place of <paramref name="nodeInList"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="newNode"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="nodeInList"/> is not in this list.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SeparatedSyntaxList`1.ReplaceSeparator(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns a detached list with <paramref name="newSeparator"/> in place of <paramref name="separatorToken"/>.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="separatorToken"/> is not a separator of this list.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SeparatedSyntaxList`1.Enumerator">
+            <summary>Walks a <see cref="T:Meziantou.Framework.Language.SeparatedSyntaxList`1"/> without allocating.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SourceText">
+            <summary>Represents immutable source text with line information and text-change application helpers.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SourceText.From(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SourceText.WithChanges(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.TextChange})">
+            <summary>
+            Applies <paramref name="changes"/> from the end of the text backwards, so the spans of the changes that come
+            earlier in the text stay valid. A change reaching past the end of the text is ignored.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SourceText.GetLine(System.Int32)">
+            <summary>Gets the line containing the specified character position.</summary>
+            <remarks>
+            <paramref name="position"/> may be <see cref="P:Meziantou.Framework.Language.SourceText.Length"/>, which is where a span that runs to the end of the
+            text finishes; anything past that indexes no character and is rejected rather than reported as the last line.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="position"/> is negative or past the end.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SourceText.ToString(Meziantou.Framework.Language.TextSpan)">
+            <summary>Returns the characters covered by <paramref name="span"/>.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="span"/> reaches past the end of the text.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SourceText.GetSubText(Meziantou.Framework.Language.TextSpan)">
+            <summary>Returns the text covered by <paramref name="span"/> as its own <see cref="T:Meziantou.Framework.Language.SourceText"/>.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="span"/> reaches past the end of the text.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SourceText.GetChangeRanges(Meziantou.Framework.Language.SourceText)">
+            <summary>
+            Describes how <paramref name="oldText"/> was changed to produce this text, as spans of <paramref name="oldText"/>.
+            </summary>
+            <remarks>
+            The result is derived from the two texts alone, by trimming the common prefix and the common suffix, so it is
+            always a single range. It does not attempt to recover the individual edits that were originally applied.
+            </remarks>
+            <returns>An empty list when the texts are equal, otherwise the single range covering everything that differs.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="oldText"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Syntax.SyntaxDiffer">
+            <summary>Works out what changed between two trees by comparing the immutable nodes behind them.</summary>
+            <remarks>
+            Two subtrees that are the same instance are equal without looking inside, which is what makes this proportional to
+            what changed rather than to the size of the document -- provided the new tree was derived from the old one and so
+            shares its untouched parts.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxDiffer.Compare(Meziantou.Framework.Language.SyntaxNodeOrToken,Meziantou.Framework.Language.SyntaxNodeOrToken,System.Collections.Generic.List{Meziantou.Framework.Language.TextChange})">
+            <remarks>
+            The walk keeps its own stack rather than recursing, so the depth of the document does not become the depth of
+            the call stack, and it pairs the children off with two enumerators rather than indexing each one, so a wide
+            node is walked once instead of once per child.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Syntax.SyntaxListNode">
+            <summary>The node behind a list of children.</summary>
+            <remarks>
+            A list is transparent: its elements report the list's own parent, so a consumer walking a tree never sees a list
+            node, only the children it holds.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Syntax.SyntaxNavigator">
+            <summary>Steps from one token to the next across the whole tree.</summary>
+            <remarks>
+            Finding a node's place among its siblings means scanning them, so stepping token by token over a long list costs
+            more than it looks. <see cref="M:Meziantou.Framework.Language.SyntaxNode.DescendantTokens(System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})"/> is the cheaper way to visit
+            many tokens in a row.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Syntax.SyntaxNodeRemover">
+            <summary>Works out what to carry over from a node that is being removed, and where to put it.</summary>
+            <remarks>
+            Only the trivia at the outer edges of what is removed is considered, which is what the options are named after:
+            the comment in front of a node and whatever followed it. Trivia in the middle belonged to the node's own tokens and
+            goes with them.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxNodeRemover.ResidualTrivia(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.Language.InternalSyntax.GreenNode},Meziantou.Framework.Language.SyntaxRemoveOptions,Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Collects the trivia that should outlive <paramref name="removed"/>.</summary>
+            <param name="removed">The green nodes and tokens being taken out, in source order.</param>
+            <param name="options">Which of their trivia to keep.</param>
+            <param name="language">A node of the language, asked which of the trivia end a line.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxNodeRemover.PrependLeadingTrivia(Meziantou.Framework.Language.InternalSyntax.GreenNode,Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Returns a copy of <paramref name="node"/> whose first token carries <paramref name="trivia"/> in front of it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxNodeRemover.AppendTrailingTrivia(Meziantou.Framework.Language.InternalSyntax.GreenNode,Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Returns a copy of <paramref name="node"/> whose last token carries <paramref name="trivia"/> after it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxNodeRemover.RebuildEdge(Meziantou.Framework.Language.InternalSyntax.GreenNode,Meziantou.Framework.Language.InternalSyntax.GreenNode,System.Boolean)">
+            <summary>
+            Rebuilds the path down to the first or last token of <paramref name="node"/> with extra trivia on it.
+            </summary>
+            <remarks>
+            The descent is written out rather than recursed so a deeply nested document does not become a deep call stack.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Syntax.SyntaxReplacer">
+            <summary>Rebuilds a tree with some of its parts replaced.</summary>
+            <remarks>
+            <para>
+            Only the spine from a replaced part up to the root is rebuilt. Every subtree that contains nothing to replace is
+            carried over by reference, so an edit costs the depth of the tree rather than its size, and the parts that did not
+            change stay the very same immutable nodes -- which is what makes it possible to ask, afterwards, what actually
+            changed.
+            </para>
+            <para>
+            Nodes are matched by identity, and tokens and trivia by the immutable node behind them together with their
+            position, because a token is a view rather than an object and two views of the same token compare equal only when
+            they agree on both.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxReplacer.EditSlots(Meziantou.Framework.Language.SyntaxNode,System.Func{Meziantou.Framework.Language.InternalSyntax.GreenNode[],Meziantou.Framework.Language.InternalSyntax.GreenNode[]})">
+            <summary>
+            Registers a change to the slots of <paramref name="node"/>, applied once everything below it has been rebuilt.
+            </summary>
+            <remarks>
+            Running after the children means a change to a node and a change to something inside it both take effect: the
+            walk still goes all the way down, and each change is applied on the way back out.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxReplacer.Rebuild(Meziantou.Framework.Language.SyntaxNode,System.Boolean@)">
+            <summary>Rebuilds <paramref name="root"/> and reports whether anything was actually replaced.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxReplacer.RebuildNode(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Rebuilds <paramref name="root"/>, replacing whatever was registered below it.</summary>
+            <remarks>
+            The descent keeps its own stack rather than recursing, so a deeply nested document does not become a deep call
+            stack. The pruning above keeps the walk to the spine down to what is being replaced, but that spine is as deep
+            as the target, and the parsers here are iterative: they read documents nested far deeper than a recursive walk
+            could rebuild.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxReplacer.StartFrame(Meziantou.Framework.Language.SyntaxNode,Meziantou.Framework.Language.InternalSyntax.GreenNode@)">
+            <summary>
+            Begins rebuilding <paramref name="node"/>, or answers outright with <paramref name="resolved"/> when there is
+            nothing under it to walk.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxReplacer.RebuildTokenList(Meziantou.Framework.Language.SyntaxNode,System.Int32,Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>
+            Rebuilds a slot holding a list of tokens rather than of nodes.
+            </summary>
+            <remarks>
+            Such a list has no red node of its own, so the tokens inside it are only reachable from here. Without this a
+            token in a list -- the tokens of a skipped-text node, say -- could never be replaced.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Syntax.SyntaxReplacer.Frame">
+            <summary>One node part-way through being rebuilt: which slot the walk is at, and what it has produced so far.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxReplacer.Frame.#ctor(Meziantou.Framework.Language.SyntaxNode,System.Func{Meziantou.Framework.Language.InternalSyntax.GreenNode[],Meziantou.Framework.Language.InternalSyntax.GreenNode[]})">
+            <summary>One node part-way through being rebuilt: which slot the walk is at, and what it has produced so far.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Syntax.SyntaxReplacer.Frame.Slot">
+            <summary>The slot the walk is at, which is the one a result coming back belongs in.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Syntax.SyntaxReplacer.Frame.NewSlots">
+            <summary>The slots as rebuilt, left null while every one of them is still the original.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxReplacer.Frame.Accept(Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Records what the current slot rebuilt to and moves on to the next.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Syntax.SyntaxTreeDiagnostics">
+            <summary>Turns the diagnostics attached to immutable nodes into diagnostics with absolute positions.</summary>
+            <remarks>
+            Each diagnostic is stored relative to the node that owns it, so this walk carries a running position and only
+            resolves the absolute one as it goes. A subtree carrying no diagnostic is skipped whole, which makes a clean tree
+            cost one flag test.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Syntax.SyntaxTreeDiagnostics.Enumerate(Meziantou.Framework.Language.InternalSyntax.GreenNode,System.Int32,Meziantou.Framework.Language.SourceText)">
+            <summary>Returns every diagnostic at or below <paramref name="node"/>, in source order.</summary>
+            <remarks>
+            The walk cannot produce them in order on its own: a node's own diagnostic is found before its children are
+            visited, yet its offset may fall after theirs. They are ordered by position afterwards, which is stable, so
+            two diagnostics at the same position keep the order the walk found them in.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxAnnotation">
+            <summary>
+            A marker that can be attached to a node, token, or trivia and found again after the tree has been edited.
+            </summary>
+            <remarks>
+            Two annotations are equal only when they are the same annotation, even when their <see cref="P:Meziantou.Framework.Language.SyntaxAnnotation.Kind"/> and
+            <see cref="P:Meziantou.Framework.Language.SyntaxAnnotation.Data"/> match. That is what makes "find the node I marked earlier" work: an edit rebuilds the nodes
+            around the marked one, but carries its annotations forward, so the new tree can be searched for this exact
+            instance.
+            </remarks>
+            <example>
+            <code>
+            var marker = new SyntaxAnnotation();
+            var annotated = node.WithAdditionalAnnotations(marker);
+            var updated = root.ReplaceNode(node, annotated);
+            var found = updated.GetAnnotatedNodes(marker).Single();
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxAnnotation.Kind">
+            <summary>Gets the category of the annotation, used to find annotations without holding the instance.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxAnnotation.Data">
+            <summary>Gets the payload carried alongside the annotation.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxList`1">
+            <summary>A sequence of nodes of the same kind, held in one slot of their parent.</summary>
+            <typeparam name="TNode">The type of the nodes in the list.</typeparam>
+            <remarks><see langword="default"/> is the empty list.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.#ctor(`0)">
+            <summary>Creates a detached list holding a single node.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Creates a detached list holding <paramref name="nodes"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nodes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.IndexOf(`0)">
+            <summary>Returns the position of <paramref name="node"/> in this list, or -1.</summary>
+            <remarks>
+            Elements are matched by which one they are, not by the immutable node behind them: that node is shared, so
+            two elements holding the same text are usually the same node and would both answer with the first position.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.IndexOf(System.Func{`0,System.Boolean})">
+            <summary>Finds the first node matching <paramref name="predicate"/>, or -1.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="predicate"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.Add(`0)">
+            <summary>Returns a detached list with <paramref name="node"/> appended.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Returns a detached list with <paramref name="nodes"/> appended.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.Insert(System.Int32,`0)">
+            <summary>Returns a detached list with <paramref name="node"/> inserted at <paramref name="index"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>Returns a detached list with <paramref name="nodes"/> inserted at <paramref name="index"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nodes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.RemoveAt(System.Int32)">
+            <summary>Returns a detached list without the node at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.Remove(`0)">
+            <summary>Returns a detached list without <paramref name="node"/>, or this list when it does not contain it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.Replace(`0,`0)">
+            <summary>Returns a detached list with <paramref name="newNode"/> in place of <paramref name="nodeInList"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="newNode"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="nodeInList"/> is not in this list.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxList`1.ReplaceRange(`0,System.Collections.Generic.IEnumerable{`0})">
+            <summary>Returns a detached list with <paramref name="newNodes"/> in place of <paramref name="nodeInList"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="newNodes"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="nodeInList"/> is not in this list.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxList`1.Enumerator">
+            <summary>Walks a <see cref="T:Meziantou.Framework.Language.SyntaxList`1"/> without allocating.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxNode">
+            <summary>
+            A node in a syntax tree: a position, a parent, and a view onto the shared immutable node that holds the structure.
+            </summary>
+            <remarks>
+            <para>
+            Nodes are created on demand as a tree is walked, and each one is created at most once per tree, so reference
+            identity is stable: asking a node for the same child twice returns the same instance.
+            </para>
+            <para>
+            This type cannot be derived from outside the assemblies that make up the language framework. Every syntax tree is
+            produced by a parser that knows how to build the underlying immutable nodes.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.Position">
+            <summary>Gets the character offset of the start of this node, including its leading trivia.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.RawKind">
+            <summary>Gets the language-specific kind of this node as a plain integer.</summary>
+            <remarks>Each language exposes this as its own <c>SyntaxKind</c> enum through a <c>Kind()</c> method.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.Parent">
+            <summary>Gets the node this one is a child of, or <see langword="null"/> when it is the root.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.SyntaxTree">
+            <summary>
+            Gets the tree this node belongs to, or <see langword="null"/> when it was built rather than parsed.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetDiagnostics">
+            <summary>Gets the diagnostics at or below this node.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.FullSpan">
+            <summary>Gets the range this node covers, including the trivia at its outer edges.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.Span">
+            <summary>Gets the range this node covers, excluding the trivia at its outer edges.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.SpanStart">
+            <summary>Gets the character offset of the start of this node, excluding its leading trivia.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.ContainsDiagnostics">
+            <summary>Gets a value indicating whether this node or anything below it carries a diagnostic.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.ContainsAnnotations">
+            <summary>Gets a value indicating whether this node or anything below it carries an annotation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.ContainsSkippedText">
+            <summary>Gets a value indicating whether this node or anything below it came from text the parser could not use.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNode.IsMissing">
+            <summary>Gets a value indicating whether the parser inserted this node rather than reading it from the text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetNodeSlot(System.Int32)">
+            <summary>Gets the child node in <paramref name="index"/>, creating it if this is the first request.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetCachedSlot(System.Int32)">
+            <summary>Gets the child node in <paramref name="index"/> only if it has already been created.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetRedAtZero``1(``0@)">
+            <summary>Returns the child in slot 0, creating it once and caching it in <paramref name="field"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetRed``1(``0@,System.Int32)">
+            <summary>Returns the child in <paramref name="slot"/>, creating it once and caching it in <paramref name="field"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetRedElement(Meziantou.Framework.Language.SyntaxNode@,System.Int32)">
+            <summary>
+            Returns an element of a list, creating it once and caching it in <paramref name="element"/>.
+            </summary>
+            <remarks>
+            A list is transparent: its elements report the list's own parent, so consumers never see the list node itself.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetChildIndex(System.Int32)">
+            <summary>Gets the place of the child in <paramref name="slot"/> among the children, counting a list slot as its own children.</summary>
+            <remarks>
+            This is the index a token needs to know where it sits, which is what lets a caller step from it to the next
+            token without searching for it first.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetChildPosition(System.Int32)">
+            <summary>Gets the position of the child in <paramref name="index"/>.</summary>
+            <remarks>
+            Already-created siblings answer this without re-summing widths, so walking a long list stays linear rather
+            than quadratic.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.ChildNodesAndTokens">
+            <summary>Gets the children of this node, with the lists among them flattened away.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetFirstToken">
+            <summary>Returns the first token below this node, or <see cref="P:Meziantou.Framework.Language.SyntaxToken.None"/> when it has none.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetLastToken">
+            <summary>Returns the last token below this node, or <see cref="P:Meziantou.Framework.Language.SyntaxToken.None"/> when it has none.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetLeadingTrivia">
+            <summary>Gets the trivia in front of this node, which is the leading trivia of its first token.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetTrailingTrivia">
+            <summary>Gets the trivia after this node, which is the trailing trivia of its last token.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.ChildNodes">
+            <summary>Gets the child nodes of this node, skipping the tokens among them.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.ChildTokens">
+            <summary>Gets the child tokens of this node, skipping the nodes among them.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantNodes(System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})">
+            <summary>Gets every node below this one, parents before children.</summary>
+            <param name="descendIntoChildren">Decides whether to look inside a node. Everything is looked inside when omitted.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantNodes(Meziantou.Framework.Language.TextSpan,System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})">
+            <summary>Gets every node below this one that touches <paramref name="span"/>, parents before children.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantNodesAndSelf(System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})">
+            <summary>Gets this node and every node below it, parents before children.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantNodesAndSelf(Meziantou.Framework.Language.TextSpan,System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})">
+            <summary>Gets this node and every node below it that touches <paramref name="span"/>, parents before children.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantNodesAndTokens(System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})">
+            <summary>Gets every node and token below this one, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantNodesAndTokens(Meziantou.Framework.Language.TextSpan,System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})">
+            <summary>Gets every node and token below this one that touches <paramref name="span"/>, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantTokens(System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})">
+            <summary>Gets every token below this one, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantTokens(Meziantou.Framework.Language.TextSpan,System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})">
+            <summary>Gets every token below this one that touches <paramref name="span"/>, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantTrivia(System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})">
+            <summary>Gets every trivia below this node, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantTrivia(Meziantou.Framework.Language.TextSpan,System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean})">
+            <summary>Gets every trivia below this node that touches <paramref name="span"/>, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.Ancestors">
+            <summary>Gets the nodes this one sits inside, closest first.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.AncestorsAndSelf">
+            <summary>Gets this node and the nodes it sits inside, closest first.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.FirstAncestorOrSelf``1(System.Func{``0,System.Boolean})">
+            <summary>Finds the closest node of type <typeparamref name="TNode"/>, starting with this one.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.ChildThatContainsPosition(System.Int32)">
+            <summary>Gets the child whose full span contains <paramref name="position"/>.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="position"/> is outside this node.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.FindToken(System.Int32)">
+            <summary>Finds the token at <paramref name="position"/>.</summary>
+            <param name="position">A position inside this node, or its very end.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="position"/> is outside this node.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.FindTrivia(System.Int32)">
+            <summary>Finds the trivia at <paramref name="position"/>, or nothing when the position falls on a token's own text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.FindNode(Meziantou.Framework.Language.TextSpan,System.Boolean)">
+            <summary>Finds the smallest node whose full span covers <paramref name="span"/>.</summary>
+            <param name="span">A range inside this node.</param>
+            <param name="getInnermostNodeForTie">
+            When several nested nodes cover exactly the same range, whether to return the innermost rather than the outermost.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="span"/> is not inside this node.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotations(System.String)">
+            <summary>Gets the annotations of this node itself, of the given kind.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="annotationKind"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotations">
+            <summary>Gets all the annotations of this node itself.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.HasAnnotation(Meziantou.Framework.Language.SyntaxAnnotation)">
+            <summary>Determines whether this node itself carries <paramref name="annotation"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.HasAnnotations(System.String)">
+            <summary>Determines whether this node itself carries an annotation of the given kind.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotatedNodesAndTokens(Meziantou.Framework.Language.SyntaxAnnotation)">
+            <summary>Gets everything at or below this node carrying <paramref name="annotation"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="annotation"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotatedNodesAndTokens(System.String)">
+            <summary>Gets everything at or below this node carrying an annotation of the given kind.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="annotationKind"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotatedNodes(Meziantou.Framework.Language.SyntaxAnnotation)">
+            <summary>Gets the nodes at or below this one carrying <paramref name="annotation"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotatedNodes(System.String)">
+            <summary>Gets the nodes at or below this one carrying an annotation of the given kind.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotatedTokens(Meziantou.Framework.Language.SyntaxAnnotation)">
+            <summary>Gets the tokens below this node carrying <paramref name="annotation"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotatedTokens(System.String)">
+            <summary>Gets the tokens below this node carrying an annotation of the given kind.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotatedTrivia(Meziantou.Framework.Language.SyntaxAnnotation)">
+            <summary>Gets the trivia below this node carrying <paramref name="annotation"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="annotation"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotatedTrivia(System.String)">
+            <summary>Gets the trivia below this node carrying an annotation of the given kind.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="annotationKind"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.ToString">
+            <summary>Returns the text of this node, excluding the trivia at its outer edges.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.ToFullString">
+            <summary>Returns the text of this node, including the trivia at its outer edges.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.WriteTo(System.IO.TextWriter)">
+            <summary>Writes the text of this node, including the trivia at its outer edges.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.IsEquivalentTo(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Determines whether the two nodes have the same structure and text, ignoring their positions.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.IsIncrementallyIdenticalTo(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>
+            Determines whether the two nodes are backed by the very same immutable node, which happens when one tree was
+            derived from the other and this part of it was left untouched.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.Contains(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Determines whether <paramref name="node"/> is this node or sits below it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.DescendantNodesAndTokensCore(System.Nullable{Meziantou.Framework.Language.TextSpan},System.Func{Meziantou.Framework.Language.SyntaxNode,System.Boolean},System.Boolean)">
+            <remarks>
+            The walk keeps its own stack rather than recursing, so the depth of the document does not become the depth of
+            the call stack.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNode.GetAnnotatedNodesAndTokensCore(System.Func{Meziantou.Framework.Language.SyntaxAnnotation[],System.Boolean})">
+            <remarks>
+            A subtree that carries no annotation anywhere is skipped whole, which is what keeps the search proportional to
+            the annotated part of the tree rather than to its size.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxNodeExtensions">
+            <summary>Operations that return the same node type they were given.</summary>
+            <remarks>
+            These are extensions rather than members so that the result keeps its type: editing a document returns a document,
+            not the abstract node type, and no cast is needed at the call site.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.ReplaceNode``1(``0,Meziantou.Framework.Language.SyntaxNode,Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Returns <paramref name="root"/> with <paramref name="newNode"/> in place of <paramref name="oldNode"/>.</summary>
+            <remarks>
+            The result is a new tree that shares every part of the old one that did not change, and it is the same type as
+            <paramref name="root"/>, so editing a document gives back a document. Nothing is re-parsed.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">Any argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="oldNode"/> is not part of <paramref name="root"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.ReplaceNodes``2(``0,System.Collections.Generic.IEnumerable{``1},System.Func{``1,``1,Meziantou.Framework.Language.SyntaxNode})">
+            <summary>Returns <paramref name="root"/> with each of <paramref name="nodes"/> replaced by what <paramref name="computeReplacement"/> returns for it.</summary>
+            <remarks>An empty sequence asks for nothing, and gives <paramref name="root"/> back unchanged.</remarks>
+            <param name="root">The tree to rebuild.</param>
+            <param name="nodes">The nodes to replace.</param>
+            <param name="computeReplacement">Given the original node twice, returns what to put in its place.</param>
+            <exception cref="T:System.ArgumentNullException">Any argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">One of <paramref name="nodes"/> is not part of <paramref name="root"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.ReplaceToken``1(``0,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns <paramref name="root"/> with <paramref name="newToken"/> in place of <paramref name="oldToken"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="root"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="oldToken"/> is not part of <paramref name="root"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.ReplaceTokens``1(``0,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxToken},System.Func{Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken})">
+            <summary>Returns <paramref name="root"/> with each of <paramref name="tokens"/> replaced by what <paramref name="computeReplacement"/> returns for it.</summary>
+            <remarks>An empty sequence asks for nothing, and gives <paramref name="root"/> back unchanged.</remarks>
+            <exception cref="T:System.ArgumentNullException">Any argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">One of <paramref name="tokens"/> is not part of <paramref name="root"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.ReplaceTrivia``1(``0,Meziantou.Framework.Language.SyntaxTrivia,Meziantou.Framework.Language.SyntaxTrivia)">
+            <summary>Returns <paramref name="root"/> with <paramref name="newTrivia"/> in place of <paramref name="oldTrivia"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="root"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="oldTrivia"/> is not part of <paramref name="root"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.ReplaceTrivia``1(``0,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxTrivia},System.Func{Meziantou.Framework.Language.SyntaxTrivia,Meziantou.Framework.Language.SyntaxTrivia,Meziantou.Framework.Language.SyntaxTrivia})">
+            <summary>Returns <paramref name="root"/> with each of <paramref name="trivia"/> replaced by what <paramref name="computeReplacement"/> returns for it.</summary>
+            <remarks>An empty sequence asks for nothing, and gives <paramref name="root"/> back unchanged.</remarks>
+            <exception cref="T:System.ArgumentNullException">Any argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">One of <paramref name="trivia"/> is not part of <paramref name="root"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.ReplaceNode``1(``0,Meziantou.Framework.Language.SyntaxNode,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxNode})">
+            <summary>Returns <paramref name="root"/> with <paramref name="newNodes"/> in place of <paramref name="oldNode"/>.</summary>
+            <remarks>Replacing one node with several requires that it sits in a list, even one holding nothing but it.</remarks>
+            <exception cref="T:System.ArgumentNullException">Any argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="oldNode"/> is not part of <paramref name="root"/>, or is not somewhere several nodes can go.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.InsertNodesBefore``1(``0,Meziantou.Framework.Language.SyntaxNode,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxNode})">
+            <summary>Returns <paramref name="root"/> with <paramref name="newNodes"/> added in front of <paramref name="nodeInList"/>.</summary>
+            <exception cref="T:System.ArgumentNullException">Any argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="nodeInList"/> is not part of <paramref name="root"/>, or is not in a list.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.InsertNodesAfter``1(``0,Meziantou.Framework.Language.SyntaxNode,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxNode})">
+            <summary>Returns <paramref name="root"/> with <paramref name="newNodes"/> added after <paramref name="nodeInList"/>.</summary>
+            <exception cref="T:System.ArgumentNullException">Any argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="nodeInList"/> is not part of <paramref name="root"/>, or is not in a list.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.RemoveNode``1(``0,Meziantou.Framework.Language.SyntaxNode,Meziantou.Framework.Language.SyntaxRemoveOptions)">
+            <summary>Returns <paramref name="root"/> without <paramref name="node"/>.</summary>
+            <param name="root">The tree to rebuild.</param>
+            <param name="node">The node to take out. Its separator goes with it when it sits in a separated list.</param>
+            <param name="options">What to keep of the trivia around it. Anything kept moves onto what now stands in its place.</param>
+            <exception cref="T:System.ArgumentNullException">Any argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="node"/> is not part of <paramref name="root"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.RemoveNodes``1(``0,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxNode},Meziantou.Framework.Language.SyntaxRemoveOptions)">
+            <summary>Returns <paramref name="root"/> without <paramref name="nodes"/>.</summary>
+            <param name="root">The tree to rebuild.</param>
+            <param name="nodes">The nodes to take out. Naming both a node and something inside it removes the node, once.</param>
+            <param name="options">What to keep of the trivia around them.</param>
+            <exception cref="T:System.ArgumentNullException">Any argument is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">One of <paramref name="nodes"/> is not part of <paramref name="root"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.RemoveFromSlot(Meziantou.Framework.Language.SyntaxNode,Meziantou.Framework.Language.InternalSyntax.GreenNode[],System.Int32,System.Collections.Generic.List{System.Int32},Meziantou.Framework.Language.SyntaxRemoveOptions)">
+            <summary>Takes the named items out of one slot and finds a home for whatever trivia is being kept.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.AttachToNeighbouringSlot(Meziantou.Framework.Language.InternalSyntax.GreenNode[],System.Int32,Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Puts kept trivia on the nearest thing left in the parent once its own slot has emptied.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.WithLeadingTrivia``1(``0,Meziantou.Framework.Language.SyntaxTrivia[])">
+            <summary>Returns <paramref name="node"/> with <paramref name="trivia"/> in front of its first token.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.WithLeadingTrivia``1(``0,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxTrivia})">
+            <summary>Returns <paramref name="node"/> with <paramref name="trivia"/> in front of its first token.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.WithTrailingTrivia``1(``0,Meziantou.Framework.Language.SyntaxTrivia[])">
+            <summary>Returns <paramref name="node"/> with <paramref name="trivia"/> after its last token.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.WithTrailingTrivia``1(``0,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxTrivia})">
+            <summary>Returns <paramref name="node"/> with <paramref name="trivia"/> after its last token.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.WithTriviaFrom``1(``0,Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Returns <paramref name="node"/> surrounded by the trivia that surrounds <paramref name="source"/>.</summary>
+            <remarks>
+            Replacing a node does not carry its trivia over, because the replacement may want its own. This is how a caller
+            asks for the trivia of the node being replaced to be kept.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> or <paramref name="source"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.WithAdditionalAnnotations``1(``0,Meziantou.Framework.Language.SyntaxAnnotation[])">
+            <summary>Returns <paramref name="node"/> carrying <paramref name="annotations"/> as well as the ones it already has.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> or <paramref name="annotations"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.WithoutAnnotations``1(``0,Meziantou.Framework.Language.SyntaxAnnotation[])">
+            <summary>Returns <paramref name="node"/> without <paramref name="annotations"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> or <paramref name="annotations"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.WithoutAnnotations``1(``0,System.String)">
+            <summary>Returns <paramref name="node"/> without any annotation of the given kind.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> or <paramref name="annotationKind"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.CopyAnnotationsTo``1(Meziantou.Framework.Language.SyntaxNode,``0)">
+            <summary>Returns <paramref name="to"/> carrying the annotations of <paramref name="from"/> as well as its own.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="from"/> or <paramref name="to"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.Splice(Meziantou.Framework.Language.InternalSyntax.GreenNode[],System.Int32,Meziantou.Framework.Language.InternalSyntax.GreenNode[],System.Boolean,System.Boolean,Meziantou.Framework.Language.InternalSyntax.GreenNode,System.Int32,System.Boolean)">
+            <summary>
+            Splices nodes into the contents of a slot, adding the separators a separated list needs to stay alternating.
+            </summary>
+            <remarks>
+            A separated list holds tokens between its nodes. Adding a node to one means adding a separator with it, and
+            taking a node out means taking its separator too, or the list stops alternating and can no longer be read.
+            Which kind of list this is comes from <paramref name="isSeparated"/>, because a list of one element has no
+            separator in it to go by. The separator to add is the one the list already holds, so its spacing carries over;
+            failing that it is the one <paramref name="owner"/> declares for this slot, because a language may separate
+            one kind of list differently from another.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.TryLocate(Meziantou.Framework.Language.SyntaxNode,Meziantou.Framework.Language.SyntaxNode@,System.Int32@,System.Int32@)">
+            <summary>Finds where <paramref name="node"/> sits in its parent: which slot, and where in that slot's list.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeExtensions.EnsureInTree(Meziantou.Framework.Language.SyntaxNode,Meziantou.Framework.Language.SyntaxNode,System.String,System.String)">
+            <summary>Rejects a target that is not part of the tree being rebuilt.</summary>
+            <remarks>
+            Each target is checked as it is registered, so a batch holding one target from the tree and one from
+            somewhere else is rejected rather than half applied. Rebuilding alone cannot tell the difference: it only
+            knows whether anything at all was replaced.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxNodeOrToken">
+            <summary>Either a node or a token, as they appear side by side among the children of a node.</summary>
+            <remarks><see langword="default"/> is the token that is not there, matching <see cref="P:Meziantou.Framework.Language.SyntaxToken.None"/>.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNodeOrToken.RawKind">
+            <summary>Gets the language-specific kind as a plain integer.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxNodeOrToken.Parent">
+            <summary>Gets the node this one is a child of.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrToken.AsNode">
+            <summary>Returns the node, or <see langword="null"/> when this is a token.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrToken.AsNode(Meziantou.Framework.Language.SyntaxNode@)">
+            <summary>Returns whether this is a node, and the node itself when it is.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrToken.AsToken">
+            <summary>Returns the token, or <see cref="P:Meziantou.Framework.Language.SyntaxToken.None"/> when this is a node.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrToken.AsToken(Meziantou.Framework.Language.SyntaxToken@)">
+            <summary>Returns whether this is a token, and the token itself when it is.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrToken.ChildNodesAndTokens">
+            <summary>Gets the children of the node, or nothing when this is a token.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrToken.WriteTo(System.IO.TextWriter)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrToken.IsEquivalentTo(Meziantou.Framework.Language.SyntaxNodeOrToken)">
+            <summary>Determines whether the two have the same structure and text, ignoring their positions.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrToken.FromNode(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Returns this as a node or token, for callers that cannot use the implicit conversion.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrToken.FromToken(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this as a node or token, for callers that cannot use the implicit conversion.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxNodeOrTokenList">
+            <summary>A sequence that mixes nodes and tokens, as a separated list does.</summary>
+            <remarks><see langword="default"/> is the empty list.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrTokenList.#ctor(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxNodeOrToken})">
+            <summary>Creates a detached list holding <paramref name="nodesAndTokens"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nodesAndTokens"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrTokenList.IndexOf(Meziantou.Framework.Language.SyntaxNodeOrToken)">
+            <summary>Returns the position of <paramref name="nodeOrToken"/> in this list, or -1.</summary>
+            <remarks>
+            Items are matched by which one they are, not by the immutable node behind them: that node is shared, so two
+            items holding the same text are usually the same node and would both answer with the first position.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrTokenList.Add(Meziantou.Framework.Language.SyntaxNodeOrToken)">
+            <summary>Returns a detached list with <paramref name="nodeOrToken"/> appended.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrTokenList.AddRange(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxNodeOrToken})">
+            <summary>Returns a detached list with <paramref name="nodesAndTokens"/> appended.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrTokenList.Insert(System.Int32,Meziantou.Framework.Language.SyntaxNodeOrToken)">
+            <summary>Returns a detached list with <paramref name="nodeOrToken"/> inserted at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrTokenList.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxNodeOrToken})">
+            <summary>Returns a detached list with <paramref name="nodesAndTokens"/> inserted at <paramref name="index"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nodesAndTokens"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrTokenList.RemoveAt(System.Int32)">
+            <summary>Returns a detached list without the item at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrTokenList.Remove(Meziantou.Framework.Language.SyntaxNodeOrToken)">
+            <summary>Returns a detached list without <paramref name="nodeOrToken"/>, or this list when it does not contain it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxNodeOrTokenList.Replace(Meziantou.Framework.Language.SyntaxNodeOrToken,Meziantou.Framework.Language.SyntaxNodeOrToken)">
+            <summary>Returns a detached list with <paramref name="newNodeOrToken"/> in place of <paramref name="nodeOrTokenInList"/>.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="nodeOrTokenInList"/> is not in this list.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxNodeOrTokenList.Enumerator">
+            <summary>Walks a <see cref="T:Meziantou.Framework.Language.SyntaxNodeOrTokenList"/> without allocating.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxRemoveOptions">
+            <summary>What to do with the trivia around a node that is being removed.</summary>
+            <remarks>
+            A node's leading and trailing trivia would normally disappear with it, which quietly throws away any comment sitting in
+            front of it. These say what to keep instead. Whatever is kept moves onto whatever now stands where the node was:
+            the thing that follows it, or the thing before it when nothing follows.
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.Language.SyntaxRemoveOptions.KeepNoTrivia">
+            <summary>Take the node and everything around it.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.SyntaxRemoveOptions.KeepLeadingTrivia">
+            <summary>Keep what came in front of the node, such as the comment describing it.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.SyntaxRemoveOptions.KeepTrailingTrivia">
+            <summary>Keep what came after the node.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.SyntaxRemoveOptions.KeepExteriorTrivia">
+            <summary>Keep what came in front of and after the node.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.SyntaxRemoveOptions.KeepEndOfLine">
+            <summary>
+            Keep one line break out of what was removed, so the lines either side of it do not run together. Has no effect
+            when a line break was already kept by one of the other options.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxToken">
+            <summary>A terminal of the grammar: the smallest piece of a tree that carries text.</summary>
+            <remarks>
+            A token is a view rather than an object of its own, so <see langword="default"/> is a valid, empty token rather
+            than something that throws. Compare against <see cref="P:Meziantou.Framework.Language.SyntaxToken.None"/>, or test <see cref="P:Meziantou.Framework.Language.SyntaxToken.RawKind"/>, to detect it.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.None">
+            <summary>Gets the token that is not there.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.RawKind">
+            <summary>Gets the language-specific kind of this token as a plain integer.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.Parent">
+            <summary>Gets the node this token is a child of.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.FullSpan">
+            <summary>Gets the range this token covers, including the trivia on both sides.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.Span">
+            <summary>Gets the range the token's own text covers.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.Text">
+            <summary>Gets the token exactly as it was spelled in the source.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.ValueText">
+            <summary>Gets the value the text denotes, which is the text itself unless the language decoded something else.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.Value">
+            <summary>Gets the decoded value of the token, which may be a number or another type the language chose.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.IsMissing">
+            <summary>Gets a value indicating whether the parser inserted this token rather than reading it from the text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.LeadingTrivia">
+            <summary>Gets the trivia that comes before this token's text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxToken.TrailingTrivia">
+            <summary>Gets the trivia that comes after this token's text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.WithLeadingTrivia(Meziantou.Framework.Language.SyntaxTrivia[])">
+            <summary>Returns this token with <paramref name="trivia"/> in front of its text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.WithLeadingTrivia(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxTrivia})">
+            <summary>Returns this token with <paramref name="trivia"/> in front of its text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.WithTrailingTrivia(Meziantou.Framework.Language.SyntaxTrivia[])">
+            <summary>Returns this token with <paramref name="trivia"/> after its text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.WithTrailingTrivia(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxTrivia})">
+            <summary>Returns this token with <paramref name="trivia"/> after its text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.WithTriviaFrom(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this token carrying the trivia of <paramref name="token"/> on both sides.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.WithAdditionalAnnotations(Meziantou.Framework.Language.SyntaxAnnotation[])">
+            <summary>Returns this token carrying <paramref name="annotations"/> as well as the ones it already has.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.WithoutAnnotations(Meziantou.Framework.Language.SyntaxAnnotation[])">
+            <summary>Returns this token without <paramref name="annotations"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.WithoutAnnotations(System.String)">
+            <summary>Returns this token without any annotation of the given kind.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.CopyAnnotationsTo(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns <paramref name="token"/> carrying this token's annotations as well as its own.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.GetAnnotations">
+            <summary>Gets all the annotations of this token.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.GetAnnotations(System.String)">
+            <summary>Gets the annotations of this token of the given kind.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="annotationKind"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.HasAnnotation(Meziantou.Framework.Language.SyntaxAnnotation)">
+            <summary>Determines whether this token carries <paramref name="annotation"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.HasAnnotations(System.String)">
+            <summary>Determines whether this token carries an annotation of the given kind.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.GetNextToken">
+            <summary>Returns the token that comes after this one in the tree, or <see cref="P:Meziantou.Framework.Language.SyntaxToken.None"/> when there is none.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.GetPreviousToken">
+            <summary>Returns the token that comes before this one in the tree, or <see cref="P:Meziantou.Framework.Language.SyntaxToken.None"/> when there is none.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.ToString">
+            <summary>Returns the text of this token, excluding its trivia.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.ToFullString">
+            <summary>Returns the text of this token, including its trivia.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.WriteTo(System.IO.TextWriter)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.IsEquivalentTo(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Determines whether the two tokens have the same kind and text, ignoring the trivia around them.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxToken.IsIncrementallyIdenticalTo(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>
+            Determines whether the two tokens are backed by the very same immutable token, which happens when one tree was
+            derived from the other and this token was left untouched.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxTokenList">
+            <summary>A sequence of tokens held in one slot of their parent.</summary>
+            <remarks><see langword="default"/> is the empty list.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTokenList.#ctor(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxToken})">
+            <summary>Creates a detached list holding <paramref name="tokens"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="tokens"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTokenList.IndexOf(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns the position of <paramref name="token"/> in this list, or -1.</summary>
+            <remarks>
+            Tokens are matched by which one they are, not by the immutable token behind them: that token is shared, so
+            two entries spelled the same are usually the same token and would both answer with the first position.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTokenList.Add(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns a detached list with <paramref name="token"/> appended.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTokenList.AddRange(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxToken})">
+            <summary>Returns a detached list with <paramref name="tokens"/> appended.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTokenList.Insert(System.Int32,Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns a detached list with <paramref name="token"/> inserted at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTokenList.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxToken})">
+            <summary>Returns a detached list with <paramref name="tokens"/> inserted at <paramref name="index"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="tokens"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTokenList.RemoveAt(System.Int32)">
+            <summary>Returns a detached list without the token at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTokenList.Remove(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns a detached list without <paramref name="token"/>, or this list when it does not contain it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTokenList.Replace(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns a detached list with <paramref name="newToken"/> in place of <paramref name="tokenInList"/>.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="tokenInList"/> is not in this list.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxTokenList.Enumerator">
+            <summary>Walks a <see cref="T:Meziantou.Framework.Language.SyntaxTokenList"/> without allocating.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxTree">
+            <summary>A parsed document: its text, the tree over it, and the diagnostics the parser produced.</summary>
+            <remarks>
+            Only a handful of members are left to a language: the text, the root, and how to make a new tree from either.
+            Everything else here is answered from the immutable nodes alone.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxTree.FilePath">
+            <summary>Gets the path the text came from, or <see langword="null"/> when it did not come from a file.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetText">
+            <summary>Gets the text this tree was parsed from.</summary>
+            <remarks>
+            The same instance every time: diagnostics compare the text they point into by reference, so a tree that
+            returned a new one each call would produce diagnostics that never compare equal.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetRoot">
+            <summary>Gets the root of the tree.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetRootCore">
+            <summary>Gets the root of the tree. A language overrides this and offers its own typed <c>GetRoot</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.WithChangedText(Meziantou.Framework.Language.SourceText)">
+            <summary>Returns a tree over <paramref name="newText"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="newText"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.WithChangedTextCore(Meziantou.Framework.Language.SourceText)">
+            <summary>Returns a tree over <paramref name="newText"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.WithRoot(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Returns a tree whose root is <paramref name="root"/> and whose text is the text of that root.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="root"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.WithRootCore(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Returns a tree whose root is <paramref name="root"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetDiagnostics">
+            <summary>Gets every diagnostic in the tree, in source order.</summary>
+            <remarks>
+            A language that keeps its diagnostics in a list of its own rather than on the nodes overrides this, so that a
+            caller holding the tree through this type still sees them.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetDiagnostics(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Gets the diagnostics at or below <paramref name="node"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetDiagnostics(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Gets the diagnostics on <paramref name="token"/> and the trivia around it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetDiagnostics(Meziantou.Framework.Language.SyntaxTrivia)">
+            <summary>Gets the diagnostics on <paramref name="trivia"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetLocation(Meziantou.Framework.Language.TextSpan)">
+            <summary>Pairs <paramref name="span"/> with the text it indexes into.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetLineSpan(Meziantou.Framework.Language.TextSpan)">
+            <summary>Converts <paramref name="span"/> to line and character positions.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetChanges(Meziantou.Framework.Language.SyntaxTree)">
+            <summary>Describes how <paramref name="oldTree"/> would have to change to become this one.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="oldTree"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.GetChangedSpans(Meziantou.Framework.Language.SyntaxTree)">
+            <summary>Gets the ranges of this tree that differ from <paramref name="oldTree"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="oldTree"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTree.IsEquivalentTo(Meziantou.Framework.Language.SyntaxTree)">
+            <summary>Determines whether the two trees have the same structure and text.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxTrivia">
+            <summary>A run of text a parser keeps but does not give meaning to, such as whitespace or a comment.</summary>
+            <remarks>Trivia belongs to a token: it is either the leading or the trailing trivia of the token it sits beside.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxTrivia.Token">
+            <summary>Gets the token this trivia belongs to.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxTrivia.RawKind">
+            <summary>Gets the language-specific kind of this trivia as a plain integer.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxTrivia.Span">
+            <summary>Gets the range this trivia covers. Trivia has no trivia of its own, so this is also its full span.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTrivia.WithAdditionalAnnotations(Meziantou.Framework.Language.SyntaxAnnotation[])">
+            <summary>Returns this trivia carrying <paramref name="annotations"/> as well as the ones it already has.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTrivia.WithoutAnnotations(Meziantou.Framework.Language.SyntaxAnnotation[])">
+            <summary>Returns this trivia without <paramref name="annotations"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTrivia.GetAnnotations">
+            <summary>Gets all the annotations of this trivia.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTrivia.GetAnnotations(System.String)">
+            <summary>Gets the annotations of this trivia of the given kind.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="annotationKind"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTrivia.HasAnnotation(Meziantou.Framework.Language.SyntaxAnnotation)">
+            <summary>Determines whether this trivia carries <paramref name="annotation"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTrivia.HasAnnotations(System.String)">
+            <summary>Determines whether this trivia carries an annotation of the given kind.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTrivia.ToString">
+            <summary>Returns the text of this trivia.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTrivia.ToFullString">
+            <summary>Returns the text of this trivia, which is the same as <see cref="M:Meziantou.Framework.Language.SyntaxTrivia.ToString"/> because trivia has no trivia.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTrivia.WriteTo(System.IO.TextWriter)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTrivia.IsEquivalentTo(Meziantou.Framework.Language.SyntaxTrivia)">
+            <summary>Determines whether the two trivia have the same kind and text.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxTriviaList">
+            <summary>The trivia on one side of a token.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTriviaList.#ctor(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxTrivia})">
+            <summary>Creates a detached list holding <paramref name="trivia"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="trivia"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTriviaList.IndexOf(Meziantou.Framework.Language.SyntaxTrivia)">
+            <summary>Returns the position of <paramref name="trivia"/> in this list, or -1.</summary>
+            <remarks>
+            Trivia is matched by which entry it is, not by the immutable trivium behind it: a run of spaces is interned,
+            so two entries holding the same text are usually the same trivium and would both answer with the first.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTriviaList.Add(Meziantou.Framework.Language.SyntaxTrivia)">
+            <summary>Returns a detached list with <paramref name="trivia"/> appended.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTriviaList.AddRange(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxTrivia})">
+            <summary>Returns a detached list with <paramref name="trivia"/> appended.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTriviaList.Insert(System.Int32,Meziantou.Framework.Language.SyntaxTrivia)">
+            <summary>Returns a detached list with <paramref name="trivia"/> inserted at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTriviaList.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxTrivia})">
+            <summary>Returns a detached list with <paramref name="trivia"/> inserted at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTriviaList.RemoveAt(System.Int32)">
+            <summary>Returns a detached list without the trivia at <paramref name="index"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTriviaList.Remove(Meziantou.Framework.Language.SyntaxTrivia)">
+            <summary>Returns a detached list without <paramref name="trivia"/>, or this list when it does not contain it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxTriviaList.Replace(Meziantou.Framework.Language.SyntaxTrivia,Meziantou.Framework.Language.SyntaxTrivia)">
+            <summary>Returns a detached list with <paramref name="newTrivia"/> in place of <paramref name="triviaInList"/>.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="triviaInList"/> is not in this list.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxTriviaList.Enumerator">
+            <summary>Walks a <see cref="T:Meziantou.Framework.Language.SyntaxTriviaList"/> without allocating.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxWalker">
+            <summary>Walks a tree without knowing the language that produced it.</summary>
+            <remarks>
+            This walker dispatches on structure alone. A language that wants to dispatch on kind offers a walker of its own,
+            built on its visitor.
+            </remarks>
+            <example>
+            <code>
+            private sealed class TokenCounter : SyntaxWalker
+            {
+                public TokenCounter() : base(SyntaxWalkerDepth.Token) { }
+                public int Count { get; private set; }
+                protected override void VisitToken(SyntaxToken token) => Count++;
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Language.SyntaxWalker.Depth">
+            <summary>Gets how far down this walker goes.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.SyntaxWalker.Visit(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Visits <paramref name="node"/> and everything below it.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="node"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InsufficientExecutionStackException">The tree is nested too deeply to walk.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Language.SyntaxWalkerDepth">
+            <summary>How far down a <see cref="T:Meziantou.Framework.Language.SyntaxWalker"/> goes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.SyntaxWalkerDepth.Node">
+            <summary>Visit nodes only.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.SyntaxWalkerDepth.Token">
+            <summary>Visit nodes and the tokens among them.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.SyntaxWalkerDepth.Trivia">
+            <summary>Visit nodes, tokens, and the trivia around each token.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.TextChange">
+            <summary>Represents a text replacement applied to a <see cref="T:Meziantou.Framework.Language.SourceText"/> or to a syntax tree.</summary>
+            <example>
+            <code>
+            var change = new TextChange(new TextSpan(10, 5), "2.0.0");
+            var updated = tree.WithChanges(change);
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.TextChangeRange">
+            <summary>Describes a region of old text that was replaced, and how long the replacement is.</summary>
+            <remarks>
+            Unlike <see cref="T:Meziantou.Framework.Language.TextChange"/>, a range does not carry the replacement text. It is what an incremental
+            parser needs: enough to map a position in the new text back to the old one.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.TextChangeRange.Span">
+            <summary>Gets the replaced range, in the old text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.TextChangeRange.NewLength">
+            <summary>Gets the length the range occupies in the new text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.TextChangeRange.Delta">
+            <summary>Gets the number of characters the text grew by, which is negative when it shrank.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.TextChangeRange.Collapse(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.TextChangeRange})">
+            <summary>Combines <paramref name="changes"/> into the single range that spans all of them.</summary>
+            <param name="changes">The ranges to combine. They are expected to be ordered by <see cref="P:Meziantou.Framework.Language.TextChangeRange.Span"/> and not to overlap.</param>
+            <returns>A range covering every change, or <see langword="default"/> when there is none.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="changes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Language.TextLine">
+            <summary>Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.SourceText"/> instance.</summary>
+            <example>
+            <code>
+            var line = SourceText.From("first\nsecond").Lines[1];
+            var text = line.Text;
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.Language.TextLine.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.SourceText"/> instance.</summary>
+            <example>
+            <code>
+            var line = SourceText.From("first\nsecond").Lines[1];
+            var text = line.Text;
+            </code>
+            </example>
+        </member>
+        <member name="T:Meziantou.Framework.Language.TextSpan">
+            <summary>Represents a contiguous character range in text.</summary>
+            <example>
+            <code>
+            var span = new TextSpan(start: 5, length: 3);
+            var sameSpan = TextSpan.FromBounds(5, 8);
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Language.TextSpan.IsEmpty">
+            <summary>Gets a value indicating whether the span is zero-length.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.TextSpan.Contains(System.Int32)">
+            <summary>Determines whether the span contains <paramref name="position"/>. The end of the span is exclusive.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.TextSpan.Contains(Meziantou.Framework.Language.TextSpan)">
+            <summary>Determines whether the span contains all of <paramref name="span"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.TextSpan.OverlapsWith(Meziantou.Framework.Language.TextSpan)">
+            <summary>Determines whether the two spans share at least one character. Empty spans never overlap.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.TextSpan.IntersectsWith(Meziantou.Framework.Language.TextSpan)">
+            <summary>Determines whether the two spans share at least one character or touch at an endpoint.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.TextSpan.IntersectsWith(System.Int32)">
+            <summary>Determines whether <paramref name="position"/> is inside the span or at its end.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.TextSpan.Overlap(Meziantou.Framework.Language.TextSpan)">
+            <summary>Returns the overlap of the two spans, or <see langword="null"/> when they do not overlap.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.TextSpan.Intersection(Meziantou.Framework.Language.TextSpan)">
+            <summary>Returns the intersection of the two spans, or <see langword="null"/> when they do not intersect. Two spans that only touch intersect in an empty span.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.TextSpan.CompareTo(Meziantou.Framework.Language.TextSpan)">
+            <summary>Orders spans by <see cref="P:Meziantou.Framework.Language.TextSpan.Start"/>, then by <see cref="P:Meziantou.Framework.Language.TextSpan.Length"/>.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+    </members>
+</doc>

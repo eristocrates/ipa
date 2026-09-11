@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>SigmaGraph.NET</id>
+    <version>0.0.3</version>
+    <authors>Timo Mühlhaus, fslab contributors</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://fslab.org/SigmaGraph.NET/</projectUrl>
+    <description>A .NET interface for sigma.js graph visualisation written in F#</description>
+    <releaseNotes>Update:
+Update DynamicObj reference</releaseNotes>
+    <tags>sigma graph visualisation fsharp csharp dotnet</tags>
+    <repository type="git" url="https://github.com/fslaborg/SigmaGraph.NET" commit="75eaf06f736e88aa8fc3b5fd2e4669b67fe4b814" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="DynamicObj" version="[7.0.1, 8.0.0)" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="8.0.100" exclude="Build,Analyzers" />
+        <dependency id="Giraffe.ViewEngine.StrongName" version="2.0.0-alpha1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/net8.0/graphology-library.min.js" buildAction="Content" />
+      <files include="any/net8.0/graphology.umd.min.js" buildAction="Content" />
+      <files include="any/net8.0/sigma.min.js" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+</package>

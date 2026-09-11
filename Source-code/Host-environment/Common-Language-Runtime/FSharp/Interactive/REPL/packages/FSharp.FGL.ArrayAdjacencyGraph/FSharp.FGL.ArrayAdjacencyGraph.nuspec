@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FSharp.FGL.ArrayAdjacencyGraph</id>
+    <version>0.0.2</version>
+    <authors>LibraChris,HLWeil,CSBiology</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://csbiology.github.io/FSharp.FGL/</projectUrl>
+    <iconUrl>https://fslab.org/docs-template/img/logo.png</iconUrl>
+    <description>A graph data structure efficient for large sparse graph representation written in F#</description>
+    <releaseNotes>Added FSharp.ArrayAdjacencyGraph and Tests</releaseNotes>
+    <tags>F# FSharp bioinformatics datascience biology graph FGL network</tags>
+    <repository type="git" url="https://github.com/CSBiology/FSharp.FGL" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.FGL" version="0.0.2" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

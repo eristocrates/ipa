@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Meziantou.Framework.DependencyScanning</id>
+    <version>3.0.13</version>
+    <authors>meziantou</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/meziantou/Meziantou.Framework</projectUrl>
+    <description>Find dependencies in source files. Support multiple package managers such as NuGet, npm, Docker, PyPi, and so on</description>
+    <tags>dependencies, scanner, nuget, npm, docker, pypi, dependency-update</tags>
+    <repository type="git" url="https://github.com/meziantou/Meziantou.Framework" branch="refs/heads/main" commit="00bc803b61309d80cf37b7ad9291f8b2703a2bbf" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Meziantou.Framework.Globbing" version="5.0.3" exclude="Build,Analyzers" />
+        <dependency id="Meziantou.Framework.Language.Json" version="2.0.4" exclude="Build,Analyzers" />
+        <dependency id="Meziantou.Framework.Language.Xml" version="2.0.2" exclude="Build,Analyzers" />
+        <dependency id="Meziantou.Framework.Yaml" version="2.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net11.0">
+        <dependency id="Meziantou.Framework.Globbing" version="5.0.3" exclude="Build,Analyzers" />
+        <dependency id="Meziantou.Framework.Language.Json" version="2.0.4" exclude="Build,Analyzers" />
+        <dependency id="Meziantou.Framework.Language.Xml" version="2.0.2" exclude="Build,Analyzers" />
+        <dependency id="Meziantou.Framework.Yaml" version="2.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

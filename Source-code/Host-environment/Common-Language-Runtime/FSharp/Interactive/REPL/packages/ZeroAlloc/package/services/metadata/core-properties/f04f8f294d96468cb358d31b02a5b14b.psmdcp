@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>DevAM</dc:creator>
+  <dc:description>Zero-allocation string formatting and binary serialization library with Roslyn source generators. Features: compile-time optimized ZA.String() and ZA.Bytes() APIs, endian-aware wrappers (U16BE, I32LE, etc.), VarInt encoding, length-prefixed string encodings, and generated binary parsers. Perfect for network protocols, CAN/FlexRay, embedded systems, and high-performance logging. Requires .NET 10+.</dc:description>
+  <dc:identifier>ZeroAlloc</dc:identifier>
+  <version>0.6.0</version>
+  <keywords>serialization binary zero-allocation source-generator performance span byte-array bit-level can flexray</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

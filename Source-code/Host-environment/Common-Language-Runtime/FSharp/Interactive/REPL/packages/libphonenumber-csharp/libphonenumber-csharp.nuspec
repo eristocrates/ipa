@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>libphonenumber-csharp</id>
-    <version>9.0.38</version>
+    <version>9.0.39</version>
     <title>libphonenumber-csharp</title>
     <authors>Patrick Mézard,Thomas Clegg,Jarrod Alexander,Google,libphonenumber contributors</authors>
     <license type="expression">Apache-2.0</license>
@@ -12,7 +12,7 @@
     <projectUrl>https://github.com/twcclegg/libphonenumber-csharp</projectUrl>
     <description>C# port of Google's common Java, C++ and Javascript library for parsing, formatting, storing and validating international phone numbers. https://github.com/google/libphonenumber</description>
     <tags>phonenumber phone libphonenumber e164 e.164 international</tags>
-    <repository type="git" url="https://github.com/twcclegg/libphonenumber-csharp" branch="main" commit="2558136b2f21636f6ee1c0da9631cce582d2cd56" />
+    <repository type="git" url="https://github.com/twcclegg/libphonenumber-csharp" branch="main" commit="c673174a9ea0845e1b9f3778287f6695653509bf" />
     <dependencies>
       <group targetFramework="net10.0" />
       <group targetFramework="net8.0" />

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Microsoft.SqlServer.TransactSql.ScriptDom</id>
-    <version>180.102.0</version>
+    <version>180.107.0</version>
     <title>Microsoft SQL Server ScriptDOM</title>
     <authors>Microsoft</authors>
     <license type="expression">MIT</license>
@@ -14,7 +14,7 @@
     <releaseNotes>https://go.microsoft.com/fwlink/?linkid=2240206</releaseNotes>
     <copyright>© Microsoft Corporation. All rights reserved.</copyright>
     <tags>SQL Script DOM</tags>
-    <repository type="git" url="https://github.com/microsoft/SqlScriptDOM" commit="9d1d1c1d062bd900ad9cac5e4e05bdf950d5a229" />
+    <repository type="git" url="https://github.com/microsoft/SqlScriptDOM" commit="567a7bf22f13e8b89c4e4259cf77ba2b26f477fc" />
     <dependencies>
       <group targetFramework=".NETFramework4.7.2" />
       <group targetFramework="net8.0" />

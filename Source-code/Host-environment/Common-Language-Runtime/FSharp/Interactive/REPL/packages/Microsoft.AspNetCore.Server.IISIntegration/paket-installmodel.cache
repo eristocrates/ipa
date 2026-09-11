@@ -1,0 +1,15 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Server.IISIntegration.dll
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Server.IISIntegration.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/f743d2bac0ea402484b21fd29ad7a07d.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /microsoft.aspnetcore.server.iisintegration.2.3.13.nupkg
+F: /Microsoft.AspNetCore.Server.IISIntegration.nuspec
+F: /[Content_Types].xml

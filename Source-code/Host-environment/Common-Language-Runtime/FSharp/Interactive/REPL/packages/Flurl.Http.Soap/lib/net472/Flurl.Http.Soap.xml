@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Flurl.Http.Soap</name>
+    </assembly>
+    <members>
+        <member name="T:Flurl.Http.Soap.SoapEnvelope`1">
+            <summary>
+            Represents a SOAP Envelope and provides methods to parse raw XML input.
+            </summary>
+        </member>
+        <member name="M:Flurl.Http.Soap.SoapEnvelope`1.ParseXml(System.String,Flurl.Http.Soap.SoapHeader@,Flurl.Http.Soap.SoapBody{`0}@)">
+            <summary>
+            Attempt to parse the XML string for a SOAP Envelope and output the SOAP Header/Body.
+            </summary>
+            <param name="xml">String representation of the SOAP Envelope.</param>
+            <param name="header">POCO representation of the SOAP Header.</param>
+            <param name="body">POCO representation of the SOAP Body.</param>
+            <returns>True if parsing was successful or False if there was an issue.</returns>
+        </member>
+        <member name="T:Flurl.Http.Soap.SoapHeader">
+            <summary>
+            Represents the SOAP Header
+            </summary>
+        </member>
+        <member name="T:Flurl.Http.Soap.SoapBody`1">
+            <summary>
+            Represents the SOAP Body as a wrapped POCO class.
+            </summary>
+        </member>
+        <member name="M:Flurl.Http.Soap.SoapBody`1.GetValue">
+            <summary>
+            Retrieve the internal value of <see cref="T:Flurl.Http.Soap.SoapBody`1"/> as <typeparamref name="T"/>.
+            </summary>
+        </member>
+        <member name="M:Flurl.Http.Soap.SoapBody`1.op_Implicit(Flurl.Http.Soap.SoapBody{`0})~`0">
+            <summary>
+            Implicitly retrieve the internal value of <paramref name="soapBody"/> as type <typeparamref name="T"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -228,6 +228,56 @@
             it can evolve without breaking older consumers if a binary is shipped without rebuilding.
             </remarks>
         </member>
+        <member name="M:PhoneNumbers.BuildMetadataFromXml.ValidateAndNarrowPatternRE(System.String,System.Boolean)">
+            <summary>
+            Same contract as <see cref="M:PhoneNumbers.BuildMetadataFromXml.ValidateRE(System.String,System.Boolean)"/>, but first narrows every
+            regex-structural <c>\d</c> (and <c>\D</c>) in the pattern to an ASCII-only equivalent --
+            see <see cref="M:PhoneNumbers.BuildMetadataFromXml.NarrowDigitClassToAscii(System.String)"/>. Use this (instead of the plain
+            <see cref="M:PhoneNumbers.BuildMetadataFromXml.ValidateRE(System.String,System.Boolean)"/> overloads) only for metadata fields that are
+            actually matched against phone-number input at run time (nationalNumberPattern,
+            leadingDigits, internationalPrefix, nationalPrefixForParsing, and a numberFormat's
+            pattern attribute) -- never for fields that only ever serve as a *replacement* template
+            (nationalPrefixTransformRule, nationalPrefixFormattingRule, carrierCodeFormattingRule,
+            the format/intlFormat text, preferredInternationalPrefix, preferredExtnPrefix), so those
+            keep validating (and echoing back) exactly the text the XML author wrote.
+            <para>
+            This narrowing is safe specifically because every one of those five matched-against
+            fields is only ever matched, at run time, against a string PhoneNumberUtil has already
+            normalized to ASCII 0-9 (see PhoneNumberUtil.Normalize/NormalizeDigits and its callers --
+            MaybeStripInternationalPrefixAndNormalize, ParseHelper, MaybeStripNationalPrefixAndCarrierCode)
+            or that was rebuilt from the numeric NationalNumber field of an already-parsed PhoneNumber
+            (GetNationalSignificantNumber*, always ASCII by construction), or -- for AsYouTypeFormatter --
+            a buffer fed exclusively through NormalizeAndAccrueDigitsAndPlusSign, which normalizes each
+            character as it is accrued. None of these call sites can hand a metadata pattern a raw,
+            non-normalized (and therefore potentially non-ASCII-digit) string. The free-text
+            candidate-scanning patterns in PhoneNumberMatcher are hand-written C# (not sourced from
+            this XML parser) and are deliberately left untouched -- they run against arbitrary raw text
+            before normalization and must stay Unicode-digit-aware.
+            </para>
+            </summary>
+        </member>
+        <member name="M:PhoneNumbers.BuildMetadataFromXml.NarrowDigitClassToAscii(System.String)">
+            <summary>
+            Rewrites every regex-structural <c>\d</c> in <paramref name="regex"/> to the ASCII-only
+            <c>[0-9]</c> (or, for a <c>\d</c> already inside a <c>[...]</c> character class, the bare
+            <c>0-9</c> substituted in place of the escape -- e.g. <c>[\d-]</c> becomes <c>[0-9-]</c>,
+            never the broken/nested <c>[[0-9]-]</c>). A <c>\D</c> outside any character class narrows
+            symmetrically to <c>[^0-9]</c>; a <c>\D</c> found *inside* a character class throws, since
+            "not a decimal digit" cannot in general be soundly unioned into an existing bracket
+            expression's other members -- this shape does not occur anywhere in the shipped metadata
+            today (verified by inspection of PhoneNumberMetadata.xml, ShortNumberMetadata.xml,
+            PhoneNumberAlternateFormats.xml and PhoneNumberMetadataForTesting.xml), so surfacing it
+            loudly if a future upstream sync ever introduces one is preferable to silently emitting an
+            incorrect pattern.
+            <para>
+            This is structural, not a blind string replace: a backslash is only ever treated as
+            starting a fresh escape when it is not itself the second half of one (so <c>\\d</c> --
+            an escaped backslash followed by a literal "d" -- is left alone), and entry into/exit
+            from a character class tracks the POSIX idiom where a literal <c>]</c> immediately after
+            <c>[</c> or <c>[^</c> does not close the class.
+            </para>
+            </summary>
+        </member>
         <member name="M:PhoneNumbers.BuildMetadataFromXml.GetNationalPrefix(System.Xml.Linq.XElement)">
             <summary>
             Returns the national prefix of the provided country element.
@@ -394,6 +444,39 @@
             </summary>
             <threadsafety static="true" instance="false"/>
         </member>
+        <member name="F:PhoneNumbers.InternalRegexOptions.Interpreted">
+            <summary>
+            Options for metadata-derived patterns -- everything <see cref="T:PhoneNumbers.PhoneRegex"/> builds.
+            <para>
+            No RegexOptions.Compiled, deliberately. Compiling costs roughly 1.5 ms of IL-emit for each
+            distinct pattern, and buys about 0.044 us per match; a pattern therefore has to be matched
+            on the order of 30,000 times before compiling it breaks even. Metadata-derived patterns do
+            not come close to that in most processes: there are thousands of them, each first built when
+            some caller happens to touch that region, and a workload spread across regions matches each
+            one a few thousand times at most.
+            </para>
+            <para>
+            Measured end-to-end (net8.0, total wall time including startup, parse + validate + format):
+            compiling these is 34x slower for 1,000 operations across 245 regions, 3.7x slower for
+            100,000, and still 1.7x slower at 1,000,000. It wins only when a process concentrates very
+            high volume on very few regions -- 1 region and 100,000+ operations -- and then by 6-20%.
+            The library has shipped that trade three times by accident, most recently in PR #325, each
+            time because the benchmark used to justify it pre-warmed every pattern in setup and then
+            hammered a handful, which is precisely the one shape where compiling wins. Do not change
+            this on the strength of PhoneNumberWorkflowBenchmark alone.
+            </para>
+            </summary>
+        </member>
+        <member name="F:PhoneNumbers.InternalRegexOptions.Default">
+            <summary>
+            Options for the library's own fixed, compile-time-known regexes -- the <c>GeneratedRegex</c>
+            members and <c>static readonly Regex</c> fields scattered across the library. Compiling
+            those is worth it: there is a fixed handful, each is built once per process, and each is on
+            a hot path for the life of it. Derived from <see cref="F:PhoneNumbers.InternalRegexOptions.Interpreted"/> so the two sets differ
+            by nothing except RegexOptions.Compiled, and a semantic flag added here cannot apply to one
+            group of regexes but not the other.
+            </summary>
+        </member>
         <member name="T:PhoneNumbers.LocaleData">
             <summary>
             Holds a map from ISO 3166-1 country code (e.g. GB) to a dict. Each dict maps from an
@@ -518,6 +601,11 @@
             the implementer is responsible for managing their lifetime; <see cref="T:PhoneNumbers.MetadataSource"/>
             does not implement <see cref="T:System.IDisposable"/>.</para>
             <para>Mirrors <c>com.google.i18n.phonenumbers.MetadataLoader</c> in Java.</para>
+            <para>This was made public in PR #323 on "mirrors Java's MetadataLoader API" reasoning,
+            without the explicit sign-off a new public member requires — see the note on new public
+            members in AGENTS.md. Nothing documented ever depended on it being an extension point, so it
+            is being walked back to internal; marked <see cref="T:System.ObsoleteAttribute"/> first, as a
+            deprecation window, rather than removed outright.</para>
             </remarks>
         </member>
         <member name="M:PhoneNumbers.IMetadataLoader.LoadMetadata(System.String)">
@@ -608,9 +696,8 @@
             constructor.
             </summary>
             <remarks>
-            Intended for callers shipping trimmed or remote metadata. Should be called once at
-            application startup, before any metadata is requested — already-cached metadata is not
-            invalidated when the loader is replaced.
+            Not intended for external use — see the note on <see cref="T:PhoneNumbers.IMetadataLoader"/>. Exercised
+            directly by this project's own tests.
             </remarks>
             <param name="loader">Loader to use for both supplementary metadata file types.</param>
         </member>
@@ -2160,6 +2247,41 @@
             <param name="number">the phone number that needs to be formatted</param>
             <param name="regionCallingFrom">the region where the call is being placed</param>
             <returns>the formatted phone number</returns>
+        </member>
+        <member name="T:PhoneNumbers.PhoneRegex">
+            <summary>
+            Wraps the three regexes ("raw", "anchored to the whole input", "anchored to the start") built
+            from a single metadata-derived pattern string.
+            <para>
+            These are built with <see cref="F:PhoneNumbers.InternalRegexOptions.Interpreted"/>, deliberately, and must stay
+            that way -- see <see cref="F:PhoneNumbers.InternalRegexOptions.Interpreted"/> for the measurements. Unlike the
+            library's fixed regexes, which are compile-time-known and built once per process, these are
+            metadata-derived: there are thousands of them, each built the first time some caller happens to
+            touch that region, and RegexOptions.Compiled costs roughly 1.5 ms of IL-emit per pattern that
+            only repays after tens of thousands of matches of that same pattern.
+            </para>
+            <para>
+            This type is public, and both constructors are <see cref="T:System.ObsoleteAttribute"/>, only because the
+            obsolete <see cref="T:PhoneNumbers.RegexCache"/> shim returns <see cref="T:PhoneNumbers.PhoneRegex"/> instances. Neither the
+            type nor either constructor was ever meant to be called by consumers; both were only ever meant
+            to be internal, and will become so at the next opportunity for a breaking change -- see issue
+            #375.
+            </para>
+            </summary>
+        </member>
+        <member name="M:PhoneNumbers.PhoneRegex.#ctor(System.String)">
+            <summary>
+            This constructor, like the type it belongs to, is public only because the obsolete
+            <see cref="T:PhoneNumbers.RegexCache"/> shim returns <see cref="T:PhoneNumbers.PhoneRegex"/> instances -- see the class
+            remarks. It was never meant to be called directly.
+            </summary>
+        </member>
+        <member name="P:PhoneNumbers.PhoneRegex.BuiltOptions">
+            <summary>
+            Options the three regexes were actually built with. Exists so a test can fail if
+            metadata-derived patterns are ever switched back to RegexOptions.Compiled -- the regression
+            this library has shipped three times, and which no test has ever caught.
+            </summary>
         </member>
         <member name="T:PhoneNumbers.PrefixFileReader">
             <summary>

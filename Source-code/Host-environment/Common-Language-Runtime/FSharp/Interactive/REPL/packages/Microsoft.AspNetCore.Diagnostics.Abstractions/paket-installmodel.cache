@@ -1,0 +1,15 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.Abstractions.dll
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.Abstractions.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/aa3c03a6625c4540b6b8e0bcba0d85af.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /microsoft.aspnetcore.diagnostics.abstractions.2.3.13.nupkg
+F: /Microsoft.AspNetCore.Diagnostics.Abstractions.nuspec
+F: /[Content_Types].xml

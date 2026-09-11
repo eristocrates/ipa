@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>Immutable, round-trip shell script concrete syntax tree for bash, sh, zsh, PowerShell, PowerShell Core, and cmd, with diagnostics, trivia, source locations, and editing helpers.</dc:description>
   <dc:identifier>Meziantou.Framework.Language.Shell</dc:identifier>
-  <version>1.0.2</version>
+  <version>3.0.0</version>
   <keywords>shell, bash, powershell, syntax-tree, cst, parser</keywords>
-  <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+  <lastModifiedBy>NuGet.Packaging, Version=7.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

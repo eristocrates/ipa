@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>PhoenixmlDb.XQuery</id>
-    <version>1.6.14</version>
+    <version>1.6.15</version>
     <authors>Endpoint Systems</authors>
     <license type="expression">Apache-2.0</license>
     <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
@@ -10,76 +10,105 @@
     <readme>PACKAGE.md</readme>
     <projectUrl>https://phoenixml.dev/</projectUrl>
     <description>XQuery 4.0 query engine for PhoenixmlDb</description>
-    <releaseNotes>Error codes. Four sites where the engine knew exactly what had gone wrong and reported something
-a caller could not act on — three of them by letting a raw .NET exception escape.
+    <releaseNotes>### Arithmetic on a date or time leaked a CLR exception
 
-### Casting and constructor functions leaked CLR exceptions
+`xs:date('2020-01-01') + 1` reported *"Unable to cast object of type 'PhoenixmlDb.Xdm.XsDate' to
+type 'System.IConvertible'"* — a raw `InvalidCastException`, not an XQuery error, matching no code
+a caller could catch. The valid date/time and duration combinations are matched earlier in each
+operator, so anything of those types reaching numeric promotion has already failed to match one
+and is a type error. Now XPTY0004.
 
-`xs:int('abc')` reported *"The input string 'abc' was not in a correct format."* That is a
-`FormatException`, not an XQuery error, and it matches no error code any caller could catch on.
-The conversion primitives underneath — `Convert.To*`, `*.Parse` — throw `FormatException`,
-`OverflowException` and `InvalidCastException`, and those travelled all the way out.
+Guarded in `ToDouble`/`ToFloat` and in `PromoteNumeric`, which every operator fall-through routes
+through. Durations are deliberately not rejected: `duration * 2` is valid and passes the NUMBER
+through that path.
 
-The spec defines a constructor function as equivalent to a cast, so `xs:int('abc')` and
-`'abc' cast as xs:int` must report the same code. Only the cast half had been wrapped; the 49
-constructor functions called `long.Parse` and `Convert.ToInt32` directly. Both halves now
-translate consistently: an invalid lexical form is FORG0001, a value out of range is FOCA0002, an
-operand whose type has no conversion at all is XPTY0004.
+```
+xs:date(…) + xs:dayTimeDuration('P1D')   2020-01-02    unchanged
+xs:dayTimeDuration('P1D') * 2            2.00:00:00    unchanged
+xs:date(…) + 1                           XPTY0004      was InvalidCastException
+xs:dateTime(…) * 2                       XPTY0004      was InvalidCastException
+```
 
-The mapping was measured against the W3C corpus rather than assumed. In cast and constructor
-context `FormatException` corresponds to FORG0001 in 57 of 57 cases; `OverflowException` splits
-78 to 29 in favour of FOCA0002, so that is a majority answer rather than a certainty, and the
-minority remain wrong — with a proper code — until the split is understood.
+W3C XQTS 29,205 → **29,316 of 31,414 (93.32%)**. `InvalidCastException` 125 → 14. Unit suite 1542.
 
-Both wrappers sit in the shared helper rather than at the call sites, because every call site is
-an `async IAsyncEnumerable` iterator and C# forbids `yield return` inside a `try` with a `catch`.
-That constraint is the likeliest reason this was never wrapped.
+**The cause was not what the call sites suggested, and two guesses at them cost an hour.** Reading
+four failing queries settled it in minutes:
 
-### Casting to a gregorian type accepted operands the spec forbids
+```
+xs:dayTimeDuration("PT1H") + xs:duration("P1D")     want XPTY0004
+xs:duration("P1D") + xs:date("1997-01-01")          want XPTY0004
+```
 
-XQuery §19.1 permits casting to `xs:gYear` and its relatives only from `xs:string`,
-`xs:untypedAtomic`, `xs:date`, `xs:dateTime` or the same gregorian type. The default arm of each
-dispatch instead stringified whatever it received and handed the text to the lexical parser, so
-`xs:time("13:20:00-05:00") cast as xs:gYear` reported `Invalid xs:gYear: '13:20:00-05:00'` —
-diagnosing a malformed lexical form for a cast that was never legal. Now XPTY0004.
+These use `xs:duration`, the ABSTRACT base type. F&amp;O defines the duration operators only on
+`xs:yearMonthDuration` and `xs:dayTimeDuration` — there is no `op:add-durations` — so mixing the
+base type into arithmetic is a type error, and it was falling through to `Convert` instead.
 
-### fn:avg disagreed with fn:sum about its own operand types
+Rejecting only the base type still left `dayTimeDuration + xs:duration` leaking, because that one
+failed on the **TimeSpan** side. Reaching numeric conversion at all means every valid combination
+in the caller has already failed to match, so a duration operand there is equally an error.
+Rejecting the subtypes too took the cluster from 92 to 14.
 
-`fn:sum` raises FORG0006 for boolean, string, anyURI and duration operands. `fn:avg` agreed only
-on string and used XPTY0004 for boolean and anyURI — inconsistent with its twin three lines away
-in the same file. `fn:avg` also crashed outright on an `xs:integer` outside `long` range:
-`BigInteger` does not implement `IConvertible`, and the accumulation ended in an unconditional
-`Convert.ToDouble` outside its `else if` chain. `fn:sum` was unaffected; its chain is closed.
+| step | gain |
+|---|---|
+| `ToDouble`/`ToFloat` guard — date/time operands | +30 |
+| `PromoteNumeric` guard | +1 |
+| `xs:duration` base type | +41 |
+| duration subtypes at numeric conversion | +39 |
 
-### fn:load-xquery-module reported FOQM0002 for every failure
+Verified rather than assumed, because `duration * number` passes the NUMBER to `ToDouble` and had
+to keep working:
 
-The implementation compiles a synthetic `import module`, so the analyzer has already classified
-the failure precisely — an unresolvable module namespace is XQST0059. The wrapper discarded that
-and reported FOQM0002 for everything, making "no such module", "the module has a syntax error" and
-"the module imports something missing" indistinguishable.
+```
+xs:dayTimeDuration('PT1H') + xs:dayTimeDuration('P1D')      1.01:00:00   unchanged
+xs:yearMonthDuration('P1Y') + xs:yearMonthDuration('P1M')   P1Y1M        unchanged
+xs:date('2020-01-01') + xs:dayTimeDuration('P1D')           2020-01-02   unchanged
+xs:duration('P1D') + xs:date('1997-01-01')                  XPTY0004     fixed
+```
 
-Static errors surfaced through `XQueryFacade` and the `xquery` CLI had the same shape, reporting a
-blanket XPST0003 — a syntax error — for any compilation failure, while `QueryEngine.Compile` had
-always propagated the analyzer's own code.
+What remains is scattered rather than clustered: 14 cases across `fn-avg` (5),
+`misc-CombinedErrorCodes` (4) and singles in the lookup and array paths.
 
-### Measured
+### FIXED: the CLI serialized adaptive xs:double the wrong way
 
-W3C XQTS 28,887 → **29,205 of 31,414 (92.97%)**. Unit suite 1532, unchanged.
+`xquery -o adaptive 'xs:double(41) + 1'` prints **42**. `XQueryResultSerializer.Serialize(item,
+store)`, whose default method is Adaptive, returns **4.2e1** for the same value. Two
+implementations of the adaptive output method, in the same estate, giving different answers.
 
-The denominator moved too, and not because tests were dropped for convenience: the runner accepted
-any `&lt;dependency type="spec"&gt;` containing "XQ", so tests pinned to **XQuery 1.0** ran against a 4.0
-engine. `Axes127` states in its own description that "the namespace-node() kind test is new in
-XQuery 3.0" and asserts an error — it requires the engine NOT to support something this engine
-does support. 56 such tests are now correctly skipped.
+`XQueryResultSerializer.FormatAdaptiveDouble` is deliberate and cites W3C Serialization 4.0 §6 —
+its comment states that it is adaptive-scoped and intentionally does not touch the general double
+formatter. The `xquery` CLI does not use it: that tool has its own `ResultSerializer`, which
+predates it and formats doubles the fixed-point way.
 
-### Source layout
+Anything embedding the library gets `4.2e1`; anyone using the CLI gets `42`. Found because
+`xquery-mcp` moved off PhoenixmlDb.XQuery 1.3.15, where the engine still returned `42` — its test
+for that has been skipped with the finding recorded rather than adjusted, since adjusting it would
+bake in whichever answer is current.
 
-No behaviour change: 31 files carrying five or more top-level types are now one type per file,
-including `PhysicalOperators.cs` (89 types, 12,879 lines). Verified by diffing the full type
-inventory before and after — 890 types, none lost, none added.</releaseNotes>
+**The spec settles it, and the library was right.** W3C XSLT and XQuery Serialization 3.1 §10:
+
+&gt; An instance of `xs:double` is serialized by applying the function
+&gt; `format-number(?, '0.0##########################e0')`
+
+with exponent-separator `e`, infinity `INF`, NaN `NaN`. So `4.2e1` is correct for the adaptive
+method, and the CLI printing `42` was the defect — not the other way round, which is what the
+vendored spec summary ("atomic values are output as their string representation") had suggested.
+
+The same section says `xs:integer` and `xs:decimal` DO use `fn:string`, so `41 + 1` remains `42`
+under every method. Only `xs:double` takes the exponential form, and only under adaptive.
+
+`FormatAdaptiveDouble` is now public and the CLI delegates to it, so there is one implementation
+rather than two. Pinned by `AdaptiveDoubleSerializationTests`, including `INF`/`-INF`/`NaN` and
+negative zero.
+
+```
+                        adaptive   xml/text
+xs:double(41) + 1       4.2e1      42
+xs:double(0.5)          5.0e-1     0.5
+41 + 1                  42         42
+```</releaseNotes>
     <copyright>Copyright © Endpoint Systems 2026. All rights reserved.</copyright>
     <tags>xml xquery xpath query database</tags>
-    <repository type="git" url="https://github.com/phoenixmldb/phoenixmldb-xquery" commit="9cfb6fc33b00ee0d5a37e33b41516ef100108169" />
+    <repository type="git" url="https://github.com/phoenixmldb/phoenixmldb-xquery" commit="b696f6a06bc074ba76b71032e398c929a5c2170c" />
     <dependencies>
       <group targetFramework="net10.0">
         <dependency id="Antlr4.Runtime.Standard" version="4.13.1" exclude="Build,Analyzers" />

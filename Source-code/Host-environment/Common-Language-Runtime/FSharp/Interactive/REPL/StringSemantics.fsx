@@ -12,10 +12,10 @@ type Rune with
 
 type String with
     member this.runes = this.Normalize().EnumerateRunes() |> Seq.toArray
-
     member this.prefixed(affix: string) = affix + this
     member this.suffixed(affix: string) = this + affix
     member this.circumfixed(affix: string) = affix + this + affix
+
 
 type Guid with
     member this.asString = this.ToString("N")

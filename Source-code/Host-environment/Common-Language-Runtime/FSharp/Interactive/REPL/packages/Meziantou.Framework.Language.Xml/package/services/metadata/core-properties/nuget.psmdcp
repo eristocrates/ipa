@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>Immutable XML syntax tree with diagnostics, editing helpers, and XPath navigation.</dc:description>
   <dc:identifier>Meziantou.Framework.Language.Xml</dc:identifier>
-  <version>2.0.2</version>
+  <version>4.0.0</version>
   <keywords>xml, syntax-tree, cst, parser, xpath</keywords>
-  <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+  <lastModifiedBy>NuGet.Packaging, Version=7.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

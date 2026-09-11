@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Flurl.Http.Newtonsoft</id>
+    <version>0.9.1</version>
+    <authors>Todd Menier</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://flurl.dev/</projectUrl>
+    <description>A Newtonsoft-based JSON serializer for Flurl.Http 4.0 and above.</description>
+    <releaseNotes>https://github.com/tmenier/Flurl/releases</releaseNotes>
+    <copyright>Copyright (c) Todd Menier 2024.</copyright>
+    <tags>flurl http json</tags>
+    <repository type="git" url="https://github.com/tmenier/Flurl.git" commit="7ea321cdd2b45ebd5c31164316480e40543e0a71" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="Flurl.Http" version="4.0.1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="Flurl.Http" version="4.0.1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Flurl.Http" version="4.0.1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.6.1" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

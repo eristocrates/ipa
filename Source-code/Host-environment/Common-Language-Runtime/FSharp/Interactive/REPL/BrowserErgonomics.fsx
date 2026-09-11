@@ -29,6 +29,8 @@ open System.Net
 open WebDriverBiDi
 open WebDriverBiDi.Session
 open WebDriverBiDi.BrowsingContext
+open FolkerKinzel.MimeTypes
+
 
 
 /// https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
@@ -47,8 +49,8 @@ type kType =
     | auction_worklet
     | assistive_technology
     | browser_ui
-    member this.asString = this.ToString()
 
+    member this.asString = this.ToString()
     member this.asTargetType =
         match this with
         | kType.tab -> TargetType.Tab
@@ -67,16 +69,9 @@ type kType =
 
 type BiDiDriver with
     static member Connect() =
-
         let driver = BiDiDriver(TimeSpan.FromSeconds 30.)
-
-        task { return! driver.StartAsync("ws://127.0.0.1:9223/session") }
-        |> await
-
-        driver.Session.NewSessionAsync(NewCommandParameters())
-        |> await
-        |> ignore
-
+        task { return! driver.StartAsync("ws://127.0.0.1:9223/session") } |> await
+        driver.Session.NewSessionAsync(NewCommandParameters()) |> await |> ignore
         driver
 
     member this.BrowsingContextTree =
@@ -113,45 +108,29 @@ type CdpFrame with
 type CdpHttpRequest with
     member this.DomUrl = DomUrl this.Url
 
-    member this.headers =
-        this.Headers
-        |> Seq.map (fun kvp -> kvp.Key, kvp.Value)
-        |> Seq.toArray
+    member this.headers = this.Headers |> Seq.map (fun kvp -> kvp.Key, kvp.Value) |> Seq.toArray
 
     member this.header(targetHeader: string) =
         this.headers
-        |> Array.tryPick (fun (headerKey, headerValue) ->
-            if headerKey = targetHeader then
-                Some headerValue
-            else
-                None)
+        |> Array.tryPick (fun (headerKey, headerValue) -> if headerKey = targetHeader then Some headerValue else None)
 
-    member this.PostText =
-        if this.HasPostData then
-            Some this.PostData
-        else
-            None
+    member this.PostText = if this.HasPostData then Some this.PostData else None
 
 
 
 type CdpHttpResponse with
     member this.DomUrl = DomUrl this.Url
 
-    member this.headers =
-        this.Headers
-        |> Seq.map (fun kvp -> kvp.Key, kvp.Value)
-        |> Seq.toArray
+    member this.headers = this.Headers |> Seq.map (fun kvp -> kvp.Key, kvp.Value) |> Seq.toArray
 
     member this.Text() =
         try
             task { return! this.TextAsync() } |> await |> Some
-        with
-        | err ->
+        with err ->
             let headers =
                 this.headers
                 |> Array.map (fun (key, value) -> $"{key}:{value}")
                 |> String.concat "\n"
-
             printfn "request %s %s threw %s" this.Url headers err.Message
             None
 
@@ -166,94 +145,102 @@ let failedRequests = new ResizeArray<CdpHttpRequest>()
 
 
 
-
 let writeRequestResponse (response: CdpHttpResponse) (extensionOverride: string option) =
     match extensionOverride, response.TextAsync().await with
     | Some extension, text when not (String.IsNullOrWhiteSpace(text)) ->
-        let file =
-            Path.ChangeExtension(response.DomUrl.asFile.FullName, extension)
-            |> FileInfo
-
-        Directory.CreateDirectory file.DirectoryName
-        |> ignore
-
+        let file = Path.ChangeExtension(response.DomUrl.asFile.FullName, extension) |> FileInfo
+        Directory.CreateDirectory file.DirectoryName |> ignore
+        printfn "%s:\t\t %s ----> %s" response.DomUrl.Host response.DomUrl.AbsolutePathName file.Name
         File.WriteAllText(file.FullName, text)
     | None, text when not (String.IsNullOrWhiteSpace(text)) ->
-        Directory.CreateDirectory response.DomUrl.asFile.DirectoryName
-        |> ignore
-
+        Directory.CreateDirectory response.DomUrl.asFile.DirectoryName |> ignore
+        printfn "%s:\t\t %s ----> %s" response.DomUrl.Host response.DomUrl.AbsolutePathName response.DomUrl.asFile.Name
         File.WriteAllText(response.DomUrl.asFile.FullName, text)
     | _, _ -> ()
 
 let neogovPathStems =
-    set [ "employees"
-          "customWindowProperties"
-          "orgChartView"
-          "directManager"
-          "user-profile" ]
+    set [
+        "employees"
+        "customWindowProperties"
+        "orgChartView"
+        "directManager"
+        "user-profile"
+    ]
 
 let bannerXmlStems = set [ "menu" ]
 
 let bannerJsonStems =
-    set [ "fetchUsageTracking"
-          "getAccordionSectionData"
-          "getSettingsVisibilityInd"
-          "getPayStubSummary"
-          "getPayStubSummaryList" ]
+    set [
+        "fetchUsageTracking"
+        "getAccordionSectionData"
+        "getSettingsVisibilityInd"
+        "getPayStubSummary"
+        "getPayStubSummaryList"
+    ]
+/// https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types/Common_types
+
 
 let networkMailbox =
-    MailboxProcessor<CdpHttpRequest>.Start
-        (fun inbox ->
-            let rec loop () =
-                async {
-                    let! request = inbox.Receive()
-
-                    match request.Response.Status with
-                    | HttpStatusCode.OK ->
-
-
-                        finishedRequests.Add request
-
-                        match request.Response.DomUrl.Host,
-                              request.Response.DomUrl.pathStem,
-                              request.Response.DomUrl.extension
-                            with
-                        | "leoncountyfl.samanage.com", _, ".json" -> writeRequestResponse request.Response None
-                        | "leoncountyfl.samanage.com", _, ".jsonhtml" -> writeRequestResponse request.Response None
-                        | "leoncountyfl.samanage.com", _, ".xml" -> writeRequestResponse request.Response None
-                        | "unifiedweb-api.neogov.com", pathStem, _ when neogovPathStems.Contains(pathStem) ->
+    MailboxProcessor<CdpHttpRequest>.Start(fun inbox ->
+        let rec loop () =
+            async {
+                let! request = inbox.Receive()
+                match request.Response.Status with
+                | HttpStatusCode.OK ->
+                    finishedRequests.Add request
+                    let mimeMediaType =
+                        MimeType.TryParse(request.Response.Headers["content-type"])
+                        |> fun (wasParsed, mimeType) ->
+                            match wasParsed with
+                            | true -> mimeType.MediaType
+                            | false -> String.Empty
+                    let mimeSubType =
+                        MimeType.TryParse(request.Response.Headers["content-type"])
+                        |> fun (wasParsed, mimeType) ->
+                            match wasParsed with
+                            | true -> mimeType.SubType
+                            | false -> String.Empty
+                    match request.Response.DomUrl.Host, request.Response.DomUrl.pathStem, request.Response.DomUrl.extension, mimeMediaType, mimeSubType with
+                    | host, pathstem, extension, mediaType, subType -> ()
+                    (*
+                        | "leoncountyfl.samanage.com", _, ".json", _ -> writeRequestResponse request.Response None
+                        | "leoncountyfl.samanage.com", _, ".jsonhtml", _ -> writeRequestResponse request.Response None
+                        | "leoncountyfl.samanage.com", _, ".xml", _ -> writeRequestResponse request.Response None
+                        | "unifiedweb-api.neogov.com", pathStem, _, _ when neogovPathStems.Contains(pathStem) -> Some ".json" |> writeRequestResponse request.Response
+                        | "content.centene.com", _, ".json", _ -> writeRequestResponse request.Response None
+                        | "my.centene.com", _, ".json", _ -> writeRequestResponse request.Response None
+                        | "app.securiti.ai", "location", _, _ ->
                             Some ".json"
                             |> writeRequestResponse request.Response
-                        | "content.centene.com", _, ".json" -> writeRequestResponse request.Response None
-                        | "my.centene.com", _, ".json" -> writeRequestResponse request.Response None
-                        | "app.securiti.ai", "location", _ ->
+                        | "smetrics.sunshinehealth.com", "interact", _, _ ->
                             Some ".json"
                             |> writeRequestResponse request.Response
-                        | "smetrics.sunshinehealth.com", "interact", _ ->
+                        | "external-api.search.my.centene.com", "query", _, _ ->
                             Some ".json"
                             |> writeRequestResponse request.Response
-                        | "external-api.search.my.centene.com", "query", _ ->
+                        | "siteintercept.qualtrics.com", _, ".php", _ ->
                             Some ".json"
                             |> writeRequestResponse request.Response
-                        | "siteintercept.qualtrics.com", _, ".php" ->
-                            Some ".json"
-                            |> writeRequestResponse request.Response
-                        | "bannerprodssb.leoncountyfl.gov:8449", pathStem, _ when bannerXmlStems.Contains(pathStem) ->
+                        | "bannerprodssb.leoncountyfl.gov:8449", pathStem, _, _ when bannerXmlStems.Contains(pathStem) ->
                             Some ".xml"
                             |> writeRequestResponse request.Response
-                        | "bannerprodssb.leoncountyfl.gov:8449", pathStem, _ when bannerJsonStems.Contains(pathStem) ->
+                        | "bannerprodssb.leoncountyfl.gov:8449", pathStem, _, _ when bannerJsonStems.Contains(pathStem) ->
                             Some ".json"
                             |> writeRequestResponse request.Response
-
-
-
-                        | _ -> ()
-                    | _ -> failedRequests.Add request
-
-                    return! loop ()
-                }
-
-            loop ())
+                        | "bannerprodssb.leoncountyfl.gov:8449", _, "", "json" ->
+                            Some ".json"
+                            |> writeRequestResponse request.Response
+                        | "bannerprodssb.leoncountyfl.gov:8449", _, "", "xml" ->
+                            Some ".xml"
+                            |> writeRequestResponse request.Response
+                        | "bannerprodssb.leoncountyfl.gov:8449", _, extension, "json" when not (String.IsNullOrEmpty extension) -> writeRequestResponse request.Response None
+                        | "bannerprodssb.leoncountyfl.gov:8449", _, extension, "xml" when not (String.IsNullOrEmpty extension) -> writeRequestResponse request.Response None
+                        *)
+                    | host, pathstem, extension, mediaType, subType -> ()
+                | _ -> failedRequests.Add request
+                return! loop ()
+            }
+        loop ())
 
 let watchPageNetworkTraffic (page: CdpPage) =
     page.RequestFinished.Add(fun eventArguments -> networkMailbox.Post eventArguments.Request.asCdp)
@@ -262,9 +249,7 @@ let watchPageNetworkTraffic (page: CdpPage) =
 
 
 type CdpBrowser with
-    member this.targets =
-        this.Targets()
-        |> Array.map (fun itarget -> itarget :?> CdpTarget)
+    member this.targets = this.Targets() |> Array.map (fun itarget -> itarget :?> CdpTarget)
 
     member this.otherDevToolsTargets =
         this.targets
@@ -327,9 +312,7 @@ type CdpBrowser with
 
 
     member this.tabs =
-        let pages =
-            this.pageTargets
-            |> Array.map (fun target -> target.AsPageAsync().await.asCdp)
+        let pages = this.pageTargets |> Array.map (fun target -> target.AsPageAsync().await.asCdp)
 
         pages |> Array.iter watchPageNetworkTraffic
         pages
@@ -343,9 +326,7 @@ module CdpBrowser =
         options.BrowserURL <- "http://127.0.0.1:9222"
         options.DefaultViewport <- null
 
-        let ibrowser =
-            task { return! Puppeteer.ConnectAsync(options) }
-            |> await
+        let ibrowser = task { return! Puppeteer.ConnectAsync(options) } |> await
 
         ibrowser :?> CdpBrowser
 
@@ -361,7 +342,6 @@ module CdpBrowser =
         let backTab = browser.NewPageAsync(backgroundOption).await.asCdp
         let response = backTab.GoToAsync(url.Href).await
 
-        url
-        |> DomUrl.WriteFileExtensionText (response.TextAsync().await) extension
+        url |> DomUrl.WriteFileExtensionText (response.TextAsync().await) extension
 
         backTab.CloseAsync() |> ignore

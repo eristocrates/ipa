@@ -1,0 +1,2666 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GraphQL.Server.Transports.AspNetCore</name>
+    </assembly>
+    <members>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.AuthorizationHelper">
+            <summary>
+            Helper methods for performing connection authorization.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationHelper.AuthorizeAsync``1(GraphQL.Server.Transports.AspNetCore.AuthorizationParameters{``0},``0)">
+            <summary>
+            Performs connection authorization according to the options set within
+            <see cref="T:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1"/>.  Returns <see langword="true"/>
+            if authorization was successful or not required.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1">
+            <summary>
+            Authorization parameters.
+            This struct is used to group all necessary parameters together and perform arbitrary
+            actions based on provided authentication properties/attributes/etc.
+            It is not intended to be called from user code.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.#ctor(Microsoft.AspNetCore.Http.HttpContext,GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions,System.Func{`0,System.Threading.Tasks.Task},System.Func{`0,System.Threading.Tasks.Task},System.Func{`0,Microsoft.AspNetCore.Authorization.AuthorizationResult,System.Threading.Tasks.Task})">
+            <summary>
+            Initializes an instance with a specified <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>
+            and parameters copied from the specified instance of <see cref="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.HttpContext">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/> for the request.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.AuthorizationRequired">
+            <inheritdoc cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizationRequired"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.AuthorizedRoles">
+            <inheritdoc cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizedRoles"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.AuthorizedPolicy">
+            <inheritdoc cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizedPolicy"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.OnNotAuthenticated">
+            <summary>
+            A delegate which executes if <see cref="P:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.AuthorizationRequired"/> is set
+            but <see cref="P:System.Security.Principal.IIdentity.IsAuthenticated"/> returns <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.OnNotAuthorizedRole">
+            <summary>
+            A delegate which executes if <see cref="P:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.AuthorizedRoles"/> is set but
+            <see cref="M:System.Security.Claims.ClaimsPrincipal.IsInRole(System.String)"/> returns <see langword="false"/>
+            for all roles.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.OnNotAuthorizedPolicy">
+            <summary>
+            A delegate which executes if <see cref="P:GraphQL.Server.Transports.AspNetCore.AuthorizationParameters`1.AuthorizedPolicy"/> is set but
+            <see cref="M:Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync(System.Security.Claims.ClaimsPrincipal,System.Object,System.String)"/>
+            returns an unsuccessful <see cref="T:Microsoft.AspNetCore.Authorization.AuthorizationResult"/> for the specified policy.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.AuthorizationValidationRule">
+            <summary>
+            Validates a document against the configured set of policy and role requirements.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationValidationRule.GetPreNodeVisitorAsync(GraphQL.Validation.ValidationContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitor">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitor.#ctor(GraphQL.Validation.ValidationContext,System.Security.Claims.ClaimsPrincipal,Microsoft.AspNetCore.Authorization.IAuthorizationService)">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitor"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitor.ClaimsPrincipal">
+            <summary>
+            Gets the user that this authorization visitor will authenticate against.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitor.AuthorizationService">
+            <summary>
+            Gets the authorization service that is used to authorize policy requests.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitor.IsAuthenticated">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitor.IsInRole(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitor.AuthorizeAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.AuthorizationValidationRule"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.#ctor(GraphQL.Validation.ValidationContext)">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.EnterAsync(GraphQLParser.AST.ASTNode,GraphQL.Validation.ValidationContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.LeaveAsync(GraphQLParser.AST.ASTNode,GraphQL.Validation.ValidationContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.RecursiveResolveAsync(System.String,GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TypeInfo,GraphQL.Validation.ValidationContext)">
+            <summary>
+            Runs when a fragment is added or updated; the fragment might not be waiting on any
+            other fragments, or it still might be.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TypeInfo">
+            <summary>
+            Stores information about the current graph type being examined
+            to know if all selected fields have been marked with
+            <see cref="M:GraphQL.AuthorizationExtensions.AllowAnonymous``1(``0)">AllowAnonymous</see>,
+            in which case authentication checks are skipped for the current graph type.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TypeInfo.AnyAuthenticated">
+            <summary>
+            Indicates if any fields have been selected for the graph type which require authentication.
+            This includes any fields which are not marked with
+            <see cref="M:GraphQL.AuthorizationExtensions.AllowAnonymous``1(``0)">AllowAnonymous</see>.
+            Does not include introspection fields.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TypeInfo.AnyAnonymous">
+            <summary>
+            Indicates if any fields have been selected for the graph type which are marked with
+            <see cref="M:GraphQL.AuthorizationExtensions.AllowAnonymous``1(``0)">AllowAnonymous</see>.
+            Does not include introspection fields.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TypeInfo.WaitingOnFragments">
+            <summary>
+            A list of fragments referenced in the selection set which have not yet been encountered while
+            walking the document nodes.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TodoInfo">
+            <summary>
+            Stores information about a graph type containing fragment(s) which have not yet
+            been encountered while walking the document nodes.
+            <br/><br/>
+            Once the fragments have all been encountered, authentication checks occur if necessary for the
+            graph type -- specifically, if any authenticated fields were selected, or if no anonymous fields
+            were selected.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TodoInfo.ValidationInfo">
+            <inheritdoc cref="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TodoInfo.ValidationInfo"/>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TodoInfo.AnyAuthenticated">
+            <inheritdoc cref="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TypeInfo.AnyAuthenticated"/>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TodoInfo.AnyAnonymous">
+            <inheritdoc cref="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TypeInfo.AnyAnonymous"/>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TodoInfo.WaitingOnFragments">
+            <inheritdoc cref="F:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.TypeInfo.WaitingOnFragments"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidateSchemaAsync(GraphQL.Validation.ValidationContext)">
+            <summary>
+            Validates authorization rules for the schema.
+            Returns a value indicating if validation was successful.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidateAsync(GraphQL.Types.IMetadataReader,GraphQLParser.AST.ASTNode,GraphQL.Validation.ValidationContext)">
+            <summary>
+            Validate a node that is current within the context.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.BuildValidationInfo(GraphQLParser.AST.ASTNode,GraphQL.Types.IMetadataReader,GraphQL.Validation.ValidationContext)">
+            <summary>
+            Initializes a new <see cref="T:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo"/> instance for the specified node.
+            </summary>
+            <param name="node">The specified <see cref="T:GraphQLParser.AST.ASTNode"/>.</param>
+            <param name="obj">The <see cref="T:GraphQL.Types.IGraphType"/>, <see cref="T:GraphQL.Types.IFieldType"/> or <see cref="T:GraphQL.Types.QueryArgument"/> which has been matched to the node specified in <paramref name="node"/>.</param>
+            <param name="context">The validation context.</param>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo">
+            <summary>Provides contextual information to the schema, graph, field, or query argument being validated.</summary>
+            <param name="Obj">The schema, graph type, field type, or query argument being validated. May be an interface type if fragments are in use.</param>
+            <param name="Node">Null for a schema validation; otherwise the <see cref="T:GraphQLParser.AST.GraphQLOperationDefinition"/>, <see cref="T:GraphQLParser.AST.GraphQLField"/>, or <see cref="T:GraphQLParser.AST.GraphQLArgument"/> being validated.</param>
+            <param name="Context">The validation context; but <see cref="P:GraphQL.Validation.ValidationContext.TypeInfo"/> may not be applicable for node being validated.</param>
+            <param name="ParentFieldType">For graph types other than operations, the field where this type was referenced; for query arguments, the field to which this argument belongs.</param>
+            <param name="ParentGraphType">For graph types, the graph type for the field where this type was referenced; for field types, the graph type to which this field belongs; for query arguments, the graph type for the field to which this argument belongs.</param>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo.#ctor(GraphQL.Types.IMetadataReader,GraphQLParser.AST.ASTNode,GraphQL.Types.IFieldType,GraphQL.Types.IGraphType,GraphQL.Validation.ValidationContext)">
+            <summary>Provides contextual information to the schema, graph, field, or query argument being validated.</summary>
+            <param name="Obj">The schema, graph type, field type, or query argument being validated. May be an interface type if fragments are in use.</param>
+            <param name="Node">Null for a schema validation; otherwise the <see cref="T:GraphQLParser.AST.GraphQLOperationDefinition"/>, <see cref="T:GraphQLParser.AST.GraphQLField"/>, or <see cref="T:GraphQLParser.AST.GraphQLArgument"/> being validated.</param>
+            <param name="Context">The validation context; but <see cref="P:GraphQL.Validation.ValidationContext.TypeInfo"/> may not be applicable for node being validated.</param>
+            <param name="ParentFieldType">For graph types other than operations, the field where this type was referenced; for query arguments, the field to which this argument belongs.</param>
+            <param name="ParentGraphType">For graph types, the graph type for the field where this type was referenced; for field types, the graph type to which this field belongs; for query arguments, the graph type for the field to which this argument belongs.</param>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo.Obj">
+            <summary>The schema, graph type, field type, or query argument being validated. May be an interface type if fragments are in use.</summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo.Node">
+            <summary>Null for a schema validation; otherwise the <see cref="T:GraphQLParser.AST.GraphQLOperationDefinition"/>, <see cref="T:GraphQLParser.AST.GraphQLField"/>, or <see cref="T:GraphQLParser.AST.GraphQLArgument"/> being validated.</summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo.ParentFieldType">
+            <summary>For graph types other than operations, the field where this type was referenced; for query arguments, the field to which this argument belongs.</summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo.ParentGraphType">
+            <summary>For graph types, the graph type for the field where this type was referenced; for field types, the graph type to which this field belongs; for query arguments, the graph type for the field to which this argument belongs.</summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo.Context">
+            <summary>The validation context; but <see cref="P:GraphQL.Validation.ValidationContext.TypeInfo"/> may not be applicable for node being validated.</summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidateAsync(GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo)">
+            <summary>
+            Validates authorization rules for the specified schema, graph, field or query argument.
+            Does not consider <see cref="M:GraphQL.AuthorizationExtensions.IsAnonymousAllowed(GraphQL.Types.IMetadataReader)"/>
+            as this is handled elsewhere.
+            Returns a value indicating if validation was successful for this node.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.IsAuthenticated">
+            <inheritdoc cref="P:System.Security.Principal.IIdentity.IsAuthenticated"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.IsInRole(System.String)">
+            <inheritdoc cref="M:System.Security.Claims.ClaimsPrincipal.IsInRole(System.String)"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.AuthorizeAsync(System.String)">
+            <inheritdoc cref="M:Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync(System.Security.Claims.ClaimsPrincipal,System.Object,System.String)"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.HandleNodeNotAuthorized(GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo)">
+            <summary>
+            Adds a error to the validation context indicating that the user is not authenticated
+            as required by this graph, field or query argument.
+            </summary>
+            <param name="info">Information about the node being validated.</param>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.HandleNodeNotInRoles(GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo,System.Collections.Generic.List{System.String})">
+            <summary>
+            Adds a error to the validation context indicating that the user is not a member of any of
+            the roles required by this graph, field or query argument.
+            </summary>
+            <param name="info">Information about the node being validated.</param>
+            <param name="roles">The list of roles of which the user must be a member.</param>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.HandleNodeNotInPolicy(GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo,System.String,Microsoft.AspNetCore.Authorization.AuthorizationResult)">
+            <summary>
+            Adds a error to the validation context indicating that the user does not meet the
+            authorization policy required by this graph, field or query argument.
+            </summary>
+            <param name="info">Information about the node being validated.</param>
+            <param name="policy">The policy which these nodes are being authenticated against.</param>
+            <param name="authorizationResult">The result of the authentication request.</param>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.GenerateResourceDescription(GraphQL.Server.Transports.AspNetCore.AuthorizationVisitorBase.ValidationInfo)">
+            <summary>
+            Generates a friendly name for a specified graph, field or query argument.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.IHostApplicationLifetime">
+            <summary>
+            Provides a signal when the application is shutting down.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.IHostApplicationLifetime.ApplicationStopping">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.IHostApplicationLifetime"/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.HostApplicationLifetime">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.IHostApplicationLifetime"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.HostApplicationLifetime.ApplicationStopping">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.HostApplicationLifetime.StartAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.HostApplicationLifetime.StopAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.AccessDeniedError">
+            <summary>
+            Represents an error indicating that the user is not allowed access to the specified resource.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.AccessDeniedError.#ctor(System.String)">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.AccessDeniedError"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.AccessDeniedError.#ctor(System.String,GraphQLParser.ROM,GraphQLParser.AST.ASTNode[])">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.AccessDeniedError"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.Errors.AccessDeniedError.PolicyRequired">
+            <summary>
+            Returns the policy that would allow access to these node(s).
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.Errors.AccessDeniedError.PolicyAuthorizationResult">
+            <inheritdoc cref="T:Microsoft.AspNetCore.Authorization.AuthorizationResult"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.Errors.AccessDeniedError.RolesRequired">
+            <summary>
+            Returns the list of role memberships that would allow access to these node(s).
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.Errors.AccessDeniedError.PreferredStatusCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.BatchedRequestsNotSupportedError">
+            <summary>
+            Represents an error indicating that batched requests are not supported.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.BatchedRequestsNotSupportedError.#ctor">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.BatchedRequestsNotSupportedError"/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.CsrfProtectionError">
+            <summary>
+            Represents an error indicating that the request may not have triggered a CORS preflight request.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.CsrfProtectionError.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.CsrfProtectionError"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.CsrfProtectionError.#ctor(System.Collections.Generic.IEnumerable{System.String},System.Exception)">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.CsrfProtectionError"/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.FileCountExceededError">
+            <summary>
+            Represents an error when too many files are uploaded in a GraphQL request.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.FileCountExceededError.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GraphQL.Server.Transports.AspNetCore.Errors.FileCountExceededError"/> class.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.Errors.FileCountExceededError.PreferredStatusCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.FileSizeExceededError">
+            <summary>
+            Represents an error when a file exceeds the allowed size limit in a GraphQL upload.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.FileSizeExceededError.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GraphQL.Server.Transports.AspNetCore.Errors.FileSizeExceededError"/> class.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.Errors.FileSizeExceededError.PreferredStatusCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.HttpMethodValidationError">
+            <summary>
+            Represents a validation error indicating that the requested operation is not valid
+            for the type of HTTP request.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.HttpMethodValidationError.#ctor(GraphQLParser.ROM,GraphQLParser.AST.ASTNode,System.String)">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.HttpMethodValidationError"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.Errors.HttpMethodValidationError.PreferredStatusCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.IHasPreferredStatusCode">
+            <summary>
+            Defines an interface for errors that have a preferred HTTP status code.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.Errors.IHasPreferredStatusCode.PreferredStatusCode">
+            <summary>
+            Returns the preferred HTTP status code for this error.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.InvalidContentTypeError">
+            <summary>
+            Represents an error indicating that the content-type is invalid, for example, could not be parsed or is not supported.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.InvalidContentTypeError.#ctor">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.InvalidContentTypeError"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.InvalidContentTypeError.#ctor(System.String)">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.InvalidContentTypeError"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.Errors.InvalidContentTypeError.PreferredStatusCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.InvalidMapError">
+            <summary>
+            Represents an error when an invalid map path is provided in a GraphQL file upload request.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.InvalidMapError.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GraphQL.Server.Transports.AspNetCore.Errors.InvalidMapError"/> class.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.JsonInvalidError">
+            <summary>
+            Represents an error indicating that the JSON provided could not be parsed.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.JsonInvalidError.#ctor">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.JsonInvalidError"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.JsonInvalidError.#ctor(System.Exception)">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.JsonInvalidError"/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.Errors.WebSocketSubProtocolNotSupportedError">
+            <summary>
+            Represents an error indicating that none of the requested websocket sub-protocols are supported.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.Errors.WebSocketSubProtocolNotSupportedError.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.Errors.WebSocketSubProtocolNotSupportedError"/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.ExecutionResultActionResult">
+            <summary>
+            An action result that formats the <see cref="T:GraphQL.ExecutionResult"/> as JSON.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.ExecutionResultActionResult.#ctor(GraphQL.ExecutionResult)">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.ExecutionResultActionResult"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.ExecutionResultActionResult.#ctor(GraphQL.ExecutionResult,System.Net.HttpStatusCode)">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.ExecutionResultActionResult"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.ExecutionResultActionResult.ContentType">
+            <inheritdoc cref="P:Microsoft.AspNetCore.Http.HttpResponse.ContentType"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.ExecutionResultActionResult.ExecuteResultAsync(Microsoft.AspNetCore.Mvc.ActionContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.TaskExtensions.WaitAsync``1(System.Threading.Tasks.Task{``0},System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Gets a <see cref="T:System.Threading.Tasks.Task`1"/> that will complete when this <see cref="T:System.Threading.Tasks.Task`1"/> completes,
+            when the specified timeout expires, or when the specified <see cref="T:System.Threading.CancellationToken"/> has cancellation requested.
+            </summary>
+            <exception cref="T:System.OperationCanceledException"></exception>
+            <exception cref="T:System.TimeoutException"></exception>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.FormFileGraphType">
+            <summary>
+            Represents a GraphQL scalar type named 'FormFile' for handling file uploads
+            sent via multipart/form-data GraphQL requests.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.FormFileGraphType.CanParseLiteral(GraphQLParser.AST.GraphQLValue)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.FormFileGraphType.ParseLiteral(GraphQLParser.AST.GraphQLValue)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.FormFileGraphType.CanParseValue(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.FormFileGraphType.ParseValue(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.FormFileGraphType.Serialize(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.FormFileGraphType.IsValidDefault(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.FormFileGraphType.ToAST(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.GraphQLExecutionActionResult`1">
+            <summary>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> that executes a GraphQL request for the specified schema.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLExecutionActionResult`1.#ctor(System.Action{GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions})">
+            <summary>
+            Initializes a new instance with an optional middleware configuration delegate.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLExecutionActionResult`1.#ctor(GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions)">
+            <summary>
+            Initializes a new instance with the specified middleware options.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLExecutionActionResult`1.ExecuteResultAsync(Microsoft.AspNetCore.Mvc.ActionContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.GraphQLExecutionActionResult">
+            <summary>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> that executes a GraphQL request for the default schema.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLExecutionActionResult.#ctor(System.Action{GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions})">
+            <inheritdoc cref="M:GraphQL.Server.Transports.AspNetCore.GraphQLExecutionActionResult`1.#ctor(System.Action{GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions})"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLExecutionActionResult.#ctor(GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions)">
+            <inheritdoc cref="M:GraphQL.Server.Transports.AspNetCore.GraphQLExecutionActionResult`1.#ctor(GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions)"/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware`1">
+            <inheritdoc/>
+            <typeparam name="TSchema">
+            Type of GraphQL schema that is used to validate and process requests.
+            This may be a typed schema as well as <see cref="T:GraphQL.Types.ISchema"/>.  In both cases registered schemas will be pulled from
+            the dependency injection framework.  Note that when specifying <see cref="T:GraphQL.Types.ISchema"/> the first schema registered via
+            <see cref="M:GraphQL.GraphQLBuilderExtensions.AddSchema``1(GraphQL.DI.IGraphQLBuilder,GraphQL.DI.ServiceLifetime)">AddSchema</see>
+            will be pulled (the "default" schema).
+            </typeparam>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware`1.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,GraphQL.IGraphQLTextSerializer,GraphQL.IDocumentExecuter{`0},Microsoft.Extensions.DependencyInjection.IServiceScopeFactory,GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions,GraphQL.Server.Transports.AspNetCore.IHostApplicationLifetime)">
+            <summary>
+            Initializes a new instance.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware`1.BuildUserContextAsync(Microsoft.AspNetCore.Http.HttpContext,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware">
+            <summary>
+            ASP.NET Core middleware for processing GraphQL requests. Handles both single and batch requests,
+            as well as WebSocket requests.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,GraphQL.IGraphQLTextSerializer,GraphQL.IDocumentExecuter,Microsoft.Extensions.DependencyInjection.IServiceScopeFactory,GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions,GraphQL.Server.Transports.AspNetCore.IHostApplicationLifetime)">
+            <summary>
+            Initializes a new instance.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <inheritdoc cref="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)" />
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <inheritdoc cref="M:Microsoft.AspNetCore.Http.IMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)" />
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.ReadPostContentAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate,System.String,System.Text.Encoding)">
+            <summary>
+            Parses a request into a single or batch <see cref="T:GraphQL.Transport.GraphQLRequest"/> instance.
+            <br/><br/>
+            In case of an error, this method will handle the request (e.g. by calling
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.WriteErrorResponseAsync(Microsoft.AspNetCore.Http.HttpContext,System.Net.HttpStatusCode,GraphQL.ExecutionError)">WriteErrorResponseAsync</see>)
+            and return <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.ReadFormContent(Microsoft.AspNetCore.Http.IFormCollection)">
+            <summary>
+            This method looks for an 'operations' key with a JSON value representing the GraphQL request(s)
+            and a 'map' key with a JSON object value mapping file keys to variables in the request(s).
+            See: <see href="https://github.com/jaydenseric/graphql-multipart-request-spec"/>.
+            <para>
+            If no 'operations' key exists, then falls back to looking for 'query', 'operationName', 'variables' and 'extensions' keys.
+            </para>
+            </summary>
+            <remarks>
+            Note that 'operations' and 'map' keys are searched for even with application/x-www-form-urlencoded requests, but
+            this should not be a problem.  Also, JSON deserialization may throw an exception by the JSON serialization engine in use.
+            </remarks>
+            <exception cref="T:GraphQL.Server.Transports.AspNetCore.Errors.FileCountExceededError"></exception>
+            <exception cref="T:GraphQL.Server.Transports.AspNetCore.Errors.FileSizeExceededError"></exception>
+            <exception cref="T:GraphQL.Server.Transports.AspNetCore.Errors.InvalidMapError"></exception>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleCsrfProtectionAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Performs CSRF protection, if required, and returns <see langword="true"/> if the
+            request was handled (typically by returning an error message).  If <see langword="false"/>
+            is returned, the request is processed normally.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleAuthorizeAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Perform authentication, if required, and returns <see langword="true"/> if the
+            request was handled (typically by returning an error message).  If <see langword="false"/>
+            is returned, the request is processed normally.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.SetHttpContextUserAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            If any authentication schemes are defined, set the <see cref="P:Microsoft.AspNetCore.Http.HttpContext.User"/> property.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleAuthorizeWebSocketConnectionAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Perform authorization, if required, and return <see langword="true"/> if the
+            request was handled (typically by returning an error message).  If <see langword="false"/>
+            is returned, the request is processed normally.
+            <br/><br/>
+            By default this does not check authorization rules because authentication may take place within
+            the WebSocket connection during the ConnectionInit message.  Authorization checks for
+            WebSocket connections occur then, after authorization has taken place.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleRequestAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate,GraphQL.Transport.GraphQLRequest)">
+            <summary>
+            Handles a single GraphQL request.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleBatchRequestAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate,System.Collections.Generic.IList{GraphQL.Transport.GraphQLRequest})">
+            <summary>
+            Handles a batched GraphQL request.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.ExecuteScopedRequestAsync(Microsoft.AspNetCore.Http.HttpContext,GraphQL.Transport.GraphQLRequest,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a GraphQL request with a scoped service provider.
+            <br/><br/>
+            Typically this method should create a service scope and call
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.ExecuteRequestAsync(Microsoft.AspNetCore.Http.HttpContext,GraphQL.Transport.GraphQLRequest,System.IServiceProvider,System.Collections.Generic.IDictionary{System.String,System.Object})">ExecuteRequestAsync</see>,
+            disposing of the scope when the asynchronous operation completes.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.ExecuteRequestAsync(Microsoft.AspNetCore.Http.HttpContext,GraphQL.Transport.GraphQLRequest,System.IServiceProvider,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a GraphQL request.
+            <br/><br/>
+            It is suggested to use the <see cref="T:GraphQL.Server.Transports.AspNetCore.HttpGetValidationRule"/> and
+            <see cref="T:GraphQL.Server.Transports.AspNetCore.HttpPostValidationRule"/> to ensure that only query operations
+            are executed for GET requests, and query or mutation operations for
+            POST requests.
+            This should be set in both <see cref="P:GraphQL.ExecutionOptions.ValidationRules"/> and
+            <see cref="P:GraphQL.ExecutionOptions.CachedDocumentValidationRules"/>, as shown below:
+            <code>
+            var rule = isGet ? new HttpGetValidationRule() : new HttpPostValidationRule();
+            options.ValidationRules = DocumentValidator.CoreRules.Append(rule);
+            options.CachedDocumentValidationRules = new[] { rule };
+            </code>
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.BuildUserContextAsync(Microsoft.AspNetCore.Http.HttpContext,System.Object)">
+            <summary>
+            Builds the user context based on a <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>.
+            <br/><br/>
+            Note that for batch or WebSocket requests, the user context is created once
+            and re-used for each GraphQL request or data event that applies to the same
+            <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>.
+            <br/><br/>
+            To tailor the user context individually for each request, call
+            <see cref="M:GraphQL.GraphQLBuilderExtensions.ConfigureExecutionOptions(GraphQL.DI.IGraphQLBuilder,System.Action{GraphQL.ExecutionOptions})"/>
+            to set or modify the user context, pulling the HTTP context from
+            <see cref="T:Microsoft.AspNetCore.Http.IHttpContextAccessor"/> via <see cref="P:GraphQL.ExecutionOptions.RequestServices"/>
+            if needed.
+            <br/><br/>
+            By default this method pulls the registered <see cref="T:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder`1"/>
+            or <see cref="T:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder"/> instance, if any, within the service scope
+            and executes it to build the user context.
+            In this manner, both scoped and singleton <see cref="T:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder"/>
+            instances are supported, although singleton instances are recommended.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.SelectResponseContentType(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Selects a response content type string based on the <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>.
+            The default implementation attempts to match the content-type requested by the
+            client through the 'Accept' HTTP header to the default content type specified
+            within <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.DefaultResponseContentType"/>.
+            If matched, the specified content-type is returned; if not, supported
+            content-types are tested ("application/json", "application/graphql+json", and
+            "application/graphql-response+json") to see if they match the 'Accept' header.
+            <br/><br/>
+            Note that by default, the response will be written as UTF-8 encoded JSON, regardless
+            of the content-type value here, and this method's default implementation assumes as much.
+            For more complex behavior patterns, override
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.WriteJsonResponseAsync``1(Microsoft.AspNetCore.Http.HttpContext,System.Net.HttpStatusCode,``0)"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.IsSupportedMediaType(Microsoft.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Checks to see if the specified <see cref="T:Microsoft.Net.Http.Headers.MediaTypeHeaderValue"/> matches any of the supported content types
+            by this middleware.  If a match is found, the matching content type is returned; otherwise, <see langword="null"/>.
+            Prioritizes <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.DefaultResponseContentType"/>, then
+            <c>application/graphql-response+json</c>, then <c>application/json</c>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.IsSupportedMediaType(Microsoft.Net.Http.Headers.MediaTypeHeaderValue,Microsoft.Net.Http.Headers.MediaTypeHeaderValue,Microsoft.Net.Http.Headers.MediaTypeHeaderValue[])">
+            <summary>
+            Checks to see if the specified <see cref="T:Microsoft.Net.Http.Headers.MediaTypeHeaderValue"/> matches any of the supported content types
+            by this middleware.  If a match is found, the matching content type is returned; otherwise, <see langword="null"/>.
+            Prioritizes <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.DefaultResponseContentType"/>, then
+            <c>application/graphql-response+json</c>, then <c>application/json</c>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.WriteJsonResponseAsync(Microsoft.AspNetCore.Http.HttpContext,GraphQL.ExecutionResult)">
+            <summary>
+            Writes the specified <see cref="T:GraphQL.ExecutionResult"/> as JSON to the HTTP response stream,
+            selecting the proper content type and status code based on the request Accept header and response.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.WriteJsonResponseAsync``1(Microsoft.AspNetCore.Http.HttpContext,System.Net.HttpStatusCode,``0)">
+            <summary>
+            Writes the specified object (usually a GraphQL response represented as an instance of <see cref="T:GraphQL.ExecutionResult"/>)
+            as JSON to the HTTP response stream, using the specified status code.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.SupportedWebSocketSubProtocols">
+            <summary>
+            Gets a list of WebSocket sub-protocols supported.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.CreateWebSocketConnection(Microsoft.AspNetCore.Http.HttpContext,System.Net.WebSockets.WebSocket,System.Threading.CancellationToken)">
+            <summary>
+            Creates an <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection"/>, a WebSocket message pump.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.CreateMessageProcessor(GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection,System.String)">
+            <summary>
+            Builds an <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor"/> for the specified sub-protocol.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleWebSocketAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Handles a WebSocket connection request.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleNotAuthenticatedAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Writes an access denied message to the output with status code <c>401 Unauthorized</c> when the user is not authenticated.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleNotAuthorizedRoleAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Writes an access denied message to the output with status code <c>403 Forbidden</c> when the user fails the role checks.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleNotAuthorizedPolicyAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Authorization.AuthorizationResult)">
+            <summary>
+            Writes an access denied message to the output with status code <c>403 Forbidden</c> when the user fails the policy check.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleDeserializationErrorAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate,System.Exception)">
+            <summary>
+            Writes a '400 JSON body text could not be parsed.' message to the output.
+            Return <see langword="false"/> to rethrow the exception or <see langword="true"/>
+            if it has been handled.  By default returns <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleCsrfProtectionErrorAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Writes a '.' message to the output.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleBatchedRequestsNotSupportedAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Writes a '400 Batched requests are not supported.' message to the output.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleWebSocketSubProtocolNotSupportedAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Writes a '400 Invalid requested WebSocket sub-protocol(s).' message to the output.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleContentTypeCouldNotBeParsedErrorAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Writes a '415 Invalid Content-Type header: could not be parsed.' message to the output.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleInvalidContentTypeErrorAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Writes a '415 Invalid Content-Type header: non-supported media type.' message to the output.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.HandleInvalidHttpMethodErrorAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Indicates that an unsupported HTTP method was requested.
+            Executes the next delegate in the chain by default.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.WriteErrorResponseAsync(Microsoft.AspNetCore.Http.HttpContext,GraphQL.ExecutionError)">
+            <summary>
+            Writes the specified error as a JSON-formatted GraphQL response.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.WriteErrorResponseAsync(Microsoft.AspNetCore.Http.HttpContext,System.Net.HttpStatusCode,System.String)">
+            <summary>
+            Writes the specified error message as a JSON-formatted GraphQL response, with the specified HTTP status code.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.WriteErrorResponseAsync(Microsoft.AspNetCore.Http.HttpContext,System.Net.HttpStatusCode,GraphQL.ExecutionError)">
+            <summary>
+            Writes the specified error as a JSON-formatted GraphQL response, with the specified HTTP status code.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.DeserializeFromGraphBodyAsync(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Reads body of content type: application/graphql
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions">
+            <summary>
+            Configuration options for <see cref="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.HandleGet">
+            <summary>
+            Enables handling of GET requests.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.HandlePost">
+            <summary>
+            Enables handling of POST requests, including form submissions, JSON-formatted requests and raw query requests.
+            <para>Supported media types are:</para>
+            <list type="bullet">
+            <item>application/x-www-form-urlencoded</item>
+            <item>multipart/form-data</item>
+            <item>application/json</item>
+            <item>application/graphql</item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.HandleWebSockets">
+            <summary>
+            Enables handling of WebSockets requests.
+            <br/><br/>
+            Requires calling <see cref="M:Microsoft.AspNetCore.Builder.WebSocketMiddlewareExtensions.UseWebSockets(Microsoft.AspNetCore.Builder.IApplicationBuilder)"/>
+            to initialize the WebSocket pipeline within the ASP.NET Core framework.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.EnableBatchedRequests">
+            <summary>
+            Enables handling of batched GraphQL requests for POST requests when formatted as JSON.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.ExecuteBatchedRequestsInParallel">
+            <summary>
+            Enables parallel execution of batched GraphQL requests.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.ValidationErrorsReturnBadRequest">
+            <summary>
+            When enabled, GraphQL requests with validation errors have the HTTP status code
+            set to 400 Bad Request or the error status code dictated by the error, while
+            setting this to <c>false</c> will use a 200 status code for all responses.
+            <br/><br/>
+            GraphQL requests with execution errors are unaffected and return a 200 status code.
+            <br/><br/>
+            Transport errors, such as a transport-level authentication failure, are not affected
+            and return a error-specific status code, such as 405 Method Not Allowed if a mutation
+            is attempted over a HTTP GET connection.
+            <br/><br/>
+            Does not apply to batched or WebSocket requests.
+            <br/><br/>
+            Settings this to <see langword="null"/> will use a 200 status code for
+            <c>application/json</c> responses and use a 4xx status code for
+            <c>application/graphql-response+json</c> and other responses.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.ReadQueryStringOnPost">
+            <summary>
+            Enables parsing the query string on POST requests.
+            If enabled, the query string properties override those in the body of the request.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.ReadFormOnPost">
+            <summary>
+            Enables parsing POST requests with the form content types such as <c>multipart-form/data</c>.
+            </summary>
+            <remarks>
+            There is a potential security vulnerability when employing cookie authentication
+            with the <c>multipart-form/data</c> content type because sending cookies
+            alongside the request does not initiate a pre-flight CORS request.
+            As a result, GraphQL.NET carries out the request and potentially modifies data,
+            even if the CORS policy forbids it, irrespective of the sender's ability to access
+            the response.  With <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.CsrfProtectionEnabled"/> enabled, these requests
+            are blocked the request contains a non-empty header from the
+            <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.CsrfProtectionHeaders"/> list, providing a measure of protection.
+            </remarks>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.CsrfProtectionEnabled">
+            <summary>
+            Enables cross-site request forgery (CSRF) protection for both GET and POST requests.
+            Requires a non-empty header from the <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.CsrfProtectionHeaders"/> list to be
+            present, or a POST request with a Content-Type header that is not <c>text/plain</c>,
+            <c>application/x-www-form-urlencoded</c>, or <c>multipart/form-data</c>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.CsrfProtectionHeaders">
+            <summary>
+            When <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.CsrfProtectionEnabled"/> is enabled, requests require a non-empty
+            header from this list or a POST request with a Content-Type header that is not
+            <c>text/plain</c>, <c>application/x-www-form-urlencoded</c>, or <c>multipart/form-data</c>.
+            Defaults to <c>GraphQL-Require-Preflight</c>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.ReadVariablesFromQueryString">
+            <summary>
+            Enables reading variables from the query string.
+            Variables are interpreted as JSON and deserialized before being
+            provided to the <see cref="T:GraphQL.IDocumentExecuter"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.ReadExtensionsFromQueryString">
+            <summary>
+            Enables reading extensions from the query string.
+            Extensions are interpreted as JSON and deserialized before being
+            provided to the <see cref="T:GraphQL.IDocumentExecuter"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthenticationSchemes">
+            <summary>
+            Gets or sets a list of the authentication schemes the authentication requirements are evaluated against.
+            When no schemes are specified, the default authentication scheme is used.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizationRequired">
+            <inheritdoc/>
+            <remarks>
+            HTTP requests return <c>401 Forbidden</c> when the request is not authenticated.
+            </remarks>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizedRoles">
+            <inheritdoc cref="P:GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions.AuthorizedRoles"/>
+            <remarks>
+            HTTP requests return <c>403 Forbidden</c> when the user fails the role check.
+            </remarks>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizedPolicy">
+            <inheritdoc/>
+            <remarks>
+            HTTP requests return <c>403 Forbidden</c> when the user fails the policy check.
+            </remarks>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.MaximumFileSize">
+            <summary>
+            The maximum allowed file size in bytes for each file uploaded pursuant to the
+            specification at <see href="https://github.com/jaydenseric/graphql-multipart-request-spec"/>.
+            Null indicates no limit.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.MaximumFileCount">
+            <summary>
+            The maximum allowed number of files uploaded pursuant to the specification at
+            <see href="https://github.com/jaydenseric/graphql-multipart-request-spec"/>.
+            Null indicates no limit.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.WebSockets">
+            <summary>
+            Returns an options class for WebSocket connections.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.DefaultResponseContentType">
+            <summary>
+            The Content-Type to use for GraphQL responses, if it matches the 'Accept'
+            HTTP request header. Defaults to "application/graphql-response+json; charset=utf-8".
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.HttpGetValidationRule">
+            <summary>
+            Validates that HTTP GET requests only execute queries; not mutations or subscriptions.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.HttpGetValidationRule.GetPreNodeVisitorAsync(GraphQL.Validation.ValidationContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.HttpPostValidationRule">
+            <summary>
+            Validates that HTTP POST requests do not execute subscriptions.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.HttpPostValidationRule.GetPreNodeVisitorAsync(GraphQL.Validation.ValidationContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions">
+            <summary>
+            Provides authorization options.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions.AuthorizationRequired">
+            <summary>
+            If set, requires that <see cref="P:System.Security.Principal.IIdentity.IsAuthenticated"/> return <see langword="true"/>
+            for the user within <see cref="P:Microsoft.AspNetCore.Http.HttpContext.User"/>
+            prior to executing the GraphQL request or accepting the WebSocket connection.
+            Technically this property should be named as AuthenticationRequired but for
+            ASP.NET Core / GraphQL.NET naming and design decisions it was called so.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions.AuthorizedRoles">
+            <summary>
+            Requires that <see cref="M:System.Security.Claims.ClaimsPrincipal.IsInRole(System.String)"/> return <see langword="true"/>
+            for the user within <see cref="P:Microsoft.AspNetCore.Http.HttpContext.User"/>
+            for at least one role in the list prior to executing the GraphQL request or accepting
+            the WebSocket connection.  If no roles are specified, authorization is not checked.
+            Also implies <see cref="P:GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions.AuthorizationRequired"/> is enabled even if it is set to <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions.AuthorizedPolicy">
+            <summary>
+            If set, requires that <see cref="M:Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync(System.Security.Claims.ClaimsPrincipal,System.Object,System.String)"/>
+            return a successful result for the user within <see cref="P:Microsoft.AspNetCore.Http.HttpContext.User"/>
+            for the specified policy before executing the GraphQL
+            request or accepting the WebSocket connection.
+            Also implies <see cref="P:GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions.AuthorizationRequired"/> is enabled even if it is set to <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder">
+            <summary>
+            Creates a user context from a <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/> and/or the WebSocket initialization message's payload.
+            <br/><br/>
+            The generated user context may be used for one or more GraphQL requests or
+            subscriptions over the same HTTP connection.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder.BuildUserContextAsync(Microsoft.AspNetCore.Http.HttpContext,System.Object)">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder"/>
+            <param name="context">The <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/> of the HTTP connection.</param>
+            <param name="payload">
+            The payload of the WebSocket connection request, if applicable.  Typically this is either <see langword="null"/> or
+            an object that has not fully been deserialized yet; when using the Newtonsoft.Json deserializer, this will be a JObject,
+            and when using System.Text.Json this will be a JsonElement.  You may call
+            <see cref="M:GraphQL.IGraphQLSerializer.ReadNode``1(System.Object)"/> to deserialize the node into the expected type.  To deserialize
+            into a nested set of <see cref="T:System.Collections.Generic.IDictionary`2">IDictionary&lt;string, object?&gt;</see> maps, call
+            <see cref="M:GraphQL.IGraphQLSerializer.ReadNode``1(System.Object)"/> with <see cref="T:GraphQL.Inputs"/> as the generic type.
+            <br/><br/>
+            To determine if this is a WebSocket connection request, check
+            <paramref name="context"/>.<see cref="P:Microsoft.AspNetCore.Http.HttpContext.WebSockets">WebSockets</see>.<see cref="P:Microsoft.AspNetCore.Http.WebSocketManager.IsWebSocketRequest">IsWebSocketRequest</see>.
+            </param>
+            <returns>Dictionary object representing user context. Return <see langword="null"/> to use default user context.</returns>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder`1">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder"/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.MediaTypeAttribute">
+            <summary>
+            Ensures that the marked field argument or input object field is a valid media type
+            via the <see cref="M:Microsoft.Net.Http.Headers.MediaTypeHeaderValue.IsSubsetOf(Microsoft.Net.Http.Headers.MediaTypeHeaderValue)"/> method
+            and supports wildcards such as "<c>text/*</c>".
+            </summary>
+            <remarks>
+            Only checks values of type <see cref="T:Microsoft.AspNetCore.Http.IFormFile"/>, or lists of <see cref="T:Microsoft.AspNetCore.Http.IFormFile"/>.
+            Any other types of values will throw a run-time exception.
+            </remarks>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.MediaTypeAttribute.#ctor(System.String[])">
+            <inheritdoc cref="T:GraphQL.Server.Transports.AspNetCore.MediaTypeAttribute"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.MediaTypeAttribute.Modify(GraphQL.Types.FieldType,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.MediaTypeAttribute.Modify(GraphQL.Types.QueryArgument)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.SecurityHelper">
+            <summary>
+            Helper code used when implementing authentication middleware
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.SecurityHelper.MergeUserPrincipal(System.Security.Claims.ClaimsPrincipal,System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Add all ClaimsIdentities from an additional ClaimPrincipal to the ClaimsPrincipal
+            Merges a new claims principal, placing all new identities first, and eliminating
+            any empty unauthenticated identities from context.User
+            </summary>
+            <param name="existingPrincipal">The <see cref="T:System.Security.Claims.ClaimsPrincipal"/> containing existing <see cref="T:System.Security.Claims.ClaimsIdentity"/>.</param>
+            <param name="additionalPrincipal">The <see cref="T:System.Security.Claims.ClaimsPrincipal"/> containing <see cref="T:System.Security.Claims.ClaimsIdentity"/> to be added.</param>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.UserContextBuilder`1">
+            <summary>
+            Represents a user context builder based on a delegate.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.UserContextBuilder`1.#ctor(System.Func{Microsoft.AspNetCore.Http.HttpContext,System.Threading.Tasks.ValueTask{`0}})">
+            <summary>
+            Initializes a new instance with the specified delegate.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.UserContextBuilder`1.#ctor(System.Func{Microsoft.AspNetCore.Http.HttpContext,`0})">
+            <inheritdoc cref="M:GraphQL.Server.Transports.AspNetCore.UserContextBuilder`1.#ctor(System.Func{Microsoft.AspNetCore.Http.HttpContext,System.Threading.Tasks.ValueTask{`0}})"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.UserContextBuilder`1.#ctor(System.Func{Microsoft.AspNetCore.Http.HttpContext,System.Object,System.Threading.Tasks.ValueTask{`0}})">
+            <inheritdoc cref="M:GraphQL.Server.Transports.AspNetCore.UserContextBuilder`1.#ctor(System.Func{Microsoft.AspNetCore.Http.HttpContext,System.Threading.Tasks.ValueTask{`0}})"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.UserContextBuilder`1.#ctor(System.Func{Microsoft.AspNetCore.Http.HttpContext,System.Object,`0})">
+            <inheritdoc cref="M:GraphQL.Server.Transports.AspNetCore.UserContextBuilder`1.#ctor(System.Func{Microsoft.AspNetCore.Http.HttpContext,System.Threading.Tasks.ValueTask{`0}})"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.UserContextBuilder`1.BuildUserContextAsync(Microsoft.AspNetCore.Http.HttpContext,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.AsyncMessagePump`1">
+            <summary>
+            <para>
+            An asynchronous message pump, where messages intended for the client can be posted
+            on multiple threads and executed sequentially.
+            </para>
+            <para>
+            The callback functions are guaranteed to be executed in the
+            same order that <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.AsyncMessagePump`1.Post(`0)"/> was called.
+            </para>
+            <para>
+            Callback functions may be synchronous or asynchronous.
+            Since callback functions may execute on the same thread that
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.AsyncMessagePump`1.Post(`0)"/> was called on, it is not suggested
+            to use long-running synchronous tasks within the callback
+            delegate without the use of <see cref="M:System.Threading.Tasks.Task.Yield"/>.
+            </para>
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.AsyncMessagePump`1.Count">
+            <summary>
+            Returns the number of messages in the queue.
+            This count includes any message currently being processed.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.AsyncMessagePump`1.#ctor(System.Func{`0,System.Threading.Tasks.Task})">
+            <summary>
+            Initializes a new instance with the specified asynchronous callback delegate.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.AsyncMessagePump`1.#ctor(System.Action{`0})">
+            <summary>
+            Initializes a new instance with the specified synchronous callback delegate.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.AsyncMessagePump`1.Post(`0)">
+            <summary>
+            Posts the specified message to the message queue.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.AsyncMessagePump`1.Post(System.Threading.Tasks.ValueTask{`0})">
+            <summary>
+            Posts the result of an asynchronous operation to the message queue.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.AsyncMessagePump`1.ProcessAllMessagesInQueueAsync">
+            <summary>
+            Processes messages from the queue in order; executes until the queue is empty.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.AsyncMessagePump`1.HandleErrorAsync(System.Exception)">
+            <summary>
+            Handles exceptions that occur within the asynchronous or synchronous message delegate.
+            By default does nothing.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer">
+            <summary>
+            Manages a WebSocket message stream.
+            </summary>
+            <remarks>
+            All methods except <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnMessageReceivedAsync(GraphQL.Transport.OperationMessage)">OnMessageReceivedAsync</see> should be thread-safe.
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnMessageReceivedAsync(GraphQL.Transport.OperationMessage)">OnMessageReceivedAsync</see> will receive an ordered
+            sequence of messages from the client, dispatched by <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection"/>.
+            </remarks>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.Connection">
+            <summary>
+            Returns a <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection"/> instance that can be used
+            to send messages to the client.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.CancellationToken">
+            <summary>
+            Returns a <see cref="T:System.Threading.CancellationToken"/> that is signaled
+            when this class is disposed or when the WebSockets connection is closed.
+            Intended to stop background timers.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.Subscriptions">
+            <summary>
+            Returns a synchronized list of subscriptions.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.DefaultKeepAliveTimeout">
+            <summary>
+            Returns the default keep-alive timeout.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.DefaultConnectionTimeout">
+            <summary>
+            Returns the default connection timeout.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.#ctor(GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection,GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions,GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions)">
+            <summary>
+            Initializes a new instance with the specified parameters.
+            </summary>
+            <param name="connection">The WebSockets stream used to send data packets or close the connection.</param>
+            <param name="options">Configuration options for this instance.</param>
+            <param name="authorizationOptions">Authorization options for this instance.</param>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.InitializeConnectionAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnConnectionInitWaitTimeoutAsync">
+            <summary>
+            Executes once the initialization timeout has expired without being initialized.
+            This method may execute concurrently with other code in this class.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.Dispose">
+            <summary>
+            Called when the WebSocket connection (not necessarily the HTTP connection) has been terminated.
+            Disposes of all active subscriptions, cancels all existing requests,
+            and prevents any further responses.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.Initialized">
+            <summary>
+            Indicates if the connection has been already initialized.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.TryInitialize">
+            <summary>
+            Sets the initialized flag if it has not already been set.
+            Returns <see langword="false"/> if it was already set.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnMessageReceivedAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes when a message has been received from the client.
+            This method should essentially implement a state machine for the implemented protocol.
+            </summary>
+            <exception cref="T:System.OperationCanceledException"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnCloseConnectionAsync">
+            <summary>
+            Executes upon a request to close the connection from the client.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ErrorAccessDeniedAsync">
+            <summary>
+            Executes upon a request that has failed authorization.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ErrorConnectionInitializationTimeoutAsync">
+            <summary>
+            Sends a fatal error message indicating that the initialization timeout has expired
+            without the connection being initialized.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ErrorTooManyInitializationRequestsAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Sends a fatal error message indicating that the client attempted to initialize
+            the connection more than one time.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ErrorNotInitializedAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Sends a fatal error message indicating that the client attempted to subscribe
+            to an event stream before initialization was complete.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ErrorUnrecognizedMessageAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Sends a fatal error message indicating that the client attempted to use an
+            unrecognized message type.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ErrorIdCannotBeBlankAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Sends a fatal error message indicating that the client attempted to subscribe
+            to an event stream with an empty id.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ErrorIdAlreadyExistsAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Sends a fatal error message indicating that the client attempted to subscribe
+            to an event stream with an id that was already in use.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.AuthorizeAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Authorizes an incoming GraphQL over WebSockets request with the connection initialization message.
+            <br/><br/>
+            The default implementation checks the authorization rules set in <see cref="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions"/>,
+            if any, against <see cref="P:Microsoft.AspNetCore.Http.HttpContext.User"/>.  If validation fails, control is passed
+            to <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthenticatedAsync(GraphQL.Transport.OperationMessage)">OnNotAuthenticatedAsync</see>,
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthorizedRoleAsync(GraphQL.Transport.OperationMessage)">OnNotAuthorizedRoleAsync</see>
+            or <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthorizedPolicyAsync(GraphQL.Transport.OperationMessage,Microsoft.AspNetCore.Authorization.AuthorizationResult)">OnNotAuthorizedPolicyAsync</see>.
+            <br/><br/>
+            Derived implementations should call the <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService.AuthenticateAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection,System.String,GraphQL.Transport.OperationMessage)"/>
+            method to authenticate the request, and then call this base method.
+            <br/><br/>
+            This method will return <see langword="true"/> if authorization is successful, or
+            return <see langword="false"/> if not.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthenticatedAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes if <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizationRequired"/> is set
+            but <see cref="P:System.Security.Principal.IIdentity.IsAuthenticated"/> returns <see langword="false"/>.
+            <br/><br/>
+            Default implementation closes the WebSocket connection with a 4401 'Access denied'
+            error message via <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ErrorAccessDeniedAsync"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthorizedRoleAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes if <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizedRoles"/> is set but
+            <see cref="M:System.Security.Claims.ClaimsPrincipal.IsInRole(System.String)"/> returns <see langword="false"/> for all roles.
+            <br/><br/>
+            Default implementation closes the WebSocket connection with a 4401 'Access denied'
+            error message via <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ErrorAccessDeniedAsync"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthorizedPolicyAsync(GraphQL.Transport.OperationMessage,Microsoft.AspNetCore.Authorization.AuthorizationResult)">
+            <summary>
+            Executes if <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizedPolicy"/> is set but
+            <see cref="M:Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync(System.Security.Claims.ClaimsPrincipal,System.Object,System.String)"/>
+            returns an unsuccessful <see cref="T:Microsoft.AspNetCore.Authorization.AuthorizationResult"/> for the specified policy.
+            <br/><br/>
+            Default implementation closes the WebSocket connection with a 4401 'Access denied'
+            error message via <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ErrorAccessDeniedAsync"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnConnectionInitAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes when the client is attempting to initialize the connection.
+            <br/><br/>
+            By default, this first checks <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.AuthorizeAsync(GraphQL.Transport.OperationMessage)"/> to validate that the
+            request has passed authentication.  If validation fails, the connection is closed with an Access
+            Denied message.
+            <br/><br/>
+            Otherwise, the connection is acknowledged via <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnConnectionAcknowledgeAsync(GraphQL.Transport.OperationMessage)"/>,
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.TryInitialize"/> is called to indicate that this WebSocket connection is ready to accept requests,
+            and <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnSendKeepAliveAsync"/> is called to start sending keep-alive messages if configured to do so.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnConnectionInitAsync(GraphQL.Transport.OperationMessage,System.Boolean)">
+            <summary>
+            Executes when the client is attempting to initialize the connection.
+            <br/><br/>
+            By default, this first checks <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.AuthorizeAsync(GraphQL.Transport.OperationMessage)"/> to validate that the
+            request has passed authentication.  If validation fails, the connection is closed with an Access
+            Denied message.
+            <br/><br/>
+            Otherwise, the connection is acknowledged via <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnConnectionAcknowledgeAsync(GraphQL.Transport.OperationMessage)"/>,
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.TryInitialize"/> is called to indicate that this WebSocket connection is ready to accept requests,
+            and <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnSendKeepAliveAsync"/> is called to start sending keep-alive messages if configured to do so.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnKeepAliveLoopAsync">
+            <summary>
+            Starts sending keep-alive messages if configured to do so. Inspects the configured
+            <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions"/> and passes control to <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnKeepAliveLoopAsync(System.TimeSpan,GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode)"/>
+            if keep-alive messages are enabled.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnKeepAliveLoopAsync(System.TimeSpan,GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode)">
+            <summary>
+            Sends keep-alive messages according to the specified timeout period and method.
+            See <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode"/> for implementation details for each supported mode.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnSendKeepAliveAsync">
+            <summary>
+            Executes when a keep-alive message needs to be sent.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnConnectionAcknowledgeAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes when a connection request needs to be acknowledged.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SubscribeAsync(GraphQL.Transport.OperationMessage,System.Boolean)">
+            <summary>
+            Executes when a new GraphQL request (typically subscription) has occurred.
+            Optionally disconnects any existing subscription associated with the same id.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.HandleErrorDuringSubscribeAsync(GraphQL.Transport.OperationMessage,System.Exception)">
+            <summary>
+            Creates an <see cref="T:GraphQL.ExecutionError"/> for an unknown <see cref="T:System.Exception"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendSingleResultAsync(GraphQL.Transport.OperationMessage,GraphQL.ExecutionResult)">
+            <summary>
+            Sends a single result to the client for a query or mutation request, along with a notice
+            that it was the last result in the event stream.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendErrorResultAsync(GraphQL.Transport.OperationMessage,GraphQL.ExecutionError)">
+            <summary>
+            Sends an execution error to the client during set-up of a GraphQL request (typically subscription).
+            The default implementation calls <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendErrorResultAsync(System.String,GraphQL.ExecutionResult)"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendErrorResultAsync(System.String,GraphQL.ExecutionError)">
+            <summary>
+            Sends an execution error to the client during set-up of a GraphQL request (typically subscription).
+            The default implementation calls <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendErrorResultAsync(System.String,GraphQL.ExecutionResult)"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendErrorResultAsync(GraphQL.Transport.OperationMessage,GraphQL.ExecutionResult)">
+            <summary>
+            Sends an execution error to the client during set-up of a GraphQL request (typically subscription).
+            The default implementation calls <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendErrorResultAsync(System.String,GraphQL.ExecutionResult)"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendErrorResultAsync(System.String,GraphQL.ExecutionResult)">
+            <summary>
+            Sends an execution error to the client during set-up of a GraphQL request (typically subscription).
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendSubscriptionSuccessfulAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Sends a notification that the specified subscription has been set up successfully.
+            Note that both graphql-ws and subscriptions-transport-ws protocols do not need
+            such notification but some custom protocol may require it; for example, see start_ack message
+            from https://docs.aws.amazon.com/appsync/latest/devguide/real-time-websocket-client.html
+            protocol for AWS AppSync. 
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendDataAsync(System.String,GraphQL.ExecutionResult)">
+            <summary>
+            Sends a data packet to the client for a GraphQL request (typically a subscription event).
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.SendCompletedAsync(System.String)">
+            <summary>
+            Sends a notice that a GraphQL request has completed (typically a subscription) and no more data packets will be sent.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.ExecuteRequestAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes a GraphQL request. The request is inside <see cref="P:GraphQL.Transport.OperationMessage.Payload"/>
+            and will need to be deserialized by <see cref="M:GraphQL.IGraphQLSerializer.ReadNode``1(System.Object)"/>
+            into a <see cref="T:GraphQL.Transport.GraphQLRequest"/> instance.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.UnsubscribeAsync(System.String)">
+            <summary>
+            Unsubscribes from a subscription event stream.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.HandleErrorFromSourceAsync(System.Exception)">
+            <summary>
+            Wraps an unhandled exception within an <see cref="T:GraphQL.ExecutionError"/> instance.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.Observer">
+            <summary>
+            Handles messages from the event source.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions">
+            <summary>
+            Configuration options for a WebSocket connection.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.ConnectionInitWaitTimeout">
+            <summary>
+            The amount of time to wait for a GraphQL initialization packet before the connection is closed.
+            A value of <see langword="null"/> indicates the default value defined by the implementation.
+            The included implementations in this library have a default value of 10 seconds.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.KeepAliveTimeout">
+            <summary>
+            The amount of time to wait between sending keep-alive packets.
+            A value of <see cref="F:System.Threading.Timeout.InfiniteTimeSpan"/> means that keep-alive packets are disabled.
+            A value of <see langword="null"/> indicates the default value defined by the implementation.
+            The included implementations in this library default to having keep-alive packets disabled.
+            <br/><br/>
+            Keep in mind that the 'subscription-transport-ws' implementation typically
+            disconnects clients if a keep-alive packet has not been received for 20 seconds,
+            when keep-alive packets are enabled, so it is recommended to keep the keep-alive
+            packets disabled or use a value less than 20 seconds.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.KeepAliveMode">
+            <summary>
+            Gets or sets the keep-alive mode used for websocket subscriptions.
+            This property is only applicable when using the GraphQLWs protocol.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.DisconnectionTimeout">
+            <summary>
+            The amount of time to wait to attempt a graceful teardown of the WebSockets protocol.
+            A value of <see langword="null"/> indicates the default value defined by the implementation.
+            The included implementations in this library have a default value of 10 seconds.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.DisconnectAfterErrorEvent">
+            <summary>
+            Disconnects a subscription from the client if the subscription source dispatches an
+            <see cref="M:System.IObserver`1.OnError(System.Exception)"/> event.  The default value is <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.DisconnectAfterAnyError">
+            <summary>
+            Disconnects a subscription from the client in the event of any GraphQL errors during a subscription.  The default value is <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.SupportedWebSocketSubProtocols">
+            <summary>
+            The list of supported WebSocket sub-protocols.
+            Defaults to <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.SubProtocol"/> and <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.SubProtocol"/>.
+            Adding other sub-protocols require the <see cref="M:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware.CreateMessageProcessor(GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection,System.String)"/> method
+            to be overridden to handle the new sub-protocol.
+            </summary>
+            <remarks>
+            When the <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.KeepAliveMode"/> is set to <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode.TimeoutWithPayload"/>, you may wish to remove
+            <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.SubProtocol"/> from this list to prevent clients from using
+            protocols which do not support the <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode.TimeoutWithPayload"/> keep-alive mode.
+            </remarks>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType">
+            <summary>
+            Protocol message types defined in
+            <see href="https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md"/>
+            and
+            <see href="https://github.com/enisdenjo/graphql-ws/blob/master/src/common.ts"/>
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.ConnectionInit">
+            <summary>
+            <para>
+            Indicates that the client wants to establish a connection within the existing socket.
+            This connection is not the actual WebSocket communication channel, but is rather a
+            frame within it asking the server to allow future operation requests.
+            </para>
+            <para>
+            The server must receive the connection initialization message within the allowed waiting
+            time specified in the <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.ConnectionInitWaitTimeout"/>
+            parameter during the server setup.  If the client does not request a connection within
+            the allowed timeout, the server will close the socket with the event:
+            <i>4408: Connection initialization timeout</i>.
+            </para>
+            <para>
+            If the server receives more than one <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.ConnectionInit"/> message at any
+            given time, the server will close the socket with the event
+            <i>4429: Too many initialization requests</i>.
+            </para>
+            <para>
+            The client may use the optional <see cref="P:GraphQL.Transport.OperationMessage.Payload"/> field to transfer
+            additional details about the connection.
+            </para>
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.ConnectionAck">
+            <summary>
+            <para>
+            Expected response to the <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.ConnectionInit"/> message from the client acknowledging
+            a successful connection with the server.
+            </para>
+            <para>
+            The server can use the optional <see cref="P:GraphQL.Transport.OperationMessage.Payload"/> field to transfer additional details about the connection.
+            </para>
+            <para>
+            The client is now ready to request subscription operations.
+            </para>
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Subscribe">
+            <summary>
+            <para>
+            Requests an operation as a <see cref="T:GraphQL.Transport.GraphQLRequest"/> specified in <see cref="P:GraphQL.Transport.OperationMessage.Payload"/>.
+            This message provides a unique ID within <see cref="P:GraphQL.Transport.OperationMessage.Id"/> to connect published messages
+            to the operation requested by this message.
+            </para>
+            <para>
+            If there is already an active subscriber for an operation matching the provided ID, regardless of the operation type,
+            the server must close the socket immediately with the event <i>4409: Subscriber for &lt;unique-operation-id&gt; already exists</i>.
+            </para>
+            <para>
+            The server needs only keep track of IDs for as long as the subscription is active.
+            Once a client completes an operation, it is free to re-use that ID.
+            </para>
+            <para>
+            Executing operations is allowed only after the server has acknowledged the connection through the
+            <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.ConnectionAck"/> message; if the connection is not acknowledged, the socket will be
+            closed immediately with the event <i>4401: Unauthorized</i>.
+            </para>
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Next">
+            <summary>
+            <para>
+            Operation execution result(s) from the source stream created by the binding <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Subscribe"/> message.
+            After all results have been emitted, the <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Complete"/> message will follow indicating stream completion.
+            </para>
+            <para>
+            The <see cref="P:GraphQL.Transport.OperationMessage.Id"/> must contain the unique ID of the subscription, and the
+            <see cref="P:GraphQL.Transport.OperationMessage.Payload"/> must contain a <see cref="T:GraphQL.ExecutionResult"/> instance.
+            </para>
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Error">
+            <summary>
+            <para>
+            Operation execution error(s) in response to the <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Subscribe"/> message.  This can occur before
+            execution starts, usually due to validation errors, or during the execution of the request.  This message
+            terminates the operation and no further messages will be sent.
+            </para>
+            <para>
+            The <see cref="P:GraphQL.Transport.OperationMessage.Id"/> must contain the unique ID of the subscription, and the
+            <see cref="P:GraphQL.Transport.OperationMessage.Payload"/> must contain a list/array of <see cref="T:GraphQL.ExecutionError"/> instances.
+            </para>
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Complete">
+            <summary>
+            <para>
+            <b>Server -&gt; Client</b> indicates that the requested operation execution has completed.  If the server dispatched
+            the <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Error"/> message relative to the original <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Subscribe"/> message,
+            no <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Complete"/> message will be emitted.
+            </para>
+            <para>
+            <b>Client -&gt; Server</b> indicates that the client has stopped listening and wants to complete the subscription.
+            No further events, relevant to the original subscription, should be sent through. Even if the client sent a
+            <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Complete"/> message for a single-result-operation before it resolved, the result should not be
+            sent through once it does.
+            </para>
+            <para>
+            Note: The asynchronous nature of the full-duplex connection means that a client can send a <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Complete"/>
+            message to the server even when messages are in-flight to the client, or when the server has itself completed the
+            operation (via an <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Error"/> or <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Complete"/> message).  Both client and server must
+            therefore be prepared to receive (and ignore) messages for operations that they consider already completed.
+            </para>
+            <para>
+            The <see cref="P:GraphQL.Transport.OperationMessage.Id"/> must contain the unique ID of the subscription.
+            </para>
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Ping">
+            <summary>
+            <para>
+            Client or Server sends this message to request a <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Pong"/> packet from the recipient.
+            </para>
+            <para>
+            Useful for detecting failed connections, displaying latency metrics or other types of network probing.
+            </para>
+            <para>
+            A <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Pong"/> must be sent in response from the receiving party as soon as possible.
+            </para>
+            <para>
+            The <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Ping"/> message can be sent at any time within the established socket.
+            </para>
+            <para>
+            The optional <see cref="P:GraphQL.Transport.OperationMessage.Payload"/> field can be used to transfer additional details about the ping.
+            </para>
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Pong">
+            <summary>
+            <para>
+            The response to the <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Ping"/> message. Must be sent as soon as the <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Ping"/> message is received.
+            </para>
+            <para>
+            The <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Pong"/> message can be sent at any time within the established socket.
+            Furthermore, the <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.MessageType.Pong"/> message may even be sent unsolicited as an unidirectional heartbeat.
+            </para>
+            <para>
+            The optional <see cref="P:GraphQL.Transport.OperationMessage.Payload"/> field can be used to transfer additional details about the pong.
+            </para>
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.PingPayload">
+            <summary>
+            The payload of the ping message.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.PingPayload.id">
+            <summary>
+            The unique identifier of the ping message.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer">
+            <inheritdoc/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.SubProtocol">
+            <summary>
+            The WebSocket sub-protocol used for this protocol.
+            </summary>
+            <remarks>
+            Please note that the correct sub-protocol for the
+            <see href="https://github.com/enisdenjo/graphql-ws">graphql-ws</see>
+            protocol is <c>graphql-transport-ws</c> as is defined here.
+            </remarks>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.DocumentExecuter">
+            <summary>
+            Returns the <see cref="T:GraphQL.IDocumentExecuter"/> used to execute requests.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.ServiceScopeFactory">
+            <summary>
+            Returns the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory"/> used to create a service scope for request execution.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.UserContext">
+            <summary>
+            Gets or sets the user context used to execute requests.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.UserContextBuilder">
+            <summary>
+            Returns the user context builder used during connection initialization.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.Serializer">
+            <summary>
+            Returns the <see cref="T:GraphQL.IGraphQLSerializer"/> used to deserialize <see cref="T:GraphQL.Transport.OperationMessage"/> payloads.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.#ctor(GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection,GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions,GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions,GraphQL.IDocumentExecuter,GraphQL.IGraphQLSerializer,Microsoft.Extensions.DependencyInjection.IServiceScopeFactory,GraphQL.Server.Transports.AspNetCore.IUserContextBuilder,GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService)">
+            <summary>
+            Initializes a new instance with the specified parameters.
+            </summary>
+            <param name="connection">The WebSockets stream used to send data packets or close the connection.</param>
+            <param name="options">Configuration options for this instance.</param>
+            <param name="authorizationOptions">Authorization options for this instance.</param>
+            <param name="executer">The <see cref="T:GraphQL.IDocumentExecuter"/> to use to execute GraphQL requests.</param>
+            <param name="serializer">The <see cref="T:GraphQL.IGraphQLSerializer"/> to use to deserialize payloads stored within <see cref="P:GraphQL.Transport.OperationMessage.Payload"/>.</param>
+            <param name="serviceScopeFactory">A <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory"/> to create service scopes for execution of GraphQL requests.</param>
+            <param name="userContextBuilder">The user context builder used during connection initialization.</param>
+            <param name="authenticationService">An optional service to authenticate connections.</param>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.OnMessageReceivedAsync(GraphQL.Transport.OperationMessage)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.OnConnectionInitAsync(GraphQL.Transport.OperationMessage,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.OnKeepAliveLoopAsync(System.TimeSpan,GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode)">
+            <inheritdoc/>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer._pongMessage">
+            <summary>
+            Pong is a required response to a ping, and also a unidirectional keep-alive packet,
+            whereas ping is a bidirectional keep-alive packet.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.OnPingAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes when a ping message is received.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.OnPongAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes when a pong message is received.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.OnSendKeepAliveAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.OnConnectionAcknowledgeAsync(GraphQL.Transport.OperationMessage)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.OnSubscribeAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes when a request is received to start a subscription.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.OnCompleteAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes when a request is received to stop a subscription.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.SendErrorResultAsync(System.String,GraphQL.ExecutionResult)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.SendDataAsync(System.String,GraphQL.ExecutionResult)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.SendCompletedAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.ExecuteRequestAsync(GraphQL.Transport.OperationMessage)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.AuthorizeAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Authorizes an incoming GraphQL over WebSockets request with the connection initialization message and initializes the <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.UserContext"/>.
+            <br/><br/>
+            The default implementation calls the <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService.AuthenticateAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection,System.String,GraphQL.Transport.OperationMessage)"/>
+            method to authenticate the request (if <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService"/> was specified),
+            checks the authorization rules set in <see cref="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions"/>,
+            if any, against <see cref="P:Microsoft.AspNetCore.Http.HttpContext.User"/>.  If validation fails, control is passed
+            to <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthenticatedAsync(GraphQL.Transport.OperationMessage)">OnNotAuthenticatedAsync</see>,
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthorizedRoleAsync(GraphQL.Transport.OperationMessage)">OnNotAuthorizedRoleAsync</see>
+            or <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthorizedPolicyAsync(GraphQL.Transport.OperationMessage,Microsoft.AspNetCore.Authorization.AuthorizationResult)">OnNotAuthorizedPolicyAsync</see>.
+            <br/><br/>
+            After successful authorization, the default implementation calls
+            <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWs.SubscriptionServer.UserContextBuilder"/>.<see cref="M:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder.BuildUserContextAsync(Microsoft.AspNetCore.Http.HttpContext,System.Object)">BuildUserContextAsync</see>
+            to generate a user context.
+            <br/><br/>
+            This method will return <see langword="true"/> if authorization is successful, or
+            return <see langword="false"/> if not.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor">
+            <summary>
+            Processes a stream of messages received from a WebSockets client.
+            <see cref="M:System.IDisposable.Dispose"/> must be called when the WebSocket connection
+            has received a close message, and/or when the connection terminates.
+            Methods defined within this interface need not be thread-safe.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor.InitializeConnectionAsync">
+            <summary>
+            Starts the connection initialization timer, if configured.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor.OnMessageReceivedAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Called when a message is received from the client.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService">
+            <summary>
+            Authenticates an incoming GraphQL over WebSockets request with the
+            connection initialization message.  A typical implementation will
+            set the <see cref="P:Microsoft.AspNetCore.Http.HttpContext.User"/> property after reading the
+            authorization token.  This service must be registered as a singleton
+            in the dependency injection framework.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService.AuthenticateAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection,System.String,GraphQL.Transport.OperationMessage)">
+            <summary>
+            Authenticates an incoming GraphQL over WebSockets request with the connection initialization message.  The implementation should
+            set the <paramref name="connection"/>.<see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection.HttpContext">HttpContext</see>.<see cref="P:Microsoft.AspNetCore.Http.HttpContext.User">User</see>
+            property after validating the provided credentials.
+            <br/><br/>
+            After calling this method to authenticate the request, the infrastructure will authorize the incoming request via the
+            <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizationRequired"/>, <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizedRoles"/> and
+            <see cref="P:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions.AuthorizedPolicy"/> properties.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection">
+            <summary>
+            Represents a WebSocket connection, dispatching received messages over
+            the connection to the specified <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor"/>,
+            and sending requested messages out the connection when requested.
+            <br/><br/>
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection.ExecuteAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor)"/> may be only called once.
+            All members must be thread-safe.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection.ExecuteAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor)">
+            <summary>
+            Listens to incoming messages over the WebSocket connection,
+            dispatching the messages to the specified <paramref name="operationMessageProcessor"/>.
+            Returns or throws <see cref="T:System.OperationCanceledException"/> when the WebSocket connection is closed.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection.SendMessageAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Sends a message to the client.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection.CloseAsync">
+            <summary>
+            Performs a graceful shutdown of the WebSocket connection with event ID 1000, and
+            prevents further incoming messages from being dispatched through <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection.CloseAsync(System.Int32,System.String)">
+            <summary>
+            Performs a graceful shutdown of the WebSocket connection with the specified error information, and
+            prevents further incoming messages from being dispatched through <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection.LastMessageSentAt">
+            <summary>
+            Returns the last UTC time that a message was sent to the client.
+            This property is needed to implement the idle timeout to only send a keep-alive message after ## seconds of "no traffic". 
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection.RequestAborted">
+            <inheritdoc cref="P:Microsoft.AspNetCore.Http.HttpContext.RequestAborted"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection.HttpContext">
+            <summary>
+            Returns the <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/> associated with this request.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode">
+            <summary>
+            Specifies the mode of keep-alive behavior.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode.Default">
+            <summary>
+            Same as <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode.Timeout"/>: Sends a unidirectional keep-alive message when no message has been received within the specified timeout period.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode.Timeout">
+            <summary>
+            Sends a unidirectional keep-alive message when no message has been received within the specified timeout period.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode.Interval">
+            <summary>
+            Sends a unidirectional keep-alive message at a fixed interval, regardless of message activity.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode.TimeoutWithPayload">
+            <summary>
+            Sends a Ping message with a payload after the specified timeout from the last received Pong,
+            and waits for a corresponding Pong response. Requires that the client reflects the payload
+            in the response. Forcibly disconnects the client if the client does not respond with a Pong
+            message within the specified timeout. This means that a dead connection will be closed after
+            a maximum of double the <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.KeepAliveTimeout"/> period.
+            </summary>
+            <remarks>
+            This mode is particularly useful when backpressure causes subscription messages to be delayed
+            due to a slow or unresponsive client connection. The server can detect that the client is not
+            processing messages in a timely manner and disconnect the client to free up resources.
+            </remarks>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream">
+            <summary>
+            A readable memory stream based on a buffer, with a resettable maximum length.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance based on the specified buffer.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.Read(System.Span{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.ReadAsync(System.Memory{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.ResetLength(System.Int32)">
+            <summary>
+            Sets the length to the specified value and resets the position to the start of the stream.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.ReusableMemoryReaderStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionList">
+            <summary>
+            A list of subscriptions represented by a dictionary of string keys (subscription ids) and <see cref="T:System.IDisposable"/> values.
+            All members are thread-safe.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionList.Dispose">
+            <summary>
+            Disposes all subscriptions in the list.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionList.TryAdd(System.String,System.IDisposable)">
+            <summary>
+            Adds a subscription to the internal list if none is already in the list with the same id.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.OperationCanceledException"/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionList.Item(System.String)">
+            <summary>
+            Adds a subscription to the internal list, overwriting an existing registration if any.
+            When overwriting an existing registration, the old registration is disposed.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.OperationCanceledException"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionList.Contains(System.String,System.IDisposable)">
+            <summary>
+            Validates that the specified subscription is still in the list.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.OperationCanceledException"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionList.Contains(System.String)">
+            <summary>
+            Validates that the specified subscription is still in the list.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.OperationCanceledException"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionList.CompareExchange(System.String,System.IDisposable,System.IDisposable)">
+            <summary>
+            Exchanges the specified subscription with another implementation for the specified id.
+            Disposes of the old subscription if exchanged.
+            Returns <see langword="false"/> if no subscription can be found.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.OperationCanceledException"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionList.TryRemove(System.String)">
+            <summary>
+            Removes the specified subscription and disposes of it.
+            Returns <see langword="false"/> if no subscription can be found.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionList.TryRemove(System.String,System.IDisposable)">
+            <summary>
+            Removes the specified subscription and disposes of it.
+            Returns <see langword="false"/> if no subscription can be found.
+            </summary>
+            <exception cref="T:System.OperationCanceledException"/>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType">
+            <summary>
+                Protocol message types defined in
+                https://github.com/apollographql/subscriptions-transport-ws/blob/master/PROTOCOL.md
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType.GQL_CONNECTION_INIT">
+            <summary>
+                Client sends this message after plain websocket connection to start the communication with the server
+                The server will response only with GQL_CONNECTION_ACK + GQL_CONNECTION_KEEP_ALIVE(if used) or GQL_CONNECTION_ERROR
+                to this message.
+                payload: Object : optional parameters that the client specifies in connectionParams
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType.GQL_CONNECTION_ACK">
+            <summary>
+                The server may responses with this message to the GQL_CONNECTION_INIT from client, indicates the server accepted
+                the connection.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType.GQL_CONNECTION_ERROR">
+            <summary>
+                The server may responses with this message to the GQL_CONNECTION_INIT from client, indicates the server rejected
+                the connection.
+                It server also respond with this message in case of a parsing errors of the message (which does not disconnect the
+                client, just ignore the message).
+                payload: Object: the server side error
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType.GQL_CONNECTION_KEEP_ALIVE">
+            <summary>
+                Server message that should be sent right after each GQL_CONNECTION_ACK processed and then periodically to keep the
+                client connection alive.
+                The client starts to consider the keep alive message only upon the first received keep alive message from the
+                server.
+                <remarks>
+                    NOTE: This one here don't follow the standard due to connection optimization
+                </remarks>
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType.GQL_CONNECTION_TERMINATE">
+            <summary>
+                Client sends this message to terminate the connection.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType.GQL_START">
+            <summary>
+                Client sends this message to execute GraphQL operation
+                id: string : The id of the GraphQL operation to start
+                payload: Object:
+                query: string : GraphQL operation as string or parsed GraphQL document node
+                variables?: Object : Object with GraphQL variables
+                operationName?: string : GraphQL operation name
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType.GQL_DATA">
+            <summary>
+                The server sends this message to transfer the GraphQL execution result from the server to the client, this message
+                is a response for GQL_START message.
+                For each GraphQL operation send with GQL_START, the server will respond with at least one GQL_DATA message.
+                id: string : ID of the operation that was successfully set up
+                payload: Object :
+                data: any: Execution result
+                errors?: Error[] : Array of resolvers errors
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType.GQL_ERROR">
+            <summary>
+                Server sends this message upon a failing operation, before the GraphQL execution, usually due to GraphQL validation
+                errors (resolver errors are part of GQL_DATA message, and will be added as errors array)
+                payload: Error : payload with the error attributed to the operation failing on the server
+                id: string : operation ID of the operation that failed on the server
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType.GQL_COMPLETE">
+            <summary>
+                Server sends this message to indicate that a GraphQL operation is done, and no more data will arrive for the
+                specific operation.
+                id: string : operation ID of the operation that completed
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.MessageType.GQL_STOP">
+            <summary>
+                Client sends this message in order to stop a running GraphQL operation execution (for example: unsubscribe)
+                id: string : operation id
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer">
+            <inheritdoc/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.SubProtocol">
+            <summary>
+            The WebSocket sub-protocol used for this protocol.
+            </summary>
+            <remarks>
+            Please note that the correct sub-protocol for the
+            <see href="https://github.com/apollographql/subscriptions-transport-ws">subscriptions-transport-ws</see>
+            protocol is <c>graphql-ws</c> as is defined here.
+            </remarks>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.DocumentExecuter">
+            <summary>
+            Returns the <see cref="T:GraphQL.IDocumentExecuter"/> used to execute requests.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.ServiceScopeFactory">
+            <summary>
+            Returns the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory"/> used to create a service scope for request execution.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.UserContext">
+            <summary>
+            Gets or sets the user context used to execute requests.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.UserContextBuilder">
+            <summary>
+            Returns the user context builder used during connection initialization.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.Serializer">
+            <summary>
+            Returns the <see cref="T:GraphQL.IGraphQLSerializer"/> used to deserialize <see cref="T:GraphQL.Transport.OperationMessage"/> payloads.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.#ctor(GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection,GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions,GraphQL.Server.Transports.AspNetCore.IAuthorizationOptions,GraphQL.IDocumentExecuter,GraphQL.IGraphQLSerializer,Microsoft.Extensions.DependencyInjection.IServiceScopeFactory,GraphQL.Server.Transports.AspNetCore.IUserContextBuilder,GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService)">
+            <summary>
+            Initializes a new instance with the specified parameters.
+            </summary>
+            <param name="connection">The WebSockets stream used to send data packets or close the connection.</param>
+            <param name="options">Configuration options for this instance.</param>
+            <param name="authorizationOptions">Authorization options for this instance.</param>
+            <param name="executer">The <see cref="T:GraphQL.IDocumentExecuter"/> to use to execute GraphQL requests.</param>
+            <param name="serializer">The <see cref="T:GraphQL.IGraphQLSerializer"/> to use to deserialize payloads stored within <see cref="P:GraphQL.Transport.OperationMessage.Payload"/>.</param>
+            <param name="serviceScopeFactory">A <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory"/> to create service scopes for execution of GraphQL requests.</param>
+            <param name="userContextBuilder">The user context builder used during connection initialization.</param>
+            <param name="authenticationService">An optional service to authenticate connections.</param>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.OnMessageReceivedAsync(GraphQL.Transport.OperationMessage)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.OnConnectionInitAsync(GraphQL.Transport.OperationMessage,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.OnKeepAliveLoopAsync(System.TimeSpan,GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode)">
+            <inheritdoc/>
+            <remarks>
+            This implementation overrides <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.KeepAliveMode"/> to <see cref="F:GraphQL.Server.Transports.AspNetCore.WebSockets.KeepAliveMode.Interval"/>
+            as this protocol does not support the other modes. Override this method to support your own implementation.
+            </remarks>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.OnSendKeepAliveAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.OnConnectionAcknowledgeAsync(GraphQL.Transport.OperationMessage)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.OnStartAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes when a request is received to start a subscription.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.OnStopAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Executes when a request is received to stop a subscription.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.SendErrorResultAsync(System.String,GraphQL.ExecutionResult)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.SendDataAsync(System.String,GraphQL.ExecutionResult)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.SendCompletedAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.ExecuteRequestAsync(GraphQL.Transport.OperationMessage)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.ErrorAccessDeniedAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.AuthorizeAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Authorizes an incoming GraphQL over WebSockets request with the connection initialization message and initializes the <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.UserContext"/>.
+            <br/><br/>
+            The default implementation calls the <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService.AuthenticateAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketConnection,System.String,GraphQL.Transport.OperationMessage)"/>
+            method to authenticate the request (if <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService"/> was specified),
+            checks the authorization rules set in <see cref="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions"/>,
+            if any, against <see cref="P:Microsoft.AspNetCore.Http.HttpContext.User"/>.  If validation fails, control is passed
+            to <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthenticatedAsync(GraphQL.Transport.OperationMessage)">OnNotAuthenticatedAsync</see>,
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthorizedRoleAsync(GraphQL.Transport.OperationMessage)">OnNotAuthorizedRoleAsync</see>
+            or <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.BaseSubscriptionServer.OnNotAuthorizedPolicyAsync(GraphQL.Transport.OperationMessage,Microsoft.AspNetCore.Authorization.AuthorizationResult)">OnNotAuthorizedPolicyAsync</see>.
+            <br/><br/>
+            After successful authorization, the default implementation calls
+            <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.SubscriptionsTransportWs.SubscriptionServer.UserContextBuilder"/>.<see cref="M:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder.BuildUserContextAsync(Microsoft.AspNetCore.Http.HttpContext,System.Object)">BuildUserContextAsync</see>
+            to generate a user context.
+            <br/><br/>
+            This method will return <see langword="true"/> if authorization is successful, or
+            return <see langword="false"/> if not.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection">
+            <summary>
+            Manages a WebSocket connection, dispatching messages to the specified <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor"/>,
+            and sending messages requested by the <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor"/> implementation.
+            <br/><br/>
+            The <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.ExecuteAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor)"/> method may only be executed once for each
+            instance. Awaiting the result will return once the WebSocket connection has been properly closed from both
+            ends, after all messages have been sent.
+            <br/><br/>
+            Calls to <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor.OnMessageReceivedAsync(GraphQL.Transport.OperationMessage)"/> will be awaited
+            before dispatching subsequent messages.
+            <br/><br/>
+            Calls to <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.CloseAsync"/> and <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.SendMessageAsync(GraphQL.Transport.OperationMessage)"/> may be
+            called on multiple threads simultaneously.  They are queued for delivery and sent in the order posted.
+            Messages posted after requesting the connection be closed will be discarded.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.RequestAborted">
+            <inheritdoc/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.DefaultDisconnectionTimeout">
+            <summary>
+            Returns the default disconnection timeout value.
+            See <see cref="P:GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions.DisconnectionTimeout"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.LastMessageSentAt">
+            <inheritdoc/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.HttpContext">
+            <inheritdoc/>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.SendQueueCount">
+            <summary>
+            Returns the number of packets waiting in the send queue, including
+            messages, keep-alive packets, and the close message.
+            This count includes any packet currently being processed.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.#ctor(Microsoft.AspNetCore.Http.HttpContext,System.Net.WebSockets.WebSocket,GraphQL.IGraphQLSerializer,GraphQL.Server.Transports.AspNetCore.WebSockets.GraphQLWebSocketOptions,System.Threading.CancellationToken)">
+            <summary>
+            Initializes an instance with the specified parameters.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.ExecuteAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor)">
+            <summary>
+            Listens to incoming messages on the WebSocket specified in the constructor,
+            dispatching the messages to the specified <paramref name="operationMessageProcessor"/>.
+            Returns or throws <see cref="T:System.OperationCanceledException"/> when the WebSocket connection is closed.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.CloseAsync">
+            <inheritdoc/>
+            <remarks>
+            The close message is posted to a queue and execution returns immediately.
+            </remarks>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.CloseAsync(System.Int32,System.String)">
+            <inheritdoc/>
+            <remarks>
+            The close message is posted to a queue and execution returns immediately.
+            </remarks>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.SendMessageAsync(GraphQL.Transport.OperationMessage)">
+            <inheritdoc/>
+            <remarks>
+            The message is posted to a queue and execution returns immediately.
+            </remarks>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.HandleOutgoingMessageAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Message)">
+            <summary>
+            Handles the next <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Message"/> in the queue, which contains either an <see cref="T:GraphQL.Transport.OperationMessage"/>
+            or <see cref="T:System.Net.WebSockets.WebSocketCloseStatus"/> with description, passing to either
+            <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.OnSendMessageAsync(GraphQL.Transport.OperationMessage)"/> or <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.OnCloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String)"/>.
+            <br/><br/>
+            The methods <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.SendMessageAsync(GraphQL.Transport.OperationMessage)"/>, <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.CloseAsync"/>
+            and <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.CloseAsync(System.Int32,System.String)"/> add <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Message"/> instances to the queue.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.OnDispatchMessageAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor,GraphQL.Transport.OperationMessage)">
+            <summary>
+            Dispatches a received message to an <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IOperationMessageProcessor"/> instance.
+            Override if logging is desired.
+            <br/><br/>
+            This method is synchronized and will wait until completion before dispatching another message.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.OnSendMessageAsync(GraphQL.Transport.OperationMessage)">
+            <summary>
+            Sends the specified message to the underlying <see cref="T:System.Net.WebSockets.WebSocket"/>.
+            Override if logging is desired.
+            <br/><br/>
+            This method is synchronized and will wait until completion before sending another message or closing the output stream.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.OnCloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String)">
+            <summary>
+            Closes the underlying <see cref="T:System.Net.WebSockets.WebSocket"/>.
+            Override if logging is desired.
+            <br/><br/>
+            This method is synchronized and will wait until completion before sending another message or closing the output stream.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Message">
+            <summary>
+            A queue entry; see <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.HandleOutgoingMessageAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Message)"/>.
+            </summary>
+            <param name="OperationMessage">The message to send, if set; if it is <see langword="null"/> then this is a closure message.</param>
+            <param name="CloseStatus">The close status.</param>
+            <param name="CloseDescription">The close description.</param>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Message.#ctor(GraphQL.Transport.OperationMessage,System.Net.WebSockets.WebSocketCloseStatus,System.String)">
+            <summary>
+            A queue entry; see <see cref="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.HandleOutgoingMessageAsync(GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Message)"/>.
+            </summary>
+            <param name="OperationMessage">The message to send, if set; if it is <see langword="null"/> then this is a closure message.</param>
+            <param name="CloseStatus">The close status.</param>
+            <param name="CloseDescription">The close description.</param>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Message.OperationMessage">
+            <summary>The message to send, if set; if it is <see langword="null"/> then this is a closure message.</summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Message.CloseStatus">
+            <summary>The close status.</summary>
+        </member>
+        <member name="P:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Message.CloseDescription">
+            <summary>The close description.</summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.OnNonGracefulShutdownAsync(System.Boolean,System.Boolean)">
+            <summary>
+            Occurs when a WebSocket connection is terminated before both the input and output were closed.
+            Override if logging is desired.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Transports.AspNetCore.WebSockets.WebSocketConnection.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.ServiceCollectionExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.ServiceCollectionExtensions.AddHostApplicationLifetime(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers <see cref="T:GraphQL.Server.Transports.AspNetCore.IHostApplicationLifetime"/> within the dependency injection framework.
+            "Native" IHostApplicationLifetime is not available for .NET Core 2.1 / .NET Framework 4.8
+            </summary>
+        </member>
+        <member name="T:GraphQL.ServerGraphQLBuilderExtensions">
+            <summary>
+            Extension methods for <see cref="T:GraphQL.DI.IGraphQLBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.ServerGraphQLBuilderExtensions.AddUserContextBuilder``1(GraphQL.DI.IGraphQLBuilder)">
+            <summary>
+            Registers the specified <typeparamref name="TUserContextBuilder"/> as a singleton of
+            type <see cref="T:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder"/> and configures it to be used for each GraphQL request.
+            <br/><br/>
+            Requires <see cref="T:Microsoft.AspNetCore.Http.IHttpContextAccessor"/> to be registered within the dependency injection framework
+            if calling <see cref="M:GraphQL.DocumentExecuter.ExecuteAsync(GraphQL.ExecutionOptions)"/> directly.
+            </summary>
+        </member>
+        <member name="M:GraphQL.ServerGraphQLBuilderExtensions.AddUserContextBuilder``1(GraphQL.DI.IGraphQLBuilder,System.Func{Microsoft.AspNetCore.Http.HttpContext,``0})">
+            <summary>
+            Configures a delegate to be used to create a user context for each GraphQL request.
+            <br/><br/>
+            Requires <see cref="T:Microsoft.AspNetCore.Http.IHttpContextAccessor"/> to be registered within the dependency injection framework
+            if calling <see cref="M:GraphQL.DocumentExecuter.ExecuteAsync(GraphQL.ExecutionOptions)"/> directly.
+            </summary>
+        </member>
+        <member name="M:GraphQL.ServerGraphQLBuilderExtensions.AddUserContextBuilder``1(GraphQL.DI.IGraphQLBuilder,System.Func{Microsoft.AspNetCore.Http.HttpContext,System.Threading.Tasks.Task{``0}})">
+            <inheritdoc cref="M:GraphQL.ServerGraphQLBuilderExtensions.AddUserContextBuilder``1(GraphQL.DI.IGraphQLBuilder,System.Func{Microsoft.AspNetCore.Http.HttpContext,``0})"/>
+        </member>
+        <member name="M:GraphQL.ServerGraphQLBuilderExtensions.AddUserContextBuilder``1(GraphQL.DI.IGraphQLBuilder,System.Func{Microsoft.AspNetCore.Http.HttpContext,System.Object,``0})">
+            <inheritdoc cref="M:GraphQL.ServerGraphQLBuilderExtensions.AddUserContextBuilder``1(GraphQL.DI.IGraphQLBuilder,System.Func{Microsoft.AspNetCore.Http.HttpContext,``0})"/>
+        </member>
+        <member name="M:GraphQL.ServerGraphQLBuilderExtensions.AddUserContextBuilder``1(GraphQL.DI.IGraphQLBuilder,System.Func{Microsoft.AspNetCore.Http.HttpContext,System.Object,System.Threading.Tasks.Task{``0}})">
+            <inheritdoc cref="M:GraphQL.ServerGraphQLBuilderExtensions.AddUserContextBuilder``1(GraphQL.DI.IGraphQLBuilder,System.Func{Microsoft.AspNetCore.Http.HttpContext,``0})"/>
+        </member>
+        <member name="T:GraphQL.ServerGraphQLBuilderExtensions.UserContextConfigurator">
+            <summary>
+            Checks if <see cref="P:GraphQL.ExecutionOptions.UserContext"/> is still at its initial "default" value, and if so,
+            creates the user context from the registered <see cref="T:GraphQL.Server.Transports.AspNetCore.IUserContextBuilder"/>.
+            <br/><br/>
+            Typically the middleware initializes the user context, which is specifically necessary for WebSocket requests
+            and batched requests, in which case this code executes allocation-free -- but it may be useful when GraphQL
+            is served via a MVC controller action, for example.
+            </summary>
+        </member>
+        <member name="M:GraphQL.ServerGraphQLBuilderExtensions.AddWebSocketAuthentication``1(GraphQL.DI.IGraphQLBuilder)">
+            <summary>
+            Registers <typeparamref name="TWebSocketAuthenticationService"/> with the dependency injection framework
+            as a singleton of type <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.ServerGraphQLBuilderExtensions.AddWebSocketAuthentication(GraphQL.DI.IGraphQLBuilder,System.Func{System.IServiceProvider,GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService})">
+            <summary>
+            Registers a service of type <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService"/> with the specified factory delegate
+            with the dependency injection framework as a singleton.
+            </summary>
+        </member>
+        <member name="M:GraphQL.ServerGraphQLBuilderExtensions.AddWebSocketAuthentication(GraphQL.DI.IGraphQLBuilder,GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService)">
+            <summary>
+            Registers a specified instance of type <see cref="T:GraphQL.Server.Transports.AspNetCore.WebSockets.IWebSocketAuthenticationService"/> with the
+            dependency injection framework.
+            </summary>
+        </member>
+        <member name="M:GraphQL.ServerGraphQLBuilderExtensions.AddAuthorizationRule(GraphQL.DI.IGraphQLBuilder)">
+            <summary>
+            Registers <see cref="T:GraphQL.Server.Transports.AspNetCore.AuthorizationValidationRule"/> with the dependency injection framework
+            and configures it to be used when executing a request.
+            </summary>
+        </member>
+        <member name="M:GraphQL.ServerGraphQLBuilderExtensions.AddFormFileGraphType(GraphQL.DI.IGraphQLBuilder)">
+            <summary>
+            Registers <see cref="T:GraphQL.Server.Transports.AspNetCore.FormFileGraphType"/> within the dependency injection framework
+            and configures the schema to use it for mapping <see cref="T:Microsoft.AspNetCore.Http.IFormFile"/> instances.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Utilities.Federation.GraphQLHttpRequestExtensions">
+            <summary>
+            <see cref="T:Microsoft.AspNetCore.Http.HttpRequest" /> extension methods for checking headers.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Utilities.Federation.GraphQLHttpRequestExtensions.IsApolloFederatedTracingEnabled(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Determines if federated tracing is <see href="https://www.apollographql.com/docs/federation/metrics/#how-tracing-data-is-exposed-from-a-subgraph">enabled</see> through HTTP headers.
+            </summary>
+            <returns><see langword="true"/> if the 'apollo-federation-include-trace' HTTP header has a value of 'ftv1'</returns>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute">
+             <summary>
+             Indicates that certain members on a specified <see cref="T:System.Type"/> are accessed dynamically,
+             for example through <see cref="N:System.Reflection"/>.
+             </summary>
+             <remarks>
+             This allows tools to understand which members are being accessed during the execution
+             of a program.
+            
+             This attribute is valid on members whose type is <see cref="T:System.Type"/> or <see cref="T:System.String"/>.
+            
+             When this attribute is applied to a location of type <see cref="T:System.String"/>, the assumption is
+             that the string represents a fully qualified type name.
+            
+             When this attribute is applied to a class, interface, or struct, the members specified
+             can be accessed dynamically on <see cref="T:System.Type"/> instances returned from calling
+             <see cref="M:System.Object.GetType"/> on instances of that class, interface, or struct.
+            
+             If the attribute is applied to a method it's treated as a special case and it implies
+             the attribute should be applied to the "this" parameter of the method. As such the attribute
+             should only be used on instance methods of types assignable to System.Type (or string, but no methods
+             will use it there).
+             </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.#ctor(System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute"/> class
+            with the specified member types.
+            </summary>
+            <param name="memberTypes">The types of members dynamically accessed.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.MemberTypes">
+            <summary>
+            Gets the <see cref="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes"/> which specifies the type
+            of members dynamically accessed.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes">
+             <summary>
+             Specifies the types of members that are dynamically accessed.
+            
+             This enumeration has a <see cref="T:System.FlagsAttribute"/> attribute that allows a
+             bitwise combination of its member values.
+             </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.None">
+            <summary>
+            Specifies no members.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicParameterlessConstructor">
+            <summary>
+            Specifies the default, parameterless public constructor.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors">
+            <summary>
+            Specifies all public constructors.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicConstructors">
+            <summary>
+            Specifies all non-public constructors.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicMethods">
+            <summary>
+            Specifies all public methods.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicMethods">
+            <summary>
+            Specifies all non-public methods.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicFields">
+            <summary>
+            Specifies all public fields.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicFields">
+            <summary>
+            Specifies all non-public fields.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicNestedTypes">
+            <summary>
+            Specifies all public nested types.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicNestedTypes">
+            <summary>
+            Specifies all non-public nested types.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties">
+            <summary>
+            Specifies all public properties.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicProperties">
+            <summary>
+            Specifies all non-public properties.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicEvents">
+            <summary>
+            Specifies all public events.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicEvents">
+            <summary>
+            Specifies all non-public events.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.Interfaces">
+            <summary>
+            Specifies all interfaces implemented by the type.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.All">
+            <summary>
+            Specifies all members.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>
+            Reserved to be used by the compiler for tracking metadata.
+            This class should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.GraphQLHttpApplicationBuilderExtensions">
+            <summary>
+            Extensions for <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add <see cref="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware`1"/>
+            or its descendants in the HTTP request pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.GraphQLHttpApplicationBuilderExtensions.UseGraphQL(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.String,System.Action{GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions})">
+            <summary>
+            Add the GraphQL middleware to the HTTP request pipeline.
+            <br/><br/>
+            Uses the GraphQL schema registered as <see cref="T:GraphQL.Types.ISchema"/> within the dependency injection
+            framework to execute the query.
+            </summary>
+            <param name="builder">The application builder</param>
+            <param name="path">The path to the GraphQL endpoint which defaults to '/graphql'</param>
+            <param name="configureMiddleware">A delegate to configure the middleware</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> received as parameter</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.GraphQLHttpApplicationBuilderExtensions.UseGraphQL(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Http.PathString,System.Action{GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions})">
+            <summary>
+            Add the GraphQL middleware to the HTTP request pipeline.
+            <br/><br/>
+            Uses the GraphQL schema registered as <see cref="T:GraphQL.Types.ISchema"/> within the dependency injection
+            framework to execute the query.
+            </summary>
+            <param name="builder">The application builder</param>
+            <param name="path">The path to the GraphQL endpoint</param>
+            <param name="configureMiddleware">A delegate to configure the middleware</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> received as parameter</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.GraphQLHttpApplicationBuilderExtensions.UseGraphQL``1(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.String,System.Action{GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions})">
+            <summary>
+            Add the GraphQL middleware to the HTTP request pipeline for the specified schema.
+            </summary>
+            <typeparam name="TSchema">The implementation of <see cref="T:GraphQL.Types.ISchema"/> to use</typeparam>
+            <param name="builder">The application builder</param>
+            <param name="path">The path to the GraphQL endpoint which defaults to '/graphql'</param>
+            <param name="configureMiddleware">A delegate to configure the middleware</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> received as parameter</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.GraphQLHttpApplicationBuilderExtensions.UseGraphQL``1(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Http.PathString,System.Action{GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddlewareOptions})">
+            <summary>
+            Add the GraphQL middleware to the HTTP request pipeline for the specified schema.
+            </summary>
+            <typeparam name="TSchema">The implementation of <see cref="T:GraphQL.Types.ISchema"/> to use</typeparam>
+            <param name="builder">The application builder</param>
+            <param name="path">The path to the GraphQL endpoint</param>
+            <param name="configureMiddleware">A delegate to configure the middleware</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> received as parameter</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.GraphQLHttpApplicationBuilderExtensions.UseGraphQL``1(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.String,System.Object[])">
+            <summary>
+            Add the GraphQL custom middleware to the HTTP request pipeline for the specified schema.
+            </summary>
+            <typeparam name="TMiddleware">Custom middleware inherited from <see cref="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware`1"/></typeparam>
+            <param name="builder">The application builder</param>
+            <param name="path">The path to the GraphQL endpoint which defaults to '/graphql'</param>
+            <param name="args">The arguments to pass to the middleware type instance's constructor.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> received as parameter</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.GraphQLHttpApplicationBuilderExtensions.UseGraphQL``1(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Http.PathString,System.Object[])">
+            <summary>
+            Add the GraphQL custom middleware to the HTTP request pipeline for the specified schema.
+            </summary>
+            <typeparam name="TMiddleware">Custom middleware inherited from <see cref="T:GraphQL.Server.Transports.AspNetCore.GraphQLHttpMiddleware`1"/></typeparam>
+            <param name="builder">The application builder</param>
+            <param name="path">The path to the GraphQL endpoint</param>
+            <param name="args">The arguments to pass to the middleware type instance's constructor.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> received as parameter</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.GraphQLHttpApplicationBuilderExtensions.UseIgnoreDisconnections(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Ignores <see cref="T:System.OperationCanceledException"/> exceptions when
+            <see cref="P:Microsoft.AspNetCore.Http.HttpContext.RequestAborted"/> is signaled.
+            </summary>
+            <remarks>
+            Place this immediately after exception handling or logging middleware, such as
+            <see cref="M:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage(Microsoft.AspNetCore.Builder.IApplicationBuilder)">UseDeveloperExceptionPage</see>.
+            </remarks>
+        </member>
+    </members>
+</doc>

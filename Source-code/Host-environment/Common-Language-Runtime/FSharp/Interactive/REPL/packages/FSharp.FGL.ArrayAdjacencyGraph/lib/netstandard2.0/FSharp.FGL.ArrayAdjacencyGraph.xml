@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharp.FGL.ArrayAdjacencyGraph</name></assembly>
+<members>
+<member name="P:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.VertexCount">
+<summary>
+Returns the number of vertices of the graph.
+</summary>
+</member>
+<member name="P:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.EdgeCount">
+<summary>
+Number of edges in the graph
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.WeightedDegree(Microsoft.FSharp.Core.FSharpFunc{`2,System.Double},`0)">
+<summary>
+Returns the weighted degree of the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.TrySuccessors(`0)">
+<summary>
+Returns Some vertices if they are successors of the vertex, else None.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.TryPredecessors(`0)">
+<summary>
+Returns Some vertices if they are predecessors of the vertex, else None.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.TryNeighbours(`0)">
+<summary>
+Returns Some vertices if they are neighbours of the vertex, else None.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.TryGetWeight(`0,`0)">
+<summary>
+Lookup the weight of the edge defined by source and vertex. If it exists, return Some value, else none.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.TryGetOutEdges(`0)">
+<summary>
+Lookup all edges that originate from the vertex v in the graph, returning a Some value if a binding exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.TryGetLabel(`0)">
+<summary>
+Returns Some label, if a label for the vertex v exists, else none.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.TryGetInEdges(`0)">
+<summary>
+Lookup all edges that target the vertex v in the graph, returning a Some value if a binding exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.TryGetEdges(`0,`0)">
+<summary>
+Lookup all edges in the graph that matches the conditions, returning a Some value if it exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.TryGetEdge(`0,`0)">
+<summary>
+Lookup the first edge in the graph that matches the conditions, returning a Some value if it exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.TryGetConnectedEdges(`0)">
+<summary>
+Lookup all edges connected to the vertex v in the graph, returning a Some value if a binding exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.Successors(`0)">
+<summary>
+Returns the succeeding vertices of the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.SetWeight(`0,`0,`2)">
+<summary>
+Set the weight of the LEdge defined by source and vertex to be equal weight.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.SetLabel(`0,`1)">
+<summary>
+Sets the label for the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.RemoveVertex(`0)">
+<summary>
+Removes a vertex from the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.RemoveManyVertices(`0[])">
+<summary>
+Removes an array of vertices from the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.RemoveManyEdges(System.Tuple{`0,`0,`2}[])">
+<summary>
+Removes an array of edges from the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.RemoveEdge(System.Tuple{`0,`0,`2})">
+<summary>
+Removes an edge from the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.Predecessors(`0)">
+<summary>
+Returns the preceding vertices of the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.OutDegree(`0)">
+<summary>
+Returns the number of edges that target the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.Neighbours(`0)">
+<summary>
+Returns the neighbouring edges of the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.InDegree(`0)">
+<summary>
+Returns the number of edges that originate from the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.GetWeight(`0,`0)">
+<summary>
+Return the weight of the edge defined by source and vertex
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.GetVertices">
+<summary>
+Returns the vertices of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.GetOutEdges(`0)">
+<summary>
+Lookup all edges that originate from the vertex v in the graph, returning an array of connected edges.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.GetLabels">
+<summary>
+Returns all labels of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.GetLabel(`0)">
+<summary>
+Returns the label for the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.GetInEdges(`0)">
+<summary>
+Lookup all edges that target the vertex v in the graph, returning an array of connected edges.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.GetEdges">
+<summary>
+Returns all edges of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.GetEdges(`0,`0)">
+<summary>
+Return all edges in the graph that matches the conditions
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.GetEdge(`0,`0)">
+<summary>
+Return the first edge in the graph that matches the conditions.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.GetConnectedEdges(`0)">
+<summary>
+Lookup all edges connected to the vertex v in the graph, returning an array of connected edges.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.Degree(`0)">
+<summary>
+Returns the degree of the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.Copy">
+<summary>
+Copys the given graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.ContainsVertex(`0)">
+<summary>
+Returns true, if the graph contains the vertex, else false.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.ContainsEdge(System.Tuple{`0,`0,`2})">
+<summary>
+Returns true, if the edge is found in the graph, else false.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.ConnectedEdgesEmpty(`0)">
+<summary>
+Returns true, if the vertex v does not have edges connected to it. Otherwise, it returns false.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.AddVertex(System.Tuple{`0,`1})">
+<summary>
+Adds a labeled vertex to the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.AddManyVertices(System.Tuple{`0,`1}[])">
+<summary>
+Adds an array of labeled vertices to the graph.    
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.AddManyEdges(System.Collections.Generic.IEnumerable{System.Tuple{`0,`0,`2}})">
+<summary>
+Adds an array of labeled, edges to the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3.AddEdge(System.Tuple{`0,`0,`2})">
+<summary>
+Adds a labeled, edge to the graph.
+</summary>
+</member>
+<member name="T:FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph`3">
+<summary>
+  A mutable directed graph data structure efficient for large sparse graph representations
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.removeMany``3(System.Tuple{``0,``0,``1}[],FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``2,``1})">
+<summary>
+Returns a new graph where the given edges were removed from the original graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.remove``3(``0,``0,``1,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``2,``1})">
+<summary>
+Returns a new graph where the given edge was removed from the original graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.addMany``3(System.Collections.Generic.IEnumerable{System.Tuple{``0,``0,``1}},FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``2,``1})">
+<summary>
+Returns a new graph where the given edges were added.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.add``3(``0,``0,``1,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``2,``1})">
+<summary>
+Returns a new graph where the given edge was added.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.setWeight``3(``0,``0,``1,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``2,``1})">
+<summary>
+Return a new graph where the weight for the given edge was adapted.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.getWeight``3(``0,``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Return the weight of the edge defined by source and vertex
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.tryGetWeight``3(``0,``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Lookup the weight of the edge defined by source and vertex. If it exists, return Some value, else none.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.getOutEdges``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Lookup all edges that originate from the vertex v in the graph, returning an array of connected edges.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.tryGetOutEdges``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Lookup all edges that originate from the vertex v in the graph, returning a Some value if a binding exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.getInEdges``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Lookup all edges that target the vertex v in the graph, returning an array of connected edges.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.tryGetInEdges``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Lookup all edges that target the vertex v in the graph, returning a Some value if a binding exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.getConnected``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Lookup all edges connected to the vertex v in the graph, returning an array of connected edges.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.tryGetConnected``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Lookup all edges connected to the vertex v in the graph, returning a Some value if a binding exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.contains``3(``0,``0,``1,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``2,``1})">
+<summary>
+Returns true if the edge is found in the graph, else false.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.count``3(FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Number of edges in the graph
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.toEdgeList``3(FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns all edges of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.getMany``3(``0,``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Return all edges in the graph that matches the conditions
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.tryGetMany``3(``0,``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Lookup all edges in the graph that matches the conditions, returning a Some value if it exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.get``3(``0,``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Return the first edge in the graph that matches the conditions.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Edges.tryGet``3(``0,``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Lookup the first edge in the graph that matches the conditions, returning a Some value if it exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.getLabelList``3(FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns all labels of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.setLabel``3(``0,``1,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Retunrs a new graph where the label for the vertex v is the given label.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.getLabel``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns the label for the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.tryGetLabel``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns Some label, if a label for the vertex v exists, else none.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.neighbours``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns the neighbouring edges of the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.tryNeighbours``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns Some vertices if they are neighbours of the vertex, else None.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.successors``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns the succeeding vertices of the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.trySuccessors``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns Some vertices if they are successors of the vertex, else None.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.predecessors``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns the preceding vertices of the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.tryPredecessors``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns Some vertices if they are predecessors of the vertex, else None.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.removeMany``3(``0[],FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns a new graph where the given vertices are removed.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.remove``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns a new graph where the given vertex is removed.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.addMany``3(System.Tuple{``0,``1}[],FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns a new graph with the given vertices added.    
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.add``3(``0,``1,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns a new graph with the given vertex added.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.isConnectedToEdges``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns false if the vertex v does not have edges connected to it. Otherwise, it returns true.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.weightedDegree``3(Microsoft.FSharp.Core.FSharpFunc{``0,System.Double},``1,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``1,``2,``0})">
+<summary>
+Returns the weighted degree of the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.outDegree``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns the number of edges that target the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.inDegree``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns the number of edges that originate from the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.degree``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns the degree of the vertex v.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.toVertexList``3(FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns the vertices of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.count``3(FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns the number of vertices of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Vertices.contains``3(``0,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2})">
+<summary>
+Returns true, if the graph contains the vertex, else false.
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Graph.createOfEdgelist``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``1}},Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``0,``2}})">
+<summary>
+Create an ArrayAdjacencyGraph based on the given vertex list and edge list by adding each edge via the AddEdge function.    
+</summary>
+</member>
+<member name="M:FSharp.FGL.ArrayAdjacencyGraph.Graph.create``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``1}},Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``0,``2}})">
+<summary>
+Create an ArrayAdjacencyGraph based on the given vertex list and edge list.
+</summary>
+</member>
+<member name="M:ArrayAdjacencyGraph.Models.Scale_free_graph.BollobasRiordan.bollobasRiordan(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double,FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{System.Int32,System.Int32,System.Double})">
+<summary>
+ Returns a randomly generated, directed, scale free ArrayAdjacencyGraph, based on the given paramters.
+
+   n : integer
+       Number of nodes in graph
+
+   alpha : float
+       Probability for adding a new node connected to an existing node
+       chosen randomly according to the in-degree distribution.
+
+   beta : float
+       Probability for adding an edge between two existing nodes.
+       One existing node is chosen randomly according the in-degree
+       distribution and the other chosen randomly according to the out-degree
+       distribution.
+
+   gamma : float
+       Probability for adding a new node connected to an existing node
+       chosen randomly according to the out-degree distribution.
+
+   delta_in : float
+       Bias for choosing nodes from in-degree distribution.
+
+   delta_out : float
+       Bias for choosing nodes from out-degree distribution.
+
+   create_using : an ArrayAdjacencyGraph, that can be used as basis for the graph generation. If the given graph has less than 3 vertices, a hard-coded example is used instead. 
+The sum of `alpha`, `beta`, and `gamma` must be 1. 
+</summary>
+</member>
+<member name="M:ArrayAdjacencyGraph.Models.BarabasiAlbert.BarabasiAlbert.barabasiAlbert``3(FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,``2},System.Int32,System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,``0},Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{System.Tuple{``0,``0},``2})">
+<summary>
+ Returns an ArrayAdjacencyGraph that was randomly grown according to the Barabási–Albert model with the given parameters. 
+
+ startingGraph is the original graph, that is used as the initial connected network. The rest of the calculations and growth of the network are performed on this graph.
+
+ numberOfVertices specifies how many additional vertices the final graph will have.
+
+ numberOfEdgesPerIteration specifies how many edges should be added to the graph per iteration.
+
+ fVertexKey is a function that is used to transform an integer (the index of the vertex) into the &apos;Vertex type.  
+
+ fLabel is a function that transforms the &apos;Vertex type into a label of the &apos;Label type.   
+
+ fWeight is a funtion that takes two &apos;Vertices and returns a weight between them in form of an &apos;Edge type.    
+</summary>
+</member>
+<member name="M:ArrayAdjacencyGraph.Models.Gilbert.Gilbert.gilbert``3(System.Int32,System.Double,System.Boolean,Microsoft.FSharp.Core.FSharpFunc{System.Int32,``0},Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{System.Tuple{``0,``0},``2})">
+<summary>
+ Returns an ArrayAdjacencyGraph that is generated randomly with the given parameters.
+
+ numberOfVertices indicates the number of vertices the final graph will have. 
+
+ probability represents the probability of an edge between 2 vertices.   
+
+ fVertexKey is a function that is used to transform an integer (the index of the vertex) into the &apos;Vertex type.  
+
+ fLabel is a function that transforms the &apos;Vertex type into a label of the &apos;Label type.   
+
+ fWeight is a funtion that takes two &apos;Vertices and returns a weight between them in form of an &apos;Edge type.    
+</summary>
+</member>
+<member name="M:ArrayAdjacencyGraph.Algorithms.Louvain.Louvain.louvainResolution``2(FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,System.Double},System.Boolean,System.Double,System.Double)">
+<summary>
+ Takes an ArrayAdjacencyGraph and returns a new graph whose Labels have been transformed into tupels, where the second part is the community accorging to modularity-optimization.
+ Parameters:
+
+ graph : ArrayAdjacencyGraph, that is used as the template for the modularity optimization.
+
+ randomized : Boolean, if true randomizes the order in which the vertices are checked. Else the calculations are ordered by the index of the vertices.
+
+ modularityIncreaseThreshold : Threshold of modularity-difference that has to be exceeded in order to be recognized as a modularity-increase.
+ The value has to be between 0. and 1. to get a meaningful result. The smaller the value, the longer the calculation takes.
+
+resolution : The higher the resolution, the smaller the number of communities. The value has to be 1. or higher. Based on : &quot;R. Lambiotte, J.-C. Delvenne, M. Barahona Laplacian Dynamics and Multiscale Modular Structure in Networks 2009&quot;, 	arXiv:0812.1770 [physics.soc-ph].
+</summary>
+</member>
+<member name="M:ArrayAdjacencyGraph.Algorithms.Louvain.Louvain.louvainRandom``2(FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,System.Double},System.Double)">
+<summary>
+ Takes an ArrayAdjacencyGraph and returns a new graph whose Labels have been transformed into tupels, where the second part is the community accorging to modularity-optimization.
+ In addition, the modularity optimization is carried out in a random order
+
+ Parameters:
+
+ graph : ArrayAdjacencyGraph, that is used as the template for the modularity optimization.
+
+ modularityIncreaseThreshold : Threshold of modularity-difference that has to be exceeded in order to be recognized as a modularity-increase.
+ The value has to be between 0. and 1. to get a meaningful result. The smaller the value, the longer the calculation takes.
+</summary>
+</member>
+<member name="M:ArrayAdjacencyGraph.Algorithms.Louvain.Louvain.louvain``2(FSharp.FGL.ArrayAdjacencyGraph.ArrayAdjacencyGraph{``0,``1,System.Double},System.Double)">
+<summary>
+ Takes an ArrayAdjacencyGraph and returns a new graph whose Labels have been transformed into tupels, where the second part is the community accorging to modularity-optimization. 
+ Parameters:
+
+ graph : ArrayAdjacencyGraph, that is used as the template for the modularity optimization.
+
+ modularityIncreaseThreshold : Threshold of modularity-difference that has to be exceeded in order to be recognized as a modularity-increase.
+ The value has to be between 0. and 1. to get a meaningful result. The smaller the value, the longer the calculation takes.
+</summary>
+</member>
+<member name="T:ArrayAdjacencyGraph.Algorithms.Louvain.Louvain">
+<summary>
+Louvain method for community detection
+</summary>
+</member>
+</members>
+</doc>

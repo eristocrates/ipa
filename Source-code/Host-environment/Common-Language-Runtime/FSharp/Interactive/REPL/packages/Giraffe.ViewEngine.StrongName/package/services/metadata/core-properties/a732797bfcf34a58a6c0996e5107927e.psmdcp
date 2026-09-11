@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Dustin Moris Gorski and contributors</dc:creator>
+  <dc:description>An F# view engine for Giraffe and other ASP.NET Core web applications. Signed as a strong assembly for projects that depend on strong names.</dc:description>
+  <dc:identifier>Giraffe.ViewEngine.StrongName</dc:identifier>
+  <version>2.0.0-alpha1</version>
+  <keywords>Giraffe View Engine ASP.NET Core FSharp Functional Http Web Framework Micro Service StrongName</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=6.3.2.9, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET Standard 2.0</lastModifiedBy>
+</coreProperties>

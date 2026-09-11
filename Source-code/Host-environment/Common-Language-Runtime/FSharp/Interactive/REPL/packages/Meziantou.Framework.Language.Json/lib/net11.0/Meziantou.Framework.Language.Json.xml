@@ -4,35 +4,99 @@
         <name>Meziantou.Framework.Language.Json</name>
     </assembly>
     <members>
-        <member name="T:Meziantou.Framework.Language.Json.JsonArrayElementSyntax">
-            <summary>Represents a JSON array element, including its optional comma separator.</summary>
+        <member name="T:Meziantou.Framework.Language.Json.Internals.JsonDiagnosticDescriptors">
+            <summary>Every diagnostic the JSON parser can produce.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonArraySyntax">
-            <summary>Represents a JSON array value.</summary>
+            <summary>An array: brackets around a comma-separated list of values.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Json.JsonDiagnostic">
-            <summary>Represents a parser diagnostic produced while reading JSON syntax.</summary>
+        <member name="P:Meziantou.Framework.Language.Json.JsonArraySyntax.Elements">
+            <summary>Gets the values in the array. The commas between them are the separators of the list.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Json.JsonDiagnostic.#ctor(System.String,System.String,Meziantou.Framework.Language.Json.JsonDiagnosticSeverity,Meziantou.Framework.Language.Json.TextSpan)">
-            <summary>Represents a parser diagnostic produced while reading JSON syntax.</summary>
-        </member>
-        <member name="T:Meziantou.Framework.Language.Json.JsonDiagnosticSeverity">
-            <summary>Represents the severity of a JSON parser diagnostic.</summary>
+        <member name="M:Meziantou.Framework.Language.Json.JsonArraySyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SeparatedSyntaxList{Meziantou.Framework.Language.Json.JsonValueSyntax},Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this array with the given parts, or itself when nothing changed.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonDocumentSyntax">
-            <summary>Represents the root JSON document node and provides replacement helpers.</summary>
+            <summary>A whole JSON document.</summary>
+            <remarks>
+            <see cref="P:Meziantou.Framework.Language.Json.JsonDocumentSyntax.Values"/> is a list rather than a single value so that a document with trailing garbage keeps every
+            part of its text. A well-formed document has exactly one.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Json.JsonDocumentSyntax.Values">
+            <summary>Gets the values the document holds, which is one for a well-formed document.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Json.JsonDocumentSyntax.Value">
+            <summary>Gets the root value, or <see langword="null"/> when the document has none.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonDocumentSyntax.Update(Meziantou.Framework.Language.SyntaxList{Meziantou.Framework.Language.Json.JsonValueSyntax},Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this document with the given parts, or itself when nothing changed.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.JsonExtensions">
+            <summary>Reads the JSON kind of the tokens, trivia, and nodes the shared syntax types hand back.</summary>
+            <remarks>
+            The shared types carry a kind as a plain number because they are used by every language. These turn that number
+            back into the JSON kind it stands for.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonExtensions.Kind(Meziantou.Framework.Language.SyntaxNode)">
+            <summary>Gets the JSON kind of a node reached through the shared type rather than the JSON one.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonExtensions.WithAnnotationsFrom``1(``0,Meziantou.Framework.Language.Json.JsonSyntaxNode)">
+            <summary>Carries the annotations of <paramref name="original"/> onto a node built to replace it.</summary>
+            <remarks>
+            This is what makes an annotation survive an edit: every <c>Update</c> builds a fresh node and then copies the
+            marks the old one carried.
+            </remarks>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonLiteralSyntax">
-            <summary>Represents a JSON true, false, or null literal value.</summary>
+            <summary>One of <c>true</c>, <c>false</c>, or <c>null</c>. Which one is the node's kind.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonLiteralSyntax.Update(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this literal with a different token, or itself when nothing changed.</summary>
+            <remarks>The kind of the node follows the keyword, so replacing <c>true</c> with <c>null</c> changes both.</remarks>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonMemberSyntax">
-            <summary>Represents a JSON object member.</summary>
+            <summary>One member of an object: a name, a colon, and a value.</summary>
+            <remarks>The comma after a member is not part of it: it separates the members of the object's list.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Json.JsonMemberSyntax.Name">
+            <summary>Gets the name of the member, with its quotes and escapes resolved.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonMemberSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.Json.JsonValueSyntax)">
+            <summary>Returns this member with the given parts, or itself when nothing changed.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonMemberSyntax.WithName(System.String)">
+            <summary>Returns this member with a new name, escaped as JSON requires.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonNumberSyntax">
-            <summary>Represents a JSON number value.</summary>
+            <summary>A number value.</summary>
+            <remarks>The text is kept exactly as written; JSON numbers do not all fit a .NET numeric type without loss.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Json.JsonNumberSyntax.Text">
+            <summary>Gets the number exactly as it was written.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonNumberSyntax.Update(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this number with a different token, or itself when nothing changed.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonNumberSyntax.WithText(System.String)">
+            <summary>Returns this number written differently.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonObjectSyntax">
-            <summary>Represents a JSON object value.</summary>
+            <summary>An object: braces around a comma-separated list of members.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Json.JsonObjectSyntax.Members">
+            <summary>Gets the members of the object. The commas between them are the separators of the list.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonObjectSyntax.GetMember(System.String)">
+            <summary>Gets the first member called <paramref name="name"/>, or <see langword="null"/> when there is none.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonObjectSyntax.Update(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SeparatedSyntaxList{Meziantou.Framework.Language.Json.JsonMemberSyntax},Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this object with the given parts, or itself when nothing changed.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonPathExtensions">
             <summary>Provides JSONPath evaluation helpers for JSON syntax trees.</summary>
@@ -182,62 +246,489 @@
             <exception cref="T:Meziantou.Framework.Json.JsonPathEvaluationException">The path cannot be evaluated in <see cref="F:Meziantou.Framework.Json.JsonPathEvaluationMode.Strict"/> mode.</exception>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonSkippedTextSyntax">
-            <summary>Represents invalid or skipped JSON text retained in the concrete syntax tree.</summary>
+            <summary>Text the parser could not use, kept so the document still round-trips.</summary>
+            <remarks>
+            It stands where a value was expected, which is why it is a value: a member whose value is nonsense still needs
+            something in that place.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Json.JsonSkippedTextSyntax.Tokens">
+            <summary>Gets the tokens that were skipped.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSkippedTextSyntax.Update(Meziantou.Framework.Language.SyntaxTokenList)">
+            <summary>Returns this skipped text with different tokens, or itself when nothing changed.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonStringSyntax">
-            <summary>Represents a JSON string value.</summary>
+            <summary>A string value.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Json.JsonSyntaxKind">
-            <summary>Identifies the kind of JSON syntax node, token, or trivia.</summary>
+        <member name="P:Meziantou.Framework.Language.Json.JsonStringSyntax.Value">
+            <summary>Gets the text of the string with its quotes removed and its escapes resolved.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonStringSyntax.Update(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Returns this string with a different token, or itself when nothing changed.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonStringSyntax.WithValue(System.String)">
+            <summary>Returns this string with a new value, escaped as JSON requires.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonSyntaxNode">
-            <summary>Base type for all JSON syntax nodes in the immutable syntax tree.</summary>
+            <summary>The base of every node in a JSON tree.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Json.JsonSyntaxNodeOrToken">
-            <summary>Represents either a syntax node or a syntax token in traversal APIs.</summary>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxNode.Kind">
+            <summary>Gets what kind of node this is.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Json.JsonSyntaxNode.Parent">
+            <summary>Gets the node this one is a child of, or <see langword="null"/> when it is the root of its tree.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxNode.Accept(Meziantou.Framework.Language.Json.JsonSyntaxVisitor)">
+            <summary>Calls the method of <paramref name="visitor"/> that matches this node.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="visitor"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxNode.Accept``1(Meziantou.Framework.Language.Json.JsonSyntaxVisitor{``0})">
+            <summary>Calls the method of <paramref name="visitor"/> that matches this node.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="visitor"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonSyntaxRewriter">
-            <summary>Visitor that can produce a rewritten JSON syntax tree.</summary>
+            <summary>Builds a new tree by visiting an old one and returning replacements.</summary>
+            <remarks>
+            A node whose parts all come back unchanged is returned as it was, so rewriting a tree and changing nothing in it
+            costs nothing and keeps every node.
+            </remarks>
+            <example>
+            <code>
+            private sealed class RenameMembers : JsonSyntaxRewriter
+            {
+                public override SyntaxNode? VisitJsonMember(JsonMemberSyntax node) => node.WithName(node.Name.ToUpperInvariant());
+            }
+            </code>
+            </example>
         </member>
-        <member name="T:Meziantou.Framework.Language.Json.JsonSyntaxToken">
-            <summary>Represents a lexical token that belongs to a JSON syntax node.</summary>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxRewriter.VisitToken(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Rewrites a token, putting the trivia around it through <see cref="M:Meziantou.Framework.Language.Json.JsonSyntaxRewriter.VisitTrivia(Meziantou.Framework.Language.SyntaxTrivia)"/>.</summary>
+            <remarks>
+            Nothing else reaches a token's trivia, so an override of <see cref="M:Meziantou.Framework.Language.Json.JsonSyntaxRewriter.VisitTrivia(Meziantou.Framework.Language.SyntaxTrivia)"/> would never be called if
+            this returned the token untouched. A rewrite that returns the default trivium removes it.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxRewriter.VisitList(Meziantou.Framework.Language.SyntaxTriviaList)">
+            <summary>Rewrites each trivium of a list, dropping the ones a rewrite turned into the default trivium.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxRewriter.VisitList``1(Meziantou.Framework.Language.SeparatedSyntaxList{``0})">
+            <summary>Rewrites the elements of a separated list, keeping its separators in place.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonSyntaxTree">
-            <summary>Represents an immutable JSON syntax tree with source text and diagnostics.</summary>
+            <summary>A parsed JSON document.</summary>
+            <remarks>
+            Parsing never throws and never gives up: whatever the text says, the tree reproduces it exactly, and anything wrong
+            with it is reported through <see cref="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.GetDiagnostics"/>. Comments and trailing commas are accepted and kept.
+            </remarks>
+            <example>
+            <code>
+            var tree = JsonSyntaxTree.ParseText("""{ "name": "value" }""");
+            var name = ((JsonObjectSyntax)tree.GetRoot().Value!).GetMember("name");
+            </code>
+            </example>
         </member>
-        <member name="T:Meziantou.Framework.Language.Json.JsonSyntaxTrivia">
-            <summary>Represents JSON trivia such as whitespace, line breaks, or comments.</summary>
+        <member name="P:Meziantou.Framework.Language.Json.JsonSyntaxTree.ReusedNodeCount">
+            <summary>Gets how many nodes this tree took from the one it was derived from rather than parsing again.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.GetRoot">
+            <summary>Gets the root of the tree.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.ParseText(System.String,System.String)">
+            <summary>Parses <paramref name="text"/>.</summary>
+            <param name="text">The JSON to read.</param>
+            <param name="path">Where the text came from, for the diagnostics to refer to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.ParseText(Meziantou.Framework.Language.SourceText,System.String)">
+            <summary>Parses <paramref name="text"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.Create(Meziantou.Framework.Language.Json.JsonDocumentSyntax,System.String)">
+            <summary>Creates a tree over <paramref name="root"/>, taking its text from the root itself.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="root"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.GetDiagnostics">
+            <summary>Gets every diagnostic in the tree, in source order.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.WithChangedText(Meziantou.Framework.Language.SourceText)">
+            <summary>Returns a tree over <paramref name="newText"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="newText"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.WithChanges(Meziantou.Framework.Language.TextChange[])">
+            <summary>Returns a tree over this text with <paramref name="changes"/> applied.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="changes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.WithChanges(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.TextChange})">
+            <summary>Returns a tree over this text with <paramref name="changes"/> applied.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="changes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.WithRoot(Meziantou.Framework.Language.Json.JsonDocumentSyntax)">
+            <summary>Returns a tree whose root is <paramref name="root"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="root"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.GetChanges(Meziantou.Framework.Language.Json.JsonSyntaxTree)">
+            <summary>Describes how <paramref name="oldTree"/> would have to change to become this one.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="oldTree"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.IsEquivalentTo(Meziantou.Framework.Language.Json.JsonSyntaxTree)">
+            <summary>Determines whether the two trees have the same structure and text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxTree.WithChangedTextCore(Meziantou.Framework.Language.SourceText)">
+            <summary>
+            Reparses <paramref name="newText"/>, keeping the parts of this tree the edit did not reach.
+            </summary>
+            <remarks>
+            The change is worked out from the two texts rather than taken from the caller, so the result is a function of
+            the texts alone and no mistake in a list of edits can produce a tree that does not match its own text.
+            </remarks>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonSyntaxVisitor">
-            <summary>Base visitor for walking JSON syntax trees without returning a value.</summary>
+            <summary>Dispatches on the kind of a JSON node.</summary>
+            <remarks>
+            Visiting a node does not visit its children. Derive from <see cref="T:Meziantou.Framework.Language.Json.JsonSyntaxWalker"/> to walk a whole tree.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxVisitor.Visit(Meziantou.Framework.Language.Json.JsonSyntaxNode)">
+            <summary>Visits <paramref name="node"/>, doing nothing when it is <see langword="null"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxVisitor.DefaultVisit(Meziantou.Framework.Language.Json.JsonSyntaxNode)">
+            <summary>Called for any node whose own method is not overridden.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonSyntaxVisitor`1">
-            <summary>Base visitor for walking JSON syntax trees and returning a value.</summary>
-            <typeparam name="TResult">Type returned by visit methods.</typeparam>
+            <summary>Dispatches on the kind of a JSON node and returns a result.</summary>
+            <typeparam name="TResult">What visiting a node produces.</typeparam>
         </member>
-        <member name="T:Meziantou.Framework.Language.Json.JsonTextChange">
-            <summary>Represents a text replacement operation applied to a <see cref="T:Meziantou.Framework.Language.Json.SourceText"/> or <see cref="T:Meziantou.Framework.Language.Json.JsonSyntaxTree"/>.</summary>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxVisitor`1.Visit(Meziantou.Framework.Language.Json.JsonSyntaxNode)">
+            <summary>Visits <paramref name="node"/>, returning the default result when it is <see langword="null"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxVisitor`1.DefaultVisit(Meziantou.Framework.Language.Json.JsonSyntaxNode)">
+            <summary>Called for any node whose own method is not overridden.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.JsonSyntaxWalker">
+            <summary>Visits a JSON node and everything below it.</summary>
+            <example>
+            <code>
+            private sealed class StringCounter : JsonSyntaxWalker
+            {
+                public int Count { get; private set; }
+                public override void VisitJsonString(JsonStringSyntax node) { Count++; base.VisitJsonString(node); }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Json.JsonSyntaxWalker.Depth">
+            <summary>Gets how far down this walker goes.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.JsonSyntaxWalker.DefaultVisit(Meziantou.Framework.Language.Json.JsonSyntaxNode)">
+            <exception cref="T:System.InsufficientExecutionStackException">The document is nested too deeply to walk.</exception>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.JsonValueSyntax">
-            <summary>Base type for all JSON value syntax nodes.</summary>
+            <summary>Anything that can appear where JSON expects a value.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Json.SourceText">
-            <summary>Represents immutable JSON text with line information and text-change application helpers.</summary>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Blender">
+            <summary>Offers the parser pieces of the previous tree that the edit did not touch.</summary>
+            <remarks>
+            <para>
+            The rule that keeps this honest is that the parser is always driven by the lexer. A position only moves because a
+            token was really read out of the new text, or because a node was adopted whose text is known to match. Nothing is
+            worked out by arithmetic alone.
+            </para>
+            <para>
+            That matters more than it sounds. Type a single quote in the middle of a document and the lexer reads one
+            unterminated string running to the end of the file; it never again stops where an old node began, so nothing after
+            the quote is offered. A blender that trusted its own sums would happily reuse all of it and produce a tree that
+            does not match its own text.
+            </para>
+            </remarks>
         </member>
-        <member name="M:Meziantou.Framework.Language.Json.SourceText.ToString">
-            <summary>Returns the source text.</summary>
+        <member name="P:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Blender.ReusedNodeCount">
+            <summary>Gets how many nodes were taken from the previous tree rather than parsed again.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Blender.NodeContext">
+            <summary>Where in the grammar a node is being asked for. A member cannot stand in for a value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Blender.TryTakeNode(System.Int32,Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Blender.NodeContext)">
+            <summary>Returns the node from the previous tree that belongs at <paramref name="newPosition"/>, if any.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Blender.MapToOld(System.Int32)">
+            <summary>Maps a place in the new text back to the old one, or -1 when it falls inside what changed.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Blender.Advance">
+            <summary>Steps to the next item, looking inside the current one first.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Blender.MoveToNextInPath">
+            <summary>Steps to the next item without looking inside the current one.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonArraySyntax">
+            <summary>An array: brackets around a comma-separated list of values.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonDocumentSyntax">
+            <summary>A whole JSON document: its values and the end of the text.</summary>
+            <remarks>
+            There is a list of values rather than one, because a document with trailing garbage has to keep every part of its
+            text and still round-trip.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonLiteralSyntax">
+            <summary>One of <c>true</c>, <c>false</c>, or <c>null</c>.</summary>
+            <remarks>The kind comes from the keyword, so all three share one node type.</remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonMemberSyntax">
+            <summary>One member of an object: a name, a colon, and a value.</summary>
+            <remarks>The comma after a member is not part of it: it separates the members of the object's list.</remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonNumberSyntax">
+            <summary>A number value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonObjectSyntax">
+            <summary>An object: braces around a comma-separated list of members.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonSkippedTextSyntax">
+            <summary>Text the parser could not use, kept so the document still round-trips.</summary>
+            <remarks>
+            It stands where a value was expected, which is why it is a value: a member whose value is nonsense still needs
+            something in that slot.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonStringSyntax">
+            <summary>A string value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonSyntaxNode">
+            <summary>The base of every immutable JSON node.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonSyntaxNode.CreateSeparator">
+            <summary>JSON separates the elements of a list with a comma.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.JsonValueSyntax">
+            <summary>Anything that can appear where JSON expects a value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser">
+            <summary>Builds the immutable tree for a JSON document, keeping every character of it.</summary>
+            <remarks>
+            <para>
+            Whatever the text says, the tree reproduces it exactly and parsing finishes. Both follow from one rule: a value
+            knows what can follow it. <see cref="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser.ParseValue(Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser.TerminatorState)"/> is told which tokens end the construct it sits in, and skips
+            everything up to the first of them, so it always consumes something unless it is already looking at one. Each loop
+            then excludes exactly the tokens it passes down, which is why none of them can spin.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser.MaxDepth">
+            <summary>
+            How deeply objects and arrays may nest before the rest is kept as skipped text.
+            </summary>
+            <remarks>
+            The parser follows the shape of the document with its own call stack, so without a limit a deeply enough
+            nested document would end the process instead of reporting anything. The limit is far above anything a
+            document written to be read reaches, and well below the depth at which the stack runs out.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser.TerminatorState">
+            <summary>What a construct can end with. A value stops at the first of these it meets.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser.ParseObjectOrArray(Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser.TerminatorState)">
+            <summary>Parses an object or an array, and refuses to descend past <see cref="F:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser.MaxDepth"/>.</summary>
+            <remarks>
+            Past the limit the rest of the construct is kept as skipped text, so the promise the whole parser is built on
+            still holds: nothing is thrown, every character is reproduced, and what went wrong is a diagnostic.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser.TryReuse(Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Blender.NodeContext)">
+            <summary>Takes the node the previous tree already has here, and moves the lexer past its text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser.EndsWithNode(System.Collections.Generic.List{Meziantou.Framework.Language.InternalSyntax.GreenNode})">
+            <summary>A separated list alternates, so the next thing after a node has to be a separator.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.LanguageParser.AddErrorForMissingToken(Meziantou.Framework.Language.DiagnosticDescriptor,System.Object[])">
+            <summary>
+            Records an error for something the text does not have.
+            </summary>
+            <remarks>
+            When the previous token ended its line, the missing thing belongs at the end of that line rather than in front
+            of whatever begins the next one -- otherwise a missing value is reported against the brace on the line below.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Lexer">
+            <summary>Turns JSON text into tokens, keeping everything it cannot give meaning to as trivia.</summary>
+            <remarks>
+            Trivia is split the way it reads: whitespace and comments up to and including the end of a line belong to the
+            token that ends that line, and everything after belongs to the token that follows. That is what makes a comment on
+            its own line attach to the thing it describes rather than to the thing above it.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Lexer.#ctor(Meziantou.Framework.Language.SourceText)">
+            <summary>Turns JSON text into tokens, keeping everything it cannot give meaning to as trivia.</summary>
+            <remarks>
+            Trivia is split the way it reads: whitespace and comments up to and including the end of a line belong to the
+            token that ends that line, and everything after belongs to the token that follows. That is what makes a comment on
+            its own line attach to the thing it describes rather than to the thing above it.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.Lexer.Position">
+            <summary>Gets or sets where the next token will be read from.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.SyntaxFactory">
+            <summary>Builds the immutable JSON nodes, reusing the ones whose text never varies.</summary>
+            <remarks>
+            A green node is position-independent, so a token like <c>,</c> with no trivia is the same node wherever it appears
+            and can be shared by every tree in the process. Interning those, and the handful of whitespace runs that make up
+            almost all indentation, is what keeps parsing from allocating a node per character of layout.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.SyntaxFactory.Token(Meziantou.Framework.Language.Json.SyntaxKind)">
+            <summary>Returns the shared token for a kind whose text never varies.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.SyntaxFactory.TokenWithValue(Meziantou.Framework.Language.InternalSyntax.GreenNode,Meziantou.Framework.Language.Json.SyntaxKind,System.String,System.String,Meziantou.Framework.Language.InternalSyntax.GreenNode)">
+            <summary>Creates a token whose text and meaning differ, such as a quoted string.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.SyntaxFactory.MissingToken(Meziantou.Framework.Language.Json.SyntaxKind)">
+            <summary>Creates a zero-width token standing in for one the text does not have.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.Syntax.InternalSyntax.SyntaxFactory.ListNode(System.ReadOnlySpan{Meziantou.Framework.Language.InternalSyntax.GreenNode})">
+            <summary>Builds a list that can be projected into a red node even when it holds a single token.</summary>
         </member>
         <member name="T:Meziantou.Framework.Language.Json.SyntaxFactory">
-            <summary>Creates JSON syntax nodes, tokens, and trivia programmatically.</summary>
+            <summary>Builds JSON nodes, tokens, and trivia.</summary>
+            <remarks>
+            A node built here is not part of any document, so its span starts at zero. Putting it into a tree with
+            <see cref="M:Meziantou.Framework.Language.SyntaxNodeExtensions.ReplaceNode``1(``0,Meziantou.Framework.Language.SyntaxNode,Meziantou.Framework.Language.SyntaxNode)"/> gives it a real position,
+            without re-reading any text.
+            </remarks>
         </member>
-        <member name="T:Meziantou.Framework.Language.Json.TextLine">
-            <summary>Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.Json.SourceText"/> instance.</summary>
+        <member name="P:Meziantou.Framework.Language.Json.SyntaxFactory.Space">
+            <summary>A single space.</summary>
         </member>
-        <member name="M:Meziantou.Framework.Language.Json.TextLine.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
-            <summary>Describes a single logical line in a <see cref="T:Meziantou.Framework.Language.Json.SourceText"/> instance.</summary>
+        <member name="P:Meziantou.Framework.Language.Json.SyntaxFactory.Tab">
+            <summary>A single tab.</summary>
         </member>
-        <member name="T:Meziantou.Framework.Language.Json.TextSpan">
-            <summary>Represents a contiguous character range in text.</summary>
+        <member name="P:Meziantou.Framework.Language.Json.SyntaxFactory.LineFeed">
+            <summary>A Unix line break.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Language.Json.SyntaxFactory.CarriageReturnLineFeed">
+            <summary>A Windows line break.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.Whitespace(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.EndOfLine(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.Comment(System.String)">
+            <summary>Creates comment trivia, choosing the kind from how <paramref name="text"/> starts.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="text"/> is not a comment.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.Trivia(Meziantou.Framework.Language.Json.SyntaxKind,System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.TriviaList(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxTrivia})">
+            <exception cref="T:System.ArgumentNullException"><paramref name="trivia"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.Token(Meziantou.Framework.Language.Json.SyntaxKind)">
+            <summary>Creates a token whose text is fixed by its kind, such as a brace or a keyword.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.Token(Meziantou.Framework.Language.SyntaxTriviaList,Meziantou.Framework.Language.Json.SyntaxKind,Meziantou.Framework.Language.SyntaxTriviaList)">
+            <summary>Creates a token with trivia on either side.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.MissingToken(Meziantou.Framework.Language.Json.SyntaxKind)">
+            <summary>Creates a zero-width token standing in for one the text does not have.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.BadToken(System.String)">
+            <summary>Creates a token holding text the parser could make no sense of.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.Literal(System.String)">
+            <summary>Creates a string token holding <paramref name="value"/>, escaped as JSON requires.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.Literal(System.String,System.String)">
+            <summary>Creates a string token spelled <paramref name="text"/> and meaning <paramref name="value"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> or <paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.NumberToken(System.String)">
+            <summary>Creates a number token written exactly as <paramref name="text"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.TokenList(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxToken})">
+            <exception cref="T:System.ArgumentNullException"><paramref name="tokens"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.List``1(System.Collections.Generic.IEnumerable{``0})">
+            <exception cref="T:System.ArgumentNullException"><paramref name="nodes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.SeparatedList``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>Creates a list of <paramref name="nodes"/> with a comma between each pair.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nodes"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.SeparatedList``1(System.Collections.Generic.IEnumerable{Meziantou.Framework.Language.SyntaxNodeOrToken})">
+            <summary>Creates a list from nodes and the separators to put between them.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nodesAndSeparators"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.JsonDocument(Meziantou.Framework.Language.Json.JsonValueSyntax)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.JsonMember(System.String,Meziantou.Framework.Language.Json.JsonValueSyntax)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.JsonMember(Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.SyntaxToken,Meziantou.Framework.Language.Json.JsonValueSyntax)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.JsonString(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.JsonNumber(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.JsonLiteral(Meziantou.Framework.Language.Json.SyntaxKind)">
+            <summary>Creates <c>true</c>, <c>false</c>, or <c>null</c>.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="kind"/> is not one of the three literal kinds.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.JsonLiteral(Meziantou.Framework.Language.SyntaxToken)">
+            <summary>Creates a literal from a keyword token, taking the kind of the node from the keyword.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="literalToken"/> is not a literal keyword.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.JsonSkippedText(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.ParseSyntaxTree(System.String,System.String)">
+            <summary>Parses <paramref name="text"/> into a tree.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.ParseDocument(System.String)">
+            <summary>Parses <paramref name="text"/> and returns its root.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.ParseValue(System.String)">
+            <summary>Parses <paramref name="text"/> and returns its root value, or <see langword="null"/> when it has none.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="text"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFactory.AreEquivalent(Meziantou.Framework.Language.Json.JsonSyntaxNode,Meziantou.Framework.Language.Json.JsonSyntaxNode)">
+            <summary>Determines whether the two nodes have the same structure and text.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.SyntaxFacts">
+            <summary>Answers questions about JSON kinds that do not need a tree.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFacts.GetText(Meziantou.Framework.Language.Json.SyntaxKind)">
+            <summary>Gets the text a kind is always spelled with, or an empty string when it varies.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFacts.IsValue(Meziantou.Framework.Language.Json.SyntaxKind)">
+            <summary>Determines whether a kind is one of the nodes that can appear where a value is expected.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFacts.GetKeywordKind(System.String)">
+            <summary>Gets the keyword <paramref name="text"/> spells, or <see cref="F:Meziantou.Framework.Language.Json.SyntaxKind.None"/> when it spells none.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Language.Json.SyntaxFacts.GetLiteralExpression(Meziantou.Framework.Language.Json.SyntaxKind)">
+            <summary>Gets the node kind that wraps a keyword token.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Language.Json.SyntaxKind">
+            <summary>The kinds of node, token, and trivia a JSON tree is made of.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Json.SyntaxKind.List">
+            <summary>A sequence of children held in one slot. Shared by every language, and so fixed at 1.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Language.Json.SyntaxKind.BadToken">
+            <summary>Text the parser could make no sense of.</summary>
         </member>
     </members>
 </doc>

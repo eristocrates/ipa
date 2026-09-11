@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GraphQL.Server.Core</name>
+    </assembly>
+    <members>
+        <member name="T:GraphQL.Server.DefaultErrorInfoProvider">
+            <summary>
+            The default <see cref="T:GraphQL.Execution.ErrorInfoProvider"/> for ASP.NET Core applications providing integration
+            with Microsoft.Extensions.Options so the caller may use services.Configure{ErrorInfoProviderOptions}(...)
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.GraphQLBuilderCoreExtensions">
+            <summary>
+            GraphQL specific extension methods for <see cref="T:GraphQL.Server.IGraphQLBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddServer(GraphQL.DI.IGraphQLBuilder,System.Boolean,System.Action{GraphQL.Server.GraphQLOptions})">
+            <summary>
+            Registers an instance of <see cref="T:GraphQL.Server.BasicGraphQLExecuter`1"/> as <see cref="T:GraphQL.Server.IGraphQLExecuter`1"/> for
+            use with <see cref="T:GraphQL.Server.GraphQLOptions"/>. It is recommended to use <see cref="T:GraphQL.IDocumentExecuter"/> directly rather than
+            use the <see cref="T:GraphQL.Server.IGraphQLExecuter`1"/> interface.
+            <br/><br/>
+            Also installs <see cref="T:GraphQL.Instrumentation.InstrumentFieldsMiddleware"/> in the schema if specified. (Previous' versions of
+            GraphQL.Server would install this middleware automatically.) Specify <see langword="false"/> for <paramref name="installMetricsMiddleware"/>
+            if <see cref="M:GraphQL.GraphQLBuilderExtensions.AddMetrics(GraphQL.DI.IGraphQLBuilder,System.Boolean)"/> will be called separately. Note that
+            the implementation of <see cref="T:GraphQL.Server.BasicGraphQLExecuter`1"/> will set <see cref="P:GraphQL.ExecutionOptions.EnableMetrics"/>
+            if <see cref="P:GraphQL.Server.GraphQLOptions.EnableMetrics"/> is set.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddServer(GraphQL.DI.IGraphQLBuilder,System.Boolean,System.Action{GraphQL.Server.GraphQLOptions,System.IServiceProvider})">
+            <inheritdoc cref="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddServer(GraphQL.DI.IGraphQLBuilder,System.Boolean,System.Action{GraphQL.Server.GraphQLOptions})"/>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddErrorInfoProvider(GraphQL.Server.IGraphQLBuilder,System.Action{GraphQL.Execution.ErrorInfoProviderOptions})">
+            <summary>
+            Provides the ability to configure <see cref="T:GraphQL.Execution.ErrorInfoProviderOptions"/> for <see cref="T:GraphQL.Server.DefaultErrorInfoProvider"/>.
+            </summary>
+            <param name="builder">GraphQL builder used for GraphQL specific extension methods as 'this' argument.</param>
+            <param name="configureOptions">Action to configure the <see cref="T:GraphQL.Execution.ErrorInfoProviderOptions"/>.</param>
+            <returns>Reference to <paramref name="builder"/>.</returns>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddErrorInfoProvider``1(GraphQL.Server.IGraphQLBuilder,System.Action{GraphQL.Execution.ErrorInfoProviderOptions})">
+            <summary>
+            Provides the ability to configure <see cref="T:GraphQL.Execution.ErrorInfoProviderOptions"/> for the specified <typeparamref name="TErrorInfoProvider"/>.
+            </summary>
+            <typeparam name="TErrorInfoProvider">The <see cref="T:GraphQL.Execution.IErrorInfoProvider"/> implementation.</typeparam>
+            <param name="builder">GraphQL builder used for GraphQL specific extension methods as 'this' argument.</param>
+            <param name="configureOptions">Action to configure the <see cref="T:GraphQL.Execution.ErrorInfoProviderOptions"/>.</param>
+            <returns>Reference to <paramref name="builder"/>.</returns>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddErrorInfoProvider(GraphQL.Server.IGraphQLBuilder,System.Action{GraphQL.Execution.ErrorInfoProviderOptions,System.IServiceProvider})">
+            <summary>
+            Provides the ability to configure <see cref="T:GraphQL.Execution.ErrorInfoProviderOptions"/> for <see cref="T:GraphQL.Server.DefaultErrorInfoProvider"/>.
+            </summary>
+            <param name="builder">GraphQL builder used for GraphQL specific extension methods as 'this' argument.</param>
+            <param name="configureOptions">Action to configure the <see cref="T:GraphQL.Execution.ErrorInfoProviderOptions"/>.</param>
+            <returns>Reference to <paramref name="builder"/>.</returns>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddErrorInfoProvider``1(GraphQL.Server.IGraphQLBuilder,System.Action{GraphQL.Execution.ErrorInfoProviderOptions,System.IServiceProvider})">
+            <summary>
+            Provides the ability to configure <see cref="T:GraphQL.Execution.ErrorInfoProviderOptions"/> for the specified <typeparamref name="TErrorInfoProvider"/>.
+            </summary>
+            <typeparam name="TErrorInfoProvider">The <see cref="T:GraphQL.Execution.IErrorInfoProvider"/> implementation.</typeparam>
+            <param name="builder">GraphQL builder used for GraphQL specific extension methods as 'this' argument.</param>
+            <param name="configureOptions">Action to configure the <see cref="T:GraphQL.Execution.ErrorInfoProviderOptions"/>.</param>
+            <returns>Reference to <paramref name="builder"/>.</returns>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddDataLoader(GraphQL.Server.IGraphQLBuilder)">
+            <summary>
+            Add required services for GraphQL data loader support
+            </summary>
+            <param name="builder">GraphQL builder used for GraphQL specific extension methods as 'this' argument.</param>
+            <returns>Reference to <paramref name="builder"/>.</returns>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddGraphTypes(GraphQL.Server.IGraphQLBuilder,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Add all types that implement <seealso cref="T:GraphQL.Types.IGraphType"/> in the calling assembly
+            </summary>
+            <param name="builder">GraphQL builder used for GraphQL specific extension methods as 'this' argument.</param>
+            <param name="serviceLifetime">The service lifetime to register the GraphQL types with</param>
+            <returns>Reference to <paramref name="builder"/>.</returns>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddGraphTypes(GraphQL.Server.IGraphQLBuilder,System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Add all types that implement <seealso cref="T:GraphQL.Types.IGraphType"/> in the assembly which <paramref name="typeFromAssembly"/> belongs to
+            </summary>
+            <param name="builder">GraphQL builder used for GraphQL specific extension methods as 'this' argument.</param>
+            <param name="typeFromAssembly">The type from assembly to register all GraphQL types from</param>
+            <param name="serviceLifetime">The service lifetime to register the GraphQL types with</param>
+            <returns>Reference to <paramref name="builder"/>.</returns>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddGraphTypes(GraphQL.Server.IGraphQLBuilder,System.Reflection.Assembly,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Add all types that implement <seealso cref="T:GraphQL.Types.IGraphType"/> in the specified assembly
+            </summary>
+            <param name="builder">GraphQL builder used for GraphQL specific extension methods as 'this' argument.</param>
+            <param name="assembly">The assembly to register all GraphQL types from</param>
+            <param name="serviceLifetime">The service lifetime to register the GraphQL types with</param>
+            <returns>Reference to <paramref name="builder"/>.</returns>
+        </member>
+        <member name="M:GraphQL.Server.GraphQLBuilderCoreExtensions.AddRelayGraphTypes(GraphQL.Server.IGraphQLBuilder)">
+            <summary>
+            Adds the GraphQL Relay types <see cref="T:GraphQL.Types.Relay.ConnectionType`1"/>, <see cref="T:GraphQL.Types.Relay.EdgeType`1"/>
+            and <see cref="T:GraphQL.Types.Relay.PageInfoType"/>.
+            </summary>
+            <param name="builder">GraphQL builder used for GraphQL specific extension methods as 'this' argument.</param>
+            <returns>Reference to <paramref name="builder"/>.</returns>
+        </member>
+        <member name="T:GraphQL.Server.GraphQLOptions">
+            <summary>
+            Options to configure <see cref="T:GraphQL.Server.DefaultGraphQLExecuter`1"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.GraphQLOptions.EnableMetrics">
+            <summary>
+            This setting essentially allows Apollo Tracing.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.GraphQLOptions.MaxParallelExecutionCount">
+            <summary>If set, limits the maximum number of nodes executed in parallel</summary>
+        </member>
+        <member name="T:GraphQL.Server.GraphQLRequest">
+            <summary>
+            Represents data sent by client to GraphQL server.
+            See https://github.com/graphql/graphql-over-http/blob/master/spec/GraphQLOverHTTP.md#request
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.GraphQLRequest.OPERATION_NAME_KEY">
+            <summary>
+            Name for the operation name parameter.
+            See https://github.com/graphql/graphql-over-http/blob/master/spec/GraphQLOverHTTP.md#request-parameters
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.GraphQLRequest.QUERY_KEY">
+            <summary>
+            Name for the query parameter.
+            See https://github.com/graphql/graphql-over-http/blob/master/spec/GraphQLOverHTTP.md#request-parameters
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.GraphQLRequest.VARIABLES_KEY">
+            <summary>
+            Name for the variables parameter.
+            See https://github.com/graphql/graphql-over-http/blob/master/spec/GraphQLOverHTTP.md#request-parameters
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.GraphQLRequest.EXTENSIONS_KEY">
+            <summary>
+            Name for the extensions parameter.
+            See https://github.com/graphql/graphql-over-http/blob/master/spec/GraphQLOverHTTP.md#request-parameters
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.GraphQLRequest.OperationName">
+            <summary>
+            The name of the Operation in the Document to execute (optional).
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.GraphQLRequest.Query">
+            <summary>
+            A Document containing GraphQL Operations and Fragments to execute (required).
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.GraphQLRequest.Inputs">
+            <summary>
+            Values for any Variables defined by the Operation (optional).
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.GraphQLRequest.Extensions">
+            <summary>
+            This entry is reserved for implementors to extend the protocol however they see fit (optional).
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.IGraphQLBuilder">
+            <summary>
+            GraphQL builder used for GraphQL specific extension methods as 'this' argument.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.IGraphQLBuilder.Services">
+            <summary>
+            Underlying <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> collection used (filled) by extension methods.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.IGraphQLExecuter">
+            <summary>
+            GraphQL query, mutation and subscription executer.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.IGraphQLExecuter.ExecuteAsync(System.String,System.String,GraphQL.Inputs,System.Collections.Generic.IDictionary{System.String,System.Object},System.IServiceProvider,System.Threading.CancellationToken)">
+            <summary>
+            Execute operation
+            </summary>
+            <param name="operationName"></param>
+            <param name="query"></param>
+            <param name="variables"></param>
+            <param name="context"></param>
+            <param name="requestServices"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add GraphQL execution engine.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddGraphQL(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add required services for GraphQL.
+            </summary>
+            <param name="services">Collection of registered services.</param>
+            <returns>GraphQL builder used for GraphQL specific extension chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddGraphQL(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{GraphQL.Server.GraphQLOptions})">
+            <summary>
+            Add required services for GraphQL.
+            </summary>
+            <param name="services">Collection of registered services.</param>
+            <param name="configureOptions">An action delegate to configure the provided <see cref="T:GraphQL.Server.GraphQLOptions"/>.</param>
+            <returns>GraphQL builder used for GraphQL specific extension chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddGraphQL(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{GraphQL.Server.GraphQLOptions,System.IServiceProvider})">
+            <summary>
+            Add required services for GraphQL.
+            </summary>
+            <param name="services">Collection of registered services.</param>
+            <param name="configureOptions">
+            An action delegate to configure the provided <see cref="T:GraphQL.Server.GraphQLOptions"/>.
+            This delegate provides additional <see cref="T:System.IServiceProvider"/> parameter to resolve all necessary dependencies.
+            </param>
+            <returns>GraphQL builder used for GraphQL specific extension chaining.</returns>
+        </member>
+    </members>
+</doc>

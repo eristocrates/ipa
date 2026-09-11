@@ -3,7 +3,7 @@
   <dc:creator>meziantou</dc:creator>
   <dc:description>Helpers to manipulate URIs, including an implementation of the WHATWG URL Pattern API</dc:description>
   <dc:identifier>Meziantou.Framework.Uri</dc:identifier>
-  <version>2.0.6</version>
+  <version>2.0.7</version>
   <keywords>uri, url, urlpattern, whatwg, parsing</keywords>
-  <lastModifiedBy>NuGet.Packaging, Version=7.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+  <lastModifiedBy>NuGet.Packaging, Version=7.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
 </coreProperties>

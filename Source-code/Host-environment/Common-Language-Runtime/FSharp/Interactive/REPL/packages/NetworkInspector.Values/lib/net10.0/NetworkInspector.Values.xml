@@ -1,0 +1,879 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetworkInspector.Values</name>
+    </assembly>
+    <members>
+        <member name="T:NetworkInspector.Values.Eui64">
+            <summary>64-bit Extended Unique Identifier (EUI-64).</summary>
+        </member>
+        <member name="F:NetworkInspector.Values.Eui64.FormattedLength">
+            <summary>Formatted length: "XX:XX:XX:XX:XX:XX:XX:XX" = 23 characters.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.#ctor(System.UInt64)">
+            <summary>Creates an <see cref="T:NetworkInspector.Values.Eui64"/> from a raw 64-bit value.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.Eui64.RawValue">
+            <summary>The raw 64-bit value.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.TryFromBytes(System.ReadOnlySpan{System.Byte},NetworkInspector.Values.Eui64@)">
+            <summary>Creates an EUI-64 from an 8-byte big-endian span.</summary>
+            <returns><see langword="false"/> when fewer than 8 bytes are available.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.FromBytes(System.ReadOnlySpan{System.Byte})">
+            <summary>Creates an EUI-64 from an 8-byte big-endian span.</summary>
+            <exception cref="T:System.ArgumentException">Fewer than 8 bytes are available.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.TryParse(System.ReadOnlySpan{System.Char},NetworkInspector.Values.Eui64@)">
+            <summary>
+            Parses an EUI-64 from colon-separated hex notation "XX:XX:XX:XX:XX:XX:XX:XX" (case-insensitive).
+            </summary>
+            <param name="text">Input to parse.</param>
+            <param name="result">The parsed EUI-64 when this method returns <see langword="true"/>.</param>
+            <returns><see langword="true"/> if parsing succeeded; <see langword="false"/> for any malformed input.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.System#ISpanParsable{NetworkInspector#Values#Eui64}#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,NetworkInspector.Values.Eui64@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.System#ISpanParsable{NetworkInspector#Values#Eui64}#Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.System#IParsable{NetworkInspector#Values#Eui64}#TryParse(System.String,System.IFormatProvider,NetworkInspector.Values.Eui64@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.System#IParsable{NetworkInspector#Values#Eui64}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.ToBytes(System.Span{System.Byte})">
+            <summary>Writes 8-byte big-endian representation into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.TryGetWrittenSize(System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.TryWrite(System.Span{System.Byte},System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.TryFormat(System.Span{System.Char},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+            <remarks>Uses <see cref="T:ZeroAlloc.SpanStringBuilder"/> for zero-allocation span-based formatting.</remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.TryFormat(System.Span{System.Byte},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.TryGetStringSize(System.ReadOnlySpan{System.Char},System.IFormatProvider,System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.FormatInto(System.Span{System.Char})">
+            <summary>Writes the formatted EUI-64 into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.FormatTemp">
+            <summary>Returns a <see cref="T:ZeroAlloc.TempString"/> backed by a thread-static or pooled buffer.</summary>
+            <remarks>
+            The underlying buffer is thread-local or pooled. The caller must dispose the returned <see cref="T:ZeroAlloc.TempString"/>
+            before making another <see cref="M:NetworkInspector.Values.Eui64.FormatTemp"/> call on the same thread to avoid overwriting the buffer.
+            Do not retain references to the underlying span after disposal.
+            </remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.Format">
+            <summary>Returns the formatted EUI-64 as a new string.</summary>
+            <remarks>Allocates a new string on every call. Use <see cref="M:NetworkInspector.Values.Eui64.FormatInto(System.Span{System.Char})"/> or <see cref="M:NetworkInspector.Values.Eui64.FormatTemp"/> for allocation-free hot paths.</remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.CompareTo(NetworkInspector.Values.Eui64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.System#IComparable#CompareTo(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.op_LessThan(NetworkInspector.Values.Eui64,NetworkInspector.Values.Eui64)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.op_GreaterThan(NetworkInspector.Values.Eui64,NetworkInspector.Values.Eui64)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.op_LessThanOrEqual(NetworkInspector.Values.Eui64,NetworkInspector.Values.Eui64)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Eui64.op_GreaterThanOrEqual(NetworkInspector.Values.Eui64,NetworkInspector.Values.Eui64)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="T:NetworkInspector.Values.IPv4Address">
+            <summary>32-bit IPv4 address stored in network byte order.</summary>
+        </member>
+        <member name="F:NetworkInspector.Values.IPv4Address.MaxFormattedLength">
+            <summary>Maximum formatted length: "255.255.255.255" = 15 characters.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.#ctor(System.UInt32)">
+            <summary>Creates an <see cref="T:NetworkInspector.Values.IPv4Address"/> from a raw 32-bit value in network byte order.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv4Address.RawValue">
+            <summary>The raw 32-bit value in network byte order.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv4Address.IsPrivate">
+            <summary>True if the address is in a private range (10/8, 172.16/12, 192.168/16).</summary>
+            <remarks>Result is bit-pattern based; assumes a validly constructed IPv4 address.</remarks>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv4Address.IsLoopback">
+            <summary>True if the address is in the loopback range (127.0.0.0/8).</summary>
+            <remarks>Result is bit-pattern based; assumes a validly constructed IPv4 address.</remarks>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv4Address.IsMulticast">
+            <summary>True if the address is in the multicast range (224.0.0.0/4).</summary>
+            <remarks>Result is bit-pattern based; assumes a validly constructed IPv4 address.</remarks>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv4Address.IsLinkLocal">
+            <summary>True if the address is in the link-local range (169.254.0.0/16).</summary>
+            <remarks>Result is bit-pattern based; assumes a validly constructed IPv4 address.</remarks>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv4Address.IsBroadcast">
+            <summary>True if the address is the broadcast address (255.255.255.255).</summary>
+            <remarks>Result is bit-pattern based; assumes a validly constructed IPv4 address.</remarks>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv4Address.IsZero">
+            <summary>True if the address is all zeros.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.TryFromBytes(System.ReadOnlySpan{System.Byte},NetworkInspector.Values.IPv4Address@)">
+            <summary>Creates an IPv4 address from a 4-byte big-endian span.</summary>
+            <returns><see langword="false"/> when fewer than 4 bytes are available.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.FromBytes(System.ReadOnlySpan{System.Byte})">
+            <summary>Creates an IPv4 address from a 4-byte big-endian span.</summary>
+            <exception cref="T:System.ArgumentException">Fewer than 4 bytes are available.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.TryParse(System.ReadOnlySpan{System.Char},NetworkInspector.Values.IPv4Address@)">
+            <summary>Parses an IPv4 address from dotted-decimal notation.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.System#ISpanParsable{NetworkInspector#Values#IPv4Address}#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,NetworkInspector.Values.IPv4Address@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.System#ISpanParsable{NetworkInspector#Values#IPv4Address}#Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.System#IParsable{NetworkInspector#Values#IPv4Address}#TryParse(System.String,System.IFormatProvider,NetworkInspector.Values.IPv4Address@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.System#IParsable{NetworkInspector#Values#IPv4Address}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.ToBytes(System.Span{System.Byte})">
+            <summary>Writes 4-byte big-endian representation into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.ToBytesArray">
+            <summary>Returns a new 4-byte array with the big-endian representation.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.TryGetWrittenSize(System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.TryWrite(System.Span{System.Byte},System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.TryFormat(System.Span{System.Char},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.TryFormat(System.Span{System.Byte},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.TryGetStringSize(System.ReadOnlySpan{System.Char},System.IFormatProvider,System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.FormatInto(System.Span{System.Char})">
+            <summary>Writes the dotted-decimal address into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.FormatTemp">
+            <summary>Returns a <see cref="T:ZeroAlloc.TempString"/> backed by a thread-static or pooled buffer.</summary>
+            <remarks>
+            The underlying buffer is thread-local or pooled. The caller must dispose the returned <see cref="T:ZeroAlloc.TempString"/>
+            before making another <see cref="M:NetworkInspector.Values.IPv4Address.FormatTemp"/> call on the same thread to avoid overwriting the buffer.
+            Do not retain references to the underlying span after disposal.
+            </remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.Format">
+            <summary>Returns the formatted IPv4 address as a new string.</summary>
+            <remarks>Allocates a new string on every call. Use <see cref="M:NetworkInspector.Values.IPv4Address.FormatInto(System.Span{System.Char})"/> or <see cref="M:NetworkInspector.Values.IPv4Address.FormatTemp"/> for allocation-free hot paths.</remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.CompareTo(NetworkInspector.Values.IPv4Address)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.System#IComparable#CompareTo(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.op_LessThan(NetworkInspector.Values.IPv4Address,NetworkInspector.Values.IPv4Address)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.op_GreaterThan(NetworkInspector.Values.IPv4Address,NetworkInspector.Values.IPv4Address)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.op_LessThanOrEqual(NetworkInspector.Values.IPv4Address,NetworkInspector.Values.IPv4Address)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv4Address.op_GreaterThanOrEqual(NetworkInspector.Values.IPv4Address,NetworkInspector.Values.IPv4Address)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="T:NetworkInspector.Values.IPv6Address">
+            <summary>128-bit IPv6 address stored as two <see cref="T:System.UInt64"/> fields.</summary>
+        </member>
+        <member name="F:NetworkInspector.Values.IPv6Address.MaxFormattedLength">
+            <summary>Maximum formatted length: "XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX" = 39 characters.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.#ctor(System.UInt64,System.UInt64)">
+            <summary>Creates an <see cref="T:NetworkInspector.Values.IPv6Address"/> from two 64-bit halves.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv6Address.High">
+            <summary>The upper 64 bits (bits 127..64).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv6Address.Low">
+            <summary>The lower 64 bits (bits 63..0).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv6Address.IsLoopback">
+            <summary>True if this is the loopback address (::1).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv6Address.IsMulticast">
+            <summary>True if this is a multicast address (ff00::/8).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv6Address.IsLinkLocal">
+            <summary>True if this is a link-local address (fe80::/10).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv6Address.IsUniqueLocal">
+            <summary>True if this is a unique local address (fc00::/7).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv6Address.IsUnspecified">
+            <summary>True if this is the unspecified address (::).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.IPv6Address.IsIPv4Mapped">
+            <summary>True if this is an IPv4-mapped address (::ffff:x.x.x.x).</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.TryFromBytes(System.ReadOnlySpan{System.Byte},NetworkInspector.Values.IPv6Address@)">
+            <summary>Creates an IPv6 address from a 16-byte big-endian span.</summary>
+            <returns><see langword="false"/> when fewer than 16 bytes are available.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.FromBytes(System.ReadOnlySpan{System.Byte})">
+            <summary>Creates an IPv6 address from a 16-byte big-endian span.</summary>
+            <exception cref="T:System.ArgumentException">Fewer than 16 bytes are available.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.TryParse(System.ReadOnlySpan{System.Char},NetworkInspector.Values.IPv6Address@)">
+            <summary>
+            Parses an IPv6 address from colon-hex notation with optional <c>::</c> compression (RFC 5952).
+            </summary>
+            <param name="text">Input to parse.</param>
+            <param name="result">The parsed address when this method returns <see langword="true"/>.</param>
+            <returns><see langword="true"/> if parsing succeeded; <see langword="false"/> for any malformed input.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.System#ISpanParsable{NetworkInspector#Values#IPv6Address}#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,NetworkInspector.Values.IPv6Address@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.System#ISpanParsable{NetworkInspector#Values#IPv6Address}#Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.System#IParsable{NetworkInspector#Values#IPv6Address}#TryParse(System.String,System.IFormatProvider,NetworkInspector.Values.IPv6Address@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.System#IParsable{NetworkInspector#Values#IPv6Address}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.ToBytes(System.Span{System.Byte})">
+            <summary>Writes 16-byte big-endian representation into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.ToBytesArray">
+            <summary>Returns a new 16-byte array with the big-endian representation.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.TryGetWrittenSize(System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.TryWrite(System.Span{System.Byte},System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.GetGroups(System.Span{System.UInt16})">
+            <summary>
+            Writes the 8 groups of 16-bit values into the destination span.
+            </summary>
+            <param name="groups">Destination span, must have length &gt;= 8.</param>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="groups"/> is too small.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.TryGetGroups(System.Span{System.UInt16})">
+            <summary>
+            Writes the 8 groups of 16-bit values into the destination span.
+            Returns <see langword="false"/> without throwing when the span is too small.
+            </summary>
+            <param name="groups">Destination span; must have length &gt;= 8.</param>
+            <returns><see langword="true"/> if the groups were written; <see langword="false"/> when the span is too small.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.TryFormat(System.Span{System.Char},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.TryFormat(System.Span{System.Byte},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.TryGetStringSize(System.ReadOnlySpan{System.Char},System.IFormatProvider,System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.FormatInto(System.Span{System.Char})">
+            <summary>Writes the compressed IPv6 address into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.FormatTemp">
+            <summary>Returns a <see cref="T:ZeroAlloc.TempString"/> backed by a thread-static or pooled buffer.</summary>
+            <remarks>
+            The underlying buffer is thread-local or pooled. The caller must dispose the returned <see cref="T:ZeroAlloc.TempString"/>
+            before making another <see cref="M:NetworkInspector.Values.IPv6Address.FormatTemp"/> call on the same thread to avoid overwriting the buffer.
+            Do not retain references to the underlying span after disposal.
+            </remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.Format">
+            <summary>Returns the compressed IPv6 address as a new string.</summary>
+            <remarks>Allocates a new string on every call. Use <see cref="M:NetworkInspector.Values.IPv6Address.FormatInto(System.Span{System.Char})"/> or <see cref="M:NetworkInspector.Values.IPv6Address.FormatTemp"/> for allocation-free hot paths.</remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.CompareTo(NetworkInspector.Values.IPv6Address)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.System#IComparable#CompareTo(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.op_LessThan(NetworkInspector.Values.IPv6Address,NetworkInspector.Values.IPv6Address)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.op_GreaterThan(NetworkInspector.Values.IPv6Address,NetworkInspector.Values.IPv6Address)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.op_LessThanOrEqual(NetworkInspector.Values.IPv6Address,NetworkInspector.Values.IPv6Address)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address.op_GreaterThanOrEqual(NetworkInspector.Values.IPv6Address,NetworkInspector.Values.IPv6Address)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.IPv6Address._FindLongestZeroRun(System.ReadOnlySpan{System.UInt16},System.Int32@,System.Int32@)">
+            <summary>Finds the longest run of consecutive zero groups for :: compression.</summary>
+        </member>
+        <member name="T:NetworkInspector.Values.MacAddress">
+            <summary>
+            48-bit MAC (EUI-48) address stored in the lower 6 bytes of a <see cref="T:System.UInt64"/>.
+            </summary>
+        </member>
+        <member name="F:NetworkInspector.Values.MacAddress.FormattedLength">
+            <summary>Formatted length: "XX:XX:XX:XX:XX:XX" = 17 characters.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.#ctor(System.UInt64)">
+            <summary>Creates a <see cref="T:NetworkInspector.Values.MacAddress"/> from a raw 64-bit value (only lower 48 bits are used).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.MacAddress.RawValue">
+            <summary>The raw 64-bit value (lower 48 bits contain the MAC address).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.MacAddress.IsBroadcast">
+            <summary>True if this is the broadcast address (FF:FF:FF:FF:FF:FF).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.MacAddress.IsMulticast">
+            <summary>True if the multicast bit (bit 0 of octet 0) is set.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.MacAddress.IsUnicast">
+            <summary>True if the address is unicast (multicast bit not set).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.MacAddress.IsLocal">
+            <summary>True if the locally administered bit (bit 1 of octet 0) is set.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.MacAddress.IsGlobal">
+            <summary>True if the address is globally unique.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.MacAddress.IsZero">
+            <summary>True if all 48 bits are zero.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.TryFromBytes(System.ReadOnlySpan{System.Byte},NetworkInspector.Values.MacAddress@)">
+            <summary>Creates a MAC address from a 6-byte big-endian span.</summary>
+            <returns><see langword="false"/> when fewer than 6 bytes are available.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.FromBytes(System.ReadOnlySpan{System.Byte})">
+            <summary>Creates a MAC address from a 6-byte big-endian span.</summary>
+            <exception cref="T:System.ArgumentException">Fewer than 6 bytes are available.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.TryParse(System.ReadOnlySpan{System.Char},NetworkInspector.Values.MacAddress@)">
+            <summary>Parses a MAC address from "XX:XX:XX:XX:XX:XX" notation (case-insensitive).</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.System#ISpanParsable{NetworkInspector#Values#MacAddress}#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,NetworkInspector.Values.MacAddress@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.System#ISpanParsable{NetworkInspector#Values#MacAddress}#Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.System#IParsable{NetworkInspector#Values#MacAddress}#TryParse(System.String,System.IFormatProvider,NetworkInspector.Values.MacAddress@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.System#IParsable{NetworkInspector#Values#MacAddress}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.ToBytes(System.Span{System.Byte})">
+            <summary>Writes 6-byte big-endian representation into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.ToBytesArray">
+            <summary>Returns a new 6-byte array with the big-endian representation.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.TryGetWrittenSize(System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.TryWrite(System.Span{System.Byte},System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.TryFormat(System.Span{System.Char},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+            <remarks>Uses <see cref="T:ZeroAlloc.SpanStringBuilder"/> for zero-allocation span-based formatting.</remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.TryFormat(System.Span{System.Byte},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.TryGetStringSize(System.ReadOnlySpan{System.Char},System.IFormatProvider,System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.FormatInto(System.Span{System.Char})">
+            <summary>Writes the formatted MAC address into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.FormatTemp">
+            <summary>Returns a <see cref="T:ZeroAlloc.TempString"/> backed by a thread-static or pooled buffer.</summary>
+            <remarks>
+            The underlying buffer is thread-local or pooled. The caller must dispose the returned <see cref="T:ZeroAlloc.TempString"/>
+            before making another <see cref="M:NetworkInspector.Values.MacAddress.FormatTemp"/> call on the same thread to avoid overwriting the buffer.
+            Do not retain references to the underlying span after disposal.
+            </remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.Format">
+            <summary>Returns the formatted MAC address as a new string.</summary>
+            <remarks>Allocates a new string on every call. Use <see cref="M:NetworkInspector.Values.MacAddress.FormatInto(System.Span{System.Char})"/> or <see cref="M:NetworkInspector.Values.MacAddress.FormatTemp"/> for allocation-free hot paths.</remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.CompareTo(NetworkInspector.Values.MacAddress)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.System#IComparable#CompareTo(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.op_LessThan(NetworkInspector.Values.MacAddress,NetworkInspector.Values.MacAddress)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.op_GreaterThan(NetworkInspector.Values.MacAddress,NetworkInspector.Values.MacAddress)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.op_LessThanOrEqual(NetworkInspector.Values.MacAddress,NetworkInspector.Values.MacAddress)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.MacAddress.op_GreaterThanOrEqual(NetworkInspector.Values.MacAddress,NetworkInspector.Values.MacAddress)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="T:NetworkInspector.Values.Timestamp">
+            <summary>Nanosecond-precision timestamp (nanoseconds since Unix epoch).</summary>
+        </member>
+        <member name="F:NetworkInspector.Values.Timestamp.MaxFormattedLength">
+            <summary>Maximum formatted length: yyyy-MM-ddTHH:mm:ss.nnnnnnnnnZ = 30.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.#ctor(System.Int64)">
+            <summary>Creates a <see cref="T:NetworkInspector.Values.Timestamp"/> from nanoseconds since Unix epoch.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.Timestamp.Now">
+            <summary>Current UTC time as a timestamp.</summary>
+            <remarks>
+            Resolution is constrained by the underlying OS clock. On Windows, <see cref="P:System.DateTimeOffset.UtcNow"/>
+            typically has ~15 ms resolution; the nanosecond sub-millisecond digits are therefore zero-padded.
+            On Linux and macOS, resolution is typically 1 µs or better.
+            </remarks>
+        </member>
+        <member name="P:NetworkInspector.Values.Timestamp.AsNanos">
+            <summary>The raw nanosecond value.</summary>
+            <remarks>
+            Negative values represent timestamps before the Unix epoch (January 1, 1970 UTC).
+            Hashing and comparison treat negative values correctly (consistent with <see cref="T:System.Int64"/> semantics).
+            </remarks>
+        </member>
+        <member name="P:NetworkInspector.Values.Timestamp.AsMicros">
+            <summary>The value in microseconds (truncated).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.Timestamp.AsMillis">
+            <summary>The value in milliseconds (truncated).</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.Timestamp.Secs">
+            <summary>The whole seconds part.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.Timestamp.SubsecNanos">
+            <summary>The sub-second nanosecond part.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.FromNanos(System.Int64)">
+            <summary>Creates a timestamp from nanoseconds.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.TryFromMicros(System.Int64,NetworkInspector.Values.Timestamp@)">
+            <summary>Creates a timestamp from microseconds when representable in nanoseconds.</summary>
+            <returns><see langword="false"/> when <paramref name="micros"/> overflows the nanosecond range.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.FromMicros(System.Int64)">
+            <summary>Creates a timestamp from microseconds.</summary>
+            <exception cref="T:System.OverflowException"><paramref name="micros"/> overflows the nanosecond range.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.TryFromMillis(System.Int64,NetworkInspector.Values.Timestamp@)">
+            <summary>Creates a timestamp from milliseconds when representable in nanoseconds.</summary>
+            <returns><see langword="false"/> when <paramref name="millis"/> overflows the nanosecond range.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.FromMillis(System.Int64)">
+            <summary>Creates a timestamp from milliseconds.</summary>
+            <exception cref="T:System.OverflowException"><paramref name="millis"/> overflows the nanosecond range.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.TryFromSecs(System.Int64,NetworkInspector.Values.Timestamp@)">
+            <summary>Creates a timestamp from seconds when representable in nanoseconds.</summary>
+            <returns><see langword="false"/> when <paramref name="secs"/> overflows the nanosecond range.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.FromSecs(System.Int64)">
+            <summary>Creates a timestamp from seconds.</summary>
+            <exception cref="T:System.OverflowException"><paramref name="secs"/> overflows the nanosecond range.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.TryFromSecsAndNanos(System.Int64,System.Int32,NetworkInspector.Values.Timestamp@)">
+            <summary>Creates a timestamp from seconds and nanoseconds when representable.</summary>
+            <returns><see langword="false"/> when the combined value overflows the nanosecond range.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.FromSecsAndNanos(System.Int64,System.Int32)">
+            <summary>Creates a timestamp from seconds and nanoseconds.</summary>
+            <exception cref="T:System.OverflowException">The combined value overflows the nanosecond range.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.TryParse(System.ReadOnlySpan{System.Char},NetworkInspector.Values.Timestamp@)">
+            <summary>
+            Parses a timestamp from ISO 8601 UTC nanosecond format <c>yyyy-MM-ddTHH:mm:ss.nnnnnnnnnZ</c>.
+            </summary>
+            <param name="text">Input to parse; must be exactly 30 characters.</param>
+            <param name="result">The parsed timestamp when this method returns <see langword="true"/>.</param>
+            <returns><see langword="true"/> if parsing succeeded; <see langword="false"/> for any malformed input.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.System#ISpanParsable{NetworkInspector#Values#Timestamp}#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,NetworkInspector.Values.Timestamp@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.System#ISpanParsable{NetworkInspector#Values#Timestamp}#Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.System#IParsable{NetworkInspector#Values#Timestamp}#TryParse(System.String,System.IFormatProvider,NetworkInspector.Values.Timestamp@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.System#IParsable{NetworkInspector#Values#Timestamp}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.op_Addition(NetworkInspector.Values.Timestamp,System.TimeSpan)">
+            <summary>Adds a <see cref="T:System.TimeSpan"/> to the timestamp.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.op_Subtraction(NetworkInspector.Values.Timestamp,System.TimeSpan)">
+            <summary>Subtracts a <see cref="T:System.TimeSpan"/> from the timestamp.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.op_Subtraction(NetworkInspector.Values.Timestamp,NetworkInspector.Values.Timestamp)">
+            <summary>Returns the duration between two timestamps.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.Add(NetworkInspector.Values.Timestamp,System.TimeSpan)">
+            <summary>Adds a <see cref="T:System.TimeSpan"/> to a timestamp.</summary>
+            <remarks>Uses <c>Ticks * 100</c> for exact nanosecond conversion (1 tick = 100 ns).</remarks>
+            <exception cref="T:System.OverflowException">The result overflows the nanosecond range.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.Subtract(NetworkInspector.Values.Timestamp,System.TimeSpan)">
+            <summary>Subtracts a <see cref="T:System.TimeSpan"/> from a timestamp.</summary>
+            <remarks>Uses <c>Ticks * 100</c> for exact nanosecond conversion (1 tick = 100 ns).</remarks>
+            <exception cref="T:System.OverflowException">The result overflows the nanosecond range.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.Subtract(NetworkInspector.Values.Timestamp,NetworkInspector.Values.Timestamp)">
+            <summary>Returns the duration between two timestamps.</summary>
+            <remarks>Uses <c>Ticks * 100</c> for exact nanosecond conversion (1 tick = 100 ns).
+            Throws <see cref="T:System.OverflowException"/> when the nanosecond delta exceeds <see cref="T:System.Int64"/> range.</remarks>
+            <exception cref="T:System.OverflowException">Thrown when the nanosecond delta overflows a signed 64-bit integer.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.TryGetWrittenSize(System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.TryWrite(System.Span{System.Byte},System.Int32@)">
+            <inheritdoc/>
+            <remarks>Writes the raw nanosecond value as 8-byte big-endian.</remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.TryFormat(System.Span{System.Char},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.TryFormat(System.Span{System.Byte},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.TryGetStringSize(System.ReadOnlySpan{System.Char},System.IFormatProvider,System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.FormatInto(System.Span{System.Char})">
+            <summary>Writes the ISO 8601 UTC timestamp into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.FormatTemp">
+            <summary>Returns a <see cref="T:ZeroAlloc.TempString"/> backed by a thread-static or pooled buffer.</summary>
+            <remarks>
+            The underlying buffer is thread-local or pooled. The caller must dispose the returned <see cref="T:ZeroAlloc.TempString"/>
+            before making another <see cref="M:NetworkInspector.Values.Timestamp.FormatTemp"/> call on the same thread to avoid overwriting the buffer.
+            Do not retain references to the underlying span after disposal.
+            </remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.Format">
+            <summary>Returns the formatted timestamp as a new string.</summary>
+            <remarks>Allocates a new string on every call. Use <see cref="M:NetworkInspector.Values.Timestamp.FormatInto(System.Span{System.Char})"/> or <see cref="M:NetworkInspector.Values.Timestamp.FormatTemp"/> for allocation-free hot paths.</remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.CompareTo(NetworkInspector.Values.Timestamp)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.System#IComparable#CompareTo(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.op_LessThan(NetworkInspector.Values.Timestamp,NetworkInspector.Values.Timestamp)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.op_GreaterThan(NetworkInspector.Values.Timestamp,NetworkInspector.Values.Timestamp)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.op_LessThanOrEqual(NetworkInspector.Values.Timestamp,NetworkInspector.Values.Timestamp)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Timestamp.op_GreaterThanOrEqual(NetworkInspector.Values.Timestamp,NetworkInspector.Values.Timestamp)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="T:NetworkInspector.Values.Uuid">
+            <summary>128-bit UUID stored as two <see cref="T:System.UInt64"/> fields.</summary>
+        </member>
+        <member name="F:NetworkInspector.Values.Uuid.FormattedLength">
+            <summary>Formatted length: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" = 36 characters.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.#ctor(System.UInt64,System.UInt64)">
+            <summary>Creates a <see cref="T:NetworkInspector.Values.Uuid"/> from two 64-bit halves.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.Uuid.High">
+            <summary>The upper 64 bits.</summary>
+        </member>
+        <member name="P:NetworkInspector.Values.Uuid.Low">
+            <summary>The lower 64 bits.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.TryFromBytes(System.ReadOnlySpan{System.Byte},NetworkInspector.Values.Uuid@)">
+            <summary>Creates a UUID from a 16-byte big-endian span.</summary>
+            <returns><see langword="false"/> when fewer than 16 bytes are available.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.FromBytes(System.ReadOnlySpan{System.Byte})">
+            <summary>Creates a UUID from a 16-byte big-endian span.</summary>
+            <exception cref="T:System.ArgumentException">Fewer than 16 bytes are available.</exception>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.TryParse(System.ReadOnlySpan{System.Char},NetworkInspector.Values.Uuid@)">
+            <summary>
+            Parses a UUID from canonical form "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" (case-insensitive).
+            </summary>
+            <param name="text">Input to parse; must be exactly 36 characters.</param>
+            <param name="result">The parsed UUID when this method returns <see langword="true"/>.</param>
+            <returns><see langword="true"/> if parsing succeeded; <see langword="false"/> for any malformed input.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.System#ISpanParsable{NetworkInspector#Values#Uuid}#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,NetworkInspector.Values.Uuid@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.System#ISpanParsable{NetworkInspector#Values#Uuid}#Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.System#IParsable{NetworkInspector#Values#Uuid}#TryParse(System.String,System.IFormatProvider,NetworkInspector.Values.Uuid@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.System#IParsable{NetworkInspector#Values#Uuid}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.ToBytes(System.Span{System.Byte})">
+            <summary>Writes 16-byte big-endian representation into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.TryGetWrittenSize(System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.TryWrite(System.Span{System.Byte},System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.TryFormat(System.Span{System.Char},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.TryFormat(System.Span{System.Byte},System.Int32@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.TryGetStringSize(System.ReadOnlySpan{System.Char},System.IFormatProvider,System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.FormatInto(System.Span{System.Char})">
+            <summary>Writes the formatted UUID into the destination span.</summary>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.FormatTemp">
+            <summary>Returns a <see cref="T:ZeroAlloc.TempString"/> backed by a thread-static or pooled buffer.</summary>
+            <remarks>
+            The underlying buffer is thread-local or pooled. The caller must dispose the returned <see cref="T:ZeroAlloc.TempString"/>
+            before making another <see cref="M:NetworkInspector.Values.Uuid.FormatTemp"/> call on the same thread to avoid overwriting the buffer.
+            Do not retain references to the underlying span after disposal.
+            </remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.Format">
+            <summary>Returns the formatted UUID as a new string.</summary>
+            <remarks>Allocates a new string on every call. Use <see cref="M:NetworkInspector.Values.Uuid.FormatInto(System.Span{System.Char})"/> or <see cref="M:NetworkInspector.Values.Uuid.FormatTemp"/> for allocation-free hot paths.</remarks>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.CompareTo(NetworkInspector.Values.Uuid)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.System#IComparable#CompareTo(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.op_LessThan(NetworkInspector.Values.Uuid,NetworkInspector.Values.Uuid)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.op_GreaterThan(NetworkInspector.Values.Uuid,NetworkInspector.Values.Uuid)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.op_LessThanOrEqual(NetworkInspector.Values.Uuid,NetworkInspector.Values.Uuid)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is less than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid.op_GreaterThanOrEqual(NetworkInspector.Values.Uuid,NetworkInspector.Values.Uuid)">
+            <summary>Returns <see langword="true"/> if <paramref name="left"/> is greater than or equal to <paramref name="right"/>.</summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> if the condition holds; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NetworkInspector.Values.Uuid._WriteHexByte(System.Span{System.Char},System.Int32,System.Int32)">
+            <summary>Writes a single byte as two uppercase hex characters at the given offset.</summary>
+        </member>
+        <member name="T:ZeroAlloc.ZA">
+            <summary>
+            Per-assembly zero-allocation API surface. The generator adds overloads in this compilation.
+            Thread-safety: static methods use per-thread buffers via <see cref="T:ZeroAlloc.ZeroAllocHelper"/>; do not hold a
+            <see cref="T:ZeroAlloc.TempString"/> or <see cref="T:ZeroAlloc.TempBytes"/> across <c>await</c> on the same thread while nested calls run.
+            </summary>
+            <summary>
+            Generated zero-allocation formatting methods.
+            </summary>
+            <remarks>
+            <para>
+            All methods return <see cref="T:ZeroAlloc.TempString"/> or <see cref="T:ZeroAlloc.TempBytes"/> which MUST be
+            disposed using a <c>using</c> statement.
+            </para>
+            <para>
+            Default buffer size: 2.097.152 bytes (configurable via ZeroAlloc_DefaultBufferSize MSBuild property).
+            </para>
+            <para>
+            Recursive heap fallback: enabled (configurable via ZeroAlloc_RecursiveHeapFallback MSBuild property).
+            </para>
+            <para>
+            Buffer overflow behavior: Grow (configurable via ZeroAlloc_BufferOverflowBehavior MSBuild property).
+            </para>
+            </remarks>
+        </member>
+        <member name="F:ZeroAlloc.ZA.DefaultBufferSize">
+            <summary>
+            Initial buffer size for ThreadStatic buffers.
+            Configured via ZeroAlloc_DefaultBufferSize MSBuild property.
+            </summary>
+        </member>
+        <member name="F:ZeroAlloc.ZA.RecursiveHeapFallback">
+            <summary>
+            Whether to fall back to heap allocation when the ThreadStatic buffer is already in use (nested/recursive call).
+            Configured via ZeroAlloc_RecursiveHeapFallback MSBuild property.
+            </summary>
+            <remarks>
+            <para>
+            IMPORTANT: Each thread has exactly ONE ThreadStatic buffer. If you call ZeroAlloc APIs
+            while still holding a TempString/TempBytes (i.e., nested calls), the inner call cannot
+            use the ThreadStatic buffer because the outer call is still using it.
+            </para>
+            <para>
+            When true: Inner calls allocate a temporary heap buffer (small allocation).
+            When false: Inner calls throw InvalidOperationException.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:ZeroAlloc.ZA.BufferOverflowBehavior">
+            <summary>
+            Behavior when content exceeds buffer size: 0=Grow, 1=HeapFallback, 2=Throw.
+            Configured via ZeroAlloc_BufferOverflowBehavior MSBuild property.
+            </summary>
+        </member>
+    </members>
+</doc>

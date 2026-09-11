@@ -1,0 +1,15 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.dll
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/f6bff24086ee4443b83c4193b267a5f5.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /microsoft.aspnetcore.diagnostics.2.3.13.nupkg
+F: /Microsoft.AspNetCore.Diagnostics.nuspec
+F: /[Content_Types].xml

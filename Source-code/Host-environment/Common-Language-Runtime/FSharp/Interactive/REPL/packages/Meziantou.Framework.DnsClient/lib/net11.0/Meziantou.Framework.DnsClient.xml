@@ -1,0 +1,1286 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.DnsClient</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.DnsClient.DnsClient">
+            <summary>A DNS client supporting UDP, TCP, DNS over TLS, DNS over HTTPS, DNS over QUIC, DNSSEC, EDNS, IDN, and reverse lookups.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.DnsClient._tcpFallback">
+            <summary>Used to re-issue a truncated UDP query over TCP. Null for every other protocol.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnsClient.#ctor(System.String,Meziantou.Framework.DnsClient.DnsClientProtocol)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.DnsClient.DnsClient"/> class.
+            </summary>
+            <param name="server">The DNS server address (IP address, hostname, or URL for DNS over HTTPS).</param>
+            <param name="protocol">The DNS transport protocol to use.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnsClient.#ctor(System.String,Meziantou.Framework.DnsClient.DnsClientProtocol,Meziantou.Framework.DnsClient.DnsClientOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.DnsClient.DnsClient"/> class.
+            </summary>
+            <param name="server">The DNS server address (IP address, hostname, or URL for DNS over HTTPS).</param>
+            <param name="protocol">The DNS transport protocol to use.</param>
+            <param name="options">Optional configuration options.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnsClient.QueryAsync(System.String,Meziantou.Framework.DnsClient.Query.DnsQueryType,System.Threading.CancellationToken)">
+            <summary>Sends a DNS query for the specified domain name and record type.</summary>
+            <param name="name">The domain name to query. Unicode names are automatically converted to punycode.</param>
+            <param name="type">The DNS record type to query.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The DNS response message.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnsClient.QueryAsync(System.String,Meziantou.Framework.DnsClient.Query.DnsQueryType,Meziantou.Framework.DnsClient.Query.DnsQueryClass,System.Threading.CancellationToken)">
+            <summary>Sends a DNS query for the specified domain name, record type, and class.</summary>
+            <param name="name">The domain name to query. Unicode names are automatically converted to punycode.</param>
+            <param name="type">The DNS record type to query.</param>
+            <param name="queryClass">The DNS query class.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The DNS response message.</returns>
+            <exception cref="T:Meziantou.Framework.DnsClient.DnsProtocolException">The response is malformed, or does not answer the query that was sent.</exception>
+            <exception cref="T:System.TimeoutException"><see cref="P:Meziantou.Framework.DnsClient.DnsClientOptions.Timeout"/> elapsed before a response arrived.</exception>
+            <exception cref="T:System.OperationCanceledException"><paramref name="cancellationToken"/> was cancelled.</exception>
+            <exception cref="T:System.ObjectDisposedException">The client has been disposed.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnsClient.ReverseLookupAsync(System.Net.IPAddress,System.Threading.CancellationToken)">
+            <summary>Performs a reverse DNS lookup for the specified IP address.</summary>
+            <param name="address">The IP address to look up (IPv4 or IPv6).</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The DNS response message containing PTR records.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnsClient.SendAsync(Meziantou.Framework.DnsClient.Query.DnsQueryMessage,System.Threading.CancellationToken)">
+            <summary>Sends a DNS query message and returns the response.</summary>
+            <param name="message">The DNS query message to send.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The DNS response message.</returns>
+            <remarks>The message is not modified; the client's options are applied to an internal copy.</remarks>
+            <exception cref="T:Meziantou.Framework.DnsClient.DnsProtocolException">The response is malformed, or does not answer the query that was sent.</exception>
+            <exception cref="T:System.TimeoutException"><see cref="P:Meziantou.Framework.DnsClient.DnsClientOptions.Timeout"/> elapsed before a response arrived.</exception>
+            <exception cref="T:System.OperationCanceledException"><paramref name="cancellationToken"/> was cancelled.</exception>
+            <exception cref="T:System.ObjectDisposedException">The client has been disposed.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnsClient.Dispose">
+            <summary>Releases the resources used by this instance.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnsClient.ValidateResponseMatchesQuery(Meziantou.Framework.DnsClient.Query.DnsQueryMessage,System.UInt16,Meziantou.Framework.DnsClient.Response.DnsResponseMessage)">
+            <summary>
+            Rejects a response that does not answer the query that was sent. Without this check any party able to deliver a
+            datagram — an off-path spoofer on UDP, or an on-path attacker — can substitute arbitrary records.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnsClient.CloneWithOptions(Meziantou.Framework.DnsClient.Query.DnsQueryMessage)">
+            <summary>
+            Produces the message that will actually go on the wire, with the client's options applied. The caller's
+            message is never modified: it may be reused across calls or across clients with different options.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.DnsClientOptions">
+            <summary>
+            Configuration options for <see cref="T:Meziantou.Framework.DnsClient.DnsClient"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.Timeout">
+            <summary>Gets or sets the query timeout. Default is 5 seconds.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.EnableEdns">
+            <summary>Gets or sets a value indicating whether to include EDNS(0) OPT records in queries. Default is <see langword="true"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.EdnsUdpPayloadSize">
+            <summary>
+            Gets or sets the EDNS UDP payload size. Default is 1232, the value recommended by RFC 9715 and DNS Flag Day
+            2020 to avoid IP fragmentation; larger UDP answers are routinely dropped by middleboxes.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.DnssecOk">
+            <summary>Gets or sets a value indicating whether to set the DNSSEC OK (DO) flag. Default is <see langword="false"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.DnssecValidationMode">
+            <summary>Gets or sets how DNSSEC responses are validated. Default is <see cref="F:Meziantou.Framework.DnsClient.DnssecValidationMode.None"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.DnssecTrustAnchors">
+            <summary>Gets or sets the DNSSEC trust anchors used for local validation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.TimeProvider">
+            <summary>Gets or sets the time provider used for DNSSEC signature lifetime checks.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.RetryTruncatedOverTcp">
+            <summary>
+            Gets or sets a value indicating whether a truncated (TC) UDP response is automatically re-issued over TCP,
+            as RFC 1035 section 4.2.1 requires. Default is <see langword="true"/>. Only applies to <see cref="F:Meziantou.Framework.DnsClient.DnsClientProtocol.Udp"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.HttpVersion">
+            <summary>
+            Gets or sets the HTTP version used for DNS over HTTPS requests. Default is HTTP/2, which every DoH resolver
+            supports; requesting HTTP/3 costs a failed QUIC attempt per connection on hosts or servers without it.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.HttpVersionPolicy">
+            <summary>Gets or sets the HTTP version policy used for DNS over HTTPS requests. Default is <see cref="F:System.Net.Http.HttpVersionPolicy.RequestVersionOrLower"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.HttpHandler">
+            <summary>Gets or sets the HTTP message handler for DNS over HTTPS. When <see langword="null"/>, a default handler is used.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsClientOptions.ServerAddressResolver">
+            <summary>Gets or sets the resolver used to resolve DNS server hostnames to IP addresses.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.DnsClientProtocol">
+            <summary>Specifies the DNS transport protocol to use for queries.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.DnsClientProtocol.Udp">
+            <summary>DNS over UDP (RFC 1035), port 53.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.DnsClientProtocol.Tcp">
+            <summary>DNS over TCP (RFC 1035, RFC 7766), port 53.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.DnsClientProtocol.Tls">
+            <summary>DNS over TLS (RFC 7858), port 853.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.DnsClientProtocol.Https">
+            <summary>DNS over HTTPS (RFC 8484), port 443.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.DnsClientProtocol.Quic">
+            <summary>DNS over QUIC (RFC 9250), port 853.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.DnsProtocolException">
+            <summary>Represents an error in the DNS wire protocol.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.DnssecTrustAnchor">
+            <summary>Represents a DNSSEC trust anchor as a DS-style key digest.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnssecTrustAnchor.#ctor(System.String,System.UInt16,System.Byte,System.Byte,System.Byte[])">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.DnsClient.DnssecTrustAnchor"/> class.</summary>
+            <param name="name">The DNS name the trust anchor applies to.</param>
+            <param name="keyTag">The DNSKEY key tag.</param>
+            <param name="algorithm">The DNSSEC algorithm number.</param>
+            <param name="digestType">The DS digest type.</param>
+            <param name="digest">The DS digest bytes.</param>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnssecTrustAnchor.Name">
+            <summary>Gets the DNS name the trust anchor applies to.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnssecTrustAnchor.KeyTag">
+            <summary>Gets the DNSKEY key tag.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnssecTrustAnchor.Algorithm">
+            <summary>Gets the DNSSEC algorithm number.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnssecTrustAnchor.DigestType">
+            <summary>Gets the DS digest type.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnssecTrustAnchor.Digest">
+            <summary>Gets the DS digest bytes.</summary>
+            <remarks>
+            Exposed as <see cref="T:System.ReadOnlyMemory`1"/> rather than an array: <see cref="P:Meziantou.Framework.DnsClient.DnssecTrustAnchors.Root"/> is a
+            process-wide singleton and is the root of trust for every client, so handing out a writable reference to it
+            would let any code in the process silently break — or redirect — DNSSEC validation everywhere.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.DnssecTrustAnchors">
+            <summary>Provides built-in DNSSEC trust anchors.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnssecTrustAnchors.Root">
+            <summary>Gets the IANA root DNSSEC trust anchors.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.DnssecValidationMode">
+            <summary>Specifies how DNSSEC validation is performed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.DnssecValidationMode.None">
+            <summary>DNSSEC records can be requested and parsed, but responses are not locally validated.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.DnssecValidationMode.Local">
+            <summary>Responses are locally validated against configured DNSSEC trust anchors.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Internal.DenialKind">
+            <summary>What a denial of existence is being asked to prove.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Internal.DenialKind.NameOrData">
+            <summary>That a name, or a type at a name, does not exist. NSEC3 opt-out spans cannot prove this.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Internal.DenialKind.Delegation">
+            <summary>That no secure delegation exists at a name. NSEC3 opt-out spans do prove this.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecCanonicalizer.ToLowerAscii(System.ReadOnlySpan{System.Char})">
+            <summary>Downcases A-Z only. DNS case folding is ASCII-only (RFC 4343); culture-aware casing would be wrong.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Internal.DnssecCanonicalizer.DowncasedRdataTypes">
+            <summary>
+            The record types whose embedded domain names must be downcased in canonical form, per RFC 4034 section 6.2 as
+            amended by RFC 6840 section 5.1 (which removes NSEC's Next Domain Name from the list). Every other type's RDATA
+            is used verbatim, which is why newer types such as SVCB/HTTPS (RFC 9460) must not appear here.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecCanonicalizer.GetLongestCommonSuffix(System.String,System.String)">
+            <summary>Returns the longest sequence of trailing labels the two names have in common.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Internal.DnssecValidator._queryBudget">
+            <summary>
+            Caps how many auxiliary queries one validation may issue. A hostile response can carry hundreds of RRSIGs with
+            unrelated signer names, each of which would otherwise start its own walk to the root.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.ValidateDenialAsync(Meziantou.Framework.DnsClient.Response.DnsResponseMessage,System.String,Meziantou.Framework.DnsClient.Query.DnsQueryType,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsDnskeyRecord},Meziantou.Framework.DnsClient.Internal.DenialKind,System.Threading.CancellationToken)">
+            <summary>
+            Validates a denial of existence (NXDOMAIN or NODATA) per RFC 4035 section 5.4 and RFC 5155 section 8.
+            </summary>
+            <param name="denialKind">
+            Whether this proves a name/type does not exist, or only that a secure delegation does not exist. NSEC3 opt-out
+            records prove the latter but never the former.
+            </param>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.ValidateWildcardDenialAsync(Meziantou.Framework.DnsClient.Response.DnsResponseMessage,System.String,Meziantou.Framework.DnsClient.Query.DnsQueryType,System.Threading.CancellationToken)">
+            <summary>Determines whether a wildcard-expanded answer is accompanied by a proof that the queried name has no exact match (RFC 4035 section 5.3.4).</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.SignsForQuestion(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord},System.String)">
+            <summary>Determines whether every signature on a denial RRset was made by a zone at or above the queried name.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.IsBefore(System.UInt32,System.UInt32)">
+            <summary>
+            Issues an auxiliary query for the chain of trust. Failures are reported as a <see langword="null"/> result so
+            the caller can produce an Indeterminate verdict: a transient network error while fetching a DS or DNSKEY must
+            not throw away the answer the caller actually asked for.
+            </summary>
+            <summary>Serial-number comparison (RFC 1982): true when <paramref name="left"/> precedes <paramref name="right"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.ProvesNoData(System.String,Meziantou.Framework.DnsClient.Query.DnsQueryType,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsNsecRecord},System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record},Meziantou.Framework.DnsClient.Internal.DenialKind)">
+            <summary>Proves that the name exists but carries no record of the queried type (RFC 4035 section 5.4, RFC 5155 section 8.5/8.6).</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.ProvesNameError(System.String,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsNsecRecord},System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record},Meziantou.Framework.DnsClient.Internal.DenialKind)">
+            <summary>
+            Proves that the name does not exist. RFC 4035 section 5.4 requires two proofs: one covering the queried name and
+            one showing that no wildcard at the closest encloser could have synthesized an answer.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.CoversName(System.String,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsNsecRecord},System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record},Meziantou.Framework.DnsClient.Internal.DenialKind)">
+            <summary>Determines whether some NSEC/NSEC3 proves the name does not exist (its hash or canonical position falls inside a gap).</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.CoversOrMatchesAbsentWildcard(System.String,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsNsecRecord},System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record},Meziantou.Framework.DnsClient.Internal.DenialKind)">
+            <summary>Determines whether the wildcard name is proven absent, either by an exact NSEC/NSEC3 with no relevant types or by a covering gap.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.GetClosestEncloser(System.String,System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsNsecRecord},System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record})">
+            <summary>
+            Determines the closest encloser: the deepest ancestor of <paramref name="questionName"/> that provably exists.
+            </summary>
+            <remarks>
+            For NSEC3 (RFC 5155 section 8.3) it is the deepest ancestor whose hash matches an NSEC3 owner. For NSEC it is
+            derived from the covering record: the owner and next names both exist in the zone, so the longest suffix either
+            shares with the queried name is an existing ancestor. Deriving it this way rather than demanding an exact owner
+            match is what makes minimally-covering NSEC zones (RFC 4470) validate.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.IsOptOutUsable(Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record,Meziantou.Framework.DnsClient.Internal.DenialKind)">
+            <summary>
+            RFC 5155 section 6: an NSEC3 with the Opt-Out flag set only proves that no *signed delegation* exists in its
+            span. Unsigned names may exist there, so it can never prove that a name does not exist.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.SelectRrsetsAnsweringQuestion(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.DnsClient.Internal.DnssecValidator.DnsRecordRrset},Meziantou.Framework.DnsClient.DnsQuestion)">
+            <summary>
+            Selects the answer RRsets that actually answer the question, following the CNAME/DNAME chain from the queried
+            name. RRsets that are not reachable from the question are discarded rather than contributing to the verdict.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Internal.DnssecValidator.IsWildcardExpansion(Meziantou.Framework.DnsClient.Internal.DnssecValidator.DnsRecordRrset)">
+            <summary>
+            Determines whether an RRset was synthesized from a wildcard, i.e. every RRSIG covers fewer labels than the
+            owner name has. RFC 4034 3.1.3 also forbids a label count greater than the owner's.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Protocol.DnsName">
+            <summary>
+            Conversions between the DNS wire format for domain names and the RFC 1035 section 5.1 presentation format.
+            </summary>
+            <remarks>
+            Labels may contain arbitrary octets, including <c>.</c> and bytes outside the printable ASCII range. Escaping them
+            keeps distinct wire names distinct as strings: a single label <c>evil.com</c> becomes <c>evil\.com</c> and cannot be
+            confused with the two-label name <c>evil.com</c>.
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Protocol.DnsName.MaxLength">
+            <summary>The maximum length of a domain name in wire format, including length octets and the root label (RFC 1035 section 2.3.4).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Protocol.DnsName.MaxLabelLength">
+            <summary>The maximum length of a single label in wire format (RFC 1035 section 2.3.4).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Protocol.DnsName.MaxLabels">
+            <summary>The maximum number of labels a name can have, given <see cref="F:Meziantou.Framework.DnsClient.Protocol.DnsName.MaxLength"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Protocol.DnsName.AppendLabel(System.Text.StringBuilder,System.ReadOnlySpan{System.Byte})">
+            <summary>Appends a wire-format label to <paramref name="builder"/> in presentation format.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Protocol.DnsName.DecodeLabel(System.ReadOnlySpan{System.Char},System.Span{System.Byte})">
+            <summary>Decodes a presentation-format label into wire-format octets, resolving <c>\\</c> escapes.</summary>
+            <returns>The number of octets written to <paramref name="destination"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Protocol.DnsName.IndexOfUnescapedDot(System.ReadOnlySpan{System.Char})">
+            <summary>Returns the index of the first <c>.</c> that is not part of an escape sequence, or -1.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Protocol.DnsName.EndsWithUnescapedDot(System.ReadOnlySpan{System.Char})">
+            <summary>Returns <see langword="true"/> when the name ends with a dot that is not part of an escape sequence.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Protocol.DnsName.EnumerateLabels(System.ReadOnlySpan{System.Char})">
+            <summary>Splits a presentation-format name into its labels, ignoring escaped dots.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Protocol.DnsNameComparer">
+            <summary>
+            Comparison of domain names in presentation format, done on the underlying wire octets.
+            </summary>
+            <remarks>
+            Names are compared octet-wise after downcasing A-Z, per RFC 4034 section 6.1 and RFC 4343. A string comparison
+            cannot stand in for this: <see cref="F:System.StringComparison.OrdinalIgnoreCase"/> folds to uppercase and therefore orders
+            every character between <c>Z</c> (0x5A) and <c>a</c> (0x61) — most importantly <c>_</c> (0x5F), used by
+            <c>_dmarc</c>, <c>_domainkey</c>, <c>_tcp</c> and DANE names — on the wrong side of the letters.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Protocol.DnsNameComparer.Equals(System.String,System.String)">
+            <summary>Determines whether two domain names are equal, ignoring ASCII case and a trailing dot.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Protocol.DnsNameComparer.Compare(System.String,System.String)">
+            <summary>Compares two domain names in DNSSEC canonical order (RFC 4034 section 6.1): label by label, from the rightmost.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Protocol.DnsNameComparer.CompareLabels(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <summary>Compares two labels in presentation format as downcased wire octets.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Protocol.DnsNameComparer.SplitLabels(System.String)">
+            <summary>Splits a name into its labels, ignoring escaped dots and a trailing dot.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Protocol.DnsWireReader.ReadWindow(System.Int32)">
+            <summary>
+            Creates a reader restricted to <paramref name="length"/> bytes starting at the current position, and advances
+            this reader past them. Domain names inside the window are still resolved against the whole message, because
+            compression pointers may target any earlier offset.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Query.DnsEdnsOptions">
+            <summary>Represents EDNS(0) options for a DNS query (RFC 6891).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Query.DnsEdnsOptions.UdpPayloadSize">
+            <summary>Gets or sets the maximum UDP payload size the client can handle. Default is 4096.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Query.DnsEdnsOptions.Version">
+            <summary>Gets or sets the EDNS version. Default is 0.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Query.DnsEdnsOptions.DnssecOk">
+            <summary>Gets or sets a value indicating whether the DNSSEC OK (DO) flag is set, requesting DNSSEC records.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Query.DnsEdnsOptions.ExtendedRCode">
+            <summary>Gets or sets the extended RCODE bits (upper 8 bits).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Query.DnsOpCode">
+            <summary>Specifies the DNS operation code (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsOpCode.Query">
+            <summary>Standard query (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsOpCode.IQuery">
+            <summary>Inverse query, obsolete (RFC 3425).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsOpCode.Status">
+            <summary>Server status request (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsOpCode.Notify">
+            <summary>Zone change notification (RFC 1996).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsOpCode.Update">
+            <summary>Dynamic update (RFC 2136).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Query.DnsQueryClass">
+            <summary>Specifies DNS query classes as defined in RFC 1035.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryClass.IN">
+            <summary>Internet (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryClass.CS">
+            <summary>CSNET, obsolete (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryClass.CH">
+            <summary>CHAOS (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryClass.HS">
+            <summary>Hesiod (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryClass.NONE">
+            <summary>None, used in DNS UPDATE (RFC 2136).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryClass.ANY">
+            <summary>Any class (RFC 1035).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Query.DnsQueryMessage">
+            <summary>Represents a DNS query message to be sent to a DNS server.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Query.DnsQueryMessage.Id">
+            <summary>Gets or sets the query identifier. A random value is generated if not set.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Query.DnsQueryMessage.OpCode">
+            <summary>Gets or sets the operation code. Default is <see cref="F:Meziantou.Framework.DnsClient.Query.DnsOpCode.Query"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Query.DnsQueryMessage.RecursionDesired">
+            <summary>Gets or sets a value indicating whether recursion is desired. Default is <see langword="true"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Query.DnsQueryMessage.CheckingDisabled">
+            <summary>Gets or sets a value indicating whether checking is disabled (DNSSEC). Default is <see langword="false"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Query.DnsQueryMessage.Questions">
+            <summary>Gets the list of questions in this query.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Query.DnsQueryMessage.EdnsOptions">
+            <summary>Gets or sets the EDNS(0) options. Set to <see langword="null"/> to disable EDNS.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Query.DnsQueryType">
+            <summary>
+            Specifies DNS resource record types as defined in various RFCs.
+            Values correspond to the IANA DNS Parameters registry.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.A">
+            <summary>IPv4 host address (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.NS">
+            <summary>Authoritative name server (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.MD">
+            <summary>Mail destination, obsolete (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.MF">
+            <summary>Mail forwarder, obsolete (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.CNAME">
+            <summary>Canonical name for an alias (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.SOA">
+            <summary>Start of a zone of authority (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.MB">
+            <summary>Mailbox domain name, experimental (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.MG">
+            <summary>Mail group member, experimental (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.MR">
+            <summary>Mail rename domain name, experimental (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.NULL">
+            <summary>Null resource record, experimental (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.WKS">
+            <summary>Well known service description (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.PTR">
+            <summary>Domain name pointer (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.HINFO">
+            <summary>Host information (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.MINFO">
+            <summary>Mailbox or mail list information (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.MX">
+            <summary>Mail exchange (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.TXT">
+            <summary>Text strings (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.RP">
+            <summary>Responsible person (RFC 1183).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.AFSDB">
+            <summary>AFS database location (RFC 1183).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.X25">
+            <summary>X.25 PSDN address (RFC 1183).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.ISDN">
+            <summary>ISDN address (RFC 1183).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.RT">
+            <summary>Route through (RFC 1183).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.NSAP">
+            <summary>NSAP address (RFC 1706).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.NSAP_PTR">
+            <summary>NSAP pointer, deprecated (RFC 1706).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.SIG">
+            <summary>Security signature, deprecated (RFC 2535).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.KEY">
+            <summary>Security key, deprecated (RFC 2535).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.PX">
+            <summary>X.400 mail mapping information (RFC 2163).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.GPOS">
+            <summary>Geographical position, deprecated (RFC 1712).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.AAAA">
+            <summary>IPv6 host address (RFC 3596).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.LOC">
+            <summary>Location information (RFC 1876).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.SRV">
+            <summary>Service locator (RFC 2782).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.NAPTR">
+            <summary>Naming authority pointer (RFC 3403).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.KX">
+            <summary>Key exchanger (RFC 2230).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.CERT">
+            <summary>Certificate record (RFC 4398).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.DNAME">
+            <summary>Delegation name (RFC 6672).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.OPT">
+            <summary>EDNS(0) option, pseudo-record (RFC 6891).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.APL">
+            <summary>Address prefix list (RFC 3123).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.DS">
+            <summary>Delegation signer, DNSSEC (RFC 4034).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.SSHFP">
+            <summary>SSH key fingerprint (RFC 4255).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.IPSECKEY">
+            <summary>IPsec public key (RFC 4025).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.RRSIG">
+            <summary>DNSSEC signature (RFC 4034).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.NSEC">
+            <summary>Next secure record, DNSSEC (RFC 4034).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.DNSKEY">
+            <summary>DNS public key, DNSSEC (RFC 4034).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.DHCID">
+            <summary>DHCP identifier (RFC 4701).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.NSEC3">
+            <summary>Hashed next secure record, DNSSEC (RFC 5155).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.NSEC3PARAM">
+            <summary>NSEC3 parameters, DNSSEC (RFC 5155).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.TLSA">
+            <summary>TLSA certificate association, DANE (RFC 6698).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.SMIMEA">
+            <summary>S/MIME certificate association (RFC 8162).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.HIP">
+            <summary>Host identity protocol (RFC 8005).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.CDS">
+            <summary>Child DS, DNSSEC (RFC 7344).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.CDNSKEY">
+            <summary>Child DNSKEY, DNSSEC (RFC 7344).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.OPENPGPKEY">
+            <summary>OpenPGP public key (RFC 7929).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.CSYNC">
+            <summary>Child-to-parent synchronization (RFC 7477).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.SVCB">
+            <summary>Service binding (RFC 9460).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.HTTPS">
+            <summary>HTTPS service binding (RFC 9460).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.SPF">
+            <summary>Sender policy framework, obsolete (RFC 7208).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.TKEY">
+            <summary>Transaction key (RFC 2930).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.TSIG">
+            <summary>Transaction signature (RFC 2845).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.IXFR">
+            <summary>Incremental zone transfer (RFC 1995).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.AXFR">
+            <summary>Full zone transfer (RFC 5936).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.MAILB">
+            <summary>Mailbox-related records (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.MAILA">
+            <summary>Mail agent RRs, obsolete (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.ANY">
+            <summary>Request for all records (RFC 8482).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.URI">
+            <summary>URI record (RFC 7553).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.CAA">
+            <summary>Certification authority authorization (RFC 8659).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.TA">
+            <summary>DNSSEC trust authorities.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Query.DnsQueryType.DLV">
+            <summary>DNSSEC lookaside validation, obsolete (RFC 8749).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.DnsQuestion">
+            <summary>Represents a DNS question in the question section of a DNS message.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.DnsQuestion.#ctor(System.String,Meziantou.Framework.DnsClient.Query.DnsQueryType,Meziantou.Framework.DnsClient.Query.DnsQueryClass)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Meziantou.Framework.DnsClient.DnsQuestion"/> class.
+            </summary>
+            <param name="name">The domain name to query.</param>
+            <param name="type">The DNS record type to query.</param>
+            <param name="queryClass">The DNS query class.</param>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsQuestion.Name">
+            <summary>Gets the domain name being queried.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsQuestion.Type">
+            <summary>Gets the DNS record type being queried.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.DnsQuestion.QueryClass">
+            <summary>Gets the DNS class being queried.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.DnsRecord">
+            <summary>Base class for all DNS resource records.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsRecord.Name">
+            <summary>Gets the domain name this record belongs to.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsRecord.RecordType">
+            <summary>Gets the record type.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsRecord.RecordClass">
+            <summary>Gets the record class.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsRecord.TimeToLive">
+            <summary>Gets the time to live in seconds.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsRecord.DataLength">
+            <summary>Gets the length of the resource data in bytes.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.DnsRecordExtensions">
+            <summary>Provides extension methods for working with DNS records.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Response.DnsRecordExtensions.GetIPAddresses(System.Collections.Generic.IEnumerable{Meziantou.Framework.DnsClient.Response.DnsRecord})">
+            <summary>Returns all IP addresses from A and AAAA records in the collection.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Response.DnsRecordExtensions.GetIPv4Addresses(System.Collections.Generic.IEnumerable{Meziantou.Framework.DnsClient.Response.DnsRecord})">
+            <summary>Returns all IPv4 addresses from A records in the collection.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DnsClient.Response.DnsRecordExtensions.GetIPv6Addresses(System.Collections.Generic.IEnumerable{Meziantou.Framework.DnsClient.Response.DnsRecord})">
+            <summary>Returns all IPv6 addresses from AAAA records in the collection.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.DnsResponseCode">
+            <summary>Specifies DNS response codes as defined in various RFCs.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.NoError">
+            <summary>No error condition (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.FormError">
+            <summary>Format error: the name server was unable to interpret the query (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.ServerFailure">
+            <summary>Server failure: the name server was unable to process the query (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.NameError">
+            <summary>Name error: the domain name referenced in the query does not exist (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.NotImplemented">
+            <summary>Not implemented: the name server does not support the requested operation (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.Refused">
+            <summary>Refused: the name server refuses to perform the operation (RFC 1035).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.YxDomain">
+            <summary>Name exists when it should not (RFC 2136).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.YxRRSet">
+            <summary>RR set exists when it should not (RFC 2136).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.NxRRSet">
+            <summary>RR set that should exist does not (RFC 2136).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.NotAuthoritative">
+            <summary>Server not authoritative for zone / not authorized (RFC 2136).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.NotZone">
+            <summary>Name not contained in zone (RFC 2136).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.BadVersion">
+            <summary>Bad OPT version (RFC 6891).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.BadKey">
+            <summary>Key not recognized (RFC 2845).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.BadTime">
+            <summary>Signature out of time window (RFC 2845).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.BadMode">
+            <summary>Bad TKEY mode (RFC 2930).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.BadName">
+            <summary>Duplicate key name (RFC 2930).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.BadAlgorithm">
+            <summary>Algorithm not supported (RFC 2930).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.BadTruncation">
+            <summary>Bad truncation (RFC 4635).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnsResponseCode.BadCookie">
+            <summary>Bad/missing server cookie (RFC 7873).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.DnsResponseHeader">
+            <summary>Represents the header of a DNS response message.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.Id">
+            <summary>Gets the query identifier.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.IsResponse">
+            <summary>Gets a value indicating whether this is a response (true) or query (false).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.OpCode">
+            <summary>Gets the operation code.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.IsAuthoritative">
+            <summary>Gets a value indicating whether the responding server is authoritative for the queried domain.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.IsTruncated">
+            <summary>Gets a value indicating whether the message was truncated.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.RecursionDesired">
+            <summary>Gets a value indicating whether recursion was desired in the query.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.RecursionAvailable">
+            <summary>Gets a value indicating whether recursion is available on the server.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.AuthenticatedData">
+            <summary>Gets a value indicating whether the response data has been authenticated by the server (DNSSEC).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.CheckingDisabled">
+            <summary>Gets a value indicating whether checking was disabled (DNSSEC).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.ResponseCode">
+            <summary>Gets the response code.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.QuestionCount">
+            <summary>Gets the number of questions.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.AnswerCount">
+            <summary>Gets the number of answer records.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.AuthorityCount">
+            <summary>Gets the number of authority records.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseHeader.AdditionalCount">
+            <summary>Gets the number of additional records.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.DnsResponseMessage">
+            <summary>Represents a DNS response message received from a DNS server.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseMessage.Header">
+            <summary>Gets the response header containing flags and counts.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseMessage.Questions">
+            <summary>Gets the list of questions echoed back from the server.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseMessage.Answers">
+            <summary>Gets the answer resource records.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseMessage.Authorities">
+            <summary>Gets the authority resource records.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseMessage.AdditionalRecords">
+            <summary>Gets the additional resource records.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnsResponseMessage.DnssecValidationResult">
+            <summary>Gets the local DNSSEC validation result.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.DnssecValidationIssue">
+            <summary>Represents one DNSSEC validation issue.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnssecValidationIssue.Code">
+            <summary>Gets the issue code.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnssecValidationIssue.Message">
+            <summary>Gets the human-readable issue message.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnssecValidationIssue.Name">
+            <summary>Gets the DNS name associated with the issue, when known.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnssecValidationIssue.RecordType">
+            <summary>Gets the DNS record type associated with the issue, when known.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode">
+            <summary>Specifies DNSSEC validation issue categories.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.None">
+            <summary>No issue was reported.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.MissingQuestion">
+            <summary>The response did not contain a question to validate.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.TruncatedResponse">
+            <summary>The response was truncated.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.MissingRecord">
+            <summary>The response does not contain the records required for validation.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.MissingRrsig">
+            <summary>No matching RRSIG record was found.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.MissingDnskey">
+            <summary>No matching DNSKEY record was found.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.MissingDs">
+            <summary>No matching DS record or trust anchor was found.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.DigestMismatch">
+            <summary>A DS digest did not match its DNSKEY.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.UnsupportedAlgorithm">
+            <summary>The DNSSEC algorithm is not supported by this implementation.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.UnsupportedDigest">
+            <summary>The DS digest algorithm is not supported by this implementation.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.SignatureNotYetValid">
+            <summary>A signature is not valid yet.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.SignatureExpired">
+            <summary>A signature has expired.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.SignatureVerificationFailed">
+            <summary>A cryptographic signature verification failed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.InvalidDenialProof">
+            <summary>An authenticated denial proof was missing or invalid.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.TrustChainIncomplete">
+            <summary>The DNSSEC trust chain could not be completed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.InvalidData">
+            <summary>The response is not valid DNSSEC data.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.ChainQueryFailed">
+            <summary>A query needed to build the chain of trust failed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationIssueCode.QueryBudgetExceeded">
+            <summary>Validation needed more queries than the configured budget allows.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.DnssecValidationResult">
+            <summary>Represents the result of local DNSSEC validation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnssecValidationResult.Status">
+            <summary>Gets the validation status.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.DnssecValidationResult.Issues">
+            <summary>Gets the validation issues.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.DnssecValidationStatus">
+            <summary>Specifies the result of local DNSSEC validation.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationStatus.NotValidated">
+            <summary>The response was not locally validated.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationStatus.Secure">
+            <summary>The response was validated successfully.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationStatus.Insecure">
+            <summary>The response belongs to an authenticated unsigned delegation.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationStatus.Bogus">
+            <summary>The response failed DNSSEC validation.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Response.DnssecValidationStatus.Indeterminate">
+            <summary>The validator could not determine the DNSSEC status.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsAaaaRecord">
+            <summary>Represents a DNS AAAA record containing an IPv6 address (RFC 3596).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsAaaaRecord.Address">
+            <summary>Gets the IPv6 address.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsARecord">
+            <summary>Represents a DNS A record containing an IPv4 address (RFC 1035).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsARecord.Address">
+            <summary>Gets the IPv4 address.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsCaaRecord">
+            <summary>Represents a DNS CAA record for certification authority authorization (RFC 8659).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsCaaRecord.Flags">
+            <summary>Gets the flags byte.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsCaaRecord.Tag">
+            <summary>Gets the property tag (e.g., "issue", "issuewild", "iodef").</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsCaaRecord.Value">
+            <summary>Gets the property value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsCnameRecord">
+            <summary>Represents a DNS CNAME record containing a canonical name (RFC 1035).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsCnameRecord.CanonicalName">
+            <summary>Gets the canonical domain name.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsDnameRecord">
+            <summary>Represents a DNS DNAME record for delegation name (RFC 6672).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsDnameRecord.Target">
+            <summary>Gets the target domain name to which the queried name is aliased.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsDnskeyRecord">
+            <summary>Represents a DNS DNSKEY record (RFC 4034, DNSSEC).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsDnskeyRecord.Flags">
+            <summary>Gets the flags. Bit 7 is the Zone Key flag, bit 15 is the Secure Entry Point flag.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsDnskeyRecord.Protocol">
+            <summary>Gets the protocol. Must be 3 for DNSSEC.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsDnskeyRecord.Algorithm">
+            <summary>Gets the algorithm number.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsDnskeyRecord.PublicKey">
+            <summary>Gets the public key data.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsDsRecord">
+            <summary>Represents a DNS DS record for delegation signer (RFC 4034, DNSSEC).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsDsRecord.KeyTag">
+            <summary>Gets the key tag of the referenced DNSKEY record.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsDsRecord.Algorithm">
+            <summary>Gets the algorithm number of the referenced DNSKEY record.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsDsRecord.DigestType">
+            <summary>Gets the digest type.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsDsRecord.Digest">
+            <summary>Gets the digest data.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsEdnsOption">
+            <summary>Represents an EDNS option in an OPT record.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsEdnsOption.Code">
+            <summary>Gets the option code.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsEdnsOption.Data">
+            <summary>Gets the option data.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsHinfoRecord">
+            <summary>Represents a DNS HINFO record for host information (RFC 1035).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsHinfoRecord.Cpu">
+            <summary>Gets the CPU type string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsHinfoRecord.Os">
+            <summary>Gets the OS type string.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsLocRecord">
+            <summary>Represents a DNS LOC record for location information (RFC 1876).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsLocRecord.Version">
+            <summary>Gets the version (must be 0).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsLocRecord.Size">
+            <summary>Gets the size of the sphere enclosing the entity in centimeters.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsLocRecord.HorizontalPrecision">
+            <summary>Gets the horizontal precision in centimeters.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsLocRecord.VerticalPrecision">
+            <summary>Gets the vertical precision in centimeters.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsLocRecord.Latitude">
+            <summary>Gets the latitude in thousandths of a second of arc, with 2^31 representing the equator.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsLocRecord.Longitude">
+            <summary>Gets the longitude in thousandths of a second of arc, with 2^31 representing the prime meridian.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsLocRecord.Altitude">
+            <summary>Gets the altitude in centimeters above a base of 100,000m below the GPS reference spheroid.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsMxRecord">
+            <summary>Represents a DNS MX record containing mail exchange information (RFC 1035).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsMxRecord.Preference">
+            <summary>Gets the preference value. Lower values are preferred.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsMxRecord.Exchange">
+            <summary>Gets the mail exchange server domain name.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsNaptrRecord">
+            <summary>Represents a DNS NAPTR record for naming authority pointer (RFC 3403).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNaptrRecord.Order">
+            <summary>Gets the order value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNaptrRecord.Preference">
+            <summary>Gets the preference value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNaptrRecord.Flags">
+            <summary>Gets the flags string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNaptrRecord.Services">
+            <summary>Gets the service string.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNaptrRecord.Regexp">
+            <summary>Gets the regular expression.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNaptrRecord.Replacement">
+            <summary>Gets the replacement domain name.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3ParamRecord">
+            <summary>Represents a DNS NSEC3PARAM record (RFC 5155, DNSSEC).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3ParamRecord.HashAlgorithm">
+            <summary>Gets the hash algorithm.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3ParamRecord.Flags">
+            <summary>Gets the flags.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3ParamRecord.Iterations">
+            <summary>Gets the number of iterations.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3ParamRecord.Salt">
+            <summary>Gets the salt.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record">
+            <summary>Represents a DNS NSEC3 record for hashed authenticated denial of existence (RFC 5155, DNSSEC).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record.HashAlgorithm">
+            <summary>Gets the hash algorithm.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record.Flags">
+            <summary>Gets the flags.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record.Iterations">
+            <summary>Gets the number of iterations.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record.Salt">
+            <summary>Gets the salt.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record.NextHashedOwnerName">
+            <summary>Gets the next hashed owner name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsec3Record.TypeBitMaps">
+            <summary>Gets the set of RR types present at the original owner name.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsNsecRecord">
+            <summary>Represents a DNS NSEC record for authenticated denial of existence (RFC 4034, DNSSEC).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsecRecord.NextDomainName">
+            <summary>Gets the next owner name in the canonical ordering of the zone.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsecRecord.TypeBitMaps">
+            <summary>Gets the set of RR types present at the NSEC owner name.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsNsRecord">
+            <summary>Represents a DNS NS record containing a name server (RFC 1035).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsNsRecord.NameServer">
+            <summary>Gets the name server domain name.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsOptRecord">
+            <summary>
+            Represents a DNS OPT pseudo-record for EDNS(0) (RFC 6891).
+            This record appears in the additional section and carries extension information.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsOptRecord.UdpPayloadSize">
+            <summary>Gets the requestor's UDP payload size (encoded in the CLASS field).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsOptRecord.ExtendedRCode">
+            <summary>Gets the extended RCODE (upper 8 bits, combined with the message header RCODE).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsOptRecord.EdnsVersion">
+            <summary>Gets the EDNS version.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsOptRecord.DnssecOk">
+            <summary>Gets a value indicating whether the DNSSEC OK (DO) flag is set.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsOptRecord.Options">
+            <summary>Gets the EDNS options.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsPtrRecord">
+            <summary>Represents a DNS PTR record containing a domain name pointer (RFC 1035).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsPtrRecord.DomainName">
+            <summary>Gets the domain name pointed to.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsRpRecord">
+            <summary>Represents a DNS RP record for responsible person (RFC 1183).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRpRecord.Mailbox">
+            <summary>Gets the mailbox domain name of the responsible person.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRpRecord.TxtDomainName">
+            <summary>Gets the domain name of a TXT record with additional information.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord">
+            <summary>Represents a DNS RRSIG record for DNSSEC signature (RFC 4034).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord.TypeCovered">
+            <summary>Gets the type of the RRset that is covered by this signature.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord.Algorithm">
+            <summary>Gets the cryptographic algorithm used to create the signature.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord.Labels">
+            <summary>Gets the number of labels in the original RRSIG owner name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord.OriginalTtl">
+            <summary>Gets the original TTL of the covered RRset.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord.SignatureExpiration">
+            <summary>Gets the signature expiration time as seconds since Unix epoch.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord.SignatureInception">
+            <summary>Gets the signature inception time as seconds since Unix epoch.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord.KeyTag">
+            <summary>Gets the key tag of the DNSKEY record that created the signature.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord.SignerName">
+            <summary>Gets the signer's domain name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsRrsigRecord.Signature">
+            <summary>Gets the cryptographic signature data.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsSoaRecord">
+            <summary>Represents a DNS SOA record containing start of authority information (RFC 1035).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSoaRecord.PrimaryNameServer">
+            <summary>Gets the primary name server domain name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSoaRecord.ResponsibleMailbox">
+            <summary>Gets the responsible person's mailbox domain name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSoaRecord.Serial">
+            <summary>Gets the zone serial number.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSoaRecord.Refresh">
+            <summary>Gets the refresh interval in seconds.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSoaRecord.Retry">
+            <summary>Gets the retry interval in seconds.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSoaRecord.Expire">
+            <summary>Gets the expiration limit in seconds.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSoaRecord.Minimum">
+            <summary>Gets the minimum TTL in seconds.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsSrvRecord">
+            <summary>Represents a DNS SRV record containing service location information (RFC 2782).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSrvRecord.Priority">
+            <summary>Gets the priority. Lower values are preferred.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSrvRecord.Weight">
+            <summary>Gets the weight for load balancing among records with equal priority.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSrvRecord.Port">
+            <summary>Gets the TCP or UDP port on which the service is available.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSrvRecord.Target">
+            <summary>Gets the target host providing the service.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsSshfpRecord">
+            <summary>Represents a DNS SSHFP record for SSH key fingerprints (RFC 4255).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSshfpRecord.Algorithm">
+            <summary>Gets the algorithm number (1=RSA, 2=DSS, 3=ECDSA, 4=Ed25519, 6=Ed448).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSshfpRecord.FingerprintType">
+            <summary>Gets the fingerprint type (1=SHA-1, 2=SHA-256).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSshfpRecord.Fingerprint">
+            <summary>Gets the fingerprint data.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsSvcbRecord">
+            <summary>
+            Represents a DNS SVCB or HTTPS record for service binding (RFC 9460).
+            Used for both SVCB (type 64) and HTTPS (type 65) records.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSvcbRecord.Priority">
+            <summary>Gets the priority. 0 indicates an alias form.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSvcbRecord.TargetName">
+            <summary>Gets the target name. "." means the owner name should be used.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSvcbRecord.Parameters">
+            <summary>Gets the service parameters as key-value pairs.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsSvcParam">
+            <summary>Represents a service parameter in a SVCB/HTTPS record.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSvcParam.Key">
+            <summary>Gets the parameter key.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsSvcParam.Value">
+            <summary>Gets the raw parameter value.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsTlsaRecord">
+            <summary>Represents a DNS TLSA record for DANE certificate association (RFC 6698).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsTlsaRecord.CertificateUsage">
+            <summary>Gets the certificate usage field (0-3).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsTlsaRecord.Selector">
+            <summary>Gets the selector field (0-1).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsTlsaRecord.MatchingType">
+            <summary>Gets the matching type field (0-2).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsTlsaRecord.CertificateAssociationData">
+            <summary>Gets the certificate association data.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsTxtRecord">
+            <summary>Represents a DNS TXT record containing text strings (RFC 1035).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsTxtRecord.Text">
+            <summary>Gets the text strings.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsUnknownRecord">
+            <summary>
+            Represents a DNS record type that is not explicitly supported with a strongly-typed class.
+            The raw record data is preserved for consumers to parse.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsUnknownRecord.Data">
+            <summary>Gets the raw resource data.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DnsClient.Response.Records.DnsUriRecord">
+            <summary>Represents a DNS URI record (RFC 7553).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsUriRecord.Priority">
+            <summary>Gets the priority. Lower values are preferred.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsUriRecord.Weight">
+            <summary>Gets the weight for load balancing.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DnsClient.Response.Records.DnsUriRecord.Target">
+            <summary>Gets the URI target.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DnsClient.Transport.DnsHttpsTransport.MaxResponseLength">
+            <summary>A DNS message can never exceed 65535 bytes, so anything larger is not a response worth buffering.</summary>
+        </member>
+    </members>
+</doc>

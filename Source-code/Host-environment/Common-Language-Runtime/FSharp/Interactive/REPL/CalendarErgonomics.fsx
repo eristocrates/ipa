@@ -133,7 +133,8 @@ and Stipendium =
     member this.SyntechCheckDateTime = this.stipendiumStartInclusive.AddDays(1)
     member this.paytides = [| this.highPaytide ; this.lowPaytide|]
     member this.distipendus = Distipendus.ofDateTime this.stipendiumStartInclusive
-    member this.stipipendarium = Stipipendarium.ofDateTime this.stipendiumStartInclusive
+    member this.stipipendarium:Stipipendarium = Stipipendarium.ofDateTime this.stipendiumStartInclusive
+    member this.index = this.stipipendarium.stipendia |> Array.findIndex (fun stipendium -> stipendium = this)
 
 
 and Distipendus = 

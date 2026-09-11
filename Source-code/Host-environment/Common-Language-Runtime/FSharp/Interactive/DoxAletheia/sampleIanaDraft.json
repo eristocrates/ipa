@@ -1,0 +1,228 @@
+{
+    "name": "draft-ietf-ntp-roughtime",
+    "rev": "19",
+    "pages": 33,
+    "time": "2026-09-09 00:58:57",
+    "group": {
+        "name": "Network Time Protocols",
+        "type": "WG",
+        "acronym": "ntp"
+    },
+    "expires": "2026-09-18 19:04:51",
+    "title": "Roughtime",
+    "abstract": "   This document describes Roughtime, an experimental protocol that aims\n   to achieve two things: secure rough time synchronization even for\n   clients without any idea of what time it is, and give clients a\n   format for reporting any inconsistencies they observe between\n   timeservers.  This document specifies the on-wire protocol required\n   for these goals, and discusses aspects of the ecosystem needed for it\n   to work.\n",
+    "state": "Active",
+    "intended_std_level": "Experimental",
+    "std_level": null,
+    "authors": [
+        {
+            "name": "Watson Ladd",
+            "email": "watsonbladd@gmail.com",
+            "affiliation": "Akamai Technologies"
+        },
+        {
+            "name": "Marcus Dansarie",
+            "email": "marcus@dansarie.se",
+            "affiliation": "Netnod"
+        }
+    ],
+    "shepherd": "Karen O'Donoghue <kodonog@pobox.com>",
+    "ad": "Erik Kline <ek@aalyria.com>",
+    "rev_history": [
+        {
+            "name": "draft-roughtime-aanchal",
+            "rev": "00",
+            "published": "2019-02-08T21:51:22+00:00",
+            "url": "/doc/draft-roughtime-aanchal/00/",
+            "pages": 9
+        },
+        {
+            "name": "draft-roughtime-aanchal",
+            "rev": "01",
+            "published": "2019-03-11T17:29:14+00:00",
+            "url": "/doc/draft-roughtime-aanchal/01/",
+            "pages": 11
+        },
+        {
+            "name": "draft-roughtime-aanchal",
+            "rev": "02",
+            "published": "2019-05-27T17:03:40+00:00",
+            "url": "/doc/draft-roughtime-aanchal/02/",
+            "pages": 11
+        },
+        {
+            "name": "draft-roughtime-aanchal",
+            "rev": "03",
+            "published": "2019-07-08T15:25:01+00:00",
+            "url": "/doc/draft-roughtime-aanchal/03/",
+            "pages": 17
+        },
+        {
+            "name": "draft-roughtime-aanchal",
+            "rev": "04",
+            "published": "2020-01-20T17:57:59+00:00",
+            "url": "/doc/draft-roughtime-aanchal/04/",
+            "pages": 17
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "00",
+            "published": "2020-01-31T12:27:20+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/00/",
+            "pages": 17
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "01",
+            "published": "2020-04-01T20:04:29+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/01/",
+            "pages": 20
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "02",
+            "published": "2020-06-01T19:31:48+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/02/",
+            "pages": 20
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "03",
+            "published": "2020-08-29T15:32:19+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/03/",
+            "pages": 20
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "04",
+            "published": "2021-02-21T21:19:42+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/04/",
+            "pages": 19
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime-ecosystem",
+            "rev": "00",
+            "published": "2021-02-22T10:19:18+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime-ecosystem/00/",
+            "pages": 3
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "05",
+            "published": "2021-05-20T22:27:59+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/05/",
+            "pages": 21
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime-ecosystem",
+            "rev": "01",
+            "published": "2021-09-14T19:30:09+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime-ecosystem/01/",
+            "pages": 4
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "06",
+            "published": "2022-06-07T23:03:25+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/06/",
+            "pages": 21
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "07",
+            "published": "2022-09-26T13:15:49+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/07/",
+            "pages": 21
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "08",
+            "published": "2023-10-18T22:42:49.076226+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/08/",
+            "pages": 20
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "09",
+            "published": "2024-03-04T19:36:17.694585+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/09/",
+            "pages": 17
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "10",
+            "published": "2024-06-11T17:54:01.969354+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/10/",
+            "pages": 19
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "11",
+            "published": "2024-08-02T18:58:59.543794+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/11/",
+            "pages": 19
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "12",
+            "published": "2024-12-04T20:27:08.807107+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/12/",
+            "pages": 24
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "13",
+            "published": "2025-02-18T18:55:10.270072+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/13/",
+            "pages": 24
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "14",
+            "published": "2025-04-22T19:51:50.914716+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/14/",
+            "pages": 25
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "15",
+            "published": "2025-12-17T05:27:56.295789+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/15/",
+            "pages": 25
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "16",
+            "published": "2026-02-17T22:20:39.321771+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/16/",
+            "pages": 25
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "17",
+            "published": "2026-02-21T19:32:17.206210+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/17/",
+            "pages": 25
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "18",
+            "published": "2026-03-16T20:35:33.629715+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/18/",
+            "pages": 33
+        },
+        {
+            "name": "draft-ietf-ntp-roughtime",
+            "rev": "19",
+            "published": "2026-03-17T19:04:51.416628+00:00",
+            "url": "/doc/draft-ietf-ntp-roughtime/19/",
+            "pages": 33
+        }
+    ],
+    "iesg_state": "RFC Ed Queue",
+    "rfceditor_state": "In Progress",
+    "iana_review_state": "Version Changed - Review Needed",
+    "iana_action_state": "RFC-Ed-Ack",
+    "consensus": true,
+    "stream": "IETF"
+}

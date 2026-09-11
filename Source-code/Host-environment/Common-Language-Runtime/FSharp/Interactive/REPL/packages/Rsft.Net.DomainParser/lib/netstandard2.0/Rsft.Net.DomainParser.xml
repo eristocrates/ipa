@@ -1,0 +1,1375 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rsft.Net.DomainParser</name>
+    </assembly>
+    <members>
+        <member name="T:Rsft.Net.DomainParser.Data.DataIndex">
+            <summary>
+            The data index.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Data.DataIndex.EffectiveTldNames">
+            <summary>
+                The effective TLD names.
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Diagnostics.Common.EventIds">
+            <summary>
+            The event ids.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.None">
+            <summary>
+                The none.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.Initializing">
+            <summary>
+                The initializing.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.Initialized">
+            <summary>
+                The initialized
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.TimerLogging">
+            <summary>
+                The timer logging
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.Critical">
+            <summary>
+                The critical
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.Warning">
+            <summary>
+                The warning
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.WarningRemoteResourceUnavailable">
+            <summary>
+                The warning remote resource unavailable
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.Verbose">
+            <summary>
+                The verbose
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.Error">
+            <summary>
+                The error
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.Informational">
+            <summary>
+                The informational
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.LogAlways">
+            <summary>
+                The log always
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.MethodEnter">
+            <summary>
+                The method enter
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.MethodExit">
+            <summary>
+                The method exit
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.HttpGetRequest">
+            <summary>
+                The HTTP get request.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.HttpGetResponse">
+            <summary>
+                The HTTP get response
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.ServerResponseString">
+            <summary>
+                The server response string
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.TldRulesLoadedIntoCache">
+            <summary>
+                The TLD rules loaded into cache
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.EventIds.ServiceParsingLogging">
+            <summary>
+            The service parsing logging
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Diagnostics.Common.Messages">
+            <summary>
+            The messages.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.Critical">
+            <summary>
+                The critical.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.Error">
+            <summary>
+                The error.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.Informational">
+            <summary>
+                The informational.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.Initialized">
+            <summary>
+                The initialized.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.Initializing">
+            <summary>
+                The initializing.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.LogAlways">
+            <summary>
+                The log always.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.MethodEnter">
+            <summary>
+                The method enter.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.MethodExit">
+            <summary>
+                The method exit.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.TimerLogging">
+            <summary>
+                The timer logging.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.Verbose">
+            <summary>
+                The verbose.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.Warning">
+            <summary>
+                The warning.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.WarningRemoteResourceUnavailable">
+            <summary>
+                The warning remote resource unavailable.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.HttpGetRequest">
+            <summary>
+                The HTTP get request.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.HttpGetResponse">
+            <summary>
+                The REST response.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.ServerResponseString">
+            <summary>
+                The server response string.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.TldRulesLoadedIntoCache">
+            <summary>
+                The TLD rules loaded into cache.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.Messages.ServiceParsingLogging">
+            <summary>
+            The service parsing logging.
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Diagnostics.Common.SourceNames">
+            <summary>
+            The source names.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.SourceNames.ActivityLogging">
+            <summary>
+                The activity logging.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.Common.SourceNames.ExceptionLogging">
+            <summary>
+                The exception logging.
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource">
+            <summary>
+            The activity logging event source.
+            </summary>
+            <summary>
+                The activity logging event source.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.Initialized(System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Initializeds the specified module.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="source">The source.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.Initializing(System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Initializings the specified module.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="source">The source.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.MethodEnter(System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The method enter.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="source">The source.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.MethodExit(System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The method exit.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="source">The source.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.TimerLogging(System.String,System.String,System.Int64,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The timer logging.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="source">The source.</param>
+            <param name="elapsed">The elapsed milliseconds.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.HttpGetRequestLogging(System.String,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            HTTPs the get request logging.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="source">The source.</param>
+            <param name="url">The URL.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.HttpGetResponseLogging(System.String,System.String,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The http get response logging.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="source">The source.</param>
+            <param name="url">The URL.</param>
+            <param name="response">The response.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.ServerResponseString(System.String,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The server response string.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="source">The source.</param>
+            <param name="serverResponse">The server response.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.TldRulesLoadedIntoCache(System.Int32,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The tld rules loaded into cache.
+            </summary>
+            <param name="ruleCount">The rule count.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.ServiceParsingLogging(System.String,System.String,System.String,System.String,System.Int64,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Services the parsing logging.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="responseTld">The response TLD.</param>
+            <param name="responseSld">The response SLD.</param>
+            <param name="responseSubdomain">The response subdomain.</param>
+            <param name="executionTime">The execution time.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.Instance">
+            <summary>
+                The instance.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.#ctor">
+            <summary>
+                Prevents a default instance of the <see cref="T:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource" /> class from being created.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.Log">
+            <summary>
+                Gets the log.
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.Keywords">
+            <summary>
+                The keywords.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.Keywords.GeneralDiagnostic">
+            <summary>
+                The general diagnostic.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.Keywords.Io">
+            <summary>
+                The IO keyword.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.Keywords.Perf">
+            <summary>
+                The performance keyword.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.InitializedLocal(System.String,System.String)">
+            <summary>
+            Initializeds the specified module.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="source">The source.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.InitializingLocal(System.String,System.String)">
+            <summary>
+            The initializing.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.MethodEnterLocal(System.String,System.String)">
+            <summary>
+            The method enter.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.MethodExitLocal(System.String,System.String)">
+            <summary>
+            The method exit.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.TimerLoggingLocal(System.String,System.String,System.Int64)">
+            <summary>
+            The timer logging.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="elapsed">
+            The elapsed milliseconds.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.HttpGetRequestLoggingLocal(System.String,System.String,System.String)">
+            <summary>
+            HTTPs the get request logging.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="url">
+            The URL.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.HttpGetResponseLoggingLocal(System.String,System.String,System.String,System.String)">
+            <summary>
+            The http get response logging.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="url">
+            The URL.
+            </param>
+            <param name="response">
+            The response.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.ServerResponseStringLocal(System.String,System.String,System.String)">
+            <summary>
+            The server response string.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="serverResponse">
+            The server response.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.TldRulesLoadedIntoCacheLocal(System.Int32)">
+            <summary>
+            The tld rules loaded into cache.
+            </summary>
+            <param name="ruleCount">
+            The rule count.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ActivityLoggingEventSource.ServiceParsingLoggingLocal(System.String,System.String,System.String,System.String,System.Int64)">
+            <summary>
+            Services the parsing logging.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="responseTld">The response TLD.</param>
+            <param name="responseSld">The response SLD.</param>
+            <param name="responseSubdomain">The response subdomain.</param>
+            <param name="executionTime">The execution time.</param>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource">
+            <summary>
+            The exception logging event source.
+            </summary>
+            <summary>
+                The exception logging event source.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.TraceSource">
+            <summary>
+                The trace source.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Critical(System.Exception,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The critical.
+            </summary>
+            <param name="exception">The exception.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Critical(System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The critical.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Error(System.Exception,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The error.
+            </summary>
+            <param name="exception">The exception.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Error(System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The error.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Information(System.Exception,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Informations the specified exception.
+            </summary>
+            <param name="exception">The exception.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Information(System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The information.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Verbose(System.Exception,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Verboses the specified exception.
+            </summary>
+            <param name="exception">The exception.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Verbose(System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The verbose.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Warning(System.Exception,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            The warning.
+            </summary>
+            <param name="exception">The exception.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Warning(System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Warnings the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.WarningRemoteResourceUnavailable(System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Warnings the remote resource unavailable.
+            </summary>
+            <param name="remoteResource">The remote resource.</param>
+            <param name="message">The message.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.ExceptionTraceLogTemplate">
+            <summary>
+                The exception trace log template.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.ModuleName">
+            <summary>
+                The module name.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Instance">
+            <summary>
+                The instance.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.#ctor">
+            <summary>
+                Prevents a default instance of the <see cref="T:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource" /> class from being created.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Log">
+            <summary>
+                Gets the log.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.FormatExceptionLogEntry(System.Exception,System.Diagnostics.TraceEventType,System.Int32)">
+            <summary>
+            The format exception log entry.
+            </summary>
+            <param name="exception">
+            The exception.
+            </param>
+            <param name="traceEventType">
+            The trace event type.
+            </param>
+            <param name="eventId">
+            The event id.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Critical(System.String,System.String,System.String)">
+            <summary>
+            The critical.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="errorMessage">
+            The error message.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Error(System.String,System.String,System.String)">
+            <summary>
+            The error.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="errorMessage">
+            The error message.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Information(System.String,System.String,System.String)">
+            <summary>
+            The information.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="message">
+            The message.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.LogAlways(System.String,System.String,System.String)">
+            <summary>
+            Logs the always.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="message">
+            The message.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Verbose(System.String,System.String,System.String)">
+            <summary>
+            Verboses the specified module.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="message">
+            The message.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.Warning(System.String,System.String,System.String)">
+            <summary>
+            The warning.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="message">
+            The message.
+            </param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Diagnostics.EventSources.ExceptionLoggingEventSource.WarningRemoteResourceUnavailable(System.String,System.String,System.String,System.String)">
+            <summary>
+            The warning remote resource unavailable.
+            </summary>
+            <param name="module">
+            The module.
+            </param>
+            <param name="source">
+            The source.
+            </param>
+            <param name="remoteResource">
+            The remote resource.
+            </param>
+            <param name="message">
+            The message.
+            </param>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.DomainParserFactory">
+            <summary>
+                The domain parser factory.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.DomainParserFactory.DefaultPublicUrlDataTimeout">
+            <summary>
+                The default public URL data timeout.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.DomainParserFactory.DefaultPublicUrl">
+            <summary>
+                The default public URL.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.DomainParserFactory.DefaultLogicConfiguration">
+            <summary>
+                The default logic configuration.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.DomainParserFactory.TldRuleResolver">
+            <summary>
+                The TLD rule resolver.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.DomainParserFactory.defaultLogicReadOnlyPublicResourceRepo">
+            <summary>
+                The default logic read only public resource repo.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.DomainParserFactory.customUserLogicConfiguration">
+            <summary>
+                The custom user logic configuration.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.DomainParserFactory.customUserLogicReadOnlyPublicResourceRepo">
+            <summary>
+                The custom user logic read only public resource repo.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.DomainParserFactory.tldRulesCache">
+            <summary>
+                The TLD rules cache.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.DomainParserFactory.defaultLogicDomainParser">
+            <summary>
+                The default logic domain parser.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.DomainParserFactory.serviceDomainParser">
+            <summary>
+                The service domain parser.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.DomainParserFactory.Create(Rsft.Net.DomainParser.Core.Interfaces.IConfiguration{Rsft.Net.DomainParser.Core.Entities.Service.Configuration},Rsft.Net.DomainParser.Core.Interfaces.IReadOnlyRepository{System.String,System.String},Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            The create.
+            </summary>
+            <param name="configuration">The configuration. Uses default, internal configuration if not specified.</param>
+            <param name="customReadOnlyRepositoryExternalPublicList">The custom read only repository external public list. Uses
+            default, internal repository (reading https://publicsuffix.org/list/effective_tld_names.dat) if not specified.</param>
+            <param name="loggerFactory">The logger factory.</param>
+            <returns>
+            The domain parser.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Global">
+            <summary>
+            Global lifetime objects.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Global.LoggerFactory">
+            <summary>
+            Gets or sets the logger factory.
+            </summary>
+            <value>
+            The logger factory.
+            </value>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Helpers.SafeLinq">
+            <summary>
+            The safe linq.
+            </summary>
+            <summary>
+                Safe LINQ extensions.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Helpers.SafeLinq.AnySafe``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            The any safe.
+            </summary>
+            <param name="source">
+            The source.
+            </param>
+            <typeparam name="T">
+            Type of parameter.
+            </typeparam>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Helpers.SafeLinq.AnySafe``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Any with predicate (safe).
+            </summary>
+            <typeparam name="T">
+            Object type.
+            </typeparam>
+            <param name="enumerable">
+            The enumerable.
+            </param>
+            <param name="predicate">
+            The predicate.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Helpers.SafeLinq.CountSafe``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            The count safe.
+            </summary>
+            <param name="source">
+            The source.
+            </param>
+            <typeparam name="T">
+            Object type.
+            </typeparam>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Helpers.SafeLinq.CountSafe``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            The count safe.
+            </summary>
+            <param name="enumerable">
+            The enumerable.
+            </param>
+            <param name="predicate">
+            The predicate.
+            </param>
+            <typeparam name="T">
+            Object type.
+            </typeparam>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Helpers.SafeLinq.ToSafeEnumerable``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            The to safe enumerable.
+            </summary>
+            <param name="source">
+            The source.
+            </param>
+            <typeparam name="T">
+            Object type.
+            </typeparam>
+            <returns>
+            The IEnumerable.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Helpers.SafeLinq.ToSafeList``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            The to safe list.
+            </summary>
+            <param name="source">
+            The source.
+            </param>
+            <typeparam name="T">
+            The object type.
+            </typeparam>
+            <returns>
+            The IList.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Helpers.TaskExtensions">
+            <summary>
+                The task extensions.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Helpers.TaskExtensions.TimeoutAfter``1(System.Threading.Tasks.Task{``0},System.Int32)">
+            <summary>
+            The timeout after.
+            </summary>
+            <param name="task">
+            The task.
+            </param>
+            <param name="millisecondsTimeout">
+            The milliseconds timeout.
+            </param>
+            <typeparam name="TResult">
+            Type of result.
+            </typeparam>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/> .
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Helpers.TaskExtensions.TimeoutAfter(System.Threading.Tasks.Task,System.Int32)">
+            <summary>
+            The timeout after.
+            </summary>
+            <param name="task">
+            The task.
+            </param>
+            <param name="millisecondsTimeout">
+            The milliseconds timeout.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/> .
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Helpers.TaskExtensions.MarshalTaskResults``1(System.Threading.Tasks.Task,System.Threading.Tasks.TaskCompletionSource{``0})">
+            <summary>
+            The marshal task results.
+            </summary>
+            <param name="source">
+            The source.
+            </param>
+            <param name="proxy">
+            The proxy.
+            </param>
+            <typeparam name="TResult">
+            The result.
+            </typeparam>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Helpers.Validation">
+            <summary>
+                The validation.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Helpers.Validation.Validate``1(``0)">
+            <summary>
+            The validate.
+            </summary>
+            <param name="item">
+            The item.
+            </param>
+            <typeparam name="T">
+            Type of object to validate.
+            </typeparam>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Helpers.VoidTypeStruct">
+            <summary>
+            The void type struct.
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Logic.Configuration.DefaultConfiguration">
+            <summary>
+            The default configuration.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.Configuration.DefaultConfiguration.DefaultPublicRules">
+            <summary>
+                The public rules.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.Configuration.DefaultConfiguration.DefaultTldPublicFetchTimeout">
+            <summary>
+                The default TLD public fetch timeout.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Logic.Configuration.DefaultConfiguration.Configuration">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <exception cref="T:System.NotImplementedException">
+            Set is not implemented.
+            </exception>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Logic.Configuration.UserConfiguredConfiguration">
+            <summary>
+            The user configured configuration.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Logic.Configuration.UserConfiguredConfiguration.Configuration">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Logic.Data.LocalResourceData">
+            <summary>
+                The local resource data.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.Data.LocalResourceData.MyTypeInfo">
+            <summary>
+            My type information.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.Data.LocalResourceData.ExecutingAssemblyName">
+            <summary>
+                The executing assembly name.
+            </summary>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Logic.Data.LocalResourceData.EffectiveTldNames">
+            <summary>
+                Gets the effective TLD names.
+            </summary>
+            <value>
+                The effective TLD names.
+            </value>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.Data.LocalResourceData.GetLocalResourceFile(System.String)">
+            <summary>
+            Gets the local resource file.
+            </summary>
+            <param name="filePath">
+            The file path.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Logic.DomainParser">
+            <summary>
+            The domain parser.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.DomainParser.LoggingSourceName">
+            <summary>
+                The logging module name.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.DomainParser.rulesCache">
+            <summary>
+            The rules cache.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.DomainParser.logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.DomainParser.#ctor(Rsft.Net.DomainParser.Core.Interfaces.ITldRulesCache,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rsft.Net.DomainParser.Logic.DomainParser" /> class.
+            </summary>
+            <param name="rulesCache">The rules cache.</param>
+            <param name="loggerFactory">The logger factory.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.DomainParser.Parse(System.String)">
+            <summary>
+            The parse.
+            </summary>
+            <param name="domainString">
+            The domain string.
+            </param>
+            <returns>
+            The <see cref="T:Rsft.Net.DomainParser.Core.Entities.Logic.DomainInfo"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.DomainParser.TryParse(System.String,Rsft.Net.DomainParser.Core.Entities.Logic.DomainInfo@)">
+            <summary>
+            The try parse.
+            </summary>
+            <param name="domainString">
+            The domain string.
+            </param>
+            <param name="response">
+            The response.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.DomainParser.FindMatchingTldRule(System.String)">
+            <summary>
+            Finds matching rule for a domain. If no rule is found, returns a null TLD rule object.
+            </summary>
+            <param name="domainString">
+            The domain string.
+            </param>
+            <returns>
+            The <see cref="T:Rsft.Net.DomainParser.Core.Entities.Logic.TldRule"/>.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Logic.Repository.LocalResourceRepository">
+            <summary>
+            The local resource repository.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.Repository.LocalResourceRepository.LoggingSourceName">
+            <summary>
+                The logging module name.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.Repository.LocalResourceRepository.logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.Repository.LocalResourceRepository.#ctor(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rsft.Net.DomainParser.Logic.Repository.LocalResourceRepository"/> class.
+            </summary>
+            <param name="loggerFactory">The logger factory.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.Repository.LocalResourceRepository.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            The get all async.
+            </summary>
+            <param name="cancellationToken">
+            The cancellation token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Logic.Repository.PublicSuffixRepository">
+            <summary>
+            The public suffix repository.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.Repository.PublicSuffixRepository.LoggingSourceName">
+            <summary>
+                The logging module name.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.Repository.PublicSuffixRepository.configuration">
+            <summary>
+            The configuration.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.Repository.PublicSuffixRepository.logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.Repository.PublicSuffixRepository.#ctor(Rsft.Net.DomainParser.Core.Interfaces.IConfiguration{Rsft.Net.DomainParser.Core.Entities.Logic.Configuration.DomainParserConfiguration},Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rsft.Net.DomainParser.Logic.Repository.PublicSuffixRepository" /> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <param name="loggerFactory">The logger factory.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.Repository.PublicSuffixRepository.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            The get all async.
+            </summary>
+            <param name="cancellationToken">
+            The cancellation token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+            <exception cref="T:System.TimeoutException">Operation timed-out wrapped in AggregateException.</exception>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Logic.Repository.RepositoryBase">
+            <summary>
+            The repository base.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.Repository.RepositoryBase.#ctor(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rsft.Net.DomainParser.Logic.Repository.RepositoryBase"/> class.
+            </summary>
+            <param name="loggerFactory">The logger factory.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.Repository.RepositoryBase.GetAll">
+            <summary>
+            The get all.
+            </summary>
+            <returns>
+            The IEnumerable of string.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.Repository.RepositoryBase.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            The get all async.
+            </summary>
+            <param name="cancellationToken">
+            The cancellation token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.Repository.RepositoryBase.Get(System.String)">
+            <summary>
+            The get.
+            </summary>
+            <param name="key">
+            The key.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.Repository.RepositoryBase.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            The get async.
+            </summary>
+            <param name="key">
+            The key.
+            </param>
+            <param name="cancellationToken">
+            The cancellation token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Logic.TldRuleResolverPublicSuffix">
+            <summary>
+            The TLD rule resolver.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.TldRuleResolverPublicSuffix.Resolve(System.String)">
+            <summary>
+            The resolve.
+            </summary>
+            <param name="ruleInfo">
+            The rule info.
+            </param>
+            <remarks>
+            <para>Construct a TLDRule based on a single line from the www.publicsuffix.org list.</para>
+            </remarks>
+            <returns>
+            The <see cref="T:Rsft.Net.DomainParser.Core.Entities.Logic.TldRule"/>.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Logic.TldRulesCache">
+            <summary>
+                The TLD rules cache.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.TldRulesCache.LoggingSourceName">
+            <summary>
+                The logging module name.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.TldRulesCache.CacheKey1">
+            <summary>
+                The cache key.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.TldRulesCache.MyCache">
+            <summary>
+            My cache.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.TldRulesCache.externalDataRepo">
+            <summary>
+                The external data repo.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.TldRulesCache.localBackupRepo">
+            <summary>
+                The local backup repo.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.TldRulesCache.myConfiguration">
+            <summary>
+                The configuration.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.TldRulesCache.ruleResolver">
+            <summary>
+                The rule resolver.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Logic.TldRulesCache.logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.TldRulesCache.#ctor(Rsft.Net.DomainParser.Core.Interfaces.IConfiguration{Rsft.Net.DomainParser.Core.Entities.Logic.Configuration.DomainParserConfiguration},Rsft.Net.DomainParser.Core.Interfaces.ITldRuleResolver{Rsft.Net.DomainParser.Core.Entities.Logic.TldRule},Rsft.Net.DomainParser.Core.Interfaces.IReadOnlyRepository{System.String,System.String},Rsft.Net.DomainParser.Core.Interfaces.IReadOnlyRepository{System.String,System.String},Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rsft.Net.DomainParser.Logic.TldRulesCache" /> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <param name="ruleResolver">The rule resolver.</param>
+            <param name="localBackupRepo">The local backup repo.</param>
+            <param name="externalDataRepo">The external data repo.</param>
+            <param name="loggerFactory">The logger factory.</param>
+        </member>
+        <member name="P:Rsft.Net.DomainParser.Logic.TldRulesCache.TldRuleLists">
+            <summary>
+                Gets the TLD rule lists.
+            </summary>
+            <value>
+                The TLD rule lists.
+            </value>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.TldRulesCache.GetOrAddExisting(System.String)">
+            <summary>
+            Gets the or add existing.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.TldRulesCache.ReadRulesWithRedundancyAsync(System.Threading.CancellationToken)">
+            <summary>
+            Reads the rules asynchronously using local repo as backup.
+            </summary>
+            <param name="cancellationToken">
+            The cancellation token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.TldRulesCache.GetTldRulesAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets the list of TLD rules from the cache.
+            </summary>
+            <param name="cancellationToken">
+            The cancellation Token.
+            </param>
+            <returns>
+            The IDictionary.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Logic.TldRulesCache.ReadTldRules">
+            <summary>
+            Reads the TLD rules.
+            </summary>
+            <returns>
+            The IDictionary.
+            </returns>
+        </member>
+        <member name="T:Rsft.Net.DomainParser.Service.DomainParser">
+            <summary>
+            The domain parser.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Service.DomainParser.LoggingSourceName">
+            <summary>
+                The logging module name.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Service.DomainParser.domainParser">
+            <summary>
+            The domain parser.
+            </summary>
+        </member>
+        <member name="F:Rsft.Net.DomainParser.Service.DomainParser.logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Service.DomainParser.#ctor(Rsft.Net.DomainParser.Core.Interfaces.IDomainParser{Rsft.Net.DomainParser.Core.Entities.Logic.DomainInfo},Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rsft.Net.DomainParser.Service.DomainParser" /> class.
+            </summary>
+            <param name="domainParser">The domain parser.</param>
+            <param name="loggerFactory">The logger factory.</param>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Service.DomainParser.Parse(System.String)">
+            <summary>
+            The parse.
+            </summary>
+            <param name="domainString">
+            The domain string.
+            </param>
+            <returns>
+            The <see cref="T:Rsft.Net.DomainParser.Core.Entities.Service.DomainInfo"/>.
+            </returns>
+        </member>
+        <member name="M:Rsft.Net.DomainParser.Service.DomainParser.TryParse(System.String,Rsft.Net.DomainParser.Core.Entities.Service.DomainInfo@)">
+            <summary>
+            The try parse.
+            </summary>
+            <param name="domainString">
+            The domain string.
+            </param>
+            <param name="response">
+            The response.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+    </members>
+</doc>

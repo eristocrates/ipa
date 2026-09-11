@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Deinok,Alexander Rose,graphql-dotnet</dc:creator>
+  <dc:description>A serializer implementation for GraphQL.Client using Newtonsoft.Json as underlying JSON library</dc:description>
+  <dc:identifier>GraphQL.Client.Serializer.Newtonsoft</dc:identifier>
+  <version>6.1.0</version>
+  <keywords>GraphQL</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=6.10.0.97, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET Standard 2.0</lastModifiedBy>
+</coreProperties>

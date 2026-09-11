@@ -2420,6 +2420,23 @@
             xs:duration, xs:yearMonthDuration, and xs:dayTimeDuration are all comparable via eq/ne.
             </summary>
         </member>
+        <member name="M:PhoenixmlDb.XQuery.Execution.BinaryOperatorNode.RejectNonNumericOperand(System.Object)">
+            <summary>
+            Rejects an operand arithmetic cannot promote, with the XPTY0004 the spec requires.
+            <para>
+            The valid date/time and duration combinations are matched earlier in each operator
+            (date + dayTimeDuration and so on); anything of those types reaching numeric promotion has
+            already failed to match one, so it is a type error. Without this it reached
+            <c>Convert.ToDouble</c> and surfaced as "Unable to cast object of type
+            'PhoenixmlDb.Xdm.XsDate' to type 'System.IConvertible'" — a CLR exception, not an XQuery
+            error, matching no code a caller could catch. 83 QT3 cases in the duration operators alone.
+            </para>
+            <para>
+            Durations are deliberately NOT rejected here: <c>duration * 2</c> is valid and passes the
+            NUMBER through this path while the duration is handled by the caller.
+            </para>
+            </summary>
+        </member>
         <member name="M:PhoenixmlDb.XQuery.Execution.BinaryOperatorNode.ToDoubleOrThrow(System.Object)">
             <summary>
             Converts to double, throwing FORG0001 if a string value cannot be cast.
@@ -14225,6 +14242,13 @@
             the global double formatter (<see cref="M:PhoenixmlDb.XQuery.Functions.ConcatFunction.XQueryStringValue(System.Object)"/>),
             which emits the fixed-point canonical form expected elsewhere (e.g. <c>1</c>).
             </summary>
+            <remarks>
+            Public because the <c>xquery</c> CLI has its own serializer and needs the SAME
+            implementation, not a second one. Two implementations of this disagreed: the CLI printed
+            <c>42</c> for <c>xs:double(41) + 1</c> under <c>-o adaptive</c> where this returns
+            <c>4.2e1</c>, and the spec text above says the exponential form is correct. Call this
+            rather than re-deriving it.
+            </remarks>
         </member>
         <member name="M:PhoenixmlDb.XQuery.XQueryResultSerializer.WriteManualXmlDeclaration(System.IO.TextWriter,System.Text.Encoding)">
             <summary>

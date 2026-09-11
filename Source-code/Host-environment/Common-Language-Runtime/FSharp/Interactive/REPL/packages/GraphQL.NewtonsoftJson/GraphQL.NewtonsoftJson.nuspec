@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>GraphQL.NewtonsoftJson</id>
+    <version>8.8.5</version>
+    <authors>GraphQL.NewtonsoftJson</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>logo.64x64.png</icon>
+    <readme>README.md</readme>
+    <description>JSON.NET serializer for GraphQL.NET</description>
+    <releaseNotes>See https://github.com/graphql-dotnet/graphql-dotnet/releases and https://graphql-dotnet.github.io/docs/migrations/migration8</releaseNotes>
+    <tags>GraphQL json</tags>
+    <repository type="git" url="https://github.com/graphql-dotnet/graphql-dotnet" commit="09b0ccc8d0f4244f76272e6773d3053e755e4c5a" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="GraphQL" version="[8.8.5, 9.0.0)" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+        <dependency id="System.Buffers" version="4.5.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
