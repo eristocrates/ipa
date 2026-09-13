@@ -9,7 +9,7 @@
 // TODO add gnd to known ontologies https:-nb.info/standards/elementset/gnd2012-06-30
 
 #load @".paket/load/main.group.fsx"
-#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL"
+#I @"C:\Repositories\eristocrates\ipa\fsx"
 
 #r "IanaSchemes.dll"
 open IanaSchemes
@@ -39,9 +39,9 @@ open WebDriverBiDi.Session
 open WebDriverBiDi.BrowsingContext
 open FolkerKinzel.MimeTypes
 open IriTools
-open ktsu.Semantics.Paths
 open ktsu.Semantics.Strings
 open ktsu.Semantics.Strings.Identifiers
+open ktsu.Semantics.Paths
 open Meziantou.Framework
 open System.IO
 open AngleSharp.Html
@@ -57,14 +57,14 @@ let RegistrableDomainParser = new DomainParser(HttpRuleProvider)
 
 type DriveInfo with
     static member C = DriveInfo.GetDrives() |> Array.find (fun drive -> drive.Name[0] = 'C')
-    static member D = DriveInfo.GetDrives() |> Array.find (fun drive -> drive.Name[0] = 'D')
+    // static member D = DriveInfo.GetDrives() |> Array.find (fun drive -> drive.Name[0] = 'D')
     static member byChar =
         DriveInfo.GetDrives()
         |> Array.map (fun drive -> drive.Name[0], drive)
         |> Map.ofArray
 
 
-let personalDriveReference = DriveInfo.D.Name
+let personalDriveReference = DriveInfo.C.Name
 let personalSiteReference = "https://eristocrates.dev"
 
 type Option<'Type> with
@@ -119,7 +119,7 @@ type Option<'Type> with
 
 type ResolvedResource = {
     absoluteRoot: AbsoluteRoot
-    relativePath: RelativePath
+    pathSegments: string array
     fragmentString: FragmentString option
     queryString: QueryString option
 }
@@ -196,8 +196,8 @@ type RelativeDirectoryPath with
                     | name -> $"&{name}"
                 else
                     string character))
-        |> String.concat "\\"
-        |> RelativeDirectoryPath.Create
+        // |> String.concat "\\"
+        // |> RelativeDirectoryPath.Create
 
 
 type RegistrableDomain with
@@ -273,7 +273,7 @@ type AbsoluteRoot with
 
     static member (./)((root: AbsoluteRoot), (relativeString: string)) = {
         absoluteRoot = root
-        relativePath = RelativePath.Create relativeString
+        pathSegments = relativeString.Split([| '/'; '\\'|], StringSplitOptions.TrimEntries) |> Array.filter (fun segment -> not (String.IsNullOrWhiteSpace segment))
         fragmentString = None
         queryString = None
     }
@@ -317,8 +317,8 @@ type RelativePath with
 
 type ResolvedResource with
 
-    member this.localReference = Path.Combine(this.absoluteRoot.localReference, this.relativePath.WeakString)
-    member this.remoteReference = this.absoluteRoot.remoteReference + this.relativePath.asPathString
+    member this.localReference = Path.Combine(this.absoluteRoot.localReference, this.pathSegments |> String.concat "\\")
+    member this.remoteReference = this.absoluteRoot.remoteReference + "/" + (this.pathSegments |> String.concat "/")
 
     member this.asLocalUri = Uri this.localReference
     member this.asRemoteUri = Uri this.remoteReference
@@ -465,6 +465,7 @@ type QueryStringParameterCollection with
 
 
 
+(*
 
 
 
@@ -524,7 +525,6 @@ let baseTest = RegistrableDomain.Parse "https://google.com"
 
 
 
-(*
 
 let absoluteResource = AbsoluteResource.fromRawString "https://bannerprodssb.leoncountyfl.gov:8449"
 let relativeResource =
