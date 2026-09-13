@@ -16,7 +16,11 @@ open FSharp.Data.Sql.MsSql
 
 
 type InforProdSql =
-    SqlDataProvider<ConnectionString=Prod.connection_string, IndividualsAmount=10000, UseOptionTypes=Common.NullableColumnType.OPTION>
+    SqlDataProvider<
+        ConnectionString=Prod.connectionString,
+        IndividualsAmount=10000,
+        UseOptionTypes=Common.NullableColumnType.OPTION
+     >
 
 let operations = InforProdSql.GetDataContext()
 
@@ -27,7 +31,7 @@ open Microsoft.Data.SqlClient
 
 let linked_test () =
 
-    use connection = new SqlConnection(Prod.connection_string)
+    use connection = new SqlConnection(Prod.connectionString)
     connection.Open()
 
     use command =
@@ -112,8 +116,7 @@ let oracle_test () =
             printfn "Oracle user: %O" (reader.GetValue(0))
             printfn "Authentication method: %O" (reader.GetValue(1))
 
-    with
-    | :? OracleException as exception_value ->
+    with :? OracleException as exception_value ->
         printfn "Oracle error %d: %s" exception_value.Number exception_value.Message
 
 

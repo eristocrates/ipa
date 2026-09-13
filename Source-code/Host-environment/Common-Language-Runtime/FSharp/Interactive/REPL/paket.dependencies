@@ -210,3 +210,4 @@ nuget NetworkingPrimitivesCore
 nuget ModelingEvolution.Ipv4
 nuget ModelingEvolution.Bytes
 nuget Nager.PublicSuffix
+nuget Cambia.UriExtensions

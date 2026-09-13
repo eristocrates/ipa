@@ -16,7 +16,11 @@ open FSharp.Data.Sql.MsSql
 
 
 type InforProdSql =
-    SqlDataProvider<ConnectionString=Prod.connection_string, IndividualsAmount=10000, UseOptionTypes=Common.NullableColumnType.OPTION>
+    SqlDataProvider<
+        ConnectionString=Prod.connectionString,
+        IndividualsAmount=10000,
+        UseOptionTypes=Common.NullableColumnType.OPTION
+     >
 
 let operations = InforProdSql.GetDataContext()
 
@@ -133,7 +137,7 @@ type Infor_User =
       UserName: USRNAME
 
 
-     }
+    }
 
 let target_zaccusrs: CORE_ACCESSCONTROL.ZACCUSR seq =
     query {
@@ -276,18 +280,14 @@ let inline show value = sprintf "%A" value
 let stripCaseName (text: string) =
     let index = text.IndexOf " "
 
-    if index < 0 then
-        text
-    else
-        text.Substring(index + 1)
+    if index < 0 then text else text.Substring(index + 1)
 
 let showCell value = value |> sprintf "%A" |> stripCaseName
 
 
 
 
-sprintf "%-20s, %-20s" "USRNAME" "LICENSENAME"
-|> clip
+sprintf "%-20s, %-20s" "USRNAME" "LICENSENAME" |> clip
 
 target_users
 |> Array.collect (fun user ->

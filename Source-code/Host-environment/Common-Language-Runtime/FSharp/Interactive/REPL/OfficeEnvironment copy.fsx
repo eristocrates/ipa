@@ -7,7 +7,7 @@
 *)
 // TODO add gnd to known ontologies https:-nb.info/standards/elementset/gnd2012-06-30
 
-# time on
+#time on
 fsi.ShowDeclarationValues <- false
 // fsi.ShowDeclarationValues <- true
 open System
@@ -39,7 +39,7 @@ open System.Xml.Serialization
 open System.Xml.XPath
 
 #r "nuget: Meziantou.Framework.ValueStopwatch, 3.0.0"
-let loadTimer =  Meziantou.Framework.ValueStopwatch.StartNew()
+let loadTimer = Meziantou.Framework.ValueStopwatch.StartNew()
 #load @".paket/load/main.group.fsx"
 #r "nuget: Esri.ArcGISRuntime, 300.0.0"
 #r "nuget: Microsoft.SqlServer.DacFx, 162.5.57"
@@ -295,21 +295,13 @@ type El with
     static member Iframe = Selector "iframe"
     static member I = Selector "i"
 
-type Attr with 
+type Attr with
     static member Tabindex = AttrSelector "tabindex"
 
-let private utf8 =
-    UTF8Encoding(
-        encoderShouldEmitUTF8Identifier = false,
-        throwOnInvalidBytes = true
-    )
+let private utf8 = UTF8Encoding(encoderShouldEmitUTF8Identifier = false, throwOnInvalidBytes = true)
 
 
-let private escapedSurrogatePair =
-    Regex(
-        @"\\u([dD][89aAbB][0-9a-fA-F]{2})\\u([dD][c-fC-F][0-9a-fA-F]{2})",
-        RegexOptions.Compiled ||| RegexOptions.CultureInvariant
-    )
+let private escapedSurrogatePair = Regex(@"\\u([dD][89aAbB][0-9a-fA-F]{2})\\u([dD][c-fC-F][0-9a-fA-F]{2})", RegexOptions.Compiled ||| RegexOptions.CultureInvariant)
 
 
 let normalizeEscapedSurrogatePairs (text: string) =
@@ -319,53 +311,28 @@ let normalizeEscapedSurrogatePairs (text: string) =
         escapedSurrogatePair.Replace(
             text,
             MatchEvaluator(fun matched ->
-                let high =
-                    Convert.ToInt32(matched.Groups.[1].Value, 16)
-                    |> char
+                let high = Convert.ToInt32(matched.Groups.[1].Value, 16) |> char
 
-                let low =
-                    Convert.ToInt32(matched.Groups.[2].Value, 16)
-                    |> char
+                let low = Convert.ToInt32(matched.Groups.[2].Value, 16) |> char
 
-                Char.ConvertToUtf32(high, low)
-                |> sprintf "\\U%08X"
-            )
+                Char.ConvertToUtf32(high, low) |> sprintf "\\U%08X")
         )
 
 
 let decompressNqGzipFile (nqgzipFile: FileInfo) =
 
     if not (File.Exists nqgzipFile.FullName) then
-        raise (
-            FileNotFoundException(
-                "The N-Quads gzip file does not exist.",
-                nqgzipFile.FullName
-            )
-        )
+        raise (FileNotFoundException("The N-Quads gzip file does not exist.", nqgzipFile.FullName))
 
-    if not (
-        nqgzipFile.Name.EndsWith(
-            ".nq.gz",
-            StringComparison.OrdinalIgnoreCase
-        )
-    ) then
-        invalidArg
-            (nameof nqgzipFile)
-            $"Expected an .nq.gz file, received {nqgzipFile.Name}."
+    if not (nqgzipFile.Name.EndsWith(".nq.gz", StringComparison.OrdinalIgnoreCase)) then
+        invalidArg (nameof nqgzipFile) $"Expected an .nq.gz file, received {nqgzipFile.Name}."
 
     // Removes only the final ".gz":
     // foo.nq.gz -> foo.nq
-    let nqFile =
-        Path.ChangeExtension(nqgzipFile.FullName, null)
-        |> FileInfo
+    let nqFile = Path.ChangeExtension(nqgzipFile.FullName, null) |> FileInfo
 
     // Do not expose a partially-written "clean" .nq file.
-    let temporaryFile =
-        Path.Combine(
-            nqFile.DirectoryName,
-            Path.GetRandomFileName()
-        )
-        |> FileInfo
+    let temporaryFile = Path.Combine(nqFile.DirectoryName, Path.GetRandomFileName()) |> FileInfo
 
     let parser = NQuadsParser()
     let handler = NullHandler()
@@ -376,96 +343,59 @@ let decompressNqGzipFile (nqgzipFile: FileInfo) =
 
     try
         do
-            use sourceStream =
-                nqgzipFile.OpenRead()
+            use sourceStream = nqgzipFile.OpenRead()
 
-            use gzipStream =
-                new GZipStream(
-                    sourceStream,
-                    CompressionMode.Decompress
-                )
+            use gzipStream = new GZipStream(sourceStream, CompressionMode.Decompress)
 
-            use reader =
-                new StreamReader(
-                    gzipStream,
-                    utf8,
-                    detectEncodingFromByteOrderMarks = true
-                )
+            use reader = new StreamReader(gzipStream, utf8, detectEncodingFromByteOrderMarks = true)
 
-            use writer =
-                new StreamWriter(
-                    temporaryFile.FullName,
-                    append = false,
-                    encoding = utf8
-                )
+            use writer = new StreamWriter(temporaryFile.FullName, append = false, encoding = utf8)
 
             while not reader.EndOfStream do
-                let line =
-                    reader.ReadLine()
+                let line = reader.ReadLine()
 
                 if not (String.IsNullOrWhiteSpace line) then
-                    let normalizedLine =
-                        normalizeEscapedSurrogatePairs line
+                    let normalizedLine = normalizeEscapedSurrogatePairs line
 
-                    if not (
-                        Object.ReferenceEquals(
-                            normalizedLine,
-                            line
-                        )
-                    ) && normalizedLine <> line then
+                    if not (Object.ReferenceEquals(normalizedLine, line)) && normalizedLine <> line then
                         repaired <- repaired + 1L
 
                     try
-                        use lineReader =
-                            new StringReader(normalizedLine)
+                        use lineReader = new StringReader(normalizedLine)
 
-                        parser.Load(
-                            handler,
-                            lineReader
-                        )
+                        parser.Load(handler, lineReader)
 
                         writer.WriteLine(normalizedLine)
                         kept <- kept + 1L
 
-                    with
-                    | :? RdfParseException ->
+                    with :? RdfParseException ->
                         rejected <- rejected + 1L
 
-        File.Move(
-            temporaryFile.FullName,
-            nqFile.FullName,
-            overwrite = true
-        )
+        File.Move(temporaryFile.FullName, nqFile.FullName, overwrite = true)
 
         File.Delete(nqgzipFile.FullName)
 
-        printfn
-            "Created %s — kept %i statements; repaired %i lines; rejected %i invalid statements."
-            nqFile.FullName
-            kept
-            repaired
-            rejected
+        printfn "Created %s — kept %i statements; repaired %i lines; rejected %i invalid statements." nqFile.FullName kept repaired rejected
 
         FileInfo(nqFile.FullName)
 
-    with
-    | _ ->
+    with _ ->
         if File.Exists temporaryFile.FullName then
             File.Delete temporaryFile.FullName
 
-        reraise()
+        reraise ()
 
-let decompressGz (sourceFile : FileInfo)  =
-    let targetFile = sourceFile.FullName[..sourceFile.FullName.Length-4] |> FileInfo
+let decompressGz (sourceFile: FileInfo) =
+    let targetFile = sourceFile.FullName[.. sourceFile.FullName.Length - 4] |> FileInfo
     // Open the compressed file stream
     use sourceStream = new FileStream(sourceFile.FullName, FileMode.Open, FileAccess.Read)
-    
+
     // Create the decompression stream
     use decompressionStream = new GZipStream(sourceStream, CompressionMode.Decompress)
-    
+
     // Create the destination file stream
     use targetStream = new FileStream(targetFile.FullName, FileMode.Create, FileAccess.Write)
-    
+
     // Copy the decompressed data to the target file
     decompressionStream.CopyTo(targetStream)
     targetFile
@@ -486,15 +416,15 @@ let wellKnownGenid = $"https://eristocrates.dev/.well-known/genid"
 let xsdInference = XmlSchemaInference()
 
 let clipboard = new Clipboard()
-let clip (text:string) = clipboard.SetText text
+let clip (text: string) = clipboard.SetText text
 
 
 let responses = new ResizeArray<CdpHttpResponse>()
 let finishedRequests = new ResizeArray<CdpHttpRequest>()
 let failedRequests = new ResizeArray<CdpHttpRequest>()
 
-module ChromeDevTools = 
-    let protocol =  DomUrl "localhost:9222/json/protocol"
+module ChromeDevTools =
+    let protocol = DomUrl "localhost:9222/json/protocol"
 
 
 let LitXmlWriterSettings = new XmlWriterSettings()
@@ -506,68 +436,67 @@ LitXmlWriterSettings.NewLineOnAttributes <- false
 
 
 
-type QueryParameter = 
+type QueryParameter =
     | ParameterKeyValue of string * string
     | ParameterKeyValues of string * string array
-    member this.parameterKey = 
-        match this with 
-        | ParameterKeyValue (parameterKey, parameterValue)  -> parameterKey
-        | ParameterKeyValues (parameterKey, parameterValues)  -> parameterKey
-    member this.parameterValue = 
-        match this with 
-        | ParameterKeyValue (parameterKey, parameterValue)  -> parameterValue
-        | ParameterKeyValues (parameterKey, parameterValues)  -> parameterValues[0]
-    member this.parameterValues = 
-        match this with 
-        | ParameterKeyValue (parameterKey, parameterValue)  -> [|parameterValue|]
-        | ParameterKeyValues (parameterKey, parameterValues)  -> parameterValues
-    member this.ParameterPath = 
-        Array.concat [|
-            [|this.parameterKey|]
-            this.parameterValues
-        |]
+
+    member this.parameterKey =
+        match this with
+        | ParameterKeyValue(parameterKey, parameterValue) -> parameterKey
+        | ParameterKeyValues(parameterKey, parameterValues) -> parameterKey
+    member this.parameterValue =
+        match this with
+        | ParameterKeyValue(parameterKey, parameterValue) -> parameterValue
+        | ParameterKeyValues(parameterKey, parameterValues) -> parameterValues[0]
+    member this.parameterValues =
+        match this with
+        | ParameterKeyValue(parameterKey, parameterValue) -> [| parameterValue |]
+        | ParameterKeyValues(parameterKey, parameterValues) -> parameterValues
+    member this.ParameterPath =
+        Array.concat [| [| this.parameterKey |]; this.parameterValues |]
         |> String.concat "\\"
 
-module Folder = 
+module Folder =
     let Scratch = Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Scratch"
     let fiboMaster = DirectoryInfo @"D:\Iri\https\spec.edmcouncil.org\fibo\ontology\master"
     let ``spec.edmcouncil.org`` = DirectoryInfo @"D:\Iri\https\spec.edmcouncil.org"
     let Downloads = DirectoryInfo @"C:\Users\CollierB\Downloads"
-    let  Iri = Directory.CreateDirectory @"D:\Iri"  
-    let  DoxAletheia = Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia"   
-    let  Vocabulary = Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary"   
-    let  SolarWinds = Directory.CreateDirectory @"D:\Artifact\Company\SolarWinds"   
-    let  NeoGov = Directory.CreateDirectory @"D:\Artifact\Company\NeoGov"   
-    let  SunshineHealth = Directory.CreateDirectory @"D:\Artifact\Company\SunshineHealth"   
-    let  MicrosoftGraph = Directory.CreateDirectory @"D:\Artifact\Company\MicrosoftGraph"   
+    let Iri = Directory.CreateDirectory @"D:\Iri"
+    let DoxAletheia = Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia"
+    let Vocabulary =
+        Directory.CreateDirectory @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary"
+    let SolarWinds = Directory.CreateDirectory @"D:\Artifact\Company\SolarWinds"
+    let NeoGov = Directory.CreateDirectory @"D:\Artifact\Company\NeoGov"
+    let SunshineHealth = Directory.CreateDirectory @"D:\Artifact\Company\SunshineHealth"
+    let MicrosoftGraph = Directory.CreateDirectory @"D:\Artifact\Company\MicrosoftGraph"
 
-type NamedCharacterReference = 
-    {
-        htmlEntity:string
-        codepoints:Rune array
-        characters:string
-    }
+type NamedCharacterReference = {
+    htmlEntity: string
+    codepoints: Rune array
+    characters: string
+} with
+
     member this.entityName = this.htmlEntity.TrimStart('&').TrimEnd(';')
 
-module HtmlEntities = 
-    module json = 
+module HtmlEntities =
+    module json =
         let domUrl = DomUrl "https://html.spec.whatwg.org/entities.json"
         [<Literal>]
         let filePath = @"D:\Iri\https\html.spec.whatwg.org\entities.json\bare\entities.json"
-        type Provider = JsonProvider< UseOriginalNames = true, PreferDateOnly = true, OmitNullFields = true,
-            RootName = "entities",
-            Sample =  filePath >
-        let content = Provider.Load filePath 
+        type Provider = JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="entities", Sample=filePath>
+        let content = Provider.Load filePath
 
 
-    let namedCharacterReferences = 
+    let namedCharacterReferences =
         json.content.JsonValue.Properties
-        |> Array.map (fun (entityKey, entityValue) -> 
+        |> Array.map (fun (entityKey, entityValue) ->
             let codepointsKey, codepointsValue = entityValue.Properties[0]
             let charactersKey, charactersValue = entityValue.Properties[1]
             {
                 htmlEntity = entityKey
-                codepoints = codepointsValue.AsArray() |> Array.map (fun jsonValue -> Rune(jsonValue.AsInteger()))
+                codepoints =
+                    codepointsValue.AsArray()
+                    |> Array.map (fun jsonValue -> Rune(jsonValue.AsInteger()))
                 characters = charactersValue.AsString()
             }
 
@@ -582,61 +511,52 @@ module HtmlEntities =
     ///   3. lexical order as a final deterministic tie-breaker
     let namedCharacterReferenceByCodepoint =
         namedCharacterReferences
-        |> Array.filter (fun reference ->
-            reference.htmlEntity.EndsWith(";")
-            && reference.codepoints.Length = 1
-        )
-        |> Array.groupBy (fun reference ->
-            reference.codepoints[0].Value
-        )
+        |> Array.filter (fun reference -> reference.htmlEntity.EndsWith(";") && reference.codepoints.Length = 1)
+        |> Array.groupBy (fun reference -> reference.codepoints[0].Value)
         |> Array.map (fun (codepoint, references) ->
             let canonical =
                 references
-                |> Array.sortBy (fun reference ->
-                    reference.htmlEntity.Length,
-                    reference.htmlEntity
-                )
+                |> Array.sortBy (fun reference -> reference.htmlEntity.Length, reference.htmlEntity)
                 |> Array.head
 
-            codepoint, canonical
-        )
+            codepoint, canonical)
         |> Map.ofArray
 
-    let characterReference (rune:Rune) =
+    let characterReference (rune: Rune) =
         match namedCharacterReferenceByCodepoint.TryFind rune.Value with
-        | Some reference ->
-            reference.htmlEntity
+        | Some reference -> reference.htmlEntity
 
         // Not every Unicode character has an HTML named reference.
         // Numeric character references give us a total fallback.
-        | None ->
-            $"&#x{rune.Value:X};"
-    let invalidPathCharacterReferenceSet = 
-                Path.GetInvalidPathChars() |> Array.collect (fun pathChar ->  
-                        namedCharacterReferences |> Array.choose (fun namedCharacterReference -> 
-                            if namedCharacterReference.codepoints = [| Rune pathChar |] then 
-                                Some namedCharacterReference
-                            else 
-                                None
-                        
-                            )
-                )
-                |> Set.ofArray
-    let invalidFileNameCharacterReferenceSet = 
-                Path.GetInvalidFileNameChars () |> Array.collect (fun fileNameChar ->  
-                        namedCharacterReferences |> Array.choose (fun namedCharacterReference -> 
-                            if namedCharacterReference.codepoints = [| Rune fileNameChar |] then 
-                                Some namedCharacterReference
-                            else 
-                                None
-                        
-                            )
-                )
-                |> Set.ofArray
+        | None -> $"&#x{rune.Value:X};"
+    let invalidPathCharacterReferenceSet =
+        Path.GetInvalidPathChars()
+        |> Array.collect (fun pathChar ->
+            namedCharacterReferences
+            |> Array.choose (fun namedCharacterReference ->
+                if namedCharacterReference.codepoints = [| Rune pathChar |] then
+                    Some namedCharacterReference
+                else
+                    None
+
+            ))
+        |> Set.ofArray
+    let invalidFileNameCharacterReferenceSet =
+        Path.GetInvalidFileNameChars()
+        |> Array.collect (fun fileNameChar ->
+            namedCharacterReferences
+            |> Array.choose (fun namedCharacterReference ->
+                if namedCharacterReference.codepoints = [| Rune fileNameChar |] then
+                    Some namedCharacterReference
+                else
+                    None
+
+            ))
+        |> Set.ofArray
 
 
 
-    let namedCharacterReferenceByString = 
+    let namedCharacterReferenceByString =
         namedCharacterReferences
         |> Array.map (fun namedCharacterReference -> namedCharacterReference.characters, namedCharacterReference)
         |> Map.ofArray
@@ -644,74 +564,73 @@ module HtmlEntities =
 
 
 
-    
+
 
 
 module PathName =
 
-    let private invalidChars =
-        Path.GetInvalidFileNameChars()
-        |> Set.ofArray
+    let private invalidChars = Path.GetInvalidFileNameChars() |> Set.ofArray
 
-    let makeAcceptable (value:string) =
+    let makeAcceptable (value: string) =
         value
         |> String.collect (fun character ->
             if invalidChars.Contains character then
                 match HtmlEntityProvider.ReverseResolver.GetName(string character) with
-                | null ->
-                    $"&#x{int character:X};"
-                | name ->
-                    $"&{name}"
+                | null -> $"&#x{int character:X};"
+                | name -> $"&{name}"
             else
-                string character
-        )
+                string character)
 
 
 
 
 
-type DomUrl with 
-    member this.ConcatFragment (fragment:string) =
-        let href = 
-            if String.IsNullOrWhiteSpace(this.Search) then 
+type DomUrl with
+    member this.ConcatFragment(fragment: string) =
+        let href =
+            if String.IsNullOrWhiteSpace(this.Search) then
                 $"{this.Origin}/{this.AbsolutePathName}{this.Hash}/{fragment}"
             else
                 $"{this.Origin}/{this.AbsolutePathName}{this.Hash}/{fragment}?{this.Search}"
         DomUrl href
 
-    member this.AppendFragmentPath (fragment:string) = 
-        let href = 
-            if String.IsNullOrWhiteSpace(this.Search) then 
+    member this.AppendFragmentPath(fragment: string) =
+        let href =
+            if String.IsNullOrWhiteSpace(this.Search) then
                 $"{this.Origin}/{this.AbsolutePathName}#/{fragment}"
             else
                 $"{this.Origin}/{this.AbsolutePathName}#/{fragment}?{this.Search}"
         DomUrl href
-    member this.AppendFragment (fragment:string) = 
-        let href = 
-            if String.IsNullOrWhiteSpace(this.Search) then 
+    member this.AppendFragment(fragment: string) =
+        let href =
+            if String.IsNullOrWhiteSpace(this.Search) then
                 $"{this.Origin}/{this.AbsolutePathName}#{fragment}"
             else
                 $"{this.Origin}/{this.AbsolutePathName}#{fragment}?{this.Search}"
         DomUrl href
     member this.asString = this.ToString()
 
-    member this.QueryStringParameters = 
+    member this.QueryStringParameters =
         QueryStringUtilities.ParseQuery this.Search
-            |> Seq.map (fun keyValue ->  
-                match keyValue.Key, keyValue.Value |> Seq.toArray with 
-                | parameterKey, [|parameterValue|] -> ParameterKeyValue(parameterKey, parameterValue)
-                | parameterKey, parameterValues -> ParameterKeyValues(parameterKey, parameterValues)
-                )
-            |> Seq.toArray
-            |> Array.sortBy (fun parameter -> parameter.parameterKey)
-    member this.AppendSegments (segments:string array) = sprintf "%s/%s" (this.Origin + this.Pathname.TrimEnd('/')) ((segments |> String.concat "/").TrimStart('/'))   |> DomUrl 
-        
-    member this.AppendPath (path:string) = this.AppendSegments [| path |]
+        |> Seq.map (fun keyValue ->
+            match keyValue.Key, keyValue.Value |> Seq.toArray with
+            | parameterKey, [| parameterValue |] -> ParameterKeyValue(parameterKey, parameterValue)
+            | parameterKey, parameterValues -> ParameterKeyValues(parameterKey, parameterValues))
+        |> Seq.toArray
+        |> Array.sortBy (fun parameter -> parameter.parameterKey)
+    member this.AppendSegments(segments: string array) =
+        sprintf "%s/%s" (this.Origin + this.Pathname.TrimEnd('/')) ((segments |> String.concat "/").TrimStart('/'))
+        |> DomUrl
+
+    member this.AppendPath(path: string) = this.AppendSegments [| path |]
 
     member this.AbsolutePathName = this.Pathname[1..]
-    member this.QueryPathName = this.QueryStringParameters |> Array.map  (fun parameter -> parameter.ParameterPath) |> String.concat "\\"
-    member this.terminalName = 
-        match this.Href.ToCharArray() |> Array.last with 
+    member this.QueryPathName =
+        this.QueryStringParameters
+        |> Array.map (fun parameter -> parameter.ParameterPath)
+        |> String.concat "\\"
+    member this.terminalName =
+        match this.Href.ToCharArray() |> Array.last with
         | '#' -> "hash"
         | '/' -> "slash"
         | _ -> "bare"
@@ -721,46 +640,32 @@ type DomUrl with
     member this.extension = Path.GetExtension this.AbsolutePathName
     member this.pathStem = Path.GetFileNameWithoutExtension this.AbsolutePathName
 
-    member this.protocolPathPart =
-        this.Protocol.TrimEnd ':'
-        |> PathName.makeAcceptable
+    member this.protocolPathPart = this.Protocol.TrimEnd ':' |> PathName.makeAcceptable
 
-    member this.hostPathPart =
-        this.Host
-        |> PathName.makeAcceptable
+    member this.hostPathPart = this.Host |> PathName.makeAcceptable
 
-    member this.pathSegments =
-        this.Pathname.Split(
-            '/',
-            StringSplitOptions.RemoveEmptyEntries
-        )
+    member this.pathSegments = this.Pathname.Split('/', StringSplitOptions.RemoveEmptyEntries)
 
     member this.directorySegments =
         if this.pathSegments.Length <= 1 then
             [||]
         else
-            this.pathSegments[..this.pathSegments.Length - 2]
+            this.pathSegments[.. this.pathSegments.Length - 2]
             |> Array.map PathName.makeAcceptable
 
     member this.originalFileName =
         if this.pathSegments.Length = 0 then
-            invalidArg
-                "DomUrl"
-                $"URL has no file-name component: {this.Href}"
+            invalidArg "DomUrl" $"URL has no file-name component: {this.Href}"
 
-        this.pathSegments[this.pathSegments.Length - 1]
-        |> PathName.makeAcceptable
+        this.pathSegments[this.pathSegments.Length - 1] |> PathName.makeAcceptable
 
-    member this.fileExtension =
-        Path.GetExtension this.originalFileName
+    member this.fileExtension = Path.GetExtension this.originalFileName
 
-    member this.fileStem =
-        Path.GetFileNameWithoutExtension this.originalFileName
+    member this.fileStem = Path.GetFileNameWithoutExtension this.originalFileName
 
     member this.queryPathPart =
         if this.Search <> "" then
-            this.Search
-            |> PathName.makeAcceptable
+            this.Search |> PathName.makeAcceptable
         elif this.Href.Contains "?" then
             "&quest;"
         else
@@ -768,68 +673,37 @@ type DomUrl with
 
     member this.fragmentPathPart =
         if this.Hash <> "" then
-            "&num;"
-            + (
-                this.Hash.TrimStart '#'
-                |> PathName.makeAcceptable
-            )
+            "&num;" + (this.Hash.TrimStart '#' |> PathName.makeAcceptable)
         elif this.Href.EndsWith "#" then
             "&num;"
         else
             ""
 
-    member this.fileName =
-        this.fileStem
-        + this.queryPathPart
-        + this.fragmentPathPart
-        + this.fileExtension
+    member this.fileName = this.fileStem + this.queryPathPart + this.fragmentPathPart + this.fileExtension
 
     member this.fileDirectory =
-        Array.concat [
-            [|
-                this.protocolPathPart
-                this.hostPathPart
-            |]
-            this.directorySegments
-        ]
-        |> Array.fold
-            (fun path segment ->
-                Path.Combine(path, segment)
-            )
-            Folder.Iri.FullName
+        Array.concat [ [| this.protocolPathPart; this.hostPathPart |]; this.directorySegments ]
+        |> Array.fold (fun path segment -> Path.Combine(path, segment)) Folder.Iri.FullName
         |> Directory.CreateDirectory
 
-    member this.asFile =
-        Path.Combine(
-            this.fileDirectory.FullName,
-            this.fileName
-        )
+    member this.asFile = Path.Combine(this.fileDirectory.FullName, this.fileName) |> FileInfo
+    member this.asFileExtension(extension: string) =
+        Path.Combine(this.fileDirectory.FullName, Path.ChangeExtension(this.fileName, extension))
         |> FileInfo
-    member this.asFileExtension(extension:string) =
-        Path.Combine(
-            this.fileDirectory.FullName,
-            Path.ChangeExtension(this.fileName, extension)
-        )
-        |> FileInfo
-    member this.CreateFileDirectory() = Directory.CreateDirectory this.asFile.DirectoryName  |> ignore
-    member this.WriteFileText (text:string) = 
+    member this.CreateFileDirectory() =
+        Directory.CreateDirectory this.asFile.DirectoryName |> ignore
+    member this.WriteFileText(text: string) =
         this.CreateFileDirectory()
         File.WriteAllText(this.asFile.FullName, text)
-    member this.WriteFileLines (lines:string array) = 
-        this.CreateFileDirectory() 
+    member this.WriteFileLines(lines: string array) =
+        this.CreateFileDirectory()
         File.WriteAllLines(this.asFile.FullName, lines)
-    member this.HeadlessDownloadFile() = 
+    member this.HeadlessDownloadFile() =
         this.CreateFileDirectory()
-        http {
-            GET this.Href
-        }
-        |> Request.send
-        |> Response.saveFile this.asFile.FullName
-    member this.HeadlessDownloadFileExtension(extension:string) = 
+        http { GET this.Href } |> Request.send |> Response.saveFile this.asFile.FullName
+    member this.HeadlessDownloadFileExtension(extension: string) =
         this.CreateFileDirectory()
-        http {
-            GET this.Href
-        }
+        http { GET this.Href }
         |> Request.send
         |> Response.saveFile (Path.ChangeExtension(this.asFile.FullName, extension))
     member this.MimeType = MimeType.FromFileName this.asFile.FullName
@@ -837,38 +711,21 @@ type DomUrl with
 
         let href = this.Href
 
-        let protocol =
-            this.Protocol.TrimEnd ':'
-            |> PathName.makeAcceptable
+        let protocol = this.Protocol.TrimEnd ':' |> PathName.makeAcceptable
 
-        let host =
-            this.Host
-            |> PathName.makeAcceptable
+        let host = this.Host |> PathName.makeAcceptable
 
         let path =
-            this.Pathname
-                .TrimEnd('/')
-                .Split('/', StringSplitOptions.RemoveEmptyEntries)
+            this.Pathname.TrimEnd('/').Split('/', StringSplitOptions.RemoveEmptyEntries)
             |> Array.map PathName.makeAcceptable
 
         let terminal =
-            if href.EndsWith("#") then
-                "&num;"
-            elif this.Pathname.EndsWith("/") then
-                "&sol;"
-            else
-                "bare"
+            if href.EndsWith("#") then "&num;"
+            elif this.Pathname.EndsWith("/") then "&sol;"
+            else "bare"
 
-        Array.concat [
-            [| protocol; host |]
-            path
-            [| terminal |]
-        ]
-        |> Array.fold
-            (fun currentPath segment ->
-                Path.Combine(currentPath, segment)
-            )
-            Folder.Iri.FullName
+        Array.concat [ [| protocol; host |]; path; [| terminal |] ]
+        |> Array.fold (fun currentPath segment -> Path.Combine(currentPath, segment)) Folder.Iri.FullName
         |> Directory.CreateDirectory
 
 
@@ -876,13 +733,14 @@ type DomUrl with
 
 
 
-type ResourceReference = 
+type ResourceReference =
     | LocalFolder of DirectoryInfo
     | LocalFile of FileInfo
     | RemoteFolder of DomUrl
     | RemoteFile of DomUrl
-    member this.asString = 
-        match this with 
+
+    member this.asString =
+        match this with
         | LocalFolder directoryInfo -> directoryInfo.FullName
         | LocalFile fileInfo -> fileInfo.FullName
         | RemoteFolder domUrl -> domUrl.Href
@@ -892,48 +750,37 @@ type ResourceReference =
 
 
 
-type String with 
+type String with
     member this.runes = this.Normalize().EnumerateRunes() |> Seq.toArray
 
-type Guid with 
+type Guid with
     member this.asString = this.ToString("N")
     member this.asHyphenatedString = this.ToString("D")
     member this.asHyphenatedBracedString = this.ToString("B")
     member this.asHyphenatedParenthesizedString = this.ToString("P")
     member this.asHexString = this.ToString("X")
-type PhoneNumber with 
-    static member Parse(numberString:string) = PhoneNumberUtil.GetInstance().Parse(numberString, "US")
+type PhoneNumber with
+    static member Parse(numberString: string) =
+        PhoneNumberUtil.GetInstance().Parse(numberString, "US")
 
 
 
-type Binder = 
-    | TypeBinder of identifier:string
-    | CaseBinder of identifier:string
-    | ModuleBinder of identifier:string
-    | NamespaceBinder of identifier:string
-    | VariableBinder of identifier:string
-    member this.identifier = 
-        match this with 
+type Binder =
+    | TypeBinder of identifier: string
+    | CaseBinder of identifier: string
+    | ModuleBinder of identifier: string
+    | NamespaceBinder of identifier: string
+    | VariableBinder of identifier: string
+
+    member this.identifier =
+        match this with
         | TypeBinder identifier -> identifier
         | CaseBinder identifier -> identifier
         | ModuleBinder identifier -> identifier
         | NamespaceBinder identifier -> identifier
         | VariableBinder identifier -> identifier
-    static member BackTickExclusions = 
-        [|
-            '.'
-            '+'
-            '$'
-            '&'
-            '['
-            ']'
-            '/'
-            '\\'
-            '*'
-            '\"'
-            '`'
-        |]
-    static member IdentKeywords = 
+    static member BackTickExclusions = [| '.'; '+'; '$'; '&'; '['; ']'; '/'; '\\'; '*'; '\"'; '`' |]
+    static member IdentKeywords =
         set [
             "abstract"
             "and"
@@ -1000,52 +847,52 @@ type Binder =
             "while"
             "with"
             "yield"
-            
+
         ]
-    static member OCamlKeywords = 
-            set [
-
-              "asr"
-              "land"
-              "lor"
-              "lsl"
-              "lsr"
-              "lxor"
-              "mod"
-              "sig"
-
-               ]
-    static member ReservedKeywords = 
-    
+    static member OCamlKeywords =
         set [
 
-              "break"
-              "checked"
-              "component"
-              "const"
-              "constraint"
-              "continue"
-              "event"
-              "external"
-              "include"
-              "mixin"
-              "parallel"
-              "process"
-              "protected"
-              "pure"
-              "sealed"
-              "tailcall"
-              "trait"
-              "virtual"
-              "fori"
-              "params"
+            "asr"
+            "land"
+            "lor"
+            "lsl"
+            "lsr"
+            "lxor"
+            "mod"
+            "sig"
 
-               ]
+        ]
+    static member ReservedKeywords =
+
+        set [
+
+            "break"
+            "checked"
+            "component"
+            "const"
+            "constraint"
+            "continue"
+            "event"
+            "external"
+            "include"
+            "mixin"
+            "parallel"
+            "process"
+            "protected"
+            "pure"
+            "sealed"
+            "tailcall"
+            "trait"
+            "virtual"
+            "fori"
+            "params"
+
+        ]
     static member KeywordNames = Binder.IdentKeywords + Binder.OCamlKeywords + Binder.ReservedKeywords
 
-    member this.Contains(character:char) = this.identifier.Contains(character)
+    member this.Contains(character: char) = this.identifier.Contains(character)
     member this.isBackTickRestricted =
-        match this with 
+        match this with
         | TypeBinder identifier -> true
         | CaseBinder identifier -> true
         | ModuleBinder identifier -> true
@@ -1062,184 +909,187 @@ type Binder =
             | ','
             | '?'
             | '('
-            | ')' ->
-                ()
+            | ')' -> ()
 
-            | '&' ->
-                sb.Append("and") |> ignore
+            | '&' -> sb.Append("and") |> ignore
 
             | '/'
             | '-'
-            | ' ' ->
-                sb.Append('_') |> ignore
+            | ' ' -> sb.Append('_') |> ignore
 
-            | c when Char.IsWhiteSpace c ->
-                sb.Append('_') |> ignore
+            | c when Char.IsWhiteSpace c -> sb.Append('_') |> ignore
 
-            | c ->
-                sb.Append(c) |> ignore
+            | c -> sb.Append(c) |> ignore
 
         sb.ToString()
     static member NormalizeFirstCharacter(identifier: string) =
         match identifier with
-        | "" ->
-            "_"
+        | "" -> "_"
 
-        | identifier
-            when Syntax.PrettyNaming.IsIdentifierFirstCharacter identifier[0] ->
-            identifier
+        | identifier when Syntax.PrettyNaming.IsIdentifierFirstCharacter identifier[0] -> identifier
 
-        | identifier ->
-            "_" + identifier
+        | identifier -> "_" + identifier
     static member NormalizeKeyword(identifier: string) =
         if Binder.KeywordNames.Contains identifier then
             identifier + "_"
         else
             identifier
-    member this.binding = this.identifier |> Binder.NormalizeFirstCharacter |> Binder.NormalizeCharacters |> Binder.NormalizeKeyword |> Syntax.PrettyNaming.NormalizeIdentifierBackticks
+    member this.binding =
+        this.identifier
+        |> Binder.NormalizeFirstCharacter
+        |> Binder.NormalizeCharacters
+        |> Binder.NormalizeKeyword
+        |> Syntax.PrettyNaming.NormalizeIdentifierBackticks
 
 // xml  helpers
 
-type LitXml.ElementBuilder with 
-    
-    static member writeToXmlDocs (elements:LitXml.Element array) :string array= 
+type LitXml.ElementBuilder with
+
+    static member writeToXmlDocs(elements: LitXml.Element array) : string array =
 
         elements
-        |> Array.collect (fun element -> LitXml.ElementBuilder.writeToStringWith LitXmlWriterSettings element |> _.Split("\n"))
+        |> Array.collect (fun element ->
+            LitXml.ElementBuilder.writeToStringWith LitXmlWriterSettings element
+            |> _.Split("\n"))
 
 
 
-module XmlComment = 
+module XmlComment =
     open LitXml
-    let _href (reference:string) = attr "href" reference
+    let _href (reference: string) = attr "href" reference
     let a: ElementBuilder = elem "a"
     /// §D.3.2	Set text in a code-like font
     let c: ElementBuilder = elem "c"
     /// §D.3.3	Set one or more lines of source code or program output
-    let code : ElementBuilder = elem "code"
+    let code: ElementBuilder = elem "code"
     /// §D.3.4	Indicate an example
-    let example : ElementBuilder = elem "example"
+    let example: ElementBuilder = elem "example"
     /// §D.3.5	Identifies the exceptions a method can throw
-    let exception_ : ElementBuilder = elem "exception"
+    let exception_: ElementBuilder = elem "exception"
     /// §D.3.6	Includes XML from an external file
-    let include_ : ElementBuilder = elem "include"
+    let include_: ElementBuilder = elem "include"
     /// §D.3.7	Create a list or table
-    let list_ : ElementBuilder = elem "list"
+    let list_: ElementBuilder = elem "list"
     /// §D.3.8	Permit structure to be added to text
-    let para : ElementBuilder = elem "para"
+    let para: ElementBuilder = elem "para"
     /// §D.3.9	Describe a parameter for a method or constructor
-    let param : ElementBuilder = elem "param"
+    let param: ElementBuilder = elem "param"
     /// §D.3.10	Identify that a word is a parameter name
-    let paramref : ElementBuilder = elem "paramref"
+    let paramref: ElementBuilder = elem "paramref"
     /// §D.3.11	Document the security accessibility of a member
-    let permission : ElementBuilder = elem "permission"
+    let permission: ElementBuilder = elem "permission"
     /// §D.3.12	Describe additional information about a type
-    let remarks : ElementBuilder = elem "remarks"
+    let remarks: ElementBuilder = elem "remarks"
     /// §D.3.13	Describe the return value of a method
-    let returns : ElementBuilder = elem "returns"
+    let returns: ElementBuilder = elem "returns"
     /// §D.3.14	Specify a link
-    let see : ElementBuilder = elem "see"
+    let see: ElementBuilder = elem "see"
     /// §D.3.15	Generate a See Also entry
-    let seealso : ElementBuilder = elem "seealso"
+    let seealso: ElementBuilder = elem "seealso"
     /// §D.3.16	Describe a type or a member of a type
-    let summary : ElementBuilder = elem "summary"
+    let summary: ElementBuilder = elem "summary"
     /// §D.3.17	Describe a type parameter for a generic type or method
-    let typeparam : ElementBuilder = elem "typeparam"
+    let typeparam: ElementBuilder = elem "typeparam"
     /// §D.3.18	Identify that a word is a type parameter name
-    let typeparamref : ElementBuilder = elem "typeparamref"
+    let typeparamref: ElementBuilder = elem "typeparamref"
     /// §D.3.19	Describe a property
-    let value : ElementBuilder = elem "value"
+    let value: ElementBuilder = elem "value"
 
 
 // Rdf Helpers
 
 
 
-type IGraph with 
-    member inline this.S<'Subject when 'Subject : (member asINode: INode)> (S:'Subject ) = this.GetTriplesWithSubject(S.asINode) |> Seq.toArray
-    member inline this.SP<'Subject,'Predicate when 'Subject : (member asINode: INode) and 'Predicate : (member asINode: INode) > (S:'Subject, P:'Predicate ) = this.GetTriplesWithSubjectPredicate(S.asINode, P.asINode) |> Seq.toArray
+type IGraph with
+    member inline this.S<'Subject when 'Subject: (member asINode: INode)>(S: 'Subject) =
+        this.GetTriplesWithSubject(S.asINode) |> Seq.toArray
+    member inline this.SP<'Subject, 'Predicate when 'Subject: (member asINode: INode) and 'Predicate: (member asINode: INode)>(S: 'Subject, P: 'Predicate) =
+        this.GetTriplesWithSubjectPredicate(S.asINode, P.asINode) |> Seq.toArray
     member this.BlankNodes =
-      this.AllNodes
-      |> Seq.toArray
-      |> Array.filter (fun node -> node.NodeType = NodeType.Blank)
-      |> Array.map (fun node -> node :?> BlankNode)
-      |> Array.sortBy (fun node -> node.InternalID)
+        this.AllNodes
+        |> Seq.toArray
+        |> Array.filter (fun node -> node.NodeType = NodeType.Blank)
+        |> Array.map (fun node -> node :?> BlankNode)
+        |> Array.sortBy (fun node -> node.InternalID)
     member this.UriNodes =
-      this.AllNodes
-      |> Seq.toArray
-      |> Array.filter (fun node -> node.NodeType = NodeType.Uri)
-      |> Array.map (fun node -> node :?> UriNode)
-      |> Array.sortBy (fun node -> node.Uri.OriginalString)
+        this.AllNodes
+        |> Seq.toArray
+        |> Array.filter (fun node -> node.NodeType = NodeType.Uri)
+        |> Array.map (fun node -> node :?> UriNode)
+        |> Array.sortBy (fun node -> node.Uri.OriginalString)
     member this.LiteralNodes =
-      this.AllNodes
-      |> Seq.toArray
-      |> Array.filter (fun node -> node.NodeType = NodeType.Literal)
-      |> Array.map (fun node -> node :?> LiteralNode)
-      |> Array.filter (fun node -> node.Language = String.Empty)
-      |> Array.sortBy (fun node -> node.DataType.OriginalString, node.Value)
+        this.AllNodes
+        |> Seq.toArray
+        |> Array.filter (fun node -> node.NodeType = NodeType.Literal)
+        |> Array.map (fun node -> node :?> LiteralNode)
+        |> Array.filter (fun node -> node.Language = String.Empty)
+        |> Array.sortBy (fun node -> node.DataType.OriginalString, node.Value)
     member this.LanguageLiteralNodes =
-      this.AllNodes
-      |> Seq.toArray
-      |> Array.filter (fun node -> node.NodeType = NodeType.Literal)
-      |> Array.map (fun node -> node :?> LiteralNode)
-      |> Array.filter (fun node -> node.Language <> String.Empty)
-      |> Array.sortBy (fun node -> node.Language, node.Value)
-    member this.GraphLiteralNodes  =
-      this.AllNodes
-      |> Seq.toArray
-      |> Array.filter (fun node -> node.NodeType = NodeType.GraphLiteral)
-      |> Array.map (fun node -> node :?> GraphLiteralNode)
-      
-    member this.VariableNodes =
-      this.AllNodes
-      |> Seq.toArray
-      |> Array.filter (fun node -> node.NodeType = NodeType.Variable)
-      |> Array.map (fun node -> node :?> VariableNode)
-    member this.TripleNodes =
-      this.AllNodes
-      |> Seq.toArray
-      |> Array.filter (fun node -> node.NodeType = NodeType.Triple)
-      |> Array.map (fun node -> node :?> TripleNode)
-      |> Array.sortBy (fun node -> node.Triple.Subject.ToString(), node.Triple.Predicate.ToString(), node.Triple.Object.ToString())
+        this.AllNodes
+        |> Seq.toArray
+        |> Array.filter (fun node -> node.NodeType = NodeType.Literal)
+        |> Array.map (fun node -> node :?> LiteralNode)
+        |> Array.filter (fun node -> node.Language <> String.Empty)
+        |> Array.sortBy (fun node -> node.Language, node.Value)
+    member this.GraphLiteralNodes =
+        this.AllNodes
+        |> Seq.toArray
+        |> Array.filter (fun node -> node.NodeType = NodeType.GraphLiteral)
+        |> Array.map (fun node -> node :?> GraphLiteralNode)
 
-type IriReference with 
-    static member fromUriNode (uriNode:UriNode) = IriReference uriNode.Uri
+    member this.VariableNodes =
+        this.AllNodes
+        |> Seq.toArray
+        |> Array.filter (fun node -> node.NodeType = NodeType.Variable)
+        |> Array.map (fun node -> node :?> VariableNode)
+    member this.TripleNodes =
+        this.AllNodes
+        |> Seq.toArray
+        |> Array.filter (fun node -> node.NodeType = NodeType.Triple)
+        |> Array.map (fun node -> node :?> TripleNode)
+        |> Array.sortBy (fun node -> node.Triple.Subject.ToString(), node.Triple.Predicate.ToString(), node.Triple.Object.ToString())
+
+type IriReference with
+    static member fromUriNode(uriNode: UriNode) = IriReference uriNode.Uri
     member this.lexicalForm = this.uri.OriginalString
     member this.identity = this.lexicalForm
 
-    member this.asUrl = DomUrl this.uri.OriginalString 
+    member this.asUrl = DomUrl this.uri.OriginalString
     member this.asUri = this.uri
-    member this.asUriNode = new UriNode (this.asUri)
-    member this.asINode:INode = this.asUriNode
+    member this.asUriNode = new UriNode(this.asUri)
+    member this.asINode: INode = this.asUriNode
     member this.asRDFResource = new RDFResource(this.lexicalForm)
-    member this.maybeCurie = 
-      match namespaceMapper.ReduceToQName this.lexicalForm with 
-      | true, qname -> Some qname 
-      | false, _ -> None
+    member this.maybeCurie =
+        match namespaceMapper.ReduceToQName this.lexicalForm with
+        | true, qname -> Some qname
+        | false, _ -> None
     member this.iriref = $"<{this.uri.OriginalString}>"
 
-        
-
-
-type INamespaceMapper with 
-
-    member this.GetNamespaceName (prefix:string) = this.GetNamespaceUri prefix |> _.OriginalString
-    member this.GetNamespaceUrl (prefix:string) = this.GetNamespaceName prefix |> DomUrl
-    member this.GetNamespaceIriReference (prefix:string) = this.GetNamespaceName  prefix |> IriReference
 
 
 
+type INamespaceMapper with
 
-
+    member this.GetNamespaceName(prefix: string) =
+        this.GetNamespaceUri prefix |> _.OriginalString
+    member this.GetNamespaceUrl(prefix: string) = this.GetNamespaceName prefix |> DomUrl
+    member this.GetNamespaceIriReference(prefix: string) =
+        this.GetNamespaceName prefix |> IriReference
 
 
 
 
-type NLanguageTag.LanguageTag with 
+
+
+
+
+
+type NLanguageTag.LanguageTag with
     member this.asString = this.ToString()
 type InitialTextDirection =
     | Ltr
     | Rtl
+
     member this.asString = this.ToString().ToLowerInvariant()
 
 
@@ -1249,9 +1099,9 @@ type InitialTextDirection =
 
 
 
-type FileInfo with 
+type FileInfo with
     member this.stem = Path.GetFileNameWithoutExtension this.Name
-    member this.stemPath =  Path.Combine(this.DirectoryName,this.stem)
+    member this.stemPath = Path.Combine(this.DirectoryName, this.stem)
 
 
 
@@ -1318,77 +1168,77 @@ type FileInfo with
 
 
 
-type Arc =
-    {
-        uuid : Guid
-        tailPoint : Point
-        legisignPoint : Point
-        headPoint : Point
-    }
-and [< CustomComparison ; CustomEquality>] Iri = 
+type Arc = {
+    uuid: Guid
+    tailPoint: Point
+    legisignPoint: Point
+    headPoint: Point
+}
+and [<CustomComparison; CustomEquality>] Iri =
     | IRIREF of IriReference
     | PrefixedIri of PrefixedName
     | SkolemIri of SkolemizedName
-    static member fromUri(uri:Uri) = 
-                match namespaceMapper.ReduceToQName uri.OriginalString with 
-                | false, _ -> IriReference uri |> IRIREF 
-                | true, qname -> PrefixedName.fromQname qname |> PrefixedIri 
-    static member fromUriNode(uriNode:UriNode) = 
-                match namespaceMapper.ReduceToQName uriNode.Uri.OriginalString with 
-                | false, _ -> IriReference uriNode.Uri |> IRIREF 
-                | true, qname -> PrefixedName.fromQname qname |> PrefixedIri 
+
+    static member fromUri(uri: Uri) =
+        match namespaceMapper.ReduceToQName uri.OriginalString with
+        | false, _ -> IriReference uri |> IRIREF
+        | true, qname -> PrefixedName.fromQname qname |> PrefixedIri
+    static member fromUriNode(uriNode: UriNode) =
+        match namespaceMapper.ReduceToQName uriNode.Uri.OriginalString with
+        | false, _ -> IriReference uriNode.Uri |> IRIREF
+        | true, qname -> PrefixedName.fromQname qname |> PrefixedIri
     member this.asSubject = IriSubject this
     member this.asPredicate = IriPredicate this
     member this.asObject = IriObject this
     member this.asRdfName = IriName this
     member this.asRdfReference = NamedReference this.asIriReference
 
-    member this.asIriReference = 
-      match this with 
-      | IRIREF iriReference -> iriReference
-      | PrefixedIri prefixedName -> prefixedName.asIriReference
-      | SkolemIri skolemizedName -> skolemizedName.asIriReference
-    member this.lexicalForm = 
-      match this with 
-      | IRIREF iriReference -> iriReference.lexicalForm
-      | PrefixedIri prefixedName -> prefixedName.lexicalForm
-      | SkolemIri skolemizedName -> skolemizedName.lexicalForm
+    member this.asIriReference =
+        match this with
+        | IRIREF iriReference -> iriReference
+        | PrefixedIri prefixedName -> prefixedName.asIriReference
+        | SkolemIri skolemizedName -> skolemizedName.asIriReference
+    member this.lexicalForm =
+        match this with
+        | IRIREF iriReference -> iriReference.lexicalForm
+        | PrefixedIri prefixedName -> prefixedName.lexicalForm
+        | SkolemIri skolemizedName -> skolemizedName.lexicalForm
     member this.iriref = $"<{this.lexicalForm}>"
-    member this.asUrl = 
-      match this with 
-      | IRIREF iriReference -> iriReference.asUrl
-      | PrefixedIri prefixedName -> prefixedName.asUrl
-      | SkolemIri skolemizedName -> skolemizedName.asUrl
-    member this.asUri = 
-      match this with 
-      | IRIREF iriReference -> iriReference.asUri
-      | PrefixedIri prefixedName -> prefixedName.asUri
-      | SkolemIri skolemizedName -> skolemizedName.asUri
-    member this.asUriNode = 
-      match this with 
-      | IRIREF iriReference -> iriReference.asUriNode
-      | PrefixedIri prefixedName -> prefixedName.asUriNode
-      | SkolemIri skolemizedName -> skolemizedName.asUriNode
-    member this.asINode = 
-      match this with 
-      | IRIREF iriReference -> iriReference.asINode
-      | PrefixedIri prefixedName -> prefixedName.asINode
-      | SkolemIri skolemizedName -> skolemizedName.asINode
+    member this.asUrl =
+        match this with
+        | IRIREF iriReference -> iriReference.asUrl
+        | PrefixedIri prefixedName -> prefixedName.asUrl
+        | SkolemIri skolemizedName -> skolemizedName.asUrl
+    member this.asUri =
+        match this with
+        | IRIREF iriReference -> iriReference.asUri
+        | PrefixedIri prefixedName -> prefixedName.asUri
+        | SkolemIri skolemizedName -> skolemizedName.asUri
+    member this.asUriNode =
+        match this with
+        | IRIREF iriReference -> iriReference.asUriNode
+        | PrefixedIri prefixedName -> prefixedName.asUriNode
+        | SkolemIri skolemizedName -> skolemizedName.asUriNode
+    member this.asINode =
+        match this with
+        | IRIREF iriReference -> iriReference.asINode
+        | PrefixedIri prefixedName -> prefixedName.asINode
+        | SkolemIri skolemizedName -> skolemizedName.asINode
 
-    member this.asRDFResource = 
-      match this with 
-      | IRIREF iriReference -> iriReference.asRDFResource
-      | PrefixedIri prefixedName -> prefixedName.asRDFResource
-      | SkolemIri skolemizedName -> skolemizedName.asRDFResource
-    member this.maybeCurie = 
-      match this with 
-      | IRIREF iriReference -> iriReference.maybeCurie
-      | PrefixedIri prefixedName -> Some prefixedName.curie
-      | SkolemIri skolemizedName -> skolemizedName.maybeCurie
+    member this.asRDFResource =
+        match this with
+        | IRIREF iriReference -> iriReference.asRDFResource
+        | PrefixedIri prefixedName -> prefixedName.asRDFResource
+        | SkolemIri skolemizedName -> skolemizedName.asRDFResource
+    member this.maybeCurie =
+        match this with
+        | IRIREF iriReference -> iriReference.maybeCurie
+        | PrefixedIri prefixedName -> Some prefixedName.curie
+        | SkolemIri skolemizedName -> skolemizedName.maybeCurie
 
-      
+
     member this.identity = this.lexicalForm
-    
+
     override this.Equals(other: obj) =
         match other with
         | :? Iri as other -> this.identity = other.identity
@@ -1405,46 +1255,47 @@ and [< CustomComparison ; CustomEquality>] Iri =
             | :? IriReference as other -> compare this.identity other.identity
             | :? PrefixedName as other -> compare this.identity other.identity
             | :? SkolemizedName as other -> compare this.identity other.identity
-            | _ -> 
-                invalidArg (nameof other) (
-                    sprintf "%s can only be compared with %s, %s, %s, or %s"
+            | _ ->
+                invalidArg
+                    (nameof other)
+                    (sprintf
+                        "%s can only be compared with %s, %s, %s, or %s"
                         typeof<Iri>.Name
                         typeof<Iri>.Name
                         typeof<IriReference>.Name
                         typeof<PrefixedName>.Name
-                        typeof<SkolemizedName>.Name
-                )
-                        
-and [< CustomComparison ; CustomEquality>] PrefixedName = 
-    {
-      prefixId:PrefixId
-      localName:string
+                        typeof<SkolemizedName>.Name)
+
+and [<CustomComparison; CustomEquality>] PrefixedName = {
+    prefixId: PrefixId
+    localName: string
+} with
+
+    static member fromQname(qname: string) = {
+        prefixId = PrefixId.fromPrefixLabel qname[.. qname.IndexOf ":" - 1]
+        localName = qname[qname.IndexOf ":" + 1 ..]
     }
-    static member fromQname (qname:string)  =
-        {
-          prefixId = PrefixId.fromPrefixLabel qname[..qname.IndexOf ":" - 1]
-          localName = qname[qname.IndexOf ":" + 1..]
-        }
     member this.asSubject = PrefixedIri this |> IriSubject
     member this.asPredicate = PrefixedIri this |> IriPredicate
     member this.asObject = PrefixedIri this |> IriObject
     member this.asRdfName = PrefixedIri this |> IriName
     member this.asRdfReference = NamedReference this.asIriReference
-    member this.asXName = XName.op_Implicit(this.lexicalForm)
+    member this.asXName = XName.op_Implicit (this.lexicalForm)
     member this.asXmlQualifiedName = new XmlQualifiedName(this.localName, this.prefixId.namespaceName)
-    
-        
+
+
     member this.lexicalForm = this.prefixId.namespaceName + this.localName
-    member this.curieDelimited infixDelimiter = this.prefixId.prefixLabel + infixDelimiter + this.localName
+    member this.curieDelimited infixDelimiter =
+        this.prefixId.prefixLabel + infixDelimiter + this.localName
     member this.curie = this.curieDelimited ":"
     member this.asUrl = DomUrl this.lexicalForm
     member this.asUri = Uri this.lexicalForm
     member this.asUriNode = new UriNode(this.asUri)
-    member this.asINode :INode = this.asUriNode
+    member this.asINode: INode = this.asUriNode
     member this.asIriReference = IriReference this.lexicalForm
     member this.asRDFResource = new RDFResource(this.lexicalForm)
     member this.identity = this.lexicalForm
-    
+
     override this.Equals(other: obj) =
         match other with
         | :? Iri as other -> this.identity = other.identity
@@ -1460,77 +1311,85 @@ and [< CustomComparison ; CustomEquality>] PrefixedName =
             | :? IriReference as other -> compare this.identity other.identity
             | :? PrefixedName as other -> compare this.identity other.identity
             | :? SkolemizedName as other -> compare this.identity other.identity
-            | _ -> 
-                invalidArg (nameof other) (
-                    sprintf "%s can only be compared with %s, %s, %s, or %s"
+            | _ ->
+                invalidArg
+                    (nameof other)
+                    (sprintf
+                        "%s can only be compared with %s, %s, %s, or %s"
                         typeof<Iri>.Name
                         typeof<Iri>.Name
                         typeof<IriReference>.Name
                         typeof<PrefixedName>.Name
-                        typeof<SkolemizedName>.Name
-                )
-                        
-and PrefixId = 
-  {
-    prefixLabel :string
-    namespaceName :string
-  }
-  static member fromNamespaceLabel (namespaceName:string) (prefixLabel:string)  = 
-    let prefixId = {prefixLabel = prefixLabel ; namespaceName = namespaceName}
-    namespaceMapper.AddNamespace(prefixId.asNamespaceMap)
-    prefixId
+                        typeof<SkolemizedName>.Name)
 
-  static member rdf = PrefixId.fromNamespaceLabel "http://www.w3.org/1999/02/22-rdf-syntax-ns#"  "rdf"
-  static member rdfs = PrefixId.fromNamespaceLabel "http://www.w3.org/2000/01/rdf-schema#"  "rdfs"
-  static member owl = PrefixId.fromNamespaceLabel "http://www.w3.org/2002/07/owl#"  "owl"
-  static member xsd = PrefixId.fromNamespaceLabel "http://www.w3.org/2001/XMLSchema#"  "xsd"
-  static member xsi = PrefixId.fromNamespaceLabel "http://www.w3.org/2001/XMLSchema-instance#"  "xsi"
-  static member xdt = PrefixId.fromNamespaceLabel "https://www.w3.org/2003/05/xpath-datatypes#"  "xdt"
-  static member owlTime = PrefixId.fromNamespaceLabel "http://www.w3.org/2006/time#"  "owlTime"
-  
+and PrefixId = {
+    prefixLabel: string
+    namespaceName: string
+} with
 
-  member this.asPrefixedName = 
-    {
+    static member fromNamespaceLabel (namespaceName: string) (prefixLabel: string) =
+        let prefixId = {
+            prefixLabel = prefixLabel
+            namespaceName = namespaceName
+        }
+        namespaceMapper.AddNamespace(prefixId.asNamespaceMap)
+        prefixId
+
+    static member rdf = PrefixId.fromNamespaceLabel "http://www.w3.org/1999/02/22-rdf-syntax-ns#" "rdf"
+    static member rdfs = PrefixId.fromNamespaceLabel "http://www.w3.org/2000/01/rdf-schema#" "rdfs"
+    static member owl = PrefixId.fromNamespaceLabel "http://www.w3.org/2002/07/owl#" "owl"
+    static member xsd = PrefixId.fromNamespaceLabel "http://www.w3.org/2001/XMLSchema#" "xsd"
+    static member xsi = PrefixId.fromNamespaceLabel "http://www.w3.org/2001/XMLSchema-instance#" "xsi"
+    static member xdt = PrefixId.fromNamespaceLabel "https://www.w3.org/2003/05/xpath-datatypes#" "xdt"
+    static member owlTime = PrefixId.fromNamespaceLabel "http://www.w3.org/2006/time#" "owlTime"
+
+
+    member this.asPrefixedName = {
         prefixId = this
         localName = String.Empty
     }
-  member this.asIri = PrefixedIri this.asPrefixedName
+    member this.asIri = PrefixedIri this.asPrefixedName
 
-  member this.prefix (localName:string) = { prefixId = this ; localName = localName} |> PrefixedIri
-  member this.asSubject = PrefixedIri this.asPrefixedName |> IriSubject
-  member this.asPredicate = PrefixedIri this.asPrefixedName |> IriPredicate
-  member this.asObject = PrefixedIri this.asPrefixedName |> IriObject
-  member this.asRdfName = PrefixedIri this.asPrefixedName |> IriName
-  member this.asRdfReference = NamedReference this.asIriReference
-  member this.asIriReference = this.asPrefixedName.asIriReference
+    member this.prefix(localName: string) =
+        {
+            prefixId = this
+            localName = localName
+        }
+        |> PrefixedIri
+    member this.asSubject = PrefixedIri this.asPrefixedName |> IriSubject
+    member this.asPredicate = PrefixedIri this.asPrefixedName |> IriPredicate
+    member this.asObject = PrefixedIri this.asPrefixedName |> IriObject
+    member this.asRdfName = PrefixedIri this.asPrefixedName |> IriName
+    member this.asRdfReference = NamedReference this.asIriReference
+    member this.asIriReference = this.asPrefixedName.asIriReference
 
-  static member fromPrefixLabel (prefixLabel:string) = 
-      {
-        prefixLabel = prefixLabel 
+    static member fromPrefixLabel(prefixLabel: string) = {
+        prefixLabel = prefixLabel
         namespaceName = namespaceMapper.GetNamespaceUri prefixLabel |> _.OriginalString
-      }
-  member this.XNamespace = XNamespace.op_Implicit this.namespaceName
-  member this.XName (localName:string) = XNamespace.Xmlns + localName
-  member this.asRDFNamespace = new RDFNamespace(this.prefixLabel, this.namespaceName)
-  member this.asNamespaceMap = this.prefixLabel, Uri this.namespaceName
-  member this.namespaceIriReference = IriReference this.namespaceName
-  member this.namespaceUrl = DomUrl this.namespaceName
-  member this.namespaceUri = Uri this.namespaceName
-  member this.directory = this.namespaceUrl.asFolder
-  member this.asFileExtension (dotExtension:string) = 
+    }
+    member this.XNamespace = XNamespace.op_Implicit this.namespaceName
+    member this.XName(localName: string) = XNamespace.Xmlns + localName
+    member this.asRDFNamespace = new RDFNamespace(this.prefixLabel, this.namespaceName)
+    member this.asNamespaceMap = this.prefixLabel, Uri this.namespaceName
+    member this.namespaceIriReference = IriReference this.namespaceName
+    member this.namespaceUrl = DomUrl this.namespaceName
+    member this.namespaceUri = Uri this.namespaceName
+    member this.directory = this.namespaceUrl.asFolder
+    member this.asFileExtension(dotExtension: string) =
 
         let mimeType = MimeType.FromFileName(dotExtension)
-        Path.Combine (this.namespaceUrl.asFolder.FullName, mimeType.MediaType, $"{mimeType.SubType}{dotExtension}") |> FileInfo
-and [<CustomComparison ; CustomEquality>] SkolemizedName = 
-    {
-      uuid:Guid
-      blankNode:BlankReference
-    }
-    member this.maybeCurie = 
-      match namespaceMapper.ReduceToQName this.lexicalForm with 
-      | true, qname -> Some qname 
-      | false, _ -> None
-      
+        Path.Combine(this.namespaceUrl.asFolder.FullName, mimeType.MediaType, $"{mimeType.SubType}{dotExtension}")
+        |> FileInfo
+and [<CustomComparison; CustomEquality>] SkolemizedName = {
+    uuid: Guid
+    blankNode: BlankReference
+} with
+
+    member this.maybeCurie =
+        match namespaceMapper.ReduceToQName this.lexicalForm with
+        | true, qname -> Some qname
+        | false, _ -> None
+
     member this.asSubject = SkolemIri this |> IriSubject
     member this.asPredicate = SkolemIri this |> IriPredicate
     member this.asObject = SkolemIri this |> IriObject
@@ -1540,12 +1399,12 @@ and [<CustomComparison ; CustomEquality>] SkolemizedName =
     member this.asUrl = DomUrl this.lexicalForm
     member this.asUri = Uri this.lexicalForm
     member this.asUriNode = new UriNode(this.asUri)
-    member this.asINode :INode = this.asUriNode
+    member this.asINode: INode = this.asUriNode
     member this.asIriReference = IriReference this.lexicalForm
     member this.asRDFResource = new RDFResource(this.lexicalForm)
 
     member this.identity = this.lexicalForm
-    
+
     override this.Equals(other: obj) =
         match other with
         | :? Iri as other -> this.identity = other.identity
@@ -1562,62 +1421,77 @@ and [<CustomComparison ; CustomEquality>] SkolemizedName =
             | :? IriReference as other -> compare this.identity other.identity
             | :? PrefixedName as other -> compare this.identity other.identity
             | :? SkolemizedName as other -> compare this.identity other.identity
-            | _ -> 
-                invalidArg (nameof other) (
-                    sprintf "%s can only be compared with %s, %s, %s, or %s"
+            | _ ->
+                invalidArg
+                    (nameof other)
+                    (sprintf
+                        "%s can only be compared with %s, %s, %s, or %s"
                         typeof<Iri>.Name
                         typeof<Iri>.Name
                         typeof<IriReference>.Name
                         typeof<PrefixedName>.Name
-                        typeof<SkolemizedName>.Name
-                )
-and BlankReference = 
-    {
-      blankNodeIdentifier: string
+                        typeof<SkolemizedName>.Name)
+and BlankReference = {
+    blankNodeIdentifier: string
+} with
+
+    static member fromBlankNode(blankNode: VDS.RDF.BlankNode) = {
+        blankNodeIdentifier = blankNode.InternalID
     }
-    static member fromBlankNode(blankNode:VDS.RDF.BlankNode) = {blankNodeIdentifier = blankNode.InternalID}
-    
-    member this.asSubject = BlankSubject this 
-    member this.asObject = BlankObject this 
+
+    member this.asSubject = BlankSubject this
+    member this.asObject = BlankObject this
     member this.asRdfReference = AnonymousReference this
     member this.lexicalForm = this.blankNodeIdentifier
     member this.curie = "_:" + this.blankNodeIdentifier
     member this.asBlankNode = new VDS.RDF.BlankNode(this.blankNodeIdentifier)
     member this.asRDFResource = new RDFResource(this.curie)
-    member this.asINode:INode = this.asBlankNode
+    member this.asINode: INode = this.asBlankNode
 
-and [<CustomEquality ; CustomComparison>] RdfLiteral = 
+and [<CustomEquality; CustomComparison>] RdfLiteral =
     | PlainLiteral of PlainLiteral
     | DatatypedLiteral of DatatypedLiteral
-    static member fromLiteralNode (literalNode:LiteralNode) = 
-            match literalNode.Value, literalNode.DataType, literalNode.Language.ToLowerInvariant() with
-            | lexicalForm, null, lang when not (String.IsNullOrWhiteSpace lang) -> NLanguageTag.LanguageTag.Parse lang |> RdfLiteral.languageTagged  lexicalForm
-            | lexicalForm, datatypeUri, lang when not (isNull datatypeUri) && String.IsNullOrWhiteSpace lang -> 
-                {
-                    lexicalForm = lexicalForm
-                    datatypeIri = Iri.fromUri datatypeUri 
-                } |> DatatypedLiteral
-            | lexicalForm ,_ ,_ -> RdfLiteral.simple lexicalForm
-    static member fromILiteralNode (iliteralNode:ILiteralNode) = iliteralNode :?> LiteralNode |> RdfLiteral.fromLiteralNode
-    
-    static member simple(lexicalForm:string) = SimpleString lexicalForm |> PlainLiteral
-    static member datatyped(lexicalForm:string) (datatypeIri:Iri) =
+
+    static member fromLiteralNode(literalNode: LiteralNode) =
+        match literalNode.Value, literalNode.DataType, literalNode.Language.ToLowerInvariant() with
+        | lexicalForm, null, lang when not (String.IsNullOrWhiteSpace lang) -> NLanguageTag.LanguageTag.Parse lang |> RdfLiteral.languageTagged lexicalForm
+        | lexicalForm, datatypeUri, lang when not (isNull datatypeUri) && String.IsNullOrWhiteSpace lang ->
+            {
+                lexicalForm = lexicalForm
+                datatypeIri = Iri.fromUri datatypeUri
+            }
+            |> DatatypedLiteral
+        | lexicalForm, _, _ -> RdfLiteral.simple lexicalForm
+    static member fromILiteralNode(iliteralNode: ILiteralNode) =
+        iliteralNode :?> LiteralNode |> RdfLiteral.fromLiteralNode
+
+    static member simple(lexicalForm: string) =
+        SimpleString lexicalForm |> PlainLiteral
+    static member datatyped (lexicalForm: string) (datatypeIri: Iri) =
         {
-            lexicalForm = lexicalForm 
-            datatypeIri = datatypeIri 
-        } |> DatatypedLiteral 
-    static member languageTagged (lexicalForm:string) (languageTag:NLanguageTag.LanguageTag) = 
+            lexicalForm = lexicalForm
+            datatypeIri = datatypeIri
+        }
+        |> DatatypedLiteral
+    static member languageTagged (lexicalForm: string) (languageTag: NLanguageTag.LanguageTag) =
         {
-            lexicalForm = lexicalForm 
+            lexicalForm = lexicalForm
             languageTag = languageTag
-        } |> LanguageString |> PlainLiteral 
-    static member language(lexicalForm:string) (language:Language) = 
+        }
+        |> LanguageString
+        |> PlainLiteral
+    static member language (lexicalForm: string) (language: Language) =
         {
-            lexicalForm = lexicalForm 
+            lexicalForm = lexicalForm
             languageTag = new NLanguageTag.LanguageTag(language)
-        } |> LanguageString |> PlainLiteral 
-    static member en (lexicalForm:string) = RdfLiteral.language lexicalForm Language.EN
-    static member US (lexicalForm:string) = new NLanguageTag.LanguageTag(Language.EN, Region.US) |> RdfLiteral.languageTagged lexicalForm 
+        }
+        |> LanguageString
+        |> PlainLiteral
+    static member en(lexicalForm: string) =
+        RdfLiteral.language lexicalForm Language.EN
+    static member US(lexicalForm: string) =
+        new NLanguageTag.LanguageTag(Language.EN, Region.US)
+        |> RdfLiteral.languageTagged lexicalForm
 
 
     static member inline autotyped<'ValueType>(value: 'ValueType) =
@@ -1630,72 +1504,150 @@ and [<CustomEquality ; CustomComparison>] RdfLiteral =
                     Convert.ToString(value, CultureInfo.InvariantCulture)
 
             match box value with
-            | :? Boolean as value -> { lexicalForm = (if value then "true" else "false") ; datatypeIri = PrefixId.xsd.prefix "boolean" }
-            | :? (Byte array) as value -> { lexicalForm = Convert.ToBase64String(value) ; datatypeIri = PrefixId.xsd.prefix "base64Binary" }
-            | :? Byte as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedByte" }
-            | :? DateOnly as value -> { lexicalForm = value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "date" }
-            | :? DateTime as value -> { lexicalForm = value.ToString("o", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "dateTime" }
-            | :? DateTimeOffset as value -> { lexicalForm = value.ToString("o", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "dateTimeStamp" }
-            | :? Decimal as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "decimal" }
-            | :? Double as value -> { lexicalForm = value.ToString("R", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "double" }
-            | :? Int16 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "short" }
-            | :? Int32 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "int" }
-            | :? Int64 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "long" }
-            | :? SByte as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "byte" }
-            | :? Single as value -> { lexicalForm = value.ToString("R", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "float" }
-            | :? TimeOnly as value -> { lexicalForm = value.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture) ; datatypeIri = PrefixId.xsd.prefix "time" }
-            | :? TimeSpan as value -> { lexicalForm = Xml.XmlConvert.ToString(value) ; datatypeIri = PrefixId.xsd.prefix "duration" }
-            | :? UInt16 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedShort" }
-            | :? UInt32 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedInt" }
-            | :? UInt64 as value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xsd.prefix "unsignedLong" }
-            | :? Uri as value -> { lexicalForm = value.OriginalString ; datatypeIri = PrefixId.xsd.prefix "anyURI" }
-            | :? DomUrl as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "anyURI" }
-            | :? IriReference as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "anyURI" }
-            | :? XmlQualifiedName as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "QName" }
-            | :? Guid as value -> { lexicalForm = value.ToString() ; datatypeIri = PrefixId.xsd.prefix "ID" }
-            | :? String as value -> { lexicalForm = value ; datatypeIri = PrefixId.xsd.prefix "string" }
-            | null  -> { lexicalForm = "true" ; datatypeIri = PrefixId.xsi.prefix "nil" }
-            | value -> { lexicalForm = invariantString ; datatypeIri = PrefixId.xdt.prefix "anyAtomicType" }
+            | :? Boolean as value -> {
+                lexicalForm = (if value then "true" else "false")
+                datatypeIri = PrefixId.xsd.prefix "boolean"
+              }
+            | :? (Byte array) as value -> {
+                lexicalForm = Convert.ToBase64String(value)
+                datatypeIri = PrefixId.xsd.prefix "base64Binary"
+              }
+            | :? Byte as value -> {
+                lexicalForm = invariantString
+                datatypeIri = PrefixId.xsd.prefix "unsignedByte"
+              }
+            | :? DateOnly as value -> {
+                lexicalForm = value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
+                datatypeIri = PrefixId.xsd.prefix "date"
+              }
+            | :? DateTime as value -> {
+                lexicalForm = value.ToString("o", CultureInfo.InvariantCulture)
+                datatypeIri = PrefixId.xsd.prefix "dateTime"
+              }
+            | :? DateTimeOffset as value -> {
+                lexicalForm = value.ToString("o", CultureInfo.InvariantCulture)
+                datatypeIri = PrefixId.xsd.prefix "dateTimeStamp"
+              }
+            | :? Decimal as value -> {
+                lexicalForm = invariantString
+                datatypeIri = PrefixId.xsd.prefix "decimal"
+              }
+            | :? Double as value -> {
+                lexicalForm = value.ToString("R", CultureInfo.InvariantCulture)
+                datatypeIri = PrefixId.xsd.prefix "double"
+              }
+            | :? Int16 as value -> {
+                lexicalForm = invariantString
+                datatypeIri = PrefixId.xsd.prefix "short"
+              }
+            | :? Int32 as value -> {
+                lexicalForm = invariantString
+                datatypeIri = PrefixId.xsd.prefix "int"
+              }
+            | :? Int64 as value -> {
+                lexicalForm = invariantString
+                datatypeIri = PrefixId.xsd.prefix "long"
+              }
+            | :? SByte as value -> {
+                lexicalForm = invariantString
+                datatypeIri = PrefixId.xsd.prefix "byte"
+              }
+            | :? Single as value -> {
+                lexicalForm = value.ToString("R", CultureInfo.InvariantCulture)
+                datatypeIri = PrefixId.xsd.prefix "float"
+              }
+            | :? TimeOnly as value -> {
+                lexicalForm = value.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture)
+                datatypeIri = PrefixId.xsd.prefix "time"
+              }
+            | :? TimeSpan as value -> {
+                lexicalForm = Xml.XmlConvert.ToString(value)
+                datatypeIri = PrefixId.xsd.prefix "duration"
+              }
+            | :? UInt16 as value -> {
+                lexicalForm = invariantString
+                datatypeIri = PrefixId.xsd.prefix "unsignedShort"
+              }
+            | :? UInt32 as value -> {
+                lexicalForm = invariantString
+                datatypeIri = PrefixId.xsd.prefix "unsignedInt"
+              }
+            | :? UInt64 as value -> {
+                lexicalForm = invariantString
+                datatypeIri = PrefixId.xsd.prefix "unsignedLong"
+              }
+            | :? Uri as value -> {
+                lexicalForm = value.OriginalString
+                datatypeIri = PrefixId.xsd.prefix "anyURI"
+              }
+            | :? DomUrl as value -> {
+                lexicalForm = value.ToString()
+                datatypeIri = PrefixId.xsd.prefix "anyURI"
+              }
+            | :? IriReference as value -> {
+                lexicalForm = value.ToString()
+                datatypeIri = PrefixId.xsd.prefix "anyURI"
+              }
+            | :? XmlQualifiedName as value -> {
+                lexicalForm = value.ToString()
+                datatypeIri = PrefixId.xsd.prefix "QName"
+              }
+            | :? Guid as value -> {
+                lexicalForm = value.ToString()
+                datatypeIri = PrefixId.xsd.prefix "ID"
+              }
+            | :? String as value -> {
+                lexicalForm = value
+                datatypeIri = PrefixId.xsd.prefix "string"
+              }
+            | null -> {
+                lexicalForm = "true"
+                datatypeIri = PrefixId.xsi.prefix "nil"
+              }
+            | value -> {
+                lexicalForm = invariantString
+                datatypeIri = PrefixId.xdt.prefix "anyAtomicType"
+              }
 
         datatypedLiteral |> DatatypedLiteral
 
-    static member True = RdfLiteral.autotyped true 
+    static member True = RdfLiteral.autotyped true
     static member False = RdfLiteral.autotyped false
     member this.asObject = LiteralObject this
     member this.asRdfName = LiteralName this
-    member this.lexicalForm = 
-      match this with 
-      | PlainLiteral plainLiteral -> plainLiteral.lexicalForm
-      | DatatypedLiteral datatypedLiteral -> datatypedLiteral.lexicalForm
-    member this.maybeCurie = 
-      match this with 
-      | PlainLiteral plainLiteral -> None
-      | DatatypedLiteral datatypedLiteral -> datatypedLiteral.curie
-    member this.asLiteralNode = 
-      match this with 
-      | PlainLiteral plainLiteral -> plainLiteral.asLiteralNode
-      | DatatypedLiteral datatypedLiteral -> datatypedLiteral.asLiteralNode
-      
-    member this.asINode :INode = this.asLiteralNode
-    member this.datatypeIri = 
-      match this with 
-      | PlainLiteral plainLiteral -> PrefixId.xsd.prefix "string"
-      | DatatypedLiteral datatypedLiteral -> datatypedLiteral.datatypeIri
-      
-    member this.maybeLanguageTag = 
-      match this with 
-      | PlainLiteral plainLiteral -> plainLiteral.maybeLanguageTag
-      | DatatypedLiteral datatypedLiteral -> None
-    member this.maybeBaseDirection = 
-      match this with 
-      | PlainLiteral plainLiteral -> plainLiteral.maybeBaseDirection
-      | DatatypedLiteral datatypedLiteral -> None
+    member this.lexicalForm =
+        match this with
+        | PlainLiteral plainLiteral -> plainLiteral.lexicalForm
+        | DatatypedLiteral datatypedLiteral -> datatypedLiteral.lexicalForm
+    member this.maybeCurie =
+        match this with
+        | PlainLiteral plainLiteral -> None
+        | DatatypedLiteral datatypedLiteral -> datatypedLiteral.curie
+    member this.asLiteralNode =
+        match this with
+        | PlainLiteral plainLiteral -> plainLiteral.asLiteralNode
+        | DatatypedLiteral datatypedLiteral -> datatypedLiteral.asLiteralNode
 
-    member this.identity = 
-        match this with 
+    member this.asINode: INode = this.asLiteralNode
+    member this.datatypeIri =
+        match this with
+        | PlainLiteral plainLiteral -> PrefixId.xsd.prefix "string"
+        | DatatypedLiteral datatypedLiteral -> datatypedLiteral.datatypeIri
+
+    member this.maybeLanguageTag =
+        match this with
+        | PlainLiteral plainLiteral -> plainLiteral.maybeLanguageTag
+        | DatatypedLiteral datatypedLiteral -> None
+    member this.maybeBaseDirection =
+        match this with
+        | PlainLiteral plainLiteral -> plainLiteral.maybeBaseDirection
+        | DatatypedLiteral datatypedLiteral -> None
+
+    member this.identity =
+        match this with
         | PlainLiteral plainLiteral -> plainLiteral.identity
         | DatatypedLiteral datatypedLiteral -> datatypedLiteral.identity
-        
+
     override this.Equals(other: obj) =
         match other with
         | :? RdfLiteral as other -> this.identity = other.identity
@@ -1715,44 +1667,45 @@ and [<CustomEquality ; CustomComparison>] RdfLiteral =
             | :? LanguageString as other -> compare this.identity other.identity
             | :? DirectedLanguageString as other -> compare this.identity other.identity
             | _ -> compare this.identity (RdfLiteral.autotyped other).identity
-and [<CustomEquality ; CustomComparison>] PlainLiteral = 
+and [<CustomEquality; CustomComparison>] PlainLiteral =
     | SimpleString of string
     | LanguageString of LanguageString
     | DirectedLanguageString of DirectedLanguageString
+
     member this.asObject = PlainLiteral this |> LiteralObject
-    member this.asRdfName = PlainLiteral this |> LiteralName 
-    member this.lexicalForm = 
-      match this with 
-      | SimpleString rdfString -> rdfString
-      | LanguageString languageString -> languageString.lexicalForm
-      | DirectedLanguageString directedLanguageString -> directedLanguageString.lexicalForm
-    member this.curie = 
-      match this with 
-      | SimpleString rdfString -> rdfString
-      | LanguageString languageString -> languageString.curie
-      | DirectedLanguageString directedLanguageString -> directedLanguageString.curie
-    member this.asLiteralNode = 
-      match this with 
-      | SimpleString rdfString -> new LiteralNode (rdfString)
-      | LanguageString languageString -> new LiteralNode (languageString.lexicalForm, languageString.languageTag.asString)
-      | DirectedLanguageString directedLanguageString -> new LiteralNode (directedLanguageString.lexicalForm, directedLanguageString.i18nIri.asUri)
-    member this.asINode :INode = this.asLiteralNode
-    member this.maybeLanguageTag = 
-      match this with 
-      | SimpleString rdfString -> None
-      | LanguageString languageString -> Some languageString.languageTag
-      | DirectedLanguageString directedLanguageString -> Some directedLanguageString.languageTag
-    member this.maybeBaseDirection = 
-      match this with 
-      | SimpleString rdfString -> None
-      | LanguageString languageString -> None
-      | DirectedLanguageString directedLanguageString -> Some directedLanguageString.baseDirection
-    member this.identity = 
-      match this with 
-      | SimpleString rdfString -> (rdfString, (PrefixId.xsd.prefix "string").identity, None, None)
-      | LanguageString languageString -> languageString.identity
-      | DirectedLanguageString directedLanguageString -> directedLanguageString.identity
-      
+    member this.asRdfName = PlainLiteral this |> LiteralName
+    member this.lexicalForm =
+        match this with
+        | SimpleString rdfString -> rdfString
+        | LanguageString languageString -> languageString.lexicalForm
+        | DirectedLanguageString directedLanguageString -> directedLanguageString.lexicalForm
+    member this.curie =
+        match this with
+        | SimpleString rdfString -> rdfString
+        | LanguageString languageString -> languageString.curie
+        | DirectedLanguageString directedLanguageString -> directedLanguageString.curie
+    member this.asLiteralNode =
+        match this with
+        | SimpleString rdfString -> new LiteralNode(rdfString)
+        | LanguageString languageString -> new LiteralNode(languageString.lexicalForm, languageString.languageTag.asString)
+        | DirectedLanguageString directedLanguageString -> new LiteralNode(directedLanguageString.lexicalForm, directedLanguageString.i18nIri.asUri)
+    member this.asINode: INode = this.asLiteralNode
+    member this.maybeLanguageTag =
+        match this with
+        | SimpleString rdfString -> None
+        | LanguageString languageString -> Some languageString.languageTag
+        | DirectedLanguageString directedLanguageString -> Some directedLanguageString.languageTag
+    member this.maybeBaseDirection =
+        match this with
+        | SimpleString rdfString -> None
+        | LanguageString languageString -> None
+        | DirectedLanguageString directedLanguageString -> Some directedLanguageString.baseDirection
+    member this.identity =
+        match this with
+        | SimpleString rdfString -> (rdfString, (PrefixId.xsd.prefix "string").identity, None, None)
+        | LanguageString languageString -> languageString.identity
+        | DirectedLanguageString directedLanguageString -> directedLanguageString.identity
+
     override this.Equals(other: obj) =
         match other with
         | :? RdfLiteral as other -> this.identity = other.identity
@@ -1772,11 +1725,11 @@ and [<CustomEquality ; CustomComparison>] PlainLiteral =
             | :? LanguageString as other -> compare this.identity other.identity
             | :? DirectedLanguageString as other -> compare this.identity other.identity
             | _ -> compare this.identity (RdfLiteral.autotyped other).identity
-and [<CustomEquality ; CustomComparison>] LanguageString = 
-    {
-    lexicalForm:string
-    languageTag:NLanguageTag.LanguageTag
-    }
+and [<CustomEquality; CustomComparison>] LanguageString = {
+    lexicalForm: string
+    languageTag: NLanguageTag.LanguageTag
+} with
+
     member this.asObject = LanguageString this |> PlainLiteral |> LiteralObject
     member this.asRdfName = LanguageString this |> PlainLiteral |> LiteralName
     member this.curie = sprintf "%s@%s" this.lexicalForm this.languageTag.asString
@@ -1790,26 +1743,28 @@ and [<CustomEquality ; CustomComparison>] LanguageString =
         | :? LanguageString as other -> this.identity = other.identity
         | :? DirectedLanguageString as other -> this.identity = other.identity
         | _ -> false
-    override this.GetHashCode() = this.identity.GetHashCode()  
+    override this.GetHashCode() = this.identity.GetHashCode()
     interface IComparable with
-      member this.CompareTo(other: obj) =
-          match other with
-          | :? RdfLiteral as other -> compare this.identity other.identity
-          | :? PlainLiteral as other -> compare this.identity other.identity
-          | :? DatatypedLiteral as other -> compare this.identity other.identity
-          | :? LanguageString as other -> compare this.identity other.identity
-          | :? DirectedLanguageString as other -> compare this.identity other.identity
-          | _ -> compare this.identity (RdfLiteral.autotyped other).identity
-and [<CustomEquality ; CustomComparison>] DirectedLanguageString = 
-    {
-    lexicalForm:string
-    languageTag:NLanguageTag.LanguageTag
-    baseDirection:InitialTextDirection
-    }
+        member this.CompareTo(other: obj) =
+            match other with
+            | :? RdfLiteral as other -> compare this.identity other.identity
+            | :? PlainLiteral as other -> compare this.identity other.identity
+            | :? DatatypedLiteral as other -> compare this.identity other.identity
+            | :? LanguageString as other -> compare this.identity other.identity
+            | :? DirectedLanguageString as other -> compare this.identity other.identity
+            | _ -> compare this.identity (RdfLiteral.autotyped other).identity
+and [<CustomEquality; CustomComparison>] DirectedLanguageString = {
+    lexicalForm: string
+    languageTag: NLanguageTag.LanguageTag
+    baseDirection: InitialTextDirection
+} with
+
     member this.asObject = DirectedLanguageString this |> PlainLiteral |> LiteralObject
     member this.asRdfName = DirectedLanguageString this |> PlainLiteral |> LiteralName
     member this.curie = sprintf "%s@%s--%s" this.lexicalForm this.languageTag.asString this.baseDirection.asString
-    member this.i18nIri:Iri = IriReference $"https://www.w3.org/ns/i18n#{this.languageTag.asString}_{this.baseDirection.asString}" |> IRIREF
+    member this.i18nIri: Iri =
+        IriReference $"https://www.w3.org/ns/i18n#{this.languageTag.asString}_{this.baseDirection.asString}"
+        |> IRIREF
     // TODO from i18nIri
     member this.identity = (this.lexicalForm, (PrefixId.rdf.prefix "dirLangString").identity, Some(this.languageTag.asString), Some(this.baseDirection.asString))
 
@@ -1821,28 +1776,28 @@ and [<CustomEquality ; CustomComparison>] DirectedLanguageString =
         | :? LanguageString as other -> this.identity = other.identity
         | :? DirectedLanguageString as other -> this.identity = other.identity
         | _ -> false
-    override this.GetHashCode() = this.identity.GetHashCode()  
+    override this.GetHashCode() = this.identity.GetHashCode()
     interface IComparable with
-      member this.CompareTo(other: obj) =
-          match other with
-          | :? RdfLiteral as other -> compare this.identity other.identity
-          | :? PlainLiteral as other -> compare this.identity other.identity
-          | :? DatatypedLiteral as other -> compare this.identity other.identity
-          | :? LanguageString as other -> compare this.identity other.identity
-          | :? DirectedLanguageString as other -> compare this.identity other.identity
-          | _ -> compare this.identity (RdfLiteral.autotyped other).identity
+        member this.CompareTo(other: obj) =
+            match other with
+            | :? RdfLiteral as other -> compare this.identity other.identity
+            | :? PlainLiteral as other -> compare this.identity other.identity
+            | :? DatatypedLiteral as other -> compare this.identity other.identity
+            | :? LanguageString as other -> compare this.identity other.identity
+            | :? DirectedLanguageString as other -> compare this.identity other.identity
+            | _ -> compare this.identity (RdfLiteral.autotyped other).identity
 
-and [<CustomEquality ; CustomComparison>] DatatypedLiteral = 
-    {
-    lexicalForm:string
-    datatypeIri:Iri
-    }
-    member this.asObject = DatatypedLiteral this  |> LiteralObject
+and [<CustomEquality; CustomComparison>] DatatypedLiteral = {
+    lexicalForm: string
+    datatypeIri: Iri
+} with
+
+    member this.asObject = DatatypedLiteral this |> LiteralObject
     member this.asRdfName = DatatypedLiteral this |> LiteralName
-    member this.asLiteralNode = new LiteralNode (this.lexicalForm, this.datatypeIri.asUri)
-    member this.asINode :INode = this.asLiteralNode
-    member this.curie = 
-        match this.datatypeIri.maybeCurie with 
+    member this.asLiteralNode = new LiteralNode(this.lexicalForm, this.datatypeIri.asUri)
+    member this.asINode: INode = this.asLiteralNode
+    member this.curie =
+        match this.datatypeIri.maybeCurie with
         | Some curie -> Some(sprintf "%s^^%s" this.lexicalForm curie)
         | None -> None
     member this.identity = (this.lexicalForm, this.datatypeIri.identity, None, None)
@@ -1855,34 +1810,32 @@ and [<CustomEquality ; CustomComparison>] DatatypedLiteral =
         | :? LanguageString as other -> this.identity = other.identity
         | :? DirectedLanguageString as other -> this.identity = other.identity
         | _ -> false
-    override this.GetHashCode() = this.identity.GetHashCode()  
+    override this.GetHashCode() = this.identity.GetHashCode()
     interface IComparable with
-      member this.CompareTo(other: obj) =
-          match other with
-          | :? RdfLiteral as other -> compare this.identity other.identity
-          | :? PlainLiteral as other -> compare this.identity other.identity
-          | :? DatatypedLiteral as other -> compare this.identity other.identity
-          | :? LanguageString as other -> compare this.identity other.identity
-          | :? DirectedLanguageString as other -> compare this.identity other.identity
-          | _ -> compare this.identity (RdfLiteral.autotyped other).identity
-and [<CustomEquality ; CustomComparison>] RdfVariable = 
-    {
-        uuid :Guid
-        identifier:string
-        mutable bindingCell : Adaptive.cval<Point option>
+        member this.CompareTo(other: obj) =
+            match other with
+            | :? RdfLiteral as other -> compare this.identity other.identity
+            | :? PlainLiteral as other -> compare this.identity other.identity
+            | :? DatatypedLiteral as other -> compare this.identity other.identity
+            | :? LanguageString as other -> compare this.identity other.identity
+            | :? DirectedLanguageString as other -> compare this.identity other.identity
+            | _ -> compare this.identity (RdfLiteral.autotyped other).identity
+and [<CustomEquality; CustomComparison>] RdfVariable = {
+    uuid: Guid
+    identifier: string
+    mutable bindingCell: Adaptive.cval<Point option>
+} with
+
+    static member fromVariableNode(variableNode: VariableNode) = {
+        uuid = Guid.NewGuid()
+        identifier = variableNode.VariableName
+        bindingCell = Adaptive.cval (None: Point option)
     }
-    static member fromVariableNode (variableNode:VariableNode) = 
-            {
-                uuid = Guid.NewGuid()
-                identifier = variableNode.VariableName
-                bindingCell = Adaptive.cval (None:Point option)
-            }
-    static member fromIdentifier (identifier:string) = 
-            {
-                uuid = Guid.NewGuid()
-                identifier = identifier
-                bindingCell = Adaptive.cval (None:Point option)
-            }
+    static member fromIdentifier(identifier: string) = {
+        uuid = Guid.NewGuid()
+        identifier = identifier
+        bindingCell = Adaptive.cval (None: Point option)
+    }
     member this.asSubject = VariableSubject this
     member this.asPredicate = VariablePredicate this
     member this.asObject = VariableObject this
@@ -1891,14 +1844,22 @@ and [<CustomEquality ; CustomComparison>] RdfVariable =
     member this.questionForm = "?" + this.lexicalForm
     member this.dollarForm = "$" + this.lexicalForm
     member this.asVariableNode = new VariableNode(this.identifier)
-    member this.asINode :INode = this.asVariableNode
+    member this.asINode: INode = this.asVariableNode
     member this.asSparqlVariable = new SparqlVariable(this.identifier)
-    member this.asBlankReference = { blankNodeIdentifier = this.identifier}
-    member this.asSkolemIri = { uuid = this.uuid ; blankNode = this.asBlankReference}
-    member this.asPatternItem(patternBuilder: TriplePatternBuilder) = patternBuilder.PatternItemFactory.CreateVariablePattern(this.identifier)
-    member this.binding : Adaptive.aval<Point option> = this.bindingCell :> Adaptive.aval<Point option>
-    member this.bind (point:Point) = transact (fun () -> this.bindingCell.Value <- Some point)
-    member this.unbind() = transact (fun () -> this.bindingCell.Value <- None)
+    member this.asBlankReference = {
+        blankNodeIdentifier = this.identifier
+    }
+    member this.asSkolemIri = {
+        uuid = this.uuid
+        blankNode = this.asBlankReference
+    }
+    member this.asPatternItem(patternBuilder: TriplePatternBuilder) =
+        patternBuilder.PatternItemFactory.CreateVariablePattern(this.identifier)
+    member this.binding: Adaptive.aval<Point option> = this.bindingCell :> Adaptive.aval<Point option>
+    member this.bind(point: Point) =
+        transact (fun () -> this.bindingCell.Value <- Some point)
+    member this.unbind() =
+        transact (fun () -> this.bindingCell.Value <- None)
     member this.maybeTerm = this.binding |> Adaptive.AVal.force
     member this.identity = this.uuid
 
@@ -1912,250 +1873,224 @@ and [<CustomEquality ; CustomComparison>] RdfVariable =
     interface IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? RdfVariable as otherVariable -> compare this.identity otherVariable.identity 
+            | :? RdfVariable as otherVariable -> compare this.identity otherVariable.identity
             | _ -> invalidArg (nameof other) "An RdfVariable can only be compared with another RdfVariable."
 
-and RdfSubject = 
+and RdfSubject =
     | IriSubject of Iri
     | BlankSubject of BlankReference
     | VariableSubject of RdfVariable
-    static member fromINode (inode:INode) = 
+
+    static member fromINode(inode: INode) =
         match inode.NodeType with
-        | NodeType.Uri ->
-            inode :?> UriNode
-            |> Iri.fromUriNode
-            |> IriSubject
-        | NodeType.Blank ->
-            inode :?> BlankNode
-            |> BlankReference.fromBlankNode
-            |> BlankSubject
-        | NodeType.Variable ->
-            inode :?> VariableNode
-            |> RdfVariable.fromVariableNode
-            |> VariableSubject
-    member this.maybePredicate = 
-        match this with 
-        | IriSubject  iri -> Some iri.asPredicate
-        | BlankSubject  blankReference -> None
-        | VariableSubject  rdfVariable -> Some rdfVariable.asPredicate
-    member this.asObject = 
-        match this with 
-        | IriSubject  iri -> iri.asObject
-        | BlankSubject  blankReference -> blankReference.asObject
-        | VariableSubject  rdfVariable -> rdfVariable.asObject
-    member this.maybeRdfName = 
-        match this with 
-        | IriSubject  iri -> Some iri.asRdfName
-        | BlankSubject  blankReference -> None
-        | VariableSubject  rdfVariable -> None
-    member this.maybeRdfReference = 
-        match this with 
-        | IriSubject  iri -> Some iri.asRdfReference
-        | BlankSubject  blankReference -> Some blankReference.asRdfReference
-        | VariableSubject  rdfVariable -> None
+        | NodeType.Uri -> inode :?> UriNode |> Iri.fromUriNode |> IriSubject
+        | NodeType.Blank -> inode :?> BlankNode |> BlankReference.fromBlankNode |> BlankSubject
+        | NodeType.Variable -> inode :?> VariableNode |> RdfVariable.fromVariableNode |> VariableSubject
+    member this.maybePredicate =
+        match this with
+        | IriSubject iri -> Some iri.asPredicate
+        | BlankSubject blankReference -> None
+        | VariableSubject rdfVariable -> Some rdfVariable.asPredicate
+    member this.asObject =
+        match this with
+        | IriSubject iri -> iri.asObject
+        | BlankSubject blankReference -> blankReference.asObject
+        | VariableSubject rdfVariable -> rdfVariable.asObject
+    member this.maybeRdfName =
+        match this with
+        | IriSubject iri -> Some iri.asRdfName
+        | BlankSubject blankReference -> None
+        | VariableSubject rdfVariable -> None
+    member this.maybeRdfReference =
+        match this with
+        | IriSubject iri -> Some iri.asRdfReference
+        | BlankSubject blankReference -> Some blankReference.asRdfReference
+        | VariableSubject rdfVariable -> None
     member this.asVertex = SubjectVertex this
-    member this.asRdfTerm = 
-        match this with 
-        | IriSubject  iri -> IriPoint iri
-        | BlankSubject  blankReference -> BlankPoint blankReference
-        | VariableSubject  rdfVariable -> VariablePoint rdfVariable
-    member this.lexicalForm = 
-        match this with 
-        | IriSubject  iri -> iri.lexicalForm
-        | BlankSubject  blankReference -> blankReference.lexicalForm
-        | VariableSubject  rdfVariable -> rdfVariable.lexicalForm
-    member this.maybeCurie = 
-        match this with 
-        | IriSubject  iri -> iri.maybeCurie
-        | BlankSubject  blankReference -> Some blankReference.curie
-        | VariableSubject  rdfVariable -> None
-    member this.asINode = 
-        match this with 
-        | IriSubject  iri -> iri.asINode
-        | BlankSubject  blankReference -> blankReference.asINode
-        | VariableSubject  rdfVariable -> rdfVariable.asINode
+    member this.asRdfTerm =
+        match this with
+        | IriSubject iri -> IriPoint iri
+        | BlankSubject blankReference -> BlankPoint blankReference
+        | VariableSubject rdfVariable -> VariablePoint rdfVariable
+    member this.lexicalForm =
+        match this with
+        | IriSubject iri -> iri.lexicalForm
+        | BlankSubject blankReference -> blankReference.lexicalForm
+        | VariableSubject rdfVariable -> rdfVariable.lexicalForm
+    member this.maybeCurie =
+        match this with
+        | IriSubject iri -> iri.maybeCurie
+        | BlankSubject blankReference -> Some blankReference.curie
+        | VariableSubject rdfVariable -> None
+    member this.asINode =
+        match this with
+        | IriSubject iri -> iri.asINode
+        | BlankSubject blankReference -> blankReference.asINode
+        | VariableSubject rdfVariable -> rdfVariable.asINode
     member this.asPatternItem(patternBuilder: TriplePatternBuilder) : PatternItem =
         match this with
         | VariableSubject rdfVariable -> patternBuilder |> rdfVariable.asPatternItem
         | _ -> patternBuilder.PatternItemFactory.CreateNodeMatchPattern(this.asINode)
 
-and RdfPredicate = 
+and RdfPredicate =
     | IriPredicate of Iri
     | VariablePredicate of RdfVariable
-    static member fromINode (inode:INode) = 
+
+    static member fromINode(inode: INode) =
         match inode.NodeType with
-        | NodeType.Uri ->
-            inode :?> UriNode
-            |> Iri.fromUriNode
-            |> IriPredicate
-        | NodeType.Variable ->
-            inode :?> VariableNode
-            |> RdfVariable.fromVariableNode
-            |> VariablePredicate
-    member this.asSubject = 
-        match this with 
-        | IriPredicate  iri -> iri.asSubject
-        | VariablePredicate  rdfVariable -> rdfVariable.asSubject
-    member this.asObject = 
-        match this with 
-        | IriPredicate  iri -> iri.asObject
-        | VariablePredicate  rdfVariable -> rdfVariable.asObject
-    member this.maybeRdfName = 
-        match this with 
-        | IriPredicate  iri -> Some iri.asRdfName
-        | VariablePredicate  rdfVariable -> None
-    member this.maybeRdfReference = 
-        match this with 
-        | IriPredicate  iri -> Some(NamedReference iri.asIriReference)
-        | VariablePredicate  rdfVariable -> None
+        | NodeType.Uri -> inode :?> UriNode |> Iri.fromUriNode |> IriPredicate
+        | NodeType.Variable -> inode :?> VariableNode |> RdfVariable.fromVariableNode |> VariablePredicate
+    member this.asSubject =
+        match this with
+        | IriPredicate iri -> iri.asSubject
+        | VariablePredicate rdfVariable -> rdfVariable.asSubject
+    member this.asObject =
+        match this with
+        | IriPredicate iri -> iri.asObject
+        | VariablePredicate rdfVariable -> rdfVariable.asObject
+    member this.maybeRdfName =
+        match this with
+        | IriPredicate iri -> Some iri.asRdfName
+        | VariablePredicate rdfVariable -> None
+    member this.maybeRdfReference =
+        match this with
+        | IriPredicate iri -> Some(NamedReference iri.asIriReference)
+        | VariablePredicate rdfVariable -> None
     member this.asEdge = PredicateEdge this
-    member this.asRdfTerm = 
-        match this with 
-        | IriPredicate  iri -> IriPoint iri
-        | VariablePredicate  rdfVariable -> VariablePoint rdfVariable
-    member this.lexicalForm = 
-        match this with 
-        | IriPredicate  iri -> iri.lexicalForm
-        | VariablePredicate  rdfVariable -> rdfVariable.lexicalForm
-    member this.maybeCurie = 
-        match this with 
-        | IriPredicate  iri -> iri.maybeCurie
-        | VariablePredicate  rdfVariable -> None
-    member this.asINode = 
-        match this with 
-        | IriPredicate  iri -> iri.asINode
-        | VariablePredicate  rdfVariable -> rdfVariable.asINode
+    member this.asRdfTerm =
+        match this with
+        | IriPredicate iri -> IriPoint iri
+        | VariablePredicate rdfVariable -> VariablePoint rdfVariable
+    member this.lexicalForm =
+        match this with
+        | IriPredicate iri -> iri.lexicalForm
+        | VariablePredicate rdfVariable -> rdfVariable.lexicalForm
+    member this.maybeCurie =
+        match this with
+        | IriPredicate iri -> iri.maybeCurie
+        | VariablePredicate rdfVariable -> None
+    member this.asINode =
+        match this with
+        | IriPredicate iri -> iri.asINode
+        | VariablePredicate rdfVariable -> rdfVariable.asINode
     member this.asPatternItem(patternBuilder: TriplePatternBuilder) : PatternItem =
         match this with
         | VariablePredicate rdfVariable -> patternBuilder |> rdfVariable.asPatternItem
         | _ -> patternBuilder.PatternItemFactory.CreateNodeMatchPattern(this.asINode)
 
-and RdfObject = 
+and RdfObject =
     | IriObject of Iri
     | BlankObject of BlankReference
     | LiteralObject of RdfLiteral
     | TripleTermObject of RdfTripleTerm
     | VariableObject of RdfVariable
-    static member fromINode (inode:INode) = 
+
+    static member fromINode(inode: INode) =
         match inode.NodeType with
-        | NodeType.Uri ->
-            inode :?> UriNode
-            |> Iri.fromUriNode
-            |> IriObject
-        | NodeType.Blank ->
-            inode :?> BlankNode
-            |> BlankReference.fromBlankNode
-            |> BlankObject
-        | NodeType.Literal ->
-            inode :?> LiteralNode
-            |> RdfLiteral.fromLiteralNode
-            |> LiteralObject
-        | NodeType.Triple ->
-            inode :?> TripleNode
-            |> RdfTripleTerm.fromTripleNode
-            |> TripleTermObject
-        | NodeType.Variable ->
-            inode :?> VariableNode
-            |> RdfVariable.fromVariableNode
-            |> VariableObject
-    member this.maybeSubject = 
-        match this with 
-        | IriObject  iri -> Some (IriSubject iri)
-        | BlankObject  blankReference -> Some (BlankSubject blankReference)
-        | LiteralObject  rdfLiteral -> None
+        | NodeType.Uri -> inode :?> UriNode |> Iri.fromUriNode |> IriObject
+        | NodeType.Blank -> inode :?> BlankNode |> BlankReference.fromBlankNode |> BlankObject
+        | NodeType.Literal -> inode :?> LiteralNode |> RdfLiteral.fromLiteralNode |> LiteralObject
+        | NodeType.Triple -> inode :?> TripleNode |> RdfTripleTerm.fromTripleNode |> TripleTermObject
+        | NodeType.Variable -> inode :?> VariableNode |> RdfVariable.fromVariableNode |> VariableObject
+    member this.maybeSubject =
+        match this with
+        | IriObject iri -> Some(IriSubject iri)
+        | BlankObject blankReference -> Some(BlankSubject blankReference)
+        | LiteralObject rdfLiteral -> None
         | TripleTermObject tripleTerm -> None
-        | VariableObject  rdfVariable -> Some (VariableSubject rdfVariable )
-    member this.maybePredicate = 
-        match this with 
-        | IriObject  iri -> Some (IriPredicate iri)
-        | BlankObject  blankReference -> None
-        | LiteralObject  rdfLiteral -> None
+        | VariableObject rdfVariable -> Some(VariableSubject rdfVariable)
+    member this.maybePredicate =
+        match this with
+        | IriObject iri -> Some(IriPredicate iri)
+        | BlankObject blankReference -> None
+        | LiteralObject rdfLiteral -> None
         | TripleTermObject tripleTerm -> None
-        | VariableObject  rdfVariable -> Some (VariablePredicate rdfVariable )
-    member this.asRdfTerm = 
-        match this with 
-        | IriObject  iri -> IriPoint iri
-        | BlankObject  blankReference -> BlankPoint blankReference
-        | LiteralObject  rdfLiteral -> LiteralPoint rdfLiteral
+        | VariableObject rdfVariable -> Some(VariablePredicate rdfVariable)
+    member this.asRdfTerm =
+        match this with
+        | IriObject iri -> IriPoint iri
+        | BlankObject blankReference -> BlankPoint blankReference
+        | LiteralObject rdfLiteral -> LiteralPoint rdfLiteral
         | TripleTermObject tripleTerm -> TriplePoint tripleTerm
-        | VariableObject  rdfVariable -> VariablePoint rdfVariable
-    member this.lexicalForm = 
-        match this with 
-        | IriObject  iri -> iri.lexicalForm
-        | BlankObject  blankReference -> blankReference.lexicalForm
-        | LiteralObject  rdfLiteral -> rdfLiteral.lexicalForm
+        | VariableObject rdfVariable -> VariablePoint rdfVariable
+    member this.lexicalForm =
+        match this with
+        | IriObject iri -> iri.lexicalForm
+        | BlankObject blankReference -> blankReference.lexicalForm
+        | LiteralObject rdfLiteral -> rdfLiteral.lexicalForm
         | TripleTermObject tripleTerm -> tripleTerm.lexicalForm
-        | VariableObject  rdfVariable -> rdfVariable.lexicalForm
-    member this.maybeCurie = 
-        match this with 
-        | IriObject  iri -> iri.maybeCurie
-        | BlankObject  blankReference -> Some blankReference.curie
-        | LiteralObject  rdfLiteral -> rdfLiteral.maybeCurie
+        | VariableObject rdfVariable -> rdfVariable.lexicalForm
+    member this.maybeCurie =
+        match this with
+        | IriObject iri -> iri.maybeCurie
+        | BlankObject blankReference -> Some blankReference.curie
+        | LiteralObject rdfLiteral -> rdfLiteral.maybeCurie
         | TripleTermObject tripleTerm -> Some tripleTerm.curiesAndOrLexicalForms
-        | VariableObject  rdfVariable -> None
-    member this.asINode = 
-        match this with 
-        | IriObject  iri -> iri.asINode
-        | BlankObject  blankReference -> blankReference.asINode
-        | LiteralObject  rdfLiteral -> rdfLiteral.asINode
+        | VariableObject rdfVariable -> None
+    member this.asINode =
+        match this with
+        | IriObject iri -> iri.asINode
+        | BlankObject blankReference -> blankReference.asINode
+        | LiteralObject rdfLiteral -> rdfLiteral.asINode
         | TripleTermObject tripleTerm -> tripleTerm.asINode
-        | VariableObject  rdfVariable -> rdfVariable.asINode
+        | VariableObject rdfVariable -> rdfVariable.asINode
     member this.asPatternItem(patternBuilder: TriplePatternBuilder) : PatternItem =
         match this with
         | VariableObject rdfVariable -> patternBuilder |> rdfVariable.asPatternItem
         | _ -> patternBuilder.PatternItemFactory.CreateNodeMatchPattern(this.asINode)
 
 
-and PredicateObjectList =
-    {
+and PredicateObjectList = {
 
-      verb: RdfPredicate
-      objectLists: ObjectList array
+    verb: RdfPredicate
+    objectLists: ObjectList array
 
-     }
+} with
 
-    static member inline fromTerms (predicate: RdfPredicate) (objects: RdfObject array) =
-        {
+    static member inline fromTerms (predicate: RdfPredicate) (objects: RdfObject array) = {
 
-          verb = predicate
-          objectLists =
+        verb = predicate
+        objectLists =
             objects
-            |> Array.map (fun rdfObject ->
-                { rdfObject = rdfObject
-                  annotations = [||]
+            |> Array.map (fun rdfObject -> {
+                rdfObject = rdfObject
+                annotations = [||]
 
-                })
+            })
 
-        }
+    }
 
-and ObjectList =
-    { rdfObject: RdfObject
-      annotations: Annotation array }
+and ObjectList = {
+    rdfObject: RdfObject
+    annotations: Annotation array
+}
 and Annotation =
     | AnnotationReifier of RdfSubject
     | AnnotationBlock of PredicateObjectList
-and RdfTriple =
-    { curSubject: RdfSubject
-      curPredicate: RdfPredicate
-      curObject: RdfObject }
-    static member fromVDSTriple (vdsTriple:VDS.RDF.Triple) = 
+and RdfTriple = {
+    curSubject: RdfSubject
+    curPredicate: RdfPredicate
+    curObject: RdfObject
+} with
 
-        { curSubject = RdfSubject.fromINode vdsTriple.Subject
-          curPredicate = RdfPredicate.fromINode vdsTriple.Predicate
-          curObject = RdfObject.fromINode vdsTriple.Object }
+    static member fromVDSTriple(vdsTriple: VDS.RDF.Triple) =
+
+        {
+            curSubject = RdfSubject.fromINode vdsTriple.Subject
+            curPredicate = RdfPredicate.fromINode vdsTriple.Predicate
+            curObject = RdfObject.fromINode vdsTriple.Object
+        }
     static member inline fromTerms
         (rdfSubject: ^SubjectType when ^SubjectType: (member asSubject: RdfSubject))
         (rdfPredicate: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate))
         (rdfObject: ^ObjectType when ^ObjectType: (member asObject: RdfObject))
         =
-        { curSubject = rdfSubject.asSubject
-          curPredicate = rdfPredicate.asPredicate
-          curObject = rdfObject.asObject }
-    static member setFromTerms
-        (rdfSubjects: RdfSubject array)
-        (rdfPredicates: RdfPredicate array)
-        (rdfObjects: RdfObject array)
-        =
+        {
+            curSubject = rdfSubject.asSubject
+            curPredicate = rdfPredicate.asPredicate
+            curObject = rdfObject.asObject
+        }
+    static member setFromTerms (rdfSubjects: RdfSubject array) (rdfPredicates: RdfPredicate array) (rdfObjects: RdfObject array) =
         rdfObjects
         |> Array.Parallel.collect (fun rdfObject ->
 
@@ -2167,18 +2102,15 @@ and RdfTriple =
 
                     {
 
-                      curSubject = rdfSubject
-                      curPredicate = rdfPredicate
-                      curObject = rdfObject
+                        curSubject = rdfSubject
+                        curPredicate = rdfPredicate
+                        curObject = rdfObject
 
                     }
 
                 )))
         |> HashSet.ofSeq
-    static member setFromSubjectsPredicateObjectLists
-        (rdfSubjects: RdfSubject array)
-        (predicateObjectLists: PredicateObjectList array)
-        =
+    static member setFromSubjectsPredicateObjectLists (rdfSubjects: RdfSubject array) (predicateObjectLists: PredicateObjectList array) =
         rdfSubjects
         |> Array.Parallel.collect (fun rdfSubject ->
             predicateObjectLists
@@ -2188,9 +2120,11 @@ and RdfTriple =
                     // TODO deal with annotations
 
 
-                    { curSubject = rdfSubject
-                      curPredicate = predicateObjectList.verb
-                      curObject = objectList.rdfObject }
+                    {
+                        curSubject = rdfSubject
+                        curPredicate = predicateObjectList.verb
+                        curObject = objectList.rdfObject
+                    }
 
                 )
 
@@ -2199,72 +2133,67 @@ and RdfTriple =
         )
         |> HashSet.ofSeq
     member this.lexicalTriple = this.curSubject.lexicalForm, this.curPredicate.lexicalForm, this.curObject.lexicalForm
-    member this.lexicalForms = 
-        [|
-            this.curSubject.lexicalForm
-            this.curPredicate.lexicalForm
-            this.curObject.lexicalForm
-        |]
+    member this.lexicalForms = [|
+        this.curSubject.lexicalForm
+        this.curPredicate.lexicalForm
+        this.curObject.lexicalForm
+    |]
 
     member this.lexicalForm = this.lexicalForms |> String.concat " "
-    member this.points =
-        [| this.curSubject.asRdfTerm
-           this.curPredicate.asRdfTerm
-           this.curObject.asRdfTerm |]
-    member this.curiesAndOrLexicalForms = 
+    member this.points = [|
+        this.curSubject.asRdfTerm
+        this.curPredicate.asRdfTerm
+        this.curObject.asRdfTerm
+    |]
+    member this.curiesAndOrLexicalForms =
         this.points
-         |> Array.map (fun point -> defaultArg point.maybeCurie point.lexicalForm )
+        |> Array.map (fun point -> defaultArg point.maybeCurie point.lexicalForm)
         |> String.concat " "
-    member this.verticies = 
-        [| SubjectVertex this.curSubject
-           ObjectVertex this.curObject |]
-    member this.asVDSTriple = new Triple (this.curSubject.asINode, this.curPredicate.asINode, this.curObject.asINode)
-    member this.asITriplePattern  (patternBuilder: TriplePatternBuilder) =
-        TriplePattern(
-            this.curSubject.asPatternItem patternBuilder,
-            this.curPredicate.asPatternItem patternBuilder,
-            this.curObject.asPatternItem patternBuilder
-        )
+    member this.verticies = [| SubjectVertex this.curSubject; ObjectVertex this.curObject |]
+    member this.asVDSTriple = new Triple(this.curSubject.asINode, this.curPredicate.asINode, this.curObject.asINode)
+    member this.asITriplePattern(patternBuilder: TriplePatternBuilder) =
+        TriplePattern(this.curSubject.asPatternItem patternBuilder, this.curPredicate.asPatternItem patternBuilder, this.curObject.asPatternItem patternBuilder)
         :> ITriplePattern
-and RdfTripleTerm = 
-    {
-        ttTriple:RdfTriple 
+and RdfTripleTerm = {
+    ttTriple: RdfTriple
+} with
+
+    static member fromVDSTriple(vdsTriple: VDS.RDF.Triple) = {
+        ttTriple = RdfTriple.fromVDSTriple vdsTriple
     }
-    static member fromVDSTriple (vdsTriple:VDS.RDF.Triple) = 
-        {
-            ttTriple = RdfTriple.fromVDSTriple vdsTriple
-        }
-    static member fromTripleNode (tripleNode:TripleNode) = RdfTripleTerm.fromVDSTriple tripleNode.Triple
+    static member fromTripleNode(tripleNode: TripleNode) =
+        RdfTripleTerm.fromVDSTriple tripleNode.Triple
     member this.ttSubject = this.ttTriple.curSubject
     member this.ttPredicate = this.ttTriple.curPredicate
     member this.ttObject = this.ttTriple.curObject
     member this.asTripleNode = new TripleNode(this.ttTriple.asVDSTriple)
     member this.lexicalForm = this.ttTriple.lexicalForm
     member this.curiesAndOrLexicalForms = this.ttTriple.curiesAndOrLexicalForms
-    member this.asINode :INode = this.asTripleNode
+    member this.asINode: INode = this.asTripleNode
 
-and Formula =
-    {
+and Formula = {
 
-      subjects: RdfSubject array
-      predicates: RdfPredicate array
-      objects: RdfObject array
-      predicateObjectLists: PredicateObjectList array
-      triples: HashSet<RdfTriple>
+    subjects: RdfSubject array
+    predicates: RdfPredicate array
+    objects: RdfObject array
+    predicateObjectLists: PredicateObjectList array
+    triples: HashSet<RdfTriple>
 
-     }
+} with
+
     static member Empty =
 
-        { subjects = [||]
-          predicates = [||]
-          objects = [||]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
+        {
+            subjects = [||]
+            predicates = [||]
+            objects = [||]
+            predicateObjectLists = [||]
+            triples = HashSet.empty
 
         }
 
-    static member fromIGraph(igraph: IGraph) =
-        { Formula.Empty with
+    static member fromIGraph(igraph: IGraph) = {
+        Formula.Empty with
             triples =
                 igraph.Triples
                 |> PSeq.map (fun vdsTriple ->
@@ -2274,7 +2203,7 @@ and Formula =
                 )
                 |> HashSet.ofSeq
 
-         }
+    }
 
     static member fromGraphLiteralNode(graphLiteralNode: GraphLiteralNode) =
         Formula.fromIGraph graphLiteralNode.SubGraph
@@ -2290,190 +2219,185 @@ and Formula =
 
     static member fromRdfSubject rdfSubject =
 
-        { subjects = [| rdfSubject |]
-          predicates = [||]
-          objects = [||]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
+        {
+            subjects = [| rdfSubject |]
+            predicates = [||]
+            objects = [||]
+            predicateObjectLists = [||]
+            triples = HashSet.empty
 
         }
 
     static member fromRdfSubjects rdfSubjects =
 
-        { subjects = rdfSubjects |> List.toArray
-          predicates = [||]
-          objects = [||]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
+        {
+            subjects = rdfSubjects |> List.toArray
+            predicates = [||]
+            objects = [||]
+            predicateObjectLists = [||]
+            triples = HashSet.empty
 
         }
 
     static member fromRdfPredicate rdfPredicate =
 
-        { subjects = [||]
-          predicates = [| rdfPredicate |]
-          objects = [||]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
+        {
+            subjects = [||]
+            predicates = [| rdfPredicate |]
+            objects = [||]
+            predicateObjectLists = [||]
+            triples = HashSet.empty
 
         }
 
     static member fromRdfPredicates rdfPredicates =
 
-        { subjects = [||]
-          predicates = rdfPredicates
-          objects = [||]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
+        {
+            subjects = [||]
+            predicates = rdfPredicates
+            objects = [||]
+            predicateObjectLists = [||]
+            triples = HashSet.empty
 
         }
 
     static member fromRdfObject rdfObject =
 
-        { subjects = [||]
-          predicates = [||]
-          objects = [| rdfObject |]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
+        {
+            subjects = [||]
+            predicates = [||]
+            objects = [| rdfObject |]
+            predicateObjectLists = [||]
+            triples = HashSet.empty
 
         }
 
     static member fromRdfObjects rdfObjects =
 
-        { subjects = [||]
-          predicates = [||]
-          objects = rdfObjects
-          predicateObjectLists = [||]
-          triples = HashSet.empty
+        {
+            subjects = [||]
+            predicates = [||]
+            objects = rdfObjects
+            predicateObjectLists = [||]
+            triples = HashSet.empty
 
         }
 
 
-    member this.materializeTriples =
-        { subjects = [||]
-          predicates = [||]
-          objects = [||]
-          predicateObjectLists = [||]
-          triples =
-            Seq.concat [ this.triples
-                         RdfTriple.setFromTerms this.subjects this.predicates this.objects
-                         RdfTriple.setFromSubjectsPredicateObjectLists this.subjects this.predicateObjectLists ]
+    member this.materializeTriples = {
+        subjects = [||]
+        predicates = [||]
+        objects = [||]
+        predicateObjectLists = [||]
+        triples =
+            Seq.concat [
+                this.triples
+                RdfTriple.setFromTerms this.subjects this.predicates this.objects
+                RdfTriple.setFromSubjectsPredicateObjectLists this.subjects this.predicateObjectLists
+            ]
             |> HashSet.ofSeq
 
 
-        }
+    }
 
     static member materializeFormula(formula: Formula) = formula.materializeTriples
 
-    member this.addFormulas(formulas: Formula list) =
-        { this with
+    member this.addFormulas(formulas: Formula list) = {
+        this with
             triples =
-                Seq.concat [ this.triples
-                             formulas |> Seq.collect (fun formula -> formula.triples) |> HashSet.ofSeq ]
-                |> HashSet.ofSeq }
+                Seq.concat [
+                    this.triples
+                    formulas |> Seq.collect (fun formula -> formula.triples) |> HashSet.ofSeq
+                ]
+                |> HashSet.ofSeq
+    }
 
 
 
-    member this.addRdfSubjects rdfSubjects =
-        { this with subjects = this.subjects |> Array.append rdfSubjects }
+    member this.addRdfSubjects rdfSubjects = {
+        this with
+            subjects = this.subjects |> Array.append rdfSubjects
+    }
 
     member this.addRdfSubject rdfSubject = this.addRdfSubjects [| rdfSubject |]
 
 
     member this.addRdfPredicates rdfPredicates =
 
-        { this with predicates = this.predicates |> Array.append rdfPredicates }
+        {
+            this with
+                predicates = this.predicates |> Array.append rdfPredicates
+        }
 
     member this.addPredicateObjectLists predicateObjectLists =
 
-        { this with
-            predicateObjectLists =
-                this.predicateObjectLists
-                |> Array.append predicateObjectLists }
+        {
+            this with
+                predicateObjectLists = this.predicateObjectLists |> Array.append predicateObjectLists
+        }
 
     member this.addRdfPredicate rdfPredicate =
         this.addRdfPredicates [| rdfPredicate |]
 
-    member this.addRdfObjects rdfObjects =
-        { this with objects = this.objects |> Array.append rdfObjects }
+    member this.addRdfObjects rdfObjects = {
+        this with
+            objects = this.objects |> Array.append rdfObjects
+    }
 
     member this.addRdfObject rdfObject = this.addRdfObjects [| rdfObject |]
 
     member this.addRdfLiteral rdfLiteral =
-        RdfLiteral.autotyped rdfLiteral
-        |> RdfObject.LiteralObject
-        |> this.addRdfObject
+        RdfLiteral.autotyped rdfLiteral |> RdfObject.LiteralObject |> this.addRdfObject
 
     member this.addRdfLiterals rdfLiterals =
         rdfLiterals
         |> List.toArray
-        |> Array.Parallel.map (fun literal ->
-            literal
-            |> RdfLiteral.autotyped
-            |> RdfObject.LiteralObject)
+        |> Array.Parallel.map (fun literal -> literal |> RdfLiteral.autotyped |> RdfObject.LiteralObject)
         |> this.addRdfObjects
-    member this.lexicalForm = 
+    member this.lexicalForm =
         this.triples
         |> Seq.toArray
         |> Array.map (fun triple -> triple.lexicalForm)
         |> String.concat "\n"
-    member this.curiesAndOrLexicalForms = 
+    member this.curiesAndOrLexicalForms =
         this.triples
         |> Seq.toArray
         |> Array.map (fun triple -> triple.curiesAndOrLexicalForms)
         |> String.concat "\n"
 
 
-and Point = 
-  | IriPoint of Iri
-  | BlankPoint of BlankReference
-  | LiteralPoint of RdfLiteral
-  | TriplePoint of RdfTripleTerm
-  | VariablePoint of RdfVariable
-  | FormulaPoint of Formula
-  
+and Point =
+    | IriPoint of Iri
+    | BlankPoint of BlankReference
+    | LiteralPoint of RdfLiteral
+    | TriplePoint of RdfTripleTerm
+    | VariablePoint of RdfVariable
+    | FormulaPoint of Formula
+
     static member fromINode(inode: INode) =
         match inode.NodeType with
-        | NodeType.Uri ->
-            inode :?> UriNode
-            |> Iri.fromUriNode
-            |> IriPoint
-        | NodeType.Blank ->
-            inode :?> BlankNode
-            |> BlankReference.fromBlankNode
-            |> BlankPoint
-        | NodeType.Literal ->
-            inode :?> LiteralNode
-            |> RdfLiteral.fromLiteralNode
-            |> LiteralPoint
-        | NodeType.Triple ->
-            inode :?> TripleNode
-            |> RdfTripleTerm.fromTripleNode
-            |> TriplePoint
-        | NodeType.Variable ->
-            inode :?> VariableNode
-            |> RdfVariable.fromVariableNode
-            |> VariablePoint
-        | NodeType.GraphLiteral ->
-           inode :?> GraphLiteralNode
-           |> Formula.fromGraphLiteralNode
-           |> FormulaPoint
-  member this.lexicalForm = 
-    match this with 
-    | IriPoint iri -> iri.lexicalForm
-    | BlankPoint blankNode -> blankNode.lexicalForm
-    | LiteralPoint literal -> literal.lexicalForm
-    | VariablePoint variable -> variable.lexicalForm
-    | TriplePoint tripleTerm -> tripleTerm.lexicalForm
-    | FormulaPoint formula -> formula.lexicalForm
-  member this.maybeCurie = 
-    match this with 
-    | IriPoint iri -> iri.maybeCurie
-    | BlankPoint blankNode -> Some blankNode.curie
-    | LiteralPoint literal -> literal.maybeCurie
-    | VariablePoint variable -> None
-    | TriplePoint tripleTerm -> Some tripleTerm.curiesAndOrLexicalForms
-    | FormulaPoint formula -> Some formula.curiesAndOrLexicalForms
+        | NodeType.Uri -> inode :?> UriNode |> Iri.fromUriNode |> IriPoint
+        | NodeType.Blank -> inode :?> BlankNode |> BlankReference.fromBlankNode |> BlankPoint
+        | NodeType.Literal -> inode :?> LiteralNode |> RdfLiteral.fromLiteralNode |> LiteralPoint
+        | NodeType.Triple -> inode :?> TripleNode |> RdfTripleTerm.fromTripleNode |> TriplePoint
+        | NodeType.Variable -> inode :?> VariableNode |> RdfVariable.fromVariableNode |> VariablePoint
+        | NodeType.GraphLiteral -> inode :?> GraphLiteralNode |> Formula.fromGraphLiteralNode |> FormulaPoint
+    member this.lexicalForm =
+        match this with
+        | IriPoint iri -> iri.lexicalForm
+        | BlankPoint blankNode -> blankNode.lexicalForm
+        | LiteralPoint literal -> literal.lexicalForm
+        | VariablePoint variable -> variable.lexicalForm
+        | TriplePoint tripleTerm -> tripleTerm.lexicalForm
+        | FormulaPoint formula -> formula.lexicalForm
+    member this.maybeCurie =
+        match this with
+        | IriPoint iri -> iri.maybeCurie
+        | BlankPoint blankNode -> Some blankNode.curie
+        | LiteralPoint literal -> literal.maybeCurie
+        | VariablePoint variable -> None
+        | TriplePoint tripleTerm -> Some tripleTerm.curiesAndOrLexicalForms
+        | FormulaPoint formula -> Some formula.curiesAndOrLexicalForms
 
 
 
@@ -2482,31 +2406,40 @@ and Vertex =
     | ObjectVertex of RdfObject
 
 
-    member this.asRenderedString (prefixDelimiter: string)  =
+    member this.asRenderedString(prefixDelimiter: string) =
         match this with
-        | SubjectVertex rdfSubject -> defaultArg rdfSubject.maybeCurie rdfSubject.lexicalForm |> _.Replace(":",prefixDelimiter)
-        | ObjectVertex rdfObject -> defaultArg  rdfObject.maybeCurie rdfObject.lexicalForm |> _.Replace(":",prefixDelimiter)
+        | SubjectVertex rdfSubject ->
+            defaultArg rdfSubject.maybeCurie rdfSubject.lexicalForm
+            |> _.Replace(":", prefixDelimiter)
+        | ObjectVertex rdfObject ->
+            defaultArg rdfObject.maybeCurie rdfObject.lexicalForm
+            |> _.Replace(":", prefixDelimiter)
 
 and Edge =
     | PredicateEdge of RdfPredicate
     | TripleEdge of RdfTriple
 
-    member this.asRenderedString (prefixDelimiter: string)  =
+    member this.asRenderedString(prefixDelimiter: string) =
         match this with
-        | PredicateEdge rdfPredicate -> defaultArg rdfPredicate.maybeCurie rdfPredicate.lexicalForm |> _.Replace(":",prefixDelimiter)
-        | TripleEdge rdfTriple -> defaultArg rdfTriple.curPredicate.maybeCurie rdfTriple.lexicalForm |> _.Replace(":",prefixDelimiter)
+        | PredicateEdge rdfPredicate ->
+            defaultArg rdfPredicate.maybeCurie rdfPredicate.lexicalForm
+            |> _.Replace(":", prefixDelimiter)
+        | TripleEdge rdfTriple ->
+            defaultArg rdfTriple.curPredicate.maybeCurie rdfTriple.lexicalForm
+            |> _.Replace(":", prefixDelimiter)
 
-and RdfName = 
+and RdfName =
     | IriName of Iri
     | LiteralName of RdfLiteral
 
-and RdfReference = 
-  | NamedReference of IriReference
-  | AnonymousReference of BlankReference
+and RdfReference =
+    | NamedReference of IriReference
+    | AnonymousReference of BlankReference
 
 
-and RdfTripleSet =
-    { triples: HashSet<RdfTriple> }
+and RdfTripleSet = {
+    triples: HashSet<RdfTriple>
+} with
 
     member this.verticies =
         this.triples
@@ -2543,11 +2476,12 @@ and RdfTripleSet =
         |> Array.distinct
 
 
-    static member fromIGraph(igraph: IGraph) =
-        { triples =
+    static member fromIGraph(igraph: IGraph) = {
+        triples =
             igraph.Triples
             |> PSeq.map (fun vdsTriple -> RdfTriple.fromVDSTriple vdsTriple)
-            |> HashSet.ofSeq }
+            |> HashSet.ofSeq
+    }
 
 
 
@@ -2610,54 +2544,58 @@ and RdfTripleSet =
 
 
 
-type VDS.RDF.BlankNode with 
-    member this.asBlankReference = { blankNodeIdentifier = this.InternalID}
-type VDS.RDF.UriNode with 
+type VDS.RDF.BlankNode with
+    member this.asBlankReference = {
+        blankNodeIdentifier = this.InternalID
+    }
+type VDS.RDF.UriNode with
     member this.asIriReference = IriReference this.Uri
-type VDS.RDF.LiteralNode with 
-    member this.asRDFLiteral = 
-        match this.DataType.OriginalString, this.Language with 
+type VDS.RDF.LiteralNode with
+    member this.asRDFLiteral =
+        match this.DataType.OriginalString, this.Language with
         | "http://www.w3.org/2001/XMLSchema#string", _ -> SimpleString this.Value |> PlainLiteral
-        | "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString", languageTagString -> 
+        | "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString", languageTagString ->
             {
-              lexicalForm = this.Value
-              languageTag = LanguageTag.Parse languageTagString
-            } |> LanguageString |> PlainLiteral
-        | datatype, "" -> 
+                lexicalForm = this.Value
+                languageTag = LanguageTag.Parse languageTagString
+            }
+            |> LanguageString
+            |> PlainLiteral
+        | datatype, "" ->
             DatatypedLiteral {
-                            lexicalForm = this.Value
-                            datatypeIri =  Iri.fromUri this.DataType 
-                          }
+                lexicalForm = this.Value
+                datatypeIri = Iri.fromUri this.DataType
+            }
         | _ -> failwithf "%O %s %s failed " this this.DataType.OriginalString this.Language
 
-type IGraph with 
-    member this.RdfsEntailedGraph() = 
+type IGraph with
+    member this.RdfsEntailedGraph() =
         let rdfsEntailedGraph = new ThreadSafeGraph()
         rdfsEntailedGraph.Assert this.Triples |> ignore
         RdfsReasoner().Apply rdfsEntailedGraph
         rdfsEntailedGraph
-type RDFGraph with 
+type RDFGraph with
     member this.triples = this |> Seq.toArray
-type RDFNamespace with 
+type RDFNamespace with
     member this.NamespaceName = this.NamespaceUri.OriginalString
 
 
-type INode with 
-    member this.asRdfTerm = 
-          match this with 
-          | :? UriNode as uriNode -> Iri.fromUriNode uriNode |> IriPoint
-          | :? BlankNode as blankNode -> BlankReference.fromBlankNode blankNode |> BlankPoint
-          | :? LiteralNode as literalNode -> RdfLiteral.fromLiteralNode literalNode |> LiteralPoint
-          | :? TripleNode as tripleNode -> RdfTripleTerm.fromTripleNode tripleNode |> TriplePoint 
-          | :? VariableNode as variableNode -> RdfVariable.fromVariableNode variableNode |> VariablePoint
-          | :? GraphLiteralNode as graphLiteralNode -> Formula.fromGraphLiteralNode graphLiteralNode |> FormulaPoint
+type INode with
+    member this.asRdfTerm =
+        match this with
+        | :? UriNode as uriNode -> Iri.fromUriNode uriNode |> IriPoint
+        | :? BlankNode as blankNode -> BlankReference.fromBlankNode blankNode |> BlankPoint
+        | :? LiteralNode as literalNode -> RdfLiteral.fromLiteralNode literalNode |> LiteralPoint
+        | :? TripleNode as tripleNode -> RdfTripleTerm.fromTripleNode tripleNode |> TriplePoint
+        | :? VariableNode as variableNode -> RdfVariable.fromVariableNode variableNode |> VariablePoint
+        | :? GraphLiteralNode as graphLiteralNode -> Formula.fromGraphLiteralNode graphLiteralNode |> FormulaPoint
 
 
 
 
-type OntologyClass with 
+type OntologyClass with
     member this.asRdfTerm = this.Resource.asRdfTerm
-type OntologyProperty with 
+type OntologyProperty with
     member this.asRdfTerm = this.Resource.asRdfTerm
 
 
@@ -2696,14 +2634,12 @@ module RdfLiteral =
         let base64 (bytes: Byte array) =
             let valueString = Convert.ToBase64String(bytes)
 
-            PrefixId.xsd.prefix "base64Binary"
-            |> RdfLiteral.datatyped valueString
+            PrefixId.xsd.prefix "base64Binary" |> RdfLiteral.datatyped valueString
 
         let hex (bytes: Byte array) =
             let valueString = Convert.ToHexString(bytes)
 
-            PrefixId.xsd.prefix "hexBinary"
-            |> RdfLiteral.datatyped valueString
+            PrefixId.xsd.prefix "hexBinary" |> RdfLiteral.datatyped valueString
 
 
     module Temporal =
@@ -2711,14 +2647,12 @@ module RdfLiteral =
             let timeDuration (timespan: TimeSpan) =
                 let valueString = Xml.XmlConvert.ToString(timespan)
 
-                PrefixId.xsd.prefix "duration"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "duration" |> RdfLiteral.datatyped valueString
 
             let dayTimeDuration (timespan: TimeSpan) =
                 let valueString = Xml.XmlConvert.ToString(timespan)
 
-                PrefixId.xdt.prefix "dayTimeDuration"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xdt.prefix "dayTimeDuration" |> RdfLiteral.datatyped valueString
 
 
             let yearMonthDuration (years: int) (months: int) =
@@ -2733,22 +2667,13 @@ module RdfLiteral =
                         let monthsPart = absoluteMonths % 12
                         let sign = if totalMonths < 0 then "-" else ""
 
-                        let yearText =
-                            if yearsPart = 0 then
-                                ""
-                            else
-                                $"{yearsPart}Y"
+                        let yearText = if yearsPart = 0 then "" else $"{yearsPart}Y"
 
-                        let monthText =
-                            if monthsPart = 0 then
-                                ""
-                            else
-                                $"{monthsPart}M"
+                        let monthText = if monthsPart = 0 then "" else $"{monthsPart}M"
 
                         $"{sign}P{yearText}{monthText}"
 
-                PrefixId.xdt.prefix "yearMonthDuration"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xdt.prefix "yearMonthDuration" |> RdfLiteral.datatyped valueString
 
 
         module date =
@@ -2756,26 +2681,22 @@ module RdfLiteral =
             let only (date: DateOnly) =
                 let valueString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
 
-                PrefixId.xsd.prefix "date"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "date" |> RdfLiteral.datatyped valueString
 
             let fromDatetime (datetime: DateTime) =
                 let valueString = datetime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
 
-                PrefixId.xsd.prefix "date"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "date" |> RdfLiteral.datatyped valueString
 
             let time (datetime: DateTime) =
                 let valueString = datetime.ToString("o", CultureInfo.InvariantCulture)
 
-                PrefixId.xsd.prefix "dateTime"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "dateTime" |> RdfLiteral.datatyped valueString
 
             let timeStamp (datetimeOffset: DateTimeOffset) =
                 let valueString = datetimeOffset.ToString("o", CultureInfo.InvariantCulture)
 
-                PrefixId.xsd.prefix "dateTimeStamp"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "dateTimeStamp" |> RdfLiteral.datatyped valueString
 
 
 
@@ -2784,62 +2705,49 @@ module RdfLiteral =
             let only (time: TimeOnly) =
                 let valueString = time.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture)
 
-                PrefixId.xsd.prefix "time"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "time" |> RdfLiteral.datatyped valueString
 
             let fromDatetime (datetime: DateTime) =
-                let valueString =
-                    datetime.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture)
+                let valueString = datetime.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture)
 
-                PrefixId.xsd.prefix "time"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "time" |> RdfLiteral.datatyped valueString
 
         module period =
 
             let day (datetime: DateTime) =
-                let valueString =
-                    $"""---{datetime.Day.ToString("00", CultureInfo.InvariantCulture)}"""
+                let valueString = $"""---{datetime.Day.ToString("00", CultureInfo.InvariantCulture)}"""
 
-                PrefixId.xsd.prefix "gDay"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "gDay" |> RdfLiteral.datatyped valueString
 
 
             let month (datetime: DateTime) =
-                let valueString =
-                    $"""--{datetime.Month.ToString("00", CultureInfo.InvariantCulture)}"""
+                let valueString = $"""--{datetime.Month.ToString("00", CultureInfo.InvariantCulture)}"""
 
-                PrefixId.xsd.prefix "gMonth"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "gMonth" |> RdfLiteral.datatyped valueString
 
 
             let monthDay (datetime: DateTime) =
-                let valueString =
-                    $"""--{datetime.Month.ToString("00", CultureInfo.InvariantCulture)}-{datetime.Day.ToString("00", CultureInfo.InvariantCulture)}"""
+                let valueString = $"""--{datetime.Month.ToString("00", CultureInfo.InvariantCulture)}-{datetime.Day.ToString("00", CultureInfo.InvariantCulture)}"""
 
-                PrefixId.xsd.prefix "gMonthDay"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "gMonthDay" |> RdfLiteral.datatyped valueString
 
 
             let year (datetime: DateTime) =
                 let valueString = datetime.Year.ToString("0000", CultureInfo.InvariantCulture)
 
-                PrefixId.xsd.prefix "gYear"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "gYear" |> RdfLiteral.datatyped valueString
 
 
             let yearMonth (datetime: DateTime) =
-                let valueString =
-                    $"""{datetime.Year.ToString("0000", CultureInfo.InvariantCulture)}-{datetime.Month.ToString("00", CultureInfo.InvariantCulture)}"""
+                let valueString = $"""{datetime.Year.ToString("0000", CultureInfo.InvariantCulture)}-{datetime.Month.ToString("00", CultureInfo.InvariantCulture)}"""
 
-                PrefixId.xsd.prefix "gYearMonth"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.xsd.prefix "gYearMonth" |> RdfLiteral.datatyped valueString
             let generalDay (day: int) =
                 // TODO find a strongly typed parse instead of validation
                 // test <@ day >= 1 && day <= 99 @>
                 let valueString = $"""---{day.ToString("00", CultureInfo.InvariantCulture)}"""
 
-                PrefixId.owlTime.prefix "generalDay"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.owlTime.prefix "generalDay" |> RdfLiteral.datatyped valueString
 
 
             let generalMonth (month: int) =
@@ -2847,15 +2755,13 @@ module RdfLiteral =
                 // test <@ month >= 1 && month <= 20 @>
                 let valueString = $"""--{month.ToString("00", CultureInfo.InvariantCulture)}"""
 
-                PrefixId.owlTime.prefix "generalMonth"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.owlTime.prefix "generalMonth" |> RdfLiteral.datatyped valueString
 
 
             let generalYear (year: int) =
                 let valueString = year.ToString("0000", CultureInfo.InvariantCulture)
 
-                PrefixId.owlTime.prefix "generalYear"
-                |> RdfLiteral.datatyped valueString
+                PrefixId.owlTime.prefix "generalYear" |> RdfLiteral.datatyped valueString
 
 
     module Numeric =
@@ -2864,8 +2770,7 @@ module RdfLiteral =
             value.ToString(CultureInfo.InvariantCulture)
 
         let integer (value: bigint) =
-            PrefixId.xsd.prefix "integer"
-            |> RdfLiteral.datatyped (bigintValueString value)
+            PrefixId.xsd.prefix "integer" |> RdfLiteral.datatyped (bigintValueString value)
 
         let negativeInteger (value: bigint) =
             // TODO find a strongly typed parse instead of validation
@@ -2914,21 +2819,17 @@ module RdfLiteral =
 // ============================================================================
 // Result access
 // ============================================================================
-type SparqlResultSet with 
+type SparqlResultSet with
 
     member this.columnByVariables(rdfVariable: RdfVariable) =
         this.Results
-        |> Seq.map (fun result ->
-            result.Item rdfVariable.identifier
-            |> Point.fromINode)
+        |> Seq.map (fun result -> result.Item rdfVariable.identifier |> Point.fromINode)
         |> Seq.toArray
 module SparqlResultSet =
 
-    let variableIndex (rdfVariable: RdfVariable)(index:int)( resultSet: SparqlResultSet) =
+    let variableIndex (rdfVariable: RdfVariable) (index: int) (resultSet: SparqlResultSet) =
         resultSet.Results
-        |> Seq.map (fun result ->
-            result.Item rdfVariable.identifier
-            |> Point.fromINode)
+        |> Seq.map (fun result -> result.Item rdfVariable.identifier |> Point.fromINode)
         |> Seq.item index
 
 
@@ -2960,82 +2861,45 @@ type SparqlGraphPattern =
 
 module SparqlPattern =
 
-    let basic (formula: Formula) =
-        BasicGraphPattern formula
+    let basic (formula: Formula) = BasicGraphPattern formula
 
 
     let group (patterns: SparqlGraphPattern seq) =
-        patterns
-        |> Seq.toArray
-        |> GroupGraphPattern
+        patterns |> Seq.toArray |> GroupGraphPattern
 
 
-    let optional (pattern: SparqlGraphPattern) =
-        OptionalGraphPattern pattern
+    let optional (pattern: SparqlGraphPattern) = OptionalGraphPattern pattern
 
 
     let union (patterns: SparqlGraphPattern seq) =
 
-        let patterns =
-            patterns
-            |> Seq.toArray
+        let patterns = patterns |> Seq.toArray
 
         if patterns.Length < 2 then
-            invalidArg
-                (nameof patterns)
-                "A SPARQL UNION requires at least two graph patterns."
+            invalidArg (nameof patterns) "A SPARQL UNION requires at least two graph patterns."
 
         UnionGraphPattern patterns
 
 
-    let minus (pattern: SparqlGraphPattern) =
-        MinusGraphPattern pattern
+    let minus (pattern: SparqlGraphPattern) = MinusGraphPattern pattern
 
 
-    let graph
-        (graphIri: Iri)
-        (pattern: SparqlGraphPattern)
-        =
-        NamedGraphPattern(
-            GraphIri graphIri,
-            pattern
-        )
+    let graph (graphIri: Iri) (pattern: SparqlGraphPattern) =
+        NamedGraphPattern(GraphIri graphIri, pattern)
 
 
-    let graphVariable
-        (graphVariable: RdfVariable)
-        (pattern: SparqlGraphPattern)
-        =
-        NamedGraphPattern(
-            GraphVariable graphVariable,
-            pattern
-        )
+    let graphVariable (graphVariable: RdfVariable) (pattern: SparqlGraphPattern) =
+        NamedGraphPattern(GraphVariable graphVariable, pattern)
 
 
-    let service
-        (endpoint: Iri)
-        (pattern: SparqlGraphPattern)
-        =
-        ServiceGraphPattern(
-            endpoint,
-            pattern
-        )
+    let service (endpoint: Iri) (pattern: SparqlGraphPattern) = ServiceGraphPattern(endpoint, pattern)
 
 
-    let filter
-        (expression: ISparqlExpression)
-        =
-        FilterGraphPattern expression
+    let filter (expression: ISparqlExpression) = FilterGraphPattern expression
 
 
-    let bind
-        (rdfVariable: RdfVariable)
-        (expression: ISparqlExpression)
-        =
-        BindGraphPattern(
-            rdfVariable,
-            expression
-        )
+    let bind (rdfVariable: RdfVariable) (expression: ISparqlExpression) =
+        BindGraphPattern(rdfVariable, expression)
 
 
 // ============================================================================
@@ -3063,90 +2927,66 @@ type SparqlDatasetClause =
 // obj.
 // ============================================================================
 
-type SelectQuery =
-    {
-        selectQuery: SparqlQuery
-    }
+type SelectQuery = {
+    selectQuery: SparqlQuery
+} with
 
-    member this.asSparqlQuery =
-        this.selectQuery
+    member this.asSparqlQuery = this.selectQuery
 
-    member this.text =
-        this.selectQuery.ToString()
+    member this.text = this.selectQuery.ToString()
 
 
-type AskQuery =
-    {
-        askQuery: SparqlQuery
-    }
+type AskQuery = {
+    askQuery: SparqlQuery
+} with
 
-    member this.asSparqlQuery =
-        this.askQuery
+    member this.asSparqlQuery = this.askQuery
 
-    member this.text =
-        this.askQuery.ToString()
+    member this.text = this.askQuery.ToString()
 
 
-type GraphQuery =
-    {
-        graphQuery: SparqlQuery
-    }
+type GraphQuery = {
+    graphQuery: SparqlQuery
+} with
 
-    member this.asSparqlQuery =
-        this.graphQuery
+    member this.asSparqlQuery = this.graphQuery
 
-    member this.text =
-        this.graphQuery.ToString()
+    member this.text = this.graphQuery.ToString()
 
 
 // ============================================================================
 // Low-level dotNetRDF query-form adapters
 // ============================================================================
 
-let private SELECTALL () : ISelectBuilder =
-    QueryBuilder.SelectAll()
+let private SELECTALL () : ISelectBuilder = QueryBuilder.SelectAll()
 
 
-let private SELECT
-    (variables: RdfVariable seq)
-    : ISelectBuilder
-    =
+let private SELECT (variables: RdfVariable seq) : ISelectBuilder =
 
     variables
-    |> Seq.map (fun variable ->
-        variable.identifier)
+    |> Seq.map (fun variable -> variable.identifier)
     |> Seq.toArray
     |> QueryBuilder.Select
 
 
-let private ASK () : IQueryBuilder =
-    QueryBuilder.Ask()
+let private ASK () : IQueryBuilder = QueryBuilder.Ask()
 
 
-let private DISCOVER
-    (variables: RdfVariable seq)
-    : IDescribeBuilder
-    =
+let private DISCOVER (variables: RdfVariable seq) : IDescribeBuilder =
 
     variables
-    |> Seq.map (fun variable ->
-        variable.questionForm)
+    |> Seq.map (fun variable -> variable.questionForm)
     |> Seq.toArray
     |> QueryBuilder.Describe
 
 
-let private DESCRIBE
-    (iris: Iri seq)
-    : SparqlQuery
-    =
+let private DESCRIBE (iris: Iri seq) : SparqlQuery =
 
     iris
-    |> Seq.map (fun iri ->
-        iri.asUri)
+    |> Seq.map (fun iri -> iri.asUri)
     |> Seq.toArray
     |> QueryBuilder.Describe
-    |> fun builder ->
-        builder.BuildQuery()
+    |> fun builder -> builder.BuildQuery()
 
 
 // ============================================================================
@@ -3156,38 +2996,22 @@ let private DESCRIBE
 // already depended upon this behavior.
 // ============================================================================
 
-let private repairDescribeVariables
-    (sparqlQuery: SparqlQuery)
-    : SparqlQuery
-    =
+let private repairDescribeVariables (sparqlQuery: SparqlQuery) : SparqlQuery =
 
     if sparqlQuery.QueryType = SparqlQueryType.Describe then
 
-        let queryVariables =
-            sparqlQuery.Variables
-            :?> System.Collections.Generic.ICollection<SparqlVariable>
+        let queryVariables = sparqlQuery.Variables :?> System.Collections.Generic.ICollection<SparqlVariable>
 
         sparqlQuery.DescribeVariables
-        |> Seq.filter (fun token ->
-            token.TokenType = Token.VARIABLE)
+        |> Seq.filter (fun token -> token.TokenType = Token.VARIABLE)
         |> Seq.iter (fun token ->
 
-            let variableName =
-                token.Value.Substring(1)
+            let variableName = token.Value.Substring(1)
 
-            let alreadyRegistered =
-                queryVariables
-                |> Seq.exists (fun variable ->
-                    variable.Name = variableName)
+            let alreadyRegistered = queryVariables |> Seq.exists (fun variable -> variable.Name = variableName)
 
             if not alreadyRegistered then
-                queryVariables.Add(
-                    SparqlVariable(
-                        variableName,
-                        true
-                    )
-                )
-        )
+                queryVariables.Add(SparqlVariable(variableName, true)))
 
     sparqlQuery
 
@@ -3200,10 +3024,7 @@ let private repairDescribeVariables
 // each query builder.
 // ============================================================================
 
-let private importQueryPrefixes
-    (queryBuilder: IQueryBuilder)
-    : IQueryBuilder
-    =
+let private importQueryPrefixes (queryBuilder: IQueryBuilder) : IQueryBuilder =
 
     queryBuilder.Prefixes.Import namespaceMapper
 
@@ -3217,159 +3038,79 @@ let private importQueryPrefixes
 // GraphPatternBuilder representation.
 // ============================================================================
 
-let rec private applyGraphPattern
-    (patternBuilder: TriplePatternBuilder)
-    (builder: IGraphPatternBuilder)
-    (graphPattern: SparqlGraphPattern)
-    : unit
-    =
+let rec private applyGraphPattern (patternBuilder: TriplePatternBuilder) (builder: IGraphPatternBuilder) (graphPattern: SparqlGraphPattern) : unit =
 
-    let action
-        (pattern: SparqlGraphPattern)
-        =
-        Action<IGraphPatternBuilder>(
-            fun childBuilder ->
-                applyGraphPattern
-                    patternBuilder
-                    childBuilder
-                    pattern
-        )
+    let action (pattern: SparqlGraphPattern) =
+        Action<IGraphPatternBuilder>(fun childBuilder -> applyGraphPattern patternBuilder childBuilder pattern)
 
     match graphPattern with
 
     | BasicGraphPattern formula ->
 
-        builder.Where(
-            patternBuilder
-            |> formula.ITriplePatterns
-        )
-        |> ignore
+        builder.Where(patternBuilder |> formula.ITriplePatterns) |> ignore
 
 
     | GroupGraphPattern patterns ->
 
         builder.Group(
-            Action<IGraphPatternBuilder>(
-                fun groupBuilder ->
+            Action<IGraphPatternBuilder>(fun groupBuilder ->
 
-                    patterns
-                    |> Array.iter (
-                        applyGraphPattern
-                            patternBuilder
-                            groupBuilder
-                    )
-            )
+                patterns |> Array.iter (applyGraphPattern patternBuilder groupBuilder))
         )
         |> ignore
 
 
     | OptionalGraphPattern pattern ->
 
-        builder.Optional(
-            action pattern
-        )
-        |> ignore
+        builder.Optional(action pattern) |> ignore
 
 
     | UnionGraphPattern patterns ->
 
         if patterns.Length < 2 then
-            invalidOp
-                "A SPARQL UNION requires at least two graph patterns."
+            invalidOp "A SPARQL UNION requires at least two graph patterns."
 
-        let actions =
-            patterns
-            |> Array.map action
+        let actions = patterns |> Array.map action
 
-        builder.Union(
-            actions[0],
-            actions[1..]
-        )
-        |> ignore
+        builder.Union(actions[0], actions[1..]) |> ignore
 
 
     | MinusGraphPattern pattern ->
 
-        builder.Minus(
-            action pattern
-        )
-        |> ignore
+        builder.Minus(action pattern) |> ignore
 
 
-    | NamedGraphPattern(
-        GraphIri graphIri,
-        pattern
-      ) ->
+    | NamedGraphPattern(GraphIri graphIri, pattern) ->
 
-        builder.Graph(
-            graphIri.asUri,
-            action pattern
-        )
-        |> ignore
+        builder.Graph(graphIri.asUri, action pattern) |> ignore
 
 
-    | NamedGraphPattern(
-        GraphVariable graphVariable,
-        pattern
-      ) ->
+    | NamedGraphPattern(GraphVariable graphVariable, pattern) ->
 
-        builder.Graph(
-            graphVariable.questionForm,
-            action pattern
-        )
-        |> ignore
+        builder.Graph(graphVariable.questionForm, action pattern) |> ignore
 
 
-    | ServiceGraphPattern(
-        endpoint,
-        pattern
-      ) ->
+    | ServiceGraphPattern(endpoint, pattern) ->
 
-        builder.Service(
-            endpoint.asUri,
-            action pattern
-        )
-        |> ignore
+        builder.Service(endpoint.asUri, action pattern) |> ignore
 
 
     | FilterGraphPattern expression ->
 
-        builder.Filter(
-            expression
-        )
+        builder.Filter(expression) |> ignore
+
+
+    | BindGraphPattern(rdfVariable, expression) ->
+
+        builder.Where(BindPattern(rdfVariable.identifier, expression) :> ITriplePattern)
         |> ignore
 
 
-    | BindGraphPattern(
-        rdfVariable,
-        expression
-      ) ->
+let private applyWherePattern (queryBuilder: IQueryBuilder) (wherePattern: SparqlGraphPattern) : IQueryBuilder =
 
-        builder.Where(
-            BindPattern(
-                rdfVariable.identifier,
-                expression
-            )
-            :> ITriplePattern
-        )
-        |> ignore
+    let patternBuilder = TriplePatternBuilder(queryBuilder.Prefixes)
 
-
-let private applyWherePattern
-    (queryBuilder: IQueryBuilder)
-    (wherePattern: SparqlGraphPattern)
-    : IQueryBuilder
-    =
-
-    let patternBuilder =
-        TriplePatternBuilder(
-            queryBuilder.Prefixes
-        )
-
-    applyGraphPattern
-        patternBuilder
-        queryBuilder.Root
-        wherePattern
+    applyGraphPattern patternBuilder queryBuilder.Root wherePattern
 
     queryBuilder
 
@@ -3380,31 +3121,19 @@ let private applyWherePattern
 // These become literal SPARQL FROM / FROM NAMED clauses on SparqlQuery.
 // ============================================================================
 
-let private applyDatasetClauses
-    (datasetClauses: SparqlDatasetClause array)
-    (sparqlQuery: SparqlQuery)
-    : SparqlQuery
-    =
+let private applyDatasetClauses (datasetClauses: SparqlDatasetClause array) (sparqlQuery: SparqlQuery) : SparqlQuery =
 
     datasetClauses
-    |> Array.iter (
-        function
+    |> Array.iter (function
 
         | From graphIri ->
 
-            sparqlQuery.AddDefaultGraph(
-                graphIri.asUriNode
-                :> IRefNode
-            )
+            sparqlQuery.AddDefaultGraph(graphIri.asUriNode :> IRefNode)
 
 
         | FromNamed graphIri ->
 
-            sparqlQuery.AddNamedGraph(
-                graphIri.asUriNode
-                :> IRefNode
-            )
-    )
+            sparqlQuery.AddNamedGraph(graphIri.asUriNode :> IRefNode))
 
     sparqlQuery
 
@@ -3413,92 +3142,54 @@ let private applyDatasetClauses
 // Typed query compilers
 // ============================================================================
 
-let private buildSelectQuery
-    (variables: RdfVariable array option)
-    (datasetClauses: SparqlDatasetClause array)
-    (wherePattern: SparqlGraphPattern)
-    : SelectQuery
-    =
+let private buildSelectQuery (variables: RdfVariable array option) (datasetClauses: SparqlDatasetClause array) (wherePattern: SparqlGraphPattern) : SelectQuery =
 
-    let queryBuilder : IQueryBuilder =
+    let queryBuilder: IQueryBuilder =
 
         match variables with
 
-        | Some variables ->
-            SELECT variables
-            :> IQueryBuilder
+        | Some variables -> SELECT variables :> IQueryBuilder
 
-        | None ->
-            SELECTALL()
-            :> IQueryBuilder
+        | None -> SELECTALL() :> IQueryBuilder
 
 
     let query =
 
         queryBuilder
         |> importQueryPrefixes
-        |> fun builder ->
-            applyWherePattern
-                builder
-                wherePattern
-        |> fun builder ->
-            builder.BuildQuery()
+        |> fun builder -> applyWherePattern builder wherePattern
+        |> fun builder -> builder.BuildQuery()
         |> applyDatasetClauses datasetClauses
 
 
-    {
-        selectQuery = query
-    }
+    { selectQuery = query }
 
 
-let private buildAskQuery
-    (datasetClauses: SparqlDatasetClause array)
-    (wherePattern: SparqlGraphPattern)
-    : AskQuery
-    =
+let private buildAskQuery (datasetClauses: SparqlDatasetClause array) (wherePattern: SparqlGraphPattern) : AskQuery =
 
     let query =
 
         ASK()
         |> importQueryPrefixes
-        |> fun builder ->
-            applyWherePattern
-                builder
-                wherePattern
-        |> fun builder ->
-            builder.BuildQuery()
+        |> fun builder -> applyWherePattern builder wherePattern
+        |> fun builder -> builder.BuildQuery()
         |> applyDatasetClauses datasetClauses
 
 
-    {
-        askQuery = query
-    }
+    { askQuery = query }
 
 
-let private buildConstructQuery
-    (constructFormula: Formula)
-    (datasetClauses: SparqlDatasetClause array)
-    (wherePattern: SparqlGraphPattern)
-    : GraphQuery
-    =
+let private buildConstructQuery (constructFormula: Formula) (datasetClauses: SparqlDatasetClause array) (wherePattern: SparqlGraphPattern) : GraphQuery =
 
     let queryBuilder =
 
         QueryBuilder.Construct(
-            Action<IDescribeGraphPatternBuilder>(
-                fun constructTemplate ->
+            Action<IDescribeGraphPatternBuilder>(fun constructTemplate ->
 
-                    let templatePatternBuilder =
-                        TriplePatternBuilder(
-                            namespaceMapper
-                        )
+                let templatePatternBuilder = TriplePatternBuilder(namespaceMapper)
 
-                    constructTemplate.Where(
-                        templatePatternBuilder
-                        |> constructFormula.ITriplePatterns
-                    )
-                    |> ignore
-            )
+                constructTemplate.Where(templatePatternBuilder |> constructFormula.ITriplePatterns)
+                |> ignore)
         )
 
 
@@ -3506,89 +3197,61 @@ let private buildConstructQuery
 
         queryBuilder
         |> importQueryPrefixes
-        |> fun builder ->
-            applyWherePattern
-                builder
-                wherePattern
-        |> fun builder ->
-            builder.BuildQuery()
+        |> fun builder -> applyWherePattern builder wherePattern
+        |> fun builder -> builder.BuildQuery()
         |> applyDatasetClauses datasetClauses
 
 
-    {
-        graphQuery = query
-    }
+    { graphQuery = query }
 
 
-let private buildDiscoverQuery
-    (variables: RdfVariable array)
-    (datasetClauses: SparqlDatasetClause array)
-    (wherePattern: SparqlGraphPattern)
-    : GraphQuery
-    =
+let private buildDiscoverQuery (variables: RdfVariable array) (datasetClauses: SparqlDatasetClause array) (wherePattern: SparqlGraphPattern) : GraphQuery =
 
     let queryBuilder =
 
-        DISCOVER variables
-        :> IQueryBuilder
+        DISCOVER variables :> IQueryBuilder
 
 
     let query =
 
         queryBuilder
         |> importQueryPrefixes
-        |> fun builder ->
-            applyWherePattern
-                builder
-                wherePattern
-        |> fun builder ->
-            builder.BuildQuery()
+        |> fun builder -> applyWherePattern builder wherePattern
+        |> fun builder -> builder.BuildQuery()
         |> repairDescribeVariables
         |> applyDatasetClauses datasetClauses
 
 
-    {
-        graphQuery = query
-    }
+    { graphQuery = query }
 
 
-let private buildDescribeQuery
-    (iris: Iri array)
-    : GraphQuery
-    =
+let private buildDescribeQuery (iris: Iri array) : GraphQuery =
 
     let query =
 
-        iris
-        |> DESCRIBE
+        iris |> DESCRIBE
 
     query.NamespaceMap.Import namespaceMapper
 
-    {
-        graphQuery = query
-    }
+    { graphQuery = query }
 
 
 // ============================================================================
 // Query computation-expression state
 // ============================================================================
 
-type SparqlQueryDraft =
-    {
-        datasetClauses:
-            SparqlDatasetClause list
+type SparqlQueryDraft = {
+    datasetClauses: SparqlDatasetClause list
 
-        wherePattern:
-            SparqlGraphPattern option
-    }
+    wherePattern: SparqlGraphPattern option
+}
 
 
-let private emptySparqlQueryDraft =
-    {
-        datasetClauses = []
+let private emptySparqlQueryDraft = {
+    datasetClauses = []
 
-        wherePattern = None
-    }
+    wherePattern = None
+}
 
 
 // ============================================================================
@@ -3605,72 +3268,35 @@ let private emptySparqlQueryDraft =
 // It no longer means "execute against this IGraph".
 // ============================================================================
 
-type WhereQueryBuilder<'Query>
-    (
-        build:
-            SparqlQueryDraft
-                -> SparqlGraphPattern
-                -> 'Query
-    )
-    =
+type WhereQueryBuilder<'Query>(build: SparqlQueryDraft -> SparqlGraphPattern -> 'Query) =
 
 
-    member _.Yield(_: unit)
-        : SparqlQueryDraft
-        =
-        emptySparqlQueryDraft
+    member _.Yield(_: unit) : SparqlQueryDraft = emptySparqlQueryDraft
 
 
-    member _.Zero()
-        : SparqlQueryDraft
-        =
-        emptySparqlQueryDraft
+    member _.Zero() : SparqlQueryDraft = emptySparqlQueryDraft
 
 
-    member _.For
-        (
-            _draft: SparqlQueryDraft,
-            continuation:
-                unit -> SparqlQueryDraft
-        )
-        : SparqlQueryDraft
-        =
-        continuation()
+    member _.For(_draft: SparqlQueryDraft, continuation: unit -> SparqlQueryDraft) : SparqlQueryDraft = continuation ()
 
 
     [<CustomOperation("from")>]
-    member _.From
-        (
-            draft: SparqlQueryDraft,
-            graphIri: Iri
-        )
-        : SparqlQueryDraft
-        =
+    member _.From(draft: SparqlQueryDraft, graphIri: Iri) : SparqlQueryDraft =
 
         {
             draft with
 
-                datasetClauses =
-                    From graphIri
-                    :: draft.datasetClauses
+                datasetClauses = From graphIri :: draft.datasetClauses
         }
 
 
     [<CustomOperation("fromNamed")>]
-    member _.FromNamed
-        (
-            draft: SparqlQueryDraft,
-            graphIri: Iri
-        )
-        : SparqlQueryDraft
-        =
+    member _.FromNamed(draft: SparqlQueryDraft, graphIri: Iri) : SparqlQueryDraft =
 
         {
             draft with
 
-                datasetClauses =
-                    FromNamed graphIri
-                    :: draft.datasetClauses
+                datasetClauses = FromNamed graphIri :: draft.datasetClauses
         }
 
 
@@ -3681,20 +3307,13 @@ type WhereQueryBuilder<'Query>
     // A Formula becomes a basic graph pattern.
 
     [<CustomOperation("where")>]
-    member _.Where
-        (
-            draft: SparqlQueryDraft,
-            formula: Formula
-        )
-        : SparqlQueryDraft
-        =
+    member _.Where(draft: SparqlQueryDraft, formula: Formula) : SparqlQueryDraft =
 
         match draft.wherePattern with
 
         | Some _ ->
 
-            invalidOp
-                "The query already contains a WHERE graph pattern."
+            invalidOp "The query already contains a WHERE graph pattern."
 
 
         | None ->
@@ -3702,10 +3321,7 @@ type WhereQueryBuilder<'Query>
             {
                 draft with
 
-                    wherePattern =
-                        Some(
-                            BasicGraphPattern formula
-                        )
+                    wherePattern = Some(BasicGraphPattern formula)
             }
 
 
@@ -3717,20 +3333,13 @@ type WhereQueryBuilder<'Query>
     // nested groups, etc.
 
     [<CustomOperation("wherePattern")>]
-    member _.WherePattern
-        (
-            draft: SparqlQueryDraft,
-            graphPattern: SparqlGraphPattern
-        )
-        : SparqlQueryDraft
-        =
+    member _.WherePattern(draft: SparqlQueryDraft, graphPattern: SparqlGraphPattern) : SparqlQueryDraft =
 
         match draft.wherePattern with
 
         | Some _ ->
 
-            invalidOp
-                "The query already contains a WHERE graph pattern."
+            invalidOp "The query already contains a WHERE graph pattern."
 
 
         | None ->
@@ -3738,28 +3347,19 @@ type WhereQueryBuilder<'Query>
             {
                 draft with
 
-                    wherePattern =
-                        Some graphPattern
+                    wherePattern = Some graphPattern
             }
 
 
-    member _.Run
-        (
-            draft: SparqlQueryDraft
-        )
-        : 'Query
-        =
+    member _.Run(draft: SparqlQueryDraft) : 'Query =
 
         let wherePattern =
 
             match draft.wherePattern with
 
-            | Some wherePattern ->
-                wherePattern
+            | Some wherePattern -> wherePattern
 
-            | None ->
-                invalidOp
-                    "The query requires a WHERE graph pattern."
+            | None -> invalidOp "The query requires a WHERE graph pattern."
 
 
         let normalizedDraft =
@@ -3767,15 +3367,11 @@ type WhereQueryBuilder<'Query>
             {
                 draft with
 
-                    datasetClauses =
-                        draft.datasetClauses
-                        |> List.rev
+                    datasetClauses = draft.datasetClauses |> List.rev
             }
 
 
-        build
-            normalizedDraft
-            wherePattern
+        build normalizedDraft wherePattern
 
 
 // ============================================================================
@@ -3787,77 +3383,34 @@ type WhereQueryBuilder<'Query>
 module sparql =
 
 
-    let select
-        (variables: RdfVariable seq)
-        : WhereQueryBuilder<SelectQuery>
-        =
+    let select (variables: RdfVariable seq) : WhereQueryBuilder<SelectQuery> =
 
-        let variables =
-            variables
-            |> Seq.toArray
+        let variables = variables |> Seq.toArray
 
-        WhereQueryBuilder<SelectQuery>(
-            fun draft wherePattern ->
+        WhereQueryBuilder<SelectQuery>(fun draft wherePattern ->
 
-                buildSelectQuery
-                    (Some variables)
-                    (
-                        draft.datasetClauses
-                        |> List.toArray
-                    )
-                    wherePattern
-        )
+            buildSelectQuery (Some variables) (draft.datasetClauses |> List.toArray) wherePattern)
 
 
-    let selectAll
-        : WhereQueryBuilder<SelectQuery>
-        =
+    let selectAll: WhereQueryBuilder<SelectQuery> =
 
-        WhereQueryBuilder<SelectQuery>(
-            fun draft wherePattern ->
+        WhereQueryBuilder<SelectQuery>(fun draft wherePattern ->
 
-                buildSelectQuery
-                    None
-                    (
-                        draft.datasetClauses
-                        |> List.toArray
-                    )
-                    wherePattern
-        )
+            buildSelectQuery None (draft.datasetClauses |> List.toArray) wherePattern)
 
 
-    let construct
-        (constructFormula: Formula)
-        : WhereQueryBuilder<GraphQuery>
-        =
+    let construct (constructFormula: Formula) : WhereQueryBuilder<GraphQuery> =
 
-        WhereQueryBuilder<GraphQuery>(
-            fun draft wherePattern ->
+        WhereQueryBuilder<GraphQuery>(fun draft wherePattern ->
 
-                buildConstructQuery
-                    constructFormula
-                    (
-                        draft.datasetClauses
-                        |> List.toArray
-                    )
-                    wherePattern
-        )
+            buildConstructQuery constructFormula (draft.datasetClauses |> List.toArray) wherePattern)
 
 
-    let ask
-        : WhereQueryBuilder<AskQuery>
-        =
+    let ask: WhereQueryBuilder<AskQuery> =
 
-        WhereQueryBuilder<AskQuery>(
-            fun draft wherePattern ->
+        WhereQueryBuilder<AskQuery>(fun draft wherePattern ->
 
-                buildAskQuery
-                    (
-                        draft.datasetClauses
-                        |> List.toArray
-                    )
-                    wherePattern
-        )
+            buildAskQuery (draft.datasetClauses |> List.toArray) wherePattern)
 
 
     // "discover" remains your convenience name for:
@@ -3865,39 +3418,21 @@ module sparql =
     //     DESCRIBE ?variable ...
     //     WHERE { ... }
 
-    let discover
-        (variables: RdfVariable seq)
-        : WhereQueryBuilder<GraphQuery>
-        =
+    let discover (variables: RdfVariable seq) : WhereQueryBuilder<GraphQuery> =
 
-        let variables =
-            variables
-            |> Seq.toArray
+        let variables = variables |> Seq.toArray
 
-        WhereQueryBuilder<GraphQuery>(
-            fun draft wherePattern ->
+        WhereQueryBuilder<GraphQuery>(fun draft wherePattern ->
 
-                buildDiscoverQuery
-                    variables
-                    (
-                        draft.datasetClauses
-                        |> List.toArray
-                    )
-                    wherePattern
-        )
+            buildDiscoverQuery variables (draft.datasetClauses |> List.toArray) wherePattern)
 
 
     // DESCRIBE of concrete IRIs does not require a WHERE clause and therefore
     // remains a direct function rather than a WhereQueryBuilder.
 
-    let describe
-        (iris: Iri seq)
-        : GraphQuery
-        =
+    let describe (iris: Iri seq) : GraphQuery =
 
-        iris
-        |> Seq.toArray
-        |> buildDescribeQuery
+        iris |> Seq.toArray |> buildDescribeQuery
 
 
 // ============================================================================
@@ -3913,21 +3448,17 @@ module sparql =
 // rather than FROM / FROM NAMED in the SPARQL text.
 // ============================================================================
 
-type SparqlProtocolDataset =
-    {
-        defaultGraphs:
-            Iri array
+type SparqlProtocolDataset = {
+    defaultGraphs: Iri array
 
-        namedGraphs:
-            Iri array
+    namedGraphs: Iri array
+} with
+
+    static member Empty = {
+        defaultGraphs = [||]
+
+        namedGraphs = [||]
     }
-
-    static member Empty =
-        {
-            defaultGraphs = [||]
-
-            namedGraphs = [||]
-        }
 
 
 // ============================================================================
@@ -3937,215 +3468,115 @@ type SparqlProtocolDataset =
 // It is NOT part of the query AST.
 // ============================================================================
 
-type SparqlRemoteEndpoint =
-    {
-        httpClient:
-            HttpClient
+type SparqlRemoteEndpoint = {
+    httpClient: HttpClient
 
-        endpointUri:
-            Uri
+    endpointUri: Uri
 
-        protocolDataset:
-            SparqlProtocolDataset
-    }
+    protocolDataset: SparqlProtocolDataset
+} with
 
 
-    static member fromUri
-        (
-            httpClient: HttpClient,
-            endpointUri: Uri
-        )
-        =
+    static member fromUri(httpClient: HttpClient, endpointUri: Uri) =
 
         {
             httpClient = httpClient
 
             endpointUri = endpointUri
 
-            protocolDataset =
-                SparqlProtocolDataset.Empty
+            protocolDataset = SparqlProtocolDataset.Empty
         }
 
 
-    static member fromString
-        (
-            httpClient: HttpClient,
-            endpointUri: string
-        )
-        =
+    static member fromString(httpClient: HttpClient, endpointUri: string) =
 
-        SparqlRemoteEndpoint.fromUri(
-            httpClient,
-            Uri endpointUri
-        )
+        SparqlRemoteEndpoint.fromUri (httpClient, Uri endpointUri)
 
 
-    static member fromIri
-        (
-            httpClient: HttpClient,
-            endpointIri: Iri
-        )
-        =
+    static member fromIri(httpClient: HttpClient, endpointIri: Iri) =
 
-        SparqlRemoteEndpoint.fromUri(
-            httpClient,
-            endpointIri.asUri
-        )
-    static member fromUrl
-        (
-            httpClient: HttpClient,
-            endpointUrl: DomUrl
-        )
-        =
+        SparqlRemoteEndpoint.fromUri (httpClient, endpointIri.asUri)
+    static member fromUrl(httpClient: HttpClient, endpointUrl: DomUrl) =
 
-        SparqlRemoteEndpoint.fromUri(
-            httpClient,
-            Uri endpointUrl.Href
-        )
+        SparqlRemoteEndpoint.fromUri (httpClient, Uri endpointUrl.Href)
 
 
-    member this.withDefaultGraph
-        (
-            graphIri: Iri
-        )
-        =
+    member this.withDefaultGraph(graphIri: Iri) =
 
         {
             this with
 
-                protocolDataset =
-                    {
-                        this.protocolDataset with
+                protocolDataset = {
+                    this.protocolDataset with
 
-                            defaultGraphs =
-                                Array.append
-                                    this.protocolDataset.defaultGraphs
-                                    [| graphIri |]
-                    }
+                        defaultGraphs = Array.append this.protocolDataset.defaultGraphs [| graphIri |]
+                }
         }
 
 
-    member this.withNamedGraph
-        (
-            graphIri: Iri
-        )
-        =
+    member this.withNamedGraph(graphIri: Iri) =
 
         {
             this with
 
-                protocolDataset =
-                    {
-                        this.protocolDataset with
+                protocolDataset = {
+                    this.protocolDataset with
 
-                            namedGraphs =
-                                Array.append
-                                    this.protocolDataset.namedGraphs
-                                    [| graphIri |]
-                    }
+                        namedGraphs = Array.append this.protocolDataset.namedGraphs [| graphIri |]
+                }
         }
 
 
     member private this.createClient() =
 
-        let client =
-            SparqlQueryClient(
-                this.httpClient,
-                this.endpointUri
-            )
+        let client = SparqlQueryClient(this.httpClient, this.endpointUri)
 
 
         this.protocolDataset.defaultGraphs
         |> Array.iter (fun graphIri ->
 
-            client.DefaultGraphs.Add(
-                graphIri.lexicalForm
-            )
-        )
+            client.DefaultGraphs.Add(graphIri.lexicalForm))
 
 
         this.protocolDataset.namedGraphs
         |> Array.iter (fun graphIri ->
 
-            client.NamedGraphs.Add(
-                graphIri.lexicalForm
-            )
-        )
+            client.NamedGraphs.Add(graphIri.lexicalForm))
 
 
         client
 
 
-    member this.query
-        (
-            selectQuery: SelectQuery,
-            ?cancellationToken: CancellationToken
-        )
-        : Task<SparqlResultSet>
-        =
+    member this.query(selectQuery: SelectQuery, ?cancellationToken: CancellationToken) : Task<SparqlResultSet> =
 
-        let cancellationToken =
-            defaultArg
-                cancellationToken
-                CancellationToken.None
+        let cancellationToken = defaultArg cancellationToken CancellationToken.None
 
-        let client =
-            this.createClient()
+        let client = this.createClient ()
 
-        client.QueryWithResultSetAsync(
-            selectQuery.text,
-            cancellationToken
-        )
+        client.QueryWithResultSetAsync(selectQuery.text, cancellationToken)
 
 
-    member this.query
-        (
-            askQuery: AskQuery,
-            ?cancellationToken: CancellationToken
-        )
-        : Task<bool>
-        =
+    member this.query(askQuery: AskQuery, ?cancellationToken: CancellationToken) : Task<bool> =
 
         task {
 
-            let cancellationToken =
-                defaultArg
-                    cancellationToken
-                    CancellationToken.None
+            let cancellationToken = defaultArg cancellationToken CancellationToken.None
 
-            let client =
-                this.createClient()
+            let client = this.createClient ()
 
-            let! resultSet =
-                client.QueryWithResultSetAsync(
-                    askQuery.text,
-                    cancellationToken
-                )
+            let! resultSet = client.QueryWithResultSetAsync(askQuery.text, cancellationToken)
 
             return resultSet.Result
         }
 
 
-    member this.query
-        (
-            graphQuery: GraphQuery,
-            ?cancellationToken: CancellationToken
-        )
-        : Task<IGraph>
-        =
+    member this.query(graphQuery: GraphQuery, ?cancellationToken: CancellationToken) : Task<IGraph> =
 
-        let cancellationToken =
-            defaultArg
-                cancellationToken
-                CancellationToken.None
+        let cancellationToken = defaultArg cancellationToken CancellationToken.None
 
-        let client =
-            this.createClient()
+        let client = this.createClient ()
 
-        client.QueryWithResultGraphAsync(
-            graphQuery.text,
-            cancellationToken
-        )
+        client.QueryWithResultGraphAsync(graphQuery.text, cancellationToken)
 
 
 // ============================================================================
@@ -4162,107 +3593,54 @@ type SparqlRemoteEndpoint =
 // without changing the query itself.
 // ============================================================================
 
-type SparqlLocalDataset =
-    {
-        dataset:
-            ISparqlDataset
-    }
+type SparqlLocalDataset = {
+    dataset: ISparqlDataset
+} with
 
 
-    static member fromDataset
-        (
-            dataset: ISparqlDataset
-        )
-        =
+    static member fromDataset(dataset: ISparqlDataset) =
+
+        { dataset = dataset }
+
+
+    static member fromGraph(graph: IGraph) =
 
         {
-            dataset = dataset
+            dataset = new InMemoryDataset(graph) :> ISparqlDataset
         }
 
 
-    static member fromGraph
-        (
-            graph: IGraph
-        )
-        =
+    static member fromStore(store: IInMemoryQueryableStore) =
 
         {
-            dataset =
-                new InMemoryDataset(graph)
-                :> ISparqlDataset
+            dataset = new InMemoryDataset(store) :> ISparqlDataset
         }
 
 
-    static member fromStore
-        (
-            store: IInMemoryQueryableStore
-        )
-        =
+    member private this.processQuery(query: SparqlQuery) =
 
-        {
-            dataset =
-                new InMemoryDataset(store)
-                :> ISparqlDataset
-        }
+        let processor = new LeviathanQueryProcessor(this.dataset)
+
+        processor.ProcessQuery(query)
 
 
-    member private this.processQuery
-        (
-            query: SparqlQuery
-        )
-        =
+    member this.query(selectQuery: SelectQuery) : SparqlResultSet =
 
-        let processor =
-            new LeviathanQueryProcessor(
-                this.dataset
-            )
-
-        processor.ProcessQuery(
-            query
-        )
+        this.processQuery (selectQuery.asSparqlQuery) :?> SparqlResultSet
 
 
-    member this.query
-        (
-            selectQuery: SelectQuery
-        )
-        : SparqlResultSet
-        =
-
-        this.processQuery(
-            selectQuery.asSparqlQuery
-        )
-        :?> SparqlResultSet
-
-
-    member this.query
-        (
-            askQuery: AskQuery
-        )
-        : bool
-        =
+    member this.query(askQuery: AskQuery) : bool =
 
         let resultSet =
 
-            this.processQuery(
-                askQuery.asSparqlQuery
-            )
-            :?> SparqlResultSet
+            this.processQuery (askQuery.asSparqlQuery) :?> SparqlResultSet
 
         resultSet.Result
 
 
-    member this.query
-        (
-            graphQuery: GraphQuery
-        )
-        : IGraph
-        =
+    member this.query(graphQuery: GraphQuery) : IGraph =
 
-        this.processQuery(
-            graphQuery.asSparqlQuery
-        )
-        :?> IGraph
+        this.processQuery (graphQuery.asSparqlQuery) :?> IGraph
 
 
 
@@ -4277,10 +3655,12 @@ let (!?) (identifier: string) = RdfVariable.fromIdentifier identifier
 
 // lexical adders
 
-let (.*@) (lexicalForm:string) (languageTag:NLanguageTag.LanguageTag) = RdfLiteral.languageTagged lexicalForm languageTag
+let (.*@) (lexicalForm: string) (languageTag: NLanguageTag.LanguageTag) =
+    RdfLiteral.languageTagged lexicalForm languageTag
 
 
-let (.*^) (lexicalForm:string) (datatypeIri:Iri) = RdfLiteral.datatyped lexicalForm datatypeIri
+let (.*^) (lexicalForm: string) (datatypeIri: Iri) =
+    RdfLiteral.datatyped lexicalForm datatypeIri
 // TODO consider something for long string literals
 
 
@@ -4309,10 +3689,7 @@ let inline (!<=) valueObject =
 let inline (-!>) (draft: Formula) (subjectTerm: ^SubjectType when ^SubjectType: (member asSubject: RdfSubject)) =
     draft.addRdfSubject subjectTerm.asSubject
 
-let inline (-!|)
-    (draft: Formula)
-    (subjectTerms: ^SubjectType list when ^SubjectType: (member asSubject: RdfSubject))
-    =
+let inline (-!|) (draft: Formula) (subjectTerms: ^SubjectType list when ^SubjectType: (member asSubject: RdfSubject)) =
     subjectTerms
     |> List.map (fun subjectTerm -> subjectTerm.asSubject)
     |> List.toArray
@@ -4320,16 +3697,10 @@ let inline (-!|)
 
 
 // predicate adders
-let inline (---)
-    (draft: Formula)
-    (predicateTerm: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate))
-    =
+let inline (---) (draft: Formula) (predicateTerm: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate)) =
     draft.addRdfPredicate predicateTerm.asPredicate
 
-let inline (--|)
-    (draft: Formula)
-    (predicateTerms: ^PredicateType list when ^PredicateType: (member asPredicate: RdfPredicate))
-    =
+let inline (--|) (draft: Formula) (predicateTerms: ^PredicateType list when ^PredicateType: (member asPredicate: RdfPredicate)) =
     predicateTerms
     |> List.toArray
     |> Array.Parallel.map (fun predicateTerm -> predicateTerm.asPredicate)
@@ -4337,9 +3708,7 @@ let inline (--|)
 
 // predicateObjectList adders
 let inline (-~|) (draft: Formula) (predicateObjectLists: PredicateObjectList list) =
-    predicateObjectLists
-    |> List.toArray
-    |> draft.addPredicateObjectLists
+    predicateObjectLists |> List.toArray |> draft.addPredicateObjectLists
 
 let inline (-~|>) (draft: Formula) (predicateObjectLists: PredicateObjectList list) =
     predicateObjectLists
@@ -4348,10 +3717,7 @@ let inline (-~|>) (draft: Formula) (predicateObjectLists: PredicateObjectList li
     |> Formula.materializeFormula
 
 
-let inline (->-)
-    (predicate: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate))
-    (object: ^ObjectType when ^ObjectType: (member asObject: RdfObject))
-    =
+let inline (->-) (predicate: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate)) (object: ^ObjectType when ^ObjectType: (member asObject: RdfObject)) =
     PredicateObjectList.fromTerms predicate.asPredicate [| object.asObject |]
 
 let inline (->|)
@@ -4366,74 +3732,60 @@ let inline (->|)
     PredicateObjectList.fromTerms predicate.asPredicate objects
 
 let inline (->=) (predicate: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate)) valueObject =
-    PredicateObjectList.fromTerms
-        predicate.asPredicate
-        [| RdfLiteral.autotyped valueObject
-           |> RdfObject.LiteralObject |]
+    PredicateObjectList.fromTerms predicate.asPredicate [| RdfLiteral.autotyped valueObject |> RdfObject.LiteralObject |]
 
 
 let inline (->=|) (predicate: ^PredicateType when ^PredicateType: (member asPredicate: RdfPredicate)) valueObjects =
     let objects =
         valueObjects
-        |> List.map (fun valueObject ->
-            RdfLiteral.autotyped valueObject
-            |> RdfObject.LiteralObject)
+        |> List.map (fun valueObject -> RdfLiteral.autotyped valueObject |> RdfObject.LiteralObject)
         |> List.toArray
 
     PredicateObjectList.fromTerms predicate.asPredicate objects
 
 
 let inline (-->) (draft: Formula) (objectTerm: ^ObjectType when ^ObjectType: (member asObject: RdfObject)) =
-    draft.addRdfObject objectTerm.asObject
-    |> Formula.materializeFormula
+    draft.addRdfObject objectTerm.asObject |> Formula.materializeFormula
 
 let inline (-<-) (draft: Formula) (subjectTerm: ^SubjectType when ^SubjectType: (member asSubject: RdfSubject)) =
-    draft.addRdfSubject subjectTerm.asSubject
-    |> Formula.materializeFormula
+    draft.addRdfSubject subjectTerm.asSubject |> Formula.materializeFormula
 
 let inline (-<-/) (draft: Formula) (subjectTerm: ^SubjectType when ^SubjectType: (member asSubject: RdfSubject)) =
-    let materializedDraft =
-        draft.addRdfSubject subjectTerm.asSubject
-        |> Formula.materializeFormula
+    let materializedDraft = draft.addRdfSubject subjectTerm.asSubject |> Formula.materializeFormula
 
-    { materializedDraft with
+    {
+        materializedDraft with
 
-        subjects = [| subjectTerm.asSubject |]
+            subjects = [| subjectTerm.asSubject |]
 
-     }
+    }
 
 let inline (-->/) (draft: Formula) (objectTerm: ^ObjectType when ^ObjectType: (member asObject: RdfObject)) =
-    let materializedDraft =
-        draft.addRdfObject objectTerm.asObject
-        |> Formula.materializeFormula
+    let materializedDraft = draft.addRdfObject objectTerm.asObject |> Formula.materializeFormula
 
-    { materializedDraft with
+    {
+        materializedDraft with
 
-        subjects =
-            match objectTerm.asObject.maybeSubject with
-            | Some subject -> [| subject |]
-            | None -> [||]
+            subjects =
+                match objectTerm.asObject.maybeSubject with
+                | Some subject -> [| subject |]
+                | None -> [||]
 
-     }
+    }
 
 let inline (-->=) (draft: Formula) literal =
-    draft.addRdfLiteral literal
-    |> Formula.materializeFormula
+    draft.addRdfLiteral literal |> Formula.materializeFormula
 
 let inline (-->^) (draft: Formula) (lexicalForm: string) (datatype: Iri) =
-    draft.addRdfLiteral (lexicalForm .*^ datatype)
-    |> Formula.materializeFormula
+    draft.addRdfLiteral (lexicalForm .*^ datatype) |> Formula.materializeFormula
 
 let inline (-->@) (draft: Formula) (lexicalForm: string) (languageTag: NLanguageTag.LanguageTag) =
-    lexicalForm .*@ languageTag
-    |> draft.addRdfLiteral
-    |> Formula.materializeFormula
+    lexicalForm .*@ languageTag |> draft.addRdfLiteral |> Formula.materializeFormula
 
 
 
 let inline (-->=|) (draft: Formula) literals =
-    draft.addRdfLiterals literals
-    |> Formula.materializeFormula
+    draft.addRdfLiterals literals |> Formula.materializeFormula
 
 let inline (-->^|) (draft: Formula) (lexicalForms: string list) (datatype: Iri) =
     lexicalForms
@@ -4462,9 +3814,7 @@ let inline (-->|) (draft: Formula) (objectTerms: ^ObjectType list when ^ObjectTy
 /// formulas
 
 let inline (-*|) (draft: Formula) (formulaList: Formula list) =
-    formulaList
-    |> draft.addFormulas
-    |> Formula.materializeFormula
+    formulaList |> draft.addFormulas |> Formula.materializeFormula
 
 
 
@@ -4491,39 +3841,39 @@ let inline (-*|) (draft: Formula) (formulaList: Formula list) =
 
 type IGraph with
 
-    member this.mapPrefixes () =
+    member this.mapPrefixes() =
         this.AllNodes
-        |> Seq.iter(fun (inode) -> 
-            match Point.fromINode inode with 
-            | IriPoint (PrefixedIri prefixedName) -> this.NamespaceMap.AddNamespace prefixedName.prefixId.asNamespaceMap
-            | _ -> ()
-        )
-    static member fromRdfTripleSet (rdfTripleSet :RdfTripleSet) = 
+        |> Seq.iter (fun (inode) ->
+            match Point.fromINode inode with
+            | IriPoint(PrefixedIri prefixedName) -> this.NamespaceMap.AddNamespace prefixedName.prefixId.asNamespaceMap
+            | _ -> ())
+    static member fromRdfTripleSet(rdfTripleSet: RdfTripleSet) =
         let graph = new ThreadSafeGraph()
-        graph.Assert( rdfTripleSet.triples |> Seq.map (fun triple -> triple.asVDSTriple)) |> ignore
+        graph.Assert(rdfTripleSet.triples |> Seq.map (fun triple -> triple.asVDSTriple))
+        |> ignore
         graph
 
 
 
-type TextualSyntax =
-    {
+type TextualSyntax = {
 
-      syntaxName: string
-      fileExtension: string
+    syntaxName: string
+    fileExtension: string
 
-     }
+} with
+
     member this.mimeType = MimeString.FromFileName this.fileExtension
     member this.filePath parentDirectory stem =
-        Directory.CreateDirectory(parentDirectory)
-        |> ignore
+        Directory.CreateDirectory(parentDirectory) |> ignore
 
         Path.Combine(parentDirectory, stem + this.fileExtension)
 
 
 module Turtle =
-    let syntax =
-        { syntaxName = "Turtle"
-          fileExtension = ".ttl" }
+    let syntax = {
+        syntaxName = "Turtle"
+        fileExtension = ".ttl"
+    }
 
 
     let isValidPrefixedNameRelaxed (s: string) =
@@ -4564,9 +3914,7 @@ module Turtle =
         sb.ToString()
 
     let formatIriRefFromOriginalString (uri: Uri) =
-        "<"
-        + escapeIriRefByPercentEncoding uri.OriginalString
-        + ">"
+        "<" + escapeIriRefByPercentEncoding uri.OriginalString + ">"
 
     let isAsciiSafeLocal (local: string) =
         if String.IsNullOrEmpty(local) then
@@ -4575,13 +3923,9 @@ module Turtle =
             let isStartOk ch = Char.IsLetterOrDigit(ch) || ch = '_'
 
             let isRestOk ch =
-                Char.IsLetterOrDigit(ch)
-                || ch = '_'
-                || ch = '-'
-                || ch = '.'
+                Char.IsLetterOrDigit(ch) || ch = '_' || ch = '-' || ch = '.'
 
-            isStartOk local.[0]
-            && local |> Seq.forall isRestOk
+            isStartOk local.[0] && local |> Seq.forall isRestOk
 
     let isValidLocalName (local: string) =
         if String.IsNullOrEmpty(local) then
@@ -4589,8 +3933,7 @@ module Turtle =
         elif local.Contains("/") then
             false
         else
-            TurtleSpecsHelper.IsValidQName("p:" + local)
-            || isAsciiSafeLocal local
+            TurtleSpecsHelper.IsValidQName("p:" + local) || isAsciiSafeLocal local
 
     let tryReduceToPrefixOnly (nsMap: INamespaceMapper) (uriOriginal: string) =
         nsMap.Prefixes
@@ -4672,10 +4015,9 @@ module Turtle =
         tw.WriteLine()
 
     let writeIgraph (parentDirectory: string) (stem: string) (graph: VDS.RDF.IGraph) =
-        graph.mapPrefixes()
+        graph.mapPrefixes ()
 
-        use fileStream =
-            new FileStream(syntax.filePath parentDirectory stem, FileMode.Create, FileAccess.Write, FileShare.Read)
+        use fileStream = new FileStream(syntax.filePath parentDirectory stem, FileMode.Create, FileAccess.Write, FileShare.Read)
 
         use streamWriter = new StreamWriter(fileStream, new UTF8Encoding(false))
 
@@ -4710,32 +4052,31 @@ module Turtle =
 
 
 
-let distributionMap = 
+let distributionMap =
     [|
 
-                    "http://purl.org/vocab/vann/", "http://purl.org/vocab/vann/vann-vocab-20100607.rdf"
-                    "http://rdfs.org/ns/void#", "https://lov.linkeddata.es/generated/widoco/void-1788068093928-33605f87/ontology.ttl"
-                    "http://purl.org/vocommons/voaf#", "https://lov.linkeddata.es/generated/widoco/voaf-1788235281178-42d2c623/ontology.ttl"
-                    "http://www.linkedmodel.org/schema/vaem#", "http://www.linkedmodel.org/1.2/schema/OSG_vaem-(v1.2).ttl"
-        
+        "http://purl.org/vocab/vann/", "http://purl.org/vocab/vann/vann-vocab-20100607.rdf"
+        "http://rdfs.org/ns/void#", "https://lov.linkeddata.es/generated/widoco/void-1788068093928-33605f87/ontology.ttl"
+        "http://purl.org/vocommons/voaf#", "https://lov.linkeddata.es/generated/widoco/voaf-1788235281178-42d2c623/ontology.ttl"
+        "http://www.linkedmodel.org/schema/vaem#", "http://www.linkedmodel.org/1.2/schema/OSG_vaem-(v1.2).ttl"
+
     |]
     |> Map.ofArray
 
 
 
 
-type RdfDatasetDocument = 
-    {
+type RdfDatasetDocument = {
     datasetFile: FileInfo
-    }
-    member this.asTripleStore = 
+} with
+
+    member this.asTripleStore =
         let tripleStore = new TripleStore()
         FileLoader.Load(tripleStore, this.datasetFile.FullName)
         // TODO figure out how to get namespacemap of all graphs
         // namespaceMapper.Import tripleStore.NamespaceMap
         tripleStore
-    member this.asInMemoryQuadDataset = 
-        new InMemoryQuadDataset(this.asTripleStore)
+    member this.asInMemoryQuadDataset = new InMemoryQuadDataset(this.asTripleStore)
     member this.asSparqlLocalDataset = SparqlLocalDataset.fromDataset this.asInMemoryQuadDataset
 
 
@@ -4743,64 +4084,72 @@ type RdfDatasetDocument =
 
 
 
-type RdfGraphDocument = 
-  {
+type RdfGraphDocument = {
     graphFile: FileInfo
-  }
-  static member fromTurtleVocabulary (prefixId:PrefixId) = { graphFile = prefixId.asFileExtension ".ttl" }
-  member this.asIGraph :IGraph = 
+} with
+
+    static member fromTurtleVocabulary(prefixId: PrefixId) = {
+        graphFile = prefixId.asFileExtension ".ttl"
+    }
+    member this.asIGraph: IGraph =
         let igraph = new ThreadSafeGraph()
-        FileLoader.Load(igraph,this.graphFile.FullName)
+        FileLoader.Load(igraph, this.graphFile.FullName)
         namespaceMapper.Import igraph.NamespaceMap
         igraph
-  member this.asOntologyGraph = 
+    member this.asOntologyGraph =
         let ontologyGraph = new OntologyGraph()
-        FileLoader.Load(ontologyGraph,this.graphFile.FullName)
+        FileLoader.Load(ontologyGraph, this.graphFile.FullName)
         namespaceMapper.Import ontologyGraph.NamespaceMap
         ontologyGraph
-  member this.asSparqlLocalDataset = SparqlLocalDataset.fromGraph this.asIGraph
+    member this.asSparqlLocalDataset = SparqlLocalDataset.fromGraph this.asIGraph
 
-  member this.asRDFGraph = RDFGraph.FromFile(RDFModelEnums.RDFFormats.Turtle, this.graphFile.FullName)
-  // member this.asOWLOntology = task { return! OWLOntology.FromRDFGraphAsync this.asRDFGraph } |> Async.AwaitTask |> Async.RunSynchronously
-  member this.asDataTable = this.asRDFGraph.ToDataTable()
-  member this.points = 
-      this.asIGraph.AllNodes
-    |> Seq.toArray
-    |> Array.map Point.fromINode
-  member this.iris = this.points |> Array.choose (fun point -> 
-    match point with 
-    | IriPoint iri -> Some iri
-    | _ -> None
-    )
-  member this.prefixedNames = this.iris |> Array.choose (fun iri -> 
-    match iri with 
-    | PrefixedIri prefixedName -> Some prefixedName
-    | _ -> None
-    )
+    member this.asRDFGraph = RDFGraph.FromFile(RDFModelEnums.RDFFormats.Turtle, this.graphFile.FullName)
+    // member this.asOWLOntology = task { return! OWLOntology.FromRDFGraphAsync this.asRDFGraph } |> Async.AwaitTask |> Async.RunSynchronously
+    member this.asDataTable = this.asRDFGraph.ToDataTable()
+    member this.points = this.asIGraph.AllNodes |> Seq.toArray |> Array.map Point.fromINode
+    member this.iris =
+        this.points
+        |> Array.choose (fun point ->
+            match point with
+            | IriPoint iri -> Some iri
+            | _ -> None)
+    member this.prefixedNames =
+        this.iris
+        |> Array.choose (fun iri ->
+            match iri with
+            | PrefixedIri prefixedName -> Some prefixedName
+            | _ -> None)
 
-  member this.literals = this.points |> Array.choose (fun point -> 
-    match point with 
-    | LiteralPoint literal -> Some literal
-    | _ -> None
-    )
-  member this.blankNodes = this.points |> Array.choose (fun point -> 
-    match point with 
-    | BlankPoint blankNode -> Some blankNode
-    | _ -> None
-    )
+    member this.literals =
+        this.points
+        |> Array.choose (fun point ->
+            match point with
+            | LiteralPoint literal -> Some literal
+            | _ -> None)
+    member this.blankNodes =
+        this.points
+        |> Array.choose (fun point ->
+            match point with
+            | BlankPoint blankNode -> Some blankNode
+            | _ -> None)
 
-  member this.namespacedNames (namespacePrefixId:PrefixId) = 
-      this.prefixedNames |> Array.filter (fun prefixedName -> prefixedName.prefixId.namespaceName = namespacePrefixId.namespaceName) |> Array.sortBy (fun prefixedName -> prefixedName.localName)
+    member this.namespacedNames(namespacePrefixId: PrefixId) =
+        this.prefixedNames
+        |> Array.filter (fun prefixedName -> prefixedName.prefixId.namespaceName = namespacePrefixId.namespaceName)
+        |> Array.sortBy (fun prefixedName -> prefixedName.localName)
 
 
-type RdfVocabulary = 
-    {
-        prefixId : PrefixId
-        namespaceDocument : RdfGraphDocument
-    }
-    
-    member inline this.maybeOntologyClass<'Term when 'Term : (member asINode:INode)> (term:'Term) =  this.namespaceDocument.asOntologyGraph.AllClasses |> Seq.tryFind (fun ontologyClass -> ontologyClass.Resource = term.asINode )
-    member inline this.maybeOntologyProperty<'Term when 'Term : (member asINode:INode)> (term:'Term) =  this.namespaceDocument.asOntologyGraph.AllProperties |> Seq.tryFind (fun ontologyProperty -> ontologyProperty.Resource = term.asINode )
+type RdfVocabulary = {
+    prefixId: PrefixId
+    namespaceDocument: RdfGraphDocument
+} with
+
+    member inline this.maybeOntologyClass<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        this.namespaceDocument.asOntologyGraph.AllClasses
+        |> Seq.tryFind (fun ontologyClass -> ontologyClass.Resource = term.asINode)
+    member inline this.maybeOntologyProperty<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        this.namespaceDocument.asOntologyGraph.AllProperties
+        |> Seq.tryFind (fun ontologyProperty -> ontologyProperty.Resource = term.asINode)
     member this.OntologyClasses = this.namespaceDocument.asOntologyGraph.AllClasses |> Seq.toArray
     member this.OntologyProperties = this.namespaceDocument.asOntologyGraph.AllProperties |> Seq.toArray
     member this.RdfClasses = this.namespaceDocument.asOntologyGraph.RdfClasses |> Seq.toArray
@@ -4810,307 +4159,345 @@ type RdfVocabulary =
     member this.OwlDatatypeProperties = this.namespaceDocument.asOntologyGraph.OwlDatatypeProperties |> Seq.toArray
     member this.OwlObjectProperties = this.namespaceDocument.asOntologyGraph.OwlObjectProperties |> Seq.toArray
     member this.OwlAnnotationProperties = this.namespaceDocument.asOntologyGraph.OwlAnnotationProperties |> Seq.toArray
-    member this.AllOntologyResources = 
+    member this.AllOntologyResources =
         Array.concat [|
-            this.OntologyClasses |> Array.map (fun ontologyClass -> ontologyClass :> OntologyResource)
-            this.OntologyProperties  |> Array.map (fun ontologyProperty -> ontologyProperty :> OntologyResource)
-            |]
-    member inline this.OntologyResourceByTerm<'Term when 'Term : (member asINode:INode)> (term:'Term) =   this.AllOntologyResources |> Array.tryFind (fun ontologyResource -> ontologyResource.Resource = term.asINode  ) 
-    member inline this.termComment<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> ontologyResource.Comment |> Seq.map (fun iliteralNode -> RdfLiteral.fromILiteralNode iliteralNode ) |> Seq.toArray
+            this.OntologyClasses
+            |> Array.map (fun ontologyClass -> ontologyClass :> OntologyResource)
+            this.OntologyProperties
+            |> Array.map (fun ontologyProperty -> ontologyProperty :> OntologyResource)
+        |]
+    member inline this.OntologyResourceByTerm<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        this.AllOntologyResources
+        |> Array.tryFind (fun ontologyResource -> ontologyResource.Resource = term.asINode)
+    member inline this.termComment<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            ontologyResource.Comment
+            |> Seq.map (fun iliteralNode -> RdfLiteral.fromILiteralNode iliteralNode)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termDifferentFrom<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> ontologyResource.DifferentFrom |> Seq.map (fun inode -> Point.fromINode inode ) |> Seq.toArray
+    member inline this.termDifferentFrom<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            ontologyResource.DifferentFrom
+            |> Seq.map (fun inode -> Point.fromINode inode)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termDirectSubClasses<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termDirectSubClasses<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.DirectSubClasses |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termDirectSubProperties<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termDirectSubProperties<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.DirectSubProperties |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termDirectSuperClasses<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termDirectSuperClasses<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.DirectSuperClasses |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termDirectSuperProperties<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termDirectSuperProperties<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.DirectSuperProperties |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termDisjointClasses<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termDisjointClasses<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.DisjointClasses |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termDomains<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termDomains<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.Domains |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termRanges<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termRanges<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.Ranges |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termEquivalentClasses<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termEquivalentClasses<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.EquivalentClasses |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termEquivalentProperties<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termEquivalentProperties<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.EquivalentProperties |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termIndirectSubClasses<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termIndirectSubClasses<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.IndirectSubClasses |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termIndirectSuperClasses<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termIndirectSuperClasses<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.IndirectSuperClasses |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termIndirectSubProperties<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termIndirectSubProperties<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.IndirectSubProperties |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termIndirectSuperProperties<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termIndirectSuperProperties<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.IndirectSuperProperty |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termInverseProperties<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termInverseProperties<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.InverseProperties |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termInstances<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termInstances<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.Instances |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termIsBottomClass<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termIsBottomClass<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.IsBottomClass
             | _ -> false
         | None -> false
-    member inline this.termIsBottomProperty<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termIsBottomProperty<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.IsBottomProperty
             | _ -> false
         | None -> false
-    member inline this.termIsDefinedBy<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> ontologyResource.IsDefinedBy |> Seq.map (fun inode -> Point.fromINode inode ) |> Seq.toArray
+    member inline this.termIsDefinedBy<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            ontologyResource.IsDefinedBy
+            |> Seq.map (fun inode -> Point.fromINode inode)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termIsDomainOf<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termIsDomainOf<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.IsDomainOf |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termIsRangeOf<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termIsRangeOf<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.IsRangeOf |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termIsTopClass<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termIsTopClass<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.IsTopClass
             | _ -> false
         | None -> false
-    member inline this.termIsTopProperty<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termIsTopProperty<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.IsTopProperty
             | _ -> false
         | None -> false
-    member inline this.termLabel<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> ontologyResource.Label |> Seq.map (fun iliteralNode -> RdfLiteral.fromILiteralNode iliteralNode ) |> Seq.toArray
+    member inline this.termLabel<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            ontologyResource.Label
+            |> Seq.map (fun iliteralNode -> RdfLiteral.fromILiteralNode iliteralNode)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termSameAs<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> ontologyResource.SameAs |> Seq.map (fun inode -> Point.fromINode inode ) |> Seq.toArray
+    member inline this.termSameAs<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            ontologyResource.SameAs
+            |> Seq.map (fun inode -> Point.fromINode inode)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termSeeAlso<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> ontologyResource.SeeAlso |> Seq.map (fun inode -> Point.fromINode inode ) |> Seq.toArray
+    member inline this.termSeeAlso<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            ontologyResource.SeeAlso
+            |> Seq.map (fun inode -> Point.fromINode inode)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termSiblingClasses<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termSiblingClasses<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.Siblings |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termSiblingProperties<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termSiblingProperties<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.Siblings |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termUsedBy<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termUsedBy<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.UsedBy |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termSubClasses<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termSubClasses<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.SubClasses |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termSuperClasses<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termSuperClasses<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyClass as ontologyClass -> ontologyClass.SuperClasses |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termSubProperties<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termSubProperties<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.SubProperties |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termSuperProperties<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        match this.OntologyResourceByTerm term with 
-        | Some ontologyResource -> 
-            match ontologyResource with 
+    member inline this.termSuperProperties<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        match this.OntologyResourceByTerm term with
+        | Some ontologyResource ->
+            match ontologyResource with
             | :? OntologyProperty as ontologyProperty -> ontologyProperty.SuperProperties |> Seq.toArray
             | _ -> [||]
         | None -> [||]
-    member inline this.termTriples<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
+    member inline this.termTriples<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
         match this.OntologyResourceByTerm term with
-        | Some ontologyResource -> ontologyResource.Triples |> Seq.map (fun vdsTriple -> RdfTriple.fromVDSTriple vdsTriple ) |> Seq.toArray
+        | Some ontologyResource ->
+            ontologyResource.Triples
+            |> Seq.map (fun vdsTriple -> RdfTriple.fromVDSTriple vdsTriple)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termTriplesWithObject<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
+    member inline this.termTriplesWithObject<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
         match this.OntologyResourceByTerm term with
-        | Some ontologyResource -> ontologyResource.TriplesWithObject |> Seq.map (fun vdsTriple -> RdfTriple.fromVDSTriple vdsTriple ) |> Seq.toArray
+        | Some ontologyResource ->
+            ontologyResource.TriplesWithObject
+            |> Seq.map (fun vdsTriple -> RdfTriple.fromVDSTriple vdsTriple)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termTriplesWithPredicate<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
+    member inline this.termTriplesWithPredicate<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
         match this.OntologyResourceByTerm term with
-        | Some ontologyResource -> ontologyResource.TriplesWithPredicate |> Seq.map (fun vdsTriple -> RdfTriple.fromVDSTriple vdsTriple ) |> Seq.toArray
+        | Some ontologyResource ->
+            ontologyResource.TriplesWithPredicate
+            |> Seq.map (fun vdsTriple -> RdfTriple.fromVDSTriple vdsTriple)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termTriplesWithSubject<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
+    member inline this.termTriplesWithSubject<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
         match this.OntologyResourceByTerm term with
-        | Some ontologyResource -> ontologyResource.TriplesWithSubject |> Seq.map (fun vdsTriple -> RdfTriple.fromVDSTriple vdsTriple ) |> Seq.toArray
+        | Some ontologyResource ->
+            ontologyResource.TriplesWithSubject
+            |> Seq.map (fun vdsTriple -> RdfTriple.fromVDSTriple vdsTriple)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termTriplesWithLiteralObject<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
+    member inline this.termTriplesWithLiteralObject<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
         this.termTriplesWithSubject term
         |> Array.filter (fun triple -> triple.curObject.IsLiteralObject)
-    member inline this.termTriplesWithIriObject<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
+    member inline this.termTriplesWithIriObject<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
         this.termTriplesWithSubject term
         |> Array.filter (fun triple -> triple.curObject.IsIriObject)
-    member inline this.termTriplesWithBlankObject<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
+    member inline this.termTriplesWithBlankObject<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
         this.termTriplesWithSubject term
         |> Array.filter (fun triple -> triple.curObject.IsBlankObject)
-        
-    member inline this.termTriplesWithReferenceObject<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
-        Array.concat [|
-            this.termTriplesWithIriObject term
-            this.termTriplesWithBlankObject term
-        |]
-    member inline this.termTypes<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
+
+    member inline this.termTriplesWithReferenceObject<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
+        Array.concat [| this.termTriplesWithIriObject term; this.termTriplesWithBlankObject term |]
+    member inline this.termTypes<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
         match this.OntologyResourceByTerm term with
-        | Some ontologyResource -> ontologyResource.Types |> Seq.map (fun inode -> Point.fromINode inode ) |> Seq.toArray
+        | Some ontologyResource ->
+            ontologyResource.Types
+            |> Seq.map (fun inode -> Point.fromINode inode)
+            |> Seq.toArray
         | None -> [||]
-    member inline this.termVersionInfo<'Term when 'Term : (member asINode:INode)> (term:'Term) = 
+    member inline this.termVersionInfo<'Term when 'Term: (member asINode: INode)>(term: 'Term) =
         match this.OntologyResourceByTerm term with
-        | Some ontologyResource -> ontologyResource.VersionInfo |> Seq.map (fun iliteralNode -> RdfLiteral.fromILiteralNode iliteralNode ) |> Seq.toArray
+        | Some ontologyResource ->
+            ontologyResource.VersionInfo
+            |> Seq.map (fun iliteralNode -> RdfLiteral.fromILiteralNode iliteralNode)
+            |> Seq.toArray
         | None -> [||]
 
 
-    member inline this.ontologyClassesByMetaClass<'Term when 'Term : (member asINode:INode)> (metaClass:'Term) = this.namespaceDocument.asOntologyGraph.GetClasses metaClass.asINode |> Seq.toArray
+    member inline this.ontologyClassesByMetaClass<'Term when 'Term: (member asINode: INode)>(metaClass: 'Term) =
+        this.namespaceDocument.asOntologyGraph.GetClasses metaClass.asINode
+        |> Seq.toArray
     member this.namespacedNames = this.namespaceDocument.namespacedNames this.prefixId
-    member this.termByName = 
-        this.namespacedNames 
-        |> Array.map (fun prefixedName -> prefixedName.localName, prefixedName )
+    member this.termByName =
+        this.namespacedNames
+        |> Array.map (fun prefixedName -> prefixedName.localName, prefixedName)
         |> Map.ofArray
 
 
 
-module RdfVocabulary = 
+module RdfVocabulary =
     open XmlComment
-    
-    let fromPrefixId (prefixId :PrefixId) = 
+
+    let fromPrefixId (prefixId: PrefixId) =
         namespaceMapper.AddNamespace(prefixId.asNamespaceMap)
 
         let ttlFile = prefixId.asFileExtension ".ttl"
 
         let loader = new Loader()
         let graph = new ThreadSafeGraph()
-        try 
+        try
             if ttlFile.Exists then
-                printfn "Loading %s from %s" prefixId.namespaceName ttlFile.FullName 
+                printfn "Loading %s from %s" prefixId.namespaceName ttlFile.FullName
                 loader.LoadGraph(graph, Uri ttlFile.FullName)
             else
-                let distribution = 
-                    match distributionMap.TryFind prefixId.namespaceName with 
+                let distribution =
+                    match distributionMap.TryFind prefixId.namespaceName with
                     | Some distribution -> distribution
                     | None -> prefixId.namespaceName
                 printfn "Dereferencing distribution %s for %s " distribution prefixId.namespaceName
                 loader.LoadGraph(graph, Uri distribution)
                 Directory.CreateDirectory ttlFile.DirectoryName |> ignore
-            
-                use fileStream =
-                    new FileStream(ttlFile.FullName, FileMode.Create, FileAccess.Write, FileShare.Read)
+
+                use fileStream = new FileStream(ttlFile.FullName, FileMode.Create, FileAccess.Write, FileShare.Read)
                 use streamWriter = new StreamWriter(fileStream, new UTF8Encoding(false))
                 Turtle.writeAllPrefixes streamWriter graph
                 let formatter = Turtle.UnicodePrefixedNameTurtleW3CFormatter(graph) :> ITripleFormatter
@@ -5120,64 +4507,65 @@ module RdfVocabulary =
                     streamWriter.WriteLine(formatter.Format(triple))
 
                 streamWriter.Flush()
-        with 
-        | _ -> ()
+        with _ ->
+            ()
         {
-            prefixId =  prefixId
-            namespaceDocument = { graphFile = prefixId.asFileExtension ".ttl" }
+            prefixId = prefixId
+            namespaceDocument = {
+                graphFile = prefixId.asFileExtension ".ttl"
+            }
         }
-    let asModule(vocabulary:RdfVocabulary) = 
+    let asModule (vocabulary: RdfVocabulary) =
 
         Ast.Oak() {
-              Ast.AnonymousModule(){
+            Ast.AnonymousModule() {
 
-                Ast.Module(vocabulary.prefixId.prefixLabel){
-                    for namespacedName in vocabulary.namespacedNames do 
+                Ast.Module(vocabulary.prefixId.prefixLabel) {
+                    for namespacedName in vocabulary.namespacedNames do
                         printfn "%s" namespacedName.localName
-                        
-                        let binding = 
-                          match namespacedName.localName with 
-                          | "" -> "_namespaceIri"
-                          | _ -> 
-                              let binder = VariableBinder namespacedName.localName
-                              binder.binding
-                        let astValue = Ast.Value(binding, $"{vocabulary.prefixId.prefixLabel}Vocabulary.prefixId.prefix \"{namespacedName.localName}\"" )
+
+                        let binding =
+                            match namespacedName.localName with
+                            | "" -> "_namespaceIri"
+                            | _ ->
+                                let binder = VariableBinder namespacedName.localName
+                                binder.binding
+                        let astValue = Ast.Value(binding, $"{vocabulary.prefixId.prefixLabel}Vocabulary.prefixId.prefix \"{namespacedName.localName}\"")
                         let triplesWithLiteralObject = vocabulary.termTriplesWithLiteralObject namespacedName
 
-                        if triplesWithLiteralObject |> _.Length > 0 then 
+                        if triplesWithLiteralObject |> _.Length > 0 then
 
-                            let datatypePropertyValues = 
-                                triplesWithLiteralObject    
+                            let datatypePropertyValues =
+                                triplesWithLiteralObject
                                 |> Array.groupBy (fun triple -> triple.curPredicate)
                                 |> Array.map (fun (curPredicate, triples) -> curPredicate, triples |> Array.map (fun triple -> triple.curObject))
-                            let elements :LitXml.XmlPart array = 
-                                    [|
+                            let elements: LitXml.XmlPart array = [|
 
-                                        summary {
-                                            for datatypeProperty, propertyValues in datatypePropertyValues do  
-                                                match datatypeProperty.lexicalForm with 
+                                summary {
+                                    for datatypeProperty, propertyValues in datatypePropertyValues do
+                                        match datatypeProperty.lexicalForm with
 
-                                                | _ -> 
-                                                      para { 
-                                                            for propertyValue in propertyValues do 
-                                                                $"{defaultArg datatypeProperty.maybeCurie datatypeProperty.lexicalForm} : {defaultArg propertyValue.maybeCurie propertyValue.lexicalForm}"
-                                                      }
-                                                                
-                                            a {
-                                                _href namespacedName.lexicalForm
-                                                namespacedName.curie
+                                        | _ ->
+                                            para {
+                                                for propertyValue in propertyValues do
+                                                    $"{defaultArg datatypeProperty.maybeCurie datatypeProperty.lexicalForm} : {defaultArg propertyValue.maybeCurie propertyValue.lexicalForm}"
                                             }
-                                        }
-                                    |]
+
+                                    a {
+                                        _href namespacedName.lexicalForm
+                                        namespacedName.curie
+                                    }
+                                }
+                            |]
 
 
-                            astValue.xmlDocs( LitXml.ElementBuilder.writeToXmlDocs elements )
-                        else 
+                            astValue.xmlDocs (LitXml.ElementBuilder.writeToXmlDocs elements)
+                        else
                             astValue
 
 
-              }
-              }
+                }
+            }
         }
         |> Gen.mkOak
         |> Gen.run
@@ -5198,25 +4586,22 @@ let owlDocuments =
 
 *)
 
-type NamespaceMapper with 
-    member this.GetPrefixId (prefix :string) = 
-                                      {
-                                        prefixLabel = prefix
-                                        namespaceName = this.GetNamespaceUri prefix |> _.OriginalString
+type NamespaceMapper with
+    member this.GetPrefixId(prefix: string) = {
+        prefixLabel = prefix
+        namespaceName = this.GetNamespaceUri prefix |> _.OriginalString
 
-                                      }
-    member this.prefixIds = 
-            this.Prefixes
-            |> Seq.map (fun prefix -> 
-                                      {
-                                        prefixLabel = prefix
-                                        namespaceName = this.GetNamespaceUri prefix |> _.OriginalString
+    }
+    member this.prefixIds =
+        this.Prefixes
+        |> Seq.map (fun prefix -> {
+            prefixLabel = prefix
+            namespaceName = this.GetNamespaceUri prefix |> _.OriginalString
 
-                                      }
-            )
-            |> Set.ofSeq
-          
-          
+        })
+        |> Set.ofSeq
+
+
 
 
 
@@ -5336,22 +4721,25 @@ type ForceNode = { id: string }
 
 
 [<CLIMutable>]
-type ForceLink =
-    { source: string
-      target: string
-      predicate: string }
+type ForceLink = {
+    source: string
+    target: string
+    predicate: string
+} with
+
     static member typeName = "ForceLink"
 
-type RdfTripleSet with 
+type RdfTripleSet with
 
     member this.forceLinks =
 
         this.triples
         |> Array.ofSeq
-        |> Array.map (fun triple ->
-            { source = triple.curSubject.lexicalForm
-              target = triple.curObject.lexicalForm
-              predicate = triple.curPredicate.lexicalForm })
+        |> Array.map (fun triple -> {
+            source = triple.curSubject.lexicalForm
+            target = triple.curObject.lexicalForm
+            predicate = triple.curPredicate.lexicalForm
+        })
 
     member this.forceNodes =
         this.forceLinks
@@ -5361,29 +4749,30 @@ type RdfTripleSet with
 
 /// https://github.com/vasturiano/force-graph
 [<CLIMutable>]
-type ForceGraph =
-    {
+type ForceGraph = {
 
-      nodes: ForceNode array
-      links: ForceLink array
+    nodes: ForceNode array
+    links: ForceLink array
 
-     }
+} with
+
     static member typeName = "ForceGraph"
 
-    static member fromRdfTripleSet(rdfTripleSet: RdfTripleSet) =
-        { nodes = rdfTripleSet.forceNodes
-          links = rdfTripleSet.forceLinks }
+    static member fromRdfTripleSet(rdfTripleSet: RdfTripleSet) = {
+        nodes = rdfTripleSet.forceNodes
+        links = rdfTripleSet.forceLinks
+    }
 
 
 
 
 module NTriples =
 
-    let syntax =
-        { syntaxName = "NTriples"
-          fileExtension = ".nt"
+    let syntax = {
+        syntaxName = "NTriples"
+        fileExtension = ".nt"
 
-        }
+    }
 
 
     let parser = NTriplesParser()
@@ -5392,8 +4781,7 @@ module NTriples =
         try
             use reader = new StringReader(text)
             parser.Load(graph, reader)
-        with
-        | err ->
+        with err ->
 
             failwithf "The text %s failed to parse with error %s" text err.Message
 
@@ -5409,8 +4797,7 @@ module YoGraph =
     let fromRdfTripleSet (rdfTripleSet: RdfTripleSet) =
         rdfTripleSet.triples
         |> Array.ofSeq
-        |> Array.Parallel.map (fun triple ->
-            SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
+        |> Array.Parallel.map (fun triple -> SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
         |> Array.toList
         |> Labeled.fromList Directed
         |> Labeled.toGraph
@@ -5426,13 +4813,7 @@ module QuikGraph =
         rdfTripleSet.triples
         |> Array.ofSeq
         |> Array.map (fun triple ->
-            quikGraph.AddVerticesAndEdge(
-                new QuikEdge(
-                    SubjectVertex triple.curSubject,
-                    ObjectVertex triple.curObject,
-                    PredicateEdge triple.curPredicate
-                )
-            ))
+            quikGraph.AddVerticesAndEdge(new QuikEdge(SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)))
         |> ignore
 
         quikGraph
@@ -5440,9 +4821,10 @@ module QuikGraph =
 
 
 module JsonLd =
-    let syntax =
-        { syntaxName = "JsonLd"
-          fileExtension = ".jsonld" }
+    let syntax = {
+        syntaxName = "JsonLd"
+        fileExtension = ".jsonld"
+    }
     let triplestoreFromIgraph (outputPath: string) (graph: IGraph) =
         let store = new TripleStore()
 
@@ -5456,13 +4838,7 @@ module JsonLd =
         let context = JObject()
 
         for prefix in graph.NamespaceMap.Prefixes do
-            let namespaceIri =
-                graph
-                    .NamespaceMap
-                    .GetNamespaceUri(
-                        prefix
-                    )
-                    .AbsoluteUri
+            let namespaceIri = graph.NamespaceMap.GetNamespaceUri(prefix).AbsoluteUri
 
             if String.IsNullOrEmpty(prefix) then
                 // Turtle's default prefix corresponds most closely to @vocab.
@@ -5491,57 +4867,50 @@ module JsonLd =
 
         JsonLdProcessor.Compact(expandedJsonLd, context, options).ToString(Newtonsoft.Json.Formatting.Indented)
 
-    let writeDraft (parentDirectory: string) (stem: string) (draft: Formula) = 
-        let fileText: string = 
-            { triples = draft.triples }
-            |> IGraph.fromRdfTripleSet
-            |> compactedFromIgraph
+    let writeDraft (parentDirectory: string) (stem: string) (draft: Formula) =
+        let fileText: string = { triples = draft.triples } |> IGraph.fromRdfTripleSet |> compactedFromIgraph
 
         let filePath = syntax.filePath parentDirectory stem
         File.WriteAllText(filePath, fileText)
 
 
 module JsonRq =
-    
-    let syntax = 
-        { syntaxName = "SPARQL Results JSON"
-          fileExtension = ".rq.json" }
+
+    let syntax = {
+        syntaxName = "SPARQL Results JSON"
+        fileExtension = ".rq.json"
+    }
     let writeDraft (parentDirectory: string) (stem: string) (draft: Formula) =
         let filePath = syntax.filePath parentDirectory stem
         let store = new TripleStore()
 
         store.Add({ triples = draft.triples } |> IGraph.fromRdfTripleSet) |> ignore
 
-        let dataset =
-            new InMemoryDataset(store)
+        let dataset = new InMemoryDataset(store)
 
         let query =
-            SparqlQueryParser().ParseFromString(
-                """
+            SparqlQueryParser()
+                .ParseFromString(
+                    """
                 SELECT ?source ?predicate ?target
                 WHERE {
                     ?source ?predicate ?target
                 }
                 """
-            )
+                )
 
-        let processor =
-            new LeviathanQueryProcessor(dataset)
+        let processor = new LeviathanQueryProcessor(dataset)
 
-        let results =
-            processor.ProcessQuery(query)
-            :?> SparqlResultSet
+        let results = processor.ProcessQuery(query) :?> SparqlResultSet
 
-        SparqlJsonWriter().Save(
-            results,
-            filePath
-        )
+        SparqlJsonWriter().Save(results, filePath)
 
 module ddot =
     module it =
-        let syntax =
-            { syntaxName = "ddot.it"
-              fileExtension = ".ddot" }
+        let syntax = {
+            syntaxName = "ddot.it"
+            fileExtension = ".ddot"
+        }
 
         let tripleDdot (rdfTriple: RdfTriple) =
             sprintf
@@ -5568,47 +4937,45 @@ module ddot =
 
 module Dot =
 
-    let syntax =
-        { syntaxName = "Graphviz"
-          fileExtension = ".dot" }
+    let syntax = {
+        syntaxName = "Graphviz"
+        fileExtension = ".dot"
+    }
 
     let prefixDelimiter = ":"
 
-    let vertexDot (vertex: Vertex)  =
-        vertex.asRenderedString prefixDelimiter 
+    let vertexDot (vertex: Vertex) = vertex.asRenderedString prefixDelimiter
 
-    let edgeDot (edge: Edge)  =
-        edge.asRenderedString prefixDelimiter 
+    let edgeDot (edge: Edge) = edge.asRenderedString prefixDelimiter
 
-    let yogOptions: Dot.Options<Vertex, Edge> =
-        {
+    let yogOptions: Dot.Options<Vertex, Edge> = {
 
-          NodeLabel = (fun _ vertex -> vertexDot vertex )
-          EdgeLabel = (fun edge -> edgeDot edge )
-          HighlightedSourceNodes = Set.empty
-          HighlightedSinkNodes = Set.empty
-          HighlightedNodes = Set.empty
-          HighlightedEdges = Set.empty
-          NodeShape = "ellipse"
-          HighlightColor = "red"
+        NodeLabel = (fun _ vertex -> vertexDot vertex)
+        EdgeLabel = (fun edge -> edgeDot edge)
+        HighlightedSourceNodes = Set.empty
+        HighlightedSinkNodes = Set.empty
+        HighlightedNodes = Set.empty
+        HighlightedEdges = Set.empty
+        NodeShape = "ellipse"
+        HighlightColor = "red"
 
-        }
+    }
 
 
     let writeYograph (parentDirectory: string) (stem: string) (yograph: YoGraph) =
         let filePath = syntax.filePath parentDirectory stem
-        Dot.writeFile filePath yogOptions  yograph
+        Dot.writeFile filePath yogOptions yograph
 
     let writeQuikGraph (parentDirectory: string) (stem: string) (quikGraph: QuikGraph) =
         let dotGraph = new GraphvizAlgorithm<Vertex, QuikEdge>(quikGraph)
 
-        dotGraph.FormatVertex.Add (fun args ->
+        dotGraph.FormatVertex.Add(fun args ->
 
             args.VertexFormat.Label <- (vertexDot args.Vertex)
 
         )
 
-        dotGraph.FormatEdge.Add (fun args ->
+        dotGraph.FormatEdge.Add(fun args ->
 
             args.EdgeFormat.Label.Value <- (edgeDot args.Edge.Tag)
 
@@ -5619,98 +4986,92 @@ module Dot =
         dotGraph.Generate(new FileDotEngine(), (syntax.filePath parentDirectory stem))
         |> ignore
 
-    let writeDraftFromYograph (parentDirectory: string) (stem: string)  (draft: Formula) =
+    let writeDraftFromYograph (parentDirectory: string) (stem: string) (draft: Formula) =
         { triples = draft.triples }
         |> YoGraph.fromRdfTripleSet
-        |> writeYograph parentDirectory $"{stem}.yog" 
+        |> writeYograph parentDirectory $"{stem}.yog"
 
-    let writeDraftFromQuikGraph (parentDirectory: string) (stem: string)  (draft: Formula) =
+    let writeDraftFromQuikGraph (parentDirectory: string) (stem: string) (draft: Formula) =
         { triples = draft.triples }
         |> QuikGraph.fromRdfTripleSet
-        |> writeQuikGraph parentDirectory $"{stem}.quik" 
+        |> writeQuikGraph parentDirectory $"{stem}.quik"
 
     let writeDraft (parentDirectory: string) (stem: string) (draft: Formula) =
-        draft
-        |> writeDraftFromYograph parentDirectory stem 
+        draft |> writeDraftFromYograph parentDirectory stem
 
-        draft
-        |> writeDraftFromQuikGraph parentDirectory stem 
+        draft |> writeDraftFromQuikGraph parentDirectory stem
 
 module Mermaid =
 
-    let syntax =
-        { syntaxName = "Mermaid"
-          fileExtension = ".mmd" }
+    let syntax = {
+        syntaxName = "Mermaid"
+        fileExtension = ".mmd"
+    }
 
     let prefixDelimiter = ":"
 
-    let vertexMmd (vertex: Vertex) =
-        vertex.asRenderedString prefixDelimiter 
+    let vertexMmd (vertex: Vertex) = vertex.asRenderedString prefixDelimiter
 
-    let edgeMmd (edge: Edge) =
-        edge.asRenderedString prefixDelimiter 
+    let edgeMmd (edge: Edge) = edge.asRenderedString prefixDelimiter
 
-    let options : Mermaid.Options<Vertex, Edge> =
-        {
+    let options: Mermaid.Options<Vertex, Edge> = {
 
-          Direction = "LR"
-          NodeLabel = (fun vertexId vertex -> vertexMmd vertex )
-          EdgeLabel = (fun edge -> edgeMmd edge )
-          HighlightedEdges = Set.empty
-          HighlightedNodes = Set.empty
-          HighlightedSinkNodes = Set.empty
-          HighlightedSourceNodes = Set.empty
+        Direction = "LR"
+        NodeLabel = (fun vertexId vertex -> vertexMmd vertex)
+        EdgeLabel = (fun edge -> edgeMmd edge)
+        HighlightedEdges = Set.empty
+        HighlightedNodes = Set.empty
+        HighlightedSinkNodes = Set.empty
+        HighlightedSourceNodes = Set.empty
 
-        }
+    }
 
-    let writeYograph (parentDirectory: string) (stem: string)  yograph =
+    let writeYograph (parentDirectory: string) (stem: string) yograph =
         let filePath = syntax.filePath parentDirectory stem
-        Mermaid.writeFile filePath options  yograph
+        Mermaid.writeFile filePath options yograph
 
     let writeDraft (parentDirectory: string) (stem: string) (draft: Formula) =
         { triples = draft.triples }
         |> YoGraph.fromRdfTripleSet
-        |> writeYograph parentDirectory stem 
+        |> writeYograph parentDirectory stem
 
 
 
 module d2 =
-    let syntax =
-        { syntaxName = "d2"
-          fileExtension = ".d2" }
+    let syntax = {
+        syntaxName = "d2"
+        fileExtension = ".d2"
+    }
 
     let prefixDelimiter = "\\:"
 
-    let vertexD2 (vertex: Vertex) =
-        vertex.asRenderedString prefixDelimiter 
+    let vertexD2 (vertex: Vertex) = vertex.asRenderedString prefixDelimiter
 
-    let edgeD2 (edge: Edge) =
-        edge.asRenderedString prefixDelimiter 
+    let edgeD2 (edge: Edge) = edge.asRenderedString prefixDelimiter
 
-    let graphLines  (rdfTripleSet: RdfTripleSet) =
+    let graphLines (rdfTripleSet: RdfTripleSet) =
         rdfTripleSet.triples
         |> Array.ofSeq
-        |> Array.Parallel.map (fun triple ->
-            SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
-        |> Array.Parallel.map (fun (inVertex, outVertex, outEdge) ->
-            sprintf "%s -> %s : %s" (vertexD2 inVertex ) (vertexD2 outVertex ) (edgeD2 outEdge ))
+        |> Array.Parallel.map (fun triple -> SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
+        |> Array.Parallel.map (fun (inVertex, outVertex, outEdge) -> sprintf "%s -> %s : %s" (vertexD2 inVertex) (vertexD2 outVertex) (edgeD2 outEdge))
 
     let graphText (rdfTripleSet: RdfTripleSet) =
         rdfTripleSet |> graphLines |> String.concat "\n"
 
     let writeDraft (parentDirectory: string) (stem: string) (draft: Formula) =
-        let fileText = { triples = draft.triples } |> graphText 
+        let fileText = { triples = draft.triples } |> graphText
 
         let filePath = syntax.filePath parentDirectory stem
         File.WriteAllText(filePath, fileText)
 
-module ForceGraph2D = 
-    let syntax =
-        { syntaxName = "2d force-graph"
-          fileExtension = ".force-graph.2d.json" }
-    
+module ForceGraph2D =
+    let syntax = {
+        syntaxName = "2d force-graph"
+        fileExtension = ".force-graph.2d.json"
+    }
+
     let writeDraft (parentDirectory: string) (stem: string) (draft: Formula) =
-        let fileText = Json.serialize({ triples = draft.triples } |> ForceGraph.fromRdfTripleSet )
+        let fileText = Json.serialize ({ triples = draft.triples } |> ForceGraph.fromRdfTripleSet)
 
         let filePath = syntax.filePath parentDirectory stem
         File.WriteAllText(filePath, fileText)
@@ -5730,12 +5091,12 @@ module Formula =
     let toIgraph (draft: Formula) =
         draft |> toRdfGraph |> IGraph.fromRdfTripleSet
 
-let writeDraft  parentDirectory stem  draft =
+let writeDraft parentDirectory stem draft =
     Turtle.writeDraft parentDirectory stem draft
-    Dot.writeDraft parentDirectory stem  draft
+    Dot.writeDraft parentDirectory stem draft
     ddot.it.writeDraft parentDirectory stem draft
-    Mermaid.writeDraft parentDirectory stem  draft
-    d2.writeDraft parentDirectory stem  draft
+    Mermaid.writeDraft parentDirectory stem draft
+    d2.writeDraft parentDirectory stem draft
     JsonLd.writeDraft parentDirectory stem draft
     JsonRq.writeDraft parentDirectory stem draft
     ForceGraph2D.writeDraft parentDirectory stem draft
@@ -5790,16 +5151,13 @@ let writeDraft  parentDirectory stem  draft =
 // Async Task helpers
 
 type Task<'OutputType> with
-    member this.await =
-        this.GetAwaiter().GetResult()
+    member this.await = this.GetAwaiter().GetResult()
 type Task with
-    member this.await =
-        this.GetAwaiter().GetResult()
+    member this.await = this.GetAwaiter().GetResult()
 
 let await (operation: Task<'OutputType>) : 'OutputType = operation.GetAwaiter().GetResult()
 
-let awaitUnit (task : Task) =
-    task.GetAwaiter().GetResult()
+let awaitUnit (task: Task) = task.GetAwaiter().GetResult()
 
 
 
@@ -5821,11 +5179,11 @@ let awaitUnit (task : Task) =
 
 
 
-// Esri Helpers 
+// Esri Helpers
 
 ArcGISRuntimeEnvironment.Initialize()
-module Feature = 
-    let rec Query (offset:int)  (table:ServiceFeatureTable) = 
+module Feature =
+    let rec Query (offset: int) (table: ServiceFeatureTable) =
         Array.concat [|
 
             let query = QueryParameters()
@@ -5835,10 +5193,7 @@ module Feature =
             query.MaxFeatures <- int table.LayerInfo.MaxRecordCount
 
             let features =
-                table.QueryFeaturesAsync(
-                    query,
-                    QueryFeatureFields.LoadAll
-                )
+                table.QueryFeaturesAsync(query, QueryFeatureFields.LoadAll)
                 |> Async.AwaitTask
                 |> Async.RunSynchronously
                 |> Seq.toArray
@@ -5846,210 +5201,492 @@ module Feature =
             if features.Length = 0 then
                 [||]
             else
-                table |> Query (offset + features.Length) |> Array.append features
+                table |> Query(offset + features.Length) |> Array.append features
         |]
 
-type Feature with 
+type Feature with
 
 
-    member this.X = 
-            match this.Geometry with 
-            | :? MapPoint as mapPoint -> string mapPoint.X
-            | _ -> String.Empty
-    member this.Y = 
-            match this.Geometry with 
-            | :? MapPoint as mapPoint -> string mapPoint.Y
-            | _ -> String.Empty
-    member this.Z = 
-            match this.Geometry with 
-            | :? MapPoint as mapPoint -> string mapPoint.Z
-            | _ -> String.Empty
-    member this.attributes = 
-            this.Attributes
-            |> Seq.toArray
-            |> Array.map (|KeyValue|)
-            |> Array.filter (fun (key,objValue) -> objValue <> null )
-            |> Array.filter (fun (key,objValue) -> not (String.IsNullOrWhiteSpace (string objValue)))
-            |> Array.map (fun (key,objValue) ->  key, string objValue)
-    member this.attribute (fieldName:string) = this.attributes |> Array.tryPick (fun (key,value) -> 
-        if key = fieldName then 
-            Some value
-        else
-            None
-        )
-    member this.hasAttribute (fieldName:string) = 
-        match this.attribute fieldName with 
+    member this.X =
+        match this.Geometry with
+        | :? MapPoint as mapPoint -> string mapPoint.X
+        | _ -> String.Empty
+    member this.Y =
+        match this.Geometry with
+        | :? MapPoint as mapPoint -> string mapPoint.Y
+        | _ -> String.Empty
+    member this.Z =
+        match this.Geometry with
+        | :? MapPoint as mapPoint -> string mapPoint.Z
+        | _ -> String.Empty
+    member this.attributes =
+        this.Attributes
+        |> Seq.toArray
+        |> Array.map (|KeyValue|)
+        |> Array.filter (fun (key, objValue) -> objValue <> null)
+        |> Array.filter (fun (key, objValue) -> not (String.IsNullOrWhiteSpace(string objValue)))
+        |> Array.map (fun (key, objValue) -> key, string objValue)
+    member this.attribute(fieldName: string) =
+        this.attributes
+        |> Array.tryPick (fun (key, value) -> if key = fieldName then Some value else None)
+    member this.hasAttribute(fieldName: string) =
+        match this.attribute fieldName with
         | Some _ -> true
         | None -> false
 
-type StormwaterFeature = 
+type StormwaterFeature =
     | StormwaterFeature of Feature
-    member this.feature = 
-        match this with 
+
+    member this.feature =
+        match this with
         | StormwaterFeature feature -> feature
 
 
-    member this.ACCEPT_DATE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ACCEPT_DATE" then Some value else None)
-    member this.ACCURACYCODE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ACCURACYCODE" then Some value else None)
-    member this.ACREAGE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ACREAGE" then Some value else None)
-    member this.ACRES = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ACRES" then Some value else None)
-    member this.ACTIVITY = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ACTIVITY" then Some value else None)
-    member this.ANCILLARYROLE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ANCILLARYROLE" then Some value else None)
-    member this.ATTACHEDTOID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ATTACHEDTOID" then Some value else None)
-    member this.ATTRIBUTECOMPLETE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ATTRIBUTECOMPLETE" then Some value else None)
-    member this.CAPACITY = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "CAPACITY" then Some value else None)
-    member this.CREATIONDATE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "CREATIONDATE" then Some value else None)
-    member this.CREATOR = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "CREATOR" then Some value else None)
-    member this.CREW = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "CREW" then Some value else None)
-    member this.DAMAGEID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DAMAGEID" then Some value else None)
-    member this.DAMAGETYPE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DAMAGETYPE" then Some value else None)
-    member this.DATAFILE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DATAFILE" then Some value else None)
-    member this.DATECREATED = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DATECREATED" then Some value else None)
-    member this.DATEMODIFIED = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DATEMODIFIED" then Some value else None)
-    member this.DATE_ = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DATE_" then Some value else None)
-    member this.DESCRIPTION = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DESCRIPTION" then Some value else None)
-    member this.DIAMETER = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DIAMETER" then Some value else None)
-    member this.DIGITALPICTUREID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DIGITALPICTUREID" then Some value else None)
-    member this.DIGITALPICTUREID_E = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DIGITALPICTUREID_E" then Some value else None)
-    member this.DIGITALPICTUREID_S = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DIGITALPICTUREID_S" then Some value else None)
-    member this.DIGITALPICTUREID_W = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DIGITALPICTUREID_W" then Some value else None)
-    member this.DOWNSTREAMDEPTH = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DOWNSTREAMDEPTH" then Some value else None)
-    member this.DOWNSTREAMELEVATION = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DOWNSTREAMELEVATION" then Some value else None)
-    member this.DOWNSTREAM_DEPTH = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DOWNSTREAM_DEPTH" then Some value else None)
-    member this.DOWNSTREAM_ELEV = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DOWNSTREAM_ELEV" then Some value else None)
-    member this.DRAINAGEAREA = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DRAINAGEAREA" then Some value else None)
-    member this.DRAINAGEBASIN = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DRAINAGEBASIN" then Some value else None)
-    member this.DRAINAGE_AREA = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DRAINAGE_AREA" then Some value else None)
-    member this.DRAWINGID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "DRAWINGID" then Some value else None)
-    member this.EASTING = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "EASTING" then Some value else None)
-    member this.EDITDATE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "EDITDATE" then Some value else None)
-    member this.EDITOR = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "EDITOR" then Some value else None)
-    member this.ELEMENTX = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ELEMENTX" then Some value else None)
-    member this.ELEMENTY = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ELEMENTY" then Some value else None)
-    member this.ENABLED = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ENABLED" then Some value else None)
-    member this.FACILITYID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FACILITYID" then Some value else None)
-    member this.FIELDCOMMENTS = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FIELDCOMMENTS" then Some value else None)
-    member this.FIELDCOMPLETE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FIELDCOMPLETE" then Some value else None)
-    member this.FIELDCREW = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FIELDCREW" then Some value else None)
-    member this.FIELD_COMMENTS_ = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FIELD_COMMENTS_" then Some value else None)
-    member this.FILE_NAME = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FILE_NAME" then Some value else None)
-    member this.FILE_NAME_1 = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FILE_NAME_1" then Some value else None)
-    member this.FILTER = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FILTER" then Some value else None)
-    member this.FILTERLOCATION = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FILTERLOCATION" then Some value else None)
-    member this.FILTERTYPE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FILTERTYPE" then Some value else None)
-    member this.FINAL_NAME = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FINAL_NAME" then Some value else None)
-    member this.FOLDER = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "FOLDER" then Some value else None)
-    member this.GLOBALID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "GLOBALID" then Some value else None)
-    member this.HEIGHT = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "HEIGHT" then Some value else None)
-    member this.HOTLINK = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "HOTLINK" then Some value else None)
-    member this.HYD_ID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "HYD_ID" then Some value else None)
-    member this.HYPERLINK = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "HYPERLINK" then Some value else None)
-    member this.HYPERLINK_AR = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "HYPERLINK_AR" then Some value else None)
-    member this.IMAGERYYEAR = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "IMAGERYYEAR" then Some value else None)
-    member this.INFILTRATION = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "INFILTRATION" then Some value else None)
-    member this.INSPDATE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "INSPDATE" then Some value else None)
-    member this.INVENTORIED_BY = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "INVENTORIED_BY" then Some value else None)
-    member this.INVENTORYDATE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "INVENTORYDATE" then Some value else None)
-    member this.INVENTORYTYPE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "INVENTORYTYPE" then Some value else None)
-    member this.INVERTELEV = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "INVERTELEV" then Some value else None)
-    member this.INVERT_ELEV = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "INVERT_ELEV" then Some value else None)
-    member this.INVERT_ELEV29 = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "INVERT_ELEV29" then Some value else None)
-    member this.ISINFALL = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ISINFALL" then Some value else None)
-    member this.LEGACYID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "LEGACYID" then Some value else None)
-    member this.LEGACY_ID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "LEGACY_ID" then Some value else None)
-    member this.LFEET = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "LFEET" then Some value else None)
-    member this.LIFECYCLE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "LIFECYCLE" then Some value else None)
-    member this.LOCATION = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "LOCATION" then Some value else None)
-    member this.LOC_DESC = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "LOC_DESC" then Some value else None)
-    member this.MAINTBY = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "MAINTBY" then Some value else None)
-    member this.MATERIAL = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "MATERIAL" then Some value else None)
-    member this.MEDIA_CODE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "MEDIA_CODE" then Some value else None)
-    member this.MILES = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "MILES" then Some value else None)
-    member this.NEEDSATTENTION = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "NEEDSATTENTION" then Some value else None)
-    member this.NORTHING = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "NORTHING" then Some value else None)
-    member this.NOTES = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "NOTES" then Some value else None)
-    member this.NUM_BARRELS = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "NUM_BARRELS" then Some value else None)
-    member this.OBJECTID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "OBJECTID" then Some value else None)
-    member this.OBSTRUCTION = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "OBSTRUCTION" then Some value else None)
-    member this.ORIGINALSOURCE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ORIGINALSOURCE" then Some value else None)
-    member this.OUTFALLID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "OUTFALLID" then Some value else None)
-    member this.OUTFALLTYPE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "OUTFALLTYPE" then Some value else None)
-    member this.OWNER = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "OWNER" then Some value else None)
-    member this.PARCELID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PARCELID" then Some value else None)
-    member this.PARENTID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PARENTID" then Some value else None)
-    member this.PERCT_GRD = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PERCT_GRD" then Some value else None)
-    member this.PHOTOID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PHOTOID" then Some value else None)
-    member this.PHOTO_FOLDER = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PHOTO_FOLDER" then Some value else None)
-    member this.PHOTO_NUM = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PHOTO_NUM" then Some value else None)
-    member this.PID_1 = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PID_1" then Some value else None)
-    member this.PIPESHAPE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PIPESHAPE" then Some value else None)
-    member this.PLACE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PLACE" then Some value else None)
-    member this.PONDID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PONDID" then Some value else None)
-    member this.PONDTYPE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PONDTYPE" then Some value else None)
-    member this.PONDYR = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PONDYR" then Some value else None)
-    member this.POND_ID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "POND_ID" then Some value else None)
-    member this.PRFRESOLUTION = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "PRFRESOLUTION" then Some value else None)
-    member this.RAW_NAME = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "RAW_NAME" then Some value else None)
-    member this.RELATEDFEATURE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "RELATEDFEATURE" then Some value else None)
-    member this.ROTATION_AZ = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ROTATION_AZ" then Some value else None)
-    member this.SHAPE_Area = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "SHAPE_Area" then Some value else None)
-    member this.SHAPE_Length = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "SHAPE_Length" then Some value else None)
-    member this.SLOT_ELEV = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "SLOT_ELEV" then Some value else None)
-    member this.SOURCE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "SOURCE" then Some value else None)
-    member this.SOURCEYEAR = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "SOURCEYEAR" then Some value else None)
-    member this.STORAGE_FULL_PATH_ADDR = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "STORAGE_FULL_PATH_ADDR" then Some value else None)
-    member this.STORAGE_PATH_ADDR = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "STORAGE_PATH_ADDR" then Some value else None)
-    member this.STORAGE_STATIC_PATH_ADDR = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "STORAGE_STATIC_PATH_ADDR" then Some value else None)
-    member this.STRCT_DEPTH = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "STRCT_DEPTH" then Some value else None)
-    member this.STRUCTUREID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "STRUCTUREID" then Some value else None)
-    member this.STRUCTURETYPE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "STRUCTURETYPE" then Some value else None)
-    member this.STRUCTURE_ID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "STRUCTURE_ID" then Some value else None)
-    member this.SUBTYPEFIELD = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "SUBTYPEFIELD" then Some value else None)
-    member this.SURFACETYPE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "SURFACETYPE" then Some value else None)
-    member this.Shape_Area = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "Shape_Area" then Some value else None)
-    member this.Shape_Length = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "Shape_Length" then Some value else None)
-    member this.UNDERDRAINS = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "UNDERDRAINS" then Some value else None)
-    member this.UNITDESC = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "UNITDESC" then Some value else None)
-    member this.UNITID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "UNITID" then Some value else None)
-    member this.UPDATESOURCE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "UPDATESOURCE" then Some value else None)
-    member this.UPSTREAMDEPTH = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "UPSTREAMDEPTH" then Some value else None)
-    member this.UPSTREAMELEVATION = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "UPSTREAMELEVATION" then Some value else None)
-    member this.UPSTREAMSTUCTUREID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "UPSTREAMSTUCTUREID" then Some value else None)
-    member this.UPSTREAM_DEPTH = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "UPSTREAM_DEPTH" then Some value else None)
-    member this.UPSTREAM_ELEV = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "UPSTREAM_ELEV" then Some value else None)
-    member this.VIEW_ = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "VIEW_" then Some value else None)
-    member this.WATERBODYNAME = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "WATERBODYNAME" then Some value else None)
-    member this.WBID = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "WBID" then Some value else None)
-    member this.WHOCREATED = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "WHOCREATED" then Some value else None)
-    member this.WHOMODIFIED = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "WHOMODIFIED" then Some value else None)
-    member this.WIDTH = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "WIDTH" then Some value else None)
-    member this.Z29 = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "Z29" then Some value else None)
-    member this.ZVALUE = this.feature.attributes |> Array.tryPick (fun (key,value) -> if key = "ZVALUE" then Some value else None)
+    member this.ACCEPT_DATE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ACCEPT_DATE" then Some value else None)
+    member this.ACCURACYCODE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ACCURACYCODE" then Some value else None)
+    member this.ACREAGE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ACREAGE" then Some value else None)
+    member this.ACRES =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ACRES" then Some value else None)
+    member this.ACTIVITY =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ACTIVITY" then Some value else None)
+    member this.ANCILLARYROLE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ANCILLARYROLE" then Some value else None)
+    member this.ATTACHEDTOID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ATTACHEDTOID" then Some value else None)
+    member this.ATTRIBUTECOMPLETE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ATTRIBUTECOMPLETE" then Some value else None)
+    member this.CAPACITY =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "CAPACITY" then Some value else None)
+    member this.CREATIONDATE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "CREATIONDATE" then Some value else None)
+    member this.CREATOR =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "CREATOR" then Some value else None)
+    member this.CREW =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "CREW" then Some value else None)
+    member this.DAMAGEID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DAMAGEID" then Some value else None)
+    member this.DAMAGETYPE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DAMAGETYPE" then Some value else None)
+    member this.DATAFILE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DATAFILE" then Some value else None)
+    member this.DATECREATED =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DATECREATED" then Some value else None)
+    member this.DATEMODIFIED =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DATEMODIFIED" then Some value else None)
+    member this.DATE_ =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DATE_" then Some value else None)
+    member this.DESCRIPTION =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DESCRIPTION" then Some value else None)
+    member this.DIAMETER =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DIAMETER" then Some value else None)
+    member this.DIGITALPICTUREID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DIGITALPICTUREID" then Some value else None)
+    member this.DIGITALPICTUREID_E =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DIGITALPICTUREID_E" then Some value else None)
+    member this.DIGITALPICTUREID_S =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DIGITALPICTUREID_S" then Some value else None)
+    member this.DIGITALPICTUREID_W =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DIGITALPICTUREID_W" then Some value else None)
+    member this.DOWNSTREAMDEPTH =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DOWNSTREAMDEPTH" then Some value else None)
+    member this.DOWNSTREAMELEVATION =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DOWNSTREAMELEVATION" then Some value else None)
+    member this.DOWNSTREAM_DEPTH =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DOWNSTREAM_DEPTH" then Some value else None)
+    member this.DOWNSTREAM_ELEV =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DOWNSTREAM_ELEV" then Some value else None)
+    member this.DRAINAGEAREA =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DRAINAGEAREA" then Some value else None)
+    member this.DRAINAGEBASIN =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DRAINAGEBASIN" then Some value else None)
+    member this.DRAINAGE_AREA =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DRAINAGE_AREA" then Some value else None)
+    member this.DRAWINGID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "DRAWINGID" then Some value else None)
+    member this.EASTING =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "EASTING" then Some value else None)
+    member this.EDITDATE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "EDITDATE" then Some value else None)
+    member this.EDITOR =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "EDITOR" then Some value else None)
+    member this.ELEMENTX =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ELEMENTX" then Some value else None)
+    member this.ELEMENTY =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ELEMENTY" then Some value else None)
+    member this.ENABLED =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ENABLED" then Some value else None)
+    member this.FACILITYID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FACILITYID" then Some value else None)
+    member this.FIELDCOMMENTS =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FIELDCOMMENTS" then Some value else None)
+    member this.FIELDCOMPLETE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FIELDCOMPLETE" then Some value else None)
+    member this.FIELDCREW =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FIELDCREW" then Some value else None)
+    member this.FIELD_COMMENTS_ =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FIELD_COMMENTS_" then Some value else None)
+    member this.FILE_NAME =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FILE_NAME" then Some value else None)
+    member this.FILE_NAME_1 =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FILE_NAME_1" then Some value else None)
+    member this.FILTER =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FILTER" then Some value else None)
+    member this.FILTERLOCATION =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FILTERLOCATION" then Some value else None)
+    member this.FILTERTYPE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FILTERTYPE" then Some value else None)
+    member this.FINAL_NAME =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FINAL_NAME" then Some value else None)
+    member this.FOLDER =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "FOLDER" then Some value else None)
+    member this.GLOBALID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "GLOBALID" then Some value else None)
+    member this.HEIGHT =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "HEIGHT" then Some value else None)
+    member this.HOTLINK =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "HOTLINK" then Some value else None)
+    member this.HYD_ID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "HYD_ID" then Some value else None)
+    member this.HYPERLINK =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "HYPERLINK" then Some value else None)
+    member this.HYPERLINK_AR =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "HYPERLINK_AR" then Some value else None)
+    member this.IMAGERYYEAR =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "IMAGERYYEAR" then Some value else None)
+    member this.INFILTRATION =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "INFILTRATION" then Some value else None)
+    member this.INSPDATE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "INSPDATE" then Some value else None)
+    member this.INVENTORIED_BY =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "INVENTORIED_BY" then Some value else None)
+    member this.INVENTORYDATE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "INVENTORYDATE" then Some value else None)
+    member this.INVENTORYTYPE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "INVENTORYTYPE" then Some value else None)
+    member this.INVERTELEV =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "INVERTELEV" then Some value else None)
+    member this.INVERT_ELEV =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "INVERT_ELEV" then Some value else None)
+    member this.INVERT_ELEV29 =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "INVERT_ELEV29" then Some value else None)
+    member this.ISINFALL =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ISINFALL" then Some value else None)
+    member this.LEGACYID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "LEGACYID" then Some value else None)
+    member this.LEGACY_ID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "LEGACY_ID" then Some value else None)
+    member this.LFEET =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "LFEET" then Some value else None)
+    member this.LIFECYCLE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "LIFECYCLE" then Some value else None)
+    member this.LOCATION =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "LOCATION" then Some value else None)
+    member this.LOC_DESC =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "LOC_DESC" then Some value else None)
+    member this.MAINTBY =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "MAINTBY" then Some value else None)
+    member this.MATERIAL =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "MATERIAL" then Some value else None)
+    member this.MEDIA_CODE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "MEDIA_CODE" then Some value else None)
+    member this.MILES =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "MILES" then Some value else None)
+    member this.NEEDSATTENTION =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "NEEDSATTENTION" then Some value else None)
+    member this.NORTHING =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "NORTHING" then Some value else None)
+    member this.NOTES =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "NOTES" then Some value else None)
+    member this.NUM_BARRELS =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "NUM_BARRELS" then Some value else None)
+    member this.OBJECTID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "OBJECTID" then Some value else None)
+    member this.OBSTRUCTION =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "OBSTRUCTION" then Some value else None)
+    member this.ORIGINALSOURCE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ORIGINALSOURCE" then Some value else None)
+    member this.OUTFALLID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "OUTFALLID" then Some value else None)
+    member this.OUTFALLTYPE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "OUTFALLTYPE" then Some value else None)
+    member this.OWNER =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "OWNER" then Some value else None)
+    member this.PARCELID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PARCELID" then Some value else None)
+    member this.PARENTID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PARENTID" then Some value else None)
+    member this.PERCT_GRD =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PERCT_GRD" then Some value else None)
+    member this.PHOTOID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PHOTOID" then Some value else None)
+    member this.PHOTO_FOLDER =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PHOTO_FOLDER" then Some value else None)
+    member this.PHOTO_NUM =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PHOTO_NUM" then Some value else None)
+    member this.PID_1 =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PID_1" then Some value else None)
+    member this.PIPESHAPE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PIPESHAPE" then Some value else None)
+    member this.PLACE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PLACE" then Some value else None)
+    member this.PONDID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PONDID" then Some value else None)
+    member this.PONDTYPE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PONDTYPE" then Some value else None)
+    member this.PONDYR =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PONDYR" then Some value else None)
+    member this.POND_ID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "POND_ID" then Some value else None)
+    member this.PRFRESOLUTION =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "PRFRESOLUTION" then Some value else None)
+    member this.RAW_NAME =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "RAW_NAME" then Some value else None)
+    member this.RELATEDFEATURE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "RELATEDFEATURE" then Some value else None)
+    member this.ROTATION_AZ =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ROTATION_AZ" then Some value else None)
+    member this.SHAPE_Area =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "SHAPE_Area" then Some value else None)
+    member this.SHAPE_Length =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "SHAPE_Length" then Some value else None)
+    member this.SLOT_ELEV =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "SLOT_ELEV" then Some value else None)
+    member this.SOURCE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "SOURCE" then Some value else None)
+    member this.SOURCEYEAR =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "SOURCEYEAR" then Some value else None)
+    member this.STORAGE_FULL_PATH_ADDR =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "STORAGE_FULL_PATH_ADDR" then Some value else None)
+    member this.STORAGE_PATH_ADDR =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "STORAGE_PATH_ADDR" then Some value else None)
+    member this.STORAGE_STATIC_PATH_ADDR =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) ->
+            if key = "STORAGE_STATIC_PATH_ADDR" then
+                Some value
+            else
+                None)
+    member this.STRCT_DEPTH =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "STRCT_DEPTH" then Some value else None)
+    member this.STRUCTUREID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "STRUCTUREID" then Some value else None)
+    member this.STRUCTURETYPE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "STRUCTURETYPE" then Some value else None)
+    member this.STRUCTURE_ID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "STRUCTURE_ID" then Some value else None)
+    member this.SUBTYPEFIELD =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "SUBTYPEFIELD" then Some value else None)
+    member this.SURFACETYPE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "SURFACETYPE" then Some value else None)
+    member this.Shape_Area =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "Shape_Area" then Some value else None)
+    member this.Shape_Length =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "Shape_Length" then Some value else None)
+    member this.UNDERDRAINS =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "UNDERDRAINS" then Some value else None)
+    member this.UNITDESC =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "UNITDESC" then Some value else None)
+    member this.UNITID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "UNITID" then Some value else None)
+    member this.UPDATESOURCE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "UPDATESOURCE" then Some value else None)
+    member this.UPSTREAMDEPTH =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "UPSTREAMDEPTH" then Some value else None)
+    member this.UPSTREAMELEVATION =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "UPSTREAMELEVATION" then Some value else None)
+    member this.UPSTREAMSTUCTUREID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "UPSTREAMSTUCTUREID" then Some value else None)
+    member this.UPSTREAM_DEPTH =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "UPSTREAM_DEPTH" then Some value else None)
+    member this.UPSTREAM_ELEV =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "UPSTREAM_ELEV" then Some value else None)
+    member this.VIEW_ =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "VIEW_" then Some value else None)
+    member this.WATERBODYNAME =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "WATERBODYNAME" then Some value else None)
+    member this.WBID =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "WBID" then Some value else None)
+    member this.WHOCREATED =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "WHOCREATED" then Some value else None)
+    member this.WHOMODIFIED =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "WHOMODIFIED" then Some value else None)
+    member this.WIDTH =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "WIDTH" then Some value else None)
+    member this.Z29 =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "Z29" then Some value else None)
+    member this.ZVALUE =
+        this.feature.attributes
+        |> Array.tryPick (fun (key, value) -> if key = "ZVALUE" then Some value else None)
 
 
 
 
-        
+
 
 type ServiceFeatureTable with
     member this.fields = this.Fields |> Seq.toArray
     member this.domainFields = this.Fields |> Seq.filter (fun field -> field.Domain <> null) |> Seq.toArray
     member this.nondomainFields = this.Fields |> Seq.filter (fun field -> field.Domain = null) |> Seq.toArray
-    member this.aliasedFields = this.Fields |> Seq.filter (fun field -> field.Name <> field.Alias) |> Seq.toArray
-    member this.features = this |> Feature.Query  0
+    member this.aliasedFields =
+        this.Fields
+        |> Seq.filter (fun field -> field.Name <> field.Alias)
+        |> Seq.toArray
+    member this.features = this |> Feature.Query 0
 type StormwaterFeatureTable =
     | StormwaterFeatureTable of ServiceFeatureTable
-    member this.table = 
-        match this with 
+
+    member this.table =
+        match this with
         | StormwaterFeatureTable serviceFeatureTable -> serviceFeatureTable
     member this.features = this.table.features |> Array.map (fun feature -> StormwaterFeature feature)
 
 type ArcGISMapImageLayer with
-    member this.sublayers = this.Sublayers |> Seq.map (fun layer -> layer :?> ArcGISMapImageSublayer) |> Seq.toArray
-type StormwaterImageLayer = 
+    member this.sublayers =
+        this.Sublayers
+        |> Seq.map (fun layer -> layer :?> ArcGISMapImageSublayer)
+        |> Seq.toArray
+type StormwaterImageLayer =
     | StormwaterImageLayer of ArcGISMapImageSublayer
-    member this.imageLayer = 
-        match this with 
+
+    member this.imageLayer =
+        match this with
         | StormwaterImageLayer arcGISMapImageSublayer -> arcGISMapImageSublayer
 
 
@@ -6076,7 +5713,7 @@ StormwaterInfrastructureMapImageLayer.LoadTablesAndLayersAsync().await
 
 
 
-// Infor Helpers 
+// Infor Helpers
 
 
 #load @"C:\Secret\InforSecrets.fsx"
@@ -6138,7 +5775,7 @@ open InforSecrets
 
 type InforProdSql = SqlDataProvider<IndividualsAmount=1000, UseOptionTypes=Common.NullableColumnType.OPTION, CaseSensitivityChange = Common.CaseSensitivityChange.ORIGINAL,
     SsdtPath = Prod.dapac,
-    ConnectionString=Prod.connection_string>
+    ConnectionString=Prod.connectionString>
 
 let operations = InforProdSql.GetDataContext()
 
@@ -6147,11 +5784,11 @@ let operations = InforProdSql.GetDataContext()
 
 
 
-module HansenDataDistribution = 
+module HansenDataDistribution =
     [<Literal>]
-    let xmlFilePath =  @"D:/Surface/Company/Infor/Download_Center/Product/Operations_and_Regulations/Release/Infor_Public_Sector_2025_04_01/IPS_2025_04_01/Deployment Files/MetaData/MetaData.xml"
-    type Provider = XmlProvider<UseOriginalNames = true, PreferDateOnly = true,
-            Sample = xmlFilePath >
+    let xmlFilePath =
+        @"D:/Surface/Company/Infor/Download_Center/Product/Operations_and_Regulations/Release/Infor_Public_Sector_2025_04_01/IPS_2025_04_01/Deployment Files/MetaData/MetaData.xml"
+    type Provider = XmlProvider<UseOriginalNames=true, PreferDateOnly=true, Sample=xmlFilePath>
     let xml = Provider.Load xmlFilePath
 
 
@@ -6162,7 +5799,7 @@ module HansenDataDistribution =
 
 
 
-type Dac.Model.TSqlObject with 
+type Dac.Model.TSqlObject with
     member this.ast = this.GetAst()
     member this.children = this.GetChildren() |> Seq.toArray
     member this.parent = this.GetParent()
@@ -6173,124 +5810,126 @@ type Dac.Model.TSqlObject with
     member this.script = this.GetScript() |> Seq.toArray
     member this.sourceInformation = this.GetSourceInformation()
 
-type Dac.Model.TSqlModel with 
-        member this.TableValuedFunctions =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "TableValuedFunction")
+type Dac.Model.TSqlModel with
+    member this.TableValuedFunctions =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "TableValuedFunction")
 
-        member this.ScalarFunctions =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "ScalarFunction")
+    member this.ScalarFunctions =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "ScalarFunction")
 
-        member this.Indexes =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Index")
+    member this.Indexes =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Index")
 
-        member this.CheckConstraints =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "CheckConstraint")
+    member this.CheckConstraints =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "CheckConstraint")
 
-        member this.DatabaseOptions =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "DatabaseOptions")
+    member this.DatabaseOptions =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "DatabaseOptions")
 
-        member this.DefaultConstraints =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "DefaultConstraint")
+    member this.DefaultConstraints =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "DefaultConstraint")
 
-        member this.DmlTriggers =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "DmlTrigger")
+    member this.DmlTriggers =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "DmlTrigger")
 
-        member this.ExtendedPropertys =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "ExtendedProperty")
+    member this.ExtendedPropertys =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "ExtendedProperty")
 
-        member this.ForeignKeyConstraints =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "ForeignKeyConstraint")
+    member this.ForeignKeyConstraints =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "ForeignKeyConstraint")
 
-        member this.Logins =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Login")
+    member this.Logins =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Login")
 
-        member this.PrimaryKeyConstraints =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "PrimaryKeyConstraint")
+    member this.PrimaryKeyConstraints =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "PrimaryKeyConstraint")
 
-        member this.Procedures =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Procedure")
+    member this.Procedures =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Procedure")
 
-        member this.Roles =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Role")
+    member this.Roles =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Role")
 
-        member this.RoleMemberships =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "RoleMembership")
+    member this.RoleMemberships =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "RoleMembership")
 
-        member this.Schemas =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Schema")
+    member this.Schemas =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Schema")
 
-        member this.Statisticss =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Statistics")
+    member this.Statisticss =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Statistics")
 
-        member this.Synonyms =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Synonym")
+    member this.Synonyms =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Synonym")
 
-        member this.Tables =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Table")
+    member this.Tables =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Table")
 
-        member this.TableTypes =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "TableType")
+    member this.TableTypes =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "TableType")
 
-        member this.UniqueConstraints =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "UniqueConstraint")
+    member this.UniqueConstraints =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "UniqueConstraint")
 
-        member this.Users =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "User")
+    member this.Users =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "User")
 
-        member this.Views =
-            this.GetObjects(Dac.Model.DacQueryScopes.All)
-            |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "View")
+    member this.Views =
+        this.GetObjects(Dac.Model.DacQueryScopes.All)
+        |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "View")
 
 
-                                           
-                                           
-module Dacpac =                            
-        [<Literal>]                        
-        let xmlFilePath = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\SqlDatabase\Metadata\dapac\model.xml"
-        type Provider = XmlProvider<UseOriginalNames = true, PreferDateOnly = true,
-                Sample = xmlFilePath >     
-        let xml = Provider.Load xmlFilePath
-                                           
-        let Model =                        
-            let options = Dac.Model.ModelLoadOptions()
-                                                                      
-            options.LoadAsScriptBackedModel <- true                   
-            options.ModelStorageType <- Dac.DacSchemaModelStorageType.Memory
-                                                                      
-            Dac.Model.TSqlModel.LoadFromDacpac(@"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\SqlDatabase\Metadata\operations.dacpac", options)
-                                                                      
-                                                                      
-type Dac.Model.ObjectIdentifier with                                  
-  member this.display  = Dacpac.Model.DisplayServices.GetDisplayName(this, Dac.Model.EscapeStyle.EscapeIfNecessary, false)
-  member this.fullDisplay  = Dacpac.Model.DisplayServices.GetDisplayName(this, Dac.Model.EscapeStyle.EscapeIfNecessary, true)
-                                                                      
-type Dac.Model.TSqlObject with                                        
-  member this.simpleName  = Dacpac.Model.DisplayServices.GetElementName (this, Dac.Model.ElementNameStyle.SimpleName)
-  member this.escapedSimpleName  = Dacpac.Model.DisplayServices.GetElementName (this, Dac.Model.ElementNameStyle.EscapedSimpleName)
-  member this.fullyQualifiedName  = Dacpac.Model.DisplayServices.GetElementName (this, Dac.Model.ElementNameStyle.FullyQualifiedName)
-  member this.escapedFullyQualifiedName  = Dacpac.Model.DisplayServices.GetElementName (this, Dac.Model.ElementNameStyle.EscapedFullyQualifiedName)
-  (*
+
+
+module Dacpac =
+    [<Literal>]
+    let xmlFilePath = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\SqlDatabase\Metadata\dapac\model.xml"
+    type Provider = XmlProvider<UseOriginalNames=true, PreferDateOnly=true, Sample=xmlFilePath>
+    let xml = Provider.Load xmlFilePath
+
+    let Model =
+        let options = Dac.Model.ModelLoadOptions()
+
+        options.LoadAsScriptBackedModel <- true
+        options.ModelStorageType <- Dac.DacSchemaModelStorageType.Memory
+
+        Dac.Model.TSqlModel.LoadFromDacpac(
+            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\SqlDatabase\Metadata\operations.dacpac",
+            options
+        )
+
+
+type Dac.Model.ObjectIdentifier with
+    member this.display = Dacpac.Model.DisplayServices.GetDisplayName(this, Dac.Model.EscapeStyle.EscapeIfNecessary, false)
+    member this.fullDisplay = Dacpac.Model.DisplayServices.GetDisplayName(this, Dac.Model.EscapeStyle.EscapeIfNecessary, true)
+
+type Dac.Model.TSqlObject with
+    member this.simpleName = Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.SimpleName)
+    member this.escapedSimpleName = Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.EscapedSimpleName)
+    member this.fullyQualifiedName = Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.FullyQualifiedName)
+    member this.escapedFullyQualifiedName = Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.EscapedFullyQualifiedName)
+(*
   member this.maybeProductFamily =                                    
     HansenDataDistribution.xml.hansenMetadata.productFamilies         
     |> Array.tryFind (fun productFamily ->                            
@@ -6310,7 +5949,7 @@ type Dac.Model.TSqlObject with
     )
 
   *)
-type Dac.Model.ModelTypeClass with 
+type Dac.Model.ModelTypeClass with
     member this.metadata = this.Metadata |> Seq.toArray
     member this.properties = this.Properties |> Seq.toArray
 
@@ -6333,7 +5972,7 @@ HansenDataDistribution.xml.hansenMetadata.productFamilies
 
 
 
-// codegen helpers 
+// codegen helpers
 
 
 
@@ -6789,7 +6428,7 @@ type Dom.Document with
 
 /// https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
 [<RequireQualifiedAccess>]
-type kType = 
+type kType =
     | tab
     | page
     | iframe
@@ -6803,9 +6442,10 @@ type kType =
     | auction_worklet
     | assistive_technology
     | browser_ui
+
     member this.asString = this.ToString()
-    member this.asTargetType = 
-        match this with 
+    member this.asTargetType =
+        match this with
         | kType.tab -> TargetType.Tab
         | kType.page -> TargetType.Page
         | kType.iframe -> TargetType.IFrame
@@ -6855,57 +6495,31 @@ type kType =
 type AngleSharpDomMetadataProvider() =
     inherit JavascriptMetadataProvider()
 
-    let fallback =
-        AttributeJavascriptMetadataProvider()
+    let fallback = AttributeJavascriptMetadataProvider()
 
     override _.GetMemberMetadata(memberInfo: MemberInfo) =
 
         let domName =
             memberInfo.GetCustomAttributes(typeof<DomNameAttribute>, false)
             |> Seq.tryPick (function
-                | :? DomNameAttribute as attribute ->
-                    Some attribute.OfficialName
-                | _ ->
-                    None
-            )
+                | :? DomNameAttribute as attribute -> Some attribute.OfficialName
+                | _ -> None)
 
         match domName with
-        | Some name ->
-            JavascriptMemberAttribute(MemberName = name)
-            :> IJavascriptMemberMetadata
+        | Some name -> JavascriptMemberAttribute(MemberName = name) :> IJavascriptMemberMetadata
 
-        | None ->
-            fallback.GetMemberMetadata(memberInfo)
+        | None -> fallback.GetMemberMetadata(memberInfo)
 
 
 type Javascript private () =
 
-    static let options =
-        JavascriptCompilationOptions(
-            enum<JsCompilationFlags> 0
-        )
+    static let options = JavascriptCompilationOptions(enum<JsCompilationFlags> 0)
 
-    static do
-        options.CustomMetadataProvider <-
-            AngleSharpDomMetadataProvider()
+    static do options.CustomMetadataProvider <- AngleSharpDomMetadataProvider()
 
-    static member func<'InputType, 'OutputType>
-        (
-            expression:
-                Expression<
-                    Func<'InputType, 'OutputType>
-                >
-        ) =
-        expression
+    static member func<'InputType, 'OutputType>(expression: Expression<Func<'InputType, 'OutputType>>) = expression
 
-    static member asText<'InputType, 'OutputType>
-        (
-            expression:
-                Expression<
-                    Func<'InputType, 'OutputType>
-                >
-        ) =
-        expression.CompileToJavascript(options)
+    static member asText<'InputType, 'OutputType>(expression: Expression<Func<'InputType, 'OutputType>>) = expression.CompileToJavascript(options)
 
 
 
@@ -6918,77 +6532,75 @@ type Javascript private () =
 
 
 
-// cdp helpers 
+// cdp helpers
 
 
 type IPage with
-    member this.asCdp =
-        this :?> CdpPage
+    member this.asCdp = this :?> CdpPage
 
 type IBrowser with
-    member this.asCdp =
-        this :?> CdpBrowser
+    member this.asCdp = this :?> CdpBrowser
 
 type ITarget with
-    member this.asCdp =
-        this :?> CdpTarget
+    member this.asCdp = this :?> CdpTarget
 
 type IBrowserContext with
-    member this.asCdp =
-        this :?> CdpBrowserContext
+    member this.asCdp = this :?> CdpBrowserContext
 
-type IRequest with 
+type IRequest with
     member this.asCdp = this :?> CdpHttpRequest
 
-type IResponse with 
+type IResponse with
     member this.asCdp = this :?> CdpHttpResponse
 
-type IElementHandle with 
+type IElementHandle with
     member this.asCdp = this :?> CdpElementHandle
 
 
 
 
 
-let chrome = 
-    
-        let options = ConnectOptions()
-        
-        options.BrowserURL <- "http://127.0.0.1:9222"
-        options.DefaultViewport <- null
+let chrome =
 
-        let ibrowser = task { return! Puppeteer.ConnectAsync(options) } |> await
-        ibrowser :?> CdpBrowser
+    let options = ConnectOptions()
+
+    options.BrowserURL <- "http://127.0.0.1:9222"
+    options.DefaultViewport <- null
+
+    let ibrowser = task { return! Puppeteer.ConnectAsync(options) } |> await
+    ibrowser :?> CdpBrowser
 
 
 let backgroundOption = new CreatePageOptions()
 backgroundOption.Background <- true
 
-type DomUrl with 
-    member this.HeadedDownloadText() = 
+type DomUrl with
+    member this.HeadedDownloadText() =
         let backTab = chrome.NewPageAsync(backgroundOption).await.asCdp
         let response = backTab.GoToAsync(this.asString).await
         this.WriteFileText(response.TextAsync().await)
         backTab.CloseAsync() |> ignore
 
 
-    member this.ProviderText = 
-        if not this.asFile.Exists then 
+    member this.ProviderText =
+        if not this.asFile.Exists then
             this.HeadedDownloadText()
         let sampleIdentifier = $"{this.pathStem}FilePath"
-        let text = 
-            Ast.Oak(){
-                Ast.AnonymousModule(){
+        let text =
+            Ast.Oak() {
+                Ast.AnonymousModule() {
                     Ast.Value(sampleIdentifier, Ast.VerbatimString(this.asFile.FullName))
-                    |> _.attribute(
-                        Ast.Attribute("Literal")
-                    )
+                    |> _.attribute(Ast.Attribute("Literal"))
 
-                    match this.extension with 
-                    | ".json" -> Ast.Abbrev($"{this.pathStem}JsonProvider", "JsonProvider< UseOriginalNames = true, PreferDateOnly = true, OmitNullFields = true, RootName = \"{this.pathStem}\"")
-                    | ".xml" -> 
-                                Ast.Abbrev($"{this.pathStem}HtmlProvider",$"HtmlProvider<PreferOptionals = true, PreferDateOnly = true, Sample = {sampleIdentifier}>")
-                                Ast.Abbrev($"{this.pathStem}XmlProvider", $"XmlProvider<UseOriginalNames = true, PreferDateOnly = true, Sample = {sampleIdentifier}>")
+                    match this.extension with
+                    | ".json" ->
+                        Ast.Abbrev(
+                            $"{this.pathStem}JsonProvider",
+                            "JsonProvider< UseOriginalNames = true, PreferDateOnly = true, OmitNullFields = true, RootName = \"{this.pathStem}\""
+                        )
+                    | ".xml" ->
+                        Ast.Abbrev($"{this.pathStem}HtmlProvider", $"HtmlProvider<PreferOptionals = true, PreferDateOnly = true, Sample = {sampleIdentifier}>")
+                        Ast.Abbrev($"{this.pathStem}XmlProvider", $"XmlProvider<UseOriginalNames = true, PreferDateOnly = true, Sample = {sampleIdentifier}>")
                     | _ -> ()
                 }
             }
@@ -6998,22 +6610,22 @@ type DomUrl with
 
 
 
-module DomUrl = 
+module DomUrl =
 
-    let AddQueryParameter (parameterKey:string) parameterValue (domUrl:DomUrl) = 
-        new DomUrl(QueryStringUtilities.AddQueryString( domUrl.Href, parameterKey, string parameterValue) )  
+    let AddQueryParameter (parameterKey: string) parameterValue (domUrl: DomUrl) =
+        new DomUrl(QueryStringUtilities.AddQueryString(domUrl.Href, parameterKey, string parameterValue))
 
-    let UpsertQueryParameter (parameterKey:string) parameterValue (domUrl:DomUrl)= 
-        new DomUrl(QueryStringUtilities.AddOrReplaceQueryString( domUrl.Href, parameterKey, string parameterValue) )  
-    let RemoveQueryParameter (parameterKey:string)  (domUrl:DomUrl)= 
-        new DomUrl(QueryStringUtilities.RemoveQueryString( domUrl.Href, parameterKey) )  
-    let WriteFileExtensionText (text:string) (extension:string) (url:DomUrl)= 
+    let UpsertQueryParameter (parameterKey: string) parameterValue (domUrl: DomUrl) =
+        new DomUrl(QueryStringUtilities.AddOrReplaceQueryString(domUrl.Href, parameterKey, string parameterValue))
+    let RemoveQueryParameter (parameterKey: string) (domUrl: DomUrl) =
+        new DomUrl(QueryStringUtilities.RemoveQueryString(domUrl.Href, parameterKey))
+    let WriteFileExtensionText (text: string) (extension: string) (url: DomUrl) =
         url.CreateFileDirectory()
         File.WriteAllText(Path.ChangeExtension(url.asFile.FullName, extension), text)
 
-type DomUrl with 
+type DomUrl with
 
-    member this.HeadedDownloadTextExtension(extension:string) = 
+    member this.HeadedDownloadTextExtension(extension: string) =
         let backTab = chrome.NewPageAsync(backgroundOption).await.asCdp
         let response = backTab.GoToAsync(this.asString).await
         this |> DomUrl.WriteFileExtensionText (response.TextAsync().await) extension
@@ -7056,7 +6668,7 @@ type BrowsingContextInfo with
 
 
 *)
-    
+
 
 
 
@@ -7074,26 +6686,23 @@ type BrowsingContextInfo with
 
 
 
-type CdpHttpRequest with 
-    member this.DomUrl = DomUrl this.Url  
+type CdpHttpRequest with
+    member this.DomUrl = DomUrl this.Url
     member this.headers = this.Headers |> Seq.map (fun kvp -> kvp.Key, kvp.Value) |> Seq.toArray
-    member this.header (targetHeader:string) = this.headers  |> Array.tryPick (fun (headerKey,headerValue) -> if headerKey = targetHeader then Some headerValue else None)
-    member this.PostText  = 
-        if this.HasPostData then 
-            Some this.PostData
-        else 
-            None
+    member this.header(targetHeader: string) =
+        this.headers
+        |> Array.tryPick (fun (headerKey, headerValue) -> if headerKey = targetHeader then Some headerValue else None)
+    member this.PostText = if this.HasPostData then Some this.PostData else None
 
 
 
-type CdpHttpResponse with 
-    member this.DomUrl = DomUrl this.Url  
+type CdpHttpResponse with
+    member this.DomUrl = DomUrl this.Url
     member this.headers = this.Headers |> Seq.map (fun kvp -> kvp.Key, kvp.Value) |> Seq.toArray
-    member this.Text()  = 
-        try 
+    member this.Text() =
+        try
             task { return! this.TextAsync() } |> await |> Some
-        with 
-        | err -> 
+        with err ->
             logLines.Add(sprintf "request %s %A threw %s" this.Url this.headers err.Message)
             None
 
@@ -7101,15 +6710,15 @@ type CdpHttpResponse with
 
 
 
-type CdpElementHandle with 
-    member this.EvaluateFunction ( javascriptFunction: Expression< Func<'InputType, 'OutputType> > ) =
+type CdpElementHandle with
+    member this.EvaluateFunction(javascriptFunction: Expression<Func<'InputType, 'OutputType>>) =
         task { return! this.EvaluateFunctionAsync<'OutputType>(javascriptFunction |> Javascript.asText) }
         |> await
-    member this.outerHTML = 
-            Javascript.func<AngleSharp.Dom.IElement, string> ( fun element -> element.OuterHtml )
-            |> this.EvaluateFunction  
-            |> HtmlNode.Parse
-        
+    member this.outerHTML =
+        Javascript.func<AngleSharp.Dom.IElement, string> (fun element -> element.OuterHtml)
+        |> this.EvaluateFunction
+        |> HtmlNode.Parse
+
 
 
 type CdpPageTarget with
@@ -7117,79 +6726,90 @@ type CdpPageTarget with
 
 type CdpPage with
     member this.DomUrl = DomUrl this.Url
-    member this.ScrollToBottom() = task { return! this.EvaluateFunctionAsync( "() => window.scrollTo(0, document.documentElement.scrollHeight)" ) } |> await
-    member this.ScrollDown(pixels: int) = task { return! this.EvaluateFunctionAsync( "(pixels) => window.scrollBy(0, pixels)", pixels ) } |> await
+    member this.ScrollToBottom() =
+        task { return! this.EvaluateFunctionAsync("() => window.scrollTo(0, document.documentElement.scrollHeight)") }
+        |> await
+    member this.ScrollDown(pixels: int) =
+        task { return! this.EvaluateFunctionAsync("(pixels) => window.scrollBy(0, pixels)", pixels) }
+        |> await
 
-    member this.ScrollUp(pixels: int) = task { return! this.EvaluateFunctionAsync( "(pixels) => window.scrollBy(0, -pixels)", pixels ) } |> await
+    member this.ScrollUp(pixels: int) =
+        task { return! this.EvaluateFunctionAsync("(pixels) => window.scrollBy(0, -pixels)", pixels) }
+        |> await
     member this.SetTabName(name: string) =
-        task {
-            return!
-                this.EvaluateFunctionAsync<string>(
-                    "name => document.title = name",
-                    name
-                )
-        }
+        task { return! this.EvaluateFunctionAsync<string>("name => document.title = name", name) }
 
 
 
 type CdpFrame with
-    member this.DomUrl = DomUrl this.Url 
+    member this.DomUrl = DomUrl this.Url
 
 
 
 
 
-type CdpBrowser with 
+type CdpBrowser with
     member this.targets = this.Targets() |> Array.map (fun itarget -> itarget :?> CdpTarget)
-    member this.otherDevToolsTargets = this.targets |> Array.choose (fun target -> 
-        match target.Type, target.GetType().Name with 
-        | TargetType.Other, "CdpDevToolsTarget" -> Some (target :?> CdpDevToolsTarget)
-        | _ -> None
-        ) 
-    member this.otherTargets = this.targets |> Array.choose (fun target -> 
-        match target.Type, target.GetType().Name with 
-        | TargetType.Other, "CdpOtherTarget" -> Some (target :?> CdpOtherTarget)
-        | _ -> None
-        ) 
-    
-    member this.pageOtherTargets = this.targets |> Array.choose (fun target -> 
-        match target.Type, target.GetType().Name with 
-        | TargetType.Page, "CdpOtherTarget" -> Some (target :?> CdpOtherTarget)
-        | _ -> None
-        ) 
-    
-    member this.pageTargets = this.targets |> Array.choose (fun target -> 
-        match target.Type, target.GetType().Name with 
-        | TargetType.Page, "CdpPageTarget" -> Some (target :?> CdpPageTarget)
-        | _ -> None
-        ) 
-    member this.workerTargets = this.targets |> Array.choose (fun target -> 
-        match target.Type, target.GetType().Name with 
-        | TargetType.ServiceWorker, "CdpWorkerTarget" -> Some (target :?> CdpWorkerTarget)
-        | _ -> None
-        ) 
-    member this.browserOtherTargets = this.targets |> Array.choose (fun target -> 
-        match target.Type, target.GetType().Name with 
-        | TargetType.Browser, "CdpOtherTarget" -> Some (target :?> CdpOtherTarget)
-        | _ -> None
-        ) 
-    member this.workerOtherTargets = this.targets |> Array.choose (fun target -> 
-        match target.Type, target.GetType().Name with 
-        | TargetType.Worker, "CdpOtherTarget" -> Some (target :?> CdpOtherTarget)
-        | _ -> None
-        ) 
-    member this.iframeOtherTargets = this.targets |> Array.choose (fun target -> 
-        match target.Type, target.GetType().Name with 
-        | TargetType.IFrame, "CdpOtherTarget" -> Some (target :?> CdpOtherTarget)
-        | _ -> None
-        ) 
-    
-    member this.maybePageTarget ( pageTargetFinder : CdpPageTarget  -> bool)  = this.pageTargets |> Array.tryFind pageTargetFinder
-    
-module CdpBrowser = 
-    let maybeTab ( pageTargetFinder : CdpPageTarget -> bool) (browser:CdpBrowser) = 
-        let maybePage = browser.maybePageTarget pageTargetFinder |> Option.map (fun target -> target.AsPageAsync().await.asCdp )
-        match maybePage with 
+    member this.otherDevToolsTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Other, "CdpDevToolsTarget" -> Some(target :?> CdpDevToolsTarget)
+            | _ -> None)
+    member this.otherTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Other, "CdpOtherTarget" -> Some(target :?> CdpOtherTarget)
+            | _ -> None)
+
+    member this.pageOtherTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Page, "CdpOtherTarget" -> Some(target :?> CdpOtherTarget)
+            | _ -> None)
+
+    member this.pageTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Page, "CdpPageTarget" -> Some(target :?> CdpPageTarget)
+            | _ -> None)
+    member this.workerTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.ServiceWorker, "CdpWorkerTarget" -> Some(target :?> CdpWorkerTarget)
+            | _ -> None)
+    member this.browserOtherTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Browser, "CdpOtherTarget" -> Some(target :?> CdpOtherTarget)
+            | _ -> None)
+    member this.workerOtherTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Worker, "CdpOtherTarget" -> Some(target :?> CdpOtherTarget)
+            | _ -> None)
+    member this.iframeOtherTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.IFrame, "CdpOtherTarget" -> Some(target :?> CdpOtherTarget)
+            | _ -> None)
+
+    member this.maybePageTarget(pageTargetFinder: CdpPageTarget -> bool) =
+        this.pageTargets |> Array.tryFind pageTargetFinder
+
+module CdpBrowser =
+    let maybeTab (pageTargetFinder: CdpPageTarget -> bool) (browser: CdpBrowser) =
+        let maybePage =
+            browser.maybePageTarget pageTargetFinder
+            |> Option.map (fun target -> target.AsPageAsync().await.asCdp)
+        match maybePage with
         | Some page -> page
         | None -> browser.NewPageAsync().await.asCdp
 
@@ -7197,31 +6817,28 @@ module CdpBrowser =
 
 
 
-let writeRequestResponse  (response:CdpHttpResponse) (extensionOverride:string option) = 
-        match extensionOverride, response.Text() with 
-        | Some extension, Some text  -> 
-            let file = Path.ChangeExtension(response.DomUrl.asFile.FullName, extension) |> FileInfo
-            Directory.CreateDirectory file.DirectoryName |> ignore
-            File.WriteAllText(  file.FullName, text)
-        | None, Some text -> 
-            Directory.CreateDirectory response.DomUrl.asFile.DirectoryName |> ignore
-            File.WriteAllText( response.DomUrl.asFile.FullName , text)
-        | _, _ -> ()
+let writeRequestResponse (response: CdpHttpResponse) (extensionOverride: string option) =
+    match extensionOverride, response.Text() with
+    | Some extension, Some text ->
+        let file = Path.ChangeExtension(response.DomUrl.asFile.FullName, extension) |> FileInfo
+        Directory.CreateDirectory file.DirectoryName |> ignore
+        File.WriteAllText(file.FullName, text)
+    | None, Some text ->
+        Directory.CreateDirectory response.DomUrl.asFile.DirectoryName |> ignore
+        File.WriteAllText(response.DomUrl.asFile.FullName, text)
+    | _, _ -> ()
 
-let neogovPathStems = 
+let neogovPathStems =
     set [
-            "employees"
-            "customWindowProperties"
-            "orgChartView"
-            "directManager"
-            "user-profile"
+        "employees"
+        "customWindowProperties"
+        "orgChartView"
+        "directManager"
+        "user-profile"
     ]
 
-let bannerXmlStems = 
-    set [
-        "menu"
-    ]
-let bannerJsonStems = 
+let bannerXmlStems = set [ "menu" ]
+let bannerJsonStems =
     set [
         "fetchUsageTracking"
         "getAccordionSectionData"
@@ -7234,41 +6851,41 @@ let networkMailbox =
         let rec loop () =
             async {
                 let! request = inbox.Receive()
-                match request.Response.Status with 
+                match request.Response.Status with
                 | HttpStatusCode.OK ->
 
-                    
+
                     finishedRequests.Add request
                     match request.Response.DomUrl.Host, request.Response.DomUrl.pathStem, request.Response.DomUrl.extension with
-                    | "leoncountyfl.samanage.com", _, ".json"-> writeRequestResponse request.Response  None
-                    | "leoncountyfl.samanage.com", _, ".jsonhtml"-> writeRequestResponse request.Response  None
-                    | "leoncountyfl.samanage.com", _, ".xml"-> writeRequestResponse request.Response  None
-                    | "unifiedweb-api.neogov.com", pathStem, _ when neogovPathStems.Contains(pathStem) -> Some ".json" |> writeRequestResponse request.Response 
-                    | "content.centene.com", _, ".json"->  writeRequestResponse request.Response  None
-                    | "my.centene.com", _, ".json"->  writeRequestResponse request.Response  None
-                    | "app.securiti.ai", "location", _ -> Some ".json" |> writeRequestResponse request.Response 
-                    | "smetrics.sunshinehealth.com", "interact", _ -> Some ".json" |> writeRequestResponse request.Response 
-                    | "external-api.search.my.centene.com", "query", _ -> Some ".json" |> writeRequestResponse request.Response 
-                    | "siteintercept.qualtrics.com", _, ".php" -> Some ".json" |> writeRequestResponse request.Response 
-                    | "bannerprodssb.leoncountyfl.gov:8449", pathStem, _ when bannerXmlStems.Contains(pathStem) -> Some ".xml" |> writeRequestResponse request.Response 
-                    | "bannerprodssb.leoncountyfl.gov:8449", pathStem, _ when bannerJsonStems.Contains(pathStem) -> Some ".json" |> writeRequestResponse request.Response 
-                    
+                    | "leoncountyfl.samanage.com", _, ".json" -> writeRequestResponse request.Response None
+                    | "leoncountyfl.samanage.com", _, ".jsonhtml" -> writeRequestResponse request.Response None
+                    | "leoncountyfl.samanage.com", _, ".xml" -> writeRequestResponse request.Response None
+                    | "unifiedweb-api.neogov.com", pathStem, _ when neogovPathStems.Contains(pathStem) -> Some ".json" |> writeRequestResponse request.Response
+                    | "content.centene.com", _, ".json" -> writeRequestResponse request.Response None
+                    | "my.centene.com", _, ".json" -> writeRequestResponse request.Response None
+                    | "app.securiti.ai", "location", _ -> Some ".json" |> writeRequestResponse request.Response
+                    | "smetrics.sunshinehealth.com", "interact", _ -> Some ".json" |> writeRequestResponse request.Response
+                    | "external-api.search.my.centene.com", "query", _ -> Some ".json" |> writeRequestResponse request.Response
+                    | "siteintercept.qualtrics.com", _, ".php" -> Some ".json" |> writeRequestResponse request.Response
+                    | "bannerprodssb.leoncountyfl.gov:8449", pathStem, _ when bannerXmlStems.Contains(pathStem) -> Some ".xml" |> writeRequestResponse request.Response
+                    | "bannerprodssb.leoncountyfl.gov:8449", pathStem, _ when bannerJsonStems.Contains(pathStem) -> Some ".json" |> writeRequestResponse request.Response
 
-                         
+
+
                     | _ -> ()
                 | _ -> failedRequests.Add request
                 return! loop ()
             }
 
-        loop ()
-    )
+        loop ())
 
-let watchPageNetworkTraffic (page:CdpPage) = page.RequestFinished.Add(fun eventArguments -> networkMailbox.Post eventArguments.Request.asCdp)
+let watchPageNetworkTraffic (page: CdpPage) =
+    page.RequestFinished.Add(fun eventArguments -> networkMailbox.Post eventArguments.Request.asCdp)
 
 
-type CdpBrowser with 
+type CdpBrowser with
 
-    member this.tabs = 
+    member this.tabs =
         let pages = this.pageTargets |> Array.map (fun target -> target.AsPageAsync().await.asCdp)
         pages |> Array.iter watchPageNetworkTraffic
         pages
@@ -7329,22 +6946,25 @@ type CdpBrowser with
 
 
 
-let localVersionSet = Folder.fiboMaster.GetDirectories() |> Array.map (fun directory -> directory.Name) |> Set.ofArray
+let localVersionSet =
+    Folder.fiboMaster.GetDirectories()
+    |> Array.map (fun directory -> directory.Name)
+    |> Set.ofArray
 let latestRelease = DomUrl "https://github.com/edmcouncil/fibo/releases/latest"
-    
+
 let latestRemoteVersion =
     let master_ = "master_"
     task {
-            let options = new CreatePageOptions()
-            options.Background <- true
-            let! tab = chrome.NewPageAsync(options)
-            let! response = tab.GoToAsync(latestRelease.Href)
-            do! tab.CloseAsync()
+        let options = new CreatePageOptions()
+        options.Background <- true
+        let! tab = chrome.NewPageAsync(options)
+        let! response = tab.GoToAsync(latestRelease.Href)
+        do! tab.CloseAsync()
 
-            return response.asCdp.DomUrl.pathStem[master_.Length .. ]
-            }
-        |> await
-match localVersionSet.Contains(latestRemoteVersion) with  
+        return response.asCdp.DomUrl.pathStem[master_.Length ..]
+    }
+    |> await
+match localVersionSet.Contains(latestRemoteVersion) with
 | true -> printfn "fibo version %s already downloaded" latestRemoteVersion
 | false ->
     printfn "downloading fibo version %s" latestRemoteVersion
@@ -7361,19 +6981,19 @@ match localVersionSet.Contains(latestRemoteVersion) with
     if httpResponse.originalHttpResponseMessage.IsSuccessStatusCode then
         fiboZip.CreateFileDirectory()
         Response.saveFile fiboZip.asFile.FullName httpResponse
-    if fiboZip.asFile.Exists then 
+    if fiboZip.asFile.Exists then
         ZipFile.ExtractToDirectory(fiboZip.asFile.FullName, Folder.``spec.edmcouncil.org``.FullName)
 
 
 
 module PrefixId =
 
-    let vann = PrefixId.fromNamespaceLabel "http://purl.org/vocab/vann/"  "vann"
-    let foaf = PrefixId.fromNamespaceLabel "http://xmlns.com/foaf/0.1/" "foaf" 
-    let vs = PrefixId.fromNamespaceLabel "http://www.w3.org/2003/06/sw-vocab-status/ns#" "vs" 
-    let hydra = PrefixId.fromNamespaceLabel "http://www.w3.org/ns/hydra/core#" "hydra" 
-    let void_ = PrefixId.fromNamespaceLabel "http://rdfs.org/ns/void#" "void" 
-    let vaem = PrefixId.fromNamespaceLabel "http://www.linkedmodel.org/schema/vaem#" "vaem" 
+    let vann = PrefixId.fromNamespaceLabel "http://purl.org/vocab/vann/" "vann"
+    let foaf = PrefixId.fromNamespaceLabel "http://xmlns.com/foaf/0.1/" "foaf"
+    let vs = PrefixId.fromNamespaceLabel "http://www.w3.org/2003/06/sw-vocab-status/ns#" "vs"
+    let hydra = PrefixId.fromNamespaceLabel "http://www.w3.org/ns/hydra/core#" "hydra"
+    let void_ = PrefixId.fromNamespaceLabel "http://rdfs.org/ns/void#" "void"
+    let vaem = PrefixId.fromNamespaceLabel "http://www.linkedmodel.org/schema/vaem#" "vaem"
     let voaf = PrefixId.fromNamespaceLabel "http://purl.org/vocommons/voaf#" "voaf"
     let dcterms = PrefixId.fromNamespaceLabel "http://purl.org/dc/terms/" "dcterms"
     let dcat = PrefixId.fromNamespaceLabel "http://www.w3.org/ns/dcat#" "dcat"
@@ -7381,19 +7001,45 @@ module PrefixId =
 
 
 
-let rdfVocabulary = PrefixId.fromNamespaceLabel "http://www.w3.org/1999/02/22-rdf-syntax-ns#" "rdf" |> RdfVocabulary.fromPrefixId  
-let rdfsVocabulary = PrefixId.fromNamespaceLabel "http://www.w3.org/2000/01/rdf-schema#" "rdfs" |> RdfVocabulary.fromPrefixId  
-let owlVocabulary = PrefixId.fromNamespaceLabel "http://www.w3.org/2002/07/owl#" "owl" |> RdfVocabulary.fromPrefixId  
-let timeVocabulary = PrefixId.fromNamespaceLabel "http://www.w3.org/2006/time#" "time" |> RdfVocabulary.fromPrefixId  
-let vannVocabulary = PrefixId.fromNamespaceLabel "http://purl.org/vocab/vann/" "vann" |> RdfVocabulary.fromPrefixId  
-let foafVocabulary = PrefixId.fromNamespaceLabel "http://xmlns.com/foaf/0.1/" "foaf" |> RdfVocabulary.fromPrefixId  
-let vsVocabulary = PrefixId.fromNamespaceLabel "http://www.w3.org/2003/06/sw-vocab-status/ns#" "vs" |> RdfVocabulary.fromPrefixId  
-let hydraVocabulary = PrefixId.fromNamespaceLabel "http://www.w3.org/ns/hydra/core#" "hydra" |> RdfVocabulary.fromPrefixId  
-let voidVocabulary = PrefixId.fromNamespaceLabel "http://rdfs.org/ns/void#" "void" |> RdfVocabulary.fromPrefixId  
-let vaemVocabulary = PrefixId.fromNamespaceLabel "http://www.linkedmodel.org/schema/vaem#" "vaem" |> RdfVocabulary.fromPrefixId  
-let voafVocabulary = PrefixId.fromNamespaceLabel "http://purl.org/vocommons/voaf#" "voaf" |> RdfVocabulary.fromPrefixId  
-let dctermsVocabulary = PrefixId.fromNamespaceLabel "http://purl.org/dc/terms/" "dcterms" |> RdfVocabulary.fromPrefixId  
-let dcatVocabulary = PrefixId.fromNamespaceLabel "http://www.w3.org/ns/dcat#" "dcat" |> RdfVocabulary.fromPrefixId  
+let rdfVocabulary =
+    PrefixId.fromNamespaceLabel "http://www.w3.org/1999/02/22-rdf-syntax-ns#" "rdf"
+    |> RdfVocabulary.fromPrefixId
+let rdfsVocabulary =
+    PrefixId.fromNamespaceLabel "http://www.w3.org/2000/01/rdf-schema#" "rdfs"
+    |> RdfVocabulary.fromPrefixId
+let owlVocabulary =
+    PrefixId.fromNamespaceLabel "http://www.w3.org/2002/07/owl#" "owl"
+    |> RdfVocabulary.fromPrefixId
+let timeVocabulary =
+    PrefixId.fromNamespaceLabel "http://www.w3.org/2006/time#" "time"
+    |> RdfVocabulary.fromPrefixId
+let vannVocabulary =
+    PrefixId.fromNamespaceLabel "http://purl.org/vocab/vann/" "vann"
+    |> RdfVocabulary.fromPrefixId
+let foafVocabulary =
+    PrefixId.fromNamespaceLabel "http://xmlns.com/foaf/0.1/" "foaf"
+    |> RdfVocabulary.fromPrefixId
+let vsVocabulary =
+    PrefixId.fromNamespaceLabel "http://www.w3.org/2003/06/sw-vocab-status/ns#" "vs"
+    |> RdfVocabulary.fromPrefixId
+let hydraVocabulary =
+    PrefixId.fromNamespaceLabel "http://www.w3.org/ns/hydra/core#" "hydra"
+    |> RdfVocabulary.fromPrefixId
+let voidVocabulary =
+    PrefixId.fromNamespaceLabel "http://rdfs.org/ns/void#" "void"
+    |> RdfVocabulary.fromPrefixId
+let vaemVocabulary =
+    PrefixId.fromNamespaceLabel "http://www.linkedmodel.org/schema/vaem#" "vaem"
+    |> RdfVocabulary.fromPrefixId
+let voafVocabulary =
+    PrefixId.fromNamespaceLabel "http://purl.org/vocommons/voaf#" "voaf"
+    |> RdfVocabulary.fromPrefixId
+let dctermsVocabulary =
+    PrefixId.fromNamespaceLabel "http://purl.org/dc/terms/" "dcterms"
+    |> RdfVocabulary.fromPrefixId
+let dcatVocabulary =
+    PrefixId.fromNamespaceLabel "http://www.w3.org/ns/dcat#" "dcat"
+    |> RdfVocabulary.fromPrefixId
 
 
 
@@ -7524,8 +7170,7 @@ module rdfs =
     ///   <para>rdfs:label : ContainerMembershipProperty^^xsd:string</para>
     ///   <a href="http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty">rdfs:ContainerMembershipProperty</a>
     /// </summary>
-    let ContainerMembershipProperty =
-        rdfsVocabulary.prefixId.prefix "ContainerMembershipProperty"
+    let ContainerMembershipProperty = rdfsVocabulary.prefixId.prefix "ContainerMembershipProperty"
 
     /// <summary>
     ///   <para>rdfs:comment : The class of RDF datatypes.^^xsd:string</para>
@@ -7686,8 +7331,7 @@ module owl =
     ///   <para>rdfs:label : InverseFunctionalProperty^^xsd:string</para>
     ///   <a href="http://www.w3.org/2002/07/owl#InverseFunctionalProperty">owl:InverseFunctionalProperty</a>
     /// </summary>
-    let InverseFunctionalProperty =
-        owlVocabulary.prefixId.prefix "InverseFunctionalProperty"
+    let InverseFunctionalProperty = owlVocabulary.prefixId.prefix "InverseFunctionalProperty"
 
     /// <summary>
     ///   <para>rdfs:comment : The class of irreflexive properties.^^xsd:string</para>
@@ -7707,8 +7351,7 @@ module owl =
     ///   <para>rdfs:label : NegativePropertyAssertion^^xsd:string</para>
     ///   <a href="http://www.w3.org/2002/07/owl#NegativePropertyAssertion">owl:NegativePropertyAssertion</a>
     /// </summary>
-    let NegativePropertyAssertion =
-        owlVocabulary.prefixId.prefix "NegativePropertyAssertion"
+    let NegativePropertyAssertion = owlVocabulary.prefixId.prefix "NegativePropertyAssertion"
 
     /// <summary>
     ///   <para>rdfs:comment : This is the empty class.^^xsd:string</para>
@@ -7921,8 +7564,7 @@ module owl =
     ///   <para>rdfs:label : maxQualifiedCardinality^^xsd:string</para>
     ///   <a href="http://www.w3.org/2002/07/owl#maxQualifiedCardinality">owl:maxQualifiedCardinality</a>
     /// </summary>
-    let maxQualifiedCardinality =
-        owlVocabulary.prefixId.prefix "maxQualifiedCardinality"
+    let maxQualifiedCardinality = owlVocabulary.prefixId.prefix "maxQualifiedCardinality"
 
     /// <summary>
     ///   <para>rdfs:comment : The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom.^^xsd:string</para>
@@ -7942,8 +7584,7 @@ module owl =
     ///   <para>rdfs:label : minQualifiedCardinality^^xsd:string</para>
     ///   <a href="http://www.w3.org/2002/07/owl#minQualifiedCardinality">owl:minQualifiedCardinality</a>
     /// </summary>
-    let minQualifiedCardinality =
-        owlVocabulary.prefixId.prefix "minQualifiedCardinality"
+    let minQualifiedCardinality = owlVocabulary.prefixId.prefix "minQualifiedCardinality"
 
     /// <summary>
     ///   <para>rdfs:comment : The property that determines the class that a qualified object cardinality restriction refers to.^^xsd:string</para>
@@ -8153,8 +7794,7 @@ module foaf =
     ///   <para>vs:term_status : testing^^xsd:string</para>
     ///   <a href="http://xmlns.com/foaf/0.1/PersonalProfileDocument">foaf:PersonalProfileDocument</a>
     /// </summary>
-    let PersonalProfileDocument =
-        foafVocabulary.prefixId.prefix "PersonalProfileDocument"
+    let PersonalProfileDocument = foafVocabulary.prefixId.prefix "PersonalProfileDocument"
 
     /// <summary>
     ///   <para>rdfs:comment : A project (a collective endeavour of some kind).^^xsd:string</para>
@@ -8637,8 +8277,7 @@ module hydra =
     let Collection = hydraVocabulary.prefixId.prefix "Collection"
     let Error = hydraVocabulary.prefixId.prefix "Error"
 
-    let ExplicitRepresentation =
-        hydraVocabulary.prefixId.prefix "ExplicitRepresentation"
+    let ExplicitRepresentation = hydraVocabulary.prefixId.prefix "ExplicitRepresentation"
 
     /// <summary>
     ///   <para>rdfs:comment : Specifies a possible either expected or returned header values^^xsd:string</para>
@@ -8660,8 +8299,7 @@ module hydra =
     let SupportedProperty = hydraVocabulary.prefixId.prefix "SupportedProperty"
     let TemplatedLink = hydraVocabulary.prefixId.prefix "TemplatedLink"
 
-    let VariableRepresentation =
-        hydraVocabulary.prefixId.prefix "VariableRepresentation"
+    let VariableRepresentation = hydraVocabulary.prefixId.prefix "VariableRepresentation"
 
     let apiDocumentation = hydraVocabulary.prefixId.prefix "apiDocumentation"
     /// <summary>
@@ -8850,8 +8488,7 @@ module hydra =
     ///   <para>vs:term_status : testing^^xsd:string</para>
     ///   <a href="http://www.w3.org/ns/hydra/core#variableRepresentation">hydra:variableRepresentation</a>
     /// </summary>
-    let variableRepresentation =
-        hydraVocabulary.prefixId.prefix "variableRepresentation"
+    let variableRepresentation = hydraVocabulary.prefixId.prefix "variableRepresentation"
 
     let view = hydraVocabulary.prefixId.prefix "view"
     /// <summary>
@@ -9066,8 +8703,7 @@ module vann =
     ///   <para>rdfs:comment : The preferred namespace prefix to use when using terms from this vocabulary in an XML document.</para>
     ///   <a href="http://purl.org/vocab/vann/preferredNamespacePrefix">vann:preferredNamespacePrefix</a>
     /// </summary>
-    let preferredNamespacePrefix =
-        vannVocabulary.prefixId.prefix "preferredNamespacePrefix"
+    let preferredNamespacePrefix = vannVocabulary.prefixId.prefix "preferredNamespacePrefix"
 
     /// <summary>
     ///   <para>rdfs:label : Preferred Namespace Uri</para>
@@ -9089,8 +8725,7 @@ module vann =
     let usageNote = vannVocabulary.prefixId.prefix "usageNote"
     let vann_vocab_20040305 = vannVocabulary.prefixId.prefix "vann-vocab-20040305"
 
-    let ``vann_vocab_20100607.rdf`` =
-        vannVocabulary.prefixId.prefix "vann-vocab-20100607.rdf"
+    let ``vann_vocab_20100607.rdf`` = vannVocabulary.prefixId.prefix "vann-vocab-20100607.rdf"
 
 module vaem =
     let AnnotationsGraph = vaemVocabulary.prefixId.prefix "AnnotationsGraph"
@@ -9260,8 +8895,7 @@ module vaem =
     ///   <para>rdfs:label : uses non-imported resource^^xsd:string</para>
     ///   <a href="http://www.linkedmodel.org/schema/vaem#usesNonImportedResource">vaem:usesNonImportedResource</a>
     /// </summary>
-    let usesNonImportedResource =
-        vaemVocabulary.prefixId.prefix "usesNonImportedResource"
+    let usesNonImportedResource = vaemVocabulary.prefixId.prefix "usesNonImportedResource"
 
     /// <summary>
     ///   <para>rdfs:label : with attribution to^^xsd:string</para>
@@ -9491,8 +9125,7 @@ module voaf =
     ///   <para>vs:term_status : testing^^xsd:string</para>
     ///   <a href="http://purl.org/vocommons/voaf#occurrencesInVocabularies">voaf:occurrencesInVocabularies</a>
     /// </summary>
-    let occurrencesInVocabularies =
-        voafVocabulary.prefixId.prefix "occurrencesInVocabularies"
+    let occurrencesInVocabularies = voafVocabulary.prefixId.prefix "occurrencesInVocabularies"
 
     /// <summary>
     ///   <para>dc:description : PREFIX rdf:&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
@@ -9628,8 +9261,7 @@ module dcterms =
     ///   <para>rdfs:label : Bibliographic Resource</para>
     ///   <a href="http://purl.org/dc/terms/BibliographicResource">dcterms:BibliographicResource</a>
     /// </summary>
-    let BibliographicResource =
-        dctermsVocabulary.prefixId.prefix "BibliographicResource"
+    let BibliographicResource = dctermsVocabulary.prefixId.prefix "BibliographicResource"
 
     let Box = dctermsVocabulary.prefixId.prefix "Box"
     let DCMIType = dctermsVocabulary.prefixId.prefix "DCMIType"
@@ -9691,8 +9323,7 @@ module dcterms =
     ///   <para>rdfs:label : Location, Period, or Jurisdiction</para>
     ///   <a href="http://purl.org/dc/terms/LocationPeriodOrJurisdiction">dcterms:LocationPeriodOrJurisdiction</a>
     /// </summary>
-    let LocationPeriodOrJurisdiction =
-        dctermsVocabulary.prefixId.prefix "LocationPeriodOrJurisdiction"
+    let LocationPeriodOrJurisdiction = dctermsVocabulary.prefixId.prefix "LocationPeriodOrJurisdiction"
 
     let MESH = dctermsVocabulary.prefixId.prefix "MESH"
     /// <summary>
@@ -9863,8 +9494,7 @@ module dcterms =
     ///   <para>rdfs:label : Bibliographic Citation</para>
     ///   <a href="http://purl.org/dc/terms/bibliographicCitation">dcterms:bibliographicCitation</a>
     /// </summary>
-    let bibliographicCitation =
-        dctermsVocabulary.prefixId.prefix "bibliographicCitation"
+    let bibliographicCitation = dctermsVocabulary.prefixId.prefix "bibliographicCitation"
 
     /// <summary>
     ///   <para>dcterms:issued : 2001-05-21^^xsd:date</para>
@@ -10614,8 +10244,7 @@ module dcat =
     ///   <para>skos:scopeNote : Alternative spatial resolutions might be provided as different dataset distributions.skos:scopeNote : Distintas distribuciones de un conjunto de datos pueden tener resoluciones espaciales diferentes.skos:scopeNote : If the dataset is an image or grid this should correspond to the spacing of items. For other kinds of spatial dataset, this property will usually indicate the smallest distance between items in the dataset.skos:scopeNote : Pokud je datová sada obraz či mřížka, měla by tato vlastnost odpovídat rozestupu položek. Pro ostatní druhy prostorových datových sad bude tato vlastnost obvykle indikovat nejmenší vzdálenost mezi položkami této datové sady.skos:scopeNote : Risoluzioni spaziali alternative possono essere fornite come diverse distribuzioni di set di dati.skos:scopeNote : Různá prostorová rozlišení mohou být poskytována jako různé distribuce datové sady.skos:scopeNote : Se il set di dati è un'immagine o una griglia, questo dovrebbe corrispondere alla spaziatura degli elementi. Per altri tipi di set di dati spaziali, questa proprietà di solito indica la distanza minima tra gli elementi nel set di dati.skos:scopeNote : Si el conjunto de datos es una imágen o grilla, esta propiedad corresponde al espaciado de los elementos. Para otro tipo de conjunto de datos espaciales, esta propieda usualmente indica la menor distancia entre los elementos de dichos datos.skos:scopeNote : Alternative geografiske opløsninger kan leveres som forskellige datasætdistributioner.skos:scopeNote : Hvis datasættet udgøres af et billede eller et grid, så bør dette svare til afstanden mellem elementerne. For andre typer af spatiale datasæt, vil denne egenskab typisk indikere den mindste afstand mellem elementerne i datasættet.</para>
     ///   <a href="http://www.w3.org/ns/dcat#spatialResolutionInMeters">ns0:spatialResolutionInMeters</a>
     /// </summary>
-    let spatialResolutionInMeters =
-        dcatVocabulary.prefixId.prefix "spatialResolutionInMeters"
+    let spatialResolutionInMeters = dcatVocabulary.prefixId.prefix "spatialResolutionInMeters"
 
     /// <summary>
     ///   <para>rdfs:label : datum začátkurdfs:label : start daterdfs:label : data di iniziordfs:label : startdato</para>
@@ -10693,10 +10322,14 @@ module dcat =
 
 *)
 
-    
-module dac = 
+
+module dac =
     let _prefixId = PrefixId.fromNamespaceLabel "http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02" "dac"
-    let _prefix (localName:string) = PrefixedIri { prefixId = _prefixId ; localName = localName } 
+    let _prefix (localName: string) =
+        PrefixedIri {
+            prefixId = _prefixId
+            localName = localName
+        }
     let DataSchemaModel = _prefix "DataSchemaModel"
     let Model = _prefix "Model"
     let Element = _prefix "Element"
@@ -10741,21 +10374,6 @@ module dac =
     let SqlUniqueConstraint = _prefix "SqlUniqueConstraint"
     let SqlUser = _prefix "SqlUser"
     let SqlView = _prefix "SqlView"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10983,9 +10601,13 @@ let a = rdf.type_
 
 
 
-module dbug = 
-    let _prefixId = PrefixId.fromNamespaceLabel "https://eristocrates.dev/ontology/dbug/"  "dbug"
-    let _prefix (localName:string) = PrefixedIri { prefixId = _prefixId ; localName = localName } 
+module dbug =
+    let _prefixId = PrefixId.fromNamespaceLabel "https://eristocrates.dev/ontology/dbug/" "dbug"
+    let _prefix (localName: string) =
+        PrefixedIri {
+            prefixId = _prefixId
+            localName = localName
+        }
     let Bob = _prefix "Bob"
     let Alice = _prefix "Alice"
     let this = _prefix "this"
@@ -10994,50 +10616,45 @@ module dbug =
 
 
 [<RequireQualifiedAccess>]
-type LovTermType = 
+type LovTermType =
     | ``class``
     | property
     | datatype
     | instance
-type LovApiTermSearchParameters =
-    {
-        /// Full text query.
-        q :string
-        /// Maximum number of results to return per page (default: 10).
-        page_size :int option
-        /// Result page to display starting from 1 (default: 1).
-        page :int option
-        /// Filter query results based on their type. Possible values: [class, propery, datatype, instance]. Multiple values allowed (use coma without space to seperate them).
-        types :LovTermType array
-        /// Filter query results based on the vocabulary it belongs to (e.g. "foaf"). Expecting only one value.
-        vocab :string
-        /// Number of elements to display in the vocabulary facet (default: 10).
-        vocab_limit :int option
-        /// Filter query results based on their tag (e.g. "event"). Multiple values allowed, use coma as a separator (e.g. "event,time").
-        tags :string array
-        /// Number of elements to display in the tag facet (default: 10).
-        tag_limit :int option
-    }
+type LovApiTermSearchParameters = {
+    /// Full text query.
+    q: string
+    /// Maximum number of results to return per page (default: 10).
+    page_size: int option
+    /// Result page to display starting from 1 (default: 1).
+    page: int option
+    /// Filter query results based on their type. Possible values: [class, propery, datatype, instance]. Multiple values allowed (use coma without space to seperate them).
+    types: LovTermType array
+    /// Filter query results based on the vocabulary it belongs to (e.g. "foaf"). Expecting only one value.
+    vocab: string
+    /// Number of elements to display in the vocabulary facet (default: 10).
+    vocab_limit: int option
+    /// Filter query results based on their tag (e.g. "event"). Multiple values allowed, use coma as a separator (e.g. "event,time").
+    tags: string array
+    /// Number of elements to display in the tag facet (default: 10).
+    tag_limit: int option
+}
 [<Literal>]
 let termSearchFilePath = @"D:\Iri\https\lov.linkeddata.es\dataset\api\v2\term\search&quest;q=sample.json"
-type TermSearchProvider = JsonProvider< UseOriginalNames = true, PreferDateOnly = true, OmitNullFields = true,
-            RootName = "result",
-            Sample =  termSearchFilePath >
+type TermSearchProvider = JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="result", Sample=termSearchFilePath>
 [<Literal>]
 let vocabSearchFilePath = @"D:\Iri\https\lov.linkeddata.es\dataset\api\v2\vocabulary\search&quest;q=http%3A%2F%2Fwww.w3.json"
-type VocabSearchProvider = JsonProvider< UseOriginalNames = true, PreferDateOnly = true, OmitNullFields = true,
-            RootName = "result",
-            Sample =  vocabSearchFilePath >
+type VocabSearchProvider = JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="result", Sample=vocabSearchFilePath>
 
 let lovBase = DomUrl "https://lov.linkeddata.es/dataset/api/v2"
 
-let LovSearchTerm (term:string) = 
-    let domUrl = lovBase.AppendPath "term/search"  |> DomUrl.AddQueryParameter "q" term
+let LovSearchTerm (term: string) =
+    let domUrl = lovBase.AppendPath "term/search" |> DomUrl.AddQueryParameter "q" term
     domUrl.HeadedDownloadTextExtension(".json")
     TermSearchProvider.Load (domUrl.asFileExtension ".json").FullName
 
-let LovSearchVocab (vocab:string) = 
-    let domUrl = lovBase.AppendPath "vocabulary/search"  |> DomUrl.AddQueryParameter "q" vocab
+let LovSearchVocab (vocab: string) =
+    let domUrl = lovBase.AppendPath "vocabulary/search" |> DomUrl.AddQueryParameter "q" vocab
     domUrl.HeadedDownloadTextExtension(".json")
     VocabSearchProvider.Load (domUrl.asFileExtension ".json").FullName
 
@@ -11096,168 +10713,184 @@ module LovKeyword =
 
 
 
-type DomUrl with 
-    member this.asSparqlRemoteEndpoint = 
-        SparqlRemoteEndpoint.fromString(
-            new HttpClient(),
-            this.Href
-        )
+type DomUrl with
+    member this.asSparqlRemoteEndpoint = SparqlRemoteEndpoint.fromString (new HttpClient(), this.Href)
 
-let lov_n3 = { graphFile = FileInfo @"D:\Iri\https\lov.linkeddata.es\lov.n3" }
-let lov_nq = { datasetFile = FileInfo @"D:\Iri\https\lov.linkeddata.es\lov.nq"  }
+let lov_n3 = {
+    graphFile = FileInfo @"D:\Iri\https\lov.linkeddata.es\lov.n3"
+}
+let lov_nq = {
+    datasetFile = FileInfo @"D:\Iri\https\lov.linkeddata.es\lov.nq"
+}
 let lovDataset = lov_nq.asInMemoryQuadDataset
 let lov_sparql = DomUrl "https://lov.linkeddata.es/dataset/lov/sparql"
-    
-
-let s = !? "s"
-let p = !? "p"
-let o = !? "o"
-
-let vocabularyIri = !? "vocabularyIri"
-let preferredNamespaceUri = !? "preferredNamespaceUri"
-let preferredNamespacePrefix = !? "preferredNamespacePrefix"
 
 
-let selectVariables = [ vocabularyIri ; preferredNamespaceUri ; preferredNamespacePrefix]
-let vocabularyQuery = 
+let s = !?"s"
+let p = !?"p"
+let o = !?"o"
 
-        sparql.select selectVariables {
-            where ( 
-                !>vocabularyIri -~|> [ 
-                                        a ->- voaf.Vocabulary
-                                        vann.preferredNamespacePrefix ->- preferredNamespacePrefix
-                                        vann.preferredNamespaceUri ->- preferredNamespaceUri
-                                    ]
-                
-                )
-        }
-        |> lov_n3.asSparqlLocalDataset.query
+let vocabularyIri = !?"vocabularyIri"
+let preferredNamespaceUri = !?"preferredNamespaceUri"
+let preferredNamespacePrefix = !?"preferredNamespacePrefix"
 
 
-type LovVocabulary = 
-    {
-        vocabularyIri : Iri
-        vocabularyPrefix : RdfLiteral
-        vocabularyNamespace : RdfLiteral
+let selectVariables = [ vocabularyIri; preferredNamespaceUri; preferredNamespacePrefix ]
+let vocabularyQuery =
+
+    sparql.select selectVariables {
+        where (
+            !>vocabularyIri
+            -~|> [
+                a ->- voaf.Vocabulary
+                vann.preferredNamespacePrefix ->- preferredNamespacePrefix
+                vann.preferredNamespaceUri ->- preferredNamespaceUri
+            ]
+
+        )
     }
+    |> lov_n3.asSparqlLocalDataset.query
+
+
+type LovVocabulary = {
+    vocabularyIri: Iri
+    vocabularyPrefix: RdfLiteral
+    vocabularyNamespace: RdfLiteral
+} with
+
     member this.namespaceUrl = DomUrl this.vocabularyNamespace.lexicalForm
     member this.graphName = this.vocabularyIri.asUriNode :> IRefNode
     member this.asIGraph = lovDataset[this.graphName]
-    member this.tryIGraph = 
-        if lovDataset.HasGraph this.graphName then 
+    member this.tryIGraph =
+        if lovDataset.HasGraph this.graphName then
             printfn "Loading %s from lov.nq" this.vocabularyIri.lexicalForm
             Some lovDataset[this.graphName]
-        else 
+        else
             printfn "%s not found in lov.nq" this.vocabularyIri.lexicalForm
             None
-    member this.asFileExtension (dotExtension:string) = 
+    member this.asFileExtension(dotExtension: string) =
         let mimeType = MimeType.FromFileName(dotExtension)
-        Path.Combine (this.namespaceUrl.asFolder.FullName, mimeType.MediaType, $"{mimeType.SubType}{dotExtension}") |> FileInfo
-    member this.namespaceIri = IriReference this.vocabularyNamespace.lexicalForm  |> IRIREF
+        Path.Combine(this.namespaceUrl.asFolder.FullName, mimeType.MediaType, $"{mimeType.SubType}{dotExtension}")
+        |> FileInfo
+    member this.namespaceIri = IriReference this.vocabularyNamespace.lexicalForm |> IRIREF
     member this.asPrefixId = PrefixId.fromNamespaceLabel this.vocabularyNamespace.lexicalForm this.vocabularyPrefix.lexicalForm
     member this.ttlFile = this.asFileExtension ".ttl"
-    member this.tryGraphDocument = 
+    member this.tryGraphDocument =
         let ttlFile = this.ttlFile
-        match ttlFile.Exists, this.tryIGraph with 
+        match ttlFile.Exists, this.tryIGraph with
         | false, Some igraph ->
-                printfn "writing %s to  %s" this.vocabularyIri.lexicalForm (Path.Combine(ttlFile.DirectoryName,$"{ttlFile.stem}.ttl"))
-                igraph |> Turtle.writeIgraph ttlFile.DirectoryName ttlFile.stem
-                Some { graphFile = ttlFile }
+            printfn "writing %s to  %s" this.vocabularyIri.lexicalForm (Path.Combine(ttlFile.DirectoryName, $"{ttlFile.stem}.ttl"))
+            igraph |> Turtle.writeIgraph ttlFile.DirectoryName ttlFile.stem
+            Some { graphFile = ttlFile }
         | true, _ -> Some { graphFile = ttlFile }
         | _, _ -> None
-    member this.asRdfGraphDocument = 
-                    let ttlFile = this.ttlFile
-                    if not (ttlFile.Exists) then 
-                        this.asIGraph |> Turtle.writeIgraph this.ttlFile.DirectoryName this.ttlFile.stem
-                    { graphFile = ttlFile}
+    member this.asRdfGraphDocument =
+        let ttlFile = this.ttlFile
+        if not (ttlFile.Exists) then
+            this.asIGraph |> Turtle.writeIgraph this.ttlFile.DirectoryName this.ttlFile.stem
+        { graphFile = ttlFile }
 
-    member this.tryRdfVocabulary = 
-        match this.tryGraphDocument with 
-        | Some document -> 
+    member this.tryRdfVocabulary =
+        match this.tryGraphDocument with
+        | Some document ->
             Some {
-                    prefixId = this.asPrefixId
-                    namespaceDocument = document
-                }
-        | None -> None
-    member this.asRdfVocabulary = 
-                 {
-                    prefixId = this.asPrefixId
-                    namespaceDocument = this.asRdfGraphDocument
-                }
-
-let lovVocabularies =
-    [|
-
-        for index = 0 to vocabularyQuery.Count() - 1 do
-            let (IriPoint vocabIri) =  vocabularyQuery |> SparqlResultSet.variableIndex vocabularyIri index
-            let (LiteralPoint prefixLabel) = vocabularyQuery |>  SparqlResultSet.variableIndex preferredNamespacePrefix index 
-            let (LiteralPoint namespaceUri) = vocabularyQuery |>  SparqlResultSet.variableIndex preferredNamespaceUri index
-            {
-                vocabularyIri = vocabIri
-                vocabularyPrefix = prefixLabel
-                vocabularyNamespace = namespaceUri
-
+                prefixId = this.asPrefixId
+                namespaceDocument = document
             }
-    
-    |]
+        | None -> None
+    member this.asRdfVocabulary = {
+        prefixId = this.asPrefixId
+        namespaceDocument = this.asRdfGraphDocument
+    }
 
-let lovVocabularyMap = 
+let lovVocabularies = [|
+
+    for index = 0 to vocabularyQuery.Count() - 1 do
+        let (IriPoint vocabIri) = vocabularyQuery |> SparqlResultSet.variableIndex vocabularyIri index
+        let (LiteralPoint prefixLabel) = vocabularyQuery |> SparqlResultSet.variableIndex preferredNamespacePrefix index
+        let (LiteralPoint namespaceUri) = vocabularyQuery |> SparqlResultSet.variableIndex preferredNamespaceUri index
+        {
+            vocabularyIri = vocabIri
+            vocabularyPrefix = prefixLabel
+            vocabularyNamespace = namespaceUri
+
+        }
+
+|]
+
+let lovVocabularyMap =
     Array.concat [|
-        lovVocabularies |> Array.map (fun vocabulary -> vocabulary.vocabularyNamespace.lexicalForm, vocabulary) 
-        lovVocabularies |> Array.map (fun vocabulary -> vocabulary.vocabularyIri.lexicalForm, vocabulary) 
-        |]
-        |> Array.distinctBy (fun (vocabularyKey, _) -> vocabularyKey)
-        |> Map.ofArray
+        lovVocabularies
+        |> Array.map (fun vocabulary -> vocabulary.vocabularyNamespace.lexicalForm, vocabulary)
+        lovVocabularies
+        |> Array.map (fun vocabulary -> vocabulary.vocabularyIri.lexicalForm, vocabulary)
+    |]
+    |> Array.distinctBy (fun (vocabularyKey, _) -> vocabularyKey)
+    |> Map.ofArray
 
-type RDFNamespaceRegister with 
+type RDFNamespaceRegister with
     static member rdfNamespaces = RDFNamespaceRegister.Instance |> Seq.cast<RDFNamespace> |> Seq.toArray
-    static member hasPrefixRegistered(prefix:string) = RDFNamespaceRegister.rdfNamespaces |> Array.exists (fun rdfNamespace -> rdfNamespace.NamespacePrefix = prefix)
-    static member hasNamespaceNameRegistered(namespaceName:string) = RDFNamespaceRegister.rdfNamespaces |> Array.exists (fun rdfNamespace -> rdfNamespace.NamespaceUri.OriginalString= namespaceName)
-    static member maybePrefixIdCollision (prefixId:PrefixId) = 
-        match RDFNamespaceRegister.GetByPrefix prefixId.prefixLabel, RDFNamespaceRegister.GetByUri prefixId.namespaceName with 
-        | namespaceFromPrefix, namespaceFromName when prefixId.asRDFNamespace = namespaceFromPrefix && prefixId.asRDFNamespace = namespaceFromName -> None
+    static member hasPrefixRegistered(prefix: string) =
+        RDFNamespaceRegister.rdfNamespaces
+        |> Array.exists (fun rdfNamespace -> rdfNamespace.NamespacePrefix = prefix)
+    static member hasNamespaceNameRegistered(namespaceName: string) =
+        RDFNamespaceRegister.rdfNamespaces
+        |> Array.exists (fun rdfNamespace -> rdfNamespace.NamespaceUri.OriginalString = namespaceName)
+    static member maybePrefixIdCollision(prefixId: PrefixId) =
+        match RDFNamespaceRegister.GetByPrefix prefixId.prefixLabel, RDFNamespaceRegister.GetByUri prefixId.namespaceName with
+        | namespaceFromPrefix, namespaceFromName when
+            prefixId.asRDFNamespace = namespaceFromPrefix
+            && prefixId.asRDFNamespace = namespaceFromName
+            ->
+            None
         | namespaceFromPrefix, namespaceFromName -> Some(namespaceFromPrefix, namespaceFromName)
-    static member lovVocabularyNamespaces = 
-        RDFNamespaceRegister.rdfNamespaces |> Array.choose (fun rdfNamespace -> lovVocabularyMap.TryFind rdfNamespace.NamespaceUri.OriginalString)
+    static member lovVocabularyNamespaces =
+        RDFNamespaceRegister.rdfNamespaces
+        |> Array.choose (fun rdfNamespace -> lovVocabularyMap.TryFind rdfNamespace.NamespaceUri.OriginalString)
 
-let lovVocabularyNamespaces = RDFNamespaceRegister.lovVocabularyNamespaces |> Array.choose (fun lovVocabularyNamespaces -> lovVocabularyNamespaces.tryRdfVocabulary )
+let lovVocabularyNamespaces =
+    RDFNamespaceRegister.lovVocabularyNamespaces
+    |> Array.choose (fun lovVocabularyNamespaces -> lovVocabularyNamespaces.tryRdfVocabulary)
 
 lovVocabularyNamespaces[16]
 
 let lovNamespaces = lovVocabularies |> Array.choose (fun vocabulary -> vocabulary.tryRdfVocabulary)
 
-let lovNamespaceMap = lovNamespaces |> Array.map (fun lovNamespace -> lovNamespace.prefixId.namespaceName,  lovNamespace) |> Map.ofArray
+let lovNamespaceMap =
+    lovNamespaces
+    |> Array.map (fun lovNamespace -> lovNamespace.prefixId.namespaceName, lovNamespace)
+    |> Map.ofArray
 
-let targetNamespaceNames = 
-    [|
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        "http://www.w3.org/2000/01/rdf-schema#"
-        "http://www.w3.org/2002/07/owl#"
-        "http://www.w3.org/2001/XMLSchema#"
-        "http://www.w3.org/2001/XMLSchema-instance#"
-        "https://www.w3.org/2003/05/xpath-datatypes#"
-        "http://www.w3.org/2006/time#"
-        "http://purl.org/vocab/vann/"
-        "http://xmlns.com/foaf/0.1/"
-        "http://www.w3.org/2003/06/sw-vocab-status/ns#"
-        "http://www.w3.org/ns/hydra/core#"
-        "http://rdfs.org/ns/void#"
-        "http://www.linkedmodel.org/schema/vaem#"
-        "http://purl.org/vocommons/voaf#"
-        "http://purl.org/dc/terms/"
-        "http://www.w3.org/ns/dcat#"
-    |]
-let missingNamespaceNames = 
+let targetNamespaceNames = [|
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    "http://www.w3.org/2000/01/rdf-schema#"
+    "http://www.w3.org/2002/07/owl#"
+    "http://www.w3.org/2001/XMLSchema#"
+    "http://www.w3.org/2001/XMLSchema-instance#"
+    "https://www.w3.org/2003/05/xpath-datatypes#"
+    "http://www.w3.org/2006/time#"
+    "http://purl.org/vocab/vann/"
+    "http://xmlns.com/foaf/0.1/"
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#"
+    "http://www.w3.org/ns/hydra/core#"
+    "http://rdfs.org/ns/void#"
+    "http://www.linkedmodel.org/schema/vaem#"
+    "http://purl.org/vocommons/voaf#"
+    "http://purl.org/dc/terms/"
+    "http://www.w3.org/ns/dcat#"
+|]
+let missingNamespaceNames =
     targetNamespaceNames
-    |> Array.filter (fun namespaceName -> 
-        match lovNamespaceMap.TryFind namespaceName with 
+    |> Array.filter (fun namespaceName ->
+        match lovNamespaceMap.TryFind namespaceName with
         | Some _ -> false
         | _ -> true)
 
 targetNamespaceNames
 |> Array.choose (fun namespaceName -> lovNamespaceMap.TryFind namespaceName)
 |> Array.filter (fun vocabulary -> vocabulary.namespaceDocument.graphFile.Exists)
-|> Array.map (fun vocabulary -> $"let {vocabulary.prefixId.prefixLabel}Vocabulary = PrefixId.fromNamespaceLabel \"{vocabulary.prefixId.namespaceName}\" \"{vocabulary.prefixId.prefixLabel}\" |> RdfVocabulary.fromPrefixId  ")
+|> Array.map (fun vocabulary ->
+    $"let {vocabulary.prefixId.prefixLabel}Vocabulary = PrefixId.fromNamespaceLabel \"{vocabulary.prefixId.namespaceName}\" \"{vocabulary.prefixId.prefixLabel}\" |> RdfVocabulary.fromPrefixId  ")
 |> String.concat "\n"
 |> clip
 
@@ -11267,7 +10900,8 @@ targetNamespaceNames
 |> Array.sortBy (fun vocabulary -> vocabulary.prefixId.prefixLabel)
 |> Array.map (fun vocabulary -> RdfVocabulary.asModule vocabulary)
 |> String.concat "\n\n\n"
-|> fun namespaceText -> File.WriteAllText(@"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\VocabularyModules.txt", namespaceText)
+|> fun namespaceText ->
+    File.WriteAllText(@"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\VocabularyModules.txt", namespaceText)
 
 
 (*
@@ -11281,28 +10915,29 @@ describeTriples
 
 *)
 
-!> PrefixId.vann.asIri --- a --> voaf.Vocabulary
+!>PrefixId.vann.asIri --- a --> voaf.Vocabulary
 |> writeDraft Folder.Scratch.FullName "scratch"
 
 
 
 
 
-module gov = 
-    module leoncountyfl = 
-        module leonintra = 
+module gov =
+    module leoncountyfl =
+        module leonintra =
             let baseUrl = DomUrl "https://leonintra.leoncountyfl.gov/"
 
             let PayrollCalendar = baseUrl.AppendPath "Departments/Human-Resources/PAYROLL-CALENDARS"
 
             let FormsDocuments = baseUrl.AppendPath "Forms-Documents"
 
-        module bannerprodssb = 
+        module bannerprodssb =
 
             let baseUrl = DomUrl "https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService"
             let hrDashboard = baseUrl.AppendPath "ssb/hrDashboard"
             let payStubSummaryList = hrDashboard.AppendFragmentPath "payStubSummary/list"
-            let payStubSummary (payYear:int) = payStubSummaryList.ConcatFragment (string payYear)
+            let payStubSummary (payYear: int) =
+                payStubSummaryList.ConcatFragment(string payYear)
 
 
 gov.leoncountyfl.bannerprodssb.payStubSummary 2025
@@ -11315,10 +10950,10 @@ gov.leoncountyfl.bannerprodssb.payStubSummary 2025
 
 
 
-module Infor = 
-    module infortest = 
+module Infor =
+    module infortest =
         let test_operations = DomUrl "https://infortest.leoncountyfl.gov/test_operations/"
-    module CustomerService = 
+    module CustomerService =
         let portal = DomUrl "https://customerportal.infor.com/csmcore"
 
 
@@ -11352,152 +10987,151 @@ employeeTest.pathStem
 employeeTest.extension
 
 
-module Microsoft = 
-    module Graph = 
+module Microsoft =
+    module Graph =
         let OpenAPI = DomUrl "https://github.com/microsoftgraph/msgraph-metadata/raw/refs/heads/master/openapi/beta/openapi.yaml"
         let csdl = DomUrl "https://github.com/microsoftgraph/msgraph-metadata/raw/refs/heads/master/schemas/beta-Prod.csdl"
         let betaMetadata = DomUrl "https://graph.microsoft.com/beta/$metadata"
         let v1metadata = DomUrl "https://graph.microsoft.com/v1.0/$metadata"
         let httpClient = new HttpClient()
 
-        let explorer =  DomUrl "https://developer.microsoft.com/en-us/graph/graph-explorer"
-        let getAccessToken(tab:CdpPage) = 
-    
+        let explorer = DomUrl "https://developer.microsoft.com/en-us/graph/graph-explorer"
+        let getAccessToken (tab: CdpPage) =
+
             tab.ClickAsync(El.Button * Attr.Value.Equals("access-token") |> _.Css).await
             let accessTokenElement = tab.QuerySelectorAsync(El.Div * Attr.Id.Equals("access-token") |> _.Css).await.asCdp
             accessTokenElement.InnerTextAsync().await
-        let userProperties = 
-            [|
+        let userProperties = [|
 
 
-                "additionalData"
-                "adhocCalls"
-                "ageGroup"
-                "agreementAcceptances"
-                "appRoleAssignments"
-                "assignedLicenses"
-                "assignedPlans"
-                "authentication"
-                "authorizationInfo"
-                "backingStore"
-                "birthday"
-                "businessPhones"
-                "calendar"
-                "calendarGroups"
-                "chats"
-                "city"
-                "cloudClipboard"
-                "cloudPCs"
-                "companyName"
-                "consentProvidedForMinor"
-                "contactFolders"
-                "contacts"
-                "country"
-                "createdDateTime"
-                "createdObjects"
-                "creationType"
-                "customSecurityAttributes"
-                "dataSecurityAndGovernance"
-                "deletedDateTime"
-                "deviceManagementTroubleshootingEvents"
-                "directReports"
-                "displayName"
-                "drive"
-                "drives"
-                "employeeExperience"
-                "employeeHireDate"
-                "employeeId"
-                "employeeLeaveDateTime"
-                "employeeOrgData"
-                "employeeType"
-                "events"
-                "extensions"
-                "externalUserState"
-                "externalUserStateChangeDateTime"
-                "givenName"
-                "hireDate"
-                "id"
-                "identities"
-                "identityParentId"
-                "imAddresses"
-                "inferenceClassification"
-                "insights"
-                "interests"
-                "isManagementRestricted"
-                "isResourceAccount"
-                "jobTitle"
-                "joinedTeams"
-                "lastPasswordChangeDateTime"
-                "legalAgeGroupClassification"
-                "mail"
-                "mailFolders"
-                "mailNickname"
-                "mailboxSettings"
-                "managedAppRegistrations"
-                "managedDevices"
-                "manager"
-                "memberOf"
-                "messages"
-                "mobilePhone"
-                "mySite"
-                "oauth2PermissionGrants"
-                "odataType"
-                "officeLocation"
-                "onPremisesDistinguishedName"
-                "onPremisesImmutableId"
-                "onPremisesLastSyncDateTime"
-                "onPremisesProvisioningErrors"
-                "onPremisesSamAccountName"
-                "onPremisesSecurityIdentifier"
-                "onPremisesSyncBehavior"
-                "onPremisesSyncEnabled"
-                "onPremisesUserPrincipalName"
-                "onenote"
-                "onlineMeetings"
-                "otherMails"
-                "outlook"
-                "ownedDevices"
-                "ownedObjects"
-                "passwordPolicies"
-                "people"
-                "permissionGrants"
-                "photo"
-                "photos"
-                "planner"
-                "postalCode"
-                "preferredDataLocation"
-                "preferredLanguage"
-                "preferredName"
-                "presence"
-                "provisionedPlans"
-                "proxyAddresses"
-                "registeredDevices"
-                "responsibilities"
-                "securityIdentifier"
-                "serviceProvisioningErrors"
-                "settings"
-                "showInAddressList"
-                "signInSessionsValidFromDateTime"
-                "skills"
-                "solutions"
-                "sponsorOf"
-                "sponsors"
-                "state"
-                "streetAddress"
-                "surname"
-                "teamwork"
-                "todo"
-                "userPrincipalName"
-                "userType"
+            "additionalData"
+            "adhocCalls"
+            "ageGroup"
+            "agreementAcceptances"
+            "appRoleAssignments"
+            "assignedLicenses"
+            "assignedPlans"
+            "authentication"
+            "authorizationInfo"
+            "backingStore"
+            "birthday"
+            "businessPhones"
+            "calendar"
+            "calendarGroups"
+            "chats"
+            "city"
+            "cloudClipboard"
+            "cloudPCs"
+            "companyName"
+            "consentProvidedForMinor"
+            "contactFolders"
+            "contacts"
+            "country"
+            "createdDateTime"
+            "createdObjects"
+            "creationType"
+            "customSecurityAttributes"
+            "dataSecurityAndGovernance"
+            "deletedDateTime"
+            "deviceManagementTroubleshootingEvents"
+            "directReports"
+            "displayName"
+            "drive"
+            "drives"
+            "employeeExperience"
+            "employeeHireDate"
+            "employeeId"
+            "employeeLeaveDateTime"
+            "employeeOrgData"
+            "employeeType"
+            "events"
+            "extensions"
+            "externalUserState"
+            "externalUserStateChangeDateTime"
+            "givenName"
+            "hireDate"
+            "id"
+            "identities"
+            "identityParentId"
+            "imAddresses"
+            "inferenceClassification"
+            "insights"
+            "interests"
+            "isManagementRestricted"
+            "isResourceAccount"
+            "jobTitle"
+            "joinedTeams"
+            "lastPasswordChangeDateTime"
+            "legalAgeGroupClassification"
+            "mail"
+            "mailFolders"
+            "mailNickname"
+            "mailboxSettings"
+            "managedAppRegistrations"
+            "managedDevices"
+            "manager"
+            "memberOf"
+            "messages"
+            "mobilePhone"
+            "mySite"
+            "oauth2PermissionGrants"
+            "odataType"
+            "officeLocation"
+            "onPremisesDistinguishedName"
+            "onPremisesImmutableId"
+            "onPremisesLastSyncDateTime"
+            "onPremisesProvisioningErrors"
+            "onPremisesSamAccountName"
+            "onPremisesSecurityIdentifier"
+            "onPremisesSyncBehavior"
+            "onPremisesSyncEnabled"
+            "onPremisesUserPrincipalName"
+            "onenote"
+            "onlineMeetings"
+            "otherMails"
+            "outlook"
+            "ownedDevices"
+            "ownedObjects"
+            "passwordPolicies"
+            "people"
+            "permissionGrants"
+            "photo"
+            "photos"
+            "planner"
+            "postalCode"
+            "preferredDataLocation"
+            "preferredLanguage"
+            "preferredName"
+            "presence"
+            "provisionedPlans"
+            "proxyAddresses"
+            "registeredDevices"
+            "responsibilities"
+            "securityIdentifier"
+            "serviceProvisioningErrors"
+            "settings"
+            "showInAddressList"
+            "signInSessionsValidFromDateTime"
+            "skills"
+            "solutions"
+            "sponsorOf"
+            "sponsors"
+            "state"
+            "streetAddress"
+            "surname"
+            "teamwork"
+            "todo"
+            "userPrincipalName"
+            "userType"
 
 
-            |]
+        |]
 
 
 let microsoftGraphTab = chrome.NewPageAsync().await.asCdp
 microsoftGraphTab.GoToAsync(Microsoft.Graph.explorer.Href).await
-Microsoft.Graph.httpClient.DefaultRequestHeaders.Authorization <- AuthenticationHeaderValue("Bearer", Microsoft.Graph.getAccessToken(microsoftGraphTab))
-let microsoftGraphClient = new GraphServiceClient(Microsoft.Graph.httpClient,  baseUrl = "https://graph.microsoft.com/beta")
+Microsoft.Graph.httpClient.DefaultRequestHeaders.Authorization <- AuthenticationHeaderValue("Bearer", Microsoft.Graph.getAccessToken (microsoftGraphTab))
+let microsoftGraphClient = new GraphServiceClient(Microsoft.Graph.httpClient, baseUrl = "https://graph.microsoft.com/beta")
 
 
 // Microsoft.Graph.v1metadata.HeadlessDownloadFileExtension(".xml")
@@ -11507,94 +11141,92 @@ let microsoftGraphClient = new GraphServiceClient(Microsoft.Graph.httpClient,  b
 // Microsoft.Graph.csdl.asFile.FullName |> clip
 [<Literal>]
 let csdlFilePath = @"D:\Iri\https\github.com\microsoftgraph\msgraph-metadata\raw\refs\heads\master\schemas\beta-Prod.csdl"
-type CsdlProvider  = XmlProvider<UseOriginalNames = true, PreferDateOnly = true,
-            Sample = csdlFilePath >
+type CsdlProvider = XmlProvider<UseOriginalNames=true, PreferDateOnly=true, Sample=csdlFilePath>
 let beta_Prod_csdl = CsdlProvider.Load csdlFilePath
 let user_csdl =
     beta_Prod_csdl.DataServices.Schemas
-    |> Array.pick (fun schema -> 
-        match schema.Namespace with 
-        | "microsoft.graph" -> 
-                    schema.EntityTypes |> Array.tryFind (fun entityType -> entityType.Name = "user" )
+    |> Array.pick (fun schema ->
+        match schema.Namespace with
+        | "microsoft.graph" -> schema.EntityTypes |> Array.tryFind (fun entityType -> entityType.Name = "user")
 
-        | _ -> None
-    )
+        | _ -> None)
 let csdlUserPropertySet = user_csdl.Properties |> Array.map (fun property -> property.Name) |> Set.ofArray
-let clrUserPropertySet = typeof<Microsoft.Graph.Models.User>.GetProperties() |> Array.map (fun property -> property.Name.ToCamelCase()) |> Set.ofArray
+let clrUserPropertySet =
+    typeof<Microsoft.Graph.Models.User>.GetProperties()
+    |> Array.map (fun property -> property.Name.ToCamelCase())
+    |> Set.ofArray
 csdlUserPropertySet.Count()
 clrUserPropertySet.Count()
-let workingProperties = 
+let workingProperties =
     clrUserPropertySet
     |> Set.toArray
-    |> Array.Parallel.choose (fun property -> 
-        try 
-            let  myUserAccount = microsoftGraphClient.Me.GetAsync(fun request -> request.QueryParameters.Select <- [| property |] ).await
+    |> Array.Parallel.choose (fun property ->
+        try
+            let myUserAccount = microsoftGraphClient.Me.GetAsync(fun request -> request.QueryParameters.Select <- [| property |]).await
             Some property
-        with 
-        | _ -> None
+        with _ ->
+            None
 
-    
+
     )
-let  myUserAccount = microsoftGraphClient.Me.GetAsync(fun request -> request.QueryParameters.Select <- Microsoft.Graph.userProperties ).await
+let myUserAccount = microsoftGraphClient.Me.GetAsync(fun request -> request.QueryParameters.Select <- Microsoft.Graph.userProperties).await
 
 
 
 
-type Microsoft.Graph.Models.User with 
-    member this.properties: array<PropertyInfo * obj> = 
+type Microsoft.Graph.Models.User with
+    member this.properties: array<PropertyInfo * obj> =
         typeof<Microsoft.Graph.Models.User>.GetProperties()
-        |> Array.choose (fun property -> 
-            match property.GetValue this with 
-            | null -> None 
-            | value -> Some (property, value)
-            )
+        |> Array.choose (fun property ->
+            match property.GetValue this with
+            | null -> None
+            | value -> Some(property, value))
     member this.propertyNames = this.properties |> Array.map (fun (property, value) -> property.Name)
-    member this.propertyTypeNames = this.properties |> Array.map (fun (property, value) -> FSharpLiteral.stringifyTypeDynamic property.PropertyType, property.PropertyType.FullName) |> Array.distinct |> Array.sort
+    member this.propertyTypeNames =
+        this.properties
+        |> Array.map (fun (property, value) -> FSharpLiteral.stringifyTypeDynamic property.PropertyType, property.PropertyType.FullName)
+        |> Array.distinct
+        |> Array.sort
 
     member this.AstAdditionalDataFields =
-            this.AdditionalData
-            |> Seq.toArray
-            |> Array.map (fun keyValue -> 
-                match keyValue.Key, FSharpLiteral.stringifyTypeDynamic (keyValue.Value.GetType()) with 
-                | "@odata.context", fieldTypeName  -> Ast.Field("OdataContext", "DomUrl")
-                | fieldName, fieldTypeName -> Ast.Field(fieldName, fieldTypeName)
-                )
-        
+        this.AdditionalData
+        |> Seq.toArray
+        |> Array.map (fun keyValue ->
+            match keyValue.Key, FSharpLiteral.stringifyTypeDynamic (keyValue.Value.GetType()) with
+            | "@odata.context", fieldTypeName -> Ast.Field("OdataContext", "DomUrl")
+            | fieldName, fieldTypeName -> Ast.Field(fieldName, fieldTypeName))
+
     member this.AstFields =
 
         this.properties
-        |> Array.filter (fun (property,value) -> property.Name <> "AdditionalData")
-        |> Array.map (fun (property,value) -> 
-            match property.Name, FSharpLiteral.stringifyTypeDynamic property.PropertyType with 
-            | "BusinessPhones", fieldTypeName   -> Ast.Field("BusinessPhones", "PhoneNumber array" )
-            | "Id", fieldTypeName   -> Ast.Field("Id", "Guid" )
-            | "ImAddresses", fieldTypeName   -> Ast.Field("ImAddresses", "EmailAddress" )
-            | "Mail", fieldTypeName   -> Ast.Field("Mail", "EmailAddress" )
-            | "ProxyAddresses", fieldTypeName   -> Ast.Field("ProxyAddresses", "EmailAddress array" )
-            | fieldName, fieldTypeName when property.PropertyType.IsInterface && fieldName <> "AdditionalData"  -> Ast.Field(fieldName, FSharpLiteral.stringifyTypeDynamic(value.GetType()))
-            | fieldName, fieldTypeName when fieldTypeName.StartsWith("Nullable") -> Ast.Field(fieldName, fieldTypeName.Replace("Nullable","Option"))
-            | fieldName, fieldTypeName when fieldTypeName.StartsWith("IDictionary") -> Ast.Field(fieldName, fieldTypeName.Replace("IDictionary","Map"))
-            | fieldName, fieldTypeName when fieldTypeName.StartsWith("ResizeArray") -> Ast.Field(fieldName, fieldTypeName.Replace("ResizeArray","array"))
-            | fieldName, fieldTypeName -> Ast.Field(fieldName, fieldTypeName)
-            )
-    member this.AstRecord (recordName:string) = 
-        Ast.Record(recordName){
+        |> Array.filter (fun (property, value) -> property.Name <> "AdditionalData")
+        |> Array.map (fun (property, value) ->
+            match property.Name, FSharpLiteral.stringifyTypeDynamic property.PropertyType with
+            | "BusinessPhones", fieldTypeName -> Ast.Field("BusinessPhones", "PhoneNumber array")
+            | "Id", fieldTypeName -> Ast.Field("Id", "Guid")
+            | "ImAddresses", fieldTypeName -> Ast.Field("ImAddresses", "EmailAddress")
+            | "Mail", fieldTypeName -> Ast.Field("Mail", "EmailAddress")
+            | "ProxyAddresses", fieldTypeName -> Ast.Field("ProxyAddresses", "EmailAddress array")
+            | fieldName, fieldTypeName when property.PropertyType.IsInterface && fieldName <> "AdditionalData" ->
+                Ast.Field(fieldName, FSharpLiteral.stringifyTypeDynamic (value.GetType()))
+            | fieldName, fieldTypeName when fieldTypeName.StartsWith("Nullable") -> Ast.Field(fieldName, fieldTypeName.Replace("Nullable", "Option"))
+            | fieldName, fieldTypeName when fieldTypeName.StartsWith("IDictionary") -> Ast.Field(fieldName, fieldTypeName.Replace("IDictionary", "Map"))
+            | fieldName, fieldTypeName when fieldTypeName.StartsWith("ResizeArray") -> Ast.Field(fieldName, fieldTypeName.Replace("ResizeArray", "array"))
+            | fieldName, fieldTypeName -> Ast.Field(fieldName, fieldTypeName))
+    member this.AstRecord(recordName: string) =
+        Ast.Record(recordName) {
             for field in this.AstFields -> field
             for field in this.AstAdditionalDataFields -> field
-            
+
         }
-    member this.AstAnonymousModule = 
-        Ast.AnonymousModule(){
+    member this.AstAnonymousModule =
+        Ast.AnonymousModule() {
             this.AstRecord "EntraUser"
 
         }
-    member this.AstOak = 
+    member this.AstOak =
 
-        Ast.Oak(){
-            this.AstAnonymousModule
-        }
-        |> Gen.mkOak
-        |> Gen.run
+        Ast.Oak() { this.AstAnonymousModule } |> Gen.mkOak |> Gen.run
 
 
 
@@ -11611,7 +11243,7 @@ additionalData[0].Key
 myUserAccount.BackingStore.GetType().Name
 
 
-myUserAccount.BusinessPhones |> Seq.map PhoneNumber.Parse 
+myUserAccount.BusinessPhones |> Seq.map PhoneNumber.Parse
 myUserAccount.ImAddresses |> Seq.map EmailAddress.Parse
 
 myUserAccount.propertyTypeNames
@@ -11848,67 +11480,93 @@ let mainTab = cdp.openTargetInForeground cdp.pages[0]
 
 *)
 
-module LeonCounty = 
-    module Resolution = 
-        let TreatAllDignityRespect =  "https://cms.leoncountyfl.gov/Portals/0/DeptFiles/Admin/ResolutionTreatAllDignityRespect.pdf" |> FileInfo 
-    module ComprehensivePlan = 
-        let TallahasseeLeonCounty2050 =  "https://www.talgov.com/Uploads/Public/Documents/place/comp_plan/tallahassee-leon-county-comprehensive-plan-rev-g2026n.pdf" |> FileInfo 
-    module FY2022 = 
-        module FY2026 = 
-            let StrategicPlan =  "https://cms.leoncountyfl.gov/Portals/0/DeptFiles/CMR/Docs/StrategicPlan.pdf" |> FileInfo 
-    module FY2025 = 
-            let AnnualReport =  "https://cms.leoncountyfl.gov/Portals/0/adam/Documents/AI0vCswaFkyX0tCKHBE7pQ/Link/LCAR-2025.pdf" |> FileInfo 
-    module FY2026 = 
-        module Budget = 
-            module Adopted = 
-                let LeonCounty =  "https://cms.leoncountyfl.gov/Portals/0/DeptFiles/OMB/Docs/AnnualBudget/FY2026AdoptedBudget.pdf" |> FileInfo 
-                let GeneralBudgetInformation =  "https://www.leoncountyfl.gov/omb/budget26/docs/00-05%20-%20General%20Budget%20Information.pdf" |> FileInfo 
-                let DepartmentofPublicWorks =  "https://www.leoncountyfl.gov/omb/budget26/docs/11%20-%20Public%20Works.pdf" |> FileInfo 
-                let OfficeofInformationAndTechnology =  "https://www.leoncountyfl.gov/omb/budget26/docs/09%20-%20Office%20of%20Information%20Technology.pdf" |> FileInfo 
-                let Appendix =  "https://www.leoncountyfl.gov/omb/budget26/docs/26%20-%20Appendix.pdf" |> FileInfo 
+module LeonCounty =
+    module Resolution =
+        let TreatAllDignityRespect =
+            "https://cms.leoncountyfl.gov/Portals/0/DeptFiles/Admin/ResolutionTreatAllDignityRespect.pdf"
+            |> FileInfo
+    module ComprehensivePlan =
+        let TallahasseeLeonCounty2050 =
+            "https://www.talgov.com/Uploads/Public/Documents/place/comp_plan/tallahassee-leon-county-comprehensive-plan-rev-g2026n.pdf"
+            |> FileInfo
+    module FY2022 =
+        module FY2026 =
+            let StrategicPlan =
+                "https://cms.leoncountyfl.gov/Portals/0/DeptFiles/CMR/Docs/StrategicPlan.pdf"
+                |> FileInfo
+    module FY2025 =
+        let AnnualReport =
+            "https://cms.leoncountyfl.gov/Portals/0/adam/Documents/AI0vCswaFkyX0tCKHBE7pQ/Link/LCAR-2025.pdf"
+            |> FileInfo
+    module FY2026 =
+        module Budget =
+            module Adopted =
+                let LeonCounty =
+                    "https://cms.leoncountyfl.gov/Portals/0/DeptFiles/OMB/Docs/AnnualBudget/FY2026AdoptedBudget.pdf"
+                    |> FileInfo
+                let GeneralBudgetInformation =
+                    "https://www.leoncountyfl.gov/omb/budget26/docs/00-05%20-%20General%20Budget%20Information.pdf"
+                    |> FileInfo
+                let DepartmentofPublicWorks =
+                    "https://www.leoncountyfl.gov/omb/budget26/docs/11%20-%20Public%20Works.pdf"
+                    |> FileInfo
+                let OfficeofInformationAndTechnology =
+                    "https://www.leoncountyfl.gov/omb/budget26/docs/09%20-%20Office%20of%20Information%20Technology.pdf"
+                    |> FileInfo
+                let Appendix =
+                    "https://www.leoncountyfl.gov/omb/budget26/docs/26%20-%20Appendix.pdf"
+                    |> FileInfo
 
 
 
 
-type DictionaryToken with 
+type DictionaryToken with
     member this.data = this.Data |> Seq.toArray
 
-type Structure with 
-        member this.catalogAcroForm = this.Catalog.CatalogDictionary.Data["AcroForm"]
-        member this.catalogMarkInfo = this.Catalog.CatalogDictionary.Data["MarkInfo"]
-        member this.catalogMetadata = this.Catalog.CatalogDictionary.Data["Metadata"]
-        member this.catalogOCProperties = this.Catalog.CatalogDictionary.Data["OCProperties"]
-        member this.catalogOutlines = this.Catalog.CatalogDictionary.Data["Outlines"]
-        member this.catalogPages = this.Catalog.CatalogDictionary.Data["Pages"]
-        member this.catalogStructTreeRoot = this.Catalog.CatalogDictionary.Data["StructTreeRoot"]
-        member this.catalogType = this.Catalog.CatalogDictionary.Data["Type"]
+type Structure with
+    member this.catalogAcroForm = this.Catalog.CatalogDictionary.Data["AcroForm"]
+    member this.catalogMarkInfo = this.Catalog.CatalogDictionary.Data["MarkInfo"]
+    member this.catalogMetadata = this.Catalog.CatalogDictionary.Data["Metadata"]
+    member this.catalogOCProperties = this.Catalog.CatalogDictionary.Data["OCProperties"]
+    member this.catalogOutlines = this.Catalog.CatalogDictionary.Data["Outlines"]
+    member this.catalogPages = this.Catalog.CatalogDictionary.Data["Pages"]
+    member this.catalogStructTreeRoot = this.Catalog.CatalogDictionary.Data["StructTreeRoot"]
+    member this.catalogType = this.Catalog.CatalogDictionary.Data["Type"]
 
 
 module OfficeofInformationAndTechnology =
     let pdf = PdfDocument.Open LeonCounty.FY2026.Budget.Adopted.OfficeofInformationAndTechnology.FullName
 
-module NeoGov = 
-    let PaginatedUrl (url:DomUrl) = 
+module NeoGov =
+    let PaginatedUrl (url: DomUrl) =
 
-                    url
-                    |> DomUrl.AddQueryParameter "Page" 1
-                    |> DomUrl.AddQueryParameter "PageSize" 1000
-    let loginwithsso = DomUrl "https://login.neogov.com/loginwithsso"  // ?returnURL=https%3A%2F%2Funified.neogov.com%2Fdashboard&siteCode=US 
-    let dashboard = DomUrl "https://unified.neogov.com/dashboard" 
-    module Employee = 
-        let employees = DomUrl "https://unifiedweb-api.neogov.com/api/Employee/employees"  |> PaginatedUrl
-        module by = 
-            module id = 
-                let orgChartView (employeeId:string) = DomUrl $"https://unifiedweb-api.neogov.com/api/Employee/{employeeId}/hierarchy/orgChartView"  |> DomUrl.AddQueryParameter "includeSubordinateInformation"  true
-                let directManager (employeeId:string) = DomUrl $"https://unifiedweb-api.neogov.com/api/Employee/{employeeId}/directManager"  
-                let profile (employeeId:string) = DomUrl $"https://unifiedweb-api.neogov.com/api/Employee/user-profile"  |> DomUrl.AddQueryParameter "employeeId"  employeeId
-    module Default = 
-        let customWindowProperties = DomUrl "https://unifiedweb-api.neogov.com/api/Default/customWindowProperties" 
-    let profile (employeeId:string) = DomUrl $"https://unified.neogov.com/profile/{employeeId}" 
-    module Task = 
-        let todo = DomUrl "https://unifiedweb-api.neogov.com/api/Task/todo"  |> PaginatedUrl
-        let completed = DomUrl "https://unifiedweb-api.neogov.com/api/Task/completed"  |> PaginatedUrl
-        let taskType = DomUrl "https://unifiedweb-api.neogov.com/api/TaskType" 
+        url
+        |> DomUrl.AddQueryParameter "Page" 1
+        |> DomUrl.AddQueryParameter "PageSize" 1000
+    let loginwithsso = DomUrl "https://login.neogov.com/loginwithsso" // ?returnURL=https%3A%2F%2Funified.neogov.com%2Fdashboard&siteCode=US
+    let dashboard = DomUrl "https://unified.neogov.com/dashboard"
+    module Employee =
+        let employees =
+            DomUrl "https://unifiedweb-api.neogov.com/api/Employee/employees"
+            |> PaginatedUrl
+        module by =
+            module id =
+                let orgChartView (employeeId: string) =
+                    DomUrl $"https://unifiedweb-api.neogov.com/api/Employee/{employeeId}/hierarchy/orgChartView"
+                    |> DomUrl.AddQueryParameter "includeSubordinateInformation" true
+                let directManager (employeeId: string) =
+                    DomUrl $"https://unifiedweb-api.neogov.com/api/Employee/{employeeId}/directManager"
+                let profile (employeeId: string) =
+                    DomUrl $"https://unifiedweb-api.neogov.com/api/Employee/user-profile"
+                    |> DomUrl.AddQueryParameter "employeeId" employeeId
+    module Default =
+        let customWindowProperties = DomUrl "https://unifiedweb-api.neogov.com/api/Default/customWindowProperties"
+    let profile (employeeId: string) =
+        DomUrl $"https://unified.neogov.com/profile/{employeeId}"
+    module Task =
+        let todo = DomUrl "https://unifiedweb-api.neogov.com/api/Task/todo" |> PaginatedUrl
+        let completed = DomUrl "https://unifiedweb-api.neogov.com/api/Task/completed" |> PaginatedUrl
+        let taskType = DomUrl "https://unifiedweb-api.neogov.com/api/TaskType"
 
 
 
@@ -11942,26 +11600,37 @@ El.Input * Attr.Type.Equals("submit") |> _.Css |> mainTab.Locator |> _.ClickAsyn
 
 
 
-module Accela = 
+module Accela =
     [<RequireQualifiedAccess>]
-    type Environment = 
+    type Environment =
         | prod
         | test
         | supp
+
         member this.asString = this.ToString()
-        member this.url  = DomUrl $"https://leonco-{this.asString}-av.accela.com/" 
-        member this.contacts = this.url.AppendPath "portlets/commons/contact/refContact.jsp?mode=search&spaceName=spaces.leonco.contacts&spaceName=spaces.leonco.contacts&spaceName=spaces.leonco.contacts"
-        member this.licenseprofessionals = this.url.AppendPath "portlets/commons/professional/refProfessional.jsp?spaceName=spaces.leonco.licenseprofessionals&spaceName=spaces.leonco.licenseprofessionals&spaceName=spaces.leonco.licenseprofessionals&spaceName=spaces.leonco.licenseprofessionals"
-        member this.record = this.url.AppendPath "portlets/commons/cap/myCAPDetailPortlet.jsp?module=-select-&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record"
-        member this.recordSearch = this.url.AppendPath "portlets/cap/capSearch.do?mode=search&isFromSearch=true&isSearchButton=true&spaceName=spaces.leonco.record&module=PublicWorks&isGeneralCAP=Y"
-        member this.permit (permitNumber : string) = this.url.AppendPath $"portlets/cap/capsummary/CapTabSummary.do?mode=tabSummary&serviceProviderCode=LEONCO&ID1=EMP26&ID2=00000&ID3=00029&requireNotice=YES&clearForm=clearForm&module=EnvManagement&isFromCapList=true&isGeneralCAP=Y&spaceName=spaces.leonco.{permitNumber.ToLowerInvariant()}&spaceName=spaces.leonco.{permitNumber.ToLowerInvariant()}"
-    module DigEplan = 
+        member this.url = DomUrl $"https://leonco-{this.asString}-av.accela.com/"
+        member this.contacts =
+            this.url.AppendPath
+                "portlets/commons/contact/refContact.jsp?mode=search&spaceName=spaces.leonco.contacts&spaceName=spaces.leonco.contacts&spaceName=spaces.leonco.contacts"
+        member this.licenseprofessionals =
+            this.url.AppendPath
+                "portlets/commons/professional/refProfessional.jsp?spaceName=spaces.leonco.licenseprofessionals&spaceName=spaces.leonco.licenseprofessionals&spaceName=spaces.leonco.licenseprofessionals&spaceName=spaces.leonco.licenseprofessionals"
+        member this.record =
+            this.url.AppendPath
+                "portlets/commons/cap/myCAPDetailPortlet.jsp?module=-select-&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record&spaceName=spaces.leonco.record"
+        member this.recordSearch =
+            this.url.AppendPath
+                "portlets/cap/capSearch.do?mode=search&isFromSearch=true&isSearchButton=true&spaceName=spaces.leonco.record&module=PublicWorks&isGeneralCAP=Y"
+        member this.permit(permitNumber: string) =
+            this.url.AppendPath
+                $"portlets/cap/capsummary/CapTabSummary.do?mode=tabSummary&serviceProviderCode=LEONCO&ID1=EMP26&ID2=00000&ID3=00029&requireNotice=YES&clearForm=clearForm&module=EnvManagement&isFromCapList=true&isGeneralCAP=Y&spaceName=spaces.leonco.{permitNumber.ToLowerInvariant()}&spaceName=spaces.leonco.{permitNumber.ToLowerInvariant()}"
+    module DigEplan =
         // https://support.digeplan.com/hc/en-us/articles/51431808148884-Bug-Fixes
-        let url  = DomUrl "https://leonco.usw.digeplan.app/"
-        
+        let url = DomUrl "https://leonco.usw.digeplan.app/"
+
         module DataSheet =
-            let May25 = DomUrl "https://avolvesoftware.com/wp-content/uploads/2025/07/DigEplan-Data-Sheet-May-25.pdf" 
-            let AccelaND = DomUrl "https://digeplan.com/wp-content/uploads/2020/12/DEP-Data-Sheet-Accela-ND.pdf" 
+            let May25 = DomUrl "https://avolvesoftware.com/wp-content/uploads/2025/07/DigEplan-Data-Sheet-May-25.pdf"
+            let AccelaND = DomUrl "https://digeplan.com/wp-content/uploads/2020/12/DEP-Data-Sheet-Accela-ND.pdf"
 
 
 // Accela.DigEplan.DataSheet.AccelaND.DownloadFileText()
@@ -12043,29 +11712,24 @@ module {SolarWindsInterface} =
 
 
 
-module SolarWindsServiceDesk = 
+module SolarWindsServiceDesk =
 
 
-    let jsonOptions =
-        JsonSerializerOptions(
-            PropertyNameCaseInsensitive = true,
-            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
-        )
+    let jsonOptions = JsonSerializerOptions(PropertyNameCaseInsensitive = true, PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower)
 
-    let refitSettings =
-        RefitSettings(
-            SystemTextJsonContentSerializer(jsonOptions)
-        )
+    let refitSettings = RefitSettings(SystemTextJsonContentSerializer(jsonOptions))
 
     refitSettings.UrlParameterFormatter <- ServiceDeskUrlParameterFormatter()
 
-    let ServiceUrl = 
+    let ServiceUrl =
         DomUrl "https://leoncountyfl.samanage.com"
-        
+
         |> DomUrl.AddQueryParameter "layout" "long"
         |> DomUrl.AddQueryParameter "is_portal_mode" false
-    let home = ServiceUrl.AppendPath "incidents?report_id=9641268&assigned_to%5B%5D=10744815&data=state&sort_by=state&sort_order=DESC&state_is_not%5B%5D=758500&state_is_not%5B%5D=758501&state_is_not%5B%5D=758502&state_is_not%5B%5D=793540&state_is_not%5B%5D=800657"
-    let sessionCookie = 
+    let home =
+        ServiceUrl.AppendPath
+            "incidents?report_id=9641268&assigned_to%5B%5D=10744815&data=state&sort_by=state&sort_order=DESC&state_is_not%5B%5D=758500&state_is_not%5B%5D=758501&state_is_not%5B%5D=758502&state_is_not%5B%5D=793540&state_is_not%5B%5D=800657"
+    let sessionCookie =
         task {
             let options = new CreatePageOptions()
             options.Background <- true
@@ -12079,98 +11743,87 @@ module SolarWindsServiceDesk =
 
             do! tab.CloseAsync()
             return cookie
-            }
+        }
     let httpClient = new HttpClient(BaseAddress = Uri ServiceUrl.Origin)
 
-    httpClient.DefaultRequestHeaders.TryAddWithoutValidation(
-        "Cookie", await sessionCookie  
-    )
+    httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Cookie", await sessionCookie)
     |> ignore
     module Api =
 
-        let Attachments = RestService.For<IAttachments> (httpClient, refitSettings) 
-        let Audits = RestService.For<IAudits> (httpClient, refitSettings) 
-        let CatalogItems = RestService.For<ICatalogItems> (httpClient, refitSettings) 
-        let Categories = RestService.For<ICategories> (httpClient, refitSettings) 
-        let ChangeCatalogs = RestService.For<IChangeCatalogs> (httpClient, refitSettings) 
-        let ChangeRequests = RestService.For<IChangeRequests> (httpClient, refitSettings) 
-        let Changes = RestService.For<IChanges> (httpClient, refitSettings) 
-        let Comments = RestService.For<IComments> (httpClient, refitSettings) 
-        let ConfigurationItems = RestService.For<IConfigurationItems> (httpClient, refitSettings) 
-        let Contracts = RestService.For<IContracts> (httpClient, refitSettings) 
-        let CustomFields = RestService.For<ICustomFields> (httpClient, refitSettings) 
-        let CustomForms = RestService.For<ICustomForms> (httpClient, refitSettings) 
-        let Dashboards = RestService.For<IDashboards> (httpClient, refitSettings) 
-        let Departments = RestService.For<IDepartments> (httpClient, refitSettings) 
-        let Groups = RestService.For<IGroups> (httpClient, refitSettings) 
-        let Hardwares = RestService.For<IHardwares> (httpClient, refitSettings) 
-        let Incidents = RestService.For<IIncidents> (httpClient, refitSettings) 
-        let IncidentTypes = RestService.For<IIncidentTypes> (httpClient, refitSettings) 
-        let Memberships = RestService.For<IMemberships> (httpClient, refitSettings) 
-        let MobileDevices = RestService.For<IMobileDevices> (httpClient, refitSettings) 
-        let Notifications = RestService.For<INotifications> (httpClient, refitSettings) 
-        let OtherAssets = RestService.For<IOtherAssets> (httpClient, refitSettings) 
-        let Printers = RestService.For<IPrinters> (httpClient, refitSettings) 
-        let Problems = RestService.For<IProblems> (httpClient, refitSettings) 
-        let PurchaseOrders = RestService.For<IPurchaseOrders> (httpClient, refitSettings) 
-        let PurchaseOrdersApi = RestService.For<IPurchaseOrdersApi> (httpClient, refitSettings) 
-        let Purchases = RestService.For<IPurchases> (httpClient, refitSettings) 
-        let Releases = RestService.For<IReleases> (httpClient, refitSettings) 
-        let ResponseTemplates = RestService.For<IResponseTemplates> (httpClient, refitSettings) 
-        let Risks = RestService.For<IRisks> (httpClient, refitSettings) 
-        let Roles = RestService.For<IRoles> (httpClient, refitSettings) 
-        let ServiceRequests = RestService.For<IServiceRequests> (httpClient, refitSettings) 
-        let SetupItsmStates = RestService.For<ISetupItsmStates> (httpClient, refitSettings) 
-        let Sites = RestService.For<ISites> (httpClient, refitSettings) 
-        let Softwares = RestService.For<ISoftwares> (httpClient, refitSettings) 
-        let Solutions = RestService.For<ISolutions> (httpClient, refitSettings) 
-        let Tasks = RestService.For<ITasks> (httpClient, refitSettings) 
-        let Tickets = RestService.For<ITickets> (httpClient, refitSettings) 
-        let TimeTracks = RestService.For<ITimeTracks> (httpClient, refitSettings) 
-        let UiCustomViews = RestService.For<IUiCustomViews> (httpClient, refitSettings) 
-        let UiInfrastructure = RestService.For<IUiInfrastructure> (httpClient, refitSettings) 
-        let UiJsonHtmlLists = RestService.For<IUiJsonHtmlLists> (httpClient, refitSettings) 
-        let Users = RestService.For<IUsers> (httpClient, refitSettings) 
-        let Vendors = RestService.For<IVendors> (httpClient, refitSettings) 
-        let Widgets = RestService.For<IWidgets> (httpClient, refitSettings) 
-        let WorkflowApprovers = RestService.For<IWorkflowApprovers> (httpClient, refitSettings) 
+        let Attachments = RestService.For<IAttachments>(httpClient, refitSettings)
+        let Audits = RestService.For<IAudits>(httpClient, refitSettings)
+        let CatalogItems = RestService.For<ICatalogItems>(httpClient, refitSettings)
+        let Categories = RestService.For<ICategories>(httpClient, refitSettings)
+        let ChangeCatalogs = RestService.For<IChangeCatalogs>(httpClient, refitSettings)
+        let ChangeRequests = RestService.For<IChangeRequests>(httpClient, refitSettings)
+        let Changes = RestService.For<IChanges>(httpClient, refitSettings)
+        let Comments = RestService.For<IComments>(httpClient, refitSettings)
+        let ConfigurationItems = RestService.For<IConfigurationItems>(httpClient, refitSettings)
+        let Contracts = RestService.For<IContracts>(httpClient, refitSettings)
+        let CustomFields = RestService.For<ICustomFields>(httpClient, refitSettings)
+        let CustomForms = RestService.For<ICustomForms>(httpClient, refitSettings)
+        let Dashboards = RestService.For<IDashboards>(httpClient, refitSettings)
+        let Departments = RestService.For<IDepartments>(httpClient, refitSettings)
+        let Groups = RestService.For<IGroups>(httpClient, refitSettings)
+        let Hardwares = RestService.For<IHardwares>(httpClient, refitSettings)
+        let Incidents = RestService.For<IIncidents>(httpClient, refitSettings)
+        let IncidentTypes = RestService.For<IIncidentTypes>(httpClient, refitSettings)
+        let Memberships = RestService.For<IMemberships>(httpClient, refitSettings)
+        let MobileDevices = RestService.For<IMobileDevices>(httpClient, refitSettings)
+        let Notifications = RestService.For<INotifications>(httpClient, refitSettings)
+        let OtherAssets = RestService.For<IOtherAssets>(httpClient, refitSettings)
+        let Printers = RestService.For<IPrinters>(httpClient, refitSettings)
+        let Problems = RestService.For<IProblems>(httpClient, refitSettings)
+        let PurchaseOrders = RestService.For<IPurchaseOrders>(httpClient, refitSettings)
+        let PurchaseOrdersApi = RestService.For<IPurchaseOrdersApi>(httpClient, refitSettings)
+        let Purchases = RestService.For<IPurchases>(httpClient, refitSettings)
+        let Releases = RestService.For<IReleases>(httpClient, refitSettings)
+        let ResponseTemplates = RestService.For<IResponseTemplates>(httpClient, refitSettings)
+        let Risks = RestService.For<IRisks>(httpClient, refitSettings)
+        let Roles = RestService.For<IRoles>(httpClient, refitSettings)
+        let ServiceRequests = RestService.For<IServiceRequests>(httpClient, refitSettings)
+        let SetupItsmStates = RestService.For<ISetupItsmStates>(httpClient, refitSettings)
+        let Sites = RestService.For<ISites>(httpClient, refitSettings)
+        let Softwares = RestService.For<ISoftwares>(httpClient, refitSettings)
+        let Solutions = RestService.For<ISolutions>(httpClient, refitSettings)
+        let Tasks = RestService.For<ITasks>(httpClient, refitSettings)
+        let Tickets = RestService.For<ITickets>(httpClient, refitSettings)
+        let TimeTracks = RestService.For<ITimeTracks>(httpClient, refitSettings)
+        let UiCustomViews = RestService.For<IUiCustomViews>(httpClient, refitSettings)
+        let UiInfrastructure = RestService.For<IUiInfrastructure>(httpClient, refitSettings)
+        let UiJsonHtmlLists = RestService.For<IUiJsonHtmlLists>(httpClient, refitSettings)
+        let Users = RestService.For<IUsers>(httpClient, refitSettings)
+        let Vendors = RestService.For<IVendors>(httpClient, refitSettings)
+        let Widgets = RestService.For<IWidgets>(httpClient, refitSettings)
+        let WorkflowApprovers = RestService.For<IWorkflowApprovers>(httpClient, refitSettings)
 
 
 [<Literal>]
 let incidentsFilterFilePath = @"D:\Iri\https\leoncountyfl.samanage.com\filters.json\context\incidents\is_portal_mode\False\layout\long\bare\filters.json"
-type IncidentsFilterProvider = JsonProvider< UseOriginalNames = true, PreferDateOnly = true, OmitNullFields = true,
-    RootName = "filters",
-    Sample =  incidentsFilterFilePath >
+type IncidentsFilterProvider = JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="filters", Sample=incidentsFilterFilePath>
 
 
 
 [<Literal>]
-let incidentsMetadataFilePath = @"D:\Iri\https\leoncountyfl.samanage.com\custom_views\incidents\metadata.json\assigned_to[]\10744815\data\state\is_portal_mode\false\report_id\9641268\sort_by\state\sort_order\DESC\state_is_not[]\758500\758501\758502\793540\800657\bare\metadata.json"
-type IncidentsMetadataProvider = JsonProvider< UseOriginalNames = true, PreferDateOnly = true, OmitNullFields = true,
-    RootName = "metadata",
-    Sample =  incidentsMetadataFilePath >
+let incidentsMetadataFilePath =
+    @"D:\Iri\https\leoncountyfl.samanage.com\custom_views\incidents\metadata.json\assigned_to[]\10744815\data\state\is_portal_mode\false\report_id\9641268\sort_by\state\sort_order\DESC\state_is_not[]\758500\758501\758502\793540\800657\bare\metadata.json"
+type IncidentsMetadataProvider = JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="metadata", Sample=incidentsMetadataFilePath>
 
 
 [<Literal>]
 let incidentsCustomViewFilePath = @"D:\Iri\https\leoncountyfl.samanage.com\custom_views\incidents.json\is_portal_mode\false\report_id\9641268\bare\incidents.json"
-type IncidentsCustomViewProvider = JsonProvider< UseOriginalNames = true, PreferDateOnly = true, OmitNullFields = true,
-    RootName = "column",
-    Sample =  incidentsCustomViewFilePath >
+type IncidentsCustomViewProvider = JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="column", Sample=incidentsCustomViewFilePath>
 
 
 
 type IIncidents with
-    member this.Get(request:GetIncidentsRequest) = 
+    member this.Get(request: GetIncidentsRequest) =
         request.Layout <- ResponseLayout.Long
-        task {
-            return! this.GetAsync( request, CancellationToken.None )
-        }
+        task { return! this.GetAsync(request, CancellationToken.None) }
         |> await
         |> Seq.toArray
-    member this.GetId(id:int) = 
-        task {
-            return! this.GetAsync( id, ResponseLayout.Long, CancellationToken.None )
-        }
+    member this.GetId(id: int) =
+        task { return! this.GetAsync(id, ResponseLayout.Long, CancellationToken.None) }
         |> await
 
 
@@ -12181,11 +11834,10 @@ let incidentsMetadata = IncidentsMetadataProvider.Load incidentsMetadataFilePath
 let incidentsCustomView = IncidentsCustomViewProvider.Load incidentsCustomViewFilePath
 let incidentsFilters = IncidentsFilterProvider.Load(incidentsFilterFilePath)
 
-let titleFilter (title:string) (resource:DomUrl) = 
-    resource
-    |> DomUrl.AddQueryParameter "title" title
+let titleFilter (title: string) (resource: DomUrl) =
+    resource |> DomUrl.AddQueryParameter "title" title
 
-let viewIncidents (resource:DomUrl) = 
+let viewIncidents (resource: DomUrl) =
     resource
     |> DomUrl.AddQueryParameter "report_id" 9641268
     |> DomUrl.AddQueryParameter "applied" true
@@ -12194,21 +11846,22 @@ let viewIncidents (resource:DomUrl) =
 
 
 
-type String with 
-    member this.prefixed (affix:string) = affix + this
-    member this.suffixed (affix:string) = this + affix
-    member this.circumfixed (affix:string) = affix + this + affix
-    member this.normalizedFSharpIdentifier  =
+type String with
+    member this.prefixed(affix: string) = affix + this
+    member this.suffixed(affix: string) = this + affix
+    member this.circumfixed(affix: string) = affix + this + affix
+    member this.normalizedFSharpIdentifier =
         let sb = System.Text.StringBuilder()
         for rune in this.EnumerateRunes() do
             let maybeCharacterReference = HtmlEntities.namedCharacterReferenceByString.TryFind(string rune)
-            let toAppend = 
-                match maybeCharacterReference, CharUnicodeInfo.GetUnicodeCategory rune.Value with 
-                | Some namedCharacterReference, UnicodeCategory.ConnectorPunctuation when namedCharacterReference.entityName <> "lowbar"  -> maybeCharacterReference.Value.entityName.circumfixed  "'"
-                | Some namedCharacterReference, UnicodeCategory.OtherPunctuation  -> maybeCharacterReference.Value.entityName.circumfixed  "'"
-                | Some namedCharacterReference, UnicodeCategory.OpenPunctuation  -> maybeCharacterReference.Value.entityName.circumfixed  "'"
-                | Some namedCharacterReference, UnicodeCategory.ClosePunctuation  -> maybeCharacterReference.Value.entityName.circumfixed  "'"
-                | _, UnicodeCategory.DashPunctuation  -> "_"
+            let toAppend =
+                match maybeCharacterReference, CharUnicodeInfo.GetUnicodeCategory rune.Value with
+                | Some namedCharacterReference, UnicodeCategory.ConnectorPunctuation when namedCharacterReference.entityName <> "lowbar" ->
+                    maybeCharacterReference.Value.entityName.circumfixed "'"
+                | Some namedCharacterReference, UnicodeCategory.OtherPunctuation -> maybeCharacterReference.Value.entityName.circumfixed "'"
+                | Some namedCharacterReference, UnicodeCategory.OpenPunctuation -> maybeCharacterReference.Value.entityName.circumfixed "'"
+                | Some namedCharacterReference, UnicodeCategory.ClosePunctuation -> maybeCharacterReference.Value.entityName.circumfixed "'"
+                | _, UnicodeCategory.DashPunctuation -> "_"
                 | _, _ -> string rune
             sb.Append((toAppend.ReplaceWhitespace("_")).NormalizeKeyword) |> ignore
 
@@ -12216,16 +11869,12 @@ type String with
         sb.ToString()
     member this.NormalizeFirstCharacter =
         match this with
-        | "" ->
-            "_"
+        | "" -> "_"
 
-        | identifier
-            when Syntax.PrettyNaming.IsIdentifierFirstCharacter identifier[0] ->
-            identifier
+        | identifier when Syntax.PrettyNaming.IsIdentifierFirstCharacter identifier[0] -> identifier
 
-        | identifier ->
-            "_" + identifier
-    member this.NormalizeKeyword : string =
+        | identifier -> "_" + identifier
+    member this.NormalizeKeyword: string =
         if Binder.KeywordNames.Contains this then
             this + "_"
         else
@@ -12238,11 +11887,11 @@ rdfNamespaceName
 
 let testColumn = incidentsCustomView[22]
 let testIdentifier = testColumn.name.JsonValue.AsString()
-let testBinder = VariableBinder testIdentifier 
+let testBinder = VariableBinder testIdentifier
 
-testIdentifier.normalizedFSharpIdentifier 
+testIdentifier.normalizedFSharpIdentifier
 
-type Rune with 
+type Rune with
     member this.UnicodeCategory = CharUnicodeInfo.GetUnicodeCategory this.Value
 
 
@@ -12280,14 +11929,12 @@ incidentsCustomView
 |> String.concat "\n" |> clip
 
 *)
-module Users = 
+module Users =
     let resourceReference = SolarWindsServiceDesk.ServiceUrl.AppendPath "users.jsonhtml"
-    [<Literal>]                        
+    [<Literal>]
     let jsonHtmlPath = @"D:\Iri\https\leoncountyfl.samanage.com\users.jsonhtml\bare\users.jsonhtml"
-    
-    type Provider = JsonProvider< UseOriginalNames = true, PreferDateOnly = true, OmitNullFields = true,
-        RootName = "jsonhtml",
-        Sample =  jsonHtmlPath >
+
+    type Provider = JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="jsonhtml", Sample=jsonHtmlPath>
     let jsonhtml = Provider.Load jsonHtmlPath
 
 Users.jsonhtml.count
@@ -12300,7 +11947,8 @@ Users.jsonhtml.count
 
 
 module SolarWindsFilter =
-        let assigned_to parameterValue  (resourceReference:DomUrl) = resourceReference |> DomUrl.AddQueryParameter "2327702" parameterValue
+    let assigned_to parameterValue (resourceReference: DomUrl) =
+        resourceReference |> DomUrl.AddQueryParameter "2327702" parameterValue
 
 
 
@@ -12313,7 +11961,11 @@ module SolarWindsFilter =
 // &data=state
 // &columns=requester%2Ctitle%2Cstate%2Csub_type%2Ctype%2Csite%2Cdepartment%2Cassigned_to%2Cpriority%2Ccreated_at%2Ccreated_by%2Ctag_list%2Cnumber%2Cslm%2Cpreview
 
-let filterTypes = incidentsCustomView |> Array.map (fun column -> column.``type``) |> Array.distinct |> Array.sort
+let filterTypes =
+    incidentsCustomView
+    |> Array.map (fun column -> column.``type``)
+    |> Array.distinct
+    |> Array.sort
 
 
 SolarWindsServiceDesk.ServiceUrl.AppendPath "incidents.json"
@@ -12321,12 +11973,16 @@ SolarWindsServiceDesk.ServiceUrl.AppendPath "incidents.json"
 |> DomUrl.AddQueryParameter "data" "state"
 |> SolarWindsFilter.assigned_to 10744815
 
-let testFilter = DomUrl "https://leoncountyfl.samanage.com/incidents?assigned_to_is_not%5B%5D=10744815&created_by%5B%5D=10899501&report_id=9702975&state_is_not%5B%5D=758500&state_is_not%5B%5D=758501&state_is_not%5B%5D=758502&state_is_not%5B%5D=793540&state_is_not%5B%5D=800657" 
+let testFilter =
+    DomUrl
+        "https://leoncountyfl.samanage.com/incidents?assigned_to_is_not%5B%5D=10744815&created_by%5B%5D=10899501&report_id=9702975&state_is_not%5B%5D=758500&state_is_not%5B%5D=758501&state_is_not%5B%5D=758502&state_is_not%5B%5D=793540&state_is_not%5B%5D=800657"
 testFilter.QueryStringParameters
 
-let metadataTest = DomUrl "https://leoncountyfl.samanage.com/custom_views/incidents/metadata.json?assigned_to%5B%5D=10744815&data=state&report_id=9641268&sort_by=state&sort_order=DESC&state_is_not%5B%5D=758500&state_is_not%5B%5D=758501&state_is_not%5B%5D=758502&state_is_not%5B%5D=793540&state_is_not%5B%5D=800657&is_portal_mode=false" 
+let metadataTest =
+    DomUrl
+        "https://leoncountyfl.samanage.com/custom_views/incidents/metadata.json?assigned_to%5B%5D=10744815&data=state&report_id=9641268&sort_by=state&sort_order=DESC&state_is_not%5B%5D=758500&state_is_not%5B%5D=758501&state_is_not%5B%5D=758502&state_is_not%5B%5D=793540&state_is_not%5B%5D=800657&is_portal_mode=false"
 metadataTest.AbsolutePathName
-let incidentFilters = 
+let incidentFilters =
     SolarWindsServiceDesk.ServiceUrl.AppendPath "filters.json"
     |> DomUrl.AddQueryParameter "context" "incidents"
 incidentFilters.asFile.FullName |> clip
@@ -12343,19 +11999,21 @@ incidentFilters.asFile.FullName |> clip
 
 incidentsFilters[0]
 incidentsFilters
-|> Array.map (fun filter -> 
+|> Array.map (fun filter ->
     filter.optionsUrl
     |> Option.map (fun optionsUrl ->
         SolarWindsServiceDesk.ServiceUrl.Origin + optionsUrl
         |> DomUrl
-        
-        |> _.HeadedDownloadText()
-        )
-)
 
-let testTitleFilter = DomUrl "https://leoncountyfl.samanage.com/incidents?report_id=9641268&applied=true&columns=requester%2Ctitle%2Cstate%2Csub_type%2Ctype%2Csite%2Cdepartment%2Cassigned_to%2Cpriority%2Ccreated_at%2Ccreated_by%2Ctag_list%2Cnumber%2Cslm%2Cpreview&data=state&sort_by=state&sort_order=DESC&title%5B%5D=test" 
+        |> _.HeadedDownloadText()))
+
+let testTitleFilter =
+    DomUrl
+        "https://leoncountyfl.samanage.com/incidents?report_id=9641268&applied=true&columns=requester%2Ctitle%2Cstate%2Csub_type%2Ctype%2Csite%2Cdepartment%2Cassigned_to%2Cpriority%2Ccreated_at%2Ccreated_by%2Ctag_list%2Cnumber%2Cslm%2Cpreview&data=state&sort_by=state&sort_order=DESC&title%5B%5D=test"
 testTitleFilter.QueryStringParameters
-let testOption = SolarWindsServiceDesk.ServiceUrl.Origin + incidentsFilters[1].optionsUrl.Value |>DomUrl 
+let testOption =
+    SolarWindsServiceDesk.ServiceUrl.Origin + incidentsFilters[1].optionsUrl.Value
+    |> DomUrl
 testOption
 QueryStringUtilities.ParseQuery incidentsFilters[1].optionsUrl.Value
 let queryDelimiterIndex = incidentsFilters[1].optionsUrl.Value.IndexOf('?')
@@ -12373,9 +12031,9 @@ type IncidentRequest =
 
 
 
-let incidents = 
+let incidents =
     let request = GetIncidentsRequest()
-    
+
     request.CreatedFrom <- DateTime.Today
     request.ReportId <- 9641268
     SolarWindsServiceDesk.Api.Incidents.Get request
@@ -12519,4 +12177,3 @@ InforMenu.System.menuItem.outerHTML |> clip
 let inforMenuItems = menuAndView.menuitems |> Array.map (fun menuitem -> { menuItem = menuitem})
 
 *)
-

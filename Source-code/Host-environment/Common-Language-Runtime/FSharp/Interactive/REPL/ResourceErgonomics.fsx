@@ -42,50 +42,302 @@ open IriTools
 open ktsu.Semantics.Paths
 open ktsu.Semantics.Strings
 open ktsu.Semantics.Strings.Identifiers
-open Rsft.Net.DomainParser
 open Meziantou.Framework
 open System.IO
 open AngleSharp.Html
 open Microsoft.AspNetCore.Http
+open ModelingEvolution.Ipv4
+open Nager.PublicSuffix
+open Nager.PublicSuffix.RuleProviders
 
+
+let HttpRuleProvider = new SimpleHttpRuleProvider()
+do HttpRuleProvider.BuildAsync().await |> ignore
+let RegistrableDomainParser = new DomainParser(HttpRuleProvider)
+
+type DriveInfo with
+    static member C = DriveInfo.GetDrives() |> Array.find (fun drive -> drive.Name[0] = 'C')
+    static member D = DriveInfo.GetDrives() |> Array.find (fun drive -> drive.Name[0] = 'D')
+    static member byChar =
+        DriveInfo.GetDrives()
+        |> Array.map (fun drive -> drive.Name[0], drive)
+        |> Map.ofArray
+
+
+let personalDriveReference = DriveInfo.D.Name
+let personalSiteReference = "https://eristocrates.dev"
 
 type Option<'Type> with
-    static member ofEmpty value =
+    static member ofNullOrWhiteSpace(value: 'Type) =
         if String.IsNullOrWhiteSpace(string value) then
             None
         else
             Some value
+    static member tryNullOrWhiteSpace(maybeValue: 'Type option) =
+        match maybeValue with
+        | Some value when String.IsNullOrWhiteSpace(string value) -> None
+        | None -> None
+        | Some value -> Some value
 
 
 
-type DomainName(originalString: string) =
 
-    let _domain = DomainParserFactory.Create().Parse originalString
-    member this.topLevelDomain = _domain.Tld
-    member this.secondLevelDomain = _domain.Sld
-    member this.subdomain = Option.ofEmpty _domain.Subdomain
-    member this.domainName = originalString
 
-type WHATWGSite = {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+type ResolvedResource = {
+    absoluteRoot: AbsoluteRoot
+    relativePath: RelativePath
+    fragmentString: FragmentString option
+    queryString: QueryString option
+}
+
+and AbsoluteRoot =
+    | DriveRoot of DriveInfo
+    | SiteRoot of WhatwgSite
+
+and WhatwgSite = {
     scheme: IanaScheme
-    host: DomainName
-} with
-
-    member this.weakString = $"{this.scheme.lexicalForm}://{this.host.domainName}"
-    member this.asUri = Uri this.weakString
-    member this.asUrl = DomUrl this.weakString
-    member this.asIriReference = IriReference this.weakString
-
-let (..//) (scheme: IanaScheme) (domain: DomainName) = { scheme = scheme; host = domain }
-let xn__6qq79v = IanaScheme.http ..// DomainName "你好.cn"
+    host: HostName
+    port: int option
+}
+and HostName =
+    | Ipv4Host of Ipv4Address
+    | DomainHost of RegistrableDomain
+and RegistrableDomain = { domainName: DomainInfo }
 
 
-xn__6qq79v.asUri
-xn__6qq79v.asUrl
-xn__6qq79v.asIriReference
 
 
-IanaScheme.https
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+type Ipv4Address with
+    member this.remoteReference = this.ToString()
+    member this.asIpAddress = IPAddress.Parse this.remoteReference
+    member this.outerLeft = int this.A
+    member this.innerLeft = int this.B
+    member this.innerRight = int this.C
+    member this.outerRight = int this.D
+    member this.localReference = this.remoteReference.Replace(".", "/")
+
+
+
+type RelativeDirectoryPath with
+    static member EnsureCreate(rawPath: string) =
+        let invalidChars = Path.GetInvalidFileNameChars() |> Set.ofArray
+        rawPath.Split([| '/'; '\\' |], StringSplitOptions.TrimEntries)
+        |> Array.filter (fun segment -> not (String.IsNullOrWhiteSpace segment))
+        |> Array.map (fun segment ->
+            segment
+            |> String.collect (fun character ->
+                if invalidChars.Contains character then
+                    match HtmlEntityProvider.ReverseResolver.GetName(string character) with
+                    | null -> $"&#x{int character:X};"
+                    | name -> $"&{name}"
+                else
+                    string character))
+        |> String.concat "\\"
+        |> RelativeDirectoryPath.Create
+
+
+type RegistrableDomain with
+    static member (..//)((scheme: IanaScheme), (domain: RegistrableDomain)) =
+        {
+            scheme = scheme
+            host = DomainHost domain
+            port = None
+        }
+        |> SiteRoot
+    static member Parse(originalString: string) = {
+        domainName = RegistrableDomainParser.Parse originalString
+    }
+    member this.topLevelDomain = this.domainName.TopLevelDomainRule
+    member this.remoteReference = this.domainName.FullyQualifiedDomainName
+    member this.secondLevelDomain = this.domainName.Domain
+    member this.subdomain = Option.ofNullOrWhiteSpace this.domainName.Subdomain
+    member this.dnsDomain = this.domainName.RegistrableDomain
+    member this.localReference =
+        match this.subdomain with
+        | Some subdomain -> Path.Combine(this.topLevelDomain.Name, this.secondLevelDomain, subdomain)
+        | None -> Path.Combine(this.topLevelDomain.Name, this.secondLevelDomain)
+
+    member this.asRelativeDirectoryPath = RelativeDirectoryPath.EnsureCreate this.localReference
+    member this.asRelativeFilePath = RelativeFilePath.Create this.localReference
+    member this.ipAddresses =
+        try
+            Dns.GetHostAddresses this.dnsDomain
+        with _ -> [||]
+    member this.ipv4Addresses = this.ipAddresses |> Array.map Ipv4Address.FromIPAddress
+type HostName with
+    member this.remoteReference =
+        match this with
+        | Ipv4Host ipv4 -> ipv4.remoteReference
+        | DomainHost domain -> domain.remoteReference
+    member this.localReference =
+        match this with
+        | Ipv4Host ipv4 -> ipv4.localReference
+        | DomainHost domain -> domain.localReference
+type WhatwgSite with
+    static member op_Addition((site: WhatwgSite), (port: int)) = { site with port = Some port }
+    member this.localReference = Path.Combine(personalDriveReference, this.scheme.lexicalForm, this.host.localReference)
+    member this.remoteReference =
+        match this.port with
+        | Some port -> $"{this.scheme.lexicalForm}://{this.host.remoteReference}:{port}"
+        | None -> $"{this.scheme.lexicalForm}://{this.host.remoteReference}"
+    member this.asLocalUri = Uri this.localReference
+    member this.asRemoteUri = Uri this.remoteReference
+    member this.asLocalUrl = DomUrl this.localReference
+    member this.asRemoteUrl = DomUrl this.remoteReference
+    member this.asLocalIri = IriReference this.localReference |> IRIREF
+    member this.asRemoteIri = IriReference this.remoteReference |> IRIREF
+
+    member this.asRelativeDirectoryPath = RelativeDirectoryPath.EnsureCreate this.localReference
+    member this.asRelativeFilePath = RelativeFilePath.Create this.localReference
+type DriveInfo with
+    member this.localReference = string this.Name[0]
+    member this.remoteReference = $"{personalSiteReference}/{this.Name}"
+    member this.asLocalUri = Uri this.Name
+    member this.asLocalUrl = DomUrl this.Name
+    member this.asLocalIri = IriReference this.Name |> IRIREF
+    member this.asRemoteUri = Uri this.remoteReference
+    member this.asRemoteUrl = DomUrl this.remoteReference
+    member this.asRemoteIri = IriReference this.remoteReference |> IRIREF
+    member this.asRelativeDirectoryPath = RelativeDirectoryPath.EnsureCreate this.localReference
+    member this.asRelativeFilePath = RelativeFilePath.Create this.localReference
+
+type AbsoluteRoot with
+    static member op_Addition((root: AbsoluteRoot), (port: int)) =
+        match root with
+        | DriveRoot driveInfo -> root
+        | SiteRoot whatwgSite -> { whatwgSite with port = Some port } |> SiteRoot
+
+    static member (./)((root: AbsoluteRoot), (relativeString: string)) = {
+        absoluteRoot = root
+        relativePath = RelativePath.Create relativeString
+        fragmentString = None
+        queryString = None
+    }
+
+    member this.localReference =
+        match this with
+        | DriveRoot driveInfo -> driveInfo.localReference
+        | SiteRoot whatwgSite -> whatwgSite.localReference
+    member this.remoteReference =
+        match this with
+        | DriveRoot driveInfo -> driveInfo.remoteReference
+        | SiteRoot whatwgSite -> whatwgSite.remoteReference
+    member this.asLocalUri = Uri this.localReference
+    member this.asLocalUrl = DomUrl this.localReference
+    member this.asLocalIri = IriReference this.localReference |> IRIREF
+    member this.asRemoteUri = Uri this.remoteReference
+    member this.asRemoteUrl = DomUrl this.remoteReference
+    member this.asRemoteIri = IriReference this.remoteReference |> IRIREF
+
+    member this.asRelativeDirectoryPath = RelativeDirectoryPath.EnsureCreate this.localReference
+    member this.asRelativeFilePath = RelativeFilePath.Create this.localReference
+    member this.asAbsoluteDirectoryPath = AbsoluteDirectoryPath.Create this.localReference
+    member this.asAbsoluteFilePath = AbsoluteFilePath.Create this.localReference
+
+type RelativePath with
+    member this.asRelativeUri = Uri(this.WeakString, UriKind.Relative)
+    member this.asResolvedUri(baseUri: Uri) = Uri(baseUri, this.WeakString)
+    member this.asResolvedUrl(baseUrl: DomUrl) = DomUrl(this.WeakString, baseUrl)
+    member this.asRelativeIriReference = IriReference this.WeakString
+
+    member this.asResolvedIri(baseIri: Iri) =
+        IriReference $"{baseIri.lexicalForm}/{this.WeakString}" |> IRIREF
+    member this.asPrefixedName(prefixId: PrefixId) = prefixId.prefix this.WeakString
+
+    member this.asRelativeDirectoryPath = RelativeDirectoryPath.EnsureCreate this.WeakString
+    member this.asRelativeFilePath = RelativeFilePath.Create this.WeakString
+    member this.asPathString = PathString $"/{this.WeakString}"
+    member this.asDirectoryName = DirectoryName.Create this.WeakString
+    member this.asFileName = FileName.Create this.WeakString
+
+
+type ResolvedResource with
+
+    member this.localReference = Path.Combine(this.absoluteRoot.localReference, this.relativePath.WeakString)
+    member this.remoteReference = this.absoluteRoot.remoteReference + this.relativePath.asPathString
+
+    member this.asLocalUri = Uri this.localReference
+    member this.asRemoteUri = Uri this.remoteReference
+    member this.asLocalUrl = DomUrl this.localReference
+    member this.asRemoteUrl = DomUrl this.remoteReference
+    member this.asLocalIri = IriReference this.localReference |> IRIREF
+    member this.asRemoteIri = IriReference this.remoteReference |> IRIREF
+
+    member this.asRelativeDirectoryPath = RelativeDirectoryPath.EnsureCreate this.localReference
+    member this.asRelativeFilePath = RelativeFilePath.Create this.localReference
+    member this.asAbsoluteDirectoryPath = AbsoluteDirectoryPath.Create this.localReference
+    member this.asAbsoluteFilePath = AbsoluteFilePath.Create this.localReference
+    member this.asDirectoryPath = AbsoluteDirectoryPath.Create this.localReference
+    member this.asFilePath = AbsoluteFilePath.Create this.localReference
+    member this.asFileInfo = FileInfo this.localReference
+    member this.asDirectoryInfo = DirectoryInfo this.localReference
+    member this.asFullPath = FullPath.FromPath this.localReference
+
+
 type FullPath with
     static member CurrentFile() =
         Path.Combine(FullPath.CurrentDirectory().RawValue, __SOURCE_FILE__)
@@ -100,145 +352,59 @@ type ResourceIdentifier =
     | UniversallyUniqueLexicographicallySortableIdentifier of Ulid
     | InternationalStandardBookNumber of Isbn
 
-type RelativeDirectoryPath with
-    static member EnsureCreate(value: string) =
-        let invalidChars = Path.GetInvalidFileNameChars() |> Set.ofArray
-        value
-        |> String.collect (fun character ->
-            if invalidChars.Contains character then
-                match HtmlEntityProvider.ReverseResolver.GetName(string character) with
-                | null -> $"&#x{int character:X};"
-                | name -> $"&{name}"
-            else
-                string character)
-        |> RelativeDirectoryPath.Create
 
 type MimeType with
     static member FromFileName(fileName: FileName) =
         MimeType.FromFileName fileName.WeakString
 
-
-type WindowsPath =
-    | WindowsDirectory of DirectoryInfo
-    | WindowsFile of FileInfo
-
-    member this.asFileSystemInfo =
-        match this with
-        | WindowsDirectory directoryInfo -> directoryInfo :> FileSystemInfo
-        | WindowsFile fileInfo -> fileInfo :> FileSystemInfo
-    member this.rawString = this.asFileSystemInfo.FullName
-    member this.href = this.rawString
-    member this.asFullPath = FullPath.FromFileSystemInfo this.asFileSystemInfo
-    member this.asAbsoluteDirectoryPath = AbsoluteDirectoryPath.Create this.rawString
-    member this.asAbsoluteFilePath = AbsoluteFilePath.Create this.rawString
+fsi.AddPrinter<RelativeDirectoryPath>(fun path -> path.WeakString)
+fsi.AddPrinter<RelativeFilePath>(fun path -> path.WeakString)
+fsi.AddPrinter<RelativePath>(fun path -> path.WeakString)
+fsi.AddPrinter<AbsoluteDirectoryPath>(fun path -> path.WeakString)
+fsi.AddPrinter<AbsoluteFilePath>(fun path -> path.WeakString)
+fsi.AddPrinter<AbsolutePath>(fun path -> path.WeakString)
 
 
 
 
 
-type AbsoluteResource(originalString: string) =
-    member this.weakString = originalString
-    member this.asUri = Uri(this.weakString, UriKind.Absolute)
-    member this.asUrl = DomUrl this.weakString
-    member this.asDirectoryPath = AbsoluteDirectoryPath.Create this.weakString
-    member this.asFilePath = AbsoluteFilePath.Create this.weakString
-    member this.asFileInfo = FileInfo this.weakString
-    member this.asDirectoryInfo = DirectoryInfo this.weakString
-    member this.asFullPath = FullPath.FromFileSystemInfo this.asDirectoryInfo
-    member this.expand(relativeResource: RelativeResource) = {
-        absoluteReference = this
-        relativeReference = relativeResource
-    }
-
-and RelativeResource(originalString: string) =
-    member this.weakString = originalString
-    member this.asUri = Uri(this.weakString, UriKind.Relative)
-    member this.asDirectoryPath = RelativeDirectoryPath.Create this.weakString
-    member this.asFilePath = RelativeFilePath.Create this.weakString
-    member this.resolve(absoluteResource: AbsoluteResource) = {
-        absoluteReference = absoluteResource
-        relativeReference = this
-    }
-and ResolvedResource = {
-    absoluteReference: AbsoluteResource
-    relativeReference: RelativeResource
-} with
-
-    member this.weakDelimitedString(delimiter: string) =
-        this.absoluteReference.weakString
-        + delimiter
-        + this.relativeReference.weakString
-    member this.weakString = this.weakDelimitedString "/"
-    member this.resolvedUri = Uri(this.absoluteReference.asUri, this.relativeReference.asUri)
-    member this.resolvedUrl = DomUrl(this.relativeReference.weakString, this.absoluteReference.asUrl)
 
 
-type ResourcePath =
-    | AbsoluteResourcePath of AbsoluteResource
-    | ResolvedResourcePath of ResolvedResource
 
-    member this.weakString =
-        match this with
-        | AbsoluteResourcePath absoluteResource -> absoluteResource.weakString
-        | ResolvedResourcePath resolvedResource -> resolvedResource.weakString
 
-    member this.asUri = Uri this.weakString
-    member this.asUrl = DomUrl this.weakString
-    member this.scheme = this.asUri.Scheme.TrimEnd ':'
-    member this.username = Option.ofEmpty this.asUrl.Username
-    member this.password = Option.ofEmpty this.asUrl.Password
-    member this.userinfo =
-        match Option.ofEmpty this.asUri.UserInfo, this.username, this.password with
-        | Some userinfo, _, _ -> Some userinfo
-        | None, Some username, None -> Some username
-        | None, None, Some password -> Some password
-        | None, Some username, Some password -> Some $"{username}:{password}"
-        | _, _, _ -> None
-    member this.host = this.asUrl.Host
-    member this.domainName = this.asUri.DnsSafeHost
-    // member this.topLevelDomain = DomainName.Parse this.domainName |> _.Tld
-    // member this.secondLevelDomain = DomainName.Parse this.domainName |> _.Sld
-    // member this.subdomain = DomainName.Parse this.domainName |> _.Subdomain
-    member this.port = Option.ofEmpty this.asUrl.Port
-    member this.authority = this.asUri.Authority
-    member this.origin = this.asUrl.Origin
-    member this.absolutePath = this.asUri.AbsolutePath
-    member this.localPath = this.asUri.LocalPath.TrimStart '/'
-    member this.queryString = Option.ofEmpty this.asUri.Query
-    member this.fragmentString = Option.ofEmpty this.asUri.Fragment
-    member this.originFormRequestTarget = this.asUri.PathAndQuery
-    member this.absoluteUri = this.asUri.AbsoluteUri
-    member this.absolutePathReference = this.weakString[this.origin.Length ..]
-    member this.relativePathReference = this.absolutePathReference.TrimStart '/'
-    // member this.originRelativeDirectoryPath = this.schemeRelativeDirectoryPath.WithSuffix(this.hostRelativeDirectoryPath).WithSuffix(this.hierarchicalRelativeDirectoryPath)
-    member this.originalStringToAbsoluteDirectoryPath = AbsoluteDirectoryPath.Create this.weakString
-    member this.originalStringToRelativeDirectoryPath = RelativeDirectoryPath.Create this.weakString
-    member this.originalStringToAbsoluteFilePath = AbsoluteFilePath.Create this.weakString
-    member this.originalStringToRelativeFilePath = RelativeFilePath.Create this.weakString
-    member this.tokens =
-        this.absoluteUri.Split([| '/'; '&'; '='; '?'; ':' |], StringSplitOptions.TrimEntries)
-        |> Array.choose (fun segment -> Option.ofEmpty segment)
-    member this.queryStringParameterCollection =
-        this.queryString
-        |> Option.map (fun queryString -> QueryStringUtilities.ParseQuery queryString)
+
+
+
+
+
+
+let IanaSchemeDomain (scheme: IanaScheme) (domainString: string) =
+    scheme ..// RegistrableDomain.Parse domainString
+
+
+
+
+module https =
+    let https (domainString: string) =
+        IanaSchemeDomain IanaScheme.https domainString
+
+    module dev =
+        let eristocrates = https "eristocrates.dev"
+    module gov =
+        module leoncountyfl =
+            module bannerprodssb =
+                let site = https "bannerprodssb.leoncountyfl.gov" + 8449
+                module EmployeeSelfService =
+                    let resource = site ./ "EmployeeSelfService"
+
+
+
+
+
+
+type QueryString with
+    member this.parameterCollection = QueryStringUtilities.ParseQuery this.Value
 // member this.AppendFileName (fileName:FileName) = let mimeType = MimeType.FromFileName fileName
-
-
-
-
-
-
-
-
-
-
-
-let relativeTest = RelativeResource "search?q=cat"
-let baseTest = AbsoluteResource "https://google.com"
-
-relativeTest.resolve baseTest
-
-
 
 
 
@@ -290,7 +456,70 @@ type QueryStringParameterCollection with
             Array.concat [| [| parameter.parameterKey |]; parameter.parameterValues |]
             |> String.concat "\\")
         |> String.concat "\\"
-        |> RelativeDirectoryPath.Create
+        |> RelativeDirectoryPath.EnsureCreate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TODO work on separating fragment and query strings into resolved resource
+
+
+
+https.gov.leoncountyfl.bannerprodssb.EmployeeSelfService.resource.asAbsoluteDirectoryPath
+https.gov.leoncountyfl.bannerprodssb.EmployeeSelfService.resource.localReference
+https.gov.leoncountyfl.bannerprodssb.EmployeeSelfService.resource.remoteReference
+
+
+
+let myIpv4 = Ipv4Address.Parse "170.85.130.82"
+
+let uriTest = Uri "https://www.cambiaresearch.com"
+
+let cambiaresearch = IanaScheme.https ..// RegistrableDomain.Parse "www.cambiaresearch.com"
+cambiaresearch
+
+let relativeResourceTest = RelativePath.Create "articles/730004/the-dotnet-uri-class-and-the-cambia.uriextensions-nuget-package#sec-4EIL2NFFDJUQ2XHLG2FPTXKIT"
+
+
+relativeResourceTest.asRelativeDirectoryPath
+relativeResourceTest.asRelativeDirectoryPath.Parent
+relativeResourceTest.asRelativeDirectoryPath.Parent.Parent
+
+
+let xn__6qq79v = IanaScheme.http ..// RegistrableDomain.Parse "你好.cn"
+let googleSite = IanaScheme.http ..// RegistrableDomain.Parse "www.google.com"
+
+
+
+let testUri =
+    Uri
+        "https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubDetail/getPayStubDetail.json?payDate=20251231&payId=BW&payNumber=27&paySequence=0&payYear=2025#testFragment"
+
+let pathString = PathString.FromUriComponent testUri
+let queryString = QueryString.FromUriComponent testUri
+queryString
+
+
+
+
+
+let baseTest = RegistrableDomain.Parse "https://google.com"
+
+
+
+
+
 
 
 

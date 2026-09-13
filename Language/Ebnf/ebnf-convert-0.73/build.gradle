@@ -1,0 +1,265 @@
+/*
+ * Gradle build file for ebnf-convert - Grammar Converter.
+ */
+
+plugins {
+    id 'java'
+    id 'war'
+    id 'com.github.jk1.dependency-license-report' version '2.9'
+    id 'maven-publish'
+    id 'signing'
+}
+
+defaultTasks 'build'
+build.dependsOn 'distZip'
+
+version = '0.73'
+group = 'de.bottlecaps.ebnf-convert'
+
+def project_name = "$project.name"
+def buildTime = new Date()
+def rrVersion = '2.6'
+
+def generatedSrc = "$buildDir/generated-src/main"
+
+sourceSets {
+    main {
+        java {
+            srcDirs += ["$generatedSrc/java"]
+        }
+        resources {
+            srcDirs += ["$generatedSrc/resources"]
+        }
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+configurations {
+    rrLib
+    rrWebapp
+}
+
+dependencies {
+    rrLib "de.bottlecaps.rr:rr-lib:$rrVersion"
+    rrWebapp "de.bottlecaps.rr:rr-webapp:$rrVersion"
+
+    compileOnly 'org.apache.tomcat:tomcat-servlet-api:8.5.100'
+    compileOnly "de.bottlecaps.rr:rr-lib:$rrVersion"
+
+    implementation 'net.sf.saxon:Saxon-HE:12.9'
+    implementation 'org.xmlresolver:xmlresolver:5.3.3'
+    implementation 'commons-fileupload:commons-fileupload:1.6.0'
+    implementation 'commons-io:commons-io:2.21.0'
+}
+
+configurations.rrLib {
+    transitive = false
+}
+
+configurations.runtimeClasspath {
+    transitive = false
+}
+
+jar {
+    manifest {
+        attributes (
+            'Implementation-Version': archiveVersion,
+            'Build-Timestamp': new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(buildTime)
+        )
+    }
+    from({zipTree(configurations.rrLib.singleFile)}) {
+        include 'de/bottlecaps/railroad/xq/*'
+        include 'de/bottlecaps/railroad/core/CrLfNormalizer*'
+        include 'de/bottlecaps/railroad/core/Download*'
+        include 'de/bottlecaps/railroad/core/ExtensionFunctions*'
+        include 'de/bottlecaps/railroad/core/Parser*'
+        include 'de/bottlecaps/xml/*'
+        include 'de/bottlecaps/webapp/*'
+        include 'de/bottlecaps/webapp/servlet/*'
+        exclude 'de/bottlecaps/webapp/server'
+    }
+    rootSpec.exclude 'de/bottlecaps/convert/ClasspathUrlStreamHandlerProvider*'
+    rootSpec.exclude 'META-INF/services'
+    archiveFileName = "${project.name}.jar"
+}
+
+licenseReport {
+    outputDir = "$buildDir/LICENSE"
+    configurations = ['runtimeClasspath']
+    renderers = [new com.github.jk1.license.render.TextReportRenderer()]
+}
+
+task generateSrc {
+    doFirst {
+        def convertVersion = new File("$generatedSrc/java/de/bottlecaps/convert", 'ConvertVersion.java')
+        convertVersion.parentFile.exists() || convertVersion.parentFile.mkdirs()
+        convertVersion.withWriter {
+            it << $/package de.bottlecaps.convert;
+
+public class ConvertVersion
+{
+  public static final String PROJECT_NAME = "$project_name";
+  public static final String VERSION = "$version";
+  public static final String DATE = "${new java.text.SimpleDateFormat("MMM dd, yyyy", Locale.US).format(buildTime)}";
+}
+/$
+        }
+    }
+}
+
+compileJava {
+    dependsOn generateSrc
+    options.release = 11
+    options.encoding = 'UTF-8'
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+task generateLicense {
+    doFirst {
+        def calendar = Calendar.getInstance()
+        calendar.setTime(buildTime)
+        def year = calendar.get(Calendar.YEAR)
+        def licenseTxt = new File("$buildDir", 'LICENSE.TXT')
+        licenseTxt.parentFile.exists() || licenseTxt.parentFile.mkdirs()
+        licenseTxt.withWriter {
+            it << $/${project_name} - Grammar Converter
+
+Copyright 2011-$year Gunther Rademacher <grd@gmx.net>
+
+Licensed under the Apache 2.0 License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied. See the License for the specific language governing
+permissions and limitations under the License.
+
+For third-party license information see THIRD-PARTY-NOTICES.txt.
+
+Thank you for choosing ${project_name} - Grammar Converter.
+/$
+        }
+    }
+}
+
+war {
+    dependsOn jar, generateLicense, generateLicenseReport
+    manifest {
+        attributes (
+            'Main-Class': 'de.bottlecaps.fatjar.Loader',
+            'FatJar-Main-Class': 'de.bottlecaps.convert.Convert',
+            'FatJar-Jars': 'WEB-INF/lib/' + jar.archiveFileName.get() + ' ' + configurations.runtimeClasspath.collect{'WEB-INF/lib/' + it.name}.join(' '),
+            'Implementation-Version': archiveVersion,
+            'Build-Timestamp': new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(buildTime)
+        )
+    }
+    into('LICENSE') {
+        from "$buildDir/LICENSE.txt"
+        from "$buildDir/LICENSE/THIRD-PARTY-NOTICES.txt"
+    }
+    from({zipTree(configurations.rrWebapp.singleFile)}) {
+        include 'de/bottlecaps/fatjar/*'
+    }
+    classpath jar
+    rootSpec.exclude 'de'
+    rootSpec.exclude 'htdocs'
+    rootSpec.exclude 'META-INF'
+    archiveFileName = "${project.name}.war"
+}
+
+task distZip(type:JavaExec) {
+    dependsOn war
+    mainClass = '-jar'
+    args "$buildDir/libs/${project.name}.war", '-distZip'
+    workingDir = "$buildDir/distributions"
+
+    doFirst {
+      mkdir workingDir
+    }
+}
+
+ext.isReleaseVersion = !version.endsWith("-SNAPSHOT")
+
+void configureMetadata(MavenPublication mavenPublication) {
+    configure (mavenPublication) {
+        pom {
+            name = groupId + ':' + artifactId
+            description = 'Grammar Converter'
+            url = "https://www.bottlecaps.de/${project.name}"
+            licenses {
+                license {
+                    name = 'Apache-2.0'
+                    url = 'https://opensource.org/licenses/Apache-2.0'
+                }
+            }
+            developers {
+                developer {
+                    name = 'Gunther Rademacher'
+                    email = 'grd@gmx.net'
+                    organization = 'Gunther Rademacher'
+                    organizationUrl = 'https://www.bottlecaps.de/'
+                }
+            }
+            scm {
+                connection = "git@github.com:GuntherRademacher/${project.name}.git"
+                developerConnection = "git@github.com:GuntherRademacher/${project.name}.git"
+                url = "https://github.com/GuntherRademacher/${project.name}"
+            }
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = 'local'
+            def releaseRepo = layout.buildDirectory.dir('repo/releases')
+            def snapshotRepo = layout.buildDirectory.dir('repo/snapshots')
+            url = isReleaseVersion ? releaseRepo : snapshotRepo
+        }
+    }
+
+    publications {
+        jar(MavenPublication) {
+            artifactId = 'ebnf-convert-lib'
+            from components.java
+            configureMetadata delegate
+        }
+        war(MavenPublication) {
+            artifactId = 'ebnf-convert-webapp'
+            from components.web
+            configureMetadata delegate
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign publishing.publications.jar
+    sign publishing.publications.war
+}
+
+tasks.withType(Sign) {
+    onlyIf { isReleaseVersion }
+}
+
+tasks.register('createBundle', Zip) {
+    dependsOn 'publishAllPublicationsToLocalRepository'
+    from publishing.repositories.local.url
+    archiveFileName = "${project.name}-${project.version}-bundle.zip"
+    destinationDirectory = layout.buildDirectory.dir('bundles')
+}
+
+publish.finalizedBy createBundle

@@ -15,7 +15,7 @@ open PowershellErgonomics
 
 
 
-let connectionString = Prod.connection_string
+let connectionString = Prod.connectionString
 
 let getSchema collectionName =
     use connection = new SqlConnection(connectionString)
@@ -60,8 +60,7 @@ let sprintDataTableShape (data_tabletable: DataTable) =
     |> Seq.map (fun data_column -> sprintf "%s : %O" data_column.ColumnName data_column.DataType)
     |> String.concat "\n"
 
-sprintDataTableShape MetaDataCollection.ForeignKeys
-|> clip
+sprintDataTableShape MetaDataCollection.ForeignKeys |> clip
 
 
 

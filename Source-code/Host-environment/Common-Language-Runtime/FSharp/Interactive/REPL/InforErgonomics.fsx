@@ -31,7 +31,7 @@ open InforSecrets
 
 type InforProdSql = SqlDataProvider<IndividualsAmount=1000, UseOptionTypes=Common.NullableColumnType.OPTION, CaseSensitivityChange = Common.CaseSensitivityChange.ORIGINAL,
     SsdtPath = Prod.dapac,
-    ConnectionString=Prod.connection_string>
+    ConnectionString=Prod.connectionString>
 
 let operations = InforProdSql.GetDataContext()
 
@@ -42,8 +42,7 @@ let operations = InforProdSql.GetDataContext()
 
 module Dacpac =
     [<Literal>]
-    let xmlFilePath =
-        @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\SqlDatabase\Metadata\dapac\model.xml"
+    let xmlFilePath = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\SqlDatabase\Metadata\dapac\model.xml"
 
     type Provider = XmlProvider<UseOriginalNames=true, PreferDateOnly=true, Sample=xmlFilePath>
     let xml = Provider.Load xmlFilePath
@@ -62,24 +61,18 @@ module Dacpac =
 
 
 type Dac.Model.ObjectIdentifier with
-    member this.display =
-        Dacpac.Model.DisplayServices.GetDisplayName(this, Dac.Model.EscapeStyle.EscapeIfNecessary, false)
+    member this.display = Dacpac.Model.DisplayServices.GetDisplayName(this, Dac.Model.EscapeStyle.EscapeIfNecessary, false)
 
-    member this.fullDisplay =
-        Dacpac.Model.DisplayServices.GetDisplayName(this, Dac.Model.EscapeStyle.EscapeIfNecessary, true)
+    member this.fullDisplay = Dacpac.Model.DisplayServices.GetDisplayName(this, Dac.Model.EscapeStyle.EscapeIfNecessary, true)
 
 type Dac.Model.TSqlObject with
-    member this.simpleName =
-        Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.SimpleName)
+    member this.simpleName = Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.SimpleName)
 
-    member this.escapedSimpleName =
-        Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.EscapedSimpleName)
+    member this.escapedSimpleName = Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.EscapedSimpleName)
 
-    member this.fullyQualifiedName =
-        Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.FullyQualifiedName)
+    member this.fullyQualifiedName = Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.FullyQualifiedName)
 
-    member this.escapedFullyQualifiedName =
-        Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.EscapedFullyQualifiedName)
+    member this.escapedFullyQualifiedName = Dacpac.Model.DisplayServices.GetElementName(this, Dac.Model.ElementNameStyle.EscapedFullyQualifiedName)
 
 module Infor =
     module infortest =

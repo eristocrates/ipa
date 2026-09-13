@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ModelingEvolution.Bytes</name>
+    </assembly>
+    <members>
+        <member name="T:ModelingEvolution.Bytes">
+            <summary>
+            A struct representing a size in bytes with support for human-readable formatting,
+            arithmetic operations, and full serialization including use as dictionary keys.
+            </summary>
+        </member>
+        <member name="F:ModelingEvolution.Bytes.Zero">
+            <summary>
+            Represents zero bytes.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Bytes.#ctor(System.Int64,System.SByte)">
+            <summary>
+            Initializes a new instance of Bytes with the specified value and precision.
+            </summary>
+            <param name="value">The size in bytes.</param>
+            <param name="precision">The number of decimal places for formatting.</param>
+        </member>
+        <member name="M:ModelingEvolution.Bytes.FromFile(System.String)">
+            <summary>
+            Creates a Bytes instance from a file's size.
+            </summary>
+            <param name="path">The path to the file.</param>
+            <returns>A Bytes instance representing the file's size.</returns>
+        </member>
+        <member name="P:ModelingEvolution.Bytes.Value">
+            <summary>
+            Gets the raw value in bytes.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Bytes.CompareTo(ModelingEvolution.Bytes)">
+            <summary>
+            Compares this instance to another Bytes instance.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Bytes.CompareTo(System.Object)">
+            <summary>
+            Compares this instance to another object.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Bytes.Equals(ModelingEvolution.Bytes)">
+            <summary>
+            Determines whether this instance equals another Bytes instance.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Bytes.Equals(System.Object)">
+            <summary>
+            Determines whether this instance equals another object.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Bytes.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Bytes.ToString">
+            <summary>
+            Returns a human-readable string representation of the byte value.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Bytes.Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Parses a string representation of bytes with optional size suffix (B, KB, MB, GB, TB, PB, EB).
+            </summary>
+            <param name="s">The string to parse.</param>
+            <param name="provider">The format provider to use for parsing.</param>
+            <returns>A Bytes instance.</returns>
+            <exception cref="T:System.FormatException">Thrown when the string cannot be parsed.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Bytes.TryParse(System.String,System.IFormatProvider,ModelingEvolution.Bytes@)">
+            <summary>
+            Tries to parse a string representation of bytes with optional size suffix.
+            </summary>
+            <param name="s">The string to parse.</param>
+            <param name="provider">The format provider to use for parsing.</param>
+            <param name="result">The parsed Bytes value if successful.</param>
+            <returns>True if parsing succeeded; otherwise, false.</returns>
+        </member>
+        <member name="T:ModelingEvolution.BytesJsonConverter">
+            <summary>
+            JSON converter for the Bytes struct that supports both standalone serialization
+            and use as dictionary keys.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesJsonConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads a Bytes value from JSON.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesJsonConverter.Write(System.Text.Json.Utf8JsonWriter,ModelingEvolution.Bytes,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes a Bytes value to JSON.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesJsonConverter.ReadAsPropertyName(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads a Bytes value from a string (used for dictionary key deserialization).
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesJsonConverter.WriteAsPropertyName(System.Text.Json.Utf8JsonWriter,ModelingEvolution.Bytes,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes a Bytes value as a dictionary key.
+            </summary>
+        </member>
+        <member name="T:ModelingEvolution.BytesJsonConverterFactory">
+            <summary>
+            JSON converter factory that enables automatic discovery of the BytesJsonConverter.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesJsonConverterFactory.CanConvert(System.Type)">
+            <summary>
+            Determines whether the converter can handle the specified type.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesJsonConverterFactory.CreateConverter(System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Creates a converter for the specified type.
+            </summary>
+        </member>
+        <member name="T:ModelingEvolution.BytesPerSecond">
+            <summary>
+            A struct representing a transfer rate in bytes per second with support for human-readable formatting,
+            arithmetic operations, and full serialization.
+            </summary>
+        </member>
+        <member name="F:ModelingEvolution.BytesPerSecond.Zero">
+            <summary>
+            Represents zero bytes per second.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.#ctor(System.Int64,System.SByte)">
+            <summary>
+            Initializes a new instance of BytesPerSecond with the specified value and precision.
+            </summary>
+            <param name="bytesPerSecond">The rate in bytes per second.</param>
+            <param name="precision">The number of decimal places for formatting.</param>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.FromBytesAndTime(ModelingEvolution.Bytes,System.Double)">
+            <summary>
+            Creates a BytesPerSecond from bytes transferred over a time period.
+            </summary>
+            <param name="bytes">The bytes transferred.</param>
+            <param name="seconds">The time period in seconds.</param>
+            <returns>A BytesPerSecond instance.</returns>
+        </member>
+        <member name="P:ModelingEvolution.BytesPerSecond.Value">
+            <summary>
+            Gets the raw value in bytes per second.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.GetBytesForDuration(System.Double)">
+            <summary>
+            Calculates how many bytes would be transferred in the given time.
+            </summary>
+            <param name="seconds">The time period in seconds.</param>
+            <returns>The bytes that would be transferred.</returns>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.CompareTo(ModelingEvolution.BytesPerSecond)">
+            <summary>
+            Compares this instance to another BytesPerSecond instance.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.CompareTo(System.Object)">
+            <summary>
+            Compares this instance to another object.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.Equals(ModelingEvolution.BytesPerSecond)">
+            <summary>
+            Determines whether this instance equals another BytesPerSecond instance.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.Equals(System.Object)">
+            <summary>
+            Determines whether this instance equals another object.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.ToString">
+            <summary>
+            Returns a human-readable string representation of the transfer rate.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.op_Addition(ModelingEvolution.BytesPerSecond,ModelingEvolution.Bytes)">
+            <summary>
+            Adds bytes to the current rate (creates new instance).
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Parses a string representation of bytes per second with optional size suffix.
+            </summary>
+            <param name="s">The string to parse (e.g., "1.5 MB/s", "100 KB/s").</param>
+            <param name="provider">The format provider to use for parsing.</param>
+            <returns>A BytesPerSecond instance.</returns>
+            <exception cref="T:System.FormatException">Thrown when the string cannot be parsed.</exception>
+        </member>
+        <member name="M:ModelingEvolution.BytesPerSecond.TryParse(System.String,System.IFormatProvider,ModelingEvolution.BytesPerSecond@)">
+            <summary>
+            Tries to parse a string representation of bytes per second.
+            </summary>
+            <param name="s">The string to parse.</param>
+            <param name="provider">The format provider to use for parsing.</param>
+            <param name="result">The parsed BytesPerSecond value if successful.</param>
+            <returns>True if parsing succeeded; otherwise, false.</returns>
+        </member>
+        <member name="T:ModelingEvolution.BytesPerSecondJsonConverter">
+            <summary>
+            JSON converter for BytesPerSecond that supports both regular serialization and dictionary keys.
+            </summary>
+        </member>
+        <member name="T:ModelingEvolution.SizeExtensions">
+            <summary>
+            Extension methods for formatting byte sizes in human-readable format.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.SizeExtensions.WithSizeSuffix(System.Int32,System.Int32)">
+            <summary>
+            Formats an integer value as a human-readable byte size.
+            </summary>
+            <param name="value">The value in bytes.</param>
+            <param name="decimalPlaces">The number of decimal places to display.</param>
+            <returns>A formatted string with size suffix.</returns>
+        </member>
+        <member name="M:ModelingEvolution.SizeExtensions.WithSizeSuffix(System.UInt32,System.Int32)">
+            <summary>
+            Formats an unsigned integer value as a human-readable byte size.
+            </summary>
+            <param name="value">The value in bytes.</param>
+            <param name="decimalPlaces">The number of decimal places to display.</param>
+            <returns>A formatted string with size suffix.</returns>
+        </member>
+        <member name="M:ModelingEvolution.SizeExtensions.WithSizeSuffix(System.UInt64,System.Int32)">
+            <summary>
+            Formats an unsigned long value as a human-readable byte size.
+            </summary>
+            <param name="value">The value in bytes.</param>
+            <param name="decimalPlaces">The number of decimal places to display.</param>
+            <returns>A formatted string with size suffix.</returns>
+        </member>
+        <member name="M:ModelingEvolution.SizeExtensions.WithSizeSuffix(System.Int64,System.Int32)">
+            <summary>
+            Formats a long value as a human-readable byte size.
+            </summary>
+            <param name="value">The value in bytes.</param>
+            <param name="decimalPlaces">The number of decimal places to display.</param>
+            <returns>A formatted string with size suffix.</returns>
+        </member>
+        <member name="T:ModelingEvolution.TransferStatisticsJsonConverter">
+            <summary>
+            JSON converter for TransferStatistics.
+            </summary>
+        </member>
+        <member name="T:ModelingEvolution.TransferWatch">
+            <summary>
+            A class that measures data transfer rates using time-bucketed sampling without allocations.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.TransferWatch.#ctor(System.Double,System.Int32)">
+            <summary>
+            Initializes a new instance of TransferWatch.
+            </summary>
+            <param name="bucketIntervalSeconds">The interval in seconds for each measurement bucket.</param>
+            <param name="maxBuckets">Maximum number of buckets to keep in history (default 10).</param>
+        </member>
+        <member name="P:ModelingEvolution.TransferWatch.TotalBytes">
+            <summary>
+            Gets the total bytes transferred since the watch started.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferWatch.CurrentRate">
+            <summary>
+            Gets the current transfer rate based on the most recent complete interval.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferWatch.AverageRate">
+            <summary>
+            Gets the average transfer rate since the watch started.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferWatch.PeakRate">
+            <summary>
+            Gets the peak transfer rate from all buckets.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferWatch.InstantaneousRate">
+            <summary>
+            Gets the instantaneous rate (current interval in progress).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferWatch.Elapsed">
+            <summary>
+            Gets the elapsed time since the watch started.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.TransferWatch.Add(ModelingEvolution.Bytes)">
+            <summary>
+            Adds bytes transferred to the current measurement.
+            </summary>
+            <param name="bytes">The bytes transferred.</param>
+        </member>
+        <member name="M:ModelingEvolution.TransferWatch.Reset">
+            <summary>
+            Resets the watch to start fresh measurements.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.TransferWatch.GetRecentRates">
+            <summary>
+            Gets a snapshot of recent transfer rates.
+            </summary>
+            <returns>An array of recent transfer rates, newest first.</returns>
+        </member>
+        <member name="M:ModelingEvolution.TransferWatch.GetStatistics">
+            <summary>
+            Gets statistics about the transfer.
+            </summary>
+        </member>
+        <member name="T:ModelingEvolution.TransferStatistics">
+            <summary>
+            Immutable statistics about a transfer operation.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferStatistics.TotalBytes">
+            <summary>
+            Total bytes transferred.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferStatistics.ElapsedTime">
+            <summary>
+            Total elapsed time.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferStatistics.CurrentRate">
+            <summary>
+            Current transfer rate.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferStatistics.AverageRate">
+            <summary>
+            Average transfer rate.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferStatistics.PeakRate">
+            <summary>
+            Peak transfer rate.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferStatistics.InstantaneousRate">
+            <summary>
+            Instantaneous transfer rate.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.TransferStatistics.SampleCount">
+            <summary>
+            Number of samples collected.
+            </summary>
+        </member>
+    </members>
+</doc>

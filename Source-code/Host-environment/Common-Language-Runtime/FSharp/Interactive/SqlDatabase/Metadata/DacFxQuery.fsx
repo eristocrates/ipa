@@ -22,26 +22,16 @@ module Database =
     [<Literal>]
     let name = "operations"
 
-    let connectionString = Prod.connection_string
+    let connectionString = Prod.connectionString
 
 
 module Dacpac =
-    let path = Path.Combine(__SOURCE_DIRECTORY__, $"{Database.name}.dacpac")
+    let path = Path.Combine(@"D:\Persistence\DAC", $"{Database.name}.dacpac")
 
 
 module Extraction =
 
-    Target.create "ExportBacpac" (fun _ ->
-        let sourceConnection =
-            "Data Source=MyServer;Initial Catalog=MySourceDb;Integrated Security=True;"
 
-        let destinationBacpac = "path/to/backup.bacpac"
-
-        SqlPackage.exec (fun args ->
-            { args with
-                Action = SqlPackage.Action.Export
-                Source = sourceConnection
-                Destination = destinationBacpac }))
 
 
     let extract () =
@@ -210,32 +200,26 @@ let employee_constraints =
 
 module RESOURCES =
     let schema =
-        Schemas
-        |> Seq.find (fun Schema -> Schema.Name.Parts.Contains("RESOURCES"))
+        Schemas |> Seq.find (fun Schema -> Schema.Name.Parts.Contains("RESOURCES"))
 
     module EMPLOYEE =
 
 
-        let table =
-            Tables
-            |> Seq.find (fun Table -> Table.Name.Parts.Contains("EMPLOYEE"))
+        let table = Tables |> Seq.find (fun Table -> Table.Name.Parts.Contains("EMPLOYEE"))
 
         let columns = table.GetChildren()
 
         let CONTACTKEY =
-            columns
-            |> Seq.find (fun column -> column.Name.Parts.Contains("CONTACTKEY"))
+            columns |> Seq.find (fun column -> column.Name.Parts.Contains("CONTACTKEY"))
 
-RESOURCES.EMPLOYEE.columns
-|> PSeq.iter (fun column -> printfn "%A" column.Name)
+RESOURCES.EMPLOYEE.columns |> PSeq.iter (fun column -> printfn "%A" column.Name)
 
 RESOURCES.EMPLOYEE.CONTACTKEY.ObjectType.Properties
 
 
 
 let random_child =
-    RESOURCES.EMPLOYEE.table.GetChildren(DacQueryScopes.All)
-    |> Seq.randomChoice
+    RESOURCES.EMPLOYEE.table.GetChildren(DacQueryScopes.All) |> Seq.randomChoice
 
 RESOURCES.EMPLOYEE.CONTACTKEY.ObjectType.Properties
 |> Seq.iter (fun property ->
@@ -249,9 +233,7 @@ RESOURCES.EMPLOYEE.CONTACTKEY.ObjectType.Relationships
 |> Seq.iter (fun relationship ->
     printfn "%A %30s: %A" RESOURCES.EMPLOYEE.CONTACTKEY.Name relationship.Name relationship.Properties)
 
-let random_property =
-    random_child.ObjectType.Properties
-    |> Seq.randomChoice
+let random_property = random_child.ObjectType.Properties |> Seq.randomChoice
 
 
 

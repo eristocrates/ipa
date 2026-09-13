@@ -148,7 +148,7 @@ module nlp =
 
 let should_triplify = false
 
-type InforProdSql = SqlDataProvider<ConnectionString=Prod.connection_string, IndividualsAmount=10000, UseOptionTypes=Common.NullableColumnType.OPTION>
+type InforProdSql = SqlDataProvider<ConnectionString=Prod.connectionString, IndividualsAmount=10000, UseOptionTypes=Common.NullableColumnType.OPTION>
 
 
 module InforProdSql =
@@ -181,11 +181,7 @@ let is_not_nullish (string_value: string) = not (is_nullish string_value)
 let xpath (expression: string) (xpath_navigator: XPathNavigator) =
     let xpath_expression = XPathExpression.Compile(expression)
 
-    xpath_navigator
-        .Select(
-            xpath_expression
-        )
-        .toElementArray
+    xpath_navigator.Select(xpath_expression).toElementArray
 
 
 
@@ -568,71 +564,60 @@ let layer'field'productFamily'table'column_names =
        |]
 
 let layer_name_by_FeatureClass'Name =
-    Map.ofArray [|
+    Map.ofArray
+        [|
 
 
-                   "Bridge", "Bridge"
-                   "BridgePoint", "Bridge Point"
-                   "Conduit", "Conduit"
-                   "Connectivity", "Connectivity"
-                   "CulvertCrossDrain", "Culvert Cross Drain"
-                   "Damage", "Damage"
-                   "DebrisTrap", "Debris Trap"
-                   "Ditch", "Ditch"
-                   "DitchPoint", "Ditch Point"
-                   "EndPoint", "End Point"
-                   "GenericStormAsset", "Generic Storm Asset"
-                   "Inlet", "Inlet"
-                   "Interference", "Interference"
-                   "Junction_fixed", "Junction Fixed"
-                   "MediaPoints", "Media Points"
-                   "MediaPointsWithoutPhotos", "Media Points Without Photos"
-                   "Outfall", "Outfall"
-                   "Outfall_DrainageArea", "Outfall Drainage Area"
-                   "Outfall_DrainageArea_MOF", "Outfall Drainage Area MOF"
-                   "Outfall_DrainageArea_MS4", "Outfall Drainage Area MS4"
-                   "PollutionControlBox", "Pollution Control Box"
-                   "PrivatePoint", "Private Point"
-                   "StormwaterPond", "Stormwater Pond"
-                   "StormwaterPond_MediaPoints", "Stormwater Pond Media Points"
-                   "StormwaterPondDischarge", "Stormwater Pond Discharge"
-                   "StormwaterPondTopOfBank", "Stormwater Pond - Top of Bank"
+           "Bridge", "Bridge"
+           "BridgePoint", "Bridge Point"
+           "Conduit", "Conduit"
+           "Connectivity", "Connectivity"
+           "CulvertCrossDrain", "Culvert Cross Drain"
+           "Damage", "Damage"
+           "DebrisTrap", "Debris Trap"
+           "Ditch", "Ditch"
+           "DitchPoint", "Ditch Point"
+           "EndPoint", "End Point"
+           "GenericStormAsset", "Generic Storm Asset"
+           "Inlet", "Inlet"
+           "Interference", "Interference"
+           "Junction_fixed", "Junction Fixed"
+           "MediaPoints", "Media Points"
+           "MediaPointsWithoutPhotos", "Media Points Without Photos"
+           "Outfall", "Outfall"
+           "Outfall_DrainageArea", "Outfall Drainage Area"
+           "Outfall_DrainageArea_MOF", "Outfall Drainage Area MOF"
+           "Outfall_DrainageArea_MS4", "Outfall Drainage Area MS4"
+           "PollutionControlBox", "Pollution Control Box"
+           "PrivatePoint", "Private Point"
+           "StormwaterPond", "Stormwater Pond"
+           "StormwaterPond_MediaPoints", "Stormwater Pond Media Points"
+           "StormwaterPondDischarge", "Stormwater Pond Discharge"
+           "StormwaterPondTopOfBank", "Stormwater Pond - Top of Bank"
 
-                    |]
+           |]
 
 let layer_names_with_unit_ids =
     LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
     |> Array.Parallel.choose (fun Layer ->
         let fields =
-            Layer.Fields
-            |> Array.Parallel.map (fun Field -> Field.Name)
-            |> Set.ofArray
-        if fields.Contains("UNITID") then
-            Some(Layer.Name)
-        else
-            None)
+            Layer.Fields |> Array.Parallel.map (fun Field -> Field.Name) |> Set.ofArray
+        if fields.Contains("UNITID") then Some(Layer.Name) else None)
     |> Set.ofArray
 
 let layer_names_without_unit_ids =
     LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
     |> Array.Parallel.choose (fun Layer ->
         let fields =
-            Layer.Fields
-            |> Array.Parallel.map (fun Field -> Field.Name)
-            |> Set.ofArray
-        if fields.Contains("UNITID") then
-            None
-        else
-            Some(Layer.Name))
+            Layer.Fields |> Array.Parallel.map (fun Field -> Field.Name) |> Set.ofArray
+        if fields.Contains("UNITID") then None else Some(Layer.Name))
     |> Set.ofArray
 
 let layer_names_with_global_ids =
     LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
     |> Array.Parallel.choose (fun Layer ->
         let fields =
-            Layer.Fields
-            |> Array.Parallel.map (fun Field -> Field.Name)
-            |> Set.ofArray
+            Layer.Fields |> Array.Parallel.map (fun Field -> Field.Name) |> Set.ofArray
         if fields.Contains("GLOBALID") then
             Some(Layer.Name)
         else
@@ -643,13 +628,8 @@ let layer_names_with_globalids_without_unit_ids =
     LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
     |> Array.Parallel.choose (fun Layer ->
         let fields =
-            Layer.Fields
-            |> Array.Parallel.map (fun Field -> Field.Name)
-            |> Set.ofArray
-        if
-            fields.Contains("GLOBALID")
-            && not (fields.Contains("UNITID"))
-        then
+            Layer.Fields |> Array.Parallel.map (fun Field -> Field.Name) |> Set.ofArray
+        if fields.Contains("GLOBALID") && not (fields.Contains("UNITID")) then
             Some(Layer.Name)
         else
             None)
@@ -659,20 +639,16 @@ let layer_names_with_global_id_and_unit_ids =
     LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
     |> Array.Parallel.choose (fun Layer ->
         let fields =
-            Layer.Fields
-            |> Array.Parallel.map (fun Field -> Field.Name)
-            |> Set.ofArray
-        if
-            fields.Contains("GLOBALID")
-            && fields.Contains("UNITID")
-        then
+            Layer.Fields |> Array.Parallel.map (fun Field -> Field.Name) |> Set.ofArray
+        if fields.Contains("GLOBALID") && fields.Contains("UNITID") then
             Some(Layer.Name)
         else
             None)
     |> Set.ofArray
 
 let relevent_ids =
-    set [
+    set
+        [
 
 
           "ATTACHEDTOID"
@@ -684,10 +660,11 @@ let relevent_ids =
           "STRUCTUREID"
           "UPSTREAMSTUCTUREID"
 
-           ]
+          ]
 
 let relevent_domain_attributes =
-    set [
+    set
+        [
 
 
           "DIAMETER"
@@ -698,10 +675,11 @@ let relevent_domain_attributes =
           "PIPESHAPE"
           "PONDTYPE"
 
-           ]
+          ]
 
 let relevent_attributes =
-    set [
+    set
+        [
 
 
 
@@ -736,7 +714,7 @@ let relevent_attributes =
           "ZVALUE"
 
 
-           ]
+          ]
 
 let table_databaseName_from_name =
 
@@ -781,10 +759,7 @@ let table_key_from_name (table_name: string) =
                 select Dbtable.Tablekey
         }
         |> Seq.toArray
-    if result.Length < 1 then
-        None
-    else
-        Some(result[0])
+    if result.Length < 1 then None else Some(result[0])
 
 module Normalize =
     let field (field_name: string) =
@@ -5428,7 +5403,7 @@ module h8importtool =
         let file_path (layer_name: string) =
             Path.Combine(mapping_directory, $"{layer_name}.xlsx")
 
-        let connection_string (layer_name: string) =
+        let connectionString (layer_name: string) =
             let Data_Source = file_path layer_name
             $"""Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Data_Source};Extended Properties="Excel 12.0;HDR=Yes;IMEX=1";"""
 
@@ -5437,9 +5412,9 @@ module h8importtool =
             let file_path = _string.file_path layer_name
             RDF_Literal.simple file_path transaction
 
-        let connection_string (layer_name: string) (transaction: LightningTransaction) =
-            let connection_string = _string.connection_string layer_name
-            RDF_Literal.simple connection_string transaction
+        let connectionString (layer_name: string) (transaction: LightningTransaction) =
+            let connectionString = _string.connectionString layer_name
+            RDF_Literal.simple connectionString transaction
 
         let System'Data'OleDb =
             lmdb_read_write { return! RDF_Literal.simple "System.Data.OleDb" }
@@ -6068,14 +6043,15 @@ let DomainNames =
 
     )
     // TODO ask GIS what happend to domain data from the feature layer
-    |> Array.append [|
+    |> Array.append
+        [|
 
-                       "dDomainInletMaterial"
-                       "dDomainEndPointMaterial"
-                       "dDomainJunctionMaterial"
-                       "dDomainDitchSurfType"
+           "dDomainInletMaterial"
+           "dDomainEndPointMaterial"
+           "dDomainJunctionMaterial"
+           "dDomainDitchSurfType"
 
-                        |]
+           |]
     |> Array.distinct
 
 
@@ -6145,44 +6121,45 @@ let FieldName'DomainName'CodedValueName'CodedValueCodes =
 
     )
     // TODO ask GIS what happend to domain data from the feature layer
-    |> Array.append [|
+    |> Array.append
+        [|
 
-                       "MATERIAL", "dDomainInletMaterial", "Brick", "BRK"
-                       "MATERIAL", "dDomainInletMaterial", "Concrete", "CON"
-                       "MATERIAL", "dDomainInletMaterial", "Other", "OTH"
-                       "MATERIAL", "dDomainInletMaterial", "Not Assessed", "NA"
-                       "MATERIAL", "dDomainInletMaterial", "Unknown", "UNK"
-                       "MATERIAL", "dDomainInletMaterial", "SCB", "SCB"
+           "MATERIAL", "dDomainInletMaterial", "Brick", "BRK"
+           "MATERIAL", "dDomainInletMaterial", "Concrete", "CON"
+           "MATERIAL", "dDomainInletMaterial", "Other", "OTH"
+           "MATERIAL", "dDomainInletMaterial", "Not Assessed", "NA"
+           "MATERIAL", "dDomainInletMaterial", "Unknown", "UNK"
+           "MATERIAL", "dDomainInletMaterial", "SCB", "SCB"
 
-                       "MATERIAL", "dDomainEndPointMaterial", "CONCRETE", "CON"
-                       "MATERIAL", "dDomainEndPointMaterial", "BRICK", "BRK"
-                       "MATERIAL", "dDomainEndPointMaterial", "RUBBLE ROCK", "RR"
-                       "MATERIAL", "dDomainEndPointMaterial", "SAND CEMENT BAG", "SCB"
-                       "MATERIAL", "dDomainEndPointMaterial", "DIRT", "DRT"
-                       "MATERIAL", "dDomainEndPointMaterial", "OTHER", "OTH"
-                       "MATERIAL", "dDomainEndPointMaterial", "NOT ASSESSED", "NA"
-                       "MATERIAL", "dDomainEndPointMaterial", "UNKNOWN", "UNK"
+           "MATERIAL", "dDomainEndPointMaterial", "CONCRETE", "CON"
+           "MATERIAL", "dDomainEndPointMaterial", "BRICK", "BRK"
+           "MATERIAL", "dDomainEndPointMaterial", "RUBBLE ROCK", "RR"
+           "MATERIAL", "dDomainEndPointMaterial", "SAND CEMENT BAG", "SCB"
+           "MATERIAL", "dDomainEndPointMaterial", "DIRT", "DRT"
+           "MATERIAL", "dDomainEndPointMaterial", "OTHER", "OTH"
+           "MATERIAL", "dDomainEndPointMaterial", "NOT ASSESSED", "NA"
+           "MATERIAL", "dDomainEndPointMaterial", "UNKNOWN", "UNK"
 
-                       "MATERIAL", "dDomainJunctionMaterial", "Brick", "BRK"
-                       "MATERIAL", "dDomainJunctionMaterial", "PreCast", "PRE"
-                       "MATERIAL", "dDomainJunctionMaterial", "Other", "OTH"
-                       "MATERIAL", "dDomainJunctionMaterial", "Unknown", "UNK"
-                       "MATERIAL", "dDomainJunctionMaterial", "NotAssessed", "NA"
-                       "MATERIAL", "dDomainJunctionMaterial", "Concrete", "CON"
+           "MATERIAL", "dDomainJunctionMaterial", "Brick", "BRK"
+           "MATERIAL", "dDomainJunctionMaterial", "PreCast", "PRE"
+           "MATERIAL", "dDomainJunctionMaterial", "Other", "OTH"
+           "MATERIAL", "dDomainJunctionMaterial", "Unknown", "UNK"
+           "MATERIAL", "dDomainJunctionMaterial", "NotAssessed", "NA"
+           "MATERIAL", "dDomainJunctionMaterial", "Concrete", "CON"
 
 
-                       "SURFACETYPE", "dDomainDitchSurfType", "Rubble Rock", "ROCK"
-                       "SURFACETYPE", "dDomainDitchSurfType", "Grass", "GRASS"
-                       "SURFACETYPE", "dDomainDitchSurfType", "Dirt", "DIRT"
-                       "SURFACETYPE", "dDomainDitchSurfType", "Sand Cement Bags", "SAND"
-                       "SURFACETYPE", "dDomainDitchSurfType", "Fabri Form", "FABRI"
-                       "SURFACETYPE", "dDomainDitchSurfType", "Gabion", "GAB"
-                       "SURFACETYPE", "dDomainDitchSurfType", "Concrete", "CON"
-                       "SURFACETYPE", "dDomainDitchSurfType", "Other", "OTH"
-                       "SURFACETYPE", "dDomainDitchSurfType", "Unknown", "UNK"
-                       "SURFACETYPE", "dDomainDitchSurfType", "Not Assessed", "NA"
+           "SURFACETYPE", "dDomainDitchSurfType", "Rubble Rock", "ROCK"
+           "SURFACETYPE", "dDomainDitchSurfType", "Grass", "GRASS"
+           "SURFACETYPE", "dDomainDitchSurfType", "Dirt", "DIRT"
+           "SURFACETYPE", "dDomainDitchSurfType", "Sand Cement Bags", "SAND"
+           "SURFACETYPE", "dDomainDitchSurfType", "Fabri Form", "FABRI"
+           "SURFACETYPE", "dDomainDitchSurfType", "Gabion", "GAB"
+           "SURFACETYPE", "dDomainDitchSurfType", "Concrete", "CON"
+           "SURFACETYPE", "dDomainDitchSurfType", "Other", "OTH"
+           "SURFACETYPE", "dDomainDitchSurfType", "Unknown", "UNK"
+           "SURFACETYPE", "dDomainDitchSurfType", "Not Assessed", "NA"
 
-                        |]
+           |]
     |> Array.distinct
 
 
@@ -6640,9 +6617,7 @@ let FieldName'FieldDomain =
 module Layer_Field =
     let FieldNames =
         LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
-        |> Array.Parallel.collect (fun Layer ->
-            Layer.Fields
-            |> Array.map (fun Field -> Normalize.field Field.Name))
+        |> Array.Parallel.collect (fun Layer -> Layer.Fields |> Array.map (fun Field -> Normalize.field Field.Name))
         |> Array.distinct
         |> Array.append [| "x"; "y" |]
 
@@ -6651,16 +6626,14 @@ module Layer_Field =
         |> Array.Parallel.collect (fun Layer ->
             Layer.Fields
             |> Array.map (fun Field -> Layer.Name, Normalize.field Field.Name)
-            |> Array.append [| Layer.Name, "x"
-                               Layer.Name, "y" |])
+            |> Array.append [| Layer.Name, "x"; Layer.Name, "y" |])
         |> Array.distinct
 
     let FieldTypes =
         LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
         |> Array.Parallel.collect (fun Layer ->
 
-            Layer.Fields
-            |> Array.map (fun Field -> Field.Type))
+            Layer.Fields |> Array.map (fun Field -> Field.Type))
         |> Array.distinct
 
     module Iri =
@@ -6748,11 +6721,7 @@ let FieldName'DomainName =
     |> Array.Parallel.collect (fun layer ->
 
         layer.Fields
-        |> Array.Parallel.choose (fun field ->
-            if field.Domain.IsSome then
-                Some(field)
-            else
-                None
+        |> Array.Parallel.choose (fun field -> if field.Domain.IsSome then Some(field) else None
 
         )
         |> Array.map (fun field -> Normalize.field field.Name, field.Domain.Value.Name))
@@ -6864,7 +6833,7 @@ type Esri_Feature =
       Y: Option<float>
       Zvalue: Option<decimal>
 
-     }
+    }
 
 let Features =
     LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
@@ -6878,8 +6847,7 @@ let Features =
                     | Some structure_id when string structure_id |> is_not_nullish -> Some(string structure_id)
                     | _ -> None
 
-                with
-                | _ ->
+                with _ ->
                     match Feature.Attributes.Structureid.String with
                     | Some structure_id when structure_id |> is_not_nullish -> Some(structure_id)
                     | _ -> None
@@ -6888,8 +6856,8 @@ let Features =
 
                 try
                     Feature.Attributes.Filterlocation.String
-                with
-                | _ -> None
+                with _ ->
+                    None
 
             let Notes =
 
@@ -6900,8 +6868,8 @@ let Features =
                         Feature.Attributes.Notes.String
 
 
-                with
-                | _ -> Feature.Attributes.Notes.String
+                with _ ->
+                    Feature.Attributes.Notes.String
 
             let Pondyr =
 
@@ -6912,8 +6880,8 @@ let Features =
                         None
 
 
-                with
-                | _ -> None
+                with _ ->
+                    None
 
             let Relatedfeature =
 
@@ -6923,8 +6891,8 @@ let Features =
                     | Some "NOT ASSESSED" -> None
                     | _ -> Feature.Attributes.Relatedfeature.String
 
-                with
-                | _ -> None
+                with _ ->
+                    None
 
             let DownstreamDepth =
                 if Feature.Attributes.DownstreamDepth.IsSome then
@@ -7041,22 +7009,14 @@ let Features =
 let Features_with_Unitid =
 
     Features
-    |> Array.Parallel.choose (fun Feature ->
-        if Feature.Unitid.IsSome then
-            Some(Feature)
-        else
-            None)
+    |> Array.Parallel.choose (fun Feature -> if Feature.Unitid.IsSome then Some(Feature) else None)
     |> Array.distinct
 
 
 let Features_with_Globalid =
 
     Features
-    |> Array.Parallel.choose (fun Feature ->
-        if Feature.Globalid.IsSome then
-            Some(Feature)
-        else
-            None)
+    |> Array.Parallel.choose (fun Feature -> if Feature.Globalid.IsSome then Some(Feature) else None)
     |> Array.distinct
 
 
@@ -7374,14 +7334,10 @@ module FeatureId =
 module Coordinate =
 
     let Xs =
-        Features
-        |> Array.Parallel.choose (fun Feature -> Feature.X)
-        |> Array.distinct
+        Features |> Array.Parallel.choose (fun Feature -> Feature.X) |> Array.distinct
 
     let Ys =
-        Features
-        |> Array.Parallel.choose (fun Feature -> Feature.Y)
-        |> Array.distinct
+        Features |> Array.Parallel.choose (fun Feature -> Feature.Y) |> Array.distinct
 
     let Zs =
         Features
@@ -7636,9 +7592,7 @@ module Attribute =
 
                        for Structuretype in Structuretypes do
                            let local_name =
-                               if Structuretype
-                                   .ToLowerInvariant()
-                                      .Contains("structure") then
+                               if Structuretype.ToLowerInvariant().Contains("structure") then
                                    Structuretype
                                else
                                    $"{Structuretype} Structure"
@@ -8246,7 +8200,8 @@ let random_FeatureClass_Element = FeatureClass_Elements |> Array.randomChoice
 *)
 // TODO ask GIS why features in these layers have a subtype code of 1 despite the layer not showing any subtypes
 let layers_without_listed_subtype =
-    set [
+    set
+        [
 
           "Stormwater Pond"
           "Bridge Point"
@@ -8274,8 +8229,8 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
             Assert.spog individual_feature subtype_predicate subtype_owl_class oit._graph transaction
             Assert.spog subtype_owl_class rdfs.label Subtype.name[(Feature.LayerName, Feature.Subtypefield.Value)] oit._graph transaction
 
-        with
-        | err -> failwith $"Subtype.iri[({Feature.LayerName}, {Feature.Subtypefield.Value})] failed with message {err.Message}"
+        with err ->
+            failwith $"Subtype.iri[({Feature.LayerName}, {Feature.Subtypefield.Value})] failed with message {err.Message}"
 
     if Feature.Attachedtoid.IsSome then
         Assert.spog individual_feature ms4.attached_to FeatureId.Iri.individual_feature_by_Attachedtoid[Feature.Attachedtoid.Value] oit._graph transaction
@@ -8344,24 +8299,19 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
 
 
 
-    if Feature.Description.IsSome
-       && Feature.Description.Value |> is_not_nullish then
+    if Feature.Description.IsSome && Feature.Description.Value |> is_not_nullish then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.DESCRIPTION"] Attribute.Literal.description[Feature.Description.Value] oit._graph transaction
 
-    if Feature.Diameter.IsSome
-       && Feature.Diameter.Value <> 0 then
+    if Feature.Diameter.IsSome && Feature.Diameter.Value <> 0 then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.DIAMETER"] Attribute.Literal.diameter[Feature.Diameter.Value] oit._graph transaction
 
-    if Feature.DownstreamDepth.IsSome
-       && Feature.DownstreamDepth.Value <> 0M then
+    if Feature.DownstreamDepth.IsSome && Feature.DownstreamDepth.Value <> 0M then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.DOWNSTREAMDEPTH"] Attribute.Literal.downstream_depth[Feature.DownstreamDepth.Value] oit._graph transaction
 
-    if Feature.DownstreamElevation.IsSome
-       && Feature.DownstreamElevation.Value <> 0M then
+    if Feature.DownstreamElevation.IsSome && Feature.DownstreamElevation.Value <> 0M then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.DOWNSTREAMELEVATION"] Attribute.Literal.downstream_elevation[Feature.DownstreamElevation.Value] oit._graph transaction
 
-    if Feature.Drainagebasin.IsSome
-       && Feature.Drainagebasin.Value |> is_not_nullish then
+    if Feature.Drainagebasin.IsSome && Feature.Drainagebasin.Value |> is_not_nullish then
         let individual_drainage_basin =
             Attribute.Iri.individual_drainage_basin[Feature.Drainagebasin.Value]
 
@@ -8372,41 +8322,37 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
         Assert.spog individual_drainage_basin is_a ms4.Drainage_Basin oit._graph transaction
         Assert.spog individual_drainage_basin rdfs.label drainage_basin_label oit._graph transaction
 
-    if Feature.Filterlocation.IsSome
-       && Feature.Filterlocation.Value |> is_not_nullish then
+    if Feature.Filterlocation.IsSome && Feature.Filterlocation.Value |> is_not_nullish then
         try
             let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.FILTERLOCATION"]
 
             Assert.spog individual_feature layer_field Attribute.Literal.filter_location[Feature.Filterlocation.Value] oit._graph transaction
             Assert.spog individual_feature ms4.filter_location Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("FILTERLOCATION", Feature.Filterlocation.Value)] oit._graph transaction
             Assert.spog ms4.filter_location ms4.field layer_field oit._graph transaction
-        with
-        | err -> failwith $"(FILTERLOCATION, {Feature.Filterlocation.Value}) failed with message {err.Message}"
+        with err ->
+            failwith $"(FILTERLOCATION, {Feature.Filterlocation.Value}) failed with message {err.Message}"
 
-    if Feature.Filtertype.IsSome
-       && Feature.Filtertype.Value |> is_not_nullish then
+    if Feature.Filtertype.IsSome && Feature.Filtertype.Value |> is_not_nullish then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.FILTERTYPE"] Attribute.Literal.filter_type[Feature.Filtertype.Value] oit._graph transaction
 
-    if Feature.Height.IsSome
-       && Feature.Height.Value <> 0M then
+    if Feature.Height.IsSome && Feature.Height.Value <> 0M then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.HEIGHT"] Attribute.Literal.height[Feature.Height.Value] oit._graph transaction
 
-    if Feature.InvertElevation.IsSome
-       && Feature.InvertElevation.Value <> 0M then
+    if Feature.InvertElevation.IsSome && Feature.InvertElevation.Value <> 0M then
         try
             Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.INVERTELEV"] Attribute.Literal.invert_elevation[Feature.InvertElevation.Value] oit._graph transaction
-        with
-        | err -> failwith $"({Feature.LayerName}.INVERTELEV, {Feature.InvertElevation.Value}) failed with message {err.Message}"
+        with err ->
+            failwith $"({Feature.LayerName}.INVERTELEV, {Feature.InvertElevation.Value}) failed with message {err.Message}"
     if Feature.Lfeet.IsSome && Feature.Lfeet.Value <> 0M then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.LFEET"] Attribute.Literal.l_feet[Feature.Lfeet.Value] oit._graph transaction
 
-    if Feature.LocationDescription.IsSome
-       && Feature.LocationDescription.Value
-          |> is_not_nullish then
+    if
+        Feature.LocationDescription.IsSome
+        && Feature.LocationDescription.Value |> is_not_nullish
+    then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.LOCATION"] Attribute.Literal.location_description[Feature.LocationDescription.Value] oit._graph transaction
 
-    if Feature.Maintby.IsSome
-       && Feature.Maintby.Value |> is_not_nullish then
+    if Feature.Maintby.IsSome && Feature.Maintby.Value |> is_not_nullish then
         try
             let code = Normalize.maint_by Feature.Maintby.Value
             let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.MAINTBY"]
@@ -8415,10 +8361,9 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
             Assert.spog individual_feature ms4.maintainer Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("MAINTBY", code)] oit._graph transaction
             Assert.spog ms4.maintainer ms4.field layer_field oit._graph transaction
 
-        with
-        | err -> failwith $"(MAINTBY, {Feature.Maintby.Value}) failed with message {err.Message}"
-    if Feature.Material.IsSome
-       && Feature.Material.Value |> is_not_nullish then
+        with err ->
+            failwith $"(MAINTBY, {Feature.Maintby.Value}) failed with message {err.Message}"
+    if Feature.Material.IsSome && Feature.Material.Value |> is_not_nullish then
         try
             let code = Normalize.material Feature.Material.Value
             let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.MATERIAL"]
@@ -8427,24 +8372,20 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
             Assert.spog individual_feature layer_field Attribute.Literal.material[code] oit._graph transaction
             Assert.spog individual_feature ms4.material Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("MATERIAL", code)] oit._graph transaction
             Assert.spog ms4.material ms4.field layer_field oit._graph transaction
-        with
-        | err -> failwith $"(MATERIAL, {Feature.Material.Value}) failed with message {err.Message}"
-    if Feature.Notes.IsSome
-       && Feature.Notes.Value |> is_not_nullish then
+        with err ->
+            failwith $"(MATERIAL, {Feature.Material.Value}) failed with message {err.Message}"
+    if Feature.Notes.IsSome && Feature.Notes.Value |> is_not_nullish then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.NOTES"] Attribute.Literal.notes[Feature.Notes.Value] oit._graph transaction
 
-    if Feature.NumBarrels.IsSome
-       && Feature.NumBarrels.Value <> 0 then
+    if Feature.NumBarrels.IsSome && Feature.NumBarrels.Value <> 0 then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.NUM_BARRELS"] Attribute.Literal.num_barrels[Feature.NumBarrels.Value] oit._graph transaction
 
-    if Feature.Outfalltype.IsSome
-       && Feature.Outfalltype.Value |> is_not_nullish then
+    if Feature.Outfalltype.IsSome && Feature.Outfalltype.Value |> is_not_nullish then
         let outfall_type = Attribute.Iri.outfall_type[Feature.Outfalltype.Value]
         Assert.spog individual_feature is_a outfall_type oit._graph transaction
 
         Assert.spog outfall_type rdfs.label Attribute.Literal.outfall_type[Feature.Outfalltype.Value] oit._graph transaction
-    if Feature.Owner.IsSome
-       && Feature.Owner.Value |> is_not_nullish then
+    if Feature.Owner.IsSome && Feature.Owner.Value |> is_not_nullish then
         try
             let code = Normalize.owner Feature.Owner.Value
             let owner =
@@ -8454,10 +8395,9 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
             Assert.spog individual_feature ms4.owner owner oit._graph transaction
             Assert.spog ms4.owner ms4.field layer_field oit._graph transaction
             Assert.spog owner is_a ms4.Owner oit._graph transaction
-        with
-        | err -> failwith $"(OWNER, {Feature.Owner.Value}) failed with message {err.Message}"
-    if Feature.Pipeshape.IsSome
-       && Feature.Pipeshape.Value |> is_not_nullish then
+        with err ->
+            failwith $"(OWNER, {Feature.Owner.Value}) failed with message {err.Message}"
+    if Feature.Pipeshape.IsSome && Feature.Pipeshape.Value |> is_not_nullish then
         try
             let code = Normalize.pipe_shape Feature.Pipeshape.Value
             let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.PIPESHAPE"]
@@ -8466,10 +8406,9 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
             Assert.spog individual_feature ms4.pipe_shape Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("PIPESHAPE", code)] oit._graph transaction
             Assert.spog ms4.pipe_shape ms4.field layer_field oit._graph transaction
 
-        with
-        | err -> failwith $"(PIPESHAPE, {Feature.Pipeshape.Value}) failed with message {err.Message}"
-    if Feature.Pondtype.IsSome
-       && Feature.Pondtype.Value |> is_not_nullish then
+        with err ->
+            failwith $"(PIPESHAPE, {Feature.Pipeshape.Value}) failed with message {err.Message}"
+    if Feature.Pondtype.IsSome && Feature.Pondtype.Value |> is_not_nullish then
 
         let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.PONDTYPE"]
         Assert.spog individual_feature layer_field Attribute.Literal.pond_type[Feature.Pondtype.Value] oit._graph transaction
@@ -8479,47 +8418,39 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
     if Feature.Pondyr.IsSome && Feature.Pondyr.Value <> 0 then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.PONDYR"] Attribute.Literal.pond_yr[Feature.Pondyr.Value] oit._graph transaction
 
-    if Feature.Relatedfeature.IsSome
-       && Feature.Relatedfeature.Value |> is_not_nullish then
+    if Feature.Relatedfeature.IsSome && Feature.Relatedfeature.Value |> is_not_nullish then
 
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.RELATEDFEATURE"] Attribute.Literal.related_feature[Feature.Relatedfeature.Value] oit._graph transaction
 
-    if Feature.SlotElev.IsSome
-       && Feature.SlotElev.Value <> 0M then
+    if Feature.SlotElev.IsSome && Feature.SlotElev.Value <> 0M then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.SLOT_ELEV"] Attribute.Literal.slot_elev[Feature.SlotElev.Value] oit._graph transaction
 
-    if Feature.StrctDepth.IsSome
-       && Feature.StrctDepth.Value <> 0M then
+    if Feature.StrctDepth.IsSome && Feature.StrctDepth.Value <> 0M then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.STRCT_DEPTH"] Attribute.Literal.strct_depth[Feature.StrctDepth.Value] oit._graph transaction
 
-    if Feature.Structuretype.IsSome
-       && Feature.Structuretype.Value |> is_not_nullish then
+    if Feature.Structuretype.IsSome && Feature.Structuretype.Value |> is_not_nullish then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.STRUCTURETYPE"] Attribute.Literal.structure_type[Feature.Structuretype.Value] oit._graph transaction
         Assert.spog individual_feature is_a Attribute.Iri.structure_type[Feature.Structuretype.Value] oit._graph transaction
 
 
 
-    if Feature.Surfacetype.IsSome
-       && Feature.Surfacetype.Value |> is_not_nullish then
+    if Feature.Surfacetype.IsSome && Feature.Surfacetype.Value |> is_not_nullish then
         try
             let code = Normalize.surface_type Feature.Surfacetype.Value
             let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.SURFACETYPE"]
             Assert.spog individual_feature layer_field Attribute.Literal.surface_type[code] oit._graph transaction
             Assert.spog individual_feature ms4.surface_type Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("SURFACETYPE", code)] oit._graph transaction
             Assert.spog ms4.surface_type ms4.field layer_field oit._graph transaction
-        with
-        | err -> failwith $"(SURFACETYPE, {Feature.Surfacetype.Value}) failed with message {err.Message}"
+        with err ->
+            failwith $"(SURFACETYPE, {Feature.Surfacetype.Value}) failed with message {err.Message}"
 
-    if Feature.UpstreamDepth.IsSome
-       && Feature.UpstreamDepth.Value <> 0M then
+    if Feature.UpstreamDepth.IsSome && Feature.UpstreamDepth.Value <> 0M then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.UPSTREAMDEPTH"] Attribute.Literal.upstream_depth[Feature.UpstreamDepth.Value] oit._graph transaction
 
-    if Feature.UpstreamElevation.IsSome
-       && Feature.UpstreamElevation.Value <> 0M then
+    if Feature.UpstreamElevation.IsSome && Feature.UpstreamElevation.Value <> 0M then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.UPSTREAMELEVATION"] Attribute.Literal.upstream_elevation[Feature.UpstreamElevation.Value] oit._graph transaction
 
-    if Feature.Waterbodyname.IsSome
-       && Feature.Waterbodyname.Value |> is_not_nullish then
+    if Feature.Waterbodyname.IsSome && Feature.Waterbodyname.Value |> is_not_nullish then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.WATERBODYNAME"] Attribute.Literal.water_body_name[Feature.Waterbodyname.Value] oit._graph transaction
 
     if Feature.Width.IsSome && Feature.Width.Value <> 0M then
@@ -8536,8 +8467,7 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
         Assert.spog individual_feature y_predicate Coordinate.Literal.y[Feature.Y.Value] oit._graph transaction
         Assert.spog y_predicate rdfs.subPropertyOf ms4.ycoordinate oit._graph transaction
 
-    if Feature.Zvalue.IsSome
-       && Feature.Zvalue.Value <> 0M then
+    if Feature.Zvalue.IsSome && Feature.Zvalue.Value <> 0M then
         Assert.spog individual_feature ms4.zcoordinate Coordinate.Literal.z[Feature.Zvalue.Value] oit._graph transaction
 // with | err -> printf "Feature %A failed with error: %s" Feature err.Message
 
@@ -8635,11 +8565,7 @@ module AZ =
         let xpath_expression = XPathExpression.Compile(expression)
         xpath_expression.SetContext(namespace_manager)
 
-        xpath_navigator
-            .Select(
-                xpath_expression
-            )
-            .toElementArray
+        xpath_navigator.Select(xpath_expression).toElementArray
 
     let xml = XmlProvider<file_path>.Load file_path
 
@@ -8681,9 +8607,7 @@ module AZ =
                 |> Array.filter (fun token -> token.Value <> "_")
                 |> Array.map (fun token -> token.Value)
             if tokens.Length > 1 then
-                let components =
-                    tokens
-                    |> Array.map (fun token -> id, $"{id}.{token}")
+                let components = tokens |> Array.map (fun token -> id, $"{id}.{token}")
                 Some(components)
             else
                 None)
@@ -8979,9 +8903,7 @@ module H8Help_gloss =
     // let navigator = XPathNavigator.Load(file_path)
     let xml = XmlProvider<file_path>.Load file_path
 
-    let ids =
-        xml.Terms
-        |> Array.Parallel.map (fun term -> term.Word)
+    let ids = xml.Terms |> Array.Parallel.map (fun term -> term.Word)
 
     let lexical_tokens =
         ids
@@ -9006,21 +8928,16 @@ module H8Help_gloss =
                 |> Array.filter (fun token -> token.Value <> "_")
                 |> Array.map (fun token -> token.Value)
             if tokens.Length > 1 then
-                let components =
-                    tokens
-                    |> Array.map (fun token -> id, $"{id}.{token}")
+                let components = tokens |> Array.map (fun token -> id, $"{id}.{token}")
                 Some(components)
             else
                 None)
         |> Array.collect (fun nested_array -> nested_array)
 
     let definiendums =
-        xml.Terms
-        |> Array.Parallel.map (fun term -> term.Word, term.Word)
+        xml.Terms |> Array.Parallel.map (fun term -> term.Word, term.Word)
 
-    let definientia =
-        xml.Terms
-        |> Array.Parallel.map (fun term -> term.Word, term.Def)
+    let definientia = xml.Terms |> Array.Parallel.map (fun term -> term.Word, term.Def)
     // TODO handle implicit see also in def
     module Iri =
 
@@ -10114,15 +10031,11 @@ module table =
 
     let names =
         MetaData.xml.HansenMetadata.ProductFamilies
-        |> Array.Parallel.collect (fun ProductFamily ->
-            ProductFamily.Tables
-            |> Array.Parallel.map (fun Table -> Table.Name))
+        |> Array.Parallel.collect (fun ProductFamily -> ProductFamily.Tables |> Array.Parallel.map (fun Table -> Table.Name))
 
     let types =
         MetaData.xml.HansenMetadata.ProductFamilies
-        |> Array.Parallel.collect (fun ProductFamily ->
-            ProductFamily.Tables
-            |> Array.Parallel.map (fun Table -> Table.Type))
+        |> Array.Parallel.collect (fun ProductFamily -> ProductFamily.Tables |> Array.Parallel.map (fun Table -> Table.Type))
 
     let iri =
         lmdb_read_write {
@@ -10161,41 +10074,39 @@ module column =
         |> Array.Parallel.collect (fun ProductFamily ->
             ProductFamily.Tables
             |> Array.Parallel.collect (fun Table ->
-                Array.concat [|
+                Array.concat
+                    [|
 
 
-                                Table.Columns
-                                |> Array.Parallel.map (fun Column -> ProductFamily.Name, Table.Name, Column.Name)
-                                Table.DomainColumnReferences
-                                |> Array.Parallel.map (fun Column -> ProductFamily.Name, Table.Name, Column.Name)
+                       Table.Columns
+                       |> Array.Parallel.map (fun Column -> ProductFamily.Name, Table.Name, Column.Name)
+                       Table.DomainColumnReferences
+                       |> Array.Parallel.map (fun Column -> ProductFamily.Name, Table.Name, Column.Name)
 
 
-                                 |]))
+                       |]))
 
     let names =
         MetaData.xml.HansenMetadata.ProductFamilies
         |> Array.Parallel.collect (fun ProductFamily ->
             ProductFamily.Tables
             |> Array.Parallel.collect (fun Table ->
-                Array.concat [|
+                Array.concat
+                    [|
 
 
-                                Table.Columns
-                                |> Array.Parallel.map (fun Column -> Column.Name)
-                                Table.DomainColumnReferences
-                                |> Array.Parallel.map (fun Column -> Column.Name)
+                       Table.Columns |> Array.Parallel.map (fun Column -> Column.Name)
+                       Table.DomainColumnReferences |> Array.Parallel.map (fun Column -> Column.Name)
 
 
-                                 |]))
+                       |]))
 
 
     let types =
         MetaData.xml.HansenMetadata.ProductFamilies
         |> Array.Parallel.collect (fun ProductFamily ->
             ProductFamily.Tables
-            |> Array.Parallel.collect (fun Table ->
-                Table.Columns
-                |> Array.Parallel.map (fun Column -> Column.Type)))
+            |> Array.Parallel.collect (fun Table -> Table.Columns |> Array.Parallel.map (fun Column -> Column.Type)))
 
     let iri =
         lmdb_read_write {
@@ -10332,8 +10243,8 @@ module Map =
                     |> Option.get
 
                 clrColumn.FieldType.FullName
-            with
-            | err -> failwithf "Hansen.%s.%s.%s failed with message %s" productFamily_name table_name column_name err.Message
+            with err ->
+                failwithf "Hansen.%s.%s.%s failed with message %s" productFamily_name table_name column_name err.Message
 
     let layer_field_to_table_column<'ValueType> (layer_name: string) (field_name: string) (productFamily_name: string) (table_name: string) (column_name: string) (transaction: LightningTransaction) =
 
@@ -10347,8 +10258,7 @@ module Map =
         try
             let source_field = Layer_Field.Iri.layer_field[$"{layer_name}.{field_name}"]
             ()
-        with
-        | err ->
+        with err ->
             failwith
                 $"""layer_name:{layer_name}
     field_name:{field_name}
@@ -10906,8 +10816,8 @@ if should_triplify then
                 let layer_abstract = Feature_Layer.Literal.abstract_description[Layer.Name]
                 do! Assert.spog feature_layer ms4.name layer_name oit._graph
                 do! Assert.spog feature_layer esri.``abstract`` layer_abstract oit._graph
-            with
-            | _ -> ()
+            with _ ->
+                ()
 
 
             do! Assert.spog feature_layer ms4.currentVersion Feature_Layer.Literal.current_version[Layer.CurrentVersion] oit._graph
@@ -11092,10 +11002,11 @@ if should_triplify then
 
             do! Assert.spog individual_system_license is_a infor.System_License oit._graph
             do! Assert.spog individual_system_license infor.name hansenDataDistribution.Literal.name[SystemLicense.Name] oit._graph
-            if SystemLicense.Description.IsSome
-               && SystemLicense.Description.Value
-                  <> SystemLicense.Name
-               && SystemLicense.Description.Value |> is_not_nullish then
+            if
+                SystemLicense.Description.IsSome
+                && SystemLicense.Description.Value <> SystemLicense.Name
+                && SystemLicense.Description.Value |> is_not_nullish
+            then
                 do! Assert.spog individual_system_license infor.description hansenDataDistribution.Literal.description[SystemLicense.Description.Value] oit._graph
             if SystemLicense.EffectiveDateTime.IsSome then
                 do! Assert.spog individual_system_license infor.effectiveDateTime hansenDataDistribution.Literal.effectiveDateTime[SystemLicense.EffectiveDateTime.Value] oit._graph
@@ -11111,29 +11022,33 @@ if should_triplify then
             do! Assert.spog individual_domain_column infor.isRequired hansenDataDistribution.Literal.isRequired[DomainColumn.IsRequired] oit._graph
             do! Assert.spog individual_domain_column infor.description hansenDataDistribution.Literal.description[DomainColumn.Text.Description] oit._graph
 
-            if DomainColumn.Text.Remarks.IsSome
-               && DomainColumn.Text.Remarks.Value |> is_not_nullish then
+            if
+                DomainColumn.Text.Remarks.IsSome
+                && DomainColumn.Text.Remarks.Value |> is_not_nullish
+            then
                 do! Assert.spog individual_domain_column infor.remarks hansenDataDistribution.Literal.remarks[DomainColumn.Text.Remarks.Value] oit._graph
-            if DomainColumn.Text.DisplayDescription.IsSome
-               && DomainColumn.Text.DisplayDescription.Value
-                  |> is_not_nullish
-               && DomainColumn.Text.DisplayDescription.Value
-                  <> DomainColumn.Text.Description then
+            if
+                DomainColumn.Text.DisplayDescription.IsSome
+                && DomainColumn.Text.DisplayDescription.Value |> is_not_nullish
+                && DomainColumn.Text.DisplayDescription.Value <> DomainColumn.Text.Description
+            then
                 do! Assert.spog individual_domain_column infor.displayDescription hansenDataDistribution.Literal.displayDescription[DomainColumn.Text.DisplayDescription.Value] oit._graph
-            if DomainColumn.Text.DisplayTitle.IsSome
-               && DomainColumn.Text.DisplayTitle.Value
-                  |> is_not_nullish then
+            if
+                DomainColumn.Text.DisplayTitle.IsSome
+                && DomainColumn.Text.DisplayTitle.Value |> is_not_nullish
+            then
                 do! Assert.spog individual_domain_column infor.displayTitle hansenDataDistribution.Literal.displayTitle[DomainColumn.Text.DisplayTitle.Value] oit._graph
-            if DomainColumn.Text.DisplayTitleLong.IsSome
-               && DomainColumn.Text.DisplayTitleLong.Value
-                  |> is_not_nullish then
+            if
+                DomainColumn.Text.DisplayTitleLong.IsSome
+                && DomainColumn.Text.DisplayTitleLong.Value |> is_not_nullish
+            then
                 if DomainColumn.Text.DisplayTitle.IsNone then
                     do! Assert.spog individual_domain_column infor.displayTitleLong hansenDataDistribution.Literal.displayTitleLong[DomainColumn.Text.DisplayTitleLong.Value] oit._graph
-                else if DomainColumn.Text.DisplayTitle.IsSome
-                        && DomainColumn.Text.DisplayTitle.Value
-                           |> is_not_nullish
-                        && (DomainColumn.Text.DisplayTitleLong.Value
-                            <> DomainColumn.Text.DisplayTitle.Value) then
+                else if
+                    DomainColumn.Text.DisplayTitle.IsSome
+                    && DomainColumn.Text.DisplayTitle.Value |> is_not_nullish
+                    && (DomainColumn.Text.DisplayTitleLong.Value <> DomainColumn.Text.DisplayTitle.Value)
+                then
                     do! Assert.spog individual_domain_column infor.displayTitleLong hansenDataDistribution.Literal.displayTitleLong[DomainColumn.Text.DisplayTitleLong.Value] oit._graph
 
         for table_type in table.types do
@@ -11168,11 +11083,9 @@ if should_triplify then
                 if Table.DatabaseName.StartsWith("COMP") then
                     do! Assert.spog individual_table is_a infor.AssetType oit._graph
 
-                if Table.Text.Description.IsSome
-                   && Table.Text.Description.Value |> is_not_nullish then
+                if Table.Text.Description.IsSome && Table.Text.Description.Value |> is_not_nullish then
                     do! Assert.spog individual_table infor.description hansenDataDistribution.Literal.description[Table.Text.Description.Value] oit._graph
-                if Table.Text.Remarks.IsSome
-                   && Table.Text.Remarks.Value |> is_not_nullish then
+                if Table.Text.Remarks.IsSome && Table.Text.Remarks.Value |> is_not_nullish then
                     do! Assert.spog individual_table infor.remarks hansenDataDistribution.Literal.remarks[Table.Text.Remarks.Value] oit._graph
 
                 for DomainColumnReference in Table.DomainColumnReferences do
@@ -11200,34 +11113,41 @@ if should_triplify then
                     do! Assert.spog individual_column infor.databaseName hansenDataDistribution.Literal.databaseName[Column.DatabaseName] oit._graph
                     do! Assert.spog individual_column infor.length hansenDataDistribution.Literal.length[Column.Length] oit._graph
 
-                    if Column.Text.Remarks.IsSome
-                       && Column.Text.Remarks.Value |> is_not_nullish then
+                    if Column.Text.Remarks.IsSome && Column.Text.Remarks.Value |> is_not_nullish then
                         do! Assert.spog individual_column infor.remarks hansenDataDistribution.Literal.remarks[Column.Text.Remarks.Value] oit._graph
-                    if Column.Text.Description.IsSome
-                       && Column.Text.Description.Value |> is_not_nullish then
+                    if
+                        Column.Text.Description.IsSome
+                        && Column.Text.Description.Value |> is_not_nullish
+                    then
                         do! Assert.spog individual_column infor.description hansenDataDistribution.Literal.description[Column.Text.Description.Value] oit._graph
-                    if Column.Text.DisplayDescription.IsSome
-                       && Column.Text.DisplayDescription.Value
-                          |> is_not_nullish then
+                    if
+                        Column.Text.DisplayDescription.IsSome
+                        && Column.Text.DisplayDescription.Value |> is_not_nullish
+                    then
                         if Column.Text.Description.IsNone then
                             do! Assert.spog individual_column infor.displayDescription hansenDataDistribution.Literal.displayDescription[Column.Text.DisplayDescription.Value] oit._graph
-                        else if Column.Text.Description.IsSome
-                                && Column.Text.Description.Value |> is_not_nullish
-                                && (Column.Text.DisplayDescription.Value
-                                    <> Column.Text.Description.Value) then
+                        else if
+                            Column.Text.Description.IsSome
+                            && Column.Text.Description.Value |> is_not_nullish
+                            && (Column.Text.DisplayDescription.Value <> Column.Text.Description.Value)
+                        then
                             do! Assert.spog individual_column infor.displayDescription hansenDataDistribution.Literal.displayDescription[Column.Text.DisplayDescription.Value] oit._graph
-                    if Column.Text.DisplayTitle.IsSome
-                       && Column.Text.DisplayTitle.Value |> is_not_nullish then
+                    if
+                        Column.Text.DisplayTitle.IsSome
+                        && Column.Text.DisplayTitle.Value |> is_not_nullish
+                    then
                         do! Assert.spog individual_column infor.displayTitle hansenDataDistribution.Literal.displayTitle[Column.Text.DisplayTitle.Value] oit._graph
-                    if Column.Text.DisplayTitleLong.IsSome
-                       && Column.Text.DisplayTitleLong.Value
-                          |> is_not_nullish then
+                    if
+                        Column.Text.DisplayTitleLong.IsSome
+                        && Column.Text.DisplayTitleLong.Value |> is_not_nullish
+                    then
                         if Column.Text.DisplayTitle.IsNone then
                             do! Assert.spog individual_column infor.displayTitleLong hansenDataDistribution.Literal.displayTitleLong[Column.Text.DisplayTitleLong.Value] oit._graph
-                        else if Column.Text.DisplayTitle.IsSome
-                                && Column.Text.DisplayTitle.Value |> is_not_nullish
-                                && (Column.Text.DisplayTitleLong.Value
-                                    <> Column.Text.DisplayTitle.Value) then
+                        else if
+                            Column.Text.DisplayTitle.IsSome
+                            && Column.Text.DisplayTitle.Value |> is_not_nullish
+                            && (Column.Text.DisplayTitleLong.Value <> Column.Text.DisplayTitle.Value)
+                        then
                             do! Assert.spog individual_column infor.displayTitleLong hansenDataDistribution.Literal.displayTitleLong[Column.Text.DisplayTitleLong.Value] oit._graph
 
 
@@ -11238,46 +11158,36 @@ if should_triplify then
                         do! Assert.spog individual_table woedms.primary_key_column individual_column oit._graph
 
                 for ReferencingConstraint in Table.ReferencingConstraints do
-                    for index = 0 to ReferencingConstraint.ForeignColumnReferences.Length
-                                     - 1 do
-                        let local_reference =
-                            ReferencingConstraint.LocalColumnReferences[index]
-                                .Name
-                        let foreign_reference =
-                            ReferencingConstraint.ForeignColumnReferences[index]
-                                .Name
+                    for index = 0 to ReferencingConstraint.ForeignColumnReferences.Length - 1 do
+                        let local_reference = ReferencingConstraint.LocalColumnReferences[index].Name
+                        let foreign_reference = ReferencingConstraint.ForeignColumnReferences[index].Name
                         try
                             let local_column = column.iri[local_reference]
                             let foreign_column = column.iri[foreign_reference]
 
                             do! Assert.spog foreign_column woedms.values_depend_on_column local_column oit._graph
                             do! Assert.spog local_column woedms.dependent_column foreign_column oit._graph
-                        with
-                        | err -> failwith $"{ProductFamily.Name}.{Table.Name}.{ReferencingConstraint.CommonId} failed with error {err.Message}"
+                        with err ->
+                            failwith $"{ProductFamily.Name}.{Table.Name}.{ReferencingConstraint.CommonId} failed with error {err.Message}"
 
                 for ForeignKeyConstraint in Table.ForeignKeyConstraints do
-                    for index = 0 to ForeignKeyConstraint.ForeignColumnReferences.Length
-                                     - 1 do
-                        let local_reference =
-                            ForeignKeyConstraint.LocalColumnReferences[index]
-                                .Name
-                        let foreign_reference =
-                            ForeignKeyConstraint.ForeignColumnReferences[index]
-                                .Name
+                    for index = 0 to ForeignKeyConstraint.ForeignColumnReferences.Length - 1 do
+                        let local_reference = ForeignKeyConstraint.LocalColumnReferences[index].Name
+                        let foreign_reference = ForeignKeyConstraint.ForeignColumnReferences[index].Name
                         try
                             let local_column = column.iri[local_reference]
                             let foreign_column = column.iri[foreign_reference]
 
                             do! Assert.spog foreign_column woedms.dependent_column local_column oit._graph
                             do! Assert.spog local_column woedms.values_depend_on_column foreign_column oit._graph
-                        with
-                        | err -> failwith $"{ProductFamily.Name}.{Table.Name}.{ForeignKeyConstraint.CommonId} failed with error {err.Message}"
+                        with err ->
+                            failwith $"{ProductFamily.Name}.{Table.Name}.{ForeignKeyConstraint.CommonId} failed with error {err.Message}"
 
                 for EnumerationCheckConstraint in Table.EnumerationCheckConstraints do
                     try
                         do! Assert.spog column.iri[EnumerationCheckConstraint.LocalColumnReference.Name] infor.enumeration enumeration.iri[EnumerationCheckConstraint.EnumerationName] oit._graph
-                    with
-                    | err -> failwith $"{ProductFamily.Name}.{Table.Name}.{EnumerationCheckConstraint.CommonId} failed with error {err.Message}"
+                    with err ->
+                        failwith $"{ProductFamily.Name}.{Table.Name}.{EnumerationCheckConstraint.CommonId} failed with error {err.Message}"
                 for UniqueConstraint in Table.UniqueConstraints do
                     for LocalColumnReference in UniqueConstraint.LocalColumnReferences do
 
@@ -11392,10 +11302,7 @@ if should_triplify then
         for article in AZ.articles do
 
             let article_id = article.Attribute "id"
-            let dfn =
-                article
-                |> AZ.xpath "./descendant::xhtml:dfn"
-                |> Array.exactlyOne
+            let dfn = article |> AZ.xpath "./descendant::xhtml:dfn" |> Array.exactlyOne
             let dfn_id = dfn.Attribute "id"
             let headword = dfn.Value
 
@@ -11423,20 +11330,13 @@ if should_triplify then
             for anchor in article |> AZ.xpath """./descendant::xhtml:a""" do
                 let! cross_reference = A_to_Z_GIS._prefix anchor.Value
                 do! Assert.spog lexicographic_entry rdfs.seeAlso cross_reference oit._graph
-            for figure in
-                article
-                |> AZ.xpath """./descendant::xhtml:figure""" do
-                let src =
-                    figure
-                    |> AZ.xpath """./descendant::xhtml:img/@src"""
-                    |> Array.exactlyOne
+            for figure in article |> AZ.xpath """./descendant::xhtml:figure""" do
+                let src = figure |> AZ.xpath """./descendant::xhtml:img/@src""" |> Array.exactlyOne
                 let img_path = Path.Combine(AZ.directory_path, src.Value)
                 let! img_form = Lexical_Form.from_string img_path
                 let! img_iriref = RDF_Term.from_atomic_iri { lexical_form_id = img_form.lexical_form_id }
                 let figcaption =
-                    figure
-                    |> AZ.xpath """./descendant::xhtml:figcaption"""
-                    |> Array.exactlyOne
+                    figure |> AZ.xpath """./descendant::xhtml:figcaption""" |> Array.exactlyOne
                 let! label = RDF_Literal.US figcaption.Value
 
                 do! Assert.spog lexicographic_entry foaf.depiction img_iriref oit._graph
@@ -11444,18 +11344,11 @@ if should_triplify then
                 do! Assert.spog img_iriref rdfs.label label oit._graph
 
 
-            let sense_list =
-                article
-                |> AZ.xpath """./descendant::xhtml:ol/xhtml:li"""
-            let sense_elements =
-                if sense_list.Length > 0 then
-                    sense_list
-                else
-                    [| article |]
+            let sense_list = article |> AZ.xpath """./descendant::xhtml:ol/xhtml:li"""
+            let sense_elements = if sense_list.Length > 0 then sense_list else [| article |]
             for sense_element in sense_elements do
                 let def_spans =
-                    sense_element
-                    |> AZ.xpath """./descendant::xhtml:span[@epub:type = "def"]"""
+                    sense_element |> AZ.xpath """./descendant::xhtml:span[@epub:type = "def"]"""
                 if def_spans.Length = 1 then
                     let! definition = RDF_Literal.US def_spans[0].Value
                     let subject_areas =
@@ -11537,8 +11430,8 @@ if should_triplify then
                                     do! Assert.spog lexical_entry decomp.constituent lexical_constituent oit._graph
                                     do! Assert.spog lexical_entry rdf_ordinal lexical_constituent oit._graph
                                     do! Assert.spog lexical_constituent decomp.correspondsTo lexical_token oit._graph
-                                with
-                                | err -> failwith $"headword: {headword} token: {tokens[index]} failed with error {err.Message}"
+                                with err ->
+                                    failwith $"headword: {headword} token: {tokens[index]} failed with error {err.Message}"
 
                         else
                             do! Assert.spog lexical_entry is_a ontolex.Word oit._graph
@@ -11619,12 +11512,7 @@ if should_triplify then
                 match term.Def with
                 | _ when term.Def.StartsWith("see") ->
                     let referenced_terms =
-                        term
-                            .Def
-                            .TrimStart("see ".ToCharArray())
-                            .Replace(", or", ",")
-                            .Replace(" or ", ", ")
-                            .Split(", ")
+                        term.Def.TrimStart("see ".ToCharArray()).Replace(", or", ",").Replace(" or ", ", ").Split(", ")
                     for referenced_term in referenced_terms do
                         let cross_reference = hansen._prefix referenced_term current_transaction
                         Assert.spog lexicographic_entry rdfs.seeAlso cross_reference oit._graph current_transaction
@@ -11714,8 +11602,8 @@ if should_triplify then
                         do! Assert.spog lexical_entry decomp.constituent lexical_constituent oit._graph
                         do! Assert.spog lexical_entry rdf_ordinal lexical_constituent oit._graph
                         do! Assert.spog lexical_constituent decomp.correspondsTo lexical_token oit._graph
-                    with
-                    | err -> failwith $"headword: {headword} token: {tokens[index]} failed with error {err.Message}"
+                    with err ->
+                        failwith $"headword: {headword} token: {tokens[index]} failed with error {err.Message}"
 
             else
                 do! Assert.spog lexical_entry is_a ontolex.Word oit._graph
@@ -11730,15 +11618,16 @@ if should_triplify then
 
         do! Assert.spog hansen.Metadata is_a lexicog.LexicographicResource oit._graph
         let asset_columns =
-            Array.concat [|
+            Array.concat
+                [|
 
-                            MetaData.navigator
-                            |> xpath """//productFamily[@name = "AssetManagement.AgencyDefined"]/table[@name = "SimpleAgencyAsset"]/column"""
-                            MetaData.navigator |> xpath """//domainColumn"""
-                            MetaData.navigator
-                            |> xpath """//table[@name = "Asset"]/column[@name = "AddressQualifier"]"""
+                   MetaData.navigator
+                   |> xpath """//productFamily[@name = "AssetManagement.AgencyDefined"]/table[@name = "SimpleAgencyAsset"]/column"""
+                   MetaData.navigator |> xpath """//domainColumn"""
+                   MetaData.navigator
+                   |> xpath """//table[@name = "Asset"]/column[@name = "AddressQualifier"]"""
 
-                             |]
+                   |]
         for asset_column in asset_columns do
             let headword = asset_column.Attribute "name"
             let database_name = asset_column.Attribute "databaseName"
@@ -11762,14 +11651,9 @@ if should_triplify then
             do! Assert.spog lexical_form is_a ontolex.Form oit._graph
             do! Assert.spog lexical_form ontolex.canonicalForm canonical_form oit._graph
 
-            let asset_description =
-                asset_column
-                |> xpath ".//@description"
-                |> Array.exactlyOne
+            let asset_description = asset_column |> xpath ".//@description" |> Array.exactlyOne
             let asset_displayDescription =
-                asset_column
-                |> xpath ".//@displayDescription"
-                |> Array.exactlyOne
+                asset_column |> xpath ".//@displayDescription" |> Array.exactlyOne
             let! definition =
                 match asset_displayDescription.Value, asset_description.Value with
                 | displayDescription, _ when not (String.IsNullOrWhiteSpace(displayDescription)) -> RDF_Literal.US displayDescription
@@ -11827,8 +11711,8 @@ if should_triplify then
                         do! Assert.spog lexical_entry decomp.constituent lexical_constituent oit._graph
                         do! Assert.spog lexical_entry rdf_ordinal lexical_constituent oit._graph
                         do! Assert.spog lexical_constituent decomp.correspondsTo lexical_token oit._graph
-                    with
-                    | err -> failwith $"headword: {headword} token: {tokens[index]} failed with error {err.Message}"
+                    with err ->
+                        failwith $"headword: {headword} token: {tokens[index]} failed with error {err.Message}"
 
             else
                 do! Assert.spog lexical_entry is_a ontolex.Word oit._graph
@@ -11893,11 +11777,7 @@ if should_triplify then
                     hansen.Reference_Guide
                 else
                     ms4.Stormwater_Editing_Training_Manual
-            let prefix_term =
-                if is_infor then
-                    hansen._prefix
-                else
-                    ms4._prefix
+            let prefix_term = if is_infor then hansen._prefix else ms4._prefix
             let concept_scheme = if is_infor then "infor" else "gis"
 
             let! lexicographic_entry = prefix_term definiendum
@@ -11974,8 +11854,8 @@ if should_triplify then
                         do! Assert.spog lexical_entry decomp.constituent lexical_constituent oit._graph
                         do! Assert.spog lexical_entry rdf_ordinal lexical_constituent oit._graph
                         do! Assert.spog lexical_constituent decomp.correspondsTo lexical_token oit._graph
-                    with
-                    | err -> failwith $"definiendum: {definiendum} token: {tokens[index]} failed with error {err.Message}"
+                    with err ->
+                        failwith $"definiendum: {definiendum} token: {tokens[index]} failed with error {err.Message}"
 
             else
                 do! Assert.spog lexical_entry is_a ontolex.Word oit._graph
@@ -12090,10 +11970,7 @@ module Tabular =
 
             let escaped = value.Replace("\"", "\"\"")
 
-            if requires_quotes then
-                $"\"{escaped}\""
-            else
-                escaped
+            if requires_quotes then $"\"{escaped}\"" else escaped
 
         let row (cells: string array) =
             cells |> Array.map escape |> String.concat ","
@@ -12199,9 +12076,7 @@ module NetRdf =
         let parse (quads: Quad array) (triplestore: VDS.RDF.ITripleStore) (transaction: LightningTransaction) =
 
             let text =
-                quads
-                |> Array.map (fun quad -> Quad.nq quad transaction)
-                |> String.concat "\n"
+                quads |> Array.map (fun quad -> Quad.nq quad transaction) |> String.concat "\n"
 
             use reader = new StringReader(text)
             parser.Load(triplestore, reader)
@@ -12219,8 +12094,7 @@ module NetRdf =
             try
                 use reader = new StringReader(text)
                 parser.Load(graph, reader)
-            with
-            | err ->
+            with err ->
                 clip text
                 failwith err.Message
 
@@ -12265,37 +12139,24 @@ let serialize_ttl (graph: VDS.RDF.IGraph) (quads: Quad array) (stem: string) =
 
     graph |> NetRdf.PREFIX "owl" owl._namespace_name
     graph |> NetRdf.PREFIX "prov" prov._namespace_name
-    graph
-    |> NetRdf.PREFIX "termlex" termlex._namespace_name
+    graph |> NetRdf.PREFIX "termlex" termlex._namespace_name
     graph |> NetRdf.PREFIX "foaf" foaf._namespace_name
-    graph
-    |> NetRdf.PREFIX "hansen" hansen._namespace_name
+    graph |> NetRdf.PREFIX "hansen" hansen._namespace_name
     graph |> NetRdf.PREFIX "skos" skos._namespace_name
-    graph
-    |> NetRdf.PREFIX "A_to_Z_GIS" A_to_Z_GIS._namespace_name
-    graph
-    |> NetRdf.PREFIX "concept" concept._namespace_name
-    graph
-    |> NetRdf.PREFIX "constituent" constituent._namespace_name
-    graph
-    |> NetRdf.PREFIX "ontolex" ontolex._namespace_name
-    graph
-    |> NetRdf.PREFIX "lexicog" lexicog._namespace_name
-    graph
-    |> NetRdf.PREFIX "decomp" decomp._namespace_name
-    graph
-    |> NetRdf.PREFIX "sense" sense._namespace_name
-    graph
-    |> NetRdf.PREFIX "usage" usage._namespace_name
-    graph
-    |> NetRdf.PREFIX "esri_press" esri_press._namespace_name
-    graph
-    |> NetRdf.PREFIX "entry" entry._namespace_name
+    graph |> NetRdf.PREFIX "A_to_Z_GIS" A_to_Z_GIS._namespace_name
+    graph |> NetRdf.PREFIX "concept" concept._namespace_name
+    graph |> NetRdf.PREFIX "constituent" constituent._namespace_name
+    graph |> NetRdf.PREFIX "ontolex" ontolex._namespace_name
+    graph |> NetRdf.PREFIX "lexicog" lexicog._namespace_name
+    graph |> NetRdf.PREFIX "decomp" decomp._namespace_name
+    graph |> NetRdf.PREFIX "sense" sense._namespace_name
+    graph |> NetRdf.PREFIX "usage" usage._namespace_name
+    graph |> NetRdf.PREFIX "esri_press" esri_press._namespace_name
+    graph |> NetRdf.PREFIX "entry" entry._namespace_name
     graph |> NetRdf.PREFIX "lime" lime._namespace_name
     graph |> NetRdf.PREFIX "" data._namespace_name
 
-    graph
-    |> NetRdf.PREFIX "dcterms" dcterms._namespace_name
+    graph |> NetRdf.PREFIX "dcterms" dcterms._namespace_name
 
     graph
     |> NetRdf.PREFIX "LCPW_OverlayStormwaterInfrastructure_D_WM" LCPW_OverlayStormwaterInfrastructure_D_WM._namespace_name
@@ -12306,21 +12167,17 @@ let serialize_ttl (graph: VDS.RDF.IGraph) (quads: Quad array) (stem: string) =
 
     graph |> NetRdf.PREFIX "oit" oit._namespace_name
 
-    graph
-    |> NetRdf.PREFIX "woedms" woedms._namespace_name
+    graph |> NetRdf.PREFIX "woedms" woedms._namespace_name
 
     graph |> NetRdf.PREFIX "ms4" ms4._namespace_name
 
     graph
     |> NetRdf.PREFIX "LCG_Stormwater_Inventory" LCG_Stormwater_Inventory._namespace_name
 
-    graph
-    |> NetRdf.PREFIX "infor" infor._namespace_name
+    graph |> NetRdf.PREFIX "infor" infor._namespace_name
 
-    graph
-    |> NetRdf.PREFIX "h8importtool" h8importtool._namespace_name
-    graph
-    |> NetRdf.PREFIX "leonad" leonad._namespace_name
+    graph |> NetRdf.PREFIX "h8importtool" h8importtool._namespace_name
+    graph |> NetRdf.PREFIX "leonad" leonad._namespace_name
 
     let file_path = Path.Combine(rdf_directory_path, $"{stem}.ttl")
     graph |> NetRdf.Turtle.write file_path
@@ -12405,9 +12262,7 @@ let map_columns =
 let source_field_quads =
     lmdb_read_only {
         let! current_transaction = lmdb_read_only.Current_Transaction
-        let! source_field_quads =
-            Graph_Pattern._p_g woedms.from_field oit._graph
-            |> Quad_Query.quads_by_pattern
+        let! source_field_quads = Graph_Pattern._p_g woedms.from_field oit._graph |> Quad_Query.quads_by_pattern
         let distinct_terms =
             [| for quad in source_field_quads do
                    quad.object |> RDF_Object.term |]
@@ -12422,9 +12277,7 @@ let source_field_quads =
 let target_column_quads =
     lmdb_read_only {
         let! current_transaction = lmdb_read_only.Current_Transaction
-        let! target_column_quads =
-            Graph_Pattern._p_g woedms.to_column oit._graph
-            |> Quad_Query.quads_by_pattern
+        let! target_column_quads = Graph_Pattern._p_g woedms.to_column oit._graph |> Quad_Query.quads_by_pattern
         let distinct_terms =
             [| for quad in target_column_quads do
                    quad.object |> RDF_Object.term |]
@@ -12447,13 +12300,10 @@ let layer'unitid_terms =
         return
             source_field_terms
             |> Array.choose (fun term ->
-                let (RDF_Term.FromNamespacedIRI (term_id, term_iri)) = term
+                let (RDF_Term.FromNamespacedIRI(term_id, term_iri)) = term
                 let local_name =
                     Get.String_by_Lexical_Form_ID term_iri.local_name_id current_transaction
-                if
-                    local_name.Contains("UNITID")
-                    && not (local_name.Contains("Hansen"))
-                then
+                if local_name.Contains("UNITID") && not (local_name.Contains("Hansen")) then
                     let to_period = local_name.IndexOf(".") - 1
                     let layer_name = local_name[..to_period]
                     Some(layer_name, term)
@@ -12508,7 +12358,8 @@ let sample_features_by_layer =
                     |> Array.choose (fun quad ->
                         let predicate_string = RDF_Predicate.string_value quad.predicate current_transaction
                         let predicate_is_excluded =
-                            set [
+                            set
+                                [
 
                                   "maintainer"
                                   "material"
@@ -12543,12 +12394,9 @@ let sample_features_by_layer =
                                   "FILTERTYPE"
 
 
-                                   ]
+                                  ]
                             |> Set.exists (fun excluded_predicate_substring -> predicate_string.Contains(excluded_predicate_substring))
-                        if predicate_is_excluded then
-                            None
-                        else
-                            Some quad)
+                        if predicate_is_excluded then None else Some quad)
                 layer_name, filtered_sample_quads
 
             )
@@ -12574,8 +12422,7 @@ let features_by_layer =
             |> Array.map (fun (layer_name, unitid_quads) ->
 
                 let features =
-                    unitid_quads
-                    |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
+                    unitid_quads |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
 
 
                 let feature_quads =
@@ -12593,8 +12440,7 @@ let features_by_layer =
 
 // TODO move to string extension
 let contains_substring_from (substrings: string array) (value: string) =
-    substrings
-    |> Array.exists (fun substring -> value.Contains substring)
+    substrings |> Array.exists (fun substring -> value.Contains substring)
 
 
 
@@ -12628,14 +12474,15 @@ let sample_layer_quads =
     }
 
 let metadata_quads =
-    Array.concat [|
+    Array.concat
+        [|
 
-                    mappings
-                    map_columns
-                    source_field_quads
-                    target_column_quads
+           mappings
+           map_columns
+           source_field_quads
+           target_column_quads
 
-                     |]
+           |]
 
 
 
@@ -12655,10 +12502,10 @@ let columns_by_layer quads_by_layer =
                     |> Array.map (fun quad ->
 
                         match RDF_Object.term quad.object with
-                        | RDF_Term.FromNamespacedIRI (term_id, term) -> Get.String_by_Lexical_Form_ID term.local_name_id current_transaction
-                        | RDF_Term.FromSimpleLiteral (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
-                        | RDF_Term.FromDatatypedLiteral (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
-                        | RDF_Term.FromRegionString (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
+                        | RDF_Term.FromNamespacedIRI(term_id, term) -> Get.String_by_Lexical_Form_ID term.local_name_id current_transaction
+                        | RDF_Term.FromSimpleLiteral(term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
+                        | RDF_Term.FromDatatypedLiteral(term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
+                        | RDF_Term.FromRegionString(term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
 
                     )
                 (layer_name, columns_in_layer)
@@ -12716,10 +12563,7 @@ let tabular_content_by_layer quads_by_layer =
                 let cell_by_column = column_cells_for_feature |> Map.ofArray
 
                 header_row
-                |> Array.map (fun column ->
-                    cell_by_column
-                    |> Map.tryFind column
-                    |> Option.defaultValue ""))
+                |> Array.map (fun column -> cell_by_column |> Map.tryFind column |> Option.defaultValue ""))
 
         let rows_in_layer = feature_rows |> Array.insertAt 0 header_row
         (layer_name, rows_in_layer))
@@ -12727,10 +12571,7 @@ let tabular_content_by_layer quads_by_layer =
 let csv_content_by_layer quads_by_layer =
     tabular_content_by_layer quads_by_layer
     |> Array.map (fun (layer_name, rows_in_layer) ->
-        let csv_content =
-            rows_in_layer
-            |> Array.map Tabular.Csv.row
-            |> String.concat "\n"
+        let csv_content = rows_in_layer |> Array.map Tabular.Csv.row |> String.concat "\n"
         (layer_name, csv_content)
 
     )
@@ -12771,14 +12612,15 @@ let sample_data_graph = new VDS.RDF.ThreadSafeGraph()
 let sample_data_quads =
 
     let excluded_predicate_terms =
-        set [ ms4.owner
+        set
+            [ ms4.owner
               ms4.zcoordinate
               ms4.maintainer
               ms4.material
               ms4.surface_type
               ms4.pipe_shape
 
-               ]
+              ]
     let excluded_predicate_substrings =
         [|
 
@@ -12811,25 +12653,27 @@ let sample_data_quads =
            |]
 
     let excluded_object_terms =
-        set [
+        set
+            [
 
               owl.NamedIndividual
               ms4.Feature
               esri.GPFeatureLayer
 
-               ]
+              ]
 
 
     lmdb_read_only {
         let! current_transaction = lmdb_read_only.Current_Transaction
         return
 
-            Array.concat [|
+            Array.concat
+                [|
 
-                            sample_quads
-                            sample_layer_quads
+                   sample_quads
+                   sample_layer_quads
 
-                             |]
+                   |]
     (*
             |> Array.Parallel.filter (fun quad -> not (excluded_object_terms.Contains(RDF_Object.term quad.object)))
             |> Array.Parallel.filter (fun quad -> not (excluded_predicate_terms.Contains(RDF_Predicate.term quad.predicate)))
@@ -12890,13 +12734,9 @@ serialize_ttl sample_data_graph sample_data_quads "sample_data"
 let map_terms =
 
     lmdb_read_only {
-        let! quads =
-            Graph_Pattern._p_g woedms.map oit._graph
-            |> Quad_Query.quads_by_pattern
+        let! quads = Graph_Pattern._p_g woedms.map oit._graph |> Quad_Query.quads_by_pattern
 
-        return
-            quads
-            |> Array.map (fun quad -> RDF_Object.term quad.object)
+        return quads |> Array.map (fun quad -> RDF_Object.term quad.object)
 
     }
 
@@ -12987,9 +12827,7 @@ let h8import_xml_content =
                         SheetName {
 
                             Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.SheetName oit._graph) current_transaction
-                            |> Array.map (fun quad ->
-                                (RDF_Object.string_value quad.object current_transaction)
-                                    .Replace(" ", "_"))
+                            |> Array.map (fun quad -> (RDF_Object.string_value quad.object current_transaction).Replace(" ", "_"))
                             |> Array.head
 
                         }
@@ -13029,9 +12867,7 @@ let h8import_xml_content =
                                 MapKey { key }
                                 SourceColumnName {
                                     Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_column h8importtool.SourceColumnName oit._graph) current_transaction
-                                    |> Array.map (fun quad ->
-                                        (RDF_Object.string_value quad.object current_transaction)
-                                            .Replace(" ", "_"))
+                                    |> Array.map (fun quad -> (RDF_Object.string_value quad.object current_transaction).Replace(" ", "_"))
                                     |> Array.head
                                 }
                                 TargetColumnCommonId {
@@ -13082,8 +12918,7 @@ let h8import_xml_content =
     }
 
 let h8import_xml_document =
-    h8import_xml_content
-    |> Render.toXDocument "1.0" "utf-8" (Some "yes")
+    h8import_xml_content |> Render.toXDocument "1.0" "utf-8" (Some "yes")
 
 h8import_xml_document.Save(h8import_xml_path)
 
@@ -13236,7 +13071,8 @@ let entry_quads =
 
 
 let gis_headwords =
-    set [
+    set
+        [
 
           "feature"
           "feature_class"
@@ -13250,10 +13086,11 @@ let gis_headwords =
           "Location"
 
 
-           ]
+          ]
 
 let infor_headwords =
-    set [
+    set
+        [
           // H8Help headwords
           "asset"
           "table"
@@ -13275,14 +13112,15 @@ let infor_headwords =
           "Business layer"
           "Presentation layer"
 
-           ]
+          ]
 
 
 
 let esrinfor_headwords = Set.union gis_headwords infor_headwords
 
 let excluded_predicate_terms =
-    set [
+    set
+        [
 
           decomp.constituent
           ontolex.isSenseOf
@@ -13291,10 +13129,11 @@ let excluded_predicate_terms =
           termlex.isEvokedBy
           dcterms.subject
 
-           ]
+          ]
 
 let excluded_senses =
-    set [
+    set
+        [
 
           "data_storage.feature_class"
           "data_models.field"
@@ -13303,10 +13142,11 @@ let excluded_senses =
           "core.field"
           "esri_software.organization"
 
-           ]
+          ]
 
 let excluded_object_terms =
-    set [
+    set
+        [
 
           skos.Concept
           termlex.TerminologicalConcept
@@ -13314,7 +13154,7 @@ let excluded_object_terms =
           // ontolex.Word
           // ontolex.MultiWordExpression
 
-           ]
+          ]
 
 
 
@@ -13360,10 +13200,8 @@ let lexical_quads =
             |> Array.choose (fun quad ->
                 let local_name = RDF_Subject.string_value quad.subject current_transaction
                 let term_exists =
-                    esrinfor_headwords
-                    |> Set.exists (fun term -> local_name.EndsWith(term))
-                if RDF_Predicate.term quad.predicate = decomp.correspondsTo
-                   && term_exists then
+                    esrinfor_headwords |> Set.exists (fun term -> local_name.EndsWith(term))
+                if RDF_Predicate.term quad.predicate = decomp.correspondsTo && term_exists then
                     Some(quad)
                 else
                     None)
@@ -13417,15 +13255,16 @@ let lexical_quads =
             |> Graph_Traversal.to_quads
 
         return
-            Array.concat [|
+            Array.concat
+                [|
 
-                            entry_quads
-                            sense_quads
-                            usage_quads
-                            constituent_quads_filtered
-                            concept_quads
+                   entry_quads
+                   sense_quads
+                   usage_quads
+                   constituent_quads_filtered
+                   concept_quads
 
-                             |]
+                   |]
             |> Array.Parallel.filter (fun quad -> not (excluded_predicate_terms.Contains(RDF_Predicate.term quad.predicate)))
             |> Array.Parallel.filter (fun quad -> not (excluded_object_terms.Contains(RDF_Object.term quad.object)))
             |> Array.Parallel.choose (fun quad ->
@@ -13433,10 +13272,8 @@ let lexical_quads =
                 let local_name = RDF_Object.string_value quad.object current_transaction
 
                 let term_exists =
-                    excluded_senses
-                    |> Set.exists (fun term -> local_name.EndsWith(term))
-                if RDF_Predicate.term quad.predicate = ontolex.sense
-                   && term_exists then
+                    excluded_senses |> Set.exists (fun term -> local_name.EndsWith(term))
+                if RDF_Predicate.term quad.predicate = ontolex.sense && term_exists then
                     None
                 else
                     Some(quad)
@@ -13469,8 +13306,7 @@ let test_quads =
             |> Array.collect (fun (layer_name, unitid_quads) ->
 
                 let features =
-                    unitid_quads
-                    |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
+                    unitid_quads |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
 
 
 
@@ -13484,10 +13320,7 @@ let test_quads =
                             |> Array.choose (fun quad ->
 
                                 let predicate_string = RDF_Predicate.string_value quad.predicate current_transaction
-                                if
-                                    predicate_string.EndsWith("MAINTBY")
-                                    || predicate_string.EndsWith("OWNER")
-                                then
+                                if predicate_string.EndsWith("MAINTBY") || predicate_string.EndsWith("OWNER") then
                                     Some quad
                                 else
                                     None)
@@ -13819,10 +13652,7 @@ let html_element =
                       Rem 0.75 |> GridColumnGap.value
                       Rem 0.5 |> RowGap.value ]
 
-                css
-                    "dd"
-                    [ 2 |> GridColumnStart.value
-                      Zero |> Margin.value ]
+                css "dd" [ 2 |> GridColumnStart.value; Zero |> Margin.value ]
                 css
                     "aside"
                     [
@@ -14012,7 +13842,7 @@ let html_element =
                                         for column_index = 0 to column_index_end do
                                             let header = rows[0][column_index]
                                             match maybe_infor_header layer_name header with
-                                            | Some (productFamily_name, table_name, column_name) ->
+                                            | Some(productFamily_name, table_name, column_name) ->
                                                 th {
                                                     _id $"{productFamily_name}_{table_name}_{column_name}"
                                                     $"{column_name}"
@@ -14028,9 +13858,7 @@ let html_element =
                                 tbody {
                                     for row_index = 1 to row_index_end do
                                         let row = rows[row_index]
-                                        let id_index =
-                                            rows[0]
-                                            |> Array.findIndex (fun header -> header.EndsWith("UNITID"))
+                                        let id_index = rows[0] |> Array.findIndex (fun header -> header.EndsWith("UNITID"))
                                         let unit_id = rows[row_index][id_index]
                                         let should_print_prod_environment = false
                                         let infor_environment =
@@ -14132,10 +13960,7 @@ let html_element =
     }
 
 
-let html_document =
-    html_element
-    |> Render.toHtmlDocString
-    |> HtmlDocument.Parse
+let html_document = html_element |> Render.toHtmlDocString |> HtmlDocument.Parse
 
 let publication_directory_path =
     @"C:\Users\CollierB\OneDrive\OneDrive - Leon County Government\Publications"
@@ -14158,9 +13983,7 @@ let docx_document_path =
     Path.Combine(documentation_directory_path, $"{documentation_date_stem}.docx")
 
 let docx_document =
-    html_element
-    |> Render.toString
-    |> Render.toDocx docx_document_path
+    html_element |> Render.toString |> Render.toDocx docx_document_path
 
 LCG.print_stats ()
 // printfn "%s elapsed=%O" "transaction stopwatch:" stopwatch.Elapsed

@@ -121,5 +121,12 @@ compilationTargets
 
 *)
 
-compileScriptToDll @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\IanaSchemes.fsx"
-|> Async.RunSynchronously
+let result =
+    compileScriptToDll @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL\IanaSchemes.fsx"
+    |> Async.RunSynchronously
+(*
+
+match result with 
+| Error err -> err.Message
+
+*)

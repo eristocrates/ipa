@@ -1,3 +1,7 @@
+(*
+paddleocr-sharp parse report.pdf --output-dir out/
+paddleocr-sharp parse report.pdf --output-dir out/
+*)
 #load @".paket/load/main.group.fsx"
 #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL"
 #time on

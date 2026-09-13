@@ -16,7 +16,11 @@ open FSharp.Data.Sql.MsSql
 
 
 type InforProdSql =
-    SqlDataProvider<ConnectionString=Prod.connection_string, IndividualsAmount=10000, UseOptionTypes=Common.NullableColumnType.OPTION>
+    SqlDataProvider<
+        ConnectionString=Prod.connectionString,
+        IndividualsAmount=10000,
+        UseOptionTypes=Common.NullableColumnType.OPTION
+     >
 
 let operations = InforProdSql.GetDataContext()
 

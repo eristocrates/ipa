@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ModelingEvolution.Bytes</id>
+    <version>3.0.0</version>
+    <authors>ModelingEvolution Team</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/modelingevolution/bytes</projectUrl>
+    <description>A readonly struct for representing byte sizes with human-readable formatting, arithmetic operations, and full serialization support including dictionary key compatibility.</description>
+    <releaseNotes>See https://github.com/modelingevolution/bytes/releases/tag/v3.0.0</releaseNotes>
+    <copyright>Copyright © 2025 ModelingEvolution</copyright>
+    <tags>bytes size filesize datacontract serialization value-type</tags>
+    <repository type="git" url="https://github.com/modelingevolution/bytes" commit="776661fb368ed15fcd25936ee39c28e3d4e75fce" />
+    <dependencies>
+      <group targetFramework="net9.0">
+        <dependency id="System.Text.Json" version="9.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
