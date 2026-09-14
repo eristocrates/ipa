@@ -6,6 +6,8 @@ fsi.ShowDeclarationValues <- false
 #load @".paket/load/main.group.fsx"
 #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\REPL"
 open System
+open System.Text
+open System.Globalization
 open FSharp.Data
 open FolkerKinzel.MimeTypes
 open Dubzer.WhatwgUrl
@@ -170,23 +172,39 @@ let rfcXref = ianaXrefs |> Array.filter (fun xref -> xref.xrefType = "rfc")
 // TODO add rfc json links
 // https://www.rfc-editor.org/rfc/rfc3261.json
 // C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\sampleRfc.json
-type RfcEditiorProvider =
+
+
+type RFCProvider =
     JsonProvider<
         UseOriginalNames=true,
         OmitNullFields=true,
         RootName="rfc",
         Sample= @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\sampleRfc.json"
      >
-type IanaRfc = {
-    rfcDocId: string
-} with
+type RequestForComment(rfcInt: int) =
+    let _url = DomUrl $"https://www.rfc-editor.org/rfc/{rfcInt}.json"
 
-    member this.editorUrl = DomUrl $"https://www.rfc-editor.org/rfc/{this.rfcDocId}.json"
-    member this.GetRfcJson() =
-        http { GET this.editorUrl.Href }
+    let _json = http { GET _url.Href } |> Request.send |> Response.toText |> RFCProvider.Parse
+    static member GetIndex() =
+
+        http { GET "https://www.ietf.org/download/rfc-index.txt" }
         |> Request.send
         |> Response.toText
-        |> RfcEditiorProvider.Parse
+
+    member this.rfcNumber = sprintf "%04i" rfcInt
+    member this.rfcName = $"RFC{this.rfcNumber}"
+
+    member this.url = _url
+    member this.json = _json
+
+let rfcNumbers =
+    RequestForComment.GetIndex().Split('\n')
+    |> Array.choose (fun line ->
+        if line.Length > 3 && line[..3] |> Seq.forall Char.IsDigit then
+            int line[..3] |> RequestForComment |> Some
+        else
+            None)
+rfcNumbers[0]
 
 let rfc_errataXref = ianaXrefs |> Array.filter (fun xref -> xref.xrefType = "rfc-errata")
 let uriXref = ianaXrefs |> Array.filter (fun xref -> xref.xrefType = "uri")
@@ -212,7 +230,7 @@ type IanaMediaType = {
         this.xrefs
         |> Array.choose (fun xref ->
             match xref.xrefType with
-            | "rfc" -> Some { rfcDocId = xref.xrefData }
+            | "rfc" -> Some { rfcNumber = xref.xrefData }
             | _ -> None)
     member this.ianaDrafts =
         this.xrefs
@@ -274,3 +292,6 @@ let ianaMediaTypes =
 //
 let rfcJson = ianaMediaTypes[0].rfcs[0].GetRfcJson()
 rfcJson.draft
+let uriRfc = { rfcNumber = "rfc3839" }
+let uriRfcJson = uriRfc.GetRfcJson()
+uriRfcJson.``abstract``

@@ -2,6 +2,7 @@
 #r "nuget: FSharp.Data"
 #r "nuget: Dubzer.WhatwgUrl"
 #r "nuget: libphonenumber-csharp"
+
 open System
 open PosInformatique.Foundations.EmailAddresses
 open Dubzer.WhatwgUrl
@@ -392,6 +393,14 @@ and User =
       department_id: int
       department: Department
       has_gravatar: bool
+
+
+
+
+
+
+
+
       customer_satisfaction_survey_time: DateTime option
       avatar: Avatar }
 

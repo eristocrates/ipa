@@ -1,8 +1,8 @@
-# time on
+#time on
 fsi.PrintLength <- 10
 fsi.ShowDeclarationValues <- false
 
-open System 
+open System
 open System.IO
 
 open System.Xml
@@ -14,10 +14,11 @@ open System.Xml.Schema
 #r "nuget: Dubzer.WhatwgUrl"
 open Dubzer.WhatwgUrl
 
+#r "nuget: FSharp.Collections.ParallelSeq"
+open FSharp.Collections.ParallelSeq
 
 #r "nuget: PosInformatique.Foundations.EmailAddresses"
 open PosInformatique.Foundations.EmailAddresses
-
 
 #r "nuget: libphonenumber-csharp"
 open PhoneNumbers
@@ -39,6 +40,17 @@ open FSharp.XExtensions
 #r "nuget: LitXml"
 open LitXml
 
+#r "nuget: FSharp.ViewEngine"
+open FSharp.ViewEngine
+
+#r "nuget: Universal.Common.Css.Selectors"
+open Universal.Common
+
+#r "nuget: Fss-lib.Core"
+open Fss.Selector
+type FssSelector = Fss.Selector.Selector
+type FssAttribute = Fss.Types.Attribute.Attribute
+type FssTag = Fss.Types.Html.Html
 
 #r "nuget: FSharp.Collections.ParallelSeq"
 open FSharp.Collections.ParallelSeq
@@ -64,7 +76,7 @@ open Fli
 open TextCopy
 
 
-let phoneNumberUtil = PhoneNumberUtil.GetInstance() 
+let phoneNumberUtil = PhoneNumberUtil.GetInstance()
 let number = phoneNumberUtil.Parse("\u002B1 850-606-5534", "US")
 
 
@@ -78,108 +90,101 @@ let number = phoneNumberUtil.Parse("\u002B1 850-606-5534", "US")
 
 
 let clipboard = new Clipboard()
-let clip (text:string) = clipboard.SetText text
+let clip (text: string) = clipboard.SetText text
 
 
 
-type Binder = 
-    | TypeBinder of identifier:string
-    | CaseBinder of identifier:string
-    | ModuleBinder of identifier:string
-    | NamespaceBinder of identifier:string
-    | VariableBinder of identifier:string
-    member this.identifier = 
-        match this with 
+type Binder =
+    | TypeBinder of identifier: string
+    | CaseBinder of identifier: string
+    | ModuleBinder of identifier: string
+    | NamespaceBinder of identifier: string
+    | VariableBinder of identifier: string
+
+    member this.identifier =
+        match this with
         | TypeBinder identifier -> identifier
         | CaseBinder identifier -> identifier
         | ModuleBinder identifier -> identifier
         | NamespaceBinder identifier -> identifier
         | VariableBinder identifier -> identifier
-    static member BackTickExclusions = 
-        [|
-            '.'
-            '+'
-            '$'
-            '&'
-            '['
-            ']'
-            '/'
-            '\\'
-            '*'
-            '\"'
-            '`'
-        |]
-    static member IdentKeywords = 
-        set [
-            "abstract"
-            "and"
-            "as"
-            "assert"
-            "base"
-            "begin"
-            "class"
-            "const"
-            "default"
-            "delegate"
-            "do"
-            "done"
-            "downcast"
-            "downto"
-            "elif"
-            "else"
-            "end"
-            "exception"
-            "extern"
-            "false"
-            "finally"
-            "fixed"
-            "for"
-            "fun"
-            "function"
-            "global"
-            "if"
-            "in"
-            "inherit"
-            "inline"
-            "interface"
-            "internal"
-            "lazy"
-            "let"
-            "match"
-            "member"
-            "module"
-            "mutable"
-            "namespace"
-            "new"
-            "null"
-            "of"
-            "open"
-            "or"
-            "override"
-            "private"
-            "public"
-            "rec"
-            "return"
-            "sig"
-            "static"
-            "struct"
-            "then"
-            "to"
-            "true"
-            "try"
-            "type"
-            "upcast"
-            "use"
-            "val"
-            "void"
-            "when"
-            "while"
-            "with"
-            "yield"
-            
-        ]
-    static member OCamlKeywords = 
-            set [
+
+    static member BackTickExclusions =
+        [| '.'; '+'; '$'; '&'; '['; ']'; '/'; '\\'; '*'; '\"'; '`' |]
+
+    static member IdentKeywords =
+        set
+            [ "abstract"
+              "and"
+              "as"
+              "assert"
+              "base"
+              "begin"
+              "class"
+              "const"
+              "default"
+              "delegate"
+              "do"
+              "done"
+              "downcast"
+              "downto"
+              "elif"
+              "else"
+              "end"
+              "exception"
+              "extern"
+              "false"
+              "finally"
+              "fixed"
+              "for"
+              "fun"
+              "function"
+              "global"
+              "if"
+              "in"
+              "inherit"
+              "inline"
+              "interface"
+              "internal"
+              "lazy"
+              "let"
+              "match"
+              "member"
+              "module"
+              "mutable"
+              "namespace"
+              "new"
+              "null"
+              "of"
+              "open"
+              "or"
+              "override"
+              "private"
+              "public"
+              "rec"
+              "return"
+              "sig"
+              "static"
+              "struct"
+              "then"
+              "to"
+              "true"
+              "try"
+              "type"
+              "upcast"
+              "use"
+              "val"
+              "void"
+              "when"
+              "while"
+              "with"
+              "yield"
+
+              ]
+
+    static member OCamlKeywords =
+        set
+            [
 
               "asr"
               "land"
@@ -190,10 +195,12 @@ type Binder =
               "mod"
               "sig"
 
-               ]
-    static member ReservedKeywords = 
-    
-        set [
+              ]
+
+    static member ReservedKeywords =
+
+        set
+            [
 
               "break"
               "checked"
@@ -214,35 +221,43 @@ type Binder =
               "trait"
               "virtual"
 
-               ]
-    static member KeywordNames = Binder.IdentKeywords + Binder.OCamlKeywords + Binder.ReservedKeywords
+              ]
 
-    member this.Contains(character:char) = this.identifier.Contains(character)
+    static member KeywordNames =
+        Binder.IdentKeywords + Binder.OCamlKeywords + Binder.ReservedKeywords
+
+    member this.Contains(character: char) = this.identifier.Contains(character)
+
     member this.isBackTickRestricted =
-        match this with 
+        match this with
         | TypeBinder identifier -> true
         | CaseBinder identifier -> true
         | ModuleBinder identifier -> true
         | NamespaceBinder identifier -> true
         | VariableBinder identifier -> false
-    static member NormalizeIdentifier (is_restricted:bool) (identifier: string)  =
+
+    static member NormalizeIdentifier (is_restricted: bool) (identifier: string) =
         match identifier with
         | _ when identifier.Contains(' ') ->
-            Converters.ReplaceWhitespace(identifier,  "_")
+            Converters.ReplaceWhitespace(identifier, "_")
             |> Binder.NormalizeIdentifier is_restricted
-        | _ when identifier.Contains('-') ->
-            identifier.Replace("-", "_")
-            |> Binder.NormalizeIdentifier is_restricted
+        | _ when identifier.Contains('-') -> identifier.Replace("-", "_") |> Binder.NormalizeIdentifier is_restricted
         | _ when not (Syntax.PrettyNaming.IsIdentifierFirstCharacter identifier[0]) ->
             "_" + identifier |> Binder.NormalizeIdentifier is_restricted
-        | _ when Binder.KeywordNames.Contains(identifier) -> identifier + "_" |> Binder.NormalizeIdentifier is_restricted
-        | _ when Syntax.PrettyNaming.DoesIdentifierNeedBackticks identifier && is_restricted  ->
-            let backtickableIdentifier = identifier.Replace(Binder.BackTickExclusions,"")
-            Syntax.PrettyNaming.NormalizeIdentifierBackticks backtickableIdentifier |> Binder.NormalizeIdentifier is_restricted
-        | _ when Syntax.PrettyNaming.DoesIdentifierNeedBackticks identifier   ->
-            Syntax.PrettyNaming.NormalizeIdentifierBackticks identifier |> Binder.NormalizeIdentifier is_restricted
+        | _ when Binder.KeywordNames.Contains(identifier) ->
+            identifier + "_" |> Binder.NormalizeIdentifier is_restricted
+        | _ when Syntax.PrettyNaming.DoesIdentifierNeedBackticks identifier && is_restricted ->
+            let backtickableIdentifier = identifier.Replace(Binder.BackTickExclusions, "")
+
+            Syntax.PrettyNaming.NormalizeIdentifierBackticks backtickableIdentifier
+            |> Binder.NormalizeIdentifier is_restricted
+        | _ when Syntax.PrettyNaming.DoesIdentifierNeedBackticks identifier ->
+            Syntax.PrettyNaming.NormalizeIdentifierBackticks identifier
+            |> Binder.NormalizeIdentifier is_restricted
         | _ -> identifier
-    member this.binding = Binder.NormalizeIdentifier this.isBackTickRestricted this.identifier
+
+    member this.binding =
+        Binder.NormalizeIdentifier this.isBackTickRestricted this.identifier
 
 
 
@@ -264,44 +279,70 @@ type Binder =
 
 
 
-module XMLSchema = 
-    let namespace_name =  "http://www.w3.org/2001/XMLSchema"
+module XMLSchema =
+    let namespace_name = "http://www.w3.org/2001/XMLSchema"
     let xnamespace = XNamespace.Get namespace_name
-    let qualifiedName (localName:string) = XmlQualifiedName(localName, namespace_name)
+
+    let qualifiedName (localName: string) =
+        XmlQualifiedName(localName, namespace_name)
+
     let schemaSet = XmlSchemaSet()
-module Folder = 
-  let departments = Directory.CreateDirectory @"D:\Artifact\Company\SolarWinds\departments" 
-  let incidents = Directory.CreateDirectory @"D:\Artifact\Company\SolarWinds\incidents" 
 
-module Document = 
-  module Incidents = 
-    [<Literal>]
-    let jsonFilePath = @"D:\Artifact\Company\SolarWinds\incidents\incidents_000040.json"
-    type Provider = JsonProvider<jsonFilePath>
-  module Incident = 
-    [<Literal>]
-    let xsdFilePath = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ServiceDesk\SolarWinds\Incident.xsd"
-    let xsd = XmlProvider<xsdFilePath>.Load xsdFilePath
-    let xmlSchema = 
-      use reader = XmlReader.Create(xsdFilePath)
-      XmlSchema.Read(reader, fun sender e -> printfn "Validation error: %s" e.Message)
-      |> XMLSchema.schemaSet.Add
-    [<Literal>]
-    let jsonFilePath = @"D:\Artifact\Company\SolarWinds\custom_views\incidents.json"
-    let columns = JsonProvider<jsonFilePath>.Load jsonFilePath
+module Folder =
+    let _samples = Directory.CreateDirectory @"D:\Artifact\Company\SolarWinds\_samples"
 
-    [<Literal>]
-    let jsonSchemaFilePath = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ServiceDesk\SolarWinds\incident.schema.json"
-    let jsonSchema = (JsonProvider<jsonSchemaFilePath>.Load jsonSchemaFilePath).Properties.Data.Items
+    let departments =
+        Directory.CreateDirectory @"D:\Artifact\Company\SolarWinds\departments"
 
-  module Departments = 
-    [<Literal>]
-    let jsonFilePath = @"D:\Artifact\Company\SolarWinds\departments\departments_000001.json"
-    type Provider = JsonProvider<jsonFilePath>
-  module Site = 
-    [<Literal>]
-    let jsonFilePath = @"D:\Artifact\Company\SolarWinds\sites.json"
-    let json = JsonProvider<jsonFilePath>.Load jsonFilePath
+    let incidents =
+        Directory.CreateDirectory @"D:\Artifact\Company\SolarWinds\incidents"
+
+    let incident = Directory.CreateDirectory @"D:\Artifact\Company\SolarWinds\incident"
+
+module Document =
+    module Incidents =
+        [<Literal>]
+        let jsonFilePath = @"D:\Artifact\Company\SolarWinds\incidents\incidents_000040.json"
+
+        type Provider = JsonProvider<jsonFilePath>
+
+    module Incident =
+        [<Literal>]
+        let xsdFilePath =
+            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ServiceDesk\SolarWinds\Incident.xsd"
+
+        let xsd = XmlProvider<xsdFilePath>.Load xsdFilePath
+
+        let xmlSchema =
+            use reader = XmlReader.Create(xsdFilePath)
+
+            XmlSchema.Read(reader, fun sender e -> printfn "Validation error: %s" e.Message)
+            |> XMLSchema.schemaSet.Add
+
+        [<Literal>]
+        let jsonFilePath = @"D:\Artifact\Company\SolarWinds\custom_views\incidents.json"
+
+        let columns = JsonProvider<jsonFilePath>.Load jsonFilePath
+
+        [<Literal>]
+        let jsonSchemaFilePath =
+            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ServiceDesk\SolarWinds\incident.schema.json"
+
+        let jsonSchema =
+            (JsonProvider<jsonSchemaFilePath>.Load jsonSchemaFilePath).Properties.Data.Items
+
+    module Departments =
+        [<Literal>]
+        let jsonFilePath =
+            @"D:\Artifact\Company\SolarWinds\departments\departments_000001.json"
+
+        type Provider = JsonProvider<jsonFilePath>
+
+    module Site =
+        [<Literal>]
+        let jsonFilePath = @"D:\Artifact\Company\SolarWinds\sites.json"
+
+        let json = JsonProvider<jsonFilePath>.Load jsonFilePath
 
 
 
@@ -316,12 +357,31 @@ module Document =
 
 
 
-let incidents = 
+let incidents =
     Folder.incidents.GetFiles()
-    |> Array.Parallel.collect (fun jsonFile -> 
-    let json = Document.Incidents.Provider.Load jsonFile.FullName
-    json 
-    )
+    |> PSeq.ofArray
+    |> PSeq.collect (fun jsonFile ->
+        let json = Document.Incidents.Provider.Load jsonFile.FullName
+        json)
+    |> PSeq.toArray
+    |> Array.sortBy (fun incident -> incident.Id)
+
+let incidentFile =
+    Path.Combine(Folder.incident.FullName, $"{incidents[0].Id}.json") |> FileInfo
+
+
+
+let myIncidents =
+    incidents
+    |> Array.Parallel.filter (fun incident ->
+        try
+            match incident.Assignee.Email with
+            | Some email when email.ToLowerInvariant() = "collierb@leoncountyfl.gov" -> true
+            | _ -> false
+        with _ ->
+            false)
+
+myIncidents[0].State
 
 
 
@@ -339,31 +399,26 @@ let incidents =
 
 
 
+type DepartmentRecord = { name: string; id: int }
 
-
-
-
-type DepartmentRecord = 
-  {
-    name:string
-    id:int
-  }
-
-let departments = 
+let departments =
     Folder.departments.GetFiles()
     |> Array.filter (fun file -> file.Name.EndsWith(".json"))
-    |> Array.collect (fun jsonFile -> 
-      let json = Document.Departments.Provider.Load jsonFile.FullName
-      json 
-      |> Array.map (fun department -> { name = department.Name ; id = department.Id})
-      )
+    |> Array.collect (fun jsonFile ->
+        let json = Document.Departments.Provider.Load jsonFile.FullName
+
+        json
+        |> Array.map (fun department ->
+            { name = department.Name
+              id = department.Id }))
+
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ServiceDesk\SolarWinds\test.fsx"
 open Test
 
 
-type State with 
-    static member fromString (stateString:string) = 
-        match stateString with 
+type State with
+    static member fromString(stateString: string) =
+        match stateString with
         | "New" -> State.New
         | "Pending Assignment" -> State.``Pending Assignment``
         | "In Process" -> State.``In Process``
@@ -386,14 +441,14 @@ type State with
         | "Assigned" -> State.Assigned
         | "Resolved" -> State.Resolved
 
-type Priority with 
-    static member fromInt (priorityInt:int) = 
-        match priorityInt with 
-        | 4 ->  Priority.Low 
-        | 3 ->  Priority.Medium 
-        | 2 ->  Priority.High 
-        | 1 ->  Priority.Critical 
-        | _ ->  Priority.None 
+type Priority with
+    static member fromInt(priorityInt: int) =
+        match priorityInt with
+        | 4 -> Priority.Low
+        | 3 -> Priority.Medium
+        | 2 -> Priority.High
+        | 1 -> Priority.Critical
+        | _ -> Priority.None
 (*
 
 let incidents = 
@@ -653,131 +708,134 @@ Document.Incident.columns
 *)
 
 
-let requiredColumns = 
-  set [
-      "id"
-      "number"
-      "name"
-      "description"
-      "description_no_html"
-      "state"
-      "priority"
-      "category"
-      "subcategory"
-      "assignee"
-      "requester"
-      "created_at"
-      "updated_at"
-      "sla_violations"
-      "number_of_comments"
-      "user_saw_all_comments"
-      "is_service_request"
-      "created_by"
-      "resolved_by"
-      "resolution_description"
-      "resolution_code"
-      "href"
-      "href_account_domain"
-      "department"
-      "cc"
-      "custom_fields_values"
-      "origin"
-      "releases"
-      "problems"
-      "problem"
-      "incidents"
-      "changes"
-      "tasks"
-      "time_tracks"
-      "solutions"
-      "assets"
-      "mobiles"
-      "other_assets"
-      "configuration_items"
-      "discovery_hardwares"
-      "purchase_orders"
+let requiredColumns =
+    set
+        [ "id"
+          "number"
+          "name"
+          "description"
+          "description_no_html"
+          "state"
+          "priority"
+          "category"
+          "subcategory"
+          "assignee"
+          "requester"
+          "created_at"
+          "updated_at"
+          "sla_violations"
+          "number_of_comments"
+          "user_saw_all_comments"
+          "is_service_request"
+          "created_by"
+          "resolved_by"
+          "resolution_description"
+          "resolution_code"
+          "href"
+          "href_account_domain"
+          "department"
+          "cc"
+          "custom_fields_values"
+          "origin"
+          "releases"
+          "problems"
+          "problem"
+          "incidents"
+          "changes"
+          "tasks"
+          "time_tracks"
+          "solutions"
+          "assets"
+          "mobiles"
+          "other_assets"
+          "configuration_items"
+          "discovery_hardwares"
+          "purchase_orders"
 
-  ]
-
-
+          ]
 
 
-let states = 
-  [|
-    "New"
-    "Pending Assignment"
-    "In Process"
-    "On Hold"
-    "Awaiting Approval"
-    "Awaiting Asset Tag"
-    "Awaiting Delivery"
-    "Awaiting Effective Date"
-    "Awaiting Input - User"
-    "Awaiting Input - Tech"
-    "Awaiting Input - Vendor"
-    "Awaiting Quote"
-    "Canceled by Requester"
-    "Pending HR Actions"
-    "Project - Proactive"
-    "Purchase in Process"
-    "Research Required"
-    "Scheduled-Check Due Date"
-    "Under Review"
-    "Assigned"
-    "Resolved"
 
-  |]
 
-let defaultColumns = 
-  Document.Incident.columns
-  |> Array.filter (fun column -> 
-        match column.IsDefault with 
-        | Some true when requiredColumns.Contains(column.Name.JsonValue.AsString()) -> true 
-        | _ -> false 
-        )
-let resolutions = 
-  [|
+let states =
+    [| "New"
+       "Pending Assignment"
+       "In Process"
+       "On Hold"
+       "Awaiting Approval"
+       "Awaiting Asset Tag"
+       "Awaiting Delivery"
+       "Awaiting Effective Date"
+       "Awaiting Input - User"
+       "Awaiting Input - Tech"
+       "Awaiting Input - Vendor"
+       "Awaiting Quote"
+       "Canceled by Requester"
+       "Pending HR Actions"
+       "Project - Proactive"
+       "Purchase in Process"
+       "Research Required"
+       "Scheduled-Check Due Date"
+       "Under Review"
+       "Assigned"
+       "Resolved"
 
-    "Aborted"
-    "Canceled by User Request"
-    "Duplicate"
-    "No longer Funded"
-    "Not Solved (Black Flag Blocking - See Notes)"
-    "Not Solved (Escalated to External Support)"
-    "Not Solved (Escalated to Vendor)"
-    "Not Solved (Resolution Set for Future Upgrade)"
-    "Not Solved (Not Reproducible)"
-    "Not Solved (Too Costly)"
-    "Postponed"
-    "Solved (Permanently)"
-    "Solved (Work Around)"
-    "Unknown (No Response From User)"
-    
-  |]
-let incidentRowColumns = 
-  [|
+       |]
 
-    "Assignee"
-    "Category"
-    "Comments"
-    "Created At"
-    "Created By"
-    "Department"
-    "Description"
-    "Group Assignment"
-    "Priority"
-    "Requester"
-    "Site"
-    "State"
-    "Subcategory"
-    "Tags"
-    "Title"
-    "Updated At"
-  |]
+let defaultColumns =
+    Document.Incident.columns
+    |> Array.filter (fun column ->
+        match column.IsDefault with
+        | Some true when requiredColumns.Contains(column.Name.JsonValue.AsString()) -> true
+        | _ -> false)
 
-defaultColumns |> Array.iter (fun column -> printfn "%s" (column.Name.JsonValue.AsString()))
+let resolutions =
+    [|
 
-let priority = Document.Incident.columns |> Array.find (fun column -> column.Name.JsonValue.AsString() = "priority")
+       "Aborted"
+       "Canceled by User Request"
+       "Duplicate"
+       "No longer Funded"
+       "Not Solved (Black Flag Blocking - See Notes)"
+       "Not Solved (Escalated to External Support)"
+       "Not Solved (Escalated to Vendor)"
+       "Not Solved (Resolution Set for Future Upgrade)"
+       "Not Solved (Not Reproducible)"
+       "Not Solved (Too Costly)"
+       "Postponed"
+       "Solved (Permanently)"
+       "Solved (Work Around)"
+       "Unknown (No Response From User)"
+
+       |]
+
+let incidentRowColumns =
+    [|
+
+       "Assignee"
+       "Category"
+       "Comments"
+       "Created At"
+       "Created By"
+       "Department"
+       "Description"
+       "Group Assignment"
+       "Priority"
+       "Requester"
+       "Site"
+       "State"
+       "Subcategory"
+       "Tags"
+       "Title"
+       "Updated At" |]
+
+defaultColumns
+|> Array.iter (fun column -> printfn "%s" (column.Name.JsonValue.AsString()))
+
+let priority =
+    Document.Incident.columns
+    |> Array.find (fun column -> column.Name.JsonValue.AsString() = "priority")
+
 let jsonTestFile = Path.Combine(__SOURCE_DIRECTORY__, "test.fsx") |> FileInfo
 
 
@@ -791,40 +849,30 @@ Ast.Oak() {
             "\"nuget: Esri.ArcGISRuntime, 300.0.0\""
         )
         *)
-        Ast.HashDirective(
-            "r",
-            "\"nuget: PosInformatique.Foundations.EmailAddresses\""
-        )
-        Ast.HashDirective(
-            "r",
-            "\"nuget: FSharp.Data\""
-        )
-        Ast.HashDirective(
-            "r",
-            "\"nuget: Dubzer.WhatwgUrl\""
-        )
-        Ast.HashDirective(
-            "r",
-            "\"nuget: libphonenumber-csharp\""
-        )
+        Ast.HashDirective("r", "\"nuget: PosInformatique.Foundations.EmailAddresses\"")
+        Ast.HashDirective("r", "\"nuget: FSharp.Data\"")
+        Ast.HashDirective("r", "\"nuget: Dubzer.WhatwgUrl\"")
+        Ast.HashDirective("r", "\"nuget: libphonenumber-csharp\"")
         Ast.Open("System")
         Ast.Open("PosInformatique.Foundations.EmailAddresses")
         Ast.Open("Dubzer.WhatwgUrl")
         Ast.Open("FSharp.Data")
         Ast.Open("PhoneNumbers")
 
-        
-        Ast.Enum("Priority"){
-          for priorityOption in priority.Options do 
-            Ast.EnumCase(priorityOption.Name.JsonValue.AsString(), Ast.Int(priorityOption.Id.JsonValue.AsInteger()))
-        } 
-        Ast.Enum("Department"){
 
-                for department in departments do 
-                  Ast.EnumCase(department.name, Ast.Int(department.id))
+        Ast.Enum("Priority") {
+            for priorityOption in priority.Options do
+                Ast.EnumCase(priorityOption.Name.JsonValue.AsString(), Ast.Int(priorityOption.Id.JsonValue.AsInteger()))
+        }
 
-        } 
-        Ast.Record("Incident"){
+        Ast.Enum("Department") {
+
+            for department in departments do
+                Ast.EnumCase(department.name, Ast.Int(department.id))
+
+        }
+
+        Ast.Record("Incident") {
             Ast.Field("id", "int")
             Ast.Field("number", "int")
             Ast.Field("name", "string")
@@ -871,120 +919,143 @@ Ast.Oak() {
             Ast.Field("other_assets", "unit array")
             Ast.Field("configuration_items", "unit array")
             Ast.Field("discovery_hardwares", "unit array")
-            Ast.Field("purchase_orders", "unit array")              
-              }
-        Ast.Union("State"){
-          for state in states do 
-            Ast.UnionCase state
-            
+            Ast.Field("purchase_orders", "unit array")
+        }
+
+        Ast.Union("State") {
+            for state in states do
+                Ast.UnionCase state
+
         }
         |> _.toRecursive()
         |> _.attribute(Ast.Attribute("RequireQualifiedAccess"))
-        Ast.Union("ResolutionCode"){
-          for resolution in resolutions do 
-            Ast.UnionCase resolution
-            
+
+        Ast.Union("ResolutionCode") {
+            for resolution in resolutions do
+                Ast.UnionCase resolution
+
         }
         |> _.toRecursive()
         |> _.attribute(Ast.Attribute("RequireQualifiedAccess"))
-        Ast.Record("User"){
-          
-          Ast.Field("id",  "int")
-          Ast.Field("account_id",  "int")
-          Ast.Field("user_id",  "int")
-          Ast.Field("email",  "EmailAddress")
-          Ast.Field("name",  "string")
-          Ast.Field("disabled",  "bool")
-          Ast.Field("site_id",  "int option")
-          Ast.Field("site",  "Site option")
-          Ast.Field("department_id",  "int")
-          Ast.Field("department",  "Department")
-          Ast.Field("has_gravatar",  "bool")
-          Ast.Field("customer_satisfaction_survey_time",  "DateTime option")
-          Ast.Field("avatar",  "Avatar")
-        } |> _.toRecursive()
-        Ast.Record("Site"){
-          
-          Ast.Field("id",  "int")
-          Ast.Field("name",  "string")
-          Ast.Field("location",  "string")
-          Ast.Field("description",  "string option")
-          Ast.Field("time_zone",  "string")
-        } |> _.toRecursive()
-        Ast.Union("Avatar"){
-          Ast.UnionCase("AvatarInitials",  "AvatarInitials")
-          Ast.UnionCase("AvatarImage",  "AvatarImage")
-        } |> _.toRecursive()
-        Ast.Record("AvatarInitials"){
-          Ast.Field("initials",  "string")
-          Ast.Field("color",  "string")
-        } |> _.toRecursive()
-        Ast.Record("AvatarImage"){
-          Ast.Field("image_class",  "string option")
-          Ast.Field("sso_image_class",  "string option")
-          Ast.Field("avatar_url",  "DomUrl")
-        } |> _.toRecursive()
-        Ast.Record("IncidentRow"){
-          for column in incidentRowColumns do 
-              Ast.Field(column,  "string")
-        } |> _.toRecursive()
-        Ast.Record("IncidentReference"){
-          Ast.Field("id",  "int")
-          Ast.Field("href",  "DomUrl")
-        } |> _.toRecursive()
 
-        Ast.Record("Category"){
-              Ast.Field("id", "int")
-              Ast.Field("name", "string")
-              Ast.Field("default_tags", "string option")
-              Ast.Field("parent_id", "int option")
-              Ast.Field("deleted", "bool")
-              Ast.Field("default_assignee_id", "int")
-        } |> _.toRecursive()
-        Ast.Record("Assignee"){
-              Ast.Field("group_id", "int")
-              Ast.Field("is_user", "bool")
-              Ast.Field("id", "int")
-              Ast.Field("name", "string")
-              Ast.Field("email",  "EmailAddress")
-              Ast.Field("avatar", "Avatar")
-              Ast.Field("reports_to", "Assignee option")
-        } |> _.toRecursive()
-        Ast.Record("Employee"){
-              Ast.Field("id", "int")
-              Ast.Field("name", "string")
-              Ast.Field("disabled", "bool")
-              Ast.Field("title", "string")
-              Ast.Field("email",  "EmailAddress")
-              Ast.Field("created_at", "DateTime")
-              Ast.Field("updated_at", "DateTime")
-              Ast.Field("last_login", "DateTime")
-              Ast.Field("phone", "PhoneNumber")
-              Ast.Field("mobile_phone", "PhoneNumber option")
-              Ast.Field("role", "Role")
-              Ast.Field("group_ids", "int array")
-              Ast.Field("available_for_assignment", "bool")
-              Ast.Field("can_be_available_for_assignment", "bool")
-              Ast.Field("provider",  "string")
-              Ast.Field("custom_fields_values", "unit array")
-              Ast.Field("site",  "Site option")
-              Ast.Field("department",  "Department")
-              Ast.Field("avatar", "Avatar")
-              Ast.Field("reports_to", "Assignee option")
+        Ast.Record("User") {
 
-        } |> _.toRecursive()
-        Ast.Record("Role"){
-              Ast.Field("id", "int")
-              Ast.Field("name", "string")
-              Ast.Field("description",  "string")
-              Ast.Field("portal", "bool")
-              Ast.Field("show_my_tasks", "bool")
-        } |> _.toRecursive()
+            Ast.Field("id", "int")
+            Ast.Field("account_id", "int")
+            Ast.Field("user_id", "int")
+            Ast.Field("email", "EmailAddress")
+            Ast.Field("name", "string")
+            Ast.Field("disabled", "bool")
+            Ast.Field("site_id", "int option")
+            Ast.Field("site", "Site option")
+            Ast.Field("department_id", "int")
+            Ast.Field("department", "Department")
+            Ast.Field("has_gravatar", "bool")
+            Ast.Field("customer_satisfaction_survey_time", "DateTime option")
+            Ast.Field("avatar", "Avatar")
+        }
+        |> _.toRecursive()
+
+        Ast.Record("Site") {
+
+            Ast.Field("id", "int")
+            Ast.Field("name", "string")
+            Ast.Field("location", "string")
+            Ast.Field("description", "string option")
+            Ast.Field("time_zone", "string")
+        }
+        |> _.toRecursive()
+
+        Ast.Union("Avatar") {
+            Ast.UnionCase("AvatarInitials", "AvatarInitials")
+            Ast.UnionCase("AvatarImage", "AvatarImage")
+        }
+        |> _.toRecursive()
+
+        Ast.Record("AvatarInitials") {
+            Ast.Field("initials", "string")
+            Ast.Field("color", "string")
+        }
+        |> _.toRecursive()
+
+        Ast.Record("AvatarImage") {
+            Ast.Field("image_class", "string option")
+            Ast.Field("sso_image_class", "string option")
+            Ast.Field("avatar_url", "DomUrl")
+        }
+        |> _.toRecursive()
+
+        Ast.Record("IncidentRow") {
+            for column in incidentRowColumns do
+                Ast.Field(column, "string")
+        }
+        |> _.toRecursive()
+
+        Ast.Record("IncidentReference") {
+            Ast.Field("id", "int")
+            Ast.Field("href", "DomUrl")
+        }
+        |> _.toRecursive()
+
+        Ast.Record("Category") {
+            Ast.Field("id", "int")
+            Ast.Field("name", "string")
+            Ast.Field("default_tags", "string option")
+            Ast.Field("parent_id", "int option")
+            Ast.Field("deleted", "bool")
+            Ast.Field("default_assignee_id", "int")
+        }
+        |> _.toRecursive()
+
+        Ast.Record("Assignee") {
+            Ast.Field("group_id", "int")
+            Ast.Field("is_user", "bool")
+            Ast.Field("id", "int")
+            Ast.Field("name", "string")
+            Ast.Field("email", "EmailAddress")
+            Ast.Field("avatar", "Avatar")
+            Ast.Field("reports_to", "Assignee option")
+        }
+        |> _.toRecursive()
+
+        Ast.Record("Employee") {
+            Ast.Field("id", "int")
+            Ast.Field("name", "string")
+            Ast.Field("disabled", "bool")
+            Ast.Field("title", "string")
+            Ast.Field("email", "EmailAddress")
+            Ast.Field("created_at", "DateTime")
+            Ast.Field("updated_at", "DateTime")
+            Ast.Field("last_login", "DateTime")
+            Ast.Field("phone", "PhoneNumber")
+            Ast.Field("mobile_phone", "PhoneNumber option")
+            Ast.Field("role", "Role")
+            Ast.Field("group_ids", "int array")
+            Ast.Field("available_for_assignment", "bool")
+            Ast.Field("can_be_available_for_assignment", "bool")
+            Ast.Field("provider", "string")
+            Ast.Field("custom_fields_values", "unit array")
+            Ast.Field("site", "Site option")
+            Ast.Field("department", "Department")
+            Ast.Field("avatar", "Avatar")
+            Ast.Field("reports_to", "Assignee option")
+
+        }
+        |> _.toRecursive()
+
+        Ast.Record("Role") {
+            Ast.Field("id", "int")
+            Ast.Field("name", "string")
+            Ast.Field("description", "string")
+            Ast.Field("portal", "bool")
+            Ast.Field("show_my_tasks", "bool")
+        }
+        |> _.toRecursive()
     }
 }
 |> Gen.mkOak
 |> Gen.run
-|> fun fsText -> File.WriteAllText(jsonTestFile.FullName,fsText)
+|> fun fsText -> File.WriteAllText(jsonTestFile.FullName, fsText)
 
 
 

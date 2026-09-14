@@ -2228,7 +2228,7 @@
             "locSimilarityId": "c3ab368c-f7f5-3f6a-9065-1429795409fe",
             "locationId": "6086393",
             "locationStartDate": "2020-09-01T00:00:00Z",
-            "name": "Millennium Physician Group LLC",
+            "name": "Results |> Array.filter (fun result -> not (result.CarrierEntity.Locations |> Array.exists (fun location -> location.Name.Contains("Millennium"))))nium Physician Group LLC",
             "networkLocationCycles": [
               {
                 "endDate": "4000-01-01T00:00:00Z",

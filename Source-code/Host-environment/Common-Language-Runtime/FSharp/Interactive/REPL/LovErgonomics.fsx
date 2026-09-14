@@ -1,4 +1,4 @@
-# time on
+#time on
 fsi.ShowDeclarationValues <- false
 
 #load @".paket/load/main.group.fsx"
@@ -57,16 +57,10 @@ open RDFSharp.Model
 
 
 
-let private utf8 =
-    UTF8Encoding(encoderShouldEmitUTF8Identifier = false, throwOnInvalidBytes = true)
+let private utf8 = UTF8Encoding(encoderShouldEmitUTF8Identifier = false, throwOnInvalidBytes = true)
 
 
-let private escapedSurrogatePair =
-    Regex(
-        @"\\u([dD][89aAbB][0-9a-fA-F]{2})\\u([dD][c-fC-F][0-9a-fA-F]{2})",
-        RegexOptions.Compiled
-        ||| RegexOptions.CultureInvariant
-    )
+let private escapedSurrogatePair = Regex(@"\\u([dD][89aAbB][0-9a-fA-F]{2})\\u([dD][c-fC-F][0-9a-fA-F]{2})", RegexOptions.Compiled ||| RegexOptions.CultureInvariant)
 
 
 let normalizeEscapedSurrogatePairs (text: string) =
@@ -75,17 +69,12 @@ let normalizeEscapedSurrogatePairs (text: string) =
     else
         escapedSurrogatePair.Replace(
             text,
-            MatchEvaluator (fun matched ->
-                let high =
-                    Convert.ToInt32(matched.Groups.[1].Value, 16)
-                    |> char
+            MatchEvaluator(fun matched ->
+                let high = Convert.ToInt32(matched.Groups.[1].Value, 16) |> char
 
-                let low =
-                    Convert.ToInt32(matched.Groups.[2].Value, 16)
-                    |> char
+                let low = Convert.ToInt32(matched.Groups.[2].Value, 16) |> char
 
-                Char.ConvertToUtf32(high, low)
-                |> sprintf "\\U%08X")
+                Char.ConvertToUtf32(high, low) |> sprintf "\\U%08X")
         )
 
 
@@ -99,14 +88,10 @@ let decompressNqGzipFile (nqgzipFile: FileInfo) =
 
     // Removes only the final ".gz":
     // foo.nq.gz -> foo.nq
-    let nqFile =
-        Path.ChangeExtension(nqgzipFile.FullName, null)
-        |> FileInfo
+    let nqFile = Path.ChangeExtension(nqgzipFile.FullName, null) |> FileInfo
 
     // Do not expose a partially-written "clean" .nq file.
-    let temporaryFile =
-        Path.Combine(nqFile.DirectoryName, Path.GetRandomFileName())
-        |> FileInfo
+    let temporaryFile = Path.Combine(nqFile.DirectoryName, Path.GetRandomFileName()) |> FileInfo
 
     let parser = NQuadsParser()
     let handler = NullHandler()
@@ -121,11 +106,9 @@ let decompressNqGzipFile (nqgzipFile: FileInfo) =
 
             use gzipStream = new GZipStream(sourceStream, CompressionMode.Decompress)
 
-            use reader =
-                new StreamReader(gzipStream, utf8, detectEncodingFromByteOrderMarks = true)
+            use reader = new StreamReader(gzipStream, utf8, detectEncodingFromByteOrderMarks = true)
 
-            use writer =
-                new StreamWriter(temporaryFile.FullName, append = false, encoding = utf8)
+            use writer = new StreamWriter(temporaryFile.FullName, append = false, encoding = utf8)
 
             while not reader.EndOfStream do
                 let line = reader.ReadLine()
@@ -133,10 +116,7 @@ let decompressNqGzipFile (nqgzipFile: FileInfo) =
                 if not (String.IsNullOrWhiteSpace line) then
                     let normalizedLine = normalizeEscapedSurrogatePairs line
 
-                    if
-                        not (Object.ReferenceEquals(normalizedLine, line))
-                        && normalizedLine <> line
-                    then
+                    if not (Object.ReferenceEquals(normalizedLine, line)) && normalizedLine <> line then
                         repaired <- repaired + 1L
 
                     try
@@ -147,43 +127,33 @@ let decompressNqGzipFile (nqgzipFile: FileInfo) =
                         writer.WriteLine(normalizedLine)
                         kept <- kept + 1L
 
-                    with
-                    | :? RdfParseException -> rejected <- rejected + 1L
+                    with :? RdfParseException ->
+                        rejected <- rejected + 1L
 
         File.Move(temporaryFile.FullName, nqFile.FullName, overwrite = true)
 
         File.Delete(nqgzipFile.FullName)
 
-        printfn
-            "Created %s — kept %i statements; repaired %i lines; rejected %i invalid statements."
-            nqFile.FullName
-            kept
-            repaired
-            rejected
+        printfn "Created %s — kept %i statements; repaired %i lines; rejected %i invalid statements." nqFile.FullName kept repaired rejected
 
         FileInfo(nqFile.FullName)
 
-    with
-    | _ ->
+    with _ ->
         if File.Exists temporaryFile.FullName then
             File.Delete temporaryFile.FullName
 
         reraise ()
 
 let decompressGz (sourceFile: FileInfo) =
-    let targetFile =
-        sourceFile.FullName[.. sourceFile.FullName.Length - 4]
-        |> FileInfo
+    let targetFile = sourceFile.FullName[.. sourceFile.FullName.Length - 4] |> FileInfo
     // Open the compressed file stream
-    use sourceStream =
-        new FileStream(sourceFile.FullName, FileMode.Open, FileAccess.Read)
+    use sourceStream = new FileStream(sourceFile.FullName, FileMode.Open, FileAccess.Read)
 
     // Create the decompression stream
     use decompressionStream = new GZipStream(sourceStream, CompressionMode.Decompress)
 
     // Create the destination file stream
-    use targetStream =
-        new FileStream(targetFile.FullName, FileMode.Create, FileAccess.Write)
+    use targetStream = new FileStream(targetFile.FullName, FileMode.Create, FileAccess.Write)
 
     // Copy the decompressed data to the target file
     decompressionStream.CopyTo(targetStream)
@@ -210,61 +180,52 @@ type LovTermType =
     | datatype
     | instance
 
-type LovApiTermSearchParameters =
-    { /// Full text query.
-      q: string
-      /// Maximum number of results to return per page (default: 10).
-      page_size: int option
-      /// Result page to display starting from 1 (default: 1).
-      page: int option
-      /// Filter query results based on their type. Possible values: [class, propery, datatype, instance]. Multiple values allowed (use coma without space to seperate them).
-      types: LovTermType array
-      /// Filter query results based on the vocabulary it belongs to (e.g. "foaf"). Expecting only one value.
-      vocab: string
-      /// Number of elements to display in the vocabulary facet (default: 10).
-      vocab_limit: int option
-      /// Filter query results based on their tag (e.g. "event"). Multiple values allowed, use coma as a separator (e.g. "event,time").
-      tags: string array
-      /// Number of elements to display in the tag facet (default: 10).
-      tag_limit: int option }
+type LovApiTermSearchParameters = {
+    /// Full text query.
+    q: string
+    /// Maximum number of results to return per page (default: 10).
+    page_size: int option
+    /// Result page to display starting from 1 (default: 1).
+    page: int option
+    /// Filter query results based on their type. Possible values: [class, propery, datatype, instance]. Multiple values allowed (use coma without space to seperate them).
+    types: LovTermType array
+    /// Filter query results based on the vocabulary it belongs to (e.g. "foaf"). Expecting only one value.
+    vocab: string
+    /// Number of elements to display in the vocabulary facet (default: 10).
+    vocab_limit: int option
+    /// Filter query results based on their tag (e.g. "event"). Multiple values allowed, use coma as a separator (e.g. "event,time").
+    tags: string array
+    /// Number of elements to display in the tag facet (default: 10).
+    tag_limit: int option
+}
 
 [<Literal>]
-let termSearchFilePath =
-    @"D:\Iri\https\lov.linkeddata.es\dataset\api\v2\term\search&quest;q=sample.json"
+let termSearchFilePath = @"D:\Iri\https\lov.linkeddata.es\dataset\api\v2\term\search&quest;q=sample.json"
 
-type TermSearchProvider =
-    JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="result", Sample=termSearchFilePath>
+type TermSearchProvider = JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="result", Sample=termSearchFilePath>
 
 [<Literal>]
-let vocabSearchFilePath =
-    @"D:\Iri\https\lov.linkeddata.es\dataset\api\v2\vocabulary\search&quest;q=http%3A%2F%2Fwww.w3.json"
+let vocabSearchFilePath = @"D:\Iri\https\lov.linkeddata.es\dataset\api\v2\vocabulary\search&quest;q=http%3A%2F%2Fwww.w3.json"
 
-type VocabSearchProvider =
-    JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="result", Sample=vocabSearchFilePath>
+type VocabSearchProvider = JsonProvider<UseOriginalNames=true, PreferDateOnly=true, OmitNullFields=true, RootName="result", Sample=vocabSearchFilePath>
 
 let lovBase = DomUrl "https://lov.linkeddata.es/dataset/api/v2"
 
 let LovSearchTerm (term: string) =
     use browser = CdpBrowser.Connect()
 
-    let domUrl =
-        lovBase.AppendPath "term/search"
-        |> DomUrl.AddQueryParameter "q" term
+    let domUrl = lovBase.AppendPath "term/search" |> DomUrl.AddQueryParameter "q" term
 
-    browser
-    |> CdpBrowser.DownloadTextExtension domUrl ".json"
+    browser |> CdpBrowser.DownloadTextExtension domUrl ".json"
 
     TermSearchProvider.Load (domUrl.asFileExtension ".json").FullName
 
 let LovSearchVocab (vocab: string) =
     use browser = CdpBrowser.Connect()
 
-    let domUrl =
-        lovBase.AppendPath "vocabulary/search"
-        |> DomUrl.AddQueryParameter "q" vocab
+    let domUrl = lovBase.AppendPath "vocabulary/search" |> DomUrl.AddQueryParameter "q" vocab
 
-    browser
-    |> CdpBrowser.DownloadTextExtension domUrl ".json"
+    browser |> CdpBrowser.DownloadTextExtension domUrl ".json"
 
     VocabSearchProvider.Load (domUrl.asFileExtension ".json").FullName
 
@@ -351,8 +312,12 @@ module LovKeyword =
 
 
 
-let lov_n3 = { graphFile = FileInfo @"D:\Iri\https\lov.linkeddata.es\lov.n3" }
-let lov_nq = { datasetFile = FileInfo @"D:\Iri\https\lov.linkeddata.es\lov.nq" }
+let lov_n3 = {
+    graphFile = FileInfo @"D:\Iri\https\lov.linkeddata.es\lov.n3"
+}
+let lov_nq = {
+    datasetFile = FileInfo @"D:\Iri\https\lov.linkeddata.es\lov.nq"
+}
 let lovDataset = lov_nq.asInMemoryQuadDataset
 let lov_sparql = DomUrl "https://lov.linkeddata.es/dataset/lov/sparql"
 
@@ -362,19 +327,16 @@ let lov_sparql = DomUrl "https://lov.linkeddata.es/dataset/lov/sparql"
 
 
 
-let s = !? "s"
-let p = !? "p"
-let o = !? "o"
+let s = !?"s"
+let p = !?"p"
+let o = !?"o"
 
-let vocabularyIri = !? "vocabularyIri"
-let preferredNamespaceUri = !? "preferredNamespaceUri"
-let preferredNamespacePrefix = !? "preferredNamespacePrefix"
+let vocabularyIri = !?"vocabularyIri"
+let preferredNamespaceUri = !?"preferredNamespaceUri"
+let preferredNamespacePrefix = !?"preferredNamespacePrefix"
 
 
-let selectVariables =
-    [ vocabularyIri
-      preferredNamespaceUri
-      preferredNamespacePrefix ]
+let selectVariables = [ vocabularyIri; preferredNamespaceUri; preferredNamespacePrefix ]
 
 let a = rdf.type_
 
@@ -383,21 +345,23 @@ let vocabularyQuery =
     sparql.select selectVariables {
         where (
             !>vocabularyIri
-            -~|> [ a ->- voaf.Vocabulary
-                   vann.preferredNamespacePrefix
-                   ->- preferredNamespacePrefix
-                   vann.preferredNamespaceUri
-                   ->- preferredNamespaceUri ]
+            -~|> [
+                a ->- voaf.Vocabulary
+                vann.preferredNamespacePrefix ->- preferredNamespacePrefix
+                vann.preferredNamespaceUri ->- preferredNamespaceUri
+            ]
 
         )
     }
     |> lov_n3.asSparqlLocalDataset.query
 
 
-type LovVocabulary =
-    { vocabularyIri: Iri
-      vocabularyPrefix: RdfLiteral
-      vocabularyNamespace: RdfLiteral }
+type LovVocabulary = {
+    vocabularyIri: Iri
+    vocabularyPrefix: RdfLiteral
+    vocabularyNamespace: RdfLiteral
+} with
+
     member this.namespaceUrl = DomUrl this.vocabularyNamespace.lexicalForm
     member this.graphName = this.vocabularyIri.asUriNode :> IRefNode
     member this.asIGraph = lovDataset[this.graphName]
@@ -416,12 +380,9 @@ type LovVocabulary =
         Path.Combine(this.namespaceUrl.asFolder.FullName, mimeType.MediaType, $"{mimeType.SubType}{dotExtension}")
         |> FileInfo
 
-    member this.namespaceIri =
-        IriReference this.vocabularyNamespace.lexicalForm
-        |> IRIREF
+    member this.namespaceIri = IriReference this.vocabularyNamespace.lexicalForm |> IRIREF
 
-    member this.asPrefixId =
-        PrefixId.fromNamespaceLabel this.vocabularyNamespace.lexicalForm this.vocabularyPrefix.lexicalForm
+    member this.asPrefixId = PrefixId.fromNamespaceLabel this.vocabularyNamespace.lexicalForm this.vocabularyPrefix.lexicalForm
 
     member this.ttlFile = this.asFileExtension ".ttl"
 
@@ -430,13 +391,9 @@ type LovVocabulary =
 
         match ttlFile.Exists, this.tryIGraph with
         | false, Some igraph ->
-            printfn
-                "writing %s to  %s"
-                this.vocabularyIri.lexicalForm
-                (Path.Combine(ttlFile.DirectoryName, $"{ttlFile.stem}.ttl"))
+            printfn "writing %s to  %s" this.vocabularyIri.lexicalForm (Path.Combine(ttlFile.DirectoryName, $"{ttlFile.stem}.ttl"))
 
-            igraph
-            |> Turtle.writeIgraph ttlFile.DirectoryName ttlFile.stem
+            igraph |> Turtle.writeIgraph ttlFile.DirectoryName ttlFile.stem
 
             Some { graphFile = ttlFile }
         | true, _ -> Some { graphFile = ttlFile }
@@ -446,60 +403,54 @@ type LovVocabulary =
         let ttlFile = this.ttlFile
 
         if not (ttlFile.Exists) then
-            this.asIGraph
-            |> Turtle.writeIgraph this.ttlFile.DirectoryName this.ttlFile.stem
+            this.asIGraph |> Turtle.writeIgraph this.ttlFile.DirectoryName this.ttlFile.stem
 
         { graphFile = ttlFile }
 
     member this.tryRdfVocabulary =
         match this.tryGraphDocument with
         | Some document ->
-            Some
-                { prefixId = this.asPrefixId
-                  namespaceDocument = document }
+            Some {
+                prefixId = this.asPrefixId
+                namespaceDocument = document
+            }
         | None -> None
 
-    member this.asRdfVocabulary =
-        { prefixId = this.asPrefixId
-          namespaceDocument = this.asRdfGraphDocument }
+    member this.asRdfVocabulary = {
+        prefixId = this.asPrefixId
+        namespaceDocument = this.asRdfGraphDocument
+    }
 
-let lovVocabularies =
-    [|
+let lovVocabularies = [|
 
-       for index = 0 to vocabularyQuery.Count() - 1 do
-           let (IriPoint vocabIri) =
-               vocabularyQuery
-               |> SparqlResultSet.variableIndex vocabularyIri index
+    for index = 0 to vocabularyQuery.Count() - 1 do
+        let (IriPoint vocabIri) = vocabularyQuery |> SparqlResultSet.variableIndex vocabularyIri index
 
-           let (LiteralPoint prefixLabel) =
-               vocabularyQuery
-               |> SparqlResultSet.variableIndex preferredNamespacePrefix index
+        let (LiteralPoint prefixLabel) = vocabularyQuery |> SparqlResultSet.variableIndex preferredNamespacePrefix index
 
-           let (LiteralPoint namespaceUri) =
-               vocabularyQuery
-               |> SparqlResultSet.variableIndex preferredNamespaceUri index
+        let (LiteralPoint namespaceUri) = vocabularyQuery |> SparqlResultSet.variableIndex preferredNamespaceUri index
 
-           { vocabularyIri = vocabIri
-             vocabularyPrefix = prefixLabel
-             vocabularyNamespace = namespaceUri
+        {
+            vocabularyIri = vocabIri
+            vocabularyPrefix = prefixLabel
+            vocabularyNamespace = namespaceUri
 
-           }
+        }
 
-       |]
+|]
 
 let lovVocabularyMap =
-    Array.concat [| lovVocabularies
-                    |> Array.map (fun vocabulary -> vocabulary.vocabularyNamespace.lexicalForm, vocabulary)
-                    lovVocabularies
-                    |> Array.map (fun vocabulary -> vocabulary.vocabularyIri.lexicalForm, vocabulary) |]
+    Array.concat [|
+        lovVocabularies
+        |> Array.map (fun vocabulary -> vocabulary.vocabularyNamespace.lexicalForm, vocabulary)
+        lovVocabularies
+        |> Array.map (fun vocabulary -> vocabulary.vocabularyIri.lexicalForm, vocabulary)
+    |]
     |> Array.distinctBy (fun (vocabularyKey, _) -> vocabularyKey)
     |> Map.ofArray
 
 type RDFNamespaceRegister with
-    static member rdfNamespaces =
-        RDFNamespaceRegister.Instance
-        |> Seq.cast<RDFNamespace>
-        |> Seq.toArray
+    static member rdfNamespaces = RDFNamespaceRegister.Instance |> Seq.cast<RDFNamespace> |> Seq.toArray
 
     static member hasPrefixRegistered(prefix: string) =
         RDFNamespaceRegister.rdfNamespaces
@@ -510,9 +461,7 @@ type RDFNamespaceRegister with
         |> Array.exists (fun rdfNamespace -> rdfNamespace.NamespaceUri.OriginalString = namespaceName)
 
     static member maybePrefixIdCollision(prefixId: PrefixId) =
-        match RDFNamespaceRegister.GetByPrefix prefixId.prefixLabel,
-              RDFNamespaceRegister.GetByUri prefixId.namespaceName
-            with
+        match RDFNamespaceRegister.GetByPrefix prefixId.prefixLabel, RDFNamespaceRegister.GetByUri prefixId.namespaceName with
         | namespaceFromPrefix, namespaceFromName when
             prefixId.asRDFNamespace = namespaceFromPrefix
             && prefixId.asRDFNamespace = namespaceFromName
@@ -531,49 +480,41 @@ let lovNamespaces =
     |> Array.choose (fun vocabulary -> vocabulary.tryRdfVocabulary)
     |> Array.sortBy (fun lovNamespace -> lovNamespace.namespaceDocument.graphFile.Length)
 
-let lovNamespacesByPrefix  =
-    lovNamespaces |> Array.groupBy (fun lovNamespace -> lovNamespace.prefixId.prefixLabel )
+let lovNamespacesByPrefix =
+    lovNamespaces
+    |> Array.groupBy (fun lovNamespace -> lovNamespace.prefixId.prefixLabel)
 
-let singletonPrefixedNamespaces = 
-    lovNamespacesByPrefix |> Array.choose (fun (prefix, lovNamespaces) -> 
-        if lovNamespaces.Length = 1 then 
+let singletonPrefixedNamespaces =
+    lovNamespacesByPrefix
+    |> Array.choose (fun (prefix, lovNamespaces) ->
+        if lovNamespaces.Length = 1 then
             Some lovNamespaces[0]
-        else 
+        else
             None
-        
-        )
+
+    )
 
 
-let multitonPrefixedNamespaces = 
-    lovNamespacesByPrefix |> Array.filter (fun (prefix, lovNamespaces) ->  lovNamespaces.Length > 1 )
+let multitonPrefixedNamespaces =
+    lovNamespacesByPrefix
+    |> Array.filter (fun (prefix, lovNamespaces) -> lovNamespaces.Length > 1)
 
 
 
 
-let start = 800
-let stop = 899
+let start = 0
+let stop = lovNamespaces.Length - 1
 
 let job =
     System.Threading.Tasks.Task.Run(fun () ->
         lovNamespaces[start..stop]
-        |> Array.sortBy (fun lovNamespace ->
-            lovNamespace.namespaceDocument.graphFile.Length
-        )
+        |> Array.sortBy (fun lovNamespace -> lovNamespace.namespaceDocument.graphFile.Length)
         |> Array.iteri (fun index lovNamespace ->
             if not lovNamespace.fsxFile.Exists then
-                printfn "%d of %d %s"
-                    (start + index)
-                    stop
-                    lovNamespace.prefixId.namespaceName
+                printfn "%d of %d %s" (start + index) stop lovNamespace.prefixId.namespaceName
 
                 RdfVocabulary.asModule lovNamespace
-                |> fun fsxText ->
-                    File.WriteAllText(
-                        lovNamespace.fsxFile.FullName,
-                        fsxText
-                    )
-        )
-    )
+                |> fun fsxText -> File.WriteAllText(lovNamespace.fsxFile.FullName, fsxText)))
 
 
 

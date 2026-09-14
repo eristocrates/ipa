@@ -2030,7 +2030,7 @@ type Web_Service =
     if not this.local_fs.Exists then
       Directory.CreateDirectory(this.local_fs.DirectoryName) |> ignore
     File.WriteAllText(this.local_fs.FullName,this.fs_text)
-  member this.operations = Wsdl.operations this.local_wsdl.FullName
+i  member this.operations = Wsdl.operations this.local_wsdl.FullName
 
 
 let web_services = 

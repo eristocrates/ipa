@@ -1,0 +1,268 @@
+open System 
+
+
+type Account_id = int
+type Attachable_id = int
+type Attachable_type = string
+type Attachment_type = string
+type Body = string
+type Can_be_available_for_assignment = bool
+type Color = string
+type Commenter_id = int
+type Commenter_type = string
+type Content_type = string
+type Created_at = DateTime
+type Default_assignee_id = int
+type Deleted = bool
+type Department_id = int
+type Description = string
+type Description_no_html = string
+type Disabled = bool
+type Email = string
+type Filename = string
+type Group_id = int
+type Has_gravatar = bool
+type Href = string
+type Href_account_domain = string
+type Id = int
+type Initials = string
+type Is_private = bool
+type Is_service_request = bool
+type Is_user = bool
+type IsTask = bool
+type Language = int
+type Last_login = DateTime
+type Link_uuid_url = string
+type Location = string
+type Name = string
+type Number = int
+type Number_of_comments = int
+type Origin = string
+type Page = int
+type Per_page = int
+type Phone = string
+type Portal = bool
+type Priority = string
+type Provider = string
+type Resolution_code = string
+type Resolution_type = string
+type Secure_url = string
+type Shared_attachment = bool
+type Show_my_tasks = bool
+type Size = int
+type State = string
+type Statistic_type = string
+type Thumb_url = string
+type Time_zone = string
+type Title = string
+type Total_entries = int
+type Total_time_spent = int
+type Type = string
+type Updated_at = DateTime
+type Url = string
+type User_id = int
+type User_saw_all_comments = bool
+type Uuid = string
+type Value = string
+
+type Parent_id = int option
+type Site_id = int option
+type Due_at = string option
+type Resolution_description = string option
+type Group_assignee = string option
+type Customer_satisfaction_survey_sent_at = string option
+type Customer_satisfaction_survey_completed_at = string option
+type Custom = string option
+
+
+
+type Incident = 
+  {
+    id : Id
+    number : Number
+    name : Name
+    description : Description
+    description_no_html : Description_no_html
+    state : State
+    priority : Priority
+    category : Category
+    subcategory : Subcategory
+    assignee : Assignee
+    requester : Requester
+    created_at : Created_at
+    updated_at : Updated_at
+    due_at : Due_at
+    sla_violations : Sla_violations
+    number_of_comments : Number_of_comments
+    user_saw_all_comments : User_saw_all_comments
+    is_service_request : Is_service_request
+    created_by : Created_by
+    resolved_by : Resolved_by
+    resolution_description : Resolution_description
+    resolution_code : Resolution_code
+    group_assignee : Group_assignee
+    customer_satisfaction_survey_sent_at : Customer_satisfaction_survey_sent_at
+    customer_satisfaction_survey_completed_at : Customer_satisfaction_survey_completed_at
+    custom : Custom
+    href : Href
+    href_account_domain : Href_account_domain
+    site : Site
+    department : Department
+    cc : Cc
+    custom_fields_values : Custom_fields_values
+    origin : Origin
+    comments : Comments
+    attachments : Attachments
+    statistics : Statistics
+    tags : Tags
+    incidents : Incidents
+    changes : Changes
+    solutions : Solutions
+    associated_sla_names : Associated_sla_names
+    is_customer_satisfied : Is_customer_satisfied
+    customer_satisfaction_response : Customer_satisfaction_response
+    total_time_spent : Total_time_spent
+    resolution : Resolution
+    resolution_type : Resolution_type
+    tasks : Tasks
+    time_tracks : Time_tracks
+    assets : Assets
+    mobiles : Mobiles
+    other_assets : Other_assets
+    configuration_items : Configuration_items
+    discovery_hardwares : Discovery_hardwares
+    purchase_orders : Purchase_orders
+    releases : Releases
+    problems : Problems
+    request_variables : Request_variables
+  }
+and Category = 
+  {
+    id: Id
+    name: Name
+    default_tags: Default_tags
+    parent_id: Parent_id
+    deleted: Deleted
+    default_assignee_id: Default_assignee_id
+  }
+
+and Subcategory = 
+  {
+    id : Id
+    name : Name
+    default_tags : Default_tags
+    parent_id : Parent_id
+    deleted : Deleted
+    default_assignee_id : Default_assignee_id
+
+  }
+and Assignee = 
+  {
+    group_id: Group_id
+    is_user: Is_user
+    id: Id
+    name: Name
+    email: Email
+    avatar: Avatar
+    reports_to : Reports_to
+  }
+and Avatar = 
+  {
+   ``type`` : Type 
+   initials : Initials
+   color : Color
+  }
+and Reports_to = 
+  {
+  group_id: Group_id
+  is_user: Is_user
+  id: Id
+  name: Name
+  email: Email
+  avatar: Avatar
+  }
+and Requester = 
+  {
+    id : Id
+    account_id : Account_id
+    user_id : User_id
+    email : Email
+    name : Name
+    disabled : Disabled
+    site_id : Site_id
+    site : Site
+    department_id : Department_id
+    department : Department
+    has_gravatar : Has_gravatar
+    customer_satisfaction_survey_time : Customer_satisfaction_survey_time
+    avatar : Avatar 
+  }
+and Site = 
+  {
+    id : Id
+    name : Name
+    location : Location
+    description : Description
+    time_zone : Time_zone
+    language : Language
+    business_record : Business_record 
+  }
+and Department = 
+  {
+    id : Id
+    name : Name
+    description : Description
+    default_assignee_id : Default_assignee_id
+  }
+and Created_by = 
+  {
+    id : Id
+    account_id : Account_id
+    user_id : User_id
+    email : Email
+    name : Name
+    disabled : Disabled
+    site_id : Site_id
+    site : Site
+    department_id : Department_id
+    department : Department
+    has_gravatar : Has_gravatar
+    customer_satisfaction_survey_time : Customer_satisfaction_survey_time
+    avatar : Avatar
+  }
+and Resolved_by = 
+  {
+    id : Id
+    name : Name
+    disabled : Disabled
+    title : Title
+    email : Email
+    created_at : Created_at
+    updated_at : Updated_at
+    last_login : Last_login
+    phone : Phone
+    mobile_phone : Mobile_phone
+    role : Role
+    group_ids : Group_id array
+    available_for_assignment : Available_for_assignment
+    can_be_available_for_assignment : Can_be_available_for_assignment
+    provider : Provider
+    custom_fields_values : Custom_fields_values
+    site : Site
+    department : Department
+    avatar : Avatar
+    reports_to : Reports_to
+  }
+and Role = 
+  {
+    id : Id
+    name : Name
+    description : Description
+    portal : Portal
+    show_my_tasks : Show_my_tasks
+
+  }
+and Comment = 
+  {
+    
+  }

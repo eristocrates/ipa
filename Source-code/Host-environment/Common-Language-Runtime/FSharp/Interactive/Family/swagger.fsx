@@ -36,8 +36,7 @@ module swagger =
 
         module InsurancePlan =
             module get =
-                let summary =
-                    "Search all resources of type InsurancePlan based on a set of criteria"
+                let summary = "g"
 
                 let operationId = "searchInsurancePlan"
                 let tags = [| "InsurancePlan" |]
@@ -117,7 +116,7 @@ module swagger =
                           description = None
                           ``x-consoleDefault`` = None |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -289,7 +288,7 @@ module swagger =
                           ``in`` = "path"
                           required = true |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -644,7 +643,7 @@ module swagger =
                           description = None
                           ``x-consoleDefault`` = Some "application/json" |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -900,7 +899,7 @@ module swagger =
                           description = None
                           ``x-consoleDefault`` = None |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -1077,7 +1076,7 @@ module swagger =
                           ``in`` = "path"
                           required = true |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -1313,7 +1312,7 @@ module swagger =
                           description = None
                           ``x-consoleDefault`` = None |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -1490,7 +1489,7 @@ module swagger =
                           ``in`` = "path"
                           required = true |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -1742,7 +1741,7 @@ module swagger =
                           description = None
                           ``x-consoleDefault`` = None |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -1919,7 +1918,7 @@ module swagger =
                           ``in`` = "path"
                           required = true |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -2155,7 +2154,7 @@ module swagger =
                           description = None
                           ``x-consoleDefault`` = None |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -2332,7 +2331,7 @@ module swagger =
                           ``in`` = "path"
                           required = true |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -2572,7 +2571,7 @@ module swagger =
                           description = None
                           ``x-consoleDefault`` = None |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -2749,7 +2748,7 @@ module swagger =
                           ``in`` = "path"
                           required = true |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -3019,7 +3018,7 @@ module swagger =
                           description = None
                           ``x-consoleDefault`` = None |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =
@@ -3196,7 +3195,7 @@ module swagger =
                           ``in`` = "path"
                           required = true |} |]
 
-                let security = [| {| Basic = ([||] : obj array) |} |]
+                let security = [| {| Basic = ([||]: obj array) |} |]
 
                 module responses =
                     module _200 =

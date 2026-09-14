@@ -16,24 +16,24 @@ let jsonProtocol = DomUrl "localhost:9222/json/protocol"
 type QueryParameter =
     | ParameterKeyValue of string * string
     | ParameterKeyValues of string * string array
+
     member this.parameterKey =
         match this with
-        | ParameterKeyValue (parameterKey, parameterValue) -> parameterKey
-        | ParameterKeyValues (parameterKey, parameterValues) -> parameterKey
+        | ParameterKeyValue(parameterKey, parameterValue) -> parameterKey
+        | ParameterKeyValues(parameterKey, parameterValues) -> parameterKey
 
     member this.parameterValue =
         match this with
-        | ParameterKeyValue (parameterKey, parameterValue) -> parameterValue
-        | ParameterKeyValues (parameterKey, parameterValues) -> parameterValues[0]
+        | ParameterKeyValue(parameterKey, parameterValue) -> parameterValue
+        | ParameterKeyValues(parameterKey, parameterValues) -> parameterValues[0]
 
     member this.parameterValues =
         match this with
-        | ParameterKeyValue (parameterKey, parameterValue) -> [| parameterValue |]
-        | ParameterKeyValues (parameterKey, parameterValues) -> parameterValues
+        | ParameterKeyValue(parameterKey, parameterValue) -> [| parameterValue |]
+        | ParameterKeyValues(parameterKey, parameterValues) -> parameterValues
 
     member this.ParameterPath =
-        Array.concat [| [| this.parameterKey |]
-                        this.parameterValues |]
+        Array.concat [| [| this.parameterKey |]; this.parameterValues |]
         |> String.concat "\\"
 
 
@@ -101,14 +101,11 @@ type DomUrl with
     member this.extension = Path.GetExtension this.AbsolutePathName
     member this.pathStem = Path.GetFileNameWithoutExtension this.AbsolutePathName
 
-    member this.protocolPathPart =
-        this.Protocol.TrimEnd ':'
-        |> PathName.makeAcceptable
+    member this.protocolPathPart = this.Protocol.TrimEnd ':' |> PathName.makeAcceptable
 
     member this.hostPathPart = this.Host |> PathName.makeAcceptable
 
-    member this.pathSegments =
-        this.Pathname.Split('/', StringSplitOptions.RemoveEmptyEntries)
+    member this.pathSegments = this.Pathname.Split('/', StringSplitOptions.RemoveEmptyEntries)
 
     member this.directorySegments =
         if this.pathSegments.Length <= 1 then
@@ -121,8 +118,7 @@ type DomUrl with
         if this.pathSegments.Length = 0 then
             invalidArg "DomUrl" $"URL has no file-name component: {this.Href}"
 
-        this.pathSegments[this.pathSegments.Length - 1]
-        |> PathName.makeAcceptable
+        this.pathSegments[this.pathSegments.Length - 1] |> PathName.makeAcceptable
 
     member this.fileExtension = Path.GetExtension this.originalFileName
 
@@ -138,37 +134,27 @@ type DomUrl with
 
     member this.fragmentPathPart =
         if this.Hash <> "" then
-            "&num;"
-            + (this.Hash.TrimStart '#' |> PathName.makeAcceptable)
+            "&num;" + (this.Hash.TrimStart '#' |> PathName.makeAcceptable)
         elif this.Href.EndsWith "#" then
             "&num;"
         else
             ""
 
-    member this.fileName =
-        this.fileStem
-        + this.queryPathPart
-        + this.fragmentPathPart
-        + this.fileExtension
+    member this.fileName = this.fileStem + this.queryPathPart + this.fragmentPathPart + this.fileExtension
 
     member this.fileDirectory =
-        Array.concat [ [| this.protocolPathPart
-                          this.hostPathPart |]
-                       this.directorySegments ]
+        Array.concat [ [| this.protocolPathPart; this.hostPathPart |]; this.directorySegments ]
         |> Array.fold (fun path segment -> Path.Combine(path, segment)) Folder.Iri.FullName
         |> Directory.CreateDirectory
 
-    member this.asFile =
-        Path.Combine(this.fileDirectory.FullName, this.fileName)
-        |> FileInfo
+    member this.asFile = Path.Combine(this.fileDirectory.FullName, this.fileName) |> FileInfo
 
     member this.asFileExtension(extension: string) =
         Path.Combine(this.fileDirectory.FullName, Path.ChangeExtension(this.fileName, extension))
         |> FileInfo
 
     member this.CreateFileDirectory() =
-        Directory.CreateDirectory this.asFile.DirectoryName
-        |> ignore
+        Directory.CreateDirectory this.asFile.DirectoryName |> ignore
 
     member this.WriteFileText(text: string) =
         this.CreateFileDirectory()
@@ -181,9 +167,7 @@ type DomUrl with
     member this.HeadlessDownloadFile() =
         this.CreateFileDirectory()
 
-        http { GET this.Href }
-        |> Request.send
-        |> Response.saveFile this.asFile.FullName
+        http { GET this.Href } |> Request.send |> Response.saveFile this.asFile.FullName
 
     member this.HeadlessDownloadFileExtension(extension: string) =
         this.CreateFileDirectory()
@@ -198,30 +182,20 @@ type DomUrl with
 
         let href = this.Href
 
-        let protocol =
-            this.Protocol.TrimEnd ':'
-            |> PathName.makeAcceptable
+        let protocol = this.Protocol.TrimEnd ':' |> PathName.makeAcceptable
 
         let host = this.Host |> PathName.makeAcceptable
 
         let path =
-            this
-                .Pathname
-                .TrimEnd('/')
-                .Split('/', StringSplitOptions.RemoveEmptyEntries)
+            this.Pathname.TrimEnd('/').Split('/', StringSplitOptions.RemoveEmptyEntries)
             |> Array.map PathName.makeAcceptable
 
         let terminal =
-            if href.EndsWith("#") then
-                "&num;"
-            elif this.Pathname.EndsWith("/") then
-                "&sol;"
-            else
-                "bare"
+            if href.EndsWith("#") then "&num;"
+            elif this.Pathname.EndsWith("/") then "&sol;"
+            else "bare"
 
-        Array.concat [ [| protocol; host |]
-                       path
-                       [| terminal |] ]
+        Array.concat [ [| protocol; host |]; path; [| terminal |] ]
         |> Array.fold (fun currentPath segment -> Path.Combine(currentPath, segment)) Folder.Iri.FullName
         |> Directory.CreateDirectory
 

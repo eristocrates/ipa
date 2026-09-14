@@ -1,9 +1,19 @@
-# time on
+#time on
 fsi.PrintLength <- 20
 fsi.ShowDeclarationValues <- true
+
 open System
+open System.Globalization
 open System.IO
 open System.Net.Http
+
+
+#r "nuget: CsvHelper"
+open CsvHelper
+
+
+#r "nuget: FsExcel"
+open FsExcel
 
 #r "nuget: Humanizer.Core"
 open Humanizer
@@ -20,6 +30,7 @@ open Fli
 open FSharp.Literals
 
 #r "nuget: FSharp.Data"
+
 open FSharp.Data
 open FSharp.Data.JsonExtensions
 
@@ -43,7 +54,7 @@ open Focal.Json
 #r "nuget: Newtonsoft.Json"
 
 open Newtonsoft.Json.Linq
-#r "nuget: Fabulous.AST" 
+#r "nuget: Fabulous.AST"
 open Fabulous.AST
 
 
@@ -56,276 +67,197 @@ open Fabulous.AST
 open DoxAletheia.PrettierNaming
 open DoxAletheia.PrettierNaming.FSharp_Keywords
 
+(*
+
+Family Medicine: Adult Medicine // Millenium only
+General Practice 
+Internal Medicine (General Medical Care) 
+Nurse Practitioner 
+Nurse Practitioner: Acute Care 
+Nurse Practitioner: Adult Health 
+Nurse Practitioner: Primary Care 
+Physician Assistant 
 
 
+no more than 25 miles
+prefer males
 
-
-module results = 
+*)
+module Document =
+    module GeneralPractice =
         [<Literal>]
-        let file_path = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Family\current_results.json"
-        let json = 
-                let provided = JsonProvider<file_path>.Load file_path
-                provided.Results
-                |> Array.filter (fun result ->
-                    not (result.CarrierEntity.Locations
-                            |> Array.exists (fun location -> location.Name.Contains("Millennium"))
-                        )
-                            
-                            )
-module taxonomy = 
-        [<Literal>]
-        let file_path = @"D:\Surface\Medical\Taxonomy_Master_List.csv"
-        let csv = CsvProvider<file_path>.Load file_path
+        let filePath =
+            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Family\QueryResults\GeneralPractice.json"
 
+        let json =
+            let provided = JsonProvider<filePath>.Load filePath
 
-type Medical_Provider = 
-    {
-        first_name:string
-        middle_name:string
-        last_name:string
-        description:string
-        grouping:string
-    }
-
-
-let medical_providers = 
-            results.json
-            |> Array.take 2
-            |> Array.map (fun result -> 
-            let description_display = 
-                        result.CarrierEntity.Locations
-                        |> Array.collect (fun location ->
-                                location.Specialties |> Array.choose (fun speciality -> speciality.DescriptionDisplay)
-                                )
-                                |> Array.distinct
-                                |> String.concat ", "
-            let grouping = 
-                        result.CarrierEntity.Locations
-                        |> Array.collect (fun location ->
-                                location.Specialties |> Array.choose (fun speciality -> speciality.Grouping)
-                                )
-                                |> Array.distinct
-                                |> String.concat ", "
-            
-            {
-
-                first_name = result.CarrierEntity.Name.FirstName
-                middle_name = defaultArg result.CarrierEntity.Name.MiddleName  String.Empty
-                last_name = result.CarrierEntity.Name.LastName
-                description = description_display
-                grouping = grouping
-                
-
-            }
-                
+            provided.Results
+            |> Array.filter (fun result ->
+                not (
+                    result.CarrierEntity.Locations
+                    |> Array.exists (fun location -> location.Name.Contains("Millennium"))
                 )
 
+            )
 
-// TODO type EVERYTHING then consider how to render for mom and richard
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module Provider_Directory = 
-    let uri = new Uri "https://iopc-pd.api.centene.com/iopc/pd/fhir/providerdirectory/"
-    module openapi = 
-
+    module InteralMedicine =
         [<Literal>]
-        let file_path =
-            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Family\pd-swagger-PP-2023-12-12_15_52_39-PP-2024-10-10_21_48_31.json"
-        let json = JsonProvider<file_path>.Load file_path
-    module Client = 
-        let fhir = new FhirClient("https://iopc-pd.api.centene.com/iopc/pd/fhir/providerdirectory/" )
-        fhir.Settings.PreferredFormat <- ResourceFormat.Xml
-        fhir.Settings.ReturnPreference <- ReturnPreference.Representation
+        let filePath =
+            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Family\QueryResults\InternalMedicine.json"
 
-open Provider_Directory.Client
+        let json =
+            let provided = JsonProvider<filePath>.Load filePath
 
+            provided.Results
+            |> Array.filter (fun result ->
+                not (
+                    result.CarrierEntity.Locations
+                    |> Array.exists (fun location -> location.Name.Contains("Millennium"))
+                )
 
+            )
 
+module taxonomy =
+    [<Literal>]
+    let file_path = @"D:\Surface\Medical\Taxonomy_Master_List.csv"
 
-
-
-
-type Bundle with 
-  static member inline as_resource<'T when 'T :> Resource> (bundle:Bundle)  =
-    bundle.Entry
-    |> Seq.choose (fun entry ->
-        match entry.Resource with
-        | :? 'T as resource -> Some resource
-        | _ -> None)
-    |> Seq.toArray
-
-type Location with 
-    member this.practitioner_roles = 
-      fhir.SearchAsync<PractitionerRole>(
-          criteria =
-              [|
-                  $"location=Location/{this.Id}"
-              |]
-      )
-      |> Async.AwaitTask
-      |> Async.RunSynchronously
-      |> Bundle.as_resource<PractitionerRole>
-
-type PractitionerRole with 
-    member this.organization() =  
-      fhir.SearchAsync<Organization>(
-          criteria =
-              [|
-                  $"_id=HMN"
-              |]
-      )
-      |> Async.AwaitTask
-      |> Async.RunSynchronously
-      |> Bundle.as_resource<Organization>
+    let csv = CsvProvider<file_path>.Load file_path
 
 
+type MedicalProvider =
+    { ``First Name``: string
+      ``Middle Name``: string
+      ``Last Name``: string
+      Description: string
+      Gender: string
+      Grouping: string
+      ``Primary Location Name``: string
+      ``Primary Location Phone``: string
+      ``Primary Location Address Line 1``: string
+      ``Primary Location Address Line 2``: string
+      ``Primary Location Address City``: string
+      ``Primary Location Address Zip Code``: int }
 
 
+let generalPracticeMedicalProviders =
+    Document.GeneralPractice.json
+    |> Array.filter (fun result ->
+        result.CarrierEntity.Locations
+        |> Array.exists (fun location -> location.Primary = "Y"))
+    |> Array.filter (fun result -> result.CarrierEntity.Gender = "M")
 
+    |> Array.map (fun result ->
+        let description_display =
+            result.CarrierEntity.Locations
+            |> Array.collect (fun location ->
+                location.Specialties
+                |> Array.choose (fun speciality -> speciality.DescriptionDisplay))
+            |> Array.distinct
+            |> String.concat ", "
 
+        let grouping =
+            result.CarrierEntity.Locations
+            |> Array.collect (fun location ->
+                location.Specialties |> Array.choose (fun speciality -> speciality.Grouping))
+            |> Array.distinct
+            |> String.concat ", "
 
+        let primaryLocation =
+            result.CarrierEntity.Locations
+            |> Array.find (fun location -> location.Primary = "Y")
 
+        {
 
+          ``First Name`` = result.CarrierEntity.Name.FirstName
+          ``Middle Name`` = defaultArg result.CarrierEntity.Name.MiddleName String.Empty
+          ``Last Name`` = result.CarrierEntity.Name.LastName
+          Description = description_display
+          Grouping = grouping
+          Gender = result.CarrierEntity.Gender
+          ``Primary Location Name`` = primaryLocation.Name
+          ``Primary Location Phone`` = primaryLocation.Phone.Phone
+          ``Primary Location Address Line 1`` = primaryLocation.Address.AddressLine1
+          ``Primary Location Address Line 2`` = defaultArg primaryLocation.Address.AddressLine2 String.Empty
+          ``Primary Location Address City`` = primaryLocation.Address.City
+          ``Primary Location Address Zip Code`` = primaryLocation.Address.ZipCode
 
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let practitioners = 
-    fhir.SearchAsync<Practitioner>(
-        [| 
-          
-            "given:exact=Alfonso"
-            "family:exact=Garcia-Bello"
-          
-           |]
     )
-    |> Async.AwaitTask
-    |> Async.RunSynchronously
-    |> Bundle.as_resource<Practitioner>
 
-let practitioner = practitioners[0]
-practitioner.Identifier
+let internalMedicineMedicalProviders =
+    Document.InteralMedicine.json
+    |> Array.filter (fun result ->
+        result.CarrierEntity.Locations
+        |> Array.exists (fun location -> location.Primary = "Y"))
+    |> Array.filter (fun result -> result.CarrierEntity.Gender = "M")
+    |> Array.map (fun result ->
+        let description_display =
+            result.CarrierEntity.Locations
+            |> Array.collect (fun location ->
+                location.Specialties
+                |> Array.choose (fun speciality -> speciality.DescriptionDisplay))
+            |> Array.distinct
+            |> String.concat ", "
 
+        let grouping =
+            result.CarrierEntity.Locations
+            |> Array.collect (fun location ->
+                location.Specialties |> Array.choose (fun speciality -> speciality.Grouping))
+            |> Array.distinct
+            |> String.concat ", "
 
+        let primaryLocation =
+            result.CarrierEntity.Locations
+            |> Array.find (fun location -> location.Primary = "Y")
 
+        {
 
-let practitioner_roles = 
-    fhir.SearchAsync<PractitionerRole>(
-        [| 
-          
-            $"practitioner=Practitioner/{practitioner.Id}"
-          
-           |]
+          ``First Name`` = result.CarrierEntity.Name.FirstName
+          ``Middle Name`` = defaultArg result.CarrierEntity.Name.MiddleName String.Empty
+          ``Last Name`` = result.CarrierEntity.Name.LastName
+          Description = description_display
+          Grouping = grouping
+          Gender = result.CarrierEntity.Gender
+          ``Primary Location Name`` = primaryLocation.Name
+          ``Primary Location Phone`` = primaryLocation.Phone.Phone
+          ``Primary Location Address Line 1`` = primaryLocation.Address.AddressLine1
+          ``Primary Location Address Line 2`` = defaultArg primaryLocation.Address.AddressLine2 String.Empty
+          ``Primary Location Address City`` = primaryLocation.Address.City
+          ``Primary Location Address Zip Code`` = primaryLocation.Address.ZipCode
+
+        }
+
     )
-    |> Async.AwaitTask
-    |> Async.RunSynchronously
-    |> Bundle.as_resource<PractitionerRole>
-
-let random_practitioner_role = practitioner_roles |> Array.randomChoice
-
-
-// practitioner role id 
-// entityId-carrier_code-provId-
-
-
-let organizations = 
-    fhir.SearchAsync<Organization>(
-        [| $"={random_practitioner_role.Organization.Reference}" |]
-    )
-    |> Async.AwaitTask
-    |> Async.RunSynchronously
-    |> Bundle.as_resource<Organization>
-
-organizations.Length
-organizations |> Array.map (fun element -> element.Name)
 
 
 
+let medicalProviders =
+    Array.concat [| generalPracticeMedicalProviders; internalMedicineMedicalProviders |]
+    |> Array.sortBy (fun medicalProvider -> medicalProvider.``Primary Location Address City``)
 
+let writeCsv (filePath: string) data =
+    use writer = new StreamWriter(filePath)
+    use csv = new CsvWriter(writer, CultureInfo.InvariantCulture)
+    csv.WriteRecords(data)
 
+medicalProviders
+|> writeCsv
+    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Family\Providers.csv"
 
-let insurance_plans = 
-    fhir.SearchAsync<InsurancePlan>(
-        [| 
-          
-            "name=Medicaid/Child Welfare - FL" 
-          
-           |]
-    )
-    |> Async.AwaitTask
-    |> Async.RunSynchronously
-    |> Bundle.as_resource<InsurancePlan>
+medicalProviders.Length
 
-insurance_plans.Length
+// "address=18200 Cochran Blvd, Port Charlotte, FL 33948"
 
+let randomMedicalProvider = medicalProviders |> Array.randomChoice
 
-insurance_plans |> Array.map (fun element -> element.Type[0].Coding)
-insurance_plans |> Array.map (fun element -> element.Meta)
+let matchingResult =
+    Document.InteralMedicine.json
+    |> Array.find (fun result -> result.CarrierEntity.Name.LastName = "Castillo")
 
+let primaryLocation =
+    matchingResult.CarrierEntity.Locations
+    |> Array.find (fun location -> location.Primary = "Y")
 
-
-
-
-let locations = 
-    fhir.SearchAsync<Location>(
-        [|
-
-              "address=18200 Cochran Blvd, Port Charlotte, FL 33948"
-
-        |]
-    )
-    |> Async.AwaitTask
-    |> Async.RunSynchronously
-    |> Bundle.as_resource<Location>
-    |> Array.filter (fun location -> location.practitioner_roles.Length > 0)
-
-locations.Length
-
-let random_location = locations |> Array.randomChoice
-random_location.Address
-random_location
-random_location.practitioner_roles
-let random_practitioner_role = random_location.practitioner_roles |> Array.randomChoice 
-
-random_practitioner_role.Organization.Url.OriginalString
-random_practitioner_role.organization()
-
+primaryLocation.Address.ZipCode
