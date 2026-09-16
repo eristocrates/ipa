@@ -1,0 +1,14 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Toimik.WarcProtocol.dll
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/e4229250620e4bd2826348d7c0ccb14b.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /is4.toimik.warcprotocol.0.2.4.nupkg
+F: /IS4.Toimik.WarcProtocol.nuspec
+F: /[Content_Types].xml

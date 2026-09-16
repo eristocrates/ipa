@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>FPrimitive</id>
+    <version>3.2.2</version>
+    <title>FPrimitive</title>
+    <authors>Stijn Moreels</authors>
+    <owners>Stijn Moreels</owners>
+    <licenseUrl>https://github.com/stijnmoreels/FPrimitive/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/stijnmoreels/FPrimitive</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/stijnmoreels/FPrimitive/master/docs/img/logo.png</iconUrl>
+    <description>.NET project to help developers build a correct and more secure domain model by providing building blocks, standard types and trust boundaries.</description>
+    <summary>.NET project to help developers build a correct and more secure domain model.</summary>
+    <releaseNotes>Update `Sanitize` for a more inclusive code base ♥
+Add sanitization composition expression</releaseNotes>
+    <copyright>Copyright 2023</copyright>
+    <tags>domain,model,secure,trust,boundaries,blocks,reusable,fsharp</tags>
+    <dependencies>
+      <dependency id="FSharp.Core" version="6.0.6" />
+      <dependency id="Microsoft.Extensions.Logging" version="6.0.0" />
+    </dependencies>
+  </metadata>
+</package>

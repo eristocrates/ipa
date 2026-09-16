@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ARCtrl.Core</id>
+    <version>3.1.1</version>
+    <authors>nfdi4plants, Lukas Weil, Kevin Frey, Kevin Schneider, Florian Wetzels, Caroline Ott</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>logo.png</icon>
+    <projectUrl>https://github.com/nfdi4plants/ARCtrl</projectUrl>
+    <description>ARC and ISA compliant experimental metadata toolkit in F#. This project is meant as an easy means to open, manipulate and save ISA (Investigation,Study,Assay) metadata files in the dotnet environment.</description>
+    <releaseNotes>Additions:
+merge persons with and without orcid when writing ro-crate
+add test against merging of same name persons
+small safeguard to stop writers failing on existing .gitkeep
+Bugfixes:
+start working on some Author-related RO-Crate conversion fixes</releaseNotes>
+    <tags>ARC F# FSharp dotnet .Net bioinformatics biology fable-library datascience dataplant nfdi metadata investigation study assay ISA-Json fable-javascript fable-python fable-dotnet fable</tags>
+    <repository type="git" url="https://github.com/nfdi4plants/ARCtrl" commit="3dd44f7246cdeea77d642d74800f9259b67f3cbd" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="ARCtrl.CWL" version="3.1.1" exclude="Build,Analyzers" />
+        <dependency id="ARCtrl.FileSystem" version="3.1.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

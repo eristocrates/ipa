@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/netstandard1.5
+F: /lib/netstandard1.5/Argolis.Models.dll
+F: /lib/netstandard1.5/Argolis.Models.pdb
+F: /lib/netstandard1.5/Argolis.Models.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/cb98af468d2e4b789ea3a67fd1739e1d.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /argolis.models.0.8.0.nupkg
+F: /Argolis.Models.nuspec
+F: /[Content_Types].xml

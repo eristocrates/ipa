@@ -1,0 +1,3 @@
+
+#load "Microsoft.Extensions.Primitives.csx" 
+#r "../../packages/Microsoft.AspNetCore.ResponseCaching.Abstractions/lib/netstandard2.0/Microsoft.AspNetCore.ResponseCaching.Abstractions.dll" 

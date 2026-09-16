@@ -1,0 +1,138 @@
+#load @".paket/load/main.group.fsx"
+#I @"D:\https\com\github\eristocrates\ipa\fsx"
+
+open System
+open System.IO
+
+open FSharp.Compiler.CodeAnalysis
+open FSharp.Compiler.Diagnostics
+open FSharp.Compiler.Text
+
+
+let compileScriptToDll (sourceFilePath: string) =
+
+    async {
+
+        let sourceFilePath = Path.GetFullPath sourceFilePath
+
+        let outputFilePath = Path.ChangeExtension(sourceFilePath, ".dll")
+
+        let outputDirectory = Path.GetDirectoryName outputFilePath
+
+        Directory.CreateDirectory outputDirectory |> ignore
+
+        let checker = FSharpChecker.Create()
+
+        let sourceText = File.ReadAllText sourceFilePath |> SourceText.ofString
+
+        let! projectOptions, optionDiagnostics =
+            checker.GetProjectOptionsFromScript(sourceFilePath, sourceText, assumeDotNetFramework = false, useFsiAuxLib = true, useSdkRefs = true, previewEnabled = true)
+
+        for diagnostic in optionDiagnostics do
+            printfn "%O" diagnostic
+
+        let sourceFiles =
+            projectOptions.SourceFiles
+            |> Array.filter (fun filePath -> not (filePath.EndsWith(".fsproj.fsx")))
+
+        let compilerArguments = [|
+            // FSharpChecker.Compile explicitly ignores its first
+            // argument, but expects one.
+            "fsc.exe"
+
+            yield! projectOptions.OtherOptions
+
+            "--target:library"
+            $"--out:{outputFilePath}"
+
+            yield! sourceFiles
+        |]
+
+        let! diagnostics, terminatingException = checker.Compile compilerArguments
+
+        for diagnostic in diagnostics do
+            printfn "%O" diagnostic
+
+        match terminatingException with
+        | Some xception -> return Error xception
+
+        | None ->
+
+            let hasErrors =
+                diagnostics
+                |> Array.exists (fun diagnostic -> diagnostic.Severity = FSharpDiagnosticSeverity.Error)
+
+            if hasErrors then
+                return Error(InvalidOperationException($"Compilation of '{sourceFilePath}' failed."))
+
+            else
+                return Ok outputFilePath
+    }
+
+(*
+let targetFileNames =
+    [|
+        "rdf"
+        "voaf"
+        "vann"
+        "foaf"
+        "vs"
+        "hydra"
+        "void"
+        "vaem"
+        "dcterms"
+        "dcat"
+    |]
+    |> Array.map (fun prefix -> $"{prefix}Namespace.fsx")
+    |> Set.ofArray
+
+module Folder =
+    let REPL = Directory.CreateDirectory @"D:\https\com\github\eristocrates\ipa\fsx"
+
+    let Generated =
+        Directory.CreateDirectory @"D:\https\com\github\eristocrates\ipa\fsx\Namespace\Generated"
+
+
+let compilationTargets =
+    Array.concat [|
+
+    Folder.REPL.GetFiles("*.fsx")
+    Folder.Generated.GetFiles("*.fsx")
+     |]
+    (*
+    |> Array.filter (fun fsxFile -> fsxFile.Name = "fibo-fnd-rel-relNamespace.fsx"
+        let dllFile =
+            Path.ChangeExtension(fsxFile.FullName, ".dll")
+            |> FileInfo
+        not dllFile.Exists
+
+    )
+    *)
+
+    |> Array.sortBy (fun fsxFile -> fsxFile.Length)
+
+
+
+compilationTargets
+|> Array.mapi (fun index fsxFile ->
+    printfn "%d of %d %s" index compilationTargets.Length fsxFile.Name
+    compileScriptToDll fsxFile.FullName
+    |> Async.RunSynchronously)
+
+*)
+
+let result =
+    compileScriptToDll @"D:\https\com\github\eristocrates\ipa\fsx\Ipa.fsx"
+    |> Async.RunSynchronously
+
+
+
+
+
+
+(*
+
+match result with 
+| Error err -> err.Message
+
+*)

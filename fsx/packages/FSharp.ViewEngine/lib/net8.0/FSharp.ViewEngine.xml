@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharp.ViewEngine</name></assembly>
+<members>
+<member name="T:FSharp.ViewEngine.VoidBuilder">
+<summary>
+ Computation-expression builder for a void element that accepts attributes and renders no closing tag.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.FragmentBuilder.YieldFrom(System.Collections.Generic.IEnumerable{FSharp.ViewEngine.HtmlElement})">
+<summary>
+ Adds each yielded sibling in enumeration order.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.FragmentBuilder.Yield(System.Collections.Generic.IEnumerable{FSharp.ViewEngine.HtmlElement})">
+<summary>
+ Adds each supplied sibling in enumeration order.
+</summary>
+</member>
+<member name="T:FSharp.ViewEngine.FragmentBuilder">
+<summary>
+ Computation-expression builder for an ordered sequence of sibling nodes without a wrapper element.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.TagBuilder.YieldFrom(System.Collections.Generic.IEnumerable{FSharp.ViewEngine.HtmlElement})">
+<summary>
+ Adds each yielded element as a child in enumeration order.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.TagBuilder.Yield(System.Collections.Generic.IEnumerable{FSharp.ViewEngine.HtmlElement})">
+<summary>
+ Adds each supplied element as a child in enumeration order.
+</summary>
+</member>
+<member name="T:FSharp.ViewEngine.TagBuilder">
+<summary>
+ Computation-expression builder for a regular element that accepts attributes, text, child elements, and child collections.
+</summary>
+</member>
+<member name="T:FSharp.ViewEngine.CommentElement">
+<summary>
+ A validated HTML comment node.
+</summary>
+</member>
+<member name="T:FSharp.ViewEngine.FragmentElement">
+<summary>
+ A renderable sequence of sibling nodes.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.HtmlElement.Render(System.Text.StringBuilder)">
+<summary>
+ Appends this node&apos;s serialized HTML to the supplied StringBuilder.
+</summary>
+</member>
+<member name="T:FSharp.ViewEngine.HtmlElement">
+<summary>
+ Base type for renderable HTML nodes.
+</summary>
+</member>
+<member name="T:FSharp.ViewEngine.HtmlAttribute">
+<summary>
+ An HTML attribute name and optional encoded value. ValueNone renders a valueless boolean attribute.
+</summary>
+</member>
+<member name="F:FSharp.ViewEngine.Html.title@">
+<summary>
+ Builds the document title element using the same computation-expression syntax as other regular elements.
+</summary>
+</member>
+<member name="F:FSharp.ViewEngine.Html.fragment@">
+<summary>
+ Builds an ordered sequence of sibling nodes without emitting a wrapper element.
+</summary>
+</member>
+<member name="F:FSharp.ViewEngine.Html.empty@">
+<summary>
+ A renderable node that emits no output.
+</summary>
+</member>
+<member name="F:FSharp.ViewEngine.Html.EmptyAttr@">
+<summary>
+ An ignored attribute value, useful for conditional attribute expressions.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Html.text(System.String)">
+<summary>
+ Creates an HTML-encoded text node.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Html.raw(System.String)">
+<summary>
+ Emits trusted HTML without encoding. Never pass user-controlled content.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Html.js(System.String)">
+<summary>
+ Emits trusted JavaScript without encoding. Never pass user-controlled content.
+</summary>
+</member>
+<member name="P:FSharp.ViewEngine.Html.title">
+<summary>
+ Builds the document title element using the same computation-expression syntax as other regular elements.
+</summary>
+</member>
+<member name="P:FSharp.ViewEngine.Html.fragment">
+<summary>
+ Builds an ordered sequence of sibling nodes without emitting a wrapper element.
+</summary>
+</member>
+<member name="P:FSharp.ViewEngine.Html.empty">
+<summary>
+ A renderable node that emits no output.
+</summary>
+</member>
+<member name="P:FSharp.ViewEngine.Html.EmptyAttr">
+<summary>
+ An ignored attribute value, useful for conditional attribute expressions.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Html.elVoid(System.String)">
+<summary>
+ Creates a void custom element. The developer-controlled name is emitted without validation.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Html.el(System.String)">
+<summary>
+ Creates a regular custom element. The developer-controlled name is emitted without validation.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Html.comment(System.String)">
+<summary>
+ Creates a validated HTML comment. Values containing `--` or ending in `-` are rejected.
+</summary>
+</member>
+<member name="T:FSharp.ViewEngine.Html">
+<summary>
+ Standard HTML element builders, attributes, and explicit custom-markup escape hatches.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Render.toHtmlDocString``1(``0)">
+<summary>
+ Serializes a complete HTML document and prepends the HTML5 doctype.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Render.toUtf8Bytes(FSharp.ViewEngine.HtmlElement)">
+<summary>
+ Serializes an element as UTF-8 bytes without a byte-order mark.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Render.toString(FSharp.ViewEngine.HtmlElement)">
+<summary>
+ Serializes an element without adding a document type declaration.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Render.writeToTextWriter(System.IO.TextWriter,FSharp.ViewEngine.HtmlElement)">
+<summary>
+ Writes an element to a TextWriter without closing the writer.
+</summary>
+</member>
+<member name="M:FSharp.ViewEngine.Render.writeToStringBuilder(System.Text.StringBuilder,FSharp.ViewEngine.HtmlElement)">
+<summary>
+ Appends an element directly to an existing StringBuilder.
+</summary>
+</member>
+<member name="T:FSharp.ViewEngine.Render">
+<summary>
+ Functions for serializing completed element trees.
+</summary>
+</member>
+</members>
+</doc>

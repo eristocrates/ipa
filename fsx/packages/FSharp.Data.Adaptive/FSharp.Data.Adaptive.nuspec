@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Data.Adaptive</id>
+    <version>1.2.26</version>
+    <title>FSharp.Data.Adaptive</title>
+    <authors>fsprojects</authors>
+    <owners>fsprojects</owners>
+    <licenseUrl>https://raw.githubusercontent.com/fsprojects/FSharp.Data.Adaptive/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/fsprojects/FSharp.Data.Adaptive/</projectUrl>
+    <description>FSharp.Data.Adaptive provides an incremental evaluation system inspired by Adapton, DeltaML and many others
+for FSharp. The implementation provides incremental datastructures for refs/sets/lists/maps.</description>
+    <releaseNotes>- added ChangeableModelList(Generic|List|Array|Seq) for better handling of collections in Adaptify</releaseNotes>
+    <dependencies>
+      <dependency id="FSharp.Core" version="4.7.0" />
+      <dependency id="System.Reflection.Emit.Lightweight" version="4.6.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,10 @@
+
+#load "ktsu.CredentialCache.csx" 
+#load "ktsu.Essentials.csx" 
+#load "ktsu.Essentials.FileSystemProviders.Native.csx" 
+#load "ktsu.RunCommand.csx" 
+#load "ktsu.Semantics.Paths.csx" 
+#load "ktsu.Semantics.Strings.csx" 
+#load "Microsoft.Extensions.DependencyInjection.Abstractions.csx" 
+#load "Octokit.csx" 
+#r "../../packages/ktsu.GitIntegration/lib/net10.0/ktsu.GitIntegration.dll" 

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/AssetCloudPublicAPI.nuspec" Id="R608A6C62A02B36A0" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/45275dead28f432190ac577a84abe810.psmdcp" Id="R2A2F4D618A488C68" />
+</Relationships>

@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharp.FGL</name></assembly>
+<members>
+<member name="T:FSharp.FGL.Graph`3">
+<summary>
+Map of Vertices as keys and MContexts as values
+</summary>
+</member>
+<member name="T:FSharp.FGL.MContext`3">
+<summary>
+Context of a vertices as defined by Martin Erwig. Adjacency of type &apos;MAdj&apos;
+</summary>
+</member>
+<member name="T:FSharp.FGL.MAdj`2">
+<summary>
+Map of adjacent vertices as key and the linking edges as values
+</summary>
+</member>
+<member name="T:FSharp.FGL.Context`3">
+<summary>
+Context of a vertice as defined by Martin Erwig. Adjacency of type &apos;Adj&apos;
+</summary>
+</member>
+<member name="T:FSharp.FGL.Adj`2">
+<summary>
+Tuple list of adjacent vertices and the linking edges
+</summary>
+</member>
+<member name="T:FSharp.FGL.LEdge`2">
+<summary>
+Labeled edge
+</summary>
+</member>
+<member name="T:FSharp.FGL.Edge`1">
+<summary>
+Unlabeled edge
+</summary>
+</member>
+<member name="T:FSharp.FGL.LVertex`2">
+<summary>
+Labeled vertex
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.filter``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,System.Boolean}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+ Returns a new graph containing only the vertices for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.fold``4(``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.FSharpFunc{``2,``0}}},Microsoft.FSharp.Collections.FSharpMap{``1,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``1,``3},``2,Microsoft.FSharp.Collections.FSharpMap{``1,``3}}})">
+<summary>
+ Applies a function folder to each vertex of the graph, threading an accumulator argument through the computation.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.iteri``3(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.Unit}}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Performs a given function on every vertex and its label of a graph. The mapping function also receives an ascending integer index.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.iter``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.Unit}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Performs a given function on every vertex and its label of a graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.mapi``4(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``3},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``3}}})">
+<summary>
+Maps the vertexlabels of the graph. The mapping function also receives an ascending integer index.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.map``4(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``3},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``3}}})">
+<summary>
+Maps the vertexlabels of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.toVertexList``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Creates a list of all vertices and their labels.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.tryFind``3(``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Lookup a labeled vertex in the graph, returning a Some value if a binding exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.find``3(``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Lookup a labeled vertex in the graph. Raising KeyNotFoundException if no binding exists in the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.contains``3(``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Returns true, if the vertex v is contained in the graph. Otherwise, it returns false.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.count``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Evaluates the number of vertices in the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.removeMany``3(Microsoft.FSharp.Collections.FSharpList{``0},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Removes a list of vertices from the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.remove``3(``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Removes a vertex from the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.addMany``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``1}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Adds a list of labeled vertices to the graph.    
+</summary>
+</member>
+<member name="M:FSharp.FGL.Vertices.add``3(``0,``1,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Adds a labeled vertex to the graph.
+</summary>
+</member>
+<member name="T:FSharp.FGL.Vertices">
+<summary>
+Functions for vertices of both directed and undirected graphs
+</summary>
+</member>
+<member name="M:FSharp.FGL.Graph.iterContexts``3(Microsoft.FSharp.Core.FSharpFunc{System.Tuple{Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}}},Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Performs a given function on every edge of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Graph.foldContexts``4(``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{System.Tuple{Microsoft.FSharp.Collections.FSharpList{System.Tuple{``1,``3}},``1,``2,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``1,``3}}},``0}},Microsoft.FSharp.Collections.FSharpMap{``1,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``1,``3},``2,Microsoft.FSharp.Collections.FSharpMap{``1,``3}}})">
+<summary>
+Folds over the contexts in the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Graph.mapContexts``4(Microsoft.FSharp.Core.FSharpFunc{System.Tuple{Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}}},``3},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Maps contexts of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Graph.getContext``3(``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Lookup a context in the graph. Raising KeyNotFoundException if no binding exists in the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Graph.tryGetContext``3(``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Lookup a context in the graph, returning a Some value if a binding exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Graph.empty``3">
+<summary>
+Creates a new, empty graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Graph.isEmpty``3">
+<summary>
+Returns true, if the Graph does not contain any vertices. Returns false, if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Graph.decomposeFirst``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+If the given graph contains at least one vertex, returns a Some value of the first context and the graph minus the associated vertex and its edges. If the graph is empty, returns None and the initial graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Graph.tryDecompose``3(``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Lookup a context in the graph. If the binding exists, it returns a Some value of the context and the graph minus the vertex and its edges. If it doesn&apos;t exist, returns None and the initial graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Graph.decompose``3(``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Lookup a context in the graph. If the binding exists, it returns the context and the graph minus the vertex and its edges. Raising KeyNotFoundException if no binding exists in the graph.
+</summary>
+</member>
+<member name="T:FSharp.FGL.Graph">
+<summary>
+General functions for both directed and undirected graphs
+</summary>
+</member>
+<member name="M:FSharp.FGL.Lenses.msucc_``3">
+<summary>
+ Lens for successors in a Mcontext
+</summary>
+</member>
+<member name="M:FSharp.FGL.Lenses.mpred_``3">
+<summary>
+ Lens for predecessors in a Mcontext
+</summary>
+</member>
+<member name="M:FSharp.FGL.Lenses.succ_``3">
+<summary>
+ Lens for successors in a context
+</summary>
+</member>
+<member name="M:FSharp.FGL.Lenses.val_``3">
+<summary>
+ Lens for vertex in a context
+</summary>
+</member>
+<member name="M:FSharp.FGL.Lenses.pred_``3">
+<summary>
+ Lens for predecessors in a context
+</summary>
+</member>
+<member name="T:FSharp.FGL.Lenses">
+<summary>
+Lenses for working with contexts
+</summary>
+</member>
+<member name="T:FSharp.FGL.Algorithm.Models">
+<summary>
+Contains generic functions for creating model graphs
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Models.erdosRenyi``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,System.Tuple{``0,``1}},System.Int32,System.Int32)">
+<summary>
+Creates a directed graph of vertexcount v and edgecount e
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Models.gilbert``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,System.Tuple{``0,``1}},System.Int32,System.Double)">
+<summary>
+Creates a directed graph of vertexcount n and edge probability p
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Graph.toAdjacencyMatrixBy``4(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Collections.FSharpMap{``2,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``2,``0},``3,Microsoft.FSharp.Collections.FSharpMap{``2,``0}}})">
+<summary>
+Transfroms a graph into a adjacency matrix, maps every edge using the projection.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Graph.toAdjacencyMatrix``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Transforms a graph into an adjacency matrix of its edges.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Graph.create``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``1}},Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``0,``2}})">
+<summary>
+Creates a directed graph from a list of vertices and a list of edges
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.filter``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,System.Boolean}}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+ Returns a new graph containing only the edges for which the given predicate returns true.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.iteri``3(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.Unit}}}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Performs a given function on every edge of the graph, which also receives an ascending integer index.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.iter``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.Unit}}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Performs a given function on every edge of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.map``4(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``3,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Maps edgelabels of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.toEdgeList``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Creates a list of all edges and their labels.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.removeMany``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``0}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Removes a list of edges from the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.remove``3(``0,``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Removes an edge from the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.addMany``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``0,``1}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Adds a list of labeled, directed edges to the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.tryAddMany``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``0,``1}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Adds a list of labeled, directed edges to the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.add``3(``0,``0,``1,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Adds a labeled, directed edge to the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.tryAdd``3(``0,``0,``1,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Adds a labeled, directed edge to the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.rev``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Reverses all edges in the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.undirect``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},Microsoft.FSharp.Collections.FSharpMap{``1,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``1,``0},``2,Microsoft.FSharp.Collections.FSharpMap{``1,``0}}})">
+<summary>
+Transforms a directed graph to an undirected graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.tryFind``3(``0,``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Lookup a labeled edge in the graph, returning a Some value if a binding exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.find``3(``0,``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Lookup a labeled edge in the graph. Raising KeyNotFoundException if no binding exists in the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.contains``3(``0,``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Returns true, if the edge from vertex v1 to vertex v2 is contained in the graph. Otherwise, it returns false.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Edges.count``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Evaluates the number of edges in the graph.
+</summary>
+</member>
+<member name="T:FSharp.FGL.Directed.Edges">
+<summary>
+Functions for edges of directed Graphs
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Vertices.tovertexList``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Creates a list of all vertices and their labels.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Vertices.outwardEdges``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+ Returns all edges pointing away from the given vertex
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Vertices.inwardEdges``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+ Returns all edges pointing to the given vertex
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Vertices.clusteringCoefficient``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Evaluates the clustering coefficient of the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Vertices.degree``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+Evaluates the number of edges associated with the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Vertices.outwardDegree``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+Evaluates the number of edges pointing away from the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Vertices.inwardDegree``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+Evaluates the number of edges pointing to the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Vertices.neighbours``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+Lists the vertices which are connected to the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Vertices.successors``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+Lists the vertices which have edges pointing away from the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Directed.Vertices.predecessors``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+Lists the vertices which have edges pointing to the vertex.
+</summary>
+</member>
+<member name="T:FSharp.FGL.Directed.Vertices">
+<summary>
+Functions for vertices of directed Graphs
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Graph.toAdjacencyMatrixBy``4(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Collections.FSharpMap{``2,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``2,``0},``3,Microsoft.FSharp.Collections.FSharpMap{``2,``0}}})">
+<summary>
+Transfroms a graph into a adjacency matrix, maps every edge using the projection.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Graph.toAdjacencyMatrix``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Transforms a graph into a adjacency matrix of its edges. If there is no edge between two vertices, the noEdgeValue is used.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Graph.create``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``1}},Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``0,``2}})">
+<summary>
+Creates an undirected graph from a list of vertices and a list of edges
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.iteri``3(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.Unit}}}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Performs a given function on every edge of the graph, which also receives an ascending integer index.                                    
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.iter``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.Unit}}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Performs a given function on every edge of the graph.                
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.map``4(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``3,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Maps edgelabels of the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.toEdgeList``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Creates a list of all edges and their labels.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.removeMany``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``0}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Removes a list of edges from the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.remove``3(``0,``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Removes an edge from the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.addMany``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``0,``1}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Adds a list of labeled, undirected edges to the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.tryAddMany``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``0,``1}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Adds a list of labeled, undirected edges to the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.add``3(``0,``0,``1,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Adds a labeled, undirected edge to the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.tryAdd``3(``0,``0,``1,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``1},``2,Microsoft.FSharp.Collections.FSharpMap{``0,``1}}})">
+<summary>
+Adds a labeled, undirected edge to the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.tryFind``3(``0,``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Lookup a labeled edge in the graph, returning a Some value if a binding exists and None if not.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.find``3(``0,``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Lookup a labeled edge in the graph. Raising KeyNotFoundException if no binding exists in the graph.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.contains``3(``0,``0,Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Returns true, if the edge from vertex v1 to vertex v2 is contained in the graph. Otherwise, it returns false.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Edges.count``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Evaluates the number of edges in the graph.
+</summary>
+</member>
+<member name="T:FSharp.FGL.Undirected.Edges">
+<summary>
+Functions for edges of undirected Graphs
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Vertices.tovertexList``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Creates a list of all vertices and their labels.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Vertices.clusteringCoefficient``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+Evaluates the clustering coefficient of the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Vertices.degree``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+Evaluates the number of edges associated with the vertex.
+</summary>
+</member>
+<member name="M:FSharp.FGL.Undirected.Vertices.neighbours``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+Lists the vertices which are connected to the vertex.
+</summary>
+</member>
+<member name="T:FSharp.FGL.Undirected.Vertices">
+<summary>
+Functions for vertices of undirected Graphs
+</summary>
+</member>
+</members>
+</doc>

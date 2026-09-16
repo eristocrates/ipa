@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Argolis.Nancy</name>
+    </assembly>
+    <members>
+        <member name="T:Argolis.Nancy.ArgolisModule">
+            <summary>
+            Base module for serving resources whose paths are URI Templates managed by
+            <see cref="T:Argolis.Models.IModelTemplateProvider"/>
+            </summary>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.#ctor(Argolis.Models.IModelTemplateProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Nancy.ArgolisModule"/> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.#ctor(Argolis.Models.IModelTemplateProvider,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Nancy.ArgolisModule"/> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Get``1(System.Func{System.Object,System.Object},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares GET handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Get``1(System.Func{System.Object,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares GET handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Get``1(System.Func{System.Object,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares GET handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Put``1(System.Func{System.Object,System.Object},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares PUT handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Put``1(System.Func{System.Object,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares PUT handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Put``1(System.Func{System.Object,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares PUT handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Post``1(System.Func{System.Object,System.Object},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares POST handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Post``1(System.Func{System.Object,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares POST handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Post``1(System.Func{System.Object,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares POST handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Delete``1(System.Func{System.Object,System.Object},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares DELETE handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Delete``1(System.Func{System.Object,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares DELETE handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Delete``1(System.Func{System.Object,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares DELETE handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Patch``1(System.Func{System.Object,System.Object},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares PATCH handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Patch``1(System.Func{System.Object,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares PATCH handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Patch``1(System.Func{System.Object,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares PATCH handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Options``1(System.Func{System.Object,System.Object},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares OPTIONS handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Options``1(System.Func{System.Object,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares OPTIONS handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Options``1(System.Func{System.Object,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares OPTIONS handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Head``1(System.Func{System.Object,System.Object},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares HEAD handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Head``1(System.Func{System.Object,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares HEAD handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="M:Argolis.Nancy.ArgolisModule.Head``1(System.Func{System.Object,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Object}},System.Func{Nancy.NancyContext,System.Boolean},System.String)">
+            <summary>
+            Declares HEAD handler for a resource
+            </summary>
+            <typeparam name="T">the resource model type</typeparam>
+            <param name="action">Action that will be invoked when handling the resource</param>
+            <param name="condition">A condition to determine if the route can be hit</param>
+            <param name="name">Name of the route</param>
+        </member>
+        <member name="T:Argolis.Nancy.Installer">
+            <summary>
+            Registers defaults with Nancy's container
+            </summary>
+        </member>
+        <member name="M:Argolis.Nancy.Installer.#ctor(Nancy.ITypeCatalog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Nancy.Installer"/> class.
+            </summary>
+        </member>
+    </members>
+</doc>

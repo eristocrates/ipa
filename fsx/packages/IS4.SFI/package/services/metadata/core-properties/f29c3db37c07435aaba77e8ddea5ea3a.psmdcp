@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>IS4</dc:creator>
+  <dc:description>Contains the necessary classes and interfaces for supporting Semantic File Inspector components.</dc:description>
+  <dc:identifier>IS4.SFI</dc:identifier>
+  <version>1.3.2</version>
+  <keywords>linked-data sparql rdf semantic-search metadata-extraction</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=6.8.1.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET Standard 2.0</lastModifiedBy>
+</coreProperties>

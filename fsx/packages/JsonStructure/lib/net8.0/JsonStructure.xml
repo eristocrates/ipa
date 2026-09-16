@@ -1,0 +1,1321 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JsonStructure</name>
+    </assembly>
+    <members>
+        <member name="T:JsonStructure.Converters.Int128StringConverter">
+            <summary>
+            JSON converter for Int128 that serializes/deserializes as a string.
+            Per JSON Structure spec, int128 values are serialized as strings because
+            they exceed the range of JSON numbers.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.Int128StringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.Int128StringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Int128,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.NullableInt128StringConverter">
+            <summary>
+            JSON converter for nullable Int128 that serializes/deserializes as a string.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.NullableInt128StringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.NullableInt128StringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Nullable{System.Int128},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.UInt128StringConverter">
+            <summary>
+            JSON converter for UInt128 that serializes/deserializes as a string.
+            Per JSON Structure spec, uint128 values are serialized as strings because
+            they exceed the range of JSON numbers.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.UInt128StringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.UInt128StringConverter.Write(System.Text.Json.Utf8JsonWriter,System.UInt128,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.NullableUInt128StringConverter">
+            <summary>
+            JSON converter for nullable UInt128 that serializes/deserializes as a string.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.NullableUInt128StringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.NullableUInt128StringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Nullable{System.UInt128},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.BigIntegerStringConverter">
+            <summary>
+            JSON converter for BigInteger that serializes/deserializes as a string.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.BigIntegerStringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.BigIntegerStringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Numerics.BigInteger,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.NullableBigIntegerStringConverter">
+            <summary>
+            JSON converter for nullable BigInteger that serializes/deserializes as a string.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.NullableBigIntegerStringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.NullableBigIntegerStringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Nullable{System.Numerics.BigInteger},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.UuidStringConverter">
+            <summary>
+            JSON converter for Guid that ensures consistent serialization format.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.UuidStringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.UuidStringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Guid,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.NullableUuidStringConverter">
+            <summary>
+            JSON converter for nullable Guid.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.NullableUuidStringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.NullableUuidStringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Nullable{System.Guid},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.UriStringConverter">
+            <summary>
+            JSON converter for Uri that handles absolute and relative URIs.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.UriStringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.UriStringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Uri,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.Base64BinaryConverter">
+            <summary>
+            JSON converter for byte array that serializes/deserializes as base64 string.
+            Per JSON Structure spec, binary values are serialized as base64-encoded strings.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.Base64BinaryConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.Base64BinaryConverter.Write(System.Text.Json.Utf8JsonWriter,System.Byte[],System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.Base64MemoryConverter">
+            <summary>
+            JSON converter for ReadOnlyMemory&lt;byte&gt; that serializes/deserializes as base64 string.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.Base64MemoryConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.Base64MemoryConverter.Write(System.Text.Json.Utf8JsonWriter,System.ReadOnlyMemory{System.Byte},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.DecimalStringConverter">
+            <summary>
+            JSON converter for decimal that serializes/deserializes as a string to preserve precision.
+            Per JSON Structure spec, decimal values are serialized as strings to avoid
+            IEEE 754 floating-point precision issues.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.DecimalStringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.DecimalStringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Decimal,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.NullableDecimalStringConverter">
+            <summary>
+            JSON converter for nullable decimal that serializes/deserializes as a string to preserve precision.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.NullableDecimalStringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.NullableDecimalStringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Nullable{System.Decimal},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.Int64StringConverter">
+            <summary>
+            JSON converter for Int64 that serializes/deserializes as a string to preserve precision.
+            Per JSON Structure spec, int64 values are serialized as strings because JSON numbers
+            (IEEE 754 double) cannot accurately represent the full int64 range.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.Int64StringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.Int64StringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Int64,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.NullableInt64StringConverter">
+            <summary>
+            JSON converter for nullable Int64 that serializes/deserializes as a string to preserve precision.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.NullableInt64StringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.NullableInt64StringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Nullable{System.Int64},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.UInt64StringConverter">
+            <summary>
+            JSON converter for UInt64 that serializes/deserializes as a string to preserve precision.
+            Per JSON Structure spec, uint64 values are serialized as strings because JSON numbers
+            (IEEE 754 double) cannot accurately represent the full uint64 range.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.UInt64StringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.UInt64StringConverter.Write(System.Text.Json.Utf8JsonWriter,System.UInt64,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.NullableUInt64StringConverter">
+            <summary>
+            JSON converter for nullable UInt64 that serializes/deserializes as a string to preserve precision.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.NullableUInt64StringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.NullableUInt64StringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Nullable{System.UInt64},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.JsonStructureConverters">
+            <summary>
+            Provides a collection of all JSON Structure type converters for System.Text.Json.
+            Use <see cref="M:JsonStructure.Converters.JsonStructureConverters.ConfigureOptions(System.Text.Json.JsonSerializerOptions)"/> to add all converters to JsonSerializerOptions.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Converters.JsonStructureConverters.All">
+            <summary>
+            Gets a collection of all JSON Structure converters.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.JsonStructureConverters.ConfigureOptions(System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Adds all JSON Structure type converters to the specified options.
+            </summary>
+            <param name="options">The serializer options to configure.</param>
+            <returns>The configured options for method chaining.</returns>
+        </member>
+        <member name="M:JsonStructure.Converters.JsonStructureConverters.CreateOptions(System.Text.Json.JsonSerializerDefaults)">
+            <summary>
+            Creates a new <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance configured with all JSON Structure converters.
+            </summary>
+            <param name="defaults">Optional defaults for the new options.</param>
+            <returns>A new configured <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance.</returns>
+        </member>
+        <member name="M:JsonStructure.Converters.JsonStructureConverters.CreateOptions(System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Creates a new <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance configured with all JSON Structure converters,
+            copying settings from the specified source options.
+            </summary>
+            <param name="source">The source options to copy settings from.</param>
+            <returns>A new configured <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance.</returns>
+        </member>
+        <member name="T:JsonStructure.Converters.DurationStringConverter">
+            <summary>
+            JSON converter for TimeSpan that serializes/deserializes as an ISO 8601 duration string.
+            Per JSON Structure spec, duration values are serialized as strings in ISO 8601 format.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.DurationStringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.DurationStringConverter.Write(System.Text.Json.Utf8JsonWriter,System.TimeSpan,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.NullableDurationStringConverter">
+            <summary>
+            JSON converter for nullable TimeSpan that serializes/deserializes as an ISO 8601 duration string.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.NullableDurationStringConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.NullableDurationStringConverter.Write(System.Text.Json.Utf8JsonWriter,System.Nullable{System.TimeSpan},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.DateOnlyConverter">
+            <summary>
+            JSON converter for DateOnly that serializes/deserializes as an RFC 3339 date string.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.DateOnlyConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.DateOnlyConverter.Write(System.Text.Json.Utf8JsonWriter,System.DateOnly,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.NullableDateOnlyConverter">
+            <summary>
+            JSON converter for nullable DateOnly.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.NullableDateOnlyConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.NullableDateOnlyConverter.Write(System.Text.Json.Utf8JsonWriter,System.Nullable{System.DateOnly},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.TimeOnlyConverter">
+            <summary>
+            JSON converter for TimeOnly that serializes/deserializes as an RFC 3339 time string.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.TimeOnlyConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.TimeOnlyConverter.Write(System.Text.Json.Utf8JsonWriter,System.TimeOnly,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Converters.NullableTimeOnlyConverter">
+            <summary>
+            JSON converter for nullable TimeOnly.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Converters.NullableTimeOnlyConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:JsonStructure.Converters.NullableTimeOnlyConverter.Write(System.Text.Json.Utf8JsonWriter,System.Nullable{System.TimeOnly},System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonStructure.Schema.JsonStructureSchemaExporterOptions">
+            <summary>
+            Options for controlling JSON Structure schema generation.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterOptions.SchemaUri">
+            <summary>
+            Gets or sets the schema URI to use. Defaults to JSON Structure core v0.
+            When <see cref="P:JsonStructure.Schema.JsonStructureSchemaExporterOptions.UseExtendedValidation"/> is true, this is overridden to use the extended meta-schema.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterOptions.IncludeSchemaKeyword">
+            <summary>
+            Gets or sets whether to include the $schema property. Default is true.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterOptions.IncludeTitles">
+            <summary>
+            Gets or sets whether to include title from XML documentation or DisplayName. Default is true.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterOptions.IncludeDescriptions">
+            <summary>
+            Gets or sets whether to include description from XML documentation or Description attribute. Default is true.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterOptions.TreatNullObliviousAsNonNullable">
+            <summary>
+            Gets or sets whether to mark non-nullable reference types as required. Default is true.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterOptions.UseExtendedValidation">
+            <summary>
+            Gets or sets whether to use extended validation keywords from the JSON Structure Validation extension.
+            When enabled, the schema will use the extended meta-schema URI and include a $uses clause
+            with "JSONStructureValidation". This enables additional validation keywords such as
+            minLength, pattern, format, minItems, maxItems, uniqueItems, contains, minProperties,
+            maxProperties, dependentRequired, patternProperties, propertyNames, and default.
+            Default is false.
+            </summary>
+            <remarks>
+            See https://json-structure.github.io/validation/draft-vasters-json-structure-validation.html
+            for the full specification of validation extension keywords.
+            </remarks>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterOptions.TransformSchema">
+            <summary>
+            Gets or sets a callback to transform the generated schema.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Schema.JsonStructureSchemaExporterContext">
+            <summary>
+            Context provided to schema transformation callbacks.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterContext.Type">
+            <summary>
+            Gets the type being processed.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterContext.PropertyInfo">
+            <summary>
+            Gets the property info if processing a property.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterContext.JsonPropertyInfo">
+            <summary>
+            Gets the JSON property info if available.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterContext.Path">
+            <summary>
+            Gets the path in the schema.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Schema.JsonStructureSchemaExporterContext.IsRoot">
+            <summary>
+            Gets whether this is the root schema.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Schema.JsonStructureSchemaExporter">
+            <summary>
+            Generates JSON Structure schemas from .NET types.
+            Similar to System.Text.Json.Schema.JsonSchemaExporter but for JSON Structure format.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Schema.JsonStructureSchemaExporter.GetJsonStructureSchemaAsNode``1(System.Text.Json.JsonSerializerOptions,JsonStructure.Schema.JsonStructureSchemaExporterOptions)">
+            <summary>
+            Gets the JSON Structure schema for the specified type.
+            </summary>
+            <typeparam name="T">The type to generate a schema for.</typeparam>
+            <param name="options">Optional serializer options.</param>
+            <param name="exporterOptions">Optional exporter options.</param>
+            <returns>A JsonNode representing the schema.</returns>
+        </member>
+        <member name="M:JsonStructure.Schema.JsonStructureSchemaExporter.GetJsonStructureSchemaAsNode(System.Type,System.Text.Json.JsonSerializerOptions,JsonStructure.Schema.JsonStructureSchemaExporterOptions)">
+            <summary>
+            Gets the JSON Structure schema for the specified type.
+            </summary>
+            <param name="type">The type to generate a schema for.</param>
+            <param name="options">Optional serializer options.</param>
+            <param name="exporterOptions">Optional exporter options.</param>
+            <returns>A JsonNode representing the schema.</returns>
+        </member>
+        <member name="M:JsonStructure.Schema.JsonStructureSchemaExporter.GetJsonStructureSchemaAsNode(System.Text.Json.JsonSerializerOptions,System.Type,JsonStructure.Schema.JsonStructureSchemaExporterOptions)">
+            <summary>
+            Gets the JSON Structure schema for the specified type using JsonSerializerOptions.
+            </summary>
+            <param name="options">The serializer options.</param>
+            <param name="type">The type to generate a schema for.</param>
+            <param name="exporterOptions">Optional exporter options.</param>
+            <returns>A JsonNode representing the schema.</returns>
+        </member>
+        <member name="M:JsonStructure.Schema.JsonStructureSchemaExporter.GetJsonStructureSchemaAsNode(System.Text.Json.Serialization.Metadata.JsonTypeInfo,JsonStructure.Schema.JsonStructureSchemaExporterOptions)">
+            <summary>
+            Gets the JSON Structure schema for the specified type using JsonTypeInfo.
+            </summary>
+            <param name="typeInfo">The type info.</param>
+            <param name="exporterOptions">Optional exporter options.</param>
+            <returns>A JsonNode representing the schema.</returns>
+        </member>
+        <member name="T:JsonStructure.Validation.ErrorCodes">
+            <summary>
+            Standardized error codes for JSON Structure validation.
+            These codes are consistent across all SDK implementations.
+            </summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaNull">
+            <summary>Schema cannot be null.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaInvalidType">
+            <summary>Schema must be a boolean or object.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaMaxDepthExceeded">
+            <summary>Maximum validation depth exceeded.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaKeywordInvalidType">
+            <summary>Keyword has invalid type.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaKeywordEmpty">
+            <summary>Keyword cannot be empty.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaTypeInvalid">
+            <summary>Invalid type name.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaTypeArrayEmpty">
+            <summary>Type array cannot be empty.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaTypeObjectMissingRef">
+            <summary>Type object must contain $ref.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaRefNotFound">
+            <summary>$ref target does not exist.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaRefCircular">
+            <summary>Circular reference detected.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaExtendsCircular">
+            <summary>Circular $extends reference detected.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaExtendsNotFound">
+            <summary>$extends reference not found.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaRefNotInType">
+            <summary>$ref is only permitted inside the 'type' attribute.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaMissingType">
+            <summary>Schema must have a 'type' keyword.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaRootMissingType">
+            <summary>Root schema must have 'type', '$root', or other schema-defining keyword.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaRootMissingId">
+            <summary>Root schema must have an '$id' keyword.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaRootMissingName">
+            <summary>Root schema with 'type' must have a 'name' property.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaNameInvalid">
+            <summary>Name is not a valid identifier.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaConstraintTypeMismatch">
+            <summary>Constraint value has an invalid type for the schema type.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaConstraintValueInvalid">
+            <summary>Constraint value is invalid.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaConstraintInvalidForType">
+            <summary>Constraint is not valid for this type.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaMinGreaterThanMax">
+            <summary>Minimum cannot be greater than maximum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaPropertiesNotObject">
+            <summary>Properties must be an object.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaRequiredNotArray">
+            <summary>Required must be an array.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaRequiredItemNotString">
+            <summary>Required array items must be strings.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaRequiredPropertyNotDefined">
+            <summary>Required property is not defined in properties.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaAdditionalPropertiesInvalid">
+            <summary>additionalProperties must be a boolean or schema.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaArrayMissingItems">
+            <summary>Array type requires 'items' or 'contains' schema.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaTupleMissingDefinition">
+            <summary>Tuple type requires 'properties' and 'tuple' keyword.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaTupleOrderNotArray">
+            <summary>tuple must be an array.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaMapMissingValues">
+            <summary>Map type requires 'values' schema.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaChoiceMissingChoices">
+            <summary>Choice type requires 'choices' keyword.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaChoicesNotObject">
+            <summary>Choices must be an object.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaPatternInvalid">
+            <summary>Pattern is not a valid regular expression.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaPatternNotString">
+            <summary>Pattern must be a string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaEnumNotArray">
+            <summary>Enum must be an array.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaEnumEmpty">
+            <summary>Enum array cannot be empty.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaEnumDuplicates">
+            <summary>Enum array contains duplicate values.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaCompositionEmpty">
+            <summary>Composition keyword array cannot be empty.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaCompositionNotArray">
+            <summary>Composition keyword must be an array.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaAltnamesNotObject">
+            <summary>altnames must be an object.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaAltnamesValueNotString">
+            <summary>altnames values must be strings.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaIntegerConstraintInvalid">
+            <summary>Keyword must be a non-negative integer.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaNumberConstraintInvalid">
+            <summary>Keyword must be a number.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaPositiveNumberConstraintInvalid">
+            <summary>Keyword must be a positive number.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaUniqueItemsNotBoolean">
+            <summary>uniqueItems must be a boolean.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaItemsInvalidForTuple">
+            <summary>items must be a boolean or schema for tuple type.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.SchemaExtensionKeywordNotEnabled">
+            <summary>Validation extension keyword is used but validation extensions are not enabled.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceRootUnresolved">
+            <summary>Unable to resolve $root reference.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMaxDepthExceeded">
+            <summary>Maximum validation depth exceeded.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceSchemaFalse">
+            <summary>Schema 'false' rejects all values.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceRefUnresolved">
+            <summary>Unable to resolve reference.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceConstMismatch">
+            <summary>Value must equal const value.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceEnumMismatch">
+            <summary>Value must be one of the enum values.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceAnyOfNoneMatched">
+            <summary>Value must match at least one schema in anyOf.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceOneOfInvalidCount">
+            <summary>Value must match exactly one schema in oneOf.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceNotMatched">
+            <summary>Value must not match the schema in 'not'.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceTypeUnknown">
+            <summary>Unknown type.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceTypeMismatch">
+            <summary>Type mismatch.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceNullExpected">
+            <summary>Value must be null.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceBooleanExpected">
+            <summary>Value must be a boolean.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceStringExpected">
+            <summary>Value must be a string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceStringMinLength">
+            <summary>String length is less than minimum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceStringMaxLength">
+            <summary>String length exceeds maximum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceStringPatternMismatch">
+            <summary>String does not match pattern.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstancePatternInvalid">
+            <summary>Invalid regex pattern.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceFormatEmailInvalid">
+            <summary>String is not a valid email address.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceFormatUriInvalid">
+            <summary>String is not a valid URI.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceFormatUriReferenceInvalid">
+            <summary>String is not a valid URI reference.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceFormatDateInvalid">
+            <summary>String is not a valid date.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceFormatTimeInvalid">
+            <summary>String is not a valid time.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceFormatDatetimeInvalid">
+            <summary>String is not a valid date-time.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceFormatUuidInvalid">
+            <summary>String is not a valid UUID.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceFormatIpv4Invalid">
+            <summary>String is not a valid IPv4 address.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceFormatIpv6Invalid">
+            <summary>String is not a valid IPv6 address.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceFormatHostnameInvalid">
+            <summary>String is not a valid hostname.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceNumberExpected">
+            <summary>Value must be a number.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceIntegerExpected">
+            <summary>Value must be an integer.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceIntRangeInvalid">
+            <summary>Integer value is out of range.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceNumberMinimum">
+            <summary>Value is less than minimum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceNumberMaximum">
+            <summary>Value exceeds maximum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceNumberExclusiveMinimum">
+            <summary>Value must be greater than exclusive minimum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceNumberExclusiveMaximum">
+            <summary>Value must be less than exclusive maximum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceNumberMultipleOf">
+            <summary>Value is not a multiple of the specified value.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceObjectExpected">
+            <summary>Value must be an object.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceRequiredPropertyMissing">
+            <summary>Missing required property.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceAdditionalPropertyNotAllowed">
+            <summary>Additional property not allowed.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMinProperties">
+            <summary>Object has fewer properties than minimum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMaxProperties">
+            <summary>Object has more properties than maximum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceDependentRequired">
+            <summary>Dependent required property is missing.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceArrayExpected">
+            <summary>Value must be an array.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMinItems">
+            <summary>Array has fewer items than minimum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMaxItems">
+            <summary>Array has more items than maximum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMinContains">
+            <summary>Array has fewer matching items than minContains.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMaxContains">
+            <summary>Array has more matching items than maxContains.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceSetExpected">
+            <summary>Value must be an array (set).</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceSetDuplicate">
+            <summary>Set contains duplicate value.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMapExpected">
+            <summary>Value must be an object (map).</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMapMinEntries">
+            <summary>Map has fewer entries than minimum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMapMaxEntries">
+            <summary>Map has more entries than maximum.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceMapKeyInvalid">
+            <summary>Map key does not match keyNames or patternKeys constraint.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceTupleExpected">
+            <summary>Value must be an array (tuple).</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceTupleLengthMismatch">
+            <summary>Tuple length does not match schema.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceTupleAdditionalItems">
+            <summary>Tuple has additional items not defined in schema.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceChoiceExpected">
+            <summary>Value must be an object (choice).</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceChoiceMissingChoices">
+            <summary>Choice schema is missing choices.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceChoiceSelectorMissing">
+            <summary>Choice selector property is missing.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceChoiceSelectorNotString">
+            <summary>Selector value must be a string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceChoiceUnknown">
+            <summary>Unknown choice.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceChoiceNoMatch">
+            <summary>Value does not match any choice option.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceChoiceMultipleMatches">
+            <summary>Value matches multiple choice options.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceDateExpected">
+            <summary>Date must be a string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceDateFormatInvalid">
+            <summary>Invalid date format.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceTimeExpected">
+            <summary>Time must be a string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceTimeFormatInvalid">
+            <summary>Invalid time format.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceDatetimeExpected">
+            <summary>DateTime must be a string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceDatetimeFormatInvalid">
+            <summary>Invalid datetime format.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceDurationExpected">
+            <summary>Duration must be a string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceDurationFormatInvalid">
+            <summary>Invalid duration format.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceUuidExpected">
+            <summary>UUID must be a string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceUuidFormatInvalid">
+            <summary>Invalid UUID format.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceUriExpected">
+            <summary>URI must be a string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceUriFormatInvalid">
+            <summary>Invalid URI format.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceUriMissingScheme">
+            <summary>URI must have a scheme.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceBinaryExpected">
+            <summary>Binary must be a base64 string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceBinaryEncodingInvalid">
+            <summary>Invalid base64 encoding.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceJsonpointerExpected">
+            <summary>JSON Pointer must be a string.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceJsonpointerFormatInvalid">
+            <summary>Invalid JSON Pointer format.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceDecimalExpected">
+            <summary>Value must be a valid decimal.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceStringNotExpected">
+            <summary>String value not expected for this type.</summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ErrorCodes.InstanceCustomTypeNotSupported">
+            <summary>Custom type reference not yet supported.</summary>
+        </member>
+        <member name="T:JsonStructure.Validation.ValidationErrors">
+            <summary>
+            Helper methods for creating validation errors with consistent messages.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationErrors.Create(System.String,System.String,System.String,JsonStructure.Validation.ValidationSeverity,JsonStructure.Validation.JsonLocation,System.String)">
+            <summary>
+            Creates a validation error with the specified code and message.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationErrors.Schema(System.String,System.String,System.String,JsonStructure.Validation.JsonLocation)">
+            <summary>
+            Creates a schema validation error.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationErrors.Instance(System.String,System.String,System.String,JsonStructure.Validation.JsonLocation,System.String)">
+            <summary>
+            Creates an instance validation error.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationErrors.Warning(System.String,System.String,System.String,JsonStructure.Validation.JsonLocation,System.String)">
+            <summary>
+            Creates a validation warning.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Validation.InstanceValidator">
+            <summary>
+            Validates JSON instances against JSON Structure schemas.
+            This class is thread-safe - multiple threads can call Validate concurrently.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Validation.InstanceValidator.ValidationContext">
+            <summary>
+            Internal context for a single validation operation.
+            This isolates mutable state per validation call, enabling thread safety.
+            </summary>
+        </member>
+        <member name="F:JsonStructure.Validation.InstanceValidator._currentContext">
+            <summary>
+            AsyncLocal storage for the current validation context.
+            This allows thread-safe access to context without passing it through every method.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.InstanceValidator.CurrentContext">
+            <summary>
+            Gets the current validation context, throwing if not in a validation call.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.InstanceValidator.#ctor(JsonStructure.Validation.ValidationOptions)">
+            <summary>
+            Initializes a new instance of <see cref="T:JsonStructure.Validation.InstanceValidator"/>.
+            </summary>
+            <param name="options">Optional validation options.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.InstanceValidator.Validate(System.Text.Json.Nodes.JsonNode,System.Text.Json.Nodes.JsonNode)">
+            <summary>
+            Validates an instance against a schema.
+            </summary>
+            <param name="instance">The instance to validate.</param>
+            <param name="schema">The schema to validate against.</param>
+            <returns>The validation result.</returns>
+        </member>
+        <member name="M:JsonStructure.Validation.InstanceValidator.Validate(System.String,System.String)">
+            <summary>
+            Validates an instance against a schema from JSON strings.
+            </summary>
+            <param name="instanceJson">The instance JSON string.</param>
+            <param name="schemaJson">The schema JSON string.</param>
+            <returns>The validation result.</returns>
+        </member>
+        <member name="M:JsonStructure.Validation.InstanceValidator.HasImportThatCouldProvide(System.String,System.Text.Json.Nodes.JsonNode)">
+            <summary>
+            Checks if the schema has $import/$importdefs that could provide a ref.
+            This is a heuristic - if the ref starts with #/definitions/ and the schema has imports,
+            we assume the import might provide the ref.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.InstanceValidator.LoadImport(System.String)">
+            <summary>
+            Loads an imported schema from a URI using the ImportLoader.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.InstanceValidator.AddError(JsonStructure.Validation.ValidationResult,System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an error with source location tracking.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Validation.JsonSourceLocator">
+            <summary>
+            Locates the source position (line and column) of a JSON Pointer path within JSON text.
+            This class is thread-safe - multiple threads can call GetLocation concurrently.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.JsonSourceLocator.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:JsonStructure.Validation.JsonSourceLocator"/>.
+            </summary>
+            <param name="json">The original JSON text.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.JsonSourceLocator.GetLocation(System.String)">
+            <summary>
+            Gets the source location for a JSON Pointer path.
+            </summary>
+            <param name="path">The JSON Pointer path (e.g., "/items/0/name").</param>
+            <returns>The location in the source, or <see cref="P:JsonStructure.Validation.JsonLocation.Unknown"/> if not found.</returns>
+        </member>
+        <member name="T:JsonStructure.Validation.SchemaValidator">
+            <summary>
+            Validates JSON Structure schema documents.
+            This class is thread-safe - multiple threads can call Validate concurrently.
+            </summary>
+        </member>
+        <member name="F:JsonStructure.Validation.SchemaValidator.PrimitiveTypes">
+            <summary>
+            The valid primitive types in JSON Structure.
+            These types are defined in the JSON Structure Core specification.
+            </summary>
+        </member>
+        <member name="F:JsonStructure.Validation.SchemaValidator.CompoundTypes">
+            <summary>
+            The valid compound types in JSON Structure.
+            These types are defined in the JSON Structure Core specification (Section 3.2.3).
+            </summary>
+        </member>
+        <member name="F:JsonStructure.Validation.SchemaValidator.AllTypes">
+            <summary>
+            All valid type names.
+            </summary>
+        </member>
+        <member name="F:JsonStructure.Validation.SchemaValidator.SchemaKeywords">
+            <summary>
+            Valid top-level schema keywords.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Validation.SchemaValidator.SchemaValidationContext">
+            <summary>
+            Internal context for a single validation operation.
+            This isolates mutable state per validation call, enabling thread safety.
+            </summary>
+        </member>
+        <member name="F:JsonStructure.Validation.SchemaValidator._currentContext">
+            <summary>
+            AsyncLocal storage for the current validation context.
+            This allows thread-safe access to context without passing it through every method.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.SchemaValidator.CurrentContext">
+            <summary>
+            Gets the current validation context, throwing if not in a validation call.
+            </summary>
+        </member>
+        <member name="F:JsonStructure.Validation.SchemaValidator.ValidationExtensionKeywords">
+            <summary>
+            Validation extension keywords that require the JSONStructureValidation feature.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.#ctor(JsonStructure.Validation.ValidationOptions)">
+            <summary>
+            Initializes a new instance of <see cref="T:JsonStructure.Validation.SchemaValidator"/>.
+            </summary>
+            <param name="options">Optional validation options.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.Validate(System.Text.Json.Nodes.JsonNode)">
+            <summary>
+            Validates a JSON Structure schema document.
+            </summary>
+            <param name="schema">The schema document to validate.</param>
+            <returns>The validation result.</returns>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.ResolveLocalRef(System.String)">
+            <summary>
+            Resolves a local JSON Pointer reference to its target schema.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.Validate(System.String)">
+            <summary>
+            Validates a JSON Structure schema document from JSON string.
+            </summary>
+            <param name="json">The JSON string containing the schema.</param>
+            <returns>The validation result.</returns>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.IsValidationExtensionEnabled(System.Text.Json.Nodes.JsonNode)">
+            <summary>
+            Checks if the validation extension is enabled via $schema or $uses.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.AddExtensionKeywordWarning(JsonStructure.Validation.ValidationResult,System.String,System.String)">
+            <summary>
+            Adds a warning for validation extension keywords used without the extension enabled.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.GetLocation(System.String)">
+            <summary>
+            Gets the source location for a JSON path.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.AddError(JsonStructure.Validation.ValidationResult,System.String,System.String,System.String)">
+            <summary>
+            Adds an error to the result with source location.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.ExtractDefinitionPath(System.String)">
+            <summary>
+            Extracts the definition path from a schema path.
+            e.g., "#/definitions/Foo/properties/bar" -> "#/definitions/Foo"
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.ValidateTypeRefResolution(System.Text.Json.Nodes.JsonNode,System.String,JsonStructure.Validation.ValidationResult,System.Collections.Generic.HashSet{System.String},System.Boolean,System.String)">
+            <summary>
+            Validates that a type $ref resolves and checks for circular references.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.DeepCopySchema(System.Text.Json.Nodes.JsonNode)">
+            <summary>
+            Creates a deep copy of a schema.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.ProcessImportsInExternalSchema(System.Text.Json.Nodes.JsonObject)">
+            <summary>
+            Processes $import and $importdefs in an external schema during initialization.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.ProcessImports(System.Text.Json.Nodes.JsonObject,System.String)">
+            <summary>
+            Processes $import and $importdefs keywords recursively.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.SchemaValidator.RewriteRefs(System.Text.Json.Nodes.JsonObject,System.String)">
+            <summary>
+            Rewrites $ref pointers in imported content to point to their new location.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Validation.ValidationSeverity">
+            <summary>
+            Represents the severity of a validation message.
+            </summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ValidationSeverity.Error">
+            <summary>
+            An error that prevents validation from succeeding.
+            </summary>
+        </member>
+        <member name="F:JsonStructure.Validation.ValidationSeverity.Warning">
+            <summary>
+            A warning that does not prevent validation from succeeding.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Validation.JsonLocation">
+            <summary>
+            Represents a location in a JSON document with line and column information.
+            </summary>
+            <param name="Line">The 1-based line number.</param>
+            <param name="Column">The 1-based column number.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.JsonLocation.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Represents a location in a JSON document with line and column information.
+            </summary>
+            <param name="Line">The 1-based line number.</param>
+            <param name="Column">The 1-based column number.</param>
+        </member>
+        <member name="P:JsonStructure.Validation.JsonLocation.Line">
+            <summary>The 1-based line number.</summary>
+        </member>
+        <member name="P:JsonStructure.Validation.JsonLocation.Column">
+            <summary>The 1-based column number.</summary>
+        </member>
+        <member name="P:JsonStructure.Validation.JsonLocation.Unknown">
+            <summary>
+            Gets a location representing an unknown position.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.JsonLocation.IsKnown">
+            <summary>
+            Gets whether this location is known (non-zero).
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.JsonLocation.ToString">
+            <summary>
+            Returns a string representation of the location.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Validation.ValidationError">
+            <summary>
+            Represents an error or warning encountered during validation.
+            </summary>
+            <param name="Code">The unique error code (e.g., SCHEMA_NULL, INSTANCE_TYPE_MISMATCH).</param>
+            <param name="Message">The error message describing the validation failure.</param>
+            <param name="Path">The JSON path where the error occurred.</param>
+            <param name="Severity">The severity of the message (Error or Warning).</param>
+            <param name="Location">The line and column in the source JSON where the error occurred.</param>
+            <param name="SchemaPath">For instance validation, the path to the schema rule that caused the error.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationError.#ctor(System.String,System.String,System.String,JsonStructure.Validation.ValidationSeverity,JsonStructure.Validation.JsonLocation,System.String)">
+            <summary>
+            Represents an error or warning encountered during validation.
+            </summary>
+            <param name="Code">The unique error code (e.g., SCHEMA_NULL, INSTANCE_TYPE_MISMATCH).</param>
+            <param name="Message">The error message describing the validation failure.</param>
+            <param name="Path">The JSON path where the error occurred.</param>
+            <param name="Severity">The severity of the message (Error or Warning).</param>
+            <param name="Location">The line and column in the source JSON where the error occurred.</param>
+            <param name="SchemaPath">For instance validation, the path to the schema rule that caused the error.</param>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationError.Code">
+            <summary>The unique error code (e.g., SCHEMA_NULL, INSTANCE_TYPE_MISMATCH).</summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationError.Message">
+            <summary>The error message describing the validation failure.</summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationError.Path">
+            <summary>The JSON path where the error occurred.</summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationError.Severity">
+            <summary>The severity of the message (Error or Warning).</summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationError.Location">
+            <summary>The line and column in the source JSON where the error occurred.</summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationError.SchemaPath">
+            <summary>For instance validation, the path to the schema rule that caused the error.</summary>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationError.#ctor(System.String,System.String)">
+            <summary>
+            Creates a ValidationError with just a message and path (for backward compatibility).
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationError.ToString">
+            <summary>
+            Returns a string representation of the error.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Validation.ValidationResult">
+            <summary>
+            Represents the result of a validation operation.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationResult.IsValid">
+            <summary>
+            Gets whether the validation was successful (no errors).
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationResult.Errors">
+            <summary>
+            Gets the collection of validation errors.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationResult.Warnings">
+            <summary>
+            Gets the collection of validation warnings.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationResult.AllMessages">
+            <summary>
+            Gets all messages (errors and warnings combined).
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationResult.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:JsonStructure.Validation.ValidationResult"/>.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationResult.#ctor(System.Collections.Generic.IEnumerable{JsonStructure.Validation.ValidationError})">
+            <summary>
+            Initializes a new instance of <see cref="T:JsonStructure.Validation.ValidationResult"/> with the specified errors.
+            </summary>
+            <param name="errors">The validation errors.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationResult.AddError(System.String,System.String)">
+            <summary>
+            Adds an error to the result (backward compatible).
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="path">The path where the error occurred.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationResult.AddError(System.String,System.String,System.String,JsonStructure.Validation.JsonLocation,System.String)">
+            <summary>
+            Adds an error with a code to the result.
+            </summary>
+            <param name="code">The error code.</param>
+            <param name="message">The error message.</param>
+            <param name="path">The path where the error occurred.</param>
+            <param name="location">The source location.</param>
+            <param name="schemaPath">The schema path for instance validation errors.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationResult.AddError(JsonStructure.Validation.ValidationError)">
+            <summary>
+            Adds an error to the result.
+            </summary>
+            <param name="error">The error to add.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationResult.AddWarning(System.String,System.String,System.String,JsonStructure.Validation.JsonLocation,System.String)">
+            <summary>
+            Adds a warning to the result.
+            </summary>
+            <param name="code">The warning code.</param>
+            <param name="message">The warning message.</param>
+            <param name="path">The path where the warning occurred.</param>
+            <param name="location">The source location.</param>
+            <param name="schemaPath">The schema path for instance validation warnings.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationResult.AddErrors(System.Collections.Generic.IEnumerable{JsonStructure.Validation.ValidationError})">
+            <summary>
+            Adds multiple errors to the result.
+            </summary>
+            <param name="errors">The errors to add.</param>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationResult.Success">
+            <summary>
+            Creates a successful validation result.
+            </summary>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationResult.Failure(System.String,System.String)">
+            <summary>
+            Creates a failed validation result with a single error.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="path">The path where the error occurred.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationResult.Failure(System.Collections.Generic.IEnumerable{JsonStructure.Validation.ValidationError})">
+            <summary>
+            Creates a failed validation result with multiple errors.
+            </summary>
+            <param name="errors">The errors.</param>
+        </member>
+        <member name="M:JsonStructure.Validation.ValidationResult.ToString">
+            <summary>
+            Returns a string representation of the validation result.
+            </summary>
+        </member>
+        <member name="T:JsonStructure.Validation.ValidationOptions">
+            <summary>
+            Options for controlling validation behavior.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationOptions.StopOnFirstError">
+            <summary>
+            Gets or sets whether to stop on the first error. Default is false.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationOptions.StrictFormatValidation">
+            <summary>
+            Gets or sets whether to validate extended formats strictly. Default is true.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationOptions.MaxValidationDepth">
+            <summary>
+            Gets or sets the maximum depth for recursive schema validation. Default is 64.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationOptions.ReferenceResolver">
+            <summary>
+            Gets or sets a function to resolve external schema references.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationOptions.ImportLoader">
+            <summary>
+            Gets or sets a function to load imported schemas.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationOptions.AllowDollar">
+            <summary>
+            Gets or sets whether to allow $ in property names (required for validating metaschemas).
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationOptions.AllowImport">
+            <summary>
+            Gets or sets whether to enable processing of $import/$importdefs.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationOptions.ExternalSchemas">
+            <summary>
+            Gets or sets pre-loaded schemas for import resolution by $id.
+            </summary>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationOptions.WarnOnUnusedExtensionKeywords">
+            <summary>
+            Gets or sets whether to emit warnings when extension keywords are used without being enabled
+            via $schema or $uses. When true (default), the validator will emit warnings for validation
+            extension keywords (like minimum, maximum, minLength, maxLength, pattern, format, minItems,
+            maxItems, etc.) that are present in a schema but won't be enforced because the validation
+            extension is not enabled. Set to false to suppress these warnings.
+            </summary>
+            <remarks>
+            Extension keywords are optional features defined in JSON Structure Validation extension.
+            They require either the validation meta-schema or a $uses clause with "JSONStructureValidation"
+            to be enforced. Using them without enabling the extension means they will be ignored during
+            validation, which might not be the author's intent.
+            </remarks>
+        </member>
+        <member name="P:JsonStructure.Validation.ValidationOptions.Default">
+            <summary>
+            Gets a default instance of the options.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Cytoscape.NET</name></assembly>
+<members>
+<member name="T:Cytoscape.NET.Layout">
+<summary>
+ Layout type inherits from dynamic object
+</summary>
+</member>
+<member name="M:Cytoscape.NET.DisplayOptions.style(Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode}},Microsoft.FSharp.Core.FSharpOption{Cytoscape.NET.CytoscapeJSReference})">
+ <summary>
+ Returns a function sthat applies the given styles to a DisplayOptions object
+ </summary>
+ <param name="AdditionalHeadTags">Additional tags that will be included in the document's head </param>
+ <param name="Description">HTML tags that appear below the chart in HTML docs</param>
+ <param name="CytoscapeJSReference">Sets how cytoscape.js is referenced in the head of html docs. When CDN, a script tag that references a CDN is included in the output. When Full, a script tag containing the cytoscape.js source code (~400KB) is included in the output. HTML files generated with this option are fully self-contained and can be used offline</param>
+</member>
+<member name="M:Cytoscape.NET.DisplayOptions.initDefault">
+ <summary>
+ Returns a DisplayOptions Object with the cdn set to Globals.CYTOSCAPEJS_VERSION and additional head tags 
+ </summary>
+</member>
+<member name="M:Cytoscape.NET.DisplayOptions.initCDNOnly">
+ <summary>
+ Returns a DisplayOptions Object with the cdn set to Globals.CYTOSCAPEJS_VERSION
+ </summary>
+</member>
+<member name="M:Cytoscape.NET.DisplayOptions.init(Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode}},Microsoft.FSharp.Core.FSharpOption{Cytoscape.NET.CytoscapeJSReference})">
+ <summary>
+ Returns a new DisplayOptions object with the given styles
+ </summary>
+ <param name="AdditionalHeadTags">Additional tags that will be included in the document's head </param>
+ <param name="Description">HTML tags that appear below the chart in HTML docs</param>
+ <param name="CytoscapeJSReference">Sets how cytoscape.js is referenced in the head of html docs. When CDN, a script tag that references a CDN is included in the output. When Full, a script tag containing the cytoscape.js source code (~400KB) is included in the output. HTML files generated with this option are fully self-contained and can be used offline</param>
+</member>
+<member name="T:Cytoscape.NET.CytoscapeJSReference.Require">
+<summary>
+ Use requirejs to reference cytoscape.js from a url
+</summary>
+</member>
+<member name="T:Cytoscape.NET.CytoscapeJSReference.Full">
+<summary>
+ Full cytoscape.js source code (~400KB) is included in the output. HTML files generated with this option are fully self-contained and can be used offline
+</summary>
+</member>
+<member name="T:Cytoscape.NET.CytoscapeJSReference.CDN">
+<summary>
+ The url for a script tag that references the cytoscape.js CDN
+</summary>
+</member>
+<member name="T:Cytoscape.NET.CytoscapeJSReference">
+<summary>
+Sets how cytoscape is referenced in the head of html docs.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.HTML.toGraphHTMLNodes(Microsoft.FSharp.Core.FSharpOption{Cytoscape.NET.DisplayOptions})">
+<summary>
+ Converts a CyGraph to it HTML representation. The div layer has a default size of 600 if not specified otherwise.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.HTML.toEmbeddedHTML(Microsoft.FSharp.Core.FSharpOption{Cytoscape.NET.DisplayOptions})">
+<summary>
+ Converts a CyGraph to it HTML representation and embeds it into a html page.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.HTML.openOsSpecificFile(System.String)">
+<summary>
+Choose process to open plots with depending on OS. Thanks to @zyzhu for hinting at a solution (https://github.com/plotly/Plotly.NET/issues/31)
+</summary>
+</member>
+<member name="T:Cytoscape.NET.HTML">
+<summary>
+ HTML template for Cytoscape
+</summary>
+</member>
+<member name="P:Cytoscape.NET.Globals.LOGO_BASE64">
+<summary>
+ base64 encoded favicon logo for generated htmls
+</summary>
+</member>
+<member name="P:Cytoscape.NET.Globals.CYTOSCAPEJS_VERSION">
+<summary>
+ The cytoscape js version loaded from cdn in rendered html docs
+</summary>
+</member>
+<member name="M:Cytoscape.NET.CyParamMapper.op_LessEqualsDot``5(Microsoft.FSharp.Core.FSharpFunc{System.String,Cytoscape.NET.CyParam.CyStyleParam},Microsoft.FSharp.Core.FSharpFunc{``0,Cytoscape.NET.CyParam.CyStyleParam},``1,``2,``3,``4)">
+<summary>
+ Specifies a linear mapping to an element’s data field. For example, 
+ mapData(weight, 0, 100, blue, red) maps an element’s weight to colours between blue and red for weights between 0 and 100.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.CyParamMapper.op_EqualsDot``1(Microsoft.FSharp.Core.FSharpFunc{System.String,Cytoscape.NET.CyParam.CyStyleParam},Microsoft.FSharp.Core.FSharpFunc{``0,Cytoscape.NET.CyParam.CyStyleParam})">
+<summary>
+ Specifies a direct mapping to an element’s data field. For example,
+ data(descr) would map a property to the value in an element’s descr field in its data (i.e. ele.data(&quot;descr&quot;)).
+</summary>
+</member>
+<member name="M:Cytoscape.NET.LayoutModule.LayoutOptions.Generic``9(Microsoft.FSharp.Core.FSharpOption{``0},Microsoft.FSharp.Core.FSharpOption{``1},Microsoft.FSharp.Core.FSharpOption{``2},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{``3},Microsoft.FSharp.Core.FSharpOption{``4},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{``5},Microsoft.FSharp.Core.FSharpOption{``6},Microsoft.FSharp.Core.FSharpOption{``7})">
+<summary>
+ Applies the generic layout options to the LayoutObjects
+</summary>
+</member>
+<member name="M:Cytoscape.NET.LayoutModule.LayoutOptions.Cose``5(Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{``0},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{``1},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{``2},Microsoft.FSharp.Core.FSharpOption{``3},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Double})">
+<summary>
+ Applies the generic layout options to the LayoutObjects
+</summary>
+</member>
+<member name="T:Cytoscape.NET.LayoutModule.LayoutOptions">
+<summary>
+ Functions provide the options of the Layout objects
+</summary>
+</member>
+<member name="M:Cytoscape.NET.LayoutModule.initRandom(Microsoft.FSharp.Core.FSharpFunc{Cytoscape.NET.Layout,Cytoscape.NET.Layout})">
+<summary>
+ initializes a layout of type &quot;random&quot; applying the givin layout option function.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.LayoutModule.initCoseBilkent(Microsoft.FSharp.Core.FSharpFunc{Cytoscape.NET.Layout,Cytoscape.NET.Layout})">
+<summary>
+ initializes a layout of type &quot;cose-bilkent&quot; applying the givin layout option function.
+ The cose-bilkent extension is an evolution of the cose algorithm that is more computationally expensive but produces near-perfect results.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.LayoutModule.initCose(Microsoft.FSharp.Core.FSharpFunc{Cytoscape.NET.Layout,Cytoscape.NET.Layout})">
+<summary>
+ initializes a layout of type &quot;cose&quot; applying the givin layout option function.
+ The cose (Compound Spring Embedder) layout uses a physics simulation to lay out graphs.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.LayoutModule.initBreadthfirst(Microsoft.FSharp.Core.FSharpFunc{Cytoscape.NET.Layout,Cytoscape.NET.Layout})">
+<summary>
+ initializes a layout of type &quot;breadthfirst&quot; applying the givin layout option function.
+ The &quot;breadthfirst&quot; layout puts nodes in a hierarchy, based on a breadthfirst traversal of the graph. It is best suited to trees
+ and forests in its default top-down mode, and it is best suited to DAGs in its circle mode.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.LayoutModule.initConcentric(Microsoft.FSharp.Core.FSharpFunc{Cytoscape.NET.Layout,Cytoscape.NET.Layout})">
+<summary>
+ initializes a layout of type &quot;concentric&quot; applying the givin layout option function.
+ The concentric layout positions nodes in concentric circles, based on a metric that you specify to segregate the nodes into levels.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.LayoutModule.initCircle(Microsoft.FSharp.Core.FSharpFunc{Cytoscape.NET.Layout,Cytoscape.NET.Layout})">
+<summary>
+ initializes a layout of type &quot;circle&quot; applying the givin layout option function.
+ The &quot;circle&quot; layout puts nodes in a circle.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.LayoutModule.initGrid(Microsoft.FSharp.Core.FSharpFunc{Cytoscape.NET.Layout,Cytoscape.NET.Layout})">
+<summary>
+ initializes a layout of type &quot;grid&quot; applying the givin layout option function 
+ The &quot;grid&quot; layout puts nodes in a well-spaced grid.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.LayoutModule.initPresent(Microsoft.FSharp.Core.FSharpFunc{Cytoscape.NET.Layout,Cytoscape.NET.Layout})">
+<summary>
+ initializes a layout of type &quot;preset&quot; applying the givin layout option function.
+ The &quot;preset&quot; layout puts nodes in the positions you specify manually.
+</summary>
+</member>
+<member name="M:Cytoscape.NET.CytoscapeModel.Element.Init``3(Microsoft.FSharp.Core.FSharpOption{Cytoscape.NET.CytoscapeModel.Data},Microsoft.FSharp.Core.FSharpOption{``0},Microsoft.FSharp.Core.FSharpOption{``1},Microsoft.FSharp.Core.FSharpOption{``2},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Init Element()
+</summary>
+</member>
+<member name="M:Cytoscape.NET.CytoscapeModel.Canvas.InitDefault">
+<summary>
+ Init a default canvas for responsive rendering ( width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; )
+</summary>
+</member>
+<member name="M:Cytoscape.NET.Defaults.reset">
+<summary>
+ reset global defaults to the initial values
+</summary>
+</member>
+<member name="P:Cytoscape.NET.Defaults.DefaultHeight">
+<summary>
+ The default height of the graph container in generated html files. Default: 600 (px)
+</summary>
+</member>
+<member name="P:Cytoscape.NET.Defaults.DefaultWidth">
+<summary>
+ The default width of the graph container in generated html files. Default: 600 (px)
+</summary>
+</member>
+<member name="T:Cytoscape.NET.Defaults">
+<summary>
+ Contains mutable global default values.
+
+ Changing these values will apply the default values to all consecutive Graph generations.
+</summary>
+</member>
+</members>
+</doc>

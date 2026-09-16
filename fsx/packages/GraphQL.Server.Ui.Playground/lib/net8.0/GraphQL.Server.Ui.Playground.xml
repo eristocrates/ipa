@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GraphQL.Server.Ui.Playground</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AspNetCore.Builder.PlaygroundApplicationBuilderExtensions">
+            <summary>
+            Extensions for <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add <see cref="T:GraphQL.Server.Ui.Playground.PlaygroundMiddleware"/> in the HTTP request pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.PlaygroundApplicationBuilderExtensions.UseGraphQLPlayground(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.String,GraphQL.Server.Ui.Playground.PlaygroundOptions)">
+            <summary> Adds middleware for GraphQL Playground using the specified options. </summary>
+            <param name="app"> <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to configure an application's request pipeline. </param>
+            <param name="options"> Options to customize <see cref="T:GraphQL.Server.Ui.Playground.PlaygroundMiddleware"/>. If not set, then the default values will be used. </param>
+            <param name="path">The path to the GraphQL Playground endpoint which defaults to '/ui/playground'</param>
+            <returns> The reference to provided <paramref name="app"/> instance. </returns>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.PlaygroundEndpointRouteBuilderExtensions">
+            <summary>
+            Extensions for <see cref="T:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder"/> to add <see cref="T:GraphQL.Server.Ui.Playground.PlaygroundMiddleware"/> in the HTTP request pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.PlaygroundEndpointRouteBuilderExtensions.MapGraphQLPlayground(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder,System.String,GraphQL.Server.Ui.Playground.PlaygroundOptions)">
+            <summary>
+            Add the Playground middleware to the HTTP request pipeline
+            </summary>
+            <param name="endpoints">Defines a contract for a route builder in an application. A route builder specifies the routes for an application.</param>
+            <param name="options">Options to customize <see cref="T:GraphQL.Server.Ui.Playground.PlaygroundMiddleware"/>. If not set, then the default values will be used.</param>
+            <param name="pattern">The route pattern.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> received as parameter</returns>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.PlaygroundEndpointConventionBuilder">
+            <summary>
+            Builds conventions that will be used for customization of Microsoft.AspNetCore.Builder.EndpointBuilder instances.
+            Special convention builder that allows you to write specific extension methods for ASP.NET Core routing subsystem.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.PlaygroundEndpointConventionBuilder.Add(System.Action{Microsoft.AspNetCore.Builder.EndpointBuilder})">
+            <inheritdoc />
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.Internal.SourceGenerationContext.Boolean">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.Internal.SourceGenerationContext.DictionaryStringObject">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.Internal.SourceGenerationContext.Int32">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.Internal.SourceGenerationContext.Object">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.Internal.SourceGenerationContext.String">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.Internal.SourceGenerationContext.Default">
+            <summary>
+            The default <see cref="T:System.Text.Json.Serialization.JsonSerializerContext"/> associated with a default <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.Internal.SourceGenerationContext.GeneratedSerializerOptions">
+            <summary>
+            The source-generated options associated with this context.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Ui.Playground.Internal.SourceGenerationContext.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Ui.Playground.Internal.SourceGenerationContext.#ctor(System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GraphQL.Server.Ui.Playground.Internal.SourceGenerationContext.GetTypeInfo(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Ui.Playground.PlaygroundActionResult">
+            <summary>
+            An action result that returns a Playground user interface.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Ui.Playground.PlaygroundActionResult.#ctor(GraphQL.Server.Ui.Playground.PlaygroundOptions)">
+            <summary>
+            Initializes the Playground action result with the specified options.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Ui.Playground.PlaygroundActionResult.#ctor(System.Action{GraphQL.Server.Ui.Playground.PlaygroundOptions})">
+            <summary>
+            Initializes the Playground action result with the specified optional configuration delegate.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Ui.Playground.PlaygroundActionResult.ExecuteResultAsync(Microsoft.AspNetCore.Mvc.ActionContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GraphQL.Server.Ui.Playground.PlaygroundMiddleware">
+            <summary>
+            A middleware for GraphQL Playground UI.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Ui.Playground.PlaygroundMiddleware._pageModel">
+            <summary>
+            The page model used to render Playground.
+            </summary>
+        </member>
+        <member name="M:GraphQL.Server.Ui.Playground.PlaygroundMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,GraphQL.Server.Ui.Playground.PlaygroundOptions)">
+            <summary>
+            Create a new <see cref="T:GraphQL.Server.Ui.Playground.PlaygroundMiddleware"/>
+            </summary>
+            <param name="next">The next request delegate; not used, this is a terminal middleware.</param>
+            <param name="options">Options to customize middleware</param>
+        </member>
+        <member name="M:GraphQL.Server.Ui.Playground.PlaygroundMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Try to execute the logic of the middleware
+            </summary>
+            <param name="httpContext">The HttpContext</param>
+        </member>
+        <member name="T:GraphQL.Server.Ui.Playground.PlaygroundOptions">
+            <summary>
+            Options to customize <see cref="T:GraphQL.Server.Ui.Playground.PlaygroundMiddleware"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.GraphQLEndPoint">
+            <summary>
+            The GraphQL EndPoint.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.SubscriptionsEndPoint">
+            <summary>
+            Subscriptions EndPoint.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.GraphQLConfig">
+            <summary>
+            The GraphQL configuration.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.Headers">
+            <summary>
+            HTTP headers with which the GraphQL Playground will be initialized.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.IndexStream">
+            <summary>
+            Gets or sets a Stream function for retrieving the GraphQL Playground UI page.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.PostConfigure">
+            <summary>
+            Gets or sets a delegate that is called after all transformations of the GraphQL Playground UI page.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.PlaygroundSettings">
+            <summary>
+            The GraphQL Playground Settings, see <see href="https://github.com/prisma-labs/graphql-playground/blob/master/README.md#settings"/>.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.EditorCursorShape">
+            <summary>
+            Cursor shape.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.EditorFontFamily">
+            <summary>
+            Source Code Pro, Consolas, Inconsolata, Droid Sans Mono, Monaco, monospace.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.EditorFontSize">
+            <summary>
+            Editor font size.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.EditorReuseHeaders">
+            <summary>
+            New tab reuses headers from last tab.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.EditorTheme">
+            <summary>
+            Editor theme.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.BetaUpdates">
+            <summary>
+            Enable beta updates.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.PrettierPrintWidth">
+            <summary>
+            Print width setting.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.PrettierTabWidth">
+            <summary>
+            Tab width setting.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.PrettierUseTabs">
+            <summary>
+            Use tabs.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.RequestCredentials">
+            <summary>
+            Indicates whether the user agent should send cookies from the other domain
+            in the case of cross-origin requests.
+            </summary>
+            <remarks>
+            See <see href="https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials"/>.
+            </remarks>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.SchemaPollingEnabled">
+            <summary>
+            Enables automatic schema polling.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.SchemaPollingEndpointFilter">
+            <summary>
+            Endpoint filter for schema polling, for example *localhost*.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.SchemaPollingInterval">
+            <summary>
+            Schema polling interval in ms.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.SchemaDisableComments">
+            <summary>
+            Disable comments.
+            </summary>
+        </member>
+        <member name="P:GraphQL.Server.Ui.Playground.PlaygroundOptions.HideTracingResponse">
+            <summary>
+            Hide tracing data in responses.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Ui.Playground.EditorCursorShape">
+            <summary>
+            Available cursor shapes.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Ui.Playground.EditorCursorShape.Line">
+            <summary>
+            Line.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Ui.Playground.EditorCursorShape.Block">
+            <summary>
+            Block.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Ui.Playground.EditorCursorShape.Underline">
+            <summary>
+            Underline.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Ui.Playground.EditorTheme">
+            <summary>
+            Available editor themes.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Ui.Playground.EditorTheme.Dark">
+            <summary>
+            Dark theme.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Ui.Playground.EditorTheme.Light">
+            <summary>
+            Light theme.
+            </summary>
+        </member>
+        <member name="T:GraphQL.Server.Ui.Playground.RequestCredentials">
+            <summary>
+            Indicates whether the user agent should send cookies from the other domain
+            in the case of cross-origin requests.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Ui.Playground.RequestCredentials.Omit">
+            <summary>
+            Never send or receive cookies.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Ui.Playground.RequestCredentials.Include">
+            <summary>
+            Always send user credentials (cookies, basic http auth, etc..), even for cross-origin calls.
+            </summary>
+        </member>
+        <member name="F:GraphQL.Server.Ui.Playground.RequestCredentials.SameOrigin">
+            <summary>
+            Send user credentials (cookies, basic http auth, etc..) if the URL is on the same origin as the calling script.
+            </summary>
+        </member>
+    </members>
+</doc>

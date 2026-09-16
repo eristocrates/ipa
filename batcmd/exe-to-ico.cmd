@@ -1,0 +1,3 @@
+@echo off
+echo loading...
+PowerShell.exe -NoLogo -NoProfile -NoExit -ExecutionPolicy RemoteSigned "D:\Repositories\eristocrates\ipa\fsx\exe-to-ico.fsx" %*

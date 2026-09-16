@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>CSharpStyleChecker</id>
+    <version>1.0.1</version>
+    <authors>DevAM</authors>
+    <developmentDependency>true</developmentDependency>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>PACKAGE_README.md</readme>
+    <projectUrl>https://github.com/DevAM/CopilotAIWorkflow</projectUrl>
+    <description>Roslyn analyzers enforcing CopilotAIWorkflow C# style conventions.</description>
+    <copyright>Copyright © 2026 DevAM. Licensed under the MIT License. See LICENSE in the repository root.</copyright>
+    <tags>roslyn analyzer csharp style</tags>
+    <repository type="git" url="https://github.com/DevAM/CopilotAIWorkflow" commit="11e2209ec8fbc9a12cddb463ae292d9eff27e6fa" />
+  </metadata>
+</package>

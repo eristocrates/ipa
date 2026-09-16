@@ -1,4 +1,0 @@
-﻿namespace Fibo.DER.DerivativesContracts.MetadataDERDerivativesContracts.Namespace
-module MetadataDERDerivativesContracts =
-    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/MetadataDERDerivativesContracts/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/DER/DerivativesContracts/MetadataDERDerivativesContracts.rdf") (Some @"fibo.DER.DerivativesContracts.MetadataDERDerivativesContracts") None
-    let DerivativesContractsModule = {_prefixID with _localName = "DerivativesContractsModule"}

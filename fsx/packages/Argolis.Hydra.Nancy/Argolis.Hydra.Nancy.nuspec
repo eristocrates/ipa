@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Argolis.Hydra.Nancy</id>
+    <version>0.8.0</version>
+    <authors>Argolis.Hydra.Nancy</authors>
+    <owners>Argolis.Hydra.Nancy</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/wikibus/Argolis</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png</iconUrl>
+    <description>Package Description</description>
+    <tags>rdf rest hydra nancy semantic web json-ld</tags>
+    <repository type="git" url="https://github.com/wikibus/Argolis" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Argolis.Hydra" version="0.8.0" exclude="Build,Analyzers" />
+        <dependency id="JsonLd.Entities" version="0.3.5" exclude="Build,Analyzers" />
+        <dependency id="Nancy" version="2.0.0" exclude="Build,Analyzers" />
+        <dependency id="Rdf.Vocabularies" version="1.4.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

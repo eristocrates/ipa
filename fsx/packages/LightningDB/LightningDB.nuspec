@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>LightningDB</id>
+    <version>0.23.0</version>
+    <authors>Ilya Lukyanov,Corey Kaylor</authors>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>lightningdb.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/CoreyKaylor/Lightning.NET</projectUrl>
+    <description>LightningDB</description>
+    <tags>lmdb lightning storage persistance key-value nosql</tags>
+    <repository type="git" commit="dc732e32cf1d9d88c0157ebe0ff98654b4300e2a" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+      <group targetFramework="net8.0" />
+      <group targetFramework="net9.0" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Memory" version="4.6.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

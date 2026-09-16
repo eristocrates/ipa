@@ -1,0 +1,13 @@
+
+#load "System.Net.Http.csx" 
+#load "System.Text.RegularExpressions.csx" 
+#load "System.Xml.XmlDocument.csx" 
+#load "Waher.Content.csx" 
+#load "Waher.Content.Html.csx" 
+#load "Waher.Content.Markdown.csx" 
+#load "Waher.Content.Xml.csx" 
+#load "Waher.Persistence.csx" 
+#load "Waher.Runtime.Cache.csx" 
+#load "Waher.Runtime.Inventory.csx" 
+#load "Waher.Script.csx" 
+#r "../../packages/Waher.Content.Semantic/lib/netstandard2.0/Waher.Content.Semantic.dll" 

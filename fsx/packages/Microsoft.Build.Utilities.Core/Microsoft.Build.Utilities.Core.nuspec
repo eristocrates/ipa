@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Build.Utilities.Core</id>
+    <version>18.10.1</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>MSBuild-NuGet-Icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>http://go.microsoft.com/fwlink/?LinkId=624683</projectUrl>
+    <iconUrl>https://aka.ms/msbuildicon</iconUrl>
+    <description>This package contains the Microsoft.Build.Utilities assembly which is used to implement custom MSBuild tasks.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>MSBuild</tags>
+    <serviceable>true</serviceable>
+    <repository type="git" url="https://github.com/dotnet/msbuild" commit="3cd27c13eb422ceea9de6fb84d12684e3bcf3188" />
+    <dependencies>
+      <group targetFramework="net11.0">
+        <dependency id="Microsoft.Build.Framework" version="[18.10.1, 18.10.1]" exclude="Build,Analyzers" />
+        <dependency id="System.Configuration.ConfigurationManager" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.EventLog" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Cryptography.ProtectedData" version="10.0.10" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="Microsoft.Build.Framework" version="[18.10.1, 18.10.1]" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Immutable" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="System.Configuration.ConfigurationManager" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.IO.Redist" version="6.1.0" exclude="Build,Analyzers" />
+        <dependency id="System.Memory" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.CompilerServices.Unsafe" version="6.1.2" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.10" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="System.ValueTuple" version="4.6.2" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Build.Framework" version="[18.10.1, 18.10.1]" exclude="Build,Analyzers" />
+        <dependency id="System.Memory" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.CompilerServices.Unsafe" version="6.1.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

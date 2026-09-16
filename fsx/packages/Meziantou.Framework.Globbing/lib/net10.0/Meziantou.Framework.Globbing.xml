@@ -1,0 +1,767 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Globbing</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Globbing.Glob">
+            <summary>
+                Glob patterns specify sets of filenames with wildcard characters. Supported syntaxes:
+                <list type="table">
+                    <listheader>
+                        <term>Wildcard</term>
+                        <description>Description</description>
+                    </listheader>
+                    <item>
+                        <term>*</term>
+                        <description>matches any number of characters including none, excluding directory separator</description>
+                    </item>
+                    <item>
+                        <term>?</term>
+                        <description>matches a single character</description>
+                    </item>
+                    <item>
+                        <term>[abc]</term>
+                        <description>matches one character in the brackets</description>
+                    </item>
+                    <item>
+                        <term>[!abc]</term>
+                        <description>matches any character not in the brackets. <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Git"/>, <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Posix"/> and <see cref="F:Meziantou.Framework.Globbing.GlobDialect.PosixPath"/> also accept <c>[^abc]</c>.</description>
+                    </item>
+                    <item>
+                        <term>[a-z]</term>
+                        <description>matches one character from the range given in the brackets. With <c>GlobOptions.IgnoreCase</c>, a character matches when it, its lowercase form or its uppercase form is in the range.</description>
+                    </item>
+                    <item>
+                        <term>[!a-z]</term>
+                        <description>matches one character that is not from the range given in the brackets, using the same rule as <c>[a-z]</c> for <c>GlobOptions.IgnoreCase</c>.</description>
+                    </item>
+                    <item>
+                        <term>[[:alpha:]]</term>
+                        <description>matches one character of a POSIX character class. Only supported by <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Git"/>, <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Posix"/> and <see cref="F:Meziantou.Framework.Globbing.GlobDialect.PosixPath"/>. The supported classes are <c>alnum</c>, <c>alpha</c>, <c>blank</c>, <c>cntrl</c>, <c>digit</c>, <c>graph</c>, <c>lower</c>, <c>print</c>, <c>punct</c>, <c>space</c>, <c>upper</c> and <c>xdigit</c>. With <c>GlobOptions.IgnoreCase</c>, <c>upper</c> and <c>lower</c> match a letter of either case.</description>
+                    </item>
+                    <item>
+                        <term>[[=a=]] [[.a.]]</term>
+                        <description>an equivalence class and a collating symbol, which both stand for the character they hold. Only supported by <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Posix"/> and <see cref="F:Meziantou.Framework.Globbing.GlobDialect.PosixPath"/>. A collating symbol can be a range bound: <c>[[.-.]-0]</c>.</description>
+                    </item>
+                    <item>
+                        <term>{abc,123}</term>
+                        <description>comma-delimited set of literals, matches 'abc' or '123'. Only supported by <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Standard"/>; the other dialects read the braces as ordinary characters.</description>
+                    </item>
+                    <item>
+                        <term>**</term>
+                        <description>matches zero or more directories when it makes a whole path segment. A trailing <c>**</c> matches at least one segment. The POSIX dialects read it as a <c>*</c>.</description>
+                    </item>
+                    <item>
+                        <term>!pattern</term>
+                        <description>leading '!' negates the pattern. Only supported by <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Standard"/> and <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Git"/>.</description>
+                    </item>
+                    <item>
+                        <term>\x</term>
+                        <description>escapes the following character. For instance, '\*' matches the literal character '*' instead of being a wildcard. <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Git"/> and the POSIX dialects also read an escape in a bracket expression. <see cref="F:Meziantou.Framework.Globbing.GlobDialect.MSBuild"/> reads '\' as a path separator and escapes a character with <c>%XX</c> instead.</description>
+                    </item>
+                </list>
+                <para>
+                    If the pattern ends with a <c>/</c>, only directories are matched. Otherwise, only files are matched.
+                    A <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Git"/> pattern matches both a file and a directory, and one ending with a
+                    <c>/</c> matches the directory itself as well as everything below it. A <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Posix"/>
+                    pattern matches a plain string, whatever the kind of item.
+                </para>
+                <para>
+                    <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Git"/>, <see cref="F:Meziantou.Framework.Globbing.GlobDialect.MSBuild"/>, <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Posix"/> and
+                    <see cref="F:Meziantou.Framework.Globbing.GlobDialect.PosixPath"/> follow the behavior of git, MSBuild and fnmatch(3), which the tests
+                    check against corpora produced by those implementations. The exceptions are deliberate: characters are
+                    compared as UTF-16 code units (git compares the bytes of their UTF-8 encoding), a path ending with a
+                    <c>/</c> is a directory (fnmatch compares strings), and a pattern that can never match anything, such as
+                    one holding an unknown character class, is rejected.
+                </para>
+                <para>
+                    Matching backtracks, so the cost of a single <see cref="M:Meziantou.Framework.Globbing.Glob.IsMatch(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Nullable{Meziantou.Framework.Globbing.PathItemType})"/>
+                    call grows exponentially with the number of <c>*</c> wildcards in one path segment. Ordinary patterns and
+                    file names are unaffected, but a pattern coming from an untrusted source can be made expensive on purpose.
+                    Bound the length and the wildcard count of such patterns before parsing them.
+                </para>
+            </summary>
+            <example>
+            Parse a glob pattern and check if a path matches:
+            <code>
+            var glob = Glob.Parse("src/**/*.txt", GlobDialect.Standard);
+            if (glob.IsMatch("src/folder/file.txt"))
+            {
+                Console.WriteLine("File matches!");
+            }
+            </code>
+            Enumerate files that match a glob pattern:
+            <code>
+            var glob = Glob.Parse("**/*.cs", GlobDialect.Standard, GlobOptions.IgnoreCase);
+            foreach (var file in glob.EnumerateFiles("C:/MyProject"))
+            {
+                Console.WriteLine(file);
+            }
+            </code>
+            </example>
+            <seealso href="https://en.wikipedia.org/wiki/Glob_(programming)"/>
+            <seealso href="https://www.meziantou.net/enumerating-files-using-globbing-and-system-io-enumeration.htm"/>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.Glob.Mode">
+            <summary>Gets the glob mode indicating whether this pattern includes or excludes matches.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Glob.Parse(System.String,Meziantou.Framework.Globbing.GlobDialect,Meziantou.Framework.Globbing.GlobOptions)">
+            <summary>Parses a glob pattern string.</summary>
+            <param name="pattern">The glob pattern to parse.</param>
+            <param name="dialect">The glob pattern dialect to use.</param>
+            <param name="options">Options for controlling pattern parsing behavior.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Globbing.Glob"/> object representing the parsed pattern.</returns>
+            <exception cref="T:System.ArgumentException">The pattern is invalid.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Glob.Parse(System.ReadOnlySpan{System.Char},Meziantou.Framework.Globbing.GlobDialect,Meziantou.Framework.Globbing.GlobOptions)">
+            <summary>Parses a glob pattern string.</summary>
+            <param name="pattern">The glob pattern to parse.</param>
+            <param name="dialect">The glob pattern dialect to use.</param>
+            <param name="options">Options for controlling pattern parsing behavior.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Globbing.Glob"/> object representing the parsed pattern.</returns>
+            <exception cref="T:System.ArgumentException">The pattern is invalid.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Glob.TryParse(System.String,Meziantou.Framework.Globbing.GlobDialect,Meziantou.Framework.Globbing.GlobOptions,Meziantou.Framework.Globbing.Glob@)">
+            <summary>Attempts to parse a glob pattern string.</summary>
+            <param name="pattern">The glob pattern to parse.</param>
+            <param name="dialect">The glob pattern dialect to use.</param>
+            <param name="options">Options for controlling pattern parsing behavior.</param>
+            <param name="result">When this method returns, contains the parsed <see cref="T:Meziantou.Framework.Globbing.Glob"/> if parsing succeeded, or <see langword="null"/> if parsing failed.</param>
+            <returns><see langword="true"/> if the pattern was parsed successfully; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Glob.TryParse(System.ReadOnlySpan{System.Char},Meziantou.Framework.Globbing.GlobDialect,Meziantou.Framework.Globbing.GlobOptions,Meziantou.Framework.Globbing.Glob@)">
+            <summary>Attempts to parse a glob pattern string.</summary>
+            <param name="pattern">The glob pattern to parse.</param>
+            <param name="dialect">The glob pattern dialect to use.</param>
+            <param name="options">Options for controlling pattern parsing behavior.</param>
+            <param name="result">When this method returns, contains the parsed <see cref="T:Meziantou.Framework.Globbing.Glob"/> if parsing succeeded, or <see langword="null"/> if parsing failed.</param>
+            <returns><see langword="true"/> if the pattern was parsed successfully; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Glob.TryParseGitIgnoreEntry(System.ReadOnlySpan{System.Char},Meziantou.Framework.Globbing.Glob@)">
+            <summary>
+                Parses one line of gitignore content on behalf of <see cref="T:Meziantou.Framework.Globbing.GlobCollection"/>, which excludes the whole
+                content of an excluded directory itself. An entry ending with a '/' therefore only has to match the
+                directory here, unlike the same pattern parsed on its own.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Glob.IsMatch(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Nullable{Meziantou.Framework.Globbing.PathItemType})">
+            <summary>Determines whether the specified path matches this glob pattern.</summary>
+            <param name="directory">The directory part of the path to match.</param>
+            <param name="filename">The filename part of the path to match.</param>
+            <param name="itemType">The type of the path item (file or directory), or <see langword="null"/> if unknown.</param>
+            <returns><see langword="true"/> if the path matches the pattern; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Glob.IsPartialMatch(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <summary>Determines whether a directory should be recursed into when enumerating files.</summary>
+            <param name="folderPath">The folder path to check.</param>
+            <param name="filename">The filename part of the path to check.</param>
+            <returns><see langword="true"/> if the directory could contain matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Glob.ToString">
+            <summary>Returns a pattern that parses back, with the same dialect and options, into a glob that matches the same paths.</summary>
+            <returns>The pattern of this glob.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.GlobCollection">
+             <summary>Represents a collection of glob patterns that can be evaluated together.</summary>
+             <example>
+             Combine multiple glob patterns with include and exclude rules:
+             <code>
+             var globs = new GlobCollection(
+                 Glob.Parse("**/*.txt", GlobDialect.Standard),
+                 Glob.Parse("!temp/**/*", GlobDialect.Standard)
+             );
+            
+             foreach (var file in globs.EnumerateFiles("C:/MyProject"))
+             {
+                 Console.WriteLine(file);
+             }
+             </code>
+             </example>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobCollection.#ctor(Meziantou.Framework.Globbing.IGlobEvaluatable[])">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Globbing.GlobCollection"/> class.</summary>
+            <param name="globs">The glob patterns to include in the collection.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobCollection.ParseGitIgnore(System.ReadOnlySpan{System.Char})">
+            <summary>Loads gitignore content and creates a <see cref="T:Meziantou.Framework.Globbing.GlobCollection"/> from it.</summary>
+            <param name="gitIgnoreContent">The gitignore content.</param>
+            <remarks>
+                As git does, an entry that no path can match, such as one holding an unterminated bracket expression or
+                ending with an escape character, is ignored instead of making the whole content invalid.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobCollection.LoadGitIgnoreAsync(System.String,System.Threading.CancellationToken)">
+            <summary>Loads a gitignore file asynchronously and creates a <see cref="T:Meziantou.Framework.Globbing.GlobCollection"/> from it.</summary>
+            <param name="path">The path to the gitignore file.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobCollection.LoadGitIgnoreAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>Loads a gitignore stream asynchronously and creates a <see cref="T:Meziantou.Framework.Globbing.GlobCollection"/> from it.</summary>
+            <param name="stream">The stream containing the gitignore content.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobCollection.LoadGitIgnoreAsync(System.IO.TextReader,System.Threading.CancellationToken)">
+            <summary>Loads a gitignore reader asynchronously and creates a <see cref="T:Meziantou.Framework.Globbing.GlobCollection"/> from it.</summary>
+            <param name="reader">The reader providing the gitignore content.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.GlobCollection.Count">
+            <summary>Gets the number of glob patterns in the collection.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.GlobCollection.Item(System.Int32)">
+            <summary>Gets the glob pattern at the specified index.</summary>
+            <param name="index">The zero-based index of the glob pattern to get.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobCollection.IsMatch(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Nullable{Meziantou.Framework.Globbing.PathItemType})">
+            <summary>Determines whether the specified path matches any pattern in the collection.</summary>
+            <param name="directory">The directory part of the path to match.</param>
+            <param name="filename">The filename part of the path to match.</param>
+            <param name="itemType">The type of the path item (file or directory), or <see langword="null"/> if unknown.</param>
+            <returns>
+                <see langword="true"/> if the path matches any include pattern and no exclude pattern; otherwise,
+                <see langword="false"/>. A collection created from gitignore content resolves the path against the last
+                pattern that matches it instead, as git does, and reports a path as matched when one of its ancestor
+                directories is: git cannot re-include a path whose parent directory is excluded.
+            </returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobCollection.IsPartialMatch(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <summary>Determines whether a directory should be recursed into when enumerating files.</summary>
+            <param name="folderPath">The folder path to check.</param>
+            <param name="filename">The filename part of the path to check.</param>
+            <returns><see langword="true"/> if the directory could contain matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.GlobDialect">
+            <summary>Specifies the glob pattern dialect to use when parsing a pattern.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobDialect.Standard">
+            <summary>
+                Use the default glob pattern syntax: <c>*</c>, <c>?</c>, <c>**</c>, bracket expressions, <c>{a,b}</c> sets,
+                <c>\</c> escapes and a leading <c>!</c> to negate the pattern. Wildcards do not match a leading dot unless
+                <see cref="F:Meziantou.Framework.Globbing.GlobOptions.MatchLeadingDot"/> is set.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobDialect.Git">
+            <summary>
+                Use gitignore pattern syntax, as described by gitignore(5) and implemented by git's wildmatch: a pattern
+                without a <c>/</c> matches a name at any depth, a leading <c>/</c> anchors it, and a trailing <c>/</c>
+                only matches directories. Bracket expressions accept <c>^</c> as a negation, escapes and character
+                classes such as <c>[[:alpha:]]</c>, and braces are ordinary characters. An entry that git can never match,
+                such as one holding an unterminated bracket expression, is rejected.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobDialect.MSBuild">
+            <summary>
+                Use MSBuild glob pattern syntax: <c>*</c>, <c>?</c> and <c>**</c>, where both <c>/</c> and <c>\</c> are
+                path separators and <c>%XX</c> escapes a character. A file name made of <c>*.*</c> matches every file,
+                including the ones without an extension, a leading <c>..</c> is kept, and a leading separator makes the
+                pattern absolute. Wildcards match a leading dot.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobDialect.Posix">
+            <summary>
+                Use POSIX fnmatch pattern syntax without path-separator awareness, as <c>fnmatch</c> with no flag: the
+                pattern matches a plain string, and <c>*</c>, <c>?</c> and bracket expressions also match a <c>/</c>.
+                Bracket expressions support <c>^</c> as a negation, escapes, character classes such as <c>[[:alpha:]]</c>,
+                equivalence classes such as <c>[[=a=]]</c> and collating symbols such as <c>[[.-.]]</c>, and a <c>[</c>
+                that does not open a complete bracket expression is an ordinary character.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobDialect.PosixPath">
+            <summary>
+                Use POSIX fnmatch pattern syntax where ordinary wildcards do not cross path separators, as <c>fnmatch</c>
+                with <c>FNM_PATHNAME</c>: a <c>/</c> is only matched by a <c>/</c> of the pattern, and every <c>/</c> is
+                significant, including a leading one. The syntax is the one of <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Posix"/>.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.GlobExtensions">
+            <summary>Provides extension methods for working with glob patterns.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.IsMatch(Meziantou.Framework.Globbing.IGlobEvaluatable,System.String)">
+            <summary>Determines whether the specified path matches the glob pattern.</summary>
+            <param name="glob">The glob pattern to match against.</param>
+            <param name="path">The path to check.</param>
+            <returns><see langword="true"/> if the path matches the pattern; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.IsMatch(Meziantou.Framework.Globbing.IGlobEvaluatable,System.ReadOnlySpan{System.Char})">
+            <summary>Determines whether the specified path matches the glob pattern.</summary>
+            <param name="glob">The glob pattern to match against.</param>
+            <param name="path">The path to check.</param>
+            <returns><see langword="true"/> if the path matches the pattern; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.IsMatch(Meziantou.Framework.Globbing.IGlobEvaluatable,System.String,System.String)">
+            <summary>Determines whether the specified path matches the glob pattern.</summary>
+            <param name="glob">The glob pattern to match against.</param>
+            <param name="directory">The directory part of the path to match.</param>
+            <param name="filename">The filename part of the path to match.</param>
+            <returns><see langword="true"/> if the path matches the pattern; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.IsMatch(Meziantou.Framework.Globbing.IGlobEvaluatable,System.IO.Enumeration.FileSystemEntry@)">
+            <summary>Determines whether the specified file system entry matches the glob pattern.</summary>
+            <param name="glob">The glob pattern to match against.</param>
+            <param name="entry">The file system entry to check.</param>
+            <returns><see langword="true"/> if the entry matches the pattern; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.IsMatch(Meziantou.Framework.Globbing.IGlobEvaluatable,System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <summary>Determines whether the specified path matches the glob pattern.</summary>
+            <param name="glob">The glob pattern to match against.</param>
+            <param name="directory">The directory part of the path to match.</param>
+            <param name="filename">The filename part of the path to match.</param>
+            <returns><see langword="true"/> if the path matches the pattern; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.IsPartialMatch(Meziantou.Framework.Globbing.IGlobEvaluatable,System.String)">
+            <summary>Determines whether a directory should be recursed into when enumerating files.</summary>
+            <param name="glob">The glob pattern to check against.</param>
+            <param name="folderPath">The folder path to check.</param>
+            <returns><see langword="true"/> if the directory could contain matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.IsPartialMatch(Meziantou.Framework.Globbing.IGlobEvaluatable,System.ReadOnlySpan{System.Char})">
+            <summary>Determines whether a directory should be recursed into when enumerating files.</summary>
+            <param name="glob">The glob pattern to check against.</param>
+            <param name="folderPath">The folder path to check.</param>
+            <returns><see langword="true"/> if the directory could contain matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.IsPartialMatch(Meziantou.Framework.Globbing.IGlobEvaluatable,System.IO.Enumeration.FileSystemEntry@)">
+            <summary>Determines whether a file system entry directory should be recursed into when enumerating files.</summary>
+            <param name="glob">The glob pattern to check against.</param>
+            <param name="entry">The file system entry to check.</param>
+            <returns><see langword="true"/> if the directory could contain matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.IsPartialMatch(Meziantou.Framework.Globbing.IGlobEvaluatable,System.String,System.String)">
+            <summary>Determines whether a directory should be recursed into when enumerating files.</summary>
+            <param name="glob">The glob pattern to check against.</param>
+            <param name="folderPath">The folder path to check.</param>
+            <param name="filename">The filename part of the path to check.</param>
+            <returns><see langword="true"/> if the directory could contain matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.EnumerateFiles(Meziantou.Framework.Globbing.IGlobEvaluatable,System.String,System.IO.EnumerationOptions)">
+            <summary>Enumerates files in the specified directory that match the glob pattern.</summary>
+            <param name="glob">The glob pattern to match against.</param>
+            <param name="directory">The directory to search.</param>
+            <param name="options">Options for controlling file enumeration behavior.</param>
+            <returns>An enumerable collection of file paths that match the glob pattern.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobExtensions.EnumerateFileSystemEntries(Meziantou.Framework.Globbing.IGlobEvaluatable,System.String,System.IO.EnumerationOptions)">
+            <summary>Enumerates file system entries (files and directories) in the specified directory that match the glob pattern.</summary>
+            <param name="glob">The glob pattern to match against.</param>
+            <param name="directory">The directory to search.</param>
+            <param name="options">Options for controlling file enumeration behavior.</param>
+            <returns>An enumerable collection of file system entry paths that match the glob pattern.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.GlobFileSystemEnumerator`1">
+            <summary>Provides a base class for enumerating file system entries that match a glob pattern.</summary>
+            <typeparam name="T">The type of objects to enumerate.</typeparam>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobFileSystemEnumerator`1.#ctor(Meziantou.Framework.Globbing.IGlobEvaluatable,System.String,System.IO.EnumerationOptions)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Globbing.GlobFileSystemEnumerator`1"/> class.</summary>
+            <param name="glob">The glob pattern to match against.</param>
+            <param name="directory">The directory to enumerate.</param>
+            <param name="options">Options for controlling enumeration behavior.</param>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.GlobFileSystemEnumerator">
+            <summary>Enumerates file system entries that match a glob pattern, returning full paths as strings.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobFileSystemEnumerator.#ctor(Meziantou.Framework.Globbing.IGlobEvaluatable,System.String,System.IO.EnumerationOptions)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Globbing.GlobFileSystemEnumerator"/> class.</summary>
+            <param name="glob">The glob pattern to match against.</param>
+            <param name="directory">The directory to enumerate.</param>
+            <param name="options">Options for controlling enumeration behavior.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobFileSystemEnumerator.TransformEntry(System.IO.Enumeration.FileSystemEntry@)">
+            <summary>Transforms a file system entry into its full path string representation.</summary>
+            <param name="entry">The file system entry to transform.</param>
+            <returns>The full path of the file system entry.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.GlobMode">
+            <summary>Determines whether a glob pattern should include or exclude matching paths.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobMode.Include">
+            <summary>Include matching paths.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobMode.Exclude">
+            <summary>Exclude matching paths.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.GlobOptions">
+            <summary>Options for controlling glob pattern parsing and matching behavior.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobOptions.None">
+            <summary>No special options.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobOptions.IgnoreCase">
+            <summary>Perform case-insensitive matching. Only ASCII letters are supported for case-insensitive character ranges.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobOptions.MatchLeadingDot">
+            <summary>
+                Allow wildcard patterns to match path segments that start with a dot. Only the <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Standard"/>
+                dialect uses it: the other dialects always match a leading dot, as git, MSBuild and fnmatch do.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.IGlobEvaluatable">
+            <summary>Represents an object that can evaluate glob patterns against file system paths.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.IGlobEvaluatable.IsMatch(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Nullable{Meziantou.Framework.Globbing.PathItemType})">
+            <summary>Determines whether the specified path matches the glob pattern.</summary>
+            <param name="directory">The directory part of the path to match.</param>
+            <param name="filename">The filename part of the path to match.</param>
+            <param name="itemType">The type of the path item (file or directory), or <see langword="null"/> if unknown.</param>
+            <returns><see langword="true"/> if the path matches the pattern; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.IGlobEvaluatable.IsPartialMatch(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <summary>Determines whether a directory should be recursed into when enumerating files.</summary>
+            <param name="folderPath">The folder path to check.</param>
+            <param name="filename">The filename part of the path to check.</param>
+            <returns><see langword="true"/> if the directory could contain matches; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.IGlobEvaluatable.CanMatchFiles">
+            <summary>Gets a value indicating whether this glob pattern can match files.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.IGlobEvaluatable.CanMatchDirectories">
+            <summary>Gets a value indicating whether this glob pattern can match directories.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.IGlobEvaluatable.Mode">
+            <summary>Gets the glob mode indicating whether this pattern includes or excludes matches.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.IGlobEvaluatable.TraverseDirectories">
+            <summary>Gets a value indicating whether directories should be traversed when enumerating files.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Internals.CharacterRange.IsInRangeIgnoreCase(System.Char)">
+            <summary>
+                Tests the character and both of its case variants against the range instead of normalizing the range,
+                which would change the characters it contains: '[@-B]' contains 'A', and lowering its bounds would drop
+                both '@' and 'A'.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.Internals.GlobPatternWriter">
+            <summary>Writes literal text into a pattern, escaping the characters that the dialect would read as syntax.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Internals.GlobPatternWriter.AppendPathSegmentLiteral(Meziantou.Framework.ValueStringBuilder@,System.String,Meziantou.Framework.Globbing.GlobDialect)">
+            <summary>
+                Writes a literal that makes a whole path segment. <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Standard"/> and
+                <see cref="F:Meziantou.Framework.Globbing.GlobDialect.MSBuild"/> read a '.' or '..' segment as a relative path, so its first dot is escaped.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Internals.GlobPatternWriter.AppendLiteralSetValue(Meziantou.Framework.ValueStringBuilder@,System.String)">
+            <summary>Writes an alternative of a <see cref="F:Meziantou.Framework.Globbing.GlobDialect.Standard"/> literal set, such as <c>{a,b}</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Internals.IgnoreCaseExpansion.TryExpand(System.ReadOnlySpan{System.Char},System.Boolean,System.Char[]@)">
+            <summary>
+                Expands <paramref name="characters"/> with every character that <see cref="F:System.StringComparison.OrdinalIgnoreCase"/>
+                considers equal to one of them.
+            </summary>
+            <remarks>
+                The result feeds prefilters that reject a path before the segment is matched, so it must not miss any
+                character. Ordinal case-insensitive comparison relates more than two characters to each other (it treats
+                'Σ', 'σ' and 'ς' as equal, for instance), and <see cref="M:System.Char.ToLowerInvariant(System.Char)"/> and
+                <see cref="M:System.Char.ToUpperInvariant(System.Char)"/> do not enumerate all of them. The expansion is exact for ASCII
+                characters, as no other character is ordinal case-insensitive equal to an ASCII one, so anything else
+                returns <see langword="false"/> and the caller must drop the prefilter instead of using an incomplete set.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.Internals.NamedCharacterClass">
+            <summary>POSIX character classes usable in a bracket expression, such as <c>[[:digit:]]</c>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Internals.PathReader.MoveToFileNameAfterTrailingSeparator">
+            <summary>
+                A directory given with a trailing separator, such as "src/" or the root "/", is exhausted once that
+                separator is consumed, and the file name is the next segment.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.Internals.DirectoryContentSegment">
+            <summary>
+                Matches a directory, and optionally everything below it, for a gitignore entry ending with a '/'.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.Internals.DirectoryContentSegment.IncludingContent">
+            <summary>An entry that excludes a directory also excludes its whole content, so the segment matches any path below the directory.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.Internals.DirectoryContentSegment.DirectoryOnly">
+            <summary>A negated entry only re-includes the directory: git does not re-include the content of a directory, so the segment stops at the directory itself.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.Internals.EmptySegment">
+            <summary>
+                Matches an empty path segment: the one before the leading separator of an absolute path, or the one between
+                two consecutive separators.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Internals.RaggedSegment.#ctor(Meziantou.Framework.Globbing.Internals.Segment[],System.Boolean)">
+            <param name="segments">The subsegments to match in order.</param>
+            <param name="requiresLiteralLeadingDot">
+                Whether a path segment starting with a dot only matches when that dot is written in the pattern, rather
+                than matched by a wildcard. It is only needed when the segment starts with a literal set, as the
+                alternative that the path takes decides whether the dot is written.
+            </param>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.Internals.RaggedSegment.FirstRequiredCharacters">
+            <summary>The characters the first character of the path segment must be one of, or <see langword="null"/> when the segment does not require any.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Internals.Segment.IsMatch(Meziantou.Framework.Globbing.Internals.PathReader@)">
+            <summary>
+                Matches the segment against the current position of <paramref name="pathReader"/>. The reader may be
+                positioned at the end of the current path segment, so implementations that consume at least one character
+                must check <see cref="P:Meziantou.Framework.Globbing.Internals.PathReader.IsEndOfCurrentSegment"/> before reading. The reader is only advanced when
+                the segment matches.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.Internals.Segment.CanMatchEmptyPath">
+            <summary>
+                Whether the segment can still match once the whole path has been consumed. The matcher stops as soon as
+                the path is exhausted, so only a segment that says otherwise is given a chance to match nothing.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Globbing.Internals.Segment.BracketExpressionText">
+            <summary>
+                The text of the bracket expression the segment was parsed from, such as <c>[[:alpha:]-]</c>. A bracket
+                expression is written back as is: its syntax depends on the dialect, and the parser does not keep the
+                order of its items.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Internals.Segment.AppendPattern(Meziantou.Framework.ValueStringBuilder@,Meziantou.Framework.Globbing.GlobDialect)">
+            <summary>
+                Writes a pattern that <paramref name="dialect"/> parses back into an equivalent segment. The default
+                implementation writes <see cref="M:Meziantou.Framework.Globbing.Internals.Segment.ToString(Meziantou.Framework.Globbing.GlobDialect)"/>, which is enough for a segment that holds no literal text. A
+                segment that holds literal text must override this method, as the characters to escape depend on the
+                dialect.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.Internals.Segment.ToString(Meziantou.Framework.Globbing.GlobDialect)">
+            <summary>Returns the pattern that <paramref name="dialect"/> parses back into an equivalent segment.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobParser.TryParse(System.ReadOnlySpan{System.Char},Meziantou.Framework.Globbing.GlobDialect,Meziantou.Framework.Globbing.GlobOptions,System.Boolean,Meziantou.Framework.Globbing.Glob@,System.String@)">
+            <param name="matchGitDirectoryContent">
+                Whether a gitignore entry ending with a '/' also matches the paths below the directory. A standalone glob
+                has to, as it is the only rule the caller evaluates, but a <see cref="T:Meziantou.Framework.Globbing.GlobCollection"/> built from
+                gitignore content resolves an excluded ancestor directory on its own and passes <see langword="false"/> so
+                that the same path is not excluded twice, which would let a directory entry outrank a later negation.
+            </param>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobParser.CanStartWithLiteralDot(System.Collections.Generic.List{Meziantou.Framework.Globbing.Internals.Segment})">
+            <summary>Whether a literal set that starts the segment can match a leading dot with a '.' written in the pattern.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobParser.TryFinishSegmentAtSeparator(System.Collections.Generic.List{Meziantou.Framework.Globbing.Internals.Segment},System.Collections.Generic.List{System.Boolean},System.Collections.Generic.List{Meziantou.Framework.Globbing.Internals.Segment}@,Meziantou.Framework.ValueStringBuilder@,Meziantou.Framework.Globbing.GlobParser.GlobParserSettings,System.Boolean,System.Boolean,System.String@)">
+            <param name="isAtPatternStart">Whether only separators precede the separator, which makes the pattern an absolute path.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobParser.GetSeparatorLength(System.ReadOnlySpan{System.Char},System.Int32,Meziantou.Framework.Globbing.GlobParser.GlobParserSettings)">
+            <summary>
+                Returns the number of characters of the path separator at <paramref name="index"/>, or 0 when there is none.
+                An escaped separator ('\/', or '%2F' for MSBuild) is a separator too, as escaping an ordinary character
+                yields the character itself.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobParser.ParseBracketExpression(System.ReadOnlySpan{System.Char},System.Int32,Meziantou.Framework.Globbing.GlobParser.GlobParserSettings,Meziantou.Framework.Globbing.Internals.Segment@,System.Int32@,System.String@)">
+            <summary>Parses the bracket expression whose '[' is at <paramref name="start"/>.</summary>
+            <param name="end">The index of the character that follows the closing ']'.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobParser.TryReadBracketCharacter(System.ReadOnlySpan{System.Char},System.Int32@,Meziantou.Framework.Globbing.GlobParser.GlobParserSettings,System.Char@,System.String@)">
+            <summary>Reads a character of a bracket expression that can be a range bound: an ordinary character, an escaped character or a collating symbol.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobParser.TryReadNamedCharacterClass(System.ReadOnlySpan{System.Char},System.Int32,Meziantou.Framework.Globbing.GlobDialect,Meziantou.Framework.Globbing.Internals.NamedCharacterClass@,System.Int32@)">
+            <summary>Reads the character class, such as "[:alpha:]", whose '[' is at <paramref name="index"/> and followed by a ':'.</summary>
+            <returns>
+                <see cref="F:Meziantou.Framework.Globbing.GlobParser.BracketExpressionParseResult.NotABracketExpression"/> when the text is not a class, in which case
+                the '[' is an ordinary character, and <see cref="F:Meziantou.Framework.Globbing.GlobParser.BracketExpressionParseResult.Invalid"/> when it names an
+                unknown class, which makes the pattern unable to match anything.
+            </returns>
+        </member>
+        <member name="M:Meziantou.Framework.Globbing.GlobParser.CreateSegment(System.Collections.Generic.List{Meziantou.Framework.Globbing.Internals.Segment},System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <param name="restrictsLeadingDot">Whether a leading dot of the path segment must be written in the pattern instead of being matched by a wildcard or a bracket expression.</param>
+            <param name="requiresLiteralLeadingDot">Whether the segment itself must check that a leading dot is written in the pattern, as it depends on the alternative of a literal set.</param>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.GlobParser.ReversedRangeHandling">
+            <summary>How a bracket expression reads a range whose start comes after its end, such as "[z-a]".</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobParser.ReversedRangeHandling.Reject">
+            <summary>The pattern is invalid.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobParser.ReversedRangeHandling.Empty">
+            <summary>The range contains no character.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobParser.ReversedRangeHandling.MatchStart">
+            <summary>The range only contains its start.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.GlobParser.EmptySegmentHandling">
+            <summary>How a pattern reads an empty path segment, which comes before a leading separator or between two consecutive ones.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobParser.EmptySegmentHandling.Ignore">
+            <summary>The separators are collapsed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobParser.EmptySegmentHandling.Match">
+            <summary>The segment only matches an empty path segment.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobParser.EmptySegmentHandling.MatchLeading">
+            <summary>A leading separator makes the pattern absolute, and the other separators are collapsed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.GlobParser.EmptySegmentHandling.Reject">
+            <summary>No path can match the pattern.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Globbing.PathItemType">
+            <summary>Specifies whether a path represents a file or a directory.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.PathItemType.File">
+            <summary>The path represents a file.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Globbing.PathItemType.Directory">
+            <summary>The path represents a directory.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.#ctor(System.Span{System.Char})">
+            <summary>
+            Initializes a builder that writes into <paramref name="initialBuffer" /> and only rents from
+            <see cref="T:System.Buffers.ArrayPool`1" /> once the content outgrows it.
+            </summary>
+            <param name="initialBuffer">The buffer to write into, typically stack-allocated.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.#ctor(System.Int32)">
+            <summary>
+            Initializes a builder backed by a buffer of at least <paramref name="initialCapacity" /> characters
+            rented from <see cref="T:System.Buffers.ArrayPool`1" />.
+            </summary>
+            <param name="initialCapacity">The minimum number of characters the buffer must hold.</param>
+        </member>
+        <member name="P:Meziantou.Framework.ValueStringBuilder.Length">
+            <summary>
+            Gets or sets the number of characters written so far. Setting it truncates the content, or exposes
+            characters already present in the buffer when it is increased.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.ValueStringBuilder.Capacity">
+            <summary>
+            Gets the number of characters the current buffer can hold before it has to grow.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.EnsureCapacity(System.Int32)">
+            <summary>
+            Grows the buffer so that it can hold at least <paramref name="capacity" /> characters.
+            </summary>
+            <param name="capacity">The minimum capacity required.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.Clear">
+            <summary>
+            Resets <see cref="P:Meziantou.Framework.ValueStringBuilder.Length" /> to 0, keeping the current buffer. The characters are not erased and stay
+            readable through <see cref="P:Meziantou.Framework.ValueStringBuilder.RawChars" />.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.NullTerminate">
+            <summary>
+            Writes a null character after the content, growing the buffer if needed, without changing
+            <see cref="P:Meziantou.Framework.ValueStringBuilder.Length" />.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.GetPinnableReference">
+            <summary>
+            Returns a reference to the first character of the buffer, so the builder can be used with a
+            <see langword="fixed" /> statement. The result is not null-terminated unless
+            <see cref="M:Meziantou.Framework.ValueStringBuilder.NullTerminate" /> was called.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.ValueStringBuilder.Item(System.Int32)">
+            <summary>
+            Gets a reference to the character at <paramref name="index" />, which can be used to overwrite it.
+            </summary>
+            <param name="index">The position of the character, which must be less than <see cref="P:Meziantou.Framework.ValueStringBuilder.Length" />.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.ToString">
+            <summary>
+            Returns the characters written so far and disposes this instance, returning the rented buffer to the pool.
+            </summary>
+            <remarks>
+            This method is destructive. After it returns, the builder is reset to its default state: <see cref="P:Meziantou.Framework.ValueStringBuilder.Length"/>
+            and <see cref="P:Meziantou.Framework.ValueStringBuilder.Capacity"/> are 0, a second call returns an empty string, and appending starts a new buffer.
+            Use <see cref="M:Meziantou.Framework.ValueStringBuilder.AsSpan"/> to read the content without disposing the builder.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.ValueStringBuilder.RawChars">
+            <summary>
+            Gets the whole buffer, including the part past <see cref="P:Meziantou.Framework.ValueStringBuilder.Length" />.
+            </summary>
+            <remarks>
+            Everything beyond <see cref="P:Meziantou.Framework.ValueStringBuilder.Length" /> is uninitialized pooled memory and may hold data left by a
+            previous user of the array. Use <see cref="M:Meziantou.Framework.ValueStringBuilder.AsSpan" /> to read only what was written.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.AsSpan">
+            <summary>
+            Returns the characters written so far, without disposing the builder.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.AsSpan(System.Int32)">
+            <summary>
+            Returns the characters written so far from <paramref name="start" /> onwards.
+            </summary>
+            <param name="start">The position to start at.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.AsSpan(System.Int32,System.Int32)">
+            <summary>
+            Returns <paramref name="length" /> characters starting at <paramref name="start" />.
+            </summary>
+            <param name="start">The position to start at.</param>
+            <param name="length">The number of characters to return.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.Insert(System.Int32,System.Char,System.Int32)">
+            <summary>
+            Inserts <paramref name="value" /> <paramref name="count" /> times at <paramref name="index" />.
+            </summary>
+            <param name="index">The position to insert at.</param>
+            <param name="value">The character to insert.</param>
+            <param name="count">The number of times to insert it.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.Insert(System.Int32,System.String)">
+            <summary>
+            Inserts <paramref name="s" /> at <paramref name="index" />. A <see langword="null" /> string is ignored.
+            </summary>
+            <param name="index">The position to insert at.</param>
+            <param name="s">The string to insert.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.Append(System.Char)">
+            <summary>
+            Appends a single character.
+            </summary>
+            <param name="c">The character to append.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.Append(System.String)">
+            <summary>
+            Appends a string. A <see langword="null" /> string is ignored.
+            </summary>
+            <param name="s">The string to append.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.Append(System.Char,System.Int32)">
+            <summary>
+            Appends <paramref name="c" /> <paramref name="count" /> times.
+            </summary>
+            <param name="c">The character to append.</param>
+            <param name="count">The number of times to append it.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.Append(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Appends the characters of <paramref name="value" />.
+            </summary>
+            <param name="value">The characters to append.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.AppendSpan(System.Int32)">
+            <summary>
+            Reserves <paramref name="length" /> characters at the end of the content and returns them so the caller
+            can write into the buffer directly. <see cref="P:Meziantou.Framework.ValueStringBuilder.Length" /> is advanced immediately, so the reserved
+            characters are part of the content whether or not they are written to.
+            </summary>
+            <param name="length">The number of characters to reserve.</param>
+        </member>
+        <member name="M:Meziantou.Framework.ValueStringBuilder.Dispose">
+            <summary>
+            Releases the buffer back to <see cref="T:System.Buffers.ArrayPool`1" /> and resets the builder. Calling it more than
+            once is safe.
+            </summary>
+            <remarks>The content is not erased; it stays readable by the next consumer to rent the array.</remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+    </members>
+</doc>

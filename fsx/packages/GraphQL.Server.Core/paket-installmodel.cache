@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/GraphQL.Server.Core.dll
+F: /lib/netstandard2.0/GraphQL.Server.Core.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/27a73aca998d4ab8b0e5ff3aa9beb482.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /graphql.server.core.5.2.0.nupkg
+F: /GraphQL.Server.Core.nuspec
+F: /logo.64x64.png
+F: /README.md
+F: /[Content_Types].xml

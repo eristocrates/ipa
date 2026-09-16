@@ -1,0 +1,14 @@
+D: /content
+F: /content/MyEntityContext.tt
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/a17a23b2b29b41058b60d33a72a52b7a.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /brightstardb.1.13.3.nupkg
+F: /BrightstarDB.nuspec
+F: /README.txt
+F: /[Content_Types].xml

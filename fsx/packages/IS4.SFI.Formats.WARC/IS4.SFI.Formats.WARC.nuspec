@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>IS4.SFI.Formats.WARC</id>
+    <version>1.0.0</version>
+    <title>Semantic File Inspector Web ARChive Format</title>
+    <authors>IS4</authors>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://github.com/IS4Code/SFI/tree/HEAD/SFI.Formats/WARC</projectUrl>
+    <description>Provides support for the Web ARChive format.</description>
+    <copyright>Copyright (c) IS4 2023</copyright>
+    <tags>linked-data sparql rdf semantic-search metadata-extraction warc</tags>
+    <repository type="git" url="https://github.com/IS4Code/SFI" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="IS4.SFI" version="1.1.0" exclude="Build,Analyzers" />
+        <dependency id="IS4.Toimik.WarcProtocol" version="0.2.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

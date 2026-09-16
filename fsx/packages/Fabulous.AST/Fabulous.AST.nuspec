@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Fabulous.AST</id>
+    <version>1.10.0</version>
+    <authors>Edgar Gonzalez, Timothé Larivière</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://edgarfgp.github.io/Fabulous.AST/</projectUrl>
+    <description>Fabulous.AST, an Abstract Syntax Tree (AST) Domain Specific Language (DSL) for F#.</description>
+    <releaseNotes>### Added
+- Auto-escape let-binding names with backticks when needed for Value and Use string overloads (#170)</releaseNotes>
+    <tags>F# Declarative AST Fantomas</tags>
+    <repository type="git" url="https://github.com/edgarfgp/Fabulous.AST" commit="6cc8c1c1b31cb1dcb5b80d71619d73d6021844c6" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="Fantomas.Core" version="[7.0.1]" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="Fantomas.Core" version="[7.0.1]" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

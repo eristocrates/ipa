@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Data.LiteralProviders</id>
+    <version>1.0.3</version>
+    <title>FSharp.Data.LiteralProviders.Runtime</title>
+    <authors>Loïc Denuzière</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <repository type="git" url="https://github.com/tarmil/FSharp.Data.LiteralProviders" />
+    <projectUrl>https://github.com/tarmil/FSharp.Data.LiteralProviders</projectUrl>
+    <description>F# Type providers generating literals from the compile-time environment</description>
+    <readme>README.md</readme>
+    <copyright>Copyright 2020-2021 Loïc Denuzière</copyright>
+    <tags>F#;FSharp;Environment;TypeProvider</tags>
+    <dependencies>
+      <dependency id="FSharp.Core" version="4.5.0" />
+    </dependencies>
+  </metadata>
+</package>

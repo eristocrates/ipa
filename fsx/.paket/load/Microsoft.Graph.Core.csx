@@ -1,0 +1,11 @@
+
+#load "Microsoft.IdentityModel.Protocols.OpenIdConnect.csx" 
+#load "Microsoft.IdentityModel.Validators.csx" 
+#load "Microsoft.Kiota.Abstractions.csx" 
+#load "Microsoft.Kiota.Authentication.Azure.csx" 
+#load "Microsoft.Kiota.Http.HttpClientLibrary.csx" 
+#load "Microsoft.Kiota.Serialization.Form.csx" 
+#load "Microsoft.Kiota.Serialization.Json.csx" 
+#load "Microsoft.Kiota.Serialization.Multipart.csx" 
+#load "Microsoft.Kiota.Serialization.Text.csx" 
+#r "../../packages/Microsoft.Graph.Core/lib/net10.0/Microsoft.Graph.Core.dll" 

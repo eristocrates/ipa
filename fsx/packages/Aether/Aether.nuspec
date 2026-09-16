@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Aether</id>
+    <version>8.3.1</version>
+    <authors>Andrew Cherry, Marcus Griep, Max Malook</authors>
+    <owners>Andrew Cherry, Marcus Griep, Max Malook</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/xyncro/aether/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://xyncro.tech/aether/</projectUrl>
+    <description>Optics for F#</description>
+    <copyright>Copyright © Xyncro Ltd</copyright>
+    <tags>lens prism isomorphism optic f# fsharp</tags>
+    <repository type="git" url="https://github.com/xyncro/aether" commit="8dcbdc50190ac05851f4ccf57b356afbae5821a5" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="FSharp.Core" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.ValueTuple" version="4.4.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="4.3.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

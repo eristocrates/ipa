@@ -1,0 +1,857 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Scheduling</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Scheduling.Attendee">
+            <summary>Represents an event attendee as defined in RFC 2445.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Attendee.Address">
+            <summary>Gets or sets the calendar user address of the attendee.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.ByDay">
+            <summary>Represents a day of the week with an optional ordinal position for recurrence rules.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ByDay.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Scheduling.ByDay"/> class.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ByDay.#ctor(System.DayOfWeek)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Scheduling.ByDay"/> class with the specified day of the week.</summary>
+            <param name="dayOfWeek">The day of the week.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ByDay.#ctor(System.DayOfWeek,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Scheduling.ByDay"/> class with the specified day of the week and ordinal position.</summary>
+            <param name="dayOfWeek">The day of the week.</param>
+            <param name="ordinal">The ordinal position (e.g., 1 for first, -1 for last).</param>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.ByDay.DayOfWeek">
+            <summary>Gets or sets the day of the week.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.ByDay.Ordinal">
+            <summary>Gets or sets the ordinal position within the month or year.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ByDay.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ByDay.op_Equality(Meziantou.Framework.Scheduling.ByDay,Meziantou.Framework.Scheduling.ByDay)">
+            <summary>Determines whether two <see cref="T:Meziantou.Framework.Scheduling.ByDay"/> instances are equal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ByDay.op_Inequality(Meziantou.Framework.Scheduling.ByDay,Meziantou.Framework.Scheduling.ByDay)">
+            <summary>Determines whether two <see cref="T:Meziantou.Framework.Scheduling.ByDay"/> instances are not equal.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ByDay.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.ContentLine">
+            <summary>An iCalendar content line (RFC 5545 section 3.1): a property name, its parameters and its value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.ContentLine.Name">
+            <summary>The property name, as written. iCalendar names are case-insensitive.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.ContentLine.Value">
+            <summary>The value as written, before the decoding its value type calls for.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ContentLine.GetParameter(System.String)">
+            <summary>Gets the value of a property parameter, or <see langword="null"/> when the line does not carry it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ContentLine.GetTextValue">
+            <summary>Gets the value decoded as an iCalendar TEXT value (RFC 5545 section 3.3.11).</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ContentLine.TryParse(System.String,Meziantou.Framework.Scheduling.ContentLine@,System.String@)">
+            <summary>Parses an unfolded content line.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ContentLine.TryReadName(System.String,System.Int32@,System.String@)">
+            <summary>Reads a name (RFC 5545 section 3.1: ALPHA / DIGIT / "-").</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.ContentLine.TryReadParameterValue(System.String,System.Int32@,System.String@)">
+            <summary>Reads a param-value list (RFC 5545 section 3.2), which may contain quoted values holding a colon.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.CronExpression.GetNextOccurrences(System.DateTime,System.TimeZoneInfo)">
+            <summary>Gets all occurrences of the expression, reading <paramref name="startDate"/> as a wall-clock time in <paramref name="timeZone"/>.</summary>
+            <param name="startDate">The wall-clock time to start generating occurrences from. Its <see cref="P:System.DateTime.Kind"/> is ignored.</param>
+            <param name="timeZone">The time zone the expression is evaluated in.</param>
+            <returns>An enumerable sequence of occurrences, each carrying the UTC offset in effect at that occurrence.</returns>
+            <remarks>
+            <para>The occurrences keep their wall-clock time across a daylight saving transition, so their UTC offset changes.
+            A local time made invalid or ambiguous by a transition is resolved as RFC 5545 section 3.3.5 requires: an ambiguous
+            time keeps its first occurrence, and an invalid time is read with the UTC offset in effect before the gap.</para>
+            <para>As a consequence, an hourly expression repeats an instant across a forward transition and skips the instants
+            of the repeated hour across a backward one.</para>
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="timeZone"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.CronExpression.GetNextOccurrences(System.DateTimeOffset,System.TimeZoneInfo)">
+            <summary>Gets all occurrences of the expression, starting from the instant <paramref name="startDate"/> denotes.</summary>
+            <param name="startDate">The instant to start generating occurrences from. It is reduced to a wall-clock time in <paramref name="timeZone"/>.</param>
+            <param name="timeZone">The time zone the expression is evaluated in.</param>
+            <returns>An enumerable sequence of occurrences, each carrying the UTC offset in effect at that occurrence.</returns>
+            <remarks>Reducing an instant to a wall-clock time is lossy in the hour repeated by a backward transition, where both
+            readings denote the same wall clock. Use the <see cref="T:System.DateTime"/> overload to control which one is meant.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="timeZone"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.DailyRecurrenceRule">
+            <summary>Represents a daily recurrence rule.</summary>
+            <example>
+            <code>
+            var rrule = new DailyRecurrenceRule { Interval = 2, Occurrences = 10 };
+            var nextOccurrences = rrule.GetNextOccurrences(DateTime.Now).ToArray();
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.DailyRecurrenceRule.ByWeekDays">
+            <summary>Limits occurrences to specific days of the week.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.DailyRecurrenceRule.Text">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.Event">
+            <summary>Represents a calendar event with scheduling information.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.Id">
+            <summary>Gets or sets the unique identifier for the event.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.Summary">
+            <summary>Gets or sets the event summary or title.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.Description">
+            <summary>Gets or sets the event description.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.Organizer">
+            <summary>Gets or sets the event organizer.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.Attendees">
+            <summary>Gets the attendees for the event.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.Created">
+            <summary>Gets or sets the date and time when the event was created.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.LastModified">
+            <summary>Gets or sets the date and time when the event was last modified.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.DateTimeStamp">
+            <summary>Gets or sets the date and time stamp for the event.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.Start">
+            <summary>Gets or sets the start date and time of the event.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.End">
+            <summary>Gets or sets the end date and time of the event.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.TimeZone">
+            <summary>Gets or sets the time zone <see cref="P:Meziantou.Framework.Scheduling.Event.Start"/> and <see cref="P:Meziantou.Framework.Scheduling.Event.End"/> are expressed in.</summary>
+            <remarks>
+            <para>When set, the two properties are written as DTSTART;TZID= and DTEND;TZID= (RFC 5545 section 3.3.5 form 3),
+            and the calendar carries a matching VTIMEZONE component. When <see langword="null"/>, they are written as a UTC
+            or a floating date-time, as before.</para>
+            <para>A value whose <see cref="P:System.DateTime.Kind"/> is <see cref="F:System.DateTimeKind.Unspecified"/> is taken as a wall-clock
+            reading in this time zone. A <see cref="F:System.DateTimeKind.Utc"/> or <see cref="F:System.DateTimeKind.Local"/> value denotes an
+            instant and is converted to this time zone.</para>
+            <para><see cref="P:Meziantou.Framework.Scheduling.Event.Created"/>, <see cref="P:Meziantou.Framework.Scheduling.Event.LastModified"/> and <see cref="P:Meziantou.Framework.Scheduling.Event.DateTimeStamp"/> are not affected.</para>
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.RecurrenceRule">
+            <summary>Gets or sets the recurrence rule for repeating events.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.Status">
+            <summary>Gets or sets the status of the event.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Event.AdditionalProperties">
+            <summary>Gets additional custom properties for the event.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.EventStatus">
+            <summary>Specifies the status of a calendar event.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.EventStatus.Tentative">
+            <summary>The event is tentative.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.EventStatus.Confirmed">
+            <summary>The event is confirmed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.EventStatus.Cancelled">
+            <summary>The event is cancelled.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.Frequency">
+            <summary>Specifies the frequency of a recurrence rule.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Frequency.None">
+            <summary>No frequency specified.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Frequency.Secondly">
+            <summary>Recurrence occurs every second.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Frequency.Minutely">
+            <summary>Recurrence occurs every minute.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Frequency.Hourly">
+            <summary>Recurrence occurs every hour.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Frequency.Daily">
+            <summary>Recurrence occurs daily.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Frequency.Weekly">
+            <summary>Recurrence occurs weekly.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Frequency.Monthly">
+            <summary>Recurrence occurs monthly.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Frequency.Yearly">
+            <summary>Recurrence occurs yearly.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.HourlyRecurrenceRule">
+            <summary>Represents an hourly recurrence rule.</summary>
+            <example>
+            <code>
+            var rrule = new HourlyRecurrenceRule { Interval = 2, Occurrences = 10 };
+            var nextOccurrences = rrule.GetNextOccurrences(DateTime.Now).ToArray();
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.HourlyRecurrenceRule.ByWeekDays">
+            <summary>Limits occurrences to specific days of the week.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.HourlyRecurrenceRule.Text">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.InternetCalendar">
+            <summary>Represents an iCalendar calendar containing events.</summary>
+            <example>
+            <code>
+            var calendar = new InternetCalendar();
+            calendar.Events.Add(new Event
+            {
+                Start = DateTime.Now,
+                End = DateTime.Now.AddHours(1),
+                Summary = "Meeting"
+            });
+            var icsContent = calendar.ToIcs();
+            </code>
+            </example>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.InternetCalendar.ProductIdentifier">
+            <summary>The product identifier written as PRODID, in the FPI form suggested by RFC 5545 section 3.7.3.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.InternetCalendar.AdditionalProperties">
+            <summary>Gets additional custom properties for the calendar.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.InternetCalendar.Events">
+            <summary>Gets the events in this calendar.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.InternetCalendar.Version">
+            <summary>Gets or sets the iCalendar version.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.ToIcs(System.IO.Stream)">
+            <summary>Writes the calendar to a stream in iCalendar format.</summary>
+            <param name="stream">The stream to write to.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.ToIcs(System.IO.TextWriter)">
+            <summary>Writes the calendar to a text writer in iCalendar format.</summary>
+            <param name="writer">The text writer to write to.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.GetTimeZones">
+            <summary>Collects the distinct time zones referenced by the events, with the earliest start each is used for.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.WriteDateTimeProperty(System.IO.TextWriter,System.String,System.DateTime,System.TimeZoneInfo)">
+            <summary>Writes a date-time property, using the TZID form (RFC 5545 section 3.3.5) when the event has a time zone.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.GetRecurrenceRuleValue(Meziantou.Framework.Scheduling.RecurrenceRule,System.TimeZoneInfo)">
+            <summary>RFC 5545 section 3.3.10: when DTSTART carries a TZID, UNTIL must be a UTC date-time.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.WriteTextProperty(System.IO.TextWriter,System.String,System.String)">
+            <summary>Writes a content line whose value is escaped as an iCalendar TEXT value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.WriteEscaped(System.IO.TextWriter,System.String)">
+            <summary>Escapes an iCalendar TEXT value per RFC 5545 section 3.3.11.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.IsValidPropertyName(System.String)">
+            <summary>An iCalendar property name is ALPHA / DIGIT / "-" (RFC 5545 section 3.1).</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.ToIcs">
+            <summary>Converts the calendar to an iCalendar format string.</summary>
+            <returns>The iCalendar format string representation of this calendar.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.Parse(System.String)">
+            <summary>Parses an iCalendar object (RFC 5545).</summary>
+            <param name="ics">The iCalendar content to parse.</param>
+            <returns>The parsed calendar.</returns>
+            <exception cref="T:System.FormatException">The content is not a valid iCalendar object.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.Parse(System.ReadOnlySpan{System.Char})">
+            <summary>Parses an iCalendar object (RFC 5545).</summary>
+            <param name="ics">The iCalendar content to parse.</param>
+            <returns>The parsed calendar.</returns>
+            <exception cref="T:System.FormatException">The content is not a valid iCalendar object.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.Parse(System.IO.Stream)">
+            <summary>Parses an iCalendar object (RFC 5545) read from a stream as UTF-8.</summary>
+            <param name="stream">The stream to read the iCalendar content from.</param>
+            <returns>The parsed calendar.</returns>
+            <exception cref="T:System.FormatException">The content is not a valid iCalendar object.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.Parse(System.IO.TextReader)">
+            <summary>Parses an iCalendar object (RFC 5545).</summary>
+            <param name="reader">The text reader to read the iCalendar content from.</param>
+            <returns>The parsed calendar.</returns>
+            <exception cref="T:System.FormatException">The content is not a valid iCalendar object.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.TryParse(System.ReadOnlySpan{System.Char},Meziantou.Framework.Scheduling.InternetCalendar@)">
+            <summary>Attempts to parse an iCalendar object (RFC 5545).</summary>
+            <param name="ics">The iCalendar content to parse.</param>
+            <param name="calendar">When successful, contains the parsed calendar.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.TryParse(System.ReadOnlySpan{System.Char},Meziantou.Framework.Scheduling.InternetCalendar@,System.String@)">
+            <summary>Attempts to parse an iCalendar object (RFC 5545).</summary>
+            <param name="ics">The iCalendar content to parse.</param>
+            <param name="calendar">When successful, contains the parsed calendar.</param>
+            <param name="error">When parsing fails, contains the error message.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.TryParse(System.String,Meziantou.Framework.Scheduling.InternetCalendar@)">
+            <summary>Attempts to parse an iCalendar object (RFC 5545).</summary>
+            <param name="ics">The iCalendar content to parse.</param>
+            <param name="calendar">When successful, contains the parsed calendar.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.TryParse(System.String,Meziantou.Framework.Scheduling.InternetCalendar@,System.String@)">
+            <summary>Attempts to parse an iCalendar object (RFC 5545).</summary>
+            <param name="ics">The iCalendar content to parse.</param>
+            <param name="calendar">When successful, contains the parsed calendar.</param>
+            <param name="error">When parsing fails, contains the error message.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendar.TryParse(System.IO.TextReader,Meziantou.Framework.Scheduling.InternetCalendar@,System.String@)">
+            <summary>Attempts to parse an iCalendar object (RFC 5545).</summary>
+            <param name="reader">The text reader to read the iCalendar content from.</param>
+            <param name="calendar">When successful, contains the parsed calendar.</param>
+            <param name="error">When parsing fails, contains the error message.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.InternetCalendarParser">
+            <summary>Reads an iCalendar stream (RFC 5545) into an <see cref="T:Meziantou.Framework.Scheduling.InternetCalendar"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendarParser.TryParseDateTimeProperty(Meziantou.Framework.Scheduling.ContentLine,System.String@,System.DateTime@,System.String@)">
+            <summary>Parses a DATE-TIME or DATE value (RFC 5545 sections 3.3.4 and 3.3.5), recording the time zone it names.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendarParser.TrySkipComponent(System.Collections.Generic.List{Meziantou.Framework.Scheduling.ContentLine},System.Int32@,System.String,System.String@)">
+            <summary>Consumes a component whose content the model does not represent, including the components nested in it.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendarParser.TryReadContentLines(System.IO.TextReader,System.Collections.Generic.List{Meziantou.Framework.Scheduling.ContentLine}@,System.String@)">
+            <summary>Reads the content lines of a text reader.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendarParser.TryReadContentLines(System.ReadOnlySpan{System.Char},System.Collections.Generic.List{Meziantou.Framework.Scheduling.ContentLine}@,System.String@)">
+            <summary>Reads the content lines of a span, which spares the caller the string a text reader would need.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.InternetCalendarParser.ContentLineReader">
+            <summary>Assembles content lines from the lines of a stream, undoing the folding described by RFC 5545 section 3.1.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.InternetCalendarUserAddress">
+            <summary>Represents a calendar user address as defined in RFC 2445.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.InternetCalendarUserAddress.Uri">
+            <summary>Gets the URI of the calendar user.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendarUserAddress.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Scheduling.InternetCalendarUserAddress"/> class with the specified email address.</summary>
+            <param name="email">The email address of the calendar user.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.InternetCalendarUserAddress.#ctor(System.Uri)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Scheduling.InternetCalendarUserAddress"/> class with the specified URI.</summary>
+            <param name="uri">The URI of the calendar user, such as a mailto URI.</param>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.MinutelyRecurrenceRule">
+            <summary>Represents a minutely recurrence rule.</summary>
+            <example>
+            <code>
+            var rrule = new MinutelyRecurrenceRule { Interval = 15, Occurrences = 10 };
+            var nextOccurrences = rrule.GetNextOccurrences(DateTime.Now).ToArray();
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.MinutelyRecurrenceRule.ByWeekDays">
+            <summary>Limits occurrences to specific days of the week.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.MinutelyRecurrenceRule.Text">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.Month">
+            <summary>Specifies the months of the year.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.January">
+            <summary>January (month 1).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.February">
+            <summary>February (month 2).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.March">
+            <summary>March (month 3).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.April">
+            <summary>April (month 4).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.May">
+            <summary>May (month 5).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.June">
+            <summary>June (month 6).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.July">
+            <summary>July (month 7).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.August">
+            <summary>August (month 8).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.September">
+            <summary>September (month 9).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.October">
+            <summary>October (month 10).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.November">
+            <summary>November (month 11).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Month.December">
+            <summary>December (month 12).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.MonthlyRecurrenceRule">
+            <summary>Represents a monthly recurrence rule.</summary>
+            <example>
+            <code>
+            var rrule = new MonthlyRecurrenceRule { ByMonthDays = { -1 } }; // Last day of each month
+            var nextOccurrences = rrule.GetNextOccurrences(DateTime.Now).ToArray();
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.MonthlyRecurrenceRule.ByWeekDays">
+            <summary>Limits occurrences to specific days of the week with optional ordinal positions.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.MonthlyRecurrenceRule.Text">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.Organizer">
+            <summary>Represents an event organizer as defined in RFC 2445.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.Organizer.Address">
+            <summary>Gets or sets the calendar user address of the organizer.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.RecurrenceRule">
+            <summary>Represents a recurrence rule as defined in RFC 5545 for recurring events.</summary>
+            <example>
+            <code>
+            var rrule = RecurrenceRule.Parse("FREQ=DAILY;UNTIL=20000131T140000Z;BYMONTH=1");
+            var nextOccurrences = rrule.GetNextOccurrences(DateTime.Now).Take(50).ToArray();
+            </code>
+            </example>
+            <remarks>
+            <para>Supports the following RFC 5545 recurrence rule properties:</para>
+            <list type="bullet">
+            <item><description>FREQ (Secondly, Minutely, Hourly, Daily, Weekly, Monthly, Yearly)</description></item>
+            <item><description>INTERVAL - The interval between occurrences</description></item>
+            <item><description>COUNT - Maximum number of occurrences</description></item>
+            <item><description>UNTIL - End date for the recurrence</description></item>
+            <item><description>WKST - The day on which the workweek starts</description></item>
+            <item><description>BYSECOND - Limits occurrences to specific seconds (0-60; 60 denotes a leap second and is normalized to 59)</description></item>
+            <item><description>BYMINUTE - Limits occurrences to specific minutes (0-59)</description></item>
+            <item><description>BYHOUR - Limits occurrences to specific hours (0-23)</description></item>
+            <item><description>BYDAY - Limits occurrences to specific days of the week</description></item>
+            <item><description>BYMONTHDAY - Limits occurrences to specific days of the month (1-31, -1 to -31)</description></item>
+            <item><description>BYYEARDAY - Limits occurrences to specific days of the year (1-366, -1 to -366)</description></item>
+            <item><description>BYMONTH - Limits occurrences to specific months (1-12)</description></item>
+            <item><description>BYSETPOS - Limits occurrences to specific positions in the recurrence set</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.RecurrenceRule.DefaultFirstDayOfWeek">
+            <summary>The default first day of the week (Monday).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.RecurrenceRule.DefaultFirstDayOfWeekString">
+            <summary>The string representation of the default first day of the week.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.EndDate">
+            <summary>End date (inclusive)</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.Occurrences">
+            <summary>The number of occurrences before the recurrence ends.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is negative.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.Interval">
+            <summary>The interval between occurrences. Must be greater than or equal to 1.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is less than 1.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.WeekStart">
+            <summary>The first day of the week for the recurrence rule.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.BySeconds">
+            <summary>Limits occurrences to specific seconds (0-59). A parsed BYSECOND value of 60 denotes a
+            leap second, which <see cref="T:System.DateTime"/> cannot represent, and is normalized to 59.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.ByMinutes">
+            <summary>Limits occurrences to specific minutes (0-59).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.ByHours">
+            <summary>Limits occurrences to specific hours (0-23).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.ByMonths">
+            <summary>Limits occurrences to specific months (1-12).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.ByMonthDays">
+            <summary>Limits occurrences to specific days of the month (1-31, -1 to -31).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.BySetPositions">
+            <summary>Limits occurrences to specific positions in the recurrence set.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.IsForever">
+            <summary>Gets a value indicating whether the recurrence rule never ends.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.Parse(System.String)">
+            <summary>Parses a recurrence rule string according to RFC 5545 format.</summary>
+            <param name="rrule">The recurrence rule string to parse.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Scheduling.RecurrenceRule"/> instance representing the parsed rule.</returns>
+            <exception cref="T:System.FormatException">Thrown when the recurrence rule format is invalid.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.Parse(System.ReadOnlySpan{System.Char})">
+            <summary>Parses a recurrence rule string according to RFC 5545 format.</summary>
+            <param name="rrule">The recurrence rule string to parse.</param>
+            <returns>A <see cref="T:Meziantou.Framework.Scheduling.RecurrenceRule"/> instance representing the parsed rule.</returns>
+            <exception cref="T:System.FormatException">Thrown when the recurrence rule format is invalid.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.TryParse(System.ReadOnlySpan{System.Char},Meziantou.Framework.Scheduling.RecurrenceRule@)">
+            <summary>Attempts to parse a recurrence rule string.</summary>
+            <param name="rrule">The recurrence rule string to parse.</param>
+            <param name="recurrenceRule">When successful, contains the parsed recurrence rule.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.TryParse(System.ReadOnlySpan{System.Char},Meziantou.Framework.Scheduling.RecurrenceRule@,System.String@)">
+            <summary>Attempts to parse a recurrence rule string.</summary>
+            <param name="rrule">The recurrence rule string to parse.</param>
+            <param name="recurrenceRule">When successful, contains the parsed recurrence rule.</param>
+            <param name="error">When parsing fails, contains the error message.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.TryParse(System.String,Meziantou.Framework.Scheduling.RecurrenceRule@)">
+            <summary>Attempts to parse a recurrence rule string.</summary>
+            <param name="rrule">The recurrence rule string to parse.</param>
+            <param name="recurrenceRule">When successful, contains the parsed recurrence rule.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.TryParse(System.String,Meziantou.Framework.Scheduling.RecurrenceRule@,System.String@)">
+            <summary>Attempts to parse a recurrence rule string.</summary>
+            <param name="rrule">The recurrence rule string to parse.</param>
+            <param name="recurrenceRule">When successful, contains the parsed recurrence rule.</param>
+            <param name="error">When parsing fails, contains the error message.</param>
+            <returns><see langword="true"/> if parsing succeeded; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.GetNextOccurrences(System.DateTime)">
+            <summary>Gets all occurrences of the recurrence starting from the specified date.</summary>
+            <param name="startDate">The date to start generating occurrences from.</param>
+            <returns>An enumerable sequence of occurrence dates.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.GetNextOccurrences(System.DateTime,System.TimeZoneInfo)">
+            <summary>Gets all occurrences of the recurrence, reading <paramref name="startDate"/> as a wall-clock time in <paramref name="timeZone"/>.</summary>
+            <param name="startDate">The wall-clock time to start generating occurrences from. Its <see cref="P:System.DateTime.Kind"/> is ignored.</param>
+            <param name="timeZone">The time zone the recurrence is expressed in, as an iCalendar DTSTART;TZID= would.</param>
+            <returns>An enumerable sequence of occurrences, each carrying the UTC offset in effect at that occurrence.</returns>
+            <remarks>
+            <para>The occurrences keep their wall-clock time across a daylight saving transition, so their UTC offset changes.
+            A local time made invalid or ambiguous by a transition is resolved as RFC 5545 section 3.3.5 requires: an ambiguous
+            time keeps its first occurrence, and an invalid time is read with the UTC offset in effect before the gap.</para>
+            <para>As a consequence, a sub-daily recurrence repeats an instant across a forward transition and skips the instants
+            of the repeated hour across a backward one.</para>
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="timeZone"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.GetNextOccurrences(System.DateTimeOffset,System.TimeZoneInfo)">
+            <summary>Gets all occurrences of the recurrence, starting from the instant <paramref name="startDate"/> denotes.</summary>
+            <param name="startDate">The instant to start generating occurrences from. It is reduced to a wall-clock time in <paramref name="timeZone"/>.</param>
+            <param name="timeZone">The time zone the recurrence is expressed in, as an iCalendar DTSTART;TZID= would.</param>
+            <returns>An enumerable sequence of occurrences, each carrying the UTC offset in effect at that occurrence.</returns>
+            <remarks>Reducing an instant to a wall-clock time is lossy in the hour repeated by a backward transition, where both
+            readings denote the same wall clock. Use the <see cref="T:System.DateTime"/> overload to control which one is meant.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="timeZone"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.GetNextOccurrencesInternal(System.DateTime)">
+            <summary>When implemented in a derived class, generates the internal sequence of occurrence dates.</summary>
+            <param name="startDate">The date to start generating occurrences from.</param>
+            <returns>An enumerable sequence of occurrence dates.</returns>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRule.Text">
+            <summary>Gets the RFC 5545 string representation of this recurrence rule.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRule.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleExtensions.GetNextOccurrence(Meziantou.Framework.Scheduling.IRecurrenceRule,System.DateTime)">
+            <summary>Gets the next occurrence of the recurrence starting from the specified date.</summary>
+            <param name="startDate">The date to start searching for the next occurrence.</param>
+            <returns>The next occurrence date, or <see langword="null"/> if there are no more occurrences.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleExtensions.GetNextOccurrence(Meziantou.Framework.Scheduling.IRecurrenceRule,System.DateTimeOffset)">
+            <summary>Gets the next occurrence of the recurrence starting from the specified date.</summary>
+            <param name="startDate">The date to start searching for the next occurrence.</param>
+            <returns>The next occurrence date with the same offset as <paramref name="startDate"/>, or <see langword="null"/> if there are no more occurrences.</returns>
+            <remarks>The occurrences are computed using the local time of <paramref name="startDate"/>, and the offset of <paramref name="startDate"/> is applied to the result.
+            The offset is therefore the same for every occurrence; use an overload that takes a <see cref="T:System.TimeZoneInfo"/> to follow daylight saving transitions.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleExtensions.GetNextOccurrences(Meziantou.Framework.Scheduling.IRecurrenceRule,System.DateTime,System.TimeZoneInfo)">
+            <summary>Gets all occurrences of the recurrence, reading <paramref name="startDate"/> as a wall-clock time in <paramref name="timeZone"/>.</summary>
+            <param name="startDate">The wall-clock time to start generating occurrences from. Its <see cref="P:System.DateTime.Kind"/> is ignored.</param>
+            <param name="timeZone">The time zone the recurrence is expressed in.</param>
+            <returns>An enumerable sequence of occurrences, each carrying the UTC offset in effect at that occurrence.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleExtensions.GetNextOccurrences(Meziantou.Framework.Scheduling.IRecurrenceRule,System.DateTimeOffset,System.TimeZoneInfo)">
+            <summary>Gets all occurrences of the recurrence, starting from the instant <paramref name="startDate"/> denotes.</summary>
+            <param name="startDate">The instant to start generating occurrences from. It is reduced to a wall-clock time in <paramref name="timeZone"/>.</param>
+            <param name="timeZone">The time zone the recurrence is expressed in.</param>
+            <returns>An enumerable sequence of occurrences, each carrying the UTC offset in effect at that occurrence.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleExtensions.GetNextOccurrences(Meziantou.Framework.Scheduling.IRecurrenceRule,System.DateTime,System.String)">
+            <summary>Gets all occurrences of the recurrence, reading <paramref name="startDate"/> as a wall-clock time in the specified time zone.</summary>
+            <param name="startDate">The wall-clock time to start generating occurrences from. Its <see cref="P:System.DateTime.Kind"/> is ignored.</param>
+            <param name="timeZoneId">The identifier of the time zone the recurrence is expressed in.</param>
+            <returns>An enumerable sequence of occurrences, each carrying the UTC offset in effect at that occurrence.</returns>
+            <exception cref="T:System.TimeZoneNotFoundException">No time zone matches <paramref name="timeZoneId"/>.</exception>
+            <remarks>On .NET Framework the runtime provides no conversion between IANA and Windows identifiers, so an
+            IANA identifier such as <c>America/New_York</c> does not resolve on Windows. Resolve the
+            <see cref="T:System.TimeZoneInfo"/> there and use the overload that takes one.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleExtensions.GetNextOccurrences(Meziantou.Framework.Scheduling.IRecurrenceRule,System.DateTimeOffset,System.String)">
+            <summary>Gets all occurrences of the recurrence, starting from the instant <paramref name="startDate"/> denotes.</summary>
+            <param name="startDate">The instant to start generating occurrences from. It is reduced to a wall-clock time in the specified time zone.</param>
+            <param name="timeZoneId">The identifier of the time zone the recurrence is expressed in.</param>
+            <returns>An enumerable sequence of occurrences, each carrying the UTC offset in effect at that occurrence.</returns>
+            <exception cref="T:System.TimeZoneNotFoundException">No time zone matches <paramref name="timeZoneId"/>.</exception>
+            <remarks>On .NET Framework the runtime provides no conversion between IANA and Windows identifiers, so an
+            IANA identifier such as <c>America/New_York</c> does not resolve on Windows. Resolve the
+            <see cref="T:System.TimeZoneInfo"/> there and use the overload that takes one.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleExtensions.GetNextOccurrence(Meziantou.Framework.Scheduling.IRecurrenceRule,System.DateTime,System.TimeZoneInfo)">
+            <summary>Gets the next occurrence of the recurrence, reading <paramref name="startDate"/> as a wall-clock time in <paramref name="timeZone"/>.</summary>
+            <param name="startDate">The wall-clock time to start searching from. Its <see cref="P:System.DateTime.Kind"/> is ignored.</param>
+            <param name="timeZone">The time zone the recurrence is expressed in.</param>
+            <returns>The next occurrence with the UTC offset in effect at that occurrence, or <see langword="null"/> if there are no more occurrences.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleExtensions.GetNextOccurrence(Meziantou.Framework.Scheduling.IRecurrenceRule,System.DateTimeOffset,System.TimeZoneInfo)">
+            <summary>Gets the next occurrence of the recurrence, starting from the instant <paramref name="startDate"/> denotes.</summary>
+            <param name="startDate">The instant to start searching from. It is reduced to a wall-clock time in <paramref name="timeZone"/>.</param>
+            <param name="timeZone">The time zone the recurrence is expressed in.</param>
+            <returns>The next occurrence with the UTC offset in effect at that occurrence, or <see langword="null"/> if there are no more occurrences.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleExtensions.GetNextOccurrence(Meziantou.Framework.Scheduling.IRecurrenceRule,System.DateTime,System.String)">
+            <summary>Gets the next occurrence of the recurrence, reading <paramref name="startDate"/> as a wall-clock time in the specified time zone.</summary>
+            <param name="startDate">The wall-clock time to start searching from. Its <see cref="P:System.DateTime.Kind"/> is ignored.</param>
+            <param name="timeZoneId">The identifier of the time zone the recurrence is expressed in.</param>
+            <returns>The next occurrence with the UTC offset in effect at that occurrence, or <see langword="null"/> if there are no more occurrences.</returns>
+            <exception cref="T:System.TimeZoneNotFoundException">No time zone matches <paramref name="timeZoneId"/>.</exception>
+            <remarks>On .NET Framework the runtime provides no conversion between IANA and Windows identifiers, so an
+            IANA identifier such as <c>America/New_York</c> does not resolve on Windows. Resolve the
+            <see cref="T:System.TimeZoneInfo"/> there and use the overload that takes one.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleExtensions.GetNextOccurrence(Meziantou.Framework.Scheduling.IRecurrenceRule,System.DateTimeOffset,System.String)">
+            <summary>Gets the next occurrence of the recurrence, starting from the instant <paramref name="startDate"/> denotes.</summary>
+            <param name="startDate">The instant to start searching from. It is reduced to a wall-clock time in the specified time zone.</param>
+            <param name="timeZoneId">The identifier of the time zone the recurrence is expressed in.</param>
+            <returns>The next occurrence with the UTC offset in effect at that occurrence, or <see langword="null"/> if there are no more occurrences.</returns>
+            <exception cref="T:System.TimeZoneNotFoundException">No time zone matches <paramref name="timeZoneId"/>.</exception>
+            <remarks>On .NET Framework the runtime provides no conversion between IANA and Windows identifiers, so an
+            IANA identifier such as <c>America/New_York</c> does not resolve on Windows. Resolve the
+            <see cref="T:System.TimeZoneInfo"/> there and use the overload that takes one.</remarks>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer">
+            <summary>Provides functionality to convert recurrence rules to human-readable text.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.EnglishCultureInfo">
+            <summary>The English culture information.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.FrenchCultureInfo">
+            <summary>The French culture information.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.SupportedHumanizers">
+            <summary>Gets the supported humanizers by culture.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.GetText(Meziantou.Framework.Scheduling.RecurrenceRule)">
+            <summary>Converts a recurrence rule to human-readable text using the current UI culture.</summary>
+            <param name="rrule">The recurrence rule to convert.</param>
+            <returns>A human-readable string representation of the recurrence rule.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.GetText(Meziantou.Framework.Scheduling.RecurrenceRule,System.Globalization.CultureInfo)">
+            <summary>Converts a recurrence rule to human-readable text using the specified culture.</summary>
+            <param name="rrule">The recurrence rule to convert.</param>
+            <param name="cultureInfo">The culture to use for formatting, or <see langword="null"/> to use the current UI culture.</param>
+            <returns>A human-readable string representation of the recurrence rule.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.GetText(Meziantou.Framework.Scheduling.SecondlyRecurrenceRule,System.Globalization.CultureInfo)">
+            <summary>Converts a secondly recurrence rule to human-readable text.</summary>
+            <param name="rrule">The secondly recurrence rule.</param>
+            <param name="cultureInfo">The culture to use for formatting.</param>
+            <returns>A human-readable string representation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.GetText(Meziantou.Framework.Scheduling.MinutelyRecurrenceRule,System.Globalization.CultureInfo)">
+            <summary>Converts a minutely recurrence rule to human-readable text.</summary>
+            <param name="rrule">The minutely recurrence rule.</param>
+            <param name="cultureInfo">The culture to use for formatting.</param>
+            <returns>A human-readable string representation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.GetText(Meziantou.Framework.Scheduling.HourlyRecurrenceRule,System.Globalization.CultureInfo)">
+            <summary>Converts an hourly recurrence rule to human-readable text.</summary>
+            <param name="rrule">The hourly recurrence rule.</param>
+            <param name="cultureInfo">The culture to use for formatting.</param>
+            <returns>A human-readable string representation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.GetText(Meziantou.Framework.Scheduling.DailyRecurrenceRule,System.Globalization.CultureInfo)">
+            <summary>Converts a daily recurrence rule to human-readable text.</summary>
+            <param name="rrule">The daily recurrence rule.</param>
+            <param name="cultureInfo">The culture to use for formatting.</param>
+            <returns>A human-readable string representation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.GetText(Meziantou.Framework.Scheduling.WeeklyRecurrenceRule,System.Globalization.CultureInfo)">
+            <summary>Converts a weekly recurrence rule to human-readable text.</summary>
+            <param name="rrule">The weekly recurrence rule.</param>
+            <param name="cultureInfo">The culture to use for formatting.</param>
+            <returns>A human-readable string representation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.GetText(Meziantou.Framework.Scheduling.MonthlyRecurrenceRule,System.Globalization.CultureInfo)">
+            <summary>Converts a monthly recurrence rule to human-readable text.</summary>
+            <param name="rrule">The monthly recurrence rule.</param>
+            <param name="cultureInfo">The culture to use for formatting.</param>
+            <returns>A human-readable string representation.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizer.GetText(Meziantou.Framework.Scheduling.YearlyRecurrenceRule,System.Globalization.CultureInfo)">
+            <summary>Converts a yearly recurrence rule to human-readable text.</summary>
+            <param name="rrule">The yearly recurrence rule.</param>
+            <param name="cultureInfo">The culture to use for formatting.</param>
+            <returns>A human-readable string representation.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizerExtensions">
+            <summary>Provides extension methods for converting recurrence rules to human-readable text.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizerExtensions.GetHumanText(Meziantou.Framework.Scheduling.RecurrenceRule)">
+            <summary>Converts this recurrence rule to human-readable text using the current UI culture.</summary>
+            <param name="rrule">The recurrence rule to convert.</param>
+            <returns>A human-readable string representation of the recurrence rule.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.RecurrenceRuleHumanizerExtensions.GetHumanText(Meziantou.Framework.Scheduling.RecurrenceRule,System.Globalization.CultureInfo)">
+            <summary>Converts this recurrence rule to human-readable text using the specified culture.</summary>
+            <param name="rrule">The recurrence rule to convert.</param>
+            <param name="cultureInfo">The culture to use for formatting, or <see langword="null"/> to use the current UI culture.</param>
+            <returns>A human-readable string representation of the recurrence rule.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.SecondlyRecurrenceRule">
+            <summary>Represents a secondly recurrence rule.</summary>
+            <example>
+            <code>
+            var rrule = new SecondlyRecurrenceRule { Interval = 30, Occurrences = 10 };
+            var nextOccurrences = rrule.GetNextOccurrences(DateTime.Now).ToArray();
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.SecondlyRecurrenceRule.ByWeekDays">
+            <summary>Limits occurrences to specific days of the week.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.SecondlyRecurrenceRule.Text">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.TimeZones">
+            <summary>Resolves the time zones referenced by an iCalendar TZID parameter.</summary>
+            <remarks>
+            <para>On .NET 6 and later both IANA identifiers (<c>America/New_York</c>) and Windows identifiers
+            (<c>Eastern Standard Time</c>) are accepted on every platform.</para>
+            <para>On .NET Framework the runtime provides no conversion between the two, so an IANA identifier
+            does not resolve on Windows. Those callers should resolve the <see cref="T:System.TimeZoneInfo"/> themselves
+            and use the overloads that take one.</para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.TimeZones.Find(System.String)">
+            <summary>Finds the time zone with the specified identifier.</summary>
+            <param name="timeZoneId">The time zone identifier, as written in a TZID property parameter.</param>
+            <returns>The time zone matching <paramref name="timeZoneId"/>.</returns>
+            <exception cref="T:System.TimeZoneNotFoundException">No time zone matches <paramref name="timeZoneId"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.TimeZones.TryFind(System.String,System.TimeZoneInfo@)">
+            <summary>Attempts to find the time zone with the specified identifier.</summary>
+            <param name="timeZoneId">The time zone identifier, as written in a TZID property parameter.</param>
+            <param name="timeZone">When successful, contains the time zone matching <paramref name="timeZoneId"/>.</param>
+            <returns><see langword="true"/> if the time zone was found; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="F:Meziantou.Framework.Scheduling.Utilities.CrLf">
+            <summary>iCalendar requires CRLF between content lines (RFC 5545 section 3.1), which
+            <see cref="M:System.IO.TextWriter.WriteLine"/> does not guarantee: it emits <see cref="P:System.Environment.NewLine"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.Utilities.DateTimeToString(System.DateTime)">
+            <summary>Formats a date-time using one of the forms defined in RFC 5545 section 3.3.5.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.Utilities.ToDateTimeOffset(System.DateTime,System.TimeZoneInfo)">
+            <summary>Converts a wall-clock date-time to an instant in <paramref name="timeZone"/> using the disambiguation rules of RFC 5545 section 3.3.5.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.Utilities.ToDateTimeOffsets(System.Collections.Generic.IEnumerable{System.DateTime},System.TimeZoneInfo)">
+            <summary>Converts wall-clock occurrences to instants in <paramref name="timeZone"/>, dropping the duplicates
+            that a forward transition creates.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.Utilities.IsDuplicate(System.Nullable{System.DateTime},System.DateTimeOffset)">
+            <summary>RFC 5545 section 3.8.5.3: duplicate instances are ignored.</summary>
+            <remarks>
+            <para>Every local time in the gap of a forward transition is read at the UTC offset in effect before the
+            gap, which maps the whole gap onto the instants the hour after it also denotes. A sub-hourly recurrence
+            therefore repeats a run of instants, and the repeats are neither adjacent to nor ordered after the
+            instances they duplicate.</para>
+            <para>Keeping only what is strictly after the last instant produced removes every such repeat, and leaves
+            the recurrence set increasing. The duplicate and the instance it repeats convert to the very same value,
+            so which of the two is kept does not matter.</para>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.Utilities.GetUtcOffsetBeforeGap(System.DateTime,System.TimeZoneInfo)">
+            <summary>Gets the UTC offset in effect immediately before the forward transition that skips <paramref name="local"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.Utilities.ToWallClock(System.DateTime,System.TimeZoneInfo)">
+            <summary>Expresses <paramref name="value"/> as a wall-clock reading in <paramref name="timeZone"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.Utilities.UtcOffsetToString(System.TimeSpan)">
+            <summary>Formats a UTC offset as the utc-offset value type (RFC 5545 section 3.3.14).</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Scheduling.Utilities.IsValidTimeZoneId(System.String)">
+            <summary>A TZID written as a property parameter must be a paramtext that needs no DQUOTE
+            (RFC 5545 section 3.2); rather than quote or escape, an identifier outside this set is rejected.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.VTimeZoneWriter">
+            <summary>Writes the VTIMEZONE component (RFC 5545 section 3.6.5) describing a <see cref="T:System.TimeZoneInfo"/>.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.WeeklyRecurrenceRule">
+            <summary>Represents a weekly recurrence rule.</summary>
+            <example>
+            <code>
+            var rrule = new WeeklyRecurrenceRule { Interval = 2, ByWeekDays = { DayOfWeek.Monday, DayOfWeek.Wednesday } };
+            var nextOccurrences = rrule.GetNextOccurrences(DateTime.Now).ToArray();
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.WeeklyRecurrenceRule.ByWeekDays">
+            <summary>Limits occurrences to specific days of the week.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.WeeklyRecurrenceRule.Text">
+            <inheritdoc />
+        </member>
+        <member name="T:Meziantou.Framework.Scheduling.YearlyRecurrenceRule">
+            <summary>Represents a yearly recurrence rule.</summary>
+            <example>
+            <code>
+            var rrule = new YearlyRecurrenceRule { ByMonths = { 1 }, ByMonthDays = { 1 } };
+            var nextOccurrences = rrule.GetNextOccurrences(DateTime.Now).ToArray();
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.YearlyRecurrenceRule.ByMonthDays">
+            <summary>Limits occurrences to specific days of the month.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.YearlyRecurrenceRule.ByWeekDays">
+            <summary>Limits occurrences to specific days of the week with optional ordinal positions.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.YearlyRecurrenceRule.ByMonths">
+            <summary>Limits occurrences to specific months.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.YearlyRecurrenceRule.ByYearDays">
+            <summary>Limits occurrences to specific days of the year (1-366).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Scheduling.YearlyRecurrenceRule.Text">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharp.Idioms</name></assembly>
+<members>
+<member name="T:FSharp.Idioms.Either`1">
+<summary>
+ �������汾������������ͬ
+</summary>
+</member>
+<member name="T:FSharp.Idioms.Either`2">
+<summary>
+ ����ʽ����еı�׼ģʽ
+</summary>
+</member>
+<member name="M:FSharp.Idioms.ArrayStack`1.tryNext">
+<summary>
+ 尝试移动到下一个元素
+</summary>
+</member>
+<member name="M:FSharp.Idioms.ArrayStack`1.reset">
+<summary>
+ current &lt;- start
+</summary>
+</member>
+<member name="M:FSharp.Idioms.ArrayStack`1.pop(System.Int32)">
+<summary>
+ 弹出指定数量的元素
+</summary>
+</member>
+<member name="M:FSharp.Idioms.BufferResizeArray`1.tryNext">
+<summary>
+ 在缓存中向前移动指针
+</summary>
+</member>
+<member name="M:FSharp.Idioms.BufferResizeArray`1.enqueue(`0)">
+<summary>
+当指针位于最后一个位置时候，可以入队一个元素
+</summary>
+</member>
+<member name="M:FSharp.Idioms.BufferResizeArray`1.dequeue(System.Int32)">
+<summary>
+ 出队若干元素，当前指针变为最小-1
+</summary>
+</member>
+<member name="T:FSharp.Idioms.BufferResizeArray`1">
+<summary>
+ 专用于BufferIterator
+</summary>
+</member>
+<member name="M:FSharp.Idioms.BufferIterator`1.tryNext">
+<summary>
+ 试探性地向前移动指针，向队尾方向，超出队则读取源序列，然后返回当前值。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.BufferIterator`1.dequeueToCurrent">
+<summary>
+ 确认出队自上次确认以来的所有tryNext出来的元素，使tryNext指向队头
+</summary>
+</member>
+<member name="M:FSharp.Idioms.BufferIterator`1.dequeueHead">
+<summary>
+ 确认出队1个元素，使tryNext指向队头
+</summary>
+</member>
+<member name="M:FSharp.Idioms.BufferIterator`1.dequeue(System.Int32)">
+<summary>
+ 确认消费出队count个元素，使tryNext指向队头。
+ 从上一次dequeue的位置开始dequeue
+</summary>
+</member>
+<member name="M:FSharp.Idioms.BufferIterator`1.dequequeNothing">
+<summary>
+ 确认不消费任何元素，使tryNext指向队头
+</summary>
+</member>
+<member name="T:FSharp.Idioms.BufferIterator`1">
+<summary>
+自动缓存队列，dequeque出队后不再缓存
+</summary>
+</member>
+<member name="M:FSharp.Idioms.CircularBuffer`1.reset">
+<summary>
+ current &lt;- front
+</summary>
+</member>
+<member name="P:FSharp.Idioms.CircularBuffer`1.isfull">
+<summary>
+容量比背后数组长度少贰
+</summary>
+</member>
+<member name="T:FSharp.Idioms.CircularBuffer`1">
+<summary>
+带当前指针的环形队
+</summary>
+</member>
+<member name="M:FSharp.Idioms.CircularBufferIterator`1.tryNext">
+<summary>
+ 缓存到尾部的时候，读取源序列，读取完序列，缓存移动到尾部
+</summary>
+</member>
+<member name="M:FSharp.Idioms.CircularBufferIterator`1.reset">
+<summary>
+当前指针恢复到头部
+</summary>
+</member>
+<member name="T:FSharp.Idioms.CircularBufferIterator`1">
+<summary>
+ 缓存迭代器，容量99
+</summary>
+</member>
+<member name="M:FSharp.Idioms.BufferQueue`1.enqueue(`0)">
+<summary>
+入队一个元素
+</summary>
+</member>
+<member name="M:FSharp.Idioms.BufferQueue`1.dequeueNothing">
+<summary>
+ 出队0个元素，指针置于队头
+</summary>
+</member>
+<member name="T:FSharp.Idioms.BufferQueue`1">
+<summary>
+ 专用于BufferIterator
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Either.value``1(FSharp.Idioms.Either{``0,``0})">
+<summary>
+ ��ȡֵ
+</summary>
+</member>
+<member name="M:FSharp.Idioms.PointFree.unless``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Core.FSharpFunc{``0,``0})">
+<summary>
+ if pred=true then onTrue x else nochange.
+</summary>
+</member>
+<member name="M:FSharp.Idioms.PointFree.case``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Core.FSharpFunc{``0,``0})">
+<summary>
+ if not pred then nochange else .
+</summary>
+</member>
+<member name="M:FSharp.Idioms.PointFree.always``2(``0,``1)">
+<summary>
+两个输入值，结果总是第一个值
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Triple.middle``3(``0,``1,``2)">
+<summary>
+ 中点
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Triple.bothEnds``3(``0,``1,``2)">
+<summary>
+ 端点
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Triple.lastTwo``3(``0,``1,``2)">
+<summary>
+ 最后两分量
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Triple.last``3(``0,``1,``2)">
+<summary>
+ 最后分量
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Triple.firstTwo``3(``0,``1,``2)">
+<summary>
+ 前两分量
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Triple.first``3(``0,``1,``2)">
+<summary>
+ 第一分量
+</summary>
+</member>
+<member name="T:FSharp.Idioms.Triple">
+<summary>
+三元组(x,y,z)
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.crosspower``1(System.Int32,Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ 叉幂
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.splitBy``1(``0,Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+分割字符串如：abcbcde会被c分解成[ab][c][b][c][de]
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.countRev``1(Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ 计算长度，并返回反向列表
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.depthFirstSort``1(Microsoft.FSharp.Collections.FSharpMap{``0,Microsoft.FSharp.Collections.FSharpList{``0}},``0)">
+<summary>
+返回符号的深度优先顺序列表。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.advance``1(System.Int32,Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ 列表开始的n个元素逆序放入第一个列表，第二个列表为剩余列表。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.advanceWhile``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ 列表开始的元素满足条件，逆序放入第一个列表，第二个列表为剩余列表。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.takeUntilNot``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ 取列表前面所有断言为真的项，加上第一个断言为假的项（如果有）
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.ofJaggedMap``3(Microsoft.FSharp.Collections.FSharpMap{``0,Microsoft.FSharp.Collections.FSharpMap{``1,``2}})">
+<summary>
+ 从二级JaggedMap构造列表，生成三元组的列表
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.toUniqueJaggedMap``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``1,``2}})">
+<summary>
+ 将键值对列表转化为二级JaggedMap，相同键的值后来者赢。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.toJaggedMap``3(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``1,``2}})">
+<summary>
+ 将键值对列表转化为二级JaggedMap，键可能重复的，相同键的值收集到列表中。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.List.toMap``2(Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``1}})">
+<summary>
+ 将键值对列表转化为Map，键可能重复的，相同键的值收集到列表中。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Array.alignCols``1(``0,``0[][])">
+<summary>
+ 把所有行的列数对齐到最大,value是填充值
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Array.ofJaggedMap``3(Microsoft.FSharp.Collections.FSharpMap{``0,Microsoft.FSharp.Collections.FSharpMap{``1,``2}})">
+<summary>
+ 从二级JaggedMap构造数组，生成三元组的数组
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Array.toUniqueJaggedMap``3(System.Tuple{``0,``1,``2}[])">
+<summary>
+ 将键值对数组转化为二级JaggedMap，相同键的值后来者赢。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Array.toJaggedMap``3(System.Tuple{``0,``1,``2}[])">
+<summary>
+ 将键值对数组转化为二级JaggedMap，键可能重复的，相同键的值收集到数组中。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Array.toMap``2(System.Tuple{``0,``1}[])">
+<summary>
+ 将键值对数组转化为Map，键可能重复的，相同键的值收集到数组中。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Set.depthFirstSort``1(Microsoft.FSharp.Collections.FSharpMap{``0,Microsoft.FSharp.Collections.FSharpSet{``0}},``0)">
+<summary>
+返回符号的深度优先顺序列表。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Set.crosspower``1(System.Int32,Microsoft.FSharp.Collections.FSharpSet{``0})">
+<summary>
+ 叉幂
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Set.combine2``1(Microsoft.FSharp.Collections.FSharpSet{``0})">
+<summary>
+集合中任意两个元素的组合
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Set.toUniqueJaggedMap``3(Microsoft.FSharp.Collections.FSharpSet{System.Tuple{``0,``1,``2}})">
+<summary>
+ 将键值对数组转化为二级JaggedMap，相同键的值后来者赢。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Set.toJaggedMap``3(Microsoft.FSharp.Collections.FSharpSet{System.Tuple{``0,``1,``2}})">
+<summary>
+ 将键值对数组转化为二级JaggedMap，键可能重复的，相同键的值收集到Set中。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Set.toMap``2(Microsoft.FSharp.Collections.FSharpSet{System.Tuple{``0,``1}})">
+<summary>
+ 将键值对数组转化为Map，键可能重复的，相同键的值收集到Set中。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Set.unionByKey``3(``0)">
+<summary>
+ 對相同鍵的值集合進行並集操作
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Map.inverse``2(Microsoft.FSharp.Collections.FSharpMap{``0,``1})">
+<summary>
+ 交换key,value即value-key
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Map.fromInterface``2(System.Collections.Generic.IDictionary{``0,``1})">
+<summary>
+ 从词典接口创建Map
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Map.concat``3(``0)">
+<summary>
+ 同Seq.concat
+ 返回的键有重复，值将合并进seq&lt;&apos;v&gt;中。合并后的值集将至少有一个元素。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Map.mapEntry``4(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,System.Tuple{``2,``3}}},Microsoft.FSharp.Collections.FSharpMap{``0,``1})">
+<summary>
+ 整个词条包括键，包括值，都需要改变。
+ 返回的键有重复，值将合并进seq&lt;&apos;v&gt;中。合并后的值集将至少有一个元素。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Map.mapKey``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}},Microsoft.FSharp.Collections.FSharpMap{``0,``1})">
+<summary>
+ 值不变，修改键。
+ 返回的键有重复，值将合并进seq&lt;&apos;v&gt;中。合并后的值集将至少有一个元素。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Map.fromDuplicateKeys``3(``0)">
+<summary>
+ 收集可能重复的键，分组的值集合类型信息丢弃，返回seq类型。如输入(string*obj)[]类型，输出将是Map&lt;string,seq&lt;obj&gt;&gt;类型。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.String.tryLongestPrefix``1(``0,System.String)">
+<summary>
+ 匹配输入的最长前缀，没有向前看的附加条件
+</summary>
+</member>
+<member name="M:FSharp.Idioms.String.tryFirst(System.Char,System.String)">
+<summary>
+ 匹配输入的首字符
+</summary>
+</member>
+<member name="M:FSharp.Idioms.String.tryStartsWith(System.String,System.String)">
+<summary>
+ 匹配输入的开始字符串
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Graph.propagate``1(Microsoft.FSharp.Collections.FSharpMap{``0,Microsoft.FSharp.Collections.FSharpSet{``0}},Microsoft.FSharp.Collections.FSharpSet{System.Tuple{``0,``0}})">
+<summary>
+根据pairs提供的推理关系，从右侧开始计算，不断用右側的子集（已知）填充左側的超集(FST)
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Graph.disjoint``1(Microsoft.FSharp.Collections.FSharpSet{Microsoft.FSharp.Collections.FSharpSet{``0}})">
+<summary>
+输入任意的集合列表sets，
+如果集合列表的任意二个集合有相同的元素，就将其合并。
+最后返回的集合列表，没有任意的两个集合是有共同元素的。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Eulerian.sortVectors(Microsoft.FSharp.Collections.FSharpList{FSharp.Idioms.Eulerian.Line})">
+<summary>
+ 考虑环的一笔连
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Eulerian.simpleSort(Microsoft.FSharp.Collections.FSharpList{FSharp.Idioms.Eulerian.Vector},Microsoft.FSharp.Collections.FSharpSet{FSharp.Idioms.Eulerian.Vector})">
+<summary>
+ 单一线条的一笔连
+</summary>
+</member>
+<member name="M:FSharp.Idioms.RegularExpressions.entire(System.Text.RegularExpressions.Match)">
+<summary>
+ Substitutes the entire source string.
+</summary>
+</member>
+<member name="M:FSharp.Idioms.RegularExpressions.follows(System.Text.RegularExpressions.Match)">
+<summary>
+ the portion of the source string that follows the match.
+</summary>
+</member>
+<member name="M:FSharp.Idioms.RegularExpressions.trySearch(System.Text.RegularExpressions.Regex,System.String)">
+<summary>
+ represents the first pattern match in a string.
+</summary>
+</member>
+<member name="M:FSharp.Idioms.OrdinalIgnoreCase.op_EqualsEquals(System.String,System.String)">
+<summary>
+忽略大小写的方法比较字符串
+</summary>
+</member>
+<member name="M:FSharp.Idioms.ActivePatterns.|Rgi|_|(System.String)">
+<summary>
+ Same as Rgx and use RegexOptions.IgnoreCase
+</summary>
+</member>
+<member name="M:FSharp.Idioms.ActivePatterns.|Rgx|_|(System.String)">
+<summary>
+ input:string -&gt; Match
+</summary>
+</member>
+<member name="M:FSharp.Idioms.ActivePatterns.|RegExp|_|(System.String,System.Text.RegularExpressions.RegexOptions)">
+<summary>
+ represents the first pattern match in a string.
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Decimal.takeNumber(Microsoft.FSharp.Collections.FSharpList{System.Char})">
+<summary>
+ 完整数字: sign? digit+ fraction? exponent?
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Decimal.takeSInt(Microsoft.FSharp.Collections.FSharpList{System.Char})">
+<summary>
+ 取有符号整数
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Decimal.takeDigitsValueAndCount(Microsoft.FSharp.Collections.FSharpList{System.Char})">
+<summary>
+ 从头尽可能取出数字字符，直到遇到非法字符。转换为整数，记录位数
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Decimal.decimal_char_to_int(System.Char)">
+<summary>
+ 将十进制字符转换为数值
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Line.getColumnAndLpos(System.Int32,System.String,System.Int32)">
+<summary>
+ 计算一个位置pos是第几列；以及pos下一行的开始位置。
+ lpos，行开始位置，linp从lpos以后的剩余文本 = inp.[lpos..]，pos某个字符在总文本中的位置
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Line.rowColumn(System.Collections.Generic.IEnumerable{System.Tuple{System.Int32,System.String}},System.Int32)">
+<summary>
+绝对位置计算行列索引值 coordinate
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Line.splitLines(System.String)">
+<summary>
+ 行位置，行，数量包括结尾的\n，行的内容。
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Line.indentCodeBlock(System.Int32,System.String)">
+<summary>
+ 各行同时缩进
+ spaces: 行首将要新增的空格个数
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Line.startSpaces(System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ 每行开始的空格数
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Line.identAll(System.Int32,System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ 缩进输入块的每一行，并合并为一个字符串
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Tsv.getValue(Microsoft.FSharp.Collections.FSharpMap{System.String,System.Int32},System.String,System.String[])">
+<summary>
+ get string value
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Tsv.getFieldTitles(System.String[][])">
+<summary>
+ 第一行是标题行
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Tsv.stringify(System.String[][])">
+<summary>
+ 合成tsv格式的文本
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Tsv.parseText(System.String)">
+<summary>
+ get cells
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Tsv.parseTsv(System.String)">
+<summary>
+ get cells
+</summary>
+</member>
+<member name="T:FSharp.Idioms.Tsv">
+<summary>
+ Tab-Separated Values
+</summary>
+</member>
+<member name="M:FSharp.Idioms.FSharpCodeUtils.toCharLiteral(System.Char)">
+<summary>
+ c -&gt; &apos;c&apos;
+</summary>
+</member>
+<member name="M:FSharp.Idioms.FSharpCodeUtils.toStringLiteral(System.String)">
+<summary>
+ xyz -&gt; &quot;xyz&quot;
+</summary>
+</member>
+<member name="M:FSharp.Idioms.FSharpCodeUtils.decimalPoint(System.String)">
+<summary>
+ 如果是整数格式，浮点数给整数加小数点
+</summary>
+</member>
+<member name="M:FSharp.Idioms.FSharpCodeUtils.isIdentifier(System.String)">
+<summary>
+是否為F#標識符
+</summary>
+</member>
+<member name="P:FSharp.Idioms.Reflection.ListType.readList">
+<summary>
+列表分解一次为元素
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Reflection.EnumType.readFlags(System.Type)">
+<summary>
+[&lt;Flags&gt;] Enum 的值
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Reflection.EnumType.fromUInt64(System.Type,System.UInt64)">
+<summary>
+ enum from uint64
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Reflection.EnumType.toUInt64``1(System.Type)">
+<summary>
+ enum to uint64
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Reflection.UnionType.readUnion(System.Type)">
+<summary>
+可区分联合分解一次
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Reflection.ClassType.CanWriteMemberValue(System.Reflection.MemberInfo)">
+ <summary>
+ Determines whether the specified MemberInfo can be set.
+ </summary>
+ <param name="mmbr">The MemberInfo to determine whether can be set.</param>
+ <returns>
+ 	<c>true</c> if the specified MemberInfo can be set; otherwise, <c>false</c>.
+ </returns>
+</member>
+<member name="M:FSharp.Idioms.Reflection.ClassType.CanReadMemberValue(System.Reflection.MemberInfo)">
+ <summary>
+ Determines whether the specified MemberInfo can be read.
+ </summary>
+ <param name="mmbr">The MemberInfo to determine whether can be read.</param>
+ <returns>
+ 	<c>true</c> if the specified MemberInfo can be read; otherwise, <c>false</c>.
+ </returns>
+</member>
+<member name="M:FSharp.Idioms.Reflection.ClassType.WriteMemberValue(System.Reflection.MemberInfo,System.Object,System.Object)">
+ <summary>
+ Sets the mmbr's value on the target object.
+ </summary>
+ <param name="mmbr">The mmbr.</param>
+ <param name="target">The target.</param>
+ <param name="value">The value.</param>
+</member>
+<member name="M:FSharp.Idioms.Reflection.ClassType.ReadMemberValue(System.Reflection.MemberInfo,System.Object)">
+ <summary>
+ Gets the mmbr's value on the object.
+ </summary>
+ <param name="mmbr">The mmbr.</param>
+ <param name="target">The target object.</param>
+ <returns>The mmbr's value on the object.</returns>
+</member>
+<member name="M:FSharp.Idioms.Literals.TypePrinterApp.typeStringify(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Core.FSharpFunc{System.Type,Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.FSharpFunc{System.Type,Microsoft.FSharp.Core.FSharpFunc{System.Int32,System.String}},Microsoft.FSharp.Core.FSharpFunc{System.Int32,System.String}}}}})">
+<summary>
+ 根据优先级确定表达式是否带括号
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Literals.ValuePrinterApp.valueStringify(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Core.FSharpFunc{System.Type,Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.FSharpFunc{System.Type,Microsoft.FSharp.Core.FSharpFunc{System.Object,Microsoft.FSharp.Core.FSharpFunc{System.Int32,System.String}}},Microsoft.FSharp.Core.FSharpFunc{System.Object,Microsoft.FSharp.Core.FSharpFunc{System.Int32,System.String}}}}}},System.Type)">
+<summary>
+ 根据优先级确定表达式是否带括号
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Zeros.TryZeros.tryCtor(System.Type)">
+<summary>
+ parameterless constructor
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Zeros.ZeroUtils.getZero(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Core.FSharpFunc{System.Type,Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.FSharpFunc{System.Type,System.Object},System.Object}}}},System.Type)">
+<summary>
+ 主函数
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Literal.stringify``1(``0)">
+<summary>
+ print generic value
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Literal.stringifyDynamic(System.Type,System.Object)">
+<summary>
+ print dynamic value
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Literal.stringifyType``1">
+<summary>
+ print generic value
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Literal.stringifyTypeDynamic(System.Type)">
+<summary>
+ print dynamic value
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.Json.coalesce(System.Collections.Generic.IEnumerable{System.Tuple{System.String,FSharp.Idioms.Jsons.Json}})">
+<summary>
+ 保持先来者顺序，先来者赢，后来者补充coalesce
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.Json.assign(FSharp.Idioms.Jsons.Json)">
+<summary>
+ Object.assign
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.Json.assign(System.Collections.Generic.IEnumerable{System.Tuple{System.String,FSharp.Idioms.Jsons.Json}})">
+<summary>
+ Object.assign：保持先来者顺序，取后来者数值
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.JsonString.unquote(System.String)">
+<summary>
+ JSON格式去引号: &quot;xyz&quot; -&gt; xyz
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.JsonString.quote(System.String)">
+<summary>
+ JSON格式加引号：xyz -&gt; &quot;xyz&quot;
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.JsonRender.stringifyUnquotedJson(FSharp.Idioms.Jsons.Json)">
+<summary>
+ unquoted json 模式，如果没有歧义，省略引号
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.JsonRender.stringifyStringText(System.String)">
+<summary>
+用于unquoted json 模式，如果需要加引号
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.JsonRender.stringifyKey(System.String)">
+<summary>
+用于unquoted json 模式，如果需要加引号
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.JsonReaderApp.mainRead(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Core.FSharpFunc{System.Type,Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.FSharpFunc{System.Type,Microsoft.FSharp.Core.FSharpFunc{System.Object,FSharp.Idioms.Jsons.Json}},Microsoft.FSharp.Core.FSharpFunc{System.Object,FSharp.Idioms.Jsons.Json}}}}},System.Type)">
+<summary>
+ 根据优先级确定表达式是否带括号
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.JsonWriterApp.mainWrite(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Core.FSharpFunc{System.Type,Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.FSharpFunc{System.Type,Microsoft.FSharp.Core.FSharpFunc{FSharp.Idioms.Jsons.Json,System.Object}},Microsoft.FSharp.Core.FSharpFunc{FSharp.Idioms.Jsons.Json,System.Object}}}}},System.Type)">
+<summary>
+ 根据优先级确定表达式是否带括号
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Jsons.JsonCapture.tryCapture(System.String,Microsoft.FSharp.Collections.FSharpList{FSharp.Idioms.Jsons.Json})">
+<summary>
+ 找到记录中第一个属性
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Json.tryCapture(System.String,Microsoft.FSharp.Collections.FSharpList{FSharp.Idioms.Jsons.Json})">
+<summary>
+ 找到记录中第一个属性
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Json.deserialize``1(FSharp.Idioms.Jsons.Json)">
+<summary>
+ deserialize to: Json -&gt; &apos;t
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Json.from``1(``0)">
+<summary>
+ from: &apos;t -&gt; Json
+</summary>
+</member>
+<member name="P:FSharp.Idioms.Json.fromObj">
+<summary>
+ fromObj: obj -&gt; Json
+</summary>
+</member>
+<member name="P:FSharp.Idioms.Json.unquote">
+<summary>
+ &quot;string&quot; -&gt; string
+</summary>
+</member>
+<member name="P:FSharp.Idioms.Json.quote">
+<summary>
+ string -&gt; &quot;string&quot;
+</summary>
+</member>
+<member name="T:FSharp.Idioms.Parsers.PrimitiveType">
+<summary>
+ The primitive types are:
+ Boolean, Byte, SByte, Int16, UInt16, Int32, UInt32, Int64, UInt64, IntPtr, UIntPtr, Char, Double, and Single.
+</summary>
+</member>
+<member name="P:FSharp.Idioms.Parsers.ParseInteger.alphabet">
+<summary>
+字母，位置，查詢表
+</summary>
+</member>
+<member name="P:FSharp.Idioms.Parsers.ParseInteger.lowercases">
+<summary>
+小写字母表
+</summary>
+</member>
+<member name="P:FSharp.Idioms.Parsers.ParseInteger.uppercases">
+<summary>
+大写字母表
+</summary>
+</member>
+<member name="M:FSharp.Idioms.Parsers.PrimitiveParser.numberLoop(FSharp.Idioms.Parsers.PrimitiveParser.NumberInfo,System.String)">
+<summary>
+ 当确定输入是数字后，试探着解析剩余的部分
+</summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,686 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.HtmlSanitizer</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Sanitizers.HtmlSanitizer">
+            <summary>Sanitizes HTML fragments to prevent XSS attacks by removing dangerous elements, attributes, and URLs while preserving safe HTML structure.</summary>
+            <example>
+            Basic HTML sanitization:
+            <code>
+            var sanitizer = new HtmlSanitizer();
+            var safeHtml = sanitizer.SanitizeHtmlFragment("&lt;p&gt;Hello &lt;script&gt;alert('xss')&lt;/script&gt;World&lt;/p&gt;");
+            // Result: "&lt;p&gt;Hello World&lt;/p&gt;"
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Sanitizers.HtmlSanitizer.ValidElements">
+            <summary>Gets the set of HTML elements that are allowed in sanitized output. Elements not in this set are unwrapped: the tag is dropped but its content is kept, unless the element is in the BlockedElements set.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Sanitizers.HtmlSanitizer.ValidAttributes">
+            <summary>Gets the set of HTML attributes that are allowed in sanitized output. Attributes not in this set will be removed from elements.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Sanitizers.HtmlSanitizer.BlockedElements">
+            <summary>Gets the set of HTML elements that will be completely removed from the output, including their content. By default includes script and style elements.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Sanitizers.HtmlSanitizer.UriAttributes">
+            <summary>Gets the set of attribute names that contain URLs and should be validated for safety. Unsafe URLs will be replaced with empty strings.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Sanitizers.HtmlSanitizer.SrcsetAttributes">
+            <summary>Gets the set of attribute names that contain srcset values (responsive image sources) and should be validated for safety.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Sanitizers.HtmlSanitizer.AllowComments">
+            <summary>Gets or sets a value indicating whether HTML comments are kept in the sanitized output. Comments are removed by default because downlevel-hidden conditional comments (<c>&lt;!--[if IE]&gt;&lt;script&gt;…&lt;/script&gt;&lt;![endif]--&gt;</c>) are executed by legacy browsers.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Sanitizers.HtmlSanitizer.SanitizeHtmlFragment(System.String)">
+            <summary>Sanitizes an HTML fragment by removing dangerous elements, attributes, and URLs while preserving safe HTML structure.</summary>
+            <param name="html">The HTML fragment to sanitize.</param>
+            <returns>A sanitized HTML fragment safe for rendering.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Sanitizers.UrlSanitizer">
+            <summary>Validates URLs to prevent XSS attacks by checking for dangerous protocols and patterns.</summary>
+            <example>
+            Check if a URL is safe:
+            <code>
+            bool isSafe = UrlSanitizer.IsSafeUrl("https://example.com"); // true
+            bool isUnsafe = UrlSanitizer.IsSafeUrl("javascript:alert('xss')"); // false
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.Sanitizers.UrlSanitizer.SafeUrlRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^(?:(?:https?|mailto|ftp|tel|file):|[^&amp;:/?#]*(?:[/?#]|$))</code><br/>
+            Options:<br/>
+            <code>RegexOptions.IgnoreCase</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match with 2 alternative expressions, atomically.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match with 5 alternative expressions.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Hh].<br/>
+                            ○ Match a character in the set [Tt] exactly 2 times.<br/>
+                            ○ Match a character in the set [Pp].<br/>
+                            ○ Match a character in the set [Ss] atomically, optionally.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Mm].<br/>
+                            ○ Match a character in the set [Aa].<br/>
+                            ○ Match a character in the set [Ii].<br/>
+                            ○ Match a character in the set [Ll].<br/>
+                            ○ Match a character in the set [Tt].<br/>
+                            ○ Match a character in the set [Oo].<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Ff].<br/>
+                            ○ Match a character in the set [Tt].<br/>
+                            ○ Match a character in the set [Pp].<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Tt].<br/>
+                            ○ Match a character in the set [Ee].<br/>
+                            ○ Match a character in the set [Ll].<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Ff].<br/>
+                            ○ Match a character in the set [Ii].<br/>
+                            ○ Match a character in the set [Ll].<br/>
+                            ○ Match a character in the set [Ee].<br/>
+                    ○ Match ':'.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match a character in the set [^#&amp;/:?] greedily any number of times.<br/>
+                    ○ Match with 2 alternative expressions, atomically.<br/>
+                        ○ Match a character in the set [#/?].<br/>
+                        ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Sanitizers.UrlSanitizer.DataUrlPattern">
+            <remarks>
+            Pattern:<br/>
+            <code>^data:(?:image/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video/(?:mpeg|mp4|ogg|webm)|audio/(?:mp3|oga|ogg|opus));base64,[a-z0-9+/]+=*$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.IgnoreCase</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match a character in the set [Dd].<br/>
+            ○ Match a character in the set [Aa].<br/>
+            ○ Match a character in the set [Tt].<br/>
+            ○ Match a character in the set [Aa].<br/>
+            ○ Match ':'.<br/>
+            ○ Match with 3 alternative expressions.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match a character in the set [Ii].<br/>
+                    ○ Match a character in the set [Mm].<br/>
+                    ○ Match a character in the set [Aa].<br/>
+                    ○ Match a character in the set [Gg].<br/>
+                    ○ Match a character in the set [Ee].<br/>
+                    ○ Match '/'.<br/>
+                    ○ Match with 6 alternative expressions.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Bb].<br/>
+                            ○ Match a character in the set [Mm].<br/>
+                            ○ Match a character in the set [Pp].<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Gg].<br/>
+                            ○ Match a character in the set [Ii].<br/>
+                            ○ Match a character in the set [Ff].<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Jj].<br/>
+                            ○ Match a character in the set [Pp].<br/>
+                            ○ Match with 2 alternative expressions.<br/>
+                                ○ Match a sequence of expressions.<br/>
+                                    ○ Match a character in the set [Ee].<br/>
+                                    ○ Match a character in the set [Gg].<br/>
+                                ○ Match a character in the set [Gg].<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Pp].<br/>
+                            ○ Match a character in the set [Nn].<br/>
+                            ○ Match a character in the set [Gg].<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Tt].<br/>
+                            ○ Match a character in the set [Ii].<br/>
+                            ○ Match a character in the set [Ff] exactly 2 times.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Ww].<br/>
+                            ○ Match a character in the set [Ee].<br/>
+                            ○ Match a character in the set [Bb].<br/>
+                            ○ Match a character in the set [Pp].<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match a character in the set [Vv].<br/>
+                    ○ Match a character in the set [Ii].<br/>
+                    ○ Match a character in the set [Dd].<br/>
+                    ○ Match a character in the set [Ee].<br/>
+                    ○ Match a character in the set [Oo].<br/>
+                    ○ Match '/'.<br/>
+                    ○ Match with 3 alternative expressions.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Mm].<br/>
+                            ○ Match a character in the set [Pp].<br/>
+                            ○ Match with 2 alternative expressions.<br/>
+                                ○ Match a sequence of expressions.<br/>
+                                    ○ Match a character in the set [Ee].<br/>
+                                    ○ Match a character in the set [Gg].<br/>
+                                ○ Match '4'.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Oo].<br/>
+                            ○ Match a character in the set [Gg] exactly 2 times.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Ww].<br/>
+                            ○ Match a character in the set [Ee].<br/>
+                            ○ Match a character in the set [Bb].<br/>
+                            ○ Match a character in the set [Mm].<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match a character in the set [Aa].<br/>
+                    ○ Match a character in the set [Uu].<br/>
+                    ○ Match a character in the set [Dd].<br/>
+                    ○ Match a character in the set [Ii].<br/>
+                    ○ Match a character in the set [Oo].<br/>
+                    ○ Match '/'.<br/>
+                    ○ Match with 2 alternative expressions.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Mm].<br/>
+                            ○ Match a character in the set [Pp].<br/>
+                            ○ Match '3'.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Oo].<br/>
+                            ○ Match with 3 alternative expressions.<br/>
+                                ○ Match a sequence of expressions.<br/>
+                                    ○ Match a character in the set [Gg].<br/>
+                                    ○ Match a character in the set [Aa].<br/>
+                                ○ Match a character in the set [Gg] exactly 2 times.<br/>
+                                ○ Match a sequence of expressions.<br/>
+                                    ○ Match a character in the set [Pp].<br/>
+                                    ○ Match a character in the set [Uu].<br/>
+                                    ○ Match a character in the set [Ss].<br/>
+            ○ Match ';'.<br/>
+            ○ Match a character in the set [Bb].<br/>
+            ○ Match a character in the set [Aa].<br/>
+            ○ Match a character in the set [Ss].<br/>
+            ○ Match a character in the set [Ee].<br/>
+            ○ Match the string "64,".<br/>
+            ○ Match a character in the set [+/-9A-Za-z\u212A] atomically at least once.<br/>
+            ○ Match '=' atomically any number of times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Sanitizers.UrlSanitizer.IsSafeUrl(System.String)">
+            <summary>Determines whether a URL is safe by checking if it uses an allowed protocol (http, https, mailto, ftp, tel, file) or is a relative URL, or a safe data URL.</summary>
+            <param name="url">The URL to validate.</param>
+            <returns><see langword="true"/> if the URL is safe; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Sanitizers.UrlSanitizer.IsSafeSrcset(System.String)">
+            <summary>Determines whether a srcset value (used for responsive images) is safe by validating all URLs in the comma-separated list.</summary>
+            <param name="url">The srcset value to validate.</param>
+            <returns><see langword="true"/> if all URLs in the srcset are safe; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlCloneOptions">
+            <summary>Specifies options for cloning HTML nodes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.None">
+            <summary>No options specified.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.Deep">
+            <summary>Clone child nodes recursively.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.OverwriteAttributes">
+            <summary>Overwrite existing attributes in the target node.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.Tag">
+            <summary>Clone the Tag property.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.Attributes">
+            <summary>Clone attributes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.StreamOrder">
+            <summary>Clone the StreamOrder property.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.All">
+            <summary>Clone everything: deep children, attributes (overwriting), tag, and stream order.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlComment">
+            <summary>
+            Represents an HTML comment node (&lt;!-- comment --&gt;).
+            </summary>
+            <example>
+            <code>
+            var doc = new HtmlDocument();
+            var comment = doc.CreateComment();
+            comment.Value = "This is a comment";
+            doc.BodyElement.AppendChild(comment);
+            // Output: &lt;!-- This is a comment --&gt;
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlComment.NodeType">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlComment.Name">
+            <summary>Gets or sets the name of the comment node.</summary>
+            <value>Always returns "#comment". Setting this property has no effect.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlComment.InnerText">
+            <summary>Gets or sets the text content of the comment.</summary>
+            <value>The comment text without the &lt;!-- and --&gt; delimiters.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlComment.Value">
+            <summary>Gets or sets the value of the comment.</summary>
+            <value>The comment text without the &lt;!-- and --&gt; delimiters.</value>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlComment.WriteTo(System.IO.TextWriter)">
+            <summary>Writes the comment node to a text writer.</summary>
+            <param name="writer">The text writer to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+            <remarks>The output format is: &lt;!--[value]--&gt;</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlComment.WriteContentTo(System.IO.TextWriter)">
+            <summary>Writes the content of the comment node to a text writer.</summary>
+            <param name="writer">The text writer to write to.</param>
+            <remarks>Comments have no content, so this method does nothing.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlComment.WriteTo(System.Xml.XmlWriter)">
+            <summary>Writes the comment node to an XML writer.</summary>
+            <param name="writer">The XML writer to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlComment.WriteContentTo(System.Xml.XmlWriter)">
+            <summary>Writes the content of the comment node to an XML writer.</summary>
+            <param name="writer">The XML writer to write to.</param>
+            <remarks>Comments have no content, so this method does nothing.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlComment.CopyTo(Meziantou.Framework.Html.HtmlNode,Meziantou.Framework.Html.HtmlCloneOptions)">
+            <summary>Copies the comment node properties to the specified target node.</summary>
+            <param name="target">The target node to copy to.</param>
+            <param name="options">The cloning options.</param>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlDocument">
+             <summary>Represents an HTML document that can be loaded, parsed, and manipulated programmatically.</summary>
+             <example>
+             <code>
+             // Load from file
+             var doc = new HtmlDocument();
+             doc.Load("page.html");
+            
+             // Load from string
+             doc.LoadHtml("&lt;html&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/html&gt;");
+            
+             // Query elements using XPath
+             var title = doc.SelectSingleNode("//title")?.InnerText;
+             var links = doc.SelectNodes("//a[@href]");
+            
+             // Modify and save
+             doc.HtmlElement.SetAttributeValue("lang", "en");
+             doc.Save("modified.html");
+             </code>
+             </example>
+             <remarks>
+             This class provides a DOM-like API for parsing and manipulating HTML documents.
+             It supports encoding detection, XPath queries, and can handle malformed HTML.
+             </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.CacheVersion">
+            <summary>Gets or sets the number of times this document has changed since it was created.</summary>
+            <remarks>
+            Incremented by <see cref="M:Meziantou.Framework.Html.HtmlNode.ClearCaches"/> for every mutation anywhere in the document. Nodes stamp
+            their cached serializations with the value they were computed for and recompute once it no longer matches,
+            which keeps invalidation O(1) instead of proportional to the depth of the mutated node.
+            </remarks>
+        </member>
+        <member name="E:Meziantou.Framework.Html.HtmlDocument.Parsing">
+            <summary>Occurs when the document is being parsed.</summary>
+            <remarks>This event can be used to customize the parsing process or track progress.</remarks>
+        </member>
+        <member name="E:Meziantou.Framework.Html.HtmlDocument.Parsed">
+            <summary>Occurs after the document has been parsed.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Html.HtmlDocument"/> class.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.StreamEncoding">
+            <summary>Gets the encoding used to read the document stream.</summary>
+            <value>The stream encoding, or <see langword="null"/> if the document was not loaded from a stream.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.DetectedEncoding">
+            <summary>Gets the encoding detected from the HTML meta tags.</summary>
+            <value>The detected encoding, or <see langword="null"/> if no encoding was detected.</value>
+            <remarks>
+            The encoding is detected from meta tags like &lt;meta charset="utf-8"&gt; or
+            &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.BaseAddress">
+            <summary>Gets or sets the base URI of the document.</summary>
+            <value>The base URI used to resolve relative URLs.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.ReaderWasRestarted">
+            <summary>Gets a value indicating whether the reader was restarted during parsing due to encoding detection.</summary>
+            <value><see langword="true"/> if the reader was restarted; otherwise, <see langword="false"/>.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.DocumentType">
+            <summary>Gets the document type declaration element (&lt;!DOCTYPE&gt;).</summary>
+            <value>The document type element, or <see langword="null"/> if no DOCTYPE was found.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.HtmlElement">
+            <summary>Gets the root &lt;html&gt; element of the document.</summary>
+            <value>The html element, or <see langword="null"/> if no html element was found.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.BodyElement">
+            <summary>Gets the &lt;body&gt; element of the document.</summary>
+            <value>The body element, or <see langword="null"/> if no body element was found.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.HeadElement">
+            <summary>Gets the &lt;head&gt; element of the document.</summary>
+            <value>The head element, or <see langword="null"/> if no head element was found.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.FilePath">
+            <summary>Gets the file path from which the document was loaded.</summary>
+            <value>The file path, or <see langword="null"/> if the document was not loaded from a file.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.Options">
+            <summary>Gets or sets the parsing and serialization options for the document.</summary>
+            <value>The HTML options. The default is a new <see cref="T:Meziantou.Framework.Html.HtmlOptions"/> instance.</value>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.IO.TextWriter)">
+            <summary>Saves the document to the specified text writer.</summary>
+            <param name="writer">The text writer.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.Xml.XmlWriter)">
+            <summary>Saves the document to the specified XML writer.</summary>
+            <param name="writer">The XML writer.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.String)">
+            <summary>Saves the document to the specified file.</summary>
+            <param name="filePath">The file path. The file will be overwritten if it exists.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="filePath"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.String,System.Text.Encoding)">
+            <summary>Saves the document to the specified file with the given encoding.</summary>
+            <param name="filePath">The file path. The file will be overwritten if it exists.</param>
+            <param name="encoding">
+            The encoding to use. If <see langword="null"/>, UTF-8 encoding will be used.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="filePath"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.IO.Stream)">
+            <summary>Saves the document to the specified output stream.</summary>
+            <param name="outStream">The output stream.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="outStream"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.IO.Stream,System.Text.Encoding)">
+            <summary>Saves the document to the specified output stream with the given encoding.</summary>
+            <param name="outStream">The output stream.</param>
+            <param name="encoding">The encoding to use.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="outStream"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlElement.WriteStartTagTo(System.IO.TextWriter)">
+            <summary>Writes the tag of the element, up to and including its closing '&gt;'.</summary>
+            <returns><see langword="false"/> when nothing else has to be written for this element, either because the tag is self-closed or because the element is intentionally left open.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlElement.WriteEndTagTo(System.IO.TextWriter)">
+            <summary>Writes the end tag of the element, when it needs one.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlElementReadOptions">
+            <summary>Specifies options that control how HTML elements are read and parsed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementReadOptions.None">
+            <summary>No special read options.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementReadOptions.InnerRaw">
+            <summary>The element's inner content should be read as raw text without parsing (e.g., script, style tags).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementReadOptions.AutoClosed">
+            <summary>The element is automatically closed and doesn't require an explicit closing tag (e.g., br, img, input).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementReadOptions.NoChild">
+            <summary>The element cannot have child elements (e.g., void elements).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlElementWriteOptions">
+            <summary>Specifies options that control how HTML elements are written.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementWriteOptions.None">
+            <summary>No special write options.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementWriteOptions.DontCloseIfEmpty">
+            <summary>Don't write a closing tag if the element is empty (e.g., &lt;meta&gt; instead of &lt;meta /&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementWriteOptions.AlwaysClose">
+            <summary>Always write a closing tag, even if the element is empty (e.g., &lt;div&gt;&lt;/div&gt; instead of &lt;div /&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementWriteOptions.NoChild">
+            <summary>The element cannot have child elements.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlErrorType">
+            <summary>Specifies the type of HTML parsing error.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.TagNotClosed">
+            <summary>An opening tag was not closed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.TagNotOpened">
+            <summary>A closing tag was found without a corresponding opening tag.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.EncodingError">
+            <summary>A text encoding error occurred while reading the HTML.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.EncodingMismatch">
+            <summary>The detected encoding does not match the declared encoding.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.NamespaceNotDeclared">
+            <summary>A namespace was referenced but not declared.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.DuplicateAttribute">
+            <summary>An attribute was declared more than once on an element.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlException">
+            <summary>Represents errors that occur during HTML parsing or manipulation.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlException.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Html.HtmlException"/> class with a default message.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Html.HtmlException"/> class with a specified error message.</summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Html.HtmlException"/> class with a specified error message and inner exception.</summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlException.GetCode(System.String)">
+            <summary>Extracts the error code from an exception message.</summary>
+            <param name="message">The exception message in the format "HTMLnnnn: description".</param>
+            <returns>The numeric error code, or -1 if the message doesn't contain a valid error code.</returns>
+            <example>
+            <code>
+            var code = HtmlException.GetCode("HTML0004: Html encoding mismatch error");
+            // code == 4
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlException.Code">
+            <summary>Gets the numeric error code from the exception message.</summary>
+            <value>The error code, or -1 if no valid code is present.</value>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlFragmentType">
+            <summary>Specifies the type of HTML fragment encountered during parsing.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.Text">
+            <summary>Plain text content.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.TagOpen">
+            <summary>An opening tag (&lt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.TagEnd">
+            <summary>The end of a tag (&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.TagEndClose">
+            <summary>A self-closing tag end (/&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.TagClose">
+            <summary>A closing tag (&lt;/tagname).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.AttName">
+            <summary>An attribute name.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.AttValue">
+            <summary>An attribute value.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.Comment">
+            <summary>An HTML comment (&lt;!-- comment --&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.CDataText">
+            <summary>CDATA section text (&lt;![CDATA[ ... ]]&gt;).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlNode.HasContentToWrite">
+            <summary>Gets a value indicating whether the child nodes of this node have to be written by <see cref="M:Meziantou.Framework.Html.HtmlNode.WriteChildNodesTo(Meziantou.Framework.Html.HtmlNode,System.IO.TextWriter)"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlNode.SyncCaches">
+            <summary>Drops this node's cached values when the document has changed since they were computed.</summary>
+            <remarks>Called by every cached property before it looks at its backing field.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlNode.GetDeclaredNamespaceOfPrefix(System.String)">
+            <summary>Resolves <paramref name="prefix"/> against the declarations carried by this node alone, without looking at its ancestors.</summary>
+            <returns>The namespace URI, or <see langword="null"/> when this node declares nothing for <paramref name="prefix"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlNode.GetDeclaredPrefixOfNamespace(System.String)">
+            <summary>Resolves <paramref name="namespaceURI"/> against the declarations carried by this node alone, without looking at its ancestors.</summary>
+            <returns>The prefix, or <see langword="null"/> when this node declares nothing for <paramref name="namespaceURI"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlNode.GetDeclaredNamespaceAttributes(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>Adds the namespaces declared by this node alone to <paramref name="namespaces"/>, without looking at its ancestors.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlNodeType">
+            <summary>Specifies the type of an HTML node.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.Attribute">
+            <summary>An attribute node.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.Comment">
+            <summary>A comment node (&lt;!-- comment --&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.Document">
+            <summary>The document node.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.Element">
+            <summary>An element node (e.g., &lt;div&gt;, &lt;span&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.EndElement">
+            <summary>An end element node (deprecated/unused).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.Text">
+            <summary>A text node containing character data.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.None">
+            <summary>No node type specified.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.ProcessingInstruction">
+            <summary>A processing instruction node (&lt;?xml ?&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.DocumentType">
+            <summary>A document type declaration node (&lt;!DOCTYPE&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.XPathResult">
+            <summary>An XPath query result node.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlOptions.GetImpliedEndTags(System.String)">
+            <summary>Gets the names of the open elements that are implicitly closed when <paramref name="name"/> is opened.</summary>
+            <param name="name">The name of the element being opened.</param>
+            <returns>The names of the elements to close, or an empty collection when <paramref name="name"/> closes nothing.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlOptions.SetImpliedEndTags(System.String,System.String[])">
+            <summary>Sets the names of the open elements that are implicitly closed when <paramref name="name"/> is opened.</summary>
+            <param name="name">The name of the element being opened.</param>
+            <param name="closedElementNames">The names of the elements to close. Pass an empty array to close nothing.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="closedElementNames"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlOptions.ImpliedEndTagScopes">
+            <summary>Gets the names of the elements that stop the search for an element to implicitly close.</summary>
+            <remarks>An open element is never implicitly closed through one of these elements.</remarks>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.SafeUrlRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the SafeUrlRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.SafeUrlRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SafeUrlRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.SafeUrlRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SafeUrlRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.SafeUrlRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SafeUrlRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SafeUrlRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SafeUrlRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.DataUrlPattern_1">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the DataUrlPattern method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.DataUrlPattern_1.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.DataUrlPattern_1.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.DataUrlPattern_1.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.DataUrlPattern_1.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.DataUrlPattern_1.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.DataUrlPattern_1.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.DataUrlPattern_1.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.DataUrlPattern_1.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_ascii_488000840000000000000000">
+            <summary>Supports searching for characters in or not in "#&amp;/:?".</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_nonAscii_816089D9A81487CF2324FAA37A9F5B821663AA6172952E6510E5B583F5E54B69">
+            <summary>Supports searching for characters in or not in "+/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzK".</summary>
+        </member>
+    </members>
+</doc>

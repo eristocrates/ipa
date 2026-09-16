@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Esri Inc.</dc:creator>
+  <dc:description>Add geospatial and location intelligence functionality to your Android, iOS, and Windows apps with ArcGIS Maps SDK for .NET. Provides a cross-platform API to access a comprehensive set of mapping and spatial analytics capabilities including: vector tile basemaps; a wide range of standards-based ready-to-use and custom data layers; powerful search and topological operations; optimized routing and navigation; field data collection with offline editing and enterprise synchronization; and utility network tracing.</dc:description>
+  <dc:identifier>Esri.ArcGISRuntime</dc:identifier>
+  <version>300.0.0</version>
+  <keywords>ArcGIS Cartography Geo Geographic Geography Geolocation Geospatial GIS Latitude Location Longitude Map Mapping Maps Places Spatial 3D Analysis Basemap Coordinates Directions Elevation Geocode Geocoding Geocoder Geodatabase Geometry GNSS GPS Imagery KML KMZ MrSID Navigation NMEA OGC OpenStreetMap OSM PointCloud Raster Route Routing Scene Shapefile Terrain VectorTiles WFS WMS WMTS</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=6.14.0.116, Culture=neutral, PublicKeyToken=31bf3856ad364e35;Microsoft Windows NT 10.0.26200.0;.NET Framework 4.7.2</lastModifiedBy>
+</coreProperties>

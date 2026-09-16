@@ -1,0 +1,1333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+    <assembly>
+        <name>Argolis.Hydra</name>
+    </assembly>
+    <members>
+        <member name="T:Argolis.Hydra.Annotations.LinkAttribute">
+            <summary>
+            Marks a property as a hydra:Link
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Annotations.PropertyAttribute">
+            <summary>
+            Annotates property identifier
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Annotations.PropertyAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Annotations.PropertyAttribute" /> class.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Annotations.PropertyAttribute.Id">
+            <summary>
+            Gets the property identifier
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Annotations.RangeAttribute">
+            <summary>
+            Defines range of a property
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Annotations.RangeAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Annotations.RangeAttribute" /> class.
+            </summary>
+            <param name="range">The range predicate.</param>
+        </member>
+        <member name="P:Argolis.Hydra.Annotations.RangeAttribute.Range">
+            <summary>
+            Gets the range.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Annotations.ReadableAttribute">
+            <summary>
+            Use to mark a <see cref="T:Argolis.Hydra.Core.SupportedProperty" />, which should
+            not be <see cref="F:Vocab.Hydra.readable" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Annotations.ReadableAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Annotations.ReadableAttribute" /> class.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Annotations.ReadableAttribute.Readable">
+            <summary>
+            Gets a value indicating whether the property is writeable
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Annotations.SupportedClassAttribute">
+            <summary>
+            Marks <see cref="T:System.Type" /> to be included as hydra:Class in <see cref="T:Argolis.Hydra.Core.ApiDocumentation" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Annotations.SupportedClassAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Annotations.SupportedClassAttribute" /> class.
+            </summary>
+            <param name="rdfClassId">The RDF class identifier.</param>
+        </member>
+        <member name="P:Argolis.Hydra.Annotations.SupportedClassAttribute.RdfClass">
+            <summary>
+            Gets the RDF class.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Annotations.VariableAttribute">
+            <summary>
+            Defines the variable to be used with an <see cref="T:Argolis.Hydra.Core.IriTemplateMapping" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Annotations.VariableAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Annotations.VariableAttribute" /> class.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Annotations.VariableAttribute.Variable">
+            <summary>
+            Gets the variable name
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Annotations.WriteableAttribute">
+            <summary>
+            Use to mark a <see cref="T:Argolis.Hydra.Core.SupportedProperty" />, which should
+            not be <see cref="F:Vocab.Hydra.writeable" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Annotations.WriteableAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Annotations.WriteableAttribute" /> class.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Annotations.WriteableAttribute.Writeable">
+            <summary>
+            Gets a value indicating whether the property is writeable
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Annotations.WriteOnlyAttribute">
+            <summary>
+            Use to mark a <see cref="T:Argolis.Hydra.Core.SupportedProperty" />, which should
+            not be <see cref="F:Vocab.Hydra.readable" />
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.ContextHelpers">
+            <summary>
+            Helpers to retrieve terms mapped in the @context
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.ContextHelpers.GetExpandedIri(Newtonsoft.Json.Linq.JToken,System.String)">
+            <summary>
+            Gets the mapped term.
+            </summary>
+            <param name="context">The JSON-LD @context.</param>
+            <param name="term">The term name.</param>
+            <returns>mapped IRI or null if not found</returns>
+        </member>
+        <member name="T:Argolis.Hydra.Core.ApiDocumentation">
+            <summary>
+            Base class for Hydra API documentation
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Core.ApiDocumentation.#ctor(JsonLD.Entities.IriRef)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Core.ApiDocumentation" /> class.
+            </summary>
+            <param name="entrypoint">The entrypoint Uri.</param>
+        </member>
+        <member name="P:Argolis.Hydra.Core.ApiDocumentation.Id">
+            <summary>
+            Gets or sets the API documentation identifier
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.ApiDocumentation.Entrypoint">
+            <summary>
+            Gets the entrypoint Uri.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.ApiDocumentation.SupportedClasses">
+            <summary>
+            Gets or sets the supported classes.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Core.ApiDocumentation.GetContext(Argolis.Hydra.Core.ApiDocumentation)">
+            <summary>
+            Gets the context.
+            <p /><c>[UsedImplicitly]</c></summary>
+            <param name="doc">The document.</param>
+        </member>
+        <member name="T:Argolis.Hydra.Core.Class">
+            <summary>
+            A Hydra class
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Core.Class.#ctor(System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Core.Class" /> class.
+            </summary>
+            <param name="typeId">The class URI.</param>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Class.Id">
+            <summary>
+            Gets or sets the Class' identifier.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Class.SupportedOperations">
+            <summary>
+            Gets or sets the supported operations.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Class.SupportedProperties">
+            <summary>
+            Gets or sets the supported properties.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Core.IriTemplate">
+            <summary>
+            Represents a Hydra IRI Template
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Core.IriTemplate.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Core.IriTemplate" /> class.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.IriTemplate.VariableRepresentation">
+            <summary>
+            Gets or sets the variable representation
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.IriTemplate.Template">
+            <summary>
+            Gets or sets the template
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.IriTemplate.Mappings">
+            <summary>
+            Gets or sets the IRI Template variable mappings
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Core.IriTemplateMapping">
+            <summary>
+            Represents a Hydra IRI Template Mapping
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.IriTemplateMapping.Variable">
+            <summary>
+            Gets or sets the template variable
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.IriTemplateMapping.Property">
+            <summary>
+            Gets or sets the hydra:property
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.IriTemplateMapping.Required">
+            <summary>
+            Gets or sets a value indicating whether the <see cref="P:Argolis.Hydra.Core.IriTemplateMapping.Variable" /> is required
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Core.ManagesBlock">
+            <summary>
+            Represents a "manages block"
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Core.ManagesBlock.#ctor(System.Nullable{JsonLD.Entities.IriRef},System.Nullable{JsonLD.Entities.IriRef},System.Nullable{JsonLD.Entities.IriRef})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Core.ManagesBlock" /> class.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.ManagesBlock.Subject">
+            <summary>
+            Gets or sets the manages block's subject
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.ManagesBlock.Property">
+            <summary>
+            Gets or sets the manages block's property
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.ManagesBlock.Object">
+            <summary>
+            Gets or sets the manages block's object
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Core.Operation">
+            <summary>
+            A Hydra operation
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Core.Operation.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Core.Operation" /> class.
+            </summary>
+            <param name="method">The HTTP method.</param>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Operation.Id">
+            <summary>
+            Gets or sets the Operation's identifier.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Operation.Method">
+            <summary>
+            Gets the HTTP method.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Operation.Returns">
+            <summary>
+            Gets or sets the returned type.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Operation.Expects">
+            <summary>
+            Gets or sets the expected type.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Operation.Types">
+            <summary>
+            Gets or sets operation's types
+            <p /><c>[UsedImplicitly]</c></summary>
+        </member>
+        <member name="T:Argolis.Hydra.Core.Property">
+            <summary>
+            Represents an RDF property
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Core.Property.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Core.Property" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Core.Property.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Core.Property" /> class.
+            </summary>
+            <param name="extraTypes">Types in addition to rdf:Property</param>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Property.Range">
+            <summary>
+            Gets or sets the RDFS range.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Property.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Property.SupportedOperations">
+            <summary>
+            Gets or sets the supported operations.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Property.Types">
+            <summary>
+            Gets the property types
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Core.Resource">
+            <summary>
+            Base class for elements of Hydra Core vocabulary
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Resource.Title">
+            <summary>
+            Gets or sets the label.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.Resource.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Core.SupportedProperty">
+            <summary>
+            A Hydra property
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Core.SupportedProperty.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Core.SupportedProperty" /> class.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.SupportedProperty.Required">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Argolis.Hydra.Core.SupportedProperty" /> is required.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.SupportedProperty.Readable">
+            <summary>
+            Gets or sets a value indicating whether property can be read.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.SupportedProperty.Writeable">
+            <summary>
+            Gets or sets a value indicating whether property can be written.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Core.SupportedProperty.Property">
+            <summary>
+            Gets or sets the property.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Core.VariableRepresentation">
+            <summary>
+            A template syntax only details how to fill out simple string values, but not how to derive such string
+            values from typed values, language-tagged strings, or IRIs. Hydra addresses this by specifying
+            how such values are to be serialized as strings
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Core.VariableRepresentation.BasicRepresentation">
+            <summary>
+            The BasicRepresentation represents values by their lexical form.
+            It omits type and language information and does not differentiate between IRIs and literals
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Core.VariableRepresentation.ExplicitRepresentation">
+            <summary>
+            The ExplicitRepresentation includes type and language information
+            and differentiates between IRIs and literals by serializing values as follows
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.ApiDocumentationFactory">
+            <summary>
+            Discovers Types and converts them into Supported Classes to
+            be included in the <see cref="T:Argolis.Hydra.Core.ApiDocumentation" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.ApiDocumentationFactory.#ctor(Argolis.Hydra.IHydraDocumentationSettings,System.Collections.Generic.IEnumerable{Argolis.Hydra.Discovery.SupportedClasses.IDocumentedTypeSelector},Argolis.Hydra.Discovery.SupportedClasses.IRdfTypeProviderPolicy,Argolis.Hydra.Discovery.SupportedClasses.ISupportedClassFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.ApiDocumentationFactory" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.ApiDocumentationFactory.Create">
+            <summary>
+            Creates the API documentation.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.IApiDocumentationFactory">
+            <summary>
+            Discovers Types and converts them into Supported Classes to
+            be included in the <see cref="T:Argolis.Hydra.Core.ApiDocumentation" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.IApiDocumentationFactory.Create">
+            <summary>
+            Creates the API documentation.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.ReflectionExtensions">
+            <summary>
+            Helpers for reading stuff from reflection
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.ReflectionExtensions.GetDescription(System.Reflection.MemberInfo)">
+            <summary>
+            Gets the description of a reflected element.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.ReflectionExtensions.GetProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the property URI annotated by <see cref="T:Newtonsoft.Json.JsonPropertyAttribute" /> or <see cref="T:Argolis.Hydra.Annotations.PropertyAttribute" />
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.AssemblyAnnotatedTypeSelector">
+            <summary>
+            Finds types marked with <see cref="T:Argolis.Hydra.Annotations.SupportedClassAttribute" />
+            </summary>
+            <seealso cref="T:Argolis.Hydra.Discovery.SupportedClasses.IDocumentedTypeSelector" />
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedClasses.AssemblyAnnotatedTypeSelector.Assemblies">
+            <summary>
+            Gets the assemblies to scan for supported classes
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.AssemblyAnnotatedTypeSelector.FindTypes">
+            <summary>
+            Scans <see cref="P:Argolis.Hydra.Discovery.SupportedClasses.AssemblyAnnotatedTypeSelector.Assemblies" /> and retrieves types to include in
+            <see cref="T:Argolis.Hydra.Core.ApiDocumentation" />
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.AttributeRdfTypeProviderPolicy">
+            <summary>
+            Default implementation of <see cref="T:Argolis.Hydra.Discovery.SupportedClasses.IRdfTypeProviderPolicy" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.AttributeRdfTypeProviderPolicy.Create(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.DefaultSupportedClassFactory">
+            <summary>
+            Default implementation of <see cref="T:Argolis.Hydra.Discovery.SupportedClasses.ISupportedClassFactory" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.DefaultSupportedClassFactory.#ctor(Argolis.Hydra.Discovery.SupportedProperties.ISupportedPropertySelectionPolicy,Argolis.Hydra.Discovery.SupportedClasses.ISupportedPropertyFactory,Argolis.Hydra.Discovery.SupportedClasses.ISupportedClassMetaProvider,Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperationFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedClasses.DefaultSupportedClassFactory" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.DefaultSupportedClassFactory.Create(System.Type,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Creates a supported class with supported properties and operations
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.DefaultSupportedClassMetaProvider">
+            <summary>
+            Default implementation of <see cref="T:Argolis.Hydra.Discovery.SupportedClasses.ISupportedClassMetaProvider" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.DefaultSupportedClassMetaProvider.GetMeta(System.Type)">
+            <summary>
+            Gets the basic information about a supported class from it's reflected data and attributes.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.IDocumentedTypeSelector">
+            <summary>
+            Contract for finding types, which will be included in
+            <see cref="T:Argolis.Hydra.Core.ApiDocumentation" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.IDocumentedTypeSelector.FindTypes">
+            <summary>
+            Finds types to include in <see cref="T:Argolis.Hydra.Core.ApiDocumentation" />.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.IRdfTypeProviderPolicy">
+            <summary>
+            Contract for creating supported hydra:<see cref="T:Argolis.Hydra.Core.Class" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.IRdfTypeProviderPolicy.Create(System.Type)">
+            <summary>
+            Creates a hydra:Class from <see cref="T:System.Type" />
+            </summary>
+            <param name="documentedType">Type to document.</param>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.ISupportedClassFactory">
+            <summary>
+            Contract for creating supported classes
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.ISupportedClassFactory.Create(System.Type,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Creates a supported class
+            </summary>
+            <param name="supportedClassType">Underlying model types of the supported class.</param>
+            <param name="types">Identifiers of all discovered supported types.</param>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.ISupportedClassMetaProvider">
+            <summary>
+            Contract for returning basic information about a Supported <see cref="T:Argolis.Hydra.Core.Class" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.ISupportedClassMetaProvider.GetMeta(System.Type)">
+            <summary>
+            Gets the basic information about a supported class.
+            </summary>
+            <returns>
+            An object containing the title, description, etc.
+            </returns>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.ISupportedPropertyFactory">
+            <summary>
+            Contract for creating supported properties
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.ISupportedPropertyFactory.Create(System.Reflection.PropertyInfo,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Creates a hydra <see cref="T:Argolis.Hydra.Core.SupportedProperty" /> from a type's property.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.ISupportedPropertyMetaProvider">
+            <summary>
+            Contract for returning basic information about a <see cref="T:Argolis.Hydra.Core.SupportedProperty" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedClasses.ISupportedPropertyMetaProvider.GetMeta(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the basic information about a supported property.
+            </summary>
+            <returns>
+            An object containing the title, description, write- and readability
+            </returns>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedClasses.SupportedClassMeta">
+            <summary>
+            Basic information about a Supported <see cref="T:Argolis.Hydra.Core.Class" />
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedClasses.SupportedClassMeta.Description">
+            <summary>
+            Gets or sets the description of a supported class.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedClasses.SupportedClassMeta.Title">
+            <summary>
+            Gets or sets the class' title.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedOperations.DefaultSupportedOperationFactory">
+            <summary>
+            Default implementation of <see cref="T:Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperationFactory" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.DefaultSupportedOperationFactory.#ctor(System.Collections.Generic.IEnumerable{Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperations},Argolis.Hydra.Discovery.SupportedProperties.IPropertyRangeRetrievalPolicy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedOperations.DefaultSupportedOperationFactory" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.DefaultSupportedOperationFactory.CreateOperations(System.Type,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Creates the supported operations for supported class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.DefaultSupportedOperationFactory.CreateOperations(System.Reflection.PropertyInfo,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Creates the supported operations for supported property.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.DefaultSupportedOperationFactory.CreateOperation(Argolis.Hydra.Discovery.SupportedOperations.OperationMeta,JsonLD.Entities.IriRef)">
+            <summary>
+            Creates the operation replacing meta values with defaults.
+            </summary>
+            <example>
+            GET always expects owl:Nothing, PUT always returns owl:Nothing, etc.
+            </example>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedOperations.HttpMethod">
+            <summary>
+            HTTP Methods
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Discovery.SupportedOperations.HttpMethod.Get">
+            <summary>
+            The GET method name
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Discovery.SupportedOperations.HttpMethod.Post">
+            <summary>
+            The POST method name
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Discovery.SupportedOperations.HttpMethod.Head">
+            <summary>
+            The HEAD method name
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Discovery.SupportedOperations.HttpMethod.Options">
+            <summary>
+            The OPTIONS method name
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Discovery.SupportedOperations.HttpMethod.Delete">
+            <summary>
+            The DELETE method name
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Discovery.SupportedOperations.HttpMethod.Connect">
+            <summary>
+            The CONNECT method name
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Discovery.SupportedOperations.HttpMethod.Trace">
+            <summary>
+            The TRACE method name
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Discovery.SupportedOperations.HttpMethod.Put">
+            <summary>
+            The PUT method name
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Discovery.SupportedOperations.HttpMethod.Patch">
+            <summary>
+            The PATCH method name
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperationFactory">
+            <summary>
+            Contract for creating supported operations for a type
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperationFactory.CreateOperations(System.Type,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Creates the supported operations for supported class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperationFactory.CreateOperations(System.Reflection.PropertyInfo,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Creates the supported operations for supported property.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperations">
+            <summary>
+            Contract for getting operations supported by classes and properties
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperations.Type">
+            <summary>
+            Gets the type, which these operations apply to
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperations.GetSupportedClassOperations">
+            <summary>
+            Gets the supported operations for a supported class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperations.GetSupportedPropertyOperations(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the supported operations for a supported property .
+            </summary>
+            <param name="property">The supported property.</param>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedOperations.OperationMeta">
+            <summary>
+            Basic information about an <see cref="T:Argolis.Hydra.Core.Operation" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.OperationMeta.#ctor(System.String,System.String,System.String,System.Nullable{JsonLD.Entities.IriRef},System.Nullable{JsonLD.Entities.IriRef})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedOperations.OperationMeta" /> class.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedOperations.OperationMeta.Method">
+            <summary>
+            Gets the HTTP method.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedOperations.OperationMeta.Expects">
+            <summary>
+            Gets or sets the operation request model type identifier.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedOperations.OperationMeta.Returns">
+            <summary>
+            Gets or sets the operation response type identifier.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedOperations.OperationMeta.Title">
+            <summary>
+            Gets or sets the operation title.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedOperations.OperationMeta.Description">
+            <summary>
+            Gets or sets the operation description.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedOperations.OperationMeta.Types">
+            <summary>
+            Gets or sets the types of the operation.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationBuilder">
+            <summary>
+            Builder to set up a supported operations
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationBuilder.#ctor(Argolis.Hydra.Discovery.SupportedOperations.OperationMeta)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationBuilder" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationBuilder.Title(System.String)">
+            <summary>
+            Sets operation's hydra:title
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationBuilder.Description(System.String)">
+            <summary>
+            Sets operation hydra:description
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationBuilder.Expects(JsonLD.Entities.IriRef)">
+            <summary>
+            Sets operation's hydra:expects
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationBuilder.Returns(JsonLD.Entities.IriRef)">
+            <summary>
+            Sets operation's hydra:returns
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationBuilder.TypedAs(JsonLD.Entities.IriRef,JsonLD.Entities.IriRef[])">
+            <summary>
+            Set's the operations rdf:types (for example schema:CreateAction)
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationCollection">
+            <summary>
+            Fluent interface to simplify creating of supported operations
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationCollection.#ctor(System.Collections.Generic.IList{Argolis.Hydra.Discovery.SupportedOperations.OperationMeta})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationCollection" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationCollection.SupportsGet">
+            <summary>
+            Adds a GET supported operation
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationCollection.SupportsPut">
+            <summary>
+            Adds a PUT supported operation
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationCollection.SupportsPatch">
+            <summary>
+            Adds a PATCH supported operation
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationCollection.SupportsPost">
+            <summary>
+            Adds a POST supported operation
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationCollection.SupportsDelete">
+            <summary>
+            Adds a DELETE supported operation
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationCollection.Supports(System.String)">
+            <summary>
+            Adds a supported operation with any method
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperationCollection.Supports(Argolis.Hydra.Discovery.SupportedOperations.OperationMeta)">
+            <summary>
+            Adds a supported operation
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations">
+            <summary>
+            Base class for setting up operations supported by a class
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations" /> class.
+            </summary>
+            <param name="type">The supported class type.</param>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations.Type">
+            <summary>
+            Gets the type, which these operations apply to
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations.Class">
+            <summary>
+            Gets a builder, which sets up operations supported by the supported class
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations.GetSupportedClassOperations">
+            <summary>
+            Gets the supported operations for a supported class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations.GetSupportedPropertyOperations(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the supported operations for a supported property .
+            </summary>
+            <param name="property">The supported property.</param>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations`1">
+            <summary>
+            Base class for setting up operations supported by class <typeparamref name="T" />
+            </summary>
+            <typeparam name="T">the supported class type</typeparam>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations`1" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations`1.GetSupportedPropertyOperations(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the supported operations for a supported property .
+            </summary>
+            <param name="property">The supported property.</param>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedOperations.SupportedOperations`1.Property``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Allows the setup of an operation supported by a property
+            </summary>
+            <typeparam name="TReturn">Property return type.</typeparam>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.ApiDocumentationException">
+            <summary>
+            Represents an error, which occurs while creating <see cref="T:Argolis.Hydra.Core.ApiDocumentation" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.ApiDocumentationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedProperties.ApiDocumentationException" /> class.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertiesSelectionPolicy">
+            <summary>
+            Selects all public properties except Id
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertiesSelectionPolicy.ShouldIncludeProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Determines whether the the given <paramref name="property" /> should
+            be included as hydra:SupportedClass.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertyIdPolicy">
+            <summary>
+            Default <see cref="T:Argolis.Hydra.Discovery.SupportedProperties.IPropertyPredicateIdPolicy" /> with a sensible
+            fallback based on containing class
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertyIdPolicy.#ctor(JsonLD.Entities.IContextProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertyIdPolicy" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertyIdPolicy.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertyIdPolicy" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertyIdPolicy.GetPropertyId(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the property identifier from the @context
+            or as concatenation of class and property name.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertyRangeRetrievalPolicy">
+            <summary>
+            Default implementation of <see cref="T:Argolis.Hydra.Discovery.SupportedProperties.IPropertyRangeMappingPolicy" />, which
+            looks at <see cref="T:Argolis.Hydra.Annotations.RangeAttribute" /> and all available instances of
+            <see cref="T:Argolis.Hydra.Discovery.SupportedProperties.IPropertyRangeMappingPolicy" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertyRangeRetrievalPolicy.#ctor(System.Collections.Generic.IEnumerable{Argolis.Hydra.Discovery.SupportedProperties.IPropertyRangeMappingPolicy})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertyRangeRetrievalPolicy" /> class.
+            </summary>
+            <param name="propertyTypeMappings">The property type mappings.</param>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.DefaultPropertyRangeRetrievalPolicy.GetRange(System.Reflection.PropertyInfo,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Gets the range for the <paramref name="property" />
+            </summary>
+            <param name="property">The model property</param>
+            <param name="classIds">identifiers mapped to supported classes</param>
+            <returns>An identifier or null if none could be determined</returns>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.DefaultSupportedPropertyFactory">
+            <summary>
+            Default implementation of <see cref="T:Argolis.Hydra.Discovery.SupportedClasses.ISupportedPropertyFactory" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.DefaultSupportedPropertyFactory.#ctor(Argolis.Hydra.Discovery.SupportedProperties.IPropertyRangeRetrievalPolicy,Argolis.Hydra.Discovery.SupportedClasses.ISupportedPropertyMetaProvider,Argolis.Hydra.Discovery.SupportedProperties.IPropertyPredicateIdPolicy,Argolis.Hydra.Discovery.SupportedOperations.ISupportedOperationFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Discovery.SupportedProperties.DefaultSupportedPropertyFactory" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.DefaultSupportedPropertyFactory.Create(System.Reflection.PropertyInfo,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Creates a hydra <see cref="T:Argolis.Hydra.Core.SupportedProperty" /> from a type's property
+            using sensible defaults.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.DefaultSupportedPropertyMetaProvider">
+            <summary>
+            Default implementation of <see cref="T:Argolis.Hydra.Discovery.SupportedClasses.ISupportedPropertyMetaProvider" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.DefaultSupportedPropertyMetaProvider.GetMeta(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the <see cref="T:Argolis.Hydra.Discovery.SupportedProperties.SupportedPropertyMeta" /> based on property features
+            and common attributes.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.IPropertyPredicateIdPolicy">
+            <summary>
+            Contract for retrieving the property identifier
+            of a supported property predicate
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.IPropertyPredicateIdPolicy.GetPropertyId(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the property identifier.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.IPropertyRangeMappingPolicy">
+            <summary>
+            Contract for mapping property type to RDF type identifier
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.IPropertyRangeMappingPolicy.MapType(System.Reflection.PropertyInfo,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Maps a <see cref="P:System.Reflection.PropertyInfo.PropertyType" /> to RDF type.
+            </summary>
+            <param name="property">The property to map type of</param>
+            <param name="classIds">Identifiers mapped to discovered supported classes</param>
+            <returns>Absolute class identifier or null if type cannot be mapped</returns>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.IPropertyRangeRetrievalPolicy">
+            <summary>
+            Contract for selecting a <see cref="F:Vocab.Rdfs.range" /> for a <see cref="T:System.Reflection.PropertyInfo" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.IPropertyRangeRetrievalPolicy.GetRange(System.Reflection.PropertyInfo,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Gets the range for the <paramref name="property" />
+            </summary>
+            <param name="property">The model property</param>
+            <param name="classIds">identifiers mapped to supported classes</param>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.ISupportedPropertySelectionPolicy">
+            <summary>
+            Contract for selecting properties to be included as Supported Properties
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.ISupportedPropertySelectionPolicy.ShouldIncludeProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Determines whether the the given <paramref name="property" /> should
+            be included as hydra:SupportedClass.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.SupportedClassRangeMappingPolicy">
+            <summary>
+            Looks up property's range in discovered supported classes
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.SupportedClassRangeMappingPolicy.MapType(System.Reflection.PropertyInfo,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <inheritdoc />
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.SupportedPropertyMeta">
+            <summary>
+            Basic information about a <see cref="T:Argolis.Hydra.Core.SupportedProperty" />
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedProperties.SupportedPropertyMeta.Title">
+            <summary>
+            Gets or sets the title.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedProperties.SupportedPropertyMeta.Writeable">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Argolis.Hydra.Core.SupportedProperty" /> can be written.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedProperties.SupportedPropertyMeta.Readable">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Argolis.Hydra.Core.SupportedProperty" /> can be read.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedProperties.SupportedPropertyMeta.Description">
+            <summary>
+            Gets or sets a description of a <see cref="T:Argolis.Hydra.Core.SupportedProperty" />.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedProperties.SupportedPropertyMeta.Required">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Argolis.Hydra.Discovery.SupportedProperties.SupportedPropertyMeta" /> is required.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Discovery.SupportedProperties.SupportedPropertyMeta.IsLink">
+            <summary>
+            Gets or sets a value indicating whether the underlying property is a hydra:Link.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.XsdDatatypesMappingPolicy">
+            <summary>
+            Maps a <see cref="P:System.Reflection.PropertyInfo.PropertyType" /> to predefined XSD data types.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.XsdDatatypesMappingPolicy.MapType(System.Reflection.PropertyInfo,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Maps a <see cref="P:System.Reflection.PropertyInfo.PropertyType" /> to predefined XSD data types.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.XsdDatatypesMappingPolicy.GetMappedXsdTypeUri(System.Type)">
+            <summary>
+            Gets the mapped class URI or null.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Discovery.SupportedProperties.XsdDatatypesNullablesMappingPolicy">
+            <summary>
+            Maps underlying type of <see cref="T:System.Nullable`1" /> properties to RDF type.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Discovery.SupportedProperties.XsdDatatypesNullablesMappingPolicy.Argolis#Hydra#Discovery#SupportedProperties#IPropertyRangeMappingPolicy#MapType(System.Reflection.PropertyInfo,System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Uri})">
+            <summary>
+            Maps a <see cref="P:System.Reflection.PropertyInfo.PropertyType" /> to predefined XSD data types.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Hydra">
+            <summary>
+            Hydra Vocabulary
+            </summary>
+        </member>
+        <member name="F:Argolis.Hydra.Hydra.Context">
+            <summary>
+            URL of default Hydra JSON-LD @context
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.IHydraDocumentationSettings">
+            <summary>
+            Settings for serving hydra API Documentation
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.IHydraDocumentationSettings.DocumentationPath">
+            <summary>
+            Gets the API Documentation path.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.IHydraDocumentationSettings.EntryPoint">
+            <summary>
+            Gets the entry point URI.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.IIriTemplateFactory">
+            <summary>
+            Creates a <see cref="T:Argolis.Hydra.Core.IriTemplate" /> for a given model allowing databinding from the URI
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.IIriTemplateFactory.CreateIriTemplate``2">
+            <summary>
+            Creates an <see cref="T:Argolis.Hydra.Core.IriTemplate" /> by extending template for <typeparamref name="TModel" />
+            </summary>
+            <typeparam name="TExtension">the model to be bound from the request</typeparam>
+            <typeparam name="TModel">model which receives additional paramters</typeparam>
+        </member>
+        <member name="T:Argolis.Hydra.IriTemplateFactory">
+            <inheritdoc />
+        </member>
+        <member name="M:Argolis.Hydra.IriTemplateFactory.#ctor(Argolis.Hydra.Discovery.SupportedProperties.IPropertyRangeRetrievalPolicy,Argolis.Models.IModelTemplateProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.IriTemplateFactory" /> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.IriTemplateFactory.CreateIriTemplate``2">
+            <inheritdoc />
+        </member>
+        <member name="T:Argolis.Hydra.Models.CollectionIdentifierAttribute">
+            <summary>
+            Allows defining an identifier template for Hydra:Collection resources
+            </summary>
+            <seealso cref="T:Argolis.Models.GenericResourceIdentifierTemplateAttribute" />
+        </member>
+        <member name="M:Argolis.Hydra.Models.CollectionIdentifierAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Models.CollectionIdentifierAttribute" /> class.
+            </summary>
+            <param name="template">The template string.</param>
+        </member>
+        <member name="T:Argolis.Hydra.Models.DefaultUriTemplateExpander">
+            <summary>
+            URI Template expander implemented with TunnelVisionLabs.Net.UriTemplate package
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Models.DefaultUriTemplateExpander.#ctor(Argolis.Models.IModelTemplateProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Models.DefaultUriTemplateExpander" /> class.
+            </summary>
+            <param name="templates">The template provider.</param>
+        </member>
+        <member name="M:Argolis.Hydra.Models.DefaultUriTemplateExpander.Expand``1(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:Argolis.Hydra.Models.DefaultUriTemplateExpander.Expand``1(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Argolis.Hydra.Models.DefaultUriTemplateExpander.ExpandAbsolute``1(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:Argolis.Hydra.Models.DefaultUriTemplateExpander.ExpandAbsolute``1(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="T:Argolis.Hydra.Models.DefaultUriTemplateMatcher">
+            <summary>
+            Implements <see cref="T:Argolis.Models.IUriTemplateMatcher" /> with TunnelVisionLabs.Net.UriTemplate package
+            </summary>
+            <seealso cref="T:Argolis.Models.IUriTemplateMatcher" />
+        </member>
+        <member name="M:Argolis.Hydra.Models.DefaultUriTemplateMatcher.#ctor(Argolis.Models.IModelTemplateProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Models.DefaultUriTemplateMatcher" /> class.
+            </summary>
+            <param name="templates">The template provider.</param>
+        </member>
+        <member name="M:Argolis.Hydra.Models.DefaultUriTemplateMatcher.Match``1(System.Uri)">
+            <inheritdoc />
+        </member>
+        <member name="T:Argolis.Hydra.Models.DictionaryMaker">
+            <summary>
+            Makes a dictionary out of a given object.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Models.DictionaryMaker.Make(System.Object)">
+            <summary>
+            Makes a dictionary out of the properties of the given input.
+            </summary>
+            <param name="input">Object to make a dictionary out of</param>
+            <returns>
+            A dictionary with the keys being the input object property names and the values their respective values
+            </returns>
+        </member>
+        <member name="M:Argolis.Hydra.Models.DictionaryMaker.MakeWithType(System.Object)">
+            <summary>
+            Makes a dictionary out of the properties of the given input.
+            </summary>
+            <param name="input">Object to make a dictionary out of</param>
+            <returns>
+            A dictionary with the keys being the input object property names and the values their respective types and
+            values
+            </returns>
+        </member>
+        <member name="T:Argolis.Hydra.Resources.Collection`1">
+            <summary>
+            Hydra collection
+            </summary>
+            <typeparam name="T">collection element type</typeparam>
+        </member>
+        <member name="M:Argolis.Hydra.Resources.Collection`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Resources.Collection`1" /> class
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.Collection`1.Members">
+            <summary>
+            Gets or sets the members.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.Collection`1.Views">
+            <summary>
+            Gets or sets the views
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.Collection`1.TotalItems">
+            <summary>
+            Gets or sets the total items.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.Collection`1.Type">
+            <summary>
+            Gets the type.
+            <p /><c>[UsedImplicitly]</c></summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.Collection`1.Manages">
+            <summary>
+            Gets the collection's manages blocks
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.Collection`1.Context">
+            <summary>
+            Gets the JSON-LD context.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Resources.IResourceWithViews">
+            <summary>
+            Represents a resource, which can be "viewed" in different perspectives
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.IResourceWithViews.Views">
+            <summary>
+            Gets or sets the views
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Resources.IView">
+            <summary>
+            Marker interface for views
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Resources.PartialCollectionView">
+            <summary>
+            Hydra partial collection view
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.PartialCollectionView.Next">
+            <summary>
+            Gets or sets the next page URI.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.PartialCollectionView.Previous">
+            <summary>
+            Gets or sets the last page URI.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.PartialCollectionView.Last">
+            <summary>
+            Gets or sets the last page URI.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.PartialCollectionView.First">
+            <summary>
+            Gets or sets the first page URI.
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.PartialCollectionView.Type">
+            <summary>
+            Gets the RDF type.
+            <p /><c>[UsedImplicitly]</c></summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.PartialCollectionView.Context">
+            <summary>
+            Gets the JSON-LD context.
+            <p /><c>[UsedImplicitly]</c></summary>
+        </member>
+        <member name="T:Argolis.Hydra.Resources.Resource">
+            <summary>
+            Any resource
+            </summary>
+        </member>
+        <member name="P:Argolis.Hydra.Resources.Resource.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Resources.TemplatedPartialCollectionView">
+            <summary>
+            A hydra:PartialCollectionView constructed from a URI Template
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Resources.TemplatedPartialCollectionView.#ctor(UriTemplate.Core.UriTemplate,System.String,System.Int64,System.Int32,System.Int32,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Resources.TemplatedPartialCollectionView" /> class
+            </summary>
+            <param name="template">the URI Template</param>
+            <param name="pageVariable">the page variable</param>
+            <param name="totalItems">total items in collection</param>
+            <param name="page">
+            current page index
+            <remarks>1-based</remarks>
+            </param>
+            <param name="pageSize">page size, used to calculate last page index</param>
+            <param name="templateParams">additional template parameters</param>
+        </member>
+        <member name="T:Argolis.Hydra.Resources.ViewTemplate">
+            <summary>
+            Represents a Hydra view template
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Serialization.VariableRepresentationConverter">
+            <inheritdoc />
+        </member>
+        <member name="M:Argolis.Hydra.Serialization.VariableRepresentationConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Argolis.Hydra.Serialization.VariableRepresentationConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Argolis.Hydra.Serialization.VariableRepresentationConverter.CanConvert(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="T:Argolis.Hydra.TypeExtensions">
+            <summary>
+            Extensions of <see cref="T:System.Type" />
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.TypeExtensions.GetMemberRdfType``1(Argolis.Hydra.Resources.Collection{``0})">
+            <summary>
+            Gets RDF type of collection member
+            </summary>
+            <typeparam name="TMember">Collection member type</typeparam>
+            <returns>null if type has no clear annotation</returns>
+        </member>
+    </members>
+</doc>

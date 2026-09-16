@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dubzer.WhatwgUrl</name>
+    </assembly>
+    <members>
+        <member name="T:Dubzer.WhatwgUrl.BclInternal.ParseNumbers">
+            <summary>Methods for parsing numbers and strings.</summary>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.BclInternal.ValueStringBuilder.GetPinnableReference">
+            <summary>
+            Get a pinnable reference to the builder.
+            Does not ensure there is a null char after <see cref="P:Dubzer.WhatwgUrl.BclInternal.ValueStringBuilder.Length"/>
+            This overload is pattern matched in the C# 7.3+ compiler so you can omit
+            the explicit method call, and write eg "fixed (char* c = builder)"
+            </summary>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.BclInternal.ValueStringBuilder.GetPinnableReference(System.Boolean)">
+            <summary>
+            Get a pinnable reference to the builder.
+            </summary>
+            <param name="terminate">Ensures that the builder has a null char after <see cref="P:Dubzer.WhatwgUrl.BclInternal.ValueStringBuilder.Length"/></param>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.BclInternal.ValueStringBuilder.RawChars">
+            <summary>Returns the underlying storage of the builder.</summary>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.BclInternal.ValueStringBuilder.AsSpan(System.Boolean)">
+            <summary>
+            Returns a span around the contents of the builder.
+            </summary>
+            <param name="terminate">Ensures that the builder has a null char after <see cref="P:Dubzer.WhatwgUrl.BclInternal.ValueStringBuilder.Length"/></param>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.BclInternal.ValueStringBuilder.Grow(System.Int32)">
+            <summary>
+            Resize the internal buffer either by doubling current buffer size or
+            by adding <paramref name="additionalCapacityBeyondPos"/> to
+            <see cref="F:Dubzer.WhatwgUrl.BclInternal.ValueStringBuilder._pos"/> whichever is greater.
+            </summary>
+            <param name="additionalCapacityBeyondPos">
+            Number of chars requested beyond current position.
+            </param>
+        </member>
+        <member name="T:Dubzer.WhatwgUrl.Consts.MaxLengthOnStack">
+            <summary>
+            Max stack allocated arrays length for types
+            </summary>
+        </member>
+        <member name="T:Dubzer.WhatwgUrl.DomUrl">
+            <summary>
+            This class represents a parsed URL object
+            </summary>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Origin">
+            <summary>
+            Returns the origin of this URL
+            </summary>
+            <remarks name="Origin">
+        When the scheme is <c>file</c> returns the string <c>"null"</c><br />
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#origin">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Username">
+            <summary>
+            Returns the username of this URL
+            </summary>
+            <remarks name="Username">
+        When the username is not present in the input URL, the returned value will be an empty string<br />
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#username">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Password">
+            <summary>
+            Returns the password of this URL
+            </summary>
+            <remarks name="Password">
+        When the password is not present in the input URL, the returned value will be an empty string<br />
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#password">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Host">
+            <summary>
+            Returns the host of this URL. It includes the port
+            </summary>
+            <remarks name="Host">
+        For some protocols, when specified port is the default one, it will not be included.
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#host">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Hostname">
+            <summary>
+            Returns the hostname of this URL
+            </summary>
+            <remarks name="Hostname">
+        Does not include the port number<br />
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#hostname">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Port">
+            <summary>
+            Returns the port of this URL
+            </summary>
+            <remarks name="Port">
+        For some protocols, when specified port is the default one, the returned value will be an empty string.<br />
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#port">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Pathname">
+            <summary>
+            Returns the path of this URL
+            </summary>
+            <remarks name="Pathname">
+        If there was a trailing slash in the input, it will be included.<br />
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#pathname">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Search">
+            <summary>
+            Returns the search (query) of this URL
+            </summary>
+            <remarks name="Search">
+        If there was a query in the input, the string will start with the prefix <c>?</c>.<br />
+        Otherwise, it will be an empty string.<br />
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#search">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Hash">
+            <summary>
+            Returns the hash (fragment) of this URL
+            </summary>
+            <remarks name="Hash">
+        If there was a hash in the input, the string will start with the prefix <c>#</c>.<br />
+        Otherwise, it will be an empty string.<br />
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#hash">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Protocol">
+            <summary>
+            Returns the protocol (scheme) of this URL
+            </summary>
+            <remarks name="Protocol">
+        It <b>always</b> ends with a <c>:</c><br />
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#protocol">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.DomUrl.Href">
+            <summary>
+            Returns a serialized representation of this URL
+            </summary>
+            <remarks name="Href">
+        It will contain all the parts of the URL mentioned above.
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#href">See docs for more info</a>
+    </remarks>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.DomUrl.#ctor(System.String,System.String)">
+            <summary>
+            Parses the <paramref name="input"/> and the <paramref name="baseUrl"/>,
+            and initializes an instance of <see cref="T:Dubzer.WhatwgUrl.DomUrl" />.
+            </summary>
+            <param name="input">The URL to be parsed</param>
+            <param name="baseUrl">The base URL to resolve <paramref name="input"/> against</param>
+            <exception cref="T:Dubzer.WhatwgUrl.InvalidUrlException">
+            Thrown when <paramref name="input"/> or <paramref name="baseUrl"/> are invalid
+            </exception>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.DomUrl.#ctor(System.String,Dubzer.WhatwgUrl.DomUrl)">
+            <summary>
+            Parses the <paramref name="input"/> relative to <paramref name="baseUrl"/>,
+            and initializes an instance of <see cref="T:Dubzer.WhatwgUrl.DomUrl" />.
+            </summary>
+            <exception cref="T:Dubzer.WhatwgUrl.InvalidUrlException">
+            Thrown when <paramref name="input"/> is invalid
+            </exception>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.DomUrl.ToString">
+            <summary>Gets a serialized representation of this URL.
+            Is equivalent to getting the <see cref="P:Dubzer.WhatwgUrl.DomUrl.Href"/> property.
+            </summary>
+            <seealso cref="P:Dubzer.WhatwgUrl.DomUrl.Href"/>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.DomUrl.TryCreate(System.String,Dubzer.WhatwgUrl.DomUrl@)">
+            <summary>
+            Parses the <paramref name="input" />. Returns <see langword="true" /> if the URL is valid
+            </summary>
+            <remarks name="TryCreate">
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#bool-trycreatestring-input-out-domurl-result">
+            See docs for more info
+        </a>
+    </remarks>
+            <param name="input">The URL to be parsed</param>
+            <param name="result">When this method returns <see langword="true" />,
+            contains the created DomUrl</param>
+            <returns><see langword="true" /> if the <see cref="T:Dubzer.WhatwgUrl.DomUrl" /> was successfully created;
+            otherwise, <see langword="false" /></returns>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.DomUrl.TryCreate(System.String,Dubzer.WhatwgUrl.DomUrl,Dubzer.WhatwgUrl.DomUrl@)">
+            <summary>
+            Parses the <paramref name="input" />. Returns <see langword="true" /> if the URL is valid
+            </summary>
+            <remarks name="TryCreateObjectBase">
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#bool-trycreatestring-input-domurl-baseurl-out-domurl-result">
+            See docs for more info
+        </a>
+    </remarks>
+            <param name="input">The URL to be parsed</param>
+            <param name="baseUrl">The base URL to resolve <paramref name="input" /> against</param>
+            <param name="result">When this method returns <see langword="true" />,
+            contains the created DomUrl</param>
+            <returns><see langword="true" /> if the <see cref="T:Dubzer.WhatwgUrl.DomUrl" /> was successfully created;
+            otherwise, <see langword="false" /></returns>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.DomUrl.TryCreate(System.String,System.String,Dubzer.WhatwgUrl.DomUrl@)">
+            <summary>
+            Parses the <paramref name="input" /> and <paramref name="baseUrl" />. Returns <see langword="true" /> if the URL is valid
+            </summary>
+            <remarks name="TryCreateStringBase">
+        <a href="https://github.com/Dubzer/Dubzer.WhatwgUrl/blob/master/docs/main.md#bool-trycreatestring-input-string-baseurl-out-domurl-result">
+            See docs for more info
+        </a>
+    </remarks>
+            <param name="input">The URL to be parsed</param>
+            <param name="baseUrl">The base URL to resolve <paramref name="input" /> against</param>
+            <param name="result">When this method returns <see langword="true" />,
+            contains the created DomUrl</param>
+            <returns><see langword="true" /> if the <see cref="T:Dubzer.WhatwgUrl.DomUrl" /> was successfully created;
+            otherwise, <see langword="false" /></returns>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.InputUtils.GetParser(System.String)">
+            <summary>
+            Returns the correct parser implementation
+            when input contains surrogate pairs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Dubzer.WhatwgUrl.InternalUrl._arrFlag">
+            <summary>
+            Pointer is inside an array (ipv6)
+            </summary>
+        </member>
+        <member name="T:Dubzer.WhatwgUrl.InternalUrlRune">
+            <summary>
+            This class provides support for Unicode URLs
+            </summary>
+        </member>
+        <member name="T:Dubzer.WhatwgUrl.InvalidUrlException">
+            <summary>
+            This exception is thrown when the input URL is invalid.
+            </summary>
+        </member>
+        <member name="P:Dubzer.WhatwgUrl.InvalidUrlException.UrlError">
+            <summary>
+            <para><b>This field is purely informative.</b></para>
+            You should not rely on its value in production, but paired with the examples from the
+            <a href="https://url.spec.whatwg.org/#writing">WHATWG URL spec</a>, it might be useful for debugging.
+            </summary>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.InvalidUrlException.#ctor(System.String,Dubzer.WhatwgUrl.UrlErrorCode)">
+            <inheritdoc cref="T:Dubzer.WhatwgUrl.InvalidUrlException"/>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.Ipv4Parser.ParseNumber(System.ReadOnlySpan{System.Char})">
+            <returns>-1 when invalid</returns>
+        </member>
+        <member name="T:Dubzer.WhatwgUrl.UrlErrorCode">
+            <summary>
+            <para><b>These codes are purely informative.</b></para>
+            You should not rely on them in production, but paired with the examples from the
+            <a href="https://url.spec.whatwg.org/#writing">WHATWG URL spec</a>, they might be useful for debugging.
+            </summary>
+        </member>
+        <member name="F:Dubzer.WhatwgUrl.UrlErrorCode.Unknown">
+            <summary>
+            The error is out of specification or not specified in it.
+            </summary>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.Util.ToChar(System.Text.Rune)">
+            <returns>uFFFD if is not representable</returns>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.Util.ParseHexNumber(System.Char)">
+            <summary>
+            Convert a hex digit codepoint to a number, without allocating a string to the heap.
+            <example>'F' (u0046) -> 0xF</example>
+            </summary>
+        </member>
+        <member name="M:Dubzer.WhatwgUrl.Uts46.Idna.ToAscii(System.String)">
+            <returns>null when invalid</returns>
+        </member>
+        <member name="F:Dubzer.WhatwgUrl.Uts46.IdnaMappingTable.RefBoolPackFlag">
+            <summary>
+            This flag is used in <see cref="P:Dubzer.WhatwgUrl.Uts46.IdnaMappingTable.MainRefs"/> table
+            </summary>
+        </member>
+    </members>
+</doc>

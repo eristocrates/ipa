@@ -1,0 +1,10 @@
+
+#load "Microsoft.Extensions.Configuration.csx" 
+#load "Microsoft.Extensions.Configuration.Abstractions.csx" 
+#load "Microsoft.Extensions.Configuration.Binder.csx" 
+#load "Microsoft.Extensions.DependencyInjection.Abstractions.csx" 
+#load "Microsoft.Extensions.Logging.csx" 
+#load "Microsoft.Extensions.Logging.Abstractions.csx" 
+#load "Microsoft.Extensions.Options.csx" 
+#load "Microsoft.Extensions.Options.ConfigurationExtensions.csx" 
+#r "../../packages/Microsoft.Extensions.Logging.Configuration/lib/net10.0/Microsoft.Extensions.Logging.Configuration.dll" 

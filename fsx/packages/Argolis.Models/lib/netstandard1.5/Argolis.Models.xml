@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Argolis.Models</name>
+    </assembly>
+    <members>
+        <member name="T:Argolis.Models.AttributeModelTemplateProvider">
+            <summary>
+            Retrieves resource identifier templates from attributes
+            </summary>
+            <seealso cref="T:Argolis.Models.IModelTemplateProvider" />
+        </member>
+        <member name="M:Argolis.Models.AttributeModelTemplateProvider.#ctor(Argolis.Models.IBaseUriProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Models.AttributeModelTemplateProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Models.AttributeModelTemplateProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Models.AttributeModelTemplateProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Models.AttributeModelTemplateProvider.GetTemplate(System.Type)">
+            <summary>
+            Gets the template just as declared by the <see cref="T:Argolis.Models.IdentifierAttribute"/>.
+            </summary>
+            <exception cref="T:Argolis.Models.MissingTemplateException">when the attribute is not found</exception>
+        </member>
+        <member name="M:Argolis.Models.AttributeModelTemplateProvider.GetAbsoluteTemplate(System.Type)">
+            <summary>
+            Gets the template as declared by the <see cref="T:Argolis.Models.IdentifierAttribute"/>, prefixed with a base URI.
+            </summary>
+            <exception cref="T:Argolis.Models.MissingTemplateException">when the attribute is not found</exception>
+        </member>
+        <member name="M:Argolis.Models.AttributeModelTemplateProvider.GetTemplateAttribute(System.Type)">
+            <summary>
+            Gets the template attribute for given <paramref name="type"/>.
+            </summary>
+        </member>
+        <member name="T:Argolis.Models.GenericResourceIdentifierTemplateAttribute">
+            <summary>
+            Provides identifer template for generic resources (useful for collections)
+            </summary>
+            <seealso cref="T:Argolis.Models.TemplateAttributeBase" />
+        </member>
+        <member name="M:Argolis.Models.GenericResourceIdentifierTemplateAttribute.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Models.GenericResourceIdentifierTemplateAttribute"/> class.
+            </summary>
+            <param name="template">The template string.</param>
+            <param name="containerType">Generic container type (must have exactly one generic type parameter)</param>
+        </member>
+        <member name="P:Argolis.Models.GenericResourceIdentifierTemplateAttribute.ContainerType">
+            <summary>
+            Gets the container type.
+            </summary>
+        </member>
+        <member name="T:Argolis.Models.IBaseUriProvider">
+            <summary>
+            Provider of base URI used when constructing absolute resource identifiers
+            </summary>
+        </member>
+        <member name="P:Argolis.Models.IBaseUriProvider.BaseResourceUri">
+            <summary>
+            Gets the base resource URI.
+            </summary>
+        </member>
+        <member name="T:Argolis.Models.IdentifierAttribute">
+            <summary>
+            Lets API authors define template for identifiers identifying decorated resource type
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Argolis.Models.IdentifierAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Models.IdentifierAttribute"/> class.
+            </summary>
+            <param name="template">The URI template string.</param>
+        </member>
+        <member name="T:Argolis.Models.IModelTemplateProvider">
+            <summary>
+            Retrieves identifier templates associated with resource types
+            </summary>
+        </member>
+        <member name="M:Argolis.Models.IModelTemplateProvider.GetTemplate(System.Type)">
+            <summary>
+            Gets the template as is.
+            </summary>
+        </member>
+        <member name="M:Argolis.Models.IModelTemplateProvider.GetAbsoluteTemplate(System.Type)">
+            <summary>
+            Gets the template concatenated which should be an absolute URI.
+            </summary>
+            <remarks>implementers can use the <see cref="T:Argolis.Models.IBaseUriProvider"/> to construct absolute templates</remarks>
+        </member>
+        <member name="T:Argolis.Models.ITemplateParameters`1">
+            <summary>
+            Marks
+            </summary>
+            <typeparam name="T">Model type</typeparam>
+        </member>
+        <member name="T:Argolis.Models.IUriTemplateExpander">
+            <summary>
+            Used to expand a template by substituting variables with given parameters
+            </summary>
+        </member>
+        <member name="M:Argolis.Models.IUriTemplateExpander.Expand``1(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Expands template associated with type <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">type of resource model</typeparam>
+            <param name="parameters">The parameters.</param>
+            <returns>A relative or absolute URI depending on the URI template</returns>
+        </member>
+        <member name="M:Argolis.Models.IUriTemplateExpander.Expand``1(System.Object)">
+            <summary>
+            Expands template associated with type <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">type of resource model</typeparam>
+            <param name="parameters">The parameters anonymous object.</param>
+            <returns>A relative or absolute URI depending on the URI template</returns>
+        </member>
+        <member name="M:Argolis.Models.IUriTemplateExpander.ExpandAbsolute``1(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Expands template associated with type <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">type of resource model</typeparam>
+            <param name="parameters">The parameters.</param>
+            <returns>A absolute URI identifier</returns>
+        </member>
+        <member name="M:Argolis.Models.IUriTemplateExpander.ExpandAbsolute``1(System.Object)">
+            <summary>
+            Expands template associated with type <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">type of resource model</typeparam>
+            <param name="parameters">The parameters anonymous object.</param>
+            <returns>An absolute URI identifier</returns>
+        </member>
+        <member name="T:Argolis.Models.IUriTemplateMatcher">
+            <summary>
+            Used to extract variables and values from a URI
+            </summary>
+        </member>
+        <member name="M:Argolis.Models.IUriTemplateMatcher.Match``1(System.Uri)">
+            <summary>
+            Matches the specified URI against type <typeparamref name="T"/> identifier template.
+            </summary>
+            <typeparam name="T">resource model type</typeparam>
+            <param name="uri">The URI (absolute or relative).</param>
+            <returns>an object containing matched variables</returns>
+        </member>
+        <member name="T:Argolis.Models.MissingTemplateException">
+            <summary>
+            Exception thrown when template for the given resource type is not found
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Argolis.Models.MissingTemplateException.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Models.MissingTemplateException"/> class.
+            </summary>
+            <param name="type">The resource type.</param>
+        </member>
+        <member name="M:Argolis.Models.MissingTemplateException.#ctor(System.Type,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Models.MissingTemplateException"/> class.
+            </summary>
+            <param name="type">The resource type.</param>
+            <param name="exception">A more detailed exception.</param>
+        </member>
+        <member name="T:Argolis.Models.TemplateAttributeBase">
+            <summary>
+            Derive to annotate with resource model classes with identifier templates
+            </summary>
+        </member>
+        <member name="M:Argolis.Models.TemplateAttributeBase.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Models.TemplateAttributeBase"/> class.
+            </summary>
+            <param name="template">The template string.</param>
+        </member>
+        <member name="P:Argolis.Models.TemplateAttributeBase.Template">
+            <summary>
+            Gets the URI Template.
+            </summary>
+        </member>
+        <member name="T:Argolis.Models.UriTemplateMatches">
+            <summary>
+            Wraps values extracted from a URI against matching URI Template
+            </summary>
+        </member>
+        <member name="M:Argolis.Models.UriTemplateMatches.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Models.UriTemplateMatches"/> class.
+            </summary>
+            <param name="matchDict">The match dictionary.</param>
+        </member>
+        <member name="P:Argolis.Models.UriTemplateMatches.Success">
+            <summary>
+            Gets a value indicating whether the URI matched the template
+            </summary>
+        </member>
+        <member name="M:Argolis.Models.UriTemplateMatches.Failure">
+            <summary>
+            Creates a instance which represents an unsuccessful match
+            </summary>
+        </member>
+        <member name="M:Argolis.Models.UriTemplateMatches.Get``1(System.String)">
+            <summary>
+            Gets value of variable named as the <paramref name="key"/> parameter, converted to given type.
+            </summary>
+            <typeparam name="T">type to convert the variable value to</typeparam>
+        </member>
+    </members>
+</doc>

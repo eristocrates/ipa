@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>ARC helper functions for Common workflow language.</Description>
+    <PackageProjectUrl>https://github.com/nfdi4plants/ARCtrl/tree/main/src/CWL</PackageProjectUrl>
+    <PackageTags>ARC;F#;FSharp;dotnet;.Net;bioinformatics;biology;fable-library;datascience;dataplant;nfdi;metadata;fable-javascript;fable-python;fable-dotnet</PackageTags>
+  </PropertyGroup>
+  <Import Project="../Package.Metadata.props" />
+  
+  <ItemGroup> 
+    <Compile Include="HashHelpers.fs" /> 
+    <Compile Include="DynamicObjHelpers.fs" /> 
+    <Compile Include="CWLTypes.fs" /> 
+    <Compile Include="Requirements.fs" /> 
+    <Compile Include="Outputs.fs" /> 
+    <Compile Include="Inputs.fs" /> 
+    <Compile Include="WorkflowSteps.fs" /> 
+    <Compile Include="ParameterReference.fs" /> 
+    <Compile Include="ToolDescription.fs" /> 
+    <Compile Include="WorkflowDescription.fs" /> 
+    <Compile Include="ExpressionToolDescription.fs" />
+    <Compile Include="OperationDescription.fs" />
+    <Compile Include="CWLProcessingUnit.fs" /> 
+    <Compile Include="Decode.fs" />
+    <Compile Include="Encode.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="YAMLicious" />
+    <PackageReference Include="DynamicObj" />
+  </ItemGroup>
+</Project>

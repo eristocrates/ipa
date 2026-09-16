@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Data.WsdlProvider</id>
+    <version>0.8.0-alpha</version>
+    <authors>Jeremie Chassaing</authors>
+    <owners>Jeremie Chassaing</owners>
+    <licenseUrl>https://github.com/thinkbeforecoding/FSharp.Data.WsdlProvider/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/thinkbeforecoding/FSharp.Data.WsdlProvider</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/thinkbeforecoding/FSharp.Data.WsdlProvider/master/docs/img/logo.png</iconUrl>
+    <description>This is a type provider to generate clients for soap services from wsdl.</description>
+    <summary>This is a type provider to generate clients for soap services from wsdl</summary>
+    <tags>F# fsharp typeproviders FSharp.Data.WsdlProvider wsdl</tags>
+    <references>
+      <reference file="FSharp.Data.WsdlProvider.Runtime.dll" />
+    </references>
+    <dependencies>
+      <dependency id="FSharp.Core" version="4.7.2" />
+      <dependency id="System.ServiceModel.Duplex" version="4.9.0" />
+      <dependency id="System.ServiceModel.Http" version="4.9.0" />
+    </dependencies>
+  </metadata>
+</package>

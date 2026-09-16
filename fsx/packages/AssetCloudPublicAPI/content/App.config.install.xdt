@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <appSettings xdt:Transform="InsertIfMissing">
+  </appSettings>
+  <appSettings>
+    <add key="PublicApiToken" value="" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+    <add key="PublicApiBaseAddress" value="https://tenantname.waspassetcloud.com/" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)"/>
+    <add key="PublicApiTimeoutSeconds" value="" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)"/>
+    <add key="AutomaticUpdateFolder" value="C:\ProgramData\Wasp Barcode Technologies\MobileAssetWeb\AutoUpload" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)"/>
+    <add key="ClientSettingsProvider.ServiceUri" value="" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)"/>
+  </appSettings>
+</configuration>

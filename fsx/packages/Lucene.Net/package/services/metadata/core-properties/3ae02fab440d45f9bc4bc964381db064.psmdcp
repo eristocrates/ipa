@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>The Apache Software Foundation</dc:creator>
+  <dc:description>Lucene.Net is a full-text search engine library capable of advanced text analysis, indexing, and searching. It can be used to easily add search capabilities to applications. Lucene.Net is a C# port of the popular Java Lucene search engine framework from The Apache Software Foundation, targeted at .NET Framework and .NET Core users.</dc:description>
+  <dc:identifier>Lucene.Net</dc:identifier>
+  <version>4.8.0-beta00018</version>
+  <keywords>lucene.net core text search information retrieval lucene apache analysis index query</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=6.9.1.3, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET Standard 2.0</lastModifiedBy>
+</coreProperties>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/AutomaticGraphLayout.Drawing.nuspec" Id="RACCE184864831838" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/e61f657748eb43059e67119a1a12c8b5.psmdcp" Id="R63A38B0BF7D738E8" />
+</Relationships>

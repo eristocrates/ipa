@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Fli</name></assembly>
+<members>
+<member name="P:Fli.Output.throwIfErrored">
+<summary>
+ Throws exception if exit code is not 0.
+</summary>
+</member>
+<member name="M:Fli.Output.throw(Microsoft.FSharp.Core.FSharpFunc{Fli.Domain.Output,System.Boolean},Fli.Domain.Output)">
+<summary>
+ Throws exception if given condition in `func` matches.
+</summary>
+</member>
+<member name="P:Fli.Output.printError">
+<summary>
+ Prints `Error` from `Output`.
+</summary>
+</member>
+<member name="M:Fli.Output.toError(Fli.Domain.Output)">
+<summary>
+ Gets `Error` from `Output`.
+</summary>
+</member>
+<member name="P:Fli.Output.printExitCode">
+<summary>
+ Prints `ExitCode` from `Output`.
+</summary>
+</member>
+<member name="M:Fli.Output.toExitCode(Fli.Domain.Output)">
+<summary>
+ Gets `ExitCode` from `Output`.
+</summary>
+</member>
+<member name="P:Fli.Output.printText">
+<summary>
+ Prints `Text` from `Output`.
+</summary>
+</member>
+<member name="M:Fli.Output.toText(Fli.Domain.Output)">
+<summary>
+ Gets `Text` from `Output`.
+</summary>
+</member>
+<member name="P:Fli.Output.printId">
+<summary>
+ Prints `Id` from `Output`.
+</summary>
+</member>
+<member name="M:Fli.Output.toId(Fli.Domain.Output)">
+<summary>
+ Gets `Id` from `Output`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.CancelAfter``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.Int32)">
+<summary>
+ Cancel after a period of time in milliseconds for async operations.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Encoding``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.Text.Encoding)">
+<summary>
+ `Encoding` that&apos;ll be used for `Input`, &apos;Output.Text&apos; and `Output.Error`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.EnvironmentVariables``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}})">
+<summary>
+ A list of tupled `EnvironmentVariables`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.EnvironmentVariable``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.Tuple{System.String,System.String})">
+<summary>
+ One tupled `EnvironmentVariable`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Credentials``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.Tuple{System.String,System.String,System.String})">
+<summary>
+ Start the executable with other `Credentials`.
+ Hint: `Domain` and `Password` are available for Windows systems only.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.UserName``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.String)">
+<summary>
+ Start the executable with another `Username`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Verb``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.String)">
+<summary>
+ `Verb` keyword that can be used to start the executable.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.WindowStyle``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},Fli.Domain.WindowStyle)">
+<summary>
+ The `WindowStyle` for newly created windows.
+ Hint: Hidden, Maximized, Minimized or Normal.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.WorkingDirectory``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.String)">
+<summary>
+ Current executing `working directory`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Output``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.IO.TextWriter)">
+<summary>
+ Extra `Output` that is being executed immediately after getting output from execution.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Output``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},Microsoft.FSharp.Core.FSharpFunc{System.String,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Extra `Output` that is being executed immediately after getting output from execution.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Output``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.Text.StringBuilder)">
+<summary>
+ Extra `Output` that is being executed immediately after getting output from execution.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Output``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.String)">
+<summary>
+ Extra `Output` that is being executed immediately after getting output from execution.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Output``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},Fli.Domain.Outputs)">
+<summary>
+ Extra `Output` that is being executed immediately after getting output from execution.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Input``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},System.String)">
+<summary>
+ `Input` string(s) that can be used to interact with the executable.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Arguments``2(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ExecContext},``1)">
+<summary>
+ `Arguments` that will be passed into the executable.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Exec``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.CE.StartingContext},System.String)">
+<summary>
+ `Exec` opening keyword, which binary/executable shall be started.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.CancelAfter``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},System.Int32)">
+<summary>
+ Cancel after a period of time in milliseconds for async operations.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Encoding``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},System.Text.Encoding)">
+<summary>
+ `Encoding` that&apos;ll be used for `Input`, &apos;Output.Text&apos; and `Output.Error`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.EnvironmentVariables``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}})">
+<summary>
+ A list of tupled `EnvironmentVariables`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.EnvironmentVariable``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},System.Tuple{System.String,System.String})">
+<summary>
+ One tupled `EnvironmentVariable`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.WindowStyle``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},Fli.Domain.WindowStyle)">
+<summary>
+ The `WindowStyle` for newly created windows.
+ Hint: Hidden, Maximized, Minimized or Normal.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.WorkingDirectory``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},System.String)">
+<summary>
+ Current executing `working directory`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Output``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},System.IO.TextWriter)">
+<summary>
+ Extra `Output` that is being executed immediately after getting output from execution.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Output``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},Microsoft.FSharp.Core.FSharpFunc{System.String,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Extra `Output` that is being executed immediately after getting output from execution.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Output``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},System.Text.StringBuilder)">
+<summary>
+ Extra `Output` that is being executed immediately after getting output from execution.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Output``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},System.String)">
+<summary>
+ Extra `Output` that is being executed immediately after getting output from execution.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Output``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},Fli.Domain.Outputs)">
+<summary>
+ Extra `Output` that is being executed immediately after getting output from execution.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Input``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},System.String)">
+<summary>
+ `Input` string(s) that can be used to interact with the shell.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Command``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.Domain.ShellContext},System.String)">
+<summary>
+ Which `Command` should be executed in the `Shell`.
+</summary>
+</member>
+<member name="M:Fli.CE.ICommandContext`1.Shell``1(Fli.Domain.ICommandContext{``0},Fli.Domain.ICommandContext{Fli.CE.StartingContext},Fli.Domain.Shells)">
+<summary>
+ `Shell` opening keyword, which `Fli.Shell` shall be used.
+</summary>
+</member>
+<member name="M:Fli.Command.Command.toString(Fli.Domain.ExecContext)">
+<summary>
+ Stringifies executable + arguments.
+</summary>
+</member>
+<member name="M:Fli.Command.Command.toString(Fli.Domain.ShellContext)">
+<summary>
+ Stringifies shell + opening flag and given command.
+</summary>
+</member>
+<member name="M:Fli.Command.Command.executeAsync(Fli.Domain.ExecContext,Microsoft.FSharp.Core.FSharpOption{System.Threading.CancellationToken})">
+<summary>
+ Executes the given context as a new process asynchronously.
+</summary>
+</member>
+<member name="M:Fli.Command.Command.executeAsync(Fli.Domain.ShellContext,Microsoft.FSharp.Core.FSharpOption{System.Threading.CancellationToken})">
+<summary>
+ Executes the given context as a new process asynchronously.
+</summary>
+</member>
+<member name="M:Fli.Command.Command.execute(Fli.Domain.ExecContext)">
+<summary>
+ Executes the given context as a new process.
+</summary>
+</member>
+<member name="M:Fli.Command.Command.execute(Fli.Domain.ShellContext)">
+<summary>
+ Executes the given context as a new process.
+</summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>JsonLD.Entities</id>
+    <version>0.3.6</version>
+    <authors>tpluscode</authors>
+    <licenseUrl>https://raw.githubusercontent.com/wikibus/JsonLD.Entities/master/LICENSE</licenseUrl>
+    <projectUrl>http://github.org/wikibus/JsonLd.Entities</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/wikibus/JsonLD.Entities/master/assets/icon.png</iconUrl>
+    <description>Simple POCO object seriallization for JSON-LD</description>
+    <releaseNotes>update json-ld.net dependency</releaseNotes>
+    <copyright>Copyright 2014-2016 Tomasz Pluskiewicz
+Icon designed by Piotrek Chuchla from The Noun Project</copyright>
+    <tags>rdf json-ld turtle ttl n3 notation3 semantic web</tags>
+    <dependencies>
+      <dependency id="json-ld.net" version="1.0.5" />
+      <dependency id="Newtonsoft.Json" version="9.0.0" />
+      <dependency id="Dynamitey" version="2.0.0" />
+    </dependencies>
+  </metadata>
+</package>

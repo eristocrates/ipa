@@ -1,0 +1,8 @@
+root = true
+
+[*.fsx]
+indent_size = 4
+max_line_length = 173
+fsharp_max_value_binding_width = 173
+fsharp_blank_lines_around_nested_multiline_expressions = false
+fsharp_multiline_bracket_style = stroustrup

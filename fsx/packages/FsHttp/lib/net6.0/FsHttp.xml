@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FsHttp</name></assembly>
+<members>
+<member name="M:FsHttp.MultipartExtensions.Multipart``1(``0)">
+<summary>
+ An explicit transformation from a previous context to allow for describing the request multiparts.
+</summary>
+</member>
+<member name="M:FsHttp.MultipartElementExtensions.ContentType(FsHttp.Domain.MultipartElementContext,System.String,Microsoft.FSharp.Core.FSharpOption{System.Text.Encoding})">
+<summary>
+ The MIME type of the body of the request (used with POST and PUT requests)
+</summary>
+</member>
+<member name="M:FsHttp.BodyExtensions.ContentType(FsHttp.Domain.BodyContext,System.String,Microsoft.FSharp.Core.FSharpOption{System.Text.Encoding})">
+<summary>
+ The MIME type of the body of the request (used with POST and PUT requests)
+</summary>
+</member>
+<member name="M:FsHttp.BodyExtensions.ContentEncoding(FsHttp.Domain.BodyContext,System.String)">
+<summary>
+ The type of encoding used on the data
+</summary>
+</member>
+<member name="M:FsHttp.BodyExtensions.Body``1(``0)">
+<summary>
+ An explicit transformation from a previous context to allow for describing the request body.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.XHTTPMethodOverride(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Override HTTP method.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Warning(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ A general warning about possible problems with the entity body
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Via(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Informs the server of proxies through which the request was sent
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.UserAgent(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ The user agent string of the user agent
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Upgrade(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Specifies additional communications protocols that the client supports.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Translate(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Microsoft extension to the HTTP specification used in conjunction with WebDAV functionality.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.TransferEncoding(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ The TransferEncoding header indicates the form of encoding used to safely transfer the entity to the user.
+ The valid directives are one of: chunked, compress, deflate, gzip, orentity.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Trailer(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ The Trailer general field value indicates that the given set of header fields is present in the trailer of a message encoded with chunked transfer-coding
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.TE(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ The transfer encodings the user agent is willing to accept: the same values as for the response header
+ Transfer-Encoding can be used, plus the &quot;trailers&quot; value (related to the &quot;chunked&quot; transfer method) to
+ notify the server it expects to receive additional headers (the trailers) after the last, zero-sized, chunk.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.SetCookieForPath(FsHttp.Domain.HeaderContext,System.String,System.String,System.String)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos; with
+ the subset of URIs on the origin server to which this Cookie applies.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.SetCookieForDomain(FsHttp.Domain.HeaderContext,System.String,System.String,System.String,System.String)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos; with
+ the subset of URIs on the origin server to which this Cookie applies
+ and the internet domain for which this Cookie is valid.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.SetCookie(FsHttp.Domain.HeaderContext,System.String,System.String)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos;.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Referer(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ This is the address of the previous web page from which a link to the currently requested page was followed.
+ (The word &quot;referrer&quot; is misspelled in the RFC as well as in most implementations.)
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Range(FsHttp.Domain.HeaderContext,System.Int64,System.Int64)">
+<summary>
+ Request only part of an entity. Bytes are numbered from 0
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Query(FsHttp.Domain.HeaderContext,System.Collections.Generic.IEnumerable{System.Tuple{System.String,System.String}})">
+<summary>
+ Append query params
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.ProxyAuthorization(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Authorization credentials for connecting to a proxy.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Prefer(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Optional instructions to the server to control request processing. See RFC https://tools.ietf.org/html/rfc7240 for more details
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Pragma(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Implementation-specific headers that may have various effects anywhere along the request-response chain.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Origin(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Initiates a request for cross-origin resource sharing (asks server for an &apos;Access-Control-Allow-Origin&apos; response header)
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.MaxForwards(FsHttp.Domain.HeaderContext,System.Int32)">
+<summary>
+ Limit the number of times the message can be forwarded through proxies or gateways
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.LastModified(FsHttp.Domain.HeaderContext,System.DateTime)">
+<summary>
+ Specifies the date and time at which the accompanying body data was last modified
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.KeepAlive(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Specifies a parameter used into order to maintain a persistent connection
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.IfUnmodifiedSince(FsHttp.Domain.HeaderContext,System.DateTime)">
+<summary>
+ Only send the response if the entity has not been modified since a specific time
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.IfRange(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ If the entity is unchanged, send me the part(s) that I am missing; otherwise, send me the entire new entity
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.IfNoneMatch(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Allows a 304 Not Modified to be returned if content is unchanged
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.IfModifiedSince(FsHttp.Domain.HeaderContext,System.DateTime)">
+<summary>
+ Allows a 304 Not Modified to be returned if content is unchanged
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.IfMatch(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Only perform the action if the client supplied entity matches the same entity on the server.
+ This is mainly for methods like PUT to only update a resource if it has not been modified since the user last updated it. If-Match: &quot;737060cd8c284d8af7ad3082f209582d&quot; Permanent
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Host(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ The domain name of the server (for virtual hosting), and the TCP port number on which the server is listening.
+ The port number may be omitted if the port is the standard port for the service requested.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Header(FsHttp.Domain.HeaderContext,System.String,System.String)">
+<summary>
+ Custom header
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.From(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ The email address of the user making the request
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Expires(FsHttp.Domain.HeaderContext,System.DateTime)">
+<summary>
+ Gives the date/time after which the response is considered stale
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Expect(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Indicates that particular server behaviors are required by the client
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Date(FsHttp.Domain.HeaderContext,System.DateTime)">
+<summary>
+ The date and time that the message was sent
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Connection(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ What type of connection the user-agent would prefer
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.CacheControl(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.AuthorizationUserPw(FsHttp.Domain.HeaderContext,System.String,System.String)">
+<summary>
+ Authorization header using Basic (User/Password) authorization
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.AuthorizationBearer(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Authorization header using Bearer authorization token
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Authorization(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Authorization credentials for HTTP authorization
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.AcceptLanguage(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ List of acceptable human languages for response
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.AcceptEncoding(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ List of acceptable encodings. See HTTP compression.
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.AcceptDatetime(FsHttp.Domain.HeaderContext,System.DateTime)">
+<summary>
+ Acceptable version in time
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.AcceptCharset(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Character sets that are acceptable
+</summary>
+</member>
+<member name="M:FsHttp.HeaderExtensions.Accept(FsHttp.Domain.HeaderContext,System.String)">
+<summary>
+ Content-Types that are acceptable for the response
+</summary>
+</member>
+<member name="M:FsHttp.Response.toFormattedTextAsync(FsHttp.Domain.Response)">
+<summary>
+ Tries to convert the response content according to it&apos;s type to a formatted string.
+</summary>
+</member>
+<member name="M:FsHttp.Response.loadContent(FsHttp.Domain.Response)">
+<summary>
+ Starts serializing the content stream into a buffer as a background task.
+</summary>
+</member>
+<member name="M:FsHttp.Request.send(FsHttp.Domain.IToRequest)">
+<summary>
+ Sends a request synchronously.
+</summary>
+</member>
+<member name="M:FsHttp.Request.sendAsync(FsHttp.Domain.IToRequest)">
+<summary>
+ Sends a request asynchronously.
+</summary>
+</member>
+<member name="M:FsHttp.Request.sendTAsync(FsHttp.Domain.IToRequest)">
+<summary>
+ Sends a request asynchronously.
+</summary>
+</member>
+<member name="M:FsHttp.Request.toAsync(Microsoft.FSharp.Core.FSharpOption{System.Threading.CancellationToken},FsHttp.Domain.IToRequest)">
+<summary>
+ Builds an asynchronous request, without sending it.
+</summary>
+</member>
+<member name="M:FsHttp.Request.toRequestAndMessage(FsHttp.Domain.IToRequest)">
+<summary>
+ Transforms a Request into a System.Net.Http.HttpRequestMessage.
+</summary>
+</member>
+<member name="T:FsHttp.FsiInit.InitResult.NoFsiObjectFound">
+<summary>
+ FSI object not found (this is expected when running in a notebook).
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.MultipartElement.contentType(System.String,Microsoft.FSharp.Core.FSharpOption{System.Text.Encoding},FsHttp.Domain.MultipartElementContext)">
+<summary>
+ The MIME type of the body of the request (used with POST and PUT requests)
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Body.contentRange(System.String,FsHttp.Domain.IToBodyContext)">
+<summary>
+ Where in a full body message this partial message belongs
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Body.contentMD5(System.String,FsHttp.Domain.IToBodyContext)">
+<summary>
+ A Base64-encoded binary MD5 sum of the content of the request body
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Body.contentLocation(System.String,FsHttp.Domain.IToBodyContext)">
+<summary>
+ An alternate location for the returned data
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Body.contentLanguage(System.String,FsHttp.Domain.IToBodyContext)">
+<summary>
+ The language the content is in
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Body.contentType(System.String,Microsoft.FSharp.Core.FSharpOption{System.Text.Encoding},FsHttp.Domain.IToBodyContext)">
+<summary>
+ The MIME type of the body of the request (used with POST and PUT requests) with an optional encoding
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Body.contentEncoding(System.String,FsHttp.Domain.IToBodyContext)">
+<summary>
+ The type of encoding used on the data
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Body.header(System.String,System.String,FsHttp.Domain.IToBodyContext)">
+<summary>
+ Adds a header
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.xhttpMethodOverride(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Override HTTP method.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.warning(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ A general warning about possible problems with the entity body
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.via(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Informs the server of proxies through which the request was sent
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.userAgent(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The user agent string of the user agent
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.upgrade(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Specifies additional communications protocols that the client supports.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.translate(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Microsoft extension to the HTTP specification used in conjunction with WebDAV functionality.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.transferEncoding(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The TransferEncoding header indicates the form of encoding used to safely transfer the entity to the user.  The valid directives are one of: chunked, compress, deflate, gzip, or identity.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.trailer(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The Trailer general field value indicates that the given set of header fields is present in the trailer of a message encoded with chunked transfer-coding
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.te(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The transfer encodings the user agent is willing to accept: the same values as for the response header
+ Transfer-Encoding can be used, plus the &quot;trailers&quot; value (related to the &quot;chunked&quot; transfer method) to
+ notify the server it expects to receive additional headers (the trailers) after the last, zero-sized, chunk.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.referer(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ This is the address of the previous web page from which a link to the currently requested page was followed. (The word &quot;referrer&quot; is misspelled in the RFC as well as in most implementations.)
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.range(System.Int64,System.Int64,FsHttp.Domain.HeaderContext)">
+<summary>
+ Request only part of an entity. Bytes are numbered from 0
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.proxyAuthorization(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Authorization credentials for connecting to a proxy.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.prefer(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Optional instructions to the server to control request processing. See RFC https://tools.ietf.org/html/rfc7240 for more details
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.pragma(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Implementation-specific headers that may have various effects anywhere along the request-response chain.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.origin(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Initiates a request for cross-origin resource sharing (asks server for an &apos;Access-Control-Allow-Origin&apos; response header)
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.maxForwards(System.Int32,FsHttp.Domain.HeaderContext)">
+<summary>
+ Limit the number of times the message can be forwarded through proxies or gateways
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.lastModified(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ Specifies the date and time at which the accompanying body data was last modified
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.keepAlive(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Specifies a parameter used into order to maintain a persistent connection
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.ifUnmodifiedSince(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ Only send the response if the entity has not been modified since a specific time
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.ifRange(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ If the entity is unchanged, send me the part(s) that I am missing; otherwise, send me the entire new entity
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.ifNoneMatch(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Allows a 304 Not Modified to be returned if content is unchanged
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.ifModifiedSince(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ Allows a 304 Not Modified to be returned if content is unchanged
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.ifMatch(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Only perform the action if the client supplied entity matches the same entity on the server.
+ This is mainly for methods like PUT to only update a resource if it has not been modified since the user last updated it. If-Match: &quot;737060cd8c284d8af7ad3082f209582d&quot; Permanent
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.host(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The domain name of the server (for virtual hosting), and the TCP port number on which the server is listening.
+ The port number may be omitted if the port is the standard port for the service requested.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.from(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The email address of the user making the request
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.expires(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ Gives the date/time after which the response is considered stale
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.expect(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Indicates that particular server behaviors are required by the client
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.date(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ The date and time that the message was sent
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.cookieForDomain(System.String,System.String,System.String,System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos; with
+ the subset of URIs on the origin server to which this Cookie applies
+ and the internet domain for which this Cookie is valid.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.cookieForPath(System.String,System.String,System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos; with
+ the subset of URIs on the origin server to which this Cookie applies.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.cookie(System.String,System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos;.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.connection(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ What type of connection the user-agent would prefer
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.cacheControl(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.authorizationUserPw(System.String,System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Authorization header using Basic (User/Password) authorization
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.authorizationBearer(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Authorization header using Bearer authorization token
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.authorization(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Authorization credentials for HTTP authorization
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.acceptLanguage(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ List of acceptable human languages for response
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.acceptEncoding(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ List of acceptable encodings. See HTTP compression.
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.acceptDatetime(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ Acceptable version in time
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.acceptCharset(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Character sets that are acceptable
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.accept(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Content-Types that are acceptable for the response
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.query(Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}},FsHttp.Domain.HeaderContext)">
+<summary>
+ Adds a set of query parameters to the URL
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.header(System.String,System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Adds a header
+</summary>
+</member>
+<member name="M:FsHttp.Dsl.Header.headers(System.Collections.Generic.IEnumerable{System.Tuple{System.String,System.String}},FsHttp.Domain.HeaderContext)">
+<summary>
+ Adds headers
+</summary>
+</member>
+<member name="T:FsHttp.Dsl.Http">
+<summary>
+ Request constructors for RFC 2626 HTTP methods
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Multipart``2(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{``1})">
+<summary>
+ An explicit transformation from a previous context to allow for describing the request multiparts.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.ContentType``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.MultipartElementContext},System.String,Microsoft.FSharp.Core.FSharpOption{System.Text.Encoding})">
+<summary>
+ The MIME type of the body of the request (used with POST and PUT requests) with an optional encoding
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.ContentType``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.BodyContext},System.String,Microsoft.FSharp.Core.FSharpOption{System.Text.Encoding})">
+<summary>
+ The MIME type of the body of the request (used with POST and PUT requests) with an optional encoding
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.ContentEncoding``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.BodyContext},System.String)">
+<summary>
+ The type of encoding used on the data
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Body``2(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{``1})">
+<summary>
+ An explicit transformation from a previous context to allow for describing the request body.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.XHTTPMethodOverride``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Override HTTP method.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Warning``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ A general warning about possible problems with the entity body
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Via``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Informs the server of proxies through which the request was sent
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.UserAgent``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ The user agent string of the user agent
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Upgrade``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Specifies additional communications protocols that the client supports.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Translate``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Microsoft extension to the HTTP specification used in conjunction with WebDAV functionality.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.TransferEncoding``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ The TransferEncoding header indicates the form of encoding used to safely transfer the entity to the user.
+ The valid directives are one of: chunked, compress, deflate, gzip, orentity.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Trailer``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ The Trailer general field value indicates that the given set of header fields is present in the trailer of a message encoded with chunked transfer-coding
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.TE``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ The transfer encodings the user agent is willing to accept: the same values as for the response header
+ Transfer-Encoding can be used, plus the &quot;trailers&quot; value (related to the &quot;chunked&quot; transfer method) to
+ notify the server it expects to receive additional headers (the trailers) after the last, zero-sized, chunk.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Referer``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ This is the address of the previous web page from which a link to the currently requested page was followed.
+ (The word &quot;referrer&quot; is misspelled in the RFC as well as in most implementations.)
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Range``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.Int64,System.Int64)">
+<summary>
+ Request only part of an entity. Bytes are numbered from 0
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.ProxyAuthorization``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Authorization credentials for connecting to a proxy.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Prefer``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Optional instructions to the server to control request processing. See RFC https://tools.ietf.org/html/rfc7240 for more details
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Pragma``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Implementation-specific headers that may have various effects anywhere along the request-response chain.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Origin``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Initiates a request for cross-origin resource sharing (asks server for an &apos;Access-Control-Allow-Origin&apos; response header)
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.MaxForwards``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.Int32)">
+<summary>
+ Limit the number of times the message can be forwarded through proxies or gateways
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.LastModified``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.DateTime)">
+<summary>
+ Specifies the date and time at which the accompanying body data was last modified
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.KeepAlive``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Specifies a parameter used into order to maintain a persistent connection
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.IfUnmodifiedSince``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.DateTime)">
+<summary>
+ Only send the response if the entity has not been modified since a specific time
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.IfRange``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ If the entity is unchanged, send me the part(s) that I am missing; otherwise, send me the entire new entity
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.IfNoneMatch``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Allows a 304 Not Modified to be returned if content is unchanged
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.IfModifiedSince``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.DateTime)">
+<summary>
+ Allows a 304 Not Modified to be returned if content is unchanged
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.IfMatch``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Only perform the action if the client supplied entity matches the same entity on the server.
+ This is mainly for methods like PUT to only update a resource if it has not been modified since the user last updated it. If-Match: &quot;737060cd8c284d8af7ad3082f209582d&quot; Permanent
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Host``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ The domain name of the server (for virtual hosting), and the TCP port number on which the server is listening.
+ The port number may be omitted if the port is the standard port for the service requested.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.From``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ The email address of the user making the request
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Expires``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.DateTime)">
+<summary>
+ Gives the date/time after which the response is considered stale
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Expect``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Indicates that particular server behaviors are required by the client
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Date``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.DateTime)">
+<summary>
+ The date and time that the message was sent
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.SetCookieForDomain``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String,System.String,System.String,System.String)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos; with
+ the subset of URIs on the origin server to which this Cookie applies
+ and the internet domain for which this Cookie is valid.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.SetCookieForPath``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String,System.String,System.String)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos; with
+ the subset of URIs on the origin server to which this Cookie applies.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.SetCookie``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String,System.String)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos;.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Connection``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ What type of connection the user-agent would prefer
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.CacheControl``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.AuthorizationUserPw``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String,System.String)">
+<summary>
+ Authorization header using Basic (User/Password) authorization
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.AuthorizationBearer``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Authorization header using Bearer authorization token
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Authorization``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Authorization credentials for HTTP authorization
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.AcceptLanguage``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ List of acceptable human languages for response
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.AcceptEncoding``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ List of acceptable encodings. See HTTP compression.
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.AcceptDatetime``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.DateTime)">
+<summary>
+ Acceptable version in time
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.AcceptCharset``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Character sets that are acceptable
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Accept``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String)">
+<summary>
+ Content-Types that are acceptable for the response
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Header``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.String,System.String)">
+<summary>
+ Custom header
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Headers``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},System.Collections.Generic.IEnumerable{System.Tuple{System.String,System.String}})">
+<summary>
+ Custom headers
+</summary>
+</member>
+<member name="M:FsHttp.DslCE.IRequestContext`1.Query``1(FsHttp.Domain.IRequestContext{``0},FsHttp.Domain.IRequestContext{FsHttp.Domain.HeaderContext},Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}})">
+<summary>
+ Append query params
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.MultipartElement.ContentTypeMultipart(System.String,Microsoft.FSharp.Core.FSharpOption{System.Text.Encoding},FsHttp.Domain.MultipartElementContext)">
+<summary>
+ The MIME type of the body of the request (used with POST and PUT requests) and charset
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Multipart.enumerablePart(System.Collections.Generic.IEnumerable{System.Byte},System.String,Microsoft.FSharp.Core.FSharpOption{System.String},FsHttp.Domain.MultipartContext)">
+<summary>
+ Creates an enumerable part in a multipart request.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Multipart.streamPart(System.IO.Stream,System.String,Microsoft.FSharp.Core.FSharpOption{System.String},FsHttp.Domain.MultipartContext)">
+<summary>
+ Creates a stream part in a multipart request.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Multipart.binaryPart(System.Byte[],System.String,Microsoft.FSharp.Core.FSharpOption{System.String},FsHttp.Domain.MultipartContext)">
+<summary>
+ Creates a binary part in a multipart request.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Multipart.filePart(System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},FsHttp.Domain.MultipartContext)">
+<summary>
+ Creates a file part in a multipart request.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Multipart.textPart(System.String,System.String,Microsoft.FSharp.Core.FSharpOption{System.String},FsHttp.Domain.MultipartContext)">
+<summary>
+ Creates a text part in a multipart request.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Multipart.multipart(FsHttp.Domain.HeaderContext)">
+<summary>
+ An explicit transformation from a previous context to allow for describing the request multiparts.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.ContentType(System.String,Microsoft.FSharp.Core.FSharpOption{System.Text.Encoding},FsHttp.Domain.BodyContext)">
+<summary>
+ The MIME type of the request body (used with POST and PUT) charset
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.ContentEncoding(System.String,FsHttp.Domain.BodyContext)">
+<summary>
+ The type of encoding used on the data
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.file(System.String,FsHttp.Domain.BodyContext)">
+<summary>
+ File content (by path)
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.formUrlEncoded(Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}},FsHttp.Domain.BodyContext)">
+<summary>
+ Form URL-encoded data
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.jsonSerialize``1(``0,FsHttp.Domain.BodyContext)">
+<summary>
+ JSON serialization using default settings
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.jsonSerializeWith``1(System.Text.Json.JsonSerializerOptions,``0,FsHttp.Domain.BodyContext)">
+<summary>
+ JSON serialization with custom serializer options
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.json(System.String,FsHttp.Domain.BodyContext)">
+<summary>
+ JSON content (already in string form)
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.text(System.String,FsHttp.Domain.BodyContext)">
+<summary>
+ Text content
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.enumerable(System.Collections.Generic.IEnumerable{System.Byte},FsHttp.Domain.BodyContext)">
+<summary>
+ An enumerable collection
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.stream(System.IO.Stream,FsHttp.Domain.BodyContext)">
+<summary>
+ A stream
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.binary(System.Byte[],FsHttp.Domain.BodyContext)">
+<summary>
+ Binary data
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Body.content(FsHttp.Domain.ContentType,FsHttp.Domain.ContentData,FsHttp.Domain.BodyContext)">
+<summary>
+ Content with explicit type and data
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Header(System.String,System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Custom header
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.XHTTPMethodOverride(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Override HTTP method.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Warning(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ A general warning about possible problems with the entity body
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Via(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Informs the server of proxies through which the request was sent
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.UserAgent(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The user agent string of the user agent
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Upgrade(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Specifies additional communications protocols that the client supports.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Translate(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Microsoft extension to the HTTP specification used in conjunction with WebDAV functionality.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.TransferEncoding(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The TransferEncoding header indicates the form of encoding used to safely
+ transfer the entity to the user. Valid directives: chunked, compress, deflate, gzip, or identity.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Trailer(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The Trailer general field value indicates that the given set of header fields 
+ is present in the trailer of a message encoded with chunked transfer-coding
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.TE(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The transfer encodings the user agent is willing to accept: 
+ the same values as for the response header Transfer-Encoding can be used, 
+ plus the &quot;trailers&quot; value (related to the &quot;chunked&quot; transfer method) to 
+ notify the server it expects to receive additional headers after the last chunk.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Referer(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The address of the previous web page from which a link to the currently requested page was followed.
+ (The word &quot;referrer&quot; is misspelled in the RFC as well as in most implementations.)
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Range(System.Int64,System.Int64,FsHttp.Domain.HeaderContext)">
+<summary>
+ Request only part of an entity. Bytes are numbered from 0
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.ProxyAuthorization(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Authorization credentials for connecting to a proxy.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Prefer(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Optional instructions to the server to control request processing. 
+ See RFC https://tools.ietf.org/html/rfc7240 for more details
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Pragma(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Implementation-specific headers that may have various effects anywhere along the request-response chain.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Origin(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Initiates a request for cross-origin resource sharing
+ (asks server for an &apos;Access-Control-Allow-Origin&apos; response header)
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.MaxForwards(System.Int32,FsHttp.Domain.HeaderContext)">
+<summary>
+ Limit the number of times the message can be forwarded through proxies or gateways
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.LastModified(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ Specifies the date and time at which the accompanying body data was last modified
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.KeepAlive(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Specifies a parameter used in order to maintain a persistent connection
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.IfUnmodifiedSince(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ Only send the response if the entity has not been modified since a specific time
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.IfRange(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ If the entity is unchanged, send me the part(s) that I am missing; otherwise, send me the entire new entity
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.IfNoneMatch(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Allows a 304 Not Modified to be returned if content is unchanged
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.IfModifiedSince(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ Allows a 304 Not Modified to be returned if content is unchanged
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.IfMatch(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Only perform the action if the client supplied entity matches the same entity on the server.
+ This is mainly for methods like PUT to only update a resource if it has not been modified since the user last updated it.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Host(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The domain name of the server (for virtual hosting), and the TCP port number on which the server is listening.
+ The port number may be omitted if the port is the standard port for the service requested.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.From(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ The email address of the user making the request
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Expires(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ Gives the date/time after which the response is considered stale
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Expect(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Indicates that particular server behaviors are required by the client
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Date(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ The date and time that the message was sent
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.CookieForDomain(System.String,System.String,System.String,System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos; with
+ the subset of URIs on the origin server to which this Cookie applies
+ and the internet domain for which this Cookie is valid.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.CookieForPath(System.String,System.String,System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos; with
+ the subset of URIs on the origin server to which this Cookie applies.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Cookie(System.String,System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ An HTTP cookie previously sent by the server with &apos;Set-Cookie&apos;.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Connection(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ What type of connection the user-agent would prefer
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.CacheControl(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.AuthorizationUserPw(System.String,System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Authorization header using Basic (User/Password) authorization
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.AuthorizationBearer(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Authorization header using Bearer authorization token
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Authorization(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Authorization credentials for HTTP authorization
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.AcceptLanguage(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ List of acceptable human languages for response
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.AcceptEncoding(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ List of acceptable encodings. See HTTP compression.
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.AcceptDatetime(System.DateTime,FsHttp.Domain.HeaderContext)">
+<summary>
+ Acceptable version in time
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.AcceptCharset(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Character sets that are acceptable
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Accept(System.String,FsHttp.Domain.HeaderContext)">
+<summary>
+ Content-Types that are acceptable for the response
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Headers(System.Collections.Generic.IEnumerable{System.Tuple{System.String,System.String}},FsHttp.Domain.HeaderContext)">
+<summary>
+ Custom headers
+</summary>
+</member>
+<member name="M:FsHttp.DslCEPreview.Header.Query(Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}},FsHttp.Domain.HeaderContext)">
+<summary>
+ Append query params
+</summary>
+</member>
+</members>
+</doc>

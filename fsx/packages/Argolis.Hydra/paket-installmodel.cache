@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Argolis.Hydra.dll
+F: /lib/netstandard2.0/Argolis.Hydra.ExternalAnnotations.xml
+F: /lib/netstandard2.0/Argolis.Hydra.pdb
+F: /lib/netstandard2.0/Argolis.Hydra.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/e9b68bf44fd546d99881e1e1f54bf4ed.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /argolis.hydra.0.8.0.nupkg
+F: /Argolis.Hydra.nuspec
+F: /[Content_Types].xml

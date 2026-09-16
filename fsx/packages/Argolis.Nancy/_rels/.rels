@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Argolis.Nancy.nuspec" Id="Rb6c376878f754e5f" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/55b76155a7e14f959d6c338c54de3db8.psmdcp" Id="R5ea7f8769bd8404f" />
+</Relationships>

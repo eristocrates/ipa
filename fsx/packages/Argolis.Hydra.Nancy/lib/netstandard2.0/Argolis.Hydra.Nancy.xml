@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Argolis.Hydra.Nancy</name>
+    </assembly>
+    <members>
+        <member name="T:Argolis.Hydra.Nancy.HydraApiDocumentationModule">
+            <summary>
+            Serves Hydra API documentation
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.HydraApiDocumentationModule.#ctor(Argolis.Hydra.IHydraDocumentationSettings,Argolis.Hydra.Discovery.IApiDocumentationFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Nancy.HydraApiDocumentationModule"/> class.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Nancy.HydraBuiltInTypesSelector">
+            <summary>
+            Selects built-in hydra types
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.HydraBuiltInTypesSelector.FindTypes">
+            <inheritdoc />
+        </member>
+        <member name="T:Argolis.Hydra.Nancy.HydraDocumentationStartup">
+            <summary>
+            Initializes the application for serving hydra API documentation
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.HydraDocumentationStartup.#ctor(Argolis.Hydra.IHydraDocumentationSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Nancy.HydraDocumentationStartup"/> class.
+            </summary>
+            <param name="settings">The hydra settings.</param>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.HydraDocumentationStartup.Initialize(Nancy.Bootstrapper.IPipelines)">
+            <summary>
+            Performs Hydra initialization tasks
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Nancy.HydraRegistrations">
+            <summary>
+            Registrations of all necessary components
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.HydraRegistrations.#ctor(Nancy.ITypeCatalog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Nancy.HydraRegistrations"/> class.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Nancy.NancyContextWrapper">
+            <summary>
+            Wraps <see cref="T:Nancy.NancyContext"/> so that it can be injected by the container
+            </summary>
+            <remarks>
+            See https://github.com/NancyFx/Nancy/issues/2346 for more details
+            </remarks>
+        </member>
+        <member name="P:Argolis.Hydra.Nancy.NancyContextWrapper.Current">
+            <summary>
+            Gets the current context
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.NancyContextWrapper.SetContext(Nancy.NancyContext)">
+            <summary>
+            Sets the current context. This will be called at request startup
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Nancy.NancyContextWrapperRegistrations">
+            <summary>
+            Registers a <see cref="T:Nancy.NancyContext"/> wrapper with the container.
+            </summary>
+            <remarks>
+            See https://github.com/NancyFx/Nancy/issues/2346 for more details
+            </remarks>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.NancyContextWrapperRegistrations.#ctor(Nancy.ITypeCatalog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Nancy.NancyContextWrapperRegistrations"/> class.
+            </summary>
+        </member>
+        <member name="T:Argolis.Hydra.Nancy.NancyContextWrapperStartup">
+            <summary>
+            Sets Nancy context to current request's wrapper
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.NancyContextWrapperStartup.#ctor(Argolis.Hydra.Nancy.NancyContextWrapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Argolis.Hydra.Nancy.NancyContextWrapperStartup"/> class.
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.NancyContextWrapperStartup.Initialize(Nancy.Bootstrapper.IPipelines,Nancy.NancyContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Argolis.Hydra.Nancy.RequestResponseExtensions">
+            <summary>
+            Wires Hydra with the application
+            </summary>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.RequestResponseExtensions.AppendLinkHeader(Nancy.Response,System.String,System.String)">
+            <summary>
+            Appends a Link header to the response.
+            </summary>
+            <param name="response">The response.</param>
+            <param name="uri">The link URI.</param>
+            <param name="relation">The link relation.</param>
+            <remarks>See https://tools.ietf.org/html/rfc5988</remarks>
+        </member>
+        <member name="M:Argolis.Hydra.Nancy.RequestResponseExtensions.GetApiDocumentationUri(Nancy.Request,System.String)">
+            <summary>
+            Gets the API documentation URI.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="documentationPath">The documentation path.</param>
+            <returns>absolute URI string</returns>
+        </member>
+    </members>
+</doc>

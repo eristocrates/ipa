@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Kumo</id>
+    <version>0.3.1</version>
+    <title>Kumo Annotation Library</title>
+    <authors>lambda345</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>kumo.png</icon>
+    <description>Enriching Microsoft Word documents with semantic annotations.</description>
+    <releaseNotes>Fixed a bug with UriFormatException being thrown when attempting to attach a property
+to a range in a fresh document on Windows.</releaseNotes>
+    <tags>RDF Microsoft Word Annotation Semantic Web</tags>
+    <readme>README.md</readme>
+    <repository url="https://github.com/flaamjab/kumo.git" />
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="DocumentFormat.OpenXml" version="2.12.3" exclude="Build,Analyzers" />
+        <dependency id="dotNetRDF" version="2.7.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Idioms</id>
+    <version>1.5.5</version>
+    <authors>xp44m</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">LGPL-3.0-or-later</license>
+    <licenseUrl>https://licenses.nuget.org/LGPL-3.0-or-later</licenseUrl>
+    <readme>readme.md</readme>
+    <projectUrl>https://github.com/xp44mm/FSharp.Idioms</projectUrl>
+    <description>A functional library for F#.</description>
+    <releaseNotes>Either</releaseNotes>
+    <copyright>xp44mm</copyright>
+    <tags>fsharp lib</tags>
+    <repository type="git" url="https://github.com/xp44mm/FSharp.Idioms" commit="14e9e846980ce6872a832efed43b5e0ea6702175" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="FSharp.Core" version="10.0.101" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

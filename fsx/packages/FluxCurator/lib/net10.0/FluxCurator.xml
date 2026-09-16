@@ -1,0 +1,452 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FluxCurator</name>
+    </assembly>
+    <members>
+        <member name="T:FluxCurator.BatchProcessor">
+            <summary>
+            Batch processor for chunking multiple texts efficiently.
+            </summary>
+        </member>
+        <member name="M:FluxCurator.BatchProcessor.#ctor(FluxCurator.Core.IFluxCurator)">
+            <summary>
+            Creates a new batch processor.
+            </summary>
+            <param name="curator">The FluxCurator instance to use for processing.</param>
+        </member>
+        <member name="P:FluxCurator.BatchProcessor.Count">
+            <summary>
+            Gets the number of texts in the batch.
+            </summary>
+        </member>
+        <member name="M:FluxCurator.BatchProcessor.AddText(System.String)">
+            <summary>
+            Adds a text to the batch.
+            </summary>
+            <param name="text">The text to add.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.BatchProcessor.AddTexts(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds multiple texts to the batch.
+            </summary>
+            <param name="texts">The texts to add.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.BatchProcessor.WithMaxConcurrency(System.Int32)">
+            <summary>
+            Sets the maximum concurrency for parallel processing.
+            </summary>
+            <param name="maxConcurrency">Maximum number of concurrent operations (1-32).</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.BatchProcessor.ProcessAsync(System.Threading.CancellationToken)">
+            <summary>
+            Processes all texts in the batch using chunking.
+            </summary>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A list of chunk results for each text.</returns>
+        </member>
+        <member name="M:FluxCurator.BatchProcessor.PreprocessAsync(System.Threading.CancellationToken)">
+            <summary>
+            Processes all texts in the batch using the full preprocessing pipeline.
+            </summary>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A list of preprocessing results for each text.</returns>
+        </member>
+        <member name="M:FluxCurator.BatchProcessor.GetTotalEstimatedChunks">
+            <summary>
+            Gets the total estimated chunk count for all texts.
+            </summary>
+            <returns>Total estimated chunk count.</returns>
+        </member>
+        <member name="M:FluxCurator.BatchProcessor.Clear">
+            <summary>
+            Clears all texts from the batch.
+            </summary>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="T:FluxCurator.FluxCurator">
+             <summary>
+             Main entry point for FluxCurator text preprocessing operations.
+             Provides fluent API for text chunking, PII masking, content filtering, and text refinement.
+             </summary>
+             <remarks>
+             <para>
+             FluxCurator is designed with zero dependencies as its core philosophy.
+             Semantic chunking features require an optional IEmbedder implementation.
+             </para>
+             <example>
+             Basic usage with fluent builder:
+             <code>
+             var curator = FluxCurator.Create()
+                 .WithTextRefinement(TextRefineOptions.ForKorean)
+                 .WithPIIMasking()
+                 .WithChunkingOptions(ChunkOptions.ForKorean)
+                 .Build();
+            
+             var result = await curator.PreprocessAsync(text);
+             </code>
+             </example>
+             <example>
+             With semantic chunking:
+             <code>
+             var curator = FluxCurator.Create()
+                 .UseEmbedder(myEmbedder)
+                 .WithChunkingOptions(opt => opt.Strategy = ChunkingStrategy.Semantic)
+                 .Build();
+            
+             var chunks = await curator.ChunkAsync(text);
+             </code>
+             </example>
+             </remarks>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.#ctor">
+            <summary>
+            Creates a new FluxCurator instance with default configuration.
+            </summary>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.Create">
+            <summary>
+            Creates a new FluxCurator builder for fluent configuration.
+            </summary>
+            <returns>A new FluxCurator instance for configuration.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.Build">
+            <summary>
+            Finalizes the configuration and returns this instance.
+            This method is optional but completes the fluent builder pattern.
+            </summary>
+            <returns>This configured instance.</returns>
+        </member>
+        <member name="P:FluxCurator.FluxCurator.HasEmbedder">
+            <inheritdoc />
+        </member>
+        <member name="P:FluxCurator.FluxCurator.HasPIIMasking">
+            <inheritdoc />
+        </member>
+        <member name="P:FluxCurator.FluxCurator.HasContentFiltering">
+            <inheritdoc />
+        </member>
+        <member name="P:FluxCurator.FluxCurator.HasTextRefinement">
+            <inheritdoc />
+        </member>
+        <member name="P:FluxCurator.FluxCurator.ChunkingOptions">
+            <inheritdoc />
+        </member>
+        <member name="P:FluxCurator.FluxCurator.PIIMaskingOptions">
+            <inheritdoc />
+        </member>
+        <member name="P:FluxCurator.FluxCurator.ContentFilterOptions">
+            <inheritdoc />
+        </member>
+        <member name="P:FluxCurator.FluxCurator.TextRefineOptions">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.UseEmbedder(FluxCurator.Core.Core.IEmbedder)">
+            <summary>
+            Configures an embedder for semantic chunking capabilities.
+            Automatically registers the SemanticChunker strategy.
+            </summary>
+            <param name="embedder">The embedder implementation.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithTextRefinement">
+            <summary>
+            Enables text refinement with default (Light) options.
+            Text refinement cleans and normalizes raw text before further processing.
+            </summary>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithTextRefinement(FluxCurator.Core.Domain.TextRefineOptions)">
+            <summary>
+            Enables text refinement with the specified options.
+            </summary>
+            <param name="options">The text refinement options.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithTextRefinement(System.Action{FluxCurator.Core.Domain.TextRefineOptions})">
+            <summary>
+            Enables text refinement using a builder action.
+            </summary>
+            <param name="configure">Action to configure options.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithChunkingOptions(FluxCurator.Core.Domain.ChunkOptions)">
+            <summary>
+            Configures chunking options.
+            </summary>
+            <param name="options">The chunking options.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithChunkingOptions(System.Action{FluxCurator.Core.Domain.ChunkOptions})">
+            <summary>
+            Configures chunking options using a builder action.
+            </summary>
+            <param name="configure">Action to configure options.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithPIIMasking">
+            <summary>
+            Enables PII masking with default options.
+            </summary>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithPIIMasking(FluxCurator.Core.Domain.PIIMaskingOptions)">
+            <summary>
+            Enables PII masking with specified options.
+            </summary>
+            <param name="options">The PII masking options.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithPIIMasking(System.Action{FluxCurator.Core.Domain.PIIMaskingOptions})">
+            <summary>
+            Enables PII masking with configuration action.
+            </summary>
+            <param name="configure">Action to configure PII options.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.RegisterPIIDetector(FluxCurator.Core.Core.IPIIDetector)">
+            <summary>
+            Registers a custom PII detector.
+            PII masking must be enabled first via WithPIIMasking().
+            </summary>
+            <param name="detector">The custom detector to register.</param>
+            <returns>This instance for fluent chaining.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when PII masking is not enabled.</exception>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithContentFiltering">
+            <summary>
+            Enables content filtering with default options.
+            </summary>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithContentFiltering(FluxCurator.Core.Domain.ContentFilterOptions)">
+            <summary>
+            Enables content filtering with specified options.
+            </summary>
+            <param name="options">The content filtering options.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.WithContentFiltering(System.Action{FluxCurator.Core.Domain.ContentFilterOptions})">
+            <summary>
+            Enables content filtering with configuration action.
+            </summary>
+            <param name="configure">Action to configure filtering options.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.RegisterChunker(FluxCurator.Core.Domain.ChunkingStrategy,FluxCurator.Core.Core.IChunker)">
+            <summary>
+            Registers a custom chunker for a specific strategy.
+            </summary>
+            <param name="strategy">The strategy to register for.</param>
+            <param name="chunker">The chunker implementation.</param>
+            <returns>This instance for fluent chaining.</returns>
+        </member>
+        <member name="M:FluxCurator.FluxCurator.ChunkAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.ChunkAsync(System.String,FluxCurator.Core.Domain.ChunkOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.EstimateChunkCount(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.EstimateChunkCount(System.String,FluxCurator.Core.Domain.ChunkOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.DetectLanguage(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.ChunkStreamAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.ChunkStreamAsync(System.String,FluxCurator.Core.Domain.ChunkOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.RefineText(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.RefineText(System.String,FluxCurator.Core.Domain.TextRefineOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.MaskPII(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.DetectPII(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.ContainsPII(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.FilterContent(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.ContainsFilteredContent(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.PreprocessAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:FluxCurator.FluxCurator.CreateBatchProcessor">
+            <summary>
+            Creates a batch processor for processing multiple texts efficiently.
+            </summary>
+            <returns>A new batch processor instance.</returns>
+        </member>
+        <member name="T:FluxCurator.Infrastructure.Chunking.ChunkerFactory">
+            <summary>
+            Factory for creating chunker instances based on chunking strategy.
+            Supports all built-in chunking strategies including semantic chunking.
+            </summary>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.ChunkerFactory.#ctor(FluxCurator.Core.Core.IEmbedder)">
+            <summary>
+            Creates a new chunker factory.
+            </summary>
+            <param name="embedder">Optional embedder for semantic chunking. If null, semantic chunking will be unavailable.</param>
+        </member>
+        <member name="P:FluxCurator.Infrastructure.Chunking.ChunkerFactory.AvailableStrategies">
+            <inheritdoc/>
+        </member>
+        <member name="P:FluxCurator.Infrastructure.Chunking.ChunkerFactory.DefaultChunker">
+            <inheritdoc/>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.ChunkerFactory.CreateChunker(FluxCurator.Core.Domain.ChunkingStrategy)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.ChunkerFactory.TryCreateChunker(FluxCurator.Core.Domain.ChunkingStrategy,FluxCurator.Core.Core.IChunker@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.ChunkerFactory.IsStrategyAvailable(FluxCurator.Core.Domain.ChunkingStrategy)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.ChunkerFactory.RegisterChunker(FluxCurator.Core.Domain.ChunkingStrategy,System.Func{FluxCurator.Core.Core.IChunker})">
+            <summary>
+            Registers a custom chunker for a strategy.
+            </summary>
+            <param name="strategy">The strategy to register.</param>
+            <param name="factory">Factory function to create the chunker.</param>
+        </member>
+        <member name="T:FluxCurator.Infrastructure.Chunking.SemanticChunker">
+            <summary>
+            Chunks text using semantic similarity to find natural topic boundaries.
+            Requires an IEmbedder implementation.
+            </summary>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.SemanticChunker.#ctor(FluxCurator.Core.Core.IEmbedder)">
+            <summary>
+            Creates a new semantic chunker with the specified embedder.
+            </summary>
+            <param name="embedder">The embedder to use for semantic analysis.</param>
+        </member>
+        <member name="P:FluxCurator.Infrastructure.Chunking.SemanticChunker.StrategyName">
+            <inheritdoc/>
+        </member>
+        <member name="P:FluxCurator.Infrastructure.Chunking.SemanticChunker.RequiresEmbedder">
+            <inheritdoc/>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.SemanticChunker.GetChunkingStrategy">
+            <inheritdoc/>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.SemanticChunker.ChunkAsync(System.String,FluxCurator.Core.Domain.ChunkOptions,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.SemanticChunker.EstimateChunkCount(System.String,FluxCurator.Core.Domain.ChunkOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.SemanticChunker.ExtractSentences(System.String,System.Collections.Generic.IReadOnlyList{System.Int32})">
+            <summary>
+            Extracts sentences from text based on boundaries.
+            </summary>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.SemanticChunker.GenerateSentenceEmbeddingsAsync(System.Collections.Generic.List{FluxCurator.Infrastructure.Chunking.SemanticChunker.SentenceInfo},System.Threading.CancellationToken)">
+            <summary>
+            Generates embeddings for all sentences.
+            </summary>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.SemanticChunker.CalculateConsecutiveSimilarities(System.Collections.Generic.List{System.Single[]})">
+            <summary>
+            Calculates cosine similarity between consecutive sentence embeddings.
+            </summary>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.SemanticChunker.FindSemanticBreakpoints(System.Collections.Generic.List{System.Single},System.Single,System.Collections.Generic.List{FluxCurator.Infrastructure.Chunking.SemanticChunker.SentenceInfo},FluxCurator.Core.Core.ILanguageProfile,System.Int32,System.Int32)">
+            <summary>
+            Finds semantic breakpoints where similarity drops below threshold.
+            </summary>
+        </member>
+        <member name="M:FluxCurator.Infrastructure.Chunking.SemanticChunker.CreateChunksFromBreakpoints(System.String,System.Collections.Generic.List{FluxCurator.Infrastructure.Chunking.SemanticChunker.SentenceInfo},System.Collections.Generic.List{System.Int32},FluxCurator.Core.Core.ILanguageProfile,FluxCurator.Core.Domain.ChunkOptions)">
+            <summary>
+            Creates chunks based on identified breakpoints.
+            </summary>
+        </member>
+        <member name="T:FluxCurator.Infrastructure.Chunking.SemanticChunker.SentenceInfo">
+            <summary>
+            Represents a sentence with its position in the original text.
+            </summary>
+        </member>
+        <member name="T:FluxCurator.ServiceCollectionExtensions">
+            <summary>
+            Extension methods for registering FluxCurator services with dependency injection.
+            </summary>
+        </member>
+        <member name="M:FluxCurator.ServiceCollectionExtensions.AddFluxCurator(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+             <summary>
+             Adds FluxCurator services to the dependency injection container.
+             </summary>
+             <param name="services">The service collection.</param>
+             <returns>The service collection for chaining.</returns>
+             <remarks>
+             Registers:
+             - IChunkerFactory (as singleton)
+             - IFluxCurator (as transient)
+            
+             If an IEmbedder is already registered, it will be used for semantic chunking.
+             To enable semantic chunking, register an IEmbedder implementation before calling this method:
+             <code>
+             services.AddSingleton&lt;IEmbedder&gt;(myEmbedderInstance);
+             services.AddFluxCurator();
+             </code>
+             </remarks>
+        </member>
+        <member name="M:FluxCurator.ServiceCollectionExtensions.AddFluxCurator(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{FluxCurator.FluxCuratorOptions})">
+            <summary>
+            Adds FluxCurator services with configuration.
+            </summary>
+            <param name="services">The service collection.</param>
+            <param name="configure">Action to configure FluxCurator options.</param>
+            <returns>The service collection for chaining.</returns>
+        </member>
+        <member name="T:FluxCurator.FluxCuratorOptions">
+            <summary>
+            Configuration options for FluxCurator dependency injection.
+            </summary>
+        </member>
+        <member name="P:FluxCurator.FluxCuratorOptions.DefaultChunkOptions">
+            <summary>
+            Gets or sets the default chunking options.
+            </summary>
+        </member>
+        <member name="P:FluxCurator.FluxCuratorOptions.EnablePIIMasking">
+            <summary>
+            Gets or sets whether to enable PII masking by default.
+            </summary>
+        </member>
+        <member name="P:FluxCurator.FluxCuratorOptions.PIIMaskingOptions">
+            <summary>
+            Gets or sets the PII masking options (if EnablePIIMasking is true).
+            </summary>
+        </member>
+        <member name="P:FluxCurator.FluxCuratorOptions.EnableContentFiltering">
+            <summary>
+            Gets or sets whether to enable content filtering by default.
+            </summary>
+        </member>
+        <member name="P:FluxCurator.FluxCuratorOptions.ContentFilterOptions">
+            <summary>
+            Gets or sets the content filtering options (if EnableContentFiltering is true).
+            </summary>
+        </member>
+    </members>
+</doc>

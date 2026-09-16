@@ -1,0 +1,1167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>ARCtrl.CWL</name></assembly>
+<members>
+<member name="T:ARCtrl.CWL.CWLType.Dirent">
+<summary>
+ Define a file or subdirectory that must be placed in the designated output directory prior to executing the command line tool.
+ May be the result of executing an expression, such as building a configuration file from a template.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.CWLType.Directory">
+<summary>
+ Represents a directory to present to a command line tool.
+ Directories are represented as objects with class of Directory. Directory objects have a number of properties that provide metadata about the directory.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.CWLType.File">
+<summary>
+ Represents a file (or group of files when secondaryFiles is provided)
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.CWLType">
+<summary>
+ Primitive types with the concept of a file and directory as a builtin type.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.InputArraySchema">
+<summary>
+ Represents an array schema for workflow input parameters
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.InputRecordSchema">
+<summary>
+ Represents a record schema for workflow input parameters
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.InputRecordField">
+<summary>
+ Represents a field in an InputRecordSchema
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.InputEnumSchema.Equals(System.Object)">
+<summary>
+ Equality comparison that treats symbol order as significant.
+ Two enums are equal only if their symbols appear in the same order.
+ This follows the CWL specification where enum symbol order matters.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.InputEnumSchema">
+<summary>
+ Represents an enumeration type with a defined set of valid symbol values.
+ Per the CWL specification, symbol order is semantically significant and preserved during serialization.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.HintEntry.ofRequirements(System.Collections.Generic.List{ARCtrl.CWL.Requirement})">
+<summary>
+ Wraps all requirements as known hint entries.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.HintEntry.ofRequirement(ARCtrl.CWL.Requirement)">
+<summary>
+ Wraps a known requirement as a known hint entry.
+</summary>
+</member>
+<member name="P:ARCtrl.CWL.HintEntry.tryAsRequirement">
+<summary>
+ Returns the underlying requirement for KnownHint values.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.StepInputExpressionRequirement">
+<summary>
+ Indicate that the workflow platform must support the valueFrom field of WorkflowStepInput.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.MultipleInputFeatureRequirement">
+<summary>
+ Indicates that the workflow platform must support multiple inbound data links listed in the source field of WorkflowStepInput.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.ScatterFeatureRequirement">
+<summary>
+ Indicates that the workflow platform must support the scatter and scatterMethod fields of WorkflowStep.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.SubworkflowFeatureRequirement">
+<summary>
+ Indicates that the workflow platform must support nested workflows in the run field of WorkflowStep.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.ToolTimeLimitRequirement">
+<summary>
+ Set an upper limit on the execution time of a CommandLineTool.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.InplaceUpdateRequirement">
+<summary>
+ If inplaceUpdate is true, then an implementation supporting this feature may permit tools to directly update files with writable: true in InitialWorkDirRequirement. 
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.NetworkAccessExpressionRequirement">
+<summary>
+ Expression payload form of NetworkAccess networkAccess.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.NetworkAccessRequirement">
+<summary>
+ Indicate whether a process requires outgoing IPv4/IPv6 network access. Choice of IPv4 or IPv6 is implementation and site specific, correct tools must support both.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.WorkReuseExpressionRequirement">
+<summary>
+ Expression payload form of WorkReuse enableReuse.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.WorkReuseRequirement">
+<summary>
+ For implementations that support reusing output from past work (on the assumption that same code and same input produce same results), control whether to enable or disable the reuse behavior for a particular tool or step.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.ResourceRequirement">
+<summary>
+ Specify basic hardware resource requirements.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.ShellCommandRequirement">
+<summary>
+ Modify the behavior of CommandLineTool to generate a single string containing a shell command line.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.EnvVarRequirement">
+<summary>
+ Define a list of environment variables which will be set in the execution environment of the tool. See EnvironmentDef for details.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.InitialWorkDirRequirement">
+<summary>
+ Define a list of files and subdirectories that must be created by the workflow platform in the designated output directory prior to executing the command line tool.
+ CWL supports string/expression entries and Dirent objects.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.LoadListingRequirement">
+<summary>
+ Configure how directory listings are loaded for File/Directory inputs.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.SoftwareRequirement">
+<summary>
+ A list of software packages that should be configured in the environment of the defined process.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.DockerRequirement">
+<summary>
+ Indicates that a workflow component should be run in a Docker or Docker-compatible (such as Singularity and udocker) container environment and specifies how to fetch or build the image.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.SchemaDefRequirement">
+<summary>
+ This field consists of an array of type definitions which must be used when interpreting the inputs and outputs fields.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Requirement.InlineJavascriptRequirement">
+<summary>
+ Indicates that the workflow platform must support inline Javascript expressions.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.InitialWorkDirEntry">
+<summary>
+ Entry in InitialWorkDirRequirement listing.
+ CWL allows either a Dirent object or a string/expression entry.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.ResourceRequirementInstance">
+<summary>
+ &quot;min&quot; is the minimum amount of a resource that must be reserved to schedule a job. If &quot;min&quot; cannot be satisfied, the job should not be run.
+ &quot;max&quot; is the maximum amount of a resource that the job shall be permitted to use. If a node has sufficient resources, multiple jobs may be scheduled on a single node provided each job&apos;s &quot;max&quot; resource requirements are met.
+ If a job attempts to exceed its &quot;max&quot; resource allocation, an implementation may deny additional resources, which may result in job failure.
+ If &quot;min&quot; is specified but &quot;max&quot; is not, then &quot;max&quot; == &quot;min&quot; If &quot;max&quot; is specified by &quot;min&quot; is not, then &quot;min&quot; == &quot;max&quot;.
+ It is an error if max &lt; min.
+ It is an error if the value of any of these fields is negative.
+ If neither &quot;min&quot; nor &quot;max&quot; is specified for a resource, default values are used.
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.EnvironmentDef">
+<summary>
+ Define an environment variable that will be set in the runtime environment by the workflow platform when executing the command line tool.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.DockerRequirement.create(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{ARCtrl.CWL.SchemaSaladString},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{System.String}})">
+<summary>
+ Create a DockerRequirement from a plain docker file path or explicit schema-salad reference.
+ If both `dockerFileReference` and `dockerFile` are provided, `dockerFileReference` takes precedence.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.WorkflowStep.updateInputById(System.String,Microsoft.FSharp.Core.FSharpFunc{ARCtrl.CWL.StepInput,ARCtrl.CWL.StepInput},ARCtrl.CWL.WorkflowStep)">
+<summary>
+ Updates the first StepInput matching the provided id.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.WorkflowStep.updateInputAt(System.Int32,Microsoft.FSharp.Core.FSharpFunc{ARCtrl.CWL.StepInput,ARCtrl.CWL.StepInput},ARCtrl.CWL.WorkflowStep)">
+<summary>
+ Updates a workflow step input by index.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.WorkflowStep.removeInputsById(System.String,ARCtrl.CWL.WorkflowStep)">
+<summary>
+ Removes all StepInputs matching the provided id.
+ Reassigns step.In to a new filtered ResizeArray.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.WorkflowStep.addInput(ARCtrl.CWL.StepInput,ARCtrl.CWL.WorkflowStep)">
+<summary>
+ Adds a new StepInput to a workflow step.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.StepInput.updateAt(System.Int32,Microsoft.FSharp.Core.FSharpFunc{ARCtrl.CWL.StepInput,ARCtrl.CWL.StepInput},System.Collections.Generic.List{ARCtrl.CWL.StepInput})">
+<summary>
+ Updates a StepInput at the given index.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLToolDescription.getRequirementsOrEmpty(ARCtrl.CWL.CWLToolDescription)">
+<summary>
+ Returns the tool&apos;s requirements or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLToolDescription.getOutputs(ARCtrl.CWL.CWLToolDescription)">
+<summary>
+ Returns the tool&apos;s outputs.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLToolDescription.getOrCreateIntent(ARCtrl.CWL.CWLToolDescription)">
+<summary>
+ Returns the tool&apos;s intent, creating and assigning a new empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLToolDescription.getOrCreateInputs(ARCtrl.CWL.CWLToolDescription)">
+<summary>
+ Returns the tool&apos;s inputs, creating and assigning a new empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLToolDescription.getOrCreateHints(ARCtrl.CWL.CWLToolDescription)">
+<summary>
+ Returns the tool&apos;s hints, creating and assigning a new empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLToolDescription.getIntentOrEmpty(ARCtrl.CWL.CWLToolDescription)">
+<summary>
+ Returns the tool&apos;s intent or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLToolDescription.getInputsOrEmpty(ARCtrl.CWL.CWLToolDescription)">
+<summary>
+ Returns the tool&apos;s inputs or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLToolDescription.getHintsOrEmpty(ARCtrl.CWL.CWLToolDescription)">
+<summary>
+ Returns the tool&apos;s hints or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLWorkflowDescription.getRequirementsOrEmpty(ARCtrl.CWL.CWLWorkflowDescription)">
+<summary>
+ Returns workflow requirements or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLWorkflowDescription.getOutputs(ARCtrl.CWL.CWLWorkflowDescription)">
+<summary>
+ Returns workflow outputs.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLWorkflowDescription.getOrCreateIntent(ARCtrl.CWL.CWLWorkflowDescription)">
+<summary>
+ Returns the workflow&apos;s intent, creating and assigning a new empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLWorkflowDescription.getOrCreateHints(ARCtrl.CWL.CWLWorkflowDescription)">
+<summary>
+ Returns the workflow&apos;s hints, creating and assigning a new empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLWorkflowDescription.getIntentOrEmpty(ARCtrl.CWL.CWLWorkflowDescription)">
+<summary>
+ Returns workflow intent or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLWorkflowDescription.getInputs(ARCtrl.CWL.CWLWorkflowDescription)">
+<summary>
+ Returns workflow inputs.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLWorkflowDescription.getHintsOrEmpty(ARCtrl.CWL.CWLWorkflowDescription)">
+<summary>
+ Returns workflow hints or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLExpressionToolDescription.getRequirementsOrEmpty(ARCtrl.CWL.CWLExpressionToolDescription)">
+<summary>
+ Returns the expression tool&apos;s requirements or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLExpressionToolDescription.getOutputs(ARCtrl.CWL.CWLExpressionToolDescription)">
+<summary>
+ Returns expression tool outputs.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLExpressionToolDescription.getOrCreateIntent(ARCtrl.CWL.CWLExpressionToolDescription)">
+<summary>
+ Returns the expression tool&apos;s intent, creating and assigning a new empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLExpressionToolDescription.getOrCreateInputs(ARCtrl.CWL.CWLExpressionToolDescription)">
+<summary>
+ Returns the expression tool&apos;s inputs, creating and assigning a new empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLExpressionToolDescription.getOrCreateHints(ARCtrl.CWL.CWLExpressionToolDescription)">
+<summary>
+ Returns the expression tool&apos;s hints, creating and assigning a new empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLExpressionToolDescription.getIntentOrEmpty(ARCtrl.CWL.CWLExpressionToolDescription)">
+<summary>
+ Returns the expression tool&apos;s intent or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLExpressionToolDescription.getInputsOrEmpty(ARCtrl.CWL.CWLExpressionToolDescription)">
+<summary>
+ Returns the expression tool&apos;s inputs or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLExpressionToolDescription.getHintsOrEmpty(ARCtrl.CWL.CWLExpressionToolDescription)">
+<summary>
+ Returns the expression tool&apos;s hints or an empty ResizeArray if None.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLProcessingUnit.getRequirements(ARCtrl.CWL.CWLProcessingUnit)">
+<summary>
+ Returns requirements for all CWL processing unit variants.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLProcessingUnit.getOutputs(ARCtrl.CWL.CWLProcessingUnit)">
+<summary>
+ Returns outputs for all CWL processing unit variants.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLProcessingUnit.getKnownHints(ARCtrl.CWL.CWLProcessingUnit)">
+<summary>
+ Returns known requirement hints only, dropping unknown extension hints.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLProcessingUnit.getIntent(ARCtrl.CWL.CWLProcessingUnit)">
+<summary>
+ Returns intent for all CWL processing unit variants.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLProcessingUnit.getInputs(ARCtrl.CWL.CWLProcessingUnit)">
+<summary>
+ Returns normalized inputs for all CWL processing unit variants.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.CWLProcessingUnit.getHints(ARCtrl.CWL.CWLProcessingUnit)">
+<summary>
+ Returns hints for all CWL processing unit variants.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.DynamicObjHelpers.hashDynamicProperties(DynamicObj.DynamicObj)">
+<summary>
+ Hash preserved dynamic extension properties in the same stable order used
+ by dynamicPropertiesEqual.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.DynamicObjHelpers.dynamicPropertiesEqual(DynamicObj.DynamicObj,DynamicObj.DynamicObj)">
+<summary>
+ Compare only preserved dynamic extension properties between two CWL objects.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.DynamicObjHelpers.dynamicPropertiesSnapshot(DynamicObj.DynamicObj)">
+<summary>
+ Snapshot all dynamic extension properties on an object.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.DynamicObjHelpers.dynamicPropertiesSnapshotExcept(Microsoft.FSharp.Collections.FSharpSet{System.String},DynamicObj.DynamicObj)">
+<summary>
+ Create a stable, sorted dynamic-property snapshot for equality and hashing.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.DynamicObjHelpers.dynamicPropertiesExcept(Microsoft.FSharp.Collections.FSharpSet{System.String},DynamicObj.DynamicObj)">
+<summary>
+ Enumerate only true dynamic properties, excluding known CWL fields and
+ compiler-generated storage for typed members.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.DynamicObjHelpers.typedBackingFieldNames(DynamicObj.DynamicObj)">
+<summary>
+ Return both common backing-field spellings for all typed properties so they
+ can be excluded from dynamic CWL extension fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.DynamicObjHelpers.toCompilerBackingName(System.String)">
+<summary>
+ Convert a public F# property name to the private backing-field name that
+ DynamicObj exposes for typed members compiled by Fable or .NET.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.DecodeParameters.decodeYAMLParameterFile(System.String)">
+<summary>
+ Decode a YAML parameter file string into parameter references.
+</summary>
+</member>
+<member name="P:ARCtrl.CWL.DecodeParameters.cwlparameterReferenceArrayDecoder">
+<summary>
+ Decode every top-level parameter entry into CWLParameterReference values.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.DecodeParameters.cwlParameterReferenceDecoder(YAMLicious.Decode.IGetters,System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode one YAML parameter entry from scalar, object, or sequence forms.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeCWLProcessingUnit(System.String)">
+<summary>
+ Decode any CWL processing unit and discard recoverable warnings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeCWLProcessingUnitWithWarnings(System.String)">
+<summary>
+ Decode any CWL processing unit from a YAML string and return recoverable warnings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeOperation(System.String)">
+<summary>
+ Decode a CWL Operation and discard recoverable warnings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeOperationWithWarnings(System.String)">
+<summary>
+ Decode a CWL Operation YAML string and return recoverable warnings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeExpressionTool(System.String)">
+<summary>
+ Decode a CWL ExpressionTool and discard recoverable warnings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeExpressionToolWithWarnings(System.String)">
+<summary>
+ Decode a CWL ExpressionTool YAML string and return recoverable warnings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeWorkflow(System.String)">
+<summary>
+ Decode a CWL Workflow and discard recoverable warnings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeWorkflowWithWarnings(System.String)">
+<summary>
+ Decode a CWL Workflow YAML string and return recoverable warnings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeCommandLineTool(System.String)">
+<summary>
+ Decode a CWL CommandLineTool and discard recoverable warnings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeCommandLineToolWithWarnings(System.String)">
+<summary>
+ Decode a CWL CommandLineTool YAML string and return recoverable warnings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeCWLProcessingUnitElement(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode an already-parsed CWL element without warning collection.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeCWLProcessingUnitElementWithWarnings(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Dispatch a parsed CWL document to the processing-unit decoder declared by its class field.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.workflowDecoder(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a Workflow, including version-aware steps and preserved metadata fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.operationDecoder(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode an Operation and enforce its required inputs collection.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.expressionToolDecoder(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode an ExpressionTool and preserve unknown top-level metadata fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.commandLineToolDecoder(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a CommandLineTool and preserve unknown top-level metadata fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.stepArrayDecoderWithVersion(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode workflow steps from sequence-form or map-form syntax with version-aware inline runs.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeWorkflowStepFromArrayItemWithWarnings(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,System.Int32,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode one sequence-form workflow step, warning only for malformed unnamed entries.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeWorkflowStepFromValueWithId(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,System.String,System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a named workflow step and thread warnings into nested step inputs and inline runs.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.workflowStepRunDecoder(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a workflow step run as either a path string or an inline CWL processing unit.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.withDefaultCwlVersion(System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Inject the parent workflow cwlVersion into inline run objects that omit it.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.hasField(System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Test object mappings for an explicit field without invoking a typed decoder.
+</summary>
+</member>
+<member name="P:ARCtrl.CWL.Decode.outputStepsDecoder">
+<summary>
+ Decode workflow step out values, treating CWL empty forms as an empty output list.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeStepOutputItem(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode step outputs from scalar shorthand or record form with extension fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.inputStepDecoderWithWarnings(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Select the step input decoder based on CWL map-form versus sequence-form syntax.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeStepInputsFromArrayWithWarnings(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,Microsoft.FSharp.Collections.FSharpList{YAMLicious.YAMLiciousTypes.YAMLElement})">
+<summary>
+ Decode sequence-form step inputs, warning and skipping only malformed unnamed entries.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeStepInputFromArrayItem(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode sequence-form step inputs where the id must be present in the item.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeStepInputsFromMap(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode map-form step inputs where the map key supplies the step input id.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeStepInputFromValue(System.String,YAMLicious.YAMLiciousTypes.YAMLElement,System.Boolean)">
+<summary>
+ Decode a step input from map or scalar shorthand and preserve unknown step-input fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.expressionStringOptionFieldDecoder(System.String)">
+<summary>
+ Decode optional expression-like fields, including schema-salad directive wrappers.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.scatterMethodFieldDecoder(System.String)">
+<summary>
+ Decode and validate scatterMethod enum fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.pickValueFieldDecoder(System.String)">
+<summary>
+ Decode and validate pickValue enum fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.linkMergeFieldDecoder(System.String)">
+<summary>
+ Decode and validate linkMerge enum fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.sourceArrayFieldDecoder(System.String)">
+<summary>
+ Decode a YAMLElement into a ResizeArray&lt;string&gt; option for the source field
+ Handles both single string values and arrays of strings
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.stringOrStringArrayDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a YAMLElement that may be a single string or an array of strings.
+</summary>
+</member>
+<member name="P:ARCtrl.CWL.Decode.baseCommandDecoder">
+<summary>
+ Decode baseCommand from CWL&apos;s scalar or array forms.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.inputsDecoderWithWarnings(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}})">
+<summary>
+ Access the inputs field and decode the YAMLElements into an Input array
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.inputArrayDecoderWithWarnings(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a YAMLElement into an Input array
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeInputSequenceItem(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,System.Int32,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode one sequence-form input, warning only for malformed unnamed entries.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeNamedInput(System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a named input from map shorthand or full object form, preserving optionality and extensions.
+</summary>
+</member>
+<member name="P:ARCtrl.CWL.Decode.inputBindingDecoder">
+<summary>
+ Decode a YAMLElement into an InputBinding
+</summary>
+</member>
+<member name="P:ARCtrl.CWL.Decode.hintsDecoder">
+<summary>
+ Access the hints field and decode the YAMLElements into a HintEntry array
+</summary>
+</member>
+<member name="P:ARCtrl.CWL.Decode.requirementsDecoder">
+<summary>
+ Access the requirements field and decode the YAMLElements into a Requirement array
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.hintArrayDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode hints from sequence syntax or class-name map syntax while preserving unknown hints.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeHintElement(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode one hint as a known requirement when possible, otherwise preserve the raw hint.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.tryDecodeKnownRequirementFromElement(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Try known requirement decoding for hints, falling back to UnknownHint on decode failure.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.requirementArrayDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode requirements from either sequence syntax or class-name map syntax.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.addRequirementPayloadOverflow(YAMLicious.YAMLiciousTypes.YAMLElement,ARCtrl.CWL.Requirement)">
+<summary>
+ Attach unknown payload fields to DynamicObj-backed requirement values after class dispatch.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.requirementFromTypeName(System.String,YAMLicious.Decode.IGetters)">
+<summary>
+ Dispatch a known CWL requirement class to its typed decoder.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.inlineJavascriptRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode InlineJavascriptRequirement expressionLib in scalar or array form.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.toolTimeLimitRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode a YAMLElement into a ToolTimeLimitRequirement value
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.inplaceUpdateRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode InplaceUpdateRequirement, defaulting missing inplaceUpdate to true.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.networkAccessRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode NetworkAccess as either a concrete bool requirement or an expression payload.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.workReuseRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode WorkReuse as either a concrete bool requirement or an expression payload.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.tryDecodeBoolScalar(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode only literal boolean scalars, leaving expressions for requirement-specific handling.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.schemaDefRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode a YAMLElement into a SchemaDefRequirementType array
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.schemaDefRequirementTypeDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode schema definition entries in either named object or map-entry shorthand form.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.resourceRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode a YAMLElement into a ResourceRequirementInstance
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.optionalResourceField(YAMLicious.Decode.IGetters,System.String)">
+<summary>
+ Decode an optional resource field through the resource scalar coercion rules.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeResourceScalar(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode resource scalar fields as int64, float, or expression string without losing numeric shape.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.loadListingRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode LoadListingRequirement, applying CWL&apos;s default no_listing behavior.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.initialWorkDirRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode a YAMLElement into an InitialWorkDirRequirement array.
+ Supports both string/expression and Dirent listing items.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.softwareRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode a YAMLElement into a SoftwareRequirement array.
+ Supports both array form and map shorthand form.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.envVarRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode a YAMLElement into an EnvVarRequirement array.
+ Supports both array form and map shorthand form (envName -&gt; envValue).
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.dockerRequirementDecoder(YAMLicious.Decode.IGetters)">
+<summary>
+ Decode a YAMLElement into a DockerRequirement
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.outputsDecoderWithWarnings(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}})">
+<summary>
+ Access the outputs field and decode a YAMLElement into an Output Array
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.outputArrayDecoderWithWarnings(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a YAMLElement into an Output Array
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeOutputSequenceItem(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,System.Int32,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode one sequence-form output, warning only for malformed unnamed entries.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeNamedOutput(System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a named output from either map shorthand or full object form.
+</summary>
+</member>
+<member name="P:ARCtrl.CWL.Decode.cwlTypeDecoder">
+<summary>
+ Access the type field and decode a YAMLElement into a CWLType
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.cwlTypeStringMatcher(System.String,YAMLicious.Decode.IGetters)">
+<summary>
+ Match the input string to the possible CWL types and checks if it is optional
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.cwlTypeDecoder'(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a CWLType from a YAMLElement (handles all types including complex schemas)
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.inputEnumSchemaDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode an InputEnumSchema from a YAMLElement
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.inputRecordSchemaDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode an InputRecordSchema from a YAMLElement
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.tryDecodeFieldsAsMap(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Attempt to decode fields as map-style: {fieldName: type}
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.tryDecodeFieldsAsArray(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Attempt to decode fields as flow-style array: [{name: x, type: y}]
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.inputRecordFieldDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode an InputRecordField from a YAMLElement
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.inputArraySchemaDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode an InputArraySchema from a YAMLElement
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.parseArrayShorthand(System.String)">
+<summary>
+ Recursively parse array shorthand notation (File[][], string[][][], etc.)
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.cwlSimpleTypeFromString(System.String)">
+<summary>
+ Decode the contained type of a CWL Array
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.initialWorkDirEntryDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a listing entry of InitialWorkDirRequirement.
+ Supports both Dirent object form and string/expression form.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.direntDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a YAMLElement into a Dirent
+</summary>
+</member>
+<member name="P:ARCtrl.CWL.Decode.outputSourceDecoder">
+<summary>
+ Decode CWL outputSource in either scalar or list form.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeStringArrayOrScalar(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode schema-salad string-or-array fields into a uniform ResizeArray.
+</summary>
+</member>
+<member name="P:ARCtrl.CWL.Decode.outputBindingDecoder">
+<summary>
+ Decode a YAMLElement into an OutputBinding
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.outputBindingGlobDecoder(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a YAMLElement into a glob search pattern for output binding
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeStringOrExpression(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode a YAMLElement which is either a string or expression into a string.
+ Directive objects such as {$include: path} are represented using legacy string form.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeSchemaSaladString(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode scalar schema-salad string fields.
+ Recognized directive wrappers are `$include` and `$import`.
+ Unknown single-key mappings are intentionally coerced to a legacy literal `key: value` string.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeDirectoryInstanceFields(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode Directory object fields while preserving unrecognized extension metadata.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.decodeFileInstanceFields(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode File object fields while preserving unrecognized extension metadata.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.overflowIntoDynamicObj(DynamicObj.DynamicObj,Microsoft.FSharp.Collections.FSharpList{System.String},YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Preserve unknown object fields on DynamicObj-backed CWL objects.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.tryGetLoadListingField(System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode and validate CWL loadListing enum fields from their YAML string form.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.tryGetInt64Field(System.String,YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode int64 fields explicitly so resource and File sizes do not narrow to int.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.tryGetPresentField``1(System.String,Microsoft.FSharp.Core.FSharpFunc{YAMLicious.YAMLiciousTypes.YAMLElement,``0},YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Decode an optional field only if the field is physically present, avoiding fallback
+ behavior that can blur absent fields with malformed field values.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.isIgnorableYamlNoise(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Treat comment artifacts and empty placeholder objects as non-semantic collection items.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.overflowDecoder(DynamicObj.DynamicObj,System.Collections.Generic.Dictionary{System.String,YAMLicious.YAMLiciousTypes.YAMLElement})">
+<summary>
+ Decode key value pairs into a dynamic object, while preserving their tree structure.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.boxOverflowInt64(System.Int64)">
+<summary>
+ Box int64 values in a way that preserves 64-bit numeric intent across Fable targets.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.readSanitizedYaml(System.String)">
+<summary>
+ Read YAML and normalize comment nodes that CWL decoders intentionally ignore.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.isRecoverableDecodingError(System.Exception)">
+<summary>
+ Determines if an exception represents a recoverable decoding error.
+ Returns true for schema mismatches; false for system errors that should propagate.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.removeYamlComments(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Strip parser-level comment nodes and sequence placeholders before CWL semantic decoding.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Decode.addWarning(Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CWL.Decode.DecodeWarning}},System.String,System.String,Microsoft.FSharp.Core.FSharpOption{YAMLicious.YAMLiciousTypes.YAMLElement})">
+<summary>
+ Add a recoverable decode warning only when the caller requested warning collection.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.cwlTypeToYamlString(ARCtrl.CWL.CWLType)">
+<summary>
+ Convert a CWLType to a YAML-formatted string for use in serialization
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeCWLTypeYaml(ARCtrl.CWL.CWLType)">
+<summary>
+ Encode a CWLType to a single-line YAML string using flow/inline style
+ This produces YAML that doesn&apos;t contain newlines and can be embedded in JSON
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.renderTopLevelElement(Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Render top-level CWL sections in a stable order while keeping metadata as a final block.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.getObjectPairs(YAMLicious.YAMLiciousTypes.YAMLElement)">
+<summary>
+ Extract object mappings in order, dropping non-mapping presentation nodes.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeWorkflowStep(ARCtrl.CWL.WorkflowStep)">
+<summary>
+ Encode one workflow step as a map entry keyed by step id.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeWorkflowDescriptionElement(ARCtrl.CWL.CWLWorkflowDescription)">
+<summary>
+ Encode a Workflow element with ordered sections and preserved metadata.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeOperationDescriptionElement(ARCtrl.CWL.CWLOperationDescription)">
+<summary>
+ Encode an Operation element with ordered sections and preserved metadata.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeExpressionToolDescriptionElement(ARCtrl.CWL.CWLExpressionToolDescription)">
+<summary>
+ Encode an ExpressionTool element with ordered sections and preserved metadata.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeToolDescriptionElement(ARCtrl.CWL.CWLToolDescription)">
+<summary>
+ Encode a CommandLineTool element with ordered sections and preserved metadata.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeWorkflowStepRun(ARCtrl.CWL.WorkflowStepRun)">
+<summary>
+ Encode workflow step run targets as paths or inline processing units.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeScatter(System.Collections.Generic.List{System.String})">
+<summary>
+ Encode scatter as scalar shorthand for one item or a sequence for multiple items.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeStepOutputs(System.Collections.Generic.List{ARCtrl.CWL.StepOutput})">
+<summary>
+ Encode step outputs as either scalar ids or record-form output parameters.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeStepOutputParameter(ARCtrl.CWL.StepOutputParameter)">
+<summary>
+ Encode record-form step output parameters, including extension fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeStepInputs(System.Collections.Generic.List{ARCtrl.CWL.StepInput})">
+<summary>
+ Encode all step inputs in map form keyed by step input id.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeStepInput(ARCtrl.CWL.StepInput)">
+<summary>
+ Encode a step input using scalar source shorthand only when no other fields exist.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeSourceArray(System.Collections.Generic.List{System.String})">
+<summary>
+ Encode a ResizeArray&lt;string&gt; as either a single string or a sequence
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeHintEntry(ARCtrl.CWL.HintEntry)">
+<summary>
+ Encode known hints as requirements and unknown hints as their original raw YAML.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeRequirement(ARCtrl.CWL.Requirement)">
+<summary>
+ Encode known CWL requirements in extended form while preserving requirement extensions.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeSchemaDefRequirementType(ARCtrl.CWL.SchemaDefRequirementType)">
+<summary>
+ Encode one SchemaDefRequirement type entry and preserved schema extension fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeCWLInput(ARCtrl.CWL.CWLInput)">
+<summary>
+ Encode a workflow or tool input, choosing shorthand only when type is the sole field.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeInputBinding(ARCtrl.CWL.InputBinding)">
+<summary>
+ Encode inputBinding fields and preserved extension properties.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeCWLOutput(ARCtrl.CWL.CWLOutput)">
+<summary>
+ Encode a workflow or tool output, choosing shorthand only when type is the sole field.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeStringArrayOrScalar(System.Collections.Generic.List{System.String})">
+<summary>
+ Encode one source value as a scalar and multiple source values as a sequence.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeOutputBinding(ARCtrl.CWL.OutputBinding)">
+<summary>
+ Encode outputBinding fields and preserved extension properties.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeInputArraySchema(ARCtrl.CWL.InputArraySchema)">
+<summary>
+ Encode array schemas with their item type and preserved schema metadata.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeInputEnumSchema(ARCtrl.CWL.InputEnumSchema)">
+<summary>
+ Encode enum schemas while preserving symbol order and schema metadata.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeInputRecordSchema(ARCtrl.CWL.InputRecordSchema)">
+<summary>
+ Encode record schemas with map-form fields and preserved schema metadata.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeInputRecordField(ARCtrl.CWL.InputRecordField)">
+<summary>
+ Encode a record field as a map entry keyed by its field name.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeCWLType(ARCtrl.CWL.CWLType)">
+<summary>
+ Encode CWL types using shorthand when possible and full schema objects when required.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeDirectoryPairs(System.String,System.String,ARCtrl.CWL.DirectoryInstance)">
+<summary>
+ Encode Directory fields with the supplied discriminator key (`type` or `class`).
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeFilePairs(System.String,System.String,ARCtrl.CWL.FileInstance)">
+<summary>
+ Encode File fields with the supplied discriminator key (`type` or `class`).
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeSoftwareRequirementCompactMap(System.Collections.Generic.List{ARCtrl.CWL.SoftwarePackage})">
+<summary>
+ Encode SoftwareRequirement using compact map shorthand.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeEnvVarRequirementCompactMap(System.Collections.Generic.List{ARCtrl.CWL.EnvironmentDef})">
+<summary>
+ Encode EnvVarRequirement using compact map shorthand (envName -&gt; envValue).
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.normalizeEnvValueForEncode(System.String)">
+<summary>
+ Quote boolean-looking EnvVar values so YAML does not coerce them on decode.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeSchemaSaladString(ARCtrl.CWL.SchemaSaladString)">
+<summary>
+ Encode schema-salad strings as literals or directive mappings.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeExpressionScalar(System.String)">
+<summary>
+ Encode expression payloads with style-aware scalars.
+ Single-line expressions are double-quoted to protect JS token syntax.
+ Multi-line expressions are emitted as literal block scalars with clip chomping
+ so trailing newlines and blank lines survive decode/encode roundtrips.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.normalizeDocString(System.String)">
+<summary>
+ Normalize documentation line endings and trim only trailing newline markers.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.appendDynamicPropertiesExcept(Microsoft.FSharp.Collections.FSharpSet{System.String},DynamicObj.DynamicObj,Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,YAMLicious.YAMLiciousTypes.YAMLElement}})">
+<summary>
+ Append encodable dynamic extension fields while excluding typed CWL fields.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeDynamicObj(DynamicObj.DynamicObj)">
+<summary>
+ Encode all dynamic extension properties on a DynamicObj as a YAML mapping.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.encodeDynamicValue(System.Object)">
+<summary>
+ Encode preserved DynamicObj extension values when they can be represented as YAML.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.yFloat(System.Double)">
+<summary>
+ Encode floats with round-trip formatting on .NET while keeping Fable output usable.
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.isComplexType(ARCtrl.CWL.CWLType)">
+<summary>
+ Determine if a type requires full YAML serialization (complex type)
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.tryGetArrayShorthand(ARCtrl.CWL.CWLType)">
+<summary>
+ Try to get shorthand notation for a CWL type (e.g., &quot;File&quot;, &quot;string[]&quot;, &quot;int[][]&quot;)
+ Returns None for complex types that require full YAML serialization
+</summary>
+</member>
+<member name="M:ARCtrl.CWL.Encode.|PrimitiveType|ComplexType|(ARCtrl.CWL.CWLType)">
+<summary>
+ Active pattern to classify CWL types as primitive (with shorthand) or complex (requiring full YAML)
+</summary>
+</member>
+<member name="T:ARCtrl.CWL.Encode">
+<summary>
+ Encoding helpers and functions mirroring the logic in Decode.fs.
+ Each decode path gets a corresponding encode path that produces
+ YAML key ordering and scalar formatting matching existing fixtures.
+</summary>
+</member>
+</members>
+</doc>

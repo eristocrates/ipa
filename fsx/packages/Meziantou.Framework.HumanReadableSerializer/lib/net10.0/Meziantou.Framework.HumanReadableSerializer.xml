@@ -1,0 +1,1052 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.HumanReadableSerializer</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableAttribute">
+            <summary>Base class for attributes used to control serialization.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableConverterAttribute">
+            <summary>Specifies the converter to use when serializing a type, property, or field.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableConverterAttribute.#ctor(Meziantou.Framework.HumanReadable.HumanReadableConverter)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.HumanReadableConverterAttribute"/> class with a converter instance.</summary>
+            <param name="converterInstance">The converter instance to use.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableConverterAttribute.#ctor(System.Type)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.HumanReadableConverterAttribute"/> class with a converter type.</summary>
+            <param name="converterType">The type of the converter to use.</param>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableConverterAttribute.ConverterType">
+            <summary>Gets the type of the converter.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableConverterAttribute.ConverterInstance">
+            <summary>Gets the converter instance.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableDefaultValueAttribute">
+            <summary>Specifies the default value of a property or field used for comparison when serializing.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableDefaultValueAttribute.DefaultValue">
+            <summary>Gets the default value used for comparison when determining whether to serialize a property or field based on the DefaultIgnoreCondition setting.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableDefaultValueAttribute.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of <see cref="T:Meziantou.Framework.HumanReadable.HumanReadableDefaultValueAttribute"/>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableIgnoreAttribute.Condition">
+            <summary>Specifies the condition that must be met before a property or field will be ignored.</summary>
+            <remarks>The default value is <see cref="F:Meziantou.Framework.HumanReadable.HumanReadableIgnoreCondition.Always"/>.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableIgnoreAttribute.CustomCondition">
+            <summary>
+            Use when <see cref="P:Meziantou.Framework.HumanReadable.HumanReadableIgnoreAttribute.Condition" /> is <see cref="F:Meziantou.Framework.HumanReadable.HumanReadableIgnoreCondition.Custom"/>
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableIgnoreAttribute.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Meziantou.Framework.HumanReadable.HumanReadableIgnoreAttribute"/>.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableIgnoreData">
+            <summary>Represents data used when evaluating custom ignore conditions.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableIgnoreData.Value">
+            <summary>Gets the value being serialized.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableIgnoreData.Exception">
+            <summary>Gets the exception that occurred when getting the value, if any.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableIncludeAttribute">
+            <summary>Indicates that a property or field should be included during serialization even if it would normally be ignored.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadablePropertyNameAttribute">
+            <summary>Specifies the name to use when serializing a property or field.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadablePropertyNameAttribute.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.HumanReadablePropertyNameAttribute"/> class.</summary>
+            <param name="name">The name to use when serializing.</param>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadablePropertyNameAttribute.Name">
+            <summary>Gets the name to use when serializing.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadablePropertyOrderAttribute">
+            <summary>
+            Specifies the property order that is present in the output when serializing. Lower values are serialized first.
+            If the attribute is not specified, the default value is 0.
+            </summary>
+            <remarks>If multiple properties have the same value, the ordering is undefined between them.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadablePropertyOrderAttribute.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of <see cref="T:Meziantou.Framework.HumanReadable.HumanReadablePropertyOrderAttribute"/> with the specified order.
+            </summary>
+            <param name="order">The order of the property.</param>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadablePropertyOrderAttribute.Order">
+            <summary>The serialization order of the property.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.ConverterListExtensions">
+            <summary>Provides extension methods for adding converters to a converter list.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.ConverterListExtensions.Add``1(System.Collections.Generic.IList{Meziantou.Framework.HumanReadable.HumanReadableConverter},System.Func{``0,System.String})">
+            <summary>Adds a converter using a conversion function.</summary>
+            <typeparam name="T">The type to convert.</typeparam>
+            <param name="converters">The list of converters.</param>
+            <param name="convert">The conversion function.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.ConverterListExtensions.Add``1(System.Collections.Generic.IList{Meziantou.Framework.HumanReadable.HumanReadableConverter},System.Func{``0,Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions,System.String})">
+            <summary>Adds a converter using a conversion function that accepts serialization options.</summary>
+            <typeparam name="T">The type to convert.</typeparam>
+            <param name="converters">The list of converters.</param>
+            <param name="convert">The conversion function.</param>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.Converters.ContentSecurityPolicyFormatter.ContentSecurityPolicyNonceRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>(?&lt;=nonce-).*?(?=')</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Zero-width positive lookbehind.<br/>
+                ○ Match the string "nonce-" right-to-left.<br/>
+            ○ Match a character other than '\n' lazily any number of times.<br/>
+            ○ Zero-width positive lookahead.<br/>
+                ○ Match '\''.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.Converters.HttpRequestMessageFormat">
+            <summary>Specifies the format to use when serializing HTTP request messages.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.Converters.HttpRequestMessageFormat.NotSerialized">
+            <summary>The request message is not serialized.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.Converters.HttpRequestMessageFormat.MethodAndUri">
+            <summary>Only the HTTP method and URI are serialized.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.Converters.HttpRequestMessageFormat.Full">
+            <summary>The full request message including headers and content is serialized.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.Converters.HumanReadableHttpMessageOptions">
+            <summary>Provides options for serializing HTTP messages.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.Converters.HumanReadableHttpMessageOptions.ExcludedHeaderNames">
+            <summary>Gets the set of header names to exclude from serialization.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.Converters.HumanReadableHttpMessageOptions.HeaderValueTransformer">
+            <summary>Gets the list of header value formatters used to transform header values during serialization.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.Converters.HumanReadableHttpMessageOptions.OmitProtocolVersion">
+            <summary>
+            When <see langword="true" />, the following properties are not serialized:
+              <list type="bullet">
+               <item><see cref="P:System.Net.Http.HttpResponseMessage.Version" /></item>
+               <item><see cref="P:System.Net.Http.HttpRequestMessage.Version" /></item>
+               <item><see cref="P:System.Net.Http.HttpRequestMessage.VersionPolicy" /></item>
+              </list>
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableConverter">
+            <summary>Base class for converters that convert objects to human-readable text.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableConverter.HandleNull">
+            <summary>Gets a value indicating whether this converter handles null values.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableConverter.CanConvert(System.Type)">
+            <summary>Determines whether this converter can convert the specified type.</summary>
+            <param name="type">The type to check.</param>
+            <returns><see langword="true"/> if the converter can convert the type; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableConverter.WriteValue(Meziantou.Framework.HumanReadable.HumanReadableTextWriter,System.Object,System.Type,Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Writes a value to the writer.</summary>
+            <param name="writer">The writer to write to.</param>
+            <param name="value">The value to write.</param>
+            <param name="valueType">The type of the value.</param>
+            <param name="options">The serialization options.</param>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableConverterFactory">
+            <summary>Base class for converter factories that create converters for specific types.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableConverterFactory.CreateConverter(System.Type,Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Creates a converter for the specified type.</summary>
+            <param name="typeToConvert">The type to create a converter for.</param>
+            <param name="options">The serialization options.</param>
+            <returns>A converter for the type, or <see langword="null"/> if no converter could be created.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableConverter`1">
+            <summary>Base class for strongly-typed converters.</summary>
+            <typeparam name="T">The type this converter handles.</typeparam>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableConverter`1.CanConvert(System.Type)">
+            <summary>Determines whether this converter can convert the specified type.</summary>
+            <param name="type">The type to check.</param>
+            <returns><see langword="true"/> if the converter can convert the type; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableConverter`1.WriteValue(Meziantou.Framework.HumanReadable.HumanReadableTextWriter,System.Object,System.Type,Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Writes a value to the writer.</summary>
+            <param name="writer">The writer to write to.</param>
+            <param name="value">The value to write.</param>
+            <param name="valueType">The type of the value.</param>
+            <param name="options">The serialization options.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableConverter`1.WriteValue(Meziantou.Framework.HumanReadable.HumanReadableTextWriter,`0,Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Writes a strongly-typed value to the writer.</summary>
+            <param name="writer">The writer to write to.</param>
+            <param name="value">The value to write.</param>
+            <param name="options">The serialization options.</param>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.HumanReadableIgnoreCondition.Never">
+            <summary>Property is never ignored during serialization.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.HumanReadableIgnoreCondition.Always">
+            <summary>Property is always ignored during serialization.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.HumanReadableIgnoreCondition.WhenWritingDefault">
+            <summary>
+            If the value is the default, the property is ignored during serialization.
+            This is applied to both reference and value-type properties and fields.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.HumanReadableIgnoreCondition.WhenWritingNull">
+            <summary>
+            If the value is <see langword="null"/>, the property is ignored during serialization.
+            This is applied only to reference-type or <see cref="T:System.Nullable`1"/> properties and fields.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.HumanReadableIgnoreCondition.WhenWritingEmptyCollection">
+            <summary>
+            If the value implements <see cref="T:System.Collections.IEnumerable"/> and the collection is empty, the property is ignored during serialization.
+            </summary>
+            <remarks>If the value is not a collection, the property is not ignored during serialization.</remarks>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.HumanReadableIgnoreCondition.WhenWritingDefaultOrEmptyCollection">
+            <summary>
+            If the value implements <see cref="T:System.Collections.IEnumerable"/> and the collection is empty, or if the value is the default, the property is ignored during serialization.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.HumanReadableIgnoreCondition.Custom">
+            <summary>
+            The ignore logic is provided by <see cref="P:Meziantou.Framework.HumanReadable.HumanReadableIgnoreAttribute.CustomCondition" />.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableSerializer">
+            <summary>Serializes objects to a human-readable text format.</summary>
+            <example>
+            <code>
+            var obj = new { Name = "John Doe", Age = 32 };
+            var output = HumanReadableSerializer.Serialize(obj);
+            // Output:
+            // Name: John Doe
+            // Age: 32
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializer.Serialize(System.Object,Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Serializes the specified value to a human-readable string.</summary>
+            <param name="value">The value to serialize.</param>
+            <param name="options">Options to control the serialization behavior.</param>
+            <returns>A human-readable string representation of the value.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializer.Serialize(System.Object,System.Type,Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Serializes the specified value as the specified type to a human-readable string.</summary>
+            <param name="value">The value to serialize.</param>
+            <param name="type">The type to use for serialization.</param>
+            <param name="options">Options to control the serialization behavior.</param>
+            <returns>A human-readable string representation of the value.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializer.Serialize(Meziantou.Framework.HumanReadable.HumanReadableTextWriter,System.Object,System.Type,Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Serializes the specified value to the provided writer.</summary>
+            <param name="writer">The writer to serialize to.</param>
+            <param name="value">The value to serialize.</param>
+            <param name="type">The type to use for serialization.</param>
+            <param name="options">Options to control the serialization behavior.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializer.Serialize``1(Meziantou.Framework.HumanReadable.HumanReadableTextWriter,``0,Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Serializes the specified value to the provided writer.</summary>
+            <typeparam name="T">The type of the value to serialize.</typeparam>
+            <param name="writer">The writer to serialize to.</param>
+            <param name="value">The value to serialize.</param>
+            <param name="options">Options to control the serialization behavior.</param>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableSerializerException">
+            <summary>Represents errors that occur during serialization.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerException.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.HumanReadableSerializerException"/> class.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.HumanReadableSerializerException"/> class with a specified error message.</summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.HumanReadableSerializerException"/> class with a specified error message and a reference to the inner exception that is the cause of this exception.</summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions">
+            <summary>Provides options for controlling the behavior of <see cref="T:Meziantou.Framework.HumanReadable.HumanReadableSerializer"/>.</summary>
+            <example>
+            <code>
+            var options = new HumanReadableSerializerOptions
+            {
+                IncludeFields = true,
+                DefaultIgnoreCondition = HumanReadableIgnoreCondition.WhenWritingNull,
+            };
+            var output = HumanReadableSerializer.Serialize(obj, options);
+            </code>
+            </example>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.GetOrSetSerializationData``1(System.String,System.Func{``0})">
+            <summary>Gets or creates serialization data for the current serialization scope.</summary>
+            <typeparam name="T">The type of the data.</typeparam>
+            <param name="name">The name of the data.</param>
+            <param name="addValue">A factory function to create the value if it doesn't exist.</param>
+            <returns>The value associated with the specified name, creating it if necessary.</returns>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.IsReadOnly">
+            <summary>Gets whether this instance is read-only.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.MaxDepth">
+            <summary>Gets or sets the maximum depth allowed when serializing nested objects.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.ShowInvisibleCharactersInValues">
+            <summary>Gets or sets whether to show invisible characters (like newlines and tabs) in values using Unicode control pictures.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.Converters">
+            <summary>Gets the list of converters used for serialization.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.PropertyOrder">
+            <summary>Gets or sets the comparer used to sort property names when serializing objects.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.DictionaryKeyOrder">
+            <summary>Gets or sets the comparer used to sort dictionary keys when serializing dictionaries.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.IncludeFields">
+            <summary>Gets or sets whether to include public fields during serialization.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.IncludeObsoleteMembers">
+            <summary>Gets or sets whether to include members marked with the Obsolete attribute.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.DefaultIgnoreCondition">
+            <summary>Gets or sets the default ignore condition for properties and fields.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.AddFormatter(System.String,Meziantou.Framework.HumanReadable.ValueFormatters.ValueFormatter)">
+            <summary>Adds a value formatter for the specified media type.</summary>
+            <param name="mediaType">The media type (e.g., "application/json", "text/xml").</param>
+            <param name="formatter">The formatter to use for the media type.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.AddAttribute(System.Type,Meziantou.Framework.HumanReadable.HumanReadableAttribute)">
+            <summary>Adds an attribute to the specified type.</summary>
+            <param name="type">The type to add the attribute to.</param>
+            <param name="attribute">The attribute to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.AddAttribute(System.Type,System.String,Meziantou.Framework.HumanReadable.HumanReadableAttribute)">
+            <summary>Adds an attribute to a member of the specified type.</summary>
+            <param name="type">The type containing the member.</param>
+            <param name="memberName">The name of the member.</param>
+            <param name="attribute">The attribute to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.AddAttribute(System.Reflection.FieldInfo,Meziantou.Framework.HumanReadable.HumanReadableAttribute)">
+            <summary>Adds an attribute to the specified field.</summary>
+            <param name="member">The field to add the attribute to.</param>
+            <param name="attribute">The attribute to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.AddAttribute(System.Reflection.PropertyInfo,Meziantou.Framework.HumanReadable.HumanReadableAttribute)">
+            <summary>Adds an attribute to the specified property.</summary>
+            <param name="member">The property to add the attribute to.</param>
+            <param name="attribute">The attribute to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.AddPropertyAttribute(System.Func{System.Reflection.PropertyInfo,System.Boolean},Meziantou.Framework.HumanReadable.HumanReadableAttribute)">
+            <summary>Adds an attribute to all properties matching the specified condition.</summary>
+            <param name="condition">A function that determines which properties to add the attribute to.</param>
+            <param name="attribute">The attribute to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.AddAttribute``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},Meziantou.Framework.HumanReadable.HumanReadableAttribute)">
+            <summary>Adds an attribute to a member identified by an expression.</summary>
+            <typeparam name="T">The type containing the member.</typeparam>
+            <param name="member">An expression identifying the member.</param>
+            <param name="attribute">The attribute to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.AddFieldAttribute(System.Func{System.Reflection.FieldInfo,System.Boolean},Meziantou.Framework.HumanReadable.HumanReadableAttribute)">
+            <summary>Adds an attribute to all fields matching the specified condition.</summary>
+            <param name="condition">A function that determines which fields to add the attribute to.</param>
+            <param name="attribute">The attribute to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.AddTypeAttribute(System.Func{System.Type,System.Boolean},Meziantou.Framework.HumanReadable.HumanReadableAttribute)">
+            <summary>Adds an attribute to all types matching the specified condition.</summary>
+            <param name="condition">A function that determines which types to add the attribute to.</param>
+            <param name="attribute">The attribute to add.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions.MakeReadOnly">
+            <summary>Makes this instance read-only, preventing further modifications.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions">
+            <summary>Provides extension methods for <see cref="T:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMembersThatThrow(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Configures the options to ignore members that throw any exception when accessed.</summary>
+            <param name="options">The serialization options.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMembersThatThrow``1(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Configures the options to ignore members that throw an exception of the specified type when accessed.</summary>
+            <typeparam name="T">The type of exception to ignore.</typeparam>
+            <param name="options">The serialization options.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMembersThatThrow(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions,System.Type)">
+            <summary>Configures the options to ignore members that throw an exception of the specified type when accessed.</summary>
+            <param name="options">The serialization options.</param>
+            <param name="exceptionType">The type of exception to ignore.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMember``1(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>Configures the options to ignore the specified member.</summary>
+            <typeparam name="T">The type containing the member.</typeparam>
+            <param name="options">The serialization options.</param>
+            <param name="member">An expression identifying the member to ignore.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMember``1(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions,System.String)">
+            <summary>Configures the options to ignore the specified member by name.</summary>
+            <typeparam name="T">The type containing the member.</typeparam>
+            <param name="options">The serialization options.</param>
+            <param name="memberName">The name of the member to ignore.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMember(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions,System.Type,System.String)">
+            <summary>Configures the options to ignore the specified member by name.</summary>
+            <param name="options">The serialization options.</param>
+            <param name="type">The type containing the member.</param>
+            <param name="memberName">The name of the member to ignore.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMember(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions,System.Reflection.PropertyInfo)">
+            <summary>Configures the options to ignore the specified property.</summary>
+            <param name="options">The serialization options.</param>
+            <param name="propertyInfo">The property to ignore.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMember(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions,System.Reflection.FieldInfo)">
+            <summary>Configures the options to ignore the specified field.</summary>
+            <param name="options">The serialization options.</param>
+            <param name="fieldInfo">The field to ignore.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMember``1(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions,System.String[])">
+            <summary>Configures the options to ignore multiple members by name.</summary>
+            <typeparam name="T">The type containing the members.</typeparam>
+            <param name="options">The serialization options.</param>
+            <param name="memberNames">The names of the members to ignore.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMember(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions,System.Type,System.String[])">
+            <summary>Configures the options to ignore multiple members by name.</summary>
+            <param name="options">The serialization options.</param>
+            <param name="type">The type containing the members.</param>
+            <param name="memberNames">The names of the members to ignore.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMembersWithType``1(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Configures the options to ignore all members with the specified type.</summary>
+            <typeparam name="T">The type of members to ignore.</typeparam>
+            <param name="options">The serialization options.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableSerializerOptionsExtensions.IgnoreMembersWithType(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions,System.Type)">
+            <summary>Configures the options to ignore all members with the specified type.</summary>
+            <param name="options">The serialization options.</param>
+            <param name="type">The type of members to ignore.</param>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.HumanReadableTextWriter">
+            <summary>Writes human-readable text output with support for indentation, arrays, and objects.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.#ctor(Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.HumanReadableTextWriter"/> class.</summary>
+            <param name="options">The serialization options.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.WriteValue(System.ReadOnlySpan{System.Char})">
+            <summary>Writes a value to the output.</summary>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.WriteValue(System.String)">
+            <summary>Writes a value to the output.</summary>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.WriteFormattedValue(System.String,System.String)">
+            <summary>Writes a formatted value to the output using the formatter for the specified media type.</summary>
+            <param name="mediaTypeName">The media type name (e.g., "application/json").</param>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.WriteNullValue">
+            <summary>Writes a null value to the output.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.WritePropertyName(System.String)">
+            <summary>Writes a property name to the output.</summary>
+            <param name="propertyName">The name of the property.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.StartObject">
+            <summary>Starts writing an object.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.EndObject">
+            <summary>Ends writing an object.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.WriteEmptyObject">
+            <summary>Writes an empty object to the output.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.StartArray">
+            <summary>Starts writing an array.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.EndArray">
+            <summary>Ends writing an array.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.WriteEmptyArray">
+            <summary>Writes an empty array to the output.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.StartArrayItem(System.String)">
+            <summary>Starts writing an array item.</summary>
+            <param name="index">An optional index or label for the array item.</param>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.HumanReadableTextWriter.EndArrayItem">
+            <summary>Ends writing an array item.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.Utils.StringUtils.SpanLineEnumerator.Current">
+            <summary>Gets the line at the current position of the enumerator.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.Utils.StringUtils.SpanLineEnumerator.GetEnumerator">
+            <summary>Returns this instance as an enumerator.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.Utils.StringUtils.SpanLineEnumerator.MoveNext">
+            <summary>Advances the enumerator to the next line of the span.</summary>
+            <returns>
+            True if the enumerator successfully advanced to the next line; false if
+            the enumerator has advanced past the end of the span.
+            </returns>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.ValueFormatters.HtmlAttributeQuote">
+            <summary>Specifies the quote style to use for HTML attribute values.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.ValueFormatters.HtmlAttributeQuote.DoubleQuote">
+            <summary>Use double quotes for HTML attribute values.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.ValueFormatters.HtmlAttributeQuote.SimpleQuote">
+            <summary>Use single quotes for HTML attribute values.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.ValueFormatters.HtmlFormatterOptions">
+            <summary>Provides options for formatting HTML.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.HtmlFormatterOptions.AttributeQuote">
+            <summary>Gets or sets the quote style to use for attribute values.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.HtmlFormatterOptions.OrderAttributes">
+            <summary>Gets or sets whether to order attributes alphabetically.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.HtmlFormatterOptions.RedactContentSecurityPolicyNonce">
+            <summary>Gets or sets whether to redact Content Security Policy nonce values.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.ValueFormatters.JsonFormatter">
+            <summary>Formats JSON values for human-readable output.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.ValueFormatters.JsonFormatter.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.ValueFormatters.JsonFormatter"/> class with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.ValueFormatters.JsonFormatter.#ctor(Meziantou.Framework.HumanReadable.ValueFormatters.JsonFormatterOptions)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.ValueFormatters.JsonFormatter"/> class with the specified options.</summary>
+            <param name="options">The formatting options.</param>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.ValueFormatters.JsonFormatterOptions">
+            <summary>Provides options for formatting JSON.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.JsonFormatterOptions.FormatAsStandardObject">
+            <summary>Gets or sets whether to format JSON as a standard object in the output.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.JsonFormatterOptions.WriteIndented">
+            <summary>Gets or sets whether to write indented JSON.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.JsonFormatterOptions.OrderProperties">
+            <summary>Gets or sets whether to order properties alphabetically.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.ValueFormatters.UrlEncodedFormFormatterOptions">
+            <summary>Provides options for formatting URL-encoded form data.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.UrlEncodedFormFormatterOptions.OrderProperties">
+            <summary>Gets or sets whether to order properties alphabetically.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.UrlEncodedFormFormatterOptions.UnescapeValues">
+            <summary>Gets or sets whether to unescape URL-encoded values.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.UrlEncodedFormFormatterOptions.PrettyFormat">
+            <summary>Gets or sets whether to format the output in a pretty, human-readable format.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.ValueFormatters.ValueFormatter">
+            <summary>Base class for formatters that format values based on media type.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.ValueFormatters.ValueFormatter.JsonMediaTypeName">
+            <summary>The media type name for JSON.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.ValueFormatters.ValueFormatter.XmlMediaTypeName">
+            <summary>The media type name for XML.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.ValueFormatters.ValueFormatter.HtmlMediaTypeName">
+            <summary>The media type name for HTML.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.ValueFormatters.ValueFormatter.WwwFormUrlEncodedMediaTypeName">
+            <summary>The media type name for URL-encoded form data.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.ValueFormatters.ValueFormatter.CssMediaTypeName">
+            <summary>The media type name for CSS.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.HumanReadable.ValueFormatters.ValueFormatter.JavascriptMediaTypeName">
+            <summary>The media type name for JavaScript.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.ValueFormatters.ValueFormatter.Format(Meziantou.Framework.HumanReadable.HumanReadableTextWriter,System.String,Meziantou.Framework.HumanReadable.HumanReadableSerializerOptions)">
+            <summary>Formats the specified value and writes it to the writer.</summary>
+            <param name="writer">The writer to write to.</param>
+            <param name="value">The value to format.</param>
+            <param name="options">The serialization options.</param>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.ValueFormatters.XmlFormatter">
+            <summary>Formats XML values for human-readable output.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.ValueFormatters.XmlFormatter.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.ValueFormatters.XmlFormatter"/> class with default options.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.HumanReadable.ValueFormatters.XmlFormatter.#ctor(Meziantou.Framework.HumanReadable.ValueFormatters.XmlFormatterOptions)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.HumanReadable.ValueFormatters.XmlFormatter"/> class with the specified options.</summary>
+            <param name="options">The formatting options.</param>
+        </member>
+        <member name="T:Meziantou.Framework.HumanReadable.ValueFormatters.XmlFormatterOptions">
+            <summary>Provides options for formatting XML.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.XmlFormatterOptions.WriteIndented">
+            <summary>Gets or sets whether to write indented XML.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.HumanReadable.ValueFormatters.XmlFormatterOptions.OrderAttributes">
+            <summary>Gets or sets whether to order attributes alphabetically.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlCloneOptions">
+            <summary>Specifies options for cloning HTML nodes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.None">
+            <summary>No options specified.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.Deep">
+            <summary>Clone child nodes recursively.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.OverwriteAttributes">
+            <summary>Overwrite existing attributes in the target node.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.Tag">
+            <summary>Clone the Tag property.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.Attributes">
+            <summary>Clone attributes.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.StreamOrder">
+            <summary>Clone the StreamOrder property.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlCloneOptions.All">
+            <summary>Clone everything: deep children, attributes (overwriting), tag, and stream order.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlComment">
+            <summary>
+            Represents an HTML comment node (&lt;!-- comment --&gt;).
+            </summary>
+            <example>
+            <code>
+            var doc = new HtmlDocument();
+            var comment = doc.CreateComment();
+            comment.Value = "This is a comment";
+            doc.BodyElement.AppendChild(comment);
+            // Output: &lt;!-- This is a comment --&gt;
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlComment.NodeType">
+            <inheritdoc />
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlComment.Name">
+            <summary>Gets or sets the name of the comment node.</summary>
+            <value>Always returns "#comment". Setting this property has no effect.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlComment.InnerText">
+            <summary>Gets or sets the text content of the comment.</summary>
+            <value>The comment text without the &lt;!-- and --&gt; delimiters.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlComment.Value">
+            <summary>Gets or sets the value of the comment.</summary>
+            <value>The comment text without the &lt;!-- and --&gt; delimiters.</value>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlComment.WriteTo(System.IO.TextWriter)">
+            <summary>Writes the comment node to a text writer.</summary>
+            <param name="writer">The text writer to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+            <remarks>The output format is: &lt;!--[value]--&gt;</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlComment.WriteContentTo(System.IO.TextWriter)">
+            <summary>Writes the content of the comment node to a text writer.</summary>
+            <param name="writer">The text writer to write to.</param>
+            <remarks>Comments have no content, so this method does nothing.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlComment.WriteTo(System.Xml.XmlWriter)">
+            <summary>Writes the comment node to an XML writer.</summary>
+            <param name="writer">The XML writer to write to.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlComment.WriteContentTo(System.Xml.XmlWriter)">
+            <summary>Writes the content of the comment node to an XML writer.</summary>
+            <param name="writer">The XML writer to write to.</param>
+            <remarks>Comments have no content, so this method does nothing.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlComment.CopyTo(Meziantou.Framework.Html.HtmlNode,Meziantou.Framework.Html.HtmlCloneOptions)">
+            <summary>Copies the comment node properties to the specified target node.</summary>
+            <param name="target">The target node to copy to.</param>
+            <param name="options">The cloning options.</param>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlDocument">
+             <summary>Represents an HTML document that can be loaded, parsed, and manipulated programmatically.</summary>
+             <example>
+             <code>
+             // Load from file
+             var doc = new HtmlDocument();
+             doc.Load("page.html");
+            
+             // Load from string
+             doc.LoadHtml("&lt;html&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/html&gt;");
+            
+             // Query elements using XPath
+             var title = doc.SelectSingleNode("//title")?.InnerText;
+             var links = doc.SelectNodes("//a[@href]");
+            
+             // Modify and save
+             doc.HtmlElement.SetAttributeValue("lang", "en");
+             doc.Save("modified.html");
+             </code>
+             </example>
+             <remarks>
+             This class provides a DOM-like API for parsing and manipulating HTML documents.
+             It supports encoding detection, XPath queries, and can handle malformed HTML.
+             </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.CacheVersion">
+            <summary>Gets or sets the number of times this document has changed since it was created.</summary>
+            <remarks>
+            Incremented by <see cref="M:Meziantou.Framework.Html.HtmlNode.ClearCaches"/> for every mutation anywhere in the document. Nodes stamp
+            their cached serializations with the value they were computed for and recompute once it no longer matches,
+            which keeps invalidation O(1) instead of proportional to the depth of the mutated node.
+            </remarks>
+        </member>
+        <member name="E:Meziantou.Framework.Html.HtmlDocument.Parsing">
+            <summary>Occurs when the document is being parsed.</summary>
+            <remarks>This event can be used to customize the parsing process or track progress.</remarks>
+        </member>
+        <member name="E:Meziantou.Framework.Html.HtmlDocument.Parsed">
+            <summary>Occurs after the document has been parsed.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Html.HtmlDocument"/> class.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.StreamEncoding">
+            <summary>Gets the encoding used to read the document stream.</summary>
+            <value>The stream encoding, or <see langword="null"/> if the document was not loaded from a stream.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.DetectedEncoding">
+            <summary>Gets the encoding detected from the HTML meta tags.</summary>
+            <value>The detected encoding, or <see langword="null"/> if no encoding was detected.</value>
+            <remarks>
+            The encoding is detected from meta tags like &lt;meta charset="utf-8"&gt; or
+            &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.BaseAddress">
+            <summary>Gets or sets the base URI of the document.</summary>
+            <value>The base URI used to resolve relative URLs.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.ReaderWasRestarted">
+            <summary>Gets a value indicating whether the reader was restarted during parsing due to encoding detection.</summary>
+            <value><see langword="true"/> if the reader was restarted; otherwise, <see langword="false"/>.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.DocumentType">
+            <summary>Gets the document type declaration element (&lt;!DOCTYPE&gt;).</summary>
+            <value>The document type element, or <see langword="null"/> if no DOCTYPE was found.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.HtmlElement">
+            <summary>Gets the root &lt;html&gt; element of the document.</summary>
+            <value>The html element, or <see langword="null"/> if no html element was found.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.BodyElement">
+            <summary>Gets the &lt;body&gt; element of the document.</summary>
+            <value>The body element, or <see langword="null"/> if no body element was found.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.HeadElement">
+            <summary>Gets the &lt;head&gt; element of the document.</summary>
+            <value>The head element, or <see langword="null"/> if no head element was found.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.FilePath">
+            <summary>Gets the file path from which the document was loaded.</summary>
+            <value>The file path, or <see langword="null"/> if the document was not loaded from a file.</value>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlDocument.Options">
+            <summary>Gets or sets the parsing and serialization options for the document.</summary>
+            <value>The HTML options. The default is a new <see cref="T:Meziantou.Framework.Html.HtmlOptions"/> instance.</value>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.IO.TextWriter)">
+            <summary>Saves the document to the specified text writer.</summary>
+            <param name="writer">The text writer.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.Xml.XmlWriter)">
+            <summary>Saves the document to the specified XML writer.</summary>
+            <param name="writer">The XML writer.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.String)">
+            <summary>Saves the document to the specified file.</summary>
+            <param name="filePath">The file path. The file will be overwritten if it exists.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="filePath"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.String,System.Text.Encoding)">
+            <summary>Saves the document to the specified file with the given encoding.</summary>
+            <param name="filePath">The file path. The file will be overwritten if it exists.</param>
+            <param name="encoding">
+            The encoding to use. If <see langword="null"/>, UTF-8 encoding will be used.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="filePath"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.IO.Stream)">
+            <summary>Saves the document to the specified output stream.</summary>
+            <param name="outStream">The output stream.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="outStream"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlDocument.Save(System.IO.Stream,System.Text.Encoding)">
+            <summary>Saves the document to the specified output stream with the given encoding.</summary>
+            <param name="outStream">The output stream.</param>
+            <param name="encoding">The encoding to use.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="outStream"/> is <see langword="null"/>.
+            </exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlElement.WriteStartTagTo(System.IO.TextWriter)">
+            <summary>Writes the tag of the element, up to and including its closing '&gt;'.</summary>
+            <returns><see langword="false"/> when nothing else has to be written for this element, either because the tag is self-closed or because the element is intentionally left open.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlElement.WriteEndTagTo(System.IO.TextWriter)">
+            <summary>Writes the end tag of the element, when it needs one.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlElementReadOptions">
+            <summary>Specifies options that control how HTML elements are read and parsed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementReadOptions.None">
+            <summary>No special read options.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementReadOptions.InnerRaw">
+            <summary>The element's inner content should be read as raw text without parsing (e.g., script, style tags).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementReadOptions.AutoClosed">
+            <summary>The element is automatically closed and doesn't require an explicit closing tag (e.g., br, img, input).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementReadOptions.NoChild">
+            <summary>The element cannot have child elements (e.g., void elements).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlElementWriteOptions">
+            <summary>Specifies options that control how HTML elements are written.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementWriteOptions.None">
+            <summary>No special write options.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementWriteOptions.DontCloseIfEmpty">
+            <summary>Don't write a closing tag if the element is empty (e.g., &lt;meta&gt; instead of &lt;meta /&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementWriteOptions.AlwaysClose">
+            <summary>Always write a closing tag, even if the element is empty (e.g., &lt;div&gt;&lt;/div&gt; instead of &lt;div /&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlElementWriteOptions.NoChild">
+            <summary>The element cannot have child elements.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlErrorType">
+            <summary>Specifies the type of HTML parsing error.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.TagNotClosed">
+            <summary>An opening tag was not closed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.TagNotOpened">
+            <summary>A closing tag was found without a corresponding opening tag.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.EncodingError">
+            <summary>A text encoding error occurred while reading the HTML.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.EncodingMismatch">
+            <summary>The detected encoding does not match the declared encoding.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.NamespaceNotDeclared">
+            <summary>A namespace was referenced but not declared.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlErrorType.DuplicateAttribute">
+            <summary>An attribute was declared more than once on an element.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlException">
+            <summary>Represents errors that occur during HTML parsing or manipulation.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlException.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Html.HtmlException"/> class with a default message.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Html.HtmlException"/> class with a specified error message.</summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:Meziantou.Framework.Html.HtmlException"/> class with a specified error message and inner exception.</summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlException.GetCode(System.String)">
+            <summary>Extracts the error code from an exception message.</summary>
+            <param name="message">The exception message in the format "HTMLnnnn: description".</param>
+            <returns>The numeric error code, or -1 if the message doesn't contain a valid error code.</returns>
+            <example>
+            <code>
+            var code = HtmlException.GetCode("HTML0004: Html encoding mismatch error");
+            // code == 4
+            </code>
+            </example>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlException.Code">
+            <summary>Gets the numeric error code from the exception message.</summary>
+            <value>The error code, or -1 if no valid code is present.</value>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlFragmentType">
+            <summary>Specifies the type of HTML fragment encountered during parsing.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.Text">
+            <summary>Plain text content.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.TagOpen">
+            <summary>An opening tag (&lt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.TagEnd">
+            <summary>The end of a tag (&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.TagEndClose">
+            <summary>A self-closing tag end (/&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.TagClose">
+            <summary>A closing tag (&lt;/tagname).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.AttName">
+            <summary>An attribute name.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.AttValue">
+            <summary>An attribute value.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.Comment">
+            <summary>An HTML comment (&lt;!-- comment --&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlFragmentType.CDataText">
+            <summary>CDATA section text (&lt;![CDATA[ ... ]]&gt;).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlNode.HasContentToWrite">
+            <summary>Gets a value indicating whether the child nodes of this node have to be written by <see cref="M:Meziantou.Framework.Html.HtmlNode.WriteChildNodesTo(Meziantou.Framework.Html.HtmlNode,System.IO.TextWriter)"/>.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlNode.SyncCaches">
+            <summary>Drops this node's cached values when the document has changed since they were computed.</summary>
+            <remarks>Called by every cached property before it looks at its backing field.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlNode.GetDeclaredNamespaceOfPrefix(System.String)">
+            <summary>Resolves <paramref name="prefix"/> against the declarations carried by this node alone, without looking at its ancestors.</summary>
+            <returns>The namespace URI, or <see langword="null"/> when this node declares nothing for <paramref name="prefix"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlNode.GetDeclaredPrefixOfNamespace(System.String)">
+            <summary>Resolves <paramref name="namespaceURI"/> against the declarations carried by this node alone, without looking at its ancestors.</summary>
+            <returns>The prefix, or <see langword="null"/> when this node declares nothing for <paramref name="namespaceURI"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlNode.GetDeclaredNamespaceAttributes(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>Adds the namespaces declared by this node alone to <paramref name="namespaces"/>, without looking at its ancestors.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.Html.HtmlNodeType">
+            <summary>Specifies the type of an HTML node.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.Attribute">
+            <summary>An attribute node.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.Comment">
+            <summary>A comment node (&lt;!-- comment --&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.Document">
+            <summary>The document node.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.Element">
+            <summary>An element node (e.g., &lt;div&gt;, &lt;span&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.EndElement">
+            <summary>An end element node (deprecated/unused).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.Text">
+            <summary>A text node containing character data.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.None">
+            <summary>No node type specified.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.ProcessingInstruction">
+            <summary>A processing instruction node (&lt;?xml ?&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.DocumentType">
+            <summary>A document type declaration node (&lt;!DOCTYPE&gt;).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.Html.HtmlNodeType.XPathResult">
+            <summary>An XPath query result node.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlOptions.GetImpliedEndTags(System.String)">
+            <summary>Gets the names of the open elements that are implicitly closed when <paramref name="name"/> is opened.</summary>
+            <param name="name">The name of the element being opened.</param>
+            <returns>The names of the elements to close, or an empty collection when <paramref name="name"/> closes nothing.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.Html.HtmlOptions.SetImpliedEndTags(System.String,System.String[])">
+            <summary>Sets the names of the open elements that are implicitly closed when <paramref name="name"/> is opened.</summary>
+            <param name="name">The name of the element being opened.</param>
+            <param name="closedElementNames">The names of the elements to close. Pass an empty array to close nothing.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="closedElementNames"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.Html.HtmlOptions.ImpliedEndTagScopes">
+            <summary>Gets the names of the elements that stop the search for an element to implicitly close.</summary>
+            <remarks>An open element is never implicitly closed through one of these elements.</remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsClosedTypeAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.IsClosedTypeAttribute.#ctor">
+            <summary>Initializes the attribute.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.IsClosedTypeAttribute.DerivedTypes">
+            <summary>Gets or sets the derived types of the closed type.</summary>
+            <value>An array of the derived types of the closed type. A <see langword="null" /> value is normalized to an empty array.</value>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.ContentSecurityPolicyNonceRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the ContentSecurityPolicyNonceRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.ContentSecurityPolicyNonceRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ContentSecurityPolicyNonceRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.ContentSecurityPolicyNonceRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ContentSecurityPolicyNonceRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.ContentSecurityPolicyNonceRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ContentSecurityPolicyNonceRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ContentSecurityPolicyNonceRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+    </members>
+</doc>

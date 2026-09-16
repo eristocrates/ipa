@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Christoph Ruegg</dc:creator>
+  <dc:description>Math.NET Symbolics is a basic open source computer algebra library for .Net and Mono. Written in F# but works well in C# as well. Supports .Net Framework 4.5 or higher and .Net Standard 2.0 or higher, on Windows, Linux and Mac.</dc:description>
+  <dc:identifier>MathNet.Symbolics</dc:identifier>
+  <version>0.25</version>
+  <keywords>fsharp F# math symbolics algebra simplify solve cas parse</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=6.8.0.122, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET Standard 2.0</lastModifiedBy>
+</coreProperties>

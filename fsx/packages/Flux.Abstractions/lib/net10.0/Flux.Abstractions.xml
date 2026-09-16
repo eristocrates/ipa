@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Flux.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Flux.Abstractions.IEnrichedChunk">
+            <summary>
+            Enriched chunk contract for RAG system integration.
+            Provides standardized metadata for document chunks across the Flux ecosystem.
+            </summary>
+            <remarks>
+            This is the canonical definition shared across FluxIndex, FileFlux, and WebFlux.
+            All properties represent the superset union of all Flux modules;
+            implementations return <see langword="null"/> or default for inapplicable fields.
+            </remarks>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.Content">
+            <summary>
+            Chunk content text.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.ChunkId">
+            <summary>
+            Unique chunk identifier.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.ChunkIndex">
+            <summary>
+            Zero-based chunk index within the document.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.HeadingPath">
+            <summary>
+            Hierarchical heading path from document root.
+            Example: ["Chapter 1", "Section 1.2", "1.2.1 Purpose"]
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.SectionTitle">
+            <summary>
+            Current section title (typically the last element of <see cref="P:Flux.Abstractions.IEnrichedChunk.HeadingPath"/>).
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.StartPage">
+            <summary>
+            Start page number (1-based). <see langword="null"/> if not applicable.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.EndPage">
+            <summary>
+            End page number (for chunks spanning multiple pages).
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.Quality">
+            <summary>
+            Overall chunk quality score (0.0 - 1.0).
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.ContextDependency">
+            <summary>
+            Context dependency score (0.0 - 1.0).
+            Higher values indicate more reliance on surrounding context.
+            Used to determine whether LLM-based contextual header generation is needed.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.TokenCount">
+            <summary>
+            Estimated token count. <see langword="null"/> if not yet calculated.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.IEnrichedChunk.Source">
+            <summary>
+            Source document metadata.
+            </summary>
+        </member>
+        <member name="T:Flux.Abstractions.ILanguageProfile">
+            <summary>
+            Minimal language profile contract shared across the Flux ecosystem.
+            Provides common language-specific text segmentation metadata.
+            </summary>
+            <remarks>
+            Each Flux module may extend this with module-specific members:
+            <list type="bullet">
+            <item><description>FileFlux: rich Regex-based members via <c>ILanguageProfile</c> in <c>FileFlux.Core</c></description></item>
+            <item><description>FluxCurator: string-pattern-based members via <c>ILanguageProfile</c> in <c>FluxCurator.Core</c></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Flux.Abstractions.ILanguageProfile.LanguageCode">
+            <summary>
+            ISO 639-1 language code (e.g., "en", "ko", "ja", "zh").
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ILanguageProfile.LanguageName">
+            <summary>
+            Human-readable language name (e.g., "English", "Korean").
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ILanguageProfile.SentenceEndPattern">
+            <summary>
+            Regex pattern string for detecting sentence endings.
+            Implementations may compile this into a <see cref="T:System.Text.RegularExpressions.Regex"/> internally.
+            </summary>
+        </member>
+        <member name="M:Flux.Abstractions.ILanguageProfile.FindSentenceBoundaries(System.String)">
+            <summary>
+            Finds sentence boundaries in the given text.
+            </summary>
+            <param name="text">The text to analyze.</param>
+            <returns>A list of character positions (exclusive) where sentences end.</returns>
+        </member>
+        <member name="T:Flux.Abstractions.ISourceMetadata">
+            <summary>
+            Source document metadata for traceability and filtering.
+            Provides origin information about the document from which chunks were extracted.
+            </summary>
+            <remarks>
+            This is the canonical definition shared across the Flux ecosystem
+            (FluxIndex, FileFlux, WebFlux). All properties are the superset union;
+            implementations return <see langword="null"/> or default for inapplicable fields.
+            </remarks>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.SourceId">
+            <summary>
+            Unique source document identifier.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.SourceType">
+            <summary>
+            Document type (e.g. "PDF", "DOCX", "MD", "url", "html").
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.Title">
+            <summary>
+            Document title.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.FilePath">
+            <summary>
+            Original file path (when the source is a local file).
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.Url">
+            <summary>
+            Source URL (when the source is a web document).
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.CreatedAt">
+            <summary>
+            Document creation or processing timestamp.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.Language">
+            <summary>
+            Detected language (ISO 639-1 code, e.g. "ko", "en", "ja").
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.LanguageConfidence">
+            <summary>
+            Language detection confidence (0.0 - 1.0).
+            <see langword="null"/> if confidence is not available.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.WordCount">
+            <summary>
+            Total word count of the source document.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.ChunkCount">
+            <summary>
+            Total number of chunks generated from this source.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.PageCount">
+            <summary>
+            Total page count (when applicable, e.g. PDF documents).
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.PublishedAt">
+            <summary>
+            Content publication date (e.g. article:published_time for web documents).
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.Author">
+            <summary>
+            Content author.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.ISourceMetadata.Keywords">
+            <summary>
+            Keyword list extracted from the source.
+            </summary>
+        </member>
+        <member name="T:Flux.Abstractions.ITextCompletionService">
+            <summary>
+            Abstraction for text completion services.
+            Implementations wrap LLM providers (OpenAI, Anthropic, local models, etc.).
+            </summary>
+            <remarks>
+            Only <see cref="M:Flux.Abstractions.ITextCompletionService.CompleteAsync(System.String,Flux.Abstractions.TextCompletionOptions,System.Threading.CancellationToken)"/> is required; all other methods have
+            default interface method (DIM) implementations that delegate to it.
+            </remarks>
+        </member>
+        <member name="M:Flux.Abstractions.ITextCompletionService.CompleteAsync(System.String,Flux.Abstractions.TextCompletionOptions,System.Threading.CancellationToken)">
+            <summary>
+            Generates a completion for the given prompt.
+            </summary>
+            <param name="prompt">The prompt to complete.</param>
+            <param name="options">Optional completion options.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>Generated text completion.</returns>
+        </member>
+        <member name="M:Flux.Abstractions.ITextCompletionService.CompleteJsonAsync(System.String,Flux.Abstractions.TextCompletionOptions,System.Threading.CancellationToken)">
+            <summary>
+            Generates a JSON completion with structured output.
+            Default implementation delegates to <see cref="M:Flux.Abstractions.ITextCompletionService.CompleteAsync(System.String,Flux.Abstractions.TextCompletionOptions,System.Threading.CancellationToken)"/>.
+            </summary>
+            <param name="prompt">The prompt requesting JSON output.</param>
+            <param name="options">Optional completion options.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>Generated JSON string.</returns>
+        </member>
+        <member name="M:Flux.Abstractions.ITextCompletionService.CompleteBatchAsync(System.Collections.Generic.IEnumerable{System.String},Flux.Abstractions.TextCompletionOptions,System.Threading.CancellationToken)">
+            <summary>
+            Generates text completions for multiple prompts in batch.
+            Default implementation runs prompts sequentially.
+            </summary>
+            <param name="prompts">The prompts to complete.</param>
+            <param name="options">Optional completion options.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>Generated completions in the same order as inputs.</returns>
+        </member>
+        <member name="M:Flux.Abstractions.ITextCompletionService.CompleteStreamAsync(System.String,Flux.Abstractions.TextCompletionOptions,System.Threading.CancellationToken)">
+            <summary>
+            Streams a completion for the given prompt token by token.
+            Default implementation wraps <see cref="M:Flux.Abstractions.ITextCompletionService.CompleteAsync(System.String,Flux.Abstractions.TextCompletionOptions,System.Threading.CancellationToken)"/> as a single item.
+            </summary>
+            <param name="prompt">The prompt to complete.</param>
+            <param name="options">Optional completion options.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>Async stream of generated text tokens.</returns>
+        </member>
+        <member name="T:Flux.Abstractions.TextCompletionOptions">
+            <summary>
+            Options for text completion generation.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.TextCompletionOptions.Temperature">
+            <summary>
+            Temperature for sampling (0.0 = deterministic, higher = more creative).
+            Default: 0.7
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.TextCompletionOptions.MaxTokens">
+            <summary>
+            Maximum number of tokens to generate.
+            Default: 500
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.TextCompletionOptions.TopP">
+            <summary>
+            Top-p nucleus sampling threshold (0.0 - 1.0).
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.TextCompletionOptions.FrequencyPenalty">
+            <summary>
+            Frequency penalty (-2.0 to 2.0).
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.TextCompletionOptions.PresencePenalty">
+            <summary>
+            Presence penalty (-2.0 to 2.0).
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.TextCompletionOptions.StopSequences">
+            <summary>
+            Stop sequences that will terminate generation.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.TextCompletionOptions.SystemPrompt">
+            <summary>
+            System prompt prepended to the request.
+            </summary>
+        </member>
+        <member name="P:Flux.Abstractions.TextCompletionOptions.ResponseFormat">
+            <summary>
+            Response format hint (e.g., "json" for JSON mode).
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,15 @@
+D: /build
+F: /build/Microsoft.Bcl.Build.targets
+F: /build/Microsoft.Bcl.Build.Tasks.dll
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/642092c96f444452801a3d9f187d628b.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /License-Stable.rtf
+F: /microsoft.bcl.build.1.0.21.nupkg
+F: /Microsoft.Bcl.Build.nuspec
+F: /[Content_Types].xml

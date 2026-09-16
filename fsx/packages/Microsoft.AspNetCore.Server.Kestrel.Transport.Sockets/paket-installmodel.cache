@@ -1,0 +1,15 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll
+F: /lib/netstandard2.0/Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/a1e787e3c4824ef0a6d4fefce1aa019a.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /microsoft.aspnetcore.server.kestrel.transport.sockets.2.3.13.nupkg
+F: /Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.nuspec
+F: /[Content_Types].xml

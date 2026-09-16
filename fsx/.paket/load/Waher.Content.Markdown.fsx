@@ -1,0 +1,15 @@
+namespace PaketLoadScripts
+
+#load "SkiaSharp.fsx" 
+#load "System.Net.Http.fsx" 
+#load "System.Text.RegularExpressions.fsx" 
+#load "Waher.Content.fsx" 
+#load "Waher.Content.Emoji.fsx" 
+#load "Waher.Content.Html.fsx" 
+#load "Waher.Runtime.Cache.fsx" 
+#load "Waher.Runtime.Inventory.fsx" 
+#load "Waher.Runtime.Text.fsx" 
+#load "Waher.Runtime.Threading.fsx" 
+#load "Waher.Script.fsx" 
+#load "Waher.Script.Graphs.fsx" 
+#r "../../packages/Waher.Content.Markdown/lib/netstandard2.0/Waher.Content.Markdown.dll" 

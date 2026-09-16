@@ -1,0 +1,11 @@
+
+#load "Microsoft.Bcl.Cryptography.csx" 
+#load "Microsoft.Data.SqlClient.Extensions.Abstractions.csx" 
+#load "Microsoft.Data.SqlClient.Internal.Logging.csx" 
+#load "Microsoft.Extensions.Caching.Memory.csx" 
+#load "Microsoft.IdentityModel.JsonWebTokens.csx" 
+#load "Microsoft.IdentityModel.Protocols.OpenIdConnect.csx" 
+#load "Microsoft.SqlServer.Server.csx" 
+#load "System.Configuration.ConfigurationManager.csx" 
+#load "System.Security.Cryptography.Pkcs.csx" 
+#r "../../packages/Microsoft.Data.SqlClient/lib/net9.0/Microsoft.Data.SqlClient.dll" 

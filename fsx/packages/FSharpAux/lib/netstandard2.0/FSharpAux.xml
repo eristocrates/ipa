@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharpAux</name></assembly>
+<members>
+<member name="M:FSharpAux.Array.outersect``1(``0[],``0[])">
+<summary>
+ Computes the outersection (known as &quot;symmetric difference&quot; in mathematics) of two arrays.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.stackVertical``1(``0[][])">
+<summary>
+ Stacks an array of arrays vertically.
+</summary>
+</member>
+<member name="M:FSharpAux.Array.stackHorizontal``1(``0[][])">
+<summary>
+ Stacks an array of arrays horizontally.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.toIndexedArray``1(``0[0:])">
+<summary>
+ Transforms a 2D-array to an array where each position is indexed (first index: prior rows, second index: prior columns).
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.flipVertically``1(``0[0:])">
+<summary>
+ Inverses the order of the columns of an 2D-array.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.flipHorizontally``1(``0[0:])">
+<summary>
+ Inverses the order of the rows of an 2D-array.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.rotate180Deg``1(``0[0:])">
+<summary>
+ Rotates a 2D-array by 180°.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.rotate90DegCounterClockwise``1(``0[0:])">
+<summary>
+ Rotates a 2D-array by 90° counter-clickwise.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.rotate90DegClockwise``1(``0[0:])">
+<summary>
+ Rotates a 2D-array by 90° clockwise.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.countDistinctBy``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0[0:])">
+<summary>
+Applies a keyfunction to each element and counts the amount of each distinct resulting key
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.shuffleInPlace``1(System.Random,``0[0:])">
+<summary>
+ Shuffels the input Array2D (method: Fisher-Yates) in place. Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.shuffleRowWiseInPlace``1(System.Random,``0[0:])">
+<summary>
+ Shuffels each row of the input Array2D separately (method: Fisher-Yates) in place. Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.shuffleColumnWiseInPlace``1(System.Random,``0[0:])">
+<summary>
+ Shuffels each column of the input Array2D separately (method: Fisher-Yates) in place. Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.shuffle``1(System.Random,``0[0:])">
+<summary>
+ Shuffels the input Array2D (method: Fisher-Yates). Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.shuffleRowWise``1(System.Random,``0[0:])">
+<summary>
+ Shuffels each row of the input Array2D separately  (method: Fisher-Yates). Define the random number generator outside of a potential loop.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.shuffleColumnWise``1(System.Random,``0[0:])">
+<summary>
+ Shuffels each column of the input Array2D separately  (method: Fisher-Yates)
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.map2``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``1}},``0[0:],``0[0:])">
+<summary>
+ Builds a new array whose elements are the results of applying the given function
+ to the corresponding pairs of elements from the two arrays. 
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.mapInPlaceRowi``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},``0[0:])">
+<summary>
+ Applying the given function to each of the elements of the array and returns the value in place.
+ The integer indices passed to the function indicates the row index of the element being transformed.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.mapInPlaceColi``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},``0[0:])">
+<summary>
+ Applying the given function to each of the elements of the array and returns the value in place.
+ The integer indices passed to the function indicates the column index of the element being transformed.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.mapiInPlace``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},``0[0:])">
+<summary>
+ Applying the given function to each of the elements of the array and returns the value in place.
+ The integer indices passed to the function indicates the element being transformed.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.mapInPlace``1(Microsoft.FSharp.Core.FSharpFunc{``0,``0},``0[0:])">
+<summary>
+ Applying the given function to each of the elements of the array and returns the value in place.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.mapRowI``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``1}},``0[0:])">
+<summary>
+ Builds a new array whose elements are the results of applying the given function
+ to each of the elements of the array. The integer indices passed to the
+ function indicates the row index of the element being transformed.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.mapColI``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``1}},``0[0:])">
+<summary>
+ Builds a new array whose elements are the results of applying the given function
+ to each of the elements of the array. The integer indices passed to the
+ function indicates the column index of the element being transformed.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.foldByRow``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},``0,``1[0:])">
+<summary>
+ Fold all rows into one column array.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.foldByCol``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},``0,``1[0:])">
+<summary>
+ Fold all columns into one row array.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.foldRow``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},``0,``1[0:],System.Int32)">
+<summary>
+ Fold one row.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.foldCol``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},``0,``1[0:],System.Int32)">
+<summary>
+ Fold one column.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.colCount``1(``0[0:])">
+<summary>
+ Returns the numbers of rows.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.rowCount``1(``0[0:])">
+<summary>
+ Returns the numbers of rows.
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.transpose``1(``0[0:])">
+<summary>
+ Transpose the array
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.indexMaxBy``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0[0:])">
+<summary>
+Returns the index of the element which is the biggest after projection according to the Operators.max operator in the array
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.maxBy``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0[0:])">
+<summary>
+Returns the element of the array which is the biggest after projection according to the Operators.max operator
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.ofLongColumnArray``1(``0[],System.Int32,System.Int32)">
+<summary>
+ Creates a Array2D out of a column array [a1;b1;c1;a2;b2;c2;...]
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.toLongColumnArray``1(``0[0:])">
+<summary>
+ concate the columns of an Array2D into a long column array
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.ofJaggedArray``1(``0[][])">
+<summary>
+ Converts a jagged array (twodimensional) into a array2D
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.toJaggedArray``1(``0[0:])">
+<summary>
+ Converts a array2D to jagged array
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.toArray``1(``0[0:])">
+<summary>
+ Converts a array2D with one row to array
+</summary>
+</member>
+<member name="M:FSharpAux.Array2D.empty``1">
+<summary>
+ Create an empty array2D
+</summary>
+</member>
+<member name="M:FSharpAux.JaggedArray.ofArray2D``1(``0[0:])">
+<summary>
+ Creates a jagged array from a 2D array.
+</summary>
+</member>
+<member name="M:FSharpAux.List.outersect``1(Microsoft.FSharp.Collections.FSharpList{``0},Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Computes the outersection (known as &quot;symmetric difference&quot; in mathematics) of two lists.
+</summary>
+</member>
+<member name="M:FSharpAux.Math.Complex.fromComplex(System.Numerics.Complex)">
+<summary>
+ Retruns real * imaginary (System.Numerics.Complex)
+</summary>
+</member>
+<member name="M:FSharpAux.Math.Complex.fromComplexReal(System.Numerics.Complex)">
+<summary>
+ Retruns real part of a complex number (System.Numerics.Complex)
+</summary>
+</member>
+<member name="M:FSharpAux.Math.Complex.toComplexFromReal``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Double},``0)">
+<summary>
+ Creates a complex number from only the real part (System.Numerics.Complex)
+</summary>
+</member>
+<member name="M:FSharpAux.Math.Complex.toComplex``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.Double},Microsoft.FSharp.Core.FSharpFunc{``1,System.Double},``0,``1)">
+<summary>
+ Creates a complex number (System.Numerics.Complex)
+</summary>
+</member>
+<member name="T:FSharpAux.Math.Complex">
+<summary>
+ Helper for System.Numerics.Complex
+</summary>
+</member>
+<member name="M:FSharpAux.Memoization.memoizeP``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1})">
+<summary>
+ Memoizes the return value of function f (thread-safe)
+</summary>
+</member>
+<member name="M:FSharpAux.Memoization.memoize``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1})">
+<summary>
+ Memoizes the return value of function f (Attenetion: not thread-safe)
+</summary>
+</member>
+<member name="T:FSharpAux.Memoization">
+<summary>
+ Memoization pattern
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.outersect``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Computes the outersection (known as &quot;symmetric difference&quot; in mathematics) of two sequences.
+</summary>
+</member>
+<member name="M:FSharpAux.Seq.sortByDesc``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Sorts sequence in descending order.
+</summary>
+</member>
+<member name="M:FSharpAux.String.tryParseCharDefault(System.Char,System.String)">
+<summary>
+ Try to parse char else return default value    
+</summary>
+</member>
+</members>
+</doc>

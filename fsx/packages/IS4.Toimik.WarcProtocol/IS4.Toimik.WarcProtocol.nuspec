@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>IS4.Toimik.WarcProtocol</id>
+    <version>0.2.4</version>
+    <authors>Nurhafiz</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <projectUrl>https://github.com/toimik/WarcProtocol</projectUrl>
+    <description>Parser for WARC (aka Web ARChive) files.
+
+      Visit Project Site for documentation.</description>
+    <copyright>nurhafiz@hotmail.sg</copyright>
+    <tags>warc webarchive web-archiving web-archives warc-files warc-record warc-format warc-reader</tags>
+    <repository type="git" url="https://github.com/IllidanS4/WarcProtocol.git" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="IndexRange" version="1.0.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Bcl.AsyncInterfaces" version="7.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

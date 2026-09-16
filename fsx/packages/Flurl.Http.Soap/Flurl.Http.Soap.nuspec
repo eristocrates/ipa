@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Flurl.Http.Soap</id>
+    <version>0.1.0</version>
+    <authors>Miles Flavel</authors>
+    <license type="file">assets/LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>assets/noun_soap_3664421.png</icon>
+    <projectUrl>https://github.com/milesflavel/Flurl.Http.Soap</projectUrl>
+    <description>SOAP extensions and wrapper for Flurl.Http</description>
+    <copyright>Copyright 2021 by Miles Flavel. All rights reserved.</copyright>
+    <tags>Flurl Http Soap</tags>
+    <readme>assets/README.md</readme>
+    <repository type="git" url="https://github.com/milesflavel/Flurl.Http.Soap" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="Flurl.Http" version="3.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="Flurl.Http" version="3.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Flurl.Http" version="3.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="Flurl.Http" version="3.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

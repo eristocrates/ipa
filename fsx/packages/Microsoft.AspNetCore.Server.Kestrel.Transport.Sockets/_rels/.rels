@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.nuspec" Id="Rd67778aa6f6b499f" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/a1e787e3c4824ef0a6d4fefce1aa019a.psmdcp" Id="Rc7b5fbfad5f14d4b" />
+</Relationships>

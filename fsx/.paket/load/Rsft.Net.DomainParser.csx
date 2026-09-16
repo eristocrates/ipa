@@ -1,0 +1,11 @@
+
+#load "JetBrains.Annotations.csx" 
+#load "Microsoft.Extensions.Caching.Memory.csx" 
+#load "Microsoft.Extensions.Logging.csx" 
+#load "Rsft.Net.DomainParser.Core.csx" 
+#load "System.ComponentModel.Annotations.csx" 
+#load "System.Diagnostics.Contracts.csx" 
+#load "System.Diagnostics.Process.csx" 
+#load "System.Diagnostics.TraceSource.csx" 
+#load "System.Linq.Queryable.csx" 
+#r "../../packages/Rsft.Net.DomainParser/lib/netstandard2.0/Rsft.Net.DomainParser.dll" 

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Iride</id>
+    <version>0.6.1</version>
+    <authors>Giacomo Citi</authors>
+    <owners>Giacomo Citi</owners>
+    <licenseUrl>http://github.com/giacomociti/iride/blob/master/license.txt</licenseUrl>
+    <projectUrl>http://github.com/giacomociti/iride</projectUrl>
+    <description>F# type providers for RDF and SPARQL.
+GraphProvider generates types from a schema or sample RDF graph.
+UriProvider generates Uri properties for IRIs in RDF vocabularies.
+SparqlCommandProvider and SparqlQueryProvider provide some type safety for SPARQL.</description>
+    <summary>F# type providers for RDF and SPARQL</summary>
+    <tags>F# fsharp typeproviders RDF SPARQL</tags>
+    <references>
+      <reference file="Iride.dll" />
+    </references>
+    <dependencies>
+      <dependency id="FSharp.Core" version="4.7.2" />
+      <dependency id="dotNetRDF.Core" version="3.0.0" />
+    </dependencies>
+  </metadata>
+</package>

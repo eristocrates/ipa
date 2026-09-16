@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/IS4.SFI.Formats.WARC.dll
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/5b2ac8331bb64d27aa08f2d7e5f31aaf.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /icon.png
+F: /is4.sfi.formats.warc.1.0.0.nupkg
+F: /IS4.SFI.Formats.WARC.nuspec
+F: /LICENSE
+F: /[Content_Types].xml

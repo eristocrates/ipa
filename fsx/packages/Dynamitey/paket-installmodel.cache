@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/net40
+F: /lib/net40/Dynamitey.dll
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Dynamitey.dll
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/4e977e18a10d4aaf9b35cd31f072cf81.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /dynamitey.3.0.3.nupkg
+F: /Dynamitey.nuspec
+F: /[Content_Types].xml

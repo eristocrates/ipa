@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Tomas Petricek;Gustavo Guerra;Colin Bull;fsprojects contributors</dc:creator>
+  <dc:description>The FSharp.Data packages contain type providers and utilities to access
+    common data formats (CSV, HTML, JSON and XML in your F# applications and scripts.
+
+    * FSharp.Data -- includes everything
+        * FSharp.Data.Http -- http types/helpers
+        * FSharp.Data.Csv.Core -- csv types/helpers
+        * FSharp.Data.Json.Core -- json types/helpers
+        * FSharp.Data.Html.Core -- html types/helpers
+        * FSharp.Data.Xml.Core -- xml types/helpers</dc:description>
+  <dc:identifier>FSharp.Data.Csv.Core</dc:identifier>
+  <version>8.2.0</version>
+  <keywords>F# fsharp data typeprovider WorldBank CSV HTML CSS JSON XML HTTP linqpad-samples</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

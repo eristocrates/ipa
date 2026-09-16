@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/FSharp.Collections.ParallelSeq.dll
+F: /lib/netstandard2.0/FSharp.Collections.ParallelSeq.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/97fe757800e84b81832de0466abcd9bc.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /fsharp.collections.parallelseq.1.2.0.nupkg
+F: /FSharp.Collections.ParallelSeq.nuspec
+F: /logo.png
+F: /[Content_Types].xml

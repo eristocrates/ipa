@@ -1,0 +1,14 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/AutomaticGraphLayout.dll
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/7d9e4a39c9004769b2cebeedf1ad07b2.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /automaticgraphlayout.1.1.12.nupkg
+F: /AutomaticGraphLayout.nuspec
+F: /[Content_Types].xml

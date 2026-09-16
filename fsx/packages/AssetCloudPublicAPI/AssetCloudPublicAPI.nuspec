@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>AssetCloudPublicAPI</id>
+    <version>3.0.12.30977</version>
+    <title>AssetCloud PublicAPI</title>
+    <authors>Wasp Barcode Technologies</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>AssetCloud-Icon-Logo-128-1.png</icon>
+    <projectUrl>https://help.waspassetcloud.com/Wasp_Cloud_API.htm</projectUrl>
+    <description>Tools to integrate with AssetCloud Public API</description>
+    <releaseNotes>Initial launch of AssetCloud PublicApi.</releaseNotes>
+    <copyright>Copyright © 2014-2026 Informatics LLC.  All rights reserved.</copyright>
+    <tags>AssetCloud Asset Cloud PublicApi Public API</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="Newtonsoft.Json" version="13.0.4" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

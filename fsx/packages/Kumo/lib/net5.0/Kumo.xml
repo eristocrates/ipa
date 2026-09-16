@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kumo</name>
+    </assembly>
+    <members>
+        <member name="T:Kumo.Block">
+            <summary>Represents a block of text nodes.</summary>
+        </member>
+        <member name="T:Kumo.Document">
+            <summary>Represents an MS Word document.</summary>
+        </member>
+        <member name="P:Kumo.Document.Text">
+            <summary>
+              The text of the document, with no spaces or
+              newlines between paragraphs.
+            </summary>
+        </member>
+        <member name="P:Kumo.Document.Uri">
+            <summary>Gets this document's URI</summary>
+        </member>
+        <member name="M:Kumo.Document.Open(System.String,System.Boolean)">
+            <summary>
+              Creates a new instance of the <c>Document</c>
+              class from the specified file.
+            </summary>
+            <param name="path">The path to the document</param>
+            <param name="editable">
+              If <c>true</c>, the document will be opened in ReadWrite mode.
+            </param>
+            <returns>A new instance of <c>Document</c>.</returns>
+        </member>
+        <member name="M:Kumo.Document.Open(System.String,System.Boolean,Kumo.OpenSettings)">
+            <summary>
+              Creates a new instance of the <c>Document</c>
+              class from the specified file.
+            </summary>
+            <param name="path">The path to the document.</param>
+            <param name="editable">
+              If <c>true</c>, the document will be opened in ReadWrite mode.
+            </param>
+            <param name="settings">Settings for opening the document</param>
+            <returns>A new instance of <c>Document</c>.</returns>
+        </member>
+        <member name="M:Kumo.Document.Open(System.IO.Stream,System.Boolean)">
+            <summary>
+              Creates a new instance of the <c>Document</c> class 
+              from IO stream.
+            </summary>
+            <param name="stream">The stream to open the document from.</param>
+            <param name="editable">
+              If stream is in ReadWrite mode,
+              <c>false</c> means the document cannot be edited.
+            </param>
+            <returns>A new instance of <c>Document</c>.</returns>
+        </member>
+        <member name="M:Kumo.Document.Open(System.IO.Stream,System.Boolean,Kumo.OpenSettings)">
+            <summary>
+              Creates a new instance of the <c>Document</c> class 
+              from thes IO stream.
+            </summary>
+            <param name="stream">The stream to open the document from.</param>
+            <param name="editable">
+              If <c>stream</c> is in <c>ReadWrite</c> mode,
+              <c>false</c> means the document cannot be edited.
+            </param>
+            <param name="settings">Options for opening the document</param>
+            <returns>A new instance of <c>Document</c>.</returns>
+        </member>
+        <member name="M:Kumo.Document.Clone">
+            <summary>
+              Creates an editable clone of the document,
+              opened on a <c>System.IO.MemoryStream</c> with
+              expandable capacity and default settings.
+            </summary>
+            <returns>A new instance of <c>Document</c>.</returns>
+        </member>
+        <member name="M:Kumo.Document.Save">
+            <summary>
+              <para> Saves the document to the underlying stream or path
+              that was used to open it.</para>
+              <para>Some platforms do not support saving
+              the document while it is still open due to 
+              limitations in <c>System.IO.Packaging.Package</c>.</para>
+            </summary>
+        </member>
+        <member name="M:Kumo.Document.Paragraphs">
+            <summary>Enumerates all the paragraphs contained within the document.</summary>
+            <returns>All paragraphs within the document 
+            as instances of <c>Range</c>.</returns>
+        </member>
+        <member name="M:Kumo.Document.Dispose">
+            <summary>Flushes and saves the content,
+            closes the document, and releases
+            all resources.</summary>
+        </member>
+        <member name="M:Kumo.Document.Stars">
+            <summary>Fetches all annotated ranges contained within the document.</summary>
+            <returns>All the <c>Range</c>s in the document that have properties attached
+            or relate to some other <c>Range</c>s.</returns>
+        </member>
+        <member name="M:Kumo.Document.Range(System.Int32,System.Int32)">
+            <summary>
+              <para>Creates a new reference to a text range
+              within the document that spans characters
+              from <c>start</c> up to <c>end</c>.</para>
+              <para>For example, given a document with text "Hello, world!"
+              a range from 1 up to 5 will select the "ello" fragment.</para>
+            </summary>
+            <param name="start">The start character position of the range.</param>
+            <param name="end">
+              The character position directly after the end of the range.
+            </param>
+            <returns>A range for the specified bounds.</returns>
+        </member>
+        <member name="M:Kumo.Document.Entries(System.String,System.StringComparison)">
+            <summary>Enumerates all ranges for which text matches the provided.</summary>
+            <param name="text">Text value to match.</param>
+            <param name="comparison">The StringComparison to use for matching.</param>
+        </member>
+        <member name="M:Kumo.Document.RdfStream">
+            <summary>Presents all the RDF data in the document as a stream.</summary>
+            <remarks>The data in the stream is in N-Quads format.</remarks>
+        </member>
+        <member name="T:Kumo.OpenSettings">
+            <summary>Settings for opening the document.</summary>
+        </member>
+        <member name="P:Kumo.OpenSettings.AutoSave">
+            <summary>Gets or sets a value indicating whether to
+            autosave document modifications. The default value is true.</summary>
+        </member>
+        <member name="P:Kumo.OpenSettings.MaxCharactersInPart">
+            <summary><para>Gets or sets a value that indicates the maximum number of
+            allowable characters in an Open XML part.
+            A zero (0) value indicates that there are no limits on the size
+            of the part. A non-zero value specifies the maximum size,
+            in characters.</para>
+            <para>This property allows you to mitigate denial of service attacks
+            where the attacker submits a package with an extremely
+            large Open XML part. By limiting the size of the part, you can
+            detect the attack and recover reliably.</para></summary>
+        </member>
+        <member name="T:Kumo.IAnnotator">
+            <summary>Exposes an annotator.</summary>
+        </member>
+        <member name="T:Kumo.Link">
+            <summary>
+              Represents a link between the subject node and
+              its properties.
+            </summary>
+        </member>
+        <member name="T:Kumo.Property">
+            <summary>Represents an RDF property with a value attached.</summary>
+        </member>
+        <member name="P:Kumo.Property.Name">
+            <summary>The property name.</summary>
+        </member>
+        <member name="P:Kumo.Property.Value">
+            <summary>The property value.</summary>
+        </member>
+        <member name="M:Kumo.Property.#ctor(System.Uri,Resource)">
+            <summary>Creates a new property.</summary>
+            <param name="name">The name of the property</param>
+            <param name="value">The value of the property.</param>
+        </member>
+        <member name="T:Kumo.Range">
+            <summary>Represents a range which is a reference
+            to a text fragment within the document.</summary>
+        </member>
+        <member name="P:Kumo.Range.Uri">
+            <summary>
+              Gets the URI that uniquely identifies a range within
+              the current document.
+            </summary>
+        </member>
+        <member name="P:Kumo.Range.Start">
+            <summary>The start character position of the range.</summary>
+        </member>
+        <member name="P:Kumo.Range.End">
+            <summary>The character position directly after the end of the range.</summary>
+        </member>
+        <member name="P:Kumo.Range.Properties">
+            <summary>Gets the properties attached to this <c>Range</c></summary>
+        </member>
+        <member name="M:Kumo.Range.Text">
+            <summary>Retrieves raw text within this <c>Range</c>.</summary>
+            <remarks>Note that paragraphs are generally not separated
+            in any way in raw text. Use the <c>Paragraphs</c> method
+            to split this <c>Range</c> across paraagraphs.</remarks>
+            <returns>Raw text that this <c>Range</c> spans.</returns>  
+        </member>
+        <member name="M:Kumo.Range.Paragraphs">
+            <summary>
+              Retrieves a separate <c>Range</c> for
+              each paragraph this <c>Range</c> spans.
+            </summary>
+            <returns>Paragraphs that this <c>Range</c> spans</returns>
+        </member>
+        <member name="M:Kumo.Range.Annotate(Kumo.IAnnotator)">
+            <summary>Annotates this <c>Range</c>.</summary>
+            <param name="annotator">The annotator to use.</param>
+        </member>
+        <member name="M:Kumo.Range.Attach(Kumo.Property)">
+            <summary>Attaches a property to this <c>Range</c>.</summary>
+            <param name="property">The property to attach.</param>
+        </member>
+        <member name="M:Kumo.Range.Attach(System.Collections.Generic.IEnumerable{Kumo.Property})">
+            <summary>Attaches multiple properties to this <c>Range</c>.</summary>
+            <param name="properties">The properties to annotate with.</param>
+        </member>
+        <member name="M:Kumo.Range.Detach(Kumo.Property)">
+            <summary>Removes a property from this <c>Range</c>.</summary>
+            <param name="property">The property to remove.</param>
+            <remarks>No error will be thrown if the property being detached
+            is not associated with this <c>Range</c>.</remarks>
+        </member>
+        <member name="M:Kumo.Range.Detach(System.Collections.Generic.IEnumerable{Kumo.Property})">
+            <summary>Removes multiple properties from this <c>Range</c>.</summary>
+            <param name="properties">The properties to remove.</param>
+            <remarks>No error will be thrown in the case a property being detached
+            is not associated with this <c>Range</c>.</remarks>
+        </member>
+        <member name="M:Kumo.Range.Valid">
+            <summary>
+              <para>Gets a value indicating whether this <c>Range</c> is valid.</para>
+              <para>
+                A range is considered valid if it spans a sequence
+                of neighboring runs. Runs are considered neighbors if they
+                are within the same paragraph or directly neighboring
+                paragraphs and there are no other runs between them.
+              </para>
+              <para>For example, the following ranges are not valid:</para>
+              <list>
+                <item>
+                  - A range that starts within a main body paragraph
+                  but ends inside a table paragraph.
+                </item>
+                <item>
+                  - A range that spans multiple table cells.
+                </item>
+              </list>
+              <para>Only valid ranges can be annotated.</para>
+            </summary>
+            <returns>The value indicating whether this range is valid or not.</returns>
+        </member>
+        <member name="M:Kumo.Range.op_Equality(Kumo.Range,Kumo.Range)">
+            <summary>Decides whether two Ranges are same.</summary>
+        </member>
+        <member name="M:Kumo.Range.op_Inequality(Kumo.Range,Kumo.Range)">
+            <summary>Decides whether two Ranges are different.</summary>
+        </member>
+        <member name="M:Kumo.Range.Equals(System.Object)">
+            <summary>Decides whether this Range equals to some object.</summary>
+        </member>
+        <member name="M:Kumo.Range.Equals(Kumo.Range)">
+            <summary>Decides whether this Range equals to some other Range.</summary>
+        </member>
+        <member name="M:Kumo.Range.GetHashCode">
+            <summary>Calculates the hash code for the current <c>Range</c> instance.</summary>
+            <returns>The hash code for the current <c>Range</c> instance.</returns>
+        </member>
+        <member name="T:Resource">
+            <summary>Represents the object of an RDF statement.</summary>
+        </member>
+        <member name="T:Resource.Literal">
+            <summary>Represents an RDF literal value.</summary>
+            <param name="Value">
+              The lexical form of the literal
+              as specified in the RDF 1.1 spec.
+            </param>
+            <param name="Datatype">The datatype URI of the literal.</param>
+            <param name="Language">The language tag if present.</param>
+        </member>
+        <member name="M:Resource.Literal.#ctor(System.String,System.Uri,System.String)">
+            <summary>Represents an RDF literal value.</summary>
+            <param name="Value">
+              The lexical form of the literal
+              as specified in the RDF 1.1 spec.
+            </param>
+            <param name="Datatype">The datatype URI of the literal.</param>
+            <param name="Language">The language tag if present.</param>
+        </member>
+        <member name="P:Resource.Literal.Value">
+            <summary>Gets the lexical form.</summary>
+        </member>
+        <member name="P:Resource.Literal.Datatype">
+            <summary>Gets the datatype URI.</summary>
+        </member>
+        <member name="P:Resource.Literal.Language">
+            <summary>Gets the language string.</summary>
+        </member>
+        <member name="M:Resource.Literal.#ctor(System.String)">
+            <summary>Creates a new string literal.</summary>
+            <param name="value">The value of the literal.</param>
+        </member>
+        <member name="T:Resource.Unique">
+            <summary>Represents a resource identified by a URI.</summary>
+        </member>
+        <member name="M:Resource.Unique.#ctor(System.Uri)">
+            <summary>Represents a resource identified by a URI.</summary>
+        </member>
+        <member name="M:Resource.Unique.#ctor(System.String)">
+            <summary>
+              Creates a new <c>Thing</c> identified by the provided URI string.
+            </summary>
+            <exception>
+              Throws <c>UriFormatException</c> if the provided
+              URI string is invalid.
+            </exception>
+        </member>
+    </members>
+</doc>

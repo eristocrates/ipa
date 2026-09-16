@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.Http</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.Http.LinkHeaderValue">
+            <summary>
+            Represents a Link header value as defined in <see href="https://datatracker.ietf.org/doc/html/rfc8288">RFC 8288</see>.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.Http.LinkHeaderValue.Url">
+            <summary>Gets the URL of the link.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.Http.LinkHeaderValue.Rel">
+            <summary>Gets the relation type (rel parameter) of the link.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Http.LinkHeaderValue.GetParameterValue(System.String)">
+            <summary>Gets the value of a parameter by name. The comparison is case-insensitive.</summary>
+            <param name="parameterName">The name of the parameter.</param>
+            <returns>The parameter value, or <see langword="null"/> if the parameter is not found.</returns>
+        </member>
+        <member name="P:Meziantou.Framework.Http.LinkHeaderValue.Parameters">
+            <summary>Gets the list of parameters associated with the link.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Http.LinkHeaderValue.Parse(System.Net.Http.HttpResponseMessage)">
+            <summary>Parses Link header values from an HTTP response message.</summary>
+            <param name="httpResponse">The HTTP response message containing Link headers.</param>
+            <returns>A collection of <see cref="T:Meziantou.Framework.Http.LinkHeaderValue"/> instances.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Http.LinkHeaderValue.Parse(System.Net.Http.Headers.HttpHeaders)">
+            <summary>Parses Link header values from HTTP headers.</summary>
+            <param name="headers">The HTTP headers containing Link header values.</param>
+            <returns>A collection of <see cref="T:Meziantou.Framework.Http.LinkHeaderValue"/> instances.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Http.LinkHeaderValue.Parse(System.String)">
+            <summary>Parses a Link header value from a string.</summary>
+            <param name="value">The Link header value to parse.</param>
+            <returns>A collection of <see cref="T:Meziantou.Framework.Http.LinkHeaderValue"/> instances.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Http.LinkHeaderValue.Parse(System.ReadOnlySpan{System.Char})">
+            <summary>Parses a Link header value from a character span.</summary>
+            <param name="value">The Link header value to parse.</param>
+            <returns>A collection of <see cref="T:Meziantou.Framework.Http.LinkHeaderValue"/> instances.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.Http.LinkHeaderValueExtensions">
+            <summary>Provides extension methods for working with Link header values.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.Http.LinkHeaderValueExtensions.EnumerateLinkHeaders(System.Net.Http.Headers.HttpHeaders)">
+            <summary>Enumerates all Link header values from HTTP headers.</summary>
+            <param name="headers">The HTTP headers to parse.</param>
+            <returns>A collection of <see cref="T:Meziantou.Framework.Http.LinkHeaderValue"/> instances.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Http.LinkHeaderValueExtensions.GetLink(System.Collections.Generic.IEnumerable{Meziantou.Framework.Http.LinkHeaderValue},System.String)">
+            <summary>Gets the first link declaring the specified relation type.</summary>
+            <param name="links">The collection of links to search.</param>
+            <param name="rel">The relation type to find. A link matches when <see cref="P:Meziantou.Framework.Http.LinkHeaderValue.Rel"/> contains this relation type, which may be one of several space-separated values.</param>
+            <returns>The first <see cref="T:Meziantou.Framework.Http.LinkHeaderValue"/> with the specified relation type, or <see langword="null"/> if not found.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.Http.LinkHeaderValueExtensions.GetLinkUrl(System.Collections.Generic.IEnumerable{Meziantou.Framework.Http.LinkHeaderValue},System.String)">
+            <summary>Gets the URL of the first link with the specified relation type.</summary>
+            <param name="links">The collection of links to search.</param>
+            <param name="rel">The relation type to find.</param>
+            <returns>The URL of the first link with the specified relation type, or <see langword="null"/> if not found.</returns>
+        </member>
+    </members>
+</doc>

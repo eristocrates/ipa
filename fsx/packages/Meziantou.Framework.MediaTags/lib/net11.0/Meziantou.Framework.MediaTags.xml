@@ -1,0 +1,889 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.MediaTags</name>
+    </assembly>
+    <members>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Aiff.AiffChunk.MaxCount">
+            <summary>The maximum number of chunks read from one file.</summary>
+            <remarks>
+            An empty chunk costs 8 bytes in the file but a retained object here, so an unbounded count lets a small
+            file force a disproportionate allocation. Real files hold a handful of chunks.
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Aiff.AiffChunk.TagChunkIds">
+            <summary>The chunks a tag can be read from, and therefore the only ones whose content is buffered.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Aiff.AiffChunk.ReadChunks(System.IO.Stream,System.Int64,System.Boolean@)">
+            <summary>
+            Reads the chunks between the current position and <paramref name="endPosition"/>.
+            </summary>
+            <param name="complete">
+            <see langword="true"/> when every byte of the container was accounted for. A writer must not rebuild a
+            file from an incomplete parse: the chunks that were not reached, <c>SSND</c> included, would be dropped.
+            </param>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.Formats.Flac.FlacMetadataBlock">
+            <summary>
+            The location of a metadata block in the input file. Blocks are described rather than buffered: a picture
+            block reaches 16 MB, and the writer only ever copies it straight through to the output.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Flac.FlacMetadataBlock.MaxSize">
+            <summary>The largest size a FLAC metadata block header can express.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Flac.FlacMetadataBlock.MaxCount">
+            <summary>The maximum number of metadata blocks read from one file.</summary>
+            <remarks>Real files hold a handful; this bounds the memory a malformed file can make the parser retain.</remarks>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.Formats.Flac.FlacPictureBlock">
+            <summary>
+            Parses and builds FLAC PICTURE metadata blocks.
+            Also used by Vorbis Comments METADATA_BLOCK_PICTURE field.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.Formats.Flac.FlacStreamLocator">
+            <summary>
+            Locates the start of the FLAC stream in a file, which is not always the start of the file:
+            some taggers prepend an ID3v2 tag to a FLAC file.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Flac.FlacStreamLocator.TryGetStreamStart(System.IO.Stream,System.Int64@)">
+            <summary>
+            Finds the offset of the "fLaC" signature. The reader and the writer must agree on this offset,
+            otherwise the writer parses the ID3v2 tag as metadata blocks and destroys the audio.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Flac.FlacWriter.TryReadMetadataBlocks(System.IO.Stream,System.Collections.Generic.List{Meziantou.Framework.MediaTags.Formats.Flac.FlacMetadataBlock},System.Int64@,Meziantou.Framework.MediaTags.MediaTagResult@)">
+            <summary>
+            Records the metadata blocks to preserve and the offset the audio starts at.
+            </summary>
+            <remarks>
+            Every block must be accounted for. Stopping early and copying from wherever the parse gave up would
+            write the unparsed bytes into the audio region of a file that then replaces the caller's.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Id3v2.Id3v2Reader.TryGetTagSize(System.IO.Stream,System.Int32@)">
+            <summary>
+            Gets the number of bytes the ID3v2 tag at the current position occupies, or 0 when there is none.
+            </summary>
+            <returns>
+            <see langword="false"/> when a tag header is present but its declared size runs past the end of the
+            stream. A writer must not treat those bytes as audio, and must not treat the tag as absent either: doing
+            the first drops the audio and doing the second embeds a stale tag in the audio stream.
+            </returns>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Id3v2.Id3v2Reader.GetTagSize(System.IO.Stream)">
+            <summary>
+            Gets the size of the ID3v2 tag at the current position, treating an unusable declared size as no tag.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Id3v2.Id3v2Reader.UndoUnsynchronisation(System.Span{System.Byte})">
+            <summary>
+            Removes the zero bytes inserted after every 0xFF, in place. The result is never longer than the input,
+            so it is compacted into the same buffer rather than copied into new ones.
+            </summary>
+            <returns>The length of the tag data after unsynchronisation.</returns>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Id3v2.Id3v2Writer.MaxTagSize">
+            <summary>The largest value a synchsafe tag size can hold.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Id3v2.Id3v2Writer.TryBuildTag(Meziantou.Framework.MediaTags.MediaTagInfo,System.Int32,System.Byte[]@,System.String@)">
+            <summary>
+            Builds an ID3v2.4 tag.
+            </summary>
+            <returns>
+            <see langword="false"/> when the tags do not fit in an ID3v2 tag. Truncating the size field instead
+            would produce a file that reads back as corrupt.
+            </returns>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Id3v2.Id3v2Writer.FormatNumberPair(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Formats an ID3v2 "number/total" value. Returns <see langword="null"/> when neither part is set.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Id3v2.Mp3TagReader.MaxFirstFrameSize">
+            <summary>The largest frame this reader inspects for a VBR header.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Id3v2.Mp3TagReader.TryReadDuration(System.IO.Stream)">
+            <summary>
+            Computes the duration from the first audio frame.
+            </summary>
+            <remarks>
+            The Xing/Info/VBRI header a VBR encoder writes into the first frame carries the exact frame count, and a
+            constant bit rate stream can be derived from the size of the audio. Walking every frame instead would
+            make reading the tags of a file cost time proportional to its length.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Id3v2.Mp3TagReader.TryReadVbrFrameCount(System.IO.Stream,System.Int64,Meziantou.Framework.MediaTags.Formats.Id3v2.Mp3TagReader.Mp3FrameHeader@,System.Int64,System.UInt32@)">
+            <summary>
+            Reads the frame count from the Xing, Info or VBRI header stored inside the first frame.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Mp4.Mp4Atom.MaxDepth">
+            <summary>The maximum number of nested container atoms a file may contain.</summary>
+            <remarks>
+            Reading is recursive, so an unbounded nesting depth would overflow the stack, which cannot be caught.
+            Real files nest a handful of levels (moov/trak/mdia/minf/stbl/stsd); this limit is far above any legitimate use.
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Mp4.Mp4Atom.MaxCount">
+            <summary>The maximum number of atoms read from one file.</summary>
+            <remarks>
+            An empty atom costs 8 bytes in the file but a retained object here, so an unbounded count lets a small
+            file force a disproportionate allocation.
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Mp4.Mp4Atom.ChunkOffsetTable">
+            <summary>The chunk offset table of a track, in 32-bit and 64-bit form.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.Formats.Mp4.Mp4Atom.HeaderSize">
+            <summary>Gets the size of this atom's header, which is 16 bytes for an atom using a 64-bit size.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Mp4.Mp4Atom.ReadAtoms(System.IO.Stream,System.Int64,System.Boolean@)">
+            <summary>
+            Reads the atom tree from a stream.
+            </summary>
+            <param name="complete">
+            <see langword="true"/> when every byte of the container was accounted for. A writer must not rebuild a
+            file from an incomplete parse: the atoms that were not reached, <c>mdat</c> included, would be dropped.
+            </param>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Mp4.Mp4Atom.ShouldBufferData(System.String)">
+            <summary>
+            Whether the content of an atom is needed in memory.
+            </summary>
+            <remarks>
+            <c>mdat</c> holds the audio and is not a container, so buffering every non-container atom costs a full
+            read and a large object heap allocation per file for bytes nothing looks at.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Mp4.Mp4Atom.DescendantsAndSelf">
+            <summary>Enumerates this atom and all of its descendants.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Mp4.Mp4Writer.MaxMoovSize">
+            <summary>The largest moov atom this writer reads into memory.</summary>
+            <remarks>Only moov is materialized; the audio is streamed, so a file of any size can be tagged.</remarks>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Mp4.Mp4Writer.TryAdjustChunkOffsets(System.Byte[],System.Int64,System.Int64,System.String@)">
+            <summary>
+            Shifts every chunk offset that points at data which moved when moov was resized.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Mp4.Mp4Writer.TryValidateRanges(Meziantou.Framework.MediaTags.MediaTagInfo,System.String@)">
+            <summary>
+            Checks the values that the MP4 atoms store in a narrower type than <see cref="T:Meziantou.Framework.MediaTags.MediaTagInfo"/> does.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Ogg.OggOpusReader.TryReadDuration(System.IO.Stream,System.Byte[])">
+            <summary>
+            Derives the duration from the granule position of the last page, which is found by searching backwards
+            from the end of the file rather than by reading every page.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Ogg.OggPacketUtilities.HeaderSearchPageLimit">
+            <summary>The number of leading pages searched for a header packet.</summary>
+            <remarks>
+            The identification, comment and setup packets are the first packets of a logical stream, so reading the
+            tags never needs more than the first few pages. Reading the whole file instead would cost a full read
+            and several copies of the audio for an answer that is always at the front.
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Ogg.OggPacketUtilities.LastPageSearchWindow">
+            <summary>The size of the window searched backwards for the last page of the file.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Ogg.OggPacketUtilities.TryFindHeaderPacket(System.IO.Stream,System.ReadOnlySpan{System.Byte},System.Byte[]@)">
+            <summary>
+            Finds the first packet of the first logical stream that starts with <paramref name="prefix"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Ogg.OggPacketUtilities.TryGetLastGranulePosition(System.IO.Stream,System.UInt32,System.Int64@)">
+            <summary>
+            Finds the granule position of the last page of the given logical stream, by searching backwards from the
+            end of the file rather than reading every page.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Ogg.OggPacketUtilities.ReadAllPages(System.IO.Stream)">
+            <summary>
+            Reads every page of the stream.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Ogg.OggPacketUtilities.GetSingleStreamSerialNumber(System.Collections.Generic.IReadOnlyList{Meziantou.Framework.MediaTags.Formats.Ogg.OggPage})">
+            <summary>
+            Returns the serial number shared by every page, or <see langword="null"/> when the file carries more
+            than one logical stream.
+            </summary>
+            <remarks>
+            Rewriting one stream of a multiplexed or chained file requires renumbering only that stream's pages and
+            leaving the others interleaved where they are. That is not implemented, and doing it wrong leaves a
+            sequence hole in a stream this library never meant to touch, so those files are refused instead.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.Formats.Ogg.OggPage.Checksum">
+            <summary>Gets the checksum stored in the page header, as read from the file.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Ogg.OggPage.FixedHeaderSize">
+            <summary>The number of bytes in a page header before the segment table.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Ogg.OggPage.VerifyChecksum">
+            <summary>
+            Recomputes the page checksum and compares it with the one stored in the file.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Ogg.OggPage.BuildPageBytes">
+            <summary>Builds the page bytes with the checksum field zeroed, which is what the checksum is computed over.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Ogg.OggVorbisWriter.VorbisFramingBit">
+            <summary>
+            The framing bit that terminates a Vorbis comment header.
+            </summary>
+            <remarks>
+            libvorbis rejects the whole header when this byte is missing, so a file written without it is refused by
+            every libvorbis-based player even though this library reads it back happily. Opus must not have one:
+            an OpusTags packet ends at its last comment.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.VorbisComment.VorbisCommentReader.TryParse(System.ReadOnlySpan{System.Byte},Meziantou.Framework.MediaTags.MediaTagInfo)">
+            <summary>
+            Parses Vorbis Comments from a span of bytes.
+            Format: vendor string length (LE uint32) + vendor string + comment count (LE uint32) + comments
+            Each comment: length (LE uint32) + "FIELD=value" UTF-8 string
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Wav.RiffChunk.MaxDepth">
+            <summary>The maximum number of nested LIST chunks a file may contain.</summary>
+            <remarks>
+            Reading is recursive, so an unbounded nesting depth would overflow the stack, which cannot be caught.
+            Real files nest a level or two; this limit is far above any legitimate use.
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Formats.Wav.RiffChunk.MaxCount">
+            <summary>The maximum number of chunks read from one file.</summary>
+            <remarks>
+            An empty chunk costs 8 bytes in the file but a retained object here, so an unbounded count lets a small
+            file force a disproportionate allocation. Real files hold a handful of chunks.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.Formats.Wav.RiffChunk.ContainerId">
+            <summary>Gets the four-character identifier to write back to the file.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Wav.RiffChunk.ReadChunks(System.IO.Stream,System.Int64,System.Boolean@)">
+            <summary>
+            Reads the chunks between the current position and <paramref name="endPosition"/>.
+            </summary>
+            <param name="complete">
+            <see langword="true"/> when every byte of the container was accounted for. A writer must not rebuild a
+            file from an incomplete parse: the chunks that were not reached, <c>data</c> included, would be dropped.
+            </param>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Formats.Wav.RiffChunk.ShouldBufferData(System.String,System.Int32)">
+            <summary>
+            Whether the content of a chunk is needed in memory.
+            </summary>
+            <remarks>
+            The <c>data</c> chunk holds the audio: buffering it costs a full read and a large object heap allocation
+            per file for bytes nothing looks at. Only the chunks a tag is read from are buffered.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.FormatDetector.DetectFromHeader(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Detects the media format from the first bytes of the file.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.FormatDetector.DetectFromExtension(System.String)">
+            <summary>
+            Detects the media format from a file extension.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.Internals.Latin1Encoding">
+            <summary>
+            Helper for ISO-8859-1 (Latin-1) encoding, commonly used in ID3v1 and ID3v2 tags.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.MediaTagErrors.TryMap(System.Exception,Meziantou.Framework.MediaTags.MediaTagError@)">
+            <summary>
+            Maps an exception to the <see cref="T:Meziantou.Framework.MediaTags.MediaTagError"/> that describes it.
+            </summary>
+            <returns>
+            <see langword="false"/> for exception types that indicate a defect in this library rather than a problem
+            with the file. Those must propagate: reporting them as <see cref="F:Meziantou.Framework.MediaTags.MediaTagError.CorruptFile"/> tells the
+            caller their file is at fault and makes library bugs impossible to distinguish from bad input.
+            </returns>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.Internals.OffsetStream">
+            <summary>
+            Presents the part of a seekable stream that starts at a given offset as if it were a whole file.
+            </summary>
+            <remarks>
+            Format detection reads from the caller's current position and restores it, but every parser addresses the
+            file from offset 0. Without this shim a stream positioned part-way through would be detected at one offset
+            and then parsed from another, so the tags would be read from a different file than the one identified.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.OffsetStream.#ctor(System.IO.Stream,System.Int64)">
+            <summary>
+            Presents the part of a seekable stream that starts at a given offset as if it were a whole file.
+            </summary>
+            <remarks>
+            Format detection reads from the caller's current position and restores it, but every parser addresses the
+            file from offset 0. Without this shim a stream positioned part-way through would be detected at one offset
+            and then parsed from another, so the tags would be read from a different file than the one identified.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.Internals.OggCrc32">
+            <summary>
+            CRC-32 implementation for OGG page checksums.
+            Uses the polynomial 0x04C11DB7 with direct (non-reflected) calculation.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.Internals.StreamHelpers.MaxRecordDataSize">
+            <summary>The largest amount of data read into memory for a single tag record.</summary>
+            <remarks>
+            Record sizes are declared by the file, so they must be checked before they are used as an allocation
+            size. This is the single limit for every format; keep it in one place so hardening one parser hardens
+            all of them.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.StreamHelpers.TryReadExact(System.IO.Stream,System.Int64,System.Int64,System.Byte[]@)">
+            <summary>
+            Reads <paramref name="declaredSize"/> bytes, after validating the declared size against the bytes that
+            are actually available and against <paramref name="limit"/>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.StreamHelpers.CopyExactly(System.IO.Stream,System.IO.Stream,System.Int64)">
+            <summary>
+            Copies exactly <paramref name="count"/> bytes from one stream to another.
+            </summary>
+            <returns>
+            <see langword="false"/> when the source ends before <paramref name="count"/> bytes were copied. A writer
+            must fail in that case: the output replaces the caller's file, so a short copy silently destroys audio.
+            </returns>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.StreamHelpers.CopyExactlyFrom(System.IO.Stream,System.IO.Stream,System.Int64,System.Int64)">
+            <summary>
+            Copies <paramref name="count"/> bytes starting at <paramref name="position"/>, leaving the source
+            positioned after the copied range.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.Internals.SynchsafeInteger">
+            <summary>
+            Encodes and decodes synchsafe integers used in ID3v2 tags.
+            In a synchsafe integer, the most significant bit of each byte is zero,
+            making the total 28 bits effective in 4 bytes.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.SynchsafeInteger.Decode(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Decodes a 4-byte synchsafe integer.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.SynchsafeInteger.Encode(System.Int32,System.Span{System.Byte})">
+            <summary>
+            Encodes a value as a 4-byte synchsafe integer.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.Internals.TagFieldMapping">
+            <summary>
+            The ReplayGain and MusicBrainz fields shared by every key/value tag format (Vorbis Comments, ID3v2 TXXX
+            frames and MP4 freeform atoms).
+            </summary>
+            <remarks>
+            These used to be matched, parsed and formatted independently in each reader and writer, and the copies had
+            drifted apart. Every format now goes through this type so a parsing fix applies to all of them.
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.TagFieldMapping.TryApplySharedField(System.String,System.String,Meziantou.Framework.MediaTags.MediaTagInfo)">
+            <summary>
+            Applies a field that every key/value format stores under the same name.
+            </summary>
+            <returns><see langword="false"/> when the name is not one of them, so the caller can store it as a custom field.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.TagFieldMapping.EnumerateReplayGainFields(Meziantou.Framework.MediaTags.MediaTagInfo)">
+            <summary>
+            Yields the ReplayGain fields to write, using the names and formats every format shares.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.TagFieldMapping.EnumerateMusicBrainzFields(Meziantou.Framework.MediaTags.MediaTagInfo,System.Boolean)">
+            <summary>
+            Yields the MusicBrainz identifiers to write, under the names the given format uses.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.TagFieldMapping.TryParseGain(System.String,System.Double@)">
+            <summary>
+            Parses a ReplayGain gain value such as <c>-3.21 dB</c>.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.Internals.TagFieldMapping.TryParsePeak(System.String,System.Double@)">
+            <summary>
+            Parses a ReplayGain peak value.
+            </summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.MediaFile">
+            <summary>
+            Provides static methods for reading and writing media file tags.
+            </summary>
+            <remarks>
+            <para>
+            Writing <b>replaces</b> the tags of a file: the written <see cref="T:Meziantou.Framework.MediaTags.MediaTagInfo"/> becomes the whole tag,
+            and any field left <see langword="null"/> is removed from the file rather than left at its current value.
+            To change one field, read the tags first, modify the returned object and write it back.
+            </para>
+            <para>
+            These methods report problems with the file through the returned <see cref="T:Meziantou.Framework.MediaTags.MediaTagResult"/> instead of
+            throwing. They still throw for invalid arguments.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaFile.MaxTemporaryFileAttempts">
+            <summary>The number of random names tried before giving up on creating the temporary file.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.ReadTags(System.String)">
+            <summary>
+            Reads tags from the specified file.
+            </summary>
+            <param name="filePath">The path to the media file.</param>
+            <returns>A result containing the parsed tags, or an error.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="filePath"/> is <see langword="null"/> or empty.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.ReadTags(System.IO.Stream,System.Nullable{Meziantou.Framework.MediaTags.MediaFormat})">
+            <summary>
+            Reads tags from the specified stream, starting at its current position.
+            </summary>
+            <param name="stream">The seekable stream containing the media file.</param>
+            <param name="format">The format of the media file. If <see langword="null"/>, the format is auto-detected.</param>
+            <returns>A result containing the parsed tags, or an error.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="stream"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.WriteTags(System.String,Meziantou.Framework.MediaTags.MediaTagInfo)">
+            <summary>
+            Replaces the tags of the specified file.
+            </summary>
+            <param name="filePath">The path to the media file.</param>
+            <param name="tags">The tags to write. They replace the existing tags: fields left <see langword="null"/> are removed from the file.</param>
+            <returns>A result indicating success or failure. The file is left untouched when the operation fails.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="filePath"/> is <see langword="null"/> or empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="tags"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.WriteTags(System.String,Meziantou.Framework.MediaTags.MediaTagInfo,Meziantou.Framework.MediaTags.MediaTagWriteOptions)">
+            <summary>
+            Replaces the tags of the specified file, using the specified options.
+            </summary>
+            <param name="filePath">The path to the media file.</param>
+            <param name="tags">The tags to write. They replace the existing tags: fields left <see langword="null"/> are removed from the file.</param>
+            <param name="options">Controls how the tags are written.</param>
+            <returns>A result indicating success or failure. The file is left untouched when the operation fails.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="filePath"/> is <see langword="null"/> or empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="tags"/> or <paramref name="options"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.RemoveTags(System.String)">
+            <summary>
+            Removes every tag this library can write from the specified file.
+            </summary>
+            <param name="filePath">The path to the media file.</param>
+            <returns>A result indicating success or failure. The file is left untouched when the operation fails.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="filePath"/> is <see langword="null"/> or empty.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.WriteTags(System.IO.Stream,System.IO.Stream,Meziantou.Framework.MediaTags.MediaTagInfo,Meziantou.Framework.MediaTags.MediaFormat)">
+            <summary>
+            Writes the input stream to the output stream, replacing its tags.
+            </summary>
+            <param name="inputStream">The seekable stream containing the original media file, read from its current position.</param>
+            <param name="outputStream">The stream to write the modified media file to.</param>
+            <param name="tags">The tags to write. They replace the existing tags: fields left <see langword="null"/> are removed.</param>
+            <param name="format">The format of the media file.</param>
+            <returns>
+            A result indicating success or failure. On failure the content already written to
+            <paramref name="outputStream"/> must be discarded: it is not a valid media file.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inputStream"/>, <paramref name="outputStream"/> or <paramref name="tags"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.WriteTags(System.IO.Stream,System.IO.Stream,Meziantou.Framework.MediaTags.MediaTagInfo,Meziantou.Framework.MediaTags.MediaFormat,Meziantou.Framework.MediaTags.MediaTagWriteOptions)">
+            <summary>
+            Writes the input stream to the output stream, replacing its tags, using the specified options.
+            </summary>
+            <param name="inputStream">The seekable stream containing the original media file, read from its current position.</param>
+            <param name="outputStream">The stream to write the modified media file to.</param>
+            <param name="tags">The tags to write. They replace the existing tags: fields left <see langword="null"/> are removed.</param>
+            <param name="format">The format of the media file.</param>
+            <param name="options">Controls how the tags are written.</param>
+            <returns>
+            A result indicating success or failure. On failure the content already written to
+            <paramref name="outputStream"/> must be discarded: it is not a valid media file.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">One of the arguments is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.RemoveTags(System.IO.Stream,System.IO.Stream,Meziantou.Framework.MediaTags.MediaFormat)">
+            <summary>
+            Removes every tag this library can write, writing the result to the output stream.
+            </summary>
+            <param name="inputStream">The seekable stream containing the original media file, read from its current position.</param>
+            <param name="outputStream">The stream to write the modified media file to.</param>
+            <param name="format">The format of the media file.</param>
+            <returns>A result indicating success or failure.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inputStream"/> or <paramref name="outputStream"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.DetectFormat(System.String)">
+            <summary>
+            Detects the media format from a file path using both magic bytes and file extension.
+            </summary>
+            <param name="filePath">The path to the media file.</param>
+            <returns>The detected format, or <see langword="null"/> if not recognized.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="filePath"/> is <see langword="null"/> or empty.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.DetectFormat(System.IO.Stream)">
+            <summary>
+            Detects the media format from stream content (magic bytes).
+            The stream position is restored after detection.
+            </summary>
+            <param name="stream">The stream to detect the format from.</param>
+            <returns>The detected format, or <see langword="null"/> if not recognized.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="stream"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaFile.CreateTemporaryFile(System.String,System.String@)">
+            <summary>
+            Creates the file the new content is written to, next to the file being replaced.
+            </summary>
+            <remarks>
+            The name is random and the file is created with <see cref="F:System.IO.FileMode.CreateNew"/>: a predictable name can
+            be pre-created by anyone who can write to the directory, as a symbolic link that the write then follows,
+            or as an unrelated file that the write then destroys. The Unix mode is applied at creation so the
+            content is never briefly visible to other users.
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.MediaFormat">
+            <summary>
+            Specifies the media file format.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaFormat.Mp3">
+            <summary>MPEG Audio Layer III with ID3v1/v2 tags.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaFormat.OggVorbis">
+            <summary>OGG container with Vorbis audio and Vorbis Comments.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaFormat.OggOpus">
+            <summary>OGG container with Opus audio and Vorbis Comments.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaFormat.Flac">
+            <summary>Free Lossless Audio Codec with Vorbis Comments and PICTURE metadata blocks.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaFormat.Mp4">
+            <summary>MPEG-4 container (M4A/MP4) with iTunes-style metadata atoms.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaFormat.Wav">
+            <summary>Waveform Audio File Format (RIFF container) with LIST/INFO or ID3v2 tags.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaFormat.Aiff">
+            <summary>Audio Interchange File Format with ID3v2 tags.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.MediaPicture">
+            <summary>
+            Represents an embedded picture (album art) in a media file.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaPicture.PictureType">
+            <summary>Gets or sets the type of the picture.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaPicture.MimeType">
+            <summary>Gets or sets the MIME type of the picture data (e.g. "image/jpeg", "image/png").</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaPicture.Description">
+            <summary>Gets or sets an optional description of the picture.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaPicture.Data">
+            <summary>Gets or sets the raw picture data.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.MediaPictureType">
+            <summary>
+            Specifies the type of an embedded picture, as defined by the ID3v2 APIC frame specification.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.Other">
+            <summary>Other.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.FileIcon">
+            <summary>32x32 pixels file icon (PNG only).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.OtherFileIcon">
+            <summary>Other file icon.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.FrontCover">
+            <summary>Cover (front).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.BackCover">
+            <summary>Cover (back).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.LeafletPage">
+            <summary>Leaflet page.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.Media">
+            <summary>Media (e.g. label side of CD).</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.LeadArtist">
+            <summary>Lead artist/lead performer/soloist.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.Artist">
+            <summary>Artist/performer.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.Conductor">
+            <summary>Conductor.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.Band">
+            <summary>Band/Orchestra.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.Composer">
+            <summary>Composer.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.Lyricist">
+            <summary>Lyricist/text writer.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.RecordingLocation">
+            <summary>Recording location.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.DuringRecording">
+            <summary>During recording.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.DuringPerformance">
+            <summary>During performance.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.MovieScreenCapture">
+            <summary>Movie/video screen capture.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.BrightColouredFish">
+            <summary>A bright coloured fish.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.Illustration">
+            <summary>Illustration.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.BandLogo">
+            <summary>Band/artist logotype.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaPictureType.PublisherLogo">
+            <summary>Publisher/Studio logotype.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.MediaTagError">
+            <summary>
+            Specifies the type of error that occurred during a media tag operation.
+            </summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaTagError.UnsupportedFormat">
+            <summary>The file format is not supported or could not be detected.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaTagError.CorruptFile">
+            <summary>The file is corrupt or contains invalid data.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaTagError.UnexpectedEndOfStream">
+            <summary>The stream ended before expected data could be read.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaTagError.InvalidTagData">
+            <summary>Tag data is malformed or cannot be parsed.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaTagError.EncodingError">
+            <summary>Text encoding error in tag data.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.MediaTags.MediaTagError.IoError">
+            <summary>An I/O error occurred while reading or writing the file.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.MediaTagInfo">
+            <summary>
+            Represents the metadata tags of a media file.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Title">
+            <summary>Gets or sets the title of the track.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Artist">
+            <summary>Gets or sets the performing artist.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Album">
+            <summary>Gets or sets the album name.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.AlbumArtist">
+            <summary>Gets or sets the album artist.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Genre">
+            <summary>Gets or sets the genre.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Year">
+            <summary>Gets or sets the year of release. Must be between 0 and 9999.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is negative or greater than 9999.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.TrackNumber">
+            <summary>Gets or sets the track number. Must not be negative.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is negative.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.TrackTotal">
+            <summary>Gets or sets the total number of tracks. Must not be negative.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is negative.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.DiscNumber">
+            <summary>Gets or sets the disc number. Must not be negative.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is negative.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.DiscTotal">
+            <summary>Gets or sets the total number of discs. Must not be negative.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is negative.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Comment">
+            <summary>Gets or sets a comment or description.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Lyrics">
+            <summary>Gets or sets the track lyrics.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Isrc">
+            <summary>Gets or sets the ISRC (International Standard Recording Code).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Composer">
+            <summary>Gets or sets the composer.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Conductor">
+            <summary>Gets or sets the conductor.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Copyright">
+            <summary>Gets or sets the copyright information.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Bpm">
+            <summary>Gets or sets the beats per minute. Must not be negative.</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is negative.</exception>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Duration">
+            <summary>Gets or sets the media duration.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.IsCompilation">
+            <summary>Gets or sets whether this track is part of a compilation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Pictures">
+            <summary>Gets the list of embedded pictures (album art).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.ReplayGain">
+            <summary>Gets or sets ReplayGain loudness normalization values.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.MusicBrainzTrackId">
+            <summary>Gets or sets the MusicBrainz recording ID.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.MusicBrainzArtistId">
+            <summary>Gets or sets the MusicBrainz artist ID.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.MusicBrainzAlbumId">
+            <summary>Gets or sets the MusicBrainz album ID.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.MusicBrainzReleaseGroupId">
+            <summary>Gets or sets the MusicBrainz release group ID.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.CustomFields">
+            <summary>Gets the collection of custom or format-specific metadata fields.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagInfo.Format">
+            <summary>Gets or sets the source format that the tags were read from.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.MediaTagResult">
+            <summary>
+            Represents the result of a media tag operation that does not return a value.
+            </summary>
+            <remarks>
+            The default value of this type is a failure carrying <see cref="F:Meziantou.Framework.MediaTags.MediaTagError.UnsupportedFormat"/>, so
+            <see cref="P:Meziantou.Framework.MediaTags.MediaTagResult.Error"/> is never <see langword="null"/> when <see cref="P:Meziantou.Framework.MediaTags.MediaTagResult.IsSuccess"/> is <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagResult.IsSuccess">
+            <summary>Gets a value indicating whether the operation succeeded.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagResult.Error">
+            <summary>Gets the error that occurred, or <see langword="null"/> if the operation succeeded.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagResult.ErrorMessage">
+            <summary>Gets a human-readable error message, if the operation failed.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaTagResult.Success">
+            <summary>Creates a successful result.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaTagResult.Failure(Meziantou.Framework.MediaTags.MediaTagError,System.String)">
+            <summary>Creates a failure result with the specified error.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.MediaTagResult`1">
+            <summary>
+            Represents the result of a media tag operation that returns a value of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of the result value.</typeparam>
+            <remarks>
+            The default value of this type is a failure carrying <see cref="F:Meziantou.Framework.MediaTags.MediaTagError.UnsupportedFormat"/>, so
+            <see cref="P:Meziantou.Framework.MediaTags.MediaTagResult`1.Error"/> is never <see langword="null"/> when <see cref="P:Meziantou.Framework.MediaTags.MediaTagResult`1.IsSuccess"/> is <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagResult`1.IsSuccess">
+            <summary>Gets a value indicating whether the operation succeeded.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagResult`1.Value">
+            <summary>Gets the result value. Throws if the operation failed.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagResult`1.Error">
+            <summary>Gets the error that occurred, or <see langword="null"/> if the operation succeeded.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagResult`1.ErrorMessage">
+            <summary>Gets a human-readable error message, if the operation failed.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaTagResult`1.Success(`0)">
+            <summary>Creates a successful result with the specified value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.MediaTagResult`1.Failure(Meziantou.Framework.MediaTags.MediaTagError,System.String)">
+            <summary>Creates a failure result with the specified error.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.MediaTagWriteOptions">
+            <summary>
+            Controls how tags are written. The defaults match the behaviour of the <see cref="M:Meziantou.Framework.MediaTags.MediaFile.WriteTags(System.String,Meziantou.Framework.MediaTags.MediaTagInfo)"/>
+            overloads that do not take options.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagWriteOptions.WriteId3v1Tag">
+            <summary>
+            Gets or sets a value indicating whether an ID3v1 tag is appended to MP3 files. The default is <see langword="true"/>.
+            </summary>
+            <remarks>
+            An ID3v1 tag stores at most 30 Latin-1 characters per field, so it silently truncates values that an
+            ID3v2 tag represents in full. It is written by default because some players read nothing else.
+            </remarks>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.MediaTagWriteOptions.Id3v2PaddingSize">
+            <summary>
+            Gets or sets the number of padding bytes appended to a written ID3v2 tag. The default is 1024.
+            </summary>
+            <remarks>
+            Padding lets another tagger grow the tag later without rewriting the whole file. Set it to 0 to produce
+            the smallest possible tag.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is negative.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.MediaTags.ReplayGainInfo">
+            <summary>
+            Represents ReplayGain loudness normalization values.
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.ReplayGainInfo.TrackGain">
+            <summary>Gets the track gain in dB.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.ReplayGainInfo.TrackPeak">
+            <summary>Gets the track peak value.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.ReplayGainInfo.AlbumGain">
+            <summary>Gets the album gain in dB.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.MediaTags.ReplayGainInfo.AlbumPeak">
+            <summary>Gets the album peak value.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.ReplayGainInfo.Equals(Meziantou.Framework.MediaTags.ReplayGainInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.ReplayGainInfo.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.ReplayGainInfo.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.ReplayGainInfo.op_Equality(Meziantou.Framework.MediaTags.ReplayGainInfo,Meziantou.Framework.MediaTags.ReplayGainInfo)">
+            <summary>Equality operator.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.MediaTags.ReplayGainInfo.op_Inequality(Meziantou.Framework.MediaTags.ReplayGainInfo,Meziantou.Framework.MediaTags.ReplayGainInfo)">
+            <summary>Inequality operator.</summary>
+        </member>
+    </members>
+</doc>

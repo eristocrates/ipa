@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>DatabaseSchemaReader</id>
+    <version>2.22.0</version>
+    <authors>Martin Willey</authors>
+    <license type="expression">MS-PL</license>
+    <licenseUrl>https://licenses.nuget.org/MS-PL</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/martinjw/dbschemareader</projectUrl>
+    <description>Any ADO provider can be read  (SqlServer, SqlServer CE 4, MySQL, SQLite, System.Data.OracleClient, ODP, Devart, PostgreSql, DB2...) into a single standard model.</description>
+    <releaseNotes>2.7.3: MySql time mapping thanks @tonyliving
+      2.7.4: Postgresql table list exclude views thanks @thomasjoscht
+      2.7.5: SqlLite Compound primary keys thanks @zls3201
+      2.7.6: PostgreSql MigrationGenerator cascade escaping thanks @groogiam
+      2.7.7: fixes null 'RefersToTable' of FK when only one table is read thanks @mjalil
+      2.7.8: PostgreSql sequences missing thanks @groogiam
+      2.7.9: PostgreSql sqlgen escaping thanks @r-work
+      2.7.11: CancellationToken leaking into net4 code thanks @KeithLRobertson
+      2.7.12: reader.ViewExists(name)
+      2.7.13: PostgreSql sql generation fixes thanks @Arnagos, @cm0201
+      2.7.15: PostgreSql sqlgen fix, CompareSchema fixes thanks @Amagos, @r-work
+      2.7.16: FK constraints allowed to unique indexes (not just PK/UK) thanks @Amagos
+      2.7.17: Procedure ResultSets don't have a DataType
+      2.8.0: Reads User Defined Types (Domain/composite types)
+      2.8.1: AddColumn can generate invalid sql (#161, thanks @Arnagos)
+      2.8.2: Fix mysql bool type (#164 , thanks @tonyliving); DdlGeneratorFactory add UseGranularBatching (#168 thanks @whibdev)
+      2.9.0: Add extensions on schema for simpler sql generation
+      2.9.1: Granular batching for indexes fix (#170), user defined types extensions (#171,thanks @whibdev)
+      2.10.0: Postgresql: support partial indexes (#140)
+      2.10.1: Postgresql: fix partial indexes generation (#140); sql server UDTs bug (#173)
+      2.11.0: SQLite: sqlGeneration of Drop Table If Exists (#179), multiple constraints on the same related table #184
+      2.12.0: Migrations: NOT NULL constraints named in ADD COLUMN #193
+      2.13.0: PostgreSql separate stored procedures from functions #196
+      2.14.0: Schema: Columns now have PrecisionRadix (PostgreSql/SqlServer) #195. PostgreSql trigger sqlGen #197, #198
+      2.15.0: PostgreSql trigger body has full create #196; SqlServer sqlgen triggers add GO before create/drop #199
+      2.16.0: PostgreSql constraint fixes (#201 thanks @doverhill); Oracle index column names (#202 thanks @bojanpikl)
+      2.17.0: PostgreSql check constraint fixes (#203); CockroachDb support (#204), Check constraint brackets (#205); PostgreSql function OUT parameters (#206)
+      2.18.0: PostgreSql procs with overloads (#207); SqlServer Migrator for views with UseGranularBatching (GO, #208); PostgreSql table output arguments (#209)
+      2.19.0: Fix Oracle Index_Type (#210)
+      2.20.0: PostgreSql materialized view columns missing (#211)
+      2.21.0: PostgreSql check constraint fix (#203), SqlServer procedure source missing (#214)
+	  2.22.0: PostgreSql check constraint fix (#216) thanks @Amagos</releaseNotes>
+    <tags>ADO Entity Framework Code First SQLServer SQLite Oracle MySQL PostgreSql Schema Database</tags>
+    <repository type="git" url="https://github.com/martinjw/dbschemareader" commit="77ef7cfee321eb8a410ae3cc2f747868b2574581" />
+    <dependencies>
+      <group targetFramework=".NETFramework3.5" />
+      <group targetFramework=".NETFramework4.0" />
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework="net8.0">
+        <dependency id="Microsoft.CodeAnalysis.CSharp" version="5.3.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Data.DataSetExtensions" targetFramework=".NETFramework3.5, .NETFramework4.0, .NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Data" targetFramework=".NETFramework3.5, .NETFramework4.0, .NETFramework4.5" />
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework3.5, .NETFramework4.0, .NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework=".NETFramework3.5, .NETFramework4.0, .NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Xml.Linq" targetFramework=".NETFramework3.5, .NETFramework4.0, .NETFramework4.5" />
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework4.0, .NETFramework4.5" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

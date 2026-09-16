@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>GraphQL.Server.Transports.AspNetCore</id>
+    <version>8.3.3</version>
+    <authors>Shane Krueger, Pekka Heikura, Ivan Maximov, et al.</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>logo.64x64.png</icon>
+    <readme>README.md</readme>
+    <description>HTTP middleware for GraphQL</description>
+    <copyright>Copyright (c) 2015-2022 Shane Krueger, Pekka Heikura, Ivan Maximov, et al. All rights reserved.</copyright>
+    <tags>GraphQL middleware</tags>
+    <repository type="git" url="https://github.com/graphql-dotnet/server" commit="ffa202d6942fbe5a47f3dca2ae8f26b8590aca4a" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.1">
+        <dependency id="GraphQL.MicrosoftDI" version="[8.3.0, 9.0.0)" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore" version="2.1.7" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Authorization" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc" version="2.1.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.WebSockets" version="2.1.7" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="GraphQL.MicrosoftDI" version="[8.3.0, 9.0.0)" exclude="Build,Analyzers" />
+        <dependency id="GraphQL.SystemTextJson" version="[8.3.0, 9.0.0)" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net5.0">
+        <dependency id="GraphQL.MicrosoftDI" version="[8.3.0, 9.0.0)" exclude="Build,Analyzers" />
+        <dependency id="GraphQL.SystemTextJson" version="[8.3.0, 9.0.0)" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="GraphQL.MicrosoftDI" version="[8.3.0, 9.0.0)" exclude="Build,Analyzers" />
+        <dependency id="GraphQL.SystemTextJson" version="[8.3.0, 9.0.0)" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="GraphQL.MicrosoftDI" version="[8.3.0, 9.0.0)" exclude="Build,Analyzers" />
+        <dependency id="GraphQL.SystemTextJson" version="[8.3.0, 9.0.0)" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="GraphQL.MicrosoftDI" version="[8.3.0, 9.0.0)" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore" version="2.1.7" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Authorization" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc" version="2.1.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.WebSockets" version="2.1.7" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework=".NETCoreApp2.1" />
+      <group targetFramework=".NETCoreApp3.1">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+      <group targetFramework="net5.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+      <group targetFramework="net6.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+      <group targetFramework="net8.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+      <group targetFramework=".NETStandard2.0" />
+    </frameworkReferences>
+  </metadata>
+</package>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CaseConverter</id>
+    <version>2.0.1</version>
+    <authors>Mark Castle</authors>
+    <license type="file">LICENCE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://github.com/markcastle/CaseConverter</projectUrl>
+    <description>Convert between camelCase, snake_case, kebab-case, PascalCase and Train-Case</description>
+    <copyright>© Captive Reality Ltd. All Rights Reserved.</copyright>
+    <repository url="https://github.com/markcastle/CaseConverter" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+      <group targetFramework=".NETStandard2.1" />
+    </dependencies>
+  </metadata>
+</package>

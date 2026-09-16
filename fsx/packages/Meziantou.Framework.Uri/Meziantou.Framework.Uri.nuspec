@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Meziantou.Framework.Uri</id>
+    <version>2.0.9</version>
+    <authors>meziantou</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/meziantou/Meziantou.Framework</projectUrl>
+    <description>Helpers to manipulate URIs, including an implementation of the WHATWG URL Pattern API</description>
+    <tags>uri, url, urlpattern, whatwg, parsing</tags>
+    <repository type="git" url="https://github.com/meziantou/Meziantou.Framework" branch="refs/heads/main" commit="88d3c27b5bb56923d098e58c356f5cd89a7f77be" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Microsoft.Extensions.Primitives" version="10.0.12" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net11.0" />
+    </dependencies>
+  </metadata>
+</package>

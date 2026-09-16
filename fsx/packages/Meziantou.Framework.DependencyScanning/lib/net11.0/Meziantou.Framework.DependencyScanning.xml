@@ -1,0 +1,1008 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meziantou.Framework.DependencyScanning</name>
+    </assembly>
+    <members>
+        <member name="T:Meziantou.Framework.DependencyScanning.CandidateFileContext">
+            <summary>Provides context information about a candidate file during the scanning process.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.CandidateFileContext.RootDirectory">
+            <summary>Gets the root directory path of the scan operation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.CandidateFileContext.Directory">
+            <summary>Gets the directory path containing the file.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.CandidateFileContext.FileName">
+            <summary>Gets the file name without the directory path.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.CandidateFileContext.HasFileName(System.String,System.Boolean)">
+            <summary>Determines whether the file name matches the specified value.</summary>
+            <param name="fileName">The file name to compare.</param>
+            <param name="ignoreCase">Whether to perform a case-insensitive comparison.</param>
+            <returns><see langword="true"/> if the file names match; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.CandidateFileContext.HasExtension(System.String,System.Boolean)">
+            <summary>Determines whether the file has the specified extension.</summary>
+            <param name="extension">The extension to check (including the leading dot).</param>
+            <param name="ignoreCase">Whether to perform a case-insensitive comparison.</param>
+            <returns><see langword="true"/> if the file has the specified extension; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.CandidateFileContext.HasExtension(System.ReadOnlySpan{System.String},System.Boolean)">
+            <summary>Determines whether the file has any of the specified extensions.</summary>
+            <param name="extensions">The collection of extensions to check (each including the leading dot).</param>
+            <param name="ignoreCase">Whether to perform a case-insensitive comparison.</param>
+            <returns><see langword="true"/> if the file has any of the specified extensions; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.CandidateFileContext.RelativeDirectory">
+            <summary>Gets the directory path relative to the root directory, or an empty span when the directory is not under the root directory.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Dependency">
+            <summary>Represents a dependency discovered during scanning, including its name, version, type, and location information.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Dependency.Name">
+            <summary>Gets the name of the dependency.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Dependency.Version">
+            <summary>Gets the version of the dependency.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Dependency.Type">
+            <summary>Gets the type of the dependency.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Dependency.NameLocation">
+            <summary>Gets the location of the dependency name in the source file, or <see langword="null"/> if not available.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Dependency.VersionLocation">
+            <summary>Gets the location of the dependency version in the source file, or <see langword="null"/> if not available.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Dependency.Tags">
+            <summary>Gets a collection of tags associated with this dependency, such as the scanner type that discovered it.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Dependency.Metadata">
+            <summary>Gets a dictionary of metadata associated with this dependency for storing additional scanner-specific information.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Dependency.UpdateNameAsync(System.String,System.Threading.CancellationToken)">
+            <summary>Updates the dependency name in the source file.</summary>
+            <param name="newValue">The new name value to write.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the name location is not updatable.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Dependency.UpdateVersionAsync(System.String,System.Threading.CancellationToken)">
+            <summary>Updates the dependency version in the source file.</summary>
+            <param name="newValue">The new version value to write.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the version location is not updatable.</exception>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.DependencyFound">
+            <summary>Represents the callback method that is invoked when a dependency is found during scanning.</summary>
+            <param name="dependency">The dependency that was found.</param>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.DependencyScanner">
+            <summary>
+            Provides the base class for scanning source code files to discover dependencies across multiple package ecosystems and formats.
+            <example>
+            <code>
+            // Scan a directory for all dependencies
+            var dependencies = await DependencyScanner.ScanDirectoryAsync(
+                "C:\\MyProject",
+                options: null,
+                cancellationToken);
+            
+            foreach (var dependency in dependencies)
+            {
+                Console.WriteLine($"{dependency.Type}: {dependency.Name}@{dependency.Version}");
+            }
+            </code>
+            </example>
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.DependencyScanner.ScanDirectoryAsync(System.String,Meziantou.Framework.DependencyScanning.ScannerOptions,System.Threading.CancellationToken)">
+            <summary>Scans a directory and its subdirectories for dependencies.</summary>
+            <param name="path">The root directory path to scan.</param>
+            <param name="options">The scanner options, or <see langword="null"/> to use defaults.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <returns>A collection of all discovered dependencies.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.DependencyScanner.ScanDirectoryAsync(System.String,Meziantou.Framework.DependencyScanning.ScannerOptions,Meziantou.Framework.DependencyScanning.DependencyFound,System.Threading.CancellationToken)">
+            <summary>Scans a directory and its subdirectories for dependencies, invoking a callback for each dependency found.</summary>
+            <param name="path">The root directory path to scan.</param>
+            <param name="options">The scanner options, or <see langword="null"/> to use defaults.</param>
+            <param name="onDependencyFound">The callback invoked when a dependency is found.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.DependencyScanner.ScanFileAsync(System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>Scans a single file from memory for dependencies.</summary>
+            <param name="rootDirectory">The root directory context for relative path resolution.</param>
+            <param name="filePath">The path of the file being scanned.</param>
+            <param name="content">The file content as a byte array.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <returns>A collection of dependencies found in the file.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.DependencyScanner.ScanFileAsync(System.String,System.String,Meziantou.Framework.DependencyScanning.ScannerOptions,System.Threading.CancellationToken)">
+            <summary>Scans a single file from the file system for dependencies.</summary>
+            <param name="rootDirectory">The root directory context for relative path resolution.</param>
+            <param name="filePath">The path of the file to scan.</param>
+            <param name="options">The scanner options, or <see langword="null"/> to use defaults.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <returns>A collection of dependencies found in the file.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.DependencyScanner.ScanFilesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},Meziantou.Framework.DependencyScanning.ScannerOptions,System.Threading.CancellationToken)">
+            <summary>Scans multiple specific files for dependencies.</summary>
+            <param name="rootDirectory">The root directory context for relative path resolution.</param>
+            <param name="filePaths">The collection of file paths to scan.</param>
+            <param name="options">The scanner options, or <see langword="null"/> to use defaults.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <returns>A collection of all dependencies found across the specified files.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.DependencyScanner.ScanFilesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},Meziantou.Framework.DependencyScanning.ScannerOptions,Meziantou.Framework.DependencyScanning.DependencyFound,System.Threading.CancellationToken)">
+            <summary>Scans multiple specific files for dependencies, invoking a callback for each dependency found.</summary>
+            <param name="rootDirectory">The root directory context for relative path resolution.</param>
+            <param name="filePaths">The collection of file paths to scan.</param>
+            <param name="options">The scanner options, or <see langword="null"/> to use defaults.</param>
+            <param name="onDependencyFound">The callback invoked when a dependency is found.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.DependencyScanner.ShouldScanFile(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <summary>Determines whether this scanner should scan the specified file.</summary>
+            <param name="rootDirectory">The root directory path.</param>
+            <param name="fullPath">The full path of the file.</param>
+            <returns><see langword="true"/> if the file should be scanned; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.DependencyScanner.ShouldScanFile(Meziantou.Framework.DependencyScanning.CandidateFileContext)">
+            <summary>Determines whether this scanner should scan the specified file.</summary>
+            <param name="context">The context containing information about the candidate file.</param>
+            <returns><see langword="true"/> if the file should be scanned; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.DependencyScanner.ShouldScanFileCore(Meziantou.Framework.DependencyScanning.CandidateFileContext)">
+            <summary>When overridden in a derived class, determines whether this scanner should scan the specified file.</summary>
+            <param name="context">The context containing information about the candidate file.</param>
+            <returns><see langword="true"/> if the file should be scanned; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.DependencyScanner.ScanAsync(Meziantou.Framework.DependencyScanning.ScanFileContext)">
+            <summary>When overridden in a derived class, performs the actual scanning of a file to discover dependencies.</summary>
+            <param name="context">The context containing the file to scan and methods to report discovered dependencies.</param>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.DependencyScannerException">
+            <summary>Represents errors that occur during dependency scanning operations.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.DependencyType">
+            <summary>Specifies the type of dependency detected during scanning.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.Unknown">
+            <summary>Dependency type is unknown or not categorized.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.NuGet">
+            <summary>.NET package from NuGet.org.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.Npm">
+            <summary>JavaScript package from npmjs.com.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.PyPi">
+            <summary>Python package from PyPI.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.DockerImage">
+            <summary>Docker container image.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.GitReference">
+            <summary>Git submodule or reference.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.DotNetSdk">
+            <summary>.NET SDK version.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.DotNetTargetFramework">
+            <summary>.NET target framework.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.GitHubActions">
+            <summary>GitHub Actions workflow or reusable workflow.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.AzureDevOpsVMPool">
+            <summary>Azure DevOps VM pool image.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.AzureDevOpsTask">
+            <summary>Azure DevOps pipeline task.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.AzureDevOpsTemplate">
+            <summary>Azure DevOps pipeline template.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.HelmChart">
+            <summary>Helm chart dependency.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.RubyGem">
+            <summary>Ruby gem package.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.RenovateConfiguration">
+            <summary>Renovate configuration extends reference.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.SwiftPackage">
+            <summary>Swift package dependency from Swift Package Manager.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.MSBuildProjectReference">
+            <summary>MSBuild project reference.</summary>
+        </member>
+        <member name="F:Meziantou.Framework.DependencyScanning.DependencyType.DotNetAssemblyReference">
+            <summary>.NET assembly file reference.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.FileSystemEntryPredicate">
+            <summary>Represents a predicate for filtering file system entries during directory enumeration.</summary>
+            <param name="entry">The file system entry to evaluate.</param>
+            <returns><see langword="true"/> if the entry should be included; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.IFileSystem">
+            <summary>Provides an abstraction for file system operations, enabling testability and custom file access implementations.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.IFileSystem.OpenRead(System.String)">
+            <summary>Opens a file for reading.</summary>
+            <param name="path">The path to the file to open.</param>
+            <returns>A stream for reading the file.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.IFileSystem.OpenReadWrite(System.String)">
+            <summary>Opens a file for reading and writing.</summary>
+            <param name="path">The path to the file to open.</param>
+            <returns>A stream for reading and writing the file.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.IFileSystem.GetFiles(System.String,System.String,System.IO.SearchOption)">
+            <summary>Gets the files in a directory matching the specified pattern.</summary>
+            <param name="path">The directory path to search.</param>
+            <param name="pattern">The search pattern to match file names.</param>
+            <param name="searchOptions">Options controlling the search behavior.</param>
+            <returns>An enumerable collection of file paths.</returns>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.LocationExtensions">
+            <summary>Provides extension methods for ordering dependencies by their location in source files.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.LocationExtensions.OrderByVersionLocation(System.Collections.Generic.IEnumerable{Meziantou.Framework.DependencyScanning.Dependency})">
+            <summary>Orders dependencies by their version location in ascending order (by file path, line number, and line position).</summary>
+            <param name="dependencies">The dependencies to order.</param>
+            <returns>The ordered dependencies.</returns>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.LocationExtensions.OrderByVersionLocationDescending(System.Collections.Generic.IEnumerable{Meziantou.Framework.DependencyScanning.Dependency})">
+            <summary>Orders dependencies by their version location in descending order (by file path, line number, and line position).</summary>
+            <param name="dependencies">The dependencies to order.</param>
+            <returns>The ordered dependencies.</returns>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ILocationLineInfo.LineNumber">
+            <summary>The current line number or 0 if no line information is available.</summary>
+            <remarks>This property is used primarily for error reporting, but can be called at any time. The starting value is 1. Combined with LinePosition, a value of 1,1 indicates the start of a document.</remarks>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ILocationLineInfo.LinePosition">
+            <summary>The current line position or 0 if no line information is available.</summary>
+            <remarks>This property is used primarily for error reporting, but can be called at any time. The starting value is 1. Combined with LineNumber, a value of 1,1 indicates the start of a document.</remarks>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Location">
+            <summary>Represents the location of a dependency value in a source file, providing the ability to update the value in place.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Location.FilePath">
+            <summary>Gets the path of the file containing the dependency.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Location.IsUpdatable">
+            <summary>Gets a value indicating whether this location can be updated.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Location.UpdateAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Updates the value at this location in the source file.</summary>
+            <param name="oldValue">The expected current value, used for validation.</param>
+            <param name="newValue">The new value to write.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the location is not updatable.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Location.UpdateAsync(System.String,System.Threading.CancellationToken)">
+            <summary>Updates the value at this location in the source file.</summary>
+            <param name="newValue">The new value to write.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the location is not updatable.</exception>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Location.UpdateCoreAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>When overridden in a derived class, performs the actual update operation.</summary>
+            <param name="oldValue">The expected current value, used for validation.</param>
+            <param name="newValue">The new value to write.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.ScanFileContext">
+            <summary>Provides context information and methods for scanning a file and reporting discovered dependencies.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScanFileContext.FullPath">
+            <summary>Gets the full path of the file being scanned.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScanFileContext.Content">
+            <summary>Gets a stream containing the file content. The stream is lazily opened on first access.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScanFileContext.CancellationToken">
+            <summary>Gets the cancellation token for the scanning operation.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScanFileContext.FileSystem">
+            <summary>Gets the file system implementation for accessing files.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.ScanFileContext.ReportDependency(Meziantou.Framework.DependencyScanning.DependencyScanner,System.String,System.String,Meziantou.Framework.DependencyScanning.DependencyType,Meziantou.Framework.DependencyScanning.Location,Meziantou.Framework.DependencyScanning.Location)">
+            <summary>Reports a discovered dependency to the scanning framework.</summary>
+            <param name="scanner">The scanner that discovered the dependency.</param>
+            <param name="name">The name of the dependency.</param>
+            <param name="version">The version of the dependency.</param>
+            <param name="type">The type of the dependency.</param>
+            <param name="nameLocation">The location of the dependency name in the source file.</param>
+            <param name="versionLocation">The location of the dependency version in the source file.</param>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.ScanFileContext.ReportDependency(Meziantou.Framework.DependencyScanning.DependencyScanner,System.String,System.String,Meziantou.Framework.DependencyScanning.DependencyType,Meziantou.Framework.DependencyScanning.Location,Meziantou.Framework.DependencyScanning.Location,System.ReadOnlySpan{System.String},System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>Reports a discovered dependency with additional tags and metadata to the scanning framework.</summary>
+            <param name="scanner">The scanner that discovered the dependency.</param>
+            <param name="name">The name of the dependency.</param>
+            <param name="version">The version of the dependency.</param>
+            <param name="type">The type of the dependency.</param>
+            <param name="nameLocation">The location of the dependency name in the source file.</param>
+            <param name="versionLocation">The location of the dependency version in the source file.</param>
+            <param name="tags">Additional tags to associate with the dependency.</param>
+            <param name="metadata">Additional metadata to associate with the dependency.</param>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.ScannerOptions">
+            <summary>
+            Provides configuration options for dependency scanning operations.
+            <example>
+            <code>
+            var options = new ScannerOptions
+            {
+                DegreeOfParallelism = 8,
+                RecurseSubdirectories = true,
+                IncludedDependencyTypes = [DependencyType.NuGet, DependencyType.Npm]
+            };
+            var dependencies = await DependencyScanner.ScanDirectoryAsync("C:\\MyProject", options, cancellationToken);
+            </code>
+            </example>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScannerOptions.Scanners">
+            <summary>Gets or sets the collection of scanners to use. Defaults to all built-in scanners.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScannerOptions.RecurseSubdirectories">
+            <summary>Gets or sets a value indicating whether to recurse into subdirectories. Default is <see langword="true"/>.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScannerOptions.ShouldRecursePredicate">
+            <summary>Gets or sets a predicate to filter which subdirectories to recurse into.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScannerOptions.ShouldScanFilePredicate">
+            <summary>Gets or sets a predicate to filter which files to scan.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScannerOptions.DegreeOfParallelism">
+            <summary>Gets or sets the maximum number of parallel scanning tasks. Default is 16.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScannerOptions.FileSystem">
+            <summary>Gets or sets the file system implementation to use for file access.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScannerOptions.IncludedDependencyTypes">
+            <summary>Gets or sets the set of dependency types to include. When set, only these types will be scanned. Default is empty (all types included).</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.ScannerOptions.ExcludedDependencyTypes">
+            <summary>Gets or sets the set of dependency types to exclude from scanning. Default is empty (no types excluded).</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.AzureDevOpsScanner">
+            <summary>Scans Azure DevOps pipeline YAML files for VM pool images, tasks, templates, and repository references.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.DockerfileDependencyScanner">
+            <summary>Scans Dockerfile and Containerfile for Docker image dependencies in FROM and COPY --from instructions.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Scanners.DockerfileDependencyScanner.FromRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^FROM\s*(?&lt;ImageName&gt;[^\s]+):(?&lt;Version&gt;[^\s]+)(\s+AS\s+\w+)?\s*$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match a character in the set [Ff].<br/>
+            ○ Match a character in the set [Rr].<br/>
+            ○ Match a character in the set [Oo].<br/>
+            ○ Match a character in the set [Mm].<br/>
+            ○ Match a whitespace character atomically any number of times.<br/>
+            ○ "ImageName" capture group.<br/>
+                ○ Match any character other than a whitespace character greedily at least once.<br/>
+            ○ Match ':'.<br/>
+            ○ "Version" capture group.<br/>
+                ○ Match any character other than a whitespace character greedily at least once.<br/>
+            ○ Optional (greedy).<br/>
+                ○ Match a whitespace character atomically at least once.<br/>
+                ○ Match a character in the set [Aa].<br/>
+                ○ Match a character in the set [Ss].<br/>
+                ○ Match a whitespace character atomically at least once.<br/>
+                ○ Match a word character atomically at least once.<br/>
+            ○ Match a whitespace character greedily any number of times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Scanners.DockerfileDependencyScanner.CopyFromRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^\s*COPY\b.*?\s--from(?:=|\s+)(?&lt;ImageName&gt;[^\s]+):(?&lt;Version&gt;[^\s]+)(?:\s|$)</code><br/>
+            Options:<br/>
+            <code>RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match a whitespace character atomically any number of times.<br/>
+            ○ Match a character in the set [Cc].<br/>
+            ○ Match a character in the set [Oo].<br/>
+            ○ Match a character in the set [Pp].<br/>
+            ○ Match a character in the set [Yy].<br/>
+            ○ Match if at a word boundary.<br/>
+            ○ Match a character other than '\n' lazily any number of times.<br/>
+            ○ Match a whitespace character.<br/>
+            ○ Match the string "--".<br/>
+            ○ Match a character in the set [Ff].<br/>
+            ○ Match a character in the set [Rr].<br/>
+            ○ Match a character in the set [Oo].<br/>
+            ○ Match a character in the set [Mm].<br/>
+            ○ Match with 2 alternative expressions.<br/>
+                ○ Match '='.<br/>
+                ○ Match a whitespace character atomically at least once.<br/>
+            ○ "ImageName" capture group.<br/>
+                ○ Match any character other than a whitespace character greedily at least once.<br/>
+            ○ Match ':'.<br/>
+            ○ "Version" capture group.<br/>
+                ○ Match any character other than a whitespace character atomically at least once.<br/>
+            ○ Match with 2 alternative expressions, atomically.<br/>
+                ○ Match a whitespace character.<br/>
+                ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.DotNetFileBasedAppDependencyScanner">
+            <summary>Scans .NET file-based app (.cs) files for package, SDK, project, reference, and target framework directives.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Scanners.DotNetFileBasedAppDependencyScanner.PackageRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^#:package\s+(?&lt;Name&gt;[^\s@]+)(?:@(?&lt;Version&gt;\S+))?\s*$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match the string "#:package".<br/>
+            ○ Match a whitespace character greedily at least once.<br/>
+            ○ "Name" capture group.<br/>
+                ○ Match a character in the set [^@\s] greedily at least once.<br/>
+            ○ Optional (greedy).<br/>
+                ○ Match '@'.<br/>
+                ○ "Version" capture group.<br/>
+                    ○ Match any character other than a whitespace character atomically at least once.<br/>
+            ○ Match a whitespace character greedily any number of times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Scanners.DotNetFileBasedAppDependencyScanner.SdkRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^#:sdk\s+(?&lt;Name&gt;[^\s@]+)(?:@(?&lt;Version&gt;\S+))?\s*$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match the string "#:sdk".<br/>
+            ○ Match a whitespace character greedily at least once.<br/>
+            ○ "Name" capture group.<br/>
+                ○ Match a character in the set [^@\s] greedily at least once.<br/>
+            ○ Optional (greedy).<br/>
+                ○ Match '@'.<br/>
+                ○ "Version" capture group.<br/>
+                    ○ Match any character other than a whitespace character atomically at least once.<br/>
+            ○ Match a whitespace character greedily any number of times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Scanners.DotNetFileBasedAppDependencyScanner.ProjectRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^#:project\s+(?&lt;Path&gt;\S+)\s*$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match the string "#:project".<br/>
+            ○ Match a whitespace character atomically at least once.<br/>
+            ○ "Path" capture group.<br/>
+                ○ Match any character other than a whitespace character atomically at least once.<br/>
+            ○ Match a whitespace character greedily any number of times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Scanners.DotNetFileBasedAppDependencyScanner.RefRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^#:ref\s+(?&lt;Path&gt;\S+)\s*$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match the string "#:ref".<br/>
+            ○ Match a whitespace character atomically at least once.<br/>
+            ○ "Path" capture group.<br/>
+                ○ Match any character other than a whitespace character atomically at least once.<br/>
+            ○ Match a whitespace character greedily any number of times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Scanners.DotNetFileBasedAppDependencyScanner.TargetFrameworkPropertyRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^#:property\s+TargetFramework=(?&lt;Value&gt;\S+)\s*$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match the string "#:property".<br/>
+            ○ Match a whitespace character atomically at least once.<br/>
+            ○ Match the string "TargetFramework=".<br/>
+            ○ "Value" capture group.<br/>
+                ○ Match any character other than a whitespace character atomically at least once.<br/>
+            ○ Match a whitespace character greedily any number of times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.DotNetGlobalJsonDependencyScanner">
+            <summary>Scans .NET global.json files for SDK versions and MSBuild SDK package references.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.DotNetToolManifestDependencyScanner">
+            <summary>Scans .NET tool manifest files (dotnet-tools.json) for local tool dependencies.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.GitHubActionsScanner">
+            <summary>Scans GitHub Actions workflow YAML files for action references and Docker images.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.GitSubmoduleDependencyScanner">
+            <summary>Scans Git .gitmodules files for submodule references.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.HelmChartDependencyScanner">
+            <summary>Scans Helm Chart.yaml files for chart dependencies.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.MsBuildReferencesDependencyScanner">
+            <summary>Scans MSBuild project files (.csproj, .props, .targets) for NuGet package references, target frameworks, and project references.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Scanners.MsBuildReferencesDependencyScanner.TargetFrameworksRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>\s*(?&lt;version&gt;.+?)\s*(;|$)</code><br/>
+            Options:<br/>
+            <code>RegexOptions.ExplicitCapture | RegexOptions.NonBacktracking</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match a whitespace character greedily any number of times.<br/>
+            ○ "version" capture group.<br/>
+                ○ Match a character other than '\n' lazily at least once.<br/>
+            ○ Match a whitespace character greedily any number of times.<br/>
+            ○ Match with 2 alternative expressions, atomically.<br/>
+                ○ Match ';'.<br/>
+                ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.NpmPackageJsonDependencyScanner">
+            <summary>Scans npm package.json files for JavaScript package dependencies.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.NuSpecDependencyScanner">
+            <summary>Scans NuGet .nuspec files for package dependencies.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.PackagesConfigDependencyScanner">
+            <summary>Scans legacy packages.config files for NuGet package dependencies.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.PackagesConfigDependencyScanner.AssociatedProject">
+            <summary>
+            The elements of a project file that may reference a package, collected once so that they are not
+            re-queried for every package declared in the packages.config file.
+            </summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Scanners.PackagesConfigDependencyScanner.VersionInAssemblyNameRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>(?&lt;=Version=)(?&lt;Version&gt;[0-9.]+)</code><br/>
+            Options:<br/>
+            <code>RegexOptions.ExplicitCapture</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Zero-width positive lookbehind.<br/>
+                ○ Match the string "Version=" right-to-left.<br/>
+            ○ "Version" capture group.<br/>
+                ○ Match a character in the set [.0-9] atomically at least once.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.ProjectAssetsDependencyScanner">
+            <summary>Scans NuGet project assets files (project.assets.json) for resolved package dependencies, including transitive dependencies.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.ProjectJsonDependencyScanner">
+            <summary>Scans legacy project.json files for NuGet package dependencies.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.PythonRequirementsDependencyScanner">
+            <summary>Scans Python requirements.txt files for PyPI package dependencies.</summary>
+        </member>
+        <member name="M:Meziantou.Framework.DependencyScanning.Scanners.PythonRequirementsDependencyScanner.PypiReferenceRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^(?&lt;PACKAGENAME&gt;[\w\.-]+?)\s?(\[.*\])?\s?==\s?(?&lt;VERSION&gt;[\w\.-]*?)$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.ExplicitCapture | RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.CultureInvariant</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ "PACKAGENAME" capture group.<br/>
+                ○ Match a character in the set [\-.\w] lazily at least once.<br/>
+            ○ Match a whitespace character greedily, optionally.<br/>
+            ○ Optional (greedy).<br/>
+                ○ Match '['.<br/>
+                ○ Match any character greedily any number of times.<br/>
+                ○ Match ']'.<br/>
+            ○ Match a whitespace character atomically, optionally.<br/>
+            ○ Match the string "==".<br/>
+            ○ Match a whitespace character greedily, optionally.<br/>
+            ○ "VERSION" capture group.<br/>
+                ○ Match a character in the set [\-.\w] atomically any number of times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.RegexScanner">
+            <summary>
+            A configurable scanner that uses regular expressions to extract dependencies from files.
+            <example>
+            <code><![CDATA[
+            var scanner = new RegexScanner
+            {
+                FilePatterns = [Glob.Parse("**/*.custom", GlobDialect.Standard, GlobOptions.IgnoreCase)],
+                DependencyType = DependencyType.DockerImage,
+                Regex = new Regex(@"image:\s*(?<name>[a-z/]+)(:(?<version>[0-9.]+))?", RegexOptions.ExplicitCapture, TimeSpan.FromSeconds(10))
+            };
+            var options = new ScannerOptions { Scanners = [scanner] };
+            var dependencies = await DependencyScanner.ScanDirectoryAsync("C:\\MyProject", options, cancellationToken);
+            ]]></code>
+            </example>
+            </summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Scanners.RegexScanner.Regex">
+            <summary>Gets or sets the regular expression used to match dependencies. The expression must include named groups 'name' and optionally 'version'.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Scanners.RegexScanner.DependencyType">
+            <summary>Gets or sets the type of dependency to report when a match is found.</summary>
+        </member>
+        <member name="P:Meziantou.Framework.DependencyScanning.Scanners.RegexScanner.FilePatterns">
+            <summary>Gets or sets the glob patterns specifying which files to scan. If <see langword="null"/>, all files are scanned.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.RenovateExtendsDependencyScanner">
+            <summary>Scans Renovate configuration files for extends references to shared configuration presets.</summary>
+        </member>
+        <member name="T:Meziantou.Framework.DependencyScanning.Scanners.SwiftPackageDependencyScanner">
+            <summary>Scans Swift Package Manager files (Package.resolved and Package.swift) for dependencies.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.FromRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the FromRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.FromRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.FromRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.FromRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.FromRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.FromRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.FromRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.FromRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.FromRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.CopyFromRegex_1">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the CopyFromRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.CopyFromRegex_1.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.CopyFromRegex_1.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.CopyFromRegex_1.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.CopyFromRegex_1.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.CopyFromRegex_1.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.CopyFromRegex_1.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.CopyFromRegex_1.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.CopyFromRegex_1.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.PackageRegex_2">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the PackageRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.PackageRegex_2.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PackageRegex_2.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.PackageRegex_2.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PackageRegex_2.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.PackageRegex_2.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PackageRegex_2.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PackageRegex_2.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PackageRegex_2.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.SdkRegex_3">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the SdkRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.SdkRegex_3.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SdkRegex_3.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.SdkRegex_3.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SdkRegex_3.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.SdkRegex_3.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SdkRegex_3.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SdkRegex_3.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SdkRegex_3.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.ProjectRegex_4">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the ProjectRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.ProjectRegex_4.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ProjectRegex_4.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.ProjectRegex_4.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ProjectRegex_4.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.ProjectRegex_4.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ProjectRegex_4.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ProjectRegex_4.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ProjectRegex_4.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.RefRegex_5">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the RefRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.RefRegex_5.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.RefRegex_5.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.RefRegex_5.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.RefRegex_5.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.RefRegex_5.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.RefRegex_5.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.RefRegex_5.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.RefRegex_5.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.TargetFrameworkPropertyRegex_6">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the TargetFrameworkPropertyRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.TargetFrameworkPropertyRegex_6.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.TargetFrameworkPropertyRegex_6.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.TargetFrameworkPropertyRegex_6.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.TargetFrameworkPropertyRegex_6.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.TargetFrameworkPropertyRegex_6.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.TargetFrameworkPropertyRegex_6.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.TargetFrameworkPropertyRegex_6.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.TargetFrameworkPropertyRegex_6.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.TargetFrameworksRegex_7">
+            <summary>Caches a <see cref="T:System.Text.RegularExpressions.Regex"/> instance for the TargetFrameworksRegex method.</summary>
+            <remarks>A custom Regex-derived type could not be generated because RegexOptions.NonBacktracking isn't supported.</remarks>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.TargetFrameworksRegex_7.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.VersionInAssemblyNameRegex_8">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the VersionInAssemblyNameRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.VersionInAssemblyNameRegex_8.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.VersionInAssemblyNameRegex_8.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.VersionInAssemblyNameRegex_8.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.VersionInAssemblyNameRegex_8.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.VersionInAssemblyNameRegex_8.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.VersionInAssemblyNameRegex_8.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.VersionInAssemblyNameRegex_8.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.VersionInAssemblyNameRegex_8.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.PypiReferenceRegex_9">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the PypiReferenceRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.PypiReferenceRegex_9.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PypiReferenceRegex_9.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.PypiReferenceRegex_9.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PypiReferenceRegex_9.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.PypiReferenceRegex_9.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PypiReferenceRegex_9.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PypiReferenceRegex_9.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PypiReferenceRegex_9.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.IsBoundaryWordChar(System.Char)">
+            <summary>Determines whether the specified index is a boundary word character.</summary>
+            <remarks>This is the same as \w plus U+200C ZERO WIDTH NON-JOINER and U+200D ZERO WIDTH JOINER.</remarks>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.IsPostWordCharBoundary(System.ReadOnlySpan{System.Char},System.Int32)">
+            <summary>Determines whether the specified index is a boundary.</summary>
+            <remarks>This variant is only employed when the previous character has already been validated as a word character.</remarks>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.IsWordChar(System.Char)">
+            <summary>Determines whether the character is part of the [\w] set.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.StackPop(System.Int32[],System.Int32@,System.Int32@,System.Int32@)">
+            <summary>Pops 2 values from the backtracking stack.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.StackPush(System.Int32[]@,System.Int32@,System.Int32,System.Int32)">
+            <summary>Pushes 2 values onto the backtracking stack.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.StackPush(System.Int32[]@,System.Int32@,System.Int32,System.Int32,System.Int32)">
+            <summary>Pushes 3 values onto the backtracking stack.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.WordCategoriesMask">
+            <summary>Provides a mask of Unicode categories that combine to form [\w].</summary>
+        </member>
+        <member name="P:System.Text.RegularExpressions.Generated.Utilities.WordCharBitmap">
+            <summary>Gets a bitmap for whether each character 0 through 127 is in [\w]</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_asciiDigitsAndDot">
+            <summary>Supports searching for characters in or not in ".0123456789".</summary>
+        </member>
+    </members>
+</doc>

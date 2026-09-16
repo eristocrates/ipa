@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/FSharp.SystemTextJson.dll
+F: /lib/netstandard2.0/FSharp.SystemTextJson.pdb
+F: /lib/netstandard2.0/FSharp.SystemTextJson.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/f4479bf1541b4df589f64ff69eaae6ac.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /fsharp.systemtextjson.1.4.36.nupkg
+F: /FSharp.SystemTextJson.nuspec
+F: /[Content_Types].xml

@@ -1,0 +1,2712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>ARCtrl.Core</name></assembly>
+<members>
+<member name="M:ARCtrl.OntologyAnnotation.toStringObject(ARCtrl.OntologyAnnotation,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Get a ISATab string entries from an ISAJson Ontology Annotation object (name,source,accession)
+
+ `asOntobeePurlUrl`: option to return term accession in Ontobee purl-url format (`http://purl.obolibrary.org/obo/MS_1000121`)
+ </summary>
+</member>
+<member name="P:ARCtrl.OntologyAnnotation.TermAccessionShort">
+<summary>
+ Parses any value in `TermAccessionString` to term accession format &quot;termsourceref:localtan&quot;. Exmp.: &quot;MS:000001&quot;.
+
+ If `TermAccessionString` cannot be parsed to this format, returns empty string!
+</summary>
+</member>
+<member name="M:ARCtrl.OntologyAnnotation.createUriAnnotation(System.String,System.String)">
+<summary>
+ Create a path in form of `http://purl.obolibrary.org/obo/MS_1000121` from it&apos;s Term Accession Source `MS` and Local Term Accession Number `1000121`. 
+</summary>
+</member>
+<member name="M:ARCtrl.OntologyAnnotation.create(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.Comment}})">
+<summary>
+ Create a ISAJson Ontology Annotation value from ISATab string entries, will try to reduce `termAccessionNumber` with regex matching.
+
+ Exmp. 1: http://purl.obolibrary.org/obo/GO_000001 --> GO:000001
+</summary>
+<param name="name"></param>
+<param name="tsr">Term accession number</param>
+<param name="tan">Term accession number</param>
+<param name="comments">Term accession number</param>
+</member>
+<member name="M:ARCtrl.Person.removeByFullName(System.String,System.String,System.String,ARCtrl.Person[])">
+<summary>
+ If a person with the given FirstName, MidInitials and LastName exists in the list, removes it
+</summary>
+</member>
+<member name="M:ARCtrl.Person.existsByFullName(System.String,System.String,System.String,ARCtrl.Person[])">
+<summary>
+ If an person with the given FirstName, MidInitials and LastName exists in the list, returns true
+</summary>
+</member>
+<member name="M:ARCtrl.Person.add(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Person},ARCtrl.Person)">
+<summary>
+ adds the given person to the persons  
+</summary>
+</member>
+<member name="M:ARCtrl.CompositeHeader.jsGetColumnMetaType(System.Int32)">
+ <summary>
+ This function is used to programmatically create `CompositeHeaders` in JavaScript. Returns integer code representative of input type.
+
+ 0: Expects no input
+
+ 1: Expects OntologyAnnotation as input
+
+ 2: Expects IOType as input
+
+ 3: Expects string as input
+ </summary>
+ <param name="inp">Can be accessed from `CompositeHeader.Cases`</param>
+</member>
+<member name="P:ARCtrl.CompositeHeader.IsTermColumn">
+ <summary>
+ Is true if this Building Block type is a TermColumn.
+
+ The name "TermColumn" refers to all columns with the syntax "Parameter/Factor/etc [TERM-NAME]" and featured columns
+ such as Protocol Type as these are also represented as a triplet of MainColumn-TSR-TAN.
+ </summary>
+</member>
+<member name="P:ARCtrl.CompositeHeader.IsSingleColumn">
+ <summary>
+ Is true if the Building Block type is parsed to a single column. 
+
+ This can be any input, output column, as well as for example: `ProtocolREF` and `Performer` with FreeText body cells.
+ </summary>
+</member>
+<member name="P:ARCtrl.CompositeHeader.IsFeaturedColumn">
+ <summary>
+ Is true if the Building Block type is a FeaturedColumn. 
+
+ A FeaturedColumn can be abstracted by Parameter/Factor/Characteristic and describes one common usecase of either.
+ Such a block will contain TSR and TAN and can be used for directed Term search.
+ </summary>
+</member>
+<member name="P:ARCtrl.CompositeHeader.IsDeprecated">
+<summary>
+ Returns true if column is deprecated
+</summary>
+</member>
+<member name="P:ARCtrl.CompositeHeader.IsCvParamColumn">
+ <summary>
+ Is true if this Building Block type is a CvParamColumn.
+
+ The name "CvParamColumn" refers to all columns with the syntax "Parameter/Factor/etc [TERM-NAME]".
+
+ Does return false for featured columns such as Protocol Type.
+ </summary>
+</member>
+<member name="P:ARCtrl.CompositeHeader.GetFeaturedColumnAccession">
+ <summary>
+ This function gets the associated term accession for featured columns. 
+ 
+ It contains the hardcoded term accessions.
+ </summary>
+</member>
+<member name="P:ARCtrl.CompositeHeader.GetColumnAccessionShort">
+ <summary>
+ This function gets the associated term accession for term columns. 
+ </summary>
+</member>
+<member name="M:ARCtrl.CompositeHeader.TryGetTerm">
+ <summary>
+ Returns the term of the column if it is a term column. Otherwise returns None.
+
+ Term columns are Parameter, Factor, Characteristic and Component.
+ </summary>
+</member>
+<member name="M:ARCtrl.CompositeHeader.ToTerm">
+<summary>
+ If the column is a term column, returns the term as `OntologyAnnotation`. Otherwise returns an `OntologyAnnotation` with only the name.
+</summary>
+</member>
+<member name="M:ARCtrl.CompositeHeader.OfHeaderString(System.String)">
+ <summary>
+ Tries to create a `CompositeHeader` from a given string.
+ </summary>
+</member>
+<member name="T:ARCtrl.CompositeHeader">
+ <summary>
+ Model of the different types of Building Blocks in an ARC Annotation Table.
+ </summary>
+</member>
+<member name="M:ARCtrl.IOType.tryOfHeaderString(System.String)">
+<summary>
+ Used to match Input/Output annotation table header to IOType
+
+ Exmp. 1: &quot;Input [Source]&quot; --&gt; Some Source
+</summary>
+</member>
+<member name="M:ARCtrl.IOType.ofString(System.String)">
+<summary>
+ Used to match only(!) IOType string to IOType (without Input/Output). This matching is case sensitive.
+
+ Exmp. 1: &quot;Source&quot; --&gt; Source
+
+ Exmp. 2: &quot;Raw Data File&quot; | &quot;RawDataFile&quot; -&gt; RawDataFile
+</summary>
+</member>
+<member name="P:ARCtrl.IOType.All">
+<summary>
+ This member is used to iterate over all existing `IOType`s (excluding FreeText case).
+</summary>
+</member>
+<member name="M:ARCtrl.IOType.Merge(ARCtrl.IOType)">
+<summary>
+ Given two IOTypes, tries to return the one with a higher specificity. If both are equally specific, fail.
+
+ E.g. RawDataFile is more specific than Source, but less specific than DerivedDataFile.
+
+ E.g. Sample is equally specific to RawDataFile.
+</summary>
+</member>
+<member name="T:ARCtrl.CompositeCell.Unitized">
+<summary>
+ ISA-TAB unit columns, consisting of value and unit as ontology annotation.
+
+ https://isa-specs.readthedocs.io/en/latest/isatab.html#unit
+</summary>
+</member>
+<member name="T:ARCtrl.CompositeCell.FreeText">
+<summary>
+ Single columns like Input, Output, ProtocolREF, .. .
+</summary>
+</member>
+<member name="T:ARCtrl.CompositeCell.Term">
+<summary>
+ ISA-TAB term columns as ontology annotation.
+
+ https://isa-specs.readthedocs.io/en/latest/isatab.html#ontology-annotations
+</summary>
+</member>
+<member name="M:ARCtrl.CompositeCell.updateWithOA(ARCtrl.OntologyAnnotation,ARCtrl.CompositeCell)">
+ <summary>
+ Updates current CompositeCell with information from OntologyAnnotation.
+
+ For `Term`, OntologyAnnotation (oa) is fully set. For `Unitized`, oa is set as unit while value is untouched.
+ For `FreeText` oa.NameText is set.
+ </summary>
+ <param name="oa"></param>
+ <param name="cell"></param>
+</member>
+<member name="M:ARCtrl.CompositeCell.UpdateWithOA(ARCtrl.OntologyAnnotation)">
+ <summary>
+ Updates current CompositeCell with information from OntologyAnnotation.
+
+ For `Term`, OntologyAnnotation (oa) is fully set. For `Unitized`, oa is set as unit while value is untouched.
+ For `FreeText` oa.NameText is set.
+ </summary>
+ <param name="oa"></param>
+</member>
+<member name="M:ARCtrl.CompositeCell.ToUnitizedCell">
+<summary>
+ FreeText string will be converted to unit term name.
+
+ Term will be converted to unit term.
+</summary>
+</member>
+<member name="M:ARCtrl.CompositeCell.ToTermCell">
+<summary>
+ FreeText string will be converted to term name.
+
+ Unit term will be converted to term and unit value is dropped.
+</summary>
+</member>
+<member name="M:ARCtrl.CompositeCell.ToFreeTextCell">
+<summary>
+ Will always keep `OntologyAnnotation.NameText` from Term or Unit.
+</summary>
+</member>
+<member name="M:ARCtrl.CompositeCell.GetEmptyCell">
+ <summary>
+ This returns the default empty cell from an existing CompositeCell.
+ </summary>
+</member>
+<member name="M:ARCtrl.CompositeCell.GetContent">
+ <summary>
+ This function returns an array of all values as string
+
+ ```fsharp
+ match this with
+ | FreeText s -> [|s|]
+ | Term oa -> [| oa.NameText; defaultArg oa.TermSourceREF ""; defaultArg oa.TermAccessionNumber ""|]
+ | Unitized (v,oa) -> [| v; oa.NameText; defaultArg oa.TermSourceREF ""; defaultArg oa.TermAccessionNumber ""|]
+ ```
+ </summary>
+</member>
+<member name="M:ARCtrl.CompositeColumn.Validate(Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Returns true if header and cells are a valid combination. E.g. Term header with term or unitized cells. IO header with freetext cells.
+
+ ?raiseExeption: Default false. Set true if this function should raise an exception instead of return false.
+</summary>
+</member>
+<member name="M:ARCtrl.CompositeColumn.TryGetColumnUnits">
+ <summary>
+ Returns an array of all units found in the cells of this column. Returns None if no units are found.
+ </summary>
+</member>
+<member name="M:ARCtrl.CompositeColumn.GetDefaultEmptyCell">
+ <summary>
+ Simple predictor for empty default cells.
+
+ Currently uses majority vote for the column to decide cell type.
+ </summary>
+</member>
+<member name="M:ARCtrl.ArcTable.validate(Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Will return true or false if table is valid.
+
+ Set `raiseException` = `true` to raise exception.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.updateReferenceByAnnotationTable(ARCtrl.ArcTable,ARCtrl.ArcTable)">
+<summary>
+ This method is meant to update an ArcTable stored as a protocol in a study or investigation file with the information from an ArcTable actually stored as an annotation table
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.updateColumn(System.Int32,ARCtrl.CompositeHeader,Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CompositeCell}})">
+<summary>
+ Replaces the header and cells of a column at given index.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.updateCellsBy(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{ARCtrl.CompositeCell,ARCtrl.CompositeCell}}},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Update cells in a column by a function.
+
+ Inputs of the function are columnIndex, rowIndex, and the current cell.static member updateCellBy(f : int -&gt; int -&gt; CompositeCell -&gt; CompositeCell) =
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.updateCellBy(System.Int32,System.Int32,Microsoft.FSharp.Core.FSharpFunc{ARCtrl.CompositeCell,ARCtrl.CompositeCell},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Update cells in a column by a function.
+
+ Inputs of the function are columnIndex, rowIndex, and the current cell.static member updateCellBy(f : int -&gt; int -&gt; CompositeCell -&gt; CompositeCell) =
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.updateCellAt(System.Int32,System.Int32,ARCtrl.CompositeCell,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Update an already existing cell in the table. Fails if cell is outside the columnd AND row bounds of the table
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.tryGetColumnByHeaderBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.CompositeHeader,System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Returns the first column for that the header predicate returns true.
+ If the header is not found, returns None. Fills the column with empty cells for rows that do not have a value.
+ </summary>
+ <param name="header">Predicate to search for the header.</param>
+ <param name="failOnMissingCell">Tables can be sparse, so if set to true, will fail for non-existing cells.</param>
+</member>
+<member name="M:ARCtrl.ArcTable.tryGetColumnByHeader(ARCtrl.CompositeHeader,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Returns a column by its header.
+ If the header is not found, returns None. Fills the column with empty cells for rows that do not have a value.
+ </summary>
+ <param name="header">The header to search for.</param>
+ <param name="failOnMissingCell">Tables can be sparse, so if set to true, will fail for non-existing cells.</param>
+</member>
+<member name="M:ARCtrl.ArcTable.setCellAt(System.Int32,System.Int32,ARCtrl.CompositeCell,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Update an already existing cell in the table, or adds a new cell if the row boundary is exceeded. Fails if cell is outside the column bounds of the table
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.init(System.String)">
+<summary>
+ Create ArcTable with empty &apos;ValueHeader&apos; and &apos;Values&apos;
+</summary>
+</member>
+<member name="P:ARCtrl.ArcTable.SplitByProtocolREF">
+<summary>
+ Splits the table rowWise into a collection of tables, so that each new table has only one value for the ProtocolREF column
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.getColumn(System.Int32,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Return a CompositeColumn for the given column index. Fills the column with empty cells for rows that do not have a value.
+ </summary>
+ <param name="columnIndex">0-based Index of the column to return.</param>
+ <param name="failOnMissingCell">Tables can be sparse, so if set to true, will fail for non-existing cells. Otherwise will fill the column with empty cells for rows that do not have a value.</param>s
+</member>
+<member name="M:ARCtrl.ArcTable.append(ARCtrl.ArcTable,ARCtrl.ArcTable)">
+<summary>
+ Append the rows of another table to this one
+
+ The headers of the other table will be aligned with the headers of this table
+
+ The name of table 2 will be ignored
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.Validate(Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Will return true or false if table is valid.
+
+ Set `raiseException` = `true` to raise exception.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.UpdateColumn(System.Int32,ARCtrl.CompositeHeader,Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.CompositeCell}})">
+<summary>
+ Replaces the header and cells of a column at given index.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.UpdateCellsBy(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{ARCtrl.CompositeCell,ARCtrl.CompositeCell}}},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Update cells in a column by a function.
+
+ Inputs of the function are columnIndex, rowIndex, and the current cell.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.UpdateCellBy(System.Int32,System.Int32,Microsoft.FSharp.Core.FSharpFunc{ARCtrl.CompositeCell,ARCtrl.CompositeCell},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Update cells in a column by a function.
+
+ Inputs of the function are columnIndex, rowIndex, and the current cell.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.UpdateCellAt(System.Int32,System.Int32,ARCtrl.CompositeCell,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Update an already existing cell in the table. Fails if cell is outside the column AND row bounds of the table
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.TryGetColumnByHeaderBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.CompositeHeader,System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Returns the first column for that the header predicate returns true.
+ If the header is not found, returns None. Fills the column with empty cells for rows that do not have a value.
+ </summary>
+ <param name="header">Predicate to search for the header.</param>
+ <param name="failOnMissingCell">Tables can be sparse, so if set to true, will fail for non-existing cells.</param>
+</member>
+<member name="M:ARCtrl.ArcTable.TryGetColumnByHeader(ARCtrl.CompositeHeader,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Returns a column by its header.
+ If the header is not found, returns None. Fills the column with empty cells for rows that do not have a value.
+ </summary>
+ <param name="header">The header to search for.</param>
+ <param name="failOnMissingCell">Tables can be sparse, so if set to true, will fail for non-existing cells.</param>
+</member>
+<member name="M:ARCtrl.ArcTable.TryGetCellAt(System.Int32,System.Int32)">
+<summary>
+ Returns a cell at given position if it exists, else returns None.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.ToString">
+<summary>
+ Pretty printer
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.SplitByColumnValuesByHeader(ARCtrl.CompositeHeader)">
+<summary>
+ Splits the table rowWise into a collection of tables, so that each new table has only one value for the given column
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.SplitByColumnValues(System.Int32)">
+<summary>
+ Splits the table rowWise into a collection of tables, so that each new table has only one value for the given column
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.SetCellAt(System.Int32,System.Int32,ARCtrl.CompositeCell,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Update an already existing cell in the table, or adds a new cell if the row boundary is exceeded. Fails if cell is outside the column bounds of the table
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.RescanValueMap">
+<summary>
+ This will rescan the value map of the table, so that it is up to date with the current values.
+ This is useful if you have changed the values of the table and want to update the value map.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.ReferenceEquals(ARCtrl.ArcTable)">
+ <summary>
+ Use this function to check if this ArcTable and the input ArcTable refer to the same object.
+
+ If true, updating one will update the other due to mutability.
+ </summary>
+ <param name="other">The other ArcTable to test for reference.</param>
+</member>
+<member name="M:ARCtrl.ArcTable.Join(ARCtrl.ArcTable,Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{ARCtrl.TableJoinOptions},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ This function can be used to join two arc tables.
+ </summary>
+ <param name="index">If not set default to append. -1 will also append.</param>
+ <param name="table">The table to join to this table.</param>
+ <param name="joinOptions">Can add only headers, header with unitized cell information, headers with values.</param>
+ <param name="forceReplace">if set to true will replace unique columns.</param>
+</member>
+<member name="M:ARCtrl.ArcTable.GetProtocolTypeColumn">
+<summary>
+ Get functions for the protocol columns
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTable.GetColumnByHeader(ARCtrl.CompositeHeader,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Returns a column by its header. Fills the column with empty cells for rows that do not have a value.
+ </summary>
+ <param name="header">Header to search for.</param>
+ <param name="failOnMissingCell">Tables can be sparse, so if set to true, will fail for non-existing cells.</param>
+</member>
+<member name="M:ARCtrl.ArcTable.GetColumn(System.Int32,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Return a CompositeColumn for the given column index. Fills the column with empty cells for rows that do not have a value.
+ </summary>
+ <param name="columnIndex">0-based Index of the column to return.</param>
+ <param name="failOnMissingCell">Tables can be sparse, so if set to true, will fail for non-existing cells.</param>
+</member>
+<member name="M:ARCtrl.ArcTable.AddColumnFill(ARCtrl.CompositeHeader,ARCtrl.CompositeCell,Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Adds a new column which fills in the single given value for the length of the table.
+</summary>
+</member>
+<member name="T:ARCtrl.TableJoinOptions.WithValues">
+<summary>
+ Add full columns
+</summary>
+</member>
+<member name="T:ARCtrl.TableJoinOptions.WithUnit">
+<summary>
+ Add headers and unit information without main value
+</summary>
+</member>
+<member name="T:ARCtrl.TableJoinOptions.Headers">
+<summary>
+ Add only headers, no values
+</summary>
+</member>
+<member name="T:ARCtrl.ArcTables">
+<summary>
+ This type only includes mutable options and only static members, the MUST be referenced and used in all record types implementing `ResizeArray&lt;ArcTable&gt;`
+</summary>
+</member>
+<member name="P:ARCtrl.ArcInvestigation.Identifier(System.String)">
+<summary>
+ Must be unique in one investigation
+</summary>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.renameStudy(System.String,System.String)">
+ <summary>
+ Renames a study in the whole investigation
+ </summary>
+ <param name="oldIdentifier">Identifier of the study to be renamed</param>
+ <param name="newIdentifier">Identifier to which the study should be renamed to</param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.removeStudyAt(System.Int32)">
+ <summary>
+ Removes study at specified index from ArcInvestigation and deregisteres it.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.removeStudy(System.String)">
+ <summary>
+ Removes study with specified identifier from ArcInvestigation and deregisteres it.
+ </summary>
+ <param name="studyIdentifier"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.removeAssayAt(System.Int32)">
+ <summary>
+ Removes assay at specified index from ArcInvestigation and deregisteres it from all studies.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.removeAssay(System.String)">
+ <summary>
+ Removes assay with specified identifier from ArcInvestigation and deregisteres it from all studies.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="P:ARCtrl.ArcInvestigation.VacantStudyIdentifiers">
+<summary>
+ Returns all registered study identifiers that do not correspond to an existing study object in the investigation.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcInvestigation.RegisteredStudyIdentifierCount">
+<summary>
+ Returns the count of registered study *identifiers*. This is not necessarily the same as the count of registered studies, as not all identifiers correspond to an existing study object.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcInvestigation.RegisteredStudyCount">
+<summary>
+ Returns the count of registered studies. This is not necessarily the same as the count of registered study *identifiers*, as not all identifiers correspond to an existing study object.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcInvestigation.RegisteredStudies">
+<summary>
+ Returns all studies registered in this investigation, that correspond to an existing study object investigation.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcInvestigation.Identifier">
+<summary>
+ Must be unique in one investigation
+</summary>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.deleteStudyAt(System.Int32)">
+ <summary>
+ Removes study at specified index from ArcInvestigation without deregistering it.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.deleteStudy(System.String)">
+ <summary>
+ Removes study with specified identifier from ArcInvestigation without deregistering it.
+ </summary>
+ <param name="studyIdentifier"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.deleteAssayAt(System.Int32)">
+ <summary>
+ Removes assay at specified index from ArcInvestigation without deregistering it from studies.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.deleteAssay(System.String)">
+ <summary>
+ Removes assay with given identifier from ArcInvestigation without deregistering it from studies.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.UpdateIOTypeByEntityID">
+<summary>
+ Updates the IOtypes of the IO columns (Input, Output) across all tables in the investigation if possible.
+
+ If an entity (Row Value of IO Column) with the same name as an entity with a higher IOType specifity is found, the IOType of the entity with the lower IOType specificity is updated.
+
+ E.g. In Table1, there is a column &quot;Output [Sample Name]&quot; with an entity &quot;Sample1&quot;. In Table2, there is a column &quot;Input [Source Name]&quot; with the same entity &quot;Sample1&quot;. By equality of the entities, the IOType of the Input column in Table2 is inferred to be Sample, resulting in &quot;Input [Sample Name]&quot;.
+
+ E.g. RawDataFile is more specific than Source, but less specific than DerivedDataFile.
+
+ E.g. Sample is equally specific to RawDataFile.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.RenameWorkflow(System.String,System.String)">
+ <summary>
+ Renames an workflow in the whole investigation
+ </summary>
+ <param name="oldIdentifier">Identifier of the workflow to be renamed</param>
+ <param name="newIdentifier">Identifier to which the workflow should be renamed to</param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.RenameStudy(System.String,System.String)">
+ <summary>
+ Renames a study in the whole investigation
+ </summary>
+ <param name="oldIdentifier">Identifier of the study to be renamed</param>
+ <param name="newIdentifier">Identifier to which the study should be renamed to</param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.RenameRun(System.String,System.String)">
+ <summary>
+ Renames an run in the whole investigation
+ </summary>
+ <param name="oldIdentifier">Identifier of the run to be renamed</param>
+ <param name="newIdentifier">Identifier to which the run should be renamed to</param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.RenameAssay(System.String,System.String)">
+ <summary>
+ Renames an assay in the whole investigation
+ </summary>
+ <param name="oldIdentifier">Identifier of the assay to be renamed</param>
+ <param name="newIdentifier">Identifier to which the assay should be renamed to</param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.RemoveStudyAt(System.Int32)">
+ <summary>
+ Removes study at specified index from ArcInvestigation and deregisteres it.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.RemoveStudy(System.String)">
+ <summary>
+ Removes study with specified identifier from ArcInvestigation and deregisteres it.
+ </summary>
+ <param name="studyIdentifier"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.RemoveAssayAt(System.Int32)">
+ <summary>
+ Removes assay at specified index from ArcInvestigation and deregisteres it from all studies.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.RemoveAssay(System.String)">
+ <summary>
+ Removes assay with specified identifier from ArcInvestigation and deregisteres it from all studies.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.RegisterAssayAt(System.Int32,System.String)">
+ <summary>
+ Register an existing assay from ArcInvestigation.Assays to a existing study.
+ </summary>
+ <param name="studyIdentifier"></param>
+ <param name="assay"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.RegisterAssay(System.String,System.String)">
+ <summary>
+ Register an existing assay from ArcInvestigation.Assays to a existing study.
+ </summary>
+ <param name="studyIdentifier"></param>
+ <param name="assay"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.ReferenceEquals(ARCtrl.ArcInvestigation)">
+ <summary>
+ Use this function to check if this ArcInvestigation and the input ArcInvestigation refer to the same object.
+
+ If true, updating one will update the other due to mutability.
+ </summary>
+ <param name="other">The other ArcInvestigation to test for reference.</param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.GetAllPublications">
+ <summary>
+ Returns all fully distinct Contacts/Performers from assays/studies/investigation unfiltered.
+ </summary>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.GetAllPersons">
+ <summary>
+ Returns all fully distinct Contacts/Performers from assays/studies/investigation.
+ </summary>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.DeregisterMissingAssays">
+ <summary>
+ Deregisters assays not found in ArcInvestigation.Assays from all studies.
+ </summary>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.DeleteStudyAt(System.Int32)">
+ <summary>
+ Removes study at specified index from ArcInvestigation without deregistering it.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.DeleteStudy(System.String)">
+ <summary>
+ Removes study with specified identifier from ArcInvestigation without deregistering it.
+ </summary>
+ <param name="studyIdentifier"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.DeleteAssayAt(System.Int32)">
+ <summary>
+ Removes assay at specified index from ArcInvestigation without deregistering it from studies.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="M:ARCtrl.ArcInvestigation.DeleteAssay(System.String)">
+ <summary>
+ Removes assay with given identifier from ArcInvestigation without deregistering it from studies.
+ </summary>
+ <param name="index"></param>
+</member>
+<member name="P:ARCtrl.ArcRun.Identifier(System.String)">
+<summary>
+ Must be unique in one study
+</summary>
+</member>
+<member name="P:ARCtrl.ArcRun.Workflows">
+<summary>
+ Returns all workflows registered in this run, that correspond to an existing workflow object in the associated investigation.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcRun.WorkflowIdentifierCount">
+<summary>
+ Returns the count of workflow *identifiers*. This is not necessarily the same as the count of workflows, as not all identifiers correspond to an existing workflow.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcRun.VacantWorkflowIdentifiers">
+<summary>
+ Returns all registered workflow identifiers that do not correspond to an existing workflow object in the associated investigation.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcRun.Identifier">
+<summary>
+ Must be unique in one study
+</summary>
+</member>
+<member name="M:ARCtrl.ArcRun.getTableAt(System.Int32)">
+<summary>
+ Receive **copy** of table at `index`
+</summary>
+</member>
+<member name="M:ARCtrl.ArcRun.getTable(System.String)">
+<summary>
+ Receive **copy** of table with `name` = `ArcTable.Name`
+</summary>
+</member>
+<member name="M:ARCtrl.ArcRun.UpdateBy(ARCtrl.ArcRun,Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Updates given run with another run, Identifier will never be updated. By default update is full replace. Optional Parameters can be used to specify update logic.
+ </summary>
+ <param name="run">The run used for updating this run.</param>
+ <param name="onlyReplaceExisting">If true, this will only update fields which are `Some` or non-empty lists. Default: **false**</param>
+ <param name="appendSequences">If true, this will append lists instead of replacing. Will return only distinct elements. Default: **false**</param>
+</member>
+<member name="M:ARCtrl.ArcRun.ReferenceEquals(ARCtrl.ArcRun)">
+ <summary>
+ Use this function to check if this ArcRun and the input ArcRun refer to the same object.
+
+ If true, updating one will update the other due to mutability.
+ </summary>
+ <param name="other">The other ArcRun to test for reference.</param>
+</member>
+<member name="P:ARCtrl.ArcWorkflow.Identifier(System.String)">
+<summary>
+ Must be unique in one study
+</summary>
+</member>
+<member name="P:ARCtrl.ArcWorkflow.VacantSubWorkflowIdentifiers">
+<summary>
+ Returns all registered subWorkflow identifiers that do not correspond to an existing subWorkflow object in the associated investigation.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcWorkflow.SubWorkflows">
+<summary>
+ Returns all subWorkflows registered in this workflow, that correspond to an existing subWorkflow object in the associated investigation.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcWorkflow.SubWorkflowIdentifiersCount">
+<summary>
+ Returns the count of registered subWorkflow *identifiers*. This is not necessarily the same as the count of registered subWorkflows, as not all identifiers correspond to an existing subWorkflow.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcWorkflow.SubWorkflowCount">
+<summary>
+ Returns the count of registered subWorkflows. This is not necessarily the same as the count of registered subWorkflow *identifiers*, as not all identifiers correspond to an existing subWorkflow.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcWorkflow.Identifier">
+<summary>
+ Must be unique in one study
+</summary>
+</member>
+<member name="M:ARCtrl.ArcWorkflow.getRegisteredSubWorkflowsOrIdentifier">
+ <summary>
+ Returns ArcSubWorkflows registered in workflow, or if no parent exists, initializies new ArcSubWorkflow from identifier.
+ </summary>
+</member>
+<member name="M:ARCtrl.ArcWorkflow.ReferenceEquals(ARCtrl.ArcStudy)">
+ <summary>
+ Use this function to check if this ArcWorkflow and the input ArcWorkflow refer to the same object.
+
+ If true, updating one will update the other due to mutability.
+ </summary>
+ <param name="other">The other ArcWorkflow to test for reference.</param>
+</member>
+<member name="M:ARCtrl.ArcWorkflow.GetRegisteredSubWorkflowsOrIdentifier">
+ <summary>
+ Returns ArcSubWorkflows registered in workflow, or if no parent exists, initializies new ArcSubWorkflow from identifier.
+ </summary>
+</member>
+<member name="M:ARCtrl.ArcWorkflow.Copy(Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Copies ArcStudy object without the pointer to the parent ArcInvestigation
+
+ This copy does only contain the identifiers of the registered ArcAssays and not the actual objects.
+
+ In order to copy the ArcAssays as well, use the Copy() method of the ArcInvestigation.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcWorkflow.AddSubWorkflow(ARCtrl.ArcWorkflow)">
+ <summary>
+ Add subWorkflow to investigation and register it to workflow.
+ </summary>
+ <param name="subWorkflow"></param>
+</member>
+<member name="P:ARCtrl.ArcStudy.Identifier(System.String)">
+<summary>
+ Must be unique in one investigation
+</summary>
+</member>
+<member name="P:ARCtrl.ArcStudy.isEmpty">
+ <summary>
+ Returns true if all fields are None/ empty sequences **except** Identifier.
+ </summary>
+</member>
+<member name="P:ARCtrl.ArcStudy.VacantAssayIdentifiers">
+<summary>
+ Returns all registered assay identifiers that do not correspond to an existing assay object in the associated investigation.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcStudy.RegisteredAssays">
+<summary>
+ Returns all assays registered in this study, that correspond to an existing assay object in the associated investigation.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcStudy.RegisteredAssayIdentifierCount">
+<summary>
+ Returns the count of registered assay *identifiers*. This is not necessarily the same as the count of registered assays, as not all identifiers correspond to an existing assay.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcStudy.RegisteredAssayCount">
+<summary>
+ Returns the count of registered assays. This is not necessarily the same as the count of registered assay *identifiers*, as not all identifiers correspond to an existing assay.
+</summary>
+</member>
+<member name="P:ARCtrl.ArcStudy.Identifier">
+<summary>
+ Must be unique in one investigation
+</summary>
+</member>
+<member name="M:ARCtrl.ArcStudy.getTableAt(System.Int32)">
+<summary>
+ Receive **copy** of table at `index`
+</summary>
+</member>
+<member name="M:ARCtrl.ArcStudy.getTable(System.String)">
+<summary>
+ Receive **copy** of table with `name` = `ArcTable.Name`
+</summary>
+</member>
+<member name="M:ARCtrl.ArcStudy.getRegisteredAssaysOrIdentifier">
+ <summary>
+ Returns ArcAssays registered in study, or if no parent exists, initializies new ArcAssay from identifier.
+ </summary>
+</member>
+<member name="M:ARCtrl.ArcStudy.UpdateReferenceByStudyFile(ARCtrl.ArcStudy,Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Updates given study from an investigation file against a study from a study file. Identifier will never be updated.
+ </summary>
+ <param name="study">The study used for updating this study.</param>
+ <param name="onlyReplaceExisting">If true, this will only update fields which are `Some` or non-empty lists. Default: **false**</param>
+</member>
+<member name="M:ARCtrl.ArcStudy.ReferenceEquals(ARCtrl.ArcStudy)">
+ <summary>
+ Use this function to check if this ArcStudy and the input ArcStudy refer to the same object.
+
+ If true, updating one will update the other due to mutability.
+ </summary>
+ <param name="other">The other ArcStudy to test for reference.</param>
+</member>
+<member name="M:ARCtrl.ArcStudy.GetRegisteredAssaysOrIdentifier">
+ <summary>
+ Returns ArcAssays registered in study, or if no parent exists, initializies new ArcAssay from identifier.
+ </summary>
+</member>
+<member name="M:ARCtrl.ArcStudy.Copy(Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Copies ArcStudy object without the pointer to the parent ArcInvestigation
+
+ This copy does only contain the identifiers of the registered ArcAssays and not the actual objects.
+
+ In order to copy the ArcAssays as well, use the Copy() method of the ArcInvestigation.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcStudy.AddRegisteredAssay(ARCtrl.ArcAssay)">
+ <summary>
+ Add assay to investigation and register it to study.
+ </summary>
+ <param name="assay"></param>
+</member>
+<member name="P:ARCtrl.ArcAssay.Identifier(System.String)">
+<summary>
+ Must be unique in one study
+</summary>
+</member>
+<member name="P:ARCtrl.ArcAssay.Identifier">
+<summary>
+ Must be unique in one study
+</summary>
+</member>
+<member name="M:ARCtrl.ArcAssay.getTableAt(System.Int32)">
+<summary>
+ Receive **copy** of table at `index`
+</summary>
+</member>
+<member name="M:ARCtrl.ArcAssay.getTable(System.String)">
+<summary>
+ Receive **copy** of table with `name` = `ArcTable.Name`
+</summary>
+</member>
+<member name="M:ARCtrl.ArcAssay.UpdateReferenceByAssayFile(ARCtrl.ArcAssay,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Updates given assay stored in an study or investigation file with values from an assay file.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcAssay.UpdateBy(ARCtrl.ArcAssay,Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Updates given assay with another assay, Identifier will never be updated. By default update is full replace. Optional Parameters can be used to specify update logic.
+ </summary>
+ <param name="assay">The assay used for updating this assay.</param>
+ <param name="onlyReplaceExisting">If true, this will only update fields which are `Some` or non-empty lists. Default: **false**</param>
+ <param name="appendSequences">If true, this will append lists instead of replacing. Will return only distinct elements. Default: **false**</param>
+</member>
+<member name="M:ARCtrl.ArcAssay.ReferenceEquals(ARCtrl.ArcAssay)">
+ <summary>
+ Use this function to check if this ArcAssay and the input ArcAssay refer to the same object.
+
+ If true, updating one will update the other due to mutability.
+ </summary>
+ <param name="other">The other ArcAssay to test for reference.</param>
+</member>
+<member name="M:ARCtrl.Template.ReferenceEquals(ARCtrl.Template)">
+ <summary>
+ Use this function to check if this Template and the input Template refer to the same object.
+
+ If true, updating one will update the other due to mutability.
+ </summary>
+ <param name="other">The other Template to test for reference.</param>
+</member>
+<member name="M:ARCtrl.Templates.getDistinctOntologyAnnotations(ARCtrl.Template[])">
+ <summary>
+ Returns all **distinct** `template.Tags` and `template.EndpointRepositories`
+ </summary>
+ <param name="templates"></param>
+</member>
+<member name="M:ARCtrl.Templates.getDistinctEndpointRepositories(System.Collections.Generic.List{ARCtrl.Template})">
+ <summary>
+ Returns all **distinct** `template.Tags` and `template.EndpointRepositories`
+ </summary>
+ <param name="templates"></param>
+</member>
+<member name="M:ARCtrl.Templates.filterByTags(System.Collections.Generic.List{ARCtrl.OntologyAnnotation},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Filter templates by `template.Tags`.
+ </summary>
+ <param name="queryTags">The ontology annotation to filter by.</param>
+ <param name="matchAll">Default: false. If true all `queryTags` must be contained in template, if false only 1 tags must be contained in template.</param>
+</member>
+<member name="M:ARCtrl.Templates.filterByOntologyAnnotation(System.Collections.Generic.List{ARCtrl.OntologyAnnotation},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Filters templates by template.Tags and template.EndpointRepositories
+ </summary>
+ <param name="queryTags">The ontology annotation to filter by.</param>
+ <param name="matchAll">Default: false. If true all `queryTags` must be contained in template, if false only 1 tags must be contained in template.</param>
+</member>
+<member name="M:ARCtrl.Templates.filterByEndpointRepositories(System.Collections.Generic.List{ARCtrl.OntologyAnnotation},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Filter templates by `template.EndpointRepositories`.
+ </summary>
+ <param name="queryTags">The ontology annotation to filter by.</param>
+ <param name="matchAll">Default: false. If true all `queryTags` must be contained in template, if false only 1 tags must be contained in template.</param>
+</member>
+<member name="M:ARCtrl.Templates.filterByDataPLANT(System.Collections.Generic.List{ARCtrl.Template})">
+ <summary>
+ Filters templates by template.Organisation = `Organisation.DataPLANT`/`"DataPLANT"`.
+ </summary>
+ <param name="templates"></param>
+</member>
+<member name="M:ARCtrl.Helper.ResizeArray.appendSingleton``1(``0,System.Collections.Generic.List{``0})">
+<summary>
+ append a single element
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.ResizeArray.append``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0})">
+<summary>
+ Immutable append
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Option.fromSeq``2(``0)">
+<summary>
+ If the value matches the default, a None is returned, else a Some is returned
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Option.mapOrDefault``2(Microsoft.FSharp.Core.FSharpOption{``0},Microsoft.FSharp.Core.FSharpFunc{``1,``0},Microsoft.FSharp.Core.FSharpOption{``1})">
+<summary>
+ Applies the function f on the value of the option if it exists, else returns the default value.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Option.mapDefault``1(``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0},Microsoft.FSharp.Core.FSharpOption{``0})">
+<summary>
+ Applies the function f on the value of the option if it exists, else applies it on the default value. If the result value matches the default, a None is returned
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Option.fromValueWithDefault``1(``0,``0)">
+<summary>
+ If the value matches the default, a None is returned, else a Some is returned
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Url.uriParserCollection">
+<summary>
+ ENVO, PSI-MS (Prefix MS), CHEBI, GO, OBI, PATO, PECO, PO (purls broken), RO (purls broken), TO, UO, PSI-MOD (prefix MOD), EFO, NCIT, OMP should match to bioregistry parser
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseOutputColumnHeader(System.String)">
+<summary>
+ Matches a &quot;Output [OutputType]&quot; column header and returns the OutputType as string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseInputColumnHeader(System.String)">
+<summary>
+ Matches a &quot;Input [InputType]&quot; column header and returns the InputType as string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseTANColumnHeader(System.String)">
+<summary>
+ Matches a &quot;Term Accession Number (ShortTerm)&quot; column header and returns the ShortTerm as Term Source Ref and Annotation Number.
+
+ Example: &quot;Term Accession Number (MS:1003022)&quot; --&gt; term source ref: &quot;MS&quot;; annotation number: &quot;1003022&quot;
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseTSRColumnHeader(System.String)">
+<summary>
+ Matches a &quot;Term Source REF (ShortTerm)&quot; column header and returns the ShortTerm as Term Source Ref and Annotation Number.
+
+ Example: &quot;Term Source REF (MS:1003022)&quot; --&gt; term source ref: &quot;MS&quot;; annotation number: &quot;1003022&quot;
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseComponentColumnHeader(System.String)">
+<summary>
+ Matches a &quot;Component [Term]&quot; or &quot;Characteristics [Term]&quot; or &quot;Component Value [Term]&quot; column header and returns the Term string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseCharacteristicColumnHeader(System.String)">
+<summary>
+ Matches a &quot;Characteristic [Term]&quot; or &quot;Characteristics [Term]&quot; or &quot;Characteristics Value [Term]&quot; column header and returns the Term string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseFactorColumnHeader(System.String)">
+<summary>
+ Matches a &quot;Factor [Term]&quot; or &quot;Factor Value [Term]&quot; column header and returns the Term string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseParameterColumnHeader(System.String)">
+<summary>
+ Matches a &quot;Parameter [Term]&quot; or &quot;Parameter Value [Term]&quot; column header and returns the Term string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseUnitColumnHeader(System.String)">
+<summary>
+ Matches a &quot;Unit&quot; column header.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseTermColumn(System.String)">
+<summary>
+ Matches any column header starting with some text, followed by one whitespace and a term name inside squared brackets.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseIOTypeHeader(System.String)">
+ <summary>
+ This function is used to match both Input and Output columns and capture the IOType as `iotype` group.
+ 
+ **Example 1:** "Input [Sample]" --> "Sample"
+ </summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseExcelNumberFormat(System.String)">
+ <summary>
+ This function is used to parse Excel numberFormat string to term name.
+ 
+ **Example 1:** "0.00 "degree Celsius"" --> "degree Celsius"
+ </summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.getTermAnnotationShortString(System.String)">
+<summary>
+ Parses &apos;str&apos; to term accession and returns it in the format &quot;termsourceref:localtan&quot;. Exmp.: &quot;MS:000001&quot;
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryGetTermAnnotationShortString(System.String)">
+<summary>
+ Tries to parse &apos;str&apos; to term accession and returns it in the format `Some &quot;termsourceref:localtan&quot;`. Exmp.: `Some &quot;MS:000001&quot;`
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.tryParseTermAnnotation(System.String)">
+ <summary>
+ This function can be used to extract `IDSPACE:LOCALID` (or: `Term Accession`) from Swate header strings or obofoundry conform URI strings.
+ 
+ **Example 1:** "http://purl.obolibrary.org/obo/GO_000001" --> "GO:000001"
+ 
+ **Example 2:** "Term Source REF (NFDI4PSO:0000064)" --> "NFDI4PSO:0000064"
+ </summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|AutoGeneratedTableName|_|(System.String)">
+<summary>
+ Matches auto-generated readable table names. Mainly used in ArcAssay.addTable(). Default tables will get such a name.
+
+ Will match &quot;New Table 10&quot; and return the number `10`.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|OutputColumnHeader|_|(System.String)">
+<summary>
+ Matches a &quot;Output [OutputType]&quot; column header and returns the OutputType as string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|InputColumnHeader|_|(System.String)">
+<summary>
+ Matches a &quot;Input [InputType]&quot; column header and returns the InputType as string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|TANColumnHeader|_|(System.String)">
+<summary>
+ Matches a &quot;Term Accession Number (ShortTerm)&quot; column header and returns the ShortTerm as Term Source Ref and Annotation Number.
+
+ Example: &quot;Term Accession Number (MS:1003022)&quot; --&gt; term source ref: &quot;MS&quot;; annotation number: &quot;1003022&quot;
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|TSRColumnHeader|_|(System.String)">
+<summary>
+ Matches a &quot;Term Source REF (ShortTerm)&quot; column header and returns the ShortTerm as Term Source Ref and Annotation Number.
+
+ Example: &quot;Term Source REF (MS:1003022)&quot; --&gt; term source ref: &quot;MS&quot;; annotation number: &quot;1003022&quot;
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|TermAnnotation|_|(System.String)">
+<summary>
+ Matches a term string (either short or URI) and returns the term source ref and the annotation number strings.
+ 
+ Example 1: &quot;MS:1003022&quot; --&gt; term source ref: &quot;MS&quot;; annotation number: &quot;1003022&quot;
+
+ Example 2: &quot;http://purl.obolibrary.org/obo/MS_1003022&quot; --&gt; term source ref: &quot;MS&quot;; annotation number: &quot;1003022&quot;
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|TermAnnotationShort|_|(System.String)">
+<summary>
+ Matches a short term string and returns the term source ref and the annotation number strings.
+ 
+ Example: &quot;MS:1003022&quot; --&gt; term source ref: &quot;MS&quot;; annotation number: &quot;1003022&quot;
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|ComponentColumnHeader|_|(System.String)">
+<summary>
+ Matches a &quot;Component [Term]&quot; or &quot;Component Value [Term]&quot; column header and returns the Term string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|CharacteristicColumnHeader|_|(System.String)">
+<summary>
+ Matches a &quot;Characteristic [Term]&quot; or &quot;Characteristics [Term]&quot; or &quot;Characteristics Value [Term]&quot; column header and returns the Term string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|FactorColumnHeader|_|(System.String)">
+<summary>
+ Matches a &quot;Factor [Term]&quot; or &quot;Factor Value [Term]&quot; column header and returns the Term string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|ParameterColumnHeader|_|(System.String)">
+<summary>
+ Matches a &quot;Parameter [Term]&quot; or &quot;Parameter Value [Term]&quot; column header and returns the Term string.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|UnitColumnHeader|_|(System.String)">
+<summary>
+ Matches a &quot;Unit&quot; column header.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|TermColumn|_|(System.String)">
+<summary>
+ Matches any column header starting with some text, followed by one whitespace and a term name inside squared brackets.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|ReferenceColumnHeader|_|(System.String)">
+<summary>
+ Matches any column header starting with some text, followed by one whitespace and a term name inside squared brackets.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Regex.ActivePatterns.|Regex|_|(System.String,System.String)">
+<summary>
+ Matches, if the input string matches the given regex pattern.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.AutoGeneratedTableName">
+<summary>
+ This pattern is used to match auto-generated table names. Mainly used in ArcAssay.addTable(). Default tables will get such a name.
+
+ Will match &quot;New Table 10&quot; and will capture the number as `number` group.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.TermColumnPattern">
+<summary>
+ This pattern matches any column header starting with some text, followed by one whitespace and a term name inside squared brackets.
+
+ Captures column type as named group: &quot;termcolumntype&quot; (e.g. Component, Characteristic .. ).
+
+ Captures term name as named group: &quot;termname&quot; (e.g. instrument model).
+
+ Exmp. 1: Parameter [instrument model] --&gt; termcolumntype: Parameter; termname: instrument model
+
+ Exmp. 2: Characteristic [species] --&gt; termcolumntype: Characteristic; termname: species
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.CommentPattern">
+<summary>
+ This pattern is used to match Comment column and capture the comment key as `commentKey` group.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.OutputPattern">
+<summary>
+ This pattern is used to match Output column and capture the IOType as `iotype` group.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.InputPattern">
+<summary>
+ This pattern is used to match Input column and capture the IOType as `iotype` group.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.IOTypePattern">
+<summary>
+ This pattern is used to match both Input and Output columns and capture the IOType as `iotype` group.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.TermAnnotationURIPattern_MS_RO_PO">
+<summary>
+ Watch this closely, this could hit some edge cases we do not want to cover.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.TermAnnotationURIPattern_lessRestrictive">
+<summary>
+ Watch this closely, this could hit some edge cases we do not want to cover.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.TermAnnotationURIPattern">
+ <summary>Regex pattern is designed to hit only Foundry-compliant URIs.</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.TermAnnotationShortPattern">
+<summary>
+ Hits term accession, without id: ENVO:01001831
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.TermAccessionNumberColumnPattern">
+<summary>
+ Hits Term Source REF column header
+
+ Example 1: &quot;Term Accession Number (MS:1003022)&quot;
+
+ the id part &quot;MS:1003022&quot; is captured as `id` group.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.TermSourceREFColumnPattern">
+<summary>
+ Hits Term Accession Number column header
+
+ Example 1: &quot;Term Source REF (MS:1003022)&quot;
+
+ the id part &quot;MS:1003022&quot; is captured as `id` group.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.ReferenceColumnPattern">
+<summary>
+ Hits Term Source REF and Term Accession Number column headers
+
+ Example 1: &quot;Term Source REF (MS:1003022)&quot;
+
+ Example 2: &quot;Term Accession Number (MS:1003022)&quot;
+
+ the id part &quot;MS:1003022&quot; is captured as `id` group.
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.UnitPattern">
+<summary>
+ Hits Unit column header
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.ExcelNumberFormat">
+<summary>
+ Used to get unit name from Excel numberFormat: 0.00 &quot;degree Celsius&quot; --&gt; degree Celsius
+</summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.SquaredBracketsTermNamePattern">
+ <summary> This pattern captures characters between squared brackets, without id: Parameter [biological replicate#2] -> [biological replicate]
+ 
+ TODO: Could be redesigned to use capture groups, then it could return inner without brackets
+ </summary>
+</member>
+<member name="P:ARCtrl.Helper.Regex.Pattern.IdPattern">
+<summary>
+ This pattern is only used to remove any leftover #id attributes from previous Swate version. 
+ `&quot;Parameter [biological replicate#2]&quot;` This #id is deprecated but the pattern can still be used to remove any from files. 
+ Was deprecated before 2023.
+</summary>
+</member>
+<member name="T:ARCtrl.Helper.Regex">
+ <summary>
+ This module contains unified regex patterns and matching functions to parse isa tab column headers to BuildingBlock information.
+ </summary>
+</member>
+<member name="P:ARCtrl.Helper.Identifier.InnerValidCharactersPattern">
+<summary>
+ This pattern should never be used as standalone pattern!
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Run.tryDatamapFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `runs/runIdentifier/isa.datamap.xlsx`.
+ </summary>
+ <param name="identifier">Any correct run identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Run.datamapFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `runs/runIdentifier/isa.datamap.xlsx`.
+ </summary>
+ <param name="identifier">Any correct run identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Run.tryYmlFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a yml file we unify our output to a relative path to ARC root. So: `runs/runIdentifier/run.yml`.
+ </summary>
+ <param name="identifier">Any correct run identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Run.ymlFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a yml file we unify our output to a relative path to ARC root. So: `runs/runIdentifier/run.yml`.
+ </summary>
+ <param name="identifier">Any correct run identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Run.tryCwlFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a cwl file we unify our output to a relative path to ARC root. So: `runs/runIdentifier/run.cwl`.
+ </summary>
+ <param name="identifier">Any correct run identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Run.cwlFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a cwl file we unify our output to a relative path to ARC root. So: `runs/runIdentifier/run.cwl`.
+ </summary>
+ <param name="identifier">Any correct run identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Run.tryFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `runs/runIdentifier/isa.run.xlsx`.
+ </summary>
+ <param name="identifier">Any correct run identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Run.fileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `runs/runIdentifier/isa.run.xlsx`.
+ </summary>
+ <param name="identifier">Any correct run identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Run.tryIdentifierFromFileName(System.String)">
+ <summary>
+ On read-in the FileName can be any combination of "runs" (run folder name), runIdentifier and "isa.run.xlsx" (the actual file name).
+
+ This functions extracts runIdentifier from any of these combinations and returns it.
+ </summary>
+ <param name="fileName">FileName as written in isa.run.xlsx metadata sheet</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Run.identifierFromFileName(System.String)">
+ <summary>
+ On read-in the FileName can be any combination of "runs" (run folder name), runIdentifier and "isa.run.xlsx" (the actual file name).
+
+ This functions extracts runIdentifier from any of these combinations and returns it.
+ </summary>
+ <param name="fileName">FileName as written in isa.run.xlsx metadata sheet</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Workflow.tryDatamapFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `workflows/workflowIdentifier/isa.datamap.xlsx`.
+ </summary>
+ <param name="identifier">Any correct workflow identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Workflow.datamapFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `workflows/workflowIdentifier/isa.datamap.xlsx`.
+ </summary>
+ <param name="identifier">Any correct workflow identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Workflow.tryCwlFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a cwl file we unify our output to a relative path to ARC root. So: `workflows/workflowIdentifier/workflow.cwl`.
+ </summary>
+ <param name="identifier">Any correct workflow identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Workflow.cwlFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a cwl file we unify our output to a relative path to ARC root. So: `workflows/workflowIdentifier/workflow.cwl`.
+ </summary>
+ <param name="identifier">Any correct workflow identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Workflow.tryFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `workflows/workflowIdentifier/isa.workflow.xlsx`.
+ </summary>
+ <param name="identifier">Any correct workflow identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Workflow.fileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `workflows/workflowIdentifier/isa.workflow.xlsx`.
+ </summary>
+ <param name="identifier">Any correct workflow identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Workflow.tryIdentifierFromFileName(System.String)">
+ <summary>
+ On read-in the FileName can be any combination of "workflows" (workflow folder name), workflowIdentifier and "isa.workflow.xlsx" (the actual file name).
+
+ This functions extracts workflowIdentifier from any of these combinations and returns it.
+ </summary>
+ <param name="fileName">FileName as written in isa.workflow.xlsx metadata sheet</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Workflow.identifierFromFileName(System.String)">
+ <summary>
+ On read-in the FileName can be any combination of "workflows" (workflow folder name), workflowIdentifier and "isa.workflow.xlsx" (the actual file name).
+
+ This functions extracts workflowIdentifier from any of these combinations and returns it.
+ </summary>
+ <param name="fileName">FileName as written in isa.workflow.xlsx metadata sheet</param>
+</member>
+<member name="T:ARCtrl.Helper.Identifier.Workflow">
+<summary>
+ Workflow only contains &quot;FileName&quot; in isa.workflow.xlsx. To unify naming in our model, on read-in we transform fileName to identifier and reverse for writing.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Study.tryDatamapFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `studies/studyIdentifier/isa.investigation.xlsx`.
+ </summary>
+ <param name="identifier">Any correct study identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Study.datamapFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `studies/studyIdentifier/isa.investigation.xlsx`.
+ </summary>
+ <param name="identifier">Any correct study identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Study.tryFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `studies/studyIdentifier/isa.study.xlsx`.
+ </summary>
+ <param name="identifier">Any correct study identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Study.fileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `studies/studyIdentifier/isa.study.xlsx`.
+ </summary>
+ <param name="identifier">Any correct study identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Study.tryIdentifierFromFileName(System.String)">
+ <summary>
+ On read-in the FileName can be any combination of "studies" (study folder name), studyIdentifier and "isa.study.xlsx" (the actual file name).
+
+ This functions extracts studyIdentifier from any of these combinations and returns it.
+ </summary>
+ <param name="fileName">FileName as written in isa.study.xlsx metadata sheet</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Study.identifierFromFileName(System.String)">
+ <summary>
+ On read-in the FileName can be any combination of "studies" (study folder name), studyIdentifier and "isa.study.xlsx" (the actual file name).
+
+ This functions extracts studyIdentifier from any of these combinations and returns it.
+ </summary>
+ <param name="fileName">FileName as written in isa.study.xlsx metadata sheet</param>
+</member>
+<member name="T:ARCtrl.Helper.Identifier.Study">
+<summary>
+ Assay only contains &quot;FileName&quot; in isa.assay.xlsx. To unify naming in our model, on read-in we transform fileName to identifier and reverse for writing.
+</summary>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Assay.tryDatamapFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `assays/assayIdentifier/isa.datamap.xlsx`.
+ </summary>
+ <param name="identifier">Any correct assay identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Assay.datamapFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `assays/assayIdentifier/isa.datamap.xlsx`.
+ </summary>
+ <param name="identifier">Any correct assay identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Assay.tryFileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `assays/assayIdentifier/isa.assay.xlsx`.
+ </summary>
+ <param name="identifier">Any correct assay identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Assay.fileNameFromIdentifier(System.String)">
+ <summary>
+ On writing a xlsx file we unify our output to a relative path to ARC root. So: `assays/assayIdentifier/isa.assay.xlsx`.
+ </summary>
+ <param name="identifier">Any correct assay identifier</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Assay.tryIdentifierFromFileName(System.String)">
+ <summary>
+ On read-in the FileName can be any combination of "assays" (assay folder name), assayIdentifier and "isa.assay.xlsx" (the actual file name).
+
+ This functions extracts assayIdentifier from any of these combinations and returns it.
+ </summary>
+ <param name="fileName">FileName as written in isa.assay.xlsx metadata sheet</param>
+</member>
+<member name="M:ARCtrl.Helper.Identifier.Assay.identifierFromFileName(System.String)">
+ <summary>
+ On read-in the FileName can be any combination of "assays" (assay folder name), assayIdentifier and "isa.assay.xlsx" (the actual file name).
+
+ This functions extracts assayIdentifier from any of these combinations and returns it.
+ </summary>
+ <param name="fileName">FileName as written in isa.assay.xlsx metadata sheet</param>
+</member>
+<member name="T:ARCtrl.Helper.Identifier.Assay">
+<summary>
+ Assay only contains &quot;FileName&quot; in isa.assay.xlsx. To unify naming in our model, on read-in we transform fileName to identifier and reverse for writing.
+</summary>
+</member>
+<member name="T:ARCtrl.Helper.Identifier">
+<summary>
+ This module contains helper functions to handle study/assay/investigation identifiers in an unsafe, forced way.
+</summary>
+</member>
+<member name="M:ARCtrl.URIModule.toString(System.String)">
+<summary>
+ Create a ISATab string entry from a ISAJson URI
+
+ This is a placeholder function. It has currently no function, but as soon as it is implemented it will already be placed at all relevant code locations.
+</summary>
+</member>
+<member name="M:ARCtrl.URIModule.fromString(System.String)">
+<summary>
+ Create a ISAJson URI from a ISATab string entry
+
+ This is a placeholder function. It has currently no function, but as soon as it is implemented it will already be placed at all relevant code locations.
+</summary>
+</member>
+<member name="M:ARCtrl.CommentArray.dropByKey(System.String,System.Collections.Generic.List{ARCtrl.Comment})">
+<summary>
+ Returns a new comment [] where comments with the given key are filtered out
+</summary>
+</member>
+<member name="M:ARCtrl.CommentArray.set(ARCtrl.Comment,System.Collections.Generic.List{ARCtrl.Comment})">
+<summary>
+ Add the given comment to the comment [] if it doesnt exist, else replace it 
+</summary>
+</member>
+<member name="M:ARCtrl.CommentArray.toMap(System.Collections.Generic.List{ARCtrl.Comment})">
+<summary>
+ Create a map of comment keys to comment values
+</summary>
+</member>
+<member name="M:ARCtrl.CommentArray.item(System.String,System.Collections.Generic.List{ARCtrl.Comment})">
+<summary>
+ If a comment with the given key exists in the [], return its value
+</summary>
+</member>
+<member name="M:ARCtrl.CommentArray.containsKey(System.String,System.Collections.Generic.List{ARCtrl.Comment})">
+<summary>
+ Returns true, if the key exists in the []
+</summary>
+</member>
+<member name="M:ARCtrl.CommentArray.tryItem(System.String,System.Collections.Generic.List{ARCtrl.Comment})">
+<summary>
+ If a comment with the given key exists in the [], return its value, else return None
+</summary>
+</member>
+<member name="T:ARCtrl.ArcTableAux.ArcTableValues">
+ <summary>
+ Helper type to hold the values of an ArcTable.
+
+ Composed of a list of `ColumnValueRefs` which reference the actual values in a dictionary.
+ </summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.tryFindDuplicateUniqueInArray(System.Collections.Generic.IEnumerable{ARCtrl.CompositeHeader})">
+<summary>
+ Returns the column index of the duplicate unique column in `existingHeaders`.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.tryFindDuplicateUnique(ARCtrl.CompositeHeader,System.Collections.Generic.IEnumerable{ARCtrl.CompositeHeader})">
+<summary>
+ Returns the column index of the duplicate unique column in `existingHeaders`.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.ensureCellHashInValueMap(ARCtrl.CompositeCell,System.Collections.Generic.Dictionary{System.Int32,ARCtrl.CompositeCell})">
+<summary>
+ For a given CompositeCell, check whether its hash is already part of the valueMap. If it is, return the hash. If it is not, add it to the valueMap and return the hash. In case of a hash collision, we add a fixed value (linear probing).
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.getEmptyCellForHeader(ARCtrl.CompositeHeader,Microsoft.FSharp.Core.FSharpOption{ARCtrl.CompositeCell})">
+<summary>
+ Get an empty cell fitting for related column header.
+
+ `columCellOption` is used to decide between `CompositeCell.Term` or `CompositeCell.Unitized`. `columCellOption` can be any other cell in the same column, preferably the first one.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.Unchecked.alignByHeaders(System.Boolean,Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{System.Tuple{ARCtrl.CompositeHeader,ARCtrl.CompositeCell}}})">
+<summary>
+ From a list of rows consisting of headers and values, creates a list of combined headers and the values as a sparse matrix
+
+ The values cant be directly taken as they are, as there is no guarantee that the headers are aligned
+
+ This function aligns the headers and values by the main header string
+
+ If keepOrder is true, the order of values per row is kept intact, otherwise the values are allowed to be reordered
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.Unchecked.moveColumnTo(System.Int32,System.Int32,System.Collections.Generic.List{ARCtrl.CompositeHeader},ARCtrl.ArcTableAux.ArcTableValues)">
+<summary>
+ Moves a column from one position to another
+
+ This function moves the column from `fromCol` to `toCol` and shifts all columns in between accordingly
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.Unchecked.compositeHeaderMainColumnEqual(ARCtrl.CompositeHeader,ARCtrl.CompositeHeader)">
+<summary>
+ Returns true, if two composite headers share the same main header string
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.Unchecked.addRefColumn(ARCtrl.CompositeHeader,ARCtrl.ArcTableAux.ColumnValueRefs,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Collections.Generic.List{ARCtrl.CompositeHeader},ARCtrl.ArcTableAux.ArcTableValues)">
+ <summary>
+ Add a new column to the ArcTableValues.
+ </summary>
+ <param name="newHeader">Header of the new column.</param>
+ <param name="newCells"></param>
+ <param name="index"></param>
+ <param name="forceReplace"></param>
+ <param name="onlyHeaders">If set to true, no values will be added</param>
+ <param name="headers"></param>
+ <param name="values"></param>
+</member>
+<member name="M:ARCtrl.ArcTableAux.Unchecked.removeRowRange_withIndexChange(System.Int32,System.Int32,ARCtrl.ArcTableAux.ArcTableValues)">
+<summary>
+ Remove cells of one Row, change index of cells with higher index to index - 1
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.Unchecked.removeRowCells_withIndexChange(System.Int32,ARCtrl.ArcTableAux.ArcTableValues)">
+<summary>
+ Remove cells of one Row, change index of cells with higher index to index - 1
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.Unchecked.removeColumnCells_withIndexChange(System.Int32,System.Int32,ARCtrl.ArcTableAux.ArcTableValues)">
+<summary>
+ Remove cells of one Column, change index of cells with higher index to index - 1
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.Unchecked.removeColumnCells(System.Int32,ARCtrl.ArcTableAux.ArcTableValues)">
+<summary>
+ Remove cells of one Column, change index of cells with higher index to index - 1
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.Unchecked.setCellAt(System.Int32,System.Int32,ARCtrl.CompositeCell,ARCtrl.ArcTableAux.ArcTableValues)">
+<summary>
+ Add or update a cell in the dictionary.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.SanityChecks.validateRowIndex(System.Int32,System.Int32,System.Boolean)">
+<summary>
+ Checks if given index is valid for given number of rows.
+
+ if `allowAppend` = true =&gt; `0 &lt; index &lt;= rowCount`
+
+ if `allowAppend` = false =&gt; `0 &lt; index &lt; rowCount`
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTableAux.SanityChecks.validateColumnIndex(System.Int32,System.Int32,System.Boolean)">
+<summary>
+ Checks if given column index is valid for given number of columns.
+
+ if `allowAppend` = true =&gt; `0 &lt; index &lt;= columnCount`
+
+ if `allowAppend` = false =&gt; `0 &lt; index &lt; columnCount`
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTablesAux.getIOMap(System.Collections.Generic.List{ARCtrl.ArcTable})">
+<summary>
+ Collects the IOType of each distinct entity in the tables. Then merges the IOType of each entity according to the IOType.Merge function.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTablesAux.findIndexByTableName(System.String,System.Collections.Generic.List{ARCtrl.ArcTable})">
+<summary>
+ If a table with the given name exists in the TableList, returns it, else fails.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTablesAux.tryFindIndexByTableName(System.String,System.Collections.Generic.List{ARCtrl.ArcTable})">
+<summary>
+ If a table with the given name exists in the TableList, returns it, else returns None.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTablesAux.SanityChecks.validateNewNameAtUnique(System.Int32,System.String,System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Fails, if the name is already used by another table at a different position.
+
+ Does not fail, if the newName is the same as the one in the given position.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTablesAux.SanityChecks.validateNewNameUnique(System.String,System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Fails, if the name is already used by another table.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTablesAux.SanityChecks.validateNamesUnique(System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Fails, if two tables have the same name.
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTablesAux.SanityChecks.validateSheetIndex(System.Int32,System.Boolean,System.Collections.Generic.List{ARCtrl.ArcTable})">
+<summary>
+ Fails, if the index is out of range of the Tables collection. When allowAppend is set to true, it may be out of range by at most 1. 
+</summary>
+</member>
+<member name="M:ARCtrl.ArcTypesAux.removeMissingRegisteredAssays(ARCtrl.ArcInvestigation)">
+ <summary>
+ Some functions can change ArcInvestigation.Assays elements. After these functions we must remove all registered assays which might have gone lost.
+ </summary>
+ <param name="inv"></param>
+</member>
+<member name="T:ARCtrl.TemplatesAux">
+<summary>
+ This module contains unchecked helper functions for templates
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.tryGetName(ARCtrl.Process.Factor)">
+<summary>
+ Returns the name of the factor as string if it exists
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.tryGetByName(System.String,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Factor})">
+<summary>
+ If a factor with the given name exists in the list, returns it
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.toStringObject(ARCtrl.Process.Factor)">
+<summary>
+ Get ISATab string entries from an ISAJson Factor object
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.setFactorType(ARCtrl.Process.Factor,ARCtrl.OntologyAnnotation)">
+<summary>
+ Replaces factor type of a factor by given factor type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.setComments(ARCtrl.Process.Factor,System.Collections.Generic.List{ARCtrl.Comment})">
+<summary>
+ Replaces comments of a factor by given comment list
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.removeByName(System.String,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Factor})">
+<summary>
+ If a factor with the given name exists in the list, removes it
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.nameEqualsString(System.String,ARCtrl.Process.Factor)">
+<summary>
+ Returns true if the given name matches the name of the factor
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.mapFactorType(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.OntologyAnnotation,ARCtrl.OntologyAnnotation},ARCtrl.Process.Factor)">
+<summary>
+ Applies function f on factor type of a factor
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.mapComments(Microsoft.FSharp.Core.FSharpFunc{System.Collections.Generic.List{ARCtrl.Comment},System.Collections.Generic.List{ARCtrl.Comment}},ARCtrl.Process.Factor)">
+<summary>
+ Applies function f on comments of a factor
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.getNameAsString(ARCtrl.Process.Factor)">
+<summary>
+ Returns the name of the factor as string
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.getFactorType(ARCtrl.Process.Factor)">
+<summary>
+ Returns factor type of a factor
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.getComments(ARCtrl.Process.Factor)">
+<summary>
+ Returns comments of a factor
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.fromString(System.String,System.String,System.String,System.String,Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.Comment}})">
+<summary>
+ Create a ISAJson Factor from ISATab string entries
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.existsByName(System.String,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Factor})">
+<summary>
+ If a factor with the given name exists in the list exists, returns true
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Factor.add(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Factor},ARCtrl.Process.Factor)">
+<summary>
+ adds the given factor to the factors  
+</summary>
+</member>
+<member name="M:ARCtrl.Process.FactorValue.nameEqualsString(System.String,ARCtrl.Process.FactorValue)">
+<summary>
+ Returns true if the given name matches the name of the factor value
+</summary>
+</member>
+<member name="M:ARCtrl.Process.FactorValue.getNameAsString(ARCtrl.Process.FactorValue)">
+<summary>
+ Returns the name of the factor value as string
+</summary>
+</member>
+<member name="M:ARCtrl.Process.MaterialAttribute.tryGetNameText(ARCtrl.Process.MaterialAttribute)">
+<summary>
+ Returns the name of the characteristic as string if it exists
+</summary>
+</member>
+<member name="M:ARCtrl.Process.MaterialAttribute.toStringObject(ARCtrl.Process.MaterialAttribute)">
+<summary>
+ Get ISATab string entries from an ISAJson MaterialAttribute object
+</summary>
+</member>
+<member name="M:ARCtrl.Process.MaterialAttribute.nameEqualsString(System.String,ARCtrl.Process.MaterialAttribute)">
+<summary>
+ Returns true if the given name matches the name of the characteristic
+</summary>
+</member>
+<member name="P:ARCtrl.Process.MaterialAttribute.TryNameText">
+<summary>
+ Returns the name of the characteristic as string
+</summary>
+</member>
+<member name="P:ARCtrl.Process.MaterialAttribute.NameText">
+<summary>
+ Returns the name of the characteristic as string
+</summary>
+</member>
+<member name="M:ARCtrl.Process.MaterialAttribute.getNameText(ARCtrl.Process.MaterialAttribute)">
+<summary>
+ Returns the name of the characteristic as string
+</summary>
+</member>
+<member name="M:ARCtrl.Process.MaterialAttribute.fromString(System.String,System.String,System.String,Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.Comment}})">
+<summary>
+ Create a ISAJson MaterialAttribute from ISATab string entries
+</summary>
+</member>
+<member name="M:ARCtrl.Process.MaterialAttributeValue.tryGetNameText(ARCtrl.Process.MaterialAttributeValue)">
+<summary>
+ Returns the name of the characteristic value as string if it exists
+</summary>
+</member>
+<member name="M:ARCtrl.Process.MaterialAttributeValue.nameEqualsString(System.String,ARCtrl.Process.MaterialAttributeValue)">
+<summary>
+ Returns true if the given name matches the name of the characteristic value
+</summary>
+</member>
+<member name="P:ARCtrl.Process.MaterialAttributeValue.TryNameText">
+<summary>
+ Returns the name of the category as string
+</summary>
+</member>
+<member name="P:ARCtrl.Process.MaterialAttributeValue.NameText">
+<summary>
+ Returns the name of the category as string
+</summary>
+</member>
+<member name="M:ARCtrl.Process.MaterialAttributeValue.getNameAsString(ARCtrl.Process.MaterialAttributeValue)">
+<summary>
+ Returns the name of the characteristic value as string
+</summary>
+</member>
+<member name="P:ARCtrl.Process.MaterialType.AsString">
+<summary>
+ Returns the type of the MaterialType
+</summary>
+</member>
+<member name="P:ARCtrl.Process.Component.ComponentType">
+<summary>
+ This can be the component column header (e.g. &quot;instrument model&quot;)
+</summary>
+</member>
+<member name="P:ARCtrl.Process.Component.ComponentUnit">
+<summary>
+ This can be the unit describing a non `OntologyAnnotation` value in `ComponentValue`. (e.g. &quot;degree celcius&quot;)
+</summary>
+</member>
+<member name="P:ARCtrl.Process.Component.ComponentValue">
+<summary>
+ This can be the main column value of the component column. (e.g. &quot;SCIEX instrument model&quot; as `OntologyAnnotation`; 14;..)
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Component.toStringObject(ARCtrl.Process.Component)">
+<summary>
+ Get ISATab string entries from an ISAJson Component object
+</summary>
+</member>
+<member name="P:ARCtrl.Process.Component.UnitText">
+<summary>
+ Returns the ontology of the category of the Value as string
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Component.fromISAString(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.Comment}})">
+<summary>
+ Create a ISAJson Component from ISATab string entries
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Component.decomposeName(System.String)">
+<summary>
+ This function parses the given Component header string format into the ISA-JSON Component type
+
+ Components do not have enough fields in ISA-JSON to include all existing ontology term information. 
+ This function allows us, to add the same information as `Parameter`, `Characteristics`.., to `Component`. 
+ Without this string composition we loose the ontology information for the header value.
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Component.composeName(ARCtrl.Value,Microsoft.FSharp.Core.FSharpOption{ARCtrl.OntologyAnnotation})">
+<summary>
+ This function creates a string containing full isa term triplet information about the component
+
+ Components do not have enough fields in ISA-JSON to include all existing ontology term information. 
+ This function allows us, to add the same information as `Parameter`, `Characteristics`.., to `Component`. 
+ Without this string composition we loose the ontology information for the header value.
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProtocolParameter.tryGetNameText(ARCtrl.Process.ProtocolParameter)">
+<summary>
+ Returns the name of the paramater as string if it exists
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProtocolParameter.toStringObject(ARCtrl.Process.ProtocolParameter)">
+<summary>
+ Get ISATab string entries from an ISAJson ProtocolParameter object (name,source,accession)
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProtocolParameter.nameEqualsString(System.String,ARCtrl.Process.ProtocolParameter)">
+<summary>
+ Returns true if the given name matches the name of the parameter
+</summary>
+</member>
+<member name="P:ARCtrl.Process.ProtocolParameter.TryNameText">
+<summary>
+ Returns the name of the parameter as string
+</summary>
+</member>
+<member name="P:ARCtrl.Process.ProtocolParameter.NameText">
+<summary>
+ Returns the name of the parameter as string
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProtocolParameter.getNameText(ARCtrl.Process.ProtocolParameter)">
+<summary>
+ Returns the name of the paramater as string
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProtocolParameter.fromString(System.String,System.String,System.String,Microsoft.FSharp.Core.FSharpOption{System.Collections.Generic.List{ARCtrl.Comment}})">
+<summary>
+ Create a ISAJson Protocol Parameter from ISATab string entries
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.tryGetByName(System.String,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Protocol})">
+<summary>
+ If a protocol with the given identfier exists in the list, returns it
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.setVersion(ARCtrl.Process.Protocol,System.String)">
+<summary>
+ Replaces protocol version of a protocol by given protocol version
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.setUri(ARCtrl.Process.Protocol,System.String)">
+<summary>
+ Replaces protocol URI of a protocol by given protocol URI
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.setProtocolType(ARCtrl.Process.Protocol,ARCtrl.OntologyAnnotation)">
+<summary>
+ Replaces protocol type of a protocol by given protocol type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.setParameters(ARCtrl.Process.Protocol,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.ProtocolParameter})">
+<summary>
+ Replaces protocol parameters of a protocol by given protocol parameter list
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.setName(ARCtrl.Process.Protocol,System.String)">
+<summary>
+ Replaces protocol name of a protocol by given protocol name
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.setDescription(ARCtrl.Process.Protocol,System.String)">
+<summary>
+ Replaces protocol description of a protocol by given protocol description
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.setComponents(ARCtrl.Process.Protocol,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Component})">
+<summary>
+ Replaces components of a protocol by given component list
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.setComments(ARCtrl.Process.Protocol,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Comment})">
+<summary>
+ Replaces comments of a protocol by given comment list
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.removeByName(System.String,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Protocol})">
+<summary>
+ If a protocol with the given name exists in the list, removes it
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.mapVersion(Microsoft.FSharp.Core.FSharpFunc{System.String,System.String},ARCtrl.Process.Protocol)">
+<summary>
+ Applies function f on protocol version of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.mapUri(Microsoft.FSharp.Core.FSharpFunc{System.String,System.String},ARCtrl.Process.Protocol)">
+<summary>
+ Applies function f on protocol URI of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.mapProtocolType(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.OntologyAnnotation,ARCtrl.OntologyAnnotation},ARCtrl.Process.Protocol)">
+<summary>
+ Applies function f on protocol type of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.mapParameters(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.ProtocolParameter},Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.ProtocolParameter}},ARCtrl.Process.Protocol)">
+<summary>
+ Applies function f on protocol parameters of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.mapName(Microsoft.FSharp.Core.FSharpFunc{System.String,System.String},ARCtrl.Process.Protocol)">
+<summary>
+ Applies function f on protocol name of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.mapDescription(Microsoft.FSharp.Core.FSharpFunc{System.String,System.String},ARCtrl.Process.Protocol)">
+<summary>
+ Applies function f on protocol description of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.mapComponents(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Component},Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Component}},ARCtrl.Process.Protocol)">
+<summary>
+ Applies function f on components of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.mapComments(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Collections.FSharpList{ARCtrl.Comment},Microsoft.FSharp.Collections.FSharpList{ARCtrl.Comment}},ARCtrl.Process.Protocol)">
+<summary>
+ Applies function f on comments of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.getVersion(ARCtrl.Process.Protocol)">
+<summary>
+ Returns protocol version of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.getUri(ARCtrl.Process.Protocol)">
+<summary>
+ Returns protocol URI of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.getProtocolType(ARCtrl.Process.Protocol)">
+<summary>
+ Returns protocol type of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.getParameters(ARCtrl.Process.Protocol)">
+<summary>
+ Returns protocol parameters of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.getName(ARCtrl.Process.Protocol)">
+<summary>
+ Protocol Name
+ Returns protocol name of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.getDescription(ARCtrl.Process.Protocol)">
+<summary>
+ Returns protocol description of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.getComponents(ARCtrl.Process.Protocol)">
+<summary>
+ Returns components of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.getComments(ARCtrl.Process.Protocol)">
+<summary>
+ Returns comments of a protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.existsByName(System.String,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Protocol})">
+<summary>
+ If a protocol with the given name exists in the list exists, returns true
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Protocol.add(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Protocol},ARCtrl.Process.Protocol)">
+<summary>
+ Adds the given protocol to the protocols  
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.trySource(ARCtrl.Process.ProcessInput)">
+<summary>
+ If given process input is a source, returns it, else returns None
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.trySample(ARCtrl.Process.ProcessInput)">
+<summary>
+ If given process input is a sample, returns it, else returns None
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.tryMaterial(ARCtrl.Process.ProcessInput)">
+<summary>
+ If given process input is a material, returns it, else returns None
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.tryGetName(ARCtrl.Process.ProcessInput)">
+<summary>
+ Returns name of processInput
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.tryGetCharacteristics(ARCtrl.Process.ProcessInput)">
+<summary>
+ If given process input contains characteristics, returns them
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.tryGetCharacteristicValues(ARCtrl.Process.ProcessInput)">
+<summary>
+ If given process input contains characteristics, returns them
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.tryData(ARCtrl.Process.ProcessInput)">
+<summary>
+ If given process input is a data, returns it, else returns None
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.nameEquals(System.String,ARCtrl.Process.ProcessInput)">
+<summary>
+ Returns true, if given name equals name of processInput
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.isSource">
+<summary>
+ Returns true, if Process Input is Source
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.isSource(ARCtrl.Process.ProcessInput)">
+<summary>
+ Returns true, if Process Input is Source
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.isSample">
+<summary>
+ Returns true, if Process Input is Sample
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.isSample(ARCtrl.Process.ProcessInput)">
+<summary>
+ Returns true, if Process Input is Sample
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.isMaterial">
+<summary>
+ Returns true, if Process Input is Material
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.isMaterial(ARCtrl.Process.ProcessInput)">
+<summary>
+ Returns true, if Process Input is Material
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.isData">
+<summary>
+ Returns true, if Process Input is Data
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.isData(ARCtrl.Process.ProcessInput)">
+<summary>
+ Returns true, if Process Input is Data
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.getUnits(ARCtrl.Process.ProcessInput)">
+<summary>
+ If given process output contains units, returns them
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessInput.getName(ARCtrl.Process.ProcessInput)">
+<summary>
+ Returns name of processInput
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.trySample(ARCtrl.Process.ProcessOutput)">
+<summary>
+ If given process output is a sample, returns it, else returns None
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.tryMaterial(ARCtrl.Process.ProcessOutput)">
+<summary>
+ If given process output is a material, returns it, else returns None
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.tryGetName(ARCtrl.Process.ProcessOutput)">
+<summary>
+ Returns name of processOutput
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.tryGetFactorValues(ARCtrl.Process.ProcessOutput)">
+<summary>
+ If given process output contains factors, returns them
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.tryGetCharacteristics(ARCtrl.Process.ProcessOutput)">
+<summary>
+ If given process output contains characteristics, returns them
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.tryGetCharacteristicValues(ARCtrl.Process.ProcessOutput)">
+<summary>
+ If given process output contains characteristics, returns them
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.tryData(ARCtrl.Process.ProcessOutput)">
+<summary>
+ If given process output is a data, returns it, else returns None
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.nameEquals(System.String,ARCtrl.Process.ProcessOutput)">
+<summary>
+ Returns true, if given name equals name of processOutput
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.isSample">
+<summary>
+ Returns true, if Process Output is Sample
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.isSample(ARCtrl.Process.ProcessOutput)">
+<summary>
+ Returns true, if Process Output is Sample
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.isMaterial">
+<summary>
+ Returns true, if Process Output is Material
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.isMaterial(ARCtrl.Process.ProcessOutput)">
+<summary>
+ Returns true, if Process Output is Material
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.isData">
+<summary>
+ Returns true, if Process Output is Data
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.isData(ARCtrl.Process.ProcessOutput)">
+<summary>
+ Returns true, if Process Output is Data
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.getUnits(ARCtrl.Process.ProcessOutput)">
+<summary>
+ If given process output contains units, returns them
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessOutput.getName(ARCtrl.Process.ProcessOutput)">
+<summary>
+ Returns name of processInput
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessParameterValue.tryGetNameText(ARCtrl.Process.ProcessParameterValue)">
+<summary>
+ Returns the name of the paramater value as string if it exists
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessParameterValue.nameEqualsString(System.String,ARCtrl.Process.ProcessParameterValue)">
+<summary>
+ Returns true if the given name matches the name of the parameter value
+</summary>
+</member>
+<member name="P:ARCtrl.Process.ProcessParameterValue.TryNameText">
+<summary>
+ Returns the name of the category as string
+</summary>
+</member>
+<member name="P:ARCtrl.Process.ProcessParameterValue.NameText">
+<summary>
+ Returns the name of the category as string
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessParameterValue.getNameText(ARCtrl.Process.ProcessParameterValue)">
+<summary>
+ Returns the name of the paramater value as string
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.tryGetProtocolName(ARCtrl.Process.Process)">
+<summary>
+ Returns the name of the protocol the given process executes
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.tryGetOutputsWithParameterBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.ProtocolParameter,System.Boolean},ARCtrl.Process.Process)">
+<summary>
+ If the process implements the given parameter, return the list of output files together with their according parameter values of this parameter
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.tryGetOutputsWithFactorBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.Factor,System.Boolean},ARCtrl.Process.Process)">
+<summary>
+ If the process implements the given factor, return the list of output files together with their according factor values of this factor
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.tryGetOutputsWithCharacteristicBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.MaterialAttribute,System.Boolean},ARCtrl.Process.Process)">
+<summary>
+ If the process implements the given characteristic, return the list of output files together with their according characteristic values of this characteristic
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.tryGetInputsWithParameterBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.ProtocolParameter,System.Boolean},ARCtrl.Process.Process)">
+<summary>
+ If the process implements the given parameter, return the list of input files together with their according parameter values of this parameter
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.tryGetInputsWithCharacteristicBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.MaterialAttribute,System.Boolean},ARCtrl.Process.Process)">
+<summary>
+ If the process implements the given characteristic, return the list of input files together with their according characteristic values of this characteristic
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.getUnits(ARCtrl.Process.Process)">
+<summary>
+ Returns the units of the process
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.getProtocolName(ARCtrl.Process.Process)">
+<summary>
+ Returns the name of the protocol the given process executes
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.getParameters(ARCtrl.Process.Process)">
+<summary>
+ Returns the parameters describing the process
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.getParameterValues(ARCtrl.Process.Process)">
+<summary>
+ Returns the parameter values describing the process
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.getOutputCharacteristicValues(ARCtrl.Process.Process)">
+<summary>
+ Returns the characteristics describing the outputs of the process
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.getInputCharacteristicValues(ARCtrl.Process.Process)">
+<summary>
+ Returns the characteristics describing the inputs of the process
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.getFactors(ARCtrl.Process.Process)">
+<summary>
+ Returns the factors of the samples of the process
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.getFactorValues(ARCtrl.Process.Process)">
+<summary>
+ Returns the factor values of the samples of the process
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.getCharacteristics(ARCtrl.Process.Process)">
+<summary>
+ Returns the characteristics describing the inputs and outputs of the process
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Process.getCharacteristicValues(ARCtrl.Process.Process)">
+<summary>
+ Returns the characteristic values describing the inputs and outputs of the process
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getData(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Returns the data the given processes contain
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getFinalOutputsOf(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process},System.String)">
+<summary>
+ Returns the final outputs of the processSequence, which point to no further nodes
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getRootInputOf(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process},System.String)">
+<summary>
+ Returns the initial inputs final outputs of the processSequence, to which no processPoints
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getFinalOutputs(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Returns the final outputs of the processSequence, which point to no further nodes
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getRootInputs(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Returns the initial inputs final outputs of the processSequence, to which no processPoints
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getFactors(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Returns the factors implemented by the processes contained in these processes
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getOutputsWithFactorBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.Factor,System.Boolean},Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ If the processes contain a process implementing the given factor, return the list of output files together with their according factor values of this factor
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getOutputsWithCharacteristicBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.MaterialAttribute,System.Boolean},Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ If the processes contain a process implementing the given parameter, return the list of output files together with their according parameter values of this parameter
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getInputsWithCharacteristicBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.MaterialAttribute,System.Boolean},Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ If the processes contain a process implementing the given parameter, return the list of input files together with their according parameter values of this parameter
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getCharacteristics(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Returns the characteristics describing the inputs and outputs of the processssequence
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getParameters(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Returns the parameters implemented by the processes contained in these processes
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getOutputsWithParameterBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.ProtocolParameter,System.Boolean},Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ If the processes contain a process implementing the given parameter, return the list of output files together with their according parameter values of this parameter
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getInputsWithParameterBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.ProtocolParameter,System.Boolean},Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ If the processes contain a process implementing the given parameter, return the list of input files together with their according parameter values of this parameter
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.filterByProtocolName(System.String,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Returns a list of the processes, containing only the ones executing a protocol with the given name
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.filterByProtocolBy(Microsoft.FSharp.Core.FSharpFunc{ARCtrl.Process.Protocol,System.Boolean},Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Returns a list of the processes, containing only the ones executing a protocol for which the predicate returns true
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getProtocols(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Returns the protocols the given processes impelement
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ProcessSequence.getProtocolNames(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Returns the names of the protocols the given processes impelement
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ColumnIndex.ColumnIndexExtensions.Component.fromStringWithColumnIndex.Static(System.String,System.String,System.String,System.String,System.Int32)">
+<summary>
+ Create a ISAJson Factor from ISATab string entries
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ColumnIndex.ColumnIndexExtensions.ProtocolParameter.fromStringWithColumnIndex.Static(System.String,System.String,System.String,System.Int32)">
+<summary>
+ Create a ISAJson parameter from ISATab string entries
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ColumnIndex.ColumnIndexExtensions.MaterialAttribute.fromStringWithColumnIndex.Static(System.String,System.String,System.String,System.Int32)">
+<summary>
+ Create a ISAJson characteristic from ISATab string entries
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ColumnIndex.ColumnIndexExtensions.Factor.fromStringWithColumnIndex.Static(System.String,System.String,System.String,System.String,System.Int32)">
+<summary>
+ Create a ISAJson Factor from ISATab string entries
+</summary>
+</member>
+<member name="M:ARCtrl.Process.ColumnIndex.ColumnIndexExtensions.OntologyAnnotation.fromStringWithColumnIndex.Static(System.String,System.String,System.String,System.String,System.Int32)">
+<summary>
+ Create a ISAJson Factor from ISATab string entries
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ArcTables.fromProcesses.Static(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Create a collection of tables from a list of processes.
+
+ For this, the processes are grouped by nameroot (&quot;nameroot_1&quot;, &quot;nameroot_2&quot; ...) or exectued protocol if no name exists
+
+ Then each group is converted to a table with this nameroot as sheetname
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ArcTables.GetProcesses(ARCtrl.ArcTables)">
+<summary>
+ Return a list of all the processes in all the tables.
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ArcTable.fromProcesses.Static(System.String,Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Create a new table from a list of processes
+
+ The name will be used as the sheet name
+ 
+ The processes SHOULD have the same headers, or even execute the same protocol
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ArcTable.GetProcesses(ARCtrl.ArcTable)">
+<summary>
+ Returns the list of processes specidified in this ArcTable
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ArcTable.GetProtocols(ARCtrl.ArcTable)">
+<summary>
+ Returns the list of protocols executed in this ArcTable
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ArcTable.fromProtocol.Static(ARCtrl.Process.Protocol)">
+<summary>
+ Create a new table from an ISA protocol.
+
+ The table will have at most one row, with the protocol information and the component values
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.CompositeCell.fromValue.Static(ARCtrl.Value,Microsoft.FSharp.Core.FSharpOption{ARCtrl.OntologyAnnotation})">
+ <summary>
+ This function is used to improve interoperability with ISA-JSON types. It is not recommended for default ARCtrl usage.
+ </summary>
+ <param name="value"></param>
+ <param name="unit"></param>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.mergeIdenticalProcesses(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Merges processes with the same name, protocol and param values
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.groupProcesses(Microsoft.FSharp.Collections.FSharpList{ARCtrl.Process.Process})">
+<summary>
+ Groups processes by their name, or by the name of the protocol they execute
+
+ Process names are taken from the Worksheet name and numbered: SheetName_1, SheetName_2, etc.
+ 
+ This function decomposes this name into a root name and a number, and groups processes by root name.
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.getProcessGetter(System.String,System.Collections.Generic.IEnumerable{ARCtrl.CompositeHeader})">
+<summary>
+ Given the header sequence of an ArcTable, returns a function for parsing each row of the table to a process
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryGetCommentGetter(System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict a comment, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryGetOutputGetter(System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict an output, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryGetInputGetter(System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict an input, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryGetProtocolVersionGetter(System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict a protocolVersion, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryGetProtocolURIGetter(System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict a protocolURI, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryGetProtocolDescriptionGetter(System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict a protocolDescription, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryGetProtocolREFGetter(System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict a protocolREF, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryGetProtocolTypeGetter(System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict a protocolType, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryCharacteristicGetter(System.Int32,System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict a protocolType, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryFactorGetter(System.Int32,System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict a factor, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryParameterGetter(System.Int32,System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict a parameter, returns a function for parsing the values of the matrix to the values of this type
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.ProcessParsing.tryComponentGetter(System.Int32,System.Int32,ARCtrl.CompositeHeader)">
+<summary>
+ If the given headers depict a component, returns a function for parsing the values of the matrix to the values of this component
+</summary>
+</member>
+<member name="T:ARCtrl.Process.Conversion.ProcessParsing">
+<summary>
+ Functions for parsing ArcTables to ISA json Processes and vice versa
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.decomposeTechnologyPlatform(System.String)">
+<summary>
+ This function parses the given string containing the name and the ontology short-string of the given ontology annotation term
+
+ TechnologyPlatforms are plain strings in ISA-JSON.
+
+ This function allows us, to parse them as an ontology term.
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.composeTechnologyPlatform(ARCtrl.OntologyAnnotation)">
+<summary>
+ This function creates a string containing the name and the ontology short-string of the given ontology annotation term
+
+ TechnologyPlatforms are plain strings in ISA-JSON.
+
+ This function allows us, to parse them as an ontology term.
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.decomposeProcessOutput(ARCtrl.Process.ProcessOutput)">
+<summary>
+ Convert an ISA ProcessOutput to a CompositeHeader and Cell tuple
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.decomposeProcessInput(ARCtrl.Process.ProcessInput)">
+<summary>
+ Convert an ISA ProcessOutput to a CompositeHeader and Cell tuple
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.decomposeCharacteristicValue(ARCtrl.Process.MaterialAttributeValue)">
+<summary>
+ Convert an ISA MaterialAttributeValue to a CompositeHeader and Cell tuple
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.decomposeFactorValue(ARCtrl.Process.FactorValue)">
+<summary>
+ Convert an ISA FactorValue to a CompositeHeader and Cell tuple
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.decomposeParameterValue(ARCtrl.Process.ProcessParameterValue)">
+<summary>
+ Convert an ISA ProcessParameterValue to a CompositeHeader and Cell tuple
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.decomposeComponent(ARCtrl.Process.Component)">
+<summary>
+ Convert an ISA Component to a CompositeHeader and Cell tuple
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.cellOfValue(Microsoft.FSharp.Core.FSharpOption{ARCtrl.Value},Microsoft.FSharp.Core.FSharpOption{ARCtrl.OntologyAnnotation})">
+<summary>
+ Convert an ISA Value and Unit tuple to a CompositeCell
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.composeProcessOutput(ARCtrl.CompositeHeader,ARCtrl.CompositeCell)">
+<summary>
+ Convert a CompositeHeader and Cell tuple to a ISA ProcessOutput
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.composeProcessInput(ARCtrl.CompositeHeader,ARCtrl.CompositeCell)">
+<summary>
+ Convert a CompositeHeader and Cell tuple to a ISA ProcessInput
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.composeCharacteristicValue(ARCtrl.CompositeHeader,ARCtrl.CompositeCell)">
+<summary>
+ Convert a CompositeHeader and Cell tuple to a ISA MaterialAttributeValue
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.composeFactorValue(ARCtrl.CompositeHeader,ARCtrl.CompositeCell)">
+<summary>
+ Convert a CompositeHeader and Cell tuple to a ISA FactorValue
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.composeParameterValue(ARCtrl.CompositeHeader,ARCtrl.CompositeCell)">
+<summary>
+ Convert a CompositeHeader and Cell tuple to a ISA ProcessParameterValue
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.composeComponent(ARCtrl.CompositeHeader,ARCtrl.CompositeCell)">
+<summary>
+ Convert a CompositeHeader and Cell tuple to a ISA Component
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.JsonTypes.valueOfCell(ARCtrl.CompositeCell)">
+<summary>
+ Convert a CompositeCell to a ISA Value and Unit tuple.
+</summary>
+</member>
+<member name="T:ARCtrl.Process.Conversion.JsonTypes">
+<summary>
+ Functions for transforming base level ARC Table and ISA Json Objects
+</summary>
+</member>
+<member name="M:ARCtrl.Process.Conversion.Person.getSourceAssayIdentifiersFromComments(ARCtrl.Person)">
+ <summary>
+ This functions helps encoding/decoding ISA-JSON. It returns a sequence of ArcAssay-Identifiers.
+ </summary>
+ <param name="person"></param>
+</member>
+</members>
+</doc>
