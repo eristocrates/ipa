@@ -1,1 +1,0 @@
-.NET;C#;theme;theming;color;colors;semantic colors;color palette;dark theme;light theme;Oklab;perceptual color;accessibility;WCAG;contrast ratio;ImGui;Dear ImGui;UI framework;color science;color space;Catppuccin;Gruvbox;Nord;Dracula;Tokyo Night;color mapping;dotnet;csharp

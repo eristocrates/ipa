@@ -1,1 +1,0 @@
-frontmatter;yaml frontmatter;markdown;markdown processing;metadata;yaml;document processing;property naming;dotnet;csharp

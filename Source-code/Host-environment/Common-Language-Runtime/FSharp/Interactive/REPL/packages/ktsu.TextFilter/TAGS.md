@@ -1,1 +1,0 @@
-text filter;glob patterns;regex;regular expressions;fuzzy matching;text matching;filter;ranking;dotnet;csharp

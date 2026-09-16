@@ -1,1 +1,0 @@
-fuzzy search;fuzzy matching;string matching;approximate matching;search ranking;scoring;command palette;search as you type;text search;dotnet;csharp
