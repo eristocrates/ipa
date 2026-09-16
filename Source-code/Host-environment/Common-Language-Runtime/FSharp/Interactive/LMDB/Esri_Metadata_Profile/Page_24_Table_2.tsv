@@ -1,8 +1,0 @@
-	AvailableJunctions =  _	
-	AvailableJunctionFeatureClass +  ___	
-	AvailableJunctionSubtype  __	
-		
-	NetworkElement =  _	
-	AncillaryRole +  _	
-	0{AncillaryRoleAttribute}1 +  __	
-	EnabledAttribute  _	

@@ -1,8 +1,0 @@
-namespace PaketLoadScripts
-
-#load "Microsoft.AspNetCore.Http.Abstractions.fsx" 
-#load "Microsoft.AspNetCore.WebUtilities.fsx" 
-#load "Microsoft.Extensions.ObjectPool.fsx" 
-#load "Microsoft.Extensions.Options.fsx" 
-#load "Microsoft.Net.Http.Headers.fsx" 
-#r "../../packages/Microsoft.AspNetCore.Http/lib/netstandard2.0/Microsoft.AspNetCore.Http.dll" 

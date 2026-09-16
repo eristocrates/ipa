@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Nager.PublicSuffix.nuspec" Id="R661E8B1E5CDE865B" />
-  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/fa01db0c9ea8485cbf31ffef95ae54a1.psmdcp" Id="RB7E64F23A1834225" />
-</Relationships>
