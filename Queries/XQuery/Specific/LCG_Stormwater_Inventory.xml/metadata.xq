@@ -1,1 +1,0 @@
-distinct-values(//metadata/descendant-or-self::*/name())
