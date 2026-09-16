@@ -48,6 +48,15 @@ open RdfNamespace
 
 
 
+
+
+
+
+module commonplace =
+    let prefixId = PrefixId.fromNamespaceLabel $"{personalSiteReference}/ontology/commonplace" "commonplace"
+
+
+
 let chrome = CdpBrowser.Connect()
 chrome.TargetCreated
 let replTab = chrome.NewPageAsync().await.asCdp

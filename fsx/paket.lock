@@ -1909,6 +1909,7 @@ NUGET
     TruePath (1.12)
     TruePath.SystemIo (1.12)
       TruePath (>= 1.12)
+    Universal.Common (8.5)
     Universal.Common.Css.Selectors (1.0.1)
     UriTemplate.Core (1.0.2)
       NETStandard.Library (>= 1.6.1)

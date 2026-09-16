@@ -1,7 +1,7 @@
 namespace PaketLoadScripts
 
 #load "Argolis.Models.fsx" 
-#load "JsonLd.Entities.fsx" 
+#load "JsonLD.Entities.fsx" 
 #load "Rdf.Vocabularies.fsx" 
 #load "System.ComponentModel.Annotations.fsx" 
 #load "UriTemplate.Core.fsx" 

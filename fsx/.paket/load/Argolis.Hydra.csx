@@ -1,6 +1,6 @@
 
 #load "Argolis.Models.csx" 
-#load "JsonLd.Entities.csx" 
+#load "JsonLD.Entities.csx" 
 #load "Rdf.Vocabularies.csx" 
 #load "System.ComponentModel.Annotations.csx" 
 #load "UriTemplate.Core.csx" 

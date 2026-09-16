@@ -229,3 +229,4 @@ nuget WordGlue
 nuget XParsec
 nuget Yog.FSharp
 nuget PuppeteerExtraSharp
+nuget Universal.Common
